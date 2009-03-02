@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="Employee"
+	    table="employee"
+>
+
+    <composite-id name="EmployeePK" class="EmployeePK">
+        <key-property 
+            name="EmployeeId" 
+            column="EMPLOYEE_ID" 
+            type="string"
+            length="10">
+        </key-property>
+        <key-property 
+            name="DepartmentId" 
+            column="DEPARTMENT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+    </composite-id>    
+
+    
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to Department -->
+    <many-to-one
+        name="Department"
+	    class="Department"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="DEPARTMENT_ID" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+    <!-- bi-directional one-to-many association to EmployeeWorkingDay -->
+    <bag
+        name="EmployeeWorkingDays"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="EMPLOYEE_ID" />
+            <column name="DEPARTMENT_ID" />
+        </key>
+        <one-to-many 
+            class="EmployeeWorkingDay"
+        />
+    </bag>
+    <!-- bi-directional one-to-many association to EmployeeReward -->
+    <bag
+        name="EmployeeRewards"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="EMPLOYEE_ID" />
+            <column name="DEPARTMENT_ID" />
+        </key>
+        <one-to-many 
+            class="EmployeeReward"
+        />
+    </bag>
+    <!-- bi-directional one-to-many association to Contract -->
+    <bag
+        name="Contracts"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="EMPLOYEE_ID" />
+            <column name="DEPARTMENT_ID" />
+        </key>
+        <one-to-many 
+            class="Contract"
+        />
+    </bag>
+    <!-- bi-directional one-to-one association to EmployeeDetail -->
+    <one-to-one
+        name="EmployeeInfo"
+        class="EmployeeInfo"
+        outer-join="auto"
+    >
+    </one-to-one>
+    <!-- bi-directional one-to-many association to EmployeeDayoff -->
+    <bag
+        name="EmployeeDayoffs"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="EMPLOYEE_ID" />
+            <column name="DEPARTMENT_ID" />
+        </key>
+        <one-to-many 
+            class="EmployeeDayoff"
+        />
+    </bag>
+
+</class>
+</hibernate-mapping>

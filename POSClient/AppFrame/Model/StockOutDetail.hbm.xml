@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="StockOutDetail"
+	    table="stock_out_detail"
+>
+
+    <composite-id name="StockOutDetailPK" class="StockOutDetailPK">
+        <key-property 
+            name="StockOutId" 
+            column="STOCK_OUT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+        <key-property 
+            name="ProductId" 
+            column="PRODUCT_ID" 
+            type="string"
+            length="20">
+        </key-property>
+    </composite-id>    
+
+    <property
+        name="Quantity"
+        type="Int64"
+        column="QUANTITY"
+        length="10"
+    >
+    </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to Product -->
+    <many-to-one
+        name="Product"
+	    class="Product"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="PRODUCT_ID" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+    <!-- bi-directional many-to-one association to StockOut -->
+    <many-to-one
+        name="StockOut"
+        class="StockOut"
+        not-null="true"
+    >
+    </many-to-one>
+
+</class>
+</hibernate-mapping>
