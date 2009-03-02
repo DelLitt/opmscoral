@@ -328,9 +328,17 @@ namespace AppFrame.DataLayer
                                {
                                    try
                                    {
-                                       string queryString = "SELECT DISTINCT pm FROM ProductMaster pm, DepartmentPrice dp " +
-                                                            " WHERE pm.ProductMasterId LIKE '%" + (string) id + "%' " +
-                                                            " AND pm.DelFlg = 0 ";
+                                       string queryString = "SELECT DISTINCT pm FROM ProductMaster pm ";
+                                       if (!allDepartment)
+                                       {
+                                           queryString += ", DepartmentPrice dp ";
+                                       }
+                                       queryString += " WHERE pm.DelFlg = 0 ";
+                                       if (!string.IsNullOrEmpty((string)id))
+                                       {
+                                           queryString += " AND pm.ProductMasterId LIKE '%" + (string) id + "%' " ;
+                                       }
+                                       
 
                                        if (!allDepartment) // if not search all so search by current department
                                        {
@@ -399,7 +407,7 @@ namespace AppFrame.DataLayer
                                    {
 
                                        IList productColors =
-                                           session.CreateQuery("SELECT DISTINCT pm.ProductColor FROM ProductMaster pm, DepartmentPrice dp " +
+                                           session.CreateQuery("SELECT DISTINCT pm.ProductColor FROM ProductMaster pm " +
                                                                " WHERE pm.ProductName = '" + (string)name + "' " +
                                                                " AND pm.DelFlg = 0 ")
                                                                .List();
@@ -427,7 +435,7 @@ namespace AppFrame.DataLayer
                                    {
 
                                        IList productSizes =
-                                           session.CreateQuery("SELECT DISTINCT pm.ProductSize FROM ProductMaster pm, DepartmentPrice dp " +
+                                           session.CreateQuery("SELECT DISTINCT pm.ProductSize FROM ProductMaster pm " +
                                                                " WHERE pm.ProductName = '" + (string)name + "' " +
                                                                " AND pm.DelFlg = 0 ")
                                                                .List();
@@ -455,8 +463,12 @@ namespace AppFrame.DataLayer
                                    {
 
                                        string queryString =
-                                           "SELECT DISTINCT p.ProductMaster FROM ProductMaster pm, Product p,DepartmentStockIn dsi,DepartmentStockInDetail dsid " +
-                                           " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId " +
+                                           "SELECT DISTINCT p.ProductMaster FROM ProductMaster pm, Product p ";
+                                       if(!allDepartment)
+                                       {
+                                           queryString += ",DepartmentStockIn dsi,DepartmentStockInDetail dsid ";
+                                       }
+                                       queryString += " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId " +
                                            " AND p.ProductMaster.ProductName LIKE '%" + (string)master.ProductName + "%' " +
                                                             " AND pm.DelFlg = 0 AND p.DelFlg = 0 ";
 

@@ -39,7 +39,9 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly=false)]
         public ProductMaster Add(ProductMaster data)
         {
-            string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
+            //string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
+            // always insert goods at main stock
+            string deptId = "000";
             //var criteria = new ObjectCriteria();
             //criteria.AddBetweenCriteria("ProductMasterId", "0000000000", deptId + "9999999999" );
             object maxId = ProductMasterDAO.SelectSpecificType(null, Projections.Max("ProductMasterId"));
@@ -66,7 +68,9 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly = false)]
         public void AddAll(List<ProductMaster> productMasters)
         {
-            string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
+            //string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
+            // always insert goods at main stock
+            string deptId = "000";
             var criteria = new ObjectCriteria();
             criteria.AddBetweenCriteria("ProductMasterId", deptId + "0000000000", deptId + "9999999999");
             object maxId = ProductMasterDAO.SelectSpecificType(criteria, Projections.Max("ProductMasterId"));
