@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <object id="AppFrame.Service.IDepartmentReturnLogic" type="AppFrame.Logic.DepartmentReturnLogicImpl, AppFrameClient">
+    <property name="DepartmentReturnDAO" ref="AppFrame.DataLayer.IDepartmentReturnDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentCostLogic" type="AppFrame.Logic.DepartmentCostLogicImpl, AppFrameClient">
+    <property name="DepartmentCostDAO" ref="AppFrame.DataLayer.IDepartmentCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockOutCostLogic" type="AppFrame.Logic.StockOutCostLogicImpl, AppFrameClient">
+    <property name="StockOutCostDAO" ref="AppFrame.DataLayer.IStockOutCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReceiptLogic" type="AppFrame.Logic.ReceiptLogicImpl, AppFrameClient">
+    <property name="ReceiptDAO" ref="AppFrame.DataLayer.IReceiptDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockLogic" type="AppFrame.Logic.DepartmentStockLogicImpl, AppFrameClient">
+    <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentPriceLogic" type="AppFrame.Logic.DepartmentPriceLogicImpl, AppFrameClient">
+    <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICustomerLogic" type="AppFrame.Logic.CustomerLogicImpl, AppFrameClient">
+    <property name="CustomerDAO" ref="AppFrame.DataLayer.ICustomersDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockOutLogic" type="AppFrame.Logic.StockOutLogicImpl, AppFrameClient">
+    <property name="StockOutDAO" ref="AppFrame.DataLayer.IStockOutDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockInCostLogic" type="AppFrame.Logic.DepartmentStockInCostLogicImpl, AppFrameClient">
+    <property name="DepartmentStockInCostDAO" ref="AppFrame.DataLayer.IDepartmentStockInCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockLogic" type="AppFrame.Logic.StockLogicImpl, AppFrameClient">
+    <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
+    <property name="ReturnProductDAO" ref="AppFrame.DataLayer.IReturnProductDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IEmployeeWorkingDayLogic" type="AppFrame.Logic.EmployeeWorkingDayLogicImpl, AppFrameClient">
+    <property name="EmployeeWorkingDayDAO" ref="AppFrame.DataLayer.IEmployeeWorkingDayDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPurchaseOrderDetailLogLogic" type="AppFrame.Logic.PurchaseOrderDetailLogLogicImpl, AppFrameClient">
+    <property name="PurchaseOrderDetailLogDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailLogDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IEmployeeDetailLogic" type="AppFrame.Logic.EmployeeDetailLogicImpl, AppFrameClient">
+    <property name="EmployeeDetailDAO" ref="AppFrame.DataLayer.IEmployeeDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPurchaseOrderDetailLogic" type="AppFrame.Logic.PurchaseOrderDetailLogicImpl, AppFrameClient">
+    <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ISupplierLogic" type="AppFrame.Logic.SupplierLogicImpl, AppFrameClient">
+    <property name="SupplierDAO" ref="AppFrame.DataLayer.ISupplierDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IBlockInDetailLogic" type="AppFrame.Logic.BlockInDetailLogicImpl, AppFrameClient">
+    <property name="BlockInDetailDAO" ref="AppFrame.DataLayer.IBlockInDetailDAO"/>
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
+    <property name="ProductMasterDAO" ref="AppFrame.DataLayer.IProductMasterDAO"/>
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
+    <property name="StockInDAO" ref="AppFrame.DataLayer.IStockInDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPackagerLogic" type="AppFrame.Logic.PackagerLogicImpl, AppFrameClient">
+    <property name="PackagerDAO" ref="AppFrame.DataLayer.IPackagerDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IContractLogic" type="AppFrame.Logic.ContractLogicImpl, AppFrameClient">
+    <property name="ContractDAO" ref="AppFrame.DataLayer.IContractDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IProductColorLogic" type="AppFrame.Logic.ProductColorLogicImpl, AppFrameClient">
+    <property name="ProductColorDAO" ref="AppFrame.DataLayer.IProductColorDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockInDetailLogic" type="AppFrame.Logic.DepartmentStockInDetailLogicImpl, AppFrameClient">
+    <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReceiptOutLogic" type="AppFrame.Logic.ReceiptOutLogicImpl, AppFrameClient">
+    <property name="ReceiptOutDAO" ref="AppFrame.DataLayer.IReceiptOutDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICountryLogic" type="AppFrame.Logic.CountryLogicImpl, AppFrameClient">
+    <property name="CountryDAO" ref="AppFrame.DataLayer.ICountryDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICategoryLogic" type="AppFrame.Logic.CategoryLogicImpl, AppFrameClient">
+    <property name="CategoryDAO" ref="AppFrame.DataLayer.ICategoryDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ITaxLogic" type="AppFrame.Logic.TaxLogicImpl, AppFrameClient">
+    <property name="TaxDAO" ref="AppFrame.DataLayer.ITaxDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentReturnDetailLogic" type="AppFrame.Logic.DepartmentReturnDetailLogicImpl, AppFrameClient">
+    <property name="DepartmentReturnDetailDAO" ref="AppFrame.DataLayer.IDepartmentReturnDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IManufacturerLogic" type="AppFrame.Logic.ManufacturerLogicImpl, AppFrameClient">
+    <property name="ManufacturerDAO" ref="AppFrame.DataLayer.IManufacturerDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IGiftLogic" type="AppFrame.Logic.GiftLogicImpl, AppFrameClient">
+    <property name="GiftDAO" ref="AppFrame.DataLayer.IGiftDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReturnProductLogic" type="AppFrame.Logic.ReturnProductLogicImpl, AppFrameClient">
+    <property name="ReturnProductDAO" ref="AppFrame.DataLayer.IReturnProductDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICustomerDetailLogic" type="AppFrame.Logic.CustomerDetailLogicImpl, AppFrameClient">
+    <property name="CustomerDetailDAO" ref="AppFrame.DataLayer.ICustomerDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentLogic" type="AppFrame.Logic.DepartmentLogicImpl, AppFrameClient">
+    <property name="DepartmentDAO" ref="AppFrame.DataLayer.IDepartmentDAO"/>
+    <property name="EmployeeDetailDAO" ref="AppFrame.DataLayer.IEmployeeDetailDAO"/>
+    <property name="EmployeeDAO" ref="AppFrame.DataLayer.IEmployeeDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPromotionLogic" type="AppFrame.Logic.PromotionLogicImpl, AppFrameClient">
+    <property name="PromotionDAO" ref="AppFrame.DataLayer.IPromotionDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICouponTypeLogic" type="AppFrame.Logic.CouponTypeLogicImpl, AppFrameClient">
+    <property name="CouponTypeDAO" ref="AppFrame.DataLayer.ICouponTypeDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPurchaseOrderLogLogic" type="AppFrame.Logic.PurchaseOrderLogLogicImpl, AppFrameClient">
+    <property name="PurchaseOrderLogDAO" ref="AppFrame.DataLayer.IPurchaseOrderLogDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockOutLogic" type="AppFrame.Logic.DepartmentStockOutLogicImpl, AppFrameClient">
+    <property name="DepartmentStockOutDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">
+    <property name="DepartmentPromotionDAO" ref="AppFrame.DataLayer.IDepartmentPromotionDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPurchaseOrderLogic" type="AppFrame.Logic.PurchaseOrderLogicImpl, AppFrameClient">
+    <property name="PurchaseOrderDAO" ref="AppFrame.DataLayer.IPurchaseOrderDAO"/>
+    <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
+    <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
+    <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockOutDetailLogic" type="AppFrame.Logic.StockOutDetailLogicImpl, AppFrameClient">
+    <property name="StockOutDetailDAO" ref="AppFrame.DataLayer.IStockOutDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockInDetailLogic" type="AppFrame.Logic.StockInDetailLogicImpl, AppFrameClient">
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockInLogic" type="AppFrame.Logic.DepartmentStockInLogicImpl, AppFrameClient">
+    <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
+    <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+    <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
+    <property name="ProductMasterDAO" ref="AppFrame.DataLayer.IProductMasterDAO"/>
+    <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
+    <property name="CountryDAO" ref="AppFrame.DataLayer.ICountryDAO"/>
+    <property name="ProductColorDAO" ref="AppFrame.DataLayer.IProductColorDAO"/>
+    <property name="ProductSizeDAO" ref="AppFrame.DataLayer.IProductSizeDAO"/>
+    <property name="ProductTypeDAO" ref="AppFrame.DataLayer.IProductTypeDAO"/>
+    <property name="DistributorDAO" ref="AppFrame.DataLayer.IDistributorDAO"/>
+    <property name="ManufacturerDAO" ref="AppFrame.DataLayer.IManufacturerDAO"/>
+    <property name="PackagerDAO" ref="AppFrame.DataLayer.IPackagerDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IProductSizeLogic" type="AppFrame.Logic.ProductSizeLogicImpl, AppFrameClient">
+    <property name="ProductSizeDAO" ref="AppFrame.DataLayer.IProductSizeDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IBlockInCostLogic" type="AppFrame.Logic.BlockInCostLogicImpl, AppFrameClient">
+    <property name="BlockInCostDAO" ref="AppFrame.DataLayer.IBlockInCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IProductMasterLogic" type="AppFrame.Logic.ProductMasterLogicImpl, AppFrameClient">
+    <property name="ProductMasterDAO" ref="AppFrame.DataLayer.IProductMasterDAO"/>
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
+    <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+    <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
+    <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
+    <property name="PurchaseOrderDAO" ref="AppFrame.DataLayer.IPurchaseOrderDAO"/>
+    <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
+    <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDistributorLogic" type="AppFrame.Logic.DistributorLogicImpl, AppFrameClient">
+    <property name="DistributorDAO" ref="AppFrame.DataLayer.IDistributorDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IEmployeeLogic" type="AppFrame.Logic.EmployeeLogicImpl, AppFrameClient">
+    <property name="EmployeeDAO" ref="AppFrame.DataLayer.IEmployeeDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentReturnCostLogic" type="AppFrame.Logic.DepartmentReturnCostLogicImpl, AppFrameClient">
+    <property name="DepartmentReturnCostDAO" ref="AppFrame.DataLayer.IDepartmentReturnCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ICouponLogic" type="AppFrame.Logic.CouponLogicImpl, AppFrameClient">
+    <property name="CouponDAO" ref="AppFrame.DataLayer.ICouponDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPurchaseOrderPromotionLogic" type="AppFrame.Logic.PurchaseOrderPromotionLogicImpl, AppFrameClient">
+    <property name="PurchaseOrderPromotionDAO" ref="AppFrame.DataLayer.IPurchaseOrderPromotionDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.ISimilarProductLogic" type="AppFrame.Logic.SimilarProductLogicImpl, AppFrameClient">
+    <property name="SimilarProductDAO" ref="AppFrame.DataLayer.ISimilarProductDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockOutCostLogic" type="AppFrame.Logic.DepartmentStockOutCostLogicImpl, AppFrameClient">
+    <property name="DepartmentStockOutCostDAO" ref="AppFrame.DataLayer.IDepartmentStockOutCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IBlockInLogic" type="AppFrame.Logic.BlockInLogicImpl, AppFrameClient">
+    <property name="BlockInDAO" ref="AppFrame.DataLayer.IBlockInDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IEmployeeRewardLogic" type="AppFrame.Logic.EmployeeRewardLogicImpl, AppFrameClient">
+    <property name="EmployeeRewardDAO" ref="AppFrame.DataLayer.IEmployeeRewardDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentStockOutDetailLogic" type="AppFrame.Logic.DepartmentStockOutDetailLogicImpl, AppFrameClient">
+    <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReturnBlockInLogic" type="AppFrame.Logic.ReturnBlockInLogicImpl, AppFrameClient">
+    <property name="ReturnBlockInDAO" ref="AppFrame.DataLayer.IReturnBlockInDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IProductTypeLogic" type="AppFrame.Logic.ProductTypeLogicImpl, AppFrameClient">
+    <property name="ProductTypeDAO" ref="AppFrame.DataLayer.IProductTypeDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IStockInLogic" type="AppFrame.Logic.StockInLogicImpl, AppFrameClient">
+    <property name="StockInDAO" ref="AppFrame.DataLayer.IStockInDAO"/>
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
+    <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
+    <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReturnPoLogic" type="AppFrame.Logic.ReturnPoLogicImpl, AppFrameClient">
+    <property name="ReturnPoDAO" ref="AppFrame.DataLayer.IReturnPoDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IScheduleTemplateLogic" type="AppFrame.Logic.ScheduleTemplateLogicImpl, AppFrameClient">
+    <property name="ScheduleTemplateDAO" ref="AppFrame.DataLayer.IScheduleTemplateDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IEmployeeDayoffLogic" type="AppFrame.Logic.EmployeeDayoffLogicImpl, AppFrameClient">
+    <property name="EmployeeDayoffDAO" ref="AppFrame.DataLayer.IEmployeeDayoffDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IProductLogic" type="AppFrame.Logic.ProductLogicImpl, AppFrameClient">
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IPublishedCouponLogic" type="AppFrame.Logic.PublishedCouponLogicImpl, AppFrameClient">
+    <property name="PublishedCouponDAO" ref="AppFrame.DataLayer.IPublishedCouponDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IReceiptOutCostLogic" type="AppFrame.Logic.ReceiptOutCostLogicImpl, AppFrameClient">
+    <property name="ReceiptOutCostDAO" ref="AppFrame.DataLayer.IReceiptOutCostDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IOtherTransactionLogLogic" type="AppFrame.Logic.OtherTransactionLogLogicImpl, AppFrameClient">
+    <property name="OtherTransactionLogDAO" ref="AppFrame.DataLayer.IOtherTransactionLogDAO"/>
+  </object>
+
+
+  <tx:attribute-driven/>
+</objects>
