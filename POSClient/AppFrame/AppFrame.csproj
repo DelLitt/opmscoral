@@ -570,6 +570,7 @@
     <Compile Include="Utility\RandomGenerator.cs" />
     <Compile Include="Utility\ResourceUtility.cs" />
     <Compile Include="Utility\SecurityUtility.cs" />
+    <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="View\Dummy.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailView.cs" />

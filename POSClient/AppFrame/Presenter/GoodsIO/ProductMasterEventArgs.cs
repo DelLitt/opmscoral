@@ -22,5 +22,8 @@ namespace AppFrame.Presenter.GoodsIO
         public IList DistributorList { get; set; }
         public IList PackagerList { get; set; }
         public List<ProductMaster> CreatedProductMasterList { get; set; }
+
+        public IList SameProductMasterList { get; set; }
+        public ProductMaster ProductMasterForInit { get; set; }
     }
 }

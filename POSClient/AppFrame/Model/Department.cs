@@ -10,9 +10,9 @@ namespace AppFrame.Model
     [Serializable]
     public class Department : System.IComparable
     {
-    	#region Member Variables
+        #region Member Variables
 
-        protected Int64 _departmentId; 		
+        protected Int64 _departmentId;
         protected string _departmentName;
         protected string _address;
         protected Int64 _managerId;
@@ -35,14 +35,20 @@ namespace AppFrame.Model
 
         #region Constructors
 
-        public Department () 
+        public Department()
         {
         }
-        
+
         #endregion
 
         #region Public Properties
-
+        public virtual string NameAddress
+        {
+            get
+            {
+                return _departmentName + " - " + _address;
+            }
+        }
         public virtual Int64 DepartmentId
         {
             get
@@ -155,7 +161,7 @@ namespace AppFrame.Model
             }
         }
 
-        
+
         // DepartmentCost
         public virtual IList DepartmentCosts
         {
@@ -168,8 +174,8 @@ namespace AppFrame.Model
                 _departmentCosts = value;
             }
         }
-        
-        
+
+
         // Employee
         public virtual IList Employees
         {
@@ -214,16 +220,16 @@ namespace AppFrame.Model
         }
 
         #endregion
-        
+
         #region IComparable Methods
-        
+
         public virtual int CompareTo(object obj)
         {
             return 0;
         }
-        
+
         #endregion
-        
+
         #region Equals and GetHashCode Methods
         // override object.Equals
         public override bool Equals(object obj)
@@ -233,10 +239,10 @@ namespace AppFrame.Model
                 return false;
             }
             return base.Equals(obj);
-            
+
         }
 
-		// override object.GetHashCode
+        // override object.GetHashCode
         public override int GetHashCode()
         {
             return base.GetHashCode();
