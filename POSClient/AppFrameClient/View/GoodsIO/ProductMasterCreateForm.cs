@@ -63,12 +63,47 @@ namespace AppFrameClient.View.GoodsIO
             LoadProductMaster();
         }
 
+        private IList colorSelectedIndices;
+        private IList sizeSelectedIndices;
+        private void RememberSelectionList()
+        {
+            colorSelectedIndices = new ArrayList();
+            foreach(int i in productMasterControl.lbxProductColor.SelectedIndices)
+            {
+                colorSelectedIndices.Add(i);
+            }
+
+            sizeSelectedIndices = new ArrayList();
+            foreach (int i in productMasterControl.lbxProductSize.SelectedIndices)
+            {
+                sizeSelectedIndices.Add(i);
+            }
+        }
+
+        private void RestoreSelectionList()
+        {
+            foreach (int i in colorSelectedIndices)
+            {
+                productMasterControl.lbxProductColor.SetSelected(i,true);
+            }
+            foreach (int i in sizeSelectedIndices)
+            {
+                productMasterControl.lbxProductSize.SetSelected(i,true);
+            }
+            colorSelectedIndices = null;
+            sizeSelectedIndices = null;
+        }
+
         private void btnCreateColor_Click(object sender, EventArgs e)
         {
+            RememberSelectionList();            
             AddToDataToBindingSource(MasterType.PRODUCT_COLOR,
                 productMasterControl.colorBindingSource,
                 productMasterControl.lbxProductColor);
+            RestoreSelectionList();
         }
+
+        
 
         private void btnCreateCountry_Click(object sender, EventArgs e)
         {
@@ -96,9 +131,11 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnCreateSize_Click(object sender, EventArgs e)
         {
+            RememberSelectionList();            
             AddToDataToBindingSource(MasterType.PRODUCT_SIZE,
                 productMasterControl.sizeBindingSource,
                 productMasterControl.lbxProductSize);
+            RestoreSelectionList();
         }
 
         private void btnCreateType_Click(object sender, EventArgs e)
@@ -145,6 +182,21 @@ namespace AppFrameClient.View.GoodsIO
                 }
                 source.Add(obj);
                 listBox.SelectedIndex = source.Count - 1;
+                switch (masterType)
+                {
+                    case MasterType.PRODUCT_COLOR:
+                        if(colorSelectedIndices!=null)
+                        {
+                            colorSelectedIndices.Add(source.Count - 1);
+                        }
+                        break;
+                    case MasterType.PRODUCT_SIZE:
+                        if(sizeSelectedIndices!=null)
+                        {
+                            sizeSelectedIndices.Add(source.Count -1 );
+                        }
+                        break;
+                }
                 Refresh();
             }
         }
