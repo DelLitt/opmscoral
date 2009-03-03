@@ -377,8 +377,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             long totalProduct = 0;
             foreach (StockInDetail detail in deptSIDetailList)
             {
-                totalInPrice += detail.Price * detail.Quantity;
-                totalProduct += detail.Quantity;
+                if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
+                {
+                    totalInPrice += detail.Price * detail.Quantity;
+                    totalProduct += detail.Quantity;
+                }
             }
             txtSumValue.Text = totalInPrice.ToString();
             txtSumProduct.Text = totalProduct.ToString();
@@ -661,6 +664,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     deptSIDetailList.RemoveAt(selectedIndex);
                 }
             }
+            CalculateTotalStorePrice();
         }
 
         private void btnBarcode_Click(object sender, EventArgs e)
@@ -1071,6 +1075,21 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 color.SetSelected(item,false);                                
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var proMaster = cboProductMasters.SelectedItem as ProductMaster;
+            if (proMaster == null)
+            {
+                return;
+            }
+            ProductMasterCreateForm form =
+                GlobalUtility.GetFormObject<ProductMasterCreateForm>(FormConstants.PRODUCT_MASTER_CREATE_FORM);
+            form.ProductMaster = proMaster;
+            form.CloseProductMasterEvent += new EventHandler<ProductMasterEventArgs>(form_CloseProductMasterEvent);
+            form.Status = ViewStatus.OPENDIALOG;
+            form.Show();
         }
     }
 }

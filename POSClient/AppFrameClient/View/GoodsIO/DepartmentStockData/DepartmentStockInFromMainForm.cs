@@ -124,7 +124,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             departmentStockInEventArgs.SelectedIndex = selectedIndex;
             departmentStockInEventArgs.SelectedDepartmentStockInDetail = deptSIDetailList[selectedIndex];
 
-            if(columnName.Equals("columnColor") )
+            if (columnName.Equals("columnColor"))
             {
                 // put colors to list
                 EventUtility.fireEvent(LoadProductColorEvent, this, departmentStockInEventArgs);
@@ -142,9 +142,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
                 departmentStockInEventArgs.ProductColorList = null;
             }
-            
 
-            if( columnName.Equals("columnSize"))
+
+            if (columnName.Equals("columnSize"))
             {
                 // put size to list
                 EventUtility.fireEvent(LoadProductSizeEvent, this, departmentStockInEventArgs);
@@ -173,7 +173,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 if (e.KeyCode == Keys.F3 || comboBox.DroppedDown)
                 {
-                    ((ComboBox) sender).DataSource = null;
+                    ((ComboBox)sender).DataSource = null;
                     comboBox_DropDown(sender, null);
                 }
             }
@@ -268,13 +268,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     var loadGoods =
                         departmentStockInEventArgs.SelectedDepartmentStockInDetail.Product.ProductMaster;
                     deptSIDetailList[selectedIndex] = departmentStockInEventArgs.SelectedDepartmentStockInDetail;
-                    
+
                     bdsStockIn.EndEdit();
                     dgvDeptStockIn.Refresh();
                     dgvDeptStockIn.Invalidate();
-                    
 
-                } 
+
+                }
                 else if (e.ColumnIndex == 3)
                 {
                     // get the product name
@@ -363,8 +363,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     deptSIDetailList[selectedIndex].Quantity = qty;
                     CalculateTotalStorePrice();
-//                    deptSIDetailList[selectedIndex].Price = inPrice;
-//                    deptSIDetailList[selectedIndex].OnStorePrice = sellPrice;
+                    //                    deptSIDetailList[selectedIndex].Price = inPrice;
+                    //                    deptSIDetailList[selectedIndex].OnStorePrice = sellPrice;
                 }
                 dgvDeptStockIn.Refresh();
                 dgvDeptStockIn.Invalidate();
@@ -424,7 +424,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         void dgvDeptStockIn_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            
+
         }
 
         #region IDepartmentStockInView Members
@@ -471,7 +471,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         #endregion
 
-        
+
 
         #region IDepartmentStockInView Members
 
@@ -497,8 +497,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnSave_Click(object sender, EventArgs e)
         {
             bool isNeedClearData = (deptSI == null || deptSI.DepartmentStockInPK == null || string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId));
-            DepartmentStockIn result =  SaveDeptStockIn(false);
-            
+            DepartmentStockIn result = SaveDeptStockIn(false);
+
             if (isNeedClearData && result != null)
             {
                 deptSI = new DepartmentStockIn();
@@ -514,7 +514,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0 && e.RowIndex < deptSIDetailList.Count)
             {
-                if (deptSI != null 
+                if (deptSI != null
                     && deptSI.DepartmentStockInPK != null
                     && !string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId)
                     && deptSIDetailList[e.RowIndex].DepartmentStockInDetailPK != null
@@ -563,6 +563,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptSIDetailList.RemoveAt(selectedIndex);
                 }
             }
+            CalculateTotalStorePrice();
         }
 
         private DepartmentStockIn SaveDeptStockIn(bool isNeedSync)
@@ -636,7 +637,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSI = new DepartmentStockIn();
             }
-            
+
             deptSI.StockInDate = dtpImportDate.Value;
             deptSI.DepartmentId = dept.DepartmentId;
             deptSI.Description = txtDexcription.Text;
@@ -662,8 +663,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             long totalProduct = 0;
             foreach (DepartmentStockInDetail detail in deptSIDetailList)
             {
-                totalInPrice += detail.Price * detail.Quantity;
-                totalProduct += detail.Quantity;
+                if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
+                {
+                    totalInPrice += detail.Price * detail.Quantity;
+                    totalProduct += detail.Quantity;
+                }
             }
             txtSumValue.Text = totalInPrice.ToString();
             txtSumProduct.Text = totalProduct.ToString();

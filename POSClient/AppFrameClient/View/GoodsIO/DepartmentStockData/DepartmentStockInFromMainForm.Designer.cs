@@ -452,7 +452,7 @@
             // cbbDept
             // 
             this.cbbDept.DataSource = this.bdsDept;
-            this.cbbDept.DisplayMember = "DepartmentName";
+            this.cbbDept.DisplayMember = "NameAddress";
             this.cbbDept.FormattingEnabled = true;
             this.cbbDept.Location = new System.Drawing.Point(296, 46);
             this.cbbDept.Name = "cbbDept";

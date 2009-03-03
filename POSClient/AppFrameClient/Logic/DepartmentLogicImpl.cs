@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using AppFrame.Common;
+using AppFrame.Utility;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
@@ -119,10 +120,11 @@ namespace AppFrame.Logic
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="nameInput"></param>
         /// <returns></returns>
-        private string ConvertEmployeeNameToId(string name)
+        private string ConvertEmployeeNameToId(string nameInput)
         {
+            string name = StringUtility.ConvertUnicodeToUnmarkVI(nameInput);
             string[] nameparts = name.Split(' ');
             string retName = nameparts[nameparts.Length - 1];
             for (int i = 0;i<nameparts.Length-1; i++)

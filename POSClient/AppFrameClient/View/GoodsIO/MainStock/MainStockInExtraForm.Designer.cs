@@ -88,6 +88,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSumProduct = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -119,7 +120,7 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(289, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
@@ -150,7 +151,7 @@
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(289, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -160,7 +161,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(290, 48);
             // 
             // btnDelete
             // 
@@ -392,9 +393,9 @@
             this.Column3});
             this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
-            this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 216);
+            this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 240);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
-            this.dgvDeptStockIn.Size = new System.Drawing.Size(979, 277);
+            this.dgvDeptStockIn.Size = new System.Drawing.Size(979, 253);
             this.dgvDeptStockIn.TabIndex = 76;
             this.dgvDeptStockIn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
             this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
@@ -522,7 +523,7 @@
             // btnNewProductInput
             // 
             this.btnNewProductInput.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewProductInput.Location = new System.Drawing.Point(832, 154);
+            this.btnNewProductInput.Location = new System.Drawing.Point(832, 149);
             this.btnNewProductInput.Name = "btnNewProductInput";
             this.btnNewProductInput.Size = new System.Drawing.Size(158, 46);
             this.btnNewProductInput.TabIndex = 100;
@@ -539,6 +540,7 @@
             this.button3.TabIndex = 101;
             this.button3.Text = "Bỏ qua";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnInput
@@ -546,7 +548,7 @@
             this.btnInput.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInput.Location = new System.Drawing.Point(832, 99);
             this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(158, 49);
+            this.btnInput.Size = new System.Drawing.Size(158, 46);
             this.btnInput.TabIndex = 102;
             this.btnInput.Text = "Nhập";
             this.btnInput.UseVisualStyleBackColor = true;
@@ -562,7 +564,7 @@
             this.lstColor.Location = new System.Drawing.Point(440, 98);
             this.lstColor.Name = "lstColor";
             this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(151, 102);
+            this.lstColor.Size = new System.Drawing.Size(151, 130);
             this.lstColor.TabIndex = 103;
             // 
             // colorBindingSource
@@ -579,7 +581,7 @@
             this.lstSize.Location = new System.Drawing.Point(665, 98);
             this.lstSize.Name = "lstSize";
             this.lstSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSize.Size = new System.Drawing.Size(161, 102);
+            this.lstSize.Size = new System.Drawing.Size(161, 130);
             this.lstSize.TabIndex = 104;
             // 
             // sizeBindingSource
@@ -664,9 +666,21 @@
             this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
             this.txtSumProduct.TabIndex = 111;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(832, 199);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(158, 28);
+            this.btnEdit.TabIndex = 113;
+            this.btnEdit.Text = "Chỉnh sửa mặt hàng";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // MainStockInExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.txtPriceOut);
@@ -781,5 +795,6 @@
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox txtSumProduct;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

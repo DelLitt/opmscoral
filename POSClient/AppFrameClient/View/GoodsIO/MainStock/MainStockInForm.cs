@@ -778,8 +778,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             long totalProduct = 0;
             foreach (StockInDetail detail in deptSIDetailList)
             {
-                totalInPrice += detail.Price * detail.Quantity;
-                totalProduct += detail.Quantity;
+                if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
+                {
+                    totalInPrice += detail.Price * detail.Quantity;
+                    totalProduct += detail.Quantity;
+                }
             }
             txtSumValue.Text = totalInPrice.ToString();
             txtSumProduct.Text = totalProduct.ToString();
