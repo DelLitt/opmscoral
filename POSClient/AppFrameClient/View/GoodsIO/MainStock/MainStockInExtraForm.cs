@@ -974,6 +974,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 foreach (DataGridViewCell cell in cells)
                 {
                     cell.Value = Clipboard.GetText();
+                    CalculateTotalStorePrice();
                 }
             }
         }
