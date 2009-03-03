@@ -34,11 +34,9 @@ namespace AppFrameClient.View.GoodsIO
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtImagePath = new System.Windows.Forms.TextBox();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.picProduct = new System.Windows.Forms.PictureBox();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterCreateControl();
+            this.btnRevert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,32 +70,6 @@ namespace AppFrameClient.View.GoodsIO
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 508);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 14);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Hình ảnh";
-            // 
-            // txtImagePath
-            // 
-            this.txtImagePath.Location = new System.Drawing.Point(118, 505);
-            this.txtImagePath.Name = "txtImagePath";
-            this.txtImagePath.Size = new System.Drawing.Size(368, 22);
-            this.txtImagePath.TabIndex = 26;
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(492, 505);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(38, 23);
-            this.btnSelect.TabIndex = 27;
-            this.btnSelect.Text = "...";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // picProduct
             // 
             this.picProduct.Location = new System.Drawing.Point(118, 533);
@@ -111,19 +83,28 @@ namespace AppFrameClient.View.GoodsIO
             this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterControl.Location = new System.Drawing.Point(5, 24);
             this.productMasterControl.Name = "productMasterControl";
-            this.productMasterControl.Size = new System.Drawing.Size(577, 481);
+            this.productMasterControl.Size = new System.Drawing.Size(577, 503);
             this.productMasterControl.TabIndex = 0;
             this.productMasterControl.Load += new System.EventHandler(this.productMasterUserControl_Load);
+            // 
+            // btnRevert
+            // 
+            this.btnRevert.Location = new System.Drawing.Point(247, 627);
+            this.btnRevert.Name = "btnRevert";
+            this.btnRevert.Size = new System.Drawing.Size(101, 27);
+            this.btnRevert.TabIndex = 29;
+            this.btnRevert.Text = "Trở về như cũ";
+            this.btnRevert.UseVisualStyleBackColor = true;
+            this.btnRevert.Visible = false;
+            this.btnRevert.Click += new System.EventHandler(this.btnRevert_Click);
             // 
             // ProductMasterCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 670);
+            this.Controls.Add(this.btnRevert);
             this.Controls.Add(this.picProduct);
-            this.Controls.Add(this.btnSelect);
-            this.Controls.Add(this.txtImagePath);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label8);
@@ -143,10 +124,8 @@ namespace AppFrameClient.View.GoodsIO
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.Button btnCancel;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox txtImagePath;
-        public System.Windows.Forms.Button btnSelect;
         public System.Windows.Forms.PictureBox picProduct;
+        public System.Windows.Forms.Button btnRevert;
 
         public event EventHandler<ProductMasterEventArgs> DeleteProductMasterEvent;
     }

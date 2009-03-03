@@ -17,7 +17,8 @@ namespace AppFrameClient.Presenter.GoodsIO
         #region View use in IProductMasterController
 
         private IProductMasterView _productMasterView;
-        public IProductMasterView ProductMasterView { 
+        public IProductMasterView ProductMasterView
+        {
             get
             {
                 return _productMasterView;
@@ -52,6 +53,20 @@ namespace AppFrameClient.Presenter.GoodsIO
             e.PackagerList.Insert(0, new Packager());
             e.DistributorList = DistributorLogic.FindAll(criteria);
             e.DistributorList.Insert(0, new Distributor());
+
+            if (e.ProductMasterForInit != null)
+            {
+                criteria = new ObjectCriteria();
+                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                criteria.AddEqCriteria("ProductName", e.ProductMasterForInit.ProductName);
+                criteria.AddEqCriteria("ProductType", e.ProductMasterForInit.ProductType);
+                criteria.AddEqCriteria("Manufacturer", e.ProductMasterForInit.Manufacturer);
+                criteria.AddEqCriteria("Distributor", e.ProductMasterForInit.Distributor);
+                criteria.AddEqCriteria("Packager", e.ProductMasterForInit.Packager);
+                criteria.AddEqCriteria("Country", e.ProductMasterForInit.Country);
+
+                e.SameProductMasterList = ProductMasterLogic.FindAll(criteria);
+            }
         }
 
         public void productMasterView_LoadProductMasterEvent(object sender, ProductMasterEventArgs e)
@@ -86,19 +101,20 @@ namespace AppFrameClient.Presenter.GoodsIO
                 if (e.CreatedProductMasterList != null)
                 {
                     ProductMasterLogic.AddAll(e.CreatedProductMasterList);
-                } 
+                }
                 else if (e.ProductMaster != null)
                 {
                     e.ProductMaster = ProductMasterLogic.Add(e.ProductMaster);
                 }
             }
+            e.EventResult = "Success";
         }
 
         public void productMasterView_DeleteProductMasterEvent(object sender, ProductMasterEventArgs e)
         {
             if (!string.IsNullOrEmpty(e.ProductMasterId))
             {
-                ProductMasterLogic.Delete(new ProductMaster{ProductMasterId = e.ProductMasterId});
+                ProductMasterLogic.Delete(new ProductMaster { ProductMasterId = e.ProductMasterId });
             }
         }
 
@@ -118,7 +134,8 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         public ProductMasterEventArgs ResultEventArgs
         {
-            get; set;
+            get;
+            set;
         }
 
         #endregion

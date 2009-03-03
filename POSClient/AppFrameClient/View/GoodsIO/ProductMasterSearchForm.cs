@@ -172,7 +172,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void dgvProductMaster_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < dgvProductMaster.Rows.Count)
+            if (e.RowIndex < dgvProductMaster.Rows.Count && e.RowIndex >= 0)
             {
                 string productMasterId =
                     dgvProductMaster.Rows[e.RowIndex].Cells["productMasterIdDataGridViewTextBoxColumn"].Value.ToString();

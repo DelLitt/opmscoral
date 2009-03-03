@@ -129,7 +129,7 @@
             this.txtProductName.Location = new System.Drawing.Point(105, 37);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(185, 22);
-            this.txtProductName.TabIndex = 36;
+            this.txtProductName.TabIndex = 1;
             // 
             // cbbProductType
             // 
@@ -137,7 +137,7 @@
             this.cbbProductType.Location = new System.Drawing.Point(105, 112);
             this.cbbProductType.Name = "cbbProductType";
             this.cbbProductType.Size = new System.Drawing.Size(185, 22);
-            this.cbbProductType.TabIndex = 44;
+            this.cbbProductType.TabIndex = 3;
             // 
             // cbbProductColor
             // 
@@ -145,7 +145,7 @@
             this.cbbProductColor.Location = new System.Drawing.Point(105, 141);
             this.cbbProductColor.Name = "cbbProductColor";
             this.cbbProductColor.Size = new System.Drawing.Size(185, 22);
-            this.cbbProductColor.TabIndex = 45;
+            this.cbbProductColor.TabIndex = 4;
             // 
             // cbbProductSize
             // 
@@ -153,7 +153,7 @@
             this.cbbProductSize.Location = new System.Drawing.Point(105, 170);
             this.cbbProductSize.Name = "cbbProductSize";
             this.cbbProductSize.Size = new System.Drawing.Size(185, 22);
-            this.cbbProductSize.TabIndex = 46;
+            this.cbbProductSize.TabIndex = 5;
             // 
             // cbbCountry
             // 
@@ -161,7 +161,7 @@
             this.cbbCountry.Location = new System.Drawing.Point(105, 199);
             this.cbbCountry.Name = "cbbCountry";
             this.cbbCountry.Size = new System.Drawing.Size(185, 22);
-            this.cbbCountry.TabIndex = 47;
+            this.cbbCountry.TabIndex = 6;
             // 
             // cbbManufacturer
             // 
@@ -169,7 +169,7 @@
             this.cbbManufacturer.Location = new System.Drawing.Point(105, 228);
             this.cbbManufacturer.Name = "cbbManufacturer";
             this.cbbManufacturer.Size = new System.Drawing.Size(185, 22);
-            this.cbbManufacturer.TabIndex = 49;
+            this.cbbManufacturer.TabIndex = 7;
             // 
             // label5
             // 
@@ -186,7 +186,7 @@
             this.cbbPackager.Location = new System.Drawing.Point(105, 257);
             this.cbbPackager.Name = "cbbPackager";
             this.cbbPackager.Size = new System.Drawing.Size(185, 22);
-            this.cbbPackager.TabIndex = 51;
+            this.cbbPackager.TabIndex = 8;
             // 
             // label6
             // 
@@ -203,7 +203,7 @@
             this.cbbDistributor.Location = new System.Drawing.Point(105, 286);
             this.cbbDistributor.Name = "cbbDistributor";
             this.cbbDistributor.Size = new System.Drawing.Size(185, 22);
-            this.cbbDistributor.TabIndex = 53;
+            this.cbbDistributor.TabIndex = 9;
             // 
             // label7
             // 
@@ -219,7 +219,7 @@
             this.btnCreateType.Location = new System.Drawing.Point(297, 111);
             this.btnCreateType.Name = "btnCreateType";
             this.btnCreateType.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateType.TabIndex = 54;
+            this.btnCreateType.TabIndex = 11;
             this.btnCreateType.Text = "...";
             this.btnCreateType.UseVisualStyleBackColor = true;
             // 
@@ -228,7 +228,7 @@
             this.btnCreateColor.Location = new System.Drawing.Point(297, 141);
             this.btnCreateColor.Name = "btnCreateColor";
             this.btnCreateColor.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateColor.TabIndex = 55;
+            this.btnCreateColor.TabIndex = 12;
             this.btnCreateColor.Text = "...";
             this.btnCreateColor.UseVisualStyleBackColor = true;
             // 
@@ -237,7 +237,7 @@
             this.btnCreateSize.Location = new System.Drawing.Point(297, 170);
             this.btnCreateSize.Name = "btnCreateSize";
             this.btnCreateSize.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateSize.TabIndex = 56;
+            this.btnCreateSize.TabIndex = 13;
             this.btnCreateSize.Text = "...";
             this.btnCreateSize.UseVisualStyleBackColor = true;
             // 
@@ -246,7 +246,7 @@
             this.btnCreateCountry.Location = new System.Drawing.Point(297, 199);
             this.btnCreateCountry.Name = "btnCreateCountry";
             this.btnCreateCountry.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateCountry.TabIndex = 57;
+            this.btnCreateCountry.TabIndex = 14;
             this.btnCreateCountry.Text = "...";
             this.btnCreateCountry.UseVisualStyleBackColor = true;
             // 
@@ -255,7 +255,7 @@
             this.btnCreateManufacturer.Location = new System.Drawing.Point(297, 228);
             this.btnCreateManufacturer.Name = "btnCreateManufacturer";
             this.btnCreateManufacturer.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateManufacturer.TabIndex = 58;
+            this.btnCreateManufacturer.TabIndex = 15;
             this.btnCreateManufacturer.Text = "...";
             this.btnCreateManufacturer.UseVisualStyleBackColor = true;
             // 
@@ -264,7 +264,7 @@
             this.btnCreatePackager.Location = new System.Drawing.Point(297, 257);
             this.btnCreatePackager.Name = "btnCreatePackager";
             this.btnCreatePackager.Size = new System.Drawing.Size(40, 25);
-            this.btnCreatePackager.TabIndex = 59;
+            this.btnCreatePackager.TabIndex = 16;
             this.btnCreatePackager.Text = "...";
             this.btnCreatePackager.UseVisualStyleBackColor = true;
             // 
@@ -273,7 +273,7 @@
             this.btnCreateDistributor.Location = new System.Drawing.Point(297, 286);
             this.btnCreateDistributor.Name = "btnCreateDistributor";
             this.btnCreateDistributor.Size = new System.Drawing.Size(40, 25);
-            this.btnCreateDistributor.TabIndex = 60;
+            this.btnCreateDistributor.TabIndex = 17;
             this.btnCreateDistributor.Text = "...";
             this.btnCreateDistributor.UseVisualStyleBackColor = true;
             // 
@@ -292,7 +292,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(370, 40);
-            this.txtDescription.TabIndex = 62;
+            this.txtDescription.TabIndex = 2;
             // 
             // label9
             // 
@@ -308,14 +308,14 @@
             this.txtImagePath.Location = new System.Drawing.Point(105, 314);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(370, 22);
-            this.txtImagePath.TabIndex = 63;
+            this.txtImagePath.TabIndex = 10;
             // 
             // btnSelect
             // 
             this.btnSelect.Location = new System.Drawing.Point(481, 311);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(40, 25);
-            this.btnSelect.TabIndex = 65;
+            this.btnSelect.TabIndex = 18;
             this.btnSelect.Text = "...";
             this.btnSelect.UseVisualStyleBackColor = true;
             // 

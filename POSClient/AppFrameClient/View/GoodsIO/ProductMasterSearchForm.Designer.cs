@@ -31,14 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvProductMaster = new System.Windows.Forms.DataGridView();
-            this.productMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.productPrintDialog = new System.Windows.Forms.PrintDialog();
-            this.productPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.productMasterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +51,14 @@
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distributorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.productPrintDialog = new System.Windows.Forms.PrintDialog();
+            this.productPrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +75,7 @@
             // 
             // dgvProductMaster
             // 
+            this.dgvProductMaster.AllowUserToAddRows = false;
             this.dgvProductMaster.AutoGenerateColumns = false;
             this.dgvProductMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductMaster.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -106,62 +107,6 @@
             this.dgvProductMaster.Size = new System.Drawing.Size(921, 334);
             this.dgvProductMaster.TabIndex = 18;
             this.dgvProductMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductMaster_CellDoubleClick);
-            // 
-            // productMasterBindingSource
-            // 
-            this.productMasterBindingSource.DataSource = typeof(AppFrame.Model.ProductMaster);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(855, 500);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 19;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(774, 500);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 20;
-            this.btnSelect.Text = "Chọn";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(780, 131);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 21;
-            this.btnSearch.Text = "Tìm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // productPrintDialog
-            // 
-            this.productPrintDialog.UseEXDialog = true;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(681, 500);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(87, 23);
-            this.btnPrint.TabIndex = 22;
-            this.btnPrint.Text = "In sản phẩm";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // productMasterSearchControl
-            // 
-            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 34);
-            this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(918, 120);
-            this.productMasterSearchControl.TabIndex = 0;
             // 
             // productMasterIdDataGridViewTextBoxColumn
             // 
@@ -313,6 +258,62 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
+            // 
+            // productMasterBindingSource
+            // 
+            this.productMasterBindingSource.DataSource = typeof(AppFrame.Model.ProductMaster);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(855, 500);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 19;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(774, 500);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect.TabIndex = 20;
+            this.btnSelect.Text = "Chọn";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(780, 131);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Tìm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // productPrintDialog
+            // 
+            this.productPrintDialog.UseEXDialog = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Enabled = false;
+            this.btnPrint.Location = new System.Drawing.Point(681, 500);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(87, 23);
+            this.btnPrint.TabIndex = 22;
+            this.btnPrint.Text = "In sản phẩm";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // productMasterSearchControl
+            // 
+            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 34);
+            this.productMasterSearchControl.Name = "productMasterSearchControl";
+            this.productMasterSearchControl.Size = new System.Drawing.Size(918, 120);
+            this.productMasterSearchControl.TabIndex = 0;
             // 
             // ProductMasterSearchForm
             // 
