@@ -51,5 +51,7 @@ namespace AppFrameClient.Common
         
         public const string DAY_GOODS_SALE_LIST_FORM = "DayGoodsSaleListView";
         public const string MONTH_GOODS_SALE_LIST_FORM = "MonthGoodsSaleListView";
+        public const string REPORT_STOCK_IN_PARAM_FORM = "ReportStockInParamView";
+        public const string REPORT_STOCK_IN_FORM = "ReportStockInView";
     }
 }

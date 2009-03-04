@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
@@ -318,5 +319,37 @@ namespace AppFrame.DataLayer
                 hibernateCriteria.AddOrder(order);
             }
         }
+
+        #region IStockInDAO Members
+
+
+        public IList FindByProductMaster(System.DateTime fromDate, System.DateTime toDate)
+        {
+            return (IList) HibernateTemplate.Execute(
+                               delegate(ISession session)
+                                   {
+                                       IList list=null;
+                                       try
+                                       {
+                                           string queryString =
+                                               "SELECT pm,SUM(sidet.Quantity),SUM(sidet.SellPrice) FROM ProductMaster pm,Product p,StockInDetail sidet" +
+                                               " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId AND sidet.StockInDetailPK.ProductId = p.ProductId " +
+                                               " AND sidet.CreateDate <= :toDate AND sidet.CreateDate >= :fromDate GROUP BY pm.ProductName";
+                                           IQuery iQuery = session.CreateQuery(queryString);
+                                           iQuery.SetParameter("toDate", toDate);
+                                           iQuery.SetParameter("fromDate", fromDate);
+                                           list = iQuery.List();
+
+                                       }
+                                       catch (Exception e)
+                                       {
+                                           Console.Out.WriteLine(e.InnerException.Message);
+                                       }
+                                       return list;
+                                   }
+                               );
+
+        }
+        #endregion
     }
 }

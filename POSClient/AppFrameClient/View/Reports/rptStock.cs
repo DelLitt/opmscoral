@@ -6,29 +6,57 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
+using AppFrame.Presenter.Report;
+using AppFrame.Utility;
+using AppFrame.View.Reports;
 
 namespace AppFrameClient.View.Reports
 {
-    public partial class frmStockinRpt : Form
+    public partial class frmStockinRpt : BaseForm,IReportStockInParamView
     {
         public frmStockinRpt()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+       
 
+        #region IReportStockInParamView Members
+
+        private AppFrame.Presenter.Report.IReportStockInController reportStockInController;
+        public AppFrame.Presenter.Report.IReportStockInController ReportStockInController
+        {
+            get
+            {
+                return reportStockInController;
+            }
+            set
+            {
+                reportStockInController = value;
+                reportStockInController.ReportStockInParamView = this;
+
+            }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        #endregion
+
+        #region IReportStockInParamView Members
+
+
+        public event EventHandler<AppFrame.Presenter.Report.ReportStockInEventArgs> CreateReportStockIn;
+
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            ReportStockInParam reportStockInParam = new ReportStockInParam();
+            reportStockInParam.FromDate = dtpReportTimeFrom.Value;
+            reportStockInParam.ToDate = dtpReportTimeTo.Value;
+            ReportStockInEventArgs eventArgs = new ReportStockInEventArgs();
+            eventArgs.ReportStockInParam = reportStockInParam;
+            EventUtility.fireEvent(CreateReportStockIn,this,eventArgs);
+            Close();
         }
     }
 }

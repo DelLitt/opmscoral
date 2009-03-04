@@ -10,11 +10,13 @@ using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter;
 using AppFrame.Utility;
+using AppFrame.View.Reports;
 using AppFrameClient.Common;
 using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.View.GoodsSale;
+using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
 using Spring.Context;
 using Spring.Context.Support;
@@ -311,10 +313,9 @@ namespace AppFrame.View
 
         private void mnuGoodsImportReport_Click(object sender, EventArgs e)
         {
-            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<MainStockInSearchReportForm>(this,
-                                                                                                       FormConstants.
-                                                                                                           MAIN_STOCK_IN_SEARCH_REPORT_FORM);
+            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<frmStockinStatistic>(this, FormConstants.REPORT_STOCK_IN_FORM);
             stockInReportForm.Show();
+
         }
 
 

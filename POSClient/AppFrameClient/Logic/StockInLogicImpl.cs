@@ -306,5 +306,10 @@ namespace AppFrame.Logic
         {
             return StockInDAO.FindPaging(criteria);
         }
+
+        public IList FindByProductMaster(DateTime fromDate,DateTime toDate)
+        {
+            return StockInDAO.FindByProductMaster(fromDate, toDate);
+        }
     }
 }

@@ -324,6 +324,7 @@
     <Compile Include="Presenter\GoodsSale\GoodsSaleReturnController.cs" />
     <Compile Include="Presenter\LoginController.cs" />
     <Compile Include="Presenter\Masters\UniversalMasterSaveController.cs" />
+    <Compile Include="Presenter\Report\ReportStockInController.cs" />
     <Compile Include="Presenter\SalePoints\EmployeeController.cs" />
     <Compile Include="Presenter\SalePoints\SalePointController.cs" />
     <Compile Include="Presenter\SalePoints\SalePointListController.cs" />
@@ -389,6 +390,8 @@
     <None Include="Properties\DataSources\AppFrame.Model.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Supplier.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetail.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetailCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -417,6 +420,9 @@
     <Compile Include="Utility\Dummy.cs" />
     <Compile Include="Utility\Mapper\DepartmentMapper.cs" />
     <Compile Include="Utility\Mapper\EmployeeTransform.cs" />
+    <Compile Include="ViewModel\ProductMasterGlobal.cs" />
+    <Compile Include="ViewModel\StockInResultDetail.cs" />
+    <Compile Include="ViewModel\StockInResultDetailCollection.cs" />
     <Compile Include="View\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -717,6 +723,18 @@
     <Compile Include="View\Masters\UniversalMasterCreateForm.Designer.cs">
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports\rptStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\rptStock.Designer.cs">
+      <DependentUpon>rptStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\rptStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\rptStockIn.Designer.cs">
+      <DependentUpon>rptStockIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SalePoints\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1011,6 +1029,12 @@
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\rptStock.resx">
+      <DependentUpon>rptStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\rptStockIn.resx">
+      <DependentUpon>rptStockIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\SalePointListForm.resx">
       <DependentUpon>SalePointListForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1029,7 +1053,6 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Report\" />
-    <Folder Include="View\Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
