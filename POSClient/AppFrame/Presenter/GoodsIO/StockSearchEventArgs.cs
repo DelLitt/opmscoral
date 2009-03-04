@@ -26,5 +26,8 @@ namespace AppFrame.Presenter.GoodsIO
         public ProductSize ProductSize { get; set; }
         public ProductColor ProductColor { get; set; }
         public Country Country { get; set; }
+        public Manufacturer Manufacturer { get; set; }
+        public Distributor Distributor { get; set; }
+        public Packager Packager { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.ComponentModel;
+using AppFrame.Controls;
 
 namespace AppFrame.Model
 {
@@ -7,6 +9,7 @@ namespace AppFrame.Model
     /// <summary>
     /// Stock object for NHibernate mapped table 'stock'.
     /// </summary>
+    [TypeDescriptionProvider(typeof(ComplexCustomDescriptionProvider<Stock>))]
     [Serializable]
     public class Stock : System.IComparable
     {
@@ -33,7 +36,7 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
-        public virtual ProductMaster ProductMaster { get; set; }
+
         public virtual Int64 StockId
         {
             get
@@ -167,6 +170,8 @@ namespace AppFrame.Model
             return base.GetHashCode();
         }
         #endregion
+
+        public virtual ProductMaster ProductMaster { get; set; }
     }
     #endregion
 }
