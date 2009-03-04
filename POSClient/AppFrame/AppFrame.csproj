@@ -506,6 +506,8 @@
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
     <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
+    <Compile Include="Presenter\Report\IReportStockInController.cs" />
+    <Compile Include="Presenter\Report\ReportStockInEventArgs.cs" />
     <Compile Include="Presenter\SalePoints\ISalePointListController.cs" />
     <Compile Include="Presenter\LoginEventArgs.cs" />
     <Compile Include="Model\CustomerModel.cs" />
@@ -597,6 +599,8 @@
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\INewCustomerView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
+    <Compile Include="View\Reports\IReportStockInParamView.cs" />
+    <Compile Include="View\Reports\IReportStockInView.cs" />
     <Compile Include="View\SalePoints\IEmployeeView.cs" />
     <Compile Include="View\SalePoints\ISalePointListView.cs" />
     <Compile Include="View\SalePoints\ISalePointView.cs" />
@@ -707,7 +711,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Inventory\" />
-    <Folder Include="View\Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
