@@ -129,5 +129,10 @@ namespace AppFrameClient.View.GoodsIO
             obj[MAX_COLUMN - 1] = rowIndex;
             return obj;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

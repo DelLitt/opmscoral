@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
@@ -318,5 +319,76 @@ namespace AppFrame.DataLayer
                 hibernateCriteria.AddOrder(order);
             }
         }
+
+        #region IStockOutDAO Members
+
+
+        public IList FindByProductMaster(System.DateTime date, System.DateTime toDate)
+        {
+            return (IList)HibernateTemplate.Execute(
+                               delegate(ISession session)
+                               {
+                                   IList list = null;
+                                   try
+                                   {
+                                       string queryString =
+                                           "SELECT pm,SUM(sodet.Quantity),SUM(sodet.Price) FROM ProductMaster pm,Product p,StockOutDetail sodet,DepartmentPrice dp" +
+                                           " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId AND sodet.StockOutDetailPK.ProductId = p.ProductId " +
+                                           " AND sodet.StockOutDetailPK.StockOutId = so.StockOutId " +
+                                           " AND pm.ProductMasterId = dp.DepartmentPricePK.ProductMasterId " +
+                                           " AND sodet.StockOutDetailPK.StockOutId = so.StockOutId " +
+                                           " AND so.DepartmentId = :deparmentId " +
+                                           " AND sodet.CreateDate <= :toDate AND sodet.CreateDate >= :fromDate GROUP BY pm.ProductName";
+                                       IQuery iQuery = session.CreateQuery(queryString);
+                                       iQuery.SetParameter("toDate", toDate);
+                                       iQuery.SetParameter("fromDate", date);
+                                       list = iQuery.List();
+
+                                   }
+                                   catch (Exception e)
+                                   {
+                                       Console.Out.WriteLine(e.InnerException.Message);
+                                   }
+                                   return list;
+                               }
+                               );
+        }
+
+        #endregion
+
+        #region IStockOutDAO Members
+
+
+        public IList FindByProductMaster(long id, System.DateTime date, System.DateTime toDate)
+        {
+            return (IList)HibernateTemplate.Execute(
+                               delegate(ISession session)
+                               {
+                                   IList list = null;
+                                   try
+                                   {
+                                       string queryString =
+                                           "SELECT pm,SUM(dsidet.Quantity),SUM(dp.Price) FROM ProductMaster pm,Product p,DepartmentStockInDetail dsidet,DepartmentPrice dp" +
+                                           " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId AND dsidet.StockOutDetailPK.ProductId = p.ProductId " +
+                                           " AND pm.ProductMasterId = dp.DepartmentPricePK.ProductMasterId " +
+                                           " AND dsidet.DepartmentStockInDetailPK.DepartmentId = :deparmentId " +
+                                           " AND dsidet.CreateDate <= :toDate AND dsidet.CreateDate >= :fromDate GROUP BY pm.ProductName";
+                                       IQuery iQuery = session.CreateQuery(queryString);
+                                       iQuery.SetParameter("toDate", toDate);
+                                       iQuery.SetParameter("fromDate", date);
+                                       iQuery.SetParameter("departmentId", id);
+                                       list = iQuery.List();
+
+                                   }
+                                   catch (Exception e)
+                                   {
+                                       Console.Out.WriteLine(e.InnerException.Message);
+                                   }
+                                   return list;
+                               }
+                               );
+        }
+
+        #endregion
     }
 }

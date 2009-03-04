@@ -95,5 +95,25 @@ namespace AppFrame.Logic
         {
             return StockOutDAO.FindPaging(criteria);
         }
+
+        #region IStockOutLogic Members
+
+
+        public IList FindByProductMaster(System.DateTime date, System.DateTime toDate)
+        {
+            return null;//return StockOutDAO.FindByProductMaster(date, toDate);
+        }
+
+        #endregion
+
+        #region IStockOutLogic Members
+
+
+        public IList FindByProductMaster(long id, System.DateTime date, System.DateTime toDate)
+        {
+            return StockOutDAO.FindByProductMaster(id,date, toDate);
+        }
+
+        #endregion
     }
 }

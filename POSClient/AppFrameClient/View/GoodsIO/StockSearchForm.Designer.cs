@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvStockList = new System.Windows.Forms.DataGridView();
-            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +48,11 @@
             this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -88,46 +88,6 @@
             this.dgvStockList.Name = "dgvStockList";
             this.dgvStockList.Size = new System.Drawing.Size(961, 288);
             this.dgvStockList.TabIndex = 1;
-            // 
-            // stockBindingSource
-            // 
-            this.stockBindingSource.DataSource = typeof(AppFrame.Model.Stock);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(783, 125);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Tìm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(894, 448);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(378, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 19);
-            this.label7.TabIndex = 86;
-            this.label7.Text = "TÌM KIẾM KHO";
-            // 
-            // productMasterControl
-            // 
-            this.productMasterControl.Location = new System.Drawing.Point(2, 28);
-            this.productMasterControl.Name = "productMasterControl";
-            this.productMasterControl.Size = new System.Drawing.Size(958, 120);
-            this.productMasterControl.TabIndex = 0;
             // 
             // productMasterDataGridViewTextBoxColumn
             // 
@@ -253,6 +213,47 @@
             this.productDataGridViewTextBoxColumn.HeaderText = "Product";
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stockBindingSource
+            // 
+            this.stockBindingSource.DataSource = typeof(AppFrame.Model.Stock);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(783, 125);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(894, 448);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(378, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 19);
+            this.label7.TabIndex = 86;
+            this.label7.Text = "TÌM KIẾM KHO";
+            // 
+            // productMasterControl
+            // 
+            this.productMasterControl.Location = new System.Drawing.Point(2, 28);
+            this.productMasterControl.Name = "productMasterControl";
+            this.productMasterControl.Size = new System.Drawing.Size(958, 120);
+            this.productMasterControl.TabIndex = 0;
             // 
             // StockSearchForm
             // 

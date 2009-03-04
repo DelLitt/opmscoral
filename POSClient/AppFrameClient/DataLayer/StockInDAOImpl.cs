@@ -332,7 +332,7 @@ namespace AppFrame.DataLayer
                                        try
                                        {
                                            string queryString =
-                                               "SELECT pm,SUM(sidet.Quantity),SUM(sidet.SellPrice) FROM ProductMaster pm,Product p,StockInDetail sidet" +
+                                               "SELECT pm,SUM(sidet.Quantity),SUM(sidet.Price) FROM ProductMaster pm,Product p,StockInDetail sidet" +
                                                " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId AND sidet.StockInDetailPK.ProductId = p.ProductId " +
                                                " AND sidet.CreateDate <= :toDate AND sidet.CreateDate >= :fromDate GROUP BY pm.ProductName";
                                            IQuery iQuery = session.CreateQuery(queryString);

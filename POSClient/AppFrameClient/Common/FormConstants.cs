@@ -6,6 +6,7 @@ namespace AppFrameClient.Common
 {
     public sealed class FormConstants
     {
+        
         public const string SALEPOINT_LIST_FORM = "SalePointListView";
         // Form constants defined in Spring Context
         public const string MAIN_FORM = "mainView";
@@ -53,5 +54,6 @@ namespace AppFrameClient.Common
         public const string MONTH_GOODS_SALE_LIST_FORM = "MonthGoodsSaleListView";
         public const string REPORT_STOCK_IN_PARAM_FORM = "ReportStockInParamView";
         public const string REPORT_STOCK_IN_FORM = "ReportStockInView";
+        public static string REPORT_STOCK_OUT_FORM = "ReportStockOutView";
     }
 }

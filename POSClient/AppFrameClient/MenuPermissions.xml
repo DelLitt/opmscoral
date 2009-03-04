@@ -53,6 +53,7 @@
   <menu name="mnuReport" role="Administrator">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="NotImplement" />    
     <menuitem name="mnuGoodsImportReport" role="Administrator" />
+    <menuitem name="mnuGoodsExportReport" role="Administrator" />
     <menuitem name="mnuGoodsSendbackReport" role="NotImplement" />
     <menuitem name="mnuTotalReport" role="NotImplement" />
     <menuitem name="mnuMixReport" role="NotImplement" />
