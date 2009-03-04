@@ -894,6 +894,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\PurchaseOrder.rdlc" />
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1053,7 +1054,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

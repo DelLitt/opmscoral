@@ -97,10 +97,16 @@ namespace AppFrameClient.View.Reports
                 dgvStockProducts[0, i].Value = i + 1;
             }
 
+/*
             for (int i = 0; i < dgvStockProductsDetail.Rows.Count; i++)
             {
-                dgvStockProductsDetail[0, i].Value = i + 1;
+                DateTime dateTime = (DateTime)dgvStockProductsDetail[0, i].Value;
+                if(dateTime!=null)
+                {
+                    dateTime.
+                }
             }
+*/
         }
 
         #region IReportStockInView Members
@@ -117,6 +123,7 @@ namespace AppFrameClient.View.Reports
 
             pSODetList = new StockInDetailCollection(bdsStockInResultDetail);
             bdsStockInResultDetail.DataSource = pSODetList;
+            dgvStockProductsDetail.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
         }
 
         private void dgvStockProducts_SelectionChanged(object sender, EventArgs e)
@@ -149,6 +156,11 @@ namespace AppFrameClient.View.Reports
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgvStockProductsDetail_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            
         }
     }
 }
