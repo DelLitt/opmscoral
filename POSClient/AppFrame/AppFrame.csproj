@@ -163,6 +163,7 @@
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
     <Compile Include="Collection\StockInDetailCollection.cs" />
+    <Compile Include="Collection\StockOutDetailCollection.cs" />
     <Compile Include="Common\AbstractUser.cs" />
     <Compile Include="Common\AppUserManager.cs" />
     <Compile Include="Common\AsyncController.cs">
@@ -507,7 +508,9 @@
     <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
     <Compile Include="Presenter\Report\IReportStockInController.cs" />
+    <Compile Include="Presenter\Report\IReportStockOutController.cs" />
     <Compile Include="Presenter\Report\ReportStockInEventArgs.cs" />
+    <Compile Include="Presenter\Report\ReportStockOutEventArgs.cs" />
     <Compile Include="Presenter\SalePoints\ISalePointListController.cs" />
     <Compile Include="Presenter\LoginEventArgs.cs" />
     <Compile Include="Model\CustomerModel.cs" />
@@ -599,6 +602,7 @@
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\INewCustomerView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
+    <Compile Include="View\Reports\IDepartmentGoodsExportReportView.cs" />
     <Compile Include="View\Reports\IReportStockInParamView.cs" />
     <Compile Include="View\Reports\IReportStockInView.cs" />
     <Compile Include="View\SalePoints\IEmployeeView.cs" />

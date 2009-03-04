@@ -63,5 +63,8 @@ namespace AppFrame.DataLayer
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria criteria, IProjection type);
+
+        IList FindByProductMaster(DateTime date, DateTime toDate);
+        IList FindByProductMaster(long id, DateTime date, DateTime toDate);
     }
 }

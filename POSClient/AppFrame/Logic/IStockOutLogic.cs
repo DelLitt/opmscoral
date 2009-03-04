@@ -54,5 +54,8 @@ namespace AppFrame.Logic
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
+
+        IList FindByProductMaster(DateTime date, DateTime toDate);
+        IList FindByProductMaster(long id, DateTime date, DateTime toDate);
     }
 }

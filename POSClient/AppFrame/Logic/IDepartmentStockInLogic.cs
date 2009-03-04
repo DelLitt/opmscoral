@@ -56,5 +56,6 @@ namespace AppFrame.Logic
         QueryResult FindPaging(ObjectCriteria criteria);
 
         void Sync(DepartmentStockIn data);
+        IList FindByProductMaster(long id, DateTime date, DateTime toDate);
     }
 }
