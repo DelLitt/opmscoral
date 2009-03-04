@@ -325,5 +325,10 @@ namespace AppFrame.View
             departmentStockIn.ShowDialog();
         }
 
+        private void mnuWarehouseRemains_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

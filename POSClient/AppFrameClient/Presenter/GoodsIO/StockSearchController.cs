@@ -37,15 +37,23 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         public void stockSearchView_SearchStockEvent(object sender, StockSearchEventArgs e)
         {
-/*            var subCriteria1 = new SubObjectCriteria("Product");
-            var subCriteria2 = new SubObjectCriteria("ProductMaster");
-            subCriteria2.AddLikeCriteria("ProductMasterId", e.ProductMasterId);
-            subCriteria2.AddLikeCriteria("ProductName", e.ProductMasterName);
+            /*            var subCriteria1 = new SubObjectCriteria("Product");
+                        var subCriteria2 = new SubObjectCriteria("ProductMaster");
+                        subCriteria2.AddLikeCriteria("ProductMasterId", e.ProductMasterId);
+                        subCriteria2.AddLikeCriteria("ProductName", e.ProductMasterName);*/
 
-            var criteria = new ObjectCriteria();
-            criteria.AddSubCriteria("Product", subCriteria1);
-            criteria.AddSubCriteria("ProductMaster", subCriteria2);*/
-            IList list = StockLogic.FindByQuery(new ObjectCriteria());
+            var criteria = new ObjectCriteria(true);
+            criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
+            criteria.AddLikeCriteria("pm.ProductName", e.ProductMasterName + "%");
+            criteria.AddEqCriteria("pm.ProductType", e.ProductType);
+            criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
+            criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);
+            criteria.AddEqCriteria("pm.Country", e.Country);
+            criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
+            criteria.AddEqCriteria("pm.Packager", e.Packager);
+            criteria.AddEqCriteria("pm.Distributor", e.Distributor);
+            IList list = StockLogic.FindByQuery(criteria);
             e.StockList = list;
         }
 
@@ -54,9 +62,19 @@ namespace AppFrameClient.Presenter.GoodsIO
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", (long)0);
             e.ProductTypeList = ProductTypeLogic.FindAll(criteria);
+            e.ProductTypeList.Insert(0, new ProductType());
             e.ProductSizeList = ProductSizeLogic.FindAll(criteria);
+            e.ProductSizeList.Insert(0, new ProductSize());
             e.ProductColorList = ProductColorLogic.FindAll(criteria);
+            e.ProductColorList.Insert(0, new ProductColor());
             e.CountryList = CountryLogic.FindAll(criteria);
+            e.CountryList.Insert(0, new Country());
+            e.ManufacturerList = ManufacturerLogic.FindAll(criteria);
+            e.ManufacturerList.Insert(0, new Manufacturer());
+            e.PackagerList = PackagerLogic.FindAll(criteria);
+            e.PackagerList.Insert(0, new Packager());
+            e.DistributorList = DistributorLogic.FindAll(criteria);
+            e.DistributorList.Insert(0, new Distributor());
         }
 
         #region Logic use in IStockCreateController

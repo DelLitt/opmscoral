@@ -340,7 +340,7 @@ namespace AppFrame.DataLayer
                 for (int i = 0; i < list.Count; i++ )
                 {
                     var stock = (Stock)((object[])list[i])[0];
-                    stock.Quantity = Int64.Parse(((object[]) list[i])[0].ToString());
+                    stock.Quantity = Int64.Parse(((object[]) list[i])[1].ToString());
                     returnList.Add(stock);
                 }
                 return returnList;

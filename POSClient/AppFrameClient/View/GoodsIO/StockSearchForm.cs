@@ -28,14 +28,14 @@ namespace AppFrameClient.View.GoodsIO
         public StockSearchForm()
         {
             InitializeComponent();
-            dataTable.Columns.Add("Mã sản phẩm");
-            dataTable.Columns.Add("Tên sản phẩm");
-            dataTable.Columns.Add("Số lượng trong kho");
-            dataTable.Columns.Add("Tổng giá trị");
-            dataTable.Columns.Add("Chủng loại");
-            dataTable.Columns.Add("Màu sắc");
-            dataTable.Columns.Add("Kích cỡ");
-            dataTable.Columns.Add("Index");
+//            dataTable.Columns.Add("Mã sản phẩm");
+//            dataTable.Columns.Add("Tên sản phẩm");
+//            dataTable.Columns.Add("Số lượng trong kho");
+//            dataTable.Columns.Add("Tổng giá trị");
+//            dataTable.Columns.Add("Chủng loại");
+//            dataTable.Columns.Add("Màu sắc");
+//            dataTable.Columns.Add("Kích cỡ");
+//            dataTable.Columns.Add("Index");
         }
 
         private void StockSearchForm_Load(object sender, EventArgs e)
@@ -54,6 +54,16 @@ namespace AppFrameClient.View.GoodsIO
 
             productMasterControl.cbbCountry.DataSource = eventArgs.CountryList;
             productMasterControl.cbbCountry.DisplayMember = "CountryName";
+
+            productMasterControl.cbbPackager.DataSource = eventArgs.PackagerList;
+            productMasterControl.cbbPackager.DisplayMember = "PackagerName";
+
+            productMasterControl.cbbDistributor.DataSource = eventArgs.DistributorList;
+            productMasterControl.cbbDistributor.DisplayMember = "DistributorName";
+
+            productMasterControl.cbbManufacturer.DataSource = eventArgs.ManufacturerList;
+            productMasterControl.cbbManufacturer.DisplayMember = "ManufacturerName";
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -66,12 +76,17 @@ namespace AppFrameClient.View.GoodsIO
                 ProductType = productMasterControl.cbbProductType.SelectedIndex > 0 ? ((ProductType)productMasterControl.cbbProductType.SelectedItem) : null,
                 ProductColor = productMasterControl.cbbProductColor.SelectedIndex > 0 ?
                     ((ProductColor)productMasterControl.cbbProductColor.SelectedItem) : null,
-                Country = productMasterControl.cbbCountry.SelectedIndex > 0 ? ((Country)productMasterControl.cbbCountry.SelectedItem) : null
+                Country = productMasterControl.cbbCountry.SelectedIndex > 0 ? 
+                    ((Country)productMasterControl.cbbCountry.SelectedItem) : null,
+                Packager = productMasterControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterControl.cbbPackager.SelectedItem) : null,
+                Manufacturer = productMasterControl.cbbManufacturer.SelectedIndex > 0 ?
+                    ((Manufacturer)productMasterControl.cbbManufacturer.SelectedItem) : null,
+                Distributor = productMasterControl.cbbDistributor.SelectedIndex > 0 ?
+                    ((Distributor)productMasterControl.cbbDistributor.SelectedItem) : null
             };
             EventUtility.fireEvent(SearchStockEvent, sender, eventArgs);
-            IList stockList = eventArgs.StockList;
-            
 
+            stockBindingSource.DataSource = eventArgs.StockList;
         }
 
         public IList StockList { get; set; }
@@ -89,7 +104,7 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<StockSearchEventArgs> SearchStockEvent;
         private readonly DataTable dataTable = new DataTable();
 
-        public void PopulateDataGrid(StockCreateEventArgs e)
+        public void PopulateDataGrid()
         {
             if (StockList != null)
             {

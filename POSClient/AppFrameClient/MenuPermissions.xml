@@ -14,7 +14,7 @@
     <menuitem name="mnuImportGoods" role="Administrator" />
     <menuitem name="searchBlockToolStripMenuItem" role="Administrator" />
     <menuitem name="approveStockToolStripMenuItem" role="NotImplement" />
-    <menuitem name="searchStockToolStripMenuItem" role="NotImplement" />    
+    <menuitem name="searchStockToolStripMenuItem" role="Administrator" />    
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
     <menuitem name="mnuDanhmucHanghoa" role="NotImplement" />

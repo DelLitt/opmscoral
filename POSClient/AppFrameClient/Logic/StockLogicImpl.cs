@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
@@ -133,11 +134,21 @@ namespace AppFrame.Logic
 
         public IList FindByQuery(ObjectCriteria criteria)
         {
-            var sqlString = "select stock, sum(stock.Quantity) FROM Stock stock, Product p, ProductMaster pm WHERE stock.Product.ProductId = p.ProductId AND p.ProductMaster.ProductMasterId = pm.ProductMasterId ";
-            sqlString += " AND pm.ProductName Like :productName Group BY pm.ProductMasterId";
+            var sqlString = new StringBuilder("select stock, sum(stock.Quantity) FROM Stock stock, Product p, ProductMaster pm WHERE stock.Product.ProductId = p.ProductId AND p.ProductMaster.ProductMasterId = pm.ProductMasterId ");
+            foreach (SQLQueryCriteria crit in criteria.GetQueryCriteria())
+            {
+                sqlString.Append(" AND ")
+                       .Append(crit.PropertyName)
+                       .Append(" ")
+                       .Append(crit.SQLString)
+                       .Append(" :")
+                       .Append(crit.PropertyName)
+                       .Append(" ");
+            }
+            sqlString.Append(" Group BY pm.ProductMasterId");
             //criteria.AddQueryCriteria("productName", "Ao%");
             //var sqlString = "select * FROM Stock stock, Product p WHERE stock.Product_Id = p.Product_Id";
-            return StockDAO.FindByQuery(sqlString, criteria);
+            return StockDAO.FindByQuery(sqlString.ToString(), criteria);
         }
     }
 }
