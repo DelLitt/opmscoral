@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.Report;
@@ -19,6 +20,7 @@ namespace AppFrameClient.View.Reports
     public partial class frmStockinStatistic : BaseForm,IReportStockInView
     {
         private StockInResultDetailCollection pSODetResultList = null;
+        private StockInDetailCollection pSODetList = null;
         public frmStockinStatistic()
         {
             InitializeComponent();
@@ -79,7 +81,21 @@ namespace AppFrameClient.View.Reports
                 stockInResultDetail.StockInTotalAmounts = (long) stockDetailByPM[2];
                 pSODetResultList.Add(stockInResultDetail);
             }
-            bdsStockInResultDetail.EndEdit();
+            bdsStockInResultPM.EndEdit();
+            PopulateGrid();
+        }
+
+        private void PopulateGrid()
+        {
+            for(int i =0;i<dgvStockProducts.Rows.Count;i++)
+            {
+                dgvStockProducts[0, i].Value = i + 1;
+            }
+
+            for (int i = 0; i < dgvStockProductsDetail.Rows.Count; i++)
+            {
+                dgvStockProductsDetail[0, i].Value = i + 1;
+            }
         }
 
         #region IReportStockInView Members
@@ -91,17 +107,43 @@ namespace AppFrameClient.View.Reports
 
         private void frmStockinStatistic_Load(object sender, EventArgs e)
         {
-            pSODetResultList = new StockInResultDetailCollection(bdsStockInResultDetail);
-            bdsStockInResultDetail.DataSource = pSODetResultList;
+            pSODetResultList = new StockInResultDetailCollection(bdsStockInResultPM);
+            bdsStockInResultPM.DataSource = pSODetResultList;
+
+            pSODetList = new StockInDetailCollection(bdsStockInResultDetail);
+            bdsStockInResultDetail.DataSource = pSODetList;
         }
 
         private void dgvStockProducts_SelectionChanged(object sender, EventArgs e)
         {
+            pSODetList.Clear();
             if(resultList == null)
             {
                 return;
             }
+            DataGridViewSelectedRowCollection selectedRows = dgvStockProducts.SelectedRows;
+            if(selectedRows.Count > 0)
+            {
+                StockInResultDetail siRetDetail = pSODetResultList[selectedRows[0].Index];
 
+                foreach (StockIn stockIn in resultList)
+                {
+                    foreach (StockInDetail stockInDetail in stockIn.StockInDetails)
+                    {
+                        if(stockInDetail.Product.ProductMaster.ProductName.Equals(siRetDetail.ProductMasterGlobal.ProductName))
+                        {
+                            pSODetList.Add(stockInDetail);
+                        }
+                    }    
+                }
+                bdsStockInResultDetail.EndEdit();
+                PopulateGrid();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
