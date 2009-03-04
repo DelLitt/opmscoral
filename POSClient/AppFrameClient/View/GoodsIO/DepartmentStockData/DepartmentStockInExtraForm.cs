@@ -326,6 +326,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> FillDepartmentEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorSizeEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadPriceAndStockEvent;
 
         #endregion
 

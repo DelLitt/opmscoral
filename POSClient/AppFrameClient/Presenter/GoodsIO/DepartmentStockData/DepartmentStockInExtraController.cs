@@ -46,10 +46,17 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadGoodsByNameColorSizeEvent);
                         departmentStockInExtraView.FillDepartmentEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FillDepartmentEvent);
+                        departmentStockInExtraView.LoadPriceAndStockEvent +=
+                                    new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadPriceAndStockEvent);
                     }
                 }
 
-                void _departmentStockInView_FillDepartmentEvent(object sender, DepartmentStockInEventArgs e)
+        void _departmentStockInView_LoadPriceAndStockEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            GetRemainStockNumber(e.DepartmentStockInDetailList);
+        }
+
+        void _departmentStockInView_FillDepartmentEvent(object sender, DepartmentStockInEventArgs e)
                 {
                     var criteria = new ObjectCriteria();
                     criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
@@ -101,8 +108,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     {
                     DepartmentStockInDetail detail = e.SelectedDepartmentStockInDetail;
                     ObjectCriteria objectCriteria = new ObjectCriteria();
+                    objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
                     objectCriteria.AddEqCriteria("ProductName", detail.Product.ProductMaster.ProductName);            
                     IList list  = ProductMasterLogic.FindAll(objectCriteria);
+                    e.FoundProductMasterList = list;
                     if (list == null || list.Count == 0)
                     {
                         return;

@@ -167,6 +167,7 @@ namespace AppFrame.Logic
                     stockInDetail.UpdateDate = DateTime.Now;
                     stockInDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                     stockInDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    stockInDetail.ProductMaster = product.ProductMaster;
                     StockInDetailDAO.Add(stockInDetail);
 
                     // dept stock

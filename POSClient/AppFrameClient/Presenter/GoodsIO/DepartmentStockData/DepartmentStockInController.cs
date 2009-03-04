@@ -124,7 +124,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     .AddEqCriteria("sdetail.DelFlg", CommonConstants.DEL_FLG_NO)
                     .AddEqCriteria("s.DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId)
                     .AddSearchInCriteria("pm.ProductMasterId", productMasterIdList);
-                e.DepartmentRemainStockList = DepartmentStockLogic.FindByQuery(criteria);
+                //e.DepartmentRemainStockList = DepartmentStockLogic.FindByQuery(criteria);
             }
         }
 
