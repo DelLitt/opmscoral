@@ -352,6 +352,7 @@
     <EmbeddedResource Include="MenuPermissions.xsd" />
     <EmbeddedResource Include="Config\Logic.config" />
     <EmbeddedResource Include="Config\Presentation.config" />
+    <None Include="AppFrameClient.csi" />
     <None Include="ClassDiagram1.cd" />
     <EmbeddedResource Include="Common\FREE3OF9.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

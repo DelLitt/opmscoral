@@ -68,6 +68,10 @@ namespace AppFrameClient.View.Reports
 
             IList stockDetailByPMList = eventArgs.ProductMastersInList;
             
+            if(stockDetailByPMList.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy hàng nào","Kết quả");
+            }
             
             foreach (var o in stockDetailByPMList)
             {
@@ -83,6 +87,7 @@ namespace AppFrameClient.View.Reports
             }
             bdsStockInResultPM.EndEdit();
             PopulateGrid();
+
         }
 
         private void PopulateGrid()
