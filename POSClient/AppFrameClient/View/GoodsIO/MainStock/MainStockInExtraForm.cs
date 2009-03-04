@@ -21,9 +21,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 {
     public partial class MainStockInExtraForm : BaseForm, IMainStockInView
     {
-        private const int QUANTITY_POS = 5;
-        private const int PRICE_POS = 6;
-        private const int SELL_PRICE_POS = 7;
+        private const int QUANTITY_POS = 6;
+        private const int PRICE_POS = 7;
+        private const int SELL_PRICE_POS = 8;
         private StockInDetailCollection deptSIDetailList;
         private IList CurrentRowProductColorList { get; set; }
         private IList CurrentRowProductSizeList { get; set; }
@@ -1081,6 +1081,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnEdit_Click(object sender, EventArgs e)
         {
             var proMaster = cboProductMasters.SelectedItem as ProductMaster;
+            int i = cboProductMasters.SelectedIndex;
             if (proMaster == null)
             {
                 return;
@@ -1090,7 +1091,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             form.ProductMaster = proMaster;
             form.CloseProductMasterEvent += new EventHandler<ProductMasterEventArgs>(form_CloseProductMasterEvent);
             form.Status = ViewStatus.OPENDIALOG;
-            form.Show();
+            form.ShowDialog();
+            cboProductMasters.SelectedIndex = i;
+            cboProductMasters.SelectedItem = proMaster;
+            cboProductMasters.DroppedDown = false;
         }
     }
 }
