@@ -58,8 +58,8 @@ namespace AppFrameClient.View.Reports
             pSODetResultList.Clear();
            ReportStockInEventArgs eventArgs = new ReportStockInEventArgs();
             ReportStockInParam stockInParam = new ReportStockInParam();
-            stockInParam.FromDate = dtpFrom.Value;
-            stockInParam.ToDate = dtpTo.Value;
+            stockInParam.FromDate = DateUtility.ZeroTime(dtpFrom.Value);
+            stockInParam.ToDate = DateUtility.MaxTime(dtpTo.Value);
             eventArgs.ReportStockInParam = stockInParam;
             EventUtility.fireEvent(LoadStockInByRangeEvent,this,eventArgs);
 
