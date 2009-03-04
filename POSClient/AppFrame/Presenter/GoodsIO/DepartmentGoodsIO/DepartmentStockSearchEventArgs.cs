@@ -27,7 +27,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public IList StockList { get; set; }
         public IList DepartmentStockList { get; set; }
         public IList DepartmentList { get; set; }
-        public IList DepartmentRemainStockList { get; set; }
+        public IList DepartmentStockInDetailList { get; set; }
+        public IList FoundProductMasterList { get; set; }
 
         public string ProductMasterId { get; set; }
         public string ProductMasterName { get; set; }
