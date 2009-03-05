@@ -459,6 +459,12 @@
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.Designer.cs">
+      <DependentUpon>InventoryCheckingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInExtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -917,6 +923,9 @@
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\InventoryCheckingForm.resx">
+      <DependentUpon>InventoryCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockInExtraForm.resx">
       <DependentUpon>MainStockInExtraForm.cs</DependentUpon>
