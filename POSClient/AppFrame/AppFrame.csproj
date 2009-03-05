@@ -457,6 +457,8 @@
     <Compile Include="Model\ScheduleTemplatePK.cs" />
     <Compile Include="Model\SimilarProduct.cs" />
     <Compile Include="Model\Stock.cs" />
+    <Compile Include="Model\StockDefect.cs" />
+    <Compile Include="Model\StockDefectStatus.cs" />
     <Compile Include="Model\StockIn.cs" />
     <Compile Include="Model\StockInDetail.cs" />
     <Compile Include="Model\StockInDetailPK.cs" />
@@ -649,6 +651,8 @@
   <ItemGroup>
     <Content Include="Advice\dummy.txt" />
     <Content Include="Config\AppFrameSecurity.xml" />
+    <EmbeddedResource Include="Model\StockDefect.hbm.xml" />
+    <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
