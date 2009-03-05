@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsSaleForm));
             this.dgvBill = new System.Windows.Forms.DataGridView();
             this.bdsBill = new System.Windows.Forms.BindingSource(this.components);
@@ -56,13 +56,21 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBillDate = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtGoodsName = new System.Windows.Forms.TextBox();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.lblTax = new System.Windows.Forms.Label();
             this.txtTax = new AppFrame.Controls.NumberTextBox();
             this.txtCharge = new AppFrame.Controls.NumberTextBox();
             this.txtPayment = new AppFrame.Controls.NumberTextBox();
             this.txtTotalAmount = new AppFrame.Controls.NumberTextBox();
-            this.txtBillDate = new System.Windows.Forms.TextBox();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
@@ -70,10 +78,6 @@
             this.printBillDialog = new System.Windows.Forms.PrintDialog();
             this.printBillDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.txtGoodsName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.columnProductSearch = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
             this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +86,6 @@
             this.columnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -106,15 +109,15 @@
             this.columnSize,
             this.columnType});
             this.dgvBill.DataSource = this.bdsBill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Format = "##,##0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "##,##0";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBill.Location = new System.Drawing.Point(1, 65);
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.Size = new System.Drawing.Size(974, 265);
@@ -319,6 +322,7 @@
             this.btnAdd.TabIndex = 26;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
@@ -353,8 +357,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chung";
             // 
+            // txtBillDate
+            // 
+            this.txtBillDate.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBillDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBillDate.Location = new System.Drawing.Point(833, 52);
+            this.txtBillDate.Name = "txtBillDate";
+            this.txtBillDate.Size = new System.Drawing.Size(88, 15);
+            this.txtBillDate.TabIndex = 36;
+            this.txtBillDate.Text = "12/12/2008";
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtQuantity);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -379,6 +396,80 @@
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa đơn";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(833, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(142, 44);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Nhập";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(327, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 14);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Số lượng";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Enabled = false;
+            this.txtQuantity.Location = new System.Drawing.Point(397, 22);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity.Size = new System.Drawing.Size(79, 22);
+            this.txtQuantity.TabIndex = 2;
+            this.txtQuantity.Text = "1";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(270, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 23);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(485, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 14);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Tên hàng:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 14);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Mã vạch:";
+            // 
+            // txtGoodsName
+            // 
+            this.txtGoodsName.Location = new System.Drawing.Point(555, 22);
+            this.txtGoodsName.Name = "txtGoodsName";
+            this.txtGoodsName.ReadOnly = true;
+            this.txtGoodsName.Size = new System.Drawing.Size(263, 22);
+            this.txtGoodsName.TabIndex = 43;
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Location = new System.Drawing.Point(79, 21);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(188, 22);
+            this.txtBarcode.TabIndex = 1;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             // 
             // lblTax
             // 
@@ -425,16 +516,6 @@
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.Size = new System.Drawing.Size(196, 22);
             this.txtTotalAmount.TabIndex = 37;
-            // 
-            // txtBillDate
-            // 
-            this.txtBillDate.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBillDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBillDate.Location = new System.Drawing.Point(833, 52);
-            this.txtBillDate.Name = "txtBillDate";
-            this.txtBillDate.Size = new System.Drawing.Size(88, 15);
-            this.txtBillDate.TabIndex = 36;
-            this.txtBillDate.Text = "12/12/2008";
             // 
             // btnFirst
             // 
@@ -497,40 +578,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // txtBarcode
-            // 
-            this.txtBarcode.Location = new System.Drawing.Point(79, 21);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(188, 22);
-            this.txtBarcode.TabIndex = 42;
-            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
-            // 
-            // txtGoodsName
-            // 
-            this.txtGoodsName.Location = new System.Drawing.Point(395, 21);
-            this.txtGoodsName.Name = "txtGoodsName";
-            this.txtGoodsName.ReadOnly = true;
-            this.txtGoodsName.Size = new System.Drawing.Size(263, 22);
-            this.txtGoodsName.TabIndex = 43;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 14);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Mã vạch:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 14);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "Tên hàng:";
-            // 
             // columnProductSearch
             // 
             this.columnProductSearch.Frozen = true;
@@ -562,6 +609,7 @@
             this.columnProductName.Frozen = true;
             this.columnProductName.HeaderText = "Tên hàng";
             this.columnProductName.Name = "columnProductName";
+            this.columnProductName.ReadOnly = true;
             this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnProductName.ToolTipText = "Nhấn F3 để tìm kiếm tên hàng";
             this.columnProductName.Width = 400;
@@ -604,15 +652,6 @@
             this.columnType.Name = "columnType";
             this.columnType.ReadOnly = true;
             this.columnType.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(270, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // GoodsSaleForm
             // 
@@ -699,6 +738,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGoodsName;
         private System.Windows.Forms.TextBox txtBarcode;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.DataGridViewButtonColumn columnProductSearch;
         private AppFrame.Controls.DataGridViewNumberTextBoxColumn columnProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductName;
@@ -707,6 +750,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnType;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -68,6 +68,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void ClearGoodsSaleForm()
         {
+            ClearInput();
             txtCustomer.Text = "";
             txtBillNumber.Text = "";
             pODList.Clear();
@@ -192,7 +193,8 @@ namespace AppFrameClient.View.GoodsSale
             txtDepartment.Text = currentDepartment.DepartmentName;
             txtEmployee.Text = ClientInfo.getInstance().LoggedUser.Name;
             txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
-            btnAdd_Click(this, null);
+            txtBarcode.Focus();
+            //btnAdd_Click(this, null);
         }
 
 
@@ -360,7 +362,8 @@ namespace AppFrameClient.View.GoodsSale
             FormToModel();                  
             EventUtility.fireEvent(SavePurchaseOrderEvent,this,new GoodsSaleEventArgs());
             // clear form and add new
-            btnAdd_Click(this, null);
+            ClearGoodsSaleForm();
+            //btnAdd_Click(this, null);
         }
 
         private void RemoveEmptyProductMasterIdRow()
@@ -475,30 +478,30 @@ namespace AppFrameClient.View.GoodsSale
         private void printBillDocument_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             // clear form and add new
-            btnAdd_Click(this, null);
+            //btnAdd_Click(this, null);
+            ClearGoodsSaleForm();
         }
 
         private ProductMasterSearchDepartmentForm form = null;
         private void dgvBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvBill.CurrentCell.ColumnIndex == 0)
+            /*if(dgvBill.CurrentCell.ColumnIndex == 0)
             {
                 form = GlobalUtility.GetOnlyChildFormObject<ProductMasterSearchDepartmentForm>(GlobalCache.Instance().MainForm, FormConstants.PRODUCT_MASTER_SEARCH_DEPARMENT_FORM);
                 form.SelectProductEvent += new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(form_SelectProductEvent);
                 if(form!=null)
                     form.Show();
-            }
+            }*/
         }
 
         void form_SelectProductEvent(object sender, AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs e)
         {
-            pODList[dgvBill.CurrentCell.OwningRow.Index].Product = e.ReturnProduct;
+            /*pODList[dgvBill.CurrentCell.OwningRow.Index].Product = e.ReturnProduct;
             GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
             int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
             goodsSaleEventArgs.SelectedIndex = selectedIndex;
             goodsSaleEventArgs.SelectedPurchaseOrderDetail = bdsBill[selectedIndex] as PurchaseOrderDetail;
-            /*goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId =
-                dgvBill.CurrentCell.Value as string;*/
+            
             EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
             // event has been modified
@@ -506,7 +509,10 @@ namespace AppFrameClient.View.GoodsSale
             GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
             txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
             CalculateCharge();
-            bdsBill.EndEdit();
+            bdsBill.EndEdit();*/
+            txtBarcode.Text = e.ReturnProduct.ProductId;
+            //txtGoodsName.Text = e.ReturnProduct.ProductMaster.ProductFullName;
+            txtQuantity.Text = "1";
             if(form!=null)
             {
                 form.SelectProductEvent -= new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(form_SelectProductEvent);
@@ -528,40 +534,89 @@ namespace AppFrameClient.View.GoodsSale
             {
                 PurchaseOrderDetail orderDetail = list[i];
 
-                if(string.IsNullOrEmpty(orderDetail.Product.ProductMaster.ProductMasterId))
+                if (orderDetail.Product == null 
+                    || orderDetail.Product.ProductMaster == null 
+                   || string.IsNullOrEmpty(orderDetail.Product.ProductMaster.ProductMasterId))
                 {
                     list.RemoveAt(i);
                 }
+                i -= 1;
             }
         }
 
         // ĐANG SỬA LẠI
         private void txtBarcode_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBarcode.Text) || txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
-            {
-                GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
-                int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
-                goodsSaleEventArgs.SelectedIndex = selectedIndex;
-                goodsSaleEventArgs.SelectedPurchaseOrderDetail = bdsBill[selectedIndex] as PurchaseOrderDetail;
-                goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId =
-                    txtBarcode.Text;
-                EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+            
+                if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+                {
+                    try
+                    {
+                    GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                    /*int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
+                    goodsSaleEventArgs.SelectedIndex = selectedIndex;*/
+                    btnAdd_Click(this, null);
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail = pODList[pODList.Count - 1] as PurchaseOrderDetail;
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = txtBarcode.Text;
+                    EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
-                // event has been modified
-                pODList[selectedIndex] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
-                GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
-                txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+                    // event has been modified
+                    pODList[pODList.Count-1] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
+                    int totalNumber = 1;
+                    Int32.TryParse(txtQuantity.Text, out totalNumber);
+                    if(totalNumber <= 0 )
+                    {
+                        pODList[pODList.Count - 1].Quantity = 1;
+                    } else
+                    {
+                        pODList[pODList.Count - 1].Quantity = totalNumber;
+                    }
+                    GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+                    txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
 
-                CalculateCharge();
+                    CalculateCharge();
+                    bdsBill.EndEdit();
+                    
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new BusinessException("Mã vạch không hợp lệ hoặc hàng không tồn tại");
+                        pODList.RemoveAt(pODList.Count - 1);
+                    }
+                    finally
+                    {
+                        RemoveEmptyRowFromList(pODList);
+                        ClearInput();
+                        txtBarcode.Focus();
+                    }
             }
-            // check if last item of list has data, if has data then we add new row.
-            PurchaseOrderDetail lastDetail = pODList[pODList.Count - 1];
+            
+
+        }
+
+        private void ClearInput()
+        {
+            txtBarcode.Text = "";
+            txtGoodsName.Text = "";
+            txtQuantity.Text = "1";
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            form = GlobalUtility.GetOnlyChildFormObject<ProductMasterSearchDepartmentForm>(GlobalCache.Instance().MainForm, FormConstants.PRODUCT_MASTER_SEARCH_DEPARMENT_FORM);
+            form.SelectProductEvent += new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(form_SelectProductEvent);
+            if (form != null)
+                form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtBarcode_TextChanged(this, e);
         }
     }
 }
