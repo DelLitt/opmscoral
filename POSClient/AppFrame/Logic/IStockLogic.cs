@@ -59,5 +59,7 @@ namespace AppFrame.Logic
         void CreateOrUpdateStock(IList<Stock> stockList, IList<ReturnProduct> returnProductList, IList<StockInDetail> stockInDetailList);
 
         IList FindByQuery(ObjectCriteria criteria);
+
+        IList FindByQueryForDeptStockIn(ObjectCriteria criteria);
     }
 }

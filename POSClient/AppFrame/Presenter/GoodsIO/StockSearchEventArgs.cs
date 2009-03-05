@@ -29,5 +29,7 @@ namespace AppFrame.Presenter.GoodsIO
         public Manufacturer Manufacturer { get; set; }
         public Distributor Distributor { get; set; }
         public Packager Packager { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }

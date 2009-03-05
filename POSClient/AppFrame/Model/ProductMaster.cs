@@ -50,7 +50,17 @@ namespace AppFrame.Model
 
         #region Public Properties
         public virtual string ImagePath { get; set; }
-        
+        public virtual string TypeAndName { 
+            get
+            {
+                if (ProductType != null)
+                {
+                    return ProductType.TypeName + " - " + ProductName;
+                }
+                return ProductName;
+            }
+        }
+
         public virtual string ProductFullName
         {
             get

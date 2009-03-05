@@ -12,6 +12,7 @@ namespace AppFrame.View.GoodsIO
         IStockSearchController StockSearchController { set; }
         event EventHandler<StockSearchEventArgs> InitStockSearchEvent;
         event EventHandler<StockSearchEventArgs> SearchStockEvent;
+        event EventHandler<StockSearchEventArgs> RemainSearchStockEvent;
         #endregion
     }
 }
