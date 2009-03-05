@@ -869,6 +869,24 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 EventUtility.fireEvent(LoadPriceAndStockEvent, this, eventArgs);
             }
+
+            // remove 0 quanity
+            int count = 0;
+            int length = deptSIDetailList.Count;
+            bool isMessage = false;
+            for (int i = 0; i < length; i++)
+            {
+                if (deptSIDetailList[i - count].StockQuantity == 0)
+                {
+                    isMessage = true;
+                    deptSIDetailList.RemoveAt(i - count);
+                    count++;
+                }
+            }
+            if (isMessage)
+            {
+                MessageBox.Show("Sản phẩm có tồn kho 0 sẽ không đựoc xuất");
+            }
         }
 
         private void cboProductMasters_SelectedIndexChanged(object sender, EventArgs e)

@@ -102,6 +102,7 @@ namespace AppFrameClient.View.GoodsIO
 
         public event EventHandler<StockSearchEventArgs> InitStockSearchEvent;
         public event EventHandler<StockSearchEventArgs> SearchStockEvent;
+        public event EventHandler<StockSearchEventArgs> RemainSearchStockEvent;
         private readonly DataTable dataTable = new DataTable();
 
         public void PopulateDataGrid()

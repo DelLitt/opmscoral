@@ -30,7 +30,29 @@ namespace AppFrameClient.Presenter.GoodsIO
                 _stockSearchView = value;
                 _stockSearchView.InitStockSearchEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_InitStockSearchEvent);
                 _stockSearchView.SearchStockEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_SearchStockEvent);
+                _stockSearchView.RemainSearchStockEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_RemainSearchStockEvent);
             }
+        }
+
+        public void stockSearchView_RemainSearchStockEvent(object sender, StockSearchEventArgs e)
+        {
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
+            criteria.AddLikeCriteria("pm.ProductName", e.ProductMasterName + "%");
+            criteria.AddEqCriteria("pm.ProductType", e.ProductType);
+            criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
+            criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);
+            criteria.AddEqCriteria("pm.Country", e.Country);
+            criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
+            criteria.AddEqCriteria("pm.Packager", e.Packager);
+            criteria.AddEqCriteria("pm.Distributor", e.Distributor);
+            criteria.AddGreaterOrEqualsCriteria("stockin.StockInDate", DateUtility.ZeroTime(e.FromDate));
+            criteria.AddLesserOrEqualsCriteria("stockin.StockInDate", DateUtility.MaxTime(e.ToDate));
+
+            IList minList = StockInDetailLogic.FindByQueryForRemainStock(criteria, true);
+            IList maxList = StockInDetailLogic.FindByQueryForRemainStock(criteria, false);
+
         }
 
         #endregion
@@ -86,6 +108,7 @@ namespace AppFrameClient.Presenter.GoodsIO
         public IDistributorLogic DistributorLogic { get; set; }
         public IPackagerLogic PackagerLogic { get; set; }
         public IStockLogic StockLogic { get; set; }
+        public IStockInDetailLogic StockInDetailLogic { get; set; }
         #endregion
 
         #region Implementation of IBaseController<StockCreateEventArgs>

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utility;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -317,6 +319,35 @@ namespace AppFrame.DataLayer
             {
                 hibernateCriteria.AddOrder(order);
             }
+        }
+
+        public IList FindByQueryForRemainStockMin(string sqlString, ObjectCriteria criteria)
+        {
+            ISession session = DbUtility.getSession(HibernateTemplate);
+            try
+            {
+                List<SQLQueryCriteria> query = criteria.GetQueryCriteria();
+                var paramNames = new List<string>();
+                var values = new List<object>();
+                foreach (SQLQueryCriteria crit in query)
+                {
+                    paramNames.Add(crit.PropertyName);
+                    values.Add(crit.Value);
+                }
+                IList list = HibernateTemplate.FindByNamedParam(sqlString, paramNames.ToArray(), values.ToArray());
+                IList returnList = new ArrayList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var stockIndetail = (StockInDetail)((object[])list[i])[0];
+                    returnList.Add(stockIndetail);
+                }
+                return returnList;
+            }
+            finally
+            {
+                session.Close();
+            }
+
         }
     }
 }

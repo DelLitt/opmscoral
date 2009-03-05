@@ -198,18 +198,41 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     if (e.IsFillToComboBox)
                     {
                         ProductMaster searchPM = e.SelectedDepartmentStockInDetail.Product.ProductMaster;
-                        System.Collections.IList result = null;
-                        if (e.ComboBoxDisplayMember.Equals("ProductMasterId"))
-                        {
-                            result = ProductMasterLogic.FindProductMasterById(searchPM.ProductMasterId, 50,true);
-                        }
-                        else
-                        {
-                            result = ProductMasterLogic.FindProductMasterByName(searchPM.ProductName, 50,true);
-                        }
-                        if(result==null)
+                        var criteria = new ObjectCriteria(true);
+                        criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
+                        criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
+                        criteria.AddLikeCriteria("pm.ProductName", searchPM.ProductName + "%");
+                        IList list = StockLogic.FindByQueryForDeptStockIn(criteria);
+//                        if (e.ComboBoxDisplayMember.Equals("ProductMasterId"))
+//                        {
+//                            result = ProductMasterLogic.FindProductMasterById(searchPM.ProductMasterId, 50,true);
+//                        }
+//                        else
+//                        {
+//                            result = ProductMasterLogic.FindProductMasterByName(searchPM.ProductName, 50,true);
+//                        }
+
+                        if(list ==null || list.Count == 0)
                         {
                             return;
+                        }
+                        IList result = new ArrayList();
+                        foreach (Stock stock in list)
+                        {
+                            result.Add(stock.ProductMaster);
+                        }
+                        IList retlist = RemoveDuplicateName(result);
+
+                        result = new ArrayList();
+                        int count = 0;
+                        foreach (var p in retlist)
+                        {
+                            if (count == 50)
+                            {
+                                break;
+                            }
+                            result.Add(p);
+                            count++;
                         }
 
                         BindingList<ProductMaster> productMasters = new BindingList<ProductMaster>();
@@ -223,7 +246,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         BindingSource bindingSource = new BindingSource();
                         bindingSource.DataSource = productMasters;
                         comboBox.DataSource = bindingSource;
-                        comboBox.DisplayMember = "ProductName";
+                        comboBox.DisplayMember = "TypeAndName";
                         comboBox.ValueMember = e.ComboBoxDisplayMember;
                         comboBox.DropDownWidth = 300;
                         comboBox.DropDownHeight = 200;
@@ -280,6 +303,31 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     }
                 }
             }
+        }
+
+        private IList RemoveDuplicateName(IList prdlist)
+        {
+            IList list = new ArrayList();
+            foreach (ProductMaster productMaster in prdlist)
+            {
+                if (NotInList(productMaster, list))
+                {
+                    list.Add(productMaster);
+                }
+            }
+            return list;
+        }
+
+        private bool NotInList(ProductMaster master, IList list)
+        {
+            foreach (ProductMaster productMaster in list)
+            {
+                if (productMaster.ProductName.Equals(master.ProductName))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         #endregion

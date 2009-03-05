@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
 using AppFrame.DataLayer;
@@ -95,5 +96,33 @@ namespace AppFrame.Logic
         {
             return StockInDetailDAO.FindPaging(criteria);
         }
+
+        public IList FindByQueryForRemainStock(ObjectCriteria criteria, bool isMin)
+        {
+            var sqlString = new StringBuilder();
+            if (isMin)
+            {
+                sqlString.Append("select stockindetail, min(stockin.StockInDate) FROM StockIn stockin, StockInDetail stockindetail, ProductMaster pm WHERE stockindetail.ProductMaster.ProductMasterId = pm.ProductMasterId AND stockin.StockInId = stockindetail.StockInId ");
+            }
+            else
+            {
+                sqlString.Append("select stockindetail, max(stockin.StockInDate) FROM StockIn stockin, StockInDetail stockindetail, ProductMaster pm WHERE stockindetail.ProductMaster.ProductMasterId = pm.ProductMasterId AND stockin.StockInId = stockindetail.StockInId ");
+            }
+            
+            foreach (SQLQueryCriteria crit in criteria.GetQueryCriteria())
+            {
+                sqlString.Append(" AND ")
+                       .Append(crit.PropertyName)
+                       .Append(" ")
+                       .Append(crit.SQLString)
+                       .Append(" :")
+                       .Append(crit.PropertyName)
+                       .Append(" ");
+            }
+            sqlString.Append(" Group BY pm.ProductMasterId");
+            return StockInDetailDAO.FindByQueryForRemainStockMin(sqlString.ToString(), criteria);
+        }
+
+
     }
 }

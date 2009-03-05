@@ -72,6 +72,11 @@ namespace AppFrame.Logic
                     product.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                     ProductDAO.Add(product);
 
+                    criteria = new ObjectCriteria();
+                    criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                    criteria.AddEqCriteria("ProductMaster.ProductMasterId", product.ProductMaster.ProductMasterId);
+//                    var sum = StockDAO.SelectSpecificType(criteria, Projections.Sum("Quantity"));
+
                     // add dept stock in
                     var detailPK = new StockInDetailPK { ProductId = product.ProductId, StockInId = stockInId};
                     stockInDetail.StockInDetailPK = detailPK;
@@ -80,6 +85,7 @@ namespace AppFrame.Logic
                     stockInDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                     stockInDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                     stockInDetail.ProductMaster = product.ProductMaster;
+//                    stockInDetail.CurrentStockQuantity = (sum == null) ? 0 : Int64.Parse(sum.ToString());
                     StockInDetailDAO.Add(stockInDetail);
 
                     // dept stock
