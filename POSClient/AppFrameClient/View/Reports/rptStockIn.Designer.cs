@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,13 +38,6 @@
             this.dgvStockProducts = new System.Windows.Forms.DataGridView();
             this.bdsStockInResultPM = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStockProductsDetail = new System.Windows.Forms.DataGridView();
-            this.bdsStockInResultDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.ok = new System.Windows.Forms.Button();
-            this.view_group = new System.Windows.Forms.Button();
-            this.view_detail = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receipt_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +46,13 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsStockInResultDetail = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.ok = new System.Windows.Forms.Button();
+            this.view_group = new System.Windows.Forms.Button();
+            this.view_detail = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -146,15 +146,15 @@
             this.delFlgDataGridViewTextBoxColumn,
             this.CreateId});
             this.dgvStockProductsDetail.DataSource = this.bdsStockInResultDetail;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStockProductsDetail.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStockProductsDetail.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStockProductsDetail.Location = new System.Drawing.Point(13, 306);
             this.dgvStockProductsDetail.MultiSelect = false;
             this.dgvStockProductsDetail.Name = "dgvStockProductsDetail";
@@ -162,67 +162,6 @@
             this.dgvStockProductsDetail.Size = new System.Drawing.Size(849, 203);
             this.dgvStockProductsDetail.TabIndex = 4;
             this.dgvStockProductsDetail.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvStockProductsDetail_RowPrePaint);
-            // 
-            // bdsStockInResultDetail
-            // 
-            this.bdsStockInResultDetail.DataSource = typeof(AppFrame.Collection.StockInDetailCollection);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 281);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 22);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Chi tiết hàng nhập";
-            // 
-            // ok
-            // 
-            this.ok.Location = new System.Drawing.Point(687, 53);
-            this.ok.Name = "ok";
-            this.ok.Size = new System.Drawing.Size(98, 23);
-            this.ok.TabIndex = 6;
-            this.ok.Text = "Xem thông tin";
-            this.ok.UseVisualStyleBackColor = true;
-            this.ok.Click += new System.EventHandler(this.ok_Click);
-            // 
-            // view_group
-            // 
-            this.view_group.Location = new System.Drawing.Point(606, 527);
-            this.view_group.Name = "view_group";
-            this.view_group.Size = new System.Drawing.Size(85, 25);
-            this.view_group.TabIndex = 7;
-            this.view_group.Text = "In tổng hợp";
-            this.view_group.UseVisualStyleBackColor = true;
-            // 
-            // view_detail
-            // 
-            this.view_detail.Location = new System.Drawing.Point(697, 527);
-            this.view_detail.Name = "view_detail";
-            this.view_detail.Size = new System.Drawing.Size(78, 25);
-            this.view_detail.TabIndex = 8;
-            this.view_detail.Text = "Ịn chi tiết";
-            this.view_detail.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(525, 529);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Xem trước";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(781, 527);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Đóng";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // id
             // 
@@ -285,6 +224,67 @@
             this.CreateId.Name = "CreateId";
             this.CreateId.Visible = false;
             // 
+            // bdsStockInResultDetail
+            // 
+            this.bdsStockInResultDetail.DataSource = typeof(AppFrame.Collection.StockInDetailCollection);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 281);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 22);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Chi tiết hàng nhập";
+            // 
+            // ok
+            // 
+            this.ok.Location = new System.Drawing.Point(687, 53);
+            this.ok.Name = "ok";
+            this.ok.Size = new System.Drawing.Size(98, 23);
+            this.ok.TabIndex = 6;
+            this.ok.Text = "Xem thông tin";
+            this.ok.UseVisualStyleBackColor = true;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
+            // 
+            // view_group
+            // 
+            this.view_group.Location = new System.Drawing.Point(606, 527);
+            this.view_group.Name = "view_group";
+            this.view_group.Size = new System.Drawing.Size(85, 25);
+            this.view_group.TabIndex = 7;
+            this.view_group.Text = "In tổng hợp";
+            this.view_group.UseVisualStyleBackColor = true;
+            // 
+            // view_detail
+            // 
+            this.view_detail.Location = new System.Drawing.Point(697, 527);
+            this.view_detail.Name = "view_detail";
+            this.view_detail.Size = new System.Drawing.Size(78, 25);
+            this.view_detail.TabIndex = 8;
+            this.view_detail.Text = "Ịn chi tiết";
+            this.view_detail.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(525, 529);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Xem trước";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(781, 527);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(81, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Đóng";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // STT
             // 
             this.STT.HeaderText = "STT";
@@ -294,7 +294,7 @@
             // 
             // Category
             // 
-            this.Category.DataPropertyName = "ProductMasterGlobal.ProductName";
+            this.Category.DataPropertyName = "ProductMasterGlobal.ProductMaster.ProductType.TypeName";
             this.Category.HeaderText = "Loại hàng";
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
@@ -302,7 +302,7 @@
             // 
             // ProductName
             // 
-            this.ProductName.DataPropertyName = "ProductMasterGlobal.ProductMaster.ProductType.TypeName";
+            this.ProductName.DataPropertyName = "ProductMasterGlobal.ProductName";
             this.ProductName.HeaderText = "Tên hàng";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
