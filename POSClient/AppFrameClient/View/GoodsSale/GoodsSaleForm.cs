@@ -535,19 +535,17 @@ namespace AppFrameClient.View.GoodsSale
             }
         }
 
+        // ĐANG SỬA LẠI
         private void txtBarcode_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBarcode.Text) || txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
             {
-
-
-
                 GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
                 int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
                 goodsSaleEventArgs.SelectedIndex = selectedIndex;
                 goodsSaleEventArgs.SelectedPurchaseOrderDetail = bdsBill[selectedIndex] as PurchaseOrderDetail;
                 goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId =
-                    dgvBill.CurrentCell.Value as string;
+                    txtBarcode.Text;
                 EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
                 // event has been modified
