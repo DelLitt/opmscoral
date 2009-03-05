@@ -258,7 +258,7 @@ namespace AppFrameClient.View.GoodsSale
             {
                 if (dgvBill.Columns[e.ColumnIndex].Name.Equals("columnProductId"))
                 {
-                    string productIdValue = (string)dgvBill[e.ColumnIndex, e.RowIndex].Value;
+                    /*string productIdValue = (string)dgvBill[e.ColumnIndex, e.RowIndex].Value;
                     if(string.IsNullOrEmpty(productIdValue) || productIdValue.Length != CommonConstants.PRODUCT_ID_LENGTH)
                     {
                         throw new PresentationException("InvalidBarCode");
@@ -289,7 +289,7 @@ namespace AppFrameClient.View.GoodsSale
                     else
                     {
                         // do nothing, because we has new row already
-                    }
+                    }*/
                 }
                 else
                 {
@@ -533,6 +533,37 @@ namespace AppFrameClient.View.GoodsSale
                     list.RemoveAt(i);
                 }
             }
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBarcode.Text) || txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+            {
+
+
+
+                GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
+                goodsSaleEventArgs.SelectedIndex = selectedIndex;
+                goodsSaleEventArgs.SelectedPurchaseOrderDetail = bdsBill[selectedIndex] as PurchaseOrderDetail;
+                goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId =
+                    dgvBill.CurrentCell.Value as string;
+                EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+
+                // event has been modified
+                pODList[selectedIndex] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
+                GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+                txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+
+                CalculateCharge();
+            }
+            // check if last item of list has data, if has data then we add new row.
+            PurchaseOrderDetail lastDetail = pODList[pODList.Count - 1];
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
