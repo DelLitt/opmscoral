@@ -35,7 +35,8 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
-        public virtual StockOutDetailPK StockOutDetailPK { get; set; }
+        public virtual Int64 StockOutDetailId { get; set; }
+        //public virtual StockOutDetailPK StockOutDetailPK { get; set; }
         public virtual Int64 StockOutId
         {
             get
@@ -161,6 +162,8 @@ namespace AppFrame.Model
             }
         }
         
+        public virtual StockDefectStatus DefectStatus { get; set; }
+        public virtual string Description { get; set; }
 
         #endregion
         

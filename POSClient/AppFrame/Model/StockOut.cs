@@ -38,6 +38,7 @@ namespace AppFrame.Model
 
         #region Public Properties
 
+        
         public virtual Int64 StockoutId
         {
             get
@@ -166,8 +167,13 @@ namespace AppFrame.Model
                 _stockOutCosts = value;
             }
         }
-        
+        public virtual Int64 StockId 
+        {
+            get;
+            set;
+        }
 
+        
         #endregion
         
         #region IComparable Methods

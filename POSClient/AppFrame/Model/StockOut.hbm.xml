@@ -64,6 +64,13 @@
     >
     </property>
     <property
+        name="StockId"
+        type="Int64"
+        column="STOCK_ID"
+        length="10"
+      >
+    </property>
+    <property
         name="DelFlg"
         type="Int64"
         column="DEL_FLG"

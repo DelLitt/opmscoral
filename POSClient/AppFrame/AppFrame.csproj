@@ -162,6 +162,7 @@
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
+    <Compile Include="Collection\StockCollection.cs" />
     <Compile Include="Collection\StockInDetailCollection.cs" />
     <Compile Include="Collection\StockOutDetailCollection.cs" />
     <Compile Include="Common\AbstractUser.cs" />
@@ -490,9 +491,11 @@
     <Compile Include="Presenter\GoodsIO\IProductMasterSearchOrCreateController.cs" />
     <Compile Include="Presenter\GoodsIO\IStockCreateController.cs" />
     <Compile Include="Presenter\GoodsIO\IStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IInventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
@@ -592,6 +595,7 @@
     <Compile Include="View\GoodsIO\IProductMasterView.cs" />
     <Compile Include="View\GoodsIO\IStockCreateView.cs" />
     <Compile Include="View\GoodsIO\IStockSearchView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IInventoryCheckingView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IMainStockInSearchView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IMainStockInView.cs" />
     <Compile Include="View\GoodsSale\IDayGoodsSaleListView.cs" />

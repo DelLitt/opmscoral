@@ -127,6 +127,8 @@ namespace AppFrame.Model
         }
 
 
+        
+        
         public virtual Product Product
         {
             get
@@ -138,8 +140,17 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
+        public virtual ProductMaster ProductMaster { get; set; }
+        
 
+        public virtual Stock Stock { get; set; }
 
+        public virtual int GoodCount { get; set; }
+        public virtual int ErrorCount { get; set; }
+        public virtual int DamageCount { get; set; }
+        public virtual int LostCount { get; set; }
+        public virtual string Description { get; set; }
+        
         #endregion
 
         #region IComparable Methods
@@ -170,9 +181,7 @@ namespace AppFrame.Model
         }
         #endregion
 
-        public virtual ProductMaster ProductMaster { get; set; }
-        public virtual StockDefectStatus DefectStatus { get; set; }
-        public virtual Stock Stock { get; set; }
+        
     }
     #endregion
 }

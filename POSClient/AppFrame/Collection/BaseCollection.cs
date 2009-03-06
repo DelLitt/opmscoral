@@ -21,6 +21,7 @@ namespace AppFrame.Collection
         public BaseCollection(BindingSource source) : base()
         {
             bindingSource = source;
+            bindingSource.DataSource = this;
         }
 
         /// <summary>
