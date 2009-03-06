@@ -311,6 +311,7 @@
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInExtraController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentController.cs" />
@@ -376,6 +377,7 @@
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection2.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailCollection.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Collection.StockCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection1.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.BlockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Country.datasource" />
@@ -394,8 +396,10 @@
     <None Include="Properties\DataSources\AppFrame.Model.StockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Supplier.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockInResultDetailCollection.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockDefectCollection.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetail.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetailCollection.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockViewCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -425,10 +429,13 @@
     <Compile Include="Utility\Mapper\DepartmentMapper.cs" />
     <Compile Include="Utility\Mapper\EmployeeTransform.cs" />
     <Compile Include="ViewModel\ProductMasterGlobal.cs" />
+    <Compile Include="ViewModel\StockDefectCollection.cs" />
     <Compile Include="ViewModel\StockInResultDetail.cs" />
     <Compile Include="ViewModel\StockInResultDetailCollection.cs" />
     <Compile Include="ViewModel\DepartmentStockInResultDetail.cs" />
     <Compile Include="ViewModel\DepartmentStockInResultDetailCollection.cs" />
+    <Compile Include="ViewModel\StockView.cs" />
+    <Compile Include="ViewModel\StockViewCollection.cs" />
     <Compile Include="View\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>

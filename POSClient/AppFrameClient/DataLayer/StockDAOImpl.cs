@@ -351,5 +351,33 @@ namespace AppFrame.DataLayer
             }
 
         }
+
+        #region IStockDAO Members
+
+
+        public IList FindByProductMasterName()
+        {
+            return (IList)HibernateTemplate.Execute(
+                  delegate (ISession session)
+                      {
+                          try
+                          {
+                              string queryString =
+                                           " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,Stock st " +
+                                           " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId " +
+                                           " GROUP BY pm.ProductName";
+                              return session.CreateQuery(queryString).List();
+                          }
+                          catch (Exception)
+                          {
+
+                              return null;
+                          }
+                          
+                      }
+                );
+        }
+
+        #endregion
     }
 }

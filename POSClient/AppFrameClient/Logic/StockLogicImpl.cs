@@ -170,5 +170,15 @@ namespace AppFrame.Logic
             //var sqlString = "select * FROM Stock stock, Product p WHERE stock.Product_Id = p.Product_Id";
             return StockDAO.FindByQuery(sqlString.ToString(), criteria);
         }
+
+        #region IStockLogic Members
+
+
+        public IList FindByProductMasterName()
+        {
+            return StockDAO.FindByProductMasterName();
+        }
+
+        #endregion
     }
 }

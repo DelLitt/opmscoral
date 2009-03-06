@@ -73,6 +73,7 @@
             this.mnuReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSaleDepartmentReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsImportReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGoodsExportReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSendbackReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTotalReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMixReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,7 +102,7 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuGoodsExportReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -351,6 +352,7 @@
             this.searchBlockToolStripMenuItem,
             this.toolStripMenuItem2,
             this.approveStockToolStripMenuItem,
+            this.mnuInventoryChecking,
             this.searchStockToolStripMenuItem,
             this.toolStripMenuItem7,
             this.mnuWarehouseRemains,
@@ -450,6 +452,13 @@
             this.mnuGoodsImportReport.Size = new System.Drawing.Size(176, 22);
             this.mnuGoodsImportReport.Text = "Báo cáo nhập hàng";
             this.mnuGoodsImportReport.Click += new System.EventHandler(this.mnuGoodsImportReport_Click);
+            // 
+            // mnuGoodsExportReport
+            // 
+            this.mnuGoodsExportReport.Name = "mnuGoodsExportReport";
+            this.mnuGoodsExportReport.Size = new System.Drawing.Size(176, 22);
+            this.mnuGoodsExportReport.Text = "Báo cáo xuất hàng";
+            this.mnuGoodsExportReport.Click += new System.EventHandler(this.mnuGoodsExportReport_Click);
             // 
             // mnuGoodsSendbackReport
             // 
@@ -646,12 +655,12 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
-            // mnuGoodsExportReport
+            // mnuInventoryChecking
             // 
-            this.mnuGoodsExportReport.Name = "mnuGoodsExportReport";
-            this.mnuGoodsExportReport.Size = new System.Drawing.Size(176, 22);
-            this.mnuGoodsExportReport.Text = "Báo cáo xuất hàng";
-            this.mnuGoodsExportReport.Click += new System.EventHandler(this.mnuGoodsExportReport_Click);
+            this.mnuInventoryChecking.Name = "mnuInventoryChecking";
+            this.mnuInventoryChecking.Size = new System.Drawing.Size(182, 22);
+            this.mnuInventoryChecking.Text = "Kiểm kê kho";
+            this.mnuInventoryChecking.Click += new System.EventHandler(this.mnuInventoryChecking_Click);
             // 
             // MainForm
             // 
@@ -751,5 +760,6 @@
         private System.Windows.Forms.ToolStripMenuItem mainStockInSearchStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuGoodsSaleDepartmentReport;
         private System.Windows.Forms.ToolStripMenuItem mnuGoodsExportReport;
+        private System.Windows.Forms.ToolStripMenuItem mnuInventoryChecking;
     }
 }

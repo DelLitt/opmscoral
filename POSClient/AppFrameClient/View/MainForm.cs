@@ -336,5 +336,13 @@ namespace AppFrame.View
             stockOutReportForm.Show();
         }
 
+        private void mnuInventoryChecking_Click(object sender, EventArgs e)
+        {
+            Form inventoryCheckingForm = GlobalUtility.GetOnlyChildFormObject<InventoryCheckingForm>(this,
+                                                                                                     FormConstants.
+                                                                                                         INVENTORY_CHECKING_FORM);
+            inventoryCheckingForm.Show();
+        }
+
     }
 }

@@ -18,7 +18,8 @@
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
     <menuitem name="mnuDanhmucHanghoa" role="NotImplement" />
-    <menuitem name="mnuPhieuXuatKho" role="Administrator" />    
+    <menuitem name="mnuPhieuXuatKho" role="Administrator" />
+    <menuitem name="mnuInventoryChecking" role="Administrator" />
   </menu>
   <menu name="mnuSalePoint" role="Administrator">
     <menuitem name="mnuDefineSalePoint" role="Administrator" />
