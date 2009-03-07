@@ -107,8 +107,7 @@
     <!-- bi-directional many-to-one association to StockOut -->
     <many-to-one
         name="StockOut"
-        class="StockOut"
-        not-null="true"
+        class="StockOut"        
     >
       <column name="STOCK_OUT_ID" />
     </many-to-one>

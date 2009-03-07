@@ -39,7 +39,7 @@ namespace AppFrame.Model
         #region Public Properties
 
 		public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
-        public virtual ProductMaster ProductMaster { get; set; }
+       
         public virtual Int64 StockOutId
         {
             get
@@ -185,7 +185,7 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
-
+        public virtual ProductMaster ProductMaster { get; set; }
         #endregion
         
         #region IComparable Methods

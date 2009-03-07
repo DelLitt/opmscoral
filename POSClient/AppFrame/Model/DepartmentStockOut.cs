@@ -168,7 +168,7 @@ namespace AppFrame.Model
                 _departmentStockOutDetails = value;
             }
         }
-        
+        public virtual StockDefectStatus DefectStatus { get; set; }
 
         #endregion
         

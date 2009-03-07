@@ -104,6 +104,11 @@
             class="DepartmentStockOutDetail"
         />
     </bag>
-
+  <many-to-one
+    name="DefectStatus"
+    class="StockDefectStatus"    
+    >
+    <column name="DEFECT_STATUS_ID" />
+  </many-to-one>
 </class>
 </hibernate-mapping>

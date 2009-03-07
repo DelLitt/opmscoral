@@ -159,6 +159,7 @@
     <Compile Include="Collection\BaseCollection.cs" />
     <Compile Include="Collection\DepartmentStockCollection.cs" />
     <Compile Include="Collection\DepartmentStockInDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />

@@ -63,5 +63,8 @@ namespace AppFrame.DataLayer
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria criteria, IProjection type);
+
+        IList FindAllProductMasters();
+        IList FindByProductMasterName(ProductMaster master);
     }
 }
