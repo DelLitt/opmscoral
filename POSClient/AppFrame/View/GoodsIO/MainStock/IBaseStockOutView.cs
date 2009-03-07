@@ -11,7 +11,9 @@ namespace AppFrame.View.GoodsIO.MainStock
         #region controller
         IBaseStockOutController BaseStockOutController { get; set; }
         event EventHandler<BaseStockOutEventArgs> FillGoodsToCombo;
+        
         event EventHandler<BaseStockOutEventArgs> SaveTempStockOut;
+        event EventHandler<BaseStockOutEventArgs> LoadGoodsByNameEvent;
         #endregion
     }
 }

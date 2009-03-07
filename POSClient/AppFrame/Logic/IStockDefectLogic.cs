@@ -57,5 +57,7 @@ namespace AppFrame.Logic
 
         void Process(StockDefect defect);
         long FindMaxStockDefectId();
+        IList FindAllProductMasters();
+        IList FindByProductMasterName(ProductMaster master);
     }
 }

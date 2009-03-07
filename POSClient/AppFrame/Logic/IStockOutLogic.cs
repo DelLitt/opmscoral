@@ -57,5 +57,6 @@ namespace AppFrame.Logic
 
         IList FindByProductMaster(DateTime date, DateTime toDate);
         IList FindByProductMaster(long id, DateTime date, DateTime toDate);
+        long FindMaxId();
     }
 }

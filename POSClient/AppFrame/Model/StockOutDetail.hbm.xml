@@ -97,8 +97,7 @@
     <many-to-one
         name="Product"
 	    class="Product"
-	    update="false"
-	    insert="false"
+	    
 	>
     	<column name="PRODUCT_ID" />
 	</many-to-one>
@@ -111,6 +110,7 @@
         class="StockOut"
         not-null="true"
     >
+      <column name="STOCK_OUT_ID" />
     </many-to-one>
 
 </class>

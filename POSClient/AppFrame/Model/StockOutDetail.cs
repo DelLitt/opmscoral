@@ -164,6 +164,7 @@ namespace AppFrame.Model
         
         public virtual StockDefectStatus DefectStatus { get; set; }
         public virtual string Description { get; set; }
+        
 
         #endregion
         
