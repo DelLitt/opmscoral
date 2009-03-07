@@ -227,6 +227,7 @@
     <Compile Include="DataLayer\ScheduleTemplateDAOImpl.cs" />
     <Compile Include="DataLayer\SimilarProductDAOImpl.cs" />
     <Compile Include="DataLayer\StockDAOImpl.cs" />
+    <Compile Include="DataLayer\StockDefectDAOImpl.cs" />
     <Compile Include="DataLayer\StockInDAOImpl.cs" />
     <Compile Include="DataLayer\StockInDetailDAOImpl.cs" />
     <Compile Include="DataLayer\StockOutCostDAOImpl.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Logic\ReturnProductLogicImpl.cs" />
     <Compile Include="Logic\ScheduleTemplateLogicImpl.cs" />
     <Compile Include="Logic\SimilarProductLogicImpl.cs" />
+    <Compile Include="Logic\StockDefectLogicImpl.cs" />
     <Compile Include="Logic\StockInDetailLogicImpl.cs" />
     <Compile Include="Logic\StockInLogicImpl.cs" />
     <Compile Include="Logic\StockLogicImpl.cs" />

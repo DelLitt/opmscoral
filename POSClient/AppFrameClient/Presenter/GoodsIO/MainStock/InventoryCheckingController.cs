@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using AppFrame;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrameClient.ViewModel;
@@ -37,7 +38,31 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
            {
                foreach (StockDefect stockDefect in e.SaveStockDefectList)
                {
-                   StockOut stockOut = new StockOut();
+                   
+                   stockDefect.CreateDate = DateTime.Now;
+                   stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                   stockDefect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                   stockDefect.UpdateDate = DateTime.Now;
+                   stockDefect.DelFlg = 0;
+                   // get stock quantity
+                   stockDefect.Quantity = stockDefect.Stock.Quantity;
+                   // calculate business
+                   long totalDefects = stockDefect.DamageCount + stockDefect.ErrorCount + stockDefect.LostCount +
+                                       stockDefect.UnconfirmCount;
+                   if(stockDefect.Quantity < totalDefects)
+                   {
+                       throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");                       
+                   }
+
+                   stockDefect.GoodCount = stockDefect.Quantity - totalDefects;
+                   
+                   // update the stock remains equal good count
+                   stockDefect.Stock.Quantity = stockDefect.GoodCount;
+                   stockDefect.Quantity = stockDefect.Stock.Quantity;
+
+                   StockDefectLogic.Process(stockDefect);
+                   StockLogic.Update(stockDefect.Stock);
+                   /*StockOut stockOut = new StockOut();
                    stockOut.CreateDate = DateTime.Now;
                    stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                    stockOut.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
@@ -101,8 +126,9 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                        stockOutDetail.ProductId = stockDefect.Product.ProductId;
 
                        stockOutDetails.Add(stockOutDetail);
-                   }
-                   // TODO : Save to database
+                   }*/
+                   
+                   
                }
            }
         }
@@ -121,7 +147,15 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             {
                 e.ScannedStock = null;
             }
-            
+            IList stockDefectList = StockDefectLogic.FindAll(objectCriteria);
+            if(stockDefectList!=null && stockDefectList.Count > 0)
+            {
+                e.ScannedStockDefect = (StockDefect)stockDefectList[0];
+            }
+            else
+            {
+                e.ScannedStockDefect = null;
+            }
         }
 
         void inventoryCheckingView_FillProductMasterToComboEvent(object sender, InventoryCheckingEventArgs e)
@@ -182,6 +216,16 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         }
 
         public AppFrame.Logic.IStockOutDetailLogic StockOutDetailLogic
+        {
+            get;set;
+        }
+
+        #endregion
+
+        #region IInventoryCheckingController Members
+
+
+        public AppFrame.Logic.IStockDefectLogic StockDefectLogic
         {
             get;set;
         }

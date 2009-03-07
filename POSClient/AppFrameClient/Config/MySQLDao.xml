@@ -214,6 +214,9 @@
   <object id="AppFrame.DataLayer.IStockInDAO" type="AppFrame.DataLayer.StockInDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="AppFrame.DataLayer.IStockDefectDAO" type="AppFrame.DataLayer.StockDefectDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <object id="AppFrame.DataLayer.IReturnPoDAO" type="AppFrame.DataLayer.ReturnPoDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>

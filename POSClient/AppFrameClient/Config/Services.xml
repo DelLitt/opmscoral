@@ -165,6 +165,10 @@
     <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
   </object>
 
+  <object id="AppFrame.Service.IStockDefectLogic" type="AppFrame.Logic.StockDefectLogicImpl, AppFrameClient">
+    <property name="StockDefectDAO" ref="AppFrame.DataLayer.IStockDefectDAO"/>
+  </object>
+  
   <object id="AppFrame.Service.IDepartmentStockInLogic" type="AppFrame.Logic.DepartmentStockInLogicImpl, AppFrameClient">
     <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>

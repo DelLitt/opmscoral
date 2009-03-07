@@ -38,6 +38,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             LoadGoodsByProductId(txtBarcode.Text.Trim());
+            txtBarcode.Focus();
         }
 
         #region IInventoryCheckingView Members
@@ -123,29 +124,45 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             txtProductName.Text = stock.ProductMaster.ProductName;
             txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
             txtDescription.Text = stock.ProductMaster.Description;
-
+            pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
 
             int stockDefIndex = -1;
+            if (dgvStock.CurrentCell != null)
+            {
+                stockDefIndex = dgvStock.CurrentCell.RowIndex;
+            }
             if(HasInStockDefectList(stock,stockDefectList,out stockDefIndex))
             {
                 if(stockDefIndex> -1 && stockDefIndex < stockDefectList.Count)
                 {
-                    stockDefectList[stockDefIndex].GoodCount += 1;                                    
+                    stockDefectList[stockDefIndex].GoodCount += 1;
+                    dgvStock.CurrentCell = dgvStock[5, stockDefIndex];                
                 }
                 
             }
             else // create new stock defect row
             {
-                StockDefect newStockDefect = stockDefectList.AddNew();
-                newStockDefect.Product = stock.Product;
-                newStockDefect.ProductMaster = stock.ProductMaster;
-                newStockDefect.Stock = stock;
-                newStockDefect.Quantity = stock.Quantity;
-                newStockDefect.GoodCount += 1;
+                StockDefect newStockDefect = stockDefectList.AddNew();  
+
+                if (checkingEventArgs.ScannedStockDefect != null)
+                {
+                    stockDefectList[stockDefectList.Count -1 ] =  checkingEventArgs.ScannedStockDefect;
+                    stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
+                }
+                else
+                {
+                    newStockDefect.Product = stock.Product;
+                    newStockDefect.ProductMaster = stock.ProductMaster;
+                    newStockDefect.Stock = stock;
+                    newStockDefect.Quantity = stock.Quantity;
+                    newStockDefect.GoodCount += 1;    
+                }
+                dgvStock.CurrentCell = dgvStock[5, stockDefectList.Count - 1];
             }
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();
             dgvStock.Invalidate();
+            txtBarcode.Text = "";
         }
 
         private bool HasInStockDefectList(Stock stock, StockDefectCollection list, out int stockDefIndex)
@@ -166,10 +183,38 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(stockDefectList.Count < 1)
+            {
+                MessageBox.Show("Không có gì để lưu");                
+            }
             InventoryCheckingEventArgs checkingEventArgs = new InventoryCheckingEventArgs();
             checkingEventArgs.SaveStockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
 
             EventUtility.fireEvent(SaveInventoryCheckingEvent,this,checkingEventArgs);
+            MessageBox.Show("Lưu kết quả thành công");
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
+            stockDefectList.Clear();
+            txtBarcode.Text = "";
+            txtDescription.Text = "";
+            txtProductName.Text = "";
+            txtProductType.Text = "";
+            txtStockQuantity.Text = "0";
+            pictureBox1.ImageLocation = "";
+            txtBarcode.Focus();
+        }
+
+        private void dgvStock_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+          
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }
