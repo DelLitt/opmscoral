@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Common;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -318,5 +320,63 @@ namespace AppFrame.DataLayer
                 hibernateCriteria.AddOrder(order);
             }
         }
+
+        #region IDepartmentStockDefectDAO Members
+
+
+        public IList FindAllProductMasters()
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,DepartmentStockDefect st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId " +
+                                      " AND st.DepartmentStockDefectPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId + " " +
+                                      " GROUP BY pm.ProductName";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
+
+        #region IDepartmentStockDefectDAO Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT st FROM ProductMaster pm,DepartmentStockDefect st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId AND st.ErrorCount > 0 " +
+                                      " AND st.DepartmentStockDefectPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId + " " +
+                                      " AND pm.ProductName = '" + master.ProductName + "'";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception exp)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
     }
 }

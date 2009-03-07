@@ -394,6 +394,7 @@
     <None Include="Properties\DataSources\AppFrame.Model.BlockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Country.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStock.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.DepartmentStockDefect.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Distributor.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Manufacturer.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Packager.datasource" />

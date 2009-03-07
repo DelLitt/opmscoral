@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -54,11 +53,25 @@
             this.btnLoadBarcode = new System.Windows.Forms.Button();
             this.cboProductMasters = new System.Windows.Forms.ComboBox();
             this.dgvStockDefect = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblStockOut = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsStockOut = new System.Windows.Forms.BindingSource(this.components);
             this.btnCheckAll = new System.Windows.Forms.Button();
             this.btnUncheckAll = new System.Windows.Forms.Button();
@@ -67,42 +80,6 @@
             this.btnLoadDefect = new System.Windows.Forms.Button();
             this.rdoTamXuat = new System.Windows.Forms.RadioButton();
             this.rdoTraHang = new System.Windows.Forms.RadioButton();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDefectIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.goodCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.errorCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.damageCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lostCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
@@ -219,10 +196,6 @@
             this.txtProductType.Size = new System.Drawing.Size(129, 22);
             this.txtProductType.TabIndex = 0;
             // 
-            // bdsStockDefect
-            // 
-            this.bdsStockDefect.DataSource = typeof(AppFrameClient.ViewModel.StockDefectCollection);
-            // 
             // txtBarcode
             // 
             this.txtBarcode.Location = new System.Drawing.Point(76, 82);
@@ -294,14 +267,14 @@
             this.dgvStockDefect.AllowUserToAddRows = false;
             this.dgvStockDefect.AllowUserToDeleteRows = false;
             this.dgvStockDefect.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockDefect.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockDefect.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStockDefect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockDefect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
@@ -310,23 +283,7 @@
             this.Column3,
             this.Column4,
             this.columnError,
-            this.Column6,
-            this.stockDefectIdDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.createDateDataGridViewTextBoxColumn,
-            this.createIdDataGridViewTextBoxColumn,
-            this.updateDateDataGridViewTextBoxColumn,
-            this.updateIdDataGridViewTextBoxColumn,
-            this.exclusiveKeyDataGridViewTextBoxColumn,
-            this.delFlgDataGridViewTextBoxColumn,
-            this.productDataGridViewTextBoxColumn,
-            this.productMasterDataGridViewTextBoxColumn,
-            this.stockDataGridViewTextBoxColumn,
-            this.goodCountDataGridViewTextBoxColumn,
-            this.errorCountDataGridViewTextBoxColumn,
-            this.damageCountDataGridViewTextBoxColumn,
-            this.lostCountDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.Column6});
             this.dgvStockDefect.DataSource = this.bdsStockDefect;
             this.dgvStockDefect.Location = new System.Drawing.Point(12, 148);
             this.dgvStockDefect.Name = "dgvStockDefect";
@@ -334,6 +291,62 @@
             this.dgvStockDefect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockDefect.Size = new System.Drawing.Size(960, 166);
             this.dgvStockDefect.TabIndex = 24;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Product.ProductId";
+            this.Column8.HeaderText = "Mã vạch";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
+            this.Column1.HeaderText = "Loại hàng";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Product.ProductMaster.ProductName";
+            this.Column2.HeaderText = "Tên hàng";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.Column3.HeaderText = "Màu ";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 70;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.Column4.HeaderText = "Cỡ";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 70;
+            // 
+            // columnError
+            // 
+            this.columnError.DataPropertyName = "ErrorCount";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Format = "##,##0";
+            this.columnError.DefaultCellStyle = dataGridViewCellStyle6;
+            this.columnError.HeaderText = "Lỗi";
+            this.columnError.Name = "columnError";
+            this.columnError.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 300;
             // 
             // label11
             // 
@@ -356,16 +369,16 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Loại hàng:";
             // 
-            // label7
+            // lblStockOut
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 338);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 13);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "Tạm xuất";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.lblStockOut.AutoSize = true;
+            this.lblStockOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockOut.Location = new System.Drawing.Point(13, 338);
+            this.lblStockOut.Name = "lblStockOut";
+            this.lblStockOut.Size = new System.Drawing.Size(103, 13);
+            this.lblStockOut.TabIndex = 35;
+            this.lblStockOut.Text = "Tạm xuất - Trả hàng";
+            this.lblStockOut.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -382,14 +395,14 @@
             this.dgvTempStockOut.AllowUserToAddRows = false;
             this.dgvTempStockOut.AllowUserToDeleteRows = false;
             this.dgvTempStockOut.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTempStockOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTempStockOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvTempStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTempStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
@@ -398,22 +411,60 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.Column5,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19});
+            this.Column14});
             this.dgvTempStockOut.DataSource = this.bdsStockOut;
             this.dgvTempStockOut.Location = new System.Drawing.Point(13, 355);
             this.dgvTempStockOut.Name = "dgvTempStockOut";
             this.dgvTempStockOut.Size = new System.Drawing.Size(960, 166);
             this.dgvTempStockOut.TabIndex = 37;
             // 
-            // bdsStockOut
+            // ProductId
             // 
-            this.bdsStockOut.DataSource = typeof(AppFrame.Collection.StockOutDetailCollection);
+            this.ProductId.DataPropertyName = "Product.ProductId";
+            this.ProductId.HeaderText = "Mã vạch";
+            this.ProductId.Name = "ProductId";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Loại hàng";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Product.ProductMaster.ProductName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tên hàng";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Màu";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Cỡ";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 70;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Quantity";
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Beige;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Column5.HeaderText = "Số lượng ";
+            this.Column5.Name = "Column5";
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "Description";
+            this.Column14.HeaderText = "Ghi chú";
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 300;
             // 
             // btnCheckAll
             // 
@@ -494,282 +545,6 @@
             this.rdoTraHang.Text = "Trả hàng cho nhà sản xuất";
             this.rdoTraHang.UseVisualStyleBackColor = true;
             // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Product.ProductId";
-            this.Column8.HeaderText = "Mã vạch";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            this.Column1.HeaderText = "Loại hàng";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Product.ProductMaster.ProductName";
-            this.Column2.HeaderText = "Tên hàng";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            this.Column3.HeaderText = "Màu ";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 70;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            this.Column4.HeaderText = "Cỡ";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 70;
-            // 
-            // columnError
-            // 
-            this.columnError.DataPropertyName = "ErrorCount";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Format = "##,##0";
-            this.columnError.DefaultCellStyle = dataGridViewCellStyle2;
-            this.columnError.HeaderText = "Lỗi";
-            this.columnError.Name = "columnError";
-            this.columnError.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 300;
-            // 
-            // stockDefectIdDataGridViewTextBoxColumn
-            // 
-            this.stockDefectIdDataGridViewTextBoxColumn.DataPropertyName = "StockDefectId";
-            this.stockDefectIdDataGridViewTextBoxColumn.HeaderText = "StockDefectId";
-            this.stockDefectIdDataGridViewTextBoxColumn.Name = "stockDefectIdDataGridViewTextBoxColumn";
-            this.stockDefectIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stockDefectIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createDateDataGridViewTextBoxColumn
-            // 
-            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "CreateDate";
-            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
-            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createIdDataGridViewTextBoxColumn
-            // 
-            this.createIdDataGridViewTextBoxColumn.DataPropertyName = "CreateId";
-            this.createIdDataGridViewTextBoxColumn.HeaderText = "CreateId";
-            this.createIdDataGridViewTextBoxColumn.Name = "createIdDataGridViewTextBoxColumn";
-            this.createIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.createIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // updateDateDataGridViewTextBoxColumn
-            // 
-            this.updateDateDataGridViewTextBoxColumn.DataPropertyName = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.HeaderText = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.Name = "updateDateDataGridViewTextBoxColumn";
-            this.updateDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.updateDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // updateIdDataGridViewTextBoxColumn
-            // 
-            this.updateIdDataGridViewTextBoxColumn.DataPropertyName = "UpdateId";
-            this.updateIdDataGridViewTextBoxColumn.HeaderText = "UpdateId";
-            this.updateIdDataGridViewTextBoxColumn.Name = "updateIdDataGridViewTextBoxColumn";
-            this.updateIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.updateIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // exclusiveKeyDataGridViewTextBoxColumn
-            // 
-            this.exclusiveKeyDataGridViewTextBoxColumn.DataPropertyName = "ExclusiveKey";
-            this.exclusiveKeyDataGridViewTextBoxColumn.HeaderText = "ExclusiveKey";
-            this.exclusiveKeyDataGridViewTextBoxColumn.Name = "exclusiveKeyDataGridViewTextBoxColumn";
-            this.exclusiveKeyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.exclusiveKeyDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // delFlgDataGridViewTextBoxColumn
-            // 
-            this.delFlgDataGridViewTextBoxColumn.DataPropertyName = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
-            this.delFlgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.delFlgDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productMasterDataGridViewTextBoxColumn
-            // 
-            this.productMasterDataGridViewTextBoxColumn.DataPropertyName = "ProductMaster";
-            this.productMasterDataGridViewTextBoxColumn.HeaderText = "ProductMaster";
-            this.productMasterDataGridViewTextBoxColumn.Name = "productMasterDataGridViewTextBoxColumn";
-            this.productMasterDataGridViewTextBoxColumn.ReadOnly = true;
-            this.productMasterDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // stockDataGridViewTextBoxColumn
-            // 
-            this.stockDataGridViewTextBoxColumn.DataPropertyName = "Stock";
-            this.stockDataGridViewTextBoxColumn.HeaderText = "Stock";
-            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
-            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stockDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // goodCountDataGridViewTextBoxColumn
-            // 
-            this.goodCountDataGridViewTextBoxColumn.DataPropertyName = "GoodCount";
-            this.goodCountDataGridViewTextBoxColumn.HeaderText = "GoodCount";
-            this.goodCountDataGridViewTextBoxColumn.Name = "goodCountDataGridViewTextBoxColumn";
-            this.goodCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.goodCountDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // errorCountDataGridViewTextBoxColumn
-            // 
-            this.errorCountDataGridViewTextBoxColumn.DataPropertyName = "ErrorCount";
-            this.errorCountDataGridViewTextBoxColumn.HeaderText = "ErrorCount";
-            this.errorCountDataGridViewTextBoxColumn.Name = "errorCountDataGridViewTextBoxColumn";
-            this.errorCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.errorCountDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // damageCountDataGridViewTextBoxColumn
-            // 
-            this.damageCountDataGridViewTextBoxColumn.DataPropertyName = "DamageCount";
-            this.damageCountDataGridViewTextBoxColumn.HeaderText = "DamageCount";
-            this.damageCountDataGridViewTextBoxColumn.Name = "damageCountDataGridViewTextBoxColumn";
-            this.damageCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.damageCountDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // lostCountDataGridViewTextBoxColumn
-            // 
-            this.lostCountDataGridViewTextBoxColumn.DataPropertyName = "LostCount";
-            this.lostCountDataGridViewTextBoxColumn.HeaderText = "LostCount";
-            this.lostCountDataGridViewTextBoxColumn.Name = "lostCountDataGridViewTextBoxColumn";
-            this.lostCountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lostCountDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ProductId
-            // 
-            this.ProductId.DataPropertyName = "Product.ProductId";
-            this.ProductId.HeaderText = "Mã vạch";
-            this.ProductId.Name = "ProductId";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Loại hàng";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Product.ProductMaster.ProductName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tên hàng";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Màu";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Cỡ";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 70;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column5.HeaderText = "Số lượng ";
-            this.Column5.Name = "Column5";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Description";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Beige;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Ghi chú";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Width = 300;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "CreateDate";
-            this.dataGridViewTextBoxColumn14.HeaderText = "CreateDate";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "CreateId";
-            this.dataGridViewTextBoxColumn15.HeaderText = "CreateId";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "UpdateDate";
-            this.dataGridViewTextBoxColumn16.HeaderText = "UpdateDate";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "UpdateId";
-            this.dataGridViewTextBoxColumn17.HeaderText = "UpdateId";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "ExclusiveKey";
-            this.dataGridViewTextBoxColumn18.HeaderText = "ExclusiveKey";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "DelFlg";
-            this.dataGridViewTextBoxColumn19.HeaderText = "DelFlg";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.Visible = false;
-            // 
             // BaseStockOutForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
@@ -780,9 +555,8 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnCheckAll);
-            this.Controls.Add(this.dgvTempStockOut);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblStockOut);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtBarcode);
@@ -792,8 +566,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnSaveTempStockOut);
-            this.Controls.Add(this.dgvStockDefect);
             this.Controls.Add(this.cboProductMasters);
+            this.Controls.Add(this.dgvStockDefect);
+            this.Controls.Add(this.dgvTempStockOut);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "BaseStockOutForm";
             this.Load += new System.EventHandler(this.TemporaryStockOutForm_Load);
@@ -812,75 +587,54 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtStockQuantity;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtProductType;
-        private System.Windows.Forms.BindingSource bdsStockDefect;
-        private System.Windows.Forms.TextBox txtBarcode;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSaveTempStockOut;
-        private System.Windows.Forms.BindingSource bdsProductMasters;
-        private System.Windows.Forms.Button btnLoadBarcode;
-        private System.Windows.Forms.ComboBox cboProductMasters;
-        private System.Windows.Forms.DataGridView dgvStockDefect;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dgvTempStockOut;
-        private System.Windows.Forms.Button btnCheckAll;
-        private System.Windows.Forms.Button btnUncheckAll;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.BindingSource bdsStockOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnLoadDefect;
-        private System.Windows.Forms.RadioButton rdoTamXuat;
-        private System.Windows.Forms.RadioButton rdoTraHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockDefectIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exclusiveKeyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productMasterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn goodCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn errorCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn damageCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lostCountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox txtDescription;
+        public System.Windows.Forms.TextBox txtProductName;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtStockQuantity;
+        public System.Windows.Forms.Label lblTitle;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox txtProductType;
+        public System.Windows.Forms.BindingSource bdsStockDefect;
+        public System.Windows.Forms.TextBox txtBarcode;
+        public System.Windows.Forms.Button btnReset;
+        public System.Windows.Forms.Button btnClose;
+        public System.Windows.Forms.Button btnSaveTempStockOut;
+        public System.Windows.Forms.BindingSource bdsProductMasters;
+        public System.Windows.Forms.Button btnLoadBarcode;
+        public System.Windows.Forms.ComboBox cboProductMasters;
+        public System.Windows.Forms.DataGridView dgvStockDefect;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label lblStockOut;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.DataGridView dgvTempStockOut;
+        public System.Windows.Forms.Button btnCheckAll;
+        public System.Windows.Forms.Button btnUncheckAll;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.BindingSource bdsStockOut;
+        public System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.Button btnLoadDefect;
+        public System.Windows.Forms.RadioButton rdoTamXuat;
+        public System.Windows.Forms.RadioButton rdoTraHang;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        public System.Windows.Forms.DataGridViewTextBoxColumn columnError;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
     }
 }

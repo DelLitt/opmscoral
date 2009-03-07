@@ -107,6 +107,7 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
+            this.mnuDepartmentReturnGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -352,7 +353,8 @@
             // mnuDeptStock
             // 
             this.mnuDeptStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuDeptStockChecking});
+            this.mnuDeptStockChecking,
+            this.mnuDepartmentReturnGoods});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(92, 20);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -360,7 +362,7 @@
             // mnuDeptStockChecking
             // 
             this.mnuDeptStockChecking.Name = "mnuDeptStockChecking";
-            this.mnuDeptStockChecking.Size = new System.Drawing.Size(191, 22);
+            this.mnuDeptStockChecking.Size = new System.Drawing.Size(192, 22);
             this.mnuDeptStockChecking.Text = "Kiểm kê kho cửa hàng";
             this.mnuDeptStockChecking.Click += new System.EventHandler(this.mnuDeptStockChecking_Click);
             // 
@@ -695,6 +697,13 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
+            // mnuDepartmentReturnGoods
+            // 
+            this.mnuDepartmentReturnGoods.Name = "mnuDepartmentReturnGoods";
+            this.mnuDepartmentReturnGoods.Size = new System.Drawing.Size(192, 22);
+            this.mnuDepartmentReturnGoods.Text = "Trả hàng về kho chính";
+            this.mnuDepartmentReturnGoods.Click += new System.EventHandler(this.mnuDepartmentReturnGoods_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -798,5 +807,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStock;
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStockChecking;
         private System.Windows.Forms.ToolStripMenuItem mnuTemporaryStockOut;
+        private System.Windows.Forms.ToolStripMenuItem mnuDepartmentReturnGoods;
     }
 }

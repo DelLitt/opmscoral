@@ -23,7 +23,8 @@
     <menuitem name="mnuTemporaryStockOut" role="Administrator" />
   </menu>
   <menu name="mnuDeptStock" role="Administrator">
-    <menuitem name="mnuDeptStockChecking" role="Administrator" />    
+    <menuitem name="mnuDeptStockChecking" role="Administrator,Manager" />
+    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager" />
   </menu>
   <menu name="mnuSalePoint" role="Administrator">
     <menuitem name="mnuDefineSalePoint" role="Administrator" />

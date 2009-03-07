@@ -2,6 +2,7 @@
 using System.Collections;
 using AppFrame.Common;
 using AppFrame.Exceptions;
+using NHibernate;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
@@ -204,6 +205,26 @@ namespace AppFrame.Logic
         {
             object maxId = DepartmentStockDefectDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
             return maxId != null ? (long)maxId : 0;
+        }
+
+        #endregion
+
+        #region IDepartmentStockDefectLogic Members
+
+
+        public IList FindAllProductMasters()
+        {
+            return DepartmentStockDefectDAO.FindAllProductMasters();
+        }
+
+        #endregion
+
+        #region IDepartmentStockDefectLogic Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return DepartmentStockDefectDAO.FindByProductMasterName(master);
         }
 
         #endregion
