@@ -153,5 +153,25 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        #region IStockDefectLogic Members
+
+
+        public IList FindAllProductMasters()
+        {
+            return StockDefectDAO.FindByProductMasters();
+        }
+
+        #endregion
+
+        #region IStockDefectLogic Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return StockDefectDAO.FindByProductMasterName(master);
+        }
+
+        #endregion
     }
 }

@@ -120,7 +120,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return;
             }
 
+            if(stock.ProductMaster.ProductType!=null)
             txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
+
             txtProductName.Text = stock.ProductMaster.ProductName;
             txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
             txtDescription.Text = stock.ProductMaster.Description;

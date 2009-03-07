@@ -1,4 +1,5 @@
 using System.Collections;
+using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
 using AppFrame.DataLayer;
@@ -112,6 +113,17 @@ namespace AppFrame.Logic
         public IList FindByProductMaster(long id, System.DateTime date, System.DateTime toDate)
         {
             return StockOutDAO.FindByProductMaster(id,date, toDate);
+        }
+
+        #endregion
+
+        #region IStockOutLogic Members
+
+
+        public long FindMaxId()
+        {
+            object maxId = StockOutDAO.SelectSpecificType(null, Projections.Max("StockoutId"));
+            return maxId != null ? (long)maxId : 0;
         }
 
         #endregion

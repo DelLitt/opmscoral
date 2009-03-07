@@ -1,4 +1,5 @@
 using System.Collections;
+using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
 using AppFrame.DataLayer;
@@ -95,5 +96,16 @@ namespace AppFrame.Logic
         {
             return StockOutDetailDAO.FindPaging(criteria);
         }
+
+        #region IStockOutDetailLogic Members
+
+
+        public long FindMaxId()
+        {
+            object maxId = StockOutDetailDAO.SelectSpecificType(null, Projections.Max("StockOutDetailId"));
+            return maxId != null ? (long)maxId : 0;
+        }
+
+        #endregion
     }
 }

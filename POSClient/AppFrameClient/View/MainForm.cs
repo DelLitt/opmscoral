@@ -352,5 +352,12 @@ namespace AppFrame.View
             deptStockCheckingForm.Show();
         }
 
+        private void mnuTemporaryStockOut_Click(object sender, EventArgs e)
+        {
+            Form baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<BaseStockOutForm>(this,FormConstants.BASE_STOCK_OUT_FORM);
+            baseStockOutForm.Show();
+
+        }
+
     }
 }

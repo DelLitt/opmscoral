@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
@@ -318,5 +319,61 @@ namespace AppFrame.DataLayer
                 hibernateCriteria.AddOrder(order);
             }
         }
+
+        #region IStockDefectDAO Members
+
+
+        public IList FindByProductMasters()
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,StockDefect st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId " +
+                                      " GROUP BY pm.ProductName";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
+
+        #region IStockDefectDAO Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT st FROM ProductMaster pm,StockDefect st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId AND st.ErrorCount > 0 " +
+                                      " AND pm.ProductName = '" + master.ProductName + "'";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception exp)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
     }
 }

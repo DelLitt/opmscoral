@@ -316,6 +316,7 @@
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInExtraController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchController.cs" />
@@ -389,6 +390,7 @@
     <None Include="Properties\DataSources\AppFrame.Collection.StockCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection1.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Collection.StockOutDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.BlockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Country.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStock.datasource" />
