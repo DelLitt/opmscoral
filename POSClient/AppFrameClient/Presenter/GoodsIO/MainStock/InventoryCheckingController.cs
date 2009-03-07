@@ -36,8 +36,18 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         {
            if(e.SaveStockDefectList!=null && e.SaveStockDefectList.Count > 0)
            {
+               long maxId = StockDefectLogic.FindMaxStockDefectId();
+               maxId = maxId + 1;
                foreach (StockDefect stockDefect in e.SaveStockDefectList)
                {
+
+                   if (stockDefect.DamageCount == 0 && stockDefect.OldDamageCount == 0
+                        && stockDefect.ErrorCount == 0 && stockDefect.OldErrorCount == 0
+                        && stockDefect.LostCount == 0 && stockDefect.OldLostCount == 0
+                        && stockDefect.UnconfirmCount == 0 && stockDefect.OldUnconfirmCount == 0)
+                   {
+                       continue;
+                   }
                    
                    stockDefect.CreateDate = DateTime.Now;
                    stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
@@ -47,8 +57,14 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                    // get stock quantity
                    stockDefect.Quantity = stockDefect.Stock.Quantity;
                    // calculate business
-                   long totalDefects = stockDefect.DamageCount + stockDefect.ErrorCount + stockDefect.LostCount +
-                                       stockDefect.UnconfirmCount;
+
+                   // calculate business
+                   int currDamageCount = stockDefect.DamageCount - stockDefect.OldDamageCount;
+                   int currErrorCount = stockDefect.ErrorCount - stockDefect.OldErrorCount;
+                   int currUnconfirmCount = stockDefect.UnconfirmCount - stockDefect.OldUnconfirmCount;
+                   int currLostCount = stockDefect.LostCount - stockDefect.OldLostCount;
+
+                   long totalDefects = currDamageCount + currErrorCount + currLostCount + currUnconfirmCount;
                    if(stockDefect.Quantity < totalDefects)
                    {
                        throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");                       
@@ -59,75 +75,10 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                    // update the stock remains equal good count
                    stockDefect.Stock.Quantity = stockDefect.GoodCount;
                    stockDefect.Quantity = stockDefect.Stock.Quantity;
+                   stockDefect.StockDefectId = maxId++;
 
                    StockDefectLogic.Process(stockDefect);
                    StockLogic.Update(stockDefect.Stock);
-                   /*StockOut stockOut = new StockOut();
-                   stockOut.CreateDate = DateTime.Now;
-                   stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                   stockOut.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                   stockOut.UpdateDate = DateTime.Now;
-                   stockOut.DelFlg = 0;
-                   stockOut.StockOutDate = DateTime.Now;
-                   IList stockOutDetails = new ArrayList();
-                   if(stockDefect.ErrorCount > 0)
-                   {
-                       StockOutDetail stockOutDetail = new StockOutDetail();
-                       //StockOutDetailPK stockOutDetailPK = new StockOutDetailPK{ ProductId = stockDefect.Product.ProductId};
-
-                       //stockOutDetail.StockOutDetailPK = stockOutDetailPK;
-                       stockOutDetail.CreateDate = DateTime.Now;
-                       stockOutDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateDate = DateTime.Now;
-
-                       stockOutDetail.DelFlg = 0;
-                       stockOutDetail.Product = stockDefect.Product;
-                       stockOutDetail.Quantity = stockDefect.ErrorCount;
-                       stockOutDetail.ProductId = stockDefect.Product.ProductId;
-
-                       stockOutDetails.Add(stockOutDetail);
-                   }
-
-                   if (stockDefect.DamageCount > 0)
-                   {
-                       StockOutDetail stockOutDetail = new StockOutDetail();
-                       //StockOutDetailPK stockOutDetailPK = new StockOutDetailPK { ProductId = stockDefect.Product.ProductId };
-
-                       //stockOutDetail.StockOutDetailPK = stockOutDetailPK;
-                       stockOutDetail.CreateDate = DateTime.Now;
-                       stockOutDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateDate = DateTime.Now;
-
-                       stockOutDetail.DelFlg = 0;
-                       stockOutDetail.Product = stockDefect.Product;
-                       stockOutDetail.Quantity = stockDefect.DamageCount;
-                       stockOutDetail.ProductId = stockDefect.Product.ProductId;
-                       
-
-                       stockOutDetails.Add(stockOutDetail);
-                   }
-
-                   if (stockDefect.LostCount > 0)
-                   {
-                       StockOutDetail stockOutDetail = new StockOutDetail();
-                       //StockOutDetailPK stockOutDetailPK = new StockOutDetailPK { ProductId = stockDefect.Product.ProductId };
-
-                       //stockOutDetail.StockOutDetailPK = stockOutDetailPK;
-                       stockOutDetail.CreateDate = DateTime.Now;
-                       stockOutDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                       stockOutDetail.UpdateDate = DateTime.Now;
-
-                       stockOutDetail.DelFlg = 0;
-                       stockOutDetail.Product = stockDefect.Product;
-                       stockOutDetail.Quantity = stockDefect.LostCount;
-                       stockOutDetail.ProductId = stockDefect.Product.ProductId;
-
-                       stockOutDetails.Add(stockOutDetail);
-                   }*/
-                   
                    
                }
            }

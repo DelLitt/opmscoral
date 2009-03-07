@@ -47,7 +47,6 @@
             this.wareHouseStockInSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.searchDepartmentStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.updatePriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchProductMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +63,7 @@
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.approveStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.searchStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuWarehouseRemains = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +102,10 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatePriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDeptStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDeptStockChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +117,7 @@
             this.departmentStockToolStripMenuItem,
             this.productToolStripMenuItem,
             this.mnuSale,
+            this.mnuDeptStock,
             this.mnuWareHouse,
             this.mnuReport,
             this.mnuTool,
@@ -186,8 +190,7 @@
             this.mainStockInSearchStripMenuItem,
             this.wareHouseStockInSearch,
             this.searchDepartmentStockToolStripMenuItem,
-            this.toolStripMenuItem5,
-            this.updatePriceToolStripMenuItem});
+            this.toolStripMenuItem5});
             this.departmentStockToolStripMenuItem.Name = "departmentStockToolStripMenuItem";
             this.departmentStockToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.departmentStockToolStripMenuItem.Text = "Nhập hàng";
@@ -254,19 +257,12 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(281, 6);
             // 
-            // updatePriceToolStripMenuItem
-            // 
-            this.updatePriceToolStripMenuItem.Enabled = false;
-            this.updatePriceToolStripMenuItem.Name = "updatePriceToolStripMenuItem";
-            this.updatePriceToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
-            this.updatePriceToolStripMenuItem.Text = "Cập nhật giá bán ra";
-            this.updatePriceToolStripMenuItem.Click += new System.EventHandler(this.updatePriceToolStripMenuItem_Click);
-            // 
             // productToolStripMenuItem
             // 
             this.productToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productMasterToolStripMenuItem,
-            this.searchProductMasterToolStripMenuItem});
+            this.searchProductMasterToolStripMenuItem,
+            this.updatePriceToolStripMenuItem});
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
             this.productToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.productToolStripMenuItem.Text = "Danh mục hàng";
@@ -358,6 +354,7 @@
             this.mnuWarehouseRemains,
             this.mnuTheKho,
             this.mnuDanhmucHanghoa,
+            this.toolStripMenuItem12,
             this.mnuPhieuXuatKho});
             this.mnuWareHouse.Name = "mnuWareHouse";
             this.mnuWareHouse.Size = new System.Drawing.Size(143, 20);
@@ -388,6 +385,13 @@
             this.approveStockToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.approveStockToolStripMenuItem.Text = "Xác nhận nhập kho";
             this.approveStockToolStripMenuItem.Click += new System.EventHandler(this.approveStockToolStripMenuItem_Click);
+            // 
+            // mnuInventoryChecking
+            // 
+            this.mnuInventoryChecking.Name = "mnuInventoryChecking";
+            this.mnuInventoryChecking.Size = new System.Drawing.Size(182, 22);
+            this.mnuInventoryChecking.Text = "Kiểm kê kho";
+            this.mnuInventoryChecking.Click += new System.EventHandler(this.mnuInventoryChecking_Click);
             // 
             // searchStockToolStripMenuItem
             // 
@@ -655,12 +659,32 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
-            // mnuInventoryChecking
+            // updatePriceToolStripMenuItem
             // 
-            this.mnuInventoryChecking.Name = "mnuInventoryChecking";
-            this.mnuInventoryChecking.Size = new System.Drawing.Size(182, 22);
-            this.mnuInventoryChecking.Text = "Kiểm kê kho";
-            this.mnuInventoryChecking.Click += new System.EventHandler(this.mnuInventoryChecking_Click);
+            this.updatePriceToolStripMenuItem.Name = "updatePriceToolStripMenuItem";
+            this.updatePriceToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.updatePriceToolStripMenuItem.Text = "Cập nhật giá bán ra";
+            this.updatePriceToolStripMenuItem.Click += new System.EventHandler(this.updatePriceToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(179, 6);
+            // 
+            // mnuDeptStock
+            // 
+            this.mnuDeptStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuDeptStockChecking});
+            this.mnuDeptStock.Name = "mnuDeptStock";
+            this.mnuDeptStock.Size = new System.Drawing.Size(92, 20);
+            this.mnuDeptStock.Text = "Kho cửa hàng";
+            // 
+            // mnuDeptStockChecking
+            // 
+            this.mnuDeptStockChecking.Name = "mnuDeptStockChecking";
+            this.mnuDeptStockChecking.Size = new System.Drawing.Size(191, 22);
+            this.mnuDeptStockChecking.Text = "Kiểm kê kho cửa hàng";
+            this.mnuDeptStockChecking.Click += new System.EventHandler(this.mnuDeptStockChecking_Click);
             // 
             // MainForm
             // 
@@ -716,7 +740,6 @@
         private System.Windows.Forms.ToolStripMenuItem departmentStockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem departmentStockInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchDepartmentStockToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updatePriceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchDepartmentStockInMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuDayGoodsSaleList;
         private System.Windows.Forms.ToolStripMenuItem mnuMonthGoodsSaleList;
@@ -761,5 +784,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuGoodsSaleDepartmentReport;
         private System.Windows.Forms.ToolStripMenuItem mnuGoodsExportReport;
         private System.Windows.Forms.ToolStripMenuItem mnuInventoryChecking;
+        private System.Windows.Forms.ToolStripMenuItem updatePriceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripMenuItem mnuDeptStock;
+        private System.Windows.Forms.ToolStripMenuItem mnuDeptStockChecking;
     }
 }

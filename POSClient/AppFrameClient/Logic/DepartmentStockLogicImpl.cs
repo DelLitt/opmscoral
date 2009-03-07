@@ -104,5 +104,15 @@ namespace AppFrame.Logic
             //DepartmentStockDAO.FindByQuery(sqltemp.ToString(), new ObjectCriteria());
             return DepartmentStockDAO.FindByQuery(sql.ToString(), criteria);
         }
+
+        #region IDepartmentStockLogic Members
+
+
+        public void Process(IList list)
+        {
+            
+        }
+
+        #endregion
     }
 }

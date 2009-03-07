@@ -21,6 +21,9 @@
     <menuitem name="mnuPhieuXuatKho" role="Administrator" />
     <menuitem name="mnuInventoryChecking" role="Administrator" />
   </menu>
+  <menu name="mnuDeptStock" role="Administrator">
+    <menuitem name="mnuDeptStockChecking" role="Administrator" />    
+  </menu>
   <menu name="mnuSalePoint" role="Administrator">
     <menuitem name="mnuDefineSalePoint" role="Administrator" />
     <menuitem name="mnuListSalePoints" role="Administrator" />
@@ -31,6 +34,7 @@
   <menu name="productToolStripMenuItem" role="Administrator">
     <menuitem name="productMasterToolStripMenuItem" role="Administrator" />
     <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator" />
+    <menuitem name="updatePriceToolStripMenuItem" role="NotImplement" />
   </menu>
   <menu name="departmentStockToolStripMenuItem" role="NotImplement">
     <menuitem name="wareHouseStockIn" role="Administrator" />
@@ -39,8 +43,7 @@
     <menuitem name="wareHouseStockInSearch" role="NotImplement" />
     <menuitem name="searchDepartmentStockToolStripMenuItem" role="NotImplement" />
     <menuitem name="mainStockInSearchStripMenuItem" role="Administrator" />
-    <menuitem name="searchDepartmentStockInMenuItem" role="Administrator" />
-    <menuitem name="updatePriceToolStripMenuItem" role="Administrator" />
+    <menuitem name="searchDepartmentStockInMenuItem" role="Administrator" />    
   </menu>
   
   <menu name="mnuSale" role="Administrator,Manager">

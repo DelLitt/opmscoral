@@ -344,5 +344,13 @@ namespace AppFrame.View
             inventoryCheckingForm.Show();
         }
 
+        private void mnuDeptStockChecking_Click(object sender, EventArgs e)
+        {
+            Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockCheckingForm>(this,
+                                                                                                     FormConstants.
+                                                                                                         DEPARTMENT_STOCK_CHECKING_FORM);
+            deptStockCheckingForm.Show();
+        }
+
     }
 }

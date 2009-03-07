@@ -130,16 +130,25 @@ namespace AppFrame.Logic
             }
             else
             {
-                object maxId = StockDefectDAO.SelectSpecificType(null, Projections.Max("StockDefectId"));
-                if (maxId != null)
-                {
-                    defect.StockDefectId = (long)maxId + 1;
-                }
-                else
-                {
-                    defect.StockDefectId = 1;
-                }
                 StockDefectDAO.Add(defect);
+            }
+        }
+
+        #endregion
+
+        #region IStockDefectLogic Members
+
+
+        public long FindMaxStockDefectId()
+        {
+            object maxId = StockDefectDAO.SelectSpecificType(null, Projections.Max("StockDefectId"));
+            if (maxId != null)
+            {
+                return (long) maxId;
+            }
+            else
+            {
+                return 0;
             }
         }
 

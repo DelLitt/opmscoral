@@ -148,6 +148,19 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     stockDefectList[stockDefectList.Count -1 ] =  checkingEventArgs.ScannedStockDefect;
                     stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
+
+                    stockDefectList[stockDefectList.Count - 1].OldDamageCount =
+                        stockDefectList[stockDefectList.Count - 1].DamageCount;
+
+                    stockDefectList[stockDefectList.Count - 1].OldErrorCount =
+                        stockDefectList[stockDefectList.Count - 1].ErrorCount;
+
+                    stockDefectList[stockDefectList.Count - 1].OldUnconfirmCount =
+                        stockDefectList[stockDefectList.Count - 1].UnconfirmCount;
+
+                    stockDefectList[stockDefectList.Count - 1].OldLostCount =
+                        stockDefectList[stockDefectList.Count - 1].LostCount;
+
                 }
                 else
                 {
@@ -155,7 +168,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     newStockDefect.ProductMaster = stock.ProductMaster;
                     newStockDefect.Stock = stock;
                     newStockDefect.Quantity = stock.Quantity;
-                    newStockDefect.GoodCount += 1;    
+                    newStockDefect.GoodCount += 1;
+
+                    newStockDefect.OldDamageCount = newStockDefect.DamageCount;
+                    newStockDefect.OldErrorCount = newStockDefect.ErrorCount;
+                    newStockDefect.OldUnconfirmCount = newStockDefect.UnconfirmCount;
+                    newStockDefect.OldLostCount = newStockDefect.LostCount;
                 }
                 dgvStock.CurrentCell = dgvStock[5, stockDefectList.Count - 1];
             }
