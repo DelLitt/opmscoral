@@ -145,10 +145,11 @@ namespace AppFrame.Model
 
         public virtual Stock Stock { get; set; }
 
-        public virtual int GoodCount { get; set; }
+        public virtual long GoodCount { get; set; }
         public virtual int ErrorCount { get; set; }
         public virtual int DamageCount { get; set; }
         public virtual int LostCount { get; set; }
+        public virtual int UnconfirmCount { get; set; }
         public virtual string Description { get; set; }
         
         #endregion

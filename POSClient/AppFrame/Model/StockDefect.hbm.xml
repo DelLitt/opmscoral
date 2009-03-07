@@ -73,9 +73,9 @@
   
   <property
       name="GoodCount"
-      type="Int32"
+      type="Int64"
       column="GOOD_COUNT"
-      length="8"
+      length="10"
     >
   </property>
   <property
@@ -96,6 +96,13 @@
       name="LostCount"
       type="Int32"
       column="LOST_COUNT"
+      length="8"
+    >
+  </property>
+  <property
+      name="UnconfirmCount"
+      type="Int32"
+      column="UNCONFIRM_COUNT"
       length="8"
     >
   </property>

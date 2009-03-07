@@ -268,6 +268,7 @@
     <Compile Include="DataLayer\IScheduleTemplateDAO.cs" />
     <Compile Include="DataLayer\ISimilarProductDAO.cs" />
     <Compile Include="DataLayer\IStockDAO.cs" />
+    <Compile Include="DataLayer\IStockDefectDAO.cs" />
     <Compile Include="DataLayer\IStockInDAO.cs" />
     <Compile Include="DataLayer\IStockInDetailDAO.cs" />
     <Compile Include="DataLayer\IStockOutCostDAO.cs" />
@@ -352,6 +353,7 @@
     <Compile Include="Logic\IReturnProductLogic.cs" />
     <Compile Include="Logic\IScheduleTemplateLogic.cs" />
     <Compile Include="Logic\ISimilarProductLogic.cs" />
+    <Compile Include="Logic\IStockDefectLogic.cs" />
     <Compile Include="Logic\IStockInDetailLogic.cs" />
     <Compile Include="Logic\IStockInLogic.cs" />
     <Compile Include="Logic\IStockLogic.cs" />

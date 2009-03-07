@@ -14,6 +14,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         public IList ReturnStockViewList { get; set; }
 
         public Stock ScannedStock { get; set; }
+        public StockDefect ScannedStockDefect { get; set; }
         public IList SaveStock { get; set; }
         public IList SaveStockDefectList { get; set; }
     }
