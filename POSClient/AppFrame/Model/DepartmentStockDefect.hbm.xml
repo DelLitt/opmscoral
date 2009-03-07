@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
 
-<class name="StockDefect"
-	    table="stock_defect"
+<class name="DepartmentStockDefect"
+	    table="department_stock_defect"
 >
 
-    <id
-        name="StockDefectId"
+  <composite-id name="DepartmentStockDefectPK" class="DepartmentStockDefectPK">
+    <key-property
+        name="DepartmentId"
+        column="DEPARTMENT_ID"
         type="Int64"
-        column="STOCK_DEFECT_ID"
-    >
-        <generator class="assigned" />
-    </id>
+        length="10">
+    </key-property>
+    <key-property
+        name="DepartmentStockDefectId"
+        type="Int64"
+        column="DEPARTMENT_STOCK_DEFECT_ID"
+    >       
+    </key-property>
+  </composite-id>
+  
 
     <property
         name="Quantity"
@@ -122,18 +130,9 @@
       name="ProductMaster"
       class="ProductMaster"
       not-null="true"
-      lazy="false"
     >
     <column name="PRODUCT_MASTER_ID" />
-  </many-to-one>
-  <many-to-one
-      name="Stock"
-      class="Stock"
-      not-null="true"
-      lazy="false"
-    >
-    <column name="STOCK_ID" />
-  </many-to-one>
+  </many-to-one> 
   
 </class>
 </hibernate-mapping>

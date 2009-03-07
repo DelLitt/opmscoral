@@ -4,58 +4,59 @@ using AppFrame.Model;
 
 namespace AppFrame.Logic
 {
-    public interface IStockDefectLogic
+    public interface IDepartmentStockDefectLogic
     {
         /// <summary>
-        /// Find StockDefect object by id. Return null if nothing is found
+        /// Find DepartmentStockDefect object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockDefect</param>
+        /// <param name="id">Id of DepartmentStockDefect</param>
         /// <returns></returns>
-        StockDefect FindById(object id);
+        DepartmentStockDefect FindById(object id);
 
         /// <summary>
-        /// Add StockDefect to database.
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        StockDefect Add(StockDefect data);
-
-        /// <summary>
-        /// Update StockDefect to database.
+        /// Add DepartmentStockDefect to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update(StockDefect data);
+        DepartmentStockDefect Add(DepartmentStockDefect data);
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Update DepartmentStockDefect to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete(StockDefect data);
+        void Update(DepartmentStockDefect data);
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Delete DepartmentStockDefect from database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        void Delete(DepartmentStockDefect data);
+
+        /// <summary>
+        /// Delete DepartmentStockDefect from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         void DeleteById(object id);
 
         /// <summary>
-        /// Find all StockDefect from database. No pagination.
+        /// Find all DepartmentStockDefect from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         IList FindAll(ObjectCriteria criteria);
 
         /// <summary>
-        /// Find all StockDefect from database. Has pagination.
+        /// Find all DepartmentStockDefect from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
 
-        void Process(StockDefect defect);
-        long FindMaxStockDefectId();
+        void Process(DepartmentStockDefect defect);
+        void ProcessList(IList list);
+        long GetMaxDefectId();
     }
 }

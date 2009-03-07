@@ -213,6 +213,7 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayer\IDepartmentStockDefectDAO.cs" />
     <Compile Include="DataLayer\IBlockInCostDAO.cs" />
     <Compile Include="DataLayer\IBlockInDAO.cs" />
     <Compile Include="DataLayer\IBlockInDetailDAO.cs" />
@@ -315,6 +316,7 @@
     <Compile Include="Logic\IDepartmentReturnCostLogic.cs" />
     <Compile Include="Logic\IDepartmentReturnDetailLogic.cs" />
     <Compile Include="Logic\IDepartmentReturnLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockDefectLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInCostLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInDetailLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInLogic.cs" />
@@ -389,6 +391,8 @@
     <Compile Include="Model\DepartmentReturnDetail.cs" />
     <Compile Include="Model\DepartmentReturnDetailPK.cs" />
     <Compile Include="Model\DepartmentStock.cs" />
+    <Compile Include="Model\DepartmentStockDefect.cs" />
+    <Compile Include="Model\DepartmentStockDefectPK.cs" />
     <Compile Include="Model\DepartmentStockIn.cs" />
     <Compile Include="Model\DepartmentStockInCost.cs" />
     <Compile Include="Model\DepartmentStockInCostPK.cs" />
@@ -475,11 +479,13 @@
     <Compile Include="ObjectCriteria.cs" />
     <Compile Include="Presenter\CustomerEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentPriceUpdateEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockCheckingEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockDetailEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockInEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockInSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockInExtraController.cs" />
@@ -585,6 +591,7 @@
     <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="View\Dummy.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockInExtraView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockInSearchView.cs" />
@@ -659,6 +666,7 @@
     <Content Include="Config\AppFrameSecurity.xml" />
     <EmbeddedResource Include="Model\StockDefect.hbm.xml" />
     <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockDefect.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
