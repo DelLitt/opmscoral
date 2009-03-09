@@ -66,5 +66,6 @@ namespace AppFrame.DataLayer
 
         IList FindByProductMaster(DateTime date, DateTime toDate);
         IList FindByProductMaster(long id, DateTime date, DateTime toDate);
+        IList FindStockOut(DateTime date, DateTime toDate);
     }
 }

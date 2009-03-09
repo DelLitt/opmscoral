@@ -7,6 +7,7 @@ namespace AppFrame.Model
 {
     public class StockDefectStatus
     {
+        private string test = " Kiểm tra";
         public virtual Int64 DefectStatusId 
         {
             get;

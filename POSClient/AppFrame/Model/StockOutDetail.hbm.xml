@@ -109,7 +109,7 @@
         name="StockOut"
         class="StockOut"        
     >
-      <column name="STOCK_OUT_ID" />
+      <column name="STOCKOUT_ID" />
     </many-to-one>
 
 </class>

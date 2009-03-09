@@ -15,9 +15,9 @@
 
     <property
         name="DefectStatusName"
-        type="Int64"
+        type="string"
         column="DEFECT_STATUS_NAME"
-        length="20"
+        length="200"
     >
     </property>    
 

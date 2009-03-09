@@ -11,11 +11,11 @@ namespace AppFrame.View.Reports
         #region controller
         IReportStockOutController ReportStockOutController { get; set; }
         #endregion
-        ReportDepartmentStockOutParam ReportDepartmentStockOutParam { get; set; }
+        ReportDateStockOutParam ReportDateStockOutParam { get; set; }
         event EventHandler<ReportStockOutEventArgs> LoadStockOutByRangeEvent;
         event EventHandler<ReportStockOutEventArgs> LoadAllDeparmentEvent;
     }
-    public class ReportDepartmentStockOutParam
+    public class ReportDateStockOutParam
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }

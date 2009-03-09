@@ -172,7 +172,7 @@ namespace AppFrame.Model
             get;
             set;
         }
-
+        public virtual StockDefectStatus DefectStatus { get; set; }
         
         #endregion
         

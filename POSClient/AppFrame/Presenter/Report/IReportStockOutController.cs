@@ -17,8 +17,8 @@ namespace AppFrame.Presenter.Report
         IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
         IDepartmentLogic DepartmentLogic { get; set; }
 
-        IDepartmentStockInLogic DepartmentStockOutLogic { get; set; }
-        IDepartmentStockInDetailLogic DepartmentStockOutDetailLogic { get; set; }
+        IDepartmentStockOutLogic DepartmentStockOutLogic { get; set; }
+        IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic { get; set; }
 
         IStockOutLogic StockOutLogic { get; set; }
         IStockOutDetailLogic StockOutDetailLogic { get; set; }

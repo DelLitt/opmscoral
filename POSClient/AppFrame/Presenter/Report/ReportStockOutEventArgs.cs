@@ -11,7 +11,7 @@ namespace AppFrame.Presenter.Report
 {
     public class ReportStockOutEventArgs : BaseEventArgs
     {
-        public ReportDepartmentStockOutParam ReportDepartmentStockOutParam { get; set; }
+        public ReportDateStockOutParam ReportDateStockOutParam { get; set; }
 
         public IList ResultStockOutList { get; set; }
         public IList ProductMastersInList { get; set; }
