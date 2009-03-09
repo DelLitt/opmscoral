@@ -57,9 +57,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\antlr.runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Cells, Version=4.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+    <Reference Include="Aspose.Cells, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\Aspose\Aspose.Cells\\bin\Net1.0\Aspose.Cells.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Aspose\Aspose.Cells\Bin\Net2.0\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="BarcodeX, Version=2.0.3211.31016, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -419,6 +419,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Templates\GoodsMainStockInDetailReportTemplate.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\GoodsMainStockInReportTemplate.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\GoodsSaleListTemplate.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -487,6 +493,18 @@
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.Designer.cs">
+      <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\MainStockOutReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\MainStockOutReportForm.Designer.cs">
+      <DependentUpon>MainStockOutReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.cs">
       <SubType>Form</SubType>
@@ -776,11 +794,11 @@
     <Compile Include="View\Masters\UniversalMasterCreateForm.Designer.cs">
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\DepartmentGoodsExportReportForm.cs">
+    <Compile Include="View\Reports\DepartmentStockOutReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Reports\DepartmentGoodsExportReportForm.Designer.cs">
-      <DependentUpon>DepartmentGoodsExportReportForm.cs</DependentUpon>
+    <Compile Include="View\Reports\DepartmentStockOutReportForm.Designer.cs">
+      <DependentUpon>DepartmentStockOutReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\rptStock.cs">
       <SubType>Form</SubType>
@@ -952,7 +970,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\PurchaseOrder.rdlc" />
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -967,6 +984,12 @@
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockOutConfirmForm.resx">
+      <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\MainStockOutReportForm.resx">
+      <DependentUpon>MainStockOutReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\InventoryCheckingForm.resx">
       <DependentUpon>InventoryCheckingForm.cs</DependentUpon>
@@ -1098,8 +1121,8 @@
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\DepartmentGoodsExportReportForm.resx">
-      <DependentUpon>DepartmentGoodsExportReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Reports\DepartmentStockOutReportForm.resx">
+      <DependentUpon>DepartmentStockOutReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\rptStock.resx">
       <DependentUpon>rptStock.cs</DependentUpon>
@@ -1124,6 +1147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

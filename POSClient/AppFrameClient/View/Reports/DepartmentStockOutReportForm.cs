@@ -15,14 +15,14 @@ using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.Reports
 {
-    public partial class DepartmentGoodsExportReportForm : AppFrame.Common.BaseForm,IDepartmentGoodsExportReportView
+    public partial class DepartmentStockOutReportForm : AppFrame.Common.BaseForm,IDepartmentStockOutReportView
     {
 
         private DepartmentStockInResultDetailCollection pSODetResultList = null;
         private DepartmentStockInDetailCollection pSODetList = null;
         private IList resultList = null;
 
-        public DepartmentGoodsExportReportForm()
+        public DepartmentStockOutReportForm()
         {
             InitializeComponent();
         }
@@ -45,7 +45,7 @@ namespace AppFrameClient.View.Reports
             cboDepartments.DisplayMember = "DepartmentName";
         }
 
-        #region IDepartmentGoodsExportReportView Members
+        #region IDepartmentStockOutReportView Members
 
         AppFrame.Presenter.Report.IReportStockOutController reportStockOutController;
         public AppFrame.Presenter.Report.IReportStockOutController ReportStockOutController
@@ -57,11 +57,11 @@ namespace AppFrameClient.View.Reports
             set
             {
                 reportStockOutController = value;
-                reportStockOutController.ReportStockOutView = this;
+                reportStockOutController.ReportDepartmentStockOutView = this;
             }
         }
 
-        public ReportStockOutParam ReportStockOutParam
+        public ReportDepartmentStockOutParam ReportDepartmentStockOutParam
         {
             get;set;
         }
@@ -70,7 +70,7 @@ namespace AppFrameClient.View.Reports
 
         #endregion
 
-        #region IDepartmentGoodsExportReportView Members
+        #region IDepartmentStockOutReportView Members
 
 
         public event EventHandler<AppFrame.Presenter.Report.ReportStockOutEventArgs> LoadAllDeparmentEvent;
@@ -81,10 +81,10 @@ namespace AppFrameClient.View.Reports
         {
             pSODetResultList.Clear();
             ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
-            ReportStockOutParam stockInParam = new ReportStockOutParam();
-            stockInParam.FromDate = DateUtility.ZeroTime(dtpFrom.Value);
-            stockInParam.ToDate = DateUtility.MaxTime(dtpTo.Value);
-            eventArgs.ReportStockOutParam = stockInParam;
+            ReportDepartmentStockOutParam departmentStockInParam = new ReportDepartmentStockOutParam();
+            departmentStockInParam.FromDate = DateUtility.ZeroTime(dtpFrom.Value);
+            departmentStockInParam.ToDate = DateUtility.MaxTime(dtpTo.Value);
+            eventArgs.ReportDepartmentStockOutParam = departmentStockInParam;
             if (cboDepartments != null) 
                 eventArgs.SelectDepartment = (Department)cboDepartments.SelectedItem;
 
@@ -168,6 +168,11 @@ namespace AppFrameClient.View.Reports
                 bdsStockOutResultDetail.EndEdit();
                 PopulateGrid();
             }
+        }
+
+        private void view_group_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

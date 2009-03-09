@@ -13,30 +13,30 @@ namespace AppFrameClient.Presenter.Report
     {
         #region IReportStockOutController Members
 
-        private AppFrame.View.Reports.IDepartmentGoodsExportReportView reportStockOutView;
-        public AppFrame.View.Reports.IDepartmentGoodsExportReportView ReportStockOutView
+        private AppFrame.View.Reports.IDepartmentStockOutReportView reportDepartmentStockOutView;
+        public AppFrame.View.Reports.IDepartmentStockOutReportView ReportDepartmentStockOutView
         {
             get
             {
-                return reportStockOutView;
+                return reportDepartmentStockOutView;
             }
             set
             {
-                reportStockOutView = value;
-                reportStockOutView.LoadAllDeparmentEvent+=new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadAllDeparmentEvent);
-                reportStockOutView.LoadStockOutByRangeEvent += new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadStockOutByRangeEvent);
+                reportDepartmentStockOutView = value;
+                reportDepartmentStockOutView.LoadAllDeparmentEvent+=new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadAllDeparmentEvent);
+                reportDepartmentStockOutView.LoadStockOutByRangeEvent += new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadDepartmentStockOutByRangeEvent);
             }
         }
 
-        void reportStockOutView_LoadStockOutByRangeEvent(object sender, ReportStockOutEventArgs e)
+        void reportStockOutView_LoadDepartmentStockOutByRangeEvent(object sender, ReportStockOutEventArgs e)
         {
             ObjectCriteria criteria = new ObjectCriteria();
-            criteria.AddBetweenCriteria("CreateDate", e.ReportStockOutParam.FromDate, e.ReportStockOutParam.ToDate);
+            criteria.AddBetweenCriteria("CreateDate", e.ReportDepartmentStockOutParam.FromDate, e.ReportDepartmentStockOutParam.ToDate);
             criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.SelectDepartment.DepartmentId);
             IList stockInList = DepartmentStockInLogic.FindAll(criteria);
             e.ResultStockOutList = stockInList;
 
-            IList productMasterList = DepartmentStockInLogic.FindByProductMaster(e.SelectDepartment.DepartmentId,e.ReportStockOutParam.FromDate, e.ReportStockOutParam.ToDate);
+            IList productMasterList = DepartmentStockInLogic.FindByProductMaster(e.SelectDepartment.DepartmentId,e.ReportDepartmentStockOutParam.FromDate, e.ReportDepartmentStockOutParam.ToDate);
             e.ProductMastersInList = productMasterList;
         }
 
@@ -67,6 +67,71 @@ namespace AppFrameClient.Presenter.Report
         {
             get;set;
             
+        }
+
+        #endregion
+
+        #region IReportStockOutController Members
+
+
+        public AppFrame.View.Reports.IStockOutReportView MainStockOutReportView
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public AppFrame.Logic.IDepartmentStockInLogic DepartmentStockOutLogic
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public AppFrame.Logic.IDepartmentStockInDetailLogic DepartmentStockOutDetailLogic
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public AppFrame.Logic.IStockOutLogic StockOutLogic
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public AppFrame.Logic.IStockOutDetailLogic StockOutDetailLogic
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion

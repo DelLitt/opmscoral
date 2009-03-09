@@ -332,7 +332,7 @@ namespace AppFrame.View
 
         private void mnuGoodsExportReport_Click(object sender, EventArgs e)
         {
-            Form stockOutReportForm = GlobalUtility.GetOnlyChildFormObject<DepartmentGoodsExportReportForm>(this, FormConstants.REPORT_STOCK_OUT_FORM);
+            Form stockOutReportForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutReportForm>(this, FormConstants.REPORT_STOCK_OUT_FORM);
             stockOutReportForm.Show();
         }
 
