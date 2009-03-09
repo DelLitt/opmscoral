@@ -456,6 +456,10 @@
     <Compile Include="ViewModel\StockInResultDetailCollection.cs" />
     <Compile Include="ViewModel\DepartmentStockInResultDetail.cs" />
     <Compile Include="ViewModel\DepartmentStockInResultDetailCollection.cs" />
+    <Compile Include="ViewModel\StockOutDetailView.cs" />
+    <Compile Include="ViewModel\StockOutDetailViewCollection.cs" />
+    <Compile Include="ViewModel\StockOutView.cs" />
+    <Compile Include="ViewModel\StockOutViewCollection.cs" />
     <Compile Include="ViewModel\StockView.cs" />
     <Compile Include="ViewModel\StockViewCollection.cs" />
     <Compile Include="View\AuthForm.cs">

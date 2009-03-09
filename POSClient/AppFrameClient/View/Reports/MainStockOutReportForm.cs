@@ -1,16 +1,29 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Collection;
+using AppFrame.Model;
+using AppFrame.Presenter.Report;
+using AppFrame.Utility;
 using AppFrame.View.Reports;
+using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.Reports
 {
     public partial class MainStockOutReportForm : AppFrame.Common.BaseForm,IStockOutReportView
     {
+        private StockOutViewCollection stockOutList = null;
+        private StockOutDetailViewCollection stockOutDetailViewList = null;
+        private const int GOOD_COUNT = 0;
+        private const int ERROR_COUNT = 1;
+        private const int DAMAGE_COUNT = 2;
+        private const int LOST_COUNT = 3;
+
         public MainStockOutReportForm()
         {
             InitializeComponent();
@@ -28,14 +41,41 @@ namespace AppFrameClient.View.Reports
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-           if(rdoAll.Checked || rdoThisWeek.Checked || rdoToday.Checked)
-           {
-               
-           }
-           else
-           {
-               
-           }
+
+            stockOutList.Clear();
+                   ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
+                   eventArgs.ReportDateStockOutParam =
+                       new ReportDateStockOutParam
+                           {
+                               FromDate = DateUtility.ZeroTime(dtpFrom.Value),
+                               ToDate = DateUtility.MaxTime(dtpTo.Value)
+                           };
+            EventUtility.fireEvent(LoadStockOutsEvent,this,eventArgs);
+            
+            if(eventArgs.ResultStockOutList!=null)
+            {
+                foreach (IList result in eventArgs.ResultStockOutList)
+                {
+                    StockOutView stockOutView = new StockOutView();
+                    stockOutView.StockOut = (StockOut)result[0];
+                    stockOutView.TotalQuantity = (long) result[1];
+                    stockOutView.Department = (Department) result[3];
+                    if (stockOutView.Department != null)
+                    {
+                        stockOutView.DepartmentName = stockOutView.DepartmentName;
+                    }
+                    else
+                    {
+                        stockOutView.DepartmentName = " Kho chinh";
+                    }
+                    stockOutView.CreateDate = stockOutView.StockOut.CreateDate;
+                    bdsStockOut.Add(stockOutView);
+                }     
+            }
+
+            bdsStockOut.EndEdit();
+            dgvStock.Refresh();
+            dgvStock.Invalidate();
         }
 
         #region IStockOutReportView Members
@@ -59,5 +99,70 @@ namespace AppFrameClient.View.Reports
         public event EventHandler<AppFrame.Presenter.Report.ReportStockOutEventArgs> LoadStockOutDetailEvent;
 
         #endregion
+
+        private void MainStockOutReportForm_Load(object sender, EventArgs e)
+        {
+            stockOutList = new StockOutViewCollection(bdsStockOut);
+            bdsStockOut.DataSource = stockOutList;
+            bdsStockOut.ResetBindings(true);
+
+            stockOutDetailViewList = new StockOutDetailViewCollection(bdsStockOutDetail);
+            bdsStockOutDetail.DataSource = stockOutDetailViewList;
+            bdsStockOutDetail.ResetBindings(true);
+
+        }
+        
+    
+
+        private void dgvStockOut_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dgvStockOut.CurrentCell ==null)
+            {
+                return;
+            }
+            stockOutDetailViewList.Clear();
+            StockOutView stockOut = stockOutList[dgvStockOut.CurrentCell.OwningRow.Index];
+            IList stockOutDetails = stockOut.StockOut.StockOutDetails;
+            foreach (StockOutDetail stockOutDetail in stockOutDetails)
+            {
+                if (!HasCreatedView(stockOutDetail))
+                {
+                    StockOutDetailView stockOutDetailView = new StockOutDetailView();
+                    stockOutDetailView.StockOutDetail = stockOutDetail;
+
+                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, GOOD_COUNT);
+                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, ERROR_COUNT);
+                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, DAMAGE_COUNT);
+                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, LOST_COUNT);
+                    stockOutDetailViewList.Add(stockOutDetailView);
+                }
+
+            }
+        }
+
+        private long GetSpecificQuantity(StockOutDetail searchDetail,IList details, int specificCount)
+        {
+            foreach (StockOutDetail detail in details)
+            {
+                if ( detail.Product.ProductId == searchDetail.Product.ProductId &&
+                    detail.DefectStatus.DefectStatusId == specificCount)
+                {
+                    return detail.Quantity;
+                }
+            }
+            return 0;
+        }
+
+        private bool HasCreatedView(StockOutDetail detail)
+        {
+            foreach (StockOutDetailView outDetailView in stockOutDetailViewList)
+            {
+                if(outDetailView.StockOutDetail.Product.ProductId == detail.Product.ProductId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

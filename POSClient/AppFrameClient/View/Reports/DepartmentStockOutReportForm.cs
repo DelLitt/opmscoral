@@ -61,7 +61,7 @@ namespace AppFrameClient.View.Reports
             }
         }
 
-        public ReportDepartmentStockOutParam ReportDepartmentStockOutParam
+        public ReportDateStockOutParam ReportDateStockOutParam
         {
             get;set;
         }
@@ -81,10 +81,10 @@ namespace AppFrameClient.View.Reports
         {
             pSODetResultList.Clear();
             ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
-            ReportDepartmentStockOutParam departmentStockInParam = new ReportDepartmentStockOutParam();
-            departmentStockInParam.FromDate = DateUtility.ZeroTime(dtpFrom.Value);
-            departmentStockInParam.ToDate = DateUtility.MaxTime(dtpTo.Value);
-            eventArgs.ReportDepartmentStockOutParam = departmentStockInParam;
+            ReportDateStockOutParam dateStockInParam = new ReportDateStockOutParam();
+            dateStockInParam.FromDate = DateUtility.ZeroTime(dtpFrom.Value);
+            dateStockInParam.ToDate = DateUtility.MaxTime(dtpTo.Value);
+            eventArgs.ReportDateStockOutParam = dateStockInParam;
             if (cboDepartments != null) 
                 eventArgs.SelectDepartment = (Department)cboDepartments.SelectedItem;
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame;
+using AppFrame.Model;
 using AppFrame.Presenter.Report;
 using AppFrame.Presenter.SalePoints;
 
@@ -31,12 +32,12 @@ namespace AppFrameClient.Presenter.Report
         void reportStockOutView_LoadDepartmentStockOutByRangeEvent(object sender, ReportStockOutEventArgs e)
         {
             ObjectCriteria criteria = new ObjectCriteria();
-            criteria.AddBetweenCriteria("CreateDate", e.ReportDepartmentStockOutParam.FromDate, e.ReportDepartmentStockOutParam.ToDate);
+            criteria.AddBetweenCriteria("CreateDate", e.ReportDateStockOutParam.FromDate, e.ReportDateStockOutParam.ToDate);
             criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.SelectDepartment.DepartmentId);
             IList stockInList = DepartmentStockInLogic.FindAll(criteria);
             e.ResultStockOutList = stockInList;
 
-            IList productMasterList = DepartmentStockInLogic.FindByProductMaster(e.SelectDepartment.DepartmentId,e.ReportDepartmentStockOutParam.FromDate, e.ReportDepartmentStockOutParam.ToDate);
+            IList productMasterList = DepartmentStockInLogic.FindByProductMaster(e.SelectDepartment.DepartmentId,e.ReportDateStockOutParam.FromDate, e.ReportDateStockOutParam.ToDate);
             e.ProductMastersInList = productMasterList;
         }
 
@@ -73,65 +74,60 @@ namespace AppFrameClient.Presenter.Report
 
         #region IReportStockOutController Members
 
-
+        private AppFrame.View.Reports.IStockOutReportView mainStockOutReportView;
         public AppFrame.View.Reports.IStockOutReportView MainStockOutReportView
         {
             get
             {
-                throw new NotImplementedException();
+                return mainStockOutReportView;
             }
             set
             {
-                throw new NotImplementedException();
+                mainStockOutReportView = value;
+                mainStockOutReportView.LoadStockOutsEvent += new EventHandler<ReportStockOutEventArgs>(mainStockOutReportView_LoadStockOutsEvent);
             }
         }
 
-        public AppFrame.Logic.IDepartmentStockInLogic DepartmentStockOutLogic
+        void mainStockOutReportView_LoadStockOutsEvent(object sender, ReportStockOutEventArgs e)
         {
-            get
+            IList list = StockOutLogic.FindStockOut(e.ReportDateStockOutParam.FromDate, e.ReportDateStockOutParam.ToDate);
+            if (list != null)
             {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
+                IList parentList = new ArrayList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    IList childList = new ArrayList();
+                    childList.Add(((IList)list[i])[0]);
+                    childList.Add(((IList)list[i])[1]);
+                    childList.Add(((IList)list[i])[2]);
+                    long departmentId = (long) ((IList) list[i])[2];
+                    Department dep = DepartmentLogic.FindById(departmentId);
+                    childList.Add(dep);
+                    parentList.Add(childList);
+                }
+                e.ResultStockOutList = parentList;
             }
         }
 
-        public AppFrame.Logic.IDepartmentStockInDetailLogic DepartmentStockOutDetailLogic
+        public AppFrame.Logic.IDepartmentStockOutLogic DepartmentStockOutLogic
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;set;
+        }
+
+        public AppFrame.Logic.IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic
+        {
+            get;set;
         }
 
         public AppFrame.Logic.IStockOutLogic StockOutLogic
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;set;
+            
         }
 
         public AppFrame.Logic.IStockOutDetailLogic StockOutDetailLogic
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;set;
         }
 
         #endregion

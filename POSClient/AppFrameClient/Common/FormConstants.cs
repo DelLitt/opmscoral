@@ -58,5 +58,6 @@ namespace AppFrameClient.Common
         public static string INVENTORY_CHECKING_FORM = "InventoryCheckingView";
         public static string DEPARTMENT_STOCK_CHECKING_FORM = "DepartmentStockCheckingView";
         public static string BASE_STOCK_OUT_FORM = "BaseStockOutView";
+        public static string MAIN_STOCK_OUT_REPORT_FORM = "MainStockOutReportView";
     }
 }

@@ -390,5 +390,38 @@ namespace AppFrame.DataLayer
         }
 
         #endregion
+
+        #region IStockOutDAO Members
+
+
+        public IList FindStockOut(DateTime date, DateTime toDate)
+        {
+            return (IList)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList list = null;
+                                    try
+                                    {
+                                        string queryString =
+                                            "SELECT so, SUM(sodet.Quantity),so.DepartmentId FROM StockOut so,StockOutDetail sodet" +
+                                            " WHERE so.StockoutId = sodet.StockOut.StockoutId  " +
+                                            " AND so.DelFlg = 0 AND sodet.DelFlg = 0 " +
+                                            " AND so.CreateDate <= :toDate AND so.CreateDate >= :fromDate GROUP BY so.StockoutId";
+                                        IQuery iQuery = session.CreateQuery(queryString);
+                                        iQuery.SetParameter("toDate", toDate);
+                                        iQuery.SetParameter("fromDate", date);
+                                        list = iQuery.List();
+
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Console.Out.WriteLine(e.InnerException.Message);
+                                    }
+                                    return list;
+                                }
+                                );
+        }
+
+        #endregion
     }
 }

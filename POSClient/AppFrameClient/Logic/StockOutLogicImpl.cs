@@ -127,5 +127,15 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        #region IStockOutLogic Members
+
+
+        public IList FindStockOut(System.DateTime date, System.DateTime toDate)
+        {
+            return StockOutDAO.FindStockOut(date, toDate);
+        }
+
+        #endregion
     }
 }

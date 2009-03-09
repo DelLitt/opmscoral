@@ -61,6 +61,7 @@
             this.mnuGoodsSaleList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStockChecking = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDepartmentReturnGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,7 +108,6 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuDepartmentReturnGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -365,6 +365,13 @@
             this.mnuDeptStockChecking.Size = new System.Drawing.Size(192, 22);
             this.mnuDeptStockChecking.Text = "Kiểm kê kho cửa hàng";
             this.mnuDeptStockChecking.Click += new System.EventHandler(this.mnuDeptStockChecking_Click);
+            // 
+            // mnuDepartmentReturnGoods
+            // 
+            this.mnuDepartmentReturnGoods.Name = "mnuDepartmentReturnGoods";
+            this.mnuDepartmentReturnGoods.Size = new System.Drawing.Size(192, 22);
+            this.mnuDepartmentReturnGoods.Text = "Trả hàng về kho chính";
+            this.mnuDepartmentReturnGoods.Click += new System.EventHandler(this.mnuDepartmentReturnGoods_Click);
             // 
             // mnuWareHouse
             // 
@@ -696,13 +703,6 @@
             // 
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
-            // 
-            // mnuDepartmentReturnGoods
-            // 
-            this.mnuDepartmentReturnGoods.Name = "mnuDepartmentReturnGoods";
-            this.mnuDepartmentReturnGoods.Size = new System.Drawing.Size(192, 22);
-            this.mnuDepartmentReturnGoods.Text = "Trả hàng về kho chính";
-            this.mnuDepartmentReturnGoods.Click += new System.EventHandler(this.mnuDepartmentReturnGoods_Click);
             // 
             // MainForm
             // 
