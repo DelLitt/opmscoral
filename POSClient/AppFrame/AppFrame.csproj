@@ -87,6 +87,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\MySql.Data.dll</HintPath>
@@ -141,6 +143,7 @@
       <HintPath>..\AppFrameWeb\Bin\Spring.Web.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -159,12 +162,14 @@
     <Compile Include="Collection\BaseCollection.cs" />
     <Compile Include="Collection\DepartmentStockCollection.cs" />
     <Compile Include="Collection\DepartmentStockInDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
     <Compile Include="Collection\StockCollection.cs" />
     <Compile Include="Collection\StockInDetailCollection.cs" />
+    <Compile Include="Collection\StockOutCollection.cs" />
     <Compile Include="Collection\StockOutDetailCollection.cs" />
     <Compile Include="Common\AbstractUser.cs" />
     <Compile Include="Common\AppUserManager.cs" />
@@ -621,7 +626,8 @@
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\INewCustomerView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
-    <Compile Include="View\Reports\IDepartmentGoodsExportReportView.cs" />
+    <Compile Include="View\Reports\IDepartmentStockOutReportView.cs" />
+    <Compile Include="View\Reports\IStockOutReportView.cs" />
     <Compile Include="View\Reports\IReportStockInParamView.cs" />
     <Compile Include="View\Reports\IReportStockInView.cs" />
     <Compile Include="View\SalePoints\IEmployeeView.cs" />

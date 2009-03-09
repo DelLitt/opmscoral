@@ -9,13 +9,20 @@ namespace AppFrame.Presenter.Report
 {
     public interface IReportStockOutController
     {
-        IDepartmentGoodsExportReportView ReportStockOutView { get; set; }
-
+        IDepartmentStockOutReportView ReportDepartmentStockOutView { get; set; }
+        IStockOutReportView MainStockOutReportView { get; set; }
 
         #region logic
         IDepartmentStockInLogic DepartmentStockInLogic { get; set; }
         IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
         IDepartmentLogic DepartmentLogic { get; set; }
+
+        IDepartmentStockInLogic DepartmentStockOutLogic { get; set; }
+        IDepartmentStockInDetailLogic DepartmentStockOutDetailLogic { get; set; }
+
+        IStockOutLogic StockOutLogic { get; set; }
+        IStockOutDetailLogic StockOutDetailLogic { get; set; }
+
         #endregion
     }
 }
