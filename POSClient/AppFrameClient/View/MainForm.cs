@@ -373,7 +373,11 @@ namespace AppFrame.View
 
         private void mnuDepartmentStockOutConfirm_Click(object sender, EventArgs e)
         {
-
+            DepartmentStockOutConfirmForm form =
+                GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutConfirmForm>(this,
+                                                                                    FormConstants.
+                                                                                        DEPARTMENT_STOCK_OUT_CONFIRM_FORM);
+            form.Show();
         }
 
     }

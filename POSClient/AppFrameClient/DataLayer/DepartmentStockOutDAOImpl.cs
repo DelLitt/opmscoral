@@ -333,9 +333,9 @@ namespace AppFrame.DataLayer
                                     {
                                         string queryString =
                                             "SELECT so, SUM(sodet.Quantity),so.DepartmentStockOutPK.DepartmentId FROM DepartmentStockOut so,DepartmentStockOutDetail sodet" +
-                                            " WHERE so.DepartmentStockOutPK.StockOutId = sodet.StockOutId  " +
-                                            " AND so.DepartmentStockOutPK.DepartmentId = sodet.DepartmentId  " +
-                                            " AND so.DefectStatus.DefectStatusId = " + 1 +
+                                            " WHERE so.DepartmentStockOutPK.StockOutId = sodet.DepartmentStockOut.DepartmentStockOutPK.StockOutId  " +
+                                            " AND so.DepartmentStockOutPK.DepartmentId = sodet.DepartmentStockOut.DepartmentStockOutPK.DepartmentId  " +
+                                            " AND so.ConfirmFlg = " + 1 +
                                             " AND so.DelFlg = 0 AND sodet.DelFlg = 0 " +
                                             " AND so.CreateDate <= :toDate AND so.CreateDate >= :fromDate GROUP BY so.DepartmentStockOutPK.StockOutId";
                                         IQuery iQuery = session.CreateQuery(queryString);

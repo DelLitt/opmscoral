@@ -21,6 +21,8 @@
     <menuitem name="mnuPhieuXuatKho" role="Administrator" />
     <menuitem name="mnuInventoryChecking" role="Administrator" />    
     <menuitem name="mnuTemporaryStockOut" role="Administrator" />
+    <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator" />
+    
   </menu>
   <menu name="mnuDeptStock" role="Administrator">
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager" />

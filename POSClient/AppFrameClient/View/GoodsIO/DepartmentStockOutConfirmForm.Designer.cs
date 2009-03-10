@@ -92,6 +92,8 @@
             // 
             // dgvStockOutDetail
             // 
+            this.dgvStockOutDetail.AllowUserToAddRows = false;
+            this.dgvStockOutDetail.AllowUserToDeleteRows = false;
             this.dgvStockOutDetail.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -278,6 +280,8 @@
             // 
             // dgvStockOut
             // 
+            this.dgvStockOut.AllowUserToAddRows = false;
+            this.dgvStockOut.AllowUserToDeleteRows = false;
             this.dgvStockOut.AutoGenerateColumns = false;
             this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -405,6 +409,7 @@
             this.btnClose.TabIndex = 32;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCancel
             // 
@@ -423,6 +428,7 @@
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Xác nhận";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
@@ -442,6 +448,7 @@
             this.button1.TabIndex = 41;
             this.button1.Text = "Không xác nhận";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DepartmentStockOutConfirmForm
             // 

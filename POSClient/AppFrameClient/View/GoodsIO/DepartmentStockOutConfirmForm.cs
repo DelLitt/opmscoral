@@ -126,6 +126,7 @@ namespace AppFrameClient.View.GoodsIO
                     stockOutDetailView.StockOutDetail = stockOutDetail;
                     stockOutDetailView.TotalCount = stockOutDetail.Quantity;
                     stockOutDetailView.GoodCount = stockOutDetail.GoodQuantity;
+                    stockOutDetailView.DamageCount = stockOutDetail.DamageQuantity;
                     stockOutDetailView.ErrorCount = stockOutDetail.ErrorQuantity;
                     stockOutDetailView.LostCount = stockOutDetail.LostQuantity;
                     stockOutDetailView.UnconfirmCount = stockOutDetail.UnconfirmQuantity;
@@ -161,6 +162,40 @@ namespace AppFrameClient.View.GoodsIO
                 }
             }
             return false;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
+            IList list = new ArrayList();
+            foreach (DepartmentStockOutView view in deptStockOutList)
+            {
+                list.Add(view.DepartmentStockOut);                
+            }
+            eventArgs.DenyDepartmentStockOutList = list;
+            EventUtility.fireEvent(DenyStockOutEvent,this,eventArgs);
+            if(!eventArgs.HasErrors)
+            {
+                
+            }
+            ClearForm();
+
+        }
+
+        private void ClearForm()
+        {
+            deptStockOutList.Clear();
+            deptStockOutDetailList.Clear();
         }
     }
 }

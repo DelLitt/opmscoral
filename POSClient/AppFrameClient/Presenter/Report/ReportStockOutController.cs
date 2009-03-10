@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using AppFrame;
+using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.Report;
 using AppFrame.Presenter.SalePoints;
@@ -115,7 +117,82 @@ namespace AppFrameClient.Presenter.Report
 
         void departmentStockOutReportView_DenyStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
-            
+            IList list = e.DenyDepartmentStockOutList;
+            foreach (DepartmentStockOut departmentStockOut in list)
+            {
+                foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                {
+                    ObjectCriteria criteria = new ObjectCriteria();
+                    criteria.AddEqCriteria("Product.ProductId", detail.Product.ProductId);
+                    IList productList = StockLogic.FindAll(criteria);
+                    if (productList != null)
+                    {
+                        Stock currStock = (Stock)productList[0];
+                        currStock.Quantity += detail.GoodQuantity;
+
+                        ObjectCriteria defectCriteria = new ObjectCriteria();
+                        defectCriteria.AddEqCriteria("Product.ProductId", detail.Product.ProductId);
+                        defectCriteria.AddEqCriteria("Stock.StockId", currStock.StockId);
+                        IList defectList = StockDefectLogic.FindAll(defectCriteria);
+                        if(defectList!=null)
+                        {
+                            if (defectList.Count > 0)
+                            {
+                                StockDefect currDefect = (StockDefect) defectList[0];
+                                currDefect.GoodCount = currStock.Quantity;
+                                currDefect.ErrorCount = currDefect.ErrorCount+ (int) detail.ErrorQuantity;
+                                currDefect.DamageCount = currDefect.DamageCount + (int) detail.DamageQuantity;
+
+                                currDefect.Quantity = currDefect.GoodCount + currDefect.ErrorCount +
+                                                      currDefect.DamageCount +
+                                                      currDefect.UnconfirmCount;
+                                StockDefectLogic.Update(currDefect);
+                            }
+                            else
+                            {
+                                long maxId = StockDefectLogic.FindMaxStockDefectId();
+                                maxId = maxId + 1;
+
+                                StockDefect stockDefect = new StockDefect();
+                                stockDefect.Product = detail.Product;
+                                stockDefect.ProductMaster = currStock.ProductMaster;
+
+                                stockDefect.Description = departmentStockOut.DefectStatus.DefectStatusName;
+                                stockDefect.Stock = currStock;
+
+                                stockDefect.GoodCount = currStock.Quantity;
+                                stockDefect.ErrorCount = (int)detail.ErrorQuantity;
+                                stockDefect.DamageCount = (int)detail.DamageQuantity;
+                                stockDefect.Quantity = stockDefect.GoodCount + stockDefect.ErrorCount +
+                                                      stockDefect.DamageCount +
+                                                      stockDefect.UnconfirmCount;
+
+                                stockDefect.CreateDate = DateTime.Now;
+                                stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                                stockDefect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                                stockDefect.UpdateDate = DateTime.Now;
+                                stockDefect.DelFlg = 0;
+                                
+
+                                stockDefect.StockDefectId = maxId;
+
+                                StockDefectLogic.Add(stockDefect);
+                            }
+                        }
+                        StockLogic.Update(currStock);
+                        MessageBox.Show(" Lưu thành công !");
+                        e.HasErrors = false;
+                        
+                    }
+                    else // error
+                    {
+                        MessageBox.Show(" Không có mã vạch trong kho, đề nghị kiểm tra lại");
+                        e.HasErrors = true;
+                        return;
+                    }
+
+                }
+            }
         }
 
         void departmentStockOutReportView_ConfirmStockOutEvent(object sender, ReportStockOutEventArgs e)
@@ -142,6 +219,22 @@ namespace AppFrameClient.Presenter.Report
                 }
                 e.ResultStockOutList = parentList;
             }            
+        }
+
+        #endregion
+
+        #region IReportStockOutController Members
+
+
+        public AppFrame.Logic.IStockLogic StockLogic
+        {
+            get;set;
+            
+        }
+
+        public AppFrame.Logic.IStockDefectLogic StockDefectLogic
+        {
+            get;set;
         }
 
         #endregion
