@@ -735,6 +735,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 //                MessageBox.Show("Giá phải là số dương");
                 //                return;
                 //            }
+                cbbStockOutType.Enabled = false;
                 PopulateGridByProductMaster(lstColor.SelectedItems, lstSize.SelectedItems);
             }
             else

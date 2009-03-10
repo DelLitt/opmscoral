@@ -86,7 +86,18 @@ namespace AppFrameClient.View.GoodsIO
             bdsDeptStockOut.EndEdit();
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
+            CreateCountOnList();
         }
+
+        
+            private void CreateCountOnList()
+            {
+            for (int i = 0; i < dgvStockOut.Rows.Count;i++ )
+            {
+                dgvStockOut[0, dgvStockOut.Rows[i].Index].Value = i + 1;
+            }
+            }
+        
 
         #region IDepartmentStockOutReportView Members
 
