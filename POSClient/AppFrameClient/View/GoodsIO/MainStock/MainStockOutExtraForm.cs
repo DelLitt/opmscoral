@@ -779,6 +779,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 }
                 deptSIDetailList.Add(eventArgs.SelectedStockOutDetail);
                 deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
+                cbbStockOutType.Enabled = false;
                 LockField(deptSIDetailList.Count - 1, eventArgs.SelectedStockOutDetail);
             }
         }
@@ -1107,6 +1108,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             cboProductMasters.SelectedIndex = i;
             cboProductMasters.SelectedItem = proMaster;
             cboProductMasters.DroppedDown = false;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            cbbStockOutType.Enabled = true;
+            deptSIDetailList.Clear();
         }
     }
 }

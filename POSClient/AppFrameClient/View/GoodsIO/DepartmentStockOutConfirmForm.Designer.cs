@@ -120,6 +120,7 @@
             this.dgvStockOutDetail.DataSource = this.bdsDeptStockOutDetail;
             this.dgvStockOutDetail.Location = new System.Drawing.Point(12, 322);
             this.dgvStockOutDetail.Name = "dgvStockOutDetail";
+            this.dgvStockOutDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockOutDetail.Size = new System.Drawing.Size(960, 162);
             this.dgvStockOutDetail.TabIndex = 38;
             // 
@@ -293,6 +294,7 @@
             this.dgvStockOut.DataSource = this.bdsDeptStockOut;
             this.dgvStockOut.Location = new System.Drawing.Point(133, 141);
             this.dgvStockOut.Name = "dgvStockOut";
+            this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockOut.Size = new System.Drawing.Size(744, 175);
             this.dgvStockOut.TabIndex = 29;
             this.dgvStockOut.SelectionChanged += new System.EventHandler(this.dgvStockOut_SelectionChanged);

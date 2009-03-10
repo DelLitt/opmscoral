@@ -68,7 +68,7 @@ namespace AppFrameClient.View.GoodsIO
                     stockOutView.Department = (Department)result[3];
                     if (stockOutView.Department != null)
                     {
-                        stockOutView.DepartmentName = stockOutView.DepartmentName;
+                        stockOutView.DepartmentName = stockOutView.Department.DepartmentName;
                     }
                     else
                     {
@@ -77,6 +77,10 @@ namespace AppFrameClient.View.GoodsIO
                     stockOutView.CreateDate = stockOutView.DepartmentStockOut.CreateDate;
                     deptStockOutList.Add(stockOutView);
                 }
+            }
+            else
+            {
+                MessageBox.Show(" Không có hoá đơn xuất kho của cửa hàng nào cần xác nhận.");
             }
 
             bdsDeptStockOut.EndEdit();
@@ -183,7 +187,7 @@ namespace AppFrameClient.View.GoodsIO
             IList list = new ArrayList();
             foreach (DataGridViewRow row in selectedRows)
             {
-                list.Add(deptStockOutList[row.Index]);
+                list.Add(deptStockOutList[row.Index].DepartmentStockOut);
             }
 
             eventArgs.DenyDepartmentStockOutList = list;
@@ -208,7 +212,7 @@ namespace AppFrameClient.View.GoodsIO
             IList list = new ArrayList();
             foreach (DataGridViewRow row in selectedRows)
             {
-                list.Add(deptStockOutList[row.Index]);          
+                list.Add(deptStockOutList[row.Index].DepartmentStockOut);          
             }
             
             eventArgs.DenyDepartmentStockOutList = list;

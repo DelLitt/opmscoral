@@ -9,16 +9,16 @@ using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.Utility.Mapper
 {
-    public class StockOutMapper : BaseMapper<StockOut, StockOutView>
+    public class StockOutMapper : BaseMapper<StockOut, DepartmentStockOut>
     {
         #region BaseMapper<StockOut,StockOutView> Members
 
-        public StockOut Convert(StockOutView source)
+        public StockOut Convert(DepartmentStockOut source)
         {
             StockOut dest = new StockOut();
-            dest.StockOutDate = source.StockOut.StockOutDate;
-            dest.DefectStatus = source.StockOut.DefectStatus;
-
+            dest.StockOutDate = source.StockOutDate;
+            dest.DefectStatus = source.DefectStatus;
+            
             dest.CreateDate = DateTime.Now;
             dest.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             dest.UpdateDate = DateTime.Now;

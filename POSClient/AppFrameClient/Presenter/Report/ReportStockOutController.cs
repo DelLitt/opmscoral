@@ -9,6 +9,7 @@ using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.Report;
 using AppFrame.Presenter.SalePoints;
+using AppFrameClient.Utility.Mapper;
 
 namespace AppFrameClient.Presenter.Report
 {
@@ -179,9 +180,7 @@ namespace AppFrameClient.Presenter.Report
                                 StockDefectLogic.Add(stockDefect);
                             }
                         }
-                        StockLogic.Update(currStock);
-                        MessageBox.Show(" Lưu thành công !");
-                        e.HasErrors = false;
+                        StockLogic.Update(currStock); 
                         
                     }
                     else // error
@@ -192,19 +191,33 @@ namespace AppFrameClient.Presenter.Report
                     }
 
                 }
+                departmentStockOut.ConfirmFlg = 2;
+                DepartmentStockOutLogic.Update(departmentStockOut);
             }
+            MessageBox.Show(" Lưu thành công !");
+            e.HasErrors = false;
         }
 
         void departmentStockOutReportView_ConfirmStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
             IList list = e.DenyDepartmentStockOutList;
+            StockOutMapper mapper = new StockOutMapper();
+            StockOutDetailMapper detailMapper = new StockOutDetailMapper();
             foreach (DepartmentStockOut departmentStockOut in list)
             {
+                
+                StockOut stockOut = mapper.Convert(departmentStockOut);
+                IList detlist = new ArrayList();
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
-                       
+                    StockOutDetail detailStockOut = detailMapper.Convert(detail);
+                    detlist.Add(detailStockOut);                                           
                 }
+                stockOut.StockOutDetails = detlist;
+                StockOutLogic.Add(stockOut);
             }
+            MessageBox.Show(" Lưu thành công !");
+            e.HasErrors = false;
         }
 
         void departmentStockOutReportView_LoadDepartmentStockOutsEvent(object sender, ReportStockOutEventArgs e)

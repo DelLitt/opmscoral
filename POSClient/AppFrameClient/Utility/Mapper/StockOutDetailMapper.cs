@@ -9,29 +9,29 @@ using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.Utility.Mapper
 {
-    public class StockOutDetailMapper : BaseMapper<StockOutDetail, StockOutDetailView>
+    public class StockOutDetailMapper : BaseMapper<StockOutDetail, DepartmentStockOutDetail>
     {
         #region BaseMapper<StockOutDetail,StockOutDetailView> Members
 
-        public StockOutDetail Convert(StockOutDetailView source)
+        public StockOutDetail Convert(DepartmentStockOutDetail source)
         {
             StockOutDetail dest = new StockOutDetail();
-            dest.Product = source.StockOutDetail.Product;
-            dest.ProductId = source.StockOutDetail.Product.ProductId;
-            dest.ProductMaster = source.StockOutDetail.Product.ProductMaster;
-            dest.Description = source.StockOutDetail.Description;
+            dest.Product = source.Product;
+            dest.ProductId = source.Product.ProductId;
+            dest.ProductMaster = source.Product.ProductMaster;
+            dest.Description = source.Description;
 
             dest.CreateDate = DateTime.Now;
             dest.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             dest.UpdateDate = DateTime.Now;
             dest.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
 
-            dest.Quantity = source.StockOutDetail.Quantity;
-            dest.GoodQuantity = source.StockOutDetail.GoodQuantity;
-            dest.ErrorQuantity = source.StockOutDetail.ErrorQuantity;
-            dest.LostQuantity = source.StockOutDetail.LostQuantity;
-            dest.DamageQuantity = source.StockOutDetail.DamageQuantity;
-            dest.UnconfirmQuantity = source.StockOutDetail.UnconfirmQuantity;
+            dest.Quantity = source.Quantity;
+            dest.GoodQuantity = source.GoodQuantity;
+            dest.ErrorQuantity = source.ErrorQuantity;
+            dest.LostQuantity = source.LostQuantity;
+            dest.DamageQuantity = source.DamageQuantity;
+            dest.UnconfirmQuantity = source.UnconfirmQuantity;
 
             return dest;
         }

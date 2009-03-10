@@ -320,6 +320,7 @@
     <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentController.cs" />
     <Compile Include="Presenter\GoodsIO\StockSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\GoodsIOSearchController.cs" />
@@ -509,6 +510,12 @@
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.Designer.cs">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.Designer.cs">
+      <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\MainStockOutReportForm.cs">
       <SubType>Form</SubType>
@@ -997,6 +1004,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockOutConfirmForm.resx">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockOutExtraForm.resx">
+      <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\MainStockOutReportForm.resx">
       <DependentUpon>MainStockOutReportForm.cs</DependentUpon>
