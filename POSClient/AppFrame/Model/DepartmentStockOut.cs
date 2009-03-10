@@ -169,7 +169,7 @@ namespace AppFrame.Model
             }
         }
         public virtual StockDefectStatus DefectStatus { get; set; }
-
+        public Int64 ConfirmFlg { get; set; }
         #endregion
         
         #region IComparable Methods

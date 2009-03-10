@@ -70,6 +70,14 @@
     >
     </property>
 
+  <property
+        name="ConfirmFlg"
+        type="Int64"
+        column="CONFIRM_FLG"
+        length="10"
+    >
+  </property>
+
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->
