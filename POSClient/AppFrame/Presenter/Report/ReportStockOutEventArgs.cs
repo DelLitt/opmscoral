@@ -17,5 +17,10 @@ namespace AppFrame.Presenter.Report
         public IList ProductMastersInList { get; set; }
         public IList DepartmentsList { get; set; }
         public Department SelectDepartment { get; set; }
+
+        public IList ConfirmDepartmentStockOutList { get; set; }
+        public IList DenyDepartmentStockOutList { get; set; }
+
+        
     }
 }

@@ -38,5 +38,6 @@ namespace AppFrame.Common
         {
             ErrorCodes.Add(errCode);
         }
+        public bool HasErrors { get; set; }
     }
 }
