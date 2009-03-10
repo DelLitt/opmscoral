@@ -510,12 +510,14 @@
     <Compile Include="Presenter\GoodsIO\MainStock\IInventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IMainStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IBaseStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchOrCreateEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\StockCreateEventArgs.cs" />
@@ -619,6 +621,7 @@
     <Compile Include="View\GoodsIO\MainStock\IMainStockInSearchView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IMainStockInView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IBaseStockOutView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IMainStockOutView.cs" />
     <Compile Include="View\GoodsSale\IDayGoodsSaleListView.cs" />
     <Compile Include="View\GoodsSale\IGoodsSaleListView.cs" />
     <Compile Include="View\GoodsSale\IGoodsSaleReturnView.cs" />
