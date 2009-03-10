@@ -197,7 +197,14 @@ namespace AppFrameClient.Presenter.Report
 
         void departmentStockOutReportView_ConfirmStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
-            
+            IList list = e.DenyDepartmentStockOutList;
+            foreach (DepartmentStockOut departmentStockOut in list)
+            {
+                foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                {
+                       
+                }
+            }
         }
 
         void departmentStockOutReportView_LoadDepartmentStockOutsEvent(object sender, ReportStockOutEventArgs e)

@@ -171,17 +171,46 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
+            if (!(selectedRows.Count > 0))
+            {
+                return;
+            }
 
+            ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
+
+            IList list = new ArrayList();
+            foreach (DataGridViewRow row in selectedRows)
+            {
+                list.Add(deptStockOutList[row.Index]);
+            }
+
+            eventArgs.DenyDepartmentStockOutList = list;
+            EventUtility.fireEvent(ConfirmStockOutEvent, this, eventArgs);
+            if (!eventArgs.HasErrors)
+            {
+
+            }
+            ClearForm();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
-            IList list = new ArrayList();
-            foreach (DepartmentStockOutView view in deptStockOutList)
+            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
+            if(!(selectedRows.Count >0) )
             {
-                list.Add(view.DepartmentStockOut);                
+                return;                
             }
+
+            ReportStockOutEventArgs eventArgs = new ReportStockOutEventArgs();
+
+            IList list = new ArrayList();
+            foreach (DataGridViewRow row in selectedRows)
+            {
+                list.Add(deptStockOutList[row.Index]);          
+            }
+            
             eventArgs.DenyDepartmentStockOutList = list;
             EventUtility.fireEvent(DenyStockOutEvent,this,eventArgs);
             if(!eventArgs.HasErrors)

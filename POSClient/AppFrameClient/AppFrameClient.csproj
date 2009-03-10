@@ -449,6 +449,8 @@
     <Compile Include="Utility\Dummy.cs" />
     <Compile Include="Utility\Mapper\DepartmentMapper.cs" />
     <Compile Include="Utility\Mapper\EmployeeTransform.cs" />
+    <Compile Include="Utility\Mapper\StockOutDetailMapper.cs" />
+    <Compile Include="Utility\Mapper\StockOutMapper.cs" />
     <Compile Include="ViewModel\DepartmentStockDefectCollection.cs" />
     <Compile Include="ViewModel\DepartmentStockOutDetailView.cs" />
     <Compile Include="ViewModel\DepartmentStockOutDetailViewCollection.cs" />
