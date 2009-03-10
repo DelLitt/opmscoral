@@ -798,11 +798,11 @@
     <Compile Include="View\Masters\UniversalMasterCreateForm.Designer.cs">
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\DepartmentStockOutReportForm.cs">
+    <Compile Include="View\Reports\DepartmentStockInReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Reports\DepartmentStockOutReportForm.Designer.cs">
-      <DependentUpon>DepartmentStockOutReportForm.cs</DependentUpon>
+    <Compile Include="View\Reports\DepartmentStockInReportForm.Designer.cs">
+      <DependentUpon>DepartmentStockInReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\rptStock.cs">
       <SubType>Form</SubType>
@@ -1125,8 +1125,8 @@
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\DepartmentStockOutReportForm.resx">
-      <DependentUpon>DepartmentStockOutReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Reports\DepartmentStockInReportForm.resx">
+      <DependentUpon>DepartmentStockInReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\rptStock.resx">
       <DependentUpon>rptStock.cs</DependentUpon>

@@ -128,16 +128,34 @@ namespace AppFrameClient.View.Reports
                 if (!HasCreatedView(stockOutDetail))
                 {
                     StockOutDetailView stockOutDetailView = new StockOutDetailView();
-                    stockOutDetailView.StockOutDetail = stockOutDetail;
 
-                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, GOOD_COUNT);
-                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, ERROR_COUNT);
-                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, DAMAGE_COUNT);
-                    stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, LOST_COUNT);
+                        stockOutDetailView.StockOutDetail = stockOutDetail;
+                        
+                        stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, GOOD_COUNT);
+                        stockOutDetailView.ErrorCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, ERROR_COUNT);
+                        stockOutDetailView.DamageCount = GetSpecificQuantity(stockOutDetail, stockOutDetails,
+                                                                             DAMAGE_COUNT);
+                        stockOutDetailView.UnconfirmCount = GetSpecificQuantity(stockOutDetail, stockOutDetails,
+                                                                                LOST_COUNT);
+
+                    stockOutDetailView.TotalCount = stockOutDetailView.GoodCount + stockOutDetailView.ErrorCount +
+                                                    stockOutDetailView.DamageCount + stockOutDetailView.UnconfirmCount;
                     stockOutDetailViewList.Add(stockOutDetailView);
                 }
 
             }
+            CalculateGrandTotalCount();
+
+        }
+
+        private void CalculateGrandTotalCount()
+        {
+            long grandTotal = 0;
+            foreach (StockOutDetailView detailView in stockOutDetailViewList)
+            {
+                grandTotal += detailView.TotalCount;                
+            }
+            txtGrandTotalCount.Text = grandTotal.ToString("##,##0");
         }
 
         private long GetSpecificQuantity(StockOutDetail searchDetail,IList details, int specificCount)
@@ -163,6 +181,11 @@ namespace AppFrameClient.View.Reports
                 }
             }
             return false;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

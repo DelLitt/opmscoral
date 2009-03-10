@@ -15,14 +15,14 @@ using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.Reports
 {
-    public partial class DepartmentStockOutReportForm : AppFrame.Common.BaseForm,IDepartmentStockOutReportView
+    public partial class DepartmentStockInReportForm : AppFrame.Common.BaseForm,IDepartmentStockOutReportView
     {
 
         private DepartmentStockInResultDetailCollection pSODetResultList = null;
         private DepartmentStockInDetailCollection pSODetList = null;
         private IList resultList = null;
 
-        public DepartmentStockOutReportForm()
+        public DepartmentStockInReportForm()
         {
             InitializeComponent();
         }

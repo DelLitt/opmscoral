@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.Reports
 {
-    partial class DepartmentStockOutReportForm
+    partial class DepartmentStockInReportForm
     {
         /// <summary>
         /// Required designer variable.
