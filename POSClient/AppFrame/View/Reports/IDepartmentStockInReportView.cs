@@ -6,10 +6,10 @@ using AppFrame.Presenter.Report;
 
 namespace AppFrame.View.Reports
 {
-    public interface IDepartmentStockOutReportView
+    public interface IDepartmentStockInReportView
     {
         #region controller
-        IReportStockOutController ReportStockOutController { get; set; }
+        IReportStockInController ReportStockInController { get; set; }
         #endregion
         ReportDateStockOutParam ReportDateStockOutParam { get; set; }
         event EventHandler<ReportStockOutEventArgs> LoadStockOutByRangeEvent;

@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Logic;
+using AppFrame.View.GoodsIO;
 using AppFrame.View.Reports;
 
 namespace AppFrame.Presenter.Report
 {
     public interface IReportStockOutController
     {
-        IDepartmentStockOutReportView ReportDepartmentStockOutView { get; set; }
+        /*IDepartmentStockInReportView ReportDepartmentStockOutView { get; set; }*/
         IStockOutReportView MainStockOutReportView { get; set; }
-
+        IDepartmentStockOutReportView DepartmentStockOutReportView { get; set; }
         #region logic
         IDepartmentStockInLogic DepartmentStockInLogic { get; set; }
         IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }

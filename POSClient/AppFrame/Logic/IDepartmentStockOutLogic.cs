@@ -56,5 +56,6 @@ namespace AppFrame.Logic
         QueryResult FindPaging(ObjectCriteria criteria);
 
         long FindMaxId();
+        IList FindStockOut(DateTime date, DateTime toDate);
     }
 }
