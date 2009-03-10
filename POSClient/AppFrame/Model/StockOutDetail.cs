@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.ComponentModel;
+using AppFrame.Controls;
 
 namespace AppFrame.Model
 {
@@ -7,6 +9,7 @@ namespace AppFrame.Model
     /// <summary>
     /// StockOutDetail object for NHibernate mapped table 'stock_out_detail'.
     /// </summary>
+    [TypeDescriptionProvider(typeof(ComplexCustomDescriptionProvider<StockOutDetail>))]
     [Serializable]
     public class StockOutDetail : System.IComparable
     {
@@ -37,6 +40,12 @@ namespace AppFrame.Model
         #region Public Properties
         public virtual Int64 StockOutDetailId { get; set; }
         //public virtual StockOutDetailPK StockOutDetailPK { get; set; }
+        public virtual string Description { get; set; }
+        public virtual Int64 GoodQuantity { get; set; }
+        public virtual Int64 DamageQuantity { get; set; }
+        public virtual Int64 ErrorQuantity { get; set; }
+        public virtual Int64 LostQuantity { get; set; }
+        public virtual Int64 UnconfirmQuantity { get; set; }
         public virtual Int64 StockOutId
         {
             get
@@ -163,7 +172,6 @@ namespace AppFrame.Model
         }
         
         public virtual StockDefectStatus DefectStatus { get; set; }
-        public virtual string Description { get; set; }
         
 
         #endregion
@@ -195,6 +203,8 @@ namespace AppFrame.Model
             return base.GetHashCode();
         }
         #endregion
+        
+        public virtual ProductMaster ProductMaster { get; set; }
     }
     #endregion
 }

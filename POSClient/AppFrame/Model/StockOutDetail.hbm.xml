@@ -76,12 +76,11 @@
         length="10"
     >
     </property>
-
   <property
-        name="Description"
-        type="string"
-        column="DESCRIPTION"
-        length="500"
+      name="Description"
+      type="string"
+      column="DESCRIPTION"
+      length="500"
     >
   </property>
   <many-to-one
@@ -111,6 +110,13 @@
     >
       <column name="STOCKOUT_ID" />
     </many-to-one>
-
+  <many-to-one
+      name="ProductMaster"
+    class="ProductMaster"
+      lazy="false"
+      not-null="true"
+	>
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
 </class>
 </hibernate-mapping>
