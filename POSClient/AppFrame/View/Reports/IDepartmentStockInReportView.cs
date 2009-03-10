@@ -17,6 +17,7 @@ namespace AppFrame.View.Reports
     }
     public class ReportDateStockOutParam
     {
+        public long DepartmentId { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
     }
