@@ -12,6 +12,42 @@ namespace AppFrameClient.Presenter.Report
     {
         #region IReportStockInController Members
 
+        private AppFrame.View.Reports.IDepartmentStockInReportView departmentStockInReportView;
+        public AppFrame.View.Reports.IDepartmentStockInReportView DepartmentStockInReportView
+        {
+            get
+            {
+                return departmentStockInReportView;
+            }
+            set
+            {
+                departmentStockInReportView = value;
+                departmentStockInReportView.LoadAllDeparmentEvent += new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadAllDeparmentEvent);
+                departmentStockInReportView.LoadStockOutByRangeEvent += new EventHandler<ReportStockOutEventArgs>(reportStockOutView_LoadDepartmentStockOutByRangeEvent);
+            }
+        }
+
+        void reportStockOutView_LoadDepartmentStockOutByRangeEvent(object sender, ReportStockOutEventArgs e)
+        {
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddBetweenCriteria("CreateDate", e.ReportDateStockOutParam.FromDate, e.ReportDateStockOutParam.ToDate);
+            criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.SelectDepartment.DepartmentId);
+            IList stockInList = DepartmentStockInLogic.FindAll(criteria);
+            e.ResultStockOutList = stockInList;
+
+            IList productMasterList = DepartmentStockInLogic.FindByProductMaster(e.SelectDepartment.DepartmentId, e.ReportDateStockOutParam.FromDate, e.ReportDateStockOutParam.ToDate);
+            e.ProductMastersInList = productMasterList;
+        }
+
+        void reportStockOutView_LoadAllDeparmentEvent(object sender, ReportStockOutEventArgs e)
+        {
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", (long)0);
+            IList departmentList = DepartmentLogic.FindAll(criteria);
+            e.DepartmentsList = departmentList;
+
+        }
+
         private AppFrame.View.Reports.IReportStockInParamView reportStockInParamView;
 
         public AppFrame.View.Reports.IReportStockInParamView ReportStockInParamView
@@ -74,7 +110,26 @@ namespace AppFrameClient.Presenter.Report
         {
             get;set;
         }
+        public AppFrame.Logic.IDepartmentStockInLogic DepartmentStockInLogic
+        {
+            get;
+            set;
 
+        }
+
+        public AppFrame.Logic.IDepartmentStockInDetailLogic DepartmentStockInDetailLogic
+        {
+            get;
+            set;
+
+        }
+
+        public AppFrame.Logic.IDepartmentLogic DepartmentLogic
+        {
+            get;
+            set;
+
+        }
         #endregion
     }
 }

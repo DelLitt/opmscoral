@@ -157,11 +157,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 EventUtility.fireEvent(SaveDeptTempStockOut, this, checkingEventArgs);
                 DepartmentStockOutDetail detail =
                     (DepartmentStockOutDetail)checkingEventArgs.SaveDeptStockOutList[checkingEventArgs.SaveDeptStockOutList.Count - 1];
-                if (detail.DepartmentStockOutDetailPK.StockOutId > 0)
+               /* if (detail.DepartmentStockOutDetailPK.StockOutId > 0)
                 {
                     MessageBox.Show("Lưu thành công !");
                     ClearForm();
-                }
+                }*/
             }
         }
 
@@ -318,7 +318,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 soDetail.UpdateDate = DateTime.Now;
                 soDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                 soDetail.DepartmentId = CurrentDepartment.Get().DepartmentId;
-                soDetail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK { DepartmentId = soDetail.DepartmentId,ProductId = soDetail.Product.ProductId};
+                /*soDetail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK { DepartmentId = soDetail.DepartmentId,ProductId = soDetail.Product.ProductId};*/
                 // 6 : Xuat tam de sua hang
                 //soDetail.DefectStatus = new StockDefectStatus { DefectStatusId = 6 };
                 soDetail.ProductId = soDetail.Product.ProductId;

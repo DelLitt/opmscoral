@@ -15,7 +15,7 @@ using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.Reports
 {
-    public partial class DepartmentStockInReportForm : AppFrame.Common.BaseForm,IDepartmentStockOutReportView
+    public partial class DepartmentStockInReportForm : AppFrame.Common.BaseForm,IDepartmentStockInReportView
     {
 
         private DepartmentStockInResultDetailCollection pSODetResultList = null;
@@ -45,19 +45,19 @@ namespace AppFrameClient.View.Reports
             cboDepartments.DisplayMember = "DepartmentName";
         }
 
-        #region IDepartmentStockOutReportView Members
+        #region IDepartmentStockInReportView Members
 
-        AppFrame.Presenter.Report.IReportStockOutController reportStockOutController;
-        public AppFrame.Presenter.Report.IReportStockOutController ReportStockOutController
+        AppFrame.Presenter.Report.IReportStockInController reportStockInController;
+        public AppFrame.Presenter.Report.IReportStockInController ReportStockInController
         {
             get
             {
-                return reportStockOutController;
+                return reportStockInController;
             }
             set
             {
-                reportStockOutController = value;
-                reportStockOutController.ReportDepartmentStockOutView = this;
+                reportStockInController = value;
+                reportStockInController.DepartmentStockInReportView = this;
             }
         }
 
@@ -70,7 +70,7 @@ namespace AppFrameClient.View.Reports
 
         #endregion
 
-        #region IDepartmentStockOutReportView Members
+        #region IDepartmentStockInReportView Members
 
 
         public event EventHandler<AppFrame.Presenter.Report.ReportStockOutEventArgs> LoadAllDeparmentEvent;

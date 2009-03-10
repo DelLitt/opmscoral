@@ -131,19 +131,18 @@ namespace AppFrameClient.View.Reports
 
                         stockOutDetailView.StockOutDetail = stockOutDetail;
                         
-                        stockOutDetailView.GoodCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, GOOD_COUNT);
-                        stockOutDetailView.ErrorCount = GetSpecificQuantity(stockOutDetail, stockOutDetails, ERROR_COUNT);
-                        stockOutDetailView.DamageCount = GetSpecificQuantity(stockOutDetail, stockOutDetails,
-                                                                             DAMAGE_COUNT);
-                        stockOutDetailView.UnconfirmCount = GetSpecificQuantity(stockOutDetail, stockOutDetails,
-                                                                                LOST_COUNT);
+                        stockOutDetailView.GoodCount = stockOutDetail.GoodQuantity;
+                        stockOutDetailView.ErrorCount = stockOutDetail.ErrorQuantity;
+                        stockOutDetailView.DamageCount = stockOutDetail.DamageQuantity;
+                        stockOutDetailView.UnconfirmCount = stockOutDetail.UnconfirmQuantity;
+                    stockOutDetailView.LostCount = stockOutDetail.LostQuantity;
 
-                    stockOutDetailView.TotalCount = stockOutDetailView.GoodCount + stockOutDetailView.ErrorCount +
-                                                    stockOutDetailView.DamageCount + stockOutDetailView.UnconfirmCount;
+                    stockOutDetailView.TotalCount = stockOutDetail.Quantity;
                     stockOutDetailViewList.Add(stockOutDetailView);
                 }
 
             }
+            
             CalculateGrandTotalCount();
 
         }
@@ -175,7 +174,8 @@ namespace AppFrameClient.View.Reports
         {
             foreach (StockOutDetailView outDetailView in stockOutDetailViewList)
             {
-                if(outDetailView.StockOutDetail.Product.ProductId == detail.Product.ProductId)
+                if(outDetailView.StockOutDetail.Product.ProductId == detail.Product.ProductId
+                   && outDetailView.StockOutDetail.StockOut.StockoutId == detail.StockOut.StockoutId )
                 {
                     return true;
                 }

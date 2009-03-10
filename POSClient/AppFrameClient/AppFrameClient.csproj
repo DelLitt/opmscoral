@@ -450,6 +450,10 @@
     <Compile Include="Utility\Mapper\DepartmentMapper.cs" />
     <Compile Include="Utility\Mapper\EmployeeTransform.cs" />
     <Compile Include="ViewModel\DepartmentStockDefectCollection.cs" />
+    <Compile Include="ViewModel\DepartmentStockOutDetailView.cs" />
+    <Compile Include="ViewModel\DepartmentStockOutDetailViewCollection.cs" />
+    <Compile Include="ViewModel\DepartmentStockOutView.cs" />
+    <Compile Include="ViewModel\DepartmentStockOutViewCollection.cs" />
     <Compile Include="ViewModel\ProductMasterGlobal.cs" />
     <Compile Include="ViewModel\StockDefectCollection.cs" />
     <Compile Include="ViewModel\StockInResultDetail.cs" />

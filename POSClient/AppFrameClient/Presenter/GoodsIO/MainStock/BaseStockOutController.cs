@@ -38,7 +38,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void baseStockOutView_SaveDeptTempStockOut(object sender, BaseStockOutEventArgs e)
         {
-            DepartmentStockOut stockOut = new DepartmentStockOut();
+            /*DepartmentStockOut stockOut = new DepartmentStockOut();
             stockOut.CreateDate = DateTime.Now;
             stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             stockOut.UpdateDate = DateTime.Now;
@@ -88,7 +88,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 stockOutDetail.DepartmentStockOutDetailPK.StockOutId = stockOut.DepartmentStockOutPK.StockOutId;
                 
                 DepartmentStockOutDetailLogic.Add(stockOutDetail);
-            }
+            }*/
         }
 
         private long GetDeptErrorCount(string id, IList list)

@@ -371,5 +371,10 @@ namespace AppFrame.View
             baseStockOutForm.Show();
         }
 
+        private void mnuDepartmentStockOutConfirm_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

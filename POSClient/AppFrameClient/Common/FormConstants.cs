@@ -54,7 +54,7 @@ namespace AppFrameClient.Common
         public const string MONTH_GOODS_SALE_LIST_FORM = "MonthGoodsSaleListView";
         public const string REPORT_STOCK_IN_PARAM_FORM = "ReportStockInParamView";
         public const string REPORT_STOCK_IN_FORM = "ReportStockInView";
-        public static string REPORT_STOCK_OUT_FORM = "ReportDepartmentStockOutView";
+        public static string DEPARTMENT_STOCK_IN_REPORT_FORM = "DepartmentStockInReportView";
         public static string INVENTORY_CHECKING_FORM = "InventoryCheckingView";
         public static string DEPARTMENT_STOCK_CHECKING_FORM = "DepartmentStockCheckingView";
         public static string BASE_STOCK_OUT_FORM = "BaseStockOutView";
