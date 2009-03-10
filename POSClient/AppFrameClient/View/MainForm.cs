@@ -315,6 +315,8 @@ namespace AppFrame.View
         {
             Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<frmStockinStatistic>(this, FormConstants.REPORT_STOCK_IN_FORM);
             stockInReportForm.Show();
+//            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<MainStockInSearchReportForm>(this, FormConstants.MAIN_STOCK_IN_SEARCH_REPORT_FORM);
+//            stockInReportForm.Show();
 
         }
 
@@ -359,7 +361,9 @@ namespace AppFrame.View
 
         private void mnuTemporaryStockOut_Click(object sender, EventArgs e)
         {
-            Form baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<BaseStockOutForm>(this,FormConstants.BASE_STOCK_OUT_FORM);
+//            Form baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<BaseStockOutForm>(this,FormConstants.BASE_STOCK_OUT_FORM);
+//            baseStockOutForm.Show();
+            Form baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<MainStockOutExtraForm>(this, FormConstants.MAIN_STOCK_OUT_EXTRA_FORM);
             baseStockOutForm.Show();
 
         }
