@@ -97,7 +97,7 @@
     <many-to-one
         name="Product"
 	    class="Product"
-	    
+	    lazy ="false"
 	>
     	<column name="PRODUCT_ID" />
 	</many-to-one>
