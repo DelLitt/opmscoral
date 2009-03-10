@@ -37,8 +37,8 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
-
-		public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
+        public virtual Int64 StockOutDetailId { get; set; }
+		//public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
         public virtual Int64 GoodQuantity { get; set; }
         public virtual Int64 DamageQuantity { get; set; }
         public virtual Int64 ErrorQuantity { get; set; }

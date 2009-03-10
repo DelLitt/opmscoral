@@ -83,13 +83,34 @@
       length="500"
     >
   </property>
-  <many-to-one
-      name="DefectStatus"
-      class="StockDefectStatus"
-      not-null="true"
+  <property
+        name="GoodQuantity"
+        type="Int64"
+        column="GOOD_QUANTITY"
+        length="10"
     >
-    <column name="DEFECT_STATUS_ID" />
-  </many-to-one>
+  </property>
+  <property
+        name="ErrorQuantity"
+        type="Int64"
+        column="ERROR_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="LostQuantity"
+        type="Int64"
+        column="LOST_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="UnconfirmQuantity"
+        type="Int64"
+        column="UNCONFIRM_QUANTITY"
+        length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to Product -->
