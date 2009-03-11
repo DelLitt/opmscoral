@@ -59,16 +59,20 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                    // calculate business
 
                    // calculate business
-                   int currDamageCount = stockDefect.DamageCount - stockDefect.OldDamageCount;
+                   /*int currDamageCount = stockDefect.DamageCount - stockDefect.OldDamageCount;
                    int currErrorCount = stockDefect.ErrorCount - stockDefect.OldErrorCount;
                    int currUnconfirmCount = stockDefect.UnconfirmCount - stockDefect.OldUnconfirmCount;
-                   int currLostCount = stockDefect.LostCount - stockDefect.OldLostCount;
+                   int currLostCount = stockDefect.LostCount - stockDefect.OldLostCount;*/
+                   int currDamageCount = stockDefect.DamageCount ;
+                   int currErrorCount = stockDefect.ErrorCount ;
+                   int currUnconfirmCount = stockDefect.UnconfirmCount ;
+                   int currLostCount = stockDefect.LostCount ;
 
                    long totalDefects = currDamageCount + currErrorCount + currLostCount + currUnconfirmCount;
-                   if(stockDefect.Quantity < totalDefects)
+                   /*if(stockDefect.Quantity < totalDefects)
                    {
                        throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");                       
-                   }
+                   }*/
 
                    stockDefect.GoodCount = stockDefect.Quantity - totalDefects;
                    
@@ -79,6 +83,8 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
                    StockDefectLogic.Process(stockDefect);
                    StockLogic.Update(stockDefect.Stock);
+
+                   e.HasErrors = false;
                    
                }
            }

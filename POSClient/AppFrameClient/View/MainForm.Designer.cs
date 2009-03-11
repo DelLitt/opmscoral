@@ -67,6 +67,7 @@
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.approveStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.searchStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
@@ -108,7 +109,6 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -421,6 +421,13 @@
             this.approveStockToolStripMenuItem.Text = "Xác nhận nhập kho";
             this.approveStockToolStripMenuItem.Click += new System.EventHandler(this.approveStockToolStripMenuItem_Click);
             // 
+            // mnuDepartmentStockOutConfirm
+            // 
+            this.mnuDepartmentStockOutConfirm.Name = "mnuDepartmentStockOutConfirm";
+            this.mnuDepartmentStockOutConfirm.Size = new System.Drawing.Size(237, 22);
+            this.mnuDepartmentStockOutConfirm.Text = "Xác nhận xuất kho từ cửa hàng";
+            this.mnuDepartmentStockOutConfirm.Click += new System.EventHandler(this.mnuDepartmentStockOutConfirm_Click);
+            // 
             // mnuInventoryChecking
             // 
             this.mnuInventoryChecking.Name = "mnuInventoryChecking";
@@ -705,13 +712,6 @@
             // 
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
-            // 
-            // mnuDepartmentStockOutConfirm
-            // 
-            this.mnuDepartmentStockOutConfirm.Name = "mnuDepartmentStockOutConfirm";
-            this.mnuDepartmentStockOutConfirm.Size = new System.Drawing.Size(237, 22);
-            this.mnuDepartmentStockOutConfirm.Text = "Xác nhận xuất kho từ cửa hàng";
-            this.mnuDepartmentStockOutConfirm.Click += new System.EventHandler(this.mnuDepartmentStockOutConfirm_Click);
             // 
             // MainForm
             // 

@@ -62,17 +62,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     defect.Quantity = defect.DepartmentStock.Quantity;
                     
                     // calculate business
-                    int currDamageCount = defect.DamageCount - defect.OldDamageCount;
+                    /*int currDamageCount = defect.DamageCount - defect.OldDamageCount;
                     int currErrorCount = defect.ErrorCount - defect.OldErrorCount;
                     int currUnconfirmCount = defect.UnconfirmCount - defect.OldUnconfirmCount;
-                    int currLostCount = defect.LostCount - defect.OldLostCount;
+                    int currLostCount = defect.LostCount - defect.OldLostCount;*/
+                    int currDamageCount = defect.DamageCount ;
+                    int currErrorCount = defect.ErrorCount ;
+                    int currUnconfirmCount = defect.UnconfirmCount ;
+                    int currLostCount = defect.LostCount;
 
                     long totalDefects = currDamageCount + currErrorCount + currLostCount + currUnconfirmCount;
 
-                    if (defect.Quantity < totalDefects)
+                    /*if (defect.Quantity < totalDefects)
                     {
                         throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");
-                    }
+                    }*/
 
                     defect.GoodCount = defect.Quantity - totalDefects;
 

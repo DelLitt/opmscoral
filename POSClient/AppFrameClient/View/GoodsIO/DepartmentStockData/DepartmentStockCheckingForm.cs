@@ -90,15 +90,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                 if (checkingEventArgs.ScannedStockDefect != null)
                 {
-                    stockDefectList[stockDefectList.Count - 1] = checkingEventArgs.ScannedStockDefect;
-                    stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
-                    stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity;
-                    stockDefectList[stockDefectList.Count - 1].DepartmentStock = stock;
+                    DepartmentStockDefect defect = checkingEventArgs.ScannedStockDefect;
+                    stockDefectList[stockDefectList.Count - 1] = defect;
+                    if (defect.ErrorCount != 0
+                            || defect.DamageCount != 0
+                            || defect.LostCount != 0
+                            || defect.UnconfirmCount != 0)
+                    {
+                        stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity + defect.ErrorCount +
+                                                                              defect.DamageCount +
+                                                                              defect.UnconfirmCount +
+                                                                              defect.LostCount;
+                    }
+                    else
+                    {
+                        stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity;
+                    }
+                    txtStockQuantity.Text = stockDefectList[stockDefectList.Count - 1].Quantity.ToString("##,##0");
 
-                    stockDefectList[stockDefectList.Count - 1].OldErrorCount = stockDefectList[stockDefectList.Count - 1].ErrorCount;
-                    stockDefectList[stockDefectList.Count - 1].OldDamageCount = stockDefectList[stockDefectList.Count - 1].DamageCount;
-                    stockDefectList[stockDefectList.Count - 1].OldLostCount = stockDefectList[stockDefectList.Count - 1].LostCount;
-                    stockDefectList[stockDefectList.Count - 1].OldUnconfirmCount = stockDefectList[stockDefectList.Count - 1].UnconfirmCount;
+                    stockDefectList[stockDefectList.Count - 1].DepartmentStock = stock;
+                    stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
+                    stockDefectList[stockDefectList.Count - 1].OldErrorCount = stockDefectList[stockDefectList.Count - 1].ErrorCount = 0;
+                    stockDefectList[stockDefectList.Count - 1].OldDamageCount = stockDefectList[stockDefectList.Count - 1].DamageCount = 0;
+                    stockDefectList[stockDefectList.Count - 1].OldLostCount = stockDefectList[stockDefectList.Count - 1].LostCount = 0;
+                    stockDefectList[stockDefectList.Count - 1].OldUnconfirmCount = stockDefectList[stockDefectList.Count - 1].UnconfirmCount = 0;
 
                 }
                 else
@@ -110,7 +125,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     DepartmentStockDefectPK defectPK = new DepartmentStockDefectPK();
                     defectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
                     newStockDefect.DepartmentStockDefectPK = defectPK;
-                    newStockDefect.GoodCount += 1;
+                    newStockDefect.GoodCount = 1;
                     
                     newStockDefect.OldDamageCount = newStockDefect.DamageCount;
                     newStockDefect.OldErrorCount = newStockDefect.ErrorCount;
@@ -157,11 +172,39 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
             checkingEventArgs.SaveStockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
-
+            if(!CheckDepartmentDataIntegrity())
+                return;
             EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
             MessageBox.Show("Lưu kết quả thành công");
             ClearForm();
         }
+        private bool CheckDepartmentDataIntegrity()
+        {
+            for (int i = 0; i < stockDefectList.Count; i++)
+            {
+                DepartmentStockDefect defect = stockDefectList[i];
+
+                if (defect.ErrorCount < 0 || defect.GoodCount < 0 || defect.DamageCount < 0 || defect.LostCount < 0 || defect.UnconfirmCount < 0)
+                {
+                    MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
+                    dgvStock.CurrentCell = dgvStock[5, i];
+                    dgvStock.Focus();
+                    return false;
+                }
+
+                long totalQuantity = defect.ErrorCount + defect.GoodCount + defect.DamageCount + defect.LostCount +
+                                     defect.UnconfirmCount;
+                if (defect.Quantity != totalQuantity)
+                {
+                    MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Số lượng tồn không khớp với số lượng kiểm kê");
+                    dgvStock.CurrentCell = dgvStock[5, i];
+                    dgvStock.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
         private void ClearForm()
         {
@@ -178,6 +221,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DepartmentStockDefect defect = stockDefectList[e.RowIndex];
+            int currError = defect.ErrorCount - defect.OldErrorCount;
+            int currDamage = defect.DamageCount - defect.OldDamageCount;
+            int currLost = defect.LostCount - defect.OldLostCount;
+            int currUnconfirm = defect.UnconfirmCount - defect.OldUnconfirmCount;
+
+            defect.GoodCount = defect.GoodCount - currUnconfirm - currError - currLost - currDamage;
+
+            defect.OldDamageCount = defect.DamageCount;
+            defect.OldErrorCount = defect.ErrorCount;
+            defect.OldLostCount = defect.LostCount;
+            defect.OldUnconfirmCount = defect.UnconfirmCount;
+
+            bdsStockDefect.EndEdit();
+            dgvStock.Refresh();
+            dgvStock.Invalidate();
+
         }
     }
 }
