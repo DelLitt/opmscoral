@@ -105,6 +105,26 @@ namespace AppFrame.Logic
             return DepartmentStockDAO.FindByQuery(sql.ToString(), criteria);
         }
 
+        public IList FindByQueryForDeptStock(ObjectCriteria criteria)
+        {
+            var sqlString = new StringBuilder("select stock, sum(stock.Quantity) FROM DepartmentStock stock, Product p, ProductMaster pm WHERE stock.Product.ProductId = p.ProductId AND p.ProductMaster.ProductMasterId = pm.ProductMasterId ");
+            foreach (SQLQueryCriteria crit in criteria.GetQueryCriteria())
+            {
+                sqlString.Append(" AND ")
+                       .Append(crit.PropertyName)
+                       .Append(" ")
+                       .Append(crit.SQLString)
+                       .Append(" :")
+                       .Append(crit.PropertyName)
+                       .Append(" ");
+            }
+            sqlString.Append(" Having sum(stock.Quantity) > 0 ");
+            sqlString.Append(" Group BY pm.ProductMasterId");
+            //criteria.AddQueryCriteria("productName", "Ao%");
+            //var sqlString = "select * FROM Stock stock, Product p WHERE stock.Product_Id = p.Product_Id";
+            return DepartmentStockDAO.FindByQueryForDeptStock(sqlString.ToString(), criteria);
+        }
+
         #region IDepartmentStockLogic Members
 
 

@@ -36,6 +36,7 @@ namespace AppFrameClient.Common
         public const string SEARCH_DEPARTMENT_STOCK_IN_FORM = "DepartmentStockSearchView";
         public const string DEPARTMENT_PRICE_UPDATE_FORM = "DepartmentPriceUpdateView";
         public const string UNIVERASAL_MASTER_CREATE_FORM = "UniversalMasterSaveView";
+        public const string DEPARTMENT_STOCK_OUT_FORM = "DepartmentStockOutExtraView";
 
         public const string SALEPOINT_FORM = "SalePointView";
         public const string EMPLOYEE_FORM = "EmployeeView";

@@ -370,8 +370,7 @@ namespace AppFrame.View
 
         private void mnuDepartmentReturnGoods_Click(object sender, EventArgs e)
         {
-            BaseStockOutForm baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<BaseStockOutForm>(this, FormConstants.BASE_STOCK_OUT_FORM);
-            baseStockOutForm.DepartmentReturnForm = true;
+            DepartmentStockOutExtraForm baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutExtraForm>(this, FormConstants.DEPARTMENT_STOCK_OUT_FORM);
             baseStockOutForm.Show();
         }
 

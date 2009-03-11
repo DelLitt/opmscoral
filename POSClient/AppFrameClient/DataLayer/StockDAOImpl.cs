@@ -352,6 +352,8 @@ namespace AppFrame.DataLayer
 
         }
 
+
+
         #region IStockDAO Members
 
 

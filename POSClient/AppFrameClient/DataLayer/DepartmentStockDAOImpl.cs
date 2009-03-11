@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utility;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -391,6 +392,37 @@ namespace AppFrame.DataLayer
             }
 
             return HibernateTemplate.FindByNamedParam(sqlString, paramNames.ToArray(), values.ToArray());
+        }
+
+        public IList FindByQueryForDeptStock(string sqlString, ObjectCriteria criteria)
+        {
+            ISession session = DbUtility.getSession(HibernateTemplate);
+            try
+            {
+                List<SQLQueryCriteria> query = criteria.GetQueryCriteria();
+                var paramNames = new List<string>();
+                var values = new List<object>();
+                foreach (SQLQueryCriteria crit in query)
+                {
+                    //sqlString += " AND " + crit.PropertyName + " " + crit.SQLString + " :" + crit.PropertyName + " ";
+                    paramNames.Add(crit.PropertyName);
+                    values.Add(crit.Value);
+                }
+                IList list = HibernateTemplate.FindByNamedParam(sqlString, paramNames.ToArray(), values.ToArray());
+                IList returnList = new ArrayList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var stock = (DepartmentStock)((object[])list[i])[0];
+                    stock.Quantity = Int64.Parse(((object[])list[i])[1].ToString());
+                    returnList.Add(stock);
+                }
+                return returnList;
+            }
+            finally
+            {
+                session.Close();
+            }
+
         }
     }
 }

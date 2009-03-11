@@ -34,6 +34,7 @@
     <property name="StockOutDAO" ref="AppFrame.DataLayer.IStockOutDAO"/>
     <property name="StockOutDetailDAO" ref="AppFrame.DataLayer.IStockOutDetailDAO"/>
     <property name="StockDefectDAO" ref="AppFrame.DataLayer.IStockDefectDAO"/>
+    <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentStockInCostLogic" type="AppFrame.Logic.DepartmentStockInCostLogicImpl, AppFrameClient">
@@ -146,6 +147,9 @@
 
   <object id="AppFrame.Service.IDepartmentStockOutLogic" type="AppFrame.Logic.DepartmentStockOutLogicImpl, AppFrameClient">
     <property name="DepartmentStockOutDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDAO"/>
+    <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
+    <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
+    <property name="DepartmentStockDefectDAO" ref="AppFrame.DataLayer.IDepartmentStockDefectDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">
