@@ -109,6 +109,7 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
+            this.mnuProcessStockDefect = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -383,6 +384,7 @@
             this.approveStockToolStripMenuItem,
             this.mnuDepartmentStockOutConfirm,
             this.mnuInventoryChecking,
+            this.mnuProcessStockDefect,
             this.searchStockToolStripMenuItem,
             this.toolStripMenuItem7,
             this.mnuWarehouseRemains,
@@ -713,6 +715,13 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
+            // mnuProcessStockDefect
+            // 
+            this.mnuProcessStockDefect.Name = "mnuProcessStockDefect";
+            this.mnuProcessStockDefect.Size = new System.Drawing.Size(237, 22);
+            this.mnuProcessStockDefect.Text = "Xử lý sau kiểm kê kho";
+            this.mnuProcessStockDefect.Click += new System.EventHandler(this.mnuProcessStockDefect_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,5 +827,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTemporaryStockOut;
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentReturnGoods;
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentStockOutConfirm;
+        private System.Windows.Forms.ToolStripMenuItem mnuProcessStockDefect;
     }
 }

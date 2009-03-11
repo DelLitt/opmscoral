@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace AppFrameClient.Common
 {
@@ -62,5 +63,6 @@ namespace AppFrameClient.Common
         public static string BASE_STOCK_OUT_FORM = "BaseStockOutView";
         public static string MAIN_STOCK_OUT_REPORT_FORM = "MainStockOutReportView";
         public static string DEPARTMENT_STOCK_OUT_CONFIRM_FORM = "DepartmentStockOutConfirmView";
+        public static string PROCESS_ERROR_GOODS_FORM = "ProcessErrorGoodsView";
     }
 }

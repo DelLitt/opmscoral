@@ -315,12 +315,14 @@
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInExtraController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockInSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\ProcessErrorGoodsController.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentController.cs" />
     <Compile Include="Presenter\GoodsIO\StockSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\GoodsIOSearchController.cs" />
@@ -499,6 +501,12 @@
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.Designer.cs">
+      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,6 +524,12 @@
     </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.Designer.cs">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.Designer.cs">
+      <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\MainStockOutReportForm.cs">
       <SubType>Form</SubType>
@@ -998,6 +1012,9 @@
       <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.resx">
+      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1007,6 +1024,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockOutExtraForm.resx">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.resx">
+      <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\MainStockOutReportForm.resx">
       <DependentUpon>MainStockOutReportForm.cs</DependentUpon>

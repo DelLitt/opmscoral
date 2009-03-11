@@ -137,12 +137,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             IList stockDefectList = DepartmentStockDefectLogic.FindAll(criteria);
             e.DepartmentStockDefectList = new ArrayList();
             e.FoundDepartmentStockOutDetailList = new ArrayList();
-            foreach (Stock stock in list)
+            foreach (DepartmentStock stock in list)
             {
-                StockOutDetail detail = new StockOutDetail();
+                DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
                 detail.Product = stock.Product;
                 detail.GoodQuantity = stock.Quantity;
-                foreach (StockDefect def in stockDefectList)
+                foreach (DepartmentStockDefect def in stockDefectList)
                 {
                     if (detail.Product.ProductId.Equals(def.Product.ProductId))
                     {
@@ -159,6 +159,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
+        
         public void _departmentStockInView_FillProductToComboEvent(object sender, DepartmentStockOutEventArgs e)
         {
             ComboBox comboBox = (ComboBox) sender;

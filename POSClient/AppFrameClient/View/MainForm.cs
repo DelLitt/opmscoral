@@ -383,5 +383,12 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuProcessStockDefect_Click(object sender, EventArgs e)
+        {
+            Form form =
+                GlobalUtility.GetOnlyChildFormObject<ProcessErrorGoodsForm>(this,FormConstants.PROCESS_ERROR_GOODS_FORM);
+            form.Show();
+        }
+
     }
 }

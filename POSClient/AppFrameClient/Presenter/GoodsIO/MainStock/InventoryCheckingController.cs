@@ -40,15 +40,6 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                maxId = maxId + 1;
                foreach (StockDefect stockDefect in e.SaveStockDefectList)
                {
-
-                   if (stockDefect.DamageCount == 0 && stockDefect.OldDamageCount == 0
-                        && stockDefect.ErrorCount == 0 && stockDefect.OldErrorCount == 0
-                        && stockDefect.LostCount == 0 && stockDefect.OldLostCount == 0
-                        && stockDefect.UnconfirmCount == 0 && stockDefect.OldUnconfirmCount == 0)
-                   {
-                       continue;
-                   }
-                   
                    stockDefect.CreateDate = DateTime.Now;
                    stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                    stockDefect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
@@ -74,11 +65,11 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                        throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");                       
                    }*/
 
-                   stockDefect.GoodCount = stockDefect.Quantity - totalDefects;
+                   //stockDefect.GoodCount = stockDefect.Quantity - totalDefects;
                    
                    // update the stock remains equal good count
                    stockDefect.Stock.Quantity = stockDefect.GoodCount;
-                   stockDefect.Quantity = stockDefect.Stock.Quantity;
+                   stockDefect.Quantity = stockDefect.Stock.Quantity+ totalDefects;
                    stockDefect.StockDefectId = maxId++;
 
                    StockDefectLogic.Process(stockDefect);

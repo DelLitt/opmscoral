@@ -68,8 +68,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtDepartment = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -400,28 +398,9 @@
             this.label11.TabIndex = 18;
             this.label11.Text = "Nhập mã vạch:";
             // 
-            // txtDepartment
-            // 
-            this.txtDepartment.Location = new System.Drawing.Point(350, 35);
-            this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(259, 20);
-            this.txtDepartment.TabIndex = 23;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(265, 38);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Cửa hàng:";
-            // 
             // InventoryCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtDepartment);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtBarcode);
@@ -470,8 +449,6 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn defectStatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox txtDepartment;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

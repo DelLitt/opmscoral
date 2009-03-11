@@ -555,7 +555,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             int line = 1;
             foreach (DepartmentStockOutDetail detail in deptSIDetailList)
             {
-                foreach (StockDefect defect in DepartmentStockDefectList)
+                foreach (DepartmentStockDefect defect in DepartmentStockDefectList)
                 {
                     if (detail.Product.ProductId.Equals(defect.Product.ProductId))
                     {
