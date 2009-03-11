@@ -10,6 +10,11 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
 {
     public class InventoryCheckingEventArgs : BaseEventArgs
     {
+        public DepartmentStock ScannedDepartmentStock { get; set; }
+        public DepartmentStockDefect ScannedDepartmentStockDefect { get; set; }
+        public IList SaveDepartmentStock { get; set; }
+        public IList SaveDepartmentStockDefectList { get; set; }
+
         public string InputBarcode { get; set; }
         public IList ReturnStockViewList { get; set; }
 
