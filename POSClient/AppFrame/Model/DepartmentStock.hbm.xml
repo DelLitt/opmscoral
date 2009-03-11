@@ -92,8 +92,6 @@
   <many-to-one
     name="ProductMaster"
   class="ProductMaster"
-  update="false"
-  insert="false"
   lazy="false"
 	>
     <column name="PRODUCT_MASTER_ID" />

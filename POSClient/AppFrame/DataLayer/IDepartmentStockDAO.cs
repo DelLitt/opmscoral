@@ -68,5 +68,6 @@ namespace AppFrame.DataLayer
 
         IList FindStockQuantityForPurchaseOrder(string sqlString, ObjectCriteria criteria);
         IList ListProductMasterStockQuery(string sqlString, ObjectCriteria criteria);
+        IList FindByQueryForDeptStock(string sqlString, ObjectCriteria criteria);
     }
 }

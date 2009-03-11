@@ -56,5 +56,6 @@ namespace AppFrame.Logic
         QueryResult FindPaging(ObjectCriteria criteria);
 
         IList FindByQuery(ObjectCriteria criteria);
+        IList FindByQueryForDeptStock(ObjectCriteria criteria);
     }
 }
