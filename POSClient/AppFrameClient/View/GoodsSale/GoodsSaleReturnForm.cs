@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
@@ -17,7 +18,7 @@ using AppFrameClient.View.GoodsIO.DepartmentStockData;
 
 namespace AppFrameClient.View.GoodsSale
 {
-    public partial class GoodsSaleReturnForm : BaseForm,IGoodsSaleReturnView
+    public partial class GoodsSaleReturnForm : BaseForm, IGoodsSaleReturnView
     {
         private PurchaseOrderDetailCollection pODList = null;
         private PurchaseOrderDetailCollection pODReturnList = null;
@@ -65,7 +66,7 @@ namespace AppFrameClient.View.GoodsSale
         void goodsSaleReturnController_CompletedSavePurchaseOrderEvent(object sender, GoodsSaleReturnEventArgs e)
         {
             MessageBox.Show("Lưu hoá đơn trả  thành công !");
-            btnReset_Click(this,null);
+            btnReset_Click(this, null);
 
         }
 
@@ -105,23 +106,22 @@ namespace AppFrameClient.View.GoodsSale
             goodsSaleReturnController.ReturnPurchaseOrder = null;
             GoodsSaleReturnEventArgs goodsSaleReturnEventArgs = new GoodsSaleReturnEventArgs();
             goodsSaleReturnEventArgs.SearchPurchaseOrderId = txtBillNumber.Text.Trim();
-            EventUtility.fireEvent(LoadPurchaseOrderEvent,this,goodsSaleReturnEventArgs);
-            
+            EventUtility.fireEvent(LoadPurchaseOrderEvent, this, goodsSaleReturnEventArgs);
+
             PurchaseOrder result = goodsSaleReturnEventArgs.RefPurchaseOrder;
             goodsSaleReturnController.ReturnPurchaseOrder = result;
-            txtBillNumber.Text = result.CreateDate.ToString("dd/MM/yyyy hh:mm:ss");
+            txtBillDate.Text = result.CreateDate.ToString("dd/MM/yyyy hh:mm:ss");
             pODList.Clear();
-            foreach(PurchaseOrderDetail purchaseOrderDetail in result.PurchaseOrderDetails)
+            foreach (PurchaseOrderDetail purchaseOrderDetail in result.PurchaseOrderDetails)
             {
                 pODList.Add(purchaseOrderDetail);
             }
-            txtTotalAmount.Text = result.PurchasePrice.ToString("##,##0");
             bdsBill.EndEdit();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            SearchGoodsSaleListForm form = GlobalUtility.GetFormObject <SearchGoodsSaleListForm>(FormConstants.SEARCH_GOODS_SALE_LIST_FORM);
+            SearchGoodsSaleListForm form = GlobalUtility.GetFormObject<SearchGoodsSaleListForm>(FormConstants.SEARCH_GOODS_SALE_LIST_FORM);
             form.SelectGoodsSaleEvent += new EventHandler<GoodsSaleListEventArgs>(form_SelectGoodsSaleEvent);
             form.ShowDialog();
         }
@@ -144,9 +144,9 @@ namespace AppFrameClient.View.GoodsSale
                 if (NotReturnYet(row.Index, pODList, pODReturnList))
                 {
                     pODReturnList.Add(DumpNewRow(pODList[row.Index]));
-                    
-                    dgvBill.DefaultCellStyle.BackColor = Color.Red;
-                    dgvBill.DefaultCellStyle.ForeColor = Color.White;
+
+                    dgvBill.Rows[row.Index].DefaultCellStyle.BackColor = Color.Red;
+                    dgvBill.Rows[row.Index].DefaultCellStyle.ForeColor = Color.White;
                 }
             }
             CalculateReturnPrice(pODReturnList);
@@ -181,9 +181,9 @@ namespace AppFrameClient.View.GoodsSale
             long totalReturnAmount = 0;
             foreach (PurchaseOrderDetail detail in pODReturnList)
             {
-                totalReturnAmount += detail.Quantity * detail.Price;                
+                totalReturnAmount += detail.Quantity * detail.Price;
             }
-            txtPayment.Text = totalReturnAmount.ToString();
+            txtReturnPayment.Text = totalReturnAmount.ToString();
         }
 
         private bool NotReturnYet(int index, PurchaseOrderDetailCollection list, PurchaseOrderDetailCollection returnList)
@@ -191,9 +191,9 @@ namespace AppFrameClient.View.GoodsSale
             PurchaseOrderDetail detail = pODList[index];
             foreach (PurchaseOrderDetail orderDetail in returnList)
             {
-                if( orderDetail.PurchaseOrderDetailPK.PurchaseOrderDetailId == detail.PurchaseOrderDetailPK.PurchaseOrderDetailId
+                if (orderDetail.PurchaseOrderDetailPK.PurchaseOrderDetailId == detail.PurchaseOrderDetailPK.PurchaseOrderDetailId
                     && orderDetail.PurchaseOrderDetailPK.DepartmentId == detail.PurchaseOrderDetailPK.DepartmentId
-                    && orderDetail.PurchaseOrderDetailPK.PurchaseOrderId == detail.PurchaseOrderDetailPK.PurchaseOrderId    
+                    && orderDetail.PurchaseOrderDetailPK.PurchaseOrderId == detail.PurchaseOrderDetailPK.PurchaseOrderId
                     )
                 {
                     return false;
@@ -207,16 +207,17 @@ namespace AppFrameClient.View.GoodsSale
             DataGridViewSelectedRowCollection returnGoods = dgvBill.SelectedRows;
             foreach (DataGridViewRow row in returnGoods)
             {
-                RemoveReturnPurchaseOrder(pODList[row.Index], ref pODReturnList);
-                    dgvBill.DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.Window);
-                    dgvBill.DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+                int rowIndex = 0;
+                RemoveReturnPurchaseOrder(pODList[row.Index], ref pODReturnList, out rowIndex);
+                dgvBill.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.Window);
+                dgvBill.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
             }
             CalculateReturnPrice(pODReturnList);
         }
 
-        private void RemoveReturnPurchaseOrder(PurchaseOrderDetail detail, ref PurchaseOrderDetailCollection list)
+        private void RemoveReturnPurchaseOrder(PurchaseOrderDetail detail, ref PurchaseOrderDetailCollection list, out int index)
         {
-            for(int i = 0 ; i<list.Count;i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 PurchaseOrderDetail orderDetail = list[i];
                 if (orderDetail.PurchaseOrderDetailPK.PurchaseOrderDetailId == detail.PurchaseOrderDetailPK.PurchaseOrderDetailId
@@ -225,10 +226,11 @@ namespace AppFrameClient.View.GoodsSale
                     )
                 {
                     list.RemoveAt(i);
+                    index = i;
                     return;
                 }
             }
-                           
+            index = 0;
         }
 
         private void btnNewOrderNewRow_Click(object sender, EventArgs e)
@@ -258,18 +260,19 @@ namespace AppFrameClient.View.GoodsSale
             Product product = new Product();
             product.ProductMaster = orderDetail.ProductMaster;
             orderDetail.Product = product;
+            pODNewList.EndNew(pODNewList.Count - 1);
+            bdsNewBill.EndEdit();
 
             GoodsSaleReturnController.NextPurchaseOrder.PurchaseOrderDetails =
-                ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODList);
-            pODNewList.EndNew(pODNewList.Count-1);
-            bdsNewBill.EndEdit();
+                ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODNewList);
+            
         }
 
         private void btnNewOrderRemoveRow_Click(object sender, EventArgs e)
         {
 
-            
-            
+
+
         }
 
         private ProductMasterSearchDepartmentForm form = null;
@@ -298,7 +301,7 @@ namespace AppFrameClient.View.GoodsSale
                 form.SelectProductEvent -= new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(form_SelectProductEvent);
                 form.Close();
             }
-        }              
+        }
 
         #region IGoodsSaleReturnView Members
 
@@ -312,7 +315,7 @@ namespace AppFrameClient.View.GoodsSale
             set
             {
                 goodsSaleController = value;
-                
+
             }
         }
 
@@ -322,23 +325,49 @@ namespace AppFrameClient.View.GoodsSale
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if( pODReturnList.Count<= 0 )
+            if (pODReturnList.Count <= 0)
             {
                 MessageBox.Show("Không có hàng để trả !");
                 return;
             }
-            if(goodsSaleReturnController.ReturnPurchaseOrder==null)
+            if(Int64.Parse(txtCharge.Text) < 0)
+            {
+                MessageBox.Show("Hãy nhập vào số tiền khách hàng trả !");
+                return;    
+            }
+            if (goodsSaleReturnController.ReturnPurchaseOrder == null)
             {
                 // tra hang nghi van
             }
             else
             {
-                 // tra hang da co doi chieu
+                // tra hang da co doi chieu
                 GoodsSaleReturnEventArgs eventArgs = new GoodsSaleReturnEventArgs();
                 eventArgs.RefPurchaseOrder = goodsSaleReturnController.ReturnPurchaseOrder;
                 eventArgs.ReturnPurchaseOrderDetails = ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODReturnList);
-                EventUtility.fireEvent(SavePurchaseOrderEvent,this,eventArgs);
+                eventArgs.NextPurchaseOrder = goodsSaleReturnController.NextPurchaseOrder;
+                EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
+                if(!eventArgs.HasErrors)
+                {
+                    MessageBox.Show("Lưu thành công !");
+                    ClearForm();
+                }
             }
+        }
+
+        private void ClearForm()
+        {
+            pODList.Clear();
+            pODNewList.Clear();
+            pODReturnList.Clear();
+            txtCharge.Text = "0";
+            txtPayment.Text = "0";
+            txtTotalAmount.Text = "0";
+            txtReturnPayment.Text = "0";
+            txtTax.Text = "0";
+            txtCustomer.Text = "";
+            txtBillNumber.Text = "";
+            txtBillDate.Text = "";
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -349,8 +378,8 @@ namespace AppFrameClient.View.GoodsSale
             pODReturnList.Clear();
             txtBillNumber.Text = "";
             txtBillDate.Text = "";
-            txtTotalAmount.Text = "0";
             txtPayment.Text = "0";
+            txtCharge.Text = "0";
         }
 
         private void GoodsSaleReturnForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -365,9 +394,9 @@ namespace AppFrameClient.View.GoodsSale
 
         }
 
-        private void txtTotalAmount_TextChanged(object sender, EventArgs e)
+        private void txtPayment_TextChanged(object sender, EventArgs e)
         {
-
+            txtCharge.Text = CalculateCharge().ToString();
         }
 
         private void GoodsSaleReturnForm_Load(object sender, EventArgs e)
@@ -379,7 +408,7 @@ namespace AppFrameClient.View.GoodsSale
         private ProductMasterSearchDepartmentForm newForm = null;
         private void dgvNewBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvNewBill.CurrentCell == null)
+            if (dgvNewBill.CurrentCell == null)
             {
                 return;
             }
@@ -416,23 +445,24 @@ namespace AppFrameClient.View.GoodsSale
 
         private void tToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
-        
+
         private void btnAddUncheck_Click(object sender, EventArgs e)
         {
             CreateNewBlankPurchaseOrderDetail(bdsReturnBill);
-            
+
         }
 
-        
+
 
         private void btnRemoveUncheck_Click(object sender, EventArgs e)
         {
             if (dgvReturnBill.CurrentRow != null)
             {
                 PurchaseOrderDetail removeDetail = pODReturnList[dgvReturnBill.CurrentRow.Index];
-                RemoveReturnPurchaseOrder(removeDetail, ref pODList);
+                int index = 0;
+                RemoveReturnPurchaseOrder(removeDetail, ref pODList, out index);
                 pODReturnList.RemoveAt(dgvReturnBill.CurrentRow.Index);
                 CalculateReturnPrice(pODReturnList);
 
@@ -441,7 +471,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void CreateNewBlankPurchaseOrderDetail(BindingSource bill)
         {
-            
+
             PurchaseOrderDetail orderDetail = (PurchaseOrderDetail)bill.AddNew();
             orderDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             orderDetail.CreateDate = DateTime.Now;
@@ -450,8 +480,8 @@ namespace AppFrameClient.View.GoodsSale
             orderDetail.DelFlg = 0;
             orderDetail.DepartmentId = CurrentDepartment.Get().DepartmentId;
             orderDetail.Quantity = 1;
-            
-            
+
+
             PurchaseOrderDetailPK purchaseOrderDetailPK = new PurchaseOrderDetailPK();
             purchaseOrderDetailPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
             orderDetail.PurchaseOrderDetailPK = purchaseOrderDetailPK;
@@ -469,8 +499,151 @@ namespace AppFrameClient.View.GoodsSale
 
         private void dgvNewBill_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice = CalculateTotalPrice(pODNewList);
+            txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
+            //txtTotalAmount.Text = CalculateTotalAmount().ToString();
+            txtCharge.Text = CalculateCharge().ToString();
+            RemoveEmptyAndDuplicateRowFromList(pODNewList);
+            ClearInput();
+            txtBarcode.Focus();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
 
         }
 
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+            {
+                try
+                {
+                    GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                    /*int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
+                    goodsSaleEventArgs.SelectedIndex = selectedIndex;*/
+                    btnNewOrderNewRow_Click(this, null);
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail = pODNewList[pODNewList.Count - 1] as PurchaseOrderDetail;
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = txtBarcode.Text;
+                    EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+
+                    // event has been modified
+                    pODList[pODList.Count - 1] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
+                    int totalNumber = 1;
+
+                    GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice = CalculateTotalPrice(pODNewList);
+                    bdsBill.EndEdit();
+
+                }
+                catch (Exception ex)
+                {
+                    //throw new BusinessException("Mã vạch không hợp lệ hoặc hàng không tồn tại");
+                    pODList.RemoveAt(pODNewList.Count - 1);
+                }
+                finally
+                {
+                    txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
+                    //txtTotalAmount.Text = CalculateTotalAmount().ToString();
+                    txtCharge.Text = CalculateCharge().ToString();
+                    RemoveEmptyAndDuplicateRowFromList(pODNewList);
+                    ClearInput();
+                    txtBarcode.Focus();
+                }
+            }
+
+        }
+
+        private long CalculateCharge()
+        {
+            if(string.IsNullOrEmpty(txtTotalAmount.Text))
+            {
+                txtTotalAmount.Text = "0";
+            }
+            long newTotalAmount = Int64.Parse(txtTotalAmount.Text);
+
+            if (string.IsNullOrEmpty(txtReturnPayment.Text))
+            {
+                txtReturnPayment.Text = "0";
+            }
+            long returnPayment = Int64.Parse(txtReturnPayment.Text);
+            long totalAmount = newTotalAmount - returnPayment;
+            long payment = string.IsNullOrEmpty(txtPayment.Text) ? 0 : Int64.Parse(txtPayment.Text);
+            long charge = payment - totalAmount;
+            return charge;
+        }
+
+        private void ClearInput()
+        {
+            txtBarcode.Text = "";
+            txtBarcode.Focus();
+        }
+
+        private void RemoveEmptyAndDuplicateRowFromList(PurchaseOrderDetailCollection list)
+        {
+            int maxId = list.Count - 1;
+            while(maxId >= 0)
+            {
+                PurchaseOrderDetail detail = (PurchaseOrderDetail) list[maxId];
+                if(string.IsNullOrEmpty(detail.Product.ProductMaster.ProductName))
+                {
+                    list.RemoveAt(maxId);
+                }
+                maxId -= 1;
+            }
+            if(list.Count < 2)
+            {
+                return;
+            }
+            for(int i = 0;i<list.Count - 1;i++)
+            {
+                PurchaseOrderDetail detail = (PurchaseOrderDetail)list[i];                
+                for(int j = list.Count-1;j>=i+1;j--)
+                {
+                    PurchaseOrderDetail compdetail = (PurchaseOrderDetail)list[j];                    
+                    if(detail.Product.ProductId == compdetail.Product.ProductId)
+                    {
+                        detail.Quantity += compdetail.Quantity;
+                        list.RemoveAt(j);
+                    }
+                }
+            }
+        }
+
+        private long CalculateTotalAmount()
+        {
+            long newTotalAmount = Int64.Parse(txtTotalAmount.Text);
+            long returnPayment = Int64.Parse(txtReturnPayment.Text);
+            long totalAmount = newTotalAmount - returnPayment;
+            return totalAmount;
+        }
+
+        private long CalculateTotalPrice(PurchaseOrderDetailCollection list)
+        {
+            long totalAmount = 0;
+            if (list == null || list.Count == 0)
+                return 0;
+            foreach (PurchaseOrderDetail detail in list)
+            {
+                totalAmount += detail.Price*detail.Quantity;
+            }
+            return totalAmount;
+        }
+
+        private void dgvReturnBill_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CalculateReturnPrice(pODReturnList);
+            GoodsSaleReturnController.ReturnPurchaseOrder.PurchasePrice = CalculateTotalPrice(pODReturnList);
+            //txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
+            //txtTotalAmount.Text = CalculateTotalAmount().ToString();
+            txtCharge.Text = CalculateCharge().ToString();
+            //RemoveEmptyAndDuplicateRowFromList(pODNewList);
+            ClearInput();
+            txtBarcode.Focus();
+        }
+
+        private void dgvReturnBill_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

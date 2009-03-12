@@ -81,6 +81,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\Iesi.Collections.dll</HintPath>
@@ -102,6 +103,10 @@
     <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="QSS.Components.Windows.Forms, Version=2.0.5.874, Culture=neutral, PublicKeyToken=ff4b97c5154224ef, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Program Files (x86)\Quantum Software Solutions\Windows Forms Components\bin\QSS.Components.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -159,6 +164,7 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -388,8 +394,10 @@
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection1.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection2.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Collection.ProductReportCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailCollection.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailReportCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection1.datasource" />
@@ -413,11 +421,6 @@
     <None Include="Properties\DataSources\AppFrame.Model.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Supplier.datasource" />
-    <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockInResultDetailCollection.datasource" />
-    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockDefectCollection.datasource" />
-    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetail.datasource" />
-    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockInResultDetailCollection.datasource" />
-    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockViewCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -519,6 +522,12 @@
     <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.Designer.cs">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainReStockInExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainReStockInExtraForm.Designer.cs">
+      <DependentUpon>MainReStockInExtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -530,6 +539,12 @@
     </Compile>
     <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.Designer.cs">
       <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsSale\TrackingReturnGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsSale\TrackingReturnGoodsForm.Designer.cs">
+      <DependentUpon>TrackingReturnGoodsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\MainStockOutReportForm.cs">
       <SubType>Form</SubType>
@@ -1022,11 +1037,17 @@
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockOutConfirmForm.resx">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\MainReStockInExtraForm.resx">
+      <DependentUpon>MainReStockInExtraForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockOutExtraForm.resx">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.resx">
       <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsSale\TrackingReturnGoodsForm.resx">
+      <DependentUpon>TrackingReturnGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\MainStockOutReportForm.resx">
       <DependentUpon>MainStockOutReportForm.cs</DependentUpon>

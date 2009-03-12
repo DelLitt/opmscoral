@@ -529,19 +529,38 @@ namespace AppFrameClient.View.GoodsSale
 
         private void RemoveEmptyRowFromList(PurchaseOrderDetailCollection list)
         {
-            int i = list.Count - 1;
-            while(i >=0)
+            int maxId = list.Count - 1;
+            while (maxId >= 0)
             {
-                PurchaseOrderDetail orderDetail = list[i];
+                PurchaseOrderDetail orderDetail = list[maxId];
 
                 if (orderDetail.Product == null 
                     || orderDetail.Product.ProductMaster == null 
                    || string.IsNullOrEmpty(orderDetail.Product.ProductMaster.ProductMasterId))
                 {
-                    list.RemoveAt(i);
+                    list.RemoveAt(maxId);
                 }
-                i -= 1;
+                maxId -= 1;
             }
+
+            if (list.Count < 2)
+            {
+                return;
+            }
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                PurchaseOrderDetail detail = (PurchaseOrderDetail)list[i];
+                for (int j = list.Count - 1; j >= i + 1; j--)
+                {
+                    PurchaseOrderDetail compdetail = (PurchaseOrderDetail)list[j];
+                    if (detail.Product.ProductId == compdetail.Product.ProductId)
+                    {
+                        detail.Quantity += compdetail.Quantity;
+                        list.RemoveAt(j);
+                    }
+                }
+            }
+
         }
 
         // ĐANG SỬA LẠI
@@ -573,8 +592,6 @@ namespace AppFrameClient.View.GoodsSale
                     }
                     GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
                     txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
-
-                    CalculateCharge();
                     bdsBill.EndEdit();
                     
                     }
@@ -585,6 +602,7 @@ namespace AppFrameClient.View.GoodsSale
                     }
                     finally
                     {
+                        CalculateCharge();
                         RemoveEmptyRowFromList(pODList);
                         ClearInput();
                         txtBarcode.Focus();
