@@ -15,5 +15,6 @@ namespace AppFrame.Presenter.GoodsSale
 
         public PurchaseOrder RefPurchaseOrder { get; set; }
         public IList ReturnPurchaseOrderDetails { get; set; }
+        public PurchaseOrder NextPurchaseOrder { get; set; }
     }
 }

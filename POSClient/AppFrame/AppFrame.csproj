@@ -166,8 +166,10 @@
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
+    <Compile Include="Collection\ProductReportCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
+    <Compile Include="Collection\PurchaseOrderDetailReportCollection.cs" />
     <Compile Include="Collection\ReportCollection.cs" />
     <Compile Include="Collection\StockCollection.cs" />
     <Compile Include="Collection\StockInDetailCollection.cs" />
@@ -570,6 +572,7 @@
     <None Include="Common\FREE3OF9.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailReportCollection.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
