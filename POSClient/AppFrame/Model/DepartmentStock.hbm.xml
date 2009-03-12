@@ -110,6 +110,7 @@
         column="DAMAGE_QUANTITY"
         length="10"
     >
+    </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to Product -->
