@@ -29,7 +29,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private IList CurrentRowProductSizeList { get; set; }
         public StockIn deptSI { get; set; }
         private IList productMasterList { get; set; }
-        
+
         public MainStockInExtraForm()
         {
             InitializeComponent();
@@ -928,6 +928,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
 
         public event EventHandler<MainStockInEventArgs> LoadAllGoodsByNameEvent;
+        public event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
+        public event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
 
         #endregion
 

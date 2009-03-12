@@ -165,6 +165,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             // put total amount
             //sheet.Cells[14, 3].PutValue(txtTotalAmount.Text);
 
+            foreach (StockIn stockIn in StockInList)
+            {
+
+            }
+
             sheet.Cells.ImportDataTable(test, true, 10, 1);
             saveFileDialog1.ShowDialog();
 

@@ -23,6 +23,7 @@
     <menuitem name="mnuProcessStockDefect" role="Administrator" />
     <menuitem name="mnuTemporaryStockOut" role="Administrator" />
     <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator" />
+    <menuitem name="mnuMainReStockIn" role="Administrator" />
     
   </menu>
   <menu name="mnuDeptStock" role="Administrator">

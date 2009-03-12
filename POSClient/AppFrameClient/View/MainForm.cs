@@ -390,5 +390,12 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuMainReStockIn_Click(object sender, EventArgs e)
+        {
+            Form form =
+                GlobalUtility.GetOnlyChildFormObject<MainReStockInExtraForm>(this, FormConstants.MAIN_RE_STOCK_IN_EXTRA_FORM);
+            form.Show();
+        }
+
     }
 }

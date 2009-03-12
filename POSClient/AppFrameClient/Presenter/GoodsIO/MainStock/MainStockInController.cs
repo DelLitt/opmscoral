@@ -50,7 +50,35 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 mainStockInView.LoadGoodsByNameColorSizeEvent +=
             new EventHandler<MainStockInEventArgs>(_departmentStockInView_LoadGoodsByNameColorSizeEvent);
                 mainStockInView.LoadAllGoodsByNameEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_LoadAllGoodsByNameEvent);
+                mainStockInView.FindByBarcodeEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_FindByBarcodeEvent);
+                mainStockInView.SaveReStockInEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_SaveReStockInEvent);
             }
+        }
+
+        public void mainStockInView_SaveReStockInEvent(object sender, MainStockInEventArgs e)
+        {
+            StockInLogic.Add(e.StockIn);
+        }
+
+        public void mainStockInView_FindByBarcodeEvent(object sender, MainStockInEventArgs e)
+        {
+            var subCriteria = new SubObjectCriteria("StockOut");
+            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)8);
+            var objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("Product.ProductId", e.ProductId);
+            objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            objectCriteria.AddSubCriteria("StockOut", subCriteria);
+            IList list = StockOutDetailLogic.FindAll(objectCriteria);
+            if (list.Count > 0)
+            {
+                var detail = new StockInDetail { Product = ((StockOutDetail)list[0]).Product };
+                foreach (StockOutDetail soDetail in list)
+                {
+                    detail.StockOutQuantity += soDetail.Quantity;
+                }
+                e.StockInDetail = detail;
+            }
+            e.EventResult = "Success";
         }
 
         void mainStockInView_LoadAllGoodsByNameEvent(object sender, MainStockInEventArgs e)
@@ -289,7 +317,11 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             get;
             set;
         }
-
+        public IStockOutDetailLogic StockOutDetailLogic
+        {
+            get;
+            set;
+        }
         #endregion
 
         public MainStockInEventArgs ResultEventArgs

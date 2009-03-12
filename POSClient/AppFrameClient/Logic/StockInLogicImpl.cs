@@ -25,7 +25,39 @@ namespace AppFrame.Logic
         {
             return StockInDAO.FindById(id);
         }
-        
+
+        [Transaction(ReadOnly = false)]
+        public void AddReStock(StockIn data)
+        {
+            string dateStr = data.StockInDate.ToString("yyMMdd");
+            var criteria = new ObjectCriteria();
+            criteria.AddGreaterCriteria("StockInId", dateStr + "00000");
+            var maxId = StockInDAO.SelectSpecificType(criteria, Projections.Max("StockInId"));
+            var stockInId = maxId == null ? dateStr + "00001" : string.Format("{0:00000000000}", (Int64.Parse(maxId.ToString()) + 1));
+
+            data.CreateDate = DateTime.Now;
+            data.UpdateDate = DateTime.Now;
+            data.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+            data.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+            data.StockInType = (long) 1;
+            StockInDAO.Add(data);
+
+            foreach (StockInDetail stockInDetail in data.StockInDetails)
+            {
+                // add dept stock in
+                var detailPK = new StockInDetailPK { ProductId = stockInDetail.Product.ProductId, StockInId = stockInId };
+                stockInDetail.StockInDetailPK = detailPK;
+                stockInDetail.CreateDate = DateTime.Now;
+                stockInDetail.UpdateDate = DateTime.Now;
+                stockInDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                stockInDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                stockInDetail.ProductMaster = stockInDetail.Product.ProductMaster;
+                //                    stockInDetail.CurrentStockQuantity = (sum == null) ? 0 : Int64.Parse(sum.ToString());
+                StockInDetailDAO.Add(stockInDetail);
+
+            }
+        }
+
         /// <summary>
         /// Add StockIn to database.
         /// </summary>

@@ -69,7 +69,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(437, 406);
+            this.btnSelect.Location = new System.Drawing.Point(718, 406);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(132, 23);
             this.btnSelect.TabIndex = 55;
