@@ -33,6 +33,7 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
+        public virtual long StockInType { get; set; }
         public virtual string StockInId
         {
             get;

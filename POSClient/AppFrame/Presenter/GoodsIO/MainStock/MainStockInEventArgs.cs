@@ -33,6 +33,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         public DepartmentPrice DepartmentPrice { get; set; }
 
         public string ProductMasterId { get; set; }
+        public string ProductId { get; set; }
         public string ProductMasterIdForPrice { get; set; }
         public string ProductMasterName { get; set; }
         public ProductType ProductType { get; set; }
@@ -43,5 +44,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         public int SelectedIndex { get; set; }
         public bool IsFillToComboBox { get; set; }
         public string ComboBoxDisplayMember { get; set; }
+
+        public StockInDetail StockInDetail { get; set; }
     }
 }
