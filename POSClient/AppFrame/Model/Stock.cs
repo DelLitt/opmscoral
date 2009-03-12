@@ -36,7 +36,11 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
-
+        public virtual Int64 GoodQuantity { get; set; }
+        public virtual Int64 DamageQuantity { get; set; }
+        public virtual Int64 ErrorQuantity { get; set; }
+        public virtual Int64 LostQuantity { get; set; }
+        public virtual Int64 UnconfirmQuantity { get; set; }
         public virtual Int64 StockId
         {
             get
