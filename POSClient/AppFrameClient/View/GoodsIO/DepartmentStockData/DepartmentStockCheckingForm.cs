@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
@@ -16,7 +17,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
     public partial class DepartmentStockCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
     {
-        private DepartmentStockDefectCollection stockDefectList = null;
+        private DepartmentStockCollection stockList = null;
         public DepartmentStockCheckingForm()
         {
             InitializeComponent();
@@ -75,65 +76,31 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 stockDefIndex = dgvStock.CurrentCell.RowIndex;
             }
-            if (HasInStockDefectList(stock, stockDefectList, out stockDefIndex))
+            if (HasInStockDefectList(stock, stockList, out stockDefIndex))
             {
-                if (stockDefIndex > -1 && stockDefIndex < stockDefectList.Count)
+                if (stockDefIndex > -1 && stockDefIndex < stockList.Count)
                 {
-                    stockDefectList[stockDefIndex].GoodCount += 1;
+                    stockList[stockDefIndex].GoodQuantity += 1;
                     dgvStock.CurrentCell = dgvStock[5, stockDefIndex];
                 }
 
             }
             else // create new stock defect row
             {
-                DepartmentStockDefect newStockDefect = stockDefectList.AddNew();
-
-                if (checkingEventArgs.ScannedStockDefect != null)
-                {
-                    DepartmentStockDefect defect = checkingEventArgs.ScannedStockDefect;
-                    stockDefectList[stockDefectList.Count - 1] = defect;
-                    if (defect.ErrorCount != 0
-                            || defect.DamageCount != 0
-                            || defect.LostCount != 0
-                            || defect.UnconfirmCount != 0)
-                    {
-                        stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity + defect.ErrorCount +
-                                                                              defect.DamageCount +
-                                                                              defect.UnconfirmCount +
-                                                                              defect.LostCount;
-                    }
-                    else
-                    {
-                        stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity;
-                    }
-                    txtStockQuantity.Text = stockDefectList[stockDefectList.Count - 1].Quantity.ToString("##,##0");
-
-                    stockDefectList[stockDefectList.Count - 1].DepartmentStock = stock;
-                    stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
-                    stockDefectList[stockDefectList.Count - 1].OldErrorCount = stockDefectList[stockDefectList.Count - 1].ErrorCount = 0;
-                    stockDefectList[stockDefectList.Count - 1].OldDamageCount = stockDefectList[stockDefectList.Count - 1].DamageCount = 0;
-                    stockDefectList[stockDefectList.Count - 1].OldLostCount = stockDefectList[stockDefectList.Count - 1].LostCount = 0;
-                    stockDefectList[stockDefectList.Count - 1].OldUnconfirmCount = stockDefectList[stockDefectList.Count - 1].UnconfirmCount = 0;
-
-                }
-                else
-                {
-                    newStockDefect.Product = stock.Product;
-                    newStockDefect.ProductMaster = stock.Product.ProductMaster;
-                    newStockDefect.DepartmentStock = stock;
-                    newStockDefect.Quantity = stock.Quantity;
-                    DepartmentStockDefectPK defectPK = new DepartmentStockDefectPK();
-                    defectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
-                    newStockDefect.DepartmentStockDefectPK = defectPK;
-                    newStockDefect.GoodCount = 1;
+                    DepartmentStock defect = checkingEventArgs.ScannedStock;
+                    stockList[stockList.Count - 1] = defect;
                     
-                    newStockDefect.OldDamageCount = newStockDefect.DamageCount;
-                    newStockDefect.OldErrorCount = newStockDefect.ErrorCount;
-                    newStockDefect.OldUnconfirmCount = newStockDefect.UnconfirmCount;
-                    newStockDefect.OldLostCount = newStockDefect.LostCount;
+                    stockList[stockList.Count - 1].GoodQuantity = 1;
+                    stockList[stockList.Count - 1].OldErrorQuantity = stockList[stockList.Count - 1].ErrorQuantity = 0;
+                    stockList[stockList.Count - 1].OldDamageQuantity = stockList[stockList.Count - 1].DamageQuantity = 0;
+                    stockList[stockList.Count - 1].OldLostQuantity = stockList[stockList.Count - 1].LostQuantity = 0;
+                    stockList[stockList.Count - 1].OldUnconfirmQuantity = stockList[stockList.Count - 1].UnconfirmQuantity = 0;
+
+                    txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
+                
                     
-                }
-                dgvStock.CurrentCell = dgvStock[5, stockDefectList.Count - 1];
+                
+                dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
             }
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();
@@ -141,12 +108,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             txtBarcode.Text = "";
         }
 
-        private bool HasInStockDefectList(DepartmentStock stock, DepartmentStockDefectCollection list, out int stockDefIndex)
+        private bool HasInStockDefectList(DepartmentStock stock, DepartmentStockCollection list, out int stockDefIndex)
         {
             int count = 0;
-            foreach (DepartmentStockDefect stockDefect in list)
+            foreach (DepartmentStock stockDefect in list)
             {
-                if (stockDefect.DepartmentStockDefectPK.DepartmentId == stock.DepartmentStockPK.DepartmentId
+                if (stockDefect.DepartmentStockPK.DepartmentId == stock.DepartmentStockPK.DepartmentId
                     && stockDefect.Product.ProductId.Equals(stock.DepartmentStockPK.ProductId))
                 {
                     stockDefIndex = count;
@@ -160,18 +127,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockCheckingForm_Load(object sender, EventArgs e)
         {
-            stockDefectList = new DepartmentStockDefectCollection(bdsStockDefect);
-            bdsStockDefect.DataSource = stockDefectList;
+            stockList = new DepartmentStockCollection(bdsStockDefect);
+            bdsStockDefect.DataSource = stockList;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (stockDefectList.Count < 1)
+            if (stockList.Count < 1)
             {
                 MessageBox.Show("Không có gì để lưu");
             }
             DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
-            checkingEventArgs.SaveStockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
+            checkingEventArgs.SaveStockList = ObjectConverter.ConvertToNonGenericList(stockList);
             if(!CheckDepartmentDataIntegrity())
                 return;
             EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
@@ -180,11 +147,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         }
         private bool CheckDepartmentDataIntegrity()
         {
-            for (int i = 0; i < stockDefectList.Count; i++)
+            for (int i = 0; i < stockList.Count; i++)
             {
-                DepartmentStockDefect defect = stockDefectList[i];
+                DepartmentStock defect = stockList[i];
 
-                if (defect.ErrorCount < 0 || defect.GoodCount < 0 || defect.DamageCount < 0 || defect.LostCount < 0 || defect.UnconfirmCount < 0)
+                if (defect.ErrorQuantity < 0 || defect.GoodQuantity < 0 || defect.DamageQuantity < 0 || defect.LostQuantity < 0 || defect.UnconfirmQuantity < 0)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
                     dgvStock.CurrentCell = dgvStock[5, i];
@@ -192,8 +159,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return false;
                 }
 
-                long totalQuantity = defect.ErrorCount + defect.GoodCount + defect.DamageCount + defect.LostCount +
-                                     defect.UnconfirmCount;
+                long totalQuantity = defect.ErrorQuantity + defect.GoodQuantity + defect.DamageQuantity + defect.LostQuantity +
+                                     defect.UnconfirmQuantity;
                 if (defect.Quantity != totalQuantity)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Số lượng tồn không khớp với số lượng kiểm kê");
@@ -208,7 +175,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void ClearForm()
         {
-            stockDefectList.Clear();
+            stockList.Clear();
             txtBarcode.Text = "";
             txtDescription.Text = "";
             txtProductName.Text = "";
@@ -225,18 +192,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DepartmentStockDefect defect = stockDefectList[e.RowIndex];
-            int currError = defect.ErrorCount - defect.OldErrorCount;
-            int currDamage = defect.DamageCount - defect.OldDamageCount;
-            int currLost = defect.LostCount - defect.OldLostCount;
-            int currUnconfirm = defect.UnconfirmCount - defect.OldUnconfirmCount;
+            DepartmentStock defect = stockList[e.RowIndex];
+            long currError = defect.ErrorQuantity - defect.OldErrorQuantity;
+            long currDamage = defect.DamageQuantity - defect.OldDamageQuantity;
+            long currLost = defect.LostQuantity - defect.OldLostQuantity;
+            long currUnconfirm = defect.UnconfirmQuantity - defect.OldUnconfirmQuantity;
 
-            defect.GoodCount = defect.GoodCount - currUnconfirm - currError - currLost - currDamage;
+            defect.GoodQuantity = defect.GoodQuantity - currUnconfirm - currError - currLost - currDamage;
 
-            defect.OldDamageCount = defect.DamageCount;
-            defect.OldErrorCount = defect.ErrorCount;
-            defect.OldLostCount = defect.LostCount;
-            defect.OldUnconfirmCount = defect.UnconfirmCount;
+            defect.OldDamageQuantity = defect.DamageQuantity;
+            defect.OldErrorQuantity = defect.ErrorQuantity;
+            defect.OldLostQuantity = defect.LostQuantity;
+            defect.OldUnconfirmQuantity = defect.UnconfirmQuantity;
 
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();

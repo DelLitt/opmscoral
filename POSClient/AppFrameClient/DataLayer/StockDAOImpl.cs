@@ -381,5 +381,86 @@ namespace AppFrame.DataLayer
         }
 
         #endregion
+
+        #region IStockDAO Members
+
+
+        public IList FindAllErrors()
+        {
+            return (IList) HibernateTemplate.Execute(
+                            delegate (ISession session)
+                            {
+                                try
+                                {
+                                    string sql =
+                                        " SELECT st FROM Stock WHERE DelFlg = 0 AND ( st.ErrorQuantity > 0 OR st.UnconfirmQuantity > 0 OR st.LostQuantity > 0 OR st.DamageQuantity > 0 ";
+                                    return session.CreateQuery(sql).List();
+                                }
+                                catch (Exception)
+                                {
+                                    return null;                                 
+                                }
+                                
+                            }
+                               );
+        }
+
+        #endregion
+
+        #region IStockDAO Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT st FROM ProductMaster pm,Stock st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId AND st.ErrorQuantity > 0 " +
+                                      " AND pm.ProductName = '" + master.ProductName + "'";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception exp)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
+
+        #region IStockDAO Members
+
+
+        public IList FindAllProductMasters()
+        {
+            return (IList)HibernateTemplate.Execute(
+                 delegate(ISession session)
+                 {
+                     try
+                     {
+                         string queryString =
+                                      " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,Stock st " +
+                                      " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId " +
+                                      " GROUP BY pm.ProductName";
+                         return session.CreateQuery(queryString).List();
+                     }
+                     catch (Exception)
+                     {
+
+                         return null;
+                     }
+
+                 }
+               );
+        }
+
+        #endregion
     }
 }

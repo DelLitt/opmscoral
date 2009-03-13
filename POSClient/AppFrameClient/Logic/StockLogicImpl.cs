@@ -180,5 +180,35 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        #region IStockLogic Members
+
+
+        public IList FindAllErrors()
+        {
+            return StockDAO.FindAllErrors();
+        }
+
+        #endregion
+
+        #region IStockLogic Members
+
+
+        public IList FindByProductMasterName(ProductMaster master)
+        {
+            return StockDAO.FindByProductMasterName(master);
+        }
+
+        #endregion
+
+        #region IStockLogic Members
+
+
+        public IList FindAllProductMasters()
+        {
+            return StockDAO.FindAllProductMasters();
+        }
+
+        #endregion
     }
 }

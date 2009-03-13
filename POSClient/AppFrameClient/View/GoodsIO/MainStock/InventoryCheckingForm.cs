@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.MainStock;
@@ -19,10 +20,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
     public partial class InventoryCheckingForm : AppFrame.Common.BaseForm,IInventoryCheckingView
     {
         private StockViewCollection stockViewList = null;
-        private StockDefectCollection stockDefectList = null;
+        private StockCollection stockList = null;
 
         private StockViewCollection deptStockViewList = null;
-        private DepartmentStockDefectCollection deptStockDefectList = null;
+        private DepartmentStockCollection deptStockDefectList = null;
 
 
 
@@ -79,15 +80,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 stockViewList = new StockViewCollection(bdsProductMasters);
                 bdsProductMasters.DataSource = stockViewList;
                 bdsProductMasters.ResetBindings(true);
-                stockDefectList = new StockDefectCollection(bdsStockDefect);
-                bdsStockDefect.DataSource = stockDefectList;    
+                stockList = new StockCollection(bdsStockDefect);
+                bdsStockDefect.DataSource = stockList;    
                 bdsStockDefect.ResetBindings(true);
 
             /*}
             else
             {
                 deptStockDefectList = new DepartmentStockDefectCollection(bdsStockDefect);
-                bdsStockDefect.DataSource = stockDefectList;
+                bdsStockDefect.DataSource = stockList;
                 bdsStockDefect.ResetBindings(true);
             }*/
             
@@ -156,195 +157,53 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     stockDefIndex = dgvStock.CurrentCell.RowIndex;
                 }
-                if (HasInStockDefectList(stock, stockDefectList, out stockDefIndex))
+                if (HasInStockList(stock, stockList, out stockDefIndex))
                 {
-                    if (stockDefIndex > -1 && stockDefIndex < stockDefectList.Count)
+                    if (stockDefIndex > -1 && stockDefIndex < stockList.Count)
                     {
-                        stockDefectList[stockDefIndex].GoodCount += 1;
+                        stockList[stockDefIndex].GoodQuantity += 1;
                         dgvStock.CurrentCell = dgvStock[5, stockDefIndex];
                     }
 
                 }
                 else // create new stock defect row
                 {
-                    StockDefect newStockDefect = stockDefectList.AddNew();
-
-                    if (checkingEventArgs.ScannedStockDefect != null)
-                    {
-                        
+                        Stock newStockDefect = stockList.AddNew();
+                    
                         // assign total quantity
-                        StockDefect defect = checkingEventArgs.ScannedStockDefect;
-                        stockDefectList[stockDefectList.Count - 1] = defect;
+                        Stock defect = checkingEventArgs.ScannedStock;
+                        stockList[stockList.Count - 1] = defect;
+                        
+                        txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
 
-                        if (defect.ErrorCount != 0
-                            || defect.DamageCount != 0
-                            || defect.LostCount != 0
-                            || defect.UnconfirmCount != 0)
-                        {
-                            stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity + defect.ErrorCount +
-                                                                                  defect.DamageCount +
-                                                                                  defect.UnconfirmCount +
-                                                                                  defect.LostCount;
-                        }
-                        else
-                        {
-                            stockDefectList[stockDefectList.Count - 1].Quantity = stock.Quantity;
-                        }
-                        txtStockQuantity.Text = stockDefectList[stockDefectList.Count - 1].Quantity.ToString("##,##0");
+                        stockList[stockList.Count - 1].OldGoodQuantity = stockList[stockList.Count - 1].GoodQuantity = 1;
 
-                        stockDefectList[stockDefectList.Count - 1].GoodCount = 1;
+                        stockList[stockList.Count - 1].OldDamageQuantity = stockList[stockList.Count - 1].DamageQuantity = 0;
 
-                        stockDefectList[stockDefectList.Count - 1].OldDamageCount =
-                            stockDefectList[stockDefectList.Count - 1].DamageCount = 0;
+                        stockList[stockList.Count - 1].OldErrorQuantity =stockList[stockList.Count - 1].ErrorQuantity = 0;
 
-                        stockDefectList[stockDefectList.Count - 1].OldErrorCount =
-                            stockDefectList[stockDefectList.Count - 1].ErrorCount = 0;
+                        stockList[stockList.Count - 1].OldUnconfirmQuantity = stockList[stockList.Count - 1].UnconfirmQuantity = 0;
 
-                        stockDefectList[stockDefectList.Count - 1].OldUnconfirmCount =
-                            stockDefectList[stockDefectList.Count - 1].UnconfirmCount = 0;
+                        stockList[stockList.Count - 1].OldLostQuantity = stockList[stockList.Count - 1].LostQuantity = 0;
 
-                        stockDefectList[stockDefectList.Count - 1].OldLostCount =
-                            stockDefectList[stockDefectList.Count - 1].LostCount = 0;
-
-                    }
-                    else
-                    {
-                        newStockDefect.Product = stock.Product;
-                        newStockDefect.ProductMaster = stock.ProductMaster;
-                        newStockDefect.Stock = stock;
-                        newStockDefect.Quantity = stock.Quantity;
-                        newStockDefect.GoodCount = 1;
-
-                        newStockDefect.OldDamageCount = newStockDefect.DamageCount;
-                        newStockDefect.OldErrorCount = newStockDefect.ErrorCount;
-                        newStockDefect.OldUnconfirmCount = newStockDefect.UnconfirmCount;
-                        newStockDefect.OldLostCount = newStockDefect.LostCount;
-                    }
-                    dgvStock.CurrentCell = dgvStock[5, stockDefectList.Count - 1];
+                    
+                    dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
                 }
             
                     /* ----------------- DEPARTMENT STOCK CHECKING --------------*/
-                /* }
-                 * else   
-                {
-                    checkingEventArgs.InputBarcode = id;
-                    EventUtility.fireEvent(LoadDepartmentGoodsByProductIdEvent, this, checkingEventArgs);
-                    DepartmentStock stock = checkingEventArgs.ScannedDepartmentStock;
-                    if (stock == null)
-                    {
-                        MessageBox.Show("Không tìm thấy mã vạch trong kho", "Lỗi");
-                        return;
-                    }
-
-                    if (stock.ProductMaster.ProductType != null)
-                        txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
-
-                    txtProductName.Text = stock.ProductMaster.ProductName;
-
-                    txtDescription.Text = stock.ProductMaster.Description;
-                    pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
-
-                    int stockDefIndex = -1;
-                    if (dgvStock.CurrentCell != null)
-                    {
-                        stockDefIndex = dgvStock.CurrentCell.RowIndex;
-                    }
-                    if (HasInDepartmentStockDefectList(stock, deptStockDefectList, out stockDefIndex))
-                    {
-                        if (stockDefIndex > -1 && stockDefIndex < deptStockDefectList.Count)
-                        {
-                            deptStockDefectList[stockDefIndex].GoodCount += 1;
-                            dgvStock.CurrentCell = dgvStock[5, stockDefIndex];
-                        }
-
-                    }
-                    else // create new department stock defect row
-                    {
-                        DepartmentStockDefect newStockDefect = deptStockDefectList.AddNew();
-
-                        if (checkingEventArgs.ScannedDepartmentStockDefect != null)
-                        {
-                            txtStockQuantity.Text =
-                                (stock.Quantity + checkingEventArgs.ScannedStockDefect.GoodCount).ToString("##,##0");
-                            // assign total quantity
-                            DepartmentStockDefect defect = checkingEventArgs.ScannedDepartmentStockDefect;
-                            deptStockDefectList[deptStockDefectList.Count - 1] = defect;
-
-                            if (defect.ErrorCount != 0
-                                || defect.DamageCount != 0
-                                || defect.LostCount != 0
-                                || defect.UnconfirmCount != 0)
-                            {
-                                deptStockDefectList[deptStockDefectList.Count - 1].Quantity = stock.Quantity + defect.ErrorCount +
-                                                                                      defect.DamageCount +
-                                                                                      defect.UnconfirmCount +
-                                                                                      defect.LostCount;
-                            }
-                            else
-                            {
-                                deptStockDefectList[deptStockDefectList.Count - 1].Quantity = stock.Quantity;
-                            }
-
-                            deptStockDefectList[deptStockDefectList.Count - 1].GoodCount = 1;
-
-                            deptStockDefectList[deptStockDefectList.Count - 1].OldDamageCount =
-                                deptStockDefectList[deptStockDefectList.Count - 1].DamageCount = 0;
-
-                            deptStockDefectList[deptStockDefectList.Count - 1].OldErrorCount =
-                                deptStockDefectList[deptStockDefectList.Count - 1].ErrorCount = 0;
-
-                            deptStockDefectList[deptStockDefectList.Count - 1].OldUnconfirmCount =
-                                deptStockDefectList[deptStockDefectList.Count - 1].UnconfirmCount = 0;
-
-                            deptStockDefectList[deptStockDefectList.Count - 1].OldLostCount =
-                                deptStockDefectList[deptStockDefectList.Count - 1].LostCount = 0;
-
-                        }
-                        else
-                        {
-                            newStockDefect.Product = stock.Product;
-                            newStockDefect.ProductMaster = stock.ProductMaster;
-                            newStockDefect.DepartmentStock = stock;
-                            newStockDefect.Quantity = stock.Quantity;
-                            newStockDefect.GoodCount = 1;
-
-                            newStockDefect.OldDamageCount = newStockDefect.DamageCount;
-                            newStockDefect.OldErrorCount = newStockDefect.ErrorCount;
-                            newStockDefect.OldUnconfirmCount = newStockDefect.UnconfirmCount;
-                            newStockDefect.OldLostCount = newStockDefect.LostCount;
-                        }
-                        dgvStock.CurrentCell = dgvStock[5, deptStockDefectList.Count - 1];
-                    }
-                }*/
-            bdsStockDefect.EndEdit();
-            dgvStock.Refresh();
-            dgvStock.Invalidate();
-            txtBarcode.Text = "";
+                
+                bdsStockDefect.EndEdit();
+                dgvStock.Refresh();
+                dgvStock.Invalidate();
+                txtBarcode.Text = "";
         }
 
-        private bool HasInDepartmentStockDefectList(DepartmentStock stock, DepartmentStockDefectCollection list, out int stockDefIndex)
+        private bool HasInStockList(Stock stock, StockCollection list, out int stockDefIndex)
         {
             int count = 0;
-            foreach (DepartmentStockDefect stockDefect in list)
+            foreach (Stock stockDefect in list)
             {
-                if (stockDefect.DepartmentStock.DepartmentStockPK.DepartmentId == stock.DepartmentStockPK.DepartmentId
-                    && stockDefect.DepartmentStock.DepartmentStockPK.ProductId == stock.DepartmentStockPK.ProductId)
-                {
-                    stockDefIndex = count;
-                    return true;
-                }
-                count += 1;
-            }
-            stockDefIndex = count;
-            return false;
-        }
-
-        private bool HasInStockDefectList(Stock stock, StockDefectCollection list, out int stockDefIndex)
-        {
-            int count = 0;
-            foreach (StockDefect stockDefect in list)
-            {
-                if(stockDefect.Stock.StockId == stock.StockId)
+                if(stockDefect.StockId == stock.StockId)
                 {
                     stockDefIndex = count;
                     return true;
@@ -357,16 +216,14 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(stockDefectList.Count < 1)
+            if(stockList.Count < 1)
             {
                 MessageBox.Show("Không có gì để lưu");
                 return;
             }
-            /*if (!DepartmentChecking)
-            {*/
                 /* ----------------- STOCK CHECKING --------------*/
                 InventoryCheckingEventArgs checkingEventArgs = new InventoryCheckingEventArgs();
-                checkingEventArgs.SaveStockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
+                checkingEventArgs.SaveStockList = ObjectConverter.ConvertToNonGenericList(stockList);
                 if (!CheckDataIntegrity())
                     return;
                 EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
@@ -375,67 +232,28 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     MessageBox.Show("Lưu kết quả thành công");
                     ClearForm();
                 }
-            /*}
-            else
-            {*/
-                /* ----------------- DEPARTMENT STOCK CHECKING --------------*/
-             /*   InventoryCheckingEventArgs checkingEventArgs = new InventoryCheckingEventArgs();
-                checkingEventArgs.SaveDepartmentStockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
-                if(!CheckDepartmentDataIntegrity())
-                    return;
-                EventUtility.fireEvent(SaveDepartmentInventoryCheckingEvent, this, checkingEventArgs);
-                if (!checkingEventArgs.HasErrors)
-                {
-                    MessageBox.Show("Lưu kết quả thành công");
-                    ClearForm();
-                }
-            }*/
+            
         }
 
-        private bool CheckDepartmentDataIntegrity()
-        {
-            for (int i = 0; i < stockDefectList.Count; i++)
-            {
-                StockDefect defect = stockDefectList[i];
-
-                if (defect.ErrorCount < 0 || defect.GoodCount < 0 || defect.DamageCount < 0 || defect.LostCount < 0 || defect.UnconfirmCount < 0)
-                {
-                    MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
-                    dgvStock.CurrentCell = dgvStock[5, i];
-                    dgvStock.Focus();
-                    return false;
-                }
-
-                long totalQuantity = defect.ErrorCount + defect.GoodCount + defect.DamageCount + defect.LostCount +
-                                     defect.UnconfirmCount;
-                if (defect.Quantity != totalQuantity)
-                {
-                    MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Số lượng tồn không khớp với số lượng kiểm kê");
-                    dgvStock.CurrentCell = dgvStock[5, i];
-                    dgvStock.Focus();
-                    return false;
-                }
-            }
-            return true;
-        }
+        
 
         private bool CheckDataIntegrity()
         {
 
-            for(int i = 0; i < stockDefectList.Count;i++)
+            for(int i = 0; i < stockList.Count;i++)
             {
-                StockDefect defect = stockDefectList[i];
+                Stock stock = stockList[i];
 
-                if(defect.ErrorCount < 0 || defect.GoodCount < 0 || defect.DamageCount < 0 || defect.LostCount < 0 || defect.UnconfirmCount < 0 )
+                if(stock.ErrorQuantity < 0 || stock.GoodQuantity < 0 || stock.DamageQuantity < 0 || stock.LostQuantity < 0 || stock.UnconfirmQuantity < 0 )
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
                     dgvStock.CurrentCell = dgvStock[5, i];
                     return false;
                 }
 
-                long totalQuantity = defect.ErrorCount + defect.GoodCount + defect.DamageCount + defect.LostCount +
-                                     defect.UnconfirmCount;
-                if(defect.Quantity!=totalQuantity)
+                long totalQuantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity + stock.LostQuantity +
+                                     stock.UnconfirmQuantity;
+                if(stock.Quantity!=totalQuantity)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Số lượng tồn không khớp với số lượng kiểm kê");
                     dgvStock.CurrentCell = dgvStock[5, i];
@@ -447,7 +265,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void ClearForm()
         {
-            stockDefectList.Clear();
+            stockList.Clear();
             txtBarcode.Text = "";
             txtDescription.Text = "";
             txtProductName.Text = "";
@@ -478,18 +296,18 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            StockDefect defect = stockDefectList[e.RowIndex];
-            int currError = defect.ErrorCount - defect.OldErrorCount;
-            int currDamage = defect.DamageCount - defect.OldDamageCount;
-            int currLost = defect.LostCount - defect.OldLostCount;
-            int currUnconfirm = defect.UnconfirmCount - defect.OldUnconfirmCount;
+            Stock stock = stockList[e.RowIndex];
+            long currError = stock.ErrorQuantity - stock.OldErrorQuantity;
+            long currDamage = stock.DamageQuantity - stock.OldDamageQuantity;
+            long currLost = stock.LostQuantity - stock.OldLostQuantity;
+            long currUnconfirm = stock.UnconfirmQuantity - stock.OldUnconfirmQuantity;
 
-            defect.GoodCount = defect.GoodCount - currUnconfirm - currError - currLost - currDamage;
+            stock.GoodQuantity = stock.GoodQuantity - currUnconfirm - currError - currLost - currDamage;
 
-            defect.OldDamageCount = defect.DamageCount;
-            defect.OldErrorCount = defect.ErrorCount;
-            defect.OldLostCount = defect.LostCount;
-            defect.OldUnconfirmCount = defect.UnconfirmCount;
+            stock.OldDamageQuantity = stock.DamageQuantity;
+            stock.OldErrorQuantity = stock.ErrorQuantity;
+            stock.OldLostQuantity = stock.LostQuantity;
+            stock.OldUnconfirmQuantity = stock.UnconfirmQuantity;
 
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();

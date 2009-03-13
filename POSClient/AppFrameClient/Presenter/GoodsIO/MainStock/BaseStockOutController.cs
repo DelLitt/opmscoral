@@ -93,7 +93,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         private long GetDeptErrorCount(string id, IList list)
         {
-            foreach (DepartmentStockDefect stockDefect in list)
+            foreach (DepartmentStockHistory stockDefect in list)
             {
                 if (stockDefect.Product.ProductId == id)
                 {
@@ -184,11 +184,11 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         private long GetErrorCount(string id, IList list)
         {
-            foreach (StockDefect stockDefect in list)
+            foreach (Stock stockDefect in list)
             {
                 if(stockDefect.Product.ProductId == id)
                 {
-                    return stockDefect.ErrorCount;
+                    return stockDefect.ErrorQuantity;
                 }
             }
             return 0;
@@ -210,13 +210,13 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void baseStockOutView_LoadGoodsByNameEvent(object sender, BaseStockOutEventArgs e)
         {
-             IList stockDefectList = StockDefectLogic.FindByProductMasterName(e.RequestProductMaster);
+             IList stockDefectList = StockLogic.FindByProductMasterName(e.RequestProductMaster);
             e.ReturnStockDefectList = stockDefectList;
         }
 
         void baseStockOutView_FillGoodsToCombo(object sender, BaseStockOutEventArgs e)
         {
-            IList stockList = StockDefectLogic.FindAllProductMasters();
+            IList stockList = StockLogic.FindAllProductMasters();
             IList stockViewList = new ArrayList();
             if (stockList != null)
             {
@@ -232,11 +232,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             e.ReturnStockViewList = stockViewList;
         }
 
-        public AppFrame.Logic.IStockDefectLogic StockDefectLogic
-        {
-            get;set;
-            
-        }
+      
 
         public AppFrame.Logic.IProductLogic ProductLogic
         {

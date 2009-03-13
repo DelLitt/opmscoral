@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AppFrame;
 using AppFrame.Logic;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.MainStock;
@@ -27,7 +28,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         {
             try
             {
-                StockOutLogic.ProcessErrorGoods(e.StockDefectList, e.ReturnStockOutList, e.TempStockOutList,
+                StockOutLogic.ProcessErrorGoods(e.StockList, e.ReturnStockOutList, e.TempStockOutList,
                                                     e.DestroyUnusedGoodsList);
                 e.HasErrors = false;
 
@@ -40,8 +41,8 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void processErrorGoodsView_LoadAllStockDefects(object sender, ProcessErrorGoodsEventArgs e)
         {
-            IList stockDefectList = StockDefectLogic.FindAll(null);
-            e.StockDefectList = stockDefectList;
+            IList stockDefectList = StockLogic.FindAllErrors();
+            e.StockList = stockDefectList;
         }
 
         public IStockOutLogic StockOutLogic
@@ -57,12 +58,6 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         }
 
         public IStockLogic StockLogic
-        {
-            get;
-            set;
-        }
-
-        public IStockDefectLogic StockDefectLogic
         {
             get;
             set;

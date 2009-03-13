@@ -8,7 +8,7 @@ using AppFrame.Model;
 
 namespace AppFrame.DataLayer
 {
-    public class StockDefectDAOImpl : IStockDefectDAO
+    public class StockHistoryDAOImpl : IStockHistoryDAO
     {
         private HibernateTemplate _hibernateTemplate;
 
@@ -25,54 +25,54 @@ namespace AppFrame.DataLayer
         }
 
         /// <summary>
-        /// Find StockDefect object by id. Return null if nothing is found
+        /// Find StockHistory object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockDefect</param>
+        /// <param name="id">Id of StockHistory</param>
         /// <returns></returns>
-        public StockDefect FindById(object id)
+        public StockHistory FindById(object id)
         {
-            return (StockDefect)HibernateTemplate.Get(typeof(StockDefect), id);
+            return (StockHistory)HibernateTemplate.Get(typeof(StockHistory), id);
         }
 
         /// <summary>
-        /// Add StockDefect to database.
+        /// Add StockHistory to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public StockDefect Add(StockDefect data)
+        public StockHistory Add(StockHistory data)
         {
             HibernateTemplate.Save(data);
             return data;
         }
 
         /// <summary>
-        /// Update StockDefect to database.
+        /// Update StockHistory to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Update(StockDefect data)
+        public void Update(StockHistory data)
         {
             HibernateTemplate.Update(data);
         }
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Delete StockHistory from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Delete(StockDefect data)
+        public void Delete(StockHistory data)
         {
             HibernateTemplate.Delete(data);
         }
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Delete StockHistory from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public void DeleteById(object id)
         {
-            StockDefect obj = (StockDefect)HibernateTemplate.Get(typeof(StockDefect), id);
+            StockHistory obj = (StockHistory)HibernateTemplate.Get(typeof(StockHistory), id);
             if (obj != null)
             {
                 HibernateTemplate.Delete(obj);
@@ -80,7 +80,7 @@ namespace AppFrame.DataLayer
         }
 
         /// <summary>
-        /// Find all StockDefect from database. No pagination.
+        /// Find all StockHistory from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
@@ -89,7 +89,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockDefect));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockHistory));
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -125,7 +125,7 @@ namespace AppFrame.DataLayer
         }
 
         /// <summary>
-        /// Find all StockDefect from database. Has pagination.
+        /// Find all StockHistory from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
@@ -151,7 +151,7 @@ namespace AppFrame.DataLayer
                 }
                 queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
 
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockDefect));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockHistory));
 
                 IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
                 if (map.Count > 0)
@@ -207,7 +207,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockDefect)).SetProjection(Projections.RowCount()); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockHistory)).SetProjection(Projections.RowCount()); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -257,7 +257,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockDefect)).SetProjection(type); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockHistory)).SetProjection(type); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -320,7 +320,7 @@ namespace AppFrame.DataLayer
             }
         }
 
-        #region IStockDefectDAO Members
+        #region IStockHistoryDAO Members
 
 
         public IList FindByProductMasters()
@@ -331,7 +331,7 @@ namespace AppFrame.DataLayer
                      try
                      {
                          string queryString =
-                                      " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,StockDefect st " +
+                                      " SELECT pm,SUM(st.Quantity) FROM ProductMaster pm,StockHistory st " +
                                       " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId " +
                                       " GROUP BY pm.ProductName";
                          return session.CreateQuery(queryString).List();
@@ -348,7 +348,7 @@ namespace AppFrame.DataLayer
 
         #endregion
 
-        #region IStockDefectDAO Members
+        #region IStockHistoryDAO Members
 
 
         public IList FindByProductMasterName(ProductMaster master)
@@ -359,7 +359,7 @@ namespace AppFrame.DataLayer
                      try
                      {
                          string queryString =
-                                      " SELECT st FROM ProductMaster pm,StockDefect st " +
+                                      " SELECT st FROM ProductMaster pm,StockHistory st " +
                                       " WHERE pm.ProductMasterId = st.ProductMaster.ProductMasterId AND st.ErrorCount > 0 " +
                                       " AND pm.ProductName = '" + master.ProductName + "'";
                          return session.CreateQuery(queryString).List();

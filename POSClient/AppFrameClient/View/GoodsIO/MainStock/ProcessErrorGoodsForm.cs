@@ -22,7 +22,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private StockOutDetailCollection returnGoodsList;
         private StockOutDetailCollection tempStockOutList;
         private StockOutDetailCollection destroyGoodsList;
-        private StockDefectCollection stockDefectList;
+        private StockCollection stockDefectList;
 
         public ProcessErrorGoodsForm()
         {
@@ -56,7 +56,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             returnGoodsList= new StockOutDetailCollection(bdsReturnGoods);
             tempStockOutList= new StockOutDetailCollection(bdsTempStockOut);
             destroyGoodsList = new StockOutDetailCollection(bdsDestroyGoods);
-            stockDefectList = new StockDefectCollection(bdsStockDefect);
+            stockDefectList = new StockCollection(bdsStockDefect);
 
             LoadStockDefects();
         }
@@ -65,8 +65,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             ProcessErrorGoodsEventArgs eventArgs = new ProcessErrorGoodsEventArgs();
             EventUtility.fireEvent(LoadAllStockDefects,this,eventArgs);
-            IList list = eventArgs.StockDefectList;
-            foreach (StockDefect defect in list)
+            IList list = eventArgs.StockList;
+            foreach (Stock defect in list)
             {
                 stockDefectList.Add(defect);                
             }
@@ -84,13 +84,13 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                StockDefect defect = stockDefectList[row.Index];
+                Stock defect = stockDefectList[row.Index];
                 StockOutDetail detail = new StockOutDetail();
                 detail.Product = defect.Product;
                 detail.ProductMaster = defect.ProductMaster;
-                detail.Quantity = defect.ErrorCount+defect.DamageCount;
-                detail.ErrorQuantity = defect.ErrorCount;
-                detail.DamageQuantity = defect.DamageCount;
+                detail.Quantity = defect.ErrorQuantity + defect.DamageQuantity;
+                detail.ErrorQuantity = defect.ErrorQuantity;
+                detail.DamageQuantity = defect.DamageQuantity;
                 returnGoodsList.Add(detail);
             }
             bdsReturnGoods.EndEdit();
@@ -108,12 +108,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                StockDefect defect = stockDefectList[row.Index];
+                Stock defect = stockDefectList[row.Index];
                 StockOutDetail detail = new StockOutDetail();
                 detail.Product = defect.Product;
                 detail.ProductMaster = defect.ProductMaster;
-                detail.Quantity = defect.ErrorCount;
-                detail.ErrorQuantity = defect.ErrorCount;
+                detail.ErrorQuantity = defect.ErrorQuantity;
+                detail.Quantity = detail.ErrorQuantity;
                 tempStockOutList.Add(detail);
             }
             bdsTempStockOut.EndEdit();
@@ -130,12 +130,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                StockDefect defect = stockDefectList[row.Index];
+                Stock defect = stockDefectList[row.Index];
                 StockOutDetail detail = new StockOutDetail();
                 detail.Product = defect.Product;
                 detail.ProductMaster = defect.ProductMaster;
-                detail.LostQuantity = defect.LostCount;
-                detail.DamageQuantity = defect.DamageCount;
+                detail.LostQuantity = defect.LostQuantity;
+                detail.DamageQuantity = defect.DamageQuantity;
                 detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
                 destroyGoodsList.Add(detail);
             }
@@ -200,7 +200,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             eventArgs.ReturnStockOutList = ObjectConverter.ConvertToNonGenericList(returnGoodsList);
             eventArgs.TempStockOutList = ObjectConverter.ConvertToNonGenericList(tempStockOutList);
             eventArgs.DestroyUnusedGoodsList = ObjectConverter.ConvertToNonGenericList(destroyGoodsList);
-            eventArgs.StockDefectList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
+            eventArgs.StockList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
             EventUtility.fireEvent(SaveStockDefects,this,eventArgs);
             if(!eventArgs.HasErrors)
             {

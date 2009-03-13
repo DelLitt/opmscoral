@@ -34,46 +34,19 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void inventoryCheckingView_SaveInventoryCheckingEvent(object sender, InventoryCheckingEventArgs e)
         {
-           if(e.SaveStockDefectList!=null && e.SaveStockDefectList.Count > 0)
+           if(e.SaveStockList!=null && e.SaveStockList.Count > 0)
            {
-               long maxId = StockDefectLogic.FindMaxStockDefectId();
-               maxId = maxId + 1;
-               foreach (StockDefect stockDefect in e.SaveStockDefectList)
+               
+               foreach (Stock stock in e.SaveStockList)
                {
-                   stockDefect.CreateDate = DateTime.Now;
-                   stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                   stockDefect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                   stockDefect.UpdateDate = DateTime.Now;
-                   stockDefect.DelFlg = 0;
-                   // get stock quantity
-                   stockDefect.Quantity = stockDefect.Stock.Quantity;
-                   // calculate business
-
-                   // calculate business
-                   /*int currDamageCount = stockDefect.DamageCount - stockDefect.OldDamageCount;
-                   int currErrorCount = stockDefect.ErrorCount - stockDefect.OldErrorCount;
-                   int currUnconfirmCount = stockDefect.UnconfirmCount - stockDefect.OldUnconfirmCount;
-                   int currLostCount = stockDefect.LostCount - stockDefect.OldLostCount;*/
-                   int currDamageCount = stockDefect.DamageCount ;
-                   int currErrorCount = stockDefect.ErrorCount ;
-                   int currUnconfirmCount = stockDefect.UnconfirmCount ;
-                   int currLostCount = stockDefect.LostCount ;
-
-                   long totalDefects = currDamageCount + currErrorCount + currLostCount + currUnconfirmCount;
-                   /*if(stockDefect.Quantity < totalDefects)
-                   {
-                       throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");                       
-                   }*/
-
-                   //stockDefect.GoodCount = stockDefect.Quantity - totalDefects;
+                   stock.CreateDate = DateTime.Now;
+                   stock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                   stock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                   stock.UpdateDate = DateTime.Now;
+                   stock.DelFlg = 0;
                    
-                   // update the stock remains equal good count
-                   stockDefect.Stock.Quantity = stockDefect.GoodCount;
-                   stockDefect.Quantity = stockDefect.Stock.Quantity+ totalDefects;
-                   stockDefect.StockDefectId = maxId++;
-
-                   StockDefectLogic.Process(stockDefect);
-                   StockLogic.Update(stockDefect.Stock);
+                   // calculate business
+                   StockLogic.Update(stock);
 
                    e.HasErrors = false;
                    
@@ -95,14 +68,14 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             {
                 e.ScannedStock = null;
             }
-            IList stockDefectList = StockDefectLogic.FindAll(objectCriteria);
+            IList stockDefectList = StockLogic.FindAll(objectCriteria);
             if(stockDefectList!=null && stockDefectList.Count > 0)
             {
-                e.ScannedStockDefect = (StockDefect)stockDefectList[0];
+                e.ScannedStock = (Stock)stockDefectList[0];
             }
             else
             {
-                e.ScannedStockDefect = null;
+                e.ScannedStock = null;
             }
         }
 
@@ -171,12 +144,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         #endregion
 
         #region IInventoryCheckingController Members
-
-
-        public AppFrame.Logic.IStockDefectLogic StockDefectLogic
-        {
-            get;set;
-        }
+        
 
         #endregion
     }

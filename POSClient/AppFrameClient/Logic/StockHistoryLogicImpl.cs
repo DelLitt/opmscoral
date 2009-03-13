@@ -6,110 +6,110 @@ using AppFrame.DataLayer;
 
 namespace AppFrame.Logic
 {
-    public class StockDefectLogicImpl : IStockDefectLogic
+    public class StockHistoryLogicImpl : IStockHistoryLogic
     {
-        private IStockDefectDAO _stockDefectDAO;
+        private IStockHistoryDAO _StockHistoryDAO;
 
-        public IStockDefectDAO StockDefectDAO
+        public IStockHistoryDAO StockHistoryDAO
         {
             get
             {
-                return _stockDefectDAO;
+                return _StockHistoryDAO;
             }
             set
             {
-                _stockDefectDAO = value;
+                _StockHistoryDAO = value;
             }
         }
 
         /// <summary>
-        /// Find StockDefect object by id. Return null if nothing is found
+        /// Find StockHistory object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockDefect</param>
+        /// <param name="id">Id of StockHistory</param>
         /// <returns></returns>
-        public StockDefect FindById(object id)
+        public StockHistory FindById(object id)
         {
-            return StockDefectDAO.FindById(id);
+            return StockHistoryDAO.FindById(id);
         }
 
         /// <summary>
-        /// Add StockDefect to database.
+        /// Add StockHistory to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public StockDefect Add(StockDefect data)
+        public StockHistory Add(StockHistory data)
         {
-            StockDefectDAO.Add(data);
+            StockHistoryDAO.Add(data);
             return data;
         }
 
         /// <summary>
-        /// Update StockDefect to database.
+        /// Update StockHistory to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public void Update(StockDefect data)
+        public void Update(StockHistory data)
         {
-            StockDefectDAO.Update(data);
+            StockHistoryDAO.Update(data);
         }
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Delete StockHistory from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public void Delete(StockDefect data)
+        public void Delete(StockHistory data)
         {
-            StockDefectDAO.Delete(data);
+            StockHistoryDAO.Delete(data);
         }
 
         /// <summary>
-        /// Delete StockDefect from database.
+        /// Delete StockHistory from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
         public void DeleteById(object id)
         {
-            StockDefectDAO.DeleteById(id);
+            StockHistoryDAO.DeleteById(id);
         }
 
         /// <summary>
-        /// Find all StockDefect from database. No pagination.
+        /// Find all StockHistory from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         public IList FindAll(ObjectCriteria criteria)
         {
-            return StockDefectDAO.FindAll(criteria);
+            return StockHistoryDAO.FindAll(criteria);
         }
 
         /// <summary>
-        /// Find all StockDefect from database. Has pagination.
+        /// Find all StockHistory from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return StockDefectDAO.FindPaging(criteria);
+            return StockHistoryDAO.FindPaging(criteria);
         }
 
-        #region IStockDefectLogic Members
+        #region IStockHistoryLogic Members
 
 
-        public void Process(StockDefect defect)
+        public void Process(StockHistory defect)
         {
             // find exist stock base on productid
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("Product.ProductId", defect.Product.ProductId);
-            IList existList = StockDefectDAO.FindAll(objectCriteria);
+            IList existList = StockHistoryDAO.FindAll(objectCriteria);
 
             if (existList.Count > 0) // exist stock ?
             {
-                StockDefect existDefect = (StockDefect)existList[0];
+                StockHistory existDefect = (StockHistory)existList[0];
                 existDefect.DamageCount = defect.DamageCount;
                 existDefect.Description = defect.Description;
                 existDefect.ErrorCount = defect.ErrorCount;
@@ -124,24 +124,24 @@ namespace AppFrame.Logic
                 existDefect.UpdateId = defect.UpdateId;
 
                 existDefect.ExclusiveKey = existDefect.ExclusiveKey + 1;
-                defect.StockDefectId = existDefect.StockDefectId;
+                defect.StockHistoryId = existDefect.StockHistoryId;
 
-                StockDefectDAO.Update(existDefect);
+                StockHistoryDAO.Update(existDefect);
             }
             else
             {
-                StockDefectDAO.Add(defect);
+                StockHistoryDAO.Add(defect);
             }
         }
 
         #endregion
 
-        #region IStockDefectLogic Members
+        #region IStockHistoryLogic Members
 
 
-        public long FindMaxStockDefectId()
+        public long FindMaxStockHistoryId()
         {
-            object maxId = StockDefectDAO.SelectSpecificType(null, Projections.Max("StockDefectId"));
+            object maxId = StockHistoryDAO.SelectSpecificType(null, Projections.Max("StockHistoryId"));
             if (maxId != null)
             {
                 return (long) maxId;
@@ -154,22 +154,22 @@ namespace AppFrame.Logic
 
         #endregion
 
-        #region IStockDefectLogic Members
+        #region IStockHistoryLogic Members
 
 
         public IList FindAllProductMasters()
         {
-            return StockDefectDAO.FindByProductMasters();
+            return StockHistoryDAO.FindByProductMasters();
         }
 
         #endregion
 
-        #region IStockDefectLogic Members
+        #region IStockHistoryLogic Members
 
 
         public IList FindByProductMasterName(ProductMaster master)
         {
-            return StockDefectDAO.FindByProductMasterName(master);
+            return StockHistoryDAO.FindByProductMasterName(master);
         }
 
         #endregion

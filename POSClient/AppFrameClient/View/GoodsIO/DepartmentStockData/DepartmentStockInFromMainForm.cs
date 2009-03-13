@@ -529,9 +529,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
 //            if (e.ColumnIndex == 0 && e.RowIndex >= 0 && e.RowIndex < deptSIDetailList.Count)
 //            {
-//                if (deptSI != null
-//                    && deptSI.DepartmentStockInPK != null
-//                    && !string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId)
+//                if (deptSO != null
+//                    && deptSO.DepartmentStockInPK != null
+//                    && !string.IsNullOrEmpty(deptSO.DepartmentStockInPK.StockInId)
 //                    && deptSIDetailList[e.RowIndex].DepartmentStockInDetailPK != null
 //                    && !string.IsNullOrEmpty(deptSIDetailList[e.RowIndex].DepartmentStockInDetailPK.StockInId))
 //                {

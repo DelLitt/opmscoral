@@ -37,57 +37,28 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         void inventoryCheckingView_SaveInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)
         {
-            if (e.SaveStockDefectList != null && e.SaveStockDefectList.Count > 0)
+            if (e.SaveStockList != null && e.SaveStockList.Count > 0)
             {
 
                 long maxId = DepartmentStockDefectLogic.GetMaxDefectId();
                 maxId = maxId + 1;
-                foreach (DepartmentStockDefect defect in e.SaveStockDefectList)
+                foreach (DepartmentStock stock in e.SaveStockList)
                 {
-                    if(    defect.DamageCount == 0 && defect.OldDamageCount == 0 
-                        && defect.ErrorCount == 0 && defect.OldErrorCount == 0 
-                        && defect.LostCount == 0 && defect.OldLostCount == 0 
-                        && defect.UnconfirmCount == 0 && defect.OldUnconfirmCount == 0 )
+                    if(    stock.DamageQuantity == 0 && stock.OldDamageQuantity == 0 
+                        && stock.ErrorQuantity == 0 && stock.OldErrorQuantity == 0 
+                        && stock.LostQuantity == 0 && stock.OldLostQuantity == 0 
+                        && stock.UnconfirmQuantity == 0 && stock.OldUnconfirmQuantity == 0 )
                     {
                         continue;
                     }
 
-                    defect.CreateDate = DateTime.Now;
-                    defect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                    defect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                    defect.UpdateDate = DateTime.Now;
-                    defect.DelFlg = 0;
+                    stock.CreateDate = DateTime.Now;
+                    stock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    stock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    stock.UpdateDate = DateTime.Now;
+                    stock.DelFlg = 0;
 
-                    // get current stock quantity
-                    defect.Quantity = defect.DepartmentStock.Quantity;
-                    
-                    // calculate business
-                    /*int currDamageCount = defect.DamageCount - defect.OldDamageCount;
-                    int currErrorCount = defect.ErrorCount - defect.OldErrorCount;
-                    int currUnconfirmCount = defect.UnconfirmCount - defect.OldUnconfirmCount;
-                    int currLostCount = defect.LostCount - defect.OldLostCount;*/
-                    int currDamageCount = defect.DamageCount ;
-                    int currErrorCount = defect.ErrorCount ;
-                    int currUnconfirmCount = defect.UnconfirmCount ;
-                    int currLostCount = defect.LostCount;
-
-                    long totalDefects = currDamageCount + currErrorCount + currLostCount + currUnconfirmCount;
-
-                    /*if (defect.Quantity < totalDefects)
-                    {
-                        throw new BusinessException("Số lượng hàng lỗi,hư,mất... lớn hơn số tồn thực");
-                    }*/
-
-                    defect.GoodCount = defect.Quantity - totalDefects;
-
-                    // update the stock remains equal good count
-                    defect.DepartmentStock.Quantity = defect.GoodCount;
-                    defect.Quantity = defect.DepartmentStock.Quantity;
-
-                    defect.DepartmentStockDefectPK.DepartmentStockDefectId = maxId++;
-
-                    DepartmentStockDefectLogic.Process(defect);
-                    DepartmentStockLogic.Update(defect.DepartmentStock); 
+                    DepartmentStockLogic.Update(stock); 
                 }
                 
                 
@@ -110,20 +81,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             else
             {
                 e.ScannedStock = null;
-            }
-            objectCriteria = new ObjectCriteria();
-            objectCriteria.AddEqCriteria("Product.ProductId", e.InputBarcode);
-            objectCriteria.AddEqCriteria("DepartmentStockDefectPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
-            objectCriteria.AddEqCriteria("DelFlg", (long)0);
-
-            IList stockDefectList = DepartmentStockDefectLogic.FindAll(objectCriteria);
-            if (stockDefectList != null && stockDefectList.Count > 0)
-            {
-                e.ScannedStockDefect = (DepartmentStockDefect)stockDefectList[0];
-            }
-            else
-            {
-                e.ScannedStockDefect = null;
             }
         }
 

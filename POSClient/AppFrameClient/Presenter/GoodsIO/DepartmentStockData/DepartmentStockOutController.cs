@@ -134,27 +134,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 return;
             }
 
-            IList stockDefectList = DepartmentStockDefectLogic.FindAll(criteria);
-            e.DepartmentStockDefectList = new ArrayList();
+            
+            e.DepartmentStockList = new ArrayList();
             e.FoundDepartmentStockOutDetailList = new ArrayList();
             foreach (DepartmentStock stock in list)
             {
                 DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
                 detail.Product = stock.Product;
-                detail.GoodQuantity = stock.Quantity;
-                foreach (DepartmentStockDefect def in stockDefectList)
-                {
-                    if (detail.Product.ProductId.Equals(def.Product.ProductId))
-                    {
-                        detail.ErrorQuantity = def.ErrorCount;
-                        detail.LostQuantity = def.LostCount;
-                        detail.DamageQuantity = def.DamageCount;
-                        detail.UnconfirmQuantity = def.UnconfirmCount;
-                        e.DepartmentStockDefectList.Add(def);
-                    }
-                }
-                detail.Quantity = detail.GoodQuantity + detail.ErrorQuantity + detail.DamageQuantity +
-                                  detail.UnconfirmQuantity;
+                detail.GoodQuantity = stock.GoodQuantity;
+                detail.ErrorQuantity = stock.ErrorQuantity;
+                detail.LostQuantity = stock.LostQuantity;
+                detail.DamageQuantity = stock.DamageQuantity;
+                detail.UnconfirmQuantity = stock.UnconfirmQuantity;
+                detail.Quantity = stock.Quantity;
+
+                e.DepartmentStockList.Add(stock);
                 e.FoundDepartmentStockOutDetailList.Add(detail);
             }
         }
@@ -232,20 +226,14 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail();
             e.SelectedDepartmentStockOutDetail.Product = stock.Product;
             e.SelectedDepartmentStockOutDetail.Quantity = stock.Quantity;
+            e.SelectedDepartmentStockOutDetail.GoodQuantity = stock.Quantity;
+            e.SelectedDepartmentStockOutDetail.ErrorQuantity = stock.ErrorQuantity;
+            e.SelectedDepartmentStockOutDetail.LostQuantity = stock.LostQuantity;
+            e.SelectedDepartmentStockOutDetail.DamageQuantity = stock.DamageQuantity;
+            e.SelectedDepartmentStockOutDetail.UnconfirmQuantity = stock.UnconfirmQuantity;
+
 
             e.EventResult = "Success";
-
-            list = DepartmentStockDefectLogic.FindAll(criteria);
-            if (list.Count == 0)
-            {
-                return;
-            }
-            var def = list[0] as DepartmentStockDefect;
-            e.SelectedDepartmentStockOutDetail.ErrorQuantity = def.ErrorCount;
-            e.SelectedDepartmentStockOutDetail.LostQuantity = def.LostCount;
-            e.SelectedDepartmentStockOutDetail.DamageQuantity = def.DamageCount;
-            e.SelectedDepartmentStockOutDetail.UnconfirmQuantity = def.UnconfirmCount;
-            e.DepartmentStockDefect = def;
         }
 
         public void _departmentStockInView_SaveStockOutEvent(object sender, DepartmentStockOutEventArgs e)

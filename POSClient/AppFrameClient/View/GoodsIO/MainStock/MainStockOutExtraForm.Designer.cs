@@ -53,7 +53,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.button1 = new System.Windows.Forms.Button();
-            this.dgvDeptStockIn = new System.Windows.Forms.DataGridView();
+            this.dgvDeptStockOut = new System.Windows.Forms.DataGridView();
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -88,7 +88,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -239,11 +239,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dgvDeptStockIn
+            // dgvDeptStockOut
             // 
-            this.dgvDeptStockIn.AllowUserToAddRows = false;
-            this.dgvDeptStockIn.AutoGenerateColumns = false;
-            this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDeptStockOut.AllowUserToAddRows = false;
+            this.dgvDeptStockOut.AutoGenerateColumns = false;
+            this.dgvDeptStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
             this.ProducType,
             this.columnProductId,
@@ -262,15 +262,15 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
-            this.dgvDeptStockIn.DataSource = this.bdsStockIn;
-            this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 213);
-            this.dgvDeptStockIn.Name = "dgvDeptStockIn";
-            this.dgvDeptStockIn.Size = new System.Drawing.Size(979, 280);
-            this.dgvDeptStockIn.TabIndex = 8;
-            this.dgvDeptStockIn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
-            this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
-            this.dgvDeptStockIn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvDeptStockIn_KeyUp);
+            this.dgvDeptStockOut.ContextMenuStrip = this.ctxMenuDept;
+            this.dgvDeptStockOut.DataSource = this.bdsStockIn;
+            this.dgvDeptStockOut.Location = new System.Drawing.Point(11, 213);
+            this.dgvDeptStockOut.Name = "dgvDeptStockOut";
+            this.dgvDeptStockOut.Size = new System.Drawing.Size(979, 280);
+            this.dgvDeptStockOut.TabIndex = 8;
+            this.dgvDeptStockOut.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
+            this.dgvDeptStockOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
+            this.dgvDeptStockOut.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvDeptStockIn_KeyUp);
             // 
             // SearchCreate
             // 
@@ -589,14 +589,14 @@
             this.Controls.Add(this.txtSumValue);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgvDeptStockIn);
+            this.Controls.Add(this.dgvDeptStockOut);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainStockOutExtraForm";
             this.Text = "Nhập hàng hoá";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -623,7 +623,7 @@
         public System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.HelpProvider helpProvider1;
         public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.DataGridView dgvDeptStockIn;
+        public System.Windows.Forms.DataGridView dgvDeptStockOut;
         private System.Windows.Forms.ComboBox cboProductMasters;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInput;

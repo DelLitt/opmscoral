@@ -344,10 +344,6 @@
             this.cboProductMasters.TabIndex = 21;
             this.cboProductMasters.Visible = false;
             // 
-            // bdsProductMasters
-            // 
-            this.bdsProductMasters.DataSource = typeof(AppFrameClient.ViewModel.StockViewCollection);
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

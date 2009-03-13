@@ -30,9 +30,9 @@ namespace AppFrame.DataLayer
         /// </summary>
         /// <param name="id">Id of DepartmentStockDefect</param>
         /// <returns></returns>
-        public DepartmentStockDefect FindById(object id)
+        public DepartmentStockHistory FindById(object id)
         {
-            return (DepartmentStockDefect)HibernateTemplate.Get(typeof(DepartmentStockDefect), id);
+            return (DepartmentStockHistory)HibernateTemplate.Get(typeof(DepartmentStockHistory), id);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace AppFrame.DataLayer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public DepartmentStockDefect Add(DepartmentStockDefect data)
+        public DepartmentStockHistory Add(DepartmentStockHistory data)
         {
             HibernateTemplate.Save(data);
             return data;
@@ -51,7 +51,7 @@ namespace AppFrame.DataLayer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Update(DepartmentStockDefect data)
+        public void Update(DepartmentStockHistory data)
         {
             HibernateTemplate.Update(data);
         }
@@ -61,7 +61,7 @@ namespace AppFrame.DataLayer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Delete(DepartmentStockDefect data)
+        public void Delete(DepartmentStockHistory data)
         {
             HibernateTemplate.Delete(data);
         }
@@ -73,7 +73,7 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public void DeleteById(object id)
         {
-            DepartmentStockDefect obj = (DepartmentStockDefect)HibernateTemplate.Get(typeof(DepartmentStockDefect), id);
+            DepartmentStockHistory obj = (DepartmentStockHistory)HibernateTemplate.Get(typeof(DepartmentStockHistory), id);
             if (obj != null)
             {
                 HibernateTemplate.Delete(obj);
@@ -90,7 +90,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockDefect));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockHistory));
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -152,7 +152,7 @@ namespace AppFrame.DataLayer
                 }
                 queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
 
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockDefect));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockHistory));
 
                 IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
                 if (map.Count > 0)
@@ -208,7 +208,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockDefect)).SetProjection(Projections.RowCount()); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockHistory)).SetProjection(Projections.RowCount()); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -258,7 +258,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockDefect)).SetProjection(type); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockHistory)).SetProjection(type); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();

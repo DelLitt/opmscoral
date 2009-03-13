@@ -19,7 +19,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
     public partial class BaseStockOutForm : AppFrame.Common.BaseForm,IBaseStockOutView
     {
         protected StockViewCollection stockViewList = null;
-        protected StockDefectCollection stockDefectList = null;
+        protected StockCollection stockDefectList = null;
         protected StockOutDetailCollection stockOutList = null;
 
         protected DepartmentStockDefectCollection deptStockDefectList = null;
@@ -34,10 +34,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             stockViewList = new StockViewCollection(bdsProductMasters);
             bdsProductMasters.DataSource = stockViewList;
+            bdsProductMasters.ResetBindings(true);
 
             if (!DepartmentReturnForm)
             {
-                stockDefectList = new StockDefectCollection(bdsStockDefect);
+                stockDefectList = new StockCollection(bdsStockDefect);
                 bdsStockDefect.DataSource = stockDefectList;
                 bdsStockDefect.ResetBindings(true);
 
@@ -230,7 +231,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 eventArgs.RequestProductMaster = master;
                 EventUtility.fireEvent(LoadGoodsByNameEvent, this, eventArgs);
 
-                foreach (StockDefect stockDefect in eventArgs.ReturnStockDefectList)
+                foreach (Stock stockDefect in eventArgs.ReturnStockDefectList)
                 {
                     stockDefectList.Add(stockDefect);
                 }
@@ -242,7 +243,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 eventArgs.RequestProductMaster = master;
                 EventUtility.fireEvent(LoadDeptGoodsByNameEvent, this, eventArgs);
 
-                foreach (DepartmentStockDefect stockDefect in eventArgs.ReturnDeptStockDefectList)
+                foreach (DepartmentStockHistory stockDefect in eventArgs.ReturnDeptStockDefectList)
                 {
                     deptStockDefectList.Add(stockDefect);
                 }
@@ -273,7 +274,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     return;
                 }
-                if (stockDefectList[dgvStockDefect.CurrentCell.OwningRow.Index].ErrorCount == 0)
+                if (stockDefectList[dgvStockDefect.CurrentCell.OwningRow.Index].ErrorQuantity == 0)
                 {
                     MessageBox.Show("Lượng lỗi của mặt hàng này là không");
                     return;
@@ -281,7 +282,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 StockOutDetail soDetail = stockOutList.AddNew();
                 soDetail.Product = stockDefectList[dgvStockDefect.CurrentCell.OwningRow.Index].Product;
                 soDetail.DelFlg = 0;
-                soDetail.Quantity = stockDefectList[dgvStockDefect.CurrentCell.OwningRow.Index].ErrorCount;
+                soDetail.Quantity = stockDefectList[dgvStockDefect.CurrentCell.OwningRow.Index].ErrorQuantity;
                 soDetail.CreateDate = DateTime.Now;
                 soDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 soDetail.UpdateDate = DateTime.Now;
@@ -329,7 +330,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
         }
 
-        private bool HasInDeptList(DepartmentStockDefect defect, DepartmentStockOutDetailCollection list)
+        private bool HasInDeptList(DepartmentStockHistory defect, DepartmentStockOutDetailCollection list)
         {
             foreach (DepartmentStockOutDetail detail in list)
             {
@@ -341,7 +342,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             return false;
         }
 
-        private bool HasInList(StockDefect defect, StockOutDetailCollection list)
+        private bool HasInList(Stock defect, StockOutDetailCollection list)
         {
             foreach (StockOutDetail detail in list)
             {

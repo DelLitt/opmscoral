@@ -8,7 +8,7 @@ using AppFrame.Model;
 
 namespace AppFrameClient.ViewModel
 {
-    public class StockDefectCollection :BaseCollection<StockDefect>
+    public class StockDefectCollection :BaseCollection<StockHistory>
     {
         public StockDefectCollection(BindingSource source) : base(source)
         {
@@ -18,7 +18,8 @@ namespace AppFrameClient.ViewModel
         {
         }
 
-        public StockDefectCollection(IList<StockDefect> list) : base(list)
+        public StockDefectCollection(IList<StockHistory> list)
+            : base(list)
         {
 
         }

@@ -615,8 +615,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             /*if (e.ColumnIndex == 0 && e.RowIndex >= 0 && e.RowIndex < deptSIDetailList.Count)
             {
-                if (deptSI != null
-                    && !string.IsNullOrEmpty(deptSI.StockInId)
+                if (deptSO != null
+                    && !string.IsNullOrEmpty(deptSO.StockInId)
                     && deptSIDetailList[e.RowIndex].StockInDetailPK != null
                     && !string.IsNullOrEmpty(deptSIDetailList[e.RowIndex].StockInDetailPK.StockInId))
                 {

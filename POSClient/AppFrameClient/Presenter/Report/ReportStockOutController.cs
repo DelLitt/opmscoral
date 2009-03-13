@@ -129,57 +129,14 @@ namespace AppFrameClient.Presenter.Report
                     if (productList != null)
                     {
                         Stock currStock = (Stock)productList[0];
+                        currStock.GoodQuantity += detail.GoodQuantity;
                         currStock.Quantity += detail.GoodQuantity;
-
-                        ObjectCriteria defectCriteria = new ObjectCriteria();
-                        defectCriteria.AddEqCriteria("Product.ProductId", detail.Product.ProductId);
-                        defectCriteria.AddEqCriteria("Stock.StockId", currStock.StockId);
-                        IList defectList = StockDefectLogic.FindAll(defectCriteria);
-                        if(defectList!=null)
-                        {
-                            if (defectList.Count > 0)
-                            {
-                                StockDefect currDefect = (StockDefect) defectList[0];
-                                currDefect.GoodCount = currStock.Quantity;
-                                currDefect.ErrorCount = currDefect.ErrorCount+ (int) detail.ErrorQuantity;
-                                currDefect.DamageCount = currDefect.DamageCount + (int) detail.DamageQuantity;
-
-                                currDefect.Quantity = currDefect.GoodCount + currDefect.ErrorCount +
-                                                      currDefect.DamageCount +
-                                                      currDefect.UnconfirmCount;
-                                StockDefectLogic.Update(currDefect);
-                            }
-                            else
-                            {
-                                long maxId = StockDefectLogic.FindMaxStockDefectId();
-                                maxId = maxId + 1;
-
-                                StockDefect stockDefect = new StockDefect();
-                                stockDefect.Product = detail.Product;
-                                stockDefect.ProductMaster = currStock.ProductMaster;
-
-                                stockDefect.Description = departmentStockOut.DefectStatus.DefectStatusName;
-                                stockDefect.Stock = currStock;
-
-                                stockDefect.GoodCount = currStock.Quantity;
-                                stockDefect.ErrorCount = (int)detail.ErrorQuantity;
-                                stockDefect.DamageCount = (int)detail.DamageQuantity;
-                                stockDefect.Quantity = stockDefect.GoodCount + stockDefect.ErrorCount +
-                                                      stockDefect.DamageCount +
-                                                      stockDefect.UnconfirmCount;
-
-                                stockDefect.CreateDate = DateTime.Now;
-                                stockDefect.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                                stockDefect.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                                stockDefect.UpdateDate = DateTime.Now;
-                                stockDefect.DelFlg = 0;
-                                
-
-                                stockDefect.StockDefectId = maxId;
-
-                                StockDefectLogic.Add(stockDefect);
-                            }
-                        }
+                        currStock.ErrorQuantity += detail.ErrorQuantity;
+                        currStock.Quantity += detail.ErrorQuantity;
+                        currStock.LostQuantity += detail.LostQuantity;
+                        currStock.LostQuantity += detail.LostQuantity;
+                        currStock.DamageQuantity += detail.DamageQuantity;
+                        currStock.DamageQuantity += detail.DamageQuantity;
                         StockLogic.Update(currStock); 
                         
                     }
@@ -251,12 +208,7 @@ namespace AppFrameClient.Presenter.Report
             get;set;
             
         }
-
-        public AppFrame.Logic.IStockDefectLogic StockDefectLogic
-        {
-            get;set;
-        }
-
+        
         #endregion
     }
 }

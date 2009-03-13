@@ -31,7 +31,7 @@ namespace AppFrame.Logic
         /// </summary>
         /// <param name="id">Id of DepartmentStockDefect</param>
         /// <returns></returns>
-        public DepartmentStockDefect FindById(object id)
+        public DepartmentStockHistory FindById(object id)
         {
             return DepartmentStockDefectDAO.FindById(id);
         }
@@ -42,7 +42,7 @@ namespace AppFrame.Logic
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public DepartmentStockDefect Add(DepartmentStockDefect data)
+        public DepartmentStockHistory Add(DepartmentStockHistory data)
         {
             DepartmentStockDefectDAO.Add(data);
             return data;
@@ -54,7 +54,7 @@ namespace AppFrame.Logic
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public void Update(DepartmentStockDefect data)
+        public void Update(DepartmentStockHistory data)
         {
             DepartmentStockDefectDAO.Update(data);
         }
@@ -65,7 +65,7 @@ namespace AppFrame.Logic
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly = false)]
-        public void Delete(DepartmentStockDefect data)
+        public void Delete(DepartmentStockHistory data)
         {
             DepartmentStockDefectDAO.Delete(data);
         }
@@ -104,7 +104,7 @@ namespace AppFrame.Logic
         #region IDepartmentStockDefectLogic Members
 
         [Transaction(ReadOnly = false)]
-        public void Process(DepartmentStockDefect defect)
+        public void Process(DepartmentStockHistory defect)
         {
             
             // find exist stock base on productid
@@ -115,7 +115,7 @@ namespace AppFrame.Logic
 
             if (existList.Count > 0) // exist stock ?
             {
-                DepartmentStockDefect existDefect = (DepartmentStockDefect)existList[0];
+                DepartmentStockHistory existDefect = (DepartmentStockHistory)existList[0];
                 existDefect.DamageCount = defect.DamageCount;
                 existDefect.Description = defect.Description;
                 existDefect.ErrorCount = defect.ErrorCount;
@@ -130,7 +130,7 @@ namespace AppFrame.Logic
                 existDefect.UpdateId = defect.UpdateId;
 
                 existDefect.ExclusiveKey = existDefect.ExclusiveKey + 1;
-                defect.DepartmentStockDefectPK.DepartmentStockDefectId = existDefect.DepartmentStockDefectPK.DepartmentStockDefectId;
+                defect.DepartmentStockDefectPK.DepartmentStockHistoryId = existDefect.DepartmentStockDefectPK.DepartmentStockHistoryId;
                 defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
 
 
@@ -152,7 +152,7 @@ namespace AppFrame.Logic
             object maxId = DepartmentStockDefectDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
             long nextMaxId = maxId != null ? (long) maxId : 1;
 
-            foreach (DepartmentStockDefect defect in list)
+            foreach (DepartmentStockHistory defect in list)
             {
 
                 // find exist stock base on productid
@@ -164,7 +164,7 @@ namespace AppFrame.Logic
 
                 if (existList.Count > 0) // exist stock ?
                 {
-                    DepartmentStockDefect existDefect = (DepartmentStockDefect) existList[0];
+                    DepartmentStockHistory existDefect = (DepartmentStockHistory) existList[0];
                     existDefect.DamageCount = defect.DamageCount;
                     existDefect.Description = defect.Description;
                     existDefect.ErrorCount = defect.ErrorCount;
@@ -179,8 +179,8 @@ namespace AppFrame.Logic
                     existDefect.UpdateId = defect.UpdateId;
 
                     existDefect.ExclusiveKey = existDefect.ExclusiveKey + 1;
-                    defect.DepartmentStockDefectPK.DepartmentStockDefectId =
-                        existDefect.DepartmentStockDefectPK.DepartmentStockDefectId;
+                    defect.DepartmentStockDefectPK.DepartmentStockHistoryId =
+                        existDefect.DepartmentStockDefectPK.DepartmentStockHistoryId;
                     defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
 
 
@@ -188,7 +188,7 @@ namespace AppFrame.Logic
                 }
                 else
                 {
-                    defect.DepartmentStockDefectPK.DepartmentStockDefectId = nextMaxId++;
+                    defect.DepartmentStockDefectPK.DepartmentStockHistoryId = nextMaxId++;
                     defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
                     
                     DepartmentStockDefectDAO.Add(defect);
