@@ -33,26 +33,26 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 mainStockInView = value;
 
                 mainStockInView.FindBarcodeEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_FindBarcodeEvent);
+                    _departmentStockOutView_FindBarcodeEvent);
                 mainStockInView.SaveStockOutEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_SaveStockOutEvent);
+                    _departmentStockOutView_SaveStockOutEvent);
                 mainStockInView.FillProductToComboEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_FillProductToComboEvent);
+                    _departmentStockOutView_FillProductToComboEvent);
                 mainStockInView.LoadStockStatusEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_LoadStockStatusEvent);
+                    _departmentStockOutView_LoadStockStatusEvent);
                 mainStockInView.LoadGoodsByNameColorSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_LoadGoodsByNameColorSizeEvent);
+                    _departmentStockOutView_LoadGoodsByNameColorSizeEvent);
                 mainStockInView.LoadGoodsByNameEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_LoadGoodsByNameEvent);
+                    _departmentStockOutView_LoadGoodsByNameEvent);
                 mainStockInView.LoadProductColorEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_LoadProductColorEvent);
+                    _departmentStockOutView_LoadProductColorEvent);
                 mainStockInView.LoadProductSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
-                    _departmentStockInView_LoadProductSizeEvent);
+                    _departmentStockOutView_LoadProductSizeEvent);
 
             }
         }
 
-        public void _departmentStockInView_LoadProductSizeEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_LoadProductSizeEvent(object sender, DepartmentStockOutEventArgs e)
         {
             if (e.SelectedDepartmentStockOutDetail != null && e.SelectedDepartmentStockOutDetail.Product != null && !string.IsNullOrEmpty(e.SelectedDepartmentStockOutDetail.Product.ProductMaster.ProductName))
             {
@@ -72,7 +72,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
-        public void _departmentStockInView_LoadProductColorEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_LoadProductColorEvent(object sender, DepartmentStockOutEventArgs e)
         {
             if (e.SelectedDepartmentStockOutDetail != null && e.SelectedDepartmentStockOutDetail.Product != null
                                     && !string.IsNullOrEmpty(e.SelectedDepartmentStockOutDetail.Product.ProductMaster.ProductName))
@@ -93,7 +93,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
-        public void _departmentStockInView_LoadGoodsByNameEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_LoadGoodsByNameEvent(object sender, DepartmentStockOutEventArgs e)
         {
             DepartmentStockOutDetail detail = e.SelectedDepartmentStockOutDetail;
             ObjectCriteria objectCriteria = new ObjectCriteria();
@@ -113,12 +113,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 //            GetRemainStockNumber(detailList);
         }
 
-        public void _departmentStockInView_LoadGoodsByNameColorSizeEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_LoadGoodsByNameColorSizeEvent(object sender, DepartmentStockOutEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        public void _departmentStockInView_LoadStockStatusEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_LoadStockStatusEvent(object sender, DepartmentStockOutEventArgs e)
         {
             IList productMasterIds = new ArrayList();
             foreach (ProductMaster master in e.SelectedProductMasterList)
@@ -154,7 +154,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
 
         
-        public void _departmentStockInView_FillProductToComboEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_FillProductToComboEvent(object sender, DepartmentStockOutEventArgs e)
         {
             ComboBox comboBox = (ComboBox) sender;
             string originalText = comboBox.Text;
@@ -212,7 +212,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
-        public void _departmentStockInView_FindBarcodeEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_FindBarcodeEvent(object sender, DepartmentStockOutEventArgs e)
         {
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
@@ -236,7 +236,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.EventResult = "Success";
         }
 
-        public void _departmentStockInView_SaveStockOutEvent(object sender, DepartmentStockOutEventArgs e)
+        public void _departmentStockOutView_SaveStockOutEvent(object sender, DepartmentStockOutEventArgs e)
         {
             if (e.DepartmentStockOut.DepartmentStockOutPK == null || e.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
             {

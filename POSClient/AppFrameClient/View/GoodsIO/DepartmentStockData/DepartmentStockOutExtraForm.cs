@@ -160,6 +160,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void dgvDeptStockIn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            CalculateTotalStorePrice();
 //            try
 //            {
 //                var mainStockInEventArgs = new DepartmentStockOutEventArgs();
@@ -295,18 +296,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void CalculateTotalStorePrice()
         {
-//            long totalInPrice = 0;
-//            long totalProduct = 0;
-//            foreach (StockInDetail detail in deptSODetailList)
-//            {
-//                if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
-//                {
-//                    totalInPrice += detail.Price * detail.Quantity;
-//                    totalProduct += detail.Quantity;
-//                }
-//            }
-//            txtSumValue.Text = totalInPrice.ToString();
-//            txtSumProduct.Text = totalProduct.ToString();
+            long totalInPrice = 0;
+            long totalProduct = 0;
+            foreach (DepartmentStockOutDetail detail in deptSODetailList)
+            {
+                if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
+                {
+                    totalProduct += detail.Quantity;
+                }
+            }
+            
+            txtSumProduct.Text = totalProduct.ToString();
         }
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
@@ -500,7 +500,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         }
                     }
                 }
-                if ((detail.DefectStatus.DefectStatusId == 4 && detail.DamageQuantity == 0)
+                if ((detail.DefectStatus.DefectStatusId == 4 && detail.ErrorQuantity == 0)
                     || (detail.DefectStatus.DefectStatusId == 6 && detail.DamageQuantity + detail.GoodQuantity + detail.ErrorQuantity == 0)
                     || (detail.DefectStatus.DefectStatusId == 7 && detail.GoodQuantity == 0)) 
                 {
@@ -839,6 +839,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //                        return;
                         continue;
                     }
+
+                     // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
+                     // DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
+                     // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác" });
+                    StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+                    
+                    if (defectStatus.DefectStatusId == 4)
+                    {
+                        // if xuattam, so we check error quantity
+                        if (detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (defectStatus.DefectStatusId == 7)
+                    {
+                        // if xuatdicuahangkhac, so we check good quantity
+                        if (detail.GoodQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    detail.DefectStatus = defectStatus;
                     deptSODetailList.Add(detail);
                     deptSODetailList.EndNew(deptSODetailList.Count - 1);
                     LockField(deptSODetailList.Count - 1, detail);
@@ -859,7 +883,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         departmentStockList.Add(def);
                     }
                 }
-
+                CalculateTotalStorePrice();
             }
         }
 

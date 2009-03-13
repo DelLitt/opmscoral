@@ -166,6 +166,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void dgvDeptStockIn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            CalculateTotalStorePrice();
         }
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
@@ -527,6 +528,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 //            }
                 cbbStockOutType.Enabled = false;
                 PopulateGridByProductMaster(lstColor.SelectedItems, lstSize.SelectedItems);
+                CalculateTotalStorePrice();
             }
             else
             {
