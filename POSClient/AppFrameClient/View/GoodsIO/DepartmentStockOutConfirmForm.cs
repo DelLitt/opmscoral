@@ -201,7 +201,7 @@ namespace AppFrameClient.View.GoodsIO
                 list.Add(deptStockOutList[row.Index].DepartmentStockOut);
             }
 
-            eventArgs.DenyDepartmentStockOutList = list;
+            eventArgs.ConfirmDepartmentStockOutList = list;
             EventUtility.fireEvent(ConfirmStockOutEvent, this, eventArgs);
             if (!eventArgs.HasErrors)
             {

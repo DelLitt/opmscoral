@@ -397,5 +397,21 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuDeptStockInReport_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentStockInReportForm>(this,
+                                                                                          FormConstants.
+                                                                                              DEPARTMENT_STOCK_IN_REPORT_FORM);
+            form.Show();
+        }
+
+        private void mnuProcessDepartmentStockDefect_Click(object sender, EventArgs e)
+        {
+            ProcessErrorGoodsForm form =
+                 GlobalUtility.GetOnlyChildFormObject<ProcessErrorGoodsForm>(this, FormConstants.PROCESS_ERROR_GOODS_FORM);
+            form.DepartmentProcessing = true;
+            form.Show();
+        }
+
     }
 }

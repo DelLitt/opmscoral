@@ -592,9 +592,9 @@
             // 
             // columnProductId
             // 
-            this.columnProductId.DataPropertyName = "Product.ProductMaster.ProductMasterId";
+            this.columnProductId.DataPropertyName = "Product.ProductId";
             this.columnProductId.Frozen = true;
-            this.columnProductId.HeaderText = "Mã hàng";
+            this.columnProductId.HeaderText = "Mã vạch";
             this.columnProductId.MaxLength = 0;
             this.columnProductId.Name = "columnProductId";
             this.columnProductId.ReadOnly = true;

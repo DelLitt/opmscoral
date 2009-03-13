@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Common;
 using AppFrame.Utility;
 using NHibernate;
 using NHibernate.Criterion;
@@ -424,5 +425,32 @@ namespace AppFrame.DataLayer
             }
 
         }
+
+        #region IDepartmentStockDAO Members
+
+
+        public IList FindAllErrors()
+        {
+            return (IList)HibernateTemplate.Execute(
+                            delegate(ISession session)
+                            {
+                                try
+                                {
+                                    string sql =
+                                        " SELECT st FROM DepartmentStock AS st WHERE st.DelFlg = 0 AND " +
+                                        "( st.ErrorQuantity > 0 OR st.UnconfirmQuantity > 0 OR st.LostQuantity > 0 OR st.DamageQuantity > 0 ) " +
+                                        " AND st.DepartmentStockPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
+                                    return session.CreateQuery(sql).List();
+                                }
+                                catch (Exception e)
+                                {
+                                    return null;
+                                }
+
+                            }
+                               );
+        }
+
+        #endregion
     }
 }

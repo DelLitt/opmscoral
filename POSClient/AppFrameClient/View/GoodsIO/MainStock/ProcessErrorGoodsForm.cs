@@ -25,6 +25,16 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private StockOutDetailCollection destroyGoodsList;
         private StockCollection stockDefectList;
 
+        private DepartmentStockOutDetailCollection deptReturnGoodsList;
+        private DepartmentStockOutDetailCollection deptTempStockOutList;
+        private DepartmentStockOutDetailCollection deptDestroyGoodsList;
+        private DepartmentStockCollection deptStockDefectList;
+
+        public bool DepartmentProcessing
+        {
+            get;
+            set;
+        }
         public ProcessErrorGoodsForm()
         {
             InitializeComponent();
@@ -54,12 +64,52 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void ProcessErrorGoodsForm_Load(object sender, EventArgs e)
         {
-            returnGoodsList= new StockOutDetailCollection(bdsReturnGoods);
-            tempStockOutList= new StockOutDetailCollection(bdsTempStockOut);
-            destroyGoodsList = new StockOutDetailCollection(bdsDestroyGoods);
-            stockDefectList = new StockCollection(bdsStockDefect);
+            if (!DepartmentProcessing)
+            {
+                returnGoodsList = new StockOutDetailCollection(bdsReturnGoods);
+                tempStockOutList = new StockOutDetailCollection(bdsTempStockOut);
+                destroyGoodsList = new StockOutDetailCollection(bdsDestroyGoods);
+                stockDefectList = new StockCollection(bdsStockDefect);
 
-            LoadStockDefects();
+                bdsReturnGoods.ResetBindings(true);
+                bdsTempStockOut.ResetBindings(true);
+                bdsDestroyGoods.ResetBindings(true);
+                bdsStockDefect.ResetBindings(true);
+                
+                LoadStockDefects();
+            }
+            else
+            {
+                deptReturnGoodsList= new DepartmentStockOutDetailCollection(bdsReturnGoods);
+                deptTempStockOutList= new DepartmentStockOutDetailCollection(bdsTempStockOut);
+                deptDestroyGoodsList= new DepartmentStockOutDetailCollection(bdsDestroyGoods);
+                deptStockDefectList= new DepartmentStockCollection(bdsStockDefect);
+                bdsReturnGoods.ResetBindings(true);
+                bdsTempStockOut.ResetBindings(true);
+                bdsDestroyGoods.ResetBindings(true);
+                bdsStockDefect.ResetBindings(true);
+
+                LoadDepartmentStockDefects();
+            }
+        }
+
+        private void LoadDepartmentStockDefects()
+        {
+            ProcessErrorGoodsEventArgs eventArgs = new ProcessErrorGoodsEventArgs();
+            EventUtility.fireEvent(LoadAllDepartmentStockDefects, this, eventArgs);
+            IList list = eventArgs.StockList;
+            if (list == null)
+            {
+                return;
+            }
+            deptStockDefectList.Clear();
+            foreach (DepartmentStock defect in list)
+            {
+                deptStockDefectList.Add(defect);
+            }
+            bdsStockDefect.EndEdit();
+            dgvStockDefect.Refresh();
+            dgvStockDefect.Invalidate();
         }
 
         private void LoadStockDefects()
@@ -88,16 +138,34 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return;                
             }
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
-            foreach (DataGridViewRow row in selection)
+            if (!DepartmentProcessing)
             {
-                Stock defect = stockDefectList[row.Index];
-                StockOutDetail detail = new StockOutDetail();
-                detail.Product = defect.Product;
-                detail.ProductMaster = defect.ProductMaster;
-                detail.Quantity = defect.ErrorQuantity;
-                detail.ErrorQuantity = defect.ErrorQuantity;
-                detail.DamageQuantity = defect.DamageQuantity;
-                returnGoodsList.Add(detail);
+                foreach (DataGridViewRow row in selection)
+                {
+                    Stock defect = stockDefectList[row.Index];
+                    StockOutDetail detail = new StockOutDetail();
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.Quantity = defect.ErrorQuantity;
+                    detail.ErrorQuantity = defect.ErrorQuantity;
+                    detail.DamageQuantity = defect.DamageQuantity;
+                    returnGoodsList.Add(detail);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in selection)
+                {
+                    DepartmentStock defect = deptStockDefectList[row.Index];
+                    DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.Quantity = defect.ErrorQuantity;
+                    detail.ErrorQuantity = defect.ErrorQuantity;
+                    detail.DamageQuantity = defect.DamageQuantity;
+                    deptReturnGoodsList.Add(detail);
+                }
             }
             bdsReturnGoods.EndEdit();
             dgvReturnStockOut.Refresh();
@@ -112,15 +180,31 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return;
             }
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
-            foreach (DataGridViewRow row in selection)
+            if (!DepartmentProcessing)
             {
-                Stock defect = stockDefectList[row.Index];
-                StockOutDetail detail = new StockOutDetail();
-                detail.Product = defect.Product;
-                detail.ProductMaster = defect.ProductMaster;
-                detail.ErrorQuantity = defect.ErrorQuantity;
-                detail.Quantity = detail.ErrorQuantity;
-                tempStockOutList.Add(detail);
+                foreach (DataGridViewRow row in selection)
+                {
+                    Stock defect = stockDefectList[row.Index];
+                    StockOutDetail detail = new StockOutDetail();
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.ErrorQuantity = defect.ErrorQuantity;
+                    detail.Quantity = detail.ErrorQuantity;
+                    tempStockOutList.Add(detail);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in selection)
+                {
+                    DepartmentStock defect = deptStockDefectList[row.Index];
+                    DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.ErrorQuantity = defect.ErrorQuantity;
+                    detail.Quantity = detail.ErrorQuantity;
+                    deptTempStockOutList.Add(detail);
+                }
             }
             bdsTempStockOut.EndEdit();
             dgvTempStockOut.Refresh();
@@ -134,16 +218,33 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return;
             }
             DataGridViewSelectedRowCollection selection = dgvStockDefect.SelectedRows;
-            foreach (DataGridViewRow row in selection)
+            if (!DepartmentProcessing)
             {
-                Stock defect = stockDefectList[row.Index];
-                StockOutDetail detail = new StockOutDetail();
-                detail.Product = defect.Product;
-                detail.ProductMaster = defect.ProductMaster;
-                detail.LostQuantity = defect.LostQuantity;
-                detail.DamageQuantity = defect.DamageQuantity;
-                detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
-                destroyGoodsList.Add(detail);
+                foreach (DataGridViewRow row in selection)
+                {
+                    Stock defect = stockDefectList[row.Index];
+                    StockOutDetail detail = new StockOutDetail();
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.LostQuantity = defect.LostQuantity;
+                    detail.DamageQuantity = defect.DamageQuantity;
+                    detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
+                    destroyGoodsList.Add(detail);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in selection)
+                {
+                    DepartmentStock defect = deptStockDefectList[row.Index];
+                    DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+                    detail.Product = defect.Product;
+                    detail.ProductMaster = defect.ProductMaster;
+                    detail.LostQuantity = defect.LostQuantity;
+                    detail.DamageQuantity = defect.DamageQuantity;
+                    detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
+                    deptDestroyGoodsList.Add(detail);
+                }
             }
             bdsDestroyGoods.EndEdit();
             dgvGoodsDestroy.Refresh();
@@ -159,8 +260,19 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvReturnStockOut.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                returnGoodsList.RemoveAt(row.Index);
+                if(!DepartmentProcessing)
+                {
+                    returnGoodsList.RemoveAt(row.Index);    
+                }
+                
+                else
+                {
+                    deptReturnGoodsList.RemoveAt(row.Index);                    
+                }
             }
+            bdsReturnGoods.EndEdit();
+            dgvReturnStockOut.Refresh();
+            dgvReturnStockOut.Invalidate();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -172,8 +284,18 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvTempStockOut.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                tempStockOutList.RemoveAt(row.Index);
+                if (!DepartmentProcessing)
+                {
+                    tempStockOutList.RemoveAt(row.Index);    
+                }
+                else
+                {
+                    deptTempStockOutList.RemoveAt(row.Index);                        
+                }
             }
+            bdsTempStockOut.EndEdit();
+            dgvTempStockOut.Refresh();
+            dgvTempStockOut.Invalidate();
         }
 
         private void dgvGoodsDestroy_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -185,8 +307,19 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             DataGridViewSelectedRowCollection selection = dgvGoodsDestroy.SelectedRows;
             foreach (DataGridViewRow row in selection)
             {
-                destroyGoodsList.RemoveAt(row.Index);
+                if(!DepartmentProcessing)
+                {
+                    destroyGoodsList.RemoveAt(row.Index);    
+                }
+                else
+                {
+                    deptDestroyGoodsList.RemoveAt(row.Index);                        
+                }
+                
             }
+            bdsDestroyGoods.EndEdit();
+            dgvGoodsDestroy.Refresh();
+            dgvGoodsDestroy.Invalidate();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -203,43 +336,106 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return; 
             }
             ProcessErrorGoodsEventArgs eventArgs = new ProcessErrorGoodsEventArgs();
-            eventArgs.ReturnStockOutList = ObjectConverter.ConvertToNonGenericList(returnGoodsList);
-            eventArgs.TempStockOutList = ObjectConverter.ConvertToNonGenericList(tempStockOutList);
-            eventArgs.DestroyUnusedGoodsList = ObjectConverter.ConvertToNonGenericList(destroyGoodsList);
-            eventArgs.StockList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
-            EventUtility.fireEvent(SaveStockDefects,this,eventArgs);
+            if (!DepartmentProcessing)
+            {
+                eventArgs.ReturnStockOutList = ObjectConverter.ConvertToNonGenericList(returnGoodsList);
+                eventArgs.TempStockOutList = ObjectConverter.ConvertToNonGenericList(tempStockOutList);
+                eventArgs.DestroyUnusedGoodsList = ObjectConverter.ConvertToNonGenericList(destroyGoodsList);
+                eventArgs.StockList = ObjectConverter.ConvertToNonGenericList(stockDefectList);
+                EventUtility.fireEvent(SaveStockDefects, this, eventArgs);
+            }
+            else
+            {
+                eventArgs.ReturnStockOutList = ObjectConverter.ConvertToNonGenericList(deptReturnGoodsList);
+                eventArgs.TempStockOutList = ObjectConverter.ConvertToNonGenericList(deptTempStockOutList);
+                eventArgs.DestroyUnusedGoodsList = ObjectConverter.ConvertToNonGenericList(deptDestroyGoodsList);
+                eventArgs.StockList = ObjectConverter.ConvertToNonGenericList(deptStockDefectList);
+                EventUtility.fireEvent(SaveDepartmentStockDefects, this, eventArgs);
+            }
             if(!eventArgs.HasErrors)
             {
                 MessageBox.Show("Lưu thành công !");
                 ClearForm();
-                LoadStockDefects();
+                if(!DepartmentProcessing)
+                {
+                    LoadStockDefects();    
+                }
+                else
+                {
+                    LoadDepartmentStockDefects();
+                }
             }                      
         }
 
         private void ClearForm()
         {
-            stockDefectList.Clear();
-            tempStockOutList.Clear();
-            returnGoodsList.Clear();
-            destroyGoodsList.Clear();
+            if (!DepartmentProcessing)
+            {
+                stockDefectList.Clear();
+                tempStockOutList.Clear();
+                returnGoodsList.Clear();
+                destroyGoodsList.Clear();
+            }
+            else
+            {
+                deptStockDefectList.Clear();
+                deptTempStockOutList.Clear();
+                deptReturnGoodsList.Clear();
+                deptDestroyGoodsList.Clear();    
+            }
         }
 
         private bool CheckIntegrityData()
         {
-            foreach (Stock stock in stockDefectList)
+            if (!DepartmentProcessing)
             {
-                StockOutDetail tempStockOut = GetFromStockOutList(stock,tempStockOutList);
-                StockOutDetail returnStockOut = GetFromStockOutList(stock, returnGoodsList);
-                long tempQuantity = tempStockOut != null ? tempStockOut.ErrorQuantity : 0;
-                long returnQuantity = returnStockOut != null ? returnStockOut.ErrorQuantity : 0;
-                if(stock.ErrorQuantity < (tempQuantity + returnQuantity))
+                foreach (Stock stock in stockDefectList)
                 {
-                    throw new BusinessException("Số hàng lỗi được trả lớn hơn số hàng lỗi thực tại mã vạch " + stock.Product.ProductId);
-                    return false;
-                }
+                    StockOutDetail tempStockOut = GetFromStockOutList(stock, tempStockOutList);
+                    StockOutDetail returnStockOut = GetFromStockOutList(stock, returnGoodsList);
+                    long tempQuantity = tempStockOut != null ? tempStockOut.ErrorQuantity : 0;
+                    long returnQuantity = returnStockOut != null ? returnStockOut.ErrorQuantity : 0;
+                    if (stock.ErrorQuantity < (tempQuantity + returnQuantity))
+                    {
+                        throw new BusinessException("Số hàng lỗi được trả lớn hơn số hàng lỗi thực tại mã vạch " +
+                                                    stock.Product.ProductId);
+                        return false;
+                    }
 
+                }
+                return true;
             }
-            return true;
+            else
+            {
+                foreach (DepartmentStock stock in deptStockDefectList)
+                {
+                    DepartmentStockOutDetail tempStockOut = GetFromDepartmentStockOutList(stock, deptTempStockOutList);
+                    DepartmentStockOutDetail returnStockOut = GetFromDepartmentStockOutList(stock, deptReturnGoodsList);
+                    long tempQuantity = tempStockOut != null ? tempStockOut.ErrorQuantity : 0;
+                    long returnQuantity = returnStockOut != null ? returnStockOut.ErrorQuantity : 0;
+                    if (stock.ErrorQuantity < (tempQuantity + returnQuantity))
+                    {
+                        throw new BusinessException("Số hàng lỗi được trả lớn hơn số hàng lỗi thực tại mã vạch " +
+                                                    stock.Product.ProductId);
+                        return false;
+                    }
+
+                }
+                return true;  
+            }
+            
+        }
+
+        private DepartmentStockOutDetail GetFromDepartmentStockOutList(DepartmentStock stock, DepartmentStockOutDetailCollection list)
+        {
+            foreach (DepartmentStockOutDetail detail in list)
+            {
+                if (detail.Product.ProductId == stock.Product.ProductId)
+                {
+                    return detail;
+                }
+            }
+            return null;
         }
 
         private StockOutDetail GetFromStockOutList(Stock stock, StockOutDetailCollection list)
@@ -258,5 +454,14 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             Close();
         }
+
+        #region IProcessErrorGoodsView Members
+
+
+        public event EventHandler<ProcessErrorGoodsEventArgs> LoadAllDepartmentStockDefects;
+
+        public event EventHandler<ProcessErrorGoodsEventArgs> SaveDepartmentStockDefects;
+
+        #endregion
     }
 }

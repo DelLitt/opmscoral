@@ -659,7 +659,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSI.DepartmentStockInDetails = deptSIDetailList;
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.IsForSync = isNeedSync;
-            eventArgs.DepartmeneStockIn = deptSI;
+            eventArgs.DepartmentStockIn = deptSI;
             EventUtility.fireEvent(SaveDepartmentStockInEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
@@ -670,7 +670,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 txtSumProduct.Text = "";
                 ClearSelectionOnListBox(lstColor);
                 ClearSelectionOnListBox(lstSize);
-                return eventArgs.DepartmeneStockIn;
+                return eventArgs.DepartmentStockIn;
             }
             else
             {
@@ -955,5 +955,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             sizeBindingSource.DataSource = sizeList;
             productMasterList = mainStockInEventArgs.FoundProductMasterList;
         }
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
+
+        #endregion
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
+
+        #endregion
     }
 }

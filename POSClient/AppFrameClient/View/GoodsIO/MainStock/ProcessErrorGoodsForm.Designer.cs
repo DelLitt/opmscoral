@@ -42,24 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStockDefect = new System.Windows.Forms.DataGridView();
-            this.btnError = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dgvReturnStockOut = new System.Windows.Forms.DataGridView();
-            this.bdsReturnGoods = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
-            this.bdsTempStockOut = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvGoodsDestroy = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsDestroyGoods = new System.Windows.Forms.BindingSource(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,13 +52,31 @@
             this.columnDamage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsProductMasters = new System.Windows.Forms.BindingSource(this.components);
+            this.btnError = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dgvReturnStockOut = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ErrorCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsReturnGoods = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsTempStockOut = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvGoodsDestroy = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsDestroyGoods = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.bdsProductMasters = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockDefect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnStockOut)).BeginInit();
@@ -162,167 +162,6 @@
             this.dgvStockDefect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockDefect.Size = new System.Drawing.Size(960, 187);
             this.dgvStockDefect.TabIndex = 26;
-            // 
-            // btnError
-            // 
-            this.btnError.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnError.Location = new System.Drawing.Point(12, 237);
-            this.btnError.Name = "btnError";
-            this.btnError.Size = new System.Drawing.Size(204, 23);
-            this.btnError.TabIndex = 31;
-            this.btnError.Text = "Trả hàng lỗi cho nhà sản xuất";
-            this.btnError.UseVisualStyleBackColor = true;
-            this.btnError.Click += new System.EventHandler(this.btnError_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(446, 237);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(138, 23);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "Huỷ hàng hư mất";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // dgvReturnStockOut
-            // 
-            this.dgvReturnStockOut.AllowUserToAddRows = false;
-            this.dgvReturnStockOut.AllowUserToDeleteRows = false;
-            this.dgvReturnStockOut.AutoGenerateColumns = false;
-            this.dgvReturnStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReturnStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column5,
-            this.Column6,
-            this.ErrorCount});
-            this.dgvReturnStockOut.DataSource = this.bdsReturnGoods;
-            this.dgvReturnStockOut.Location = new System.Drawing.Point(12, 299);
-            this.dgvReturnStockOut.Name = "dgvReturnStockOut";
-            this.dgvReturnStockOut.Size = new System.Drawing.Size(316, 185);
-            this.dgvReturnStockOut.TabIndex = 34;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 283);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 13);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "Trả hàng lỗi và hư cho nhà sản xuất";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(331, 283);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "Tạm xuất để sửa";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(657, 283);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Hàng chờ huỷ";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(263, 237);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 23);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Tạm xuất để sửa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dgvTempStockOut
-            // 
-            this.dgvTempStockOut.AllowUserToAddRows = false;
-            this.dgvTempStockOut.AllowUserToDeleteRows = false;
-            this.dgvTempStockOut.AutoGenerateColumns = false;
-            this.dgvTempStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTempStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dgvTempStockOut.DataSource = this.bdsTempStockOut;
-            this.dgvTempStockOut.Location = new System.Drawing.Point(334, 299);
-            this.dgvTempStockOut.Name = "dgvTempStockOut";
-            this.dgvTempStockOut.Size = new System.Drawing.Size(316, 185);
-            this.dgvTempStockOut.TabIndex = 42;
-            // 
-            // dgvGoodsDestroy
-            // 
-            this.dgvGoodsDestroy.AllowUserToAddRows = false;
-            this.dgvGoodsDestroy.AllowUserToDeleteRows = false;
-            this.dgvGoodsDestroy.AutoGenerateColumns = false;
-            this.dgvGoodsDestroy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGoodsDestroy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dgvGoodsDestroy.DataSource = this.bdsDestroyGoods;
-            this.dgvGoodsDestroy.Location = new System.Drawing.Point(656, 299);
-            this.dgvGoodsDestroy.Name = "dgvGoodsDestroy";
-            this.dgvGoodsDestroy.Size = new System.Drawing.Size(316, 185);
-            this.dgvGoodsDestroy.TabIndex = 43;
-            this.dgvGoodsDestroy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGoodsDestroy_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Product.ProductId";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Mã vạch";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product.ProductMaster.ProductFullName";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tên hàng";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Số lượng";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 80;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(15, 491);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 44;
-            this.button5.Text = "Xoá";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(334, 490);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 45;
-            this.button6.Text = "Xoá";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(656, 490);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 46;
-            this.button7.Text = "Xoá";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -420,9 +259,43 @@
             this.Column7.Name = "Column7";
             this.Column7.Width = 144;
             // 
-            // bdsProductMasters
+            // btnError
             // 
-            this.bdsProductMasters.DataSource = typeof(AppFrameClient.ViewModel.StockViewCollection);
+            this.btnError.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnError.Location = new System.Drawing.Point(12, 237);
+            this.btnError.Name = "btnError";
+            this.btnError.Size = new System.Drawing.Size(204, 23);
+            this.btnError.TabIndex = 31;
+            this.btnError.Text = "Trả hàng lỗi cho nhà sản xuất";
+            this.btnError.UseVisualStyleBackColor = true;
+            this.btnError.Click += new System.EventHandler(this.btnError_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(446, 237);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(138, 23);
+            this.button4.TabIndex = 32;
+            this.button4.Text = "Huỷ hàng hư mất";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // dgvReturnStockOut
+            // 
+            this.dgvReturnStockOut.AllowUserToAddRows = false;
+            this.dgvReturnStockOut.AllowUserToDeleteRows = false;
+            this.dgvReturnStockOut.AutoGenerateColumns = false;
+            this.dgvReturnStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReturnStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column5,
+            this.Column6,
+            this.ErrorCount});
+            this.dgvReturnStockOut.DataSource = this.bdsReturnGoods;
+            this.dgvReturnStockOut.Location = new System.Drawing.Point(12, 299);
+            this.dgvReturnStockOut.Name = "dgvReturnStockOut";
+            this.dgvReturnStockOut.Size = new System.Drawing.Size(316, 185);
+            this.dgvReturnStockOut.TabIndex = 34;
             // 
             // Column5
             // 
@@ -447,6 +320,60 @@
             this.ErrorCount.Name = "ErrorCount";
             this.ErrorCount.Width = 80;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(178, 13);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Trả hàng lỗi và hư cho nhà sản xuất";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(331, 283);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Tạm xuất để sửa";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(657, 283);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Hàng chờ huỷ";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(263, 237);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(177, 23);
+            this.button2.TabIndex = 41;
+            this.button2.Text = "Tạm xuất để sửa";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dgvTempStockOut
+            // 
+            this.dgvTempStockOut.AllowUserToAddRows = false;
+            this.dgvTempStockOut.AllowUserToDeleteRows = false;
+            this.dgvTempStockOut.AutoGenerateColumns = false;
+            this.dgvTempStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTempStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dgvTempStockOut.DataSource = this.bdsTempStockOut;
+            this.dgvTempStockOut.Location = new System.Drawing.Point(334, 299);
+            this.dgvTempStockOut.Name = "dgvTempStockOut";
+            this.dgvTempStockOut.Size = new System.Drawing.Size(316, 185);
+            this.dgvTempStockOut.TabIndex = 42;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Product.ProductId";
@@ -468,6 +395,75 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Số lượng";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // dgvGoodsDestroy
+            // 
+            this.dgvGoodsDestroy.AllowUserToAddRows = false;
+            this.dgvGoodsDestroy.AllowUserToDeleteRows = false;
+            this.dgvGoodsDestroy.AutoGenerateColumns = false;
+            this.dgvGoodsDestroy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGoodsDestroy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.dgvGoodsDestroy.DataSource = this.bdsDestroyGoods;
+            this.dgvGoodsDestroy.Location = new System.Drawing.Point(656, 299);
+            this.dgvGoodsDestroy.Name = "dgvGoodsDestroy";
+            this.dgvGoodsDestroy.Size = new System.Drawing.Size(316, 185);
+            this.dgvGoodsDestroy.TabIndex = 43;
+            this.dgvGoodsDestroy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGoodsDestroy_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Product.ProductId";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Mã vạch";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Product.ProductMaster.ProductFullName";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tên hàng";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Số lượng";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 80;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(15, 491);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 44;
+            this.button5.Text = "Xoá";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(334, 490);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 45;
+            this.button6.Text = "Xoá";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(656, 490);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 46;
+            this.button7.Text = "Xoá";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // ProcessErrorGoodsForm
             // 

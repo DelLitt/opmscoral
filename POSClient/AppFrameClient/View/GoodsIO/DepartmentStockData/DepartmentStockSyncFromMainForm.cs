@@ -72,7 +72,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (deptStockIn != null)
             {
                 var eventArgs = new DepartmentStockInEventArgs();
-                eventArgs.DepartmeneStockIn = deptStockIn;
+                eventArgs.DepartmentStockIn = deptStockIn;
                 EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
                 MessageBox.Show("Đồng bộ hoàn tất !");
             }
@@ -96,6 +96,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> SaveDepartmentStockInEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindProductMasterEvent;
         public event EventHandler<DepartmentStockInEventArgs> SyncDepartmentStockInEvent;
+
+        #endregion
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
+
+        #endregion
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
 
         #endregion
     }

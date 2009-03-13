@@ -334,5 +334,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             btnAddProduct_Click(sender, null);
         }
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
+
+        public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
+
+        #endregion
     }
 }

@@ -37,13 +37,51 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 _departmentStockInView.FindProductMasterEvent += new System.EventHandler<DepartmentStockInEventArgs>(departmentStockInView_SearchStockEvent);
                 _departmentStockInView.SaveDepartmentStockInEvent += new System.EventHandler<DepartmentStockInEventArgs>(departmentStockInView_SaveDepartmentStockInEvent);
                 _departmentStockInView.SyncDepartmentStockInEvent += new System.EventHandler<DepartmentStockInEventArgs>(departmentStockInView_SyncDepartmentStockInEvent);
+                _departmentStockInView.FindByBarcodeEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FindByBarcodeEvent);
+                _departmentStockInView.SaveReDepartmentStockInEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_SaveReDepartmentStockInEvent);
             }
+        }
+
+        void _departmentStockInView_SaveReDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            try
+            {
+                DepartmentStockInLogic.AddReStock(e.DepartmentStockIn);
+                e.HasErrors = false;
+                e.EventResult = "Success";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void _departmentStockInView_FindByBarcodeEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            var subCriteria = new SubObjectCriteria("StockOut");
+            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)4); // tạm xuất là 8
+            var objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("Product.ProductId", e.ProductId);
+            objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            objectCriteria.AddSubCriteria("StockOut", subCriteria);
+            IList list = DepartmentStockOutDetailLogic.FindAll(objectCriteria);
+            if (list.Count > 0)
+            {
+                var detail = new DepartmentStockInDetail { Product = ((StockOutDetail)list[0]).Product };
+                foreach (DepartmentStockInDetail soDetail in list)
+                {
+                    detail.DepartmentStockOutQuantity += soDetail.Quantity;
+                }
+                e.DepartmentStockInDetail = detail;
+            }
+            e.EventResult = "Success";
         }
         #endregion
 
         public void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
-            var stockIn = e.DepartmeneStockIn;
+            var stockIn = e.DepartmentStockIn;
             if (stockIn.StockInId == 0)
             {
                 DepartmentStockInLogic.Add(stockIn);
@@ -54,9 +92,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
             if (stockIn.DepartmentStockInPK != null && e.IsForSync)
             {
-                e.DepartmeneStockIn = DepartmentStockInLogic.FindById(stockIn.DepartmentStockInPK);
+                e.DepartmentStockIn = DepartmentStockInLogic.FindById(stockIn.DepartmentStockInPK);
                 IList productMasterIds = new ArrayList();
-                foreach (DepartmentStockInDetail detail in e.DepartmeneStockIn.DepartmentStockInDetails)
+                foreach (DepartmentStockInDetail detail in e.DepartmentStockIn.DepartmentStockInDetails)
                 {
                     if (!productMasterIds.Contains(detail.Product.ProductMaster.ProductMasterId))
                     {
@@ -68,7 +106,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", (long)0);
                 criteria.AddSearchInCriteria("DepartmentPricePK.ProductMasterId", productMasterIds);
                 IList priceList = DepartmentPriceLogic.FindAll(criteria);
-                foreach (DepartmentStockInDetail detail in e.DepartmeneStockIn.DepartmentStockInDetails)
+                foreach (DepartmentStockInDetail detail in e.DepartmentStockIn.DepartmentStockInDetails)
                 {
                     foreach (DepartmentPrice price in priceList)
                     {
@@ -84,7 +122,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void departmentStockInView_SyncDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
-            var stockIn = e.DepartmeneStockIn;
+            var stockIn = e.DepartmentStockIn;
             DepartmentStockInLogic.Sync(stockIn);
         }
 
@@ -95,7 +133,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void departmentStockInView_InitStockSearchEvent(object sender, DepartmentStockInEventArgs e)
         {
-            var stockIn = e.DepartmeneStockIn;
+            var stockIn = e.DepartmentStockIn;
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", (long)0);
             criteria.AddEqCriteria("DepartmentStockInDetailPK.StockInId", stockIn.StockInId);
@@ -172,5 +210,20 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         #endregion
 
+
+        #region IDepartmentStockInController Members
+
+
+        public IDepartmentStockOutLogic DepartmentStockOutLogic
+        {
+            get;set;
+        }
+
+        public IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic
+        {
+            get;set;
+        }
+
+        #endregion
     }
 }

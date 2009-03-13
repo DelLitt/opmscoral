@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AppFrame;
 using AppFrame.Common;
 using AppFrame.Exceptions;
 using AppFrame.Model;
@@ -40,7 +41,17 @@ namespace AppFrameClient.Presenter.GoodsSale
             {
                 return;
             }*/
-            Product product = ProductLogic.FindById(e.SelectedPurchaseOrderDetail.Product.ProductId);
+            //Product product = ProductLogic.FindById(e.SelectedPurchaseOrderDetail.Product.ProductId);
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
+            objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            IList result = DepartmentStockLogic.FindAll(objectCriteria);
+            if (result == null)
+            {
+                throw new BusinessException("Mặt hàng này không tồn tại trong kho !");
+            }
+            DepartmentStock stock = (DepartmentStock)result[0];
+            Product product = stock.Product;
             detail.Product = product;
             detail.ProductMaster = product.ProductMaster;
             DepartmentPrice price = DepartmentPriceLogic.FindById(new DepartmentPricePK { DepartmentId = 0, ProductMasterId = detail.ProductMaster.ProductMasterId });
@@ -192,6 +203,17 @@ namespace AppFrameClient.Presenter.GoodsSale
         public PurchaseOrder NextPurchaseOrder
         {
             get;set;
+        }
+
+        #endregion
+
+        #region IGoodsSaleReturnController Members
+
+
+        public AppFrame.Logic.IDepartmentStockLogic DepartmentStockLogic
+        {
+            get;set;
+            
         }
 
         #endregion

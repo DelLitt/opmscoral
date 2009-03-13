@@ -239,7 +239,7 @@
   </object>
 
   <object id="AppFrame.Service.IDepartmentStockOutCostLogic" type="AppFrame.Logic.DepartmentStockOutCostLogicImpl, AppFrameClient">
-    <property name="DepartmentStockOutCostDAO" ref="AppFrame.DataLayer.IDepartmentStockOutCostDAO"/>
+    <property name="DepartmentStockOutCostDAO" ref="AppFrame.DataLayer.IDepartmentStockOutCostDAO"/>    
   </object>
 
   <object id="AppFrame.Service.IBlockInLogic" type="AppFrame.Logic.BlockInLogicImpl, AppFrameClient">

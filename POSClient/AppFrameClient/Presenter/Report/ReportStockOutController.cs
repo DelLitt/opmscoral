@@ -157,13 +157,14 @@ namespace AppFrameClient.Presenter.Report
 
         void departmentStockOutReportView_ConfirmStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
-            IList list = e.DenyDepartmentStockOutList;
+            IList list = e.ConfirmDepartmentStockOutList;
             StockOutMapper mapper = new StockOutMapper();
             StockOutDetailMapper detailMapper = new StockOutDetailMapper();
             foreach (DepartmentStockOut departmentStockOut in list)
             {
                 
                 StockOut stockOut = mapper.Convert(departmentStockOut);
+                stockOut.NotUpdateMainStock = true;
                 IList detlist = new ArrayList();
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
@@ -186,9 +187,9 @@ namespace AppFrameClient.Presenter.Report
                 for (int i = 0; i < list.Count; i++)
                 {
                     IList childList = new ArrayList();
-                    childList.Add(((IList)list[i])[0]);
-                    childList.Add(((IList)list[i])[1]);
-                    childList.Add(((IList)list[i])[2]);
+                    childList.Add(((IList)list[i])[0]); // stock out
+                    childList.Add(((IList)list[i])[1]); // quantity
+                    childList.Add(((IList)list[i])[2]); // departmentid
                     long departmentId = (long)((IList)list[i])[2];
                     Department dep = DepartmentLogic.FindById(departmentId);
                     childList.Add(dep);

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame;
+using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
@@ -52,7 +55,17 @@ namespace AppFrameClient.Presenter.GoodsSale
             {
                 return;
             }*/
-            Product product = ProductLogic.FindById(e.SelectedPurchaseOrderDetail.Product.ProductId);
+            //Product product = ProductLogic.FindProduct(e.SelectedPurchaseOrderDetail.Product.ProductId,CurrentDepartment.Get().DepartmentId);
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
+            objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            IList result = DepartmentStockLogic.FindAll(objectCriteria) ;
+            if(result == null)
+            {
+                throw new BusinessException("Mặt hàng này không tồn tại trong kho !");
+            }
+            DepartmentStock stock = (DepartmentStock)result[0];            
+            Product product = stock.Product;
             detail.Product = product;
             detail.ProductMaster = product.ProductMaster;
             DepartmentPrice price = DepartmentPriceLogic.FindById(new DepartmentPricePK { DepartmentId = 0,ProductMasterId = detail.ProductMaster.ProductMasterId} );
@@ -207,6 +220,16 @@ namespace AppFrameClient.Presenter.GoodsSale
                 goodsSaleReturnView = value;
                 goodsSaleReturnView.LoadGoodsEvent += new EventHandler<GoodsSaleEventArgs>(goodsSaleView_LoadGoodsEvent);
             }
+        }
+
+        #endregion
+
+        #region IGoodsSaleController Members
+
+
+        public AppFrame.Logic.IDepartmentStockLogic DepartmentStockLogic
+        {
+            get;set;
         }
 
         #endregion

@@ -54,20 +54,6 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDeptStockIn = new System.Windows.Forms.DataGridView();
-            this.cboProductMasters = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnInput = new System.Windows.Forms.Button();
-            this.lstColor = new System.Windows.Forms.ListBox();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lstSize = new System.Windows.Forms.ListBox();
-            this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSumProduct = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbbStockOutType = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -86,6 +72,22 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboProductMasters = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInput = new System.Windows.Forms.Button();
+            this.lstColor = new System.Windows.Forms.ListBox();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lstSize = new System.Windows.Forms.ListBox();
+            this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSumProduct = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbbStockOutType = new System.Windows.Forms.ComboBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.cboDepartment = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
@@ -274,140 +276,6 @@
             this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
             this.dgvDeptStockIn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvDeptStockIn_KeyUp);
             // 
-            // cboProductMasters
-            // 
-            this.cboProductMasters.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboProductMasters.FormattingEnabled = true;
-            this.cboProductMasters.Location = new System.Drawing.Point(82, 104);
-            this.cboProductMasters.Name = "cboProductMasters";
-            this.cboProductMasters.Size = new System.Drawing.Size(204, 24);
-            this.cboProductMasters.TabIndex = 3;
-            this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 14);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "Mặt hàng";
-            // 
-            // btnInput
-            // 
-            this.btnInput.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInput.Location = new System.Drawing.Point(817, 75);
-            this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(173, 101);
-            this.btnInput.TabIndex = 7;
-            this.btnInput.Text = "Xác nhận";
-            this.btnInput.UseVisualStyleBackColor = true;
-            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
-            // 
-            // lstColor
-            // 
-            this.lstColor.DataSource = this.colorBindingSource;
-            this.lstColor.DisplayMember = "ColorName";
-            this.lstColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstColor.FormattingEnabled = true;
-            this.lstColor.ItemHeight = 14;
-            this.lstColor.Location = new System.Drawing.Point(354, 75);
-            this.lstColor.Name = "lstColor";
-            this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(202, 102);
-            this.lstColor.TabIndex = 4;
-            // 
-            // colorBindingSource
-            // 
-            this.colorBindingSource.DataSource = typeof(AppFrame.Model.ProductColor);
-            // 
-            // lstSize
-            // 
-            this.lstSize.DataSource = this.sizeBindingSource;
-            this.lstSize.DisplayMember = "SizeName";
-            this.lstSize.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstSize.FormattingEnabled = true;
-            this.lstSize.ItemHeight = 14;
-            this.lstSize.Location = new System.Drawing.Point(625, 75);
-            this.lstSize.Name = "lstSize";
-            this.lstSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSize.Size = new System.Drawing.Size(186, 102);
-            this.lstSize.TabIndex = 5;
-            // 
-            // sizeBindingSource
-            // 
-            this.sizeBindingSource.DataSource = typeof(AppFrame.Model.ProductSize);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(292, 75);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 14);
-            this.label4.TabIndex = 105;
-            this.label4.Text = "Màu sắc";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(573, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 14);
-            this.label10.TabIndex = 106;
-            this.label10.Text = "Kích cỡ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(464, 503);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 14);
-            this.label13.TabIndex = 112;
-            this.label13.Text = "Tổng sản phẩm";
-            // 
-            // txtSumProduct
-            // 
-            this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumProduct.Location = new System.Drawing.Point(562, 500);
-            this.txtSumProduct.Name = "txtSumProduct";
-            this.txtSumProduct.ReadOnly = true;
-            this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
-            this.txtSumProduct.TabIndex = 111;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 157);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 14);
-            this.label11.TabIndex = 114;
-            this.label11.Text = "Lý do xuất";
-            // 
-            // cbbStockOutType
-            // 
-            this.cbbStockOutType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbStockOutType.FormattingEnabled = true;
-            this.cbbStockOutType.Location = new System.Drawing.Point(82, 153);
-            this.cbbStockOutType.Name = "cbbStockOutType";
-            this.cbbStockOutType.Size = new System.Drawing.Size(204, 24);
-            this.cbbStockOutType.TabIndex = 6;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(14, 184);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 115;
-            this.btnReset.Text = "Tạo lại";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // SearchCreate
             // 
             this.SearchCreate.HeaderText = "......";
@@ -565,20 +433,175 @@
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
             // 
+            // cboProductMasters
+            // 
+            this.cboProductMasters.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProductMasters.FormattingEnabled = true;
+            this.cboProductMasters.Location = new System.Drawing.Point(82, 104);
+            this.cboProductMasters.Name = "cboProductMasters";
+            this.cboProductMasters.Size = new System.Drawing.Size(204, 24);
+            this.cboProductMasters.TabIndex = 3;
+            this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 14);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "Mặt hàng";
+            // 
+            // btnInput
+            // 
+            this.btnInput.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInput.Location = new System.Drawing.Point(817, 75);
+            this.btnInput.Name = "btnInput";
+            this.btnInput.Size = new System.Drawing.Size(173, 101);
+            this.btnInput.TabIndex = 7;
+            this.btnInput.Text = "Xác nhận";
+            this.btnInput.UseVisualStyleBackColor = true;
+            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
+            // 
+            // lstColor
+            // 
+            this.lstColor.DataSource = this.colorBindingSource;
+            this.lstColor.DisplayMember = "ColorName";
+            this.lstColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstColor.FormattingEnabled = true;
+            this.lstColor.ItemHeight = 14;
+            this.lstColor.Location = new System.Drawing.Point(354, 75);
+            this.lstColor.Name = "lstColor";
+            this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstColor.Size = new System.Drawing.Size(202, 102);
+            this.lstColor.TabIndex = 4;
+            // 
+            // colorBindingSource
+            // 
+            this.colorBindingSource.DataSource = typeof(AppFrame.Model.ProductColor);
+            // 
+            // lstSize
+            // 
+            this.lstSize.DataSource = this.sizeBindingSource;
+            this.lstSize.DisplayMember = "SizeName";
+            this.lstSize.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstSize.FormattingEnabled = true;
+            this.lstSize.ItemHeight = 14;
+            this.lstSize.Location = new System.Drawing.Point(625, 75);
+            this.lstSize.Name = "lstSize";
+            this.lstSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstSize.Size = new System.Drawing.Size(186, 102);
+            this.lstSize.TabIndex = 5;
+            // 
+            // sizeBindingSource
+            // 
+            this.sizeBindingSource.DataSource = typeof(AppFrame.Model.ProductSize);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(292, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 14);
+            this.label4.TabIndex = 105;
+            this.label4.Text = "Màu sắc";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(573, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 14);
+            this.label10.TabIndex = 106;
+            this.label10.Text = "Kích cỡ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(464, 503);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 14);
+            this.label13.TabIndex = 112;
+            this.label13.Text = "Tổng sản phẩm";
+            // 
+            // txtSumProduct
+            // 
+            this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSumProduct.Location = new System.Drawing.Point(562, 500);
+            this.txtSumProduct.Name = "txtSumProduct";
+            this.txtSumProduct.ReadOnly = true;
+            this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
+            this.txtSumProduct.TabIndex = 111;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(11, 138);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 14);
+            this.label11.TabIndex = 114;
+            this.label11.Text = "Lý do xuất";
+            // 
+            // cbbStockOutType
+            // 
+            this.cbbStockOutType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbStockOutType.FormattingEnabled = true;
+            this.cbbStockOutType.Location = new System.Drawing.Point(82, 134);
+            this.cbbStockOutType.Name = "cbbStockOutType";
+            this.cbbStockOutType.Size = new System.Drawing.Size(204, 24);
+            this.cbbStockOutType.TabIndex = 6;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(82, 164);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(65, 23);
+            this.btnReset.TabIndex = 115;
+            this.btnReset.Text = "Tạo lại";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // cboDepartment
+            // 
+            this.cboDepartment.FormattingEnabled = true;
+            this.cboDepartment.Location = new System.Drawing.Point(284, 185);
+            this.cboDepartment.Name = "cboDepartment";
+            this.cboDepartment.Size = new System.Drawing.Size(527, 22);
+            this.cboDepartment.TabIndex = 116;
+            this.cboDepartment.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(191, 188);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 14);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "Cửa hàng đến";
+            this.label2.Visible = false;
+            // 
             // DepartmentStockOutExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 562);
-            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lstSize);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.txtBarcode);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cbbStockOutType);
             this.Controls.Add(this.lstColor);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnInput);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cbbStockOutType);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboProductMasters);
@@ -659,5 +682,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.ComboBox cboDepartment;
+        private System.Windows.Forms.Label label2;
     }
 }

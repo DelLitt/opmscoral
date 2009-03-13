@@ -21,7 +21,22 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 processErrorGoodsView = value;
                 processErrorGoodsView.LoadAllStockDefects += new EventHandler<ProcessErrorGoodsEventArgs>(processErrorGoodsView_LoadAllStockDefects);
                 processErrorGoodsView.SaveStockDefects += new EventHandler<ProcessErrorGoodsEventArgs>(processErrorGoodsView_SaveStockDefects);
+
+                processErrorGoodsView.LoadAllDepartmentStockDefects += new EventHandler<ProcessErrorGoodsEventArgs>(processErrorGoodsView_LoadAllDepartmentStockDefects);
+                processErrorGoodsView.SaveDepartmentStockDefects += new EventHandler<ProcessErrorGoodsEventArgs>(processErrorGoodsView_SaveDepartmentStockDefects);
             }
+        }
+
+        void processErrorGoodsView_SaveDepartmentStockDefects(object sender, ProcessErrorGoodsEventArgs e)
+        {
+            DepartmentStockOutLogic.ProcessErrorGoods(e.StockList, e.ReturnStockOutList, e.TempStockOutList,
+                                                   e.DestroyUnusedGoodsList);
+        }
+
+        void processErrorGoodsView_LoadAllDepartmentStockDefects(object sender, ProcessErrorGoodsEventArgs e)
+        {
+            IList stockDefectList = DepartmentStockLogic.FindAllErrors();
+            e.StockList = stockDefectList;
         }
 
         void processErrorGoodsView_SaveStockDefects(object sender, ProcessErrorGoodsEventArgs e)
@@ -62,5 +77,25 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             get;
             set;
         }
+
+        #region IProcessErrorGoodsController Members
+
+
+        public IDepartmentStockOutLogic DepartmentStockOutLogic
+        {
+            get;set;
+        }
+
+        public IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic
+        {
+            get;set;
+        }
+
+        public IDepartmentStockLogic DepartmentStockLogic
+        {
+            get;set;
+        }
+
+        #endregion
     }
 }

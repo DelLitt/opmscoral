@@ -57,13 +57,25 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         public void mainStockInView_SaveReStockInEvent(object sender, MainStockInEventArgs e)
         {
-            StockInLogic.AddReStock(e.StockIn);
+            try
+            {
+                StockInLogic.AddReStock(e.StockIn);
+                e.HasErrors = false;
+                e.EventResult = "Success";
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+
         }
 
         public void mainStockInView_FindByBarcodeEvent(object sender, MainStockInEventArgs e)
         {
             var subCriteria = new SubObjectCriteria("StockOut");
-            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)8);
+            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)4); // tạm xuất là 4
             var objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("Product.ProductId", e.ProductId);
             objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);

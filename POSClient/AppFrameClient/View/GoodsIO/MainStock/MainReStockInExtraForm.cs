@@ -583,27 +583,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void dgvDeptStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (e.ColumnIndex == 0 && e.RowIndex >= 0 && e.RowIndex < deptSIDetailList.Count)
-            {
-                if (deptSO != null
-                    && !string.IsNullOrEmpty(deptSO.StockInId)
-                    && deptSIDetailList[e.RowIndex].StockInDetailPK != null
-                    && !string.IsNullOrEmpty(deptSIDetailList[e.RowIndex].StockInDetailPK.StockInId))
-                {
-                    return;
-                }
-                var productMasterForm = GlobalUtility.GetFormObject<ProductMasterSearchOrCreateForm>(FormConstants.PRODUCT_MASTER_SEARCH_OR_CREATE_FORM);
-                productMasterForm.ShowDialog();
-                ProductMaster productMaster = productMasterForm.SelectedProductMaster;
-                if (productMaster != null)
-                {
-                    deptSIDetailList[e.RowIndex].Product.ProductMaster = productMaster;
-                    bdsStockIn.EndEdit();
-                    dgvDeptStockIn.Refresh();
-                    dgvDeptStockIn.Invalidate();
-                    //bdsStockIn.ResetBindings(false);
-                }
-            }*/
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

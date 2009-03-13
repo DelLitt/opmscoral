@@ -40,6 +40,7 @@ namespace AppFrame.Logic
             data.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
             data.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             data.StockInType = (long) 1;
+            data.StockInId = stockInId;
             StockInDAO.Add(data);
 
             foreach (StockInDetail stockInDetail in data.StockInDetails)
@@ -54,7 +55,18 @@ namespace AppFrame.Logic
                 stockInDetail.ProductMaster = stockInDetail.Product.ProductMaster;
                 //                    stockInDetail.CurrentStockQuantity = (sum == null) ? 0 : Int64.Parse(sum.ToString());
                 StockInDetailDAO.Add(stockInDetail);
-
+                ObjectCriteria stockCriteria = new ObjectCriteria();
+                stockCriteria.AddEqCriteria("Product.ProductId", stockInDetail.Product.ProductId);
+                IList stockList = StockDAO.FindAll(stockCriteria);
+                
+                // decrease error and increase good
+                if(stockList != null)
+                {
+                    Stock stock = (Stock)stockList[0];
+                    stock.ErrorQuantity -= stockInDetail.Quantity;
+                    stock.GoodQuantity += stockInDetail.Quantity;
+                    StockDAO.Update(stock);
+                }
             }
         }
 

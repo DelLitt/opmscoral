@@ -416,7 +416,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 CurrentDepartmentStockIn.UpdateDate = DateTime.Now;
                 CurrentDepartmentStockIn.DepartmentStockInDetails = DepartmentStockInDetailList;
-                var eventArgs = new MainStockInEventArgs { DepartmeneStockIn = CurrentDepartmentStockIn, Department = Department };
+                var eventArgs = new MainStockInEventArgs { DepartmentStockIn = CurrentDepartmentStockIn, Department = Department };
                 EventUtility.fireEvent(SaveDepartmentStockInEvent, this, eventArgs);
                 MessageBox.Show("Lưu thành công");
 
@@ -503,9 +503,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             /*if (CurrentDepartmentStockIn != null)
             {
-                var eventArgs = new MainStockInEventArgs {DepartmeneStockIn = CurrentDepartmentStockIn};
+                var eventArgs = new MainStockInEventArgs {DepartmentStockIn = CurrentDepartmentStockIn};
                 EventUtility.fireEvent(InitDepartmentStockInEvent, this, eventArgs);
-                DepartmentStockInDetailList = eventArgs.DepartmeneStockIn.DepartmentStockInDetails;
+                DepartmentStockInDetailList = eventArgs.DepartmentStockIn.DepartmentStockInDetails;
                 DepartmentStockList = eventArgs.DepartmentStockList;
                 DepartmentRemainStockList = eventArgs.DepartmentRemainStockList;
                 foreach (DepartmentStockInDetail detail in DepartmentStockInDetailList)
@@ -649,6 +649,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<MainStockInEventArgs> LoadGoodsByIdEvent;
 
         public event EventHandler<MainStockInEventArgs> LoadGoodsByNameEvent;
+
+        #endregion
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
+
+        #endregion
+
+        #region IDepartmentStockInView Members
+
+
+        public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
 
         #endregion
     }

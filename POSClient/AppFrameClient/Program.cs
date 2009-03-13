@@ -33,7 +33,7 @@ namespace AppFrame
             Stream inStream = mainForm.GetType().Assembly.GetManifestResourceStream("AppFrameClient.MenuPermissions.xml");
 
             // load menu permission
-            MenuItemPermission menuItemPermission = new MenuItemPermission(MenuItemPermission.DISABLED);
+            MenuItemPermission menuItemPermission = new MenuItemPermission(MenuItemPermission.INVISIBLE);
             menuItemPermission.loadRoles(inStream);
             ClientInfo clientInfo = ClientInfo.getInstance();
             clientInfo.MenuPermissions = menuItemPermission;

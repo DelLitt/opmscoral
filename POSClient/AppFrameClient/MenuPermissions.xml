@@ -29,6 +29,8 @@
   <menu name="mnuDeptStock" role="Administrator">
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager" />
     <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager" />
+    <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager" />
+    
   </menu>
   <menu name="mnuSalePoint" role="Administrator">
     <menuitem name="mnuDefineSalePoint" role="Administrator" />
@@ -64,8 +66,9 @@
     <menuitem name="mnuGoodsSaleDepartmentReport" role="NotImplement" />    
     <menuitem name="mnuGoodsImportReport" role="Administrator" />
     <menuitem name="mnuGoodsExportReport" role="Administrator" />
+    <menuitem name="mnuDeptStockInReport" role="Administrator" />
     <menuitem name="mnuGoodsSendbackReport" role="NotImplement" />
-    <menuitem name="mnuTotalReport" role="NotImplement" />
+    <menuitem name="mnuTotalReport" role="NotImplement" />         
     <menuitem name="mnuMixReport" role="NotImplement" />
   </menu>
   <menu name="mnuTool" role="Administrator">
