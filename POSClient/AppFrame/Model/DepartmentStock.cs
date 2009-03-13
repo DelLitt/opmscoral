@@ -49,8 +49,6 @@ namespace AppFrame.Model
         public virtual Int64 OldLostQuantity { get; set; }
         public virtual Int64 OldUnconfirmQuantity { get; set; }
 
-        public virtual ProductMaster ProductMaster { get; set; }
-
         public virtual Int64 DepartmentId
         {
             get
@@ -174,7 +172,7 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
-
+        public virtual ProductMaster ProductMaster { get; set; }
         #endregion
         
         #region IComparable Methods
