@@ -22,6 +22,7 @@ namespace AppFrame.Presenter.GoodsSale
         IProductMasterLogic ProductMasterLogic { get; set; }
         IProductLogic ProductLogic { get; set; }
         IDepartmentPriceLogic DepartmentPriceLogic { get; set; }
+        IDepartmentStockLogic DepartmentStockLogic { get; set; }
         IReturnPoLogic ReturnPoLogic { get; set; }
         #endregion
 

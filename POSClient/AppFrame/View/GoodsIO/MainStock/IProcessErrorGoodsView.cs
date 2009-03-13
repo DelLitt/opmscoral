@@ -12,5 +12,10 @@ namespace AppFrame.View.GoodsIO.MainStock
 
         event EventHandler<ProcessErrorGoodsEventArgs> LoadAllStockDefects;
         event EventHandler<ProcessErrorGoodsEventArgs> SaveStockDefects;
+
+
+        event EventHandler<ProcessErrorGoodsEventArgs> LoadAllDepartmentStockDefects;
+        event EventHandler<ProcessErrorGoodsEventArgs> SaveDepartmentStockDefects;
+        
     }
 }

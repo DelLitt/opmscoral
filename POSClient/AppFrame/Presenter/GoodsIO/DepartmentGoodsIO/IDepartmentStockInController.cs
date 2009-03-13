@@ -19,6 +19,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         IProductMasterLogic ProductMasterLogic { get; set; }
         IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
         IDepartmentStockLogic DepartmentStockLogic { get; set; }
+        IDepartmentStockOutLogic DepartmentStockOutLogic { get; set; }
+        IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic { get; set; }
 
         #endregion
     }

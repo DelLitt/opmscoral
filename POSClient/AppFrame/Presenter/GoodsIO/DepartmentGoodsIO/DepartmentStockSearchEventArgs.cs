@@ -10,11 +10,13 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
 {
     public class DepartmentStockInEventArgs : BaseEventArgs
     {
+        public DepartmentStockInDetail DepartmentStockInDetail { get; set;}
         public Form ParentForm { get; set; }
 
         public ProductMaster SelectedProductMaster { get; set; }
-        public DepartmentStockIn DepartmeneStockIn { get; set; }
+        public DepartmentStockIn DepartmentStockIn { get; set; }
         public Department Department { get; set; }
+        public string ProductId { get; set; }    
         public bool IsForSync { get; set; }
 
         public IList CountryList { get; set; }

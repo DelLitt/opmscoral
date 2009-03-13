@@ -20,6 +20,7 @@ namespace AppFrame.Presenter.GoodsSale
         IPurchaseOrderDetailLogic PurchaseOrderDetailLogic { get; set; }
         IProductMasterLogic ProductMasterLogic { get; set; }
         IProductLogic ProductLogic { get; set; }
+        IDepartmentStockLogic DepartmentStockLogic { get; set; }
         #endregion
 
         #region Model use

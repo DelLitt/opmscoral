@@ -57,5 +57,6 @@ namespace AppFrame.Logic
 
         void Sync(DepartmentStockIn data);
         IList FindByProductMaster(long id, DateTime date, DateTime toDate);
+        void AddReStock(DepartmentStockIn @in);
     }
 }
