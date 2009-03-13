@@ -146,5 +146,13 @@
 	>
     <column name="PRODUCT_MASTER_ID" />
   </many-to-one>
+
+  <many-to-one
+  name="DefectStatus"
+  class="StockDefectStatus"
+  lazy="false"
+    >
+    <column name="DEFECT_STATUS_ID" />
+  </many-to-one>
 </class>
 </hibernate-mapping>
