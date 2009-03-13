@@ -128,6 +128,7 @@ namespace AppFrame.Logic
                         UpdateDate = DateTime.Now,
                         Product = product,
                         Quantity = stockInDetail.Quantity,
+                        GoodQuantity = stockInDetail.Quantity,
                         ProductMaster = product.ProductMaster
                     };
                     stock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;

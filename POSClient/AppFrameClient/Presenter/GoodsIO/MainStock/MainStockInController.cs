@@ -57,7 +57,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         public void mainStockInView_SaveReStockInEvent(object sender, MainStockInEventArgs e)
         {
-            StockInLogic.Add(e.StockIn);
+            StockInLogic.AddReStock(e.StockIn);
         }
 
         public void mainStockInView_FindByBarcodeEvent(object sender, MainStockInEventArgs e)
