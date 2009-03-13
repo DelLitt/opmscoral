@@ -29,19 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button3 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStockDefect = new System.Windows.Forms.DataGridView();
+            this.btnError = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dgvReturnStockOut = new System.Windows.Forms.DataGridView();
+            this.bdsReturnGoods = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
+            this.bdsTempStockOut = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvGoodsDestroy = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsDestroyGoods = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,31 +70,13 @@
             this.columnDamage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnError = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dgvReturnStockOut = new System.Windows.Forms.DataGridView();
-            this.bdsReturnGoods = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsTempStockOut = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvGoodsDestroy = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsDestroyGoods = new System.Windows.Forms.BindingSource(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.bdsProductMasters = new System.Windows.Forms.BindingSource(this.components);
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ErrorCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockDefect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnStockOut)).BeginInit();
@@ -136,14 +136,14 @@
             this.dgvStockDefect.AllowUserToAddRows = false;
             this.dgvStockDefect.AllowUserToDeleteRows = false;
             this.dgvStockDefect.AutoGenerateColumns = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockDefect.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockDefect.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStockDefect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockDefect.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -162,102 +162,6 @@
             this.dgvStockDefect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockDefect.Size = new System.Drawing.Size(960, 187);
             this.dgvStockDefect.TabIndex = 26;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Product.ProductId";
-            this.Column1.HeaderText = "Mã vạch";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Product.ProductMaster.ProductFullName";
-            this.Column2.HeaderText = "Tên hàng";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            this.Column3.HeaderText = "Màu sắc";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            this.Column4.HeaderText = "Kích cỡ";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 70;
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "##,##0";
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Quantity.HeaderText = "Tổng";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 60;
-            // 
-            // columnGood
-            // 
-            this.columnGood.DataPropertyName = "GoodCount";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle10.Format = "##,##0";
-            this.columnGood.DefaultCellStyle = dataGridViewCellStyle10;
-            this.columnGood.HeaderText = "Tốt";
-            this.columnGood.Name = "columnGood";
-            this.columnGood.Width = 60;
-            // 
-            // columnError
-            // 
-            this.columnError.DataPropertyName = "ErrorCount";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle11.Format = "##,##0";
-            this.columnError.DefaultCellStyle = dataGridViewCellStyle11;
-            this.columnError.HeaderText = "Lỗi";
-            this.columnError.Name = "columnError";
-            this.columnError.Width = 60;
-            // 
-            // columnDamage
-            // 
-            this.columnDamage.DataPropertyName = "DamageCount";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle12.Format = "##,##0";
-            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle12;
-            this.columnDamage.HeaderText = "Hư";
-            this.columnDamage.Name = "columnDamage";
-            this.columnDamage.Width = 60;
-            // 
-            // columnLost
-            // 
-            this.columnLost.DataPropertyName = "LostCount";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle13.Format = "##,##0";
-            this.columnLost.DefaultCellStyle = dataGridViewCellStyle13;
-            this.columnLost.HeaderText = "Mất";
-            this.columnLost.Name = "columnLost";
-            this.columnLost.Width = 60;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "UnconfirmCount";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle14.Format = "##,##0";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle14;
-            this.Column7.HeaderText = "Không xác định";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 144;
             // 
             // btnError
             // 
@@ -351,28 +255,6 @@
             this.dgvTempStockOut.Size = new System.Drawing.Size(316, 185);
             this.dgvTempStockOut.TabIndex = 42;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Product.ProductId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã vạch";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Product.ProductMaster.ProductFullName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tên hàng";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ErrorQuantity";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Số lượng";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 80;
-            // 
             // dgvGoodsDestroy
             // 
             this.dgvGoodsDestroy.AllowUserToAddRows = false;
@@ -442,6 +324,102 @@
             this.button7.Text = "Xoá";
             this.button7.UseVisualStyleBackColor = true;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Product.ProductId";
+            this.Column1.HeaderText = "Mã vạch";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Product.ProductMaster.ProductFullName";
+            this.Column2.HeaderText = "Tên hàng";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.Column3.HeaderText = "Màu sắc";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.Column4.HeaderText = "Kích cỡ";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 70;
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "##,##0";
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Quantity.HeaderText = "Tổng";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 60;
+            // 
+            // columnGood
+            // 
+            this.columnGood.DataPropertyName = "GoodQuantity";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle3.Format = "##,##0";
+            this.columnGood.DefaultCellStyle = dataGridViewCellStyle3;
+            this.columnGood.HeaderText = "Tốt";
+            this.columnGood.Name = "columnGood";
+            this.columnGood.Width = 60;
+            // 
+            // columnError
+            // 
+            this.columnError.DataPropertyName = "ErrorQuantity";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle4.Format = "##,##0";
+            this.columnError.DefaultCellStyle = dataGridViewCellStyle4;
+            this.columnError.HeaderText = "Lỗi";
+            this.columnError.Name = "columnError";
+            this.columnError.Width = 60;
+            // 
+            // columnDamage
+            // 
+            this.columnDamage.DataPropertyName = "DamageQuantity";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle5.Format = "##,##0";
+            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle5;
+            this.columnDamage.HeaderText = "Hư";
+            this.columnDamage.Name = "columnDamage";
+            this.columnDamage.Width = 60;
+            // 
+            // columnLost
+            // 
+            this.columnLost.DataPropertyName = "LostQuantity";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle6.Format = "##,##0";
+            this.columnLost.DefaultCellStyle = dataGridViewCellStyle6;
+            this.columnLost.HeaderText = "Mất";
+            this.columnLost.Name = "columnLost";
+            this.columnLost.Width = 60;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "UnconfirmQuantity";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle7.Format = "##,##0";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column7.HeaderText = "Không xác định";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 144;
+            // 
             // bdsProductMasters
             // 
             this.bdsProductMasters.DataSource = typeof(AppFrameClient.ViewModel.StockViewCollection);
@@ -464,10 +442,32 @@
             // 
             // ErrorCount
             // 
-            this.ErrorCount.DataPropertyName = "Quantity";
+            this.ErrorCount.DataPropertyName = "ErrorQuantity";
             this.ErrorCount.HeaderText = "Số lượng";
             this.ErrorCount.Name = "ErrorCount";
             this.ErrorCount.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Product.ProductId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã vạch";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Product.ProductMaster.ProductFullName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tên hàng";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ErrorQuantity";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Số lượng";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 80;
             // 
             // ProcessErrorGoodsForm
             // 
@@ -517,16 +517,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bdsStockDefect;
         private System.Windows.Forms.DataGridView dgvStockDefect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnGood;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button btnError;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dgvReturnStockOut;
@@ -542,14 +532,24 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnGood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn ErrorCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

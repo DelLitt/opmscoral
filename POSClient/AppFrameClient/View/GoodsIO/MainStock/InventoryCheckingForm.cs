@@ -151,8 +151,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
                 txtDescription.Text = stock.ProductMaster.Description;
                 pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
+                if (!string.IsNullOrEmpty(pictureBox1.ImageLocation))
+                {
+                    pictureBox1.Load();
+                }
 
-                int stockDefIndex = -1;
+            int stockDefIndex = -1;
                 if (dgvStock.CurrentCell != null)
                 {
                     stockDefIndex = dgvStock.CurrentCell.RowIndex;
@@ -312,6 +316,14 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();
             dgvStock.Invalidate();
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+            {
+                btnConfirm_Click(this, null);
+            }
         }
     }
 }

@@ -151,7 +151,7 @@ namespace AppFrame.Logic
             return StockDAO.FindByQuery(sqlString.ToString(), criteria);
         }
 
-        public IList FindByQueryForDeptStockIn(ObjectCriteria criteria)
+        public IList FindByQueryForStockIn(ObjectCriteria criteria)
         {
             var sqlString = new StringBuilder("select stock, sum(stock.Quantity) FROM Stock stock, Product p, ProductMaster pm WHERE stock.Product.ProductId = p.ProductId AND p.ProductMaster.ProductMasterId = pm.ProductMasterId ");
             foreach (SQLQueryCriteria crit in criteria.GetQueryCriteria())

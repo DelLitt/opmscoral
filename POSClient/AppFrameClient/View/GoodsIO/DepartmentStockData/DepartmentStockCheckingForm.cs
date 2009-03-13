@@ -70,6 +70,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
             txtDescription.Text = stock.Product.ProductMaster.Description;
             pictureBox1.ImageLocation = stock.Product.ProductMaster.ImagePath;
+            if(!CheckUtility.IsNullOrEmpty(pictureBox1.ImageLocation))
+            {
+                pictureBox1.Load();
+            }
 
             int stockDefIndex = -1;
             if (dgvStock.CurrentCell != null)
@@ -87,6 +91,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             else // create new stock defect row
             {
+                    stockList.AddNew();
                     DepartmentStock defect = checkingEventArgs.ScannedStock;
                     stockList[stockList.Count - 1] = defect;
                     
@@ -97,15 +102,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     stockList[stockList.Count - 1].OldUnconfirmQuantity = stockList[stockList.Count - 1].UnconfirmQuantity = 0;
 
                     txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
-                
-                    
-                
-                dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
+                    dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
             }
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();
             dgvStock.Invalidate();
             txtBarcode.Text = "";
+            txtBarcode.Focus();
         }
 
         private bool HasInStockDefectList(DepartmentStock stock, DepartmentStockCollection list, out int stockDefIndex)
@@ -209,6 +212,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             dgvStock.Refresh();
             dgvStock.Invalidate();
 
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+            {
+                btnConfirm_Click(this, null);
+            }
         }
     }
 }

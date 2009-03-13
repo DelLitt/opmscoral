@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.Utility;
@@ -66,6 +67,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             ProcessErrorGoodsEventArgs eventArgs = new ProcessErrorGoodsEventArgs();
             EventUtility.fireEvent(LoadAllStockDefects,this,eventArgs);
             IList list = eventArgs.StockList;
+            if(list ==null)
+            {
+                return;
+            }
+            stockDefectList.Clear();
             foreach (Stock defect in list)
             {
                 stockDefectList.Add(defect);                
@@ -88,7 +94,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 StockOutDetail detail = new StockOutDetail();
                 detail.Product = defect.Product;
                 detail.ProductMaster = defect.ProductMaster;
-                detail.Quantity = defect.ErrorQuantity + defect.DamageQuantity;
+                detail.Quantity = defect.ErrorQuantity;
                 detail.ErrorQuantity = defect.ErrorQuantity;
                 detail.DamageQuantity = defect.DamageQuantity;
                 returnGoodsList.Add(detail);
@@ -194,7 +200,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             if(!CheckIntegrityData())
             {
-                
+                return; 
             }
             ProcessErrorGoodsEventArgs eventArgs = new ProcessErrorGoodsEventArgs();
             eventArgs.ReturnStockOutList = ObjectConverter.ConvertToNonGenericList(returnGoodsList);
@@ -205,18 +211,47 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             if(!eventArgs.HasErrors)
             {
                 MessageBox.Show("Lưu thành công !");
+                ClearForm();
                 LoadStockDefects();
             }                      
         }
 
+        private void ClearForm()
+        {
+            stockDefectList.Clear();
+            tempStockOutList.Clear();
+            returnGoodsList.Clear();
+            destroyGoodsList.Clear();
+        }
+
         private bool CheckIntegrityData()
         {
-
-            foreach (StockOutDetail detail in tempStockOutList)
+            foreach (Stock stock in stockDefectList)
             {
-                
+                StockOutDetail tempStockOut = GetFromStockOutList(stock,tempStockOutList);
+                StockOutDetail returnStockOut = GetFromStockOutList(stock, returnGoodsList);
+                long tempQuantity = tempStockOut != null ? tempStockOut.ErrorQuantity : 0;
+                long returnQuantity = returnStockOut != null ? returnStockOut.ErrorQuantity : 0;
+                if(stock.ErrorQuantity < (tempQuantity + returnQuantity))
+                {
+                    throw new BusinessException("Số hàng lỗi được trả lớn hơn số hàng lỗi thực tại mã vạch " + stock.Product.ProductId);
+                    return false;
+                }
+
             }
             return true;
+        }
+
+        private StockOutDetail GetFromStockOutList(Stock stock, StockOutDetailCollection list)
+        {
+            foreach (StockOutDetail detail in list)
+            {
+                if(detail.Product.ProductId == stock.Product.ProductId)
+                {
+                    return detail;
+                }
+            }
+            return null;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

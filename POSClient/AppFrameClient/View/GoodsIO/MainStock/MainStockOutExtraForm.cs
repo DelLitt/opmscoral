@@ -685,6 +685,37 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 //                        return;
                         continue;
                     }
+                    // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
+                    // DefectStatusId = 5, DefectStatusName = "Xuất trả về nhà sản xuất" });
+                    // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác ngoài hệ thống" });
+                    StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+                    if(defectStatus.DefectStatusId == 4 )
+                    {
+                        // if xuattam, so we check error quantity
+                        if(detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    
+                    if (defectStatus.DefectStatusId == 5)
+                    {
+                        // if travenhasanxuat, so we check good && error quantity
+                        if (detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    
+                    if (defectStatus.DefectStatusId == 7)
+                    {
+                        // if xuatdicuahangkhac, so we check good quantity
+                        if (detail.GoodQuantity == 0 ) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    detail.DefectStatus = defectStatus;
                     stockOutDetailList.Add(detail);
                     stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
                     LockField(stockOutDetailList.Count - 1, detail);
@@ -696,12 +727,17 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     {
                         if (def.Product.ProductId.Equals(detail.Product.ProductId))
                         {
+
                             found = true;
                             break;
                         }
                     }
                     if (!found)
                     {
+                        // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
+                        // DefectStatusId = 5, DefectStatusName = "Xuất trả về nhà sản xuất" });
+                        // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác ngoài hệ thống" });
+
                         stockList.Add(def);
                     }
                 }

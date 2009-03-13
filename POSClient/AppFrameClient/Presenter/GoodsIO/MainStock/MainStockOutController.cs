@@ -140,7 +140,6 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 StockOutDetail detail = new StockOutDetail();
                 detail.Product = stock.Product;
                 detail.GoodQuantity = stock.GoodQuantity;
-
                 detail.ErrorQuantity = stock.ErrorQuantity;
                 detail.LostQuantity = stock.LostQuantity;
                 detail.DamageQuantity = stock.DamageQuantity;
@@ -163,7 +162,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddLikeCriteria("pm.ProductName", searchPM.ProductName + "%");
-                IList list = StockLogic.FindByQueryForDeptStockIn(criteria);
+                IList list = StockLogic.FindByQueryForStockIn(criteria);
 
                 if (list == null || list.Count == 0)
                 {

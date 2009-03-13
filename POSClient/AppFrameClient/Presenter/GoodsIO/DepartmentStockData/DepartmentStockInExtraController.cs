@@ -202,7 +202,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                         criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
                         criteria.AddLikeCriteria("pm.ProductName", searchPM.ProductName + "%");
-                        IList list = StockLogic.FindByQueryForDeptStockIn(criteria);
+                        IList list = StockLogic.FindByQueryForStockIn(criteria);
 //                        if (e.ComboBoxDisplayMember.Equals("ProductMasterId"))
 //                        {
 //                            result = ProductMasterLogic.FindProductMasterById(searchPM.ProductMasterId, 50,true);

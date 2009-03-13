@@ -393,10 +393,10 @@ namespace AppFrame.DataLayer
                                 try
                                 {
                                     string sql =
-                                        " SELECT st FROM Stock WHERE DelFlg = 0 AND ( st.ErrorQuantity > 0 OR st.UnconfirmQuantity > 0 OR st.LostQuantity > 0 OR st.DamageQuantity > 0 ";
+                                        " SELECT st FROM Stock AS st WHERE st.DelFlg = 0 AND ( st.ErrorQuantity > 0 OR st.UnconfirmQuantity > 0 OR st.LostQuantity > 0 OR st.DamageQuantity > 0 ) ";
                                     return session.CreateQuery(sql).List();
                                 }
-                                catch (Exception)
+                                catch (Exception e)
                                 {
                                     return null;                                 
                                 }
