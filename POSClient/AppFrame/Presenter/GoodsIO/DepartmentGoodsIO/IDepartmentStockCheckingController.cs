@@ -15,7 +15,6 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         #endregion
         #region Logic
         IDepartmentStockLogic DepartmentStockLogic { get; set; }
-        IDepartmentStockDefectLogic DepartmentStockDefectLogic { get; set; }
         IProductLogic ProductLogic { get; set; }
         IProductMasterLogic ProductMasterLogic { get; set; }
         IDepartmentStockInLogic DepartmentStockInLogic { get; set; }

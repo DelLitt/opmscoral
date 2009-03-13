@@ -131,7 +131,7 @@ namespace AppFrame.Model
 
 
         
-        public virtual DepartmentStockHistoryPK DepartmentStockDefectPK { get; set; }
+        public virtual DepartmentStockHistoryPK DepartmentStockHistoryPK { get; set; }
         public virtual long GoodCount { get; set; }
 
         public virtual int ErrorCount { get; set; }

@@ -4,7 +4,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Logic
 {
-    public interface IDepartmentStockDefectLogic
+    public interface IDepartmentStockHistoryLogic
     {
         /// <summary>
         /// Find DepartmentStockDefect object by id. Return null if nothing is found

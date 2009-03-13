@@ -16,7 +16,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         IStockOutDetailLogic StockOutDetailLogic { get; set; }
         IProductMasterLogic ProductMasterLogic { get; set; }
 
-        IDepartmentStockDefectLogic DepartmentStockDefectLogic { get; set; }
+        IDepartmentStockHistoryLogic DepartmentStockHistoryLogic { get; set; }
         IDepartmentStockOutLogic DepartmentStockOutLogic { get; set; }
         IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic { get; set; }
     }

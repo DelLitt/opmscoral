@@ -5,7 +5,7 @@ using NHibernate.Criterion;
 
 namespace AppFrame.DataLayer
 {
-    public interface IDepartmentStockDefectDAO
+    public interface IDepartmentStockHistoryDAO
     {
         /// <summary>
         /// Find DepartmentStockDefect object by id. Return null if nothing is found

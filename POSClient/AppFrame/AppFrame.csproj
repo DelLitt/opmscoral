@@ -223,7 +223,7 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataLayer\IDepartmentStockDefectDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockHistoryDAO.cs" />
     <Compile Include="DataLayer\IBlockInCostDAO.cs" />
     <Compile Include="DataLayer\IBlockInDAO.cs" />
     <Compile Include="DataLayer\IBlockInDetailDAO.cs" />
@@ -326,7 +326,7 @@
     <Compile Include="Logic\IDepartmentReturnCostLogic.cs" />
     <Compile Include="Logic\IDepartmentReturnDetailLogic.cs" />
     <Compile Include="Logic\IDepartmentReturnLogic.cs" />
-    <Compile Include="Logic\IDepartmentStockDefectLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockHistoryLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInCostLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInDetailLogic.cs" />
     <Compile Include="Logic\IDepartmentStockInLogic.cs" />
