@@ -127,6 +127,13 @@ lazy="false"
     >
   </property>
   <property
+         name="DamageQuantity"
+         type="Int64"
+         column="DAMAGE_QUANTITY"
+         length="10"
+    >
+  </property>
+  <property
         name="ErrorQuantity"
         type="Int64"
         column="ERROR_QUANTITY"

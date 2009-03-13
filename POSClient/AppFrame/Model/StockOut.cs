@@ -173,7 +173,8 @@ namespace AppFrame.Model
             set;
         }
         public virtual StockDefectStatus DefectStatus { get; set; }
-        
+
+        public virtual bool NotUpdateMainStock { get; set; }
         #endregion
         
         #region IComparable Methods
