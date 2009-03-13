@@ -254,11 +254,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get;
             set;
         }
-        public IDepartmentStockDefectLogic DepartmentStockDefectLogic
-        {
-            get;
-            set;
-        }
+        
         public IProductColorLogic ProductColorLogic
         {
             get;

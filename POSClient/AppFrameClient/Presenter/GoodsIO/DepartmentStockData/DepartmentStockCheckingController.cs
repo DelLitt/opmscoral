@@ -40,8 +40,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if (e.SaveStockList != null && e.SaveStockList.Count > 0)
             {
 
-                long maxId = DepartmentStockDefectLogic.GetMaxDefectId();
-                maxId = maxId + 1;
+                
                 foreach (DepartmentStock stock in e.SaveStockList)
                 {
                     if(    stock.DamageQuantity == 0 && stock.OldDamageQuantity == 0 
@@ -138,15 +137,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         #endregion
 
-        #region IInventoryCheckingController Members
-
-
-        public AppFrame.Logic.IDepartmentStockDefectLogic DepartmentStockDefectLogic
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        
     }
 }

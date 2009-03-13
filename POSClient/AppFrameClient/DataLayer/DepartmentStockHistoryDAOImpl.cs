@@ -9,7 +9,7 @@ using AppFrame.Model;
 
 namespace AppFrame.DataLayer
 {
-    public class DepartmentStockDefectDAOImpl : IDepartmentStockDefectDAO
+    public class DepartmentStockHistoryDAOImpl : IDepartmentStockHistoryDAO
     {
         private HibernateTemplate _hibernateTemplate;
 
@@ -321,7 +321,7 @@ namespace AppFrame.DataLayer
             }
         }
 
-        #region IDepartmentStockDefectDAO Members
+        #region IDepartmentStockHistoryDAO Members
 
 
         public IList FindAllProductMasters()
@@ -350,7 +350,7 @@ namespace AppFrame.DataLayer
 
         #endregion
 
-        #region IDepartmentStockDefectDAO Members
+        #region IDepartmentStockHistoryDAO Members
 
 
         public IList FindByProductMasterName(ProductMaster master)

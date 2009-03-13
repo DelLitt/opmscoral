@@ -32,8 +32,7 @@
 
   <object id="AppFrame.Service.IStockOutLogic" type="AppFrame.Logic.StockOutLogicImpl, AppFrameClient">
     <property name="StockOutDAO" ref="AppFrame.DataLayer.IStockOutDAO"/>
-    <property name="StockOutDetailDAO" ref="AppFrame.DataLayer.IStockOutDetailDAO"/>
-    <property name="StockDefectDAO" ref="AppFrame.DataLayer.IStockDefectDAO"/>
+    <property name="StockOutDetailDAO" ref="AppFrame.DataLayer.IStockOutDetailDAO"/>    
     <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
   </object>
 
@@ -148,8 +147,7 @@
   <object id="AppFrame.Service.IDepartmentStockOutLogic" type="AppFrame.Logic.DepartmentStockOutLogicImpl, AppFrameClient">
     <property name="DepartmentStockOutDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDAO"/>
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
-    <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
-    <property name="DepartmentStockDefectDAO" ref="AppFrame.DataLayer.IDepartmentStockDefectDAO"/>
+    <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>    
   </object>
 
   <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">
@@ -171,12 +169,12 @@
     <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
   </object>
 
-  <object id="AppFrame.Service.IStockDefectLogic" type="AppFrame.Logic.StockDefectLogicImpl, AppFrameClient">
-    <property name="StockDefectDAO" ref="AppFrame.DataLayer.IStockDefectDAO"/>
+  <object id="AppFrame.Service.IStockHistoryLogic" type="AppFrame.Logic.StockHistoryLogicImpl, AppFrameClient">
+    <property name="StockHistoryDAO" ref="AppFrame.DataLayer.IStockHistoryDAO"/>
   </object>
   
-  <object id="AppFrame.Service.IDepartmentStockDefectLogic" type="AppFrame.Logic.DepartmentStockDefectLogicImpl, AppFrameClient">
-    <property name="DepartmentStockDefectDAO" ref="AppFrame.DataLayer.IDepartmentStockDefectDAO"/>
+  <object id="AppFrame.Service.IDepartmentStockHistoryLogic" type="AppFrame.Logic.DepartmentStockHistoryLogicImpl, AppFrameClient">
+    <property name="DepartmentStockHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockHistoryDAO"/>
   </object>
 
 

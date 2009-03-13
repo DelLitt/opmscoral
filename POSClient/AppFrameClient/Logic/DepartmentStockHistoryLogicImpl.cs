@@ -10,19 +10,19 @@ using AppFrame.DataLayer;
 
 namespace AppFrame.Logic
 {
-    public class DepartmentStockDefectLogicImpl : IDepartmentStockDefectLogic
+    public class DepartmentStockHistoryLogicImpl : IDepartmentStockHistoryLogic
     {
-        private IDepartmentStockDefectDAO _stockDefectDAO;
+        private IDepartmentStockHistoryDAO _stockHistoryDAO;
 
-        public IDepartmentStockDefectDAO DepartmentStockDefectDAO
+        public IDepartmentStockHistoryDAO DepartmentStockHistoryDAO
         {
             get
             {
-                return _stockDefectDAO;
+                return _stockHistoryDAO;
             }
             set
             {
-                _stockDefectDAO = value;
+                _stockHistoryDAO = value;
             }
         }
 
@@ -33,7 +33,7 @@ namespace AppFrame.Logic
         /// <returns></returns>
         public DepartmentStockHistory FindById(object id)
         {
-            return DepartmentStockDefectDAO.FindById(id);
+            return DepartmentStockHistoryDAO.FindById(id);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly = false)]
         public DepartmentStockHistory Add(DepartmentStockHistory data)
         {
-            DepartmentStockDefectDAO.Add(data);
+            DepartmentStockHistoryDAO.Add(data);
             return data;
         }
 
@@ -56,7 +56,7 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly = false)]
         public void Update(DepartmentStockHistory data)
         {
-            DepartmentStockDefectDAO.Update(data);
+            DepartmentStockHistoryDAO.Update(data);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly = false)]
         public void Delete(DepartmentStockHistory data)
         {
-            DepartmentStockDefectDAO.Delete(data);
+            DepartmentStockHistoryDAO.Delete(data);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly = false)]
         public void DeleteById(object id)
         {
-            DepartmentStockDefectDAO.DeleteById(id);
+            DepartmentStockHistoryDAO.DeleteById(id);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace AppFrame.Logic
         /// <returns></returns>
         public IList FindAll(ObjectCriteria criteria)
         {
-            return DepartmentStockDefectDAO.FindAll(criteria);
+            return DepartmentStockHistoryDAO.FindAll(criteria);
         }
 
         /// <summary>
@@ -98,10 +98,10 @@ namespace AppFrame.Logic
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return DepartmentStockDefectDAO.FindPaging(criteria);
+            return DepartmentStockHistoryDAO.FindPaging(criteria);
         }
 
-        #region IDepartmentStockDefectLogic Members
+        #region IDepartmentStockHistoryLogic Members
 
         [Transaction(ReadOnly = false)]
         public void Process(DepartmentStockHistory defect)
@@ -111,7 +111,7 @@ namespace AppFrame.Logic
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("Product.ProductId", defect.Product.ProductId);
             objectCriteria.AddEqCriteria("DepartmentStockDefectPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
-            IList existList = DepartmentStockDefectDAO.FindAll(objectCriteria);
+            IList existList = DepartmentStockHistoryDAO.FindAll(objectCriteria);
 
             if (existList.Count > 0) // exist stock ?
             {
@@ -130,26 +130,26 @@ namespace AppFrame.Logic
                 existDefect.UpdateId = defect.UpdateId;
 
                 existDefect.ExclusiveKey = existDefect.ExclusiveKey + 1;
-                defect.DepartmentStockDefectPK.DepartmentStockHistoryId = existDefect.DepartmentStockDefectPK.DepartmentStockHistoryId;
-                defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
+                defect.DepartmentStockHistoryPK.DepartmentStockHistoryId = existDefect.DepartmentStockHistoryPK.DepartmentStockHistoryId;
+                defect.DepartmentStockHistoryPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
 
 
-                DepartmentStockDefectDAO.Update(existDefect);
+                DepartmentStockHistoryDAO.Update(existDefect);
             }
             else
             {
-                DepartmentStockDefectDAO.Add(defect);
+                DepartmentStockHistoryDAO.Add(defect);
             }
         }
 
         #endregion
 
-        #region IDepartmentStockDefectLogic Members
+        #region IDepartmentStockHistoryLogic Members
 
         [Transaction(ReadOnly = false)]
         public void ProcessList(IList list)
         {
-            object maxId = DepartmentStockDefectDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
+            object maxId = DepartmentStockHistoryDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
             long nextMaxId = maxId != null ? (long) maxId : 1;
 
             foreach (DepartmentStockHistory defect in list)
@@ -160,7 +160,7 @@ namespace AppFrame.Logic
                 objectCriteria.AddEqCriteria("Product.ProductId", defect.Product.ProductId);
                 objectCriteria.AddEqCriteria("DepartmentStockDefectPK.DepartmentId",
                                              CurrentDepartment.Get().DepartmentId);
-                IList existList = DepartmentStockDefectDAO.FindAll(objectCriteria);
+                IList existList = DepartmentStockHistoryDAO.FindAll(objectCriteria);
 
                 if (existList.Count > 0) // exist stock ?
                 {
@@ -179,52 +179,52 @@ namespace AppFrame.Logic
                     existDefect.UpdateId = defect.UpdateId;
 
                     existDefect.ExclusiveKey = existDefect.ExclusiveKey + 1;
-                    defect.DepartmentStockDefectPK.DepartmentStockHistoryId =
-                        existDefect.DepartmentStockDefectPK.DepartmentStockHistoryId;
-                    defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
+                    defect.DepartmentStockHistoryPK.DepartmentStockHistoryId =
+                        existDefect.DepartmentStockHistoryPK.DepartmentStockHistoryId;
+                    defect.DepartmentStockHistoryPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
 
 
-                    DepartmentStockDefectDAO.Update(existDefect);
+                    DepartmentStockHistoryDAO.Update(existDefect);
                 }
                 else
                 {
-                    defect.DepartmentStockDefectPK.DepartmentStockHistoryId = nextMaxId++;
-                    defect.DepartmentStockDefectPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
+                    defect.DepartmentStockHistoryPK.DepartmentStockHistoryId = nextMaxId++;
+                    defect.DepartmentStockHistoryPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
                     
-                    DepartmentStockDefectDAO.Add(defect);
+                    DepartmentStockHistoryDAO.Add(defect);
                 }
             }
         }
 
         #endregion
 
-        #region IDepartmentStockDefectLogic Members
+        #region IDepartmentStockHistoryLogic Members
 
 
         public long GetMaxDefectId()
         {
-            object maxId = DepartmentStockDefectDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
+            object maxId = DepartmentStockHistoryDAO.SelectSpecificType(null, Projections.Max("DepartmentStockDefectPK.DepartmentStockDefectId"));
             return maxId != null ? (long)maxId : 0;
         }
 
         #endregion
 
-        #region IDepartmentStockDefectLogic Members
+        #region IDepartmentStockHistoryLogic Members
 
 
         public IList FindAllProductMasters()
         {
-            return DepartmentStockDefectDAO.FindAllProductMasters();
+            return DepartmentStockHistoryDAO.FindAllProductMasters();
         }
 
         #endregion
 
-        #region IDepartmentStockDefectLogic Members
+        #region IDepartmentStockHistoryLogic Members
 
 
         public IList FindByProductMasterName(ProductMaster master)
         {
-            return DepartmentStockDefectDAO.FindByProductMasterName(master);
+            return DepartmentStockHistoryDAO.FindByProductMasterName(master);
         }
 
         #endregion

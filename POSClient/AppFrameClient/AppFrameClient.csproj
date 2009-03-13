@@ -196,7 +196,7 @@
     <Compile Include="DataLayer\DepartmentReturnDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentReturnDetailDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentStockDAOImpl.cs" />
-    <Compile Include="DataLayer\DepartmentStockDefectDAOImpl.cs" />
+    <Compile Include="DataLayer\DepartmentStockHistoryDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentStockInCostDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentStockInDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentStockInDetailDAOImpl.cs" />
@@ -266,7 +266,7 @@
     <Compile Include="Logic\DepartmentReturnCostLogicImpl.cs" />
     <Compile Include="Logic\DepartmentReturnDetailLogicImpl.cs" />
     <Compile Include="Logic\DepartmentReturnLogicImpl.cs" />
-    <Compile Include="Logic\DepartmentStockDefectLogicImpl.cs" />
+    <Compile Include="Logic\DepartmentStockHistoryLogicImpl.cs" />
     <Compile Include="Logic\DepartmentStockInCostLogicImpl.cs" />
     <Compile Include="Logic\DepartmentStockInDetailLogicImpl.cs" />
     <Compile Include="Logic\DepartmentStockInLogicImpl.cs" />

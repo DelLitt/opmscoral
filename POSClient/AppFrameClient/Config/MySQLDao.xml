@@ -214,11 +214,11 @@
   <object id="AppFrame.DataLayer.IStockInDAO" type="AppFrame.DataLayer.StockInDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-  <object id="AppFrame.DataLayer.IStockDefectDAO" type="AppFrame.DataLayer.StockDefectDAOImpl, AppFrameClient">
+  <object id="AppFrame.DataLayer.IStockHistoryDAO" type="AppFrame.DataLayer.StockHistoryDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
 
-  <object id="AppFrame.DataLayer.IDepartmentStockDefectDAO" type="AppFrame.DataLayer.DepartmentStockDefectDAOImpl, AppFrameClient">
+  <object id="AppFrame.DataLayer.IDepartmentStockHistoryDAO" type="AppFrame.DataLayer.DepartmentStockHistoryDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
   

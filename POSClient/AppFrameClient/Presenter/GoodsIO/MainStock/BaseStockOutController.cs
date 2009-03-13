@@ -119,7 +119,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void baseStockOutView_FillDeptGoodsToCombo(object sender, BaseStockOutEventArgs e)
         {
-            IList stockList = DepartmentStockDefectLogic.FindAllProductMasters();
+            IList stockList = DepartmentStockHistoryLogic.FindAllProductMasters();
             IList stockViewList = new ArrayList();
             if (stockList != null)
             {
@@ -137,7 +137,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void baseStockOutView_LoadDeptGoodsByNameEvent(object sender, BaseStockOutEventArgs e)
         {
-            IList stockDefectList = DepartmentStockDefectLogic.FindByProductMasterName(e.RequestProductMaster);
+            IList stockDefectList = DepartmentStockHistoryLogic.FindByProductMasterName(e.RequestProductMaster);
             e.ReturnDeptStockDefectList = stockDefectList;
         }
 
@@ -268,7 +268,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         #region IBaseStockOutController Members
 
 
-        public AppFrame.Logic.IDepartmentStockDefectLogic DepartmentStockDefectLogic
+        public AppFrame.Logic.IDepartmentStockHistoryLogic DepartmentStockHistoryLogic
         {
             get;set;
         }
