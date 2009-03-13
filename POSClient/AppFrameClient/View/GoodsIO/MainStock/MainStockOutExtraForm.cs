@@ -371,6 +371,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             bool isNeedClearData = stockOut.StockoutId == 0;
             stockOut.StockOutDate = dtpImportDate.Value;
             stockOut.StockOutDetails = stockOutDetailList;
+            stockOut.DefectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
 //            stockOut.Description = txtDexcription.Text;
             var eventArgs = new MainStockOutEventArgs();
             eventArgs.StockOut = stockOut;

@@ -516,6 +516,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
             deptSO.StockOutDate = dtpImportDate.Value;
+            deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockOutEventArgs();
