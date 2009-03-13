@@ -11,7 +11,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
     public class InventoryCheckingEventArgs : BaseEventArgs
     {
         public DepartmentStock ScannedDepartmentStock { get; set; }
-        public DepartmentStockDefect ScannedDepartmentStockDefect { get; set; }
+        public DepartmentStockHistory ScannedDepartmentStockDefect { get; set; }
         public IList SaveDepartmentStock { get; set; }
         public IList SaveDepartmentStockDefectList { get; set; }
 
@@ -19,8 +19,6 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         public IList ReturnStockViewList { get; set; }
 
         public Stock ScannedStock { get; set; }
-        public StockDefect ScannedStockDefect { get; set; }
-        public IList SaveStock { get; set; }
-        public IList SaveStockDefectList { get; set; }
+        public IList SaveStockList { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
 {
     public class ProcessErrorGoodsEventArgs : BaseEventArgs
     {
-        public IList StockDefectList { get; set; }
+        public IList StockList { get; set; }
         public IList ReturnStockOutList { get; set; }
         public IList TempStockOutList { get; set; }
         public IList DestroyUnusedGoodsList { get; set; }

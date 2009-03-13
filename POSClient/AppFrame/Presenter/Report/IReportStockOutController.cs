@@ -24,7 +24,7 @@ namespace AppFrame.Presenter.Report
         IStockOutLogic StockOutLogic { get; set; }
         IStockOutDetailLogic StockOutDetailLogic { get; set; }
         IStockLogic StockLogic { get; set; }
-        IStockDefectLogic StockDefectLogic { get; set; }
+        
 
         #endregion
     }

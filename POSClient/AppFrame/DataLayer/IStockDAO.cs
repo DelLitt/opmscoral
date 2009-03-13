@@ -66,5 +66,8 @@ namespace AppFrame.DataLayer
 
         IList FindByQuery(string sqlString, ObjectCriteria criteria);
         IList FindByProductMasterName();
+        IList FindAllErrors();
+        IList FindByProductMasterName(ProductMaster master);
+        IList FindAllProductMasters();
     }
 }

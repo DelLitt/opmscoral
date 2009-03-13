@@ -6,14 +6,14 @@ using System.Text;
 namespace AppFrame.Model
 {
     [Serializable]
-    public class DepartmentStockDefectPK
+    public class DepartmentStockHistoryPK
     {
         public virtual Int64 DepartmentId
         {
             get;
             set;
         }
-        public virtual Int64 DepartmentStockDefectId
+        public virtual Int64 DepartmentStockHistoryId
         {
             get;
             set;

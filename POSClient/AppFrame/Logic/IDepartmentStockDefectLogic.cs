@@ -11,28 +11,28 @@ namespace AppFrame.Logic
         /// </summary>
         /// <param name="id">Id of DepartmentStockDefect</param>
         /// <returns></returns>
-        DepartmentStockDefect FindById(object id);
+        DepartmentStockHistory FindById(object id);
 
         /// <summary>
         /// Add DepartmentStockDefect to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        DepartmentStockDefect Add(DepartmentStockDefect data);
+        DepartmentStockHistory Add(DepartmentStockHistory data);
 
         /// <summary>
         /// Update DepartmentStockDefect to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update(DepartmentStockDefect data);
+        void Update(DepartmentStockHistory data);
 
         /// <summary>
         /// Delete DepartmentStockDefect from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete(DepartmentStockDefect data);
+        void Delete(DepartmentStockHistory data);
 
         /// <summary>
         /// Delete DepartmentStockDefect from database.
@@ -55,7 +55,7 @@ namespace AppFrame.Logic
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
 
-        void Process(DepartmentStockDefect defect);
+        void Process(DepartmentStockHistory defect);
         void ProcessList(IList list);
         long GetMaxDefectId();
         IList FindAllProductMasters();

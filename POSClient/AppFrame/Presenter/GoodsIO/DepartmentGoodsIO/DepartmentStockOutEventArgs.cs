@@ -26,8 +26,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public string ComboBoxDisplayMember { get; set; }
         public int SelectedIndex { get; set; }
 
-        public IList DepartmentStockDefectList { get; set; }
-        public DepartmentStockDefect DepartmentStockDefect { get; set; }
+        public IList DepartmentStockList { get; set; }
 
         public IList FoundDepartmentStockOutDetailList { get; set; }
     }

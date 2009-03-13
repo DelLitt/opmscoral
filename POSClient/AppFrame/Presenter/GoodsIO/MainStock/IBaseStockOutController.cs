@@ -10,7 +10,6 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
     public interface IBaseStockOutController
     {
         IBaseStockOutView BaseStockOutView { get; set; }
-        IStockDefectLogic StockDefectLogic { get; set; }
         IProductLogic ProductLogic { get; set; }
         IStockLogic StockLogic { get; set; }
         IStockOutLogic StockOutLogic { get; set; }

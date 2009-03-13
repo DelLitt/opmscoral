@@ -62,5 +62,8 @@ namespace AppFrame.Logic
 
         IList FindByQueryForDeptStockIn(ObjectCriteria criteria);
         IList FindByProductMasterName();
+        IList FindAllErrors();
+        IList FindByProductMasterName(ProductMaster master);
+        IList FindAllProductMasters();
     }
 }

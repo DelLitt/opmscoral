@@ -279,7 +279,7 @@
     <Compile Include="DataLayer\IScheduleTemplateDAO.cs" />
     <Compile Include="DataLayer\ISimilarProductDAO.cs" />
     <Compile Include="DataLayer\IStockDAO.cs" />
-    <Compile Include="DataLayer\IStockDefectDAO.cs" />
+    <Compile Include="DataLayer\IStockHistoryDAO.cs" />
     <Compile Include="DataLayer\IStockInDAO.cs" />
     <Compile Include="DataLayer\IStockInDetailDAO.cs" />
     <Compile Include="DataLayer\IStockOutCostDAO.cs" />
@@ -365,7 +365,7 @@
     <Compile Include="Logic\IReturnProductLogic.cs" />
     <Compile Include="Logic\IScheduleTemplateLogic.cs" />
     <Compile Include="Logic\ISimilarProductLogic.cs" />
-    <Compile Include="Logic\IStockDefectLogic.cs" />
+    <Compile Include="Logic\IStockHistoryLogic.cs" />
     <Compile Include="Logic\IStockInDetailLogic.cs" />
     <Compile Include="Logic\IStockInLogic.cs" />
     <Compile Include="Logic\IStockLogic.cs" />
@@ -401,8 +401,8 @@
     <Compile Include="Model\DepartmentReturnDetail.cs" />
     <Compile Include="Model\DepartmentReturnDetailPK.cs" />
     <Compile Include="Model\DepartmentStock.cs" />
-    <Compile Include="Model\DepartmentStockDefect.cs" />
-    <Compile Include="Model\DepartmentStockDefectPK.cs" />
+    <Compile Include="Model\DepartmentStockHistory.cs" />
+    <Compile Include="Model\DepartmentStockHistoryPK.cs" />
     <Compile Include="Model\DepartmentStockIn.cs" />
     <Compile Include="Model\DepartmentStockInCost.cs" />
     <Compile Include="Model\DepartmentStockInCostPK.cs" />
@@ -474,7 +474,7 @@
     <Compile Include="Model\ScheduleTemplatePK.cs" />
     <Compile Include="Model\SimilarProduct.cs" />
     <Compile Include="Model\Stock.cs" />
-    <Compile Include="Model\StockDefect.cs" />
+    <Compile Include="Model\StockHistory.cs" />
     <Compile Include="Model\StockDefectStatus.cs" />
     <Compile Include="Model\StockIn.cs" />
     <Compile Include="Model\StockInDetail.cs" />
@@ -689,9 +689,9 @@
   <ItemGroup>
     <Content Include="Advice\dummy.txt" />
     <Content Include="Config\AppFrameSecurity.xml" />
-    <EmbeddedResource Include="Model\StockDefect.hbm.xml" />
+    <EmbeddedResource Include="Model\StockHistory.hbm.xml" />
     <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
-    <EmbeddedResource Include="Model\DepartmentStockDefect.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockHistory.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />

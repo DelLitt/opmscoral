@@ -10,10 +10,11 @@ namespace AppFrame.Model
     /// Stock object for NHibernate mapped table 'stock_defect'.
     /// </summary>
     [Serializable]
-    public class DepartmentStockDefect : System.IComparable
+    public class StockHistory : System.IComparable
     {
         #region Member Variables
-        
+
+        protected Int64 _StockHistoryId;
         protected Int64 _quantity;
         protected DateTime _createDate;
         protected string _createId;
@@ -27,14 +28,26 @@ namespace AppFrame.Model
 
         #region Constructors
 
-        public DepartmentStockDefect()
+        public StockHistory()
         {
         }
 
         #endregion
 
         #region Public Properties
-        
+
+        public virtual Int64 StockHistoryId
+        {
+            get
+            {
+                return _StockHistoryId;
+            }
+            set
+            {
+                _StockHistoryId = value;
+            }
+        }
+
         public virtual Int64 Quantity
         {
             get
@@ -114,8 +127,8 @@ namespace AppFrame.Model
         }
 
 
-
-
+        
+        
         public virtual Product Product
         {
             get
@@ -128,24 +141,23 @@ namespace AppFrame.Model
             }
         }
         public virtual ProductMaster ProductMaster { get; set; }
-
-
         
-        public virtual DepartmentStockDefectPK DepartmentStockDefectPK { get; set; }
+
+        public virtual Stock Stock { get; set; }
+
         public virtual long GoodCount { get; set; }
-
         public virtual int ErrorCount { get; set; }
-        public virtual int OldErrorCount { get; set; }
         public virtual int DamageCount { get; set; }
-        public virtual int OldDamageCount { get; set; }        
         public virtual int LostCount { get; set; }
-        public virtual int OldLostCount { get; set; }
         public virtual int UnconfirmCount { get; set; }
-        public virtual int OldUnconfirmCount { get; set; }
-        public virtual string Description { get; set; }
 
-        // not mapping field
-        public virtual DepartmentStock DepartmentStock { get; set; }
+        public virtual int OldErrorCount { get; set; }
+        public virtual int OldDamageCount { get; set; }
+        public virtual int OldLostCount { get; set; }
+        public virtual int OldUnconfirmCount { get; set; }
+
+        public virtual string Description { get; set; }
+        
         #endregion
 
         #region IComparable Methods
@@ -176,7 +188,7 @@ namespace AppFrame.Model
         }
         #endregion
 
-
+        
     }
     #endregion
 }

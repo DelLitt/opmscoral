@@ -42,6 +42,13 @@ namespace AppFrame.Model
         public virtual Int64 ErrorQuantity { get; set; }
         public virtual Int64 LostQuantity { get; set; }
         public virtual Int64 UnconfirmQuantity { get; set; }
+
+        public virtual Int64 OldGoodQuantity { get; set; }
+        public virtual Int64 OldDamageQuantity { get; set; }
+        public virtual Int64 OldErrorQuantity { get; set; }
+        public virtual Int64 OldLostQuantity { get; set; }
+        public virtual Int64 OldUnconfirmQuantity { get; set; }
+
         public virtual ProductMaster ProductMaster { get; set; }
 
         public virtual Int64 DepartmentId

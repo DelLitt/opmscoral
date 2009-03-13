@@ -59,6 +59,6 @@ namespace AppFrame.Logic
         IList FindByProductMaster(long id, DateTime date, DateTime toDate);
         long FindMaxId();
         IList FindStockOut(DateTime date, DateTime toDate);
-        void ProcessErrorGoods(IList list, IList outList, IList stockOutList, IList goodsList);
+        void ProcessErrorGoods(IList stockList, IList outList, IList stockOutList, IList goodsList);
     }
 }
