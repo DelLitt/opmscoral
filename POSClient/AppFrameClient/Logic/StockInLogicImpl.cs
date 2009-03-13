@@ -362,5 +362,15 @@ namespace AppFrame.Logic
         {
             return StockInDAO.FindByProductMaster(fromDate, toDate);
         }
+
+        #region IStockInLogic Members
+
+
+        public IList FindReStockIn(string id)
+        {
+            return StockInDetailDAO.FindReStock(id);
+        }
+
+        #endregion
     }
 }

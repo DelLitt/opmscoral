@@ -537,9 +537,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     return;
                 }
 
-                if (detail.Quantity > detail.StockOutQuantity)
+                if (detail.Quantity > (detail.StockOutQuantity-detail.ReStockQuantity))
                 {
-                    MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng phải nhỏ hơn số lượng tạm xuất");
+                    MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng phải nhỏ hơn số lượng tạm xuất là " + (detail.StockOutQuantity - detail.ReStockQuantity).ToString());
                     return;
                 }
                 line++;

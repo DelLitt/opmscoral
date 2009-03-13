@@ -34,6 +34,7 @@
     <property name="StockOutDAO" ref="AppFrame.DataLayer.IStockOutDAO"/>
     <property name="StockOutDetailDAO" ref="AppFrame.DataLayer.IStockOutDetailDAO"/>    
     <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentStockInCostLogic" type="AppFrame.Logic.DepartmentStockInCostLogicImpl, AppFrameClient">

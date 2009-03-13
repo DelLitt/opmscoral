@@ -79,9 +79,10 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             var objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("Product.ProductId", e.ProductId);
             objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            objectCriteria.AddSubCriteria("StockOut", subCriteria);
+            objectCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long) 4);
+            //objectCriteria.AddSubCriteria("StockOut", subCriteria);
             IList list = StockOutDetailLogic.FindAll(objectCriteria);
-            if (list.Count > 0)
+            if (list!=null && list.Count > 0)
             {
                 var detail = new StockInDetail { Product = ((StockOutDetail)list[0]).Product };
                 foreach (StockOutDetail soDetail in list)
@@ -90,6 +91,16 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 }
                 e.StockInDetail = detail;
             }
+
+            IList reStockInList = StockInLogic.FindReStockIn(e.ProductId);
+            if(reStockInList!=null)
+            {
+                foreach (StockInDetail inDetail in reStockInList)
+                {
+                    e.StockInDetail.ReStockQuantity += inDetail.Quantity;
+                }                
+            }
+
             e.EventResult = "Success";
         }
 
