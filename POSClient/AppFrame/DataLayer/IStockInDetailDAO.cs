@@ -65,5 +65,6 @@ namespace AppFrame.DataLayer
         object SelectSpecificType(ObjectCriteria criteria, IProjection type);
 
         IList FindByQueryForRemainStockMin(string sqlString, ObjectCriteria criteria);
+        IList FindReStock(string id);
     }
 }

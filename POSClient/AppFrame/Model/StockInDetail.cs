@@ -47,6 +47,7 @@ namespace AppFrame.Model
         public virtual Int64 StockInType { get ; set ;}
         public virtual Int64 OldQuantity { get; set; }
         public virtual Int64 StockOutQuantity { get; set; }
+        public virtual Int64 ReStockQuantity { get; set; }
         public virtual Int64 StockInId
         {
             get
