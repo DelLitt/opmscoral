@@ -45,6 +45,7 @@ namespace AppFrameClient.Presenter.GoodsSale
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
             objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            objectCriteria.AddGreaterCriteria("GoodQuantity", (long)0);
             IList result = DepartmentStockLogic.FindAll(objectCriteria);
             if (result == null)
             {

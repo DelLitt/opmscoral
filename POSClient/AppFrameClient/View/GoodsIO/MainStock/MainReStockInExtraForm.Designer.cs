@@ -80,7 +80,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtQty = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.balloonToolTip1 = new QSS.Components.Windows.Forms.BalloonToolTip(this.components);
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -644,10 +643,6 @@
             this.label15.TabIndex = 116;
             this.label15.Text = "Số lượng";
             // 
-            // balloonToolTip1
-            // 
-            this.balloonToolTip1.BalloonPosition = new System.Drawing.Point(0, 0);
-            // 
             // SearchCreate
             // 
             this.SearchCreate.HeaderText = "......";
@@ -879,7 +874,6 @@
         public System.Windows.Forms.Label label14;
         public System.Windows.Forms.TextBox txtQty;
         public System.Windows.Forms.Label label15;
-        private QSS.Components.Windows.Forms.BalloonToolTip balloonToolTip1;
         private System.Windows.Forms.DataGridViewButtonColumn SearchCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProducType;

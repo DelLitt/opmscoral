@@ -59,10 +59,11 @@ namespace AppFrameClient.Presenter.GoodsSale
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
             objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            objectCriteria.AddGreaterCriteria("GoodQuantity", (long) 0);
             IList result = DepartmentStockLogic.FindAll(objectCriteria) ;
             if(result == null)
             {
-                throw new BusinessException("Mặt hàng này không tồn tại trong kho !");
+                throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
             }
             DepartmentStock stock = (DepartmentStock)result[0];            
             Product product = stock.Product;

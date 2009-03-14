@@ -106,10 +106,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="QSS.Components.Windows.Forms, Version=2.0.5.874, Culture=neutral, PublicKeyToken=ff4b97c5154224ef, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files (x86)\Quantum Software Solutions\Windows Forms Components\bin\QSS.Components.Windows.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\Spring.Aop.dll</HintPath>
