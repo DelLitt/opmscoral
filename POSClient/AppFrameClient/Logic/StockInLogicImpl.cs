@@ -65,6 +65,8 @@ namespace AppFrame.Logic
                     Stock stock = (Stock)stockList[0];
                     stock.ErrorQuantity -= stockInDetail.Quantity;
                     stock.GoodQuantity += stockInDetail.Quantity;
+                    stock.Quantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity +
+                                     stock.UnconfirmQuantity + stock.LostQuantity;
                     StockDAO.Update(stock);
                 }
             }
@@ -229,7 +231,8 @@ namespace AppFrame.Logic
                         UpdateDate = DateTime.Now,
                         Product = product,
                         ProductMaster = product.ProductMaster,
-                        Quantity = stockInDetail.Quantity
+                        Quantity = stockInDetail.Quantity,
+                        GoodQuantity = stockInDetail.Quantity
                     };
                     departmentStock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                     departmentStock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
@@ -283,8 +286,11 @@ namespace AppFrame.Logic
                         stock.UpdateDate = DateTime.Now;
                         if (stockInDetail.DelFlg == 0)
                         {
-                            stock.Quantity = stock.Quantity -
+                                                        
+                            stock.GoodQuantity = stock.GoodQuantity -
                                                        (stockInDetail.OldQuantity - stockInDetail.Quantity);
+                            stock.Quantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity +
+                                     stock.UnconfirmQuantity + stock.LostQuantity;
                         }
                         else
                         {

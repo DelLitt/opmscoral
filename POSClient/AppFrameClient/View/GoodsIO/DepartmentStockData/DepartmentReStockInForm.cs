@@ -53,7 +53,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             EventUtility.fireEvent(FindByBarcodeEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
-                if (eventArgs.DepartmentStockIn == null)
+                if (eventArgs.DepartmentStockInDetail == null)
                 {
                     MessageBox.Show("Không thể tìm thấy mã vạch " + txtBarcode.Text + " trong kho tạm xuất");
                     return;
@@ -167,6 +167,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (deptSI == null)
             {
                 deptSI = new DepartmentStockIn();
+                deptSI.DepartmentStockInPK = new DepartmentStockInPK();
             }
             bool isNeedClearData = string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId);
             deptSI.DepartmentId = CurrentDepartment.Get().DepartmentId;

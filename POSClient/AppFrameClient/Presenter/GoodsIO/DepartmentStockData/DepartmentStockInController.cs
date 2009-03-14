@@ -70,7 +70,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if (list!=null && list.Count > 0)
             {
                 var detail = new DepartmentStockInDetail { Product = ((DepartmentStockOutDetail)list[0]).Product };
-                foreach (DepartmentStockInDetail soDetail in list)
+                foreach (DepartmentStockOutDetail soDetail in list)
                 {
                     detail.StockOutQuantity += soDetail.Quantity;
                 }
