@@ -72,5 +72,7 @@ namespace AppFrame.DataLayer
         /// <param name="searchProductMaster"></param>
         /// <returns></returns>
         IList FindAllProductMaster(ProductMaster searchProductMaster);
+
+        IList FindReStock(string id);
     }
 }

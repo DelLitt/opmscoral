@@ -76,7 +76,13 @@
         length="10"
     >
     </property>
-
+  <property
+     name="StockInType"
+     type="Int64"
+     column="STOCK_IN_TYPE"
+     length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->

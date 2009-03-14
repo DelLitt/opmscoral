@@ -29,7 +29,8 @@ namespace AppFrame.Model
         protected Int64 _delFlg;
         protected DepartmentStockIn _departmentStockIn;
         protected Product _product;
-        public virtual long DepartmentStockOutQuantity { get; set;}
+        public virtual long StockOutQuantity { get; set;}
+        public virtual long ReStockQuantity { get; set; }
 
         #endregion
 

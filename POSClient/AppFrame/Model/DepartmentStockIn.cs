@@ -172,7 +172,8 @@ namespace AppFrame.Model
                 _departmentStockInCosts = value;
             }
         }
-        
+
+        public virtual long StockInType { get; set; }
 
         #endregion
         
