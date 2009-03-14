@@ -70,8 +70,8 @@ namespace AppFrameClient.View.Reports
             sheet.Cells[6, 7].PutValue(dtpReportTimeFrom.Value.ToString("dd/MM/yyyy"));
             sheet.Cells[6, 9].PutValue(dtpReportTimeTo.Value.ToString("dd/MM/yyyy"));
             var eventArgs = new StockSearchEventArgs();
-            eventArgs.FromDate = dtpReportTimeFrom.Value;
-            eventArgs.ToDate = dtpReportTimeTo.Value;
+            eventArgs.FromDate = DateUtility.ZeroTime(dtpReportTimeFrom.Value);
+            eventArgs.ToDate = DateUtility.MaxTime(dtpReportTimeTo.Value);
             EventUtility.fireEvent(RemainSearchStockEvent, this, eventArgs);
 
 
