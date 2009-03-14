@@ -62,6 +62,8 @@
             this.mnuDeptStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStockChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentReturnGoods = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProcessDepartmentStockDefect = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDepartmentReStockIn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +114,7 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuProcessDepartmentStockDefect = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStockCollection = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -360,7 +362,8 @@
             this.mnuDeptStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDeptStockChecking,
             this.mnuDepartmentReturnGoods,
-            this.mnuProcessDepartmentStockDefect});
+            this.mnuProcessDepartmentStockDefect,
+            this.mnuDepartmentReStockIn});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(92, 20);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -378,6 +381,20 @@
             this.mnuDepartmentReturnGoods.Size = new System.Drawing.Size(265, 22);
             this.mnuDepartmentReturnGoods.Text = "Phân phối hàng trong kho cửa hàng";
             this.mnuDepartmentReturnGoods.Click += new System.EventHandler(this.mnuDepartmentReturnGoods_Click);
+            // 
+            // mnuProcessDepartmentStockDefect
+            // 
+            this.mnuProcessDepartmentStockDefect.Name = "mnuProcessDepartmentStockDefect";
+            this.mnuProcessDepartmentStockDefect.Size = new System.Drawing.Size(265, 22);
+            this.mnuProcessDepartmentStockDefect.Text = "Xử lý sau kiểm kê tại cửa hàng";
+            this.mnuProcessDepartmentStockDefect.Click += new System.EventHandler(this.mnuProcessDepartmentStockDefect_Click);
+            // 
+            // mnuDepartmentReStockIn
+            // 
+            this.mnuDepartmentReStockIn.Name = "mnuDepartmentReStockIn";
+            this.mnuDepartmentReStockIn.Size = new System.Drawing.Size(265, 22);
+            this.mnuDepartmentReStockIn.Text = "Tái nhập tại cửa hàng";
+            this.mnuDepartmentReStockIn.Click += new System.EventHandler(this.mnuDepartmentReStockIn_Click);
             // 
             // mnuWareHouse
             // 
@@ -515,7 +532,8 @@
             this.mnuDeptStockInReport,
             this.mnuGoodsSendbackReport,
             this.mnuTotalReport,
-            this.mnuMixReport});
+            this.mnuMixReport,
+            this.mnuStockCollection});
             this.mnuReport.Name = "mnuReport";
             this.mnuReport.Size = new System.Drawing.Size(61, 20);
             this.mnuReport.Text = "Báo cáo";
@@ -742,12 +760,11 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
-            // mnuProcessDepartmentStockDefect
+            // mnuStockCollection
             // 
-            this.mnuProcessDepartmentStockDefect.Name = "mnuProcessDepartmentStockDefect";
-            this.mnuProcessDepartmentStockDefect.Size = new System.Drawing.Size(265, 22);
-            this.mnuProcessDepartmentStockDefect.Text = "Xử lý sau kiểm kê tại cửa hàng";
-            this.mnuProcessDepartmentStockDefect.Click += new System.EventHandler(this.mnuProcessDepartmentStockDefect_Click);
+            this.mnuStockCollection.Name = "mnuStockCollection";
+            this.mnuStockCollection.Size = new System.Drawing.Size(240, 22);
+            this.mnuStockCollection.Text = "Báo cáo tồn kho";
             // 
             // MainForm
             // 
@@ -858,5 +875,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuMainReStockIn;
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStockInReport;
         private System.Windows.Forms.ToolStripMenuItem mnuProcessDepartmentStockDefect;
+        private System.Windows.Forms.ToolStripMenuItem mnuDepartmentReStockIn;
+        private System.Windows.Forms.ToolStripMenuItem mnuStockCollection;
     }
 }

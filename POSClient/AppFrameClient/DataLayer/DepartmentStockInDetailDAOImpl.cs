@@ -376,5 +376,35 @@ namespace AppFrame.DataLayer
         }
 
         #endregion
+
+        #region IDepartmentStockInDetailDAO Members
+
+
+        public IList FindReStock(string id)
+        {
+            return (IList)HibernateTemplate.Execute(
+                delegate(ISession session)
+                {
+                    try
+                    {
+                        string sql = " SELECT sidet FROM DepartmentStockInDetail sidet,DepartmentStockIn si " +
+                                     " WHERE sidet.DepartmentStockInDetailPK.StockInId = si.DepartmentStockInPK.StockInId " +
+                                     " AND sidet.DepartmentStockInDetailPK.DepartmentId = si.DepartmentStockInPK.DepartmentId " +
+                                     " AND sidet.DepartmentStockInDetailPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId +   
+                                     " AND si.StockInType = 1 " +
+                                     " AND sidet.DelFlg = 0 AND si.DelFlg = 0 " +
+                                     " AND sidet.DepartmentStockInDetailPK.ProductId = '" + id + "'";
+                        return session.CreateQuery(sql).List();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        return null;
+                    }
+                }
+                               );
+        }
+
+        #endregion
     }
 }

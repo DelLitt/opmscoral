@@ -59,21 +59,31 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         void _departmentStockInView_FindByBarcodeEvent(object sender, DepartmentStockInEventArgs e)
         {
-            var subCriteria = new SubObjectCriteria("StockOut");
-            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)4); // tạm xuất là 8
+            /*var subCriteria = new SubObjectCriteria("StockOut");
+            subCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)4); // tạm xuất là 8*/
             var objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("Product.ProductId", e.ProductId);
             objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            objectCriteria.AddSubCriteria("StockOut", subCriteria);
+            objectCriteria.AddEqCriteria("DefectStatus.DefectStatusId", (long)4); // tạm xuất là 4
+            
             IList list = DepartmentStockOutDetailLogic.FindAll(objectCriteria);
-            if (list.Count > 0)
+            if (list!=null && list.Count > 0)
             {
-                var detail = new DepartmentStockInDetail { Product = ((StockOutDetail)list[0]).Product };
+                var detail = new DepartmentStockInDetail { Product = ((DepartmentStockOutDetail)list[0]).Product };
                 foreach (DepartmentStockInDetail soDetail in list)
                 {
-                    detail.DepartmentStockOutQuantity += soDetail.Quantity;
+                    detail.StockOutQuantity += soDetail.Quantity;
                 }
                 e.DepartmentStockInDetail = detail;
+
+                IList reStockInList = DepartmentStockInLogic.FindReStockIn(e.ProductId);
+                if (reStockInList != null)
+                {
+                    foreach (DepartmentStockInDetail inDetail in reStockInList)
+                    {
+                        e.DepartmentStockInDetail.ReStockQuantity += inDetail.Quantity;
+                    }
+                }
             }
             e.EventResult = "Success";
         }

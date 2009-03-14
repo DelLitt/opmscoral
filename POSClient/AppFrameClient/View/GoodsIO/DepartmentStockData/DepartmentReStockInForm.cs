@@ -104,7 +104,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             set
             {
-                departmentStockInController = value; 
+                departmentStockInController = value;
+                departmentStockInController.DepartmentStockInView = this;
             }
         }
 
@@ -154,10 +155,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng phải lớn hơn 0");
                     return;
                 }
-
-                if (detail.Quantity > detail.DepartmentStockOutQuantity)
+                long remainReStock = detail.StockOutQuantity - detail.ReStockQuantity;
+                if (detail.Quantity > remainReStock)
                 {
-                    MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng phải nhỏ hơn số lượng tạm xuất");
+                    MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng còn tái nhập được là " + remainReStock.ToString());
                     return;
                 }
                 line++;
@@ -168,6 +169,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSI = new DepartmentStockIn();
             }
             bool isNeedClearData = string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId);
+            deptSI.DepartmentId = CurrentDepartment.Get().DepartmentId;
             deptSI.StockInDate = dtpImportDate.Value;
             deptSI.DepartmentStockInDetails = deptSIDetailList;
             deptSI.Description = txtDexcription.Text;
@@ -213,6 +215,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSIDetailList.RemoveAt(row.Index);
             }
+        }
+
+        private void DepartmentReStockInForm_Load(object sender, EventArgs e)
+        {
+            deptSIDetailList = new DepartmentStockInDetailCollection(bdsStockIn);
+            bdsStockIn.ResetBindings(true);
         }
     }
 }

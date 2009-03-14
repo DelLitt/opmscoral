@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button3 = new System.Windows.Forms.Button();
             this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
             this.btnInput = new System.Windows.Forms.Button();
@@ -70,6 +70,7 @@
             this.columnSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepartmentStockOutQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -229,11 +230,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(364, 0);
+            this.label7.Location = new System.Drawing.Point(310, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(185, 19);
+            this.label7.Size = new System.Drawing.Size(354, 19);
             this.label7.TabIndex = 136;
-            this.label7.Text = "TÁI NHẬP HÀNG HÓA";
+            this.label7.Text = "TÁI NHẬP HÀNG HÓA TẠI KHO CỬA HÀNG";
             // 
             // lblStatus
             // 
@@ -347,6 +348,7 @@
             this.columnSize,
             this.Quantity,
             this.DepartmentStockOutQuantity,
+            this.Column4,
             this.SellPrice,
             this.Product,
             this.Column1,
@@ -356,8 +358,8 @@
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(4, 142);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvDeptStockIn.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvDeptStockIn.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.Size = new System.Drawing.Size(979, 342);
             this.dgvDeptStockIn.TabIndex = 130;
             // 
@@ -394,7 +396,7 @@
             this.columnProductName.Name = "columnProductName";
             this.columnProductName.ReadOnly = true;
             this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnProductName.Width = 200;
+            this.columnProductName.Width = 175;
             // 
             // columnColor
             // 
@@ -414,13 +416,24 @@
             // 
             // Quantity
             // 
+            this.Quantity.DataPropertyName = "Quantity";
             this.Quantity.HeaderText = "Số lượng";
             this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 120;
             // 
-            // DepartmentStockOutQuantity
+            // StockOutQuantity
             // 
-            this.DepartmentStockOutQuantity.HeaderText = "Số lượng tạm xuất";
-            this.DepartmentStockOutQuantity.Name = "DepartmentStockOutQuantity";
+            this.DepartmentStockOutQuantity.DataPropertyName = "StockOutQuantity";
+            this.DepartmentStockOutQuantity.HeaderText = "Đã tạm xuất";
+            this.DepartmentStockOutQuantity.Name = "StockOutQuantity";
+            this.DepartmentStockOutQuantity.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ReStockQuantity";
+            this.Column4.HeaderText = "Đã tái nhập";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 120;
             // 
             // SellPrice
             // 
@@ -435,6 +448,7 @@
             this.Product.HeaderText = "Xuất xứ";
             this.Product.Name = "Product";
             this.Product.ReadOnly = true;
+            this.Product.Visible = false;
             // 
             // Column1
             // 
@@ -442,6 +456,7 @@
             this.Column1.HeaderText = "Sản xuất";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
             // 
             // Column2
             // 
@@ -449,6 +464,7 @@
             this.Column2.HeaderText = "Đóng gói";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
             // 
             // Column3
             // 
@@ -456,6 +472,7 @@
             this.Column3.HeaderText = "Phân phối";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             // 
             // DepartmentReStockInForm
             // 
@@ -472,9 +489,9 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtStockInId);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dtpImportDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
@@ -486,7 +503,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvDeptStockIn);
             this.Name = "DepartmentReStockInForm";
-            this.Text = "DepartmentReStockIn";
+            this.Text = "Tái nhập kho cửa hàng";
+            this.Load += new System.EventHandler(this.DepartmentReStockInForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
@@ -539,6 +557,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentStockOutQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Product;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

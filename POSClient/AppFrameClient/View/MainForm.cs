@@ -413,5 +413,13 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuDepartmentReStockIn_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentReStockInForm>(this,
+                                                                                      FormConstants.
+                                                                                          DEPARTMENT_RESTOCK_IN_FORM);
+            form.Show();
+        }
+
     }
 }
