@@ -223,5 +223,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSIDetailList = new DepartmentStockInDetailCollection(bdsStockIn);
             bdsStockIn.ResetBindings(true);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

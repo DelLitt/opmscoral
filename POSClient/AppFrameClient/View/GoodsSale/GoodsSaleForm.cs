@@ -636,5 +636,15 @@ namespace AppFrameClient.View.GoodsSale
         {
             txtBarcode_TextChanged(this, e);
         }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.LightGreen;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.White;
+        }
     }
 }

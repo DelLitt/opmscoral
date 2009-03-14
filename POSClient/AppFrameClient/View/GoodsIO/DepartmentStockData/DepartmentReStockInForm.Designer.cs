@@ -69,7 +69,7 @@
             this.columnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentStockOutQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockOutQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -324,6 +324,7 @@
             this.button1.TabIndex = 129;
             this.button1.Text = "Đóng";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -347,7 +348,7 @@
             this.columnColor,
             this.columnSize,
             this.Quantity,
-            this.DepartmentStockOutQuantity,
+            this.StockOutQuantity,
             this.Column4,
             this.SellPrice,
             this.Product,
@@ -423,10 +424,10 @@
             // 
             // StockOutQuantity
             // 
-            this.DepartmentStockOutQuantity.DataPropertyName = "StockOutQuantity";
-            this.DepartmentStockOutQuantity.HeaderText = "Đã tạm xuất";
-            this.DepartmentStockOutQuantity.Name = "StockOutQuantity";
-            this.DepartmentStockOutQuantity.Width = 120;
+            this.StockOutQuantity.DataPropertyName = "StockOutQuantity";
+            this.StockOutQuantity.HeaderText = "Đã tạm xuất";
+            this.StockOutQuantity.Name = "StockOutQuantity";
+            this.StockOutQuantity.Width = 120;
             // 
             // Column4
             // 
@@ -563,5 +564,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockOutQuantity;
     }
 }

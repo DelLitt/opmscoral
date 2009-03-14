@@ -325,5 +325,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 btnConfirm_Click(this, null);
             }
         }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.LightGreen;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.White;
+        }
     }
 }
