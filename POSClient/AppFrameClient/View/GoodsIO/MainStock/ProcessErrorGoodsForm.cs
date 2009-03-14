@@ -149,6 +149,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.Quantity = defect.ErrorQuantity;
                     detail.ErrorQuantity = defect.ErrorQuantity;
                     detail.DamageQuantity = defect.DamageQuantity;
+                    detail.DefectStatus = new StockDefectStatus{ DefectStatusId = 5}; // trả về nhà sản xuất
                     returnGoodsList.Add(detail);
                 }
             }
@@ -164,6 +165,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.Quantity = defect.ErrorQuantity;
                     detail.ErrorQuantity = defect.ErrorQuantity;
                     detail.DamageQuantity = defect.DamageQuantity;
+                    detail.DefectStatus = new StockDefectStatus { DefectStatusId = 6 }; // trả về kho chính
                     deptReturnGoodsList.Add(detail);
                 }
             }
@@ -190,6 +192,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.ProductMaster = defect.ProductMaster;
                     detail.ErrorQuantity = defect.ErrorQuantity;
                     detail.Quantity = detail.ErrorQuantity;
+                    detail.DefectStatus = new StockDefectStatus { DefectStatusId = 4 }; // trả về nhà sản xuất
                     tempStockOutList.Add(detail);
                 }
             }
@@ -203,6 +206,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.ProductMaster = defect.ProductMaster;
                     detail.ErrorQuantity = defect.ErrorQuantity;
                     detail.Quantity = detail.ErrorQuantity;
+                    detail.DefectStatus = new StockDefectStatus { DefectStatusId = 4 }; // trả về nhà sản xuất
                     deptTempStockOutList.Add(detail);
                 }
             }
@@ -229,6 +233,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.LostQuantity = defect.LostQuantity;
                     detail.DamageQuantity = defect.DamageQuantity;
                     detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
+                    detail.DefectStatus = new StockDefectStatus { DefectStatusId = 8 }; // hủy hàng
                     destroyGoodsList.Add(detail);
                 }
             }
@@ -243,6 +248,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.LostQuantity = defect.LostQuantity;
                     detail.DamageQuantity = defect.DamageQuantity;
                     detail.Quantity = detail.LostQuantity + detail.DamageQuantity;
+                    detail.DefectStatus = new StockDefectStatus { DefectStatusId = 8 }; // hủy hàng
                     deptDestroyGoodsList.Add(detail);
                 }
             }
