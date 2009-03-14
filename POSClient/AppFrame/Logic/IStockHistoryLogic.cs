@@ -59,5 +59,6 @@ namespace AppFrame.Logic
         long FindMaxStockHistoryId();
         IList FindAllProductMasters();
         IList FindByProductMasterName(ProductMaster master);
+        IList FindByMaxDate(ObjectCriteria criteria);
     }
 }

@@ -66,5 +66,6 @@ namespace AppFrame.DataLayer
 
         IList FindByProductMasters();
         IList FindByProductMasterName(ProductMaster master);
+        IList FindByMaxDate(string sqlString, ObjectCriteria criteria);
     }
 }

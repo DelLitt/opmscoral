@@ -31,5 +31,6 @@ namespace AppFrame.Presenter.GoodsIO
         public Packager Packager { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        public List<UniversalStockReportObject> ReportList { get; set; }
     }
 }
