@@ -223,21 +223,14 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             e.SelectedStockOutDetail = new StockOutDetail();
             e.SelectedStockOutDetail.Product = stock.Product;
             e.SelectedStockOutDetail.Quantity = stock.Quantity;
-
+            e.SelectedStockOutDetail.ErrorQuantity = stock.ErrorQuantity;
+            e.SelectedStockOutDetail.LostQuantity = stock.LostQuantity;
+            e.SelectedStockOutDetail.DamageQuantity = stock.DamageQuantity;
+            e.SelectedStockOutDetail.UnconfirmQuantity = stock.UnconfirmQuantity;
+            e.SelectedStockOutDetail.Quantity = stock.Quantity;
             e.EventResult = "Success";
 
-            list = StockLogic.FindAll(criteria);
-            if (list.Count == 0)
-            {
-                return;
-            }
-            var def = list[0] as Stock;
-            e.SelectedStockOutDetail.ErrorQuantity = def.ErrorQuantity;
-            e.SelectedStockOutDetail.LostQuantity = def.LostQuantity;
-            e.SelectedStockOutDetail.DamageQuantity = def.DamageQuantity;
-            e.SelectedStockOutDetail.UnconfirmQuantity = def.UnconfirmQuantity;
-            e.SelectedStockOutDetail.Quantity = def.Quantity;
-            e.Stock = def;
+            e.Stock = stock;
         }
 
         public void mainStockOutView_SaveStockOutEvent(object sender, MainStockOutEventArgs e)

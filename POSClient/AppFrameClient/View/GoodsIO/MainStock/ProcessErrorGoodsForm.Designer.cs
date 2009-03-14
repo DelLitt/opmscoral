@@ -59,9 +59,9 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ErrorCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsReturnGoods = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblReturnGoods = new System.Windows.Forms.Label();
+            this.lblTempStockOut = new System.Windows.Forms.Label();
+            this.lblDestroyGoods = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dgvTempStockOut = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -320,32 +320,32 @@
             this.ErrorCount.Name = "ErrorCount";
             this.ErrorCount.Width = 80;
             // 
-            // label2
+            // lblReturnGoods
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 283);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 13);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "Trả hàng lỗi và hư cho nhà sản xuất";
+            this.lblReturnGoods.AutoSize = true;
+            this.lblReturnGoods.Location = new System.Drawing.Point(12, 283);
+            this.lblReturnGoods.Name = "lblReturnGoods";
+            this.lblReturnGoods.Size = new System.Drawing.Size(148, 13);
+            this.lblReturnGoods.TabIndex = 38;
+            this.lblReturnGoods.Text = "Trả hàng lỗi cho nhà sản xuất";
             // 
-            // label3
+            // lblTempStockOut
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(331, 283);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "Tạm xuất để sửa";
+            this.lblTempStockOut.AutoSize = true;
+            this.lblTempStockOut.Location = new System.Drawing.Point(331, 283);
+            this.lblTempStockOut.Name = "lblTempStockOut";
+            this.lblTempStockOut.Size = new System.Drawing.Size(87, 13);
+            this.lblTempStockOut.TabIndex = 39;
+            this.lblTempStockOut.Text = "Tạm xuất để sửa";
             // 
-            // label4
+            // lblDestroyGoods
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(657, 283);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Hàng chờ huỷ";
+            this.lblDestroyGoods.AutoSize = true;
+            this.lblDestroyGoods.Location = new System.Drawing.Point(657, 283);
+            this.lblDestroyGoods.Name = "lblDestroyGoods";
+            this.lblDestroyGoods.Size = new System.Drawing.Size(74, 13);
+            this.lblDestroyGoods.TabIndex = 40;
+            this.lblDestroyGoods.Text = "Hàng chờ huỷ";
             // 
             // button2
             // 
@@ -476,9 +476,9 @@
             this.Controls.Add(this.dgvGoodsDestroy);
             this.Controls.Add(this.dgvTempStockOut);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblDestroyGoods);
+            this.Controls.Add(this.lblTempStockOut);
+            this.Controls.Add(this.lblReturnGoods);
             this.Controls.Add(this.dgvReturnStockOut);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnError);
@@ -516,9 +516,9 @@
         private System.Windows.Forms.Button btnError;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dgvReturnStockOut;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblReturnGoods;
+        private System.Windows.Forms.Label lblTempStockOut;
+        private System.Windows.Forms.Label lblDestroyGoods;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvTempStockOut;
         private System.Windows.Forms.DataGridView dgvGoodsDestroy;

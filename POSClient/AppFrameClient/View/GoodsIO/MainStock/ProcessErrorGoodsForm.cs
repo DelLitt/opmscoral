@@ -88,7 +88,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 bdsTempStockOut.ResetBindings(true);
                 bdsDestroyGoods.ResetBindings(true);
                 bdsStockDefect.ResetBindings(true);
-
+                lblReturnGoods.Text = "Trả hàng lỗi về cho kho chính";    
                 LoadDepartmentStockDefects();
             }
         }
@@ -148,7 +148,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.ProductMaster = defect.ProductMaster;
                     detail.Quantity = defect.ErrorQuantity;
                     detail.ErrorQuantity = defect.ErrorQuantity;
-                    detail.DamageQuantity = defect.DamageQuantity;
+                    //detail.DamageQuantity = defect.DamageQuantity;
                     detail.DefectStatus = new StockDefectStatus{ DefectStatusId = 5}; // trả về nhà sản xuất
                     returnGoodsList.Add(detail);
                 }
@@ -164,7 +164,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     detail.ProductMaster = defect.ProductMaster;
                     detail.Quantity = defect.ErrorQuantity;
                     detail.ErrorQuantity = defect.ErrorQuantity;
-                    detail.DamageQuantity = defect.DamageQuantity;
+                    //detail.DamageQuantity = defect.DamageQuantity;
                     detail.DefectStatus = new StockDefectStatus { DefectStatusId = 6 }; // trả về kho chính
                     deptReturnGoodsList.Add(detail);
                 }
