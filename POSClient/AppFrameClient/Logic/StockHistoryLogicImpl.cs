@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Text;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
@@ -173,5 +174,24 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        public IList FindByMaxDate(ObjectCriteria criteria)
+        {
+            var sqlString = new StringBuilder("select stock, max(stock.CreateDate) FROM StockHistory stock, Product p WHERE stock.Product.ProductId = p.ProductId ");
+            foreach (SQLQueryCriteria crit in criteria.GetQueryCriteria())
+            {
+                sqlString.Append(" AND ")
+                       .Append(crit.PropertyName)
+                       .Append(" ")
+                       .Append(crit.SQLString)
+                       .Append(" :")
+                       .Append(crit.PropertyName)
+                       .Append(" ");
+            }
+            sqlString.Append(" Group BY pm.ProductMasterId");
+            //criteria.AddQueryCriteria("productName", "Ao%");
+            //var sqlString = "select * FROM Stock stock, Product p WHERE stock.Product_Id = p.Product_Id";
+            return StockHistoryDAO.FindByMaxDate(sqlString.ToString(), criteria);
+        }
     }
 }

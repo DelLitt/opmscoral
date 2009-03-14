@@ -34,27 +34,6 @@ namespace AppFrameClient.Presenter.GoodsIO
             }
         }
 
-        public void stockSearchView_RemainSearchStockEvent(object sender, StockSearchEventArgs e)
-        {
-            var criteria = new ObjectCriteria();
-            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
-            criteria.AddLikeCriteria("pm.ProductName", e.ProductMasterName + "%");
-            criteria.AddEqCriteria("pm.ProductType", e.ProductType);
-            criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
-            criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);
-            criteria.AddEqCriteria("pm.Country", e.Country);
-            criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
-            criteria.AddEqCriteria("pm.Packager", e.Packager);
-            criteria.AddEqCriteria("pm.Distributor", e.Distributor);
-            criteria.AddGreaterOrEqualsCriteria("stockin.StockInDate", DateUtility.ZeroTime(e.FromDate));
-            criteria.AddLesserOrEqualsCriteria("stockin.StockInDate", DateUtility.MaxTime(e.ToDate));
-
-            IList minList = StockInDetailLogic.FindByQueryForRemainStock(criteria, true);
-            IList maxList = StockInDetailLogic.FindByQueryForRemainStock(criteria, false);
-
-        }
-
         #endregion
 
         public void stockSearchView_SearchStockEvent(object sender, StockSearchEventArgs e)
@@ -109,6 +88,8 @@ namespace AppFrameClient.Presenter.GoodsIO
         public IPackagerLogic PackagerLogic { get; set; }
         public IStockLogic StockLogic { get; set; }
         public IStockInDetailLogic StockInDetailLogic { get; set; }
+        public IStockHistoryLogic StockHistoryLogic { get; set; }
+        public IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
         #endregion
 
         #region Implementation of IBaseController<StockCreateEventArgs>
@@ -119,5 +100,111 @@ namespace AppFrameClient.Presenter.GoodsIO
         }
 
         #endregion
+
+        public void stockSearchView_RemainSearchStockEvent(object sender, StockSearchEventArgs e)
+        {
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", (long)0);
+            criteria.AddLesserOrEqualsCriteria("CreateDate", e.FromDate);
+
+            IList stockInDetailFromList = StockInDetailLogic.FindAll(criteria);
+            IList deptStockInDetailFromList = DepartmentStockInDetailLogic.FindAll(criteria);
+
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", (long)0);
+            criteria.AddLesserOrEqualsCriteria("CreateDate", e.ToDate);
+
+            IList stockInDetailToList = StockInDetailLogic.FindAll(criteria);
+            IList deptStockInDetailToList = DepartmentStockInDetailLogic.FindAll(criteria);
+//            IList stockHistoryList = StockHistoryLogic.FindByMaxDate(criteria);
+            List<UniversalStockReportObject> reportList = new List<UniversalStockReportObject>();
+
+            // calculate dau` ton`
+            foreach (StockInDetail stockInDetail in stockInDetailFromList)
+            {
+                UniversalStockReportObject report = null;
+                foreach (var reportObject in reportList)
+                {
+                    if (stockInDetail.Product.ProductMaster.ProductMasterId.Equals(reportObject.ProductMaster.ProductMasterId))
+                    {
+                        report = reportObject;
+                        break;
+                    }
+                }
+
+                if (report != null)
+                {
+                    report.StockStartQuantity += stockInDetail.Quantity;
+                    report.StockInStartQuantity += stockInDetail.Quantity;
+
+                }
+                else
+                {
+                    report = new UniversalStockReportObject();
+                    reportList.Add(report);
+                    report.StockStartQuantity = stockInDetail.Quantity;
+                    report.StockInStartQuantity = stockInDetail.Quantity;
+                }
+
+                report.ProductMaster = stockInDetail.Product.ProductMaster;
+                foreach (DepartmentStockInDetail deptStockInDetail in deptStockInDetailFromList)
+                {
+                    if (report.ProductMaster.ProductMasterId.Equals(deptStockInDetail.Product.ProductMaster.ProductMasterId))
+                    {
+                        report.StockStartQuantity -= deptStockInDetail.Quantity;
+                        report.DepartmentStockInStartQuantity += deptStockInDetail.Quantity;
+                    }
+                }
+                reportList.Add(report);
+            }
+
+            // calculate cuoi ton
+            foreach (StockInDetail stockInDetail in stockInDetailToList)
+            {
+                UniversalStockReportObject report = null;
+                foreach (var reportObject in reportList)
+                {
+                    if (stockInDetail.Product.ProductMaster.ProductMasterId.Equals(reportObject.ProductMaster.ProductMasterId))
+                    {
+                        report = reportObject;
+                        break;
+                    }
+                }
+                if (report != null)
+                {
+                    report.StockEndQuantity += stockInDetail.Quantity;
+                    report.StockInEndQuantity += stockInDetail.Quantity;
+                    
+                }
+                else
+                {
+                    report = new UniversalStockReportObject();
+                    report.ProductMaster = stockInDetail.Product.ProductMaster;
+                    reportList.Add(report);
+                    report.StockEndQuantity = stockInDetail.Quantity;
+                    report.StockInEndQuantity = stockInDetail.Quantity;
+                }
+
+                foreach (DepartmentStockInDetail deptStockInDetail in deptStockInDetailToList)
+                {
+                    if (report.ProductMaster.ProductMasterId.Equals(deptStockInDetail.Product.ProductMaster.ProductMasterId))
+                    {
+                        report.StockEndQuantity -= deptStockInDetail.Quantity;
+                        report.DepartmentStockInEndQuantity += deptStockInDetail.Quantity;
+                    }
+                }
+//                foreach (StockHistory stockHistory in stockHistoryList)
+//                {
+//                    if (report.ProductMaster.ProductMasterId.Equals(stockHistory.Product.ProductMaster.ProductMasterId))
+//                    {
+//                        report.LostCount += stockHistory.LostCount;
+//                        report.GoodCount += stockHistory.GoodCount;
+//                        report.ErrorCount += stockHistory.ErrorCount;
+//                        report.DamageCount += stockHistory.DamageCount;
+//                    }
+//                }
+            }
+            e.ReportList = reportList;
+        }
     }
 }

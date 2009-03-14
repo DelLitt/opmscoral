@@ -421,5 +421,13 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuStockCollection_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<RemainStockReport>(this,
+                                                                          FormConstants.
+                                                                              MAIN_REMAIN_STOCK_REPORT_FORM);
+            form.Show();
+        }
+
     }
 }

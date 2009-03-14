@@ -29,6 +29,7 @@ namespace AppFrameClient.Common
         public const string MAIN_STOCK_OUT_FORM = "MainStockOutView";
         public const string MAIN_STOCK_OUT_EXTRA_FORM = "MainStockOutExtraView";
         public const string MAIN_RE_STOCK_IN_EXTRA_FORM = "MainReStockInExtraView";
+        public const string MAIN_REMAIN_STOCK_REPORT_FORM = "RemainStockReport";
 
         public const string DEPARTMENT_STOCK_IN_FORM = "DepartmentStockInView";
         public const string DEPARTMENT_STOCK_SYNC_FROM_MAIN_FORM = "DepartmentStockSyncFromMainView";

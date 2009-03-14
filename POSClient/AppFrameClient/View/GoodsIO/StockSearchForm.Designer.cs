@@ -52,7 +52,9 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -248,6 +250,17 @@
             this.label7.TabIndex = 86;
             this.label7.Text = "TÌM KIẾM KHO";
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(813, 448);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnExcel.TabIndex = 87;
+            this.btnExcel.Text = "Đóng";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Visible = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
             // productMasterControl
             // 
             this.productMasterControl.Location = new System.Drawing.Point(2, 28);
@@ -255,11 +268,17 @@
             this.productMasterControl.Size = new System.Drawing.Size(958, 120);
             this.productMasterControl.TabIndex = 0;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xls";
+            this.saveFileDialog1.Filter = "Excel Report (*.xls)|*.xls";
+            // 
             // StockSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 473);
+            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSearch);
@@ -302,5 +321,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exclusiveKeyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
