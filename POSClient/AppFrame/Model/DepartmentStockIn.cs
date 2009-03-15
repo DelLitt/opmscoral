@@ -42,6 +42,8 @@ namespace AppFrame.Model
         #region Public Properties
 
 		public virtual DepartmentStockInPK DepartmentStockInPK { get; set; }
+        public virtual Department Department { get; set; }
+
         public virtual string Description { get; set; }
 
         public virtual Int64 StockInId
