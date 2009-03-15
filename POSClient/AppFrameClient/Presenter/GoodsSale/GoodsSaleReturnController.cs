@@ -87,26 +87,33 @@ namespace AppFrameClient.Presenter.GoodsSale
                                               CreateDate = DateTime.Now
 
                                           };
+                    po.ReturnPoPK = poPK;
+                    po.Quantity = purchaseOrderDetail.Quantity;
+                    po.ReturnDate = DateTime.Now;
+
                     long originAmount = FindOriginAmount(e.RefPurchaseOrder.PurchaseOrderDetails, purchaseOrderDetail);
                     if (originAmount == 0)
                     {
                         throw new BusinessException("Có lỗi ở hoá đơn gốc, đề nghị kiểm tra");
                     }
 
-                    if (originAmount < (long) ReturnPoLogic.FindQuantityById(poPK))
+                    if (originAmount < ((long) ReturnPoLogic.FindQuantityById(poPK)+ po.Quantity))
                     {
                         throw new BusinessException(
                             "Đã trả hàng trước đó và số lượng trả tổng cộng vượt quá số lượng mua từ mặt hàng " +
                             purchaseOrderDetail.Product.ProductMaster.ProductName + " của hoá đơn này");
                     }
-                    po.ReturnPoPK = poPK;
-                    po.Quantity = purchaseOrderDetail.Quantity;
-                    po.ReturnDate = DateTime.Now;
+                    
                     ReturnPoLogic.Add(po);
                
                     }
-                    PurchaseOrderLogic.Add(e.NextPurchaseOrder);
-                e.HasErrors = false;
+            if (e.NextPurchaseOrder != null 
+                && e.NextPurchaseOrder.PurchaseOrderDetails!=null 
+                && e.NextPurchaseOrder.PurchaseOrderDetails.Count > 0)
+            {
+                PurchaseOrderLogic.Add(e.NextPurchaseOrder);
+            }
+                    e.HasErrors = false;
                 }
             catch (Exception ex )
             {

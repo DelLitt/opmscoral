@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsSaleForm));
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.dgvBill = new System.Windows.Forms.DataGridView();
             this.columnProductSearch = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
@@ -86,10 +92,23 @@
             this.printBillDialog = new System.Windows.Forms.PrintDialog();
             this.printBillDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.reportPurchaseOrder = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ProductReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBill
@@ -109,19 +128,19 @@
             this.columnSize,
             this.columnType});
             this.dgvBill.DataSource = this.bdsBill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Format = "##,##0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "##,##0";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBill.Location = new System.Drawing.Point(1, 65);
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.Size = new System.Drawing.Size(974, 265);
-            this.dgvBill.TabIndex = 3;
+            this.dgvBill.TabIndex = 2;
             this.dgvBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellEndEdit);
             this.dgvBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellClick);
             // 
@@ -325,7 +344,7 @@
             this.btnClose.Location = new System.Drawing.Point(929, 531);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 19;
+            this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -336,7 +355,7 @@
             this.btnSave.Location = new System.Drawing.Point(501, 531);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(97, 23);
-            this.btnSave.TabIndex = 20;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu hóa đơn";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -347,7 +366,7 @@
             this.btnReset.Location = new System.Drawing.Point(609, 531);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 21;
+            this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Bỏ qua";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
@@ -357,7 +376,7 @@
             this.btnHelp.Location = new System.Drawing.Point(12, 531);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
-            this.btnHelp.TabIndex = 22;
+            this.btnHelp.TabIndex = 8;
             this.btnHelp.Text = "Giúp đỡ";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
@@ -367,7 +386,7 @@
             this.btnPrint.Location = new System.Drawing.Point(366, 531);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(124, 23);
-            this.btnPrint.TabIndex = 23;
+            this.btnPrint.TabIndex = 4;
             this.btnPrint.Text = "Lưu và In hóa đơn";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -582,7 +601,7 @@
             this.txtPayment.MaxLength = 10;
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(186, 22);
-            this.txtPayment.TabIndex = 38;
+            this.txtPayment.TabIndex = 3;
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
             // 
             // txtTotalAmount
@@ -655,6 +674,57 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // reportPurchaseOrder
+            // 
+            reportDataSource1.Name = "AppFrame_Collection_ProductReportCollection";
+            reportDataSource1.Value = this.ProductReportCollectionBindingSource;
+            reportDataSource2.Name = "AppFrame_Collection_PurchaseOrderDetailReportCollection";
+            reportDataSource2.Value = this.PurchaseOrderDetailReportCollectionBindingSource;
+            reportDataSource3.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
+            reportDataSource3.Value = this.PurchaseOrderDetailCollectionBindingSource;
+            reportDataSource4.Name = "AppFrame_Model_PurchaseOrderDetail";
+            reportDataSource4.Value = this.PurchaseOrderDetailBindingSource;
+            reportDataSource5.Name = "AppFrame_Model_Department";
+            reportDataSource5.Value = this.DepartmentBindingSource;
+            reportDataSource6.Name = "AppFrame_Model_PurchaseOrder";
+            reportDataSource6.Value = this.PurchaseOrderBindingSource;
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportPurchaseOrder.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.PurchaseOrder.rdlc";
+            this.reportPurchaseOrder.Location = new System.Drawing.Point(175, 503);
+            this.reportPurchaseOrder.Name = "reportPurchaseOrder";
+            this.reportPurchaseOrder.Size = new System.Drawing.Size(104, 55);
+            this.reportPurchaseOrder.TabIndex = 37;
+            this.reportPurchaseOrder.Visible = false;
+            // 
+            // ProductReportCollectionBindingSource
+            // 
+            this.ProductReportCollectionBindingSource.DataSource = typeof(AppFrame.Collection.ProductReportCollection);
+            // 
+            // PurchaseOrderDetailReportCollectionBindingSource
+            // 
+            this.PurchaseOrderDetailReportCollectionBindingSource.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailReportCollection);
+            // 
+            // PurchaseOrderDetailCollectionBindingSource
+            // 
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailCollection);
+            // 
+            // PurchaseOrderDetailBindingSource
+            // 
+            this.PurchaseOrderDetailBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrderDetail);
+            // 
+            // DepartmentBindingSource
+            // 
+            this.DepartmentBindingSource.DataSource = typeof(AppFrame.Model.Department);
+            // 
+            // PurchaseOrderBindingSource
+            // 
+            this.PurchaseOrderBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrder);
+            // 
             // GoodsSaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,6 +741,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.reportPurchaseOrder);
             this.Name = "GoodsSaleForm";
             this.Text = "Nhập hoá đơn bán hàng ( Đang sửa lại )";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -682,6 +753,12 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,5 +829,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnType;
+        private Microsoft.Reporting.WinForms.ReportViewer reportPurchaseOrder;
+        private System.Windows.Forms.BindingSource ProductReportCollectionBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailReportCollectionBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailCollectionBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailBindingSource;
+        private System.Windows.Forms.BindingSource DepartmentBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderBindingSource;
     }
 }

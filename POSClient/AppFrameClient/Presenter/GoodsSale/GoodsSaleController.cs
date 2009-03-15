@@ -43,8 +43,17 @@ namespace AppFrameClient.Presenter.GoodsSale
 
         void goodsSaleView_SavePurchaseOrderEvent(object sender, GoodsSaleEventArgs e)
         {
-            PurchaseOrderLogic.Add(this.PurchaseOrder);
-            EventUtility.fireEvent(CompletedSavePurchaseOrderEvent,this,new GoodsSaleEventArgs());
+            try
+            {
+                PurchaseOrderLogic.Add(this.PurchaseOrder);
+                e.HasErrors = false;
+            }
+            catch (Exception)
+            {
+                e.HasErrors = true;
+            }
+            
+            
         }
 
         void goodsSaleView_LoadGoodsEvent(object sender, GoodsSaleEventArgs e)

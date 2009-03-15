@@ -17,6 +17,7 @@ using AppFrame.View.GoodsSale;
 using AppFrameClient.Common;
 using AppFrameClient.View.GoodsIO;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
+using Microsoft.Reporting.WinForms;
 
 
 namespace AppFrameClient.View.GoodsSale
@@ -195,6 +196,7 @@ namespace AppFrameClient.View.GoodsSale
             txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
             txtBarcode.Focus();
             //btnAdd_Click(this, null);
+            this.reportPurchaseOrder.RefreshReport();
         }
 
 
@@ -359,10 +361,19 @@ namespace AppFrameClient.View.GoodsSale
                 return;
             }
             RemoveEmptyProductMasterIdRow();
-            FormToModel();                  
-            EventUtility.fireEvent(SavePurchaseOrderEvent,this,new GoodsSaleEventArgs());
+            FormToModel();
+            GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
+            EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
             // clear form and add new
-            ClearGoodsSaleForm();
+            if (!eventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu đơn hàng thành công!");
+                ClearGoodsSaleForm();
+            }
+            else
+            {
+                MessageBox.Show(" Có lỗi khi lưu hoá đơn ");
+            }
             //btnAdd_Click(this, null);
         }
 
@@ -437,14 +448,76 @@ namespace AppFrameClient.View.GoodsSale
             }
             RemoveEmptyProductMasterIdRow();
             FormToModel();
-            EventUtility.fireEvent(SavePurchaseOrderEvent, this, new GoodsSaleEventArgs());
+            GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
+            EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
+            if (eventArgs.HasErrors)
+            {
+                MessageBox.Show("Có lỗi khi lưu hoá đơn");
+                return;
+            }
             
-            printForm = new GoodsSalePrintForm();
+            /*printForm = new GoodsSalePrintForm();
             printForm.FillForm(GoodsSaleController.PurchaseOrder);
             printForm.Show();
-            printForm.Shown += new EventHandler(printForm_Shown);
+            printForm.Shown += new EventHandler(printForm_Shown);*/
+
             
+            /*reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("Department",CurrentDepartment.Get()));
+            reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrder",GoodsSaleController.PurchaseOrder));
+            reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrderDetail", pODList));*/
+            this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
+            this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(pODList);
+
+            /*string deviceInfo = "<DeviceInfo>" +
+            "  <OutputFormat>EMF</OutputFormat>" +
+            "  <PageWidth>3.145in</PageWidth>" +
+            "  <PageHeight>5.3in</PageHeight>" +
+            "  <MarginTop>0.0in</MarginTop>" +
+            "  <MarginLeft>0.0in</MarginLeft>" +
+            "  <MarginRight>0.0in</MarginRight>" +
+            "  <MarginBottom>0.0in</MarginBottom>" +
+            "</DeviceInfo>";
+            Warning[] warnings;*/
+
+            this.reportPurchaseOrder.LocalReport.Refresh();
+            this.reportPurchaseOrder.PrintDialog();
         }
+
+        private PurchaseOrderDetailCollection CreateNonDuplicate(PurchaseOrderDetailCollection list)
+        {
+            PurchaseOrderDetailCollection newList = new PurchaseOrderDetailCollection();
+            foreach (PurchaseOrderDetail detail in list)
+            {
+                PurchaseOrderDetail newDetail = null;
+               if(!ExistInList(newList,detail,out newDetail))
+               {
+                   newList.Add(detail);
+               }
+               else
+               {
+                   newDetail.Quantity += detail.Quantity;
+                   newDetail.Price += detail.Price;
+               }
+            }
+
+            return newList;
+        }
+
+        private bool ExistInList(PurchaseOrderDetailCollection newList,PurchaseOrderDetail detail, out PurchaseOrderDetail newDetail)
+        {
+            foreach (PurchaseOrderDetail orderDetail in newList)
+            {
+                if(orderDetail.ProductMaster.ProductName.Equals(detail.ProductMaster.ProductName))
+                {
+                    newDetail = orderDetail;
+                    return true;
+                }
+            }
+            newDetail = null;
+            return false;
+        }
+
 
         void printForm_Shown(object sender, EventArgs e)
         {

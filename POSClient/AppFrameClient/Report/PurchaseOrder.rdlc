@@ -1,31 +1,2361 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-	<Width>6.5in</Width>
-	<Body>
-		<Height>2in</Height>
-	</Body>
-	<rd:InitialLanguage>true</rd:InitialLanguage>
-	<rd:InitialDimensions>
-		<rd:UnitType>Inch</rd:UnitType>
-		<rd:LeftMargin>1in</rd:LeftMargin>
-		<rd:RightMargin>1in</rd:RightMargin>
-		<rd:TopMargin>1in</rd:TopMargin>
-		<rd:BottomMargin>1in</rd:BottomMargin>
-		<rd:PageWidth>8.5in</rd:PageWidth>
-		<rd:PageHeight>11in</rd:PageHeight>
-		<rd:ColumnSpacing>0.5in</rd:ColumnSpacing>
-	</rd:InitialDimensions>
-	<rd:InitialDimensions>
-		<rd:UnitType>Cm</rd:UnitType>
-		<rd:Width>16cm</rd:Width>
-		<rd:Height>5cm</rd:Height>
-		<rd:LeftMargin>2.5cm</rd:LeftMargin>
-		<rd:RightMargin>2.5cm</rd:RightMargin>
-		<rd:TopMargin>2.5cm</rd:TopMargin>
-		<rd:BottomMargin>2.5cm</rd:BottomMargin>
-		<rd:GridSpacing>0.25cm</rd:GridSpacing>
-		<rd:PageWidth>21cm</rd:PageWidth>
-		<rd:PageHeight>29.7cm</rd:PageHeight>
-		<rd:ColumnSpacing>1cm</rd:ColumnSpacing>
-	</rd:InitialDimensions>
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <rd:DataSourceID>a416707f-be29-4d48-b409-04c2e076a488</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <rd:DrawGrid>false</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>69b0909a-5b17-485d-b4ca-d2177375e1d1</rd:ReportID>
+  <DataSets>
+    <DataSet Name="AppFrame_Collection_ProductReportCollection">
+      <Fields>
+        <Field Name="ProductFullName">
+          <DataField>ProductFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductId">
+          <DataField>ProductId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail">
+          <DataField>BlockInDetail</DataField>
+          <rd:TypeName>AppFrame.Model.BlockInDetail</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster">
+          <DataField>ProductMaster</DataField>
+          <rd:TypeName>AppFrame.Model.ProductMaster</rd:TypeName>
+        </Field>
+        <Field Name="StockOutDetails">
+          <DataField>StockOutDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="StockInDetails">
+          <DataField>StockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Stocks">
+          <DataField>Stocks</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentStockOutDetails">
+          <DataField>DepartmentStockOutDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentStockInDetails">
+          <DataField>DepartmentStockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentPromotions">
+          <DataField>DepartmentPromotions</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentStocks">
+          <DataField>DepartmentStocks</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetails">
+          <DataField>PurchaseOrderDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_StockInId">
+          <DataField>BlockInDetail.StockInId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockInDetailPK">
+          <DataField>BlockInDetail.BlockInDetailPK</DataField>
+          <rd:TypeName>AppFrame.Model.BlockInDetailPK</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockInDetailPK_BlockId">
+          <DataField>BlockInDetail.BlockInDetailPK.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockInDetailPK_BlockDetailId">
+          <DataField>BlockInDetail.BlockInDetailPK.BlockDetailId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockId">
+          <DataField>BlockInDetail.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockDetailId">
+          <DataField>BlockInDetail.BlockDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_DetailValue">
+          <DataField>BlockInDetail.DetailValue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_ManufactureId">
+          <DataField>BlockInDetail.ManufactureId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_PackagerId">
+          <DataField>BlockInDetail.PackagerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_CountryId">
+          <DataField>BlockInDetail.CountryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_SupplierId">
+          <DataField>BlockInDetail.SupplierId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_CreateDate">
+          <DataField>BlockInDetail.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_CreateId">
+          <DataField>BlockInDetail.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_UpdateDate">
+          <DataField>BlockInDetail.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_ImportDate">
+          <DataField>BlockInDetail.ImportDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_UpdateId">
+          <DataField>BlockInDetail.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_ExclusiveKey">
+          <DataField>BlockInDetail.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_DelFlg">
+          <DataField>BlockInDetail.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn">
+          <DataField>BlockInDetail.BlockIn</DataField>
+          <rd:TypeName>AppFrame.Model.BlockIn</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_BlockId">
+          <DataField>BlockInDetail.BlockIn.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_BlockName">
+          <DataField>BlockInDetail.BlockIn.BlockName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_ImportDate">
+          <DataField>BlockInDetail.BlockIn.ImportDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_CreateDate">
+          <DataField>BlockInDetail.BlockIn.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_CreateId">
+          <DataField>BlockInDetail.BlockIn.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_UpdateDate">
+          <DataField>BlockInDetail.BlockIn.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_UpdateId">
+          <DataField>BlockInDetail.BlockIn.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_ExclusiveKey">
+          <DataField>BlockInDetail.BlockIn.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_DelFlg">
+          <DataField>BlockInDetail.BlockIn.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_BlockInDetails">
+          <DataField>BlockInDetail.BlockIn.BlockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_BlockIn_BlockInCosts">
+          <DataField>BlockInDetail.BlockIn.BlockInCosts</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="BlockInDetail_Products">
+          <DataField>BlockInDetail.Products</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ImagePath">
+          <DataField>ProductMaster.ImagePath</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_TypeAndName">
+          <DataField>ProductMaster.TypeAndName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductFullName">
+          <DataField>ProductMaster.ProductFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Barcode">
+          <DataField>ProductMaster.Barcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductMasterId">
+          <DataField>ProductMaster.ProductMasterId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductName">
+          <DataField>ProductMaster.ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Description">
+          <DataField>ProductMaster.Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_SupplierId">
+          <DataField>ProductMaster.SupplierId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_CreateDate">
+          <DataField>ProductMaster.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_CreateId">
+          <DataField>ProductMaster.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_UpdateDate">
+          <DataField>ProductMaster.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_UpdateId">
+          <DataField>ProductMaster.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ExclusiveKey">
+          <DataField>ProductMaster.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_DelFlg">
+          <DataField>ProductMaster.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager">
+          <DataField>ProductMaster.Packager</DataField>
+          <rd:TypeName>AppFrame.Model.Packager</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_PackagerId">
+          <DataField>ProductMaster.Packager.PackagerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_PackagerName">
+          <DataField>ProductMaster.Packager.PackagerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_CreateDate">
+          <DataField>ProductMaster.Packager.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_CreateId">
+          <DataField>ProductMaster.Packager.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_UpdateDate">
+          <DataField>ProductMaster.Packager.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_UpdateId">
+          <DataField>ProductMaster.Packager.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_ExclusiveKey">
+          <DataField>ProductMaster.Packager.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_DelFlg">
+          <DataField>ProductMaster.Packager.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Packager_ProductMasters">
+          <DataField>ProductMaster.Packager.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor">
+          <DataField>ProductMaster.ProductColor</DataField>
+          <rd:TypeName>AppFrame.Model.ProductColor</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_ColorId">
+          <DataField>ProductMaster.ProductColor.ColorId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_ColorName">
+          <DataField>ProductMaster.ProductColor.ColorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_CreateDate">
+          <DataField>ProductMaster.ProductColor.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_CreateId">
+          <DataField>ProductMaster.ProductColor.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_UpdateDate">
+          <DataField>ProductMaster.ProductColor.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_UpdateId">
+          <DataField>ProductMaster.ProductColor.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_ExclusiveKey">
+          <DataField>ProductMaster.ProductColor.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_DelFlg">
+          <DataField>ProductMaster.ProductColor.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductColor_ProductMasters">
+          <DataField>ProductMaster.ProductColor.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country">
+          <DataField>ProductMaster.Country</DataField>
+          <rd:TypeName>AppFrame.Model.Country</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_CountryId">
+          <DataField>ProductMaster.Country.CountryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_CountryName">
+          <DataField>ProductMaster.Country.CountryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_CreateDate">
+          <DataField>ProductMaster.Country.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_CreateId">
+          <DataField>ProductMaster.Country.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_UpdateDate">
+          <DataField>ProductMaster.Country.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_UpdateId">
+          <DataField>ProductMaster.Country.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_ExclusiveKey">
+          <DataField>ProductMaster.Country.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_DelFlg">
+          <DataField>ProductMaster.Country.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Country_ProductMasters">
+          <DataField>ProductMaster.Country.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category">
+          <DataField>ProductMaster.Category</DataField>
+          <rd:TypeName>AppFrame.Model.Category</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_CategoryId">
+          <DataField>ProductMaster.Category.CategoryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_ParentCategoryId">
+          <DataField>ProductMaster.Category.ParentCategoryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_CategoryName">
+          <DataField>ProductMaster.Category.CategoryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_CreateDate">
+          <DataField>ProductMaster.Category.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_CreateId">
+          <DataField>ProductMaster.Category.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_UpdateDate">
+          <DataField>ProductMaster.Category.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_UpdateId">
+          <DataField>ProductMaster.Category.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_ExclusiveKey">
+          <DataField>ProductMaster.Category.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_DelFlg">
+          <DataField>ProductMaster.Category.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Category_ProductMasters">
+          <DataField>ProductMaster.Category.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer">
+          <DataField>ProductMaster.Manufacturer</DataField>
+          <rd:TypeName>AppFrame.Model.Manufacturer</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_ManufacturerId">
+          <DataField>ProductMaster.Manufacturer.ManufacturerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_ManufacturerName">
+          <DataField>ProductMaster.Manufacturer.ManufacturerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_CreateDate">
+          <DataField>ProductMaster.Manufacturer.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_CreateId">
+          <DataField>ProductMaster.Manufacturer.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_UpdateDate">
+          <DataField>ProductMaster.Manufacturer.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_UpdateId">
+          <DataField>ProductMaster.Manufacturer.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_ExclusiveKey">
+          <DataField>ProductMaster.Manufacturer.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_DelFlg">
+          <DataField>ProductMaster.Manufacturer.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Manufacturer_ProductMasters">
+          <DataField>ProductMaster.Manufacturer.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize">
+          <DataField>ProductMaster.ProductSize</DataField>
+          <rd:TypeName>AppFrame.Model.ProductSize</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_SizeId">
+          <DataField>ProductMaster.ProductSize.SizeId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_SizeName">
+          <DataField>ProductMaster.ProductSize.SizeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_CreateDate">
+          <DataField>ProductMaster.ProductSize.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_CreateId">
+          <DataField>ProductMaster.ProductSize.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_UpdateDate">
+          <DataField>ProductMaster.ProductSize.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_UpdateId">
+          <DataField>ProductMaster.ProductSize.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_ExclusiveKey">
+          <DataField>ProductMaster.ProductSize.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_DelFlg">
+          <DataField>ProductMaster.ProductSize.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductSize_ProductMasters">
+          <DataField>ProductMaster.ProductSize.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Products">
+          <DataField>ProductMaster.Products</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor">
+          <DataField>ProductMaster.Distributor</DataField>
+          <rd:TypeName>AppFrame.Model.Distributor</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_DistributorId">
+          <DataField>ProductMaster.Distributor.DistributorId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_DistributorName">
+          <DataField>ProductMaster.Distributor.DistributorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_CreateDate">
+          <DataField>ProductMaster.Distributor.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_CreateId">
+          <DataField>ProductMaster.Distributor.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_UpdateDate">
+          <DataField>ProductMaster.Distributor.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_UpdateId">
+          <DataField>ProductMaster.Distributor.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_ExclusiveKey">
+          <DataField>ProductMaster.Distributor.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_DelFlg">
+          <DataField>ProductMaster.Distributor.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_Distributor_ProductMasters">
+          <DataField>ProductMaster.Distributor.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType">
+          <DataField>ProductMaster.ProductType</DataField>
+          <rd:TypeName>AppFrame.Model.ProductType</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_TypeId">
+          <DataField>ProductMaster.ProductType.TypeId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_TypeName">
+          <DataField>ProductMaster.ProductType.TypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_CreateDate">
+          <DataField>ProductMaster.ProductType.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_CreateId">
+          <DataField>ProductMaster.ProductType.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_UpdateDate">
+          <DataField>ProductMaster.ProductType.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_UpdateId">
+          <DataField>ProductMaster.ProductType.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_ExclusiveKey">
+          <DataField>ProductMaster.ProductType.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_DelFlg">
+          <DataField>ProductMaster.ProductType.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster_ProductType_ProductMasters">
+          <DataField>ProductMaster.ProductType.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Collection</rd:DataSetName>
+        <rd:TableName>ProductReportCollection</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Collection.ProductReportCollection, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrame_Collection_PurchaseOrderDetailReportCollection">
+      <Fields>
+        <Field Name="PurchaseOrderDetailPK">
+          <DataField>PurchaseOrderDetailPK</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrderDetailPK</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderId">
+          <DataField>PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailId">
+          <DataField>PurchaseOrderDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseStatus">
+          <DataField>PurchaseStatus</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseType">
+          <DataField>PurchaseType</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder">
+          <DataField>PurchaseOrder</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrder</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderPromotions">
+          <DataField>PurchaseOrderPromotions</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Tax">
+          <DataField>Tax</DataField>
+          <rd:TypeName>AppFrame.Model.Tax</rd:TypeName>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+          <rd:TypeName>AppFrame.Model.Product</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster">
+          <DataField>ProductMaster</DataField>
+          <rd:TypeName>AppFrame.Model.ProductMaster</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailPK_PurchaseOrderId">
+          <DataField>PurchaseOrderDetailPK.PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailPK_PurchaseOrderDetailId">
+          <DataField>PurchaseOrderDetailPK.PurchaseOrderDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailPK_DepartmentId">
+          <DataField>PurchaseOrderDetailPK.DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderPK">
+          <DataField>PurchaseOrder.PurchaseOrderPK</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrderPK</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderPK_PurchaseOrderId">
+          <DataField>PurchaseOrder.PurchaseOrderPK.PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderPK_DepartmentId">
+          <DataField>PurchaseOrder.PurchaseOrderPK.DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderId">
+          <DataField>PurchaseOrder.PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderDescription">
+          <DataField>PurchaseOrder.PurchaseOrderDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_DepartmentId">
+          <DataField>PurchaseOrder.DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchasePrice">
+          <DataField>PurchaseOrder.PurchasePrice</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_OrderStatus">
+          <DataField>PurchaseOrder.OrderStatus</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_CreateDate">
+          <DataField>PurchaseOrder.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_CreateId">
+          <DataField>PurchaseOrder.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_UpdateDate">
+          <DataField>PurchaseOrder.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_UpdateId">
+          <DataField>PurchaseOrder.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_ExclusiveKey">
+          <DataField>PurchaseOrder.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_DelFlg">
+          <DataField>PurchaseOrder.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer">
+          <DataField>PurchaseOrder.Customer</DataField>
+          <rd:TypeName>AppFrame.Model.Customer</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerId">
+          <DataField>PurchaseOrder.Customer.CustomerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerName">
+          <DataField>PurchaseOrder.Customer.CustomerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_MoneySpent">
+          <DataField>PurchaseOrder.Customer.MoneySpent</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_BuyCount">
+          <DataField>PurchaseOrder.Customer.BuyCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_NearestCome1">
+          <DataField>PurchaseOrder.Customer.NearestCome1</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_NearestCome2">
+          <DataField>PurchaseOrder.Customer.NearestCome2</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_NearestCome3">
+          <DataField>PurchaseOrder.Customer.NearestCome3</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CreateDate">
+          <DataField>PurchaseOrder.Customer.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CreateId">
+          <DataField>PurchaseOrder.Customer.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_UpdateDate">
+          <DataField>PurchaseOrder.Customer.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_UpdateId">
+          <DataField>PurchaseOrder.Customer.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_ExclusiveKey">
+          <DataField>PurchaseOrder.Customer.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_DelFlg">
+          <DataField>PurchaseOrder.Customer.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail">
+          <DataField>PurchaseOrder.Customer.CustomerDetail</DataField>
+          <rd:TypeName>AppFrame.Model.CustomerDetail</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_CustomerId">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.CustomerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_Address">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_CountryId">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.CountryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_Birthday">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.Birthday</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_PassportNumber">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.PassportNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_Cmnd">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.Cmnd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_MoneySpent">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.MoneySpent</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_BuyCount">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.BuyCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_CreateDate">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_CreateId">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_UpdateDate">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_UpdateId">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_ExclusiveKey">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_CustomerDetail_DelFlg">
+          <DataField>PurchaseOrder.Customer.CustomerDetail.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Customer_PurchaseOrders">
+          <DataField>PurchaseOrder.Customer.PurchaseOrders</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_Receipts">
+          <DataField>PurchaseOrder.Receipts</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder_PurchaseOrderDetails">
+          <DataField>PurchaseOrder.PurchaseOrderDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Tax_TaxId">
+          <DataField>Tax.TaxId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Tax_TaxName">
+          <DataField>Tax.TaxName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tax_CreateDate">
+          <DataField>Tax.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Tax_CreateId">
+          <DataField>Tax.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tax_UpdateDate">
+          <DataField>Tax.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Tax_UpdateId">
+          <DataField>Tax.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tax_ExclusiveKey">
+          <DataField>Tax.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Tax_DelFlg">
+          <DataField>Tax.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Tax_PurchaseOrderDetails">
+          <DataField>Tax.PurchaseOrderDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductFullName">
+          <DataField>Product.ProductFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_Price">
+          <DataField>Product.Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_Quantity">
+          <DataField>Product.Quantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductId">
+          <DataField>Product.ProductId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_CreateDate">
+          <DataField>Product.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_CreateId">
+          <DataField>Product.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_UpdateDate">
+          <DataField>Product.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_UpdateId">
+          <DataField>Product.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ExclusiveKey">
+          <DataField>Product.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_DelFlg">
+          <DataField>Product.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail">
+          <DataField>Product.BlockInDetail</DataField>
+          <rd:TypeName>AppFrame.Model.BlockInDetail</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_StockInId">
+          <DataField>Product.BlockInDetail.StockInId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockInDetailPK">
+          <DataField>Product.BlockInDetail.BlockInDetailPK</DataField>
+          <rd:TypeName>AppFrame.Model.BlockInDetailPK</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockInDetailPK_BlockId">
+          <DataField>Product.BlockInDetail.BlockInDetailPK.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockInDetailPK_BlockDetailId">
+          <DataField>Product.BlockInDetail.BlockInDetailPK.BlockDetailId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockId">
+          <DataField>Product.BlockInDetail.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockDetailId">
+          <DataField>Product.BlockInDetail.BlockDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_DetailValue">
+          <DataField>Product.BlockInDetail.DetailValue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_ManufactureId">
+          <DataField>Product.BlockInDetail.ManufactureId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_PackagerId">
+          <DataField>Product.BlockInDetail.PackagerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_CountryId">
+          <DataField>Product.BlockInDetail.CountryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_SupplierId">
+          <DataField>Product.BlockInDetail.SupplierId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_CreateDate">
+          <DataField>Product.BlockInDetail.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_CreateId">
+          <DataField>Product.BlockInDetail.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_UpdateDate">
+          <DataField>Product.BlockInDetail.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_ImportDate">
+          <DataField>Product.BlockInDetail.ImportDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_UpdateId">
+          <DataField>Product.BlockInDetail.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_ExclusiveKey">
+          <DataField>Product.BlockInDetail.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_DelFlg">
+          <DataField>Product.BlockInDetail.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn">
+          <DataField>Product.BlockInDetail.BlockIn</DataField>
+          <rd:TypeName>AppFrame.Model.BlockIn</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_BlockId">
+          <DataField>Product.BlockInDetail.BlockIn.BlockId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_BlockName">
+          <DataField>Product.BlockInDetail.BlockIn.BlockName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_ImportDate">
+          <DataField>Product.BlockInDetail.BlockIn.ImportDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_CreateDate">
+          <DataField>Product.BlockInDetail.BlockIn.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_CreateId">
+          <DataField>Product.BlockInDetail.BlockIn.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_UpdateDate">
+          <DataField>Product.BlockInDetail.BlockIn.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_UpdateId">
+          <DataField>Product.BlockInDetail.BlockIn.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_ExclusiveKey">
+          <DataField>Product.BlockInDetail.BlockIn.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_DelFlg">
+          <DataField>Product.BlockInDetail.BlockIn.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_BlockInDetails">
+          <DataField>Product.BlockInDetail.BlockIn.BlockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_BlockIn_BlockInCosts">
+          <DataField>Product.BlockInDetail.BlockIn.BlockInCosts</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_BlockInDetail_Products">
+          <DataField>Product.BlockInDetail.Products</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster">
+          <DataField>Product.ProductMaster</DataField>
+          <rd:TypeName>AppFrame.Model.ProductMaster</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ImagePath">
+          <DataField>Product.ProductMaster.ImagePath</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_TypeAndName">
+          <DataField>Product.ProductMaster.TypeAndName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductFullName">
+          <DataField>Product.ProductMaster.ProductFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Barcode">
+          <DataField>Product.ProductMaster.Barcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductMasterId">
+          <DataField>Product.ProductMaster.ProductMasterId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductName">
+          <DataField>Product.ProductMaster.ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Description">
+          <DataField>Product.ProductMaster.Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_SupplierId">
+          <DataField>Product.ProductMaster.SupplierId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_CreateDate">
+          <DataField>Product.ProductMaster.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_CreateId">
+          <DataField>Product.ProductMaster.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_UpdateDate">
+          <DataField>Product.ProductMaster.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_UpdateId">
+          <DataField>Product.ProductMaster.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ExclusiveKey">
+          <DataField>Product.ProductMaster.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_DelFlg">
+          <DataField>Product.ProductMaster.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager">
+          <DataField>Product.ProductMaster.Packager</DataField>
+          <rd:TypeName>AppFrame.Model.Packager</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor">
+          <DataField>Product.ProductMaster.ProductColor</DataField>
+          <rd:TypeName>AppFrame.Model.ProductColor</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country">
+          <DataField>Product.ProductMaster.Country</DataField>
+          <rd:TypeName>AppFrame.Model.Country</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category">
+          <DataField>Product.ProductMaster.Category</DataField>
+          <rd:TypeName>AppFrame.Model.Category</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer">
+          <DataField>Product.ProductMaster.Manufacturer</DataField>
+          <rd:TypeName>AppFrame.Model.Manufacturer</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize">
+          <DataField>Product.ProductMaster.ProductSize</DataField>
+          <rd:TypeName>AppFrame.Model.ProductSize</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Products">
+          <DataField>Product.ProductMaster.Products</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor">
+          <DataField>Product.ProductMaster.Distributor</DataField>
+          <rd:TypeName>AppFrame.Model.Distributor</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType">
+          <DataField>Product.ProductMaster.ProductType</DataField>
+          <rd:TypeName>AppFrame.Model.ProductType</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_PackagerId">
+          <DataField>Product.ProductMaster.Packager.PackagerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_PackagerName">
+          <DataField>Product.ProductMaster.Packager.PackagerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_CreateDate">
+          <DataField>Product.ProductMaster.Packager.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_CreateId">
+          <DataField>Product.ProductMaster.Packager.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_UpdateDate">
+          <DataField>Product.ProductMaster.Packager.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_UpdateId">
+          <DataField>Product.ProductMaster.Packager.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_ExclusiveKey">
+          <DataField>Product.ProductMaster.Packager.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_DelFlg">
+          <DataField>Product.ProductMaster.Packager.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Packager_ProductMasters">
+          <DataField>Product.ProductMaster.Packager.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_ColorId">
+          <DataField>Product.ProductMaster.ProductColor.ColorId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_ColorName">
+          <DataField>Product.ProductMaster.ProductColor.ColorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_CreateDate">
+          <DataField>Product.ProductMaster.ProductColor.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_CreateId">
+          <DataField>Product.ProductMaster.ProductColor.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_UpdateDate">
+          <DataField>Product.ProductMaster.ProductColor.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_UpdateId">
+          <DataField>Product.ProductMaster.ProductColor.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_ExclusiveKey">
+          <DataField>Product.ProductMaster.ProductColor.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_DelFlg">
+          <DataField>Product.ProductMaster.ProductColor.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductColor_ProductMasters">
+          <DataField>Product.ProductMaster.ProductColor.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_CountryId">
+          <DataField>Product.ProductMaster.Country.CountryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_CountryName">
+          <DataField>Product.ProductMaster.Country.CountryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_CreateDate">
+          <DataField>Product.ProductMaster.Country.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_CreateId">
+          <DataField>Product.ProductMaster.Country.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_UpdateDate">
+          <DataField>Product.ProductMaster.Country.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_UpdateId">
+          <DataField>Product.ProductMaster.Country.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_ExclusiveKey">
+          <DataField>Product.ProductMaster.Country.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_DelFlg">
+          <DataField>Product.ProductMaster.Country.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Country_ProductMasters">
+          <DataField>Product.ProductMaster.Country.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_CategoryId">
+          <DataField>Product.ProductMaster.Category.CategoryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_ParentCategoryId">
+          <DataField>Product.ProductMaster.Category.ParentCategoryId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_CategoryName">
+          <DataField>Product.ProductMaster.Category.CategoryName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_CreateDate">
+          <DataField>Product.ProductMaster.Category.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_CreateId">
+          <DataField>Product.ProductMaster.Category.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_UpdateDate">
+          <DataField>Product.ProductMaster.Category.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_UpdateId">
+          <DataField>Product.ProductMaster.Category.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_ExclusiveKey">
+          <DataField>Product.ProductMaster.Category.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_DelFlg">
+          <DataField>Product.ProductMaster.Category.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Category_ProductMasters">
+          <DataField>Product.ProductMaster.Category.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_ManufacturerId">
+          <DataField>Product.ProductMaster.Manufacturer.ManufacturerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_ManufacturerName">
+          <DataField>Product.ProductMaster.Manufacturer.ManufacturerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_CreateDate">
+          <DataField>Product.ProductMaster.Manufacturer.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_CreateId">
+          <DataField>Product.ProductMaster.Manufacturer.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_UpdateDate">
+          <DataField>Product.ProductMaster.Manufacturer.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_UpdateId">
+          <DataField>Product.ProductMaster.Manufacturer.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_ExclusiveKey">
+          <DataField>Product.ProductMaster.Manufacturer.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_DelFlg">
+          <DataField>Product.ProductMaster.Manufacturer.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Manufacturer_ProductMasters">
+          <DataField>Product.ProductMaster.Manufacturer.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_SizeId">
+          <DataField>Product.ProductMaster.ProductSize.SizeId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_SizeName">
+          <DataField>Product.ProductMaster.ProductSize.SizeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_CreateDate">
+          <DataField>Product.ProductMaster.ProductSize.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_CreateId">
+          <DataField>Product.ProductMaster.ProductSize.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_UpdateDate">
+          <DataField>Product.ProductMaster.ProductSize.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_UpdateId">
+          <DataField>Product.ProductMaster.ProductSize.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_ExclusiveKey">
+          <DataField>Product.ProductMaster.ProductSize.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_DelFlg">
+          <DataField>Product.ProductMaster.ProductSize.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductSize_ProductMasters">
+          <DataField>Product.ProductMaster.ProductSize.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_DistributorId">
+          <DataField>Product.ProductMaster.Distributor.DistributorId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_DistributorName">
+          <DataField>Product.ProductMaster.Distributor.DistributorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_CreateDate">
+          <DataField>Product.ProductMaster.Distributor.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_CreateId">
+          <DataField>Product.ProductMaster.Distributor.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_UpdateDate">
+          <DataField>Product.ProductMaster.Distributor.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_UpdateId">
+          <DataField>Product.ProductMaster.Distributor.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_ExclusiveKey">
+          <DataField>Product.ProductMaster.Distributor.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_DelFlg">
+          <DataField>Product.ProductMaster.Distributor.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_Distributor_ProductMasters">
+          <DataField>Product.ProductMaster.Distributor.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_TypeId">
+          <DataField>Product.ProductMaster.ProductType.TypeId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_TypeName">
+          <DataField>Product.ProductMaster.ProductType.TypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_CreateDate">
+          <DataField>Product.ProductMaster.ProductType.CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_CreateId">
+          <DataField>Product.ProductMaster.ProductType.CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_UpdateDate">
+          <DataField>Product.ProductMaster.ProductType.UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_UpdateId">
+          <DataField>Product.ProductMaster.ProductType.UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_ExclusiveKey">
+          <DataField>Product.ProductMaster.ProductType.ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_DelFlg">
+          <DataField>Product.ProductMaster.ProductType.DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product_ProductMaster_ProductType_ProductMasters">
+          <DataField>Product.ProductMaster.ProductType.ProductMasters</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_StockOutDetails">
+          <DataField>Product.StockOutDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_StockInDetails">
+          <DataField>Product.StockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_Stocks">
+          <DataField>Product.Stocks</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_DepartmentStockOutDetails">
+          <DataField>Product.DepartmentStockOutDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_DepartmentStockInDetails">
+          <DataField>Product.DepartmentStockInDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_DepartmentPromotions">
+          <DataField>Product.DepartmentPromotions</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_DepartmentStocks">
+          <DataField>Product.DepartmentStocks</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Product_PurchaseOrderDetails">
+          <DataField>Product.PurchaseOrderDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Collection</rd:DataSetName>
+        <rd:TableName>PurchaseOrderDetailReportCollection</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Collection.PurchaseOrderDetailReportCollection, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrame_Collection_PurchaseOrderDetailCollection">
+      <Fields>
+        <Field Name="PurchaseOrderDetailPK">
+          <DataField>PurchaseOrderDetailPK</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrderDetailPK</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderId">
+          <DataField>PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailId">
+          <DataField>PurchaseOrderDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseStatus">
+          <DataField>PurchaseStatus</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseType">
+          <DataField>PurchaseType</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder">
+          <DataField>PurchaseOrder</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrder</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderPromotions">
+          <DataField>PurchaseOrderPromotions</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="Tax">
+          <DataField>Tax</DataField>
+          <rd:TypeName>AppFrame.Model.Tax</rd:TypeName>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+          <rd:TypeName>AppFrame.Model.Product</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster">
+          <DataField>ProductMaster</DataField>
+          <rd:TypeName>AppFrame.Model.ProductMaster</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Collection</rd:DataSetName>
+        <rd:TableName>PurchaseOrderDetailCollection</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Collection.PurchaseOrderDetailCollection, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrame_Model_PurchaseOrderDetail">
+      <Fields>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Product">
+          <DataField>Product</DataField>
+          <rd:TypeName>AppFrame.Model.Product</rd:TypeName>
+        </Field>
+        <Field Name="ProductMaster">
+          <DataField>ProductMaster</DataField>
+          <rd:TypeName>AppFrame.Model.ProductMaster</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder">
+          <DataField>PurchaseOrder</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrder</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailId">
+          <DataField>PurchaseOrderDetailId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetailPK">
+          <DataField>PurchaseOrderDetailPK</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrderDetailPK</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderId">
+          <DataField>PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderPromotions">
+          <DataField>PurchaseOrderPromotions</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseStatus">
+          <DataField>PurchaseStatus</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseType">
+          <DataField>PurchaseType</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Tax">
+          <DataField>Tax</DataField>
+          <rd:TypeName>AppFrame.Model.Tax</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Model</rd:DataSetName>
+        <rd:TableName>PurchaseOrderDetail</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Model.PurchaseOrderDetail, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrame_Model_Department">
+      <Fields>
+        <Field Name="Active">
+          <DataField>Active</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentCosts">
+          <DataField>DepartmentCosts</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentName">
+          <DataField>DepartmentName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Employees">
+          <DataField>Employees</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ManagerId">
+          <DataField>ManagerId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="NameAddress">
+          <DataField>NameAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ScheduleTemplates">
+          <DataField>ScheduleTemplates</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Model</rd:DataSetName>
+        <rd:TableName>Department</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Model.Department, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrame_Model_PurchaseOrder">
+      <Fields>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Customer">
+          <DataField>Customer</DataField>
+          <rd:TypeName>AppFrame.Model.Customer</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="OrderStatus">
+          <DataField>OrderStatus</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDescription">
+          <DataField>PurchaseOrderDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderDetails">
+          <DataField>PurchaseOrderDetails</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderId">
+          <DataField>PurchaseOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrderPK">
+          <DataField>PurchaseOrderPK</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrderPK</rd:TypeName>
+        </Field>
+        <Field Name="PurchasePrice">
+          <DataField>PurchasePrice</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Receipts">
+          <DataField>Receipts</DataField>
+          <rd:TypeName>System.Collections.IList</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Model</rd:DataSetName>
+        <rd:TableName>PurchaseOrder</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Model.PurchaseOrder, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Width>3.15in</Width>
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox19">
+        <Top>3.5in</Top>
+        <Width>2.875in</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>5</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Value>************</Value>
+      </Textbox>
+      <Textbox Name="textbox18">
+        <rd:DefaultName>textbox18</rd:DefaultName>
+        <Top>3.25in</Top>
+        <Width>2.875in</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>4</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Value>CHÚC QUÝ KHÁCH VUI VẺ !</Value>
+      </Textbox>
+      <Line Name="line1">
+        <Top>3.125in</Top>
+        <Width>2.875in</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <Left>0.125in</Left>
+        <Height>0in</Height>
+      </Line>
+      <List Name="list2">
+        <ZIndex>2</ZIndex>
+        <Left>0.125in</Left>
+        <DataSetName>AppFrame_Model_Department</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox20">
+            <Top>0.5in</Top>
+            <Style>
+              <FontSize>9pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.375in</Left>
+            <Value>=Fields!Address.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox11">
+            <Top>0.25in</Top>
+            <Style>
+              <FontSize>9pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.375in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!DepartmentName.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <rd:DefaultName>textbox6</rd:DefaultName>
+            <Width>0.75in</Width>
+            <Style>
+              <FontSize>9pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.375in</Left>
+            <Height>0.25in</Height>
+            <Value>Cửa hàng:</Value>
+          </Textbox>
+          <Textbox Name="textbox5">
+            <rd:DefaultName>textbox5</rd:DefaultName>
+            <Width>1.375in</Width>
+            <Style>
+              <FontFamily>VNI-Thufap2</FontFamily>
+              <FontSize>24pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Height>0.625in</Height>
+            <Value> A Chaûy</Value>
+          </Textbox>
+        </ReportItems>
+        <Width>2.875in</Width>
+        <Height>0.75in</Height>
+      </List>
+      <List Name="list3">
+        <ZIndex>1</ZIndex>
+        <Left>0.125in</Left>
+        <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox21">
+            <rd:DefaultName>textbox21</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Style>
+              <FontStyle>Italic</FontStyle>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.625in</Left>
+            <Height>0.25in</Height>
+            <Value>=FormatDateTime(Today(), DateFormat.ShortDate)</Value>
+          </Textbox>
+          <Textbox Name="textbox17">
+            <Top>1in</Top>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>6</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.875in</Left>
+            <Value>=IIf(Hour(Fields!CreateDate.Value)&gt;=14,"Ca chiều","Ca sáng")</Value>
+          </Textbox>
+          <Textbox Name="textbox16">
+            <Top>1in</Top>
+            <Width>0.875in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>5</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Value>Ca trực:</Value>
+          </Textbox>
+          <Textbox Name="textbox15">
+            <Top>0.75in</Top>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>4</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.875in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!CreateId.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox14">
+            <Top>0.5in</Top>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.875in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!PurchaseOrderPK.Value.PurchaseOrderId</Value>
+          </Textbox>
+          <Textbox Name="textbox13">
+            <Top>0.75in</Top>
+            <Width>0.875in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>Nhân viên:</Value>
+          </Textbox>
+          <Textbox Name="textbox12">
+            <rd:DefaultName>textbox12</rd:DefaultName>
+            <Top>0.5in</Top>
+            <Width>0.875in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>Số hoá đơn:</Value>
+          </Textbox>
+          <Textbox Name="textbox9">
+            <rd:DefaultName>textbox9</rd:DefaultName>
+            <Style>
+              <FontSize>14pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Center</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>HOÁ ĐƠN BÁN HÀNG</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>0.75in</Top>
+        <Width>2.875in</Width>
+        <Height>1.25in</Height>
+      </List>
+      <Table Name="table1">
+        <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
+        <Top>2.125in</Top>
+        <Width>2.875in</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox4">
+                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ProductMaster">
+                      <rd:DefaultName>ProductMaster</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ProductMaster.Value.ProductName</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Quantity_2">
+                      <rd:DefaultName>Quantity_2</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Quantity.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Price_2">
+                      <rd:DefaultName>Price_2</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Price.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox1">
+                      <rd:DefaultName>textbox1</rd:DefaultName>
+                      <Style>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>STT</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <Style>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>TÊN HÀNG</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>SL</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <Style>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>GIÁ</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>0.375in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.4in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.4in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.7in</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>0.75in</Height>
+        <Footer>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Tổng cộng:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Quantity_1">
+                      <rd:DefaultName>Quantity_1</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Price_1">
+                      <rd:DefaultName>Price_1</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Price.Value, "AppFrame_Collection_PurchaseOrderDetailCollection")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25in</Height>
+            </TableRow>
+          </TableRows>
+        </Footer>
+        <Left>0.125in</Left>
+      </Table>
+    </ReportItems>
+    <Height>5.375in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
 </Report>

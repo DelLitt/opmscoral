@@ -435,6 +435,9 @@
     <None Include="Templates\GoodsSaleMainStockInReportTemplate.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Templates\Tonkho.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -850,6 +853,12 @@
     <Compile Include="View\Reports\DepartmentStockInReportForm.Designer.cs">
       <DependentUpon>DepartmentStockInReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports\RemainStockReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\RemainStockReport.Designer.cs">
+      <DependentUpon>RemainStockReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Reports\rptStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1020,6 +1029,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\PurchaseOrder.rdlc" />
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1192,6 +1202,9 @@
     <EmbeddedResource Include="View\Reports\DepartmentStockInReportForm.resx">
       <DependentUpon>DepartmentStockInReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\RemainStockReport.resx">
+      <DependentUpon>RemainStockReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\rptStock.resx">
       <DependentUpon>rptStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -1215,7 +1228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -717,11 +717,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             var eventArgs = new MainStockInEventArgs{ProductMasterIdForPrice = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductMasterId};
             EventUtility.fireEvent(GetPriceEvent, this, eventArgs);
             string priceStr = "";
+            string name = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.TypeAndName;
             if (eventArgs.DepartmentPrice != null)
             {
-                priceStr = "Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
+                priceStr = name + " Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
             }
-            /*var code39 = new Code39
+            var code39 = new Code39
                              {
                                  FontFamilyName = "Free 3 of 9",
                                  //2.FontFamilyName = "MW6 Code39MT",
@@ -741,7 +742,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         };
 
             var code39Gen = code39.GenerateBarcode("*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId+ "*",
-                                                   (int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY));*/
+                                                   (int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY));
 
             /*var setting = new Code39Settings();
             setting.BarCodeHeight = 50;
@@ -764,8 +765,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 System.Drawing.Rectangle rc=new System.Drawing.Rectangle((i%3)*135,25,(int)(1.5*100),(int)(0.75*100));
                 //(i % 3) * 124, (i / 3) * 87, 117, 79 
-			    e.Graphics.DrawImage(codeGen.Image((int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY)),rc);
-                //e.Graphics.DrawImage(code39Gen, new Rectangle((i % 3) * 135, 100, (int)(1.5 * 100), (int)(0.75 * 100)));
+			    //e.Graphics.DrawImage(codeGen.Image((int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY)),rc);
+                e.Graphics.DrawImage(code39Gen, new Rectangle((i % 3) * 140, 25, (int)(1.4 * 100), (int)(0.75 * 100)));
                 
 			    //e.HasMorePages=false;
                 //e.Graphics.DrawImageUnscaled(codeGen.Image(codeGen.Width,codeGen.Height));

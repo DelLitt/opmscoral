@@ -61,6 +61,10 @@
             this.groupBox2.Controls.SetChildIndex(this.dtpToDate, 0);
             this.groupBox2.Controls.SetChildIndex(this.panel4, 0);
             // 
+            // txtBillNumber
+            // 
+            this.txtBillNumber.TextChanged += new System.EventHandler(this.txtBillNumber_TextChanged);
+            // 
             // bdsPurchaseOrders
             // 
             this.bdsPurchaseOrders.DataSource = typeof(AppFrame.Collection.PurchaseOrderCollection);

@@ -243,12 +243,13 @@ namespace AppFrameClient.View.GoodsSale
             orderDetail.DelFlg = 0;
             orderDetail.DepartmentId = CurrentDepartment.Get().DepartmentId;
             orderDetail.Quantity = 1;
-            if (GoodsSaleReturnController.NextPurchaseOrder == null)
+            /*if (GoodsSaleReturnController.NextPurchaseOrder == null)
             {
                 PurchaseOrder order = new PurchaseOrder();
+                order.p
                 GoodsSaleReturnController.NextPurchaseOrder = order;
-            }
-            orderDetail.PurchaseOrder = GoodsSaleReturnController.NextPurchaseOrder;
+            }*/
+            //orderDetail.PurchaseOrder = GoodsSaleReturnController.NextPurchaseOrder;
             PurchaseOrderDetailPK purchaseOrderDetailPK = new PurchaseOrderDetailPK();
             purchaseOrderDetailPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
             orderDetail.PurchaseOrderDetailPK = purchaseOrderDetailPK;
@@ -263,8 +264,8 @@ namespace AppFrameClient.View.GoodsSale
             pODNewList.EndNew(pODNewList.Count - 1);
             bdsNewBill.EndEdit();
 
-            GoodsSaleReturnController.NextPurchaseOrder.PurchaseOrderDetails =
-                ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODNewList);
+            /*GoodsSaleReturnController.NextPurchaseOrder.PurchaseOrderDetails =
+                ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODNewList);*/
             
         }
 
@@ -345,14 +346,38 @@ namespace AppFrameClient.View.GoodsSale
                 GoodsSaleReturnEventArgs eventArgs = new GoodsSaleReturnEventArgs();
                 eventArgs.RefPurchaseOrder = goodsSaleReturnController.ReturnPurchaseOrder;
                 eventArgs.ReturnPurchaseOrderDetails = ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODReturnList);
-                eventArgs.NextPurchaseOrder = goodsSaleReturnController.NextPurchaseOrder;
+
+                if(pODNewList!=null && pODNewList.Count > 0 )
+                {
+                   PurchaseOrder nextOrder = new PurchaseOrder();
+                    nextOrder.PurchaseOrderPK = new PurchaseOrderPK
+                                                    {DepartmentId = CurrentDepartment.Get().DepartmentId};
+                    nextOrder.PurchaseOrderDescription = " Next Purchase Order ";
+                    nextOrder.DelFlg = 0;
+                    nextOrder.ExclusiveKey = 1;
+                    
+                    nextOrder.PurchaseOrderDetails = ObjectConverter.ConvertToNonGenericList(pODNewList);
+                    foreach (PurchaseOrderDetail orderDetail in nextOrder.PurchaseOrderDetails)
+                    {
+                        nextOrder.PurchasePrice += orderDetail.Price;
+                    }
+                    
+                    eventArgs.NextPurchaseOrder = nextOrder;
+                }
+                
                 EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
                 if(!eventArgs.HasErrors)
                 {
                     MessageBox.Show("Lưu thành công !");
                     ClearForm();
                 }
+                PrintReturnReceipt(eventArgs);
             }
+        }
+
+        private void PrintReturnReceipt(GoodsSaleReturnEventArgs args)
+        {
+            throw new NotImplementedException();
         }
 
         private void ClearForm()
@@ -368,6 +393,7 @@ namespace AppFrameClient.View.GoodsSale
             txtCustomer.Text = "";
             txtBillNumber.Text = "";
             txtBillDate.Text = "";
+            goodsSaleReturnController.ReturnPurchaseOrder= null;
         }
 
         private void btnReset_Click(object sender, EventArgs e)

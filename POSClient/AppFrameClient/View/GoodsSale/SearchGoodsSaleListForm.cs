@@ -32,5 +32,10 @@ namespace AppFrameClient.View.GoodsSale
             EventUtility.fireEvent(SelectGoodsSaleEvent,this,eventArgs);
             Close();
         }
+
+        private void txtBillNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
