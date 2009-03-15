@@ -220,6 +220,10 @@
     <Compile Include="Controls\DataGridViewNotNullTextBoxColumn.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\HotKey\SystemHotkey.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Win32.cs" />
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
