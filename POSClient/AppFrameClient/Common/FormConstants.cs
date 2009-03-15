@@ -22,6 +22,7 @@ namespace AppFrameClient.Common
         public const string STOCK_CREATE_FORM = "StockCreateView";
         public const string STOCK_SEARCH_FORM = "StockSearchView";
 
+        public const string MAIN_STOCK_SEARCH_BY_BARCODE_FORM = "MainStockSearchByBarcodeView";
         public const string MAIN_STOCK_IN_FORM = "MainStockInView";
         public const string MAIN_STOCK_IN_EXTRA_FORM = "MainStockInExtraView";
         public const string MAIN_STOCK_IN_SEARCH_FORM = "MainStockInSearchView";

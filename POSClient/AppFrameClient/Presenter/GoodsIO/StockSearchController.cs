@@ -31,7 +31,30 @@ namespace AppFrameClient.Presenter.GoodsIO
                 _stockSearchView.InitStockSearchEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_InitStockSearchEvent);
                 _stockSearchView.SearchStockEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_SearchStockEvent);
                 _stockSearchView.RemainSearchStockEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_RemainSearchStockEvent);
+                _stockSearchView.BarcodeSearchStockEvent += new System.EventHandler<StockSearchEventArgs>(stockSearchView_BarcodeSearchStockEvent);
             }
+        }
+
+        private void stockSearchView_BarcodeSearchStockEvent(object sender, StockSearchEventArgs e)
+        {
+            var subCriteria = new SubObjectCriteria("ProductMaster");
+            subCriteria.AddLikeCriteria("ProductName", e.ProductMasterName + "%");
+            subCriteria.AddEqCriteria("ProductType", e.ProductType);
+            subCriteria.AddEqCriteria("ProductSize", e.ProductSize);
+            subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
+            subCriteria.AddEqCriteria("Country", e.Country);
+            subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);
+            subCriteria.AddEqCriteria("Packager", e.Packager);
+            subCriteria.AddEqCriteria("Distributor", e.Distributor);
+
+            var criteria = new ObjectCriteria(true);
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddLikeCriteria("Product.ProductId", e.ProductMasterId + "%");
+            criteria.AddSubCriteria("ProductMaster", subCriteria);
+            criteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(e.FromDate));
+            criteria.AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(e.ToDate));
+            IList list = StockLogic.FindAll(criteria);
+            e.StockList = list;
         }
 
         #endregion
@@ -106,18 +129,21 @@ namespace AppFrameClient.Presenter.GoodsIO
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", (long)0);
             criteria.AddLesserOrEqualsCriteria("CreateDate", e.FromDate);
-
-            IList stockInDetailFromList = StockInDetailLogic.FindAll(criteria);
             IList deptStockInDetailFromList = DepartmentStockInDetailLogic.FindAll(criteria);
+            
+            criteria.AddNotEqualsCriteria("StockInType", (long)1);
+            IList stockInDetailFromList = StockInDetailLogic.FindAll(criteria);
 
             criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", (long)0);
             criteria.AddLesserOrEqualsCriteria("CreateDate", e.ToDate);
 
-            IList stockInDetailToList = StockInDetailLogic.FindAll(criteria);
             IList deptStockInDetailToList = DepartmentStockInDetailLogic.FindAll(criteria);
+            criteria.AddNotEqualsCriteria("StockInType", (long)1);
+            IList stockInDetailToList = StockInDetailLogic.FindAll(criteria);
+
 //            IList stockHistoryList = StockHistoryLogic.FindByMaxDate(criteria);
-            List<UniversalStockReportObject> reportList = new List<UniversalStockReportObject>();
+            var reportList = new List<UniversalStockReportObject>();
 
             // calculate dau` ton`
             foreach (StockInDetail stockInDetail in stockInDetailFromList)

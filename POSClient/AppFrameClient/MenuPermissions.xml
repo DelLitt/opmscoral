@@ -24,7 +24,9 @@
     <menuitem name="mnuTemporaryStockOut" role="Administrator" />
     <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator" />
     <menuitem name="mnuMainReStockIn" role="Administrator" />
+    <menuitem name="mnuFindStockByBarcode" role="Administrator" />
     
+
   </menu>
   <menu name="mnuDeptStock" role="Administrator">
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager" />

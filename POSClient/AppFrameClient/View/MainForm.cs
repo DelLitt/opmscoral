@@ -429,5 +429,13 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuFindStockByBarcode_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<MainStockSearchByBarcodeForm>(this,
+                                                                          FormConstants.
+                                                                              MAIN_STOCK_SEARCH_BY_BARCODE_FORM);
+            form.Show();
+        }
+
     }
 }

@@ -126,6 +126,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         }
                     }
                 }
+
+                // Department information
+                e.DepartmentStockIn.Department = DepartmentLogic.FindById(stockIn.DepartmentStockInPK.DepartmentId);
+                criteria = new ObjectCriteria();
+                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                criteria.AddEqCriteria("EmployeePK.DepartmentId", stockIn.DepartmentStockInPK.DepartmentId);
+                e.DepartmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
             }
             e.EventResult = "Success";
         }
@@ -205,6 +212,17 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
 
         public IDepartmentPriceLogic DepartmentPriceLogic
+        {
+            get;
+            set;
+        }
+
+        public IDepartmentLogic DepartmentLogic
+        {
+            get;
+            set;
+        }
+        public IEmployeeLogic EmployeeLogic
         {
             get;
             set;

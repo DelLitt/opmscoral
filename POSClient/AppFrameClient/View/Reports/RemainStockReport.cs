@@ -47,6 +47,7 @@ namespace AppFrameClient.View.Reports
         public event EventHandler<StockSearchEventArgs> InitStockSearchEvent;
         public event EventHandler<StockSearchEventArgs> SearchStockEvent;
         public event EventHandler<StockSearchEventArgs> RemainSearchStockEvent;
+        public event EventHandler<StockSearchEventArgs> BarcodeSearchStockEvent;
 
         #endregion
 

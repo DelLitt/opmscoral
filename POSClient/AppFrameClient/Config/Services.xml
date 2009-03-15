@@ -188,6 +188,7 @@
     <property name="ProductMasterDAO" ref="AppFrame.DataLayer.IProductMasterDAO"/>
     <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
     <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
+    <property name="DepartmentDAO" ref="AppFrame.DataLayer.IDepartmentDAO"/>
     <property name="CountryDAO" ref="AppFrame.DataLayer.ICountryDAO"/>
     <property name="ProductColorDAO" ref="AppFrame.DataLayer.IProductColorDAO"/>
     <property name="ProductSizeDAO" ref="AppFrame.DataLayer.IProductSizeDAO"/>
@@ -195,6 +196,8 @@
     <property name="DistributorDAO" ref="AppFrame.DataLayer.IDistributorDAO"/>
     <property name="ManufacturerDAO" ref="AppFrame.DataLayer.IManufacturerDAO"/>
     <property name="PackagerDAO" ref="AppFrame.DataLayer.IPackagerDAO"/>
+    <property name="EmployeeDAO" ref="AppFrame.DataLayer.IEmployeeDAO"/>
+    <property name="EmployeeDetailDAO" ref="AppFrame.DataLayer.IEmployeeDetailDAO"/>
   </object>
 
   <object id="AppFrame.Service.IProductSizeLogic" type="AppFrame.Logic.ProductSizeLogicImpl, AppFrameClient">
