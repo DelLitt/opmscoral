@@ -15,8 +15,6 @@
     <many-to-one
   name="EmployeeInfo"
 class="EmployeeInfo"
-update="false"
-insert="false"
 lazy="false"
 	>
       <column name="EMPLOYEE_ID" />

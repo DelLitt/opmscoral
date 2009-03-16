@@ -122,6 +122,7 @@
         class="Employee"
         outer-join="auto"
         constrained="true"
+        lazy ="false"
     >
     </one-to-one>
 

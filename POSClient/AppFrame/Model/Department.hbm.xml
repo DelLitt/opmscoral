@@ -112,7 +112,7 @@
     <!-- bi-directional one-to-many association to EmployeeInfo -->
     <bag
         name="Employees"
-        lazy="true"
+        lazy="false"
         inverse="true"
 		cascade="none"
     >
