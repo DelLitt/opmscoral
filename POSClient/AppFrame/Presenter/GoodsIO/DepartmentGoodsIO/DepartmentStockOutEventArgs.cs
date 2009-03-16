@@ -29,5 +29,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public IList DepartmentStockList { get; set; }
 
         public IList FoundDepartmentStockOutDetailList { get; set; }
+
+        public SyncFromDepartmentToMain SyncFromDepartmentToMain { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace AppFrame.Model
 {
+    [Serializable]
     public class SyncFromDepartmentToMain
     {
         public IList DepartmentStockList { get; set; }
