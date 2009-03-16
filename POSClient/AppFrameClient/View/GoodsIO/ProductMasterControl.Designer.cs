@@ -323,7 +323,7 @@
             // 
             this.picProduct.Location = new System.Drawing.Point(105, 342);
             this.picProduct.Name = "picProduct";
-            this.picProduct.Size = new System.Drawing.Size(370, 98);
+            this.picProduct.Size = new System.Drawing.Size(161, 98);
             this.picProduct.TabIndex = 66;
             this.picProduct.TabStop = false;
             // 

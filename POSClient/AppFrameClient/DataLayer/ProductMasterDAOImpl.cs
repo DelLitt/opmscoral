@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Common;
+using AppFrame.Utility;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -32,7 +33,16 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public ProductMaster FindById(object id)
         {
-            return (ProductMaster)HibernateTemplate.Get(typeof(ProductMaster), id);
+            ISession session = DbUtility.getSession(HibernateTemplate);
+            try
+            {
+                return (ProductMaster)session.Get(typeof(ProductMaster), id);
+            }
+                finally
+            {
+                session.Close();
+            }
+            
         }
 
         /// <summary>
@@ -87,7 +97,7 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public IList FindAll(ObjectCriteria criteria)
         {
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
+            ISession session = DbUtility.getSession(HibernateTemplate);
             try
             {
                 ICriteria hibernateCriteria = session.CreateCriteria(typeof(ProductMaster));
@@ -120,7 +130,7 @@ namespace AppFrame.DataLayer
             {
                 if (session != null)
                 {
-                    session.Disconnect();
+                    session.Close();
                 }
             }
         }

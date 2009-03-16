@@ -123,6 +123,33 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly=false)]
         public void Update(ProductMaster data)
         {
+            var originalProMaster = ProductMasterDAO.FindById(data.ProductMasterId);
+
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddNotEqualsCriteria("ProductMasterId", data.ProductMasterId);
+            criteria.AddEqCriteria("ProductType", originalProMaster.ProductType);
+            criteria.AddEqCriteria("Country", originalProMaster.Country);
+            criteria.AddEqCriteria("Manufacturer", originalProMaster.Manufacturer);
+            criteria.AddEqCriteria("Distributor", originalProMaster.Distributor);
+            criteria.AddEqCriteria("Packager", originalProMaster.Packager);
+            criteria.AddEqCriteria("ProductName", originalProMaster.ProductName);
+
+            IList list = ProductMasterDAO.FindAll(criteria);
+            foreach (ProductMaster master in list)
+            {
+                master.ProductName = data.ProductName;
+                master.ProductType = data.ProductType;
+                master.ProductFullName = data.ProductFullName;
+                master.Manufacturer = data.Manufacturer;
+                master.Packager = data.Packager;
+                master.Distributor = data.Distributor;
+                master.Packager = data.Packager;
+                master.Country = data.Country;
+                master.UpdateDate = DateTime.Now;
+                master.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                ProductMasterDAO.Update(master);
+            }
             ProductMasterDAO.Update(data);
         }
         

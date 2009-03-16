@@ -41,6 +41,11 @@ namespace AppFrameClient.View.GoodsIO
             productMasterControl.btnCreateCountry.Click += new EventHandler(btnCreateCountry_Click);
             productMasterControl.btnCreateColor.Click += new EventHandler(btnCreateColor_Click);
             productMasterControl.btnSelect.Click += new EventHandler(btnSelect_Click);
+
+            productMasterControl.cbbProductColor.Enabled = false;
+            productMasterControl.cbbProductSize.Enabled = false;
+            productMasterControl.btnCreateSize.Enabled = false;
+            productMasterControl.btnCreateColor.Enabled = false;
         }
 
         private void ProductMasterForm_Load(object sender, EventArgs e)
