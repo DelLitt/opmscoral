@@ -72,7 +72,7 @@ namespace AppFrame.Controls.HotKey
 
         protected bool RegisterHotkey(Shortcut key)
         {	//register hotkey
-            int mod=0;
+            /*int mod=0;
             Keys k2=Keys.None;
             if (((int)key & (int)Keys.Alt)==(int)Keys.Alt) {mod+=(int)Modifiers.MOD_ALT;k2=Keys.Alt;}
             if (((int)key & (int)Keys.Shift)==(int)Keys.Shift) {mod+=(int)Modifiers.MOD_SHIFT;k2=Keys.Shift;}
@@ -81,7 +81,32 @@ namespace AppFrame.Controls.HotKey
             System.Diagnostics.Debug.Write(mod.ToString()+" ");
             System.Diagnostics.Debug.WriteLine((((int)key)-((int)k2)).ToString());
 
-            return User32.RegisterHotKey(m_Window.Handle,this.GetType().GetHashCode(),(int)mod,((int)key)-((int)k2));
+            return User32.RegisterHotKey(m_Window.Handle,this.GetType().GetHashCode(),(int)mod,((int)key)-((int)k2));*/
+
+            //register hotkey
+            int mod = 0;
+            Keys k2 = Keys.None;
+            if (((int)key & (int)Keys.Alt) == (int)Keys.Alt)
+            {
+                mod |= (int)Modifiers.MOD_ALT;
+                k2 |= Keys.Alt;
+            }
+
+            if (((int)key & (int)Keys.Shift) == (int)Keys.Shift)
+            {
+                mod |= (int)Modifiers.MOD_SHIFT;
+                k2 |= Keys.Shift;
+            }
+
+            if (((int)key & (int)Keys.Control) == (int)Keys.Control)
+            {
+                mod |= (int)Modifiers.MOD_CONTROL;
+                k2 |= Keys.Control;
+            }
+
+            int nonModifiedKey = (int)key - (int)k2;
+
+            return User32.RegisterHotKey(m_Window.Handle, this.GetType().GetHashCode(), (int)mod, nonModifiedKey);
         }
 
         public bool IsRegistered

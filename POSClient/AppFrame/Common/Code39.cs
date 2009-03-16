@@ -157,16 +157,16 @@ namespace AppFrame.Common
                 objGraphics.DrawString(barCode, _c39Font, new SolidBrush(Color.Black),
                                        (float) bX, startY);
 
-                startY = startY + bcHeight - 30;
+                startY = startY + bcHeight-27;
             }
-
-
+            //objGraphics.DrawString(barCode, _c39Font, new SolidBrush(Color.Black), barcodeRec);
+            
             if (_showCodeString)
             {
                 // calculate scale for code
                 var _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
                 float currCodeSize = _codeStringFont.Size;
-                float scaledCodeSize = (bStrHeight * currCodeSize) / _codeSize.Height;
+                float scaledCodeSize = ((bWidth-60) * currCodeSize) / _codeSize.Width;
                 _codeStringFont = new Font("Arial", scaledCodeSize);
                 _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
                 objGraphics.FillRectangle(new SolidBrush(Color.White), barCodeStrRec);

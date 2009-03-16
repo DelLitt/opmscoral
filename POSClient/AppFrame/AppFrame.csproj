@@ -489,6 +489,7 @@
     <Compile Include="Model\StockOutDetail.cs" />
     <Compile Include="Model\StockOutDetailPK.cs" />
     <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Model\SyncFromDepartmentToMain.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Model\UniversalStockReportObject.cs" />
     <Compile Include="ObjectCriteria.cs" />
