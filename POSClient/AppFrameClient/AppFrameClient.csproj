@@ -343,6 +343,7 @@
     <Compile Include="Presenter\SalePoints\EmployeeController.cs" />
     <Compile Include="Presenter\SalePoints\SalePointController.cs" />
     <Compile Include="Presenter\SalePoints\SalePointListController.cs" />
+    <Compile Include="Presenter\SecurityController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -907,6 +908,12 @@
     <Compile Include="View\SalePoints\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SecuritySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SecuritySettings.Designer.cs">
+      <DependentUpon>SecuritySettings.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -1227,6 +1234,9 @@
     <EmbeddedResource Include="View\SalePoints\SalePointListForm.resx">
       <DependentUpon>SalePointListForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SecuritySettings.resx">
+      <DependentUpon>SecuritySettings.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Logic\dummy.txt" />
   </ItemGroup>
