@@ -742,7 +742,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         };
 
             var code39Gen = code39.GenerateBarcode("*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId+ "*",
-                                                   (int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY));
+                                                   (int)((float)1.5*800),(int)((float)0.75*800));
 
             /*var setting = new Code39Settings();
             setting.BarCodeHeight = 50;

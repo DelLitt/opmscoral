@@ -68,6 +68,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            stockBindingSource.Clear();
             var eventArgs = new StockSearchEventArgs
             {
                 ProductMasterId = productMasterControl.txtProductMasterId.Text,
@@ -87,7 +88,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 ToDate = dtpImportDateTo.Value
             };
             EventUtility.fireEvent(BarcodeSearchStockEvent, sender, eventArgs);
-
+            if(eventArgs.StockList== null || eventArgs.StockList.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm nào.");
+                return;
+            }
             stockBindingSource.DataSource = eventArgs.StockList;
         }
 

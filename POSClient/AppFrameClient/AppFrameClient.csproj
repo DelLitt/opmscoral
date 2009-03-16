@@ -541,6 +541,12 @@
     <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.Designer.cs">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.Designer.cs">
+      <DependentUpon>MainStockSearchByBarcodeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1060,6 +1066,9 @@
     <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockOutExtraForm.resx">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.resx">
+      <DependentUpon>MainStockSearchByBarcodeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.resx">
       <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1218,13 +1227,13 @@
     <Content Include="Logic\dummy.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\AppFrame\AppFrame.csproj">
       <Project>{73A362AB-99CF-4AA1-8278-01CAED2516F0}</Project>
       <Name>AppFrame</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />

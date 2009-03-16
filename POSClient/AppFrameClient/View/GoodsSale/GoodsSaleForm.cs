@@ -194,9 +194,9 @@ namespace AppFrameClient.View.GoodsSale
             txtDepartment.Text = currentDepartment.DepartmentName;
             txtEmployee.Text = ClientInfo.getInstance().LoggedUser.Name;
             txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+            this.reportPurchaseOrder.RefreshReport();
             txtBarcode.Focus();
             //btnAdd_Click(this, null);
-            this.reportPurchaseOrder.RefreshReport();
         }
 
 
@@ -718,6 +718,16 @@ namespace AppFrameClient.View.GoodsSale
         private void txtBarcode_Leave(object sender, EventArgs e)
         {
             txtBarcode.BackColor = Color.White;
+        }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
+
+        private void GoodsSaleForm_Shown(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
         }
     }
 }
