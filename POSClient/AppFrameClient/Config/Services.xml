@@ -150,6 +150,10 @@
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
     <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+    <property name="PurchaseOrderDAO" ref="AppFrame.DataLayer.IPurchaseOrderDAO"/>
+    <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
+    <property name="ReturnPoDAO" ref="AppFrame.DataLayer.IReturnPoDAO"/>
+    <property name="DepartmentStockHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockHistoryDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">

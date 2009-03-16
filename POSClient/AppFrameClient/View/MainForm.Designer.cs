@@ -72,6 +72,7 @@
             this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcessStockDefect = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFindStockByBarcode = new System.Windows.Forms.ToolStripMenuItem();
             this.searchStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuWarehouseRemains = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,7 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuFindStockByBarcode = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSyncToMainForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -468,6 +469,13 @@
             this.mnuProcessStockDefect.Text = "Xử lý sau kiểm kê kho";
             this.mnuProcessStockDefect.Click += new System.EventHandler(this.mnuProcessStockDefect_Click);
             // 
+            // mnuFindStockByBarcode
+            // 
+            this.mnuFindStockByBarcode.Name = "mnuFindStockByBarcode";
+            this.mnuFindStockByBarcode.Size = new System.Drawing.Size(236, 22);
+            this.mnuFindStockByBarcode.Text = "Tìm kiếm kho theo mã vạch";
+            this.mnuFindStockByBarcode.Click += new System.EventHandler(this.mnuFindStockByBarcode_Click);
+            // 
             // searchStockToolStripMenuItem
             // 
             this.searchStockToolStripMenuItem.Name = "searchStockToolStripMenuItem";
@@ -602,6 +610,7 @@
             this.mnuDeleteData,
             this.mnuRecoverData,
             this.toolStripMenuItem9,
+            this.mnuSyncToMainForm,
             this.mnuSynchronizeData,
             this.toolStripMenuItem10,
             this.mnuSystemConfiguration});
@@ -769,12 +778,12 @@
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
             // 
-            // mnuFindStockByBarcode
+            // mnuSyncToMainForm
             // 
-            this.mnuFindStockByBarcode.Name = "mnuFindStockByBarcode";
-            this.mnuFindStockByBarcode.Size = new System.Drawing.Size(236, 22);
-            this.mnuFindStockByBarcode.Text = "Tìm kiếm kho theo mã vạch";
-            this.mnuFindStockByBarcode.Click += new System.EventHandler(this.mnuFindStockByBarcode_Click);
+            this.mnuSyncToMainForm.Name = "mnuSyncToMainForm";
+            this.mnuSyncToMainForm.Size = new System.Drawing.Size(173, 22);
+            this.mnuSyncToMainForm.Text = "Đồng bộ về kho";
+            this.mnuSyncToMainForm.Click += new System.EventHandler(this.mnuSyncToMainForm_Click);
             // 
             // MainForm
             // 
@@ -888,5 +897,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentReStockIn;
         private System.Windows.Forms.ToolStripMenuItem mnuStockCollection;
         private System.Windows.Forms.ToolStripMenuItem mnuFindStockByBarcode;
+        private System.Windows.Forms.ToolStripMenuItem mnuSyncToMainForm;
     }
 }

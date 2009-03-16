@@ -437,5 +437,13 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuSyncToMainForm_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SyncToMainForm>(this,
+                                                                          FormConstants.
+                                                                              SYNC_TO_MAIN_FORM);
+            form.Show();
+        }
+
     }
 }

@@ -48,8 +48,23 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     _departmentStockOutView_LoadProductColorEvent);
                 mainStockInView.LoadProductSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadProductSizeEvent);
+                mainStockInView.GetSyncDataEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                    _departmentStockOutView_GetSyncDataEvent);
+                mainStockInView.SyncToMainEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                    _departmentStockOutView_SyncToMainEvent);
 
             }
+        }
+
+        public void _departmentStockOutView_SyncToMainEvent(object sender, DepartmentStockOutEventArgs e)
+        {
+            DepartmentStockOutLogic.SyncToMain(e.SyncFromDepartmentToMain);
+            e.EventResult = "Success";
+        }
+
+        public void _departmentStockOutView_GetSyncDataEvent(object sender, DepartmentStockOutEventArgs e)
+        {
+            e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData();
         }
 
         public void _departmentStockOutView_LoadProductSizeEvent(object sender, DepartmentStockOutEventArgs e)
