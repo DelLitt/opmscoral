@@ -150,6 +150,7 @@ namespace AppFrameClient.View.GoodsSale
                 }
             }
             CalculateReturnPrice(pODReturnList);
+            txtCharge.Text = CalculateCharge().ToString();
         }
 
         private PurchaseOrderDetail DumpNewRow(PurchaseOrderDetail detail)
@@ -243,12 +244,11 @@ namespace AppFrameClient.View.GoodsSale
             orderDetail.DelFlg = 0;
             orderDetail.DepartmentId = CurrentDepartment.Get().DepartmentId;
             orderDetail.Quantity = 1;
-            /*if (GoodsSaleReturnController.NextPurchaseOrder == null)
+            if (GoodsSaleReturnController.NextPurchaseOrder == null)
             {
                 PurchaseOrder order = new PurchaseOrder();
-                order.p
                 GoodsSaleReturnController.NextPurchaseOrder = order;
-            }*/
+            }
             //orderDetail.PurchaseOrder = GoodsSaleReturnController.NextPurchaseOrder;
             PurchaseOrderDetailPK purchaseOrderDetailPK = new PurchaseOrderDetailPK();
             purchaseOrderDetailPK.DepartmentId = CurrentDepartment.Get().DepartmentId;
@@ -369,15 +369,23 @@ namespace AppFrameClient.View.GoodsSale
                 if(!eventArgs.HasErrors)
                 {
                     MessageBox.Show("Lưu thành công !");
+                    PrintReturnReceipt(eventArgs);
                     ClearForm();
                 }
-                PrintReturnReceipt(eventArgs);
+                
             }
         }
 
         private void PrintReturnReceipt(GoodsSaleReturnEventArgs args)
         {
-            throw new NotImplementedException();
+            this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
+            this.PurchaseOrderBindingSource.DataSource = args.RefPurchaseOrder;
+            this.PurchaseOrderDetailBindingSource.DataSource =
+                ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
+            this.reportViewer1.LocalReport.Refresh();
+            this.reportViewer1.PrintDialog();
+
         }
 
         private void ClearForm()
@@ -429,6 +437,7 @@ namespace AppFrameClient.View.GoodsSale
         {
             //btnAddUncheck_Click(this, null);
 
+            this.reportViewer1.RefreshReport();
         }
 
         private ProductMasterSearchDepartmentForm newForm = null;
@@ -568,8 +577,7 @@ namespace AppFrameClient.View.GoodsSale
                 }
                 finally
                 {
-                    txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
-                    //txtTotalAmount.Text = CalculateTotalAmount().ToString();
+                    txtTotalAmount.Text = CalculateTotalPrice(pODNewList).ToString();
                     txtCharge.Text = CalculateCharge().ToString();
                     RemoveEmptyAndDuplicateRowFromList(pODNewList);
                     ClearInput();

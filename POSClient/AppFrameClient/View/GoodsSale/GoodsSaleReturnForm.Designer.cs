@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.PurchaseOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -110,6 +118,11 @@
             this.bdsNewBill = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
@@ -121,6 +134,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNewBill)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PurchaseOrderDetailBindingSource
+            // 
+            this.PurchaseOrderDetailBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrderDetail);
+            // 
+            // PurchaseOrderDetailCollectionBindingSource
+            // 
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailCollection);
+            // 
+            // DepartmentBindingSource
+            // 
+            this.DepartmentBindingSource.DataSource = typeof(AppFrame.Model.Department);
+            // 
+            // PurchaseOrderBindingSource
+            // 
+            this.PurchaseOrderBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrder);
             // 
             // btnHelp
             // 
@@ -138,7 +167,7 @@
             this.btnReset.Location = new System.Drawing.Point(632, 532);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 39;
+            this.btnReset.TabIndex = 13;
             this.btnReset.Text = "Bỏ qua";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -149,7 +178,7 @@
             this.btnSave.Location = new System.Drawing.Point(432, 531);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(194, 23);
-            this.btnSave.TabIndex = 38;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Lưu đối chứng";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -163,6 +192,7 @@
             this.txtBillDate.Name = "txtBillDate";
             this.txtBillDate.Size = new System.Drawing.Size(148, 14);
             this.txtBillDate.TabIndex = 36;
+            this.txtBillDate.TabStop = false;
             this.txtBillDate.Text = "12/12/2008";
             // 
             // btnClose
@@ -171,7 +201,7 @@
             this.btnClose.Location = new System.Drawing.Point(925, 531);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 37;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -186,6 +216,7 @@
             this.txtCharge.ReadOnly = true;
             this.txtCharge.Size = new System.Drawing.Size(149, 21);
             this.txtCharge.TabIndex = 38;
+            this.txtCharge.TabStop = false;
             this.txtCharge.Text = "0";
             // 
             // txtPayment
@@ -195,7 +226,7 @@
             this.txtPayment.Location = new System.Drawing.Point(580, 439);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(131, 21);
-            this.txtPayment.TabIndex = 37;
+            this.txtPayment.TabIndex = 10;
             this.txtPayment.Text = "0";
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
             // 
@@ -228,6 +259,7 @@
             this.txtCustomer.ReadOnly = true;
             this.txtCustomer.Size = new System.Drawing.Size(239, 21);
             this.txtCustomer.TabIndex = 24;
+            this.txtCustomer.TabStop = false;
             // 
             // dgvBill
             // 
@@ -247,20 +279,20 @@
             this.columnType});
             this.dgvBill.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvBill.DataSource = this.bdsBill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Format = "##,##0";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "##,##0";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBill.Location = new System.Drawing.Point(6, 58);
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBill.Size = new System.Drawing.Size(472, 161);
-            this.dgvBill.TabIndex = 3;
+            this.dgvBill.TabIndex = 4;
             // 
             // Column1
             // 
@@ -390,6 +422,7 @@
             this.txtDepartment.ReadOnly = true;
             this.txtDepartment.Size = new System.Drawing.Size(335, 22);
             this.txtDepartment.TabIndex = 0;
+            this.txtDepartment.TabStop = false;
             // 
             // txtEmployee
             // 
@@ -398,6 +431,7 @@
             this.txtEmployee.ReadOnly = true;
             this.txtEmployee.Size = new System.Drawing.Size(219, 22);
             this.txtEmployee.TabIndex = 1;
+            this.txtEmployee.TabStop = false;
             // 
             // txtWorkingTime
             // 
@@ -406,6 +440,7 @@
             this.txtWorkingTime.ReadOnly = true;
             this.txtWorkingTime.Size = new System.Drawing.Size(153, 22);
             this.txtWorkingTime.TabIndex = 7;
+            this.txtWorkingTime.TabStop = false;
             // 
             // lblPayment
             // 
@@ -537,7 +572,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(80, 230);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(200, 21);
-            this.txtBarcode.TabIndex = 62;
+            this.txtBarcode.TabIndex = 8;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
             this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
@@ -562,6 +597,7 @@
             this.txtReturnPayment.ReadOnly = true;
             this.txtReturnPayment.Size = new System.Drawing.Size(147, 21);
             this.txtReturnPayment.TabIndex = 60;
+            this.txtReturnPayment.TabStop = false;
             this.txtReturnPayment.Text = "0";
             // 
             // btnAddUncheck
@@ -607,6 +643,7 @@
             this.txtTax.ReadOnly = true;
             this.txtTax.Size = new System.Drawing.Size(131, 21);
             this.txtTax.TabIndex = 56;
+            this.txtTax.TabStop = false;
             this.txtTax.Text = "0";
             // 
             // label3
@@ -627,6 +664,7 @@
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.Size = new System.Drawing.Size(148, 21);
             this.txtTotalAmount.TabIndex = 54;
+            this.txtTotalAmount.TabStop = false;
             // 
             // btnRemoveReturnGoods
             // 
@@ -634,7 +672,7 @@
             this.btnRemoveReturnGoods.Location = new System.Drawing.Point(141, 410);
             this.btnRemoveReturnGoods.Name = "btnRemoveReturnGoods";
             this.btnRemoveReturnGoods.Size = new System.Drawing.Size(76, 23);
-            this.btnRemoveReturnGoods.TabIndex = 51;
+            this.btnRemoveReturnGoods.TabIndex = 11;
             this.btnRemoveReturnGoods.Text = "Xoá";
             this.btnRemoveReturnGoods.UseVisualStyleBackColor = true;
             this.btnRemoveReturnGoods.Click += new System.EventHandler(this.btnNewOrderRemoveRow_Click);
@@ -645,8 +683,8 @@
             this.btnResetReturnGoods.Location = new System.Drawing.Point(484, 87);
             this.btnResetReturnGoods.Name = "btnResetReturnGoods";
             this.btnResetReturnGoods.Size = new System.Drawing.Size(45, 23);
-            this.btnResetReturnGoods.TabIndex = 50;
-            this.btnResetReturnGoods.Text = "Hồi";
+            this.btnResetReturnGoods.TabIndex = 6;
+            this.btnResetReturnGoods.Text = "<--";
             this.btnResetReturnGoods.UseVisualStyleBackColor = true;
             this.btnResetReturnGoods.Click += new System.EventHandler(this.btnResetReturnGoods_Click);
             // 
@@ -656,8 +694,8 @@
             this.btnReturnGoods.Location = new System.Drawing.Point(484, 58);
             this.btnReturnGoods.Name = "btnReturnGoods";
             this.btnReturnGoods.Size = new System.Drawing.Size(45, 23);
-            this.btnReturnGoods.TabIndex = 49;
-            this.btnReturnGoods.Text = "Trả";
+            this.btnReturnGoods.TabIndex = 5;
+            this.btnReturnGoods.Text = "-->";
             this.btnReturnGoods.UseVisualStyleBackColor = true;
             this.btnReturnGoods.Click += new System.EventHandler(this.btnReturnGoods_Click);
             // 
@@ -677,7 +715,7 @@
             this.btnFind.Location = new System.Drawing.Point(84, 15);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(31, 23);
-            this.btnFind.TabIndex = 47;
+            this.btnFind.TabIndex = 1;
             this.btnFind.Text = "...";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -688,7 +726,7 @@
             this.btnLoadPO.Location = new System.Drawing.Point(223, 15);
             this.btnLoadPO.Name = "btnLoadPO";
             this.btnLoadPO.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadPO.TabIndex = 46;
+            this.btnLoadPO.TabIndex = 3;
             this.btnLoadPO.Text = "Đọc";
             this.btnLoadPO.UseVisualStyleBackColor = true;
             this.btnLoadPO.Click += new System.EventHandler(this.btnLoadPO_Click);
@@ -711,19 +749,19 @@
             this.dataGridViewTextBoxColumn5});
             this.dgvReturnBill.ContextMenuStrip = this.ctxReturnBill;
             this.dgvReturnBill.DataSource = this.bdsReturnBill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Format = "##,##0";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReturnBill.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Format = "##,##0";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReturnBill.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvReturnBill.Location = new System.Drawing.Point(535, 58);
             this.dgvReturnBill.Name = "dgvReturnBill";
             this.dgvReturnBill.Size = new System.Drawing.Size(445, 161);
-            this.dgvReturnBill.TabIndex = 42;
+            this.dgvReturnBill.TabIndex = 7;
             this.dgvReturnBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnBill_CellEndEdit);
             this.dgvReturnBill.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnBill_CellEnter);
             // 
@@ -828,7 +866,7 @@
             // 
             // txtBillNumber
             // 
-            this.txtBillNumber.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBillNumber.BackColor = System.Drawing.SystemColors.Window;
             this.txtBillNumber.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBillNumber.Location = new System.Drawing.Point(118, 16);
             this.txtBillNumber.Name = "txtBillNumber";
@@ -852,19 +890,19 @@
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.dgvNewBill.DataSource = this.bdsNewBill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Format = "##,##0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNewBill.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Format = "##,##0";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNewBill.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNewBill.Location = new System.Drawing.Point(7, 255);
             this.dgvNewBill.Name = "dgvNewBill";
             this.dgvNewBill.Size = new System.Drawing.Size(975, 153);
-            this.dgvNewBill.TabIndex = 53;
+            this.dgvNewBill.TabIndex = 9;
             this.dgvNewBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewBill_CellEndEdit);
             this.dgvNewBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewBill_CellClick);
             // 
@@ -958,12 +996,37 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 23);
             this.button1.TabIndex = 45;
+            this.button1.TabStop = false;
             this.button1.Text = "Lưu không đối chứng";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer1
+            // 
+            reportDataSource1.Name = "AppFrame_Model_PurchaseOrderDetail";
+            reportDataSource1.Value = this.PurchaseOrderDetailBindingSource;
+            reportDataSource2.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
+            reportDataSource2.Value = this.PurchaseOrderDetailCollectionBindingSource;
+            reportDataSource3.Name = "AppFrame_Model_Department";
+            reportDataSource3.Value = this.DepartmentBindingSource;
+            reportDataSource4.Name = "AppFrame_Model_PurchaseOrder";
+            reportDataSource4.Value = this.PurchaseOrderBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.ReturnPurchaseOrder.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(737, 532);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(50, 50);
+            this.reportViewer1.TabIndex = 46;
+            this.reportViewer1.TabStop = false;
+            this.reportViewer1.Visible = false;
             // 
             // GoodsSaleReturnForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 567);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
@@ -974,6 +1037,10 @@
             this.Name = "GoodsSaleReturnForm";
             this.Load += new System.EventHandler(this.GoodsSaleReturnForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GoodsSaleReturnForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).EndInit();
@@ -1070,5 +1137,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailCollectionBindingSource;
+        private System.Windows.Forms.BindingSource DepartmentBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderBindingSource;
     }
 }

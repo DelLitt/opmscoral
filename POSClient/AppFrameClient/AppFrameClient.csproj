@@ -400,23 +400,17 @@
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection1.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockOutDetailCollection.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.BlockInDetail.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.Country.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStock.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStockDefect.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.Distributor.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.Manufacturer.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Packager.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Product.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.ProductMaster.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Department.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Employee.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.ProductColor.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.ProductSize.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.ProductType.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.PurchaseOrder.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.PurchaseOrderDetail.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.ReturnPo.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockInDetail.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
@@ -522,6 +516,12 @@
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.Designer.cs">
+      <DependentUpon>SyncToMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.cs">
       <SubType>Form</SubType>
@@ -1036,6 +1036,7 @@
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
     <EmbeddedResource Include="Report\PurchaseOrder.rdlc" />
+    <EmbeddedResource Include="Report\ReturnPurchaseOrder.rdlc" />
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1056,6 +1057,9 @@
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.resx">
+      <DependentUpon>SyncToMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockOutConfirmForm.resx">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
