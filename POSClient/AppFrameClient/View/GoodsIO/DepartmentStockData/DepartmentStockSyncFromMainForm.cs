@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -15,10 +16,11 @@ using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    public partial class DepartmentStockSyncFromMainForm : BaseForm, IDepartmentStockInView
+    public partial class DepartmentStockSyncFromMainForm : BaseForm, IDepartmentStockInExtraView
     {
         public DepartmentStockSyncFromMainForm()
         {
@@ -168,13 +170,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         #region Implementation of IDepartmentStockInView
 
-        private IDepartmentStockInController _departmentStockInController;
+        private DepartmentStockInExtraController _departmentStockInController;
         public IDepartmentStockInController DepartmentStockInController
         {
             set
             {
-                _departmentStockInController = value;
+                _departmentStockInController = (DepartmentStockInExtraController)value;
                 _departmentStockInController.DepartmentStockInView = this;
+                _departmentStockInController.DepartmentStockInExtraView = this;
             }
         }
 
@@ -198,6 +201,69 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
 
         public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
+
+        #endregion
+
+        private void btnSyncToDept_Click(object sender, EventArgs e)
+        {
+            var configurationAppSettings = new AppSettingsReader();
+            var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
+            if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
+            {
+                MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + exportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
+                return;
+            }
+            try
+            {
+                var deptEvent = new DepartmentStockInEventArgs();
+                EventUtility.fireEvent(FillDepartmentEvent, this, deptEvent);
+
+                IList departmentList = deptEvent.DepartmentList;
+                foreach (Department department in departmentList)
+                {
+                    deptEvent = new DepartmentStockInEventArgs();
+                    deptEvent.Department = department;
+                    EventUtility.fireEvent(LoadDepartemntStockInForExportEvent, this, deptEvent);
+
+                    if (deptEvent.DepartmentStockInList != null && deptEvent.DepartmentStockInList.Count > 0)
+                    {
+                        foreach (DepartmentStockIn stockIn in deptEvent.DepartmentStockInList)
+                        {
+                            string fileName = exportPath + "\\" + department.DepartmentName + "_" + department.Address + " - Ma lo_" + stockIn.DepartmentStockInPK.StockInId + "_" +
+                                                              stockIn.StockInDate.ToString("yyyy_MM_dd_HH_mm_ss") + ".xac";
+                            Stream stream = File.Open(fileName, FileMode.Create);
+                            BinaryFormatter bf = new BinaryFormatter();
+                            bf.Serialize(stream, stockIn);
+                            stream.Close();
+
+                            var eventArgs = new DepartmentStockInEventArgs();
+                            eventArgs.DepartmentStockIn = stockIn;
+                            EventUtility.fireEvent(UpdateDepartemntStockInForExportEvent, this, eventArgs);
+
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            MessageBox.Show("Đồng bộ hoàn tất !");
+        }
+
+        #region Implementation of IDepartmentStockInExtraView
+
+        public event EventHandler<DepartmentStockInEventArgs> FillProductToComboEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByIdEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadProductColorEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadProductSizeEvent;
+        public event EventHandler<DepartmentStockInEventArgs> FillDepartmentEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorSizeEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadPriceAndStockEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadDepartemntStockInForExportEvent;
+        public event EventHandler<DepartmentStockInEventArgs> UpdateDepartemntStockInForExportEvent;
 
         #endregion
     }

@@ -48,8 +48,30 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FillDepartmentEvent);
                         departmentStockInExtraView.LoadPriceAndStockEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadPriceAndStockEvent);
+                        departmentStockInExtraView.LoadDepartemntStockInForExportEvent +=
+                                    new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadDepartemntStockInForExportEvent);
+                        departmentStockInExtraView.UpdateDepartemntStockInForExportEvent +=
+                                    new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_UpdateDepartemntStockInForExportEvent);
                     }
                 }
+
+        public void _departmentStockInView_UpdateDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            e.DepartmentStockIn.ExportStatus = CommonConstants.DEL_FLG_YES;
+            e.DepartmentStockIn.UpdateDate = DateTime.Now;
+            e.DepartmentStockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+            DepartmentStockInLogic.UpdateExportStatus(e.DepartmentStockIn);
+        }
+
+        public void _departmentStockInView_LoadDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.Department.DepartmentId);
+            e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
+        }
 
         void _departmentStockInView_LoadPriceAndStockEvent(object sender, DepartmentStockInEventArgs e)
         {

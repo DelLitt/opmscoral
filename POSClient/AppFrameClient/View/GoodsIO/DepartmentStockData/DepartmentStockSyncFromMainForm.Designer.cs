@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
+            this.btnSyncToDept = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtFilePath
@@ -76,7 +77,7 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(208, 59);
+            this.btnRun.Location = new System.Drawing.Point(281, 59);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(103, 25);
             this.btnRun.TabIndex = 47;
@@ -84,11 +85,22 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // btnSyncToDept
+            // 
+            this.btnSyncToDept.Location = new System.Drawing.Point(136, 59);
+            this.btnSyncToDept.Name = "btnSyncToDept";
+            this.btnSyncToDept.Size = new System.Drawing.Size(103, 25);
+            this.btnSyncToDept.TabIndex = 48;
+            this.btnSyncToDept.Text = "Xuất dữ liệu đi cửa hàng";
+            this.btnSyncToDept.UseVisualStyleBackColor = true;
+            this.btnSyncToDept.Click += new System.EventHandler(this.btnSyncToDept_Click);
+            // 
             // DepartmentStockSyncFromMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 93);
+            this.Controls.Add(this.btnSyncToDept);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label7);
@@ -109,5 +121,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Button btnSyncToDept;
     }
 }
