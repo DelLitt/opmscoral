@@ -61,6 +61,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Aspose\Aspose.Cells\Bin\Net2.0\Aspose.Cells.dll</HintPath>
     </Reference>
+    <Reference Include="BarcodeControl, Version=1.0.2520.30942, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\TechnoRiver\TechnoRiver Free Barcode SDK\BarcodeControl.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="BarcodeX, Version=2.0.3211.31016, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files\BarcodeX.Net\BarcodeX.dll</HintPath>

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
@@ -14,7 +16,9 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
+using BarcodeLib;
 using Fath;
+using TechnoRiver.BarcodeDeveloper;
 
 namespace AppFrameClient.View.GoodsIO.MainStock
 {
@@ -653,7 +657,26 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     try
                     {
-                        barcodePrintDocument.Print();
+                        var numberToPrint = (int)numericUpDownBarcode.Value;
+                        var count = numberToPrint/3;
+                        if((numberToPrint % 3) != 0 )
+                        {
+                            count += 1;
+                        }
+                        for (int i = 0; i < count; i++)
+                        {
+                            barcodePrintDocument.Print();
+                            var remainToPrint = (int)numericUpDownBarcode.Value;
+                            if(remainToPrint -3 < 0 )
+                            {
+                                numericUpDownBarcode.Value = 1;                                
+                            }
+                            else
+                            {
+                                numericUpDownBarcode.Value = (remainToPrint - 3);
+                            }
+                        }
+                        
                     }
                     catch (Exception)
                     {
@@ -706,6 +729,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void barcodePrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            
             var height = 87;
             var numberToPrint = (int)numericUpDownBarcode.Value;
             string code = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;
@@ -713,23 +737,24 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             if (numberToPrint > 3)
             {
                 height = (numberToPrint / 3) * 87;
+                numberToPrint = 3;
             }
             var eventArgs = new MainStockInEventArgs{ProductMasterIdForPrice = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductMasterId};
             EventUtility.fireEvent(GetPriceEvent, this, eventArgs);
-            string priceStr = "";
-            string name = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.TypeAndName;
+            string titleString = "";
+            string name = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductName;
             if (eventArgs.DepartmentPrice != null)
             {
-                priceStr = name + " Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
+                titleString = name + " Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
             }
             var code39 = new Code39
                              {
-                                 FontFamilyName = "Free 3 of 9",
+                                 FontFamilyName = "3 of 9 Barcode",
                                  //2.FontFamilyName = "MW6 Code39MT",
                                  //3.FontFamilyName = "MW6 Code39S",
                                  //4.FontFamilyName = "MW6 Code39LT",
                                  //5.FontFamilyName = "Code EAN13",
-                                 FontFileName = "Common\\FREE3OF9.TTF",
+                                 FontFileName = "Common\\3OF9_NEW.TTF",
                                  //2.FontFileName = "Common\\MW6Code39MT.TTF",
                                  //3.FontFileName = "Common\\MW6Code39S.TTF",
                                  //4.FontFileName = "Common\\MW6Code39LT.TTF",
@@ -738,41 +763,62 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                                  FontSize = 12,
                                  TitleFont = new Font("Tahoma", 12),
                                  CodeStringFont = new Font("Tahoma",12),
-                                 Title = priceStr + " VND"
+                                 Title = titleString + " VND"
                         };
-
-            var code39Gen = code39.GenerateBarcode("*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId+ "*",
-                                                   (int)((float)1.5*800),(int)((float)0.75*800));
-
-            /*var setting = new Code39Settings();
-            setting.BarCodeHeight = 50;
-            setting.DrawText = true;
-            var code39Ex = new Code39Ex(deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId,
-                setting);*/
+            
+            barcodeControl1.BarcodeData = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;
+            
+          
+            BarcodeLib.Barcode barcode = new Barcode();
+            
+            string barCodeStr = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;            
+            Image imageBC = barcode.Encode(BarcodeLib.TYPE.UPCA, barCodeStr, Color.Black, Color.White, (int)(1.25 * e.Graphics.DpiX), (int)(0.75 * e.Graphics.DpiY));
+            
+            var code39Gen = code39.GenerateBarcode(deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId,
+                                                   (int)((float)(1.5*e.Graphics.DpiX)),(int)((float)(0.75*e.Graphics.DpiY)));
 
             
-            BarcodeX codeGen = new BarcodeX();
-            codeGen.Title = priceStr.ToUpper();
-            codeGen.Font = new Font("Arial", (float) 18, FontStyle.Regular);
-            codeGen.Data = "*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId+ "*";
-            codeGen.Width = (int)(1.25*150);
-            codeGen.Height = (int)(0.75*150);
-            codeGen.Symbology = bcType.Code39;
-            codeGen.ShowText = true;
             
+            Bitmap bitmap1 = new Bitmap(imageBC);
+            bitmap1.SetResolution(203,203);
+            Bitmap bitmap2 = new Bitmap(code39Gen);
+            bitmap2.SetResolution(203,203);
+            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+
+            // draw title string
             
+                // calculate scale for title
+                var titleStrSize = e.Graphics.MeasureString(titleString, new Font("Arial",10));
+                float currTitleSize = new Font("Arial",10).Size;
+                float scaledTitleSize = (140 * currTitleSize) / titleStrSize.Width;
+                Font _titleFont = new Font("Arial", scaledTitleSize);
+                string nameString = titleString.Substring(0, titleString.IndexOf("Giá"));
+                string priceString = titleString.Substring(titleString.IndexOf("Giá")) + " VND ";
+                var priceTotalSize = e.Graphics.MeasureString(titleString, _titleFont);
+                var nameSize = e.Graphics.MeasureString(nameString, _titleFont);
+                var priceSize = e.Graphics.MeasureString(priceString, _titleFont);
+                var barCodeSize = e.Graphics.MeasureString(barCodeStr, _titleFont);
+                /*Bitmap bitmapName = new Bitmap(nameString, true);
+                Bitmap bitmapPrice = new Bitmap(priceString, true);*/
             for (int i = 0; i < numberToPrint; i++)
             {
-                System.Drawing.Rectangle rc=new System.Drawing.Rectangle((i%3)*135,25,(int)(1.5*100),(int)(0.75*100));
-                //(i % 3) * 124, (i / 3) * 87, 117, 79 
-			    //e.Graphics.DrawImage(codeGen.Image((int)((float)1.5*e.Graphics.DpiX),(int)((float)0.75*e.Graphics.DpiY)),rc);
-                e.Graphics.DrawImage(code39Gen, new Rectangle((i % 3) * 140, 25, (int)(1.4 * 100), (int)(0.75 * 100)));
                 
-			    //e.HasMorePages=false;
-                //e.Graphics.DrawImageUnscaled(codeGen.Image(codeGen.Width,codeGen.Height));
+                System.Drawing.Rectangle rc=new System.Drawing.Rectangle((i%3)*135,50,(int)(1.4*100),(int)(0.45*100));
+            
+                //(i % 3) * 124, (i / 3) * 87, 117, 79 
+                e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
+                e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);
+                e.Graphics.DrawImage(bitmap1, rc);
+                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)94.5);
+                //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
+                
             }                  
         }
-
+        private float XCentered(float localWidth, float globalWidth)
+        {
+            return ((globalWidth - localWidth) / 2);
+        }
         private void CalculateTotalStorePrice()
         {
             long totalInPrice = 0;
