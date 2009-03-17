@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Text.RegularExpressions;
+using BarcodeLib;
 
 
 namespace AppFrame.Common
@@ -107,41 +108,43 @@ namespace AppFrame.Common
         #region Barcode Generation
         public Image GenerateBarcode(string barCode,int width,int height)
         {
-            int bX = 15;
-            int bY = 10;
+            int bX = 30;
+            int bY = 20;
             int bWidth = width - 2*bX;
             int bStrHeight = height/5-bY;
             int bBarcodeHeight = height*2/5 - bY;
             Bitmap bitmap = new Bitmap(width,height,PixelFormat.Format24bppRgb);
-            bitmap.SetResolution((float)(721),(float)(721));
+            bitmap.SetResolution((float)(203),(float)(203));
             Graphics objGraphics = Graphics.FromImage(bitmap);
             objGraphics.FillRectangle(new SolidBrush(Color.White),new Rectangle(0,0,width,height));
             //objGraphics.DrawRectangle(new Pen(Color.Black), new Rectangle(0, 0, width, height));
             Rectangle titleRec = new Rectangle(bX, bY, bWidth, bStrHeight);
-            Rectangle barcodeRec = new Rectangle(bX, height*2 / 5, bWidth, bBarcodeHeight);
+            Rectangle barcodeRec = new Rectangle(bX, (height*2 / 5) - 10, bWidth, bBarcodeHeight + 20);
             Rectangle barCodeStrRec = new Rectangle(bX,height*4/5,bWidth,bStrHeight);
 
             // draw title string
             string nameString = _titleString.Substring(0, _titleString.IndexOf("Giá"));
             string priceString = _titleString.Substring(_titleString.IndexOf("Giá"));
-            if(_titleString!=null)
+            if (_titleString != null)
             {
                 // calculate scale for title
                 var titleStrSize = objGraphics.MeasureString(_titleString, _titleFont);
                 float currTitleSize = _titleFont.Size;
-                float scaledTitleSize = (bWidth * currTitleSize) / titleStrSize.Width;
-                _titleFont = new Font("Arial",scaledTitleSize);
+                float scaledTitleSize = (bWidth*currTitleSize)/titleStrSize.Width;
+                _titleFont = new Font("Arial", scaledTitleSize);
             }
-            var nameSize = objGraphics.MeasureString(nameString, _titleFont);
-            var priceSize = objGraphics.MeasureString(priceString, _titleFont);
-            objGraphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black),
-                    (float)XCentered((int)nameSize.Width,width),bY);
+                var nameSize = objGraphics.MeasureString(nameString, _titleFont);
+                var priceSize = objGraphics.MeasureString(priceString, _titleFont);
+
+                objGraphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black),
+                                       (float)XCentered((int)nameSize.Width, width), bY);
+            
             objGraphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black),
                     (float)XCentered((int)priceSize.Width, width), (float)height*1/5);
             
             
             // calculate scale for barcode font
-            var bcSize = objGraphics.MeasureString(barCode, Code39Font);
+            /*var bcSize = objGraphics.MeasureString(barCode, Code39Font);
             float currBCSize = _c39Font.Size;
             float scaledBCSize = (bWidth * currBCSize) / bcSize.Width;
             PrivateFontCollection pfc=new PrivateFontCollection();
@@ -159,18 +162,21 @@ namespace AppFrame.Common
                                        (float) bX, startY);
 
                 startY = startY + bcHeight-19;
-            }
+            }*/
             //objGraphics.DrawString(barCode, _c39Font, new SolidBrush(Color.Black), barcodeRec);
-            
+            BarcodeLib.Barcode barcode = new Barcode();
+            Image imageBC = barcode.Encode(BarcodeLib.TYPE.UPCA, barCode, Color.Black, Color.White, (int)(width), (int)(height));
+            objGraphics.DrawImage(imageBC, barcodeRec);
+
             if (_showCodeString)
             {
                 // calculate scale for code
-                var _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
+                var _codeSize = objGraphics.MeasureString(barCode+"ZZZZZZ", _codeStringFont);
                 float currCodeSize = _codeStringFont.Size;
-                float scaledCodeSize = ((bWidth-20) * currCodeSize) / _codeSize.Width;
+                float scaledCodeSize = ((bWidth) * currCodeSize) / _codeSize.Width;
                 _codeStringFont = new Font("Arial", scaledCodeSize);
                 _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
-                objGraphics.FillRectangle(new SolidBrush(Color.White), barCodeStrRec);
+                
                 objGraphics.DrawString(barCode, _codeStringFont, new SolidBrush(Color.Black),(float)XCentered((int)_codeSize.Width,width),(float)height*4/5);
 
             }

@@ -63,6 +63,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Aspose\Aspose.Cells\Bin\Net2.0\Aspose.Cells.dll</HintPath>
     </Reference>
+    <Reference Include="BarcodeLib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\Castle.Core.dll</HintPath>
