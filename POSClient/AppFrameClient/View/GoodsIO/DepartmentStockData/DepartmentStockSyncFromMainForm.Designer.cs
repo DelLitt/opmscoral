@@ -41,6 +41,7 @@
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(344, 22);
             this.txtFilePath.TabIndex = 15;
+            this.txtFilePath.Visible = false;
             // 
             // label7
             // 
@@ -60,6 +61,7 @@
             this.label1.Size = new System.Drawing.Size(74, 14);
             this.label1.TabIndex = 44;
             this.label1.Text = "File đồng bộ";
+            this.label1.Visible = false;
             // 
             // btnSearch
             // 
@@ -69,6 +71,7 @@
             this.btnSearch.TabIndex = 46;
             this.btnSearch.Text = "...";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRun
