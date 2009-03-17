@@ -83,6 +83,13 @@
      length="10"
     >
   </property>
+  <property
+     name="ExportStatus"
+     type="Int64"
+     column="EXPORT_STATUS"
+     length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->

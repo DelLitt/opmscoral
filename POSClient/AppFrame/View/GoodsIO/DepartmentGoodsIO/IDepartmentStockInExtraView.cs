@@ -18,5 +18,7 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorEvent;
         event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorSizeEvent;
         event EventHandler<DepartmentStockInEventArgs> LoadPriceAndStockEvent;
+        event EventHandler<DepartmentStockInEventArgs> LoadDepartemntStockInForExportEvent;
+        event EventHandler<DepartmentStockInEventArgs> UpdateDepartemntStockInForExportEvent;
     }
 }

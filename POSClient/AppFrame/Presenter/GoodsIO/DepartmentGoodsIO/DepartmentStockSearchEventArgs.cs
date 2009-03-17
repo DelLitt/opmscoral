@@ -42,5 +42,6 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public int SelectedIndex { get; set; }
         public bool IsFillToComboBox { get; set; }
         public string ComboBoxDisplayMember { get; set; }
+        public IList DepartmentStockInList { get; set; }
     }
 }

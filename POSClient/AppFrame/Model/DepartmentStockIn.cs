@@ -43,6 +43,7 @@ namespace AppFrame.Model
 
 		public virtual DepartmentStockInPK DepartmentStockInPK { get; set; }
         public virtual Department Department { get; set; }
+        public virtual Int64 ExportStatus { get; set; }
 
         public virtual string Description { get; set; }
 
