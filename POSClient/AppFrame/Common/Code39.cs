@@ -107,12 +107,13 @@ namespace AppFrame.Common
         #region Barcode Generation
         public Image GenerateBarcode(string barCode,int width,int height)
         {
-            int bX = 30;
-            int bY = 20;
+            int bX = 15;
+            int bY = 10;
             int bWidth = width - 2*bX;
             int bStrHeight = height/5-bY;
             int bBarcodeHeight = height*2/5 - bY;
-            Bitmap bitmap = new Bitmap(width,height,PixelFormat.Format32bppRgb);
+            Bitmap bitmap = new Bitmap(width,height,PixelFormat.Format24bppRgb);
+            bitmap.SetResolution((float)(721),(float)(721));
             Graphics objGraphics = Graphics.FromImage(bitmap);
             objGraphics.FillRectangle(new SolidBrush(Color.White),new Rectangle(0,0,width,height));
             //objGraphics.DrawRectangle(new Pen(Color.Black), new Rectangle(0, 0, width, height));
@@ -157,7 +158,7 @@ namespace AppFrame.Common
                 objGraphics.DrawString(barCode, _c39Font, new SolidBrush(Color.Black),
                                        (float) bX, startY);
 
-                startY = startY + bcHeight-27;
+                startY = startY + bcHeight-19;
             }
             //objGraphics.DrawString(barCode, _c39Font, new SolidBrush(Color.Black), barcodeRec);
             
@@ -166,7 +167,7 @@ namespace AppFrame.Common
                 // calculate scale for code
                 var _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
                 float currCodeSize = _codeStringFont.Size;
-                float scaledCodeSize = ((bWidth-60) * currCodeSize) / _codeSize.Width;
+                float scaledCodeSize = ((bWidth-20) * currCodeSize) / _codeSize.Width;
                 _codeStringFont = new Font("Arial", scaledCodeSize);
                 _codeSize = objGraphics.MeasureString(barCode, _codeStringFont);
                 objGraphics.FillRectangle(new SolidBrush(Color.White), barCodeStrRec);

@@ -577,6 +577,9 @@
     <None Include="Common\3OF9_NEW.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Common\ABC3914X.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Common\FREE3OF9.TTF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
