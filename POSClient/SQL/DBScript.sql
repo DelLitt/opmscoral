@@ -1623,16 +1623,17 @@ CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 # Structure for the `userinfo` table : 
 #
 
-DROP TABLE IF EXISTS `userinfo`;
+DROP TABLE IF EXISTS `pos`.`userinfo`;
 
-CREATE TABLE `userinfo` (
-  `Username` VARCHAR(50) COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `Password` VARCHAR(50) COLLATE utf8_general_ci DEFAULT NULL,
-  `EMPLOYEE_ID` VARCHAR(20) COLLATE utf8_general_ci DEFAULT NULL,
-  `DEPARTMENT_ID` INTEGER(10) DEFAULT NULL,
+CREATE TABLE  `pos`.`userinfo` (
+  `Username` varchar(50) NOT NULL DEFAULT '',
+  `Password` varchar(50) DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(20) DEFAULT NULL,
+  `DEPARTMENT_ID` int(10) DEFAULT NULL,
+  `SUSPENDED` int(10) unsigned DEFAULT '0',
+  `DELETED` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`Username`)
-)ENGINE=InnoDB
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 #
 # Structure for the `userrole` table : 
