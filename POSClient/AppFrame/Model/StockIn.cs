@@ -34,6 +34,7 @@ namespace AppFrame.Model
 
         #region Public Properties
         public virtual long StockInType { get; set; }
+        public virtual long StockInCost { get; set; }
         public virtual string StockInId
         {
             get;

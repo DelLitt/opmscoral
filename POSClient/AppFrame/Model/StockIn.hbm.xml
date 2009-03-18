@@ -76,6 +76,13 @@
       length="10"
     >
   </property>
+  <property
+    name="StockInCost"
+    type="Int64"
+    column="STOCK_IN_COST"
+    length="10"
+    >
+  </property>
     <!-- Associations -->
   
     <!-- bi-directional one-to-many association to StockInDetail -->
