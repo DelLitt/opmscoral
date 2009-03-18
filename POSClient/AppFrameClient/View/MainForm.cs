@@ -445,5 +445,21 @@ namespace AppFrame.View
             form.Show();
         }
 
+        private void mnuLoadToMain_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<LoadDataFromDepartmentToMain>(this,
+                                                                          FormConstants.
+                                                                              LOAD_DATA_TO_MAIN_STOCK_FORM);
+            form.Show();
+        }
+
+        private void mnuLoadToDept_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<LoadDepartmentStockInToFileForm>(this,
+                                                                          FormConstants.
+                                                                              LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM);
+            form.Show();
+        }
+
     }
 }

@@ -26,6 +26,8 @@
     <menuitem name="mnuMainReStockIn" role="Administrator" />
     <menuitem name="mnuFindStockByBarcode" role="Administrator" />
     <menuitem name="mnuSyncToMainForm" role="Administrator" />
+    <menuitem name="mnuLoadToMain" role="Administrator" />
+    <menuitem name="mnuLoadToDept" role="Administrator" />
 
   </menu>
   <menu name="mnuDeptStock" role="Administrator">

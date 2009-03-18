@@ -28,7 +28,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnStart_Click(object sender, EventArgs e)
         {
             var configurationAppSettings = new AppSettingsReader();
-
+            syncResultBindingSource.DataSource = null;
 //            // Create new SaveFileDialog object
 //            SaveFileDialog DialogSave = new SaveFileDialog();
 //
@@ -58,6 +58,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             try
             {
+                SyncResult result = new SyncResult();
                 string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "-" +
                                   DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".xac";
                 var eventArgs = new DepartmentStockOutEventArgs();
@@ -70,11 +71,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     bf.Serialize(stream, syncData);
                     stream.Close();
                     MessageBox.Show("Đồng bộ thành công");
+                    result.FileName = fileName;
+                    result.Status = "Thành công";
                 }
                 else
                 {
                     MessageBox.Show("Đồng bộ thất bại");
+                    result.FileName = fileName;
+                    result.Status = "Thất bại";
                 }
+                IList resultList = new ArrayList();
+                resultList.Add(result);
+                syncResultBindingSource.DataSource = resultList;
             }
             catch (Exception)
             {
@@ -244,6 +252,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //                    }
 //                }
 //            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
