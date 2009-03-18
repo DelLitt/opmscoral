@@ -10,42 +10,41 @@
     </menuitem>
     <menuitem name="mnuFileChangePassword" role="NotImplement" />
   </menu> 
-  <menu name="mnuWareHouse" role="Administrator">
-    <menuitem name="mnuImportGoods" role="Administrator" />
-    <menuitem name="searchBlockToolStripMenuItem" role="Administrator" />
+  <menu name="mnuWareHouse" role="Administrator,Supervisor">
+    <menuitem name="mnuImportGoods" role="Administrator,Supervisor" />
+    <menuitem name="searchBlockToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="approveStockToolStripMenuItem" role="NotImplement" />
-    <menuitem name="searchStockToolStripMenuItem" role="Administrator" />    
+    <menuitem name="searchStockToolStripMenuItem" role="Administrator,Supervisor" />    
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
     <menuitem name="mnuDanhmucHanghoa" role="NotImplement" />
-    <menuitem name="mnuPhieuXuatKho" role="Administrator" />
-    <menuitem name="mnuInventoryChecking" role="Administrator" />
-    <menuitem name="mnuProcessStockDefect" role="Administrator" />
-    <menuitem name="mnuTemporaryStockOut" role="Administrator" />
-    <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator" />
-    <menuitem name="mnuMainReStockIn" role="Administrator" />
-    <menuitem name="mnuFindStockByBarcode" role="Administrator" />
-    <menuitem name="mnuSyncToMainForm" role="Administrator" />
-    <menuitem name="mnuLoadToMain" role="Administrator" />
-    <menuitem name="mnuLoadToDept" role="Administrator" />
+
+    <menuitem name="mnuPhieuXuatKho" role="Administrator,Supervisor" />
+    <menuitem name="mnuInventoryChecking" role="Administrator,Supervisor" />
+    <menuitem name="mnuProcessStockDefect" role="Administrator,Supervisor" />
+    <menuitem name="mnuTemporaryStockOut" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator,Supervisor" />
+    <menuitem name="mnuMainReStockIn" role="Administrator,Supervisor" />
+    <menuitem name="mnuFindStockByBarcode" role="Administrator,Supervisor" />    
+
 
   </menu>
-  <menu name="mnuDeptStock" role="Administrator">
-    <menuitem name="mnuDeptStockChecking" role="Administrator,Manager" />
-    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager" />
-    <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager" />
-    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager" />    
+  <menu name="mnuDeptStock" role="Administrator,Supervisor,Manager">
+    <menuitem name="mnuDeptStockChecking" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />    
   </menu>
-  <menu name="mnuSalePoint" role="Administrator">
-    <menuitem name="mnuDefineSalePoint" role="Administrator" />
-    <menuitem name="mnuListSalePoints" role="Administrator" />
+  <menu name="mnuSalePoint" role="Administrator,Supervisor">
+    <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
+    <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />
     <menuitem name="mnuSalePointManagement" role="NotImplement" />
     <menuitem name="mnuEmployeeManagement" role="NotImplement" />
     <menuitem name="mnuChamCong" role="NotImplement" />    
   </menu>
-  <menu name="productToolStripMenuItem" role="Administrator">
-    <menuitem name="productMasterToolStripMenuItem" role="Administrator" />
-    <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator" />
+  <menu name="productToolStripMenuItem" role="Administrator,Supervisor">
+    <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
+    <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="updatePriceToolStripMenuItem" role="NotImplement" />
   </menu>
   <menu name="departmentStockToolStripMenuItem" role="NotImplement">
@@ -58,32 +57,37 @@
     <menuitem name="searchDepartmentStockInMenuItem" role="Administrator" />    
   </menu>
   
-  <menu name="mnuSale" role="Administrator,Manager">
-    <menuitem name="mnuGoodsSale" role="Administrator,Manager" />
+  <menu name="mnuSale" role="Administrator,Manager,Supervisor,Accountant">
+    <menuitem name="mnuGoodsSale" role="Administrator,Manager,Accountant" />
     <menuitem name="mnuGoodsSaleExchange" role="NotImplement" />
-    <menuitem name="mnuGoodsSaleReturn" role="Administrator,Manager" />
-    <menuitem name="mnuGoodsSaleList" role="Administrator,Manager" />
-    <menuitem name="mnuDayGoodsSaleList" role="Administrator,Manager" />
-    <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager" />
+    <menuitem name="mnuGoodsSaleReturn" role="Administrator,Manager,Accountant" />
+    <menuitem name="mnuGoodsSaleList" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDayGoodsSaleList" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
   </menu>
-  <menu name="mnuReport" role="Administrator">
+  <menu name="mnuReport" role="Administrator,Supervisor">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="NotImplement" />    
-    <menuitem name="mnuGoodsImportReport" role="Administrator" />
-    <menuitem name="mnuGoodsExportReport" role="Administrator" />
-    <menuitem name="mnuDeptStockInReport" role="Administrator" />
+    <menuitem name="mnuGoodsImportReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuGoodsExportReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuDeptStockInReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsSendbackReport" role="NotImplement" />
     <menuitem name="mnuTotalReport" role="NotImplement" />         
     <menuitem name="mnuMixReport" role="NotImplement" />
-    <menuitem name="mnuStockCollection" role="Administrator" />
+    <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
   </menu>
-  <menu name="mnuTool" role="Administrator">
+  <menu name="mnuTool" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />
     <menuitem name="mnuDiaryTracking" role="NotImplement" />
     <menuitem name="mnuBackupData" role="NotImplement" />
     <menuitem name="mnuDeleteData" role="NotImplement" />
     <menuitem name="mnuRecoverData" role="NotImplement" />
-    <menuitem name="mnuSynchronizeData" role="Administrator,Manager" />
+    <menuitem name="mnuSynchronizeData" role="Administrator,Supervisor" />
+    <menuitem name="mnuSyncToMainForm" role="Administrator,Manager" />
+    <menuitem name="mnuLoadToMain" role="Administrator,Supervisor" />
+    <menuitem name="mnuLoadToDept" role="Administrator,Manager" />
     <menuitem name="mnuSystemConfiguration" role="NotImplement" />
+    <menuitem name="mnuUserAccount" role="Administrator" />
+
   </menu>
   <menu name="mnuHelp" role="*">
     <menuitem name="mnuHelpAbout" role="*">

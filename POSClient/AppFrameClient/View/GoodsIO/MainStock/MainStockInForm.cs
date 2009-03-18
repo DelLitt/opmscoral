@@ -745,7 +745,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             string name = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductName;
             if (eventArgs.DepartmentPrice != null)
             {
-                titleString = name + " Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
+                //titleString = name + " Giá : " + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE")) ;
+                titleString = name + " - " + eventArgs.DepartmentPrice.Price.ToString() + ".00 ";
             }
             var code39 = new Code39
                              {
@@ -772,29 +773,29 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             BarcodeLib.Barcode barcode = new Barcode();
             
             string barCodeStr = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;            
-            Image imageBC = barcode.Encode(BarcodeLib.TYPE.UPCA, barCodeStr, Color.Black, Color.White, (int)(1.25 * e.Graphics.DpiX), (int)(0.75 * e.Graphics.DpiY));
+            Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, barCodeStr, Color.Black, Color.White, (int)(1.25 * e.Graphics.DpiX), (int)(0.75 * e.Graphics.DpiY));
             
-            var code39Gen = code39.GenerateBarcode(deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId,
-                                                   (int)((float)(1.5*e.Graphics.DpiX)),(int)((float)(0.75*e.Graphics.DpiY)));
+            /*var code39Gen = code39.GenerateBarcode(deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId,
+                                                   (int)((float)(1.5*e.Graphics.DpiX)),(int)((float)(0.75*e.Graphics.DpiY)));*/
 
             
             
             Bitmap bitmap1 = new Bitmap(imageBC);
             bitmap1.SetResolution(203,203);
-            Bitmap bitmap2 = new Bitmap(code39Gen);
-            bitmap2.SetResolution(203,203);
+            /*Bitmap bitmap2 = new Bitmap(code39Gen);
+            bitmap2.SetResolution(203,203);*/
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
             e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
 
             // draw title string
             
                 // calculate scale for title
-                var titleStrSize = e.Graphics.MeasureString(titleString, new Font("Arial",10));
+                var titleStrSize = e.Graphics.MeasureString(titleString+"ZZZZZZ", new Font("Arial",10));
                 float currTitleSize = new Font("Arial",10).Size;
                 float scaledTitleSize = (140 * currTitleSize) / titleStrSize.Width;
                 Font _titleFont = new Font("Arial", scaledTitleSize);
-                string nameString = titleString.Substring(0, titleString.IndexOf("Giá"));
-                string priceString = titleString.Substring(titleString.IndexOf("Giá")) + " VND ";
+                string nameString = titleString.Substring(0, titleString.IndexOf(" - "));
+                string priceString = titleString.Substring(titleString.IndexOf(" - "));
                 var priceTotalSize = e.Graphics.MeasureString(titleString, _titleFont);
                 var nameSize = e.Graphics.MeasureString(nameString, _titleFont);
                 var priceSize = e.Graphics.MeasureString(priceString, _titleFont);
@@ -803,14 +804,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 Bitmap bitmapPrice = new Bitmap(priceString, true);*/
             for (int i = 0; i < numberToPrint; i++)
             {
-                
-                System.Drawing.Rectangle rc=new System.Drawing.Rectangle((i%3)*135,50,(int)(1.4*100),(int)(0.45*100));
+
+                System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
             
                 //(i % 3) * 124, (i / 3) * 87, 117, 79 
-                e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
-                e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);
-                e.Graphics.DrawImage(bitmap1, rc);
-                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)94.5);
+                /*e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
+                e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);*/
+                e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
+                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 135, (int)(27 + priceTotalSize.Height), (int)(1.25 * 100), (int)(0.25 * 100)));
+                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)64.5);
                 //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
                 
             }                  

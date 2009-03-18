@@ -401,6 +401,7 @@
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection1.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockInDetailCollection2.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Collection.LoginModelCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.ProductReportCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailCollection.datasource" />
@@ -411,6 +412,7 @@
     <None Include="Properties\DataSources\AppFrame.Collection.StockOutDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStock.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStockDefect.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.LoginModel.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Packager.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Product.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.ProductMaster.datasource" />
@@ -525,6 +527,18 @@
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.Designer.cs">
+      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.Designer.cs">
+      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs">
       <SubType>Form</SubType>
@@ -916,11 +930,11 @@
     <Compile Include="View\SalePoints\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SecuritySettings.cs">
+    <Compile Include="View\SecuritySettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\SecuritySettings.Designer.cs">
-      <DependentUpon>SecuritySettings.cs</DependentUpon>
+    <Compile Include="View\SecuritySettingsForm.Designer.cs">
+      <DependentUpon>SecuritySettingsForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -967,15 +981,7 @@
       <LastGenOutput>MessagesResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AuthForm.en.resx">
-      <DependentUpon>AuthForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\AuthForm.resx">
-      <DependentUpon>AuthForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\AuthForm.vi.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1072,6 +1078,12 @@
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.resx">
+      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.resx">
+      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.resx">
       <DependentUpon>SyncToMainForm.cs</DependentUpon>
@@ -1243,8 +1255,8 @@
       <DependentUpon>SalePointListForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\SecuritySettings.resx">
-      <DependentUpon>SecuritySettings.cs</DependentUpon>
+    <EmbeddedResource Include="View\SecuritySettingsForm.resx">
+      <DependentUpon>SecuritySettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Logic\dummy.txt" />
   </ItemGroup>

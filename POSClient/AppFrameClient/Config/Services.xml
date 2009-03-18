@@ -306,7 +306,11 @@
   <object id="AppFrame.Service.IOtherTransactionLogLogic" type="AppFrame.Logic.OtherTransactionLogLogicImpl, AppFrameClient">
     <property name="OtherTransactionLogDAO" ref="AppFrame.DataLayer.IOtherTransactionLogDAO"/>
   </object>
-
+  <!-- Logic Objects -->
+  <object id="LocalLoginLogic" type="AppFrameClient.Logic.LoginLogic, AppFrameClient">
+    <property name="LoginDao" ref="LoginDaoImpl" />
+    <property name="RoleDao" ref="RoleDaoImpl" />
+  </object>
 
   <tx:attribute-driven/>
 </objects>

@@ -88,5 +88,65 @@ namespace AppFrameClient.Logic
             LoginModel loginModel = LoginDao.getUser(username);
             return loginModel.EmployeeInfo;
         }
+
+        #region ILoginLogic Members
+        
+
+        public LoginModel FindById(object id)
+        {
+            return LoginDao.FindById(id);
+        }
+
+        public LoginModel Add(LoginModel data)
+        {
+            return LoginDao.Add(data);
+        }
+
+        public void Update(LoginModel data)
+        {
+            LoginDao.Update(data);
+        }
+
+        public void Delete(LoginModel data)
+        {
+            LoginDao.Delete(data);
+        }
+
+        public void DeleteById(object id)
+        {
+            LoginDao.DeleteById(id);
+        }
+
+        public IList FindAll(AppFrame.ObjectCriteria criteria)
+        {
+            return LoginDao.FindAll(criteria);
+        }
+
+        #endregion
+
+        #region ILoginLogic Members
+
+
+        public void ProcessUser(LoginModel model)
+        {
+            LoginModel dbUserModel = LoginDao.FindById(model.Username);
+            if(dbUserModel!=null)
+            {
+                dbUserModel.Username = model.Username;
+                dbUserModel.Password = model.Password;
+                dbUserModel.Roles = model.Roles;
+                dbUserModel.EmployeeInfo = model.EmployeeInfo;
+                dbUserModel.Suspended = model.Suspended;
+                dbUserModel.Deleted = model.Deleted;
+                
+                LoginDao.Update(dbUserModel);
+            }
+            else
+            {
+                LoginDao.Add(model);
+            }
+        }
+
+        #endregion
     }
 }

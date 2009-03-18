@@ -70,6 +70,9 @@ namespace AppFrameClient.Common
         public static string PROCESS_ERROR_GOODS_FORM = "ProcessErrorGoodsView";
         public static string DEPARTMENT_RESTOCK_IN_FORM="DepartmentReStockInView";
 
+        public static string SECURITY_SETTINGS_FORM = "SecuritySettingsView";
+
+
         public static string LOAD_DATA_TO_MAIN_STOCK_FORM = "LoadDataFromDepartmentToMainView";
         public static string LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM = "LoadDepartmentStockInToFileFormView";
     }

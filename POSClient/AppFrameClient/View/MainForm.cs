@@ -445,6 +445,15 @@ namespace AppFrame.View
             form.Show();
         }
 
+
+        private void mnuUserAccount_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SecuritySettingsForm>(this,
+                                                                                   FormConstants.SECURITY_SETTINGS_FORM);
+            form.Show();
+        }
+
+
         private void mnuLoadToMain_Click(object sender, EventArgs e)
         {
             Form form = GlobalUtility.GetOnlyChildFormObject<LoadDataFromDepartmentToMain>(this,
@@ -460,6 +469,7 @@ namespace AppFrame.View
                                                                               LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM);
             form.Show();
         }
+
 
     }
 }

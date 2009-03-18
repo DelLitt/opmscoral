@@ -243,4 +243,14 @@
   <object id="AppFrame.DataLayer.IOtherTransactionLogDAO" type="AppFrame.DataLayer.OtherTransactionLogDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+
+  <!-- Data Access Objects -->
+  <object id="LoginDaoImpl" type="AppFrameClient.DataLayer.LoginDaoImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="RoleDaoImpl" type="AppFrameClient.DataLayer.RoleDaoImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
 </objects>
