@@ -76,6 +76,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCost = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -212,18 +214,18 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(290, 48);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(289, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             // 
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(289, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             // 
             // label7
@@ -475,11 +477,32 @@
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
             // 
+            // txtCost
+            // 
+            this.txtCost.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCost.Location = new System.Drawing.Point(497, 115);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCost.Size = new System.Drawing.Size(231, 22);
+            this.txtCost.TabIndex = 159;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(440, 120);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(43, 14);
+            this.label16.TabIndex = 160;
+            this.label16.Text = "Chi phí";
+            // 
             // DepartmentReStockInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 562);
+            this.Controls.Add(this.txtCost);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnInput);
             this.Controls.Add(this.txtQty);
@@ -565,5 +588,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockOutQuantity;
+        public System.Windows.Forms.TextBox txtCost;
+        public System.Windows.Forms.Label label16;
     }
 }

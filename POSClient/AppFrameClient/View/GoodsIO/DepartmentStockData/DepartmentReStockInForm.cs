@@ -139,6 +139,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            long cost = 0;
+            if (NumberUtility.CheckLongNullIsZero(txtCost.Text, out cost) || cost < 0)
+            {
+                MessageBox.Show("Chi phí phải là số dương");
+                return;
+            }
             if (deptSIDetailList.Count == 0)
             {
                 MessageBox.Show("Không có sản phẩm nào để nhập kho!!!!");
@@ -174,6 +180,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSI.StockInDate = dtpImportDate.Value;
             deptSI.DepartmentStockInDetails = deptSIDetailList;
             deptSI.Description = txtDexcription.Text;
+            deptSI.StockInCost = cost;
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockIn = deptSI;
             EventUtility.fireEvent(SaveReDepartmentStockInEvent, this, eventArgs);
