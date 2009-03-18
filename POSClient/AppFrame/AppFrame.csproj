@@ -170,6 +170,7 @@
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
+    <Compile Include="Collection\LoginModelCollection.cs" />
     <Compile Include="Collection\ProductReportCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
@@ -494,6 +495,7 @@
     <Compile Include="Model\StockOutDetailPK.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\SyncFromDepartmentToMain.cs" />
+    <Compile Include="Model\SyncResult.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Model\UniversalStockReportObject.cs" />
     <Compile Include="ObjectCriteria.cs" />

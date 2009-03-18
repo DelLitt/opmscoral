@@ -1,6 +1,8 @@
-﻿using AppFrame.Common;
+﻿using System.Collections;
+using AppFrame.Common;
 using AppFrame.DataLayer;
 using AppFrame.Model;
+using Spring.Transaction.Interceptor;
 
 namespace AppFrame.Logic
 {
@@ -15,7 +17,29 @@ namespace AppFrame.Logic
 
         BaseUser getUser(string username);
         #endregion
-
+        
+        [Transaction(ReadOnly = false)]
         EmployeeInfo GetEmployeeInfo(string username);
+
+        [Transaction(ReadOnly = false)]
+        LoginModel FindById(object id);
+
+        [Transaction(ReadOnly = false)]
+        LoginModel Add(LoginModel data);
+
+        [Transaction(ReadOnly = false)]
+        void Update(LoginModel data);
+        
+        [Transaction(ReadOnly = false)]
+        void Delete(LoginModel data);
+
+        
+        [Transaction(ReadOnly = false)]
+        void DeleteById(object id);
+        
+        [Transaction(ReadOnly = false)]
+        IList FindAll(ObjectCriteria criteria);
+
+        void ProcessUser(LoginModel model);
     }
 }

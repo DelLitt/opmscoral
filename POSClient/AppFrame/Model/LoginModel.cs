@@ -16,7 +16,7 @@ namespace AppFrame.Model
         private EmployeeInfo employeeInfo;
         private IList roles = new ArrayList();
 
-        
+        public string RoleType { get; set; }
         public string Username
         {
             get { return username; }
@@ -41,5 +41,7 @@ namespace AppFrame.Model
             get { return employeeInfo; }
             set { employeeInfo = value; }
         }
+        public Int32 Suspended { get; set; }
+        public Int32 Deleted { get; set; }
     }
 }

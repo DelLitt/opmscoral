@@ -12,5 +12,6 @@ namespace AppFrame.Presenter
         ISecurityView SecurityView { get; set; }
 
         ILoginLogic LoginLogic { get; set; }
+        IDepartmentLogic DepartmentLogic { get; set; } 
     }
 }

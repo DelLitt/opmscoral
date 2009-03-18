@@ -210,7 +210,7 @@ namespace AppFrame.Model
                 _employee = value;
             }
         }
-
+        public virtual Department Department { get; set; }
         public virtual string EmployeeName
         {
             get { return employeeName; }
