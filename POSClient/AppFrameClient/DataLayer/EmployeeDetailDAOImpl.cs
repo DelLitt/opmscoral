@@ -59,13 +59,14 @@ namespace AppFrame.DataLayer
                     return data;
                 }
                 );*/
-            ObjectCriteria criteria = new ObjectCriteria();
-            criteria.AddEqCriteria("EmployeePK.EmployeeId", data.EmployeePK.EmployeeId);
-            criteria.AddEqCriteria("EmployeePK.DepartmentId", data.EmployeePK.DepartmentId);
-            IList list = FindAll(criteria);
-            if(list!=null)
+//            ObjectCriteria criteria = new ObjectCriteria();
+//            criteria.AddEqCriteria("EmployeePK.EmployeeId", data.EmployeePK.EmployeeId);
+//            criteria.AddEqCriteria("EmployeePK.DepartmentId", data.EmployeePK.DepartmentId);
+//            IList list = FindAll(criteria);
+            EmployeeInfo info = FindById(data.EmployeePK);
+            if(info!=null)
             {
-                EmployeeInfo info = (EmployeeInfo)list[0];
+                //EmployeeInfo info = (EmployeeInfo)list[0];
                 info.UpdateDate = data.UpdateDate;
                 info.UpdateId = data.UpdateId;
                 info.DelFlg = data.DelFlg;
