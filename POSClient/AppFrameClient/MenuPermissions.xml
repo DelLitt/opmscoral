@@ -66,13 +66,16 @@
     <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
   </menu>
   <menu name="mnuReport" role="Administrator,Supervisor">
-    <menuitem name="mnuGoodsSaleDepartmentReport" role="NotImplement" />    
+    <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />    
     <menuitem name="mnuGoodsImportReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsExportReport" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptStockInReport" role="Administrator,Supervisor" />
-    <menuitem name="mnuGoodsSendbackReport" role="NotImplement" />
+    <menuitem name="mnuGoodsSendbackReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTotalReport" role="NotImplement" />         
     <menuitem name="mnuMixReport" role="NotImplement" />
+    <menuitem name="mnuRestockinReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuTempStockoutReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuGoodsSaleDepartmentDetail" role="Administrator,Supervisor" />    
     <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">

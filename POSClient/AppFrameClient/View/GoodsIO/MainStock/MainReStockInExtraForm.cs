@@ -15,7 +15,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
-using Fath;
+
 
 namespace AppFrameClient.View.GoodsIO.MainStock
 {
@@ -739,7 +739,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 setting);*/
 
 
-            BarcodeX codeGen = new BarcodeX();
+            /*BarcodeX codeGen = new BarcodeX();
             codeGen.Title = priceStr.ToUpper();
             codeGen.Font = new Font("Arial", (float)12, FontStyle.Regular);
             codeGen.Data = "*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId + "*";
@@ -756,7 +756,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
                 //e.HasMorePages=false;
                 //e.Graphics.DrawImageUnscaled(codeGen.Image(codeGen.Width,codeGen.Height));
-            }
+            }*/
         }
         private void LoadProductMasterToComboBox()
         {

@@ -73,7 +73,6 @@
             this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
             this.label13 = new System.Windows.Forms.Label();
             this.txtSumProduct = new System.Windows.Forms.TextBox();
-            this.barcodeControl1 = new TechnoRiver.BarcodeDeveloper.BarcodeControl();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -502,88 +501,11 @@
             this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
             this.txtSumProduct.TabIndex = 113;
             // 
-            // barcodeControl1
-            // 
-            this.barcodeControl1.BackColor = System.Drawing.Color.White;
-            this.barcodeControl1.BarcodeData = "090313000007";
-            this.barcodeControl1.BarcodeHeightInch = new decimal(new int[] {
-            75,
-            0,
-            0,
-            131072});
-            this.barcodeControl1.BarcodeHeightMilli = new decimal(new int[] {
-            1905,
-            0,
-            0,
-            131072});
-            this.barcodeControl1.BarcodeWidthInch = new decimal(new int[] {
-            125,
-            0,
-            0,
-            131072});
-            this.barcodeControl1.BarcodeWidthMilli = new decimal(new int[] {
-            3175,
-            0,
-            0,
-            131072});
-            this.barcodeControl1.BarRatio = 3;
-            this.barcodeControl1.BoundaryZoneXInch = new decimal(new int[] {
-            104,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.BoundaryZoneXMilli = new decimal(new int[] {
-            2646,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.BoundaryZoneYInch = new decimal(new int[] {
-            69,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.BoundaryZoneYMilli = new decimal(new int[] {
-            1764,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.DisplayCheckDigitText = TechnoRiver.BarcodeDeveloper.BarcodeControl.BarcodeDisplayCheckDigitText.No;
-            this.barcodeControl1.ForeColor = System.Drawing.Color.Black;
-            this.barcodeControl1.Location = new System.Drawing.Point(681, 352);
-            this.barcodeControl1.Name = "barcodeControl1";
-            this.barcodeControl1.NarrowBarWidthInch = new decimal(new int[] {
-            14,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.NarrowBarWidthMilli = new decimal(new int[] {
-            353,
-            0,
-            0,
-            196608});
-            this.barcodeControl1.PreviousRotation = TechnoRiver.BarcodeDeveloper.BarcodeControl.BarcodeRotation.None;
-            this.barcodeControl1.Resolution = 203;
-            this.barcodeControl1.Size = new System.Drawing.Size(120, 72);
-            this.barcodeControl1.TabIndex = 115;
-            this.barcodeControl1.TextDistanceInch = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.barcodeControl1.TextDistanceMilli = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.barcodeControl1.TextFilter = null;
-            this.barcodeControl1.Visible = false;
-            // 
             // MainStockInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 485);
-            this.Controls.Add(this.barcodeControl1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.btnPreview);
@@ -669,6 +591,5 @@
         private System.Windows.Forms.PrintDialog barcodePrintDialog;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox txtSumProduct;
-        private TechnoRiver.BarcodeDeveloper.BarcodeControl barcodeControl1;
     }
 }

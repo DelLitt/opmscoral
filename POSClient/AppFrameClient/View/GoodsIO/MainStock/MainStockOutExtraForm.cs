@@ -15,7 +15,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
-using Fath;
+
 
 namespace AppFrameClient.View.GoodsIO.MainStock
 {

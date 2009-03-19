@@ -18,6 +18,7 @@ using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
+using POSReports;
 using Spring.Context;
 using Spring.Context.Support;
 using AppFrameClient.View.GoodsIO;
@@ -468,6 +469,31 @@ namespace AppFrame.View
                                                                           FormConstants.
                                                                               LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM);
             form.Show();
+        }
+
+        private void mnuGoodsSaleDepartmentReport_Click(object sender, EventArgs e)
+        {
+            new PurchaseOrderReportViewer().ShowDialog();
+        }
+
+        private void mnuGoodsSendbackReport_Click(object sender, EventArgs e)
+        {
+            new SupplierStockoutReportViewer().ShowDialog();
+        }
+
+        private void mnuRestockinReport_Click(object sender, EventArgs e)
+        {
+            new RestockinReportViewer().ShowDialog();
+        }
+
+        private void mnuTempStockoutReport_Click(object sender, EventArgs e)
+        {
+            new TempStockoutReportViewer().ShowDialog();
+        }
+
+        private void mnuGoodsSaleDepartmentDetail_Click(object sender, EventArgs e)
+        {
+            new PurchaseDetailsReportViewer().ShowDialog();
         }
 
 

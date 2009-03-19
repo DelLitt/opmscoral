@@ -17,8 +17,7 @@ using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
 using BarcodeLib;
-using Fath;
-using TechnoRiver.BarcodeDeveloper;
+
 
 namespace AppFrameClient.View.GoodsIO.MainStock
 {
@@ -767,7 +766,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                                  Title = titleString + " VND"
                         };
             
-            barcodeControl1.BarcodeData = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;
+            //barcodeControl1.BarcodeData = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;
             
           
             BarcodeLib.Barcode barcode = new Barcode();
@@ -811,7 +810,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 /*e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
                 e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);*/
                 e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
-                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 135, (int)(27 + priceTotalSize.Height), (int)(1.25 * 100), (int)(0.25 * 100)));
+                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.33 * 100), 140), (int)(23 + priceTotalSize.Height), (int)(1.33 * 100), (int)(0.27 * 100)));
                 e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)64.5);
                 //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
                 

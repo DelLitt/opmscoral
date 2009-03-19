@@ -83,7 +83,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             EventUtility.fireEvent(SearchStockInEvent, this, eventArgs);
             CurrentEventArgs = eventArgs;
             StockInList = eventArgs.StockInList;
-            PopulateDataGrid();
+            if(StockInList!= null)
+                PopulateDataGrid();
         }
 
         private void PopulateDataGrid()

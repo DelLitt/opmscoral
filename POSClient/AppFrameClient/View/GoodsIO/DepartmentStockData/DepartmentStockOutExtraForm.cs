@@ -15,7 +15,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
-using Fath;
+
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
