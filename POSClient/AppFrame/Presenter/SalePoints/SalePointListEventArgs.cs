@@ -22,5 +22,7 @@ namespace AppFrame.Presenter.SalePoints
             get { return selectedDepartment; }
             set { selectedDepartment = value; }
         }
+
+        public Department EditedDepartment { get; set; }
     }
 }

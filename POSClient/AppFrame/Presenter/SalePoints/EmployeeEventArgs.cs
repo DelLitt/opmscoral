@@ -48,5 +48,7 @@ namespace AppFrame.Presenter.SalePoints
             get { return selectedEmployeeId; }
             set { selectedEmployeeId = value; }
         }
+        public EmployeeInfo EditedEmployee { get; set; }
+        public EmployeeInfo AddedEmployee { get; set; }
     }
 }

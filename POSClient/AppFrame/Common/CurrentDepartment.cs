@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using AppFrame.Logic;
 using AppFrame.Model;
+using AppFrame.Utility;
+using NHibernate;
 using Spring.Context;
 using Spring.Context.Support;
 
@@ -36,6 +38,8 @@ namespace AppFrame.Common
                 {
                     return _hqDepartment;
                 }
+                // detach object to session
+                
                 return _currentDepartment;
             /*}
             else
