@@ -51,7 +51,14 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public void Update(Employee data)
         {
-            HibernateTemplate.Update(data);
+            HibernateTemplate.Execute(
+                delegate(ISession session)
+                {
+                    session.Replicate(data, ReplicationMode.Overwrite);
+                    return data;
+                }
+                );
+            //HibernateTemplate.Update(data);
         }
         
         /// <summary>

@@ -36,16 +36,25 @@ namespace AppFrameClient.Presenter.SalePoints
 
         void salePointView_SaveDepartmentEvent(object sender, SalePointEventArgs e)
         {
-            //DepartmentModel = e.Department;
-            if (departmentModel.DepartmentId == 0)
+            try
             {
-                DepartmentLogic.Add(DepartmentModel);
-                DepartmentModel = CreateNewDepartment();
-            } else
-            {
-                DepartmentLogic.Update(DepartmentModel);
+                //DepartmentModel = e.Department;
+                if (departmentModel.DepartmentId == 0)
+                {
+                    DepartmentLogic.Add(DepartmentModel);
+                    DepartmentModel = CreateNewDepartment();
+                }
+                else
+                {
+                    DepartmentLogic.Update(DepartmentModel);
+                }
+                e.HasErrors = false;
             }
-            EventUtility.fireEvent(CompletedAddDepartmentEvent,this,e);
+            catch(Exception ex)
+            {
+                e.HasErrors = true;
+            }
+
         }
 
         private Department CreateNewDepartment()

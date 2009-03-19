@@ -53,7 +53,14 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public void Update(Department data)
         {
-            HibernateTemplate.Update(data);
+            HibernateTemplate.Execute(
+                delegate (ISession session)
+                    {
+                        session.Replicate(data,ReplicationMode.Overwrite);
+                        return data;
+                    }
+                );
+            //HibernateTemplate.Update(data);
             //HibernateTemplate.Flush();
         }
 
@@ -121,7 +128,7 @@ namespace AppFrame.DataLayer
                     }
                     finally
                     {
-                        
+                       
                     }
                 }   
             );

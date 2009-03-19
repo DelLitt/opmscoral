@@ -109,9 +109,10 @@ namespace AppFrame.Logic
 
                     employeeInfo.Employee.UpdateDate = DateTime.Now;
                     employeeInfo.Employee.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-
-                    EmployeeDAO.Update(employeeInfo.Employee);
+                    
                     EmployeeDetailDAO.Update(employeeInfo);
+                    EmployeeDAO.Update(employeeInfo.Employee);
+                    
                 }
                 
             }

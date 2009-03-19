@@ -42,7 +42,7 @@ namespace AppFrameClient.View.SalePoints
             { 
                 salePointController = value;
                 salePointController.SalePointView = this;
-                salePointController.CompletedAddDepartmentEvent += new EventHandler<SalePointEventArgs>(salePointController_CompletedAddDepartmentEvent);
+
             }
             get
             {
@@ -52,9 +52,7 @@ namespace AppFrameClient.View.SalePoints
 
         void salePointController_CompletedAddDepartmentEvent(object sender, SalePointEventArgs e)
         {
-            MessageBox.Show("Save department completed !");
-            this.Enabled = true;
-            ModelToForm();
+            
         }
 
         void salePointController_CompletedAddEmployeeEvent(object sender, SalePointEventArgs e)
@@ -102,7 +100,15 @@ namespace AppFrameClient.View.SalePoints
             this.Enabled = false;
             
             EventUtility.fireEvent(AddEmployeeEvent,this,eventArgs);
-            
+            if(eventArgs.AddedEmployee!=null)
+            {
+                bdsEmployeeSource.Add(eventArgs.AddedEmployee);
+                bdsEmployeeSource.EndEdit();
+                dgvEmployees.Refresh();
+                dgvEmployees.Invalidate();
+            }
+            this.Enabled = true;
+            employeeController.EmployeeInfoModel = null;
         }
 
         #region ISalePointView Members
@@ -114,9 +120,6 @@ namespace AppFrameClient.View.SalePoints
             {
                 employeeController = value;
                 employeeController.SalePointView = this;
-                employeeController.CompletedCloseEmployeeFormEvent += new EventHandler<EmployeeEventArgs>(employeeController_CompletedCloseEmployeeFormEvent);
-                employeeController.CompletedAddEmployeeEvent += new EventHandler<EmployeeEventArgs>(employeeController_CompletedAddEmployeeEvent);
-                employeeController.CompletedEditEmployeeEvent += new EventHandler<EmployeeEventArgs>(employeeController_CompletedEditEmployeeEvent);
             }
         }
 
@@ -147,11 +150,36 @@ namespace AppFrameClient.View.SalePoints
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
             FormToModel();
             SalePointEventArgs eventArgs = new SalePointEventArgs();
             eventArgs.Department = SalePointController.DepartmentModel;
             EventUtility.fireEvent(SaveDepartmentEvent, this, eventArgs);
+            if(!eventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu cửa hàng thành công !");    
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi lưu cửa hàng.");
+            }
+            ClearForm();
+            //ModelToForm();
+            if(this.Status == ViewStatus.EDIT)
+            {
+                Close();                
+            }
+        }
+
+        private void ClearForm()
+        {
+            //SalePointController.DepartmentModel = null;
+            txtActiveDepartment.Text = "0";
+            txtDeparmentCost.Text = "0";
+            txtDepartmentId.Text = "";
+            txtDepartmentName.Text = "";
+            txtAddress.Text = "";
+            txtEmployeesNumber.Text = "0";
+
         }
 
         #region ISalePointView Members
@@ -178,13 +206,20 @@ namespace AppFrameClient.View.SalePoints
             eventArgs.SelectedEmployee = selectedIndex;
             this.Enabled = false;
             EventUtility.fireEvent(EditEmployeeEvent, this, eventArgs);
-
+            if(eventArgs.EditedEmployee!=null)
+            {
+                bdsEmployeeSource[selectedIndex] = eventArgs.EditedEmployee;
+                bdsEmployeeSource.EndEdit();
+                dgvEmployees.Refresh();
+                dgvEmployees.Invalidate();
+            }
+            this.Enabled = true;
+            employeeController.EmployeeInfoModel = null;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.Dispose();
         }
 
         private void btnCheckAll_Click(object sender, EventArgs e)
@@ -362,14 +397,18 @@ namespace AppFrameClient.View.SalePoints
 
         private void SalePointForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            salePointController.CompletedAddDepartmentEvent -= new EventHandler<SalePointEventArgs>(salePointController_CompletedAddDepartmentEvent);
-            employeeController.CompletedCloseEmployeeFormEvent -= new EventHandler<EmployeeEventArgs>(employeeController_CompletedCloseEmployeeFormEvent);
-            employeeController.CompletedAddEmployeeEvent -= new EventHandler<EmployeeEventArgs>(employeeController_CompletedAddEmployeeEvent);
-            employeeController.CompletedEditEmployeeEvent -= new EventHandler<EmployeeEventArgs>(employeeController_CompletedEditEmployeeEvent);
-
-            if (this.Status == ViewStatus.EDIT)
+            /*if (this.Status == ViewStatus.EDIT)
             {
                 SalePointController.EndEditDepartment();
+            }*/
+        }
+
+        private void SalePointForm_Load(object sender, EventArgs e)
+        {
+            if(this.Status == ViewStatus.EDIT)
+            {
+
+                btnReset.Enabled = false;
             }
         }
     }

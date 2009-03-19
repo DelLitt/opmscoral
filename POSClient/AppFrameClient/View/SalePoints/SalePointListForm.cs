@@ -133,7 +133,6 @@ namespace AppFrameClient.View.SalePoints
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
             DataGridViewSelectedRowCollection selectedList = dgvDepartments.SelectedRows;
             if(selectedList.Count <= 0)
             {
@@ -141,8 +140,21 @@ namespace AppFrameClient.View.SalePoints
             }
             DataGridViewRow selectedRow = selectedList[0];
             SalePointListEventArgs salePointListEventArgs = new SalePointListEventArgs();
+            int selectedIndex = selectedRow.Index;
             salePointListEventArgs.SelectedDepartment = bdsSalePointList[selectedRow.Index] as Department;
-            EventUtility.fireAsyncEvent(EditSalePointEvent,this,salePointListEventArgs,new AsyncCallback(EndEvent));
+            this.Enabled = false;
+            
+            EventUtility.fireEvent(EditSalePointEvent,this,salePointListEventArgs);
+            
+            if(salePointListEventArgs.EditedDepartment!=null)
+            {
+                bdsSalePointList[selectedIndex] = salePointListEventArgs.EditedDepartment;
+                bdsSalePointList.EndEdit();
+                dgvDepartments.Refresh();
+                dgvDepartments.Invalidate();
+            }
+            this.Enabled = true;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

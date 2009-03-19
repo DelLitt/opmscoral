@@ -152,7 +152,6 @@
             this.updateIdDataGridViewTextBoxColumn,
             this.exclusiveKeyDataGridViewTextBoxColumn,
             this.delFlgDataGridViewTextBoxColumn});
-            this.dgvDepartments.ContextMenuStrip = this.cmnDepartments;
             this.dgvDepartments.DataSource = this.bdsSalePointList;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -297,6 +296,7 @@
             this.btnDelete.TabIndex = 39;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
@@ -308,6 +308,7 @@
             this.btnAdd.TabIndex = 38;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
@@ -469,6 +470,7 @@
             this.btnSave.TabIndex = 53;
             this.btnSave.Text = "Lưu thay đổi";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // SalePointListForm

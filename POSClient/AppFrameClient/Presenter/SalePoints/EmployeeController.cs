@@ -28,10 +28,10 @@ namespace AppFrameClient.Presenter.SalePoints
             set
             {
                 employeeView = value;
-                employeeView.CloseEmployeeFormEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_CloseEmployeeFormEvent);
+                //employeeView.CloseEmployeeFormEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_CloseEmployeeFormEvent);
                 employeeView.HelpEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_HelpEvent);
                 employeeView.ResetEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_ResetEmployeeEvent);
-                employeeView.SaveEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_SaveEmployeeEvent);
+                //employeeView.SaveEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_SaveEmployeeEvent);
             }
         }
 
@@ -52,13 +52,12 @@ namespace AppFrameClient.Presenter.SalePoints
 
         void salePointView_EditEmployeeEvent(object sender, EmployeeEventArgs e)
         {
-            EmployeeForm form = GlobalUtility.GetOnlyChildFormObject<EmployeeForm>(GlobalCache.Instance().MainForm,
-                                                   FormConstants.EMPLOYEE_FORM);
+            EmployeeForm form = GlobalUtility.GetFormObject<EmployeeForm>(FormConstants.EMPLOYEE_FORM);
             EmployeeInfoModel = e.EmployeeInfo;
             form.ModelToForm();
             form.txtHiddenSelectedEmployeeId.Text = e.SelectedEmployee.ToString();
-
-            GlobalUtility.ShowForm(form);
+            form.ShowDialog((Form) sender);
+            e.EditedEmployee = EmployeeInfoModel;
         }
 
         void salePointView_AddEmployeeEvent(object sender, EmployeeEventArgs e)
@@ -70,7 +69,7 @@ namespace AppFrameClient.Presenter.SalePoints
             form.txtDepartmentName.Text = EmployeeInfoModel.Employee.Department.DepartmentName;
             form.ShowDialog(((Form) sender));
             //GlobalUtility.ShowForm(form);
-            
+            e.AddedEmployee = EmployeeInfoModel;
         }
 
         

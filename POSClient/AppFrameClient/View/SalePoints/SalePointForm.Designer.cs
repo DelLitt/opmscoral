@@ -411,6 +411,7 @@
             // 
             // txtDepartmentId
             // 
+            this.txtDepartmentId.BackColor = System.Drawing.SystemColors.Control;
             this.txtDepartmentId.Enabled = false;
             this.txtDepartmentId.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartmentId.Location = new System.Drawing.Point(106, 17);
@@ -501,6 +502,7 @@
             this.Name = "SalePointForm";
             this.Text = "SalePoint";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.SalePointForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SalePointForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.cmnEmployees.ResumeLayout(false);

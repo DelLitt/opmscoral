@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Common;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -51,7 +52,33 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public void Update(EmployeeInfo data)
         {
-            HibernateTemplate.Update(data);
+            /*HibernateTemplate.Execute(
+                delegate(ISession session)
+                {
+                    
+                    return data;
+                }
+                );*/
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("EmployeePK.EmployeeId", data.EmployeePK.EmployeeId);
+            criteria.AddEqCriteria("EmployeePK.DepartmentId", data.EmployeePK.DepartmentId);
+            IList list = FindAll(criteria);
+            if(list!=null)
+            {
+                EmployeeInfo info = (EmployeeInfo)list[0];
+                info.UpdateDate = data.UpdateDate;
+                info.UpdateId = data.UpdateId;
+                info.DelFlg = data.DelFlg;
+                info.Country = data.Country;
+                info.Address = data.Address;
+                info.EmployeeName = data.EmployeeName;
+                info.Address = data.Address;
+                info.Salary = data.Salary;
+                info.StartDate = data.StartDate;
+                info.Employee = data.Employee;
+                HibernateTemplate.Update(info);
+            }
+            //HibernateTemplate.Update(data);
         }
         
         /// <summary>

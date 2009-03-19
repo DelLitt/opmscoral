@@ -45,10 +45,10 @@ namespace AppFrameClient.Presenter.SalePoints
         {
             ObjectCriteria criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg",(long)0);
-            IList departmentList = DepartmentLogic.FindAll(criteria);
-            SalePointListEventArgs salePointListEventArgs = new SalePointListEventArgs();
-            salePointListEventArgs.DepartmentList = ObjectConverter.ConvertGenericList<Department>(departmentList);
-            EventUtility.fireEvent(CompletedLoadDepartmentsEvent,this,salePointListEventArgs);
+            IList list = DepartmentLogic.FindAll(criteria);
+            SalePointListEventArgs eventArgs = new SalePointListEventArgs();
+            eventArgs.DepartmentList = ObjectConverter.ConvertGenericList<Department>(list);
+            EventUtility.fireEvent(CompletedLoadDepartmentsEvent,this,eventArgs);
         }
 
         void salePointListView_HelpEvent(object sender, SalePointListEventArgs e)
@@ -58,25 +58,18 @@ namespace AppFrameClient.Presenter.SalePoints
 
         void salePointListView_EditSalePointEvent(object sender, SalePointListEventArgs e)
         {
-            SalePointForm form = GlobalUtility.GetOnlyChildFormObject<SalePointForm>(GlobalCache.Instance().MainForm,
-                                                   FormConstants.SALEPOINT_FORM);
-
-            //SalePointForm form = GlobalUtility.GetFormObject<SalePointForm>(FormConstants.SALEPOINT_FORM);
-
-            //Department editDepartment = this.LoadDepartment(e.SelectedDepartment);
-            e.SelectedDepartment = this.LoadDepartment(e.SelectedDepartment);
-            form.SalePointController.DepartmentModel = e.SelectedDepartment;
+            SalePointForm form = GlobalUtility.GetFormObject<SalePointForm>(FormConstants.SALEPOINT_FORM);
+            
+            //e.SelectedDepartment = this.LoadDepartment(e.SelectedDepartment);
+            form.SalePointController.DepartmentModel = e.SelectedDepartment; 
+            e.SelectedDepartment = null;
             form.Status = ViewStatus.EDIT;
-            /*if (!DbUtility.CurrentSession().Contains(form.SalePointController.DepartmentModel))
-            {
-                DbUtility.CurrentSession().Lock(form.SalePointController.DepartmentModel, LockMode.Read);
-            }
-            int i = form.SalePointController.DepartmentModel.Employees.Count;*/
-
+            
             form.ModelToForm();
-            //form.ShowDialog((Form) sender);
-            GlobalUtility.ShowForm(form);
-            //form.ShowDialog();
+            
+            form.ShowDialog((Form) sender);
+            //GlobalUtility.ShowForm(form);
+            //e.EditedDepartment = selectedDepartment;
         }
 
         private Department LoadDepartment(Department department)
