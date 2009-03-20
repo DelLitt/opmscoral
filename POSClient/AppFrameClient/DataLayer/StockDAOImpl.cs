@@ -335,6 +335,7 @@ namespace AppFrame.DataLayer
                     paramNames.Add(crit.PropertyName);
                     values.Add(crit.Value);
                 }
+                HibernateTemplate.MaxResults = 50;
                 IList list = HibernateTemplate.FindByNamedParam(sqlString, paramNames.ToArray(), values.ToArray());
                 IList returnList = new ArrayList();
                 for (int i = 0; i < list.Count; i++ )

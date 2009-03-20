@@ -249,10 +249,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         int count = 0;
                         foreach (var p in retlist)
                         {
-                            if (count == 50)
-                            {
-                                break;
-                            }
                             result.Add(p);
                             count++;
                         }
@@ -276,7 +272,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         comboBox.Text = originalText;
                         //comboBox.SelectedIndex = -1;
                         //comboBox.SelectionStart = comboBox.Text.Length;
-                        comboBox.DroppedDown = true;
+                        //comboBox.DroppedDown = true;
                         comboBox.MaxDropDownItems = 10;
                     }
                 }

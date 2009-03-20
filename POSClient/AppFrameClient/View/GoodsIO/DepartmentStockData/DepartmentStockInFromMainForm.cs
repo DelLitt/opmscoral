@@ -971,5 +971,22 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
 
         #endregion
+
+        private void cboProductMasters_DropDown(object sender, EventArgs e)
+        {
+            var deptStockInEventArgs = new DepartmentStockInEventArgs();
+            /*if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
+            {
+                return;
+            }*/
+            // selectectIndex is the firstrow
+            //int selectedIndex = 0;
+            //mainStockInEventArgs.SelectedIndex = selectedIndex;
+            //mainStockInEventArgs.SelectedStockInDetail = deptSIDetailList[selectedIndex];
+            deptStockInEventArgs.SelectedDepartmentStockInDetail = new DepartmentStockInDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.Text } } };
+            deptStockInEventArgs.IsFillToComboBox = true;
+            deptStockInEventArgs.ComboBoxDisplayMember = "ProductName";
+            EventUtility.fireEvent<DepartmentStockInEventArgs>(FillProductToComboEvent, cboProductMasters, deptStockInEventArgs);
+        }
     }
 }
