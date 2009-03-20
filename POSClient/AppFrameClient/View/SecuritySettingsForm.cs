@@ -202,6 +202,26 @@ namespace AppFrameClient.View
                 CreateSaveModel(false);
                 DataGridViewSelectedRowCollection selectedRowCollection = dgvUserInfo.SelectedRows;
                 LoginModel selectedModel = loginList[selectedRowCollection[0].Index];
+                if(selectedModel.RoleType.Equals("Administrator"))
+                {
+                    // if role is lower then exit
+                    if(ClientInfo.getInstance().LoggedUser.IsInRole(new Role {Name = "Supervisor"}))
+                    {
+                        MessageBox.Show("Không đủ quyền để thay đổi thông tin tài khoản này");
+                        return;
+                    }
+                }
+                if (selectedModel.RoleType.Equals("Supervisor"))
+                {
+                    // if role is not equal then exit
+                    IList list = ClientInfo.getInstance().LoggedUser.Roles;
+                    Role currentRole = list[0] as Role;
+                    if (!ClientInfo.getInstance().LoggedUser.Name.Equals(selectedModel.Username))
+                    {
+                        MessageBox.Show("Không đủ quyền để thay đổi thông tin tài khoản này");
+                        return;
+                    }
+                }
                 PopulateSaveModel(selectedModel);
                 txtUsername.Text = SaveModel.Username;
                 txtUsername.Enabled = false;

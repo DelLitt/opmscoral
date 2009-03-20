@@ -34,10 +34,9 @@ namespace AppFrameClient.View
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "ANVT",
             "Vo Thi An"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Administrator");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Supervisor");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Manager");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Accountant");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Supervisor");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Manager");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Accountant");
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,14 +63,6 @@ namespace AppFrameClient.View
             this.cboWatchBy = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvUserInfo = new System.Windows.Forms.DataGridView();
-            this.bdsUserInfo = new System.Windows.Forms.BindingSource(this.components);
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSuspend = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.bdsEmployees = new System.Windows.Forms.BindingSource(this.components);
-            this.grpUserInfo = new System.Windows.Forms.GroupBox();
-            this.btnUnsuspend = new System.Windows.Forms.Button();
-            this.btnUnremove = new System.Windows.Forms.Button();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +71,14 @@ namespace AppFrameClient.View
             this.EmployeeInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeInfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsUserInfo = new System.Windows.Forms.BindingSource(this.components);
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSuspend = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.bdsEmployees = new System.Windows.Forms.BindingSource(this.components);
+            this.grpUserInfo = new System.Windows.Forms.GroupBox();
+            this.btnUnsuspend = new System.Windows.Forms.Button();
+            this.btnUnremove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDepartment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsUserInfo)).BeginInit();
@@ -240,8 +239,7 @@ namespace AppFrameClient.View
             this.lstRight.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem2,
             listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem4});
             this.lstRight.Location = new System.Drawing.Point(99, 100);
             this.lstRight.MultiSelect = false;
             this.lstRight.Name = "lstRight";
@@ -318,6 +316,72 @@ namespace AppFrameClient.View
             this.dgvUserInfo.Size = new System.Drawing.Size(489, 352);
             this.dgvUserInfo.TabIndex = 25;
             // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.Frozen = true;
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Tài khoản";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "RoleType";
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "Loại tài khoản";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passwordDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Suspended";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tạm ngưng";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Deleted";
+            this.Column2.HeaderText = "Bị loại bỏ";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // EmployeeInfo
+            // 
+            this.EmployeeInfo.DataPropertyName = "EmployeeInfo.EmployeeName";
+            dataGridViewCellStyle1.NullValue = "Không";
+            this.EmployeeInfo.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EmployeeInfo.HeaderText = "Tên nhân viên";
+            this.EmployeeInfo.Name = "EmployeeInfo";
+            this.EmployeeInfo.ReadOnly = true;
+            this.EmployeeInfo.Width = 150;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "EmployeeInfo.Department.DepartmentName";
+            dataGridViewCellStyle2.NullValue = "Không";
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column1.HeaderText = "Cửa hàng";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 150;
+            // 
+            // employeeInfoDataGridViewTextBoxColumn
+            // 
+            this.employeeInfoDataGridViewTextBoxColumn.DataPropertyName = "EmployeeInfo";
+            this.employeeInfoDataGridViewTextBoxColumn.HeaderText = "EmployeeInfo";
+            this.employeeInfoDataGridViewTextBoxColumn.Name = "employeeInfoDataGridViewTextBoxColumn";
+            this.employeeInfoDataGridViewTextBoxColumn.Visible = false;
+            // 
             // bdsUserInfo
             // 
             this.bdsUserInfo.DataSource = typeof(AppFrame.Collection.LoginModelCollection);
@@ -388,72 +452,6 @@ namespace AppFrameClient.View
             this.btnUnremove.UseVisualStyleBackColor = true;
             this.btnUnremove.Click += new System.EventHandler(this.btnUnremove_Click);
             // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.Frozen = true;
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Tài khoản";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "RoleType";
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Loại tài khoản";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            this.passwordDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Suspended";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tạm ngưng";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Deleted";
-            this.Column2.HeaderText = "Bị loại bỏ";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // EmployeeInfo
-            // 
-            this.EmployeeInfo.DataPropertyName = "EmployeeInfo.EmployeeName";
-            dataGridViewCellStyle1.NullValue = "Không";
-            this.EmployeeInfo.DefaultCellStyle = dataGridViewCellStyle1;
-            this.EmployeeInfo.HeaderText = "Tên nhân viên";
-            this.EmployeeInfo.Name = "EmployeeInfo";
-            this.EmployeeInfo.ReadOnly = true;
-            this.EmployeeInfo.Width = 150;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "EmployeeInfo.Department.DepartmentName";
-            dataGridViewCellStyle2.NullValue = "Không";
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.HeaderText = "Cửa hàng";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 150;
-            // 
-            // employeeInfoDataGridViewTextBoxColumn
-            // 
-            this.employeeInfoDataGridViewTextBoxColumn.DataPropertyName = "EmployeeInfo";
-            this.employeeInfoDataGridViewTextBoxColumn.HeaderText = "EmployeeInfo";
-            this.employeeInfoDataGridViewTextBoxColumn.Name = "employeeInfoDataGridViewTextBoxColumn";
-            this.employeeInfoDataGridViewTextBoxColumn.Visible = false;
-            // 
             // SecuritySettingsForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
@@ -475,7 +473,7 @@ namespace AppFrameClient.View
             this.Controls.Add(this.lstEmployee);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpUserInfo);
-            
+            this.Name = "SecuritySettingsForm";
             this.Text = "Quản lý người dùng và mật khẩu";
             this.Load += new System.EventHandler(this.SecuritySettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsDepartment)).EndInit();

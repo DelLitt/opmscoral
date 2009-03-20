@@ -461,6 +461,7 @@
             0,
             0,
             0});
+            this.numericUpDownBarcode.ValueChanged += new System.EventHandler(this.numericUpDownBarcode_ValueChanged);
             // 
             // btnPreview
             // 

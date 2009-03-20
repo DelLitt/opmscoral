@@ -449,9 +449,7 @@ namespace AppFrame.View
 
         private void mnuUserAccount_Click(object sender, EventArgs e)
         {
-            Form form = GlobalUtility.GetOnlyChildFormObject<SecuritySettingsForm>(this,
-                                                                                   FormConstants.SECURITY_SETTINGS_FORM);
-            form.Show();
+            
         }
 
 
@@ -494,6 +492,13 @@ namespace AppFrame.View
         private void mnuGoodsSaleDepartmentDetail_Click(object sender, EventArgs e)
         {
             new PurchaseDetailsReportViewer().ShowDialog();
+        }
+
+        private void mnuUserAccount_Click_1(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SecuritySettingsForm>(this,
+                                                                                    FormConstants.SECURITY_SETTINGS_FORM);
+            form.Show();
         }
 
 
