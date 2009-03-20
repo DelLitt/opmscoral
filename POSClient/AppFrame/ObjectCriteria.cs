@@ -12,6 +12,17 @@ namespace AppFrame
     [Serializable]
     public class ObjectCriteria : SearchCriteria
     {
+        private int _maxResult = Int32.MaxValue;
+        public int MaxResult {
+            get
+            {
+                return _maxResult;   
+            }
+            set
+            {
+                _maxResult = value;
+            }
+        }
         private bool isUsingQuery = false;
         private IList<ICriterion> where = new List<ICriterion>();
         private IList<Order> order = new List<Order>();
