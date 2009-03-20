@@ -55,6 +55,8 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSumQty = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -273,11 +275,30 @@
             this.saveFileDialog1.DefaultExt = "xls";
             this.saveFileDialog1.Filter = "Excel Report (*.xls)|*.xls";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(177, 452);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 14);
+            this.label1.TabIndex = 88;
+            this.label1.Text = "Tổng cộng";
+            // 
+            // txtSumQty
+            // 
+            this.txtSumQty.Location = new System.Drawing.Point(250, 448);
+            this.txtSumQty.Name = "txtSumQty";
+            this.txtSumQty.ReadOnly = true;
+            this.txtSumQty.Size = new System.Drawing.Size(105, 22);
+            this.txtSumQty.TabIndex = 89;
+            // 
             // StockSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 473);
+            this.Controls.Add(this.txtSumQty);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnClose);
@@ -323,5 +344,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSumQty;
     }
 }

@@ -89,6 +89,12 @@ namespace AppFrameClient.View.GoodsIO
             EventUtility.fireEvent(SearchStockEvent, sender, eventArgs);
 
             stockBindingSource.DataSource = eventArgs.StockList;
+            long sumQty = 0;
+            foreach (Stock stock in eventArgs.StockList)
+            {
+                sumQty += stock.Quantity;
+            }
+            txtSumQty.Text = sumQty.ToString();
         }
 
         public IList StockList { get; set; }
