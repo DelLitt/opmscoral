@@ -297,7 +297,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 }
                 
                 comboBox.SelectionStart = comboBox.Text.Length;
-                comboBox.DroppedDown = true;
+                //comboBox.DroppedDown = false;
                 comboBox.MaxDropDownItems = 10;
             }
         }

@@ -1098,5 +1098,22 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             cboProductMasters.SelectedItem = proMaster;
             cboProductMasters.DroppedDown = false;
         }
+
+        private void cboProductMasters_DropDown(object sender, EventArgs e)
+        {
+            var mainStockInEventArgs = new MainStockInEventArgs();
+            /*if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
+            {
+                return;
+            }*/
+            // selectectIndex is the firstrow
+            //int selectedIndex = 0;
+            //mainStockInEventArgs.SelectedIndex = selectedIndex;
+            //mainStockInEventArgs.SelectedStockInDetail = deptSIDetailList[selectedIndex];
+            mainStockInEventArgs.SelectedStockInDetail = new StockInDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.Text } } };
+            mainStockInEventArgs.IsFillToComboBox = true;
+            mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
+            EventUtility.fireEvent<MainStockInEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
+        }
     }
 }

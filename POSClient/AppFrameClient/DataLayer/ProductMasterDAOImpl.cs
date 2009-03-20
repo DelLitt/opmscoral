@@ -392,7 +392,8 @@ namespace AppFrame.DataLayer
                                            queryString += " AND pm.ProductMasterId = dp.DepartmentPricePK.ProductMasterId ";
                                            queryString += " AND dp.DepartmentPricePK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
                                        } 
-                                       IList productMasters = session.CreateQuery(queryString)
+                                       
+                                       IList productMasters = session.CreateQuery(queryString).SetMaxResults(50)
                                            .List();
                                        return productMasters;
                                    }
