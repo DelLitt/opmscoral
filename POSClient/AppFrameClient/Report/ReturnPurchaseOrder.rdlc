@@ -13,9 +13,6 @@
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>3.15in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
   <rd:ReportID>ddb24abf-87ce-4b56-b94c-67438064b699</rd:ReportID>
   <PageWidth>3.15in</PageWidth>
   <DataSets>

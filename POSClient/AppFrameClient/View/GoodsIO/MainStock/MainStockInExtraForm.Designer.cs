@@ -90,6 +90,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtSumProduct = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.ctrlC = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.ctrlV = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -121,7 +123,7 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(289, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
@@ -152,7 +154,7 @@
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(289, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -162,7 +164,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(290, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
             // 
             // btnDelete
             // 
@@ -691,6 +693,16 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // ctrlC
+            // 
+            this.ctrlC.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+            this.ctrlC.Pressed += new System.EventHandler(this.ctrlC_Pressed);
+            // 
+            // ctrlV
+            // 
+            this.ctrlV.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+            this.ctrlV.Pressed += new System.EventHandler(this.ctrlV_Pressed);
+            // 
             // MainStockInExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 562);
@@ -811,5 +823,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private AppFrame.Controls.HotKey.SystemHotkey ctrlC;
+        private AppFrame.Controls.HotKey.SystemHotkey ctrlV;
     }
 }

@@ -142,8 +142,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddSearchInCriteria("ProductMaster.ProductMasterId", productMasterIds);
-            IList list = DepartmentStockLogic.FindAll(criteria);
+            
+            //criteria.AddSearchInCriteria("Product.ProductMaster.ProductMasterId", productMasterIds);
+            //criteria.AddSubCriteria("Product", new SubObjectCriteria("ProductMaster").AddSearchInCriteria("ProductMasterId", productMasterIds));
+            IList list = DepartmentStockLogic.FindAllInProductMasterId(productMasterIds);
             if (list.Count == 0)
             {
                 return;
@@ -221,9 +223,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 comboBox.DropDownHeight = 200;
                 // keep the original text
                 comboBox.Text = originalText;
-                //comboBox.SelectedIndex = -1;
-                //comboBox.SelectionStart = comboBox.Text.Length;
-                comboBox.DroppedDown = true;
                 comboBox.MaxDropDownItems = 10;
             }
         }

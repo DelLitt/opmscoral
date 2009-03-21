@@ -988,5 +988,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptStockInEventArgs.ComboBoxDisplayMember = "ProductName";
             EventUtility.fireEvent<DepartmentStockInEventArgs>(FillProductToComboEvent, cboProductMasters, deptStockInEventArgs);
         }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            if (dgvDeptStockIn.CurrentCell != null)
+            {
+                Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
+                
+            }
+            
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            if (dgvDeptStockIn.Focused)
+            {
+                DataGridViewSelectedCellCollection collection = dgvDeptStockIn.SelectedCells;
+                foreach (DataGridViewCell cell in collection)
+                {
+                    cell.Value = Clipboard.GetText();
+                }
+            }
+        }
     }
 }

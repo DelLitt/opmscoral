@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 using AppFrame;
 using AppFrame.Common;
 using AppFrame.Logic;
@@ -78,6 +79,11 @@ namespace AppFrameClient.Presenter.GoodsIO
             criteria.AddEqCriteria("pm.Packager", e.Packager);
             criteria.AddEqCriteria("pm.Distributor", e.Distributor);
             IList list = StockLogic.FindByQuery(criteria);
+            if(!CheckUtility.IsNullOrEmpty(GlobalCache.Instance().WarningText))
+            {
+                MessageBox.Show(GlobalCache.Instance().WarningText);
+                GlobalCache.Instance().WarningText = null;
+            }
             e.StockList = list;
         }
 

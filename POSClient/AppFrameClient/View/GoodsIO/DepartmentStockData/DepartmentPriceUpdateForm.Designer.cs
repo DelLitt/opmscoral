@@ -28,20 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.systemHotkey3 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // productMasterSearchControl
             // 
-            this.productMasterSearchControl.Location = new System.Drawing.Point(-3, 25);
+            this.productMasterSearchControl.Location = new System.Drawing.Point(-3, 23);
             this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(876, 120);
+            this.productMasterSearchControl.Size = new System.Drawing.Size(751, 111);
             this.productMasterSearchControl.TabIndex = 0;
             // 
             // dgvProduct
@@ -95,6 +99,21 @@
             this.label7.TabIndex = 43;
             this.label7.Text = "GIÁ HÀNG HÓA";
             // 
+            // systemHotkey1
+            // 
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // systemHotkey2
+            // 
+            this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
+            this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
+            // 
+            // systemHotkey3
+            // 
+            this.systemHotkey3.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+            this.systemHotkey3.Pressed += new System.EventHandler(this.systemHotkey3_Pressed);
+            // 
             // DepartmentPriceUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -108,7 +127,7 @@
             this.Controls.Add(this.productMasterSearchControl);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DepartmentPriceUpdateForm";
-            this.Text = "DepartmentPriceUpdateForm";
+            this.Text = "Cập nhật giá hàng hoá";
             this.Load += new System.EventHandler(this.DepartmentPriceUpdateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.ResumeLayout(false);
@@ -124,5 +143,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label7;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey3;
     }
 }

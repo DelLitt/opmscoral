@@ -453,5 +453,34 @@ namespace AppFrame.DataLayer
         }
 
         #endregion
+
+        #region IDepartmentStockDAO Members
+
+
+        public IList FindAllInProductMasterId(IList ids)
+        {
+            return (IList) HibernateTemplate.Execute(
+                delegate (ISession session)
+                    {
+                        string sql = " SELECT dt FROM DepartmentStock dt " +
+                                     " WHERE dt.DelFlg = 0 " +
+                                     " AND dt.Product.ProductMaster.ProductMasterId IN (";
+                        int i = 0;
+                        foreach (string id in ids)
+                        {
+                            sql += "'" + id + "'";
+                            if(i< (ids.Count - 2))
+                            {
+                                sql += ",";
+                            }
+                            i += 1;
+                        }
+                        sql += " )";         
+                        return session.CreateQuery(sql).List();
+                    }
+                               );
+        }
+
+        #endregion
     }
 }

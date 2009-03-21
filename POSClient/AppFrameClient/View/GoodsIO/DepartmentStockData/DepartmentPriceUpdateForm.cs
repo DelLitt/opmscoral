@@ -230,5 +230,31 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
         }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            if(dgvProduct.CurrentCell==null)
+            {
+                return;
+            }
+            Clipboard.SetText(dgvProduct.CurrentCell.Value.ToString());
+        }
+
+        private void systemHotkey3_Pressed(object sender, EventArgs e)
+        {
+            btnSearch_Click(sender, e);
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            if(dgvProduct.Focused)
+            {
+                DataGridViewSelectedCellCollection collection = dgvProduct.SelectedCells;
+                foreach (DataGridViewCell cell in collection)
+                {
+                    cell.Value = Clipboard.GetText();
+                }
+            }
+        }
     }
 }

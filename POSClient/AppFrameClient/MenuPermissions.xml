@@ -46,7 +46,7 @@
   <menu name="productToolStripMenuItem" role="Administrator,Supervisor">
     <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator,Supervisor" />
-    <menuitem name="updatePriceToolStripMenuItem" role="NotImplement" />
+    <menuitem name="updatePriceToolStripMenuItem" role="Administrator,Supervisor" />
   </menu>
   <menu name="departmentStockToolStripMenuItem" role="NotImplement">
     <menuitem name="wareHouseStockIn" role="Administrator" />
