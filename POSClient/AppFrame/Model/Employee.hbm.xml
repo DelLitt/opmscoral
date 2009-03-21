@@ -128,6 +128,7 @@
         name="EmployeeInfo"
         class="EmployeeInfo"
         outer-join="auto"
+        lazy="false"
     >
     </one-to-one>
     <!-- bi-directional one-to-many association to EmployeeDayoff -->
