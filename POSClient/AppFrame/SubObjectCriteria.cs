@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NHibernate.Criterion;
 
@@ -142,6 +143,14 @@ namespace AppFrame
             {
                 order.Add(Order.Desc(associateName + "." + propertyName));
             }
+        }
+        public SubObjectCriteria AddSearchInCriteria(string propertyName, ICollection collection)
+        {
+            if (collection != null && collection.Count > 0)
+            {
+                where.Add(Restrictions.In(propertyName, collection));
+            }
+            return this;
         }
 
         public void ClearOrder()

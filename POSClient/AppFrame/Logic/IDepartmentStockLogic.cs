@@ -59,5 +59,6 @@ namespace AppFrame.Logic
         IList FindByQueryForDeptStock(ObjectCriteria criteria);
         IList FindAllErrors();
         void ProcessErrorGoods(IList list, IList outList, IList stockOutList, IList goodsList);
+        IList FindAllInProductMasterId(IList ids);
     }
 }

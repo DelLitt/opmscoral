@@ -70,5 +70,6 @@ namespace AppFrame.DataLayer
         IList ListProductMasterStockQuery(string sqlString, ObjectCriteria criteria);
         IList FindByQueryForDeptStock(string sqlString, ObjectCriteria criteria);
         IList FindAllErrors();
+        IList FindAllInProductMasterId(IList ids);
     }
 }
