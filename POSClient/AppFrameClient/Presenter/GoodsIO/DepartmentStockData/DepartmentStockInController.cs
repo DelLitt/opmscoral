@@ -89,7 +89,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
         #endregion
 
-        public void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
+        public virtual void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
 
             var stockIn = e.DepartmentStockIn;
@@ -181,6 +181,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 throw;
             }
             
+            e.EventResult = "Success";
         }
 
         public void departmentStockInView_SearchStockEvent(object sender, DepartmentStockInEventArgs e)
@@ -235,12 +236,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get;
             set;
         }
-        public IStockInLogic StockInLogic
+        public IDepartmentStockInDetailLogic DepartmentStockInDetailLogic
         {
             get;
             set;
         }
-        public IDepartmentStockInDetailLogic DepartmentStockInDetailLogic
+        public IStockLogic StockLogic
         {
             get;
             set;
@@ -251,12 +252,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             set;
         }
 
+        public IDepartmentStockOutLogic DepartmentStockOutLogic
+        {
+            get;
+            set;
+        }
+        public IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic
+        {
+            get;
+            set;
+        }
         public IDepartmentPriceLogic DepartmentPriceLogic
         {
             get;
             set;
         }
-
         public IDepartmentLogic DepartmentLogic
         {
             get;
@@ -282,15 +292,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         #region IDepartmentStockInController Members
 
 
-        public IDepartmentStockOutLogic DepartmentStockOutLogic
-        {
-            get;set;
-        }
 
-        public IDepartmentStockOutDetailLogic DepartmentStockOutDetailLogic
-        {
-            get;set;
-        }
 
         #endregion
     }

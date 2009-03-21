@@ -324,6 +324,54 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
+        public override void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            var stockIn = e.DepartmentStockIn;
+            if (stockIn.StockInId == 0)
+            {
+                DepartmentStockInLogic.Add(stockIn);
+            }
+            else
+            {
+                DepartmentStockInLogic.Update(stockIn);
+            }
+            if (stockIn.DepartmentStockInPK != null && e.IsForSync)
+            {
+                e.DepartmentStockIn = DepartmentStockInLogic.FindById(stockIn.DepartmentStockInPK);
+                IList productMasterIds = new ArrayList();
+                foreach (DepartmentStockInDetail detail in e.DepartmentStockIn.DepartmentStockInDetails)
+                {
+                    if (!productMasterIds.Contains(detail.Product.ProductMaster.ProductMasterId))
+                    {
+                        productMasterIds.Add(detail.Product.ProductMaster.ProductMasterId);
+                    }
+                }
+                var criteria = new ObjectCriteria();
+                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", (long)0);
+                criteria.AddSearchInCriteria("DepartmentPricePK.ProductMasterId", productMasterIds);
+                IList priceList = DepartmentPriceLogic.FindAll(criteria);
+                foreach (DepartmentStockInDetail detail in e.DepartmentStockIn.DepartmentStockInDetails)
+                {
+                    foreach (DepartmentPrice price in priceList)
+                    {
+                        if (price.DepartmentPricePK.ProductMasterId.Equals(detail.Product.ProductMaster.ProductMasterId))
+                        {
+                            detail.Price = price.Price;
+                        }
+                    }
+                }
+
+                // Department information
+                e.DepartmentStockIn.Department = DepartmentLogic.FindById(stockIn.DepartmentStockInPK.DepartmentId);
+                criteria = new ObjectCriteria();
+                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                criteria.AddEqCriteria("EmployeePK.DepartmentId", stockIn.DepartmentStockInPK.DepartmentId);
+                e.DepartmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
+            }
+            e.EventResult = "Success";
+        }
+
         private IList RemoveDuplicateName(IList prdlist)
         {
             IList list = new ArrayList();
@@ -369,6 +417,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     get;set;
                 }
                 public AppFrame.Logic.IStockLogic StockLogic
+                {
+                    get;
+                    set;
+                }
+                public AppFrame.Logic.IEmployeeDetailLogic EmployeeDetailLogic
                 {
                     get;
                     set;
