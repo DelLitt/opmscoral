@@ -780,7 +780,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             
             
             Bitmap bitmap1 = new Bitmap(imageBC);
-            bitmap1.SetResolution(203,203);
+            bitmap1.SetResolution(204,204);
             /*Bitmap bitmap2 = new Bitmap(code39Gen);
             bitmap2.SetResolution(203,203);*/
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -789,10 +789,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             // draw title string
             
                 // calculate scale for title
-                var titleStrSize = e.Graphics.MeasureString(titleString+"ZZZZZZ", new Font("Arial",10));
+                var titleStrSize = e.Graphics.MeasureString(titleString.PadRight(25), new Font("Arial",10));
                 float currTitleSize = new Font("Arial",10).Size;
-                float scaledTitleSize = (140 * currTitleSize) / titleStrSize.Width;
-                Font _titleFont = new Font("Arial", scaledTitleSize);
+                float scaledTitleSize = (150 * currTitleSize) / titleStrSize.Width;
+                //Font _titleFont = new Font("Arial", scaledTitleSize);
+                Font _titleFont = new Font("Arial", 7);
                 string nameString = titleString.Substring(0, titleString.IndexOf(" - "));
                 string priceString = titleString.Substring(titleString.IndexOf(" - "));
                 var priceTotalSize = e.Graphics.MeasureString(titleString, _titleFont);
@@ -809,9 +810,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 //(i % 3) * 124, (i / 3) * 87, 117, 79 
                 /*e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
                 e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);*/
-                e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)10);
-                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.4 * 100), 140), (int)(23 + priceTotalSize.Height), (int)(1.4 * 100), (int)(0.5 * 100)));
-                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)75);
+                e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 140 + XCentered(priceTotalSize.Width, 140), (float)25);
+                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.25 * 100), 140), (int)(25 + priceTotalSize.Height), (int)(1.25 * 100), (int)(0.45 * 100)));
+                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)88);
                 //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
                 
             }                  

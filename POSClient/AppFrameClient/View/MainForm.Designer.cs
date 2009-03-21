@@ -65,9 +65,9 @@
             this.mnuProcessDepartmentStockDefect = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentReStockIn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.approveStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,6 +115,7 @@
             this.mnuSalePointManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmployeeManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChamCong = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUserAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -122,7 +123,6 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuUserAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -407,9 +407,9 @@
             // mnuWareHouse
             // 
             this.mnuWareHouse.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuImportGoods,
             this.searchBlockToolStripMenuItem,
             this.toolStripMenuItem2,
+            this.mnuImportGoods,
             this.approveStockToolStripMenuItem,
             this.mnuDepartmentStockOutConfirm,
             this.mnuInventoryChecking,
@@ -428,13 +428,6 @@
             this.mnuWareHouse.Size = new System.Drawing.Size(143, 20);
             this.mnuWareHouse.Text = "Kho chính - Nhập hàng";
             // 
-            // mnuImportGoods
-            // 
-            this.mnuImportGoods.Name = "mnuImportGoods";
-            this.mnuImportGoods.Size = new System.Drawing.Size(237, 22);
-            this.mnuImportGoods.Text = "Nhập hàng vào kho";
-            this.mnuImportGoods.Click += new System.EventHandler(this.mnuImportGoods_Click);
-            // 
             // searchBlockToolStripMenuItem
             // 
             this.searchBlockToolStripMenuItem.Name = "searchBlockToolStripMenuItem";
@@ -446,6 +439,13 @@
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(234, 6);
+            // 
+            // mnuImportGoods
+            // 
+            this.mnuImportGoods.Name = "mnuImportGoods";
+            this.mnuImportGoods.Size = new System.Drawing.Size(237, 22);
+            this.mnuImportGoods.Text = "Nhập hàng vào kho";
+            this.mnuImportGoods.Click += new System.EventHandler(this.mnuImportGoods_Click);
             // 
             // approveStockToolStripMenuItem
             // 
@@ -643,9 +643,9 @@
             this.mnuRecoverData,
             this.toolStripMenuItem9,
             this.mnuSyncToMainForm,
+            this.mnuLoadToDept,
             this.mnuSynchronizeData,
             this.mnuLoadToMain,
-            this.mnuLoadToDept,
             this.toolStripMenuItem10,
             this.mnuSystemConfiguration});
             this.mnuTool.Name = "mnuTool";
@@ -655,80 +655,80 @@
             // mnuSaleOffCreate
             // 
             this.mnuSaleOffCreate.Name = "mnuSaleOffCreate";
-            this.mnuSaleOffCreate.Size = new System.Drawing.Size(226, 22);
+            this.mnuSaleOffCreate.Size = new System.Drawing.Size(220, 22);
             this.mnuSaleOffCreate.Text = "Lập kỳ khuyến mãi";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(223, 6);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(217, 6);
             // 
             // mnuDiaryTracking
             // 
             this.mnuDiaryTracking.Name = "mnuDiaryTracking";
-            this.mnuDiaryTracking.Size = new System.Drawing.Size(226, 22);
+            this.mnuDiaryTracking.Size = new System.Drawing.Size(220, 22);
             this.mnuDiaryTracking.Text = "Lưu nhật ký";
             // 
             // mnuBackupData
             // 
             this.mnuBackupData.Name = "mnuBackupData";
-            this.mnuBackupData.Size = new System.Drawing.Size(226, 22);
+            this.mnuBackupData.Size = new System.Drawing.Size(220, 22);
             this.mnuBackupData.Text = "Sao lưu dữ liệu";
             // 
             // mnuDeleteData
             // 
             this.mnuDeleteData.Name = "mnuDeleteData";
-            this.mnuDeleteData.Size = new System.Drawing.Size(226, 22);
+            this.mnuDeleteData.Size = new System.Drawing.Size(220, 22);
             this.mnuDeleteData.Text = "Xóa dữ liệu";
             // 
             // mnuRecoverData
             // 
             this.mnuRecoverData.Name = "mnuRecoverData";
-            this.mnuRecoverData.Size = new System.Drawing.Size(226, 22);
+            this.mnuRecoverData.Size = new System.Drawing.Size(220, 22);
             this.mnuRecoverData.Text = "Phục hồi dữ liệu";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(223, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(217, 6);
             // 
             // mnuSyncToMainForm
             // 
             this.mnuSyncToMainForm.Name = "mnuSyncToMainForm";
-            this.mnuSyncToMainForm.Size = new System.Drawing.Size(226, 22);
+            this.mnuSyncToMainForm.Size = new System.Drawing.Size(220, 22);
             this.mnuSyncToMainForm.Text = "Xuất dữ liệu về kho";
             this.mnuSyncToMainForm.Click += new System.EventHandler(this.mnuSyncToMainForm_Click);
             // 
             // mnuSynchronizeData
             // 
             this.mnuSynchronizeData.Name = "mnuSynchronizeData";
-            this.mnuSynchronizeData.Size = new System.Drawing.Size(226, 22);
-            this.mnuSynchronizeData.Text = "Xuất dữ liệu về cửa hàng";
+            this.mnuSynchronizeData.Size = new System.Drawing.Size(216, 22);
+            this.mnuSynchronizeData.Text = "Nhập dữ liệu vào cửa hàng";
             this.mnuSynchronizeData.Click += new System.EventHandler(this.mnuSynchronizeData_Click);
             // 
             // mnuLoadToMain
             // 
             this.mnuLoadToMain.Name = "mnuLoadToMain";
-            this.mnuLoadToMain.Size = new System.Drawing.Size(226, 22);
-            this.mnuLoadToMain.Text = "Đồng bộ dữ liệu về kho";
+            this.mnuLoadToMain.Size = new System.Drawing.Size(234, 22);
+            this.mnuLoadToMain.Text = "Nhập dữ liệu vào kho";
             this.mnuLoadToMain.Click += new System.EventHandler(this.mnuLoadToMain_Click);
             // 
             // mnuLoadToDept
             // 
             this.mnuLoadToDept.Name = "mnuLoadToDept";
-            this.mnuLoadToDept.Size = new System.Drawing.Size(226, 22);
-            this.mnuLoadToDept.Text = "Đồng bộ dữ liệu về cửa hàng";
+            this.mnuLoadToDept.Size = new System.Drawing.Size(234, 22);
+            this.mnuLoadToDept.Text = "Xuất dữ liệu ra cửa hàng";
             this.mnuLoadToDept.Click += new System.EventHandler(this.mnuLoadToDept_Click);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(223, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(217, 6);
             // 
             // mnuSystemConfiguration
             // 
             this.mnuSystemConfiguration.Name = "mnuSystemConfiguration";
-            this.mnuSystemConfiguration.Size = new System.Drawing.Size(226, 22);
+            this.mnuSystemConfiguration.Size = new System.Drawing.Size(220, 22);
             this.mnuSystemConfiguration.Text = "Cấu hình hệ thống";
             // 
             // mnuSalePoint
@@ -782,6 +782,13 @@
             this.mnuChamCong.Size = new System.Drawing.Size(181, 22);
             this.mnuChamCong.Text = "Chấm công";
             // 
+            // mnuUserAccount
+            // 
+            this.mnuUserAccount.Name = "mnuUserAccount";
+            this.mnuUserAccount.Size = new System.Drawing.Size(181, 22);
+            this.mnuUserAccount.Text = "Quản lý tài khoản";
+            this.mnuUserAccount.Click += new System.EventHandler(this.mnuUserAccount_Click_1);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -833,13 +840,6 @@
             // 
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
-            // 
-            // mnuUserAccount
-            // 
-            this.mnuUserAccount.Name = "mnuUserAccount";
-            this.mnuUserAccount.Size = new System.Drawing.Size(181, 22);
-            this.mnuUserAccount.Text = "Quản lý tài khoản";
-            this.mnuUserAccount.Click += new System.EventHandler(this.mnuUserAccount_Click_1);
             // 
             // MainForm
             // 

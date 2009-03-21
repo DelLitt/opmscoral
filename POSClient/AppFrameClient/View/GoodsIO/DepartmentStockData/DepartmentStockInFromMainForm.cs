@@ -514,7 +514,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnSave_Click(object sender, EventArgs e)
         {
             bool isNeedClearData = (deptSI == null || deptSI.DepartmentStockInPK == null || string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId));
-            DepartmentStockIn result = SaveDeptStockIn(false);
+            DepartmentStockIn result = SaveDeptStockIn(true);
 
             if (isNeedClearData && result != null)
             {

@@ -223,7 +223,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         var criteria = new ObjectCriteria(true);
                         criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                         criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-                        criteria.AddLikeCriteria("pm.ProductName", searchPM.ProductName + "%");
+                        criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");
                         criteria.MaxResult = 50;
                         IList list = StockLogic.FindByQueryForStockIn(criteria);
 //                        if (e.ComboBoxDisplayMember.Equals("ProductMasterId"))

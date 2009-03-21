@@ -38,7 +38,7 @@ namespace AppFrameClient.Presenter.GoodsIO
         private void stockSearchView_BarcodeSearchStockEvent(object sender, StockSearchEventArgs e)
         {
             var subCriteria = new SubObjectCriteria("ProductMaster");
-            subCriteria.AddLikeCriteria("ProductName", e.ProductMasterName + "%");
+            subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");
             subCriteria.AddEqCriteria("ProductType", e.ProductType);
             subCriteria.AddEqCriteria("ProductSize", e.ProductSize);
             subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
@@ -69,7 +69,7 @@ namespace AppFrameClient.Presenter.GoodsIO
             var criteria = new ObjectCriteria(true);
             criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
-            criteria.AddLikeCriteria("pm.ProductName", e.ProductMasterName + "%");
+            criteria.AddLikeCriteria("pm.ProductName", "%" + e.ProductMasterName + "%");
             criteria.AddEqCriteria("pm.ProductType", e.ProductType);
             criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
             criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);

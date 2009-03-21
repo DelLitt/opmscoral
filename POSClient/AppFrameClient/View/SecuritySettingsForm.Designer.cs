@@ -473,7 +473,6 @@ namespace AppFrameClient.View
             this.Controls.Add(this.lstEmployee);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grpUserInfo);
-            this.Name = "SecuritySettingsForm";
             this.Text = "Quản lý người dùng và mật khẩu";
             this.Load += new System.EventHandler(this.SecuritySettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsDepartment)).EndInit();

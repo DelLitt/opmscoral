@@ -424,10 +424,11 @@ namespace AppFrame.View
 
         private void mnuStockCollection_Click(object sender, EventArgs e)
         {
-            Form form = GlobalUtility.GetOnlyChildFormObject<RemainStockReport>(this,
+            /*Form form = GlobalUtility.GetOnlyChildFormObject<RemainStockReport>(this,
                                                                           FormConstants.
                                                                               MAIN_REMAIN_STOCK_REPORT_FORM);
-            form.Show();
+            form.Show();*/
+            new StockStatisticReportViewer().ShowDialog();
         }
 
         private void mnuFindStockByBarcode_Click(object sender, EventArgs e)

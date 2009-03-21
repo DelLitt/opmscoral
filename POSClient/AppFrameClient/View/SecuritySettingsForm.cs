@@ -195,11 +195,9 @@ namespace AppFrameClient.View
         private void btnEdit_Click(object sender, EventArgs e)
         {
             
-            LockControlInEditMode();
+            
             if(dgvUserInfo.SelectedRows!= null && dgvUserInfo.SelectedRows.Count > 0 )
             {
-                grpUserInfo.Enabled = true;
-                CreateSaveModel(false);
                 DataGridViewSelectedRowCollection selectedRowCollection = dgvUserInfo.SelectedRows;
                 LoginModel selectedModel = loginList[selectedRowCollection[0].Index];
                 if(selectedModel.RoleType.Equals("Administrator"))
@@ -222,6 +220,9 @@ namespace AppFrameClient.View
                         return;
                     }
                 }
+                LockControlInEditMode();
+                grpUserInfo.Enabled = true;
+                CreateSaveModel(false);
                 PopulateSaveModel(selectedModel);
                 txtUsername.Text = SaveModel.Username;
                 txtUsername.Enabled = false;
@@ -247,17 +248,14 @@ namespace AppFrameClient.View
             int retId = 0;
             switch (id)
             {
-                case 1:   // Administrator
+                case 5:   // Supervisor
                     retId = 0;
                     break;
-                case 2: // Supervisor
+                case 2: // Manager
                     retId = 1;
                     break;
-                case 3: // Manager
+                case 3: // Accountant
                     retId = 2;
-                    break;
-                case 5: // Accountant
-                    retId = 3;
                     break;
                 default:
                     break;
@@ -322,16 +320,13 @@ namespace AppFrameClient.View
             int retId = 3;
             switch (lstRight.SelectedIndices[0])
             {
-                case 0:   // Administrator
-                    retId = 1;
-                    break;
-                case 1: // Supervisor
+                case 0: // Supervisor
                     retId = 5;
                     break;
-                case 2: // Manager
+                case 1: // Manager
                     retId = 2;
                     break;
-                case 3: // Accountant
+                case 2: // Accountant
                     retId = 3;
                     break;
                 default:
@@ -366,9 +361,24 @@ namespace AppFrameClient.View
         {
             if (dgvUserInfo.SelectedRows != null && dgvUserInfo.SelectedRows.Count > 0)
             {
-                CreateSaveModel(false);
+                
                 DataGridViewSelectedRowCollection selectedRowCollection = dgvUserInfo.SelectedRows;
                 LoginModel selectedModel = loginList[selectedRowCollection[0].Index];
+                if (selectedModel.RoleType.Equals("Administrator") || selectedModel.RoleType.Equals("Supervisor"))
+                {
+                    // if role is lower then exit
+                    if (ClientInfo.getInstance().LoggedUser.IsInRole(new Role { Name = "Supervisor" }))
+                    {
+                        MessageBox.Show("Không đủ quyền để thay đổi thông tin tài khoản này");
+                        return;
+                    }
+                }
+                if (selectedModel.RoleType.Equals("Administrator") && ClientInfo.getInstance().LoggedUser.Name.Equals(selectedModel.Username))
+                {
+                    MessageBox.Show("Không thể thay đổi thông tin tài khoản quyền cao nhất");
+                        return;
+                }
+                CreateSaveModel(false);
                 PopulateSaveModel(selectedModel);
                 if(isSuspend)
                 SaveModel.Suspended = 1;

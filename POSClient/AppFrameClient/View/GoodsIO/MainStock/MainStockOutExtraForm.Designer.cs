@@ -439,6 +439,7 @@
             this.cboProductMasters.Size = new System.Drawing.Size(204, 24);
             this.cboProductMasters.TabIndex = 3;
             this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
+            this.cboProductMasters.DropDown += new System.EventHandler(this.cboProductMasters_DropDown);
             // 
             // label1
             // 

@@ -40,7 +40,8 @@
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />
     <menuitem name="mnuSalePointManagement" role="NotImplement" />
     <menuitem name="mnuEmployeeManagement" role="NotImplement" />
-    <menuitem name="mnuChamCong" role="NotImplement" />    
+    <menuitem name="mnuChamCong" role="NotImplement" />
+    <menuitem name="mnuUserAccount" role="Administrator,Supervisor" />
   </menu>
   <menu name="productToolStripMenuItem" role="Administrator,Supervisor">
     <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
@@ -88,8 +89,7 @@
     <menuitem name="mnuSyncToMainForm" role="Administrator,Manager" />
     <menuitem name="mnuLoadToMain" role="Administrator,Supervisor" />
     <menuitem name="mnuLoadToDept" role="Administrator,Manager" />
-    <menuitem name="mnuSystemConfiguration" role="NotImplement" />
-    <menuitem name="mnuUserAccount" role="Administrator" />
+    <menuitem name="mnuSystemConfiguration" role="NotImplement" />    
 
   </menu>
   <menu name="mnuHelp" role="*">

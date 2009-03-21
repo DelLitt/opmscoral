@@ -195,8 +195,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     BinaryFormatter bf = new BinaryFormatter();
                     deptStockIn = (DepartmentStockIn)bf.Deserialize(stream);
                     if (deptStockIn == null
-                    || deptStockIn.DepartmentStockInPK == null
-                    || deptStockIn.DepartmentStockInPK.DepartmentId != CurrentDepartment.Get().DepartmentId)
+                    || deptStockIn.DepartmentStockInPK == null)
+                    //|| deptStockIn.DepartmentStockInPK.DepartmentId != CurrentDepartment.Get().DepartmentId)
                     {
                         fail = true;
                     }
@@ -216,6 +216,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                     }
                 }
+                catch(Exception expc)
+                {
+                    MessageBox.Show(expc.Message);
+                }
                 finally
                 {
                     if (stream != null)
@@ -224,7 +228,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     if (fail)
                     {
-                        File.Move(importPath, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        //fileName.Substring()
+                        File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
 //                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }

@@ -161,7 +161,8 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 var criteria = new ObjectCriteria(true);
                 criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-                criteria.AddLikeCriteria("pm.ProductName", searchPM.ProductName + "%");
+                criteria.AddLikeCriteria("pm.ProductName","%" +searchPM.ProductName + "%");
+                criteria.MaxResult = 50;
                 IList list = StockLogic.FindByQueryForStockIn(criteria);
 
                 if (list == null || list.Count == 0)
@@ -204,7 +205,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 comboBox.Text = originalText;
                 //comboBox.SelectedIndex = -1;
                 //comboBox.SelectionStart = comboBox.Text.Length;
-                comboBox.DroppedDown = true;
+                //comboBox.DroppedDown = true;
                 comboBox.MaxDropDownItems = 10;
             }
         }

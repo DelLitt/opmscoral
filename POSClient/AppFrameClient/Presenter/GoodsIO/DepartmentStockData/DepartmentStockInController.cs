@@ -91,7 +91,32 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
+
             var stockIn = e.DepartmentStockIn;
+            IList masterIds = new ArrayList();
+            foreach (DepartmentStockInDetail detail in stockIn.DepartmentStockInDetails)
+            {
+                if (!masterIds.Contains(detail.Product.ProductMaster.ProductMasterId))
+                {
+                    masterIds.Add(detail.Product.ProductMaster.ProductMasterId);
+                }
+            }
+            var cri2 = new ObjectCriteria();
+            cri2.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            cri2.AddEqCriteria("DepartmentPricePK.DepartmentId", (long)0);
+            cri2.AddSearchInCriteria("DepartmentPricePK.ProductMasterId", masterIds);
+            IList prices = DepartmentPriceLogic.FindAll(cri2);
+            foreach (DepartmentStockInDetail detail in stockIn.DepartmentStockInDetails)
+            {
+                foreach (DepartmentPrice price in prices)
+                {
+                    if (price.DepartmentPricePK.ProductMasterId.Equals(detail.Product.ProductMaster.ProductMasterId))
+                    {
+                        detail.Price = price.Price;
+                    }
+                }
+            }
+
             if (stockIn.StockInId == 0)
             {
                 DepartmentStockInLogic.Add(stockIn);
@@ -128,19 +153,34 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
 
                 // Department information
-                e.DepartmentStockIn.Department = DepartmentLogic.FindById(stockIn.DepartmentStockInPK.DepartmentId);
-                criteria = new ObjectCriteria();
-                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-                criteria.AddEqCriteria("EmployeePK.DepartmentId", stockIn.DepartmentStockInPK.DepartmentId);
-                e.DepartmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
+                if (DepartmentLogic != null)
+                {
+                    e.DepartmentStockIn.Department = DepartmentLogic.FindById(stockIn.DepartmentStockInPK.DepartmentId);
+                    criteria = new ObjectCriteria();
+                    criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                    criteria.AddEqCriteria("EmployeePK.DepartmentId", stockIn.DepartmentStockInPK.DepartmentId);
+                    e.DepartmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
+                }
             }
+            
+            
             e.EventResult = "Success";
         }
 
         public void departmentStockInView_SyncDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
-            var stockIn = e.DepartmentStockIn;
-            DepartmentStockInLogic.Sync(stockIn);
+            try
+            {
+                var stockIn = e.DepartmentStockIn;
+                DepartmentStockInLogic.Sync(stockIn);
+                e.EventResult = "Success";
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         public void departmentStockInView_SearchStockEvent(object sender, DepartmentStockInEventArgs e)
