@@ -35,6 +35,10 @@ namespace POSReports {
         
         private supplierStockoutDataTable tablesupplierStockout;
         
+        private stockStatisticDataTable tablestockStatistic;
+        
+        private stockInDataTable tablestockIn;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -75,6 +79,12 @@ namespace POSReports {
                 }
                 if ((ds.Tables["supplierStockout"] != null)) {
                     base.Tables.Add(new supplierStockoutDataTable(ds.Tables["supplierStockout"]));
+                }
+                if ((ds.Tables["stockStatistic"] != null)) {
+                    base.Tables.Add(new stockStatisticDataTable(ds.Tables["stockStatistic"]));
+                }
+                if ((ds.Tables["stockIn"] != null)) {
+                    base.Tables.Add(new stockInDataTable(ds.Tables["stockIn"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -136,6 +146,24 @@ namespace POSReports {
         public supplierStockoutDataTable supplierStockout {
             get {
                 return this.tablesupplierStockout;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public stockStatisticDataTable stockStatistic {
+            get {
+                return this.tablestockStatistic;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public stockInDataTable stockIn {
+            get {
+                return this.tablestockIn;
             }
         }
         
@@ -213,6 +241,12 @@ namespace POSReports {
                 if ((ds.Tables["supplierStockout"] != null)) {
                     base.Tables.Add(new supplierStockoutDataTable(ds.Tables["supplierStockout"]));
                 }
+                if ((ds.Tables["stockStatistic"] != null)) {
+                    base.Tables.Add(new stockStatisticDataTable(ds.Tables["stockStatistic"]));
+                }
+                if ((ds.Tables["stockIn"] != null)) {
+                    base.Tables.Add(new stockInDataTable(ds.Tables["stockIn"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -273,6 +307,18 @@ namespace POSReports {
                     this.tablesupplierStockout.InitVars();
                 }
             }
+            this.tablestockStatistic = ((stockStatisticDataTable)(base.Tables["stockStatistic"]));
+            if ((initTable == true)) {
+                if ((this.tablestockStatistic != null)) {
+                    this.tablestockStatistic.InitVars();
+                }
+            }
+            this.tablestockIn = ((stockInDataTable)(base.Tables["stockIn"]));
+            if ((initTable == true)) {
+                if ((this.tablestockIn != null)) {
+                    this.tablestockIn.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -292,6 +338,10 @@ namespace POSReports {
             base.Tables.Add(this.tableTmpStockout);
             this.tablesupplierStockout = new supplierStockoutDataTable();
             base.Tables.Add(this.tablesupplierStockout);
+            this.tablestockStatistic = new stockStatisticDataTable();
+            base.Tables.Add(this.tablestockStatistic);
+            this.tablestockIn = new stockInDataTable();
+            base.Tables.Add(this.tablestockIn);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -316,6 +366,16 @@ namespace POSReports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializesupplierStockout() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializestockStatistic() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializestockIn() {
             return false;
         }
         
@@ -381,6 +441,10 @@ namespace POSReports {
         public delegate void TmpStockoutRowChangeEventHandler(object sender, TmpStockoutRowChangeEvent e);
         
         public delegate void supplierStockoutRowChangeEventHandler(object sender, supplierStockoutRowChangeEvent e);
+        
+        public delegate void stockStatisticRowChangeEventHandler(object sender, stockStatisticRowChangeEvent e);
+        
+        public delegate void stockInRowChangeEventHandler(object sender, stockInRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -528,13 +592,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public reStockinProductRow FindBySTOCK_IN_IDPRODUCT_ID(string STOCK_IN_ID, string PRODUCT_ID) {
-                return ((reStockinProductRow)(this.Rows.Find(new object[] {
-                            STOCK_IN_ID,
-                            PRODUCT_ID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public override global::System.Data.DataTable Clone() {
                 reStockinProductDataTable cln = ((reStockinProductDataTable)(base.Clone()));
                 cln.InitVars();
@@ -573,9 +630,6 @@ namespace POSReports {
                 base.Columns.Add(this.columnQUANTITY);
                 this.columnPRICE = new global::System.Data.DataColumn("PRICE", typeof(uint), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPRICE);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSTOCK_IN_ID,
-                                this.columnPRODUCT_ID}, true));
                 this.columntype_name.MaxLength = 500;
                 this.columnproduct_name.MaxLength = 500;
                 this.columnSTOCK_IN_ID.AllowDBNull = false;
@@ -1475,12 +1529,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public TmpStockoutRow FindBystockout_id(uint stockout_id) {
-                return ((TmpStockoutRow)(this.Rows.Find(new object[] {
-                            stockout_id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public override global::System.Data.DataTable Clone() {
                 TmpStockoutDataTable cln = ((TmpStockoutDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1516,10 +1564,7 @@ namespace POSReports {
                 base.Columns.Add(this.columnproduct_name);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(uint), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnstockout_id}, true));
                 this.columnstockout_id.AllowDBNull = false;
-                this.columnstockout_id.Unique = true;
                 this.columntype_name.MaxLength = 500;
                 this.columnproduct_id.AllowDBNull = false;
                 this.columnproduct_id.MaxLength = 20;
@@ -1909,6 +1954,657 @@ namespace POSReports {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "supplierStockoutDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class stockStatisticDataTable : global::System.Data.TypedTableBase<stockStatisticRow> {
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columnproduct_id;
+            
+            private global::System.Data.DataColumn columnproduct_name;
+            
+            private global::System.Data.DataColumn columnstock_in_date;
+            
+            private global::System.Data.DataColumn columnprestockin;
+            
+            private global::System.Data.DataColumn columninstockin;
+            
+            private global::System.Data.DataColumn columninstockout;
+            
+            private global::System.Data.DataColumn columnrtn_quantity;
+            
+            private global::System.Data.DataColumn columnerror_qty;
+            
+            private global::System.Data.DataColumn columndmgqty;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticDataTable() {
+                this.TableName = "stockStatistic";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal stockStatisticDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected stockStatisticDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_idColumn {
+                get {
+                    return this.columnproduct_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_nameColumn {
+                get {
+                    return this.columnproduct_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn stock_in_dateColumn {
+                get {
+                    return this.columnstock_in_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn prestockinColumn {
+                get {
+                    return this.columnprestockin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn instockinColumn {
+                get {
+                    return this.columninstockin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn instockoutColumn {
+                get {
+                    return this.columninstockout;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn rtn_quantityColumn {
+                get {
+                    return this.columnrtn_quantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn error_qtyColumn {
+                get {
+                    return this.columnerror_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn dmgqtyColumn {
+                get {
+                    return this.columndmgqty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticRow this[int index] {
+                get {
+                    return ((stockStatisticRow)(this.Rows[index]));
+                }
+            }
+            
+            public event stockStatisticRowChangeEventHandler stockStatisticRowChanging;
+            
+            public event stockStatisticRowChangeEventHandler stockStatisticRowChanged;
+            
+            public event stockStatisticRowChangeEventHandler stockStatisticRowDeleting;
+            
+            public event stockStatisticRowChangeEventHandler stockStatisticRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddstockStatisticRow(stockStatisticRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticRow AddstockStatisticRow(string type_name, string product_id, string product_name, System.DateTime stock_in_date, decimal prestockin, decimal instockin, decimal instockout, decimal rtn_quantity, decimal error_qty, decimal dmgqty) {
+                stockStatisticRow rowstockStatisticRow = ((stockStatisticRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        type_name,
+                        product_id,
+                        product_name,
+                        stock_in_date,
+                        prestockin,
+                        instockin,
+                        instockout,
+                        rtn_quantity,
+                        error_qty,
+                        dmgqty};
+                rowstockStatisticRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowstockStatisticRow);
+                return rowstockStatisticRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                stockStatisticDataTable cln = ((stockStatisticDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new stockStatisticDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columntype_name = base.Columns["type_name"];
+                this.columnproduct_id = base.Columns["product_id"];
+                this.columnproduct_name = base.Columns["product_name"];
+                this.columnstock_in_date = base.Columns["stock_in_date"];
+                this.columnprestockin = base.Columns["prestockin"];
+                this.columninstockin = base.Columns["instockin"];
+                this.columninstockout = base.Columns["instockout"];
+                this.columnrtn_quantity = base.Columns["rtn_quantity"];
+                this.columnerror_qty = base.Columns["error_qty"];
+                this.columndmgqty = base.Columns["dmgqty"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_id);
+                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_name);
+                this.columnstock_in_date = new global::System.Data.DataColumn("stock_in_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstock_in_date);
+                this.columnprestockin = new global::System.Data.DataColumn("prestockin", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprestockin);
+                this.columninstockin = new global::System.Data.DataColumn("instockin", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninstockin);
+                this.columninstockout = new global::System.Data.DataColumn("instockout", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninstockout);
+                this.columnrtn_quantity = new global::System.Data.DataColumn("rtn_quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrtn_quantity);
+                this.columnerror_qty = new global::System.Data.DataColumn("error_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnerror_qty);
+                this.columndmgqty = new global::System.Data.DataColumn("dmgqty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndmgqty);
+                this.columntype_name.MaxLength = 500;
+                this.columnproduct_id.AllowDBNull = false;
+                this.columnproduct_id.MaxLength = 20;
+                this.columnproduct_name.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticRow NewstockStatisticRow() {
+                return ((stockStatisticRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new stockStatisticRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(stockStatisticRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.stockStatisticRowChanged != null)) {
+                    this.stockStatisticRowChanged(this, new stockStatisticRowChangeEvent(((stockStatisticRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.stockStatisticRowChanging != null)) {
+                    this.stockStatisticRowChanging(this, new stockStatisticRowChangeEvent(((stockStatisticRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.stockStatisticRowDeleted != null)) {
+                    this.stockStatisticRowDeleted(this, new stockStatisticRowChangeEvent(((stockStatisticRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.stockStatisticRowDeleting != null)) {
+                    this.stockStatisticRowDeleting(this, new stockStatisticRowChangeEvent(((stockStatisticRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovestockStatisticRow(stockStatisticRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                posDataSet ds = new posDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "stockStatisticDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class stockInDataTable : global::System.Data.TypedTableBase<stockInRow> {
+            
+            private global::System.Data.DataColumn columnSTOCK_IN_ID;
+            
+            private global::System.Data.DataColumn columnSTOCK_IN_DATE;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columnPRODUCT_ID;
+            
+            private global::System.Data.DataColumn columnproduct_name;
+            
+            private global::System.Data.DataColumn columnquantity;
+            
+            private global::System.Data.DataColumn columnprice;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInDataTable() {
+                this.TableName = "stockIn";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal stockInDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected stockInDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn STOCK_IN_IDColumn {
+                get {
+                    return this.columnSTOCK_IN_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn STOCK_IN_DATEColumn {
+                get {
+                    return this.columnSTOCK_IN_DATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PRODUCT_IDColumn {
+                get {
+                    return this.columnPRODUCT_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_nameColumn {
+                get {
+                    return this.columnproduct_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn quantityColumn {
+                get {
+                    return this.columnquantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn priceColumn {
+                get {
+                    return this.columnprice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInRow this[int index] {
+                get {
+                    return ((stockInRow)(this.Rows[index]));
+                }
+            }
+            
+            public event stockInRowChangeEventHandler stockInRowChanging;
+            
+            public event stockInRowChangeEventHandler stockInRowChanged;
+            
+            public event stockInRowChangeEventHandler stockInRowDeleting;
+            
+            public event stockInRowChangeEventHandler stockInRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddstockInRow(stockInRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInRow AddstockInRow(string STOCK_IN_ID, System.DateTime STOCK_IN_DATE, string type_name, string PRODUCT_ID, string product_name, decimal quantity, decimal price) {
+                stockInRow rowstockInRow = ((stockInRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        STOCK_IN_ID,
+                        STOCK_IN_DATE,
+                        type_name,
+                        PRODUCT_ID,
+                        product_name,
+                        quantity,
+                        price};
+                rowstockInRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowstockInRow);
+                return rowstockInRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                stockInDataTable cln = ((stockInDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new stockInDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnSTOCK_IN_ID = base.Columns["STOCK_IN_ID"];
+                this.columnSTOCK_IN_DATE = base.Columns["STOCK_IN_DATE"];
+                this.columntype_name = base.Columns["type_name"];
+                this.columnPRODUCT_ID = base.Columns["PRODUCT_ID"];
+                this.columnproduct_name = base.Columns["product_name"];
+                this.columnquantity = base.Columns["quantity"];
+                this.columnprice = base.Columns["price"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnSTOCK_IN_ID = new global::System.Data.DataColumn("STOCK_IN_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTOCK_IN_ID);
+                this.columnSTOCK_IN_DATE = new global::System.Data.DataColumn("STOCK_IN_DATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTOCK_IN_DATE);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columnPRODUCT_ID = new global::System.Data.DataColumn("PRODUCT_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRODUCT_ID);
+                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_name);
+                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnquantity);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprice);
+                this.columnSTOCK_IN_ID.AllowDBNull = false;
+                this.columnSTOCK_IN_ID.MaxLength = 11;
+                this.columntype_name.MaxLength = 500;
+                this.columnPRODUCT_ID.AllowDBNull = false;
+                this.columnPRODUCT_ID.MaxLength = 20;
+                this.columnproduct_name.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInRow NewstockInRow() {
+                return ((stockInRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new stockInRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(stockInRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.stockInRowChanged != null)) {
+                    this.stockInRowChanged(this, new stockInRowChangeEvent(((stockInRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.stockInRowChanging != null)) {
+                    this.stockInRowChanging(this, new stockInRowChangeEvent(((stockInRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.stockInRowDeleted != null)) {
+                    this.stockInRowDeleted(this, new stockInRowChangeEvent(((stockInRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.stockInRowDeleting != null)) {
+                    this.stockInRowDeleting(this, new stockInRowChangeEvent(((stockInRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovestockInRow(stockInRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                posDataSet ds = new posDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "stockInDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2790,6 +3486,416 @@ namespace POSReports {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class stockStatisticRow : global::System.Data.DataRow {
+            
+            private stockStatisticDataTable tablestockStatistic;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal stockStatisticRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablestockStatistic = ((stockStatisticDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockStatistic.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_id {
+                get {
+                    return ((string)(this[this.tablestockStatistic.product_idColumn]));
+                }
+                set {
+                    this[this.tablestockStatistic.product_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockStatistic.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.product_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime stock_in_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablestockStatistic.stock_in_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stock_in_date\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.stock_in_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal prestockin {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.prestockinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prestockin\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.prestockinColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal instockin {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.instockinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'instockin\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.instockinColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal instockout {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.instockoutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'instockout\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.instockoutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal rtn_quantity {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.rtn_quantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rtn_quantity\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.rtn_quantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal error_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.error_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'error_qty\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.error_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal dmgqty {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockStatistic.dmgqtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dmgqty\' in table \'stockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockStatistic.dmgqtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tablestockStatistic.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tablestockStatistic.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tablestockStatistic.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tablestockStatistic.product_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isstock_in_dateNull() {
+                return this.IsNull(this.tablestockStatistic.stock_in_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setstock_in_dateNull() {
+                this[this.tablestockStatistic.stock_in_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsprestockinNull() {
+                return this.IsNull(this.tablestockStatistic.prestockinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetprestockinNull() {
+                this[this.tablestockStatistic.prestockinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsinstockinNull() {
+                return this.IsNull(this.tablestockStatistic.instockinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetinstockinNull() {
+                this[this.tablestockStatistic.instockinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsinstockoutNull() {
+                return this.IsNull(this.tablestockStatistic.instockoutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetinstockoutNull() {
+                this[this.tablestockStatistic.instockoutColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isrtn_quantityNull() {
+                return this.IsNull(this.tablestockStatistic.rtn_quantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setrtn_quantityNull() {
+                this[this.tablestockStatistic.rtn_quantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iserror_qtyNull() {
+                return this.IsNull(this.tablestockStatistic.error_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Seterror_qtyNull() {
+                this[this.tablestockStatistic.error_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsdmgqtyNull() {
+                return this.IsNull(this.tablestockStatistic.dmgqtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetdmgqtyNull() {
+                this[this.tablestockStatistic.dmgqtyColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class stockInRow : global::System.Data.DataRow {
+            
+            private stockInDataTable tablestockIn;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal stockInRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablestockIn = ((stockInDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string STOCK_IN_ID {
+                get {
+                    return ((string)(this[this.tablestockIn.STOCK_IN_IDColumn]));
+                }
+                set {
+                    this[this.tablestockIn.STOCK_IN_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime STOCK_IN_DATE {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablestockIn.STOCK_IN_DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STOCK_IN_DATE\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.STOCK_IN_DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockIn.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string PRODUCT_ID {
+                get {
+                    return ((string)(this[this.tablestockIn.PRODUCT_IDColumn]));
+                }
+                set {
+                    this[this.tablestockIn.PRODUCT_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockIn.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.product_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal quantity {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockIn.quantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.quantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal price {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablestockIn.priceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'price\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSTOCK_IN_DATENull() {
+                return this.IsNull(this.tablestockIn.STOCK_IN_DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSTOCK_IN_DATENull() {
+                this[this.tablestockIn.STOCK_IN_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tablestockIn.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tablestockIn.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tablestockIn.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tablestockIn.product_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsquantityNull() {
+                return this.IsNull(this.tablestockIn.quantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetquantityNull() {
+                this[this.tablestockIn.quantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IspriceNull() {
+                return this.IsNull(this.tablestockIn.priceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetpriceNull() {
+                this[this.tablestockIn.priceColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -2931,6 +4037,68 @@ namespace POSReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public supplierStockoutRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class stockStatisticRowChangeEvent : global::System.EventArgs {
+            
+            private stockStatisticRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticRowChangeEvent(stockStatisticRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockStatisticRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class stockInRowChangeEvent : global::System.EventArgs {
+            
+            private stockInRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInRowChangeEvent(stockInRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public stockInRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4006,6 +5174,437 @@ ORDER BY so.STOCK_OUT_DATE";
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             posDataSet.supplierStockoutDataTable dataTable = new posDataSet.supplierStockoutDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class StockStatisticTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public StockStatisticTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "stockStatistic";
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("product_id", "product_id");
+            tableMapping.ColumnMappings.Add("product_name", "product_name");
+            tableMapping.ColumnMappings.Add("stock_in_date", "stock_in_date");
+            tableMapping.ColumnMappings.Add("prestockin", "prestockin");
+            tableMapping.ColumnMappings.Add("instockin", "instockin");
+            tableMapping.ColumnMappings.Add("instockout", "instockout");
+            tableMapping.ColumnMappings.Add("rtn_quantity", "rtn_quantity");
+            tableMapping.ColumnMappings.Add("error_qty", "error_qty");
+            tableMapping.ColumnMappings.Add("dmgqty", "dmgqty");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::POSReports.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "select tf.stock_in_date, type_name, pr.product_id, product_name, sum(ifnull(tt.qt" +
+                "1,0)) as prestockin,\r\n  sum(tf.qt2) as instockin, sum(ifnull(pf.qt4,0)) as insto" +
+                "ckout, sum(ifnull(dmpr.returnqt,0)) as rtn_quantity,\r\n  sum(ifnull(dmpr.error_qt" +
+                "y,0)) as error_qty, sum(ifnull(dmpr.dmg,0)) as dmgqty\r\nfrom allproduct pr left j" +
+                "oin (select product_id, sum(quantity) as qt1 from stock_in\r\n      inner join sto" +
+                "ck_in_detail sd on stock_in.stock_in_id=sd.stock_in_id\r\n      where stock_in.sto" +
+                "ck_in_type=0 and stock_in.stock_in_date<@FromDate group by product_id) as tt on " +
+                "tt.product_id=pr.product_id\r\nleft join (select stock_in_date, product_id, sum(qu" +
+                "antity) as qt2 from stock_in\r\n      inner join stock_in_detail s on s.stock_in_i" +
+                "d=stock_in.stock_in_id\r\n      where stock_in.stock_in_type=0 and stock_in.stock_" +
+                "in_date>=@FromDate\r\n      and stock_in.stock_in_date<=@ToDate group by product_i" +
+                "d) as tf on tf.product_id=pr.product_id\r\nleft join (select product_id, sum(quant" +
+                "ity) as qt4 from department_stock_in dpstk\r\n      inner join department_stock_in" +
+                "_detail s2 on s2.stock_in_id=dpstk.stock_in_id\r\n      where dpstk.stock_in_date>" +
+                "=@FromDate and dpstk.stock_in_date<=@ToDate group by product_id) as pf on pf.pro" +
+                "duct_id=pr.product_id\r\nleft join (select product_id, stko2.stock_out_date, sum(q" +
+                "uantity - error_quantity - damage_quantity - lost_quantity) as returnqt, sum(err" +
+                "or_quantity) as error_qty,\r\n      sum(damage_quantity+lost_quantity) as dmg from" +
+                " stock_out stko2\r\n      inner join stock_out_detail stkod2 on stko2.stockout_id=" +
+                "stkod2.stockout_id\r\n      where stko2.stock_out_date>=@FromDate and stko2.stock_" +
+                "out_date<=@ToDate group by product_id) as dmpr on dmpr.product_id=pr.product_id\r" +
+                "\ngroup by type_name, product_name";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@FromDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@ToDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.IsNullable = true;
+            param.SourceColumn = "";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(posDataSet.stockStatisticDataTable dataTable, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual posDataSet.stockStatisticDataTable GetData(global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            posDataSet.stockStatisticDataTable dataTable = new posDataSet.stockStatisticDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class StockInTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public StockInTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "stockIn";
+            tableMapping.ColumnMappings.Add("STOCK_IN_ID", "STOCK_IN_ID");
+            tableMapping.ColumnMappings.Add("STOCK_IN_DATE", "STOCK_IN_DATE");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("PRODUCT_ID", "PRODUCT_ID");
+            tableMapping.ColumnMappings.Add("product_name", "product_name");
+            tableMapping.ColumnMappings.Add("quantity", "quantity");
+            tableMapping.ColumnMappings.Add("price", "price");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::POSReports.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        stock_in.STOCK_IN_ID, stock_in.STOCK_IN_DATE, allproduct.type_name, stock_in_detail.PRODUCT_ID, allproduct.product_name, sum(stock_in_detail.QUANTITY) as quantity, 
+                         sum(stock_in_detail.PRICE) as price 
+FROM            stock_in INNER JOIN
+                         stock_in_detail ON stock_in.STOCK_IN_ID = stock_in_detail.STOCK_IN_ID INNER JOIN
+                         allproduct ON stock_in_detail.PRODUCT_ID = allproduct.product_id
+WHERE        (stock_in.STOCK_IN_DATE <= @ToDate) AND (stock_in.STOCK_IN_TYPE = 0) AND (stock_in.DEL_FLG = 0) AND (stock_in.STOCK_IN_DATE >= @FromDate)
+GROUP BY allproduct.type_name, stock_in.STOCK_IN_DATE, allproduct.product_name
+ORDER BY stock_in.STOCK_IN_DATE desc, stock_in_detail.product_id";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@FromDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "STOCK_IN_DATE";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@ToDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "STOCK_IN_DATE";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(posDataSet.stockInDataTable dataTable, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual posDataSet.stockInDataTable GetData(global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            posDataSet.stockInDataTable dataTable = new posDataSet.stockInDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

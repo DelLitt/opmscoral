@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="posConnectionString">
-      <rd:DataSourceID>568944b5-1266-4f9f-80b4-481bda95a0ab</rd:DataSourceID>
+      <rd:DataSourceID>b697bf50-657d-4a51-a6e6-2abae218a99a</rd:DataSourceID>
       <ConnectionProperties>
         <DataProvider>
         </DataProvider>
@@ -18,60 +18,67 @@
   <RightMargin>1in</RightMargin>
   <LeftMargin>1in</LeftMargin>
   <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>7b53f7c4-ba0d-4aa2-8ab1-68ef2a2ca8dc</rd:ReportID>
+  <rd:ReportID>9f48e794-141c-441a-beab-20511878ea21</rd:ReportID>
   <DataSets>
-    <DataSet Name="posDataSet_TmpStockout">
+    <DataSet Name="posDataSet_stockIn">
       <Fields>
-        <Field Name="stockout_id">
-          <DataField>stockout_id</DataField>
-          <rd:TypeName>System.UInt32</rd:TypeName>
+        <Field Name="STOCK_IN_ID">
+          <DataField>STOCK_IN_ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stock_out_date">
-          <DataField>stock_out_date</DataField>
+        <Field Name="STOCK_IN_DATE">
+          <DataField>STOCK_IN_DATE</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="type_name">
           <DataField>type_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="product_id">
-          <DataField>product_id</DataField>
+        <Field Name="PRODUCT_ID">
+          <DataField>PRODUCT_ID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="product_name">
           <DataField>product_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="quantity">
-          <DataField>quantity</DataField>
+        <Field Name="QUANTITY">
+          <DataField>QUANTITY</DataField>
+          <rd:TypeName>System.UInt32</rd:TypeName>
+        </Field>
+        <Field Name="PRICE">
+          <DataField>PRICE</DataField>
           <rd:TypeName>System.UInt32</rd:TypeName>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandText>select so.stockout_id, stock_out_date, type_name, sod.product_id, product_name, quantity
-from stock_out so inner join stock_out_detail sod on so.stockout_id=sod.stockout_id
-inner join allproduct pr on sod.product_id=pr.product_id
-where so.defect_status_id='4' and so.del_flg=0 and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate
-order by stock_out_date asc</CommandText>
+        <CommandText>SELECT        stock_in.STOCK_IN_ID, stock_in.STOCK_IN_DATE, allproduct.type_name, stock_in_detail.PRODUCT_ID, allproduct.product_name, stock_in_detail.QUANTITY, 
+                         stock_in_detail.PRICE
+FROM            stock_in INNER JOIN
+                         stock_in_detail ON stock_in.STOCK_IN_ID = stock_in_detail.STOCK_IN_ID INNER JOIN
+                         allproduct ON stock_in_detail.PRODUCT_ID = allproduct.product_id
+WHERE        (stock_in.STOCK_IN_DATE &lt;= @ToDate) AND (stock_in.STOCK_IN_TYPE = 0) AND (stock_in.DEL_FLG = 0) AND (stock_in.STOCK_IN_DATE &gt;= @FromDate)
+GROUP BY allproduct.type_name, stock_in.STOCK_IN_DATE, allproduct.product_name
+ORDER BY stock_in.STOCK_IN_DATE, stock_in_detail.product_id</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>posDataSet</rd:DataSetName>
-        <rd:TableName>TmpStockout</rd:TableName>
-        <rd:TableAdapterName>TmpStockoutTableAdapter</rd:TableAdapterName>
+        <rd:TableName>stockIn</rd:TableName>
+        <rd:TableAdapterName>StockInTableAdapter</rd:TableAdapterName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>7.125in</Width>
+  <Width>7.25in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox20">
         <rd:DefaultName>textbox20</rd:DefaultName>
-        <Top>0.5in</Top>
-        <Width>1.75in</Width>
+        <Top>0.375in</Top>
+        <Width>2.75in</Width>
         <Style>
           <FontFamily>Times New Roman</FontFamily>
           <FontSize>12pt</FontSize>
@@ -83,7 +90,6 @@ order by stock_out_date asc</CommandText>
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Value>CỬA HÀNG: A CHẢY</Value>
       </Textbox>
@@ -102,11 +108,11 @@ order by stock_out_date asc</CommandText>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.36in</Height>
-        <Value>BÁO CÁO TÌNH HÌNH TẠM XUẤT</Value>
+        <Value>BÁO CÁO NHẬP HÀNG</Value>
       </Textbox>
       <Table Name="table1">
-        <DataSetName>posDataSet_TmpStockout</DataSetName>
-        <Top>1.125in</Top>
+        <DataSetName>posDataSet_stockIn</DataSetName>
+        <Top>0.875in</Top>
         <TableGroups>
           <TableGroup>
             <Grouping Name="table1_type_name">
@@ -126,32 +132,6 @@ order by stock_out_date asc</CommandText>
                   <TableCells>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox13">
-                          <rd:DefaultName>textbox13</rd:DefaultName>
-                          <Style>
-                            <Color>White</Color>
-                            <BackgroundColor>#6e9eca</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Times New Roman</FontFamily>
-                            <FontWeight>700</FontWeight>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <ZIndex>17</ZIndex>
-                          <CanGrow>true</CanGrow>
-                          <Value />
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
                         <Textbox Name="type_name">
                           <rd:DefaultName>type_name</rd:DefaultName>
                           <Style>
@@ -164,13 +144,14 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>16</ZIndex>
+                          <ZIndex>17</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>=Fields!type_name.Value</Value>
                         </Textbox>
@@ -190,13 +171,14 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>15</ZIndex>
+                          <ZIndex>16</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>
                           </Value>
@@ -217,13 +199,14 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>14</ZIndex>
+                          <ZIndex>15</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>
                           </Value>
@@ -244,6 +227,35 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>14</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox13">
+                          <rd:DefaultName>textbox13</rd:DefaultName>
+                          <Style>
+                            <Color>White</Color>
+                            <BackgroundColor>#6e9eca</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -252,8 +264,7 @@ order by stock_out_date asc</CommandText>
                           </Style>
                           <ZIndex>13</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
+                          <Value>=Sum(Fields!QUANTITY.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -271,6 +282,7 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -279,8 +291,7 @@ order by stock_out_date asc</CommandText>
                           </Style>
                           <ZIndex>12</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
+                          <Value>=Sum(Fields!PRICE.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -291,47 +302,25 @@ order by stock_out_date asc</CommandText>
             </Header>
           </TableGroup>
           <TableGroup>
-            <Grouping Name="table1_product_name">
+            <Grouping Name="table1_STOCK_IN_DATE">
               <GroupExpressions>
-                <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                <GroupExpression>=Fields!STOCK_IN_DATE.Value</GroupExpression>
               </GroupExpressions>
             </Grouping>
             <Sorting>
               <SortBy>
-                <SortExpression>=Fields!product_name.Value</SortExpression>
+                <SortExpression>=Fields!STOCK_IN_DATE.Value</SortExpression>
                 <Direction>Ascending</Direction>
               </SortBy>
             </Sorting>
+            <Visibility>
+              <Hidden>true</Hidden>
+              <ToggleItem>type_name</ToggleItem>
+            </Visibility>
             <Header>
               <TableRows>
                 <TableRow>
                   <TableCells>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox18">
-                          <rd:DefaultName>textbox18</rd:DefaultName>
-                          <Style>
-                            <Color>White</Color>
-                            <BackgroundColor>SlateGray</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Times New Roman</FontFamily>
-                            <FontWeight>700</FontWeight>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <ZIndex>11</ZIndex>
-                          <CanGrow>true</CanGrow>
-                          <Value />
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
                     <TableCell>
                       <ReportItems>
                         <Textbox Name="textbox15">
@@ -346,13 +335,14 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>10</ZIndex>
+                          <ZIndex>11</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>
                           </Value>
@@ -361,8 +351,8 @@ order by stock_out_date asc</CommandText>
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="product_name">
-                          <rd:DefaultName>product_name</rd:DefaultName>
+                        <Textbox Name="STOCK_IN_DATE">
+                          <rd:DefaultName>STOCK_IN_DATE</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
                             <BackgroundColor>SlateGray</BackgroundColor>
@@ -373,15 +363,16 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>9</ZIndex>
+                          <ZIndex>10</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!product_name.Value</Value>
+                          <Value>=Day(Fields!STOCK_IN_DATE.Value)&amp;"/"&amp;Month(Fields!STOCK_IN_DATE.Value)&amp;"/"&amp;Year(Fields!STOCK_IN_DATE.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -399,13 +390,14 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>8</ZIndex>
+                          <ZIndex>9</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>
                           </Value>
@@ -426,6 +418,35 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox18">
+                          <rd:DefaultName>textbox18</rd:DefaultName>
+                          <Style>
+                            <Color>White</Color>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -434,8 +455,7 @@ order by stock_out_date asc</CommandText>
                           </Style>
                           <ZIndex>7</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
+                          <Value>=Sum(Fields!QUANTITY.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -453,6 +473,7 @@ order by stock_out_date asc</CommandText>
                               <Default>Solid</Default>
                             </BorderStyle>
                             <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
                             <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -461,8 +482,7 @@ order by stock_out_date asc</CommandText>
                           </Style>
                           <ZIndex>6</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
+                          <Value>=Sum(Fields!PRICE.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -479,29 +499,6 @@ order by stock_out_date asc</CommandText>
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox22">
-                      <rd:DefaultName>textbox22</rd:DefaultName>
-                      <Style>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>5</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
                     <Textbox Name="textbox3">
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
@@ -512,12 +509,13 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>4</ZIndex>
+                      <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>
                       </Value>
@@ -536,12 +534,13 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>3</ZIndex>
+                      <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>
                       </Value>
@@ -550,8 +549,8 @@ order by stock_out_date asc</CommandText>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="stock_out_date">
-                      <rd:DefaultName>stock_out_date</rd:DefaultName>
+                    <Textbox Name="STOCK_IN_ID">
+                      <rd:DefaultName>STOCK_IN_ID</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -560,6 +559,31 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>3</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!STOCK_IN_ID.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="product_name">
+                      <rd:DefaultName>product_name</rd:DefaultName>
+                      <Style>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -567,14 +591,14 @@ order by stock_out_date asc</CommandText>
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=day(Fields!stock_out_date.Value)&amp;"/"&amp;Month(Fields!stock_out_date.Value)&amp;"/"&amp;Year(Fields!stock_out_date.Value)</Value>
+                      <Value>=Fields!product_name.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="stockout_id">
-                      <rd:DefaultName>stockout_id</rd:DefaultName>
+                    <Textbox Name="QUANTITY">
+                      <rd:DefaultName>QUANTITY</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -583,6 +607,7 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -590,14 +615,14 @@ order by stock_out_date asc</CommandText>
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!stockout_id.Value</Value>
+                      <Value>=Fields!QUANTITY.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="quantity">
-                      <rd:DefaultName>quantity</rd:DefaultName>
+                    <Textbox Name="PRICE">
+                      <rd:DefaultName>PRICE</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -606,13 +631,14 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!quantity.Value</Value>
+                      <Value>=Fields!PRICE.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -620,6 +646,10 @@ order by stock_out_date asc</CommandText>
               <Height>0.21in</Height>
             </TableRow>
           </TableRows>
+          <Visibility>
+            <Hidden>true</Hidden>
+            <ToggleItem>STOCK_IN_DATE</ToggleItem>
+          </Visibility>
         </Details>
         <Style>
           <FontFamily>Times New Roman</FontFamily>
@@ -629,33 +659,6 @@ order by stock_out_date asc</CommandText>
           <TableRows>
             <TableRow>
               <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox8">
-                      <rd:DefaultName>textbox8</rd:DefaultName>
-                      <Style>
-                        <Color>White</Color>
-                        <BackgroundColor>SteelBlue</BackgroundColor>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>23</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>STT</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
                 <TableCell>
                   <ReportItems>
                     <Textbox Name="textbox2">
@@ -670,14 +673,14 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>22</ZIndex>
+                      <ZIndex>23</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>Chủng loại</Value>
                     </Textbox>
@@ -697,16 +700,16 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>21</ZIndex>
+                      <ZIndex>22</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tên hàng</Value>
+                      <Value>Ngày nhập</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -724,16 +727,16 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>20</ZIndex>
+                      <ZIndex>21</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Ngày xuất</Value>
+                      <Value>Phiếu nhập</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -751,7 +754,34 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>20</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Tên hàng</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -761,7 +791,7 @@ order by stock_out_date asc</CommandText>
                       </Style>
                       <ZIndex>19</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Số hóa đơn</Value>
+                      <Value>Số lượng</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -779,7 +809,7 @@ order by stock_out_date asc</CommandText>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -789,7 +819,7 @@ order by stock_out_date asc</CommandText>
                       </Style>
                       <ZIndex>18</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Số lượng</Value>
+                      <Value>Giá trị</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -801,28 +831,28 @@ order by stock_out_date asc</CommandText>
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.5in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.625in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1.75in</Width>
+            <Width>1.375in</Width>
           </TableColumn>
           <TableColumn>
             <Width>1.125in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.25in</Width>
+            <Width>1in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.875in</Width>
           </TableColumn>
           <TableColumn>
             <Width>0.875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1in</Width>
           </TableColumn>
         </TableColumns>
         <Height>0.85in</Height>
       </Table>
     </ReportItems>
-    <Height>2.125in</Height>
+    <Height>1.875in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
@@ -830,23 +860,21 @@ order by stock_out_date asc</CommandText>
     <ReportItems>
       <Textbox Name="textbox21">
         <rd:DefaultName>textbox21</rd:DefaultName>
-        <Top>0.125in</Top>
         <Style>
           <FontStyle>Italic</FontStyle>
           <FontFamily>Times New Roman</FontFamily>
           <FontSize>12pt</FontSize>
-          <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Left>5.375in</Left>
+        <Left>5.5in</Left>
         <Value>="Trang "&amp;Globals!PageNumber</Value>
       </Textbox>
     </ReportItems>
-    <Height>0.375in</Height>
+    <Height>0.25in</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageFooter>
   <TopMargin>1in</TopMargin>

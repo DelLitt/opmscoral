@@ -108,6 +108,11 @@
       <DependentUpon>posDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="posDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseDetailsReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +124,6 @@
     </Compile>
     <Compile Include="PurchaseOrderReportViewer.Designer.cs">
       <DependentUpon>PurchaseOrderReportViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="posDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>posDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -148,6 +147,16 @@
     <EmbeddedResource Include="RestockinReport.rdlc" />
     <EmbeddedResource Include="RestockinReportViewer.resx">
       <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockInReport.rdlc" />
+    <EmbeddedResource Include="StockInReportViewer.resx">
+      <DependentUpon>StockInReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockStatisticReport.rdlc" />
+    <EmbeddedResource Include="StockStatisticReportViewer.resx">
+      <DependentUpon>StockStatisticReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierStockoutReport.rdlc" />
@@ -175,9 +184,9 @@
     </None>
     <None Include="posDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>posDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LastGenOutput>posDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="posDataSet.xss">
       <DependentUpon>posDataSet.xsd</DependentUpon>
@@ -199,6 +208,18 @@
     </Compile>
     <Compile Include="RestockinReportViewer.Designer.cs">
       <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockInReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockInReportViewer.Designer.cs">
+      <DependentUpon>StockInReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockStatisticReportViewer.Designer.cs">
+      <DependentUpon>StockStatisticReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierStockoutReportViewer.cs">
       <SubType>Form</SubType>
