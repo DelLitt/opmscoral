@@ -131,7 +131,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             catch (Exception)
             {
-
+                throw;
             }
             MessageBox.Show("Đồng bộ hoàn tất !");
             syncResultBindingSource.DataSource = resultList;

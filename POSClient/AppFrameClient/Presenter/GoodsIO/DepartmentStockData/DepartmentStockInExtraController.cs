@@ -71,6 +71,30 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.Department.DepartmentId);
             e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
+
+            foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
+            {
+                departmentStockIn.Department = e.Department;
+                criteria = new ObjectCriteria();
+                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
+                departmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
+
+                foreach (DepartmentStockInDetail detail in departmentStockIn.DepartmentStockInDetails)
+                {
+                    DepartmentPrice price =
+                        DepartmentPriceLogic.FindById(new DepartmentPricePK
+                                                          {
+                                                              DepartmentId = 0,
+                                                              ProductMasterId =
+                                                                  detail.Product.ProductMaster.ProductMasterId
+                                                          });
+                    if (price != null)
+                    {
+                        detail.Price = price.Price;
+                    }
+                }
+            }
         }
 
         void _departmentStockInView_LoadPriceAndStockEvent(object sender, DepartmentStockInEventArgs e)
