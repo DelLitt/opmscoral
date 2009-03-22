@@ -1,6 +1,6 @@
 ﻿namespace POSReports
 {
-    partial class StockInReportViewer
+    partial class ReturnPOrderReportViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,13 +38,12 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.stockInBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
-            this.StockStatisticTableAdapter = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
-            this.StockInTableAdapter = new POSReports.posDataSetTableAdapters.StockInTableAdapter();
+            this.returnPOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReturnPOrderTableAdapter = new POSReports.posDataSetTableAdapters.ReturnPOrderTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stockInBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnPOrderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -68,8 +67,8 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 74);
-            this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(904, 74);
+            this.tableLayoutPanel1.TabIndex = 7;
             // 
             // label1
             // 
@@ -136,47 +135,43 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_stockIn";
-            reportDataSource1.Value = this.stockInBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockInReport.rdlc";
+            reportDataSource2.Name = "posDataSet_returnPOrder";
+            reportDataSource2.Value = this.returnPOrderBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.ReturnPOrderReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(784, 452);
-            this.reportViewer1.TabIndex = 6;
-            // 
-            // stockInBindingSource
-            // 
-            this.stockInBindingSource.DataMember = "stockIn";
-            this.stockInBindingSource.DataSource = this.posDataSet;
+            this.reportViewer1.Size = new System.Drawing.Size(904, 530);
+            this.reportViewer1.TabIndex = 8;
             // 
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // StockStatisticTableAdapter
+            // returnPOrderBindingSource
             // 
-            this.StockStatisticTableAdapter.ClearBeforeFill = true;
+            this.returnPOrderBindingSource.DataMember = "returnPOrder";
+            this.returnPOrderBindingSource.DataSource = this.posDataSet;
             // 
-            // StockInTableAdapter
+            // ReturnPOrderTableAdapter
             // 
-            this.StockInTableAdapter.ClearBeforeFill = true;
+            this.ReturnPOrderTableAdapter.ClearBeforeFill = true;
             // 
-            // StockInReportViewer
+            // ReturnPOrderReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 526);
+            this.ClientSize = new System.Drawing.Size(904, 604);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "StockInReportViewer";
-            this.Text = "BÁO CÁO NHẬP HÀNG";
-            this.Load += new System.EventHandler(this.StockInReportViewer_Load);
+            this.Name = "ReturnPOrderReportViewer";
+            this.Text = "ReturnPOrderReportViewer";
+            this.Load += new System.EventHandler(this.ReturnPOrderReportViewer_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stockInBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnPOrderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -190,10 +185,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker toDate;
         private System.Windows.Forms.Button button1;
-        private posDataSet posDataSet;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter StockStatisticTableAdapter;
-        private System.Windows.Forms.BindingSource stockInBindingSource;
-        private POSReports.posDataSetTableAdapters.StockInTableAdapter StockInTableAdapter;
+        private System.Windows.Forms.BindingSource returnPOrderBindingSource;
+        private posDataSet posDataSet;
+        private POSReports.posDataSetTableAdapters.ReturnPOrderTableAdapter ReturnPOrderTableAdapter;
     }
 }

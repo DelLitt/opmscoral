@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -104,6 +104,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentStockinReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentStockinReportViewer.Designer.cs">
+      <DependentUpon>DepartmentStockinReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeptStockStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeptStockStatisticReportViewer.Designer.cs">
+      <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="posDataSet.cs">
       <DependentUpon>posDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -128,6 +140,16 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <EmbeddedResource Include="DepartmentStockinReport.rdlc" />
+    <EmbeddedResource Include="DepartmentStockinReportViewer.resx">
+      <DependentUpon>DepartmentStockinReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeptStockStatisticReport.rdlc" />
+    <EmbeddedResource Include="DeptStockStatisticReportViewer.resx">
+      <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseDetailReport.rdlc" />
     <EmbeddedResource Include="PurchaseDetailsReportViewer.resx">
       <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>
@@ -147,6 +169,11 @@
     <EmbeddedResource Include="RestockinReport.rdlc" />
     <EmbeddedResource Include="RestockinReportViewer.resx">
       <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnPOrderReport.rdlc" />
+    <EmbeddedResource Include="ReturnPOrderReportViewer.resx">
+      <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="StockInReport.rdlc" />
@@ -208,6 +235,12 @@
     </Compile>
     <Compile Include="RestockinReportViewer.Designer.cs">
       <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnPOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnPOrderReportViewer.Designer.cs">
+      <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="StockInReportViewer.cs">
       <SubType>Form</SubType>
