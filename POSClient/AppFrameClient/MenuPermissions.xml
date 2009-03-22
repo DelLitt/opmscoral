@@ -33,7 +33,9 @@
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />    
+    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />   
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
