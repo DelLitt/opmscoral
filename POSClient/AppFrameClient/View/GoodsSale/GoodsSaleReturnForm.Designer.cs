@@ -120,6 +120,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPayMore = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
@@ -155,7 +157,7 @@
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(8, 540);
+            this.btnHelp.Location = new System.Drawing.Point(4, 627);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
             this.btnHelp.TabIndex = 40;
@@ -165,7 +167,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(632, 541);
+            this.btnReset.Location = new System.Drawing.Point(628, 628);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 13;
@@ -176,7 +178,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(432, 540);
+            this.btnSave.Location = new System.Drawing.Point(428, 627);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(194, 23);
             this.btnSave.TabIndex = 12;
@@ -189,9 +191,9 @@
             this.txtBillDate.BackColor = System.Drawing.SystemColors.Control;
             this.txtBillDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBillDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBillDate.Location = new System.Drawing.Point(833, 18);
+            this.txtBillDate.Location = new System.Drawing.Point(918, 18);
             this.txtBillDate.Name = "txtBillDate";
-            this.txtBillDate.Size = new System.Drawing.Size(148, 14);
+            this.txtBillDate.Size = new System.Drawing.Size(70, 14);
             this.txtBillDate.TabIndex = 36;
             this.txtBillDate.TabStop = false;
             this.txtBillDate.Text = "12/12/2008";
@@ -199,7 +201,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(925, 540);
+            this.btnClose.Location = new System.Drawing.Point(921, 627);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 14;
@@ -211,7 +213,7 @@
             // 
             this.txtCharge.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCharge.Format = null;
-            this.txtCharge.Location = new System.Drawing.Point(833, 438);
+            this.txtCharge.Location = new System.Drawing.Point(835, 516);
             this.txtCharge.MaxLength = 10;
             this.txtCharge.Name = "txtCharge";
             this.txtCharge.ReadOnly = true;
@@ -224,7 +226,7 @@
             // 
             this.txtPayment.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPayment.Format = "###,###";
-            this.txtPayment.Location = new System.Drawing.Point(580, 440);
+            this.txtPayment.Location = new System.Drawing.Point(573, 518);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(131, 30);
             this.txtPayment.TabIndex = 10;
@@ -234,7 +236,7 @@
             // btnReturnAdd
             // 
             this.btnReturnAdd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturnAdd.Location = new System.Drawing.Point(13, 410);
+            this.btnReturnAdd.Location = new System.Drawing.Point(13, 487);
             this.btnReturnAdd.Name = "btnReturnAdd";
             this.btnReturnAdd.Size = new System.Drawing.Size(123, 23);
             this.btnReturnAdd.TabIndex = 26;
@@ -292,7 +294,7 @@
             this.dgvBill.Location = new System.Drawing.Point(6, 58);
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBill.Size = new System.Drawing.Size(472, 153);
+            this.dgvBill.Size = new System.Drawing.Size(472, 161);
             this.dgvBill.TabIndex = 4;
             // 
             // Column1
@@ -409,11 +411,11 @@
             // 
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(458, 446);
+            this.lblTotalAmount.Location = new System.Drawing.Point(489, 527);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(116, 13);
+            this.lblTotalAmount.Size = new System.Drawing.Size(84, 13);
             this.lblTotalAmount.TabIndex = 16;
-            this.lblTotalAmount.Text = "Khách hàng đưa thêm:";
+            this.lblTotalAmount.Text = "Khách hàng trả:";
             this.lblTotalAmount.Click += new System.EventHandler(this.lblTotalAmount_Click);
             // 
             // txtDepartment
@@ -421,7 +423,7 @@
             this.txtDepartment.Location = new System.Drawing.Point(84, 21);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.ReadOnly = true;
-            this.txtDepartment.Size = new System.Drawing.Size(335, 22);
+            this.txtDepartment.Size = new System.Drawing.Size(335, 21);
             this.txtDepartment.TabIndex = 0;
             this.txtDepartment.TabStop = false;
             // 
@@ -430,7 +432,7 @@
             this.txtEmployee.Location = new System.Drawing.Point(523, 21);
             this.txtEmployee.Name = "txtEmployee";
             this.txtEmployee.ReadOnly = true;
-            this.txtEmployee.Size = new System.Drawing.Size(219, 22);
+            this.txtEmployee.Size = new System.Drawing.Size(219, 21);
             this.txtEmployee.TabIndex = 1;
             this.txtEmployee.TabStop = false;
             // 
@@ -439,7 +441,7 @@
             this.txtWorkingTime.Location = new System.Drawing.Point(833, 21);
             this.txtWorkingTime.Name = "txtWorkingTime";
             this.txtWorkingTime.ReadOnly = true;
-            this.txtWorkingTime.Size = new System.Drawing.Size(153, 22);
+            this.txtWorkingTime.Size = new System.Drawing.Size(153, 21);
             this.txtWorkingTime.TabIndex = 7;
             this.txtWorkingTime.TabStop = false;
             // 
@@ -447,7 +449,7 @@
             // 
             this.lblPayment.AutoSize = true;
             this.lblPayment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayment.Location = new System.Drawing.Point(785, 445);
+            this.lblPayment.Location = new System.Drawing.Point(786, 523);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(44, 13);
             this.lblPayment.TabIndex = 17;
@@ -458,7 +460,7 @@
             this.lblWorkingTime.AutoSize = true;
             this.lblWorkingTime.Location = new System.Drawing.Point(776, 24);
             this.lblWorkingTime.Name = "lblWorkingTime";
-            this.lblWorkingTime.Size = new System.Drawing.Size(51, 14);
+            this.lblWorkingTime.Size = new System.Drawing.Size(47, 13);
             this.lblWorkingTime.TabIndex = 8;
             this.lblWorkingTime.Text = "Ca trực:";
             // 
@@ -476,7 +478,7 @@
             // 
             this.lblBillDate.AutoSize = true;
             this.lblBillDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillDate.Location = new System.Drawing.Point(725, 18);
+            this.lblBillDate.Location = new System.Drawing.Point(810, 18);
             this.lblBillDate.Name = "lblBillDate";
             this.lblBillDate.Size = new System.Drawing.Size(88, 13);
             this.lblBillDate.TabIndex = 10;
@@ -487,7 +489,7 @@
             this.lblEmployee.AutoSize = true;
             this.lblEmployee.Location = new System.Drawing.Point(452, 24);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(65, 14);
+            this.lblEmployee.Size = new System.Drawing.Size(59, 13);
             this.lblEmployee.TabIndex = 5;
             this.lblEmployee.Text = "Nhân viên:";
             // 
@@ -499,7 +501,7 @@
             this.groupBox1.Controls.Add(this.txtDepartment);
             this.groupBox1.Controls.Add(this.txtWorkingTime);
             this.groupBox1.Controls.Add(this.lblWorkingTime);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(15, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(992, 52);
@@ -512,12 +514,14 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Location = new System.Drawing.Point(4, 24);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(63, 14);
+            this.lblDepartment.Size = new System.Drawing.Size(58, 13);
             this.lblDepartment.TabIndex = 4;
             this.lblDepartment.Text = "Cửa hàng:";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.txtPayMore);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtBarcode);
             this.groupBox2.Controls.Add(this.label5);
@@ -553,7 +557,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 60);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(992, 475);
+            this.groupBox2.Size = new System.Drawing.Size(992, 561);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa đơn";
@@ -562,7 +566,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 233);
+            this.label6.Location = new System.Drawing.Point(9, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 63;
@@ -570,7 +574,7 @@
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(80, 230);
+            this.txtBarcode.Location = new System.Drawing.Point(66, 230);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(200, 21);
             this.txtBarcode.TabIndex = 8;
@@ -582,7 +586,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(743, 228);
+            this.label5.Location = new System.Drawing.Point(741, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 61;
@@ -593,7 +597,7 @@
             // 
             this.txtReturnPayment.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnPayment.Format = "###,###";
-            this.txtReturnPayment.Location = new System.Drawing.Point(835, 217);
+            this.txtReturnPayment.Location = new System.Drawing.Point(833, 222);
             this.txtReturnPayment.Name = "txtReturnPayment";
             this.txtReturnPayment.ReadOnly = true;
             this.txtReturnPayment.Size = new System.Drawing.Size(147, 30);
@@ -629,7 +633,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(541, 419);
+            this.label4.Location = new System.Drawing.Point(534, 497);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 57;
@@ -639,7 +643,7 @@
             // 
             this.txtTax.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTax.Format = "###,###";
-            this.txtTax.Location = new System.Drawing.Point(580, 409);
+            this.txtTax.Location = new System.Drawing.Point(573, 487);
             this.txtTax.Name = "txtTax";
             this.txtTax.ReadOnly = true;
             this.txtTax.Size = new System.Drawing.Size(131, 30);
@@ -651,16 +655,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(725, 420);
+            this.label3.Location = new System.Drawing.Point(726, 462);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 55;
-            this.label3.Text = "Tổng số tiền KH trả:";
+            this.label3.Text = "Tổng tiền mua hàng:";
             // 
             // txtTotalAmount
             // 
             this.txtTotalAmount.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(833, 407);
+            this.txtTotalAmount.Location = new System.Drawing.Point(834, 449);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.Size = new System.Drawing.Size(148, 30);
@@ -670,7 +674,7 @@
             // btnRemoveReturnGoods
             // 
             this.btnRemoveReturnGoods.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveReturnGoods.Location = new System.Drawing.Point(141, 410);
+            this.btnRemoveReturnGoods.Location = new System.Drawing.Point(141, 487);
             this.btnRemoveReturnGoods.Name = "btnRemoveReturnGoods";
             this.btnRemoveReturnGoods.Size = new System.Drawing.Size(76, 23);
             this.btnRemoveReturnGoods.TabIndex = 11;
@@ -761,7 +765,7 @@
             this.dgvReturnBill.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvReturnBill.Location = new System.Drawing.Point(535, 58);
             this.dgvReturnBill.Name = "dgvReturnBill";
-            this.dgvReturnBill.Size = new System.Drawing.Size(445, 153);
+            this.dgvReturnBill.Size = new System.Drawing.Size(445, 161);
             this.dgvReturnBill.TabIndex = 7;
             this.dgvReturnBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnBill_CellEndEdit);
             this.dgvReturnBill.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturnBill_CellEnter);
@@ -900,9 +904,9 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvNewBill.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvNewBill.Location = new System.Drawing.Point(7, 255);
+            this.dgvNewBill.Location = new System.Drawing.Point(3, 258);
             this.dgvNewBill.Name = "dgvNewBill";
-            this.dgvNewBill.Size = new System.Drawing.Size(975, 149);
+            this.dgvNewBill.Size = new System.Drawing.Size(975, 185);
             this.dgvNewBill.TabIndex = 9;
             this.dgvNewBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewBill_CellEndEdit);
             this.dgvNewBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewBill_CellClick);
@@ -983,7 +987,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(458, 239);
+            this.label1.Location = new System.Drawing.Point(480, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 52;
@@ -993,7 +997,7 @@
             // 
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(261, 540);
+            this.button1.Location = new System.Drawing.Point(257, 627);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 23);
             this.button1.TabIndex = 45;
@@ -1016,7 +1020,7 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.ReturnPurchaseOrder.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(737, 532);
+            this.reportViewer1.Location = new System.Drawing.Point(115, 576);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(50, 50);
@@ -1029,18 +1033,39 @@
             this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftZ;
             this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(717, 493);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 13);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Khách hàng đưa thêm:";
+            // 
+            // txtPayMore
+            // 
+            this.txtPayMore.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayMore.Location = new System.Drawing.Point(835, 482);
+            this.txtPayMore.Name = "txtPayMore";
+            this.txtPayMore.ReadOnly = true;
+            this.txtPayMore.Size = new System.Drawing.Size(148, 30);
+            this.txtPayMore.TabIndex = 64;
+            this.txtPayMore.TabStop = false;
+            // 
             // GoodsSaleReturnForm
             // 
-            this.ClientSize = new System.Drawing.Size(1008, 567);
+            this.ClientSize = new System.Drawing.Size(1008, 662);
             this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.button1);
             this.Name = "GoodsSaleReturnForm";
+            this.Text = "Trả đổi hàng";
             this.Load += new System.EventHandler(this.GoodsSaleReturnForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GoodsSaleReturnForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).EndInit();
@@ -1149,5 +1174,7 @@
         private System.Windows.Forms.BindingSource DepartmentBindingSource;
         private System.Windows.Forms.BindingSource PurchaseOrderBindingSource;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtPayMore;
     }
 }

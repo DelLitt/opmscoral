@@ -12,6 +12,7 @@ using AppFrame.Presenter.Report;
 using AppFrame.Utility;
 using AppFrame.View.Reports;
 using AppFrameClient.ViewModel;
+using POSReports;
 
 namespace AppFrameClient.View.Reports
 {
@@ -36,7 +37,7 @@ namespace AppFrameClient.View.Reports
             bdsStockOutResultDetail.DataSource = pSODetList;
 
 
-            dgvStockProductsDetail.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
+            dgvStockProductsDetail.Columns[0].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
             ReportStockOutEventArgs stockOutEventArgs = new ReportStockOutEventArgs();
             EventUtility.fireEvent(LoadAllDeparmentEvent,this,stockOutEventArgs);
             BindingSource bdsDepartments = new BindingSource();
@@ -171,6 +172,21 @@ namespace AppFrameClient.View.Reports
         }
 
         private void view_group_Click(object sender, EventArgs e)
+        {
+            new DepartmentStockinReportViewer().ShowDialog();
+        }
+
+        private void view_detail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStockProducts_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dgvStockProductsDetail_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
         }

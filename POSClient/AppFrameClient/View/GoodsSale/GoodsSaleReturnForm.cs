@@ -103,6 +103,7 @@ namespace AppFrameClient.View.GoodsSale
         private void btnLoadPO_Click(object sender, EventArgs e)
         {
             pODReturnList.Clear();
+            bdsReturnBill.EndEdit();
             goodsSaleReturnController.ReturnPurchaseOrder = null;
             GoodsSaleReturnEventArgs goodsSaleReturnEventArgs = new GoodsSaleReturnEventArgs();
             goodsSaleReturnEventArgs.SearchPurchaseOrderId = txtBillNumber.Text.Trim();
@@ -150,7 +151,7 @@ namespace AppFrameClient.View.GoodsSale
                 }
             }
             CalculateReturnPrice(pODReturnList);
-            txtCharge.Text = CalculateCharge().ToString();
+            CalculateCharge();
         }
 
         private PurchaseOrderDetail DumpNewRow(PurchaseOrderDetail detail)
@@ -333,7 +334,7 @@ namespace AppFrameClient.View.GoodsSale
             }
             if(Int64.Parse(txtCharge.Text) < 0)
             {
-                MessageBox.Show("Hãy nhập vào số tiền khách hàng trả !");
+                MessageBox.Show("Số tiền trả thêm chưa đủ !");
                 return;    
             }
             if (goodsSaleReturnController.ReturnPurchaseOrder == null)
@@ -379,7 +380,14 @@ namespace AppFrameClient.View.GoodsSale
         private void PrintReturnReceipt(GoodsSaleReturnEventArgs args)
         {
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
-            this.PurchaseOrderBindingSource.DataSource = args.RefPurchaseOrder;
+            if (args.NextPurchaseOrder == null)
+            {
+                this.PurchaseOrderBindingSource.DataSource = args.RefPurchaseOrder;
+            }
+            else
+            {
+                this.PurchaseOrderBindingSource.DataSource = args.NextPurchaseOrder;
+            }
             this.PurchaseOrderDetailBindingSource.DataSource =
                 ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
@@ -402,6 +410,7 @@ namespace AppFrameClient.View.GoodsSale
             txtBillNumber.Text = "";
             txtBillDate.Text = "";
             goodsSaleReturnController.ReturnPurchaseOrder= null;
+            goodsSaleReturnController.NextPurchaseOrder = null;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -430,7 +439,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void txtPayment_TextChanged(object sender, EventArgs e)
         {
-            txtCharge.Text = CalculateCharge().ToString();
+            CalculateCharge();
         }
 
         private void GoodsSaleReturnForm_Load(object sender, EventArgs e)
@@ -468,8 +477,13 @@ namespace AppFrameClient.View.GoodsSale
             EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
             // event has been modified
-            pODNewList[selectedIndex] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
-            bdsNewBill.EndEdit();
+            if (goodsSaleEventArgs.SelectedPurchaseOrderDetail != null)
+            {
+                pODNewList[selectedIndex] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
+                bdsNewBill.EndEdit();
+                txtTotalAmount.Text = CalculateTotalPrice(pODNewList).ToString();
+                CalculateCharge();
+            }
 
             if (newForm != null)
             {
@@ -537,7 +551,7 @@ namespace AppFrameClient.View.GoodsSale
             GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice = CalculateTotalPrice(pODNewList);
             txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
             //txtTotalAmount.Text = CalculateTotalAmount().ToString();
-            txtCharge.Text = CalculateCharge().ToString();
+            CalculateCharge();
             RemoveEmptyAndDuplicateRowFromList(pODNewList);
             ClearInput();
             txtBarcode.Focus();
@@ -578,7 +592,7 @@ namespace AppFrameClient.View.GoodsSale
                 finally
                 {
                     txtTotalAmount.Text = CalculateTotalPrice(pODNewList).ToString();
-                    txtCharge.Text = CalculateCharge().ToString();
+                    CalculateCharge();
                     RemoveEmptyAndDuplicateRowFromList(pODNewList);
                     ClearInput();
                     txtBarcode.Focus();
@@ -587,7 +601,7 @@ namespace AppFrameClient.View.GoodsSale
 
         }
 
-        private long CalculateCharge()
+        private void CalculateCharge()
         {
             if(string.IsNullOrEmpty(txtTotalAmount.Text))
             {
@@ -601,9 +615,20 @@ namespace AppFrameClient.View.GoodsSale
             }
             long returnPayment = Int64.Parse(txtReturnPayment.Text);
             long totalAmount = newTotalAmount - returnPayment;
+            if(totalAmount > 0 )
+            {
+                txtPayMore.Text = totalAmount.ToString();
+                txtCharge.Text = "0";
+            }
+            else
+            {
+                txtCharge.Text = (returnPayment - newTotalAmount).ToString();
+                txtPayMore.Text = "0";
+            }
             long payment = string.IsNullOrEmpty(txtPayment.Text) ? 0 : Int64.Parse(txtPayment.Text);
             long charge = payment - totalAmount;
-            return charge;
+            txtCharge.Text = charge.ToString();
+            //return charge;
         }
 
         private void ClearInput()
@@ -669,7 +694,7 @@ namespace AppFrameClient.View.GoodsSale
             GoodsSaleReturnController.ReturnPurchaseOrder.PurchasePrice = CalculateTotalPrice(pODReturnList);
             //txtTotalAmount.Text = GoodsSaleReturnController.NextPurchaseOrder.PurchasePrice.ToString();
             //txtTotalAmount.Text = CalculateTotalAmount().ToString();
-            txtCharge.Text = CalculateCharge().ToString();
+            CalculateCharge();
             //RemoveEmptyAndDuplicateRowFromList(pODNewList);
             ClearInput();
             txtBarcode.Focus();

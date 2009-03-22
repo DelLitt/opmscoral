@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.view_detail = new System.Windows.Forms.Button();
@@ -47,10 +49,7 @@
             this.stockInQuantitiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsStockOutResultPM = new System.Windows.Forms.BindingSource(this.components);
             this.dgvStockProductsDetail = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receipt_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockInIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +65,9 @@
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsStockOutResultDetail = new System.Windows.Forms.BindingSource(this.components);
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -121,6 +123,8 @@
             this.view_detail.TabIndex = 21;
             this.view_detail.Text = "Ịn chi tiết";
             this.view_detail.UseVisualStyleBackColor = true;
+            this.view_detail.Visible = false;
+            this.view_detail.Click += new System.EventHandler(this.view_detail_Click);
             // 
             // view_group
             // 
@@ -154,6 +158,8 @@
             // 
             // dgvStockProducts
             // 
+            this.dgvStockProducts.AllowUserToAddRows = false;
+            this.dgvStockProducts.AllowUserToDeleteRows = false;
             this.dgvStockProducts.AutoGenerateColumns = false;
             this.dgvStockProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -173,6 +179,7 @@
             this.dgvStockProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockProducts.Size = new System.Drawing.Size(984, 150);
             this.dgvStockProducts.TabIndex = 16;
+            this.dgvStockProducts.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvStockProducts_DataError);
             this.dgvStockProducts.SelectionChanged += new System.EventHandler(this.dgvStockProducts_SelectionChanged);
             // 
             // STT
@@ -243,13 +250,12 @@
             // 
             // dgvStockProductsDetail
             // 
+            this.dgvStockProductsDetail.AllowUserToAddRows = false;
+            this.dgvStockProductsDetail.AllowUserToDeleteRows = false;
             this.dgvStockProductsDetail.AutoGenerateColumns = false;
             this.dgvStockProductsDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockProductsDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
             this.receipt_date,
-            this.color,
-            this.size,
             this.quantity,
             this.total,
             this.stockInIdDataGridViewTextBoxColumn,
@@ -264,58 +270,45 @@
             this.exclusiveKeyDataGridViewTextBoxColumn,
             this.delFlgDataGridViewTextBoxColumn,
             this.productDataGridViewTextBoxColumn,
-            this.productMasterDataGridViewTextBoxColumn});
+            this.productMasterDataGridViewTextBoxColumn,
+            this.id,
+            this.color,
+            this.size});
             this.dgvStockProductsDetail.DataSource = this.bdsStockOutResultDetail;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStockProductsDetail.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStockProductsDetail.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStockProductsDetail.Location = new System.Drawing.Point(12, 303);
             this.dgvStockProductsDetail.MultiSelect = false;
             this.dgvStockProductsDetail.Name = "dgvStockProductsDetail";
             this.dgvStockProductsDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockProductsDetail.Size = new System.Drawing.Size(984, 203);
             this.dgvStockProductsDetail.TabIndex = 17;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "STT";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
+            this.dgvStockProductsDetail.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvStockProductsDetail_DataError);
             // 
             // receipt_date
             // 
             this.receipt_date.DataPropertyName = "CreateDate";
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy hh:mm:ss";
+            this.receipt_date.DefaultCellStyle = dataGridViewCellStyle1;
             this.receipt_date.HeaderText = "Ngày nhập";
             this.receipt_date.Name = "receipt_date";
             this.receipt_date.ReadOnly = true;
             this.receipt_date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.receipt_date.Width = 120;
             // 
-            // color
-            // 
-            this.color.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            this.color.HeaderText = "Màu";
-            this.color.Name = "color";
-            this.color.ReadOnly = true;
-            this.color.Width = 160;
-            // 
-            // size
-            // 
-            this.size.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            this.size.HeaderText = "Kích cỡ";
-            this.size.Name = "size";
-            this.size.ReadOnly = true;
-            this.size.Width = 160;
-            // 
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantity.HeaderText = "Số lượng xuất";
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
@@ -420,6 +413,28 @@
             this.productMasterDataGridViewTextBoxColumn.HeaderText = "ProductMaster";
             this.productMasterDataGridViewTextBoxColumn.Name = "productMasterDataGridViewTextBoxColumn";
             this.productMasterDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "STT";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // color
+            // 
+            this.color.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.color.HeaderText = "Màu";
+            this.color.Name = "color";
+            this.color.ReadOnly = true;
+            this.color.Width = 160;
+            // 
+            // size
+            // 
+            this.size.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.size.HeaderText = "Kích cỡ";
+            this.size.Name = "size";
+            this.size.ReadOnly = true;
+            this.size.Width = 160;
             // 
             // bdsStockOutResultDetail
             // 
@@ -594,7 +609,7 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.Visible = false;
             // 
-            // DepartmentStockOutReportForm
+            // DepartmentStockInReportForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 562);
             this.Controls.Add(this.label5);
@@ -612,7 +627,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "DepartmentStockOutReportForm";
+            this.Name = "DepartmentStockInReportForm";
             this.Load += new System.EventHandler(this.DepartmentGoodsExportReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockOutResultPM)).EndInit();
@@ -656,10 +671,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receipt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockInTotalAmounts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productMasterGlobalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockInQuantitiesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn receipt_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn color;
-        private System.Windows.Forms.DataGridViewTextBoxColumn size;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockInIdDataGridViewTextBoxColumn;
@@ -675,13 +695,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMasterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receipt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StockInTotalAmounts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productMasterGlobalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockInQuantitiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn size;
     }
 }

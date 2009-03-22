@@ -477,7 +477,8 @@ namespace AppFrame.DataLayer
                                            "SELECT DISTINCT p.ProductMaster FROM ProductMaster pm, Product p ";
                                        if(!allDepartment)
                                        {
-                                           queryString += ",DepartmentStockIn dsi,DepartmentStockInDetail dsid ";
+                                           //queryString += ",DepartmentStockIn dsi,DepartmentStockInDetail dsid ";
+                                           queryString += ",DepartmentStock ds ";
                                        }
                                        queryString += " WHERE pm.ProductMasterId = p.ProductMaster.ProductMasterId " +
                                            " AND p.ProductMaster.ProductName LIKE '%" + (string)master.ProductName + "%' " +
@@ -508,17 +509,21 @@ namespace AppFrame.DataLayer
                                        if (!allDepartment) // if not search all so search by current department
                                        {
                                            //queryString += " AND pm.ProductMasterId = dsi.DepartmentStockInPK.DepartmentId ";
-                                           queryString += " AND dsid.DepartmentStockInDetailPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
+                                           //queryString += " AND dsid.DepartmentStockInDetailPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
                                            //queryString += " AND dsid.DepartmentStockInDetailPK.StockInId = dsi.DepartmentStockInPK.StockInId ";
                                            //queryString += " AND dsid.DepartmentStockInDetailPK.DepartmentId = dsi.DepartmentStockInPK.DepartmentId ";
-                                           queryString += " AND p.ProductId = dsid.DepartmentStockInDetailPK.ProductId ";
+                                           //queryString += " AND p.ProductId = dsid.DepartmentStockInDetailPK.ProductId ";
+                                           queryString += " AND ds.DepartmentStockPK.DepartmentId=" +
+                                                          CurrentDepartment.Get().DepartmentId;
+                                           queryString += " AND p.ProductId = ds.DepartmentStockPK.ProductId";
+                                           queryString += " AND ds.GoodQuantity > 0 ";
                                        }
 
                                        // ORDER BY ProductName
                                        /*queryString +=
                                            " ORDER BY pm.ProductMasterName,pm.ProductColor.ColorId,pm.ProductSize.SizeId ";*/
                                        IList productMasters = session.CreateQuery(queryString)
-                                           .SetMaxResults(500)
+                                           .SetMaxResults(100)
                                            .List();
                                        return productMasters;
                                    }

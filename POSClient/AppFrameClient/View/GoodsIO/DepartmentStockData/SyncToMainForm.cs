@@ -84,7 +84,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 resultList.Add(result);
                 syncResultBindingSource.DataSource = resultList;
             }
-            catch (Exception)
+            catch (Exception exps)
             {
                 MessageBox.Show("Có lỗi xảy ra");
                 throw;

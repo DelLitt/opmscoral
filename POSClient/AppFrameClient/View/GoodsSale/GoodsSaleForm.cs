@@ -194,6 +194,7 @@ namespace AppFrameClient.View.GoodsSale
             txtDepartment.Text = currentDepartment.DepartmentName;
             txtEmployee.Text = ClientInfo.getInstance().LoggedUser.Name;
             txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+            //this.reportPurchaseOrder.RefreshReport();
             this.reportPurchaseOrder.RefreshReport();
             txtBarcode.Focus();
             //btnAdd_Click(this, null);
@@ -300,7 +301,7 @@ namespace AppFrameClient.View.GoodsSale
                     GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
                     txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
                     bdsBill.EndEdit();
-                    
+                    CalculateCharge();
                 }
             }
             catch(Exception ex)
@@ -334,6 +335,10 @@ namespace AppFrameClient.View.GoodsSale
         private long CalculateTotalPrice(PurchaseOrderDetailCollection list)
         {
             long totalAmount = 0;
+            if(pODList == null)
+            {
+                return totalAmount;
+            }
             foreach(PurchaseOrderDetail purchaseOrderDetail in list)
             {
                 totalAmount += purchaseOrderDetail.Price * purchaseOrderDetail.Quantity;                
@@ -343,15 +348,17 @@ namespace AppFrameClient.View.GoodsSale
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection rows = dgvBill.SelectedRows;
-            foreach (DataGridViewRow row in rows)
+            //DataGridViewSelectedCellCollection rows = dgvBill.SelectedCells;
+            if(dgvBill.CurrentCell!=null)
             {
-                pODList.RemoveAt(row.Index);                
-            }
-            GoodsSaleController.PurchaseOrder.PurchaseOrderDetails =
+                pODList.RemoveAt(dgvBill.CurrentCell.OwningRow.Index);
+                GoodsSaleController.PurchaseOrder.PurchaseOrderDetails =
                 ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODList);
-
-            bdsBill.EndEdit();
+                bdsBill.EndEdit();
+                dgvBill.Focus();
+            }
+            
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -431,6 +438,7 @@ namespace AppFrameClient.View.GoodsSale
             purchaseOrder.DelFlg = 0;
             purchaseOrder.PurchaseOrderPK = purchaseOrderPK;
             purchaseOrder.PurchaseOrderDetails = ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODList);
+            GoodsSaleController.PurchaseOrder = purchaseOrder;
         }
 
         private void txtPayment_TextChanged(object sender, EventArgs e)
@@ -444,6 +452,11 @@ namespace AppFrameClient.View.GoodsSale
         {
             if (!CheckErrorOnForm())
             {
+                return;
+            }
+            if(GoodsSaleController.PurchaseOrder == null || pODList.Count == 0)
+            {
+                MessageBox.Show(" Không có hàng để lưu hóa đơn");
                 return;
             }
             RemoveEmptyProductMasterIdRow();
@@ -468,6 +481,7 @@ namespace AppFrameClient.View.GoodsSale
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
             this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(pODList);
+            
 
             /*string deviceInfo = "<DeviceInfo>" +
             "  <OutputFormat>EMF</OutputFormat>" +
@@ -482,6 +496,7 @@ namespace AppFrameClient.View.GoodsSale
 
             this.reportPurchaseOrder.LocalReport.Refresh();
             this.reportPurchaseOrder.PrintDialog();
+            ClearGoodsSaleForm();
         }
 
         private PurchaseOrderDetailCollection CreateNonDuplicate(PurchaseOrderDetailCollection list)
@@ -663,6 +678,10 @@ namespace AppFrameClient.View.GoodsSale
                     {
                         pODList[pODList.Count - 1].Quantity = totalNumber;
                     }
+                        if(GoodsSaleController.PurchaseOrder== null)
+                        {
+                            GoodsSaleController.PurchaseOrder = new PurchaseOrder();
+                        }
                     GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
                     txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
                     bdsBill.EndEdit();
@@ -728,6 +747,19 @@ namespace AppFrameClient.View.GoodsSale
         private void GoodsSaleForm_Shown(object sender, EventArgs e)
         {
             txtBarcode.Focus();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ClearGoodsSaleForm();
+            GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+            txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+            GoodsSaleController.PurchaseOrder = null;
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            btnDelete_Click(sender,e);
         }
     }
 }
