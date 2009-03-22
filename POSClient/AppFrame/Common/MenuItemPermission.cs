@@ -81,9 +81,9 @@ namespace AppFrame.Common
             loadRoles((fileStream));
         }
         /// <summary>
-        /// Load roles from a stream
+        /// 
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="inputStream"></param>
         public void loadRoles(Stream inputStream)
         {
             XmlTextReader reader = new XmlTextReader(inputStream);

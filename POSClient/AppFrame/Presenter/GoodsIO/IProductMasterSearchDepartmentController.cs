@@ -23,6 +23,7 @@ namespace AppFrame.Presenter.GoodsIO
         IDistributorLogic DistributorLogic { get; set; }
         IPackagerLogic PackagerLogic { get; set; }
         IDepartmentStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
+        IDepartmentStockLogic DepartmentStockLogic { get; set; }
 
         #endregion
     }
