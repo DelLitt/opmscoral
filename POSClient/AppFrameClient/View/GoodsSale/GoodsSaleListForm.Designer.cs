@@ -482,7 +482,7 @@
         public System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         public System.Windows.Forms.Label lblTotalAmount;
         public System.Windows.Forms.TextBox txtTotalAmount;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
 
 
 

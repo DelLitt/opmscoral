@@ -1966,11 +1966,31 @@ XIN CÁM ƠN QUÝ KHÁCH!
         <Left>0.125in</Left>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
         <ReportItems>
+          <Textbox Name="textbox23">
+            <rd:DefaultName>textbox23</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Width>1in</Width>
+            <Style>
+              <FontStyle>Italic</FontStyle>
+              <FontSize>9pt</FontSize>
+              <TextAlign>Right</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>8</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.625in</Left>
+            <Height>0.25in</Height>
+            <Value>Ngày</Value>
+          </Textbox>
           <Textbox Name="textbox21">
             <rd:DefaultName>textbox21</rd:DefaultName>
             <Top>0.25in</Top>
             <Style>
               <FontStyle>Italic</FontStyle>
+              <FontSize>9pt</FontSize>
               <TextAlign>Right</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -1986,6 +2006,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
           <Textbox Name="textbox17">
             <Top>1in</Top>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2000,6 +2021,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Top>1in</Top>
             <Width>0.875in</Width>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2012,6 +2034,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
           <Textbox Name="textbox15">
             <Top>0.75in</Top>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2026,6 +2049,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
           <Textbox Name="textbox14">
             <Top>0.5in</Top>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2041,6 +2065,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Top>0.75in</Top>
             <Width>0.875in</Width>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2056,6 +2081,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Top>0.5in</Top>
             <Width>0.875in</Width>
             <Style>
+              <FontSize>9pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2117,6 +2143,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="ProductMaster">
                       <rd:DefaultName>ProductMaster</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2134,6 +2161,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="Quantity_2">
                       <rd:DefaultName>Quantity_2</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2151,6 +2179,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="Price_2">
                       <rd:DefaultName>Price_2</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -2167,6 +2196,9 @@ XIN CÁM ƠN QUÝ KHÁCH!
             </TableRow>
           </TableRows>
         </Details>
+        <Style>
+          <FontSize>9pt</FontSize>
+        </Style>
         <Header>
           <TableRows>
             <TableRow>
@@ -2176,6 +2208,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="textbox1">
                       <rd:DefaultName>textbox1</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -2195,6 +2228,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextDecoration>Underline</TextDecoration>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -2213,6 +2247,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="textbox3">
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -2232,6 +2267,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="textbox10">
                       <rd:DefaultName>textbox10</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -2299,6 +2335,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -2321,6 +2358,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -2368,6 +2406,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>None</Top>
                         </BorderStyle>
                         <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -2390,6 +2429,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>None</Top>
                         </BorderStyle>
                         <FontStyle>Italic</FontStyle>
+                        <FontSize>9pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>

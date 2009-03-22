@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
@@ -15,6 +19,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsSale;
 using AppFrameClient.Common;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
+using Microsoft.Reporting.WinForms;
 
 namespace AppFrameClient.View.GoodsSale
 {
@@ -370,7 +375,7 @@ namespace AppFrameClient.View.GoodsSale
                 if(!eventArgs.HasErrors)
                 {
                     MessageBox.Show("Lưu thành công !");
-                    PrintReturnReceipt(eventArgs);
+                    PrintDirectlyToPrinter(eventArgs);
                     ClearForm();
                 }
                 
@@ -390,10 +395,108 @@ namespace AppFrameClient.View.GoodsSale
             }
             this.PurchaseOrderDetailBindingSource.DataSource =
                 ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
+            
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
-            this.reportViewer1.LocalReport.Refresh();
-            this.reportViewer1.PrintDialog();
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(reportViewer1_RenderingComplete);
+            //this.reportViewer1.LocalReport.Refresh();
+            this.reportViewer1.RefreshReport();
+            
 
+        }
+
+        IList<Stream> streamList = new List<Stream>();
+        private void PrintDirectlyToPrinter(GoodsSaleReturnEventArgs args)
+        {
+
+            this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
+            if (args.NextPurchaseOrder == null)
+            {
+                this.PurchaseOrderBindingSource.DataSource = args.RefPurchaseOrder;
+            }
+            else
+            {
+                this.PurchaseOrderBindingSource.DataSource = args.NextPurchaseOrder;
+            }
+            this.PurchaseOrderDetailBindingSource.DataSource =
+                ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
+
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
+            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(reportViewer1_RenderingComplete);
+            this.reportViewer1.LocalReport.Refresh();
+
+
+            streamList.Clear();
+            //const string printerName = "Epson TM-T88IV";
+            var configurationAppSettings = new AppSettingsReader();
+            string printerName = (string)configurationAppSettings.GetValue("PrinterName", typeof(String));
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = printerName;
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
+            if (!printDoc.PrinterSettings.IsValid)
+            {
+                MessageBox.Show(String.Format("Can't find printer \"{0}\".", printerName));
+
+                return;
+            }
+            printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
+
+            printDoc.Print();
+
+        }
+        
+        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding,
+                              string mimeType, bool willSeek)
+        {
+            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
+            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
+            Stream stream = new MemoryStream();
+            streamList.Add(stream);
+            return stream;
+        }
+
+        void printDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.PageSettings.PrinterResolution.X = 180;
+            e.PageSettings.PrinterResolution.Y = 180;
+            e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.X =
+            180;
+            e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.Y =
+            180;
+            string deviceInfo =
+          "<DeviceInfo>" +
+          "  <OutputFormat>EMF</OutputFormat>" +
+          "  <PageWidth>8.5in</PageWidth>" +
+          "  <PageHeight>11in</PageHeight>" +
+          "  <DpiX>180</DpiX>" +
+          "  <DpiY>180</DpiY>" +
+          "  <MarginTop>0.0in</MarginTop>" +
+          "  <MarginLeft>0.0in</MarginLeft>" +
+          "  <MarginRight>0.0in</MarginRight>" +
+          "  <MarginBottom>0.0in</MarginBottom>" +
+          "</DeviceInfo>";
+            Warning[] warnings;
+
+
+
+            this.reportViewer1.LocalReport.Render("Image", deviceInfo, CreateStream, out warnings);
+            if (streamList.Count > 0)
+            {
+                foreach (Stream stream in streamList)
+                {
+                    stream.Position = 0;
+                }
+                Metafile pageImage = new Metafile(streamList[0]);
+                e.Graphics.DrawImage(pageImage, e.PageBounds);
+            }
+
+        }
+
+
+        void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        {
+            this.reportViewer1.PrintDialog();
+            this.reportViewer1.RenderingComplete -= new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(reportViewer1_RenderingComplete);
         }
 
         private void ClearForm()
@@ -401,6 +504,9 @@ namespace AppFrameClient.View.GoodsSale
             pODList.Clear();
             pODNewList.Clear();
             pODReturnList.Clear();
+            bdsBill.EndEdit();
+            bdsNewBill.EndEdit();
+            bdsReturnBill.EndEdit();
             txtCharge.Text = "0";
             txtPayment.Text = "0";
             txtTotalAmount.Text = "0";
@@ -718,6 +824,11 @@ namespace AppFrameClient.View.GoodsSale
         private void systemHotkey1_Pressed(object sender, EventArgs e)
         {
             txtBarcode.Focus();
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            btnSave_Click(sender, e);
         }
     }
 }

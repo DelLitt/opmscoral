@@ -17,8 +17,6 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         private AppFrame.View.GoodsIO.IProductMasterSearchDepartmentView productMasterSearchDepartmentView;
         
-        private IDepartmentStockLogic departmentStockLogic;
-
         public AppFrame.View.GoodsIO.IProductMasterSearchDepartmentView ProductMasterSearchDepartmentView
         {
             get
@@ -42,12 +40,27 @@ namespace AppFrameClient.Presenter.GoodsIO
             searchByProductMasterCriteria.AddEqCriteria("Department", CurrentDepartment.Get());
             searchByProductMasterCriteria.AddEqCriteria("ProductMaster", searchProductMaster);
             searchByProductMasterCriteria.AddOrder("CreateDate", false);
+            searchByProductMasterCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             IList productsStockIn = DepartmentStockInDetailLogic.FindAllProductMaster(searchProductMaster);
+            IList productsInStock = new ArrayList();
+            IList productIds = new ArrayList();
             foreach (DepartmentStockInDetail detail in productsStockIn)
             {
-                detail.Product = ProductLogic.FindById(detail.DepartmentStockInDetailPK.ProductId);
+                productIds.Add(detail.Product.ProductId);
             }
-            e.ProductsInDepartment = productsStockIn;
+            ObjectCriteria stockCrit = new ObjectCriteria();
+            stockCrit.AddSearchInCriteria("DepartmentStockPK.ProductId", productIds);
+            IList stockList = DepartmentStockLogic.FindAll(stockCrit);
+            if (stockList != null && stockList.Count > 0)
+            {
+                foreach (DepartmentStock departmentStock in stockList)
+                {
+                    departmentStock.Product = ProductLogic.FindById(departmentStock.DepartmentStockPK.ProductId);
+                    productsInStock.Add(departmentStock);    
+                }
+                
+            }
+            e.ProductsInDepartment = productsInStock;
         }
 
         void productMasterSearchDepartmentView_SelectProductEvent(object sender, ProductMasterSearchDepartmentEventArgs e)
@@ -179,7 +192,11 @@ namespace AppFrameClient.Presenter.GoodsIO
             get;
             set;
         }
-
+        public IDepartmentStockLogic DepartmentStockLogic
+        {
+            get;
+            set;
+        }
         #endregion
     }
 }

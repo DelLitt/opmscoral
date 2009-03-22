@@ -17,12 +17,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
     public partial class ProductMasterSearchDepartmentForm : BaseForm,IProductMasterSearchDepartmentView
     {
-        private DepartmentStockInDetailCollection deptStockList = null;
+        private DepartmentStockCollection deptStockList = null;
         public ProductMasterSearchDepartmentForm()
         {
             InitializeComponent();
-            deptStockList = new DepartmentStockInDetailCollection(deptStockBindingSource);
+            deptStockList = new DepartmentStockCollection(deptStockBindingSource);
             deptStockBindingSource.DataSource = deptStockList;
+            deptStockBindingSource.ResetBindings(true);
             dgvProducts.DataError += new DataGridViewDataErrorEventHandler(dgvProducts_DataError);
             dgvProductMaster.DataError += new DataGridViewDataErrorEventHandler(dgvProductMaster_DataError);
 
@@ -249,13 +250,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 EventUtility.fireEvent(SearchProductsEvent,this,eventArgs);
                 IList productsInDepartment = eventArgs.ProductsInDepartment;
                 deptStockList.Clear();
-                foreach (DepartmentStockInDetail detail in productsInDepartment)
+                foreach (DepartmentStock detail in productsInDepartment)
                 {
                     deptStockList.Add(detail);
                 }
                 // TODO : add to detail list
                 //deptStockBindingSource.DataSource = productsInDepartment;
                 deptStockBindingSource.EndEdit();
+                dgvProducts.Refresh();
+                dgvProducts.Invalidate();
             }
         }
 
