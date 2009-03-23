@@ -550,8 +550,8 @@ namespace AppFrameClient.View.GoodsSale
             string deviceInfo =
           "<DeviceInfo>" +
           "  <OutputFormat>EMF</OutputFormat>" +
-          "  <PageWidth>8.5in</PageWidth>" +
-          "  <PageHeight>11in</PageHeight>" +
+          "  <PageWidth>3.15in</PageWidth>" +
+          "  <PageHeight>5in</PageHeight>" +
           "  <DpiX>180</DpiX>" +
           "  <DpiY>180</DpiY>" +
           "  <MarginTop>0.0in</MarginTop>" +
@@ -570,7 +570,7 @@ namespace AppFrameClient.View.GoodsSale
                     stream.Position = 0;
                 }
                 Metafile pageImage = new Metafile(streamList[0]);
-                e.Graphics.DrawImage(pageImage, e.PageBounds);
+                e.Graphics.DrawImage(pageImage, 0,0);
             }
 
         }

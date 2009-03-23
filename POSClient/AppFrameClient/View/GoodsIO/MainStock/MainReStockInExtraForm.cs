@@ -521,7 +521,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnSave_Click(object sender, EventArgs e)
         {
             long cost = 0;
-            if (NumberUtility.CheckLongNullIsZero(txtCost.Text, out cost) || cost < 0)
+            if (!NumberUtility.CheckLongNullIsZero(txtCost.Text, out cost) || cost < 0)
             {
                 MessageBox.Show("Chi phí phải là số dương");
                 return;

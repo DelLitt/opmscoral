@@ -104,6 +104,21 @@ namespace AppFrameClient.Presenter.GoodsSale
                             purchaseOrderDetail.Product.ProductMaster.ProductName + " của hoá đơn này");
                     }
                     
+                    ObjectCriteria criteria = new ObjectCriteria();
+                    criteria.AddEqCriteria("DepartmentStockPK.ProductId", purchaseOrderDetail.Product.ProductId);
+                    IList deptStockList = DepartmentStockLogic.FindAll(criteria);
+                    if(deptStockList!=null && deptStockList.Count > 0)
+                    {
+
+                        DepartmentStock departmentStock = (DepartmentStock)deptStockList[0];
+                        departmentStock.GoodQuantity += po.Quantity;
+                        departmentStock.Quantity += po.Quantity;
+                        DepartmentStockLogic.Update(departmentStock);
+                    }
+                    else
+                    {
+                        throw new BusinessException("Không có mặt hàng này trong kho. Xin vui lòng kiểm tra dữ liệu");
+                    }
                     ReturnPoLogic.Add(po);
                
                     }
