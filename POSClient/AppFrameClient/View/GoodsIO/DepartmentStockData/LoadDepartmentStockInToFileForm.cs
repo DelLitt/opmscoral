@@ -110,8 +110,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         foreach (DepartmentStockIn stockIn in deptEvent.DepartmentStockInList)
                         {
-                            string fileName = exportPath + "\\" + department.DepartmentName + "_" + department.Address + " - Ma lo_" + stockIn.DepartmentStockInPK.StockInId + "_" +
-                                                              stockIn.StockInDate.ToString("yyyy_MM_dd_HH_mm_ss") + ".xac";
+                            string fileName = exportPath + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(department.DepartmentName) + " - Ma lo_" + stockIn.DepartmentStockInPK.StockInId + "_" +
+                                                              stockIn.StockInDate.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
                             SyncResult result = new SyncResult();
                             result.FileName = fileName;
                             result.Status = "Thành công";

@@ -597,10 +597,38 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
                 else
                 {
-                    deptSODetailList.RemoveAt(selectedIndex);
+                    //deptSODetailList.RemoveAt(selectedIndex);
+                    DataGridViewSelectedCellCollection cellCollection = dgvDeptStockIn.SelectedCells;
+                    IList<int> rowIndexes = new List<int>();
+                    foreach (DataGridViewCell cell in cellCollection)
+                    {
+                        if(NotInList(cell.RowIndex,rowIndexes))
+                        {
+                            rowIndexes.Add(cell.RowIndex);
+                        }
+                    }
+                    foreach (int rowIndex in rowIndexes)
+                    {
+                        deptSODetailList.RemoveAt(rowIndex);
+                    }
+                    bdsStockIn.EndEdit();
+                    dgvDeptStockIn.Refresh();
+                    dgvDeptStockIn.Invalidate();
                 }
             }
             CalculateTotalStorePrice();
+        }
+
+        private bool NotInList(int index, IList<int> indexes)
+        {
+            foreach (int i in indexes)
+            {
+                if(i == index)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void LoadProductMasterToComboBox()
@@ -1084,6 +1112,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
             EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
+        }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
+
+        private void deleteStock_Pressed(object sender, EventArgs e)
+        {
+            btnDelete_Click(sender,e);
         }
     }
 }

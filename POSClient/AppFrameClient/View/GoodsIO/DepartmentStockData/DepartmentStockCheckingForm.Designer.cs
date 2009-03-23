@@ -66,6 +66,7 @@
             this.columnLost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
@@ -380,6 +381,11 @@
             this.label11.TabIndex = 30;
             this.label11.Text = "Nhập mã vạch:";
             // 
+            // systemHotkey1
+            // 
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
             // DepartmentStockCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
@@ -436,5 +442,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
     }
 }

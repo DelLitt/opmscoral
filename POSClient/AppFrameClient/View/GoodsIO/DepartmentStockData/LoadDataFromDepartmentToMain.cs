@@ -48,7 +48,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 return;
             }
 
-            string[] fileNames = Directory.GetFiles(importPath, "*.xac");
+            string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.CLIENT_SYNC_FORMAT);
 
             if (fileNames.Length == 0)
             {

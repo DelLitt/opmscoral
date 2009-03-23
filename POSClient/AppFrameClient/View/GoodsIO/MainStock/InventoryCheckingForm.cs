@@ -335,5 +335,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             txtBarcode.BackColor = Color.White;
         }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 SyncResult result = new SyncResult();
                 string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "-" +
-                                  DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".xac";
+                                  DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.CLIENT_SYNC_FORMAT;
                 var eventArgs = new DepartmentStockOutEventArgs();
                 EventUtility.fireEvent(GetSyncDataEvent, this, eventArgs);
                 SyncFromDepartmentToMain syncData = eventArgs.SyncFromDepartmentToMain;
@@ -137,7 +137,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 return;
             }
 
-            string[] fileNames = Directory.GetFiles(importPath, "*.xac");
+            string[] fileNames = Directory.GetFiles(importPath, "*"+ CommonConstants.CLIENT_SYNC_FORMAT);
 
             if (fileNames.Length == 0)
             {
@@ -184,7 +184,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     if (fail)
                     {
-                        File.Move(importPath, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
                         errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                     }
                     else

@@ -327,7 +327,6 @@
             this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(9, 237);
-            this.dgvDeptStockIn.MultiSelect = false;
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
             this.dgvDeptStockIn.Size = new System.Drawing.Size(979, 260);
             this.dgvDeptStockIn.TabIndex = 53;
@@ -511,6 +510,7 @@
             this.btnSaveAndExport.TabIndex = 9;
             this.btnSaveAndExport.Text = "Lưu và xuất file";
             this.btnSaveAndExport.UseVisualStyleBackColor = true;
+            this.btnSaveAndExport.Visible = false;
             this.btnSaveAndExport.Click += new System.EventHandler(this.btnSaveAndExport_Click);
             // 
             // label4
