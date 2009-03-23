@@ -354,21 +354,21 @@
     <ReportItems>
       <Line Name="line2">
         <Top>2in</Top>
-        <Width>2.75in</Width>
+        <Width>1.5in</Width>
         <Style>
           <BorderStyle>
-            <Default>Solid</Default>
+            <Default>Dotted</Default>
           </BorderStyle>
         </Style>
         <ZIndex>7</ZIndex>
-        <Left>0.125in</Left>
+        <Left>0.75in</Left>
         <Height>0in</Height>
       </Line>
       <Table Name="table2">
         <ZIndex>6</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrderDetail</DataSetName>
         <Top>1.125in</Top>
-        <Width>2.75in</Width>
+        <Width>2.75001in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -675,7 +675,7 @@
         <ZIndex>5</ZIndex>
         <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
         <Top>2.125in</Top>
-        <Width>2.75in</Width>
+        <Width>2.75001in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -1003,6 +1003,9 @@
                     <Textbox Name="textbox38">
                       <rd:DefaultName>textbox38</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontStyle>Italic</FontStyle>
                         <FontWeight>700</FontWeight>
                       </Style>
@@ -1016,6 +1019,9 @@
                   <ReportItems>
                     <Textbox Name="textbox41">
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
@@ -1023,7 +1029,7 @@
                       </Style>
                       <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tổng tiền trả lại:</Value>
+                      <Value>Tổng tiền trả lại khách hàng:</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1031,6 +1037,9 @@
                   <ReportItems>
                     <Textbox Name="textbox40">
                       <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>

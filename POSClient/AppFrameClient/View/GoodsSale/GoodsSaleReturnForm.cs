@@ -411,6 +411,8 @@ namespace AppFrameClient.View.GoodsSale
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
             if (args.NextPurchaseOrder == null)
             {
+                args.RefPurchaseOrder.PurchaseOrderPK.PurchaseOrderId =
+                    args.RefPurchaseOrder.PurchaseOrderPK.PurchaseOrderId + "RET";
                 this.PurchaseOrderBindingSource.DataSource = args.RefPurchaseOrder;
             }
             else
