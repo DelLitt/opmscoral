@@ -12,5 +12,8 @@ namespace AppFrame.Common
         public static readonly long DEL_FLG_YES = 1;
         public static readonly long DEL_FLG_NO = 0;
         public static readonly int PRODUCT_ID_LENGTH = 12;
+
+        public static readonly string SERVER_SYNC_FORMAT = ".exp";
+        public static readonly string CLIENT_SYNC_FORMAT = ".imp";
     }
 }
