@@ -155,6 +155,7 @@
     <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
     <property name="ReturnPoDAO" ref="AppFrame.DataLayer.IReturnPoDAO"/>
     <property name="DepartmentStockHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockHistoryDAO"/>
+    <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">
