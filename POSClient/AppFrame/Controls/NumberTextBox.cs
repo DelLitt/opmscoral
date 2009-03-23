@@ -27,7 +27,7 @@ namespace AppFrame.Controls
             {
                 if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
                 {
-                    if (e.KeyCode != Keys.Back
+                    if (   e.KeyCode != Keys.Back
                         || e.KeyCode != Keys.Delete
                         || e.KeyCode != Keys.Up
                         || e.KeyCode != Keys.Down
@@ -52,6 +52,7 @@ namespace AppFrame.Controls
             
             if(numberEntered)
             {
+                if(e.KeyChar!='\b')
                 e.Handled = true;
             }
         }
