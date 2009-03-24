@@ -53,7 +53,7 @@ namespace POSReports
         {
             try
             {
-                this.SupplierStockoutTableAdapter.Fill(this.posDataSet.supplierStockout, ZeroTime(fromDate.Value), ZeroTime(toDate.Value));
+                this.SupplierStockoutTableAdapter.Fill(this.posDataSet.supplierStockout, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

@@ -52,7 +52,7 @@ namespace POSReports
         {
             try
             {
-                this.RestockinProductTableAdapter.Fill(this.posDataSet.reStockinProduct, ZeroTime(this.fromDate.Value), ZeroTime(this.toDate.Value));
+                this.RestockinProductTableAdapter.Fill(this.posDataSet.reStockinProduct, ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch(Exception ex) { }

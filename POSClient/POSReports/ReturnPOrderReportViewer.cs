@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
@@ -18,9 +19,14 @@ namespace POSReports
 
         private void ReturnPOrderReportViewer_Load(object sender, EventArgs e)
         {
+            this.departmentTableAdapter.Fill(this.posDataSet.department);
             // TODO: This line of code loads data into the 'posDataSet.returnPOrder' table. You can move, or remove it, as needed.
             this.reportViewer1.RefreshReport();
-
+            if (CurrentDepartment.Get().DepartmentId != 0)
+            {
+                comboBox1.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                comboBox1.Visible = false;
+            }
         }
 
         public static DateTime ZeroTime(DateTime value)
@@ -52,13 +58,14 @@ namespace POSReports
         {
             try
             {
-                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder,ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value));
+                object id = comboBox1.SelectedValue;
+                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder,Int32.Parse(id.ToString()),ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+
+                MessageBox.Show("Co loi xay ra, xin vui long lien he nguoi quan tri");
             }
         }
     }

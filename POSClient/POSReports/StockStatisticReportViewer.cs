@@ -18,6 +18,8 @@ namespace POSReports
 
         private void StockStatisticReportViewer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
+            
             // TODO: This line of code loads data into the 'posDataSet.stockStatistic' table. You can move, or remove it, as needed.
          //   this.StockStatisticTableAdapter.Fill(this.posDataSet.stockStatistic);
 
@@ -46,10 +48,11 @@ namespace POSReports
                 999);
         }
         private void button1_Click(object sender, EventArgs e)
-        {
+        {           
+
             try
             {
-                this.StockStatisticTableAdapter.Fill(posDataSet.stockStatistic, ZeroTime(fromDate.Value), ZeroTime(toDate.Value));
+                this.StockStatisticTableAdapter.Fill(posDataSet.stockStatistic, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

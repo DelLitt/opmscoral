@@ -30,7 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.deptStockStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.departmentId = new System.Windows.Forms.ComboBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
@@ -38,13 +42,23 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.posDataSet = new POSReports.posDataSet();
-            this.deptStockStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DeptStockStatisticTableAdapter = new POSReports.posDataSetTableAdapters.DeptStockStatisticTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.deptStockStatisticBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // deptStockStatisticBindingSource
+            // 
+            this.deptStockStatisticBindingSource.DataMember = "deptStockStatistic";
+            this.deptStockStatisticBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -55,6 +69,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.departmentId, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.fromDate, 1, 1);
@@ -67,8 +82,26 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(905, 74);
             this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // departmentId
+            // 
+            this.departmentId.DataSource = this.bindingSource1;
+            this.departmentId.DisplayMember = "DEPARTMENT_NAME";
+            this.departmentId.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentId.FormattingEnabled = true;
+            this.departmentId.Location = new System.Drawing.Point(411, 5);
+            this.departmentId.Name = "departmentId";
+            this.departmentId.Size = new System.Drawing.Size(194, 27);
+            this.departmentId.TabIndex = 8;
+            this.departmentId.ValueMember = "DEPARTMENT_ID";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "department";
+            this.bindingSource1.DataSource = this.posDataSet;
             // 
             // label1
             // 
@@ -144,19 +177,13 @@
             this.reportViewer1.Size = new System.Drawing.Size(905, 449);
             this.reportViewer1.TabIndex = 7;
             // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // deptStockStatisticBindingSource
-            // 
-            this.deptStockStatisticBindingSource.DataMember = "deptStockStatistic";
-            this.deptStockStatisticBindingSource.DataSource = this.posDataSet;
-            // 
             // DeptStockStatisticTableAdapter
             // 
             this.DeptStockStatisticTableAdapter.ClearBeforeFill = true;
+            // 
+            // departmentTableAdapter
+            // 
+            this.departmentTableAdapter.ClearBeforeFill = true;
             // 
             // DeptStockStatisticReportViewer
             // 
@@ -168,10 +195,11 @@
             this.Name = "DeptStockStatisticReportViewer";
             this.Text = "DeptStockStatisticReportViewer";
             this.Load += new System.EventHandler(this.DeptStockStatisticReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.deptStockStatisticBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deptStockStatisticBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +217,8 @@
         private System.Windows.Forms.BindingSource deptStockStatisticBindingSource;
         private posDataSet posDataSet;
         private POSReports.posDataSetTableAdapters.DeptStockStatisticTableAdapter DeptStockStatisticTableAdapter;
+        private System.Windows.Forms.ComboBox departmentId;
+        private POSReports.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

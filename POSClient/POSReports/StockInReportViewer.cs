@@ -49,7 +49,7 @@ namespace POSReports
         {
             try
             {
-                this.StockInTableAdapter.Fill(this.posDataSet.stockIn, ZeroTime(fromDate.Value), ZeroTime(toDate.Value));
+                this.StockInTableAdapter.Fill(this.posDataSet.stockIn, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

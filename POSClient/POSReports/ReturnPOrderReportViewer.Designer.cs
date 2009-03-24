@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.returnPOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
@@ -38,13 +42,23 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.posDataSet = new POSReports.posDataSet();
-            this.returnPOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ReturnPOrderTableAdapter = new POSReports.posDataSetTableAdapters.ReturnPOrderTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.returnPOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // returnPOrderBindingSource
+            // 
+            this.returnPOrderBindingSource.DataMember = "returnPOrder";
+            this.returnPOrderBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -55,6 +69,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.fromDate, 1, 1);
@@ -69,6 +84,23 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(904, 74);
             this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.bindingSource1;
+            this.comboBox1.DisplayMember = "DEPARTMENT_NAME";
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(411, 5);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(194, 27);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.ValueMember = "DEPARTMENT_ID";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "department";
+            this.bindingSource1.DataSource = this.posDataSet;
             // 
             // label1
             // 
@@ -135,28 +167,22 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "posDataSet_returnPOrder";
-            reportDataSource2.Value = this.returnPOrderBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "posDataSet_returnPOrder";
+            reportDataSource1.Value = this.returnPOrderBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.ReturnPOrderReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(904, 530);
             this.reportViewer1.TabIndex = 8;
             // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // returnPOrderBindingSource
-            // 
-            this.returnPOrderBindingSource.DataMember = "returnPOrder";
-            this.returnPOrderBindingSource.DataSource = this.posDataSet;
-            // 
             // ReturnPOrderTableAdapter
             // 
             this.ReturnPOrderTableAdapter.ClearBeforeFill = true;
+            // 
+            // departmentTableAdapter
+            // 
+            this.departmentTableAdapter.ClearBeforeFill = true;
             // 
             // ReturnPOrderReportViewer
             // 
@@ -168,10 +194,11 @@
             this.Name = "ReturnPOrderReportViewer";
             this.Text = "ReturnPOrderReportViewer";
             this.Load += new System.EventHandler(this.ReturnPOrderReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.returnPOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnPOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +216,8 @@
         private System.Windows.Forms.BindingSource returnPOrderBindingSource;
         private posDataSet posDataSet;
         private POSReports.posDataSetTableAdapters.ReturnPOrderTableAdapter ReturnPOrderTableAdapter;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private POSReports.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter;
     }
 }
