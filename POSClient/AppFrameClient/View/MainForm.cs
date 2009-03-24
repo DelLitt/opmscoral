@@ -512,6 +512,16 @@ namespace AppFrame.View
             new DeptStockStatisticReportViewer().ShowDialog();
         }
 
+        private void mnuMainDeptStockStatisticReport_Click(object sender, EventArgs e)
+        {
+            new DeptStockStatisticReportViewer().ShowDialog();
+        }
+
+        private void mnuMainReturnPOReport_Click(object sender, EventArgs e)
+        {
+            new ReturnPOrderReportViewer().ShowDialog();
+        }
+
 
     }
 }

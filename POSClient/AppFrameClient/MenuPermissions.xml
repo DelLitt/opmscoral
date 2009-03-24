@@ -80,6 +80,8 @@
     <menuitem name="mnuTempStockoutReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsSaleDepartmentDetail" role="Administrator,Supervisor" />    
     <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
+    <menuitem name="mnuMainDeptStockStatisticReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />    
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />
