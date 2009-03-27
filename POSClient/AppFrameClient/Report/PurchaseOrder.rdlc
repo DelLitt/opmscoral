@@ -1861,7 +1861,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>3.15in</Width>
+  <Width>2.8in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox19">
@@ -1874,7 +1874,6 @@
         </Style>
         <ZIndex>5</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Value>************</Value>
       </Textbox>
@@ -1889,7 +1888,6 @@
         </Style>
         <ZIndex>4</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
         <Height>0.625in</Height>
         <Value>QUÝ KHÁCH VUI LÒNG GIỮ LẠI HÓA ĐƠN ĐỂ ĐỔI HÀNG BỊ LỖI TRONG VÒNG 3 NGÀY
 XIN CÁM ƠN QUÝ KHÁCH!
@@ -1904,12 +1902,10 @@ XIN CÁM ƠN QUÝ KHÁCH!
           </BorderStyle>
         </Style>
         <ZIndex>3</ZIndex>
-        <Left>0.125in</Left>
         <Height>0in</Height>
       </Line>
       <List Name="list2">
         <ZIndex>2</ZIndex>
-        <Left>0.125in</Left>
         <DataSetName>AppFrame_Model_Department</DataSetName>
         <ReportItems>
           <Textbox Name="textbox20">
@@ -1951,7 +1947,6 @@ XIN CÁM ƠN QUÝ KHÁCH!
       </List>
       <List Name="list3">
         <ZIndex>1</ZIndex>
-        <Left>0.125in</Left>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
         <ReportItems>
           <Textbox Name="textbox21">
@@ -1986,6 +1981,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>5</ZIndex>
             <CanGrow>true</CanGrow>
@@ -2021,6 +2017,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>2</ZIndex>
             <CanGrow>true</CanGrow>
@@ -2034,6 +2031,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
@@ -2065,7 +2063,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
       <Table Name="table1">
         <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
         <Top>1.125in</Top>
-        <Width>2.75in</Width>
+        <Width>2.75001in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -2361,7 +2359,6 @@ XIN CÁM ƠN QUÝ KHÁCH!
             </TableRow>
           </TableRows>
         </Footer>
-        <Left>0.125in</Left>
       </Table>
     </ReportItems>
     <Height>2.875in</Height>

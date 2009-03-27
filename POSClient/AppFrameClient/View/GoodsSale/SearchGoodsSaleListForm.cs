@@ -37,5 +37,10 @@ namespace AppFrameClient.View.GoodsSale
         {
 
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

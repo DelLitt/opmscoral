@@ -96,12 +96,15 @@ namespace AppFrameClient.Presenter.GoodsSale
                     {
                         throw new BusinessException("Có lỗi ở hoá đơn gốc, đề nghị kiểm tra");
                     }
-
-                    if (originAmount < ((long) ReturnPoLogic.FindQuantityById(poPK)+ po.Quantity))
+                    long returnedQuantity = (long) ReturnPoLogic.FindQuantityById(poPK);
+                    long currentReturnQuantity = returnedQuantity + +po.Quantity;
+                    if (originAmount < currentReturnQuantity)
                     {
                         throw new BusinessException(
-                            "Đã trả hàng trước đó và số lượng trả tổng cộng vượt quá số lượng mua từ mặt hàng " +
-                            purchaseOrderDetail.Product.ProductMaster.ProductName + " của hoá đơn này");
+                            "Lỗi :" + purchaseOrderDetail.Product.ProductMaster.ProductName +
+                            " .Tổng cộng :" + originAmount +
+                            " .Đã trả : " + returnedQuantity +
+                            " .Số lượng muốn trả: " + po.Quantity + " !");
                     }
                     
                     ObjectCriteria criteria = new ObjectCriteria();

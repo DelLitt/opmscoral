@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AppFrameClient.View.GoodsSale
+namespace AppFrameClient.View
 {
-    public partial class GoodsSaleExchangeForm : AppFrame.Common.BaseForm
+    public partial class WaitingForm : Form
     {
-        public GoodsSaleExchangeForm()
+        public WaitingForm()
         {
             InitializeComponent();
         }

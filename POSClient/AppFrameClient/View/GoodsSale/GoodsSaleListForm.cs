@@ -112,7 +112,7 @@ namespace AppFrameClient.View.GoodsSale
             DateTime dateTime = new DateTime();                        
             objectCriteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(dtpFromDate.Value))
                 .AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(dtpToDate.Value));
-
+            objectCriteria.AddOrder("CreateDate", false);
             GoodsSaleListController.PurchaseOrderCriteria = objectCriteria;
             return objectCriteria;
         }

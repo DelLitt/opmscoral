@@ -65,6 +65,10 @@
             // 
             this.txtBillNumber.TextChanged += new System.EventHandler(this.txtBillNumber_TextChanged);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // bdsPurchaseOrders
             // 
             this.bdsPurchaseOrders.DataSource = typeof(AppFrame.Collection.PurchaseOrderCollection);

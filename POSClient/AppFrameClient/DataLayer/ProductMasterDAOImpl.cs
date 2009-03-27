@@ -513,8 +513,7 @@ namespace AppFrame.DataLayer
                                            //queryString += " AND dsid.DepartmentStockInDetailPK.StockInId = dsi.DepartmentStockInPK.StockInId ";
                                            //queryString += " AND dsid.DepartmentStockInDetailPK.DepartmentId = dsi.DepartmentStockInPK.DepartmentId ";
                                            //queryString += " AND p.ProductId = dsid.DepartmentStockInDetailPK.ProductId ";
-                                           queryString += " AND ds.DepartmentStockPK.DepartmentId=" +
-                                                          CurrentDepartment.Get().DepartmentId;
+                                           queryString += " AND ds.DepartmentStockPK.DepartmentId=" + CurrentDepartment.Get().DepartmentId;
                                            queryString += " AND p.ProductId = ds.DepartmentStockPK.ProductId";
                                            queryString += " AND ds.GoodQuantity > 0 ";
                                        }

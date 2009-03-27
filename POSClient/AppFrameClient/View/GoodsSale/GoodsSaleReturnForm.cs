@@ -468,7 +468,7 @@ namespace AppFrameClient.View.GoodsSale
             string deviceInfo =
           "<DeviceInfo>" +
           "  <OutputFormat>EMF</OutputFormat>" +
-          "  <PageWidth>3.15in</PageWidth>" +
+          "  <PageWidth>2.8in</PageWidth>" +
           "  <PageHeight>5in</PageHeight>" +
           "  <DpiX>180</DpiX>" +
           "  <DpiY>180</DpiY>" +
@@ -830,7 +830,23 @@ namespace AppFrameClient.View.GoodsSale
 
         private void systemHotkey2_Pressed(object sender, EventArgs e)
         {
-            btnSave_Click(sender, e);
+            btnSave.Focus();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBillDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBillDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

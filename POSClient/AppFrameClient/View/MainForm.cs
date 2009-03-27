@@ -303,7 +303,8 @@ namespace AppFrame.View
             Form goodsSaleReturnForm = GlobalUtility.GetOnlyChildFormObject<GoodsSaleReturnForm>(this,
                                                                                                  FormConstants.
                                                                                                      GOODS_SALE_RETURN_FORM);
-            goodsSaleReturnForm.Show();
+            ShowFormWithActiveDepartment(goodsSaleReturnForm, new Department());
+            //goodsSaleReturnForm.Show();
         }
 
         private void wareHouseStockIn_Click(object sender, EventArgs e)
@@ -357,7 +358,8 @@ namespace AppFrame.View
             Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockCheckingForm>(this,
                                                                                                      FormConstants.
                                                                                                          DEPARTMENT_STOCK_CHECKING_FORM);
-            deptStockCheckingForm.Show();
+            //deptStockCheckingForm.Show();
+            ShowFormWithActiveDepartment(deptStockCheckingForm, new Department());
         }
 
         private void mnuTemporaryStockOut_Click(object sender, EventArgs e)
@@ -372,7 +374,8 @@ namespace AppFrame.View
         private void mnuDepartmentReturnGoods_Click(object sender, EventArgs e)
         {
             DepartmentStockOutExtraForm baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutExtraForm>(this, FormConstants.DEPARTMENT_STOCK_OUT_FORM);
-            baseStockOutForm.Show();
+            //baseStockOutForm.Show();
+            ShowFormWithActiveDepartment(baseStockOutForm, new Department());
         }
 
         private void mnuDepartmentStockOutConfirm_Click(object sender, EventArgs e)
@@ -411,7 +414,9 @@ namespace AppFrame.View
             ProcessErrorGoodsForm form =
                  GlobalUtility.GetOnlyChildFormObject<ProcessErrorGoodsForm>(this, FormConstants.PROCESS_ERROR_GOODS_FORM);
             form.DepartmentProcessing = true;
-            form.Show();
+            //            form.Show();
+            ShowFormWithActiveDepartment(form, new Department());
+            
         }
 
         private void mnuDepartmentReStockIn_Click(object sender, EventArgs e)
@@ -419,7 +424,8 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentReStockInForm>(this,
                                                                                       FormConstants.
                                                                                           DEPARTMENT_RESTOCK_IN_FORM);
-            form.Show();
+            //form.Show();
+            ShowFormWithActiveDepartment(form, new Department());
         }
 
         private void mnuStockCollection_Click(object sender, EventArgs e)
@@ -504,11 +510,27 @@ namespace AppFrame.View
 
         private void mnuReturnPOReport_Click(object sender, EventArgs e)
         {
+            Department department = null;
+            // if it does not have active department or department is HQ
+            if (!CurrentDepartment.CurrentActiveDepartment(out department))
+            {
+                MessageBox.Show("Cửa hàng chính chưa được thiết lập! Xin vui lòng thiết lập cửa hàng chính trước.", "Lỗi",
+                                MessageBoxButtons.OK);
+                return;
+            }
             new ReturnPOrderReportViewer().ShowDialog();
         }
 
         private void mnuDeptStockStatisticReport_Click(object sender, EventArgs e)
         {
+            Department department = null;
+            // if it does not have active department or department is HQ
+            if (!CurrentDepartment.CurrentActiveDepartment(out department))
+            {
+                MessageBox.Show("Cửa hàng chính chưa được thiết lập! Xin vui lòng thiết lập cửa hàng chính trước.", "Lỗi",
+                                MessageBoxButtons.OK);
+                return;
+            }
             new DeptStockStatisticReportViewer().ShowDialog();
         }
 

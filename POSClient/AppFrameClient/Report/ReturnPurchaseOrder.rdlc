@@ -349,7 +349,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>3.15in</Width>
+  <Width>2.8001in</Width>
   <Body>
     <ReportItems>
       <Line Name="line2">
@@ -669,7 +669,6 @@
             </TableRow>
           </TableRows>
         </Footer>
-        <Left>0.125in</Left>
       </Table>
       <Table Name="table1">
         <ZIndex>5</ZIndex>
@@ -1057,7 +1056,6 @@
             </TableRow>
           </TableRows>
         </Footer>
-        <Left>0.125in</Left>
       </Table>
       <Line Name="line1">
         <Top>3.125in</Top>
@@ -1068,12 +1066,10 @@
           </BorderStyle>
         </Style>
         <ZIndex>4</ZIndex>
-        <Left>0.125in</Left>
         <Height>0in</Height>
       </Line>
       <List Name="list3">
         <ZIndex>3</ZIndex>
-        <Left>0.125in</Left>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
         <ReportItems>
           <Textbox Name="textbox21">
@@ -1107,6 +1103,7 @@
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>5</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1142,6 +1139,7 @@
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>2</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1154,6 +1152,7 @@
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <TextAlign>Right</TextAlign>
             </Style>
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1191,7 +1190,6 @@
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
         <Height>0.5in</Height>
         <Value>QUÝ KHÁCH VUI LÒNG GIỮ LẠI HÓA ĐƠN ĐỂ ĐỔI HÀNG BỊ LỖI TRONG VÒNG 3 NGÀY
 XIN CÁM ƠN QUÝ KHÁCH!</Value>
@@ -1206,12 +1204,10 @@ XIN CÁM ƠN QUÝ KHÁCH!</Value>
         </Style>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Value>************</Value>
       </Textbox>
       <List Name="list1">
-        <Left>0.125in</Left>
         <DataSetName>AppFrame_Model_Department</DataSetName>
         <ReportItems>
           <Textbox Name="textbox30">

@@ -1,6 +1,6 @@
-﻿namespace AppFrameClient.View.GoodsSale
+﻿namespace AppFrameClient.View
 {
-    partial class GoodsSaleExchangeForm
+    partial class WaitingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // WaitingForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(984, 662);
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
+            this.Name = "WaitingForm";
+            this.Opacity = 0.3;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ResumeLayout(false);
+
         }
 
         #endregion
