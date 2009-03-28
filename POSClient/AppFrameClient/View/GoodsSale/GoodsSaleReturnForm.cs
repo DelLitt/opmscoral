@@ -433,14 +433,15 @@ namespace AppFrameClient.View.GoodsSale
             string printerName = (string)configurationAppSettings.GetValue("PrinterName", typeof(String));
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.PrinterName = printerName;
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
+            
             if (!printDoc.PrinterSettings.IsValid)
             {
                 MessageBox.Show(String.Format("Can't find printer \"{0}\".", printerName));
 
                 return;
             }
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
 
             printDoc.Print();
@@ -452,7 +453,7 @@ namespace AppFrameClient.View.GoodsSale
         {
             //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
             //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
-            Stream stream = new MemoryStream();
+            Stream stream = new MemoryStream(new byte[1024*64]);
             streamList.Add(stream);
             return stream;
         }
@@ -461,6 +462,7 @@ namespace AppFrameClient.View.GoodsSale
         {
             e.PageSettings.PrinterResolution.X = 180;
             e.PageSettings.PrinterResolution.Y = 180;
+            
             e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.X =
             180;
             e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.Y =

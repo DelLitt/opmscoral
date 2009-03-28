@@ -349,7 +349,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>2.8001in</Width>
+  <Width>2.75in</Width>
   <Body>
     <ReportItems>
       <Line Name="line2">
@@ -361,14 +361,14 @@
           </BorderStyle>
         </Style>
         <ZIndex>7</ZIndex>
-        <Left>0.75in</Left>
+        <Left>0.375in</Left>
         <Height>0in</Height>
       </Line>
       <Table Name="table2">
         <ZIndex>6</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrderDetail</DataSetName>
         <Top>1.125in</Top>
-        <Width>2.75001in</Width>
+        <Width>2.375in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -527,7 +527,7 @@
                       </Style>
                       <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>GIÁ</Value>
+                      <Value>Đ.GIÁ</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -538,16 +538,16 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.3587in</Width>
+            <Width>0.30408in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.33913in</Width>
+            <Width>1.13522in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.38261in</Width>
+            <Width>0.36809in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.66957in</Width>
+            <Width>0.56761in</Width>
           </TableColumn>
         </TableColumns>
         <Height>0.75in</Height>
@@ -674,7 +674,7 @@
         <ZIndex>5</ZIndex>
         <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
         <Top>2.125in</Top>
-        <Width>2.75001in</Width>
+        <Width>2.375in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -811,7 +811,7 @@
                       </Style>
                       <ZIndex>13</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>GIÁ</Value>
+                      <Value>Đ.GIÁ</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -822,16 +822,16 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.3587in</Width>
+            <Width>0.30979in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.33913in</Width>
+            <Width>1.15652in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.38261in</Width>
+            <Width>0.33043in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.66957in</Width>
+            <Width>0.57826in</Width>
           </TableColumn>
         </TableColumns>
         <Height>0.875in</Height>
@@ -855,7 +855,6 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox23">
                       <Style>
@@ -866,7 +865,23 @@
                       </Style>
                       <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tổng tiền:</Value>
+                      <Value>Tổng cộng:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox24">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingRight>1pt</PaddingRight>
+                      </Style>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -909,33 +924,31 @@
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox34">
-                      <rd:DefaultName>textbox34</rd:DefaultName>
+                    <Textbox Name="textbox42">
+                      <rd:DefaultName>textbox42</rd:DefaultName>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tổng số lượng:</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox24">
+                    <Textbox Name="textbox43">
+                      <rd:DefaultName>textbox43</rd:DefaultName>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>7pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingRight>1pt</PaddingRight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection")</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1059,7 +1072,7 @@
       </Table>
       <Line Name="line1">
         <Top>3.125in</Top>
-        <Width>2.75in</Width>
+        <Width>2.375in</Width>
         <Style>
           <BorderStyle>
             <Default>Solid</Default>
@@ -1080,17 +1093,19 @@
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
               <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>7</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.125in</Height>
-            <Value>="Ngày :" +FormatDateTime(Today(), DateFormat.ShortDate) + " "</Value>
+            <Value>="Ngày :" + Day(Today()).ToString()  + " / " + Month(Today()).ToString() + " / " + Year(Today()).ToString()</Value>
           </Textbox>
           <Textbox Name="textbox17">
             <Top>0.625in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>6</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1114,6 +1129,7 @@
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>4</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1126,6 +1142,7 @@
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>3</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1177,12 +1194,12 @@
           </Textbox>
         </ReportItems>
         <Top>0.25in</Top>
-        <Width>2.75in</Width>
+        <Width>2.375in</Width>
         <Height>0.75in</Height>
       </List>
       <Textbox Name="textbox26">
         <Top>3.25in</Top>
-        <Width>2.75in</Width>
+        <Width>2.375in</Width>
         <Style>
           <FontFamily>Tahoma</FontFamily>
           <FontSize>8pt</FontSize>
@@ -1196,7 +1213,7 @@ XIN CÁM ƠN QUÝ KHÁCH!</Value>
       </Textbox>
       <Textbox Name="textbox19">
         <Top>3.75in</Top>
-        <Width>2.75in</Width>
+        <Width>2.375in</Width>
         <Style>
           <FontFamily>Tahoma</FontFamily>
           <FontSize>8pt</FontSize>
@@ -1225,6 +1242,7 @@ XIN CÁM ƠN QUÝ KHÁCH!</Value>
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
@@ -1237,13 +1255,14 @@ XIN CÁM ƠN QUÝ KHÁCH!</Value>
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <CanGrow>true</CanGrow>
             <Left>0.75in</Left>
             <Value>=Fields!Address.Value</Value>
           </Textbox>
         </ReportItems>
-        <Width>2.75in</Width>
+        <Width>2.375in</Width>
         <Height>0.25in</Height>
       </List>
     </ReportItems>

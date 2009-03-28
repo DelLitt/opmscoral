@@ -515,14 +515,16 @@ namespace AppFrameClient.View.GoodsSale
             string printerName = (string)configurationAppSettings.GetValue("PrinterName", typeof(String));
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.PrinterName = printerName;
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
+            
             if (!printDoc.PrinterSettings.IsValid)
             {
                 MessageBox.Show(String.Format("Can't find printer \"{0}\".", printerName));
                 
                 return;
             }
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
+
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
             
             printDoc.Print();
@@ -533,8 +535,9 @@ namespace AppFrameClient.View.GoodsSale
                               string mimeType, bool willSeek)
         {
             //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
-            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
-            Stream stream = new MemoryStream();
+            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create,FileAccess.ReadWrite);
+            Stream stream = new MemoryStream(new byte[1024*64]);
+            //Stream test1= new MemoryStream()
             streamList.Add(stream);
             return stream;
         }
@@ -570,6 +573,7 @@ namespace AppFrameClient.View.GoodsSale
                     stream.Position = 0;
                 }
                 Metafile pageImage = new Metafile(streamList[0]);
+                
                 e.Graphics.DrawImage(pageImage, 0,0);
             }
 
