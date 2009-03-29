@@ -19,3 +19,11 @@ namespace POSReports.posDataSetTableAdapters {
     {
     }
 }
+
+namespace POSReports.posDataSetTableAdapters
+{
+    
+    
+    public partial class DeptStockStatisticTableAdapter {
+    }
+}
