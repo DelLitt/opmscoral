@@ -522,12 +522,14 @@ namespace AppFrameClient.View.GoodsSale
                 
                 return;
             }
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.X = 180;
-            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Y = 180;
+            PageSettings pageSettings = printDoc.PrinterSettings.DefaultPageSettings;
+            pageSettings.PrinterResolution.X = 180;
+            pageSettings.PrinterResolution.Y = 180;
 
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
             
             printDoc.Print();
+            
 
         }
         IList<Stream> streamList = new List<Stream>();
@@ -544,12 +546,13 @@ namespace AppFrameClient.View.GoodsSale
 
         void printDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.PageSettings.PrinterResolution.X = 180;
+            /*e.PageSettings.PrinterResolution.X = 180;
             e.PageSettings.PrinterResolution.Y = 180;
             e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.X =
             180;
             e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.Y =
-            180;
+            180;*/
+            
             string deviceInfo =
           "<DeviceInfo>" +
           "  <OutputFormat>EMF</OutputFormat>" +
