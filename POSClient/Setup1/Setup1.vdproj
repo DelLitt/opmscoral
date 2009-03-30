@@ -915,6 +915,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E46AADEE13C8363F87AFEB6B5011BB96"
+        "OwnerKey" = "8:_827EB3730971471890280D63B21A509C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E46AADEE13C8363F87AFEB6B5011BB96"
+        "OwnerKey" = "8:_96A00E71B72FFE9AB4A6B5687166CC0E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E551D01BFB004CFABBB4D4C196EABA4B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -953,36 +965,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9FF71249ADE1457E92CC65F57AD6F8EC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_96A00E71B72FFE9AB4A6B5687166CC0E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_827EB3730971471890280D63B21A509C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9E71B125CC02534D26E8CDA09A9E85D7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4ED13CEDA39FCC3DA235915F9D775037"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9246CD319AA70DF1EB89B5D39E3444B7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1066,6 +1048,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9E71B125CC02534D26E8CDA09A9E85D7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_97515878CD054C5CBB0D4B39A301BEC8"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1078,6 +1066,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9246CD319AA70DF1EB89B5D39E3444B7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9241105446F64E14BF6B79E5B9480826"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1085,6 +1079,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_82EAB42570FA48869B15A830D57806D4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_827EB3730971471890280D63B21A509C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1174,6 +1174,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4ED13CEDA39FCC3DA235915F9D775037"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4CA92B7A1D0B415B80D24922C73322D3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1181,6 +1187,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_457EB5AECFEC4815BD4F35F1E981E7A8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_96A00E71B72FFE9AB4A6B5687166CC0E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3783,12 +3795,12 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:POSClient"
         "ProductCode" = "8:{E35AFC02-79C0-4AAA-AAB4-65FB3E009DC0}"
-        "PackageCode" = "8:{AD0FD870-3F74-4FFC-9B37-00EE40C4D2E3}"
+        "PackageCode" = "8:{C53497F4-208B-4E5D-AD3B-894E9D5EC550}"
         "UpgradeCode" = "8:{C36E6B3D-B25A-4EAD-97AC-7ED634F63021}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Coral Software"
         "ARPHELPTELEPHONE" = "8:"
