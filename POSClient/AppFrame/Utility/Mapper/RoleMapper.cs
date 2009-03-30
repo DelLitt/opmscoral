@@ -9,7 +9,7 @@ namespace AppFrame.Utility.Mapper
     /// <summary>
     /// Converter convert from RoleModel to Role
     /// </summary>
-    class RoleMapper : BaseMapper<Role,RoleModel>
+    public class RoleMapper : BaseMapper<Role,RoleModel>
     {
         public Role Convert(RoleModel source)
         {

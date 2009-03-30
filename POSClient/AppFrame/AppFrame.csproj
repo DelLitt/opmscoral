@@ -232,6 +232,7 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayer\ISyncStatusDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockHistoryDAO.cs" />
     <Compile Include="DataLayer\IBlockInCostDAO.cs" />
     <Compile Include="DataLayer\IBlockInDAO.cs" />
@@ -300,6 +301,7 @@
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="Logic\ISyncStatusLogic.cs" />
     <Compile Include="Logic\IAuthoriseLogic.cs" />
     <Compile Include="Common\IPermission.cs" />
     <Compile Include="Common\IUserManager.cs" />
@@ -495,7 +497,9 @@
     <Compile Include="Model\StockOutDetailPK.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\SyncFromDepartmentToMain.cs" />
+    <Compile Include="Model\SyncFromMainToDepartment.cs" />
     <Compile Include="Model\SyncResult.cs" />
+    <Compile Include="Model\SyncStatus.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Model\UniversalStockReportObject.cs" />
     <Compile Include="ObjectCriteria.cs" />
@@ -612,6 +616,7 @@
     <Compile Include="Utility\Mapper\BaseMapper.cs" />
     <Compile Include="Utility\Mapper\BaseTransform.cs" />
     <Compile Include="Utility\Mapper\BaseUserMapper.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockInMapper.cs" />
     <Compile Include="Utility\Mapper\FormTransform.cs" />
     <Compile Include="Utility\Mapper\ObjectTransform.cs" />
     <Compile Include="Utility\Mapper\StringMapper.cs" />
@@ -710,6 +715,7 @@
     <EmbeddedResource Include="Model\StockHistory.hbm.xml" />
     <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockHistory.hbm.xml" />
+    <EmbeddedResource Include="Model\SyncStatus.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />

@@ -46,6 +46,8 @@ namespace AppFrame.Model
         public virtual Int64 ErrorQuantity { get; set; }
         public virtual Int64 LostQuantity { get; set; }
         public virtual Int64 UnconfirmQuantity { get; set; }
+        public virtual Int64 StockQuantity { get; set; }
+        public virtual Int64 Price { get; set; }
         public virtual Int64 StockOutId
         {
             get

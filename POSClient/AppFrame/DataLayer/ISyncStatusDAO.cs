@@ -1,68 +1,67 @@
 using System;
 using System.Collections;
 using AppFrame.Model;
+using NHibernate.Criterion;
 
-namespace AppFrame.Logic
+namespace AppFrame.DataLayer
 {
-    public interface IStockOutLogic
+    public interface ISyncStatusDAO
     {
         /// <summary>
-        /// Find StockOut object by id. Return null if nothing is found
+        /// Find SyncStatus object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockOut</param>
+        /// <param name="id">Id of SyncStatus</param>
         /// <returns></returns>
-        StockOut FindById(object id);
+        SyncStatus FindById(object id);
         
         /// <summary>
-        /// Add StockOut to database.
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        StockOut Add(StockOut data);
-        
-        /// <summary>
-        /// Update StockOut to database.
+        /// Add SyncStatus to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update(StockOut data);
+        SyncStatus Add(SyncStatus data);
         
         /// <summary>
-        /// Delete StockOut from database.
+        /// Update SyncStatus to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete(StockOut data);
+        void Update(SyncStatus data);
         
         /// <summary>
-        /// Delete StockOut from database.
+        /// Delete SyncStatus from database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        void Delete(SyncStatus data);
+        
+        /// <summary>
+        /// Delete SyncStatus from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         void DeleteById(object id);
         
         /// <summary>
-        /// Find all StockOut from database. No pagination.
+        /// Find all SyncStatus from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         IList FindAll(ObjectCriteria criteria);
         
         /// <summary>
-        /// Find all StockOut from database. Has pagination.
+        /// Find all SyncStatus from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
-
-        IList FindByProductMaster(DateTime date, DateTime toDate);
-        IList FindByProductMaster(long id, DateTime date, DateTime toDate);
-        long FindMaxId();
-        IList FindStockOut(DateTime date, DateTime toDate);
-        void ProcessErrorGoods(IList stockList, IList outList, IList stockOutList, IList goodsList);
-
-        void Add(DepartmentStockIn stockIn);
-
-        void Update(DepartmentStockIn stockIn);
+        
+        /// <summary>
+        /// Find min, max, count... SyncStatus from database.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        object SelectSpecificType(ObjectCriteria criteria, IProjection type);
     }
 }
