@@ -47,7 +47,7 @@ namespace POSReports
             try
             {
                 object deptId = departmentId.SelectedValue;
-                this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()),ZeroTime(fromDate.Value),MaxTime(toDate.Value) );
+                this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()),ZeroTime(toDate.Value),MaxTime(toDate.Value) );
                 this.reportViewer1.RefreshReport();
 
             } catch (Exception ex)
@@ -68,6 +68,11 @@ namespace POSReports
                 departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
                 departmentId.Visible = false;
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

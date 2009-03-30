@@ -6,24 +6,27 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
-    public partial class StockStatisticReportViewer : Form
+    public partial class MainStockReturnReportViewer : Form
     {
-        public StockStatisticReportViewer()
+        public MainStockReturnReportViewer()
         {
             InitializeComponent();
         }
 
-        private void StockStatisticReportViewer_Load(object sender, EventArgs e)
+        private void MainStockReturnReportViewer_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
-            
-            // TODO: This line of code loads data into the 'posDataSet.stockStatistic' table. You can move, or remove it, as needed.
-         //   this.StockStatisticTableAdapter.Fill(this.posDataSet.stockStatistic);
-
+            if (CurrentDepartment.Get().DepartmentId != 0)
+            {
+                departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                departmentId.Visible = false;
+            }
+            this.reportViewer1.RefreshReport();
         }
+
         public static DateTime ZeroTime(DateTime value)
         {
             return new DateTime(
@@ -47,17 +50,20 @@ namespace POSReports
                 59,
                 999);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {           
 
+        private void button1_Click(object sender, EventArgs e)
+        {
             try
             {
-                this.StockStatisticTableAdapter.Fill(posDataSet.stockStatistic, ZeroTime(ToDate.Value), MaxTime(ToDate.Value));
+                this.ReturnMainTableAdapter.Fill(this.posDataSet.returnMain,
+                                                 Int32.Parse(this.departmentId.SelectedValue.ToString()),
+                                                 ZeroTime(toDate.Value), MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Có lỗi xảy ra khi xem báo cáo, hãy thử lại lần nữa hoặc liên hệ người quản trị!","Lỗi", MessageBoxButtons.OK);
+
+                MessageBox.Show("Có lỗi xảy ra, vui lòng liên hệ với người quản trị!");
             }
         }
     }

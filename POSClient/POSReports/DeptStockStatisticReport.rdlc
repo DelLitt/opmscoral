@@ -4,10 +4,8 @@
     <DataSource Name="posConnectionString">
       <rd:DataSourceID>c3e9d91a-14d6-4ec7-b52c-70cfdc0f32fc</rd:DataSourceID>
       <ConnectionProperties>
-        <DataProvider>
-        </DataProvider>
-        <ConnectString>
-        </ConnectString>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos</ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -83,45 +81,69 @@
           <DataField>bkpro</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="department_name">
+          <DataField>department_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandText>select type_name, pr.product_id, product_name, color_name, size_name, sum(ifnull(good_qty,0)) as prestk_qty,
-sum(ifnull(instock_qty,0)) as instock_qty, sum(ifnull(error_qty,0)) as error_qty, sum(ifnull(dmg_qty,0)) as dmg_qty,
-sum(ifnull(instkout.quantity,0)) as stkout_qty, sum(ifnull(tmpout.quantity,0)) as tmpout_qty, sum(ifnull(sprtn.quantity,0)) as rtn_qty,
-sum(ifnull(dmg.quantity,0)) as destroy_qty, sum(ifnull(bkpro.quantity,0)) as bkpro, sum(ifnull(good_qty,0)+ifnull(instock_qty,0)+ifnull(bkpro.quantity,0)-ifnull(tmpout.quantity,0)-ifnull(dmg_qty,0)-ifnull(instkout.quantity,0)-ifnull(sprtn.quantity,0)-ifnull(dmg.quantity,0)) as realstock
-from allproduct pr
-    left join (select product_id, sum(good_count) as good_qty from department_stock_history where create_date&lt;@FromDate
-      and department_id=@deptID group by product_id) as stk on pr.product_id=stk.product_id
-    left join (select product_id, sum(error_quantity) as error_qty,
-      sum(damage_quantity+lost_quantity) as dmg_qty from department_stock
-      where create_date&gt;=@FromDate and create_date&lt;=@ToDate and department_id=@deptID group by product_id) as prestock
-    on prestock.product_id=pr.product_id
-    left join (select product_id, sum(quantity) as instock_qty from department_stock_in dpstkin inner join
-      department_stock_in_detail stkdt on stkdt.stock_in_id=dpstkin.stock_in_id
-      where stock_in_date&gt;=@FromDate and stock_in_date&lt;=@ToDate and dpstkin.stock_in_type=0 and dpstkin.department_id=@deptID
-      group by product_id) as instock on pr.product_id=instock.product_id
-    left join (select product_id, sum(quantity) as quantity from purchase_order dstk inner join
-      purchase_order_detail dstkd on dstk.purchase_order_id=dstkd.purchase_order_id
-      where dstk.create_date&gt;=@FromDate and dstk.create_date&lt;=@ToDate and order_status=0
-      group by product_id) as instkout on instkout.product_id=pr.product_id
-    left join (SELECT product_id, sum(quantity) as quantity from department_stock_out dpout inner join
-      department_stock_out_detail stkd on dpout.stock_out_id=stkd.stock_out_id
-      where stkd.defect_status_id=4 and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and dpout.department_id=@deptID
-      group by product_id) as tmpout on tmpout.product_id=pr.product_id
-    left join (SELECT product_id, sum(quantity) as quantity from department_stock_out dpout inner join
-      department_stock_out_detail stkd on dpout.stock_out_id=stkd.stock_out_id
-      where stkd.defect_status_id=6 and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and dpout.department_id=@deptID
-      group by product_id) as sprtn on sprtn.product_id=pr.product_id
-    left join (SELECT product_id, sum(quantity) as quantity from department_stock_out dpout inner join
-      department_stock_out_detail stkd on dpout.stock_out_id=stkd.stock_out_id
-      where stkd.defect_status_id=8 and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and dpout.department_id=@deptID
-      group by product_id) as dmg on dmg.product_id=pr.product_id
-    left join (SELECT return_date, product_id, sum(rtn.quantity) as quantity
-      from purchase_order_detail pord inner join return_po rtn on rtn.purchase_order_id=pord.purchase_order_id
-      and rtn.purchase_order_detail_id=pord.purchase_order_detail_id where return_date&gt;=@FromDate and return_date&lt;=@ToDate
-      group by return_date, product_id) as bkpro on bkpro.product_id=pr.product_id
-group by type_name, product_name, color_name, size_name</CommandText>
+        <CommandText>SELECT     department_name, pr.type_name, pr.product_id, pr.product_name, pr.color_name, pr.size_name, SUM(IFNULL(stk.good_qty, 0)) AS prestk_qty, 
+                      SUM(IFNULL(instock.instock_qty, 0)) AS instock_qty, SUM(IFNULL(prestock.error_qty, 0)) AS error_qty, SUM(IFNULL(prestock.dmg_qty, 0)) AS dmg_qty, 
+                      SUM(IFNULL(instkout.quantity, 0)) AS stkout_qty, SUM(IFNULL(tmpout.quantity, 0)) AS tmpout_qty, SUM(IFNULL(sprtn.quantity, 0)) AS rtn_qty, 
+                      SUM(IFNULL(dmg.quantity, 0)) AS destroy_qty, SUM(IFNULL(bkpro.quantity, 0)) AS bkpro, SUM(IFNULL(stk.good_qty, 0) + IFNULL(instock.instock_qty, 0) 
+                      + IFNULL(bkpro.quantity, 0) + ifnull(prestock.error_qty,0) - IFNULL(tmpout.quantity, 0) - IFNULL(prestock.dmg_qty, 0) - IFNULL(instkout.quantity, 0) - IFNULL(sprtn.quantity, 0) 
+                      - IFNULL(dmg.quantity, 0)) AS realstock
+FROM         allproduct pr LEFT OUTER JOIN
+                          (SELECT     PRODUCT_ID, GOOD_COUNT AS good_qty
+                            FROM          department_stock_history A
+                            WHERE      (DEPARTMENT_ID = @deptID) AND (CREATE_DATE =
+                                                       (SELECT     MAX(CREATE_DATE) AS Expr1
+                                                         FROM          department_stock_history b
+                                                         WHERE      (CREATE_DATE &lt; @FromDate) AND (PRODUCT_ID = A.PRODUCT_ID)
+                                                         GROUP BY PRODUCT_ID))
+                            GROUP BY PRODUCT_ID) stk ON pr.product_id = stk.PRODUCT_ID LEFT OUTER JOIN
+                          (SELECT     PRODUCT_ID, SUM(ERROR_QUANTITY) AS error_qty, SUM(DAMAGE_QUANTITY + LOST_QUANTITY) AS dmg_qty
+                            FROM          department_stock
+                            WHERE      (CREATE_DATE &gt;= @FromDate) AND (CREATE_DATE &lt;= @ToDate) AND (DEPARTMENT_ID = @deptID)
+                            GROUP BY PRODUCT_ID) prestock ON prestock.PRODUCT_ID = pr.product_id LEFT OUTER JOIN
+                          (SELECT     stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS instock_qty
+                            FROM          department_stock_in dpstkin INNER JOIN
+                                                   department_stock_in_detail stkdt ON stkdt.STOCK_IN_ID = dpstkin.STOCK_IN_ID
+                            WHERE      (dpstkin.STOCK_IN_DATE &gt;= @FromDate) AND (dpstkin.STOCK_IN_DATE &lt;= @ToDate) AND (dpstkin.STOCK_IN_TYPE = 0) AND 
+                                                   (dpstkin.DEPARTMENT_ID = @deptID)
+                            GROUP BY stkdt.PRODUCT_ID) instock ON pr.product_id = instock.PRODUCT_ID LEFT OUTER JOIN
+                          (SELECT     dstkd.PRODUCT_ID, SUM(dstkd.QUANTITY) AS quantity
+                            FROM          purchase_order dstk INNER JOIN
+                                                   purchase_order_detail dstkd ON dstk.PURCHASE_ORDER_ID = dstkd.PURCHASE_ORDER_ID
+                            WHERE      (dstk.CREATE_DATE &gt;= @FromDate) AND (dstk.CREATE_DATE &lt;= @ToDate) AND (dstk.ORDER_STATUS = 0)
+                            GROUP BY dstkd.PRODUCT_ID) instkout ON instkout.PRODUCT_ID = pr.product_id LEFT OUTER JOIN
+                          (SELECT     department_name, stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity
+                            FROM          department_stock_out dpout INNER JOIN
+                                                   department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = stkd.STOCK_OUT_ID 
+                                                   left join department dpt on dpt.department_id=dpout.department_id
+                            WHERE      (stkd.DEFECT_STATUS_ID = 4) AND (dpout.STOCK_OUT_DATE &gt;= @FromDate) AND (dpout.STOCK_OUT_DATE &lt;= @ToDate) AND 
+                                                   (dpout.DEPARTMENT_ID = @deptID)
+                            GROUP BY stkd.PRODUCT_ID) tmpout ON tmpout.PRODUCT_ID = pr.product_id LEFT OUTER JOIN
+                          (SELECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity
+                            FROM          department_stock_out dpout INNER JOIN
+                                                   department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = stkd.STOCK_OUT_ID
+                            WHERE      (stkd.DEFECT_STATUS_ID = 6) AND (dpout.STOCK_OUT_DATE &gt;= @FromDate) AND (dpout.STOCK_OUT_DATE &lt;= @ToDate) AND 
+                                                   (dpout.DEPARTMENT_ID = @deptID)
+                            GROUP BY stkd.PRODUCT_ID) sprtn ON sprtn.PRODUCT_ID = pr.product_id LEFT OUTER JOIN
+                          (SELECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity
+                            FROM          department_stock_out dpout INNER JOIN
+                                                   department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = stkd.STOCK_OUT_ID
+                            WHERE      (stkd.DEFECT_STATUS_ID = 8) AND (dpout.STOCK_OUT_DATE &gt;= @FromDate) AND (dpout.STOCK_OUT_DATE &lt;= @ToDate) AND 
+                                                   (dpout.DEPARTMENT_ID = @deptID)
+                            GROUP BY stkd.PRODUCT_ID) dmg ON dmg.PRODUCT_ID = pr.product_id LEFT OUTER JOIN
+                          (SELECT     rtn.RETURN_DATE, pord.PRODUCT_ID, SUM(rtn.QUANTITY) AS quantity
+                            FROM          purchase_order_detail pord INNER JOIN
+                                                   return_po rtn ON rtn.PURCHASE_ORDER_ID = pord.PURCHASE_ORDER_ID AND 
+                                                   rtn.PURCHASE_ORDER_DETAIL_ID = pord.PURCHASE_ORDER_DETAIL_ID
+                            WHERE      (rtn.RETURN_DATE &gt;= @FromDate) AND (rtn.RETURN_DATE &lt;= @ToDate) AND (rtn.DEPARTMENT_ID = @deptID)
+                            GROUP BY rtn.RETURN_DATE, pord.PRODUCT_ID) bkpro ON bkpro.PRODUCT_ID = pr.product_id
+GROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
@@ -134,14 +156,17 @@ group by type_name, product_name, color_name, size_name</CommandText>
     </DataSet>
   </DataSets>
   <Code />
-  <Width>10.125in</Width>
+  <Width>9.75in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox59">
         <rd:DefaultName>textbox59</rd:DefaultName>
         <Top>0.375in</Top>
-        <Width>2.875in</Width>
+        <Width>3.5in</Width>
         <Style>
+          <FontFamily>Times New Roman</FontFamily>
+          <FontSize>12pt</FontSize>
+          <FontWeight>700</FontWeight>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -150,7 +175,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.25in</Height>
-        <Value />
+        <Value>="CỬA HÀNG: "&amp;First(Fields!department_name.Value, "posDataSet_deptStockStatistic")</Value>
       </Textbox>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
@@ -1751,7 +1776,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>64</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Nhập TK</Value>
+                      <Value>Nhập</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1778,7 +1803,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>63</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Trả</Value>
+                      <Value>KH trả</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1858,7 +1883,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>60</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Trả NSX</Value>
+                      <Value>Trả kho</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1966,7 +1991,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>56</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tồn thực</Value>
+                      <Value>Tồn cuối</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1978,7 +2003,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>1.25in</Width>
+            <Width>1in</Width>
           </TableColumn>
           <TableColumn>
             <Width>1.25in</Width>
@@ -2002,7 +2027,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
             <Width>0.5in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.75in</Width>
+            <Width>0.625in</Width>
           </TableColumn>
           <TableColumn>
             <Width>0.625in</Width>
@@ -2042,7 +2067,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Left>8.625in</Left>
+        <Left>8.25in</Left>
         <Value>="Trang "&amp;Globals!PageNumber</Value>
       </Textbox>
     </ReportItems>

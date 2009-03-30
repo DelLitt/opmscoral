@@ -104,6 +104,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllStockReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllStockReportViewer.Designer.cs">
+      <DependentUpon>AllStockReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DepartmentStockinReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,12 @@
     </Compile>
     <Compile Include="DeptStockStatisticReportViewer.Designer.cs">
       <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainStockReturnReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainStockReturnReportViewer.Designer.cs">
+      <DependentUpon>MainStockReturnReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="posDataSet.cs">
       <DependentUpon>posDataSet.xsd</DependentUpon>
@@ -140,6 +152,10 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <EmbeddedResource Include="AllStockReport.rdlc" />
+    <EmbeddedResource Include="AllStockReportViewer.resx">
+      <DependentUpon>AllStockReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DepartmentStockinReport.rdlc" />
     <EmbeddedResource Include="DepartmentStockinReportViewer.resx">
       <DependentUpon>DepartmentStockinReportViewer.cs</DependentUpon>
@@ -149,6 +165,10 @@
     <EmbeddedResource Include="DeptStockStatisticReportViewer.resx">
       <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainStockReturnReport.rdlc" />
+    <EmbeddedResource Include="MainStockReturnReportViewer.resx">
+      <DependentUpon>MainStockReturnReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseDetailReport.rdlc" />
     <EmbeddedResource Include="PurchaseDetailsReportViewer.resx">
