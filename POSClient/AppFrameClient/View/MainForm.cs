@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter;
 using AppFrame.Utility;
 using AppFrame.View.Reports;
+using AppFrameClient;
 using AppFrameClient.Common;
 using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
@@ -554,6 +556,31 @@ namespace AppFrame.View
             new MainStockReturnReportViewer().ShowDialog();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
+            Stream inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.MenuPermissions.xml");
 
+            // load menu permission
+            MenuItemPermission menuItemPermission = new MenuItemPermission(MenuItemPermission.INVISIBLE);
+            menuItemPermission.loadRoles(inStream);
+            ClientInfo clientInfo = ClientInfo.getInstance();
+            clientInfo.MenuPermissions = menuItemPermission;
+
+            // register main form
+            GlobalCache.Instance().MainForm = this;
+
+            // check menu permission
+            MenuUtility.setPermission(clientInfo.LoggedUser, ref this.mnuMenu, menuItemPermission);
+            //CheckClientServer();
+        }
+
+        private void CheckClientServer()
+        {
+            if(!ClientSetting.IsClient() && !ClientSetting.IsServer())
+            {
+                new ClientServerSettingForm().ShowDialog();                
+            }
+        }
     }
 }

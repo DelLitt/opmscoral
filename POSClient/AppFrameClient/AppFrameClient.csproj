@@ -171,6 +171,7 @@
     <Compile Include="Advice\MenuPermissionAdvice.cs" />
     <Compile Include="Advice\UpdateStatusDisplayAdvice.cs" />
     <Compile Include="Common\AppFrameUser.cs" />
+    <Compile Include="Common\ClientSetting.cs" />
     <Compile Include="Common\Code39Ex.cs" />
     <Compile Include="Common\Code39Settings.cs" />
     <Compile Include="Common\FormConstants.cs" />
@@ -241,6 +242,18 @@
     <Compile Include="DataLayer\StockOutDetailDAOImpl.cs" />
     <Compile Include="DataLayer\SupplierDAOImpl.cs" />
     <Compile Include="DataLayer\TaxDAOImpl.cs" />
+    <Compile Include="View\ClientServerSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClientServerSettingForm.Designer.cs">
+      <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1050,6 +1063,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ClientServerSettingForm.resx">
+      <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\PurchaseOrder.rdlc" />
     <EmbeddedResource Include="Report\ReturnPurchaseOrder.rdlc" />
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
@@ -1256,6 +1275,8 @@
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Logic\dummy.txt" />
+    <None Include="Resources\ready-to-use.jpg" />
+    <None Include="Resources\FlashImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

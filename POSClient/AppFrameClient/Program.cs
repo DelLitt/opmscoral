@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Utility;
 using AppFrame.View;
+using AppFrameClient;
 using AppFrameClient.Common;
 using AppFrameClient.View.GoodsIO;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
@@ -17,6 +18,7 @@ namespace AppFrame
 {
     internal static class Program
     {
+        private static SplashScreen splashScreen = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -26,25 +28,23 @@ namespace AppFrame
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+            splashScreen = new SplashScreen();
+            splashScreen.Show();
+            splashScreen.Refresh();
             IApplicationContext ctx = ContextRegistry.GetContext();
             MainForm mainForm = null;
             mainForm = ctx.GetObject(FormConstants.MAIN_FORM) as MainForm;
-            Stream inStream = mainForm.GetType().Assembly.GetManifestResourceStream("AppFrameClient.MenuPermissions.xml");
-
-            // load menu permission
-            MenuItemPermission menuItemPermission = new MenuItemPermission(MenuItemPermission.INVISIBLE);
-            menuItemPermission.loadRoles(inStream);
-            ClientInfo clientInfo = ClientInfo.getInstance();
-            clientInfo.MenuPermissions = menuItemPermission;
-
-            // register main form
-            GlobalCache.Instance().MainForm = mainForm;
-            
-            // check menu permission
-            MenuUtility.setPermission(clientInfo.LoggedUser,ref mainForm.mnuMenu,menuItemPermission);
+            mainForm.Shown += new EventHandler(mainForm_Shown);            
             Application.Run(mainForm);
             //Application.Run(new ProductMasterSearchDepartmentForm());
+        }
+
+        static void mainForm_Shown(object sender, EventArgs e)
+        {
+            if(splashScreen!=null)
+            {
+                splashScreen.Close();
+            }
         }
     }
 }
