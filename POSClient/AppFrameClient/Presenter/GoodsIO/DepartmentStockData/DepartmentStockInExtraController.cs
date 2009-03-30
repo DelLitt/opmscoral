@@ -66,21 +66,28 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public void _departmentStockInView_LoadDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
         {
             var criteria = new ObjectCriteria();
-            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            /*criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.Department.DepartmentId);
-            e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
-
-            foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
+            e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);*/
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            //criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
+            //criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("DepartmentId", e.Department.DepartmentId);
+            //e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
+            e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
+            e.SyncFromMainToDepartment.StockOutList = StockOutLogic.FindAll(criteria);
+            e.SyncFromMainToDepartment.Department = e.Department;
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
+            e.SyncFromMainToDepartment.Department.Employees = EmployeeLogic.FindAll(criteria);
+            //foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
+            foreach (StockOut departmentStockIn in e.SyncFromMainToDepartment.StockOutList)
             {
-                departmentStockIn.Department = e.Department;
-                criteria = new ObjectCriteria();
-                criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-                criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
-                departmentStockIn.Department.Employees = EmployeeLogic.FindAll(criteria);
 
-                foreach (DepartmentStockInDetail detail in departmentStockIn.DepartmentStockInDetails)
+                foreach (StockOutDetail detail in departmentStockIn.StockOutDetails)
                 {
                     DepartmentPrice price =
                         DepartmentPriceLogic.FindById(new DepartmentPricePK
@@ -95,6 +102,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     }
                 }
             }
+            
         }
 
         void _departmentStockInView_LoadPriceAndStockEvent(object sender, DepartmentStockInEventArgs e)
@@ -353,7 +361,17 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             var stockIn = e.DepartmentStockIn;
             if (stockIn.StockInId == 0)
             {
-                DepartmentStockInLogic.Add(stockIn);
+                // if we are doing stock out to department
+                if(e.ExportGoodsToDepartment)
+                {
+                    // execute stock out saving
+                    StockOutLogic.Add(stockIn);    
+                }
+                else
+                {
+                    DepartmentStockInLogic.Add(stockIn);    
+                }
+                
             }
             else
             {

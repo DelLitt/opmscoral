@@ -119,10 +119,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
             if (stockIn.StockInId == 0)
             {
+                //StockOutLogic.Add(stockIn);   
                 DepartmentStockInLogic.Add(stockIn);
             }
             else
             {
+                //StockOutLogic.Update(stockIn);   
                 DepartmentStockInLogic.Update(stockIn);
             }
             if (stockIn.DepartmentStockInPK != null && e.IsForSync)
@@ -171,8 +173,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             try
             {
-                var stockIn = e.DepartmentStockIn;
-                DepartmentStockInLogic.Sync(stockIn);
+                /*var stockIn = e.DepartmentStockIn;
+                DepartmentStockInLogic.Sync(stockIn);*/
+                var syncFromMainToDepartment = e.SyncFromMainToDepartment;
+                DepartmentStockInLogic.Sync(syncFromMainToDepartment);
                 e.EventResult = "Success";
             }
             catch (Exception)
@@ -276,6 +280,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             get;
             set;
+        }
+
+        public IStockOutLogic StockOutLogic
+        {
+            get; set;
         }
         #endregion
 

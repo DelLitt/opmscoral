@@ -79,6 +79,10 @@
     <property name="PackagerDAO" ref="AppFrame.DataLayer.IPackagerDAO"/>
   </object>
 
+  <object id="AppFrame.Service.ISyncStatusLogic" type="AppFrame.Logic.SyncStatusLogicImpl, AppFrameClient">
+    <property name="SyncStatusDAO" ref="AppFrame.DataLayer.ISyncStatusDAO"/>
+  </object>
+  
   <object id="AppFrame.Service.IContractLogic" type="AppFrame.Logic.ContractLogicImpl, AppFrameClient">
     <property name="ContractDAO" ref="AppFrame.DataLayer.IContractDAO"/>
   </object>
@@ -193,6 +197,7 @@
     <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
     <property name="ProductMasterDAO" ref="AppFrame.DataLayer.IProductMasterDAO"/>
     <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="StockOutDAO" ref="AppFrame.DataLayer.IStockOutDAO"/>
     <property name="DepartmentPriceDAO" ref="AppFrame.DataLayer.IDepartmentPriceDAO"/>
     <property name="DepartmentDAO" ref="AppFrame.DataLayer.IDepartmentDAO"/>
     <property name="CountryDAO" ref="AppFrame.DataLayer.ICountryDAO"/>

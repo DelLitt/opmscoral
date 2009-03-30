@@ -193,7 +193,33 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     stream = File.Open(fileName, FileMode.Open);
                     BinaryFormatter bf = new BinaryFormatter();
-                    deptStockIn = (DepartmentStockIn)bf.Deserialize(stream);
+                    SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment)bf.Deserialize(stream);
+                    Department dept;
+                    if (syncFMTD == null
+                    || syncFMTD.Department == null
+                    || (CurrentDepartment.CurrentActiveDepartment(out dept) 
+                         && syncFMTD.Department.DepartmentId != 
+                                                    CurrentDepartment.Get().DepartmentId))
+                    {
+                        fail = true;
+                    }
+                    else
+                    {
+                        var eventArgs = new DepartmentStockInEventArgs();
+                        //eventArgs.DepartmentStockIn = deptStockIn;
+                        eventArgs.SyncFromMainToDepartment = syncFMTD;
+                        EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
+                        if (eventArgs.EventResult != null)
+                        {
+                            fail = false;
+                        }
+                        else
+                        {
+                            fail = true;
+                        }
+
+                    }
+                    /*deptStockIn = (DepartmentStockIn)bf.Deserialize(stream);
                     Department dept;
                     if (deptStockIn == null
                     || deptStockIn.DepartmentStockInPK == null
@@ -215,7 +241,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             fail = true;
                         }
 
-                    }
+                    }*/
                 }
                 finally
                 {

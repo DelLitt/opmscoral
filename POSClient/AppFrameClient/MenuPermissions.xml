@@ -18,7 +18,6 @@
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
     <menuitem name="mnuDanhmucHanghoa" role="NotImplement" />
-
     <menuitem name="mnuPhieuXuatKho" role="Administrator,Supervisor" />
     <menuitem name="mnuInventoryChecking" role="Administrator,Supervisor" />
     <menuitem name="mnuProcessStockDefect" role="Administrator,Supervisor" />
@@ -35,7 +34,8 @@
     <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />   
+    <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
@@ -81,7 +81,8 @@
     <menuitem name="mnuGoodsSaleDepartmentDetail" role="Administrator,Supervisor" />    
     <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
     <menuitem name="mnuMainDeptStockStatisticReport" role="Administrator,Supervisor" />
-    <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />    
+    <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuAllStockReturnReport" role="Administrator,Supervisor" />
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />

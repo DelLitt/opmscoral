@@ -163,7 +163,7 @@
             this.dgvBill.MultiSelect = false;
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.Size = new System.Drawing.Size(980, 326);
-            this.dgvBill.TabIndex = 2;
+            this.dgvBill.TabIndex = 3;
             this.dgvBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellEndEdit);
             this.dgvBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellClick);
             // 
@@ -404,7 +404,7 @@
             this.btnPrint.Location = new System.Drawing.Point(735, 41);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(89, 31);
-            this.btnPrint.TabIndex = 5;
+            this.btnPrint.TabIndex = 6;
             this.btnPrint.Text = "Lưu hoá đơn";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -571,7 +571,7 @@
             this.button1.Location = new System.Drawing.Point(301, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(37, 23);
-            this.button1.TabIndex = 48;
+            this.button1.TabIndex = 2;
             this.button1.TabStop = false;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -585,7 +585,7 @@
             this.txtPayment.MaxLength = 10;
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.Size = new System.Drawing.Size(196, 30);
-            this.txtPayment.TabIndex = 3;
+            this.txtPayment.TabIndex = 5;
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
             // 
             // label1

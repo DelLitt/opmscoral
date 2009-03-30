@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.DataLayer
 {
-    public class SyncStatusDAOImpl : ISyncStatusDAO
+    public class CategoryDAOImpl : ICategoryDAO
     {
         private HibernateTemplate _hibernateTemplate;
 
@@ -24,54 +24,54 @@ namespace AppFrame.DataLayer
         }
         
         /// <summary>
-        /// Find SyncStatus object by id. Return null if nothing is found
+        /// Find Category object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of SyncStatus</param>
+        /// <param name="id">Id of Category</param>
         /// <returns></returns>
-        public SyncStatus FindById(object id)
+        public Category FindById(object id)
         {
-            return (SyncStatus) HibernateTemplate.Get(typeof(SyncStatus), id);
+            return (Category) HibernateTemplate.Get(typeof(Category), id);
         }
         
         /// <summary>
-        /// Add SyncStatus to database.
+        /// Add Category to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public SyncStatus Add(SyncStatus data)
+        public Category Add(Category data)
         {
             HibernateTemplate.Save(data);
             return data;
         }
         
         /// <summary>
-        /// Update SyncStatus to database.
+        /// Update Category to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Update(SyncStatus data)
+        public void Update(Category data)
         {
             HibernateTemplate.Update(data);
         }
         
         /// <summary>
-        /// Delete SyncStatus from database.
+        /// Delete Category from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void Delete(SyncStatus data)
+        public void Delete(Category data)
         {
             HibernateTemplate.Delete(data);
         }
         
         /// <summary>
-        /// Delete SyncStatus from database.
+        /// Delete Category from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public void DeleteById(object id)
         {
-            SyncStatus obj = (SyncStatus) HibernateTemplate.Get(typeof (SyncStatus), id);
+            Category obj = (Category) HibernateTemplate.Get(typeof (Category), id);
             if (obj != null)
             {
                 HibernateTemplate.Delete(obj);
@@ -79,7 +79,7 @@ namespace AppFrame.DataLayer
         }
         
         /// <summary>
-        /// Find all SyncStatus from database. No pagination.
+        /// Find all Category from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
@@ -88,7 +88,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try 
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(SyncStatus));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(Category));
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -124,7 +124,7 @@ namespace AppFrame.DataLayer
         }
         
         /// <summary>
-        /// Find all SyncStatus from database. Has pagination.
+        /// Find all Category from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
@@ -150,7 +150,7 @@ namespace AppFrame.DataLayer
                 }
                 queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
     
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(SyncStatus));
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(Category));
     
                 IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
                 if (map.Count > 0)
@@ -206,7 +206,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try 
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(SyncStatus)).SetProjection(Projections.RowCount()); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(Category)).SetProjection(Projections.RowCount()); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
@@ -256,7 +256,7 @@ namespace AppFrame.DataLayer
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(SyncStatus)).SetProjection(type); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(Category)).SetProjection(type); ;
                 if (criteria != null)
                 {
                     IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();

@@ -106,7 +106,23 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptEvent.Department = department;
                     EventUtility.fireEvent(LoadDepartemntStockInForExportEvent, this, deptEvent);
 
-                    if (deptEvent.DepartmentStockInList != null && deptEvent.DepartmentStockInList.Count > 0)
+                    if(deptEvent.SyncFromMainToDepartment!=null 
+                        && deptEvent.SyncFromMainToDepartment.StockOutList!=null
+                        && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0 )
+                    {
+                        string fileName = exportPath + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(department.DepartmentName) + " - SyncDown_" + 
+                                                              DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
+                        SyncResult result = new SyncResult();
+                        result.FileName = fileName;
+                        result.Status = "Thành công";
+                        resultList.Add(result);
+                        Stream stream = File.Open(fileName, FileMode.Create);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
+                        stream.Close();                        
+                    }
+
+                    /*if (deptEvent.DepartmentStockInList != null && deptEvent.DepartmentStockInList.Count > 0)
                     {
                         foreach (DepartmentStockIn stockIn in deptEvent.DepartmentStockInList)
                         {
@@ -126,7 +142,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             EventUtility.fireEvent(UpdateDepartemntStockInForExportEvent, this, eventArgs);
 
                         }
-                    }
+                    }*/
                 }
             }
             catch (Exception)

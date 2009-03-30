@@ -544,6 +544,16 @@ namespace AppFrame.View
             new ReturnPOrderReportViewer().ShowDialog();
         }
 
+        private void mnuAllStockReturnReport_Click(object sender, EventArgs e)
+        {
+            new AllStockReportViewer().ShowDialog();
+        }
+
+        private void mnuReturnMainStockReport_Click(object sender, EventArgs e)
+        {
+            new MainStockReturnReportViewer().ShowDialog();
+        }
+
 
     }
 }

@@ -662,6 +662,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.IsForSync = isNeedSync;
             eventArgs.DepartmentStockIn = deptSI;
+            eventArgs.ExportGoodsToDepartment = true;
             EventUtility.fireEvent(SaveDepartmentStockInEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
