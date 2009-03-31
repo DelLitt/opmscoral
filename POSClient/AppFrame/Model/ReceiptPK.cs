@@ -7,7 +7,7 @@ namespace AppFrame.Model
     [Serializable]
     public class ReceiptPK
     {
-        public virtual Int64 ReceiptId
+        public virtual string ReceiptId
         {
             get;
             set;

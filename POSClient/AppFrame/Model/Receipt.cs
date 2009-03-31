@@ -160,7 +160,11 @@ namespace AppFrame.Model
                 _purchaseOrder = value;
             }
         }
-        
+
+        public virtual Int64 TotalAmount { get; set; }
+        public virtual Int64 CustomerPayment { get; set; }
+        public virtual Int64 Charge { get; set; }
+        public virtual Int64 ReturnAmount { get; set; }
 
         #endregion
         

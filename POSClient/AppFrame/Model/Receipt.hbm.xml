@@ -77,6 +77,34 @@
     >
     </property>
 
+  <property
+        name="TotalAmount"
+        type="Int64"
+        column="TOTAL_AMOUNT"
+        length="10"
+    >
+  </property>
+  <property
+        name="CustomerPayment"
+        type="Int64"
+        column="CUSTOMER_PAYMENT"
+        length="10"
+    >
+  </property>
+  <property
+        name="Charge"
+        type="Int64"
+        column="CHARGE"
+        length="10"
+    >
+  </property>
+  <property
+        name="ReturnAmount"
+        type="Int64"
+        column="RETURN_AMOUNT"
+        length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->
