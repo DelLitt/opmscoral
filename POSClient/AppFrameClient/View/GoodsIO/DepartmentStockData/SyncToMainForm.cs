@@ -59,7 +59,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             try
             {
                 SyncResult result = new SyncResult();
-                string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "-" +
+                string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "-SyncUp-" +
                                   DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.CLIENT_SYNC_FORMAT;
                 var eventArgs = new DepartmentStockOutEventArgs();
                 EventUtility.fireEvent(GetSyncDataEvent, this, eventArgs);

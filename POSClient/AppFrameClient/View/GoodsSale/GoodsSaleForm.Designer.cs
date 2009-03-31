@@ -30,30 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsSaleForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProductReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderDetailReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderDetailCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReceiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvBill = new System.Windows.Forms.DataGridView();
-            this.columnProductSearch = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.columnProductId = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
-            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsBill = new System.Windows.Forms.BindingSource(this.components);
             this.txtDepartment = new System.Windows.Forms.TextBox();
             this.txtEmployee = new System.Windows.Forms.TextBox();
@@ -97,12 +92,21 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.columnProductSearch = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.columnProductId = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
+            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new AppFrame.Controls.DataGridViewNumberTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -133,6 +137,10 @@
             // 
             this.PurchaseOrderBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrder);
             // 
+            // ReceiptBindingSource
+            // 
+            this.ReceiptBindingSource.DataSource = typeof(AppFrame.Model.Receipt);
+            // 
             // dgvBill
             // 
             this.dgvBill.AllowUserToAddRows = false;
@@ -162,93 +170,14 @@
             this.dgvBill.Location = new System.Drawing.Point(6, 21);
             this.dgvBill.MultiSelect = false;
             this.dgvBill.Name = "dgvBill";
+            this.dgvBill.RowHeadersWidth = 30;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dgvBill.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBill.Size = new System.Drawing.Size(980, 326);
             this.dgvBill.TabIndex = 3;
+            this.dgvBill.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBill_RowPostPaint);
             this.dgvBill.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellEndEdit);
             this.dgvBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellClick);
-            // 
-            // columnProductSearch
-            // 
-            this.columnProductSearch.Frozen = true;
-            this.columnProductSearch.HeaderText = "...";
-            this.columnProductSearch.Name = "columnProductSearch";
-            this.columnProductSearch.ReadOnly = true;
-            this.columnProductSearch.Text = "...";
-            this.columnProductSearch.ToolTipText = "...";
-            this.columnProductSearch.UseColumnTextForButtonValue = true;
-            this.columnProductSearch.Visible = false;
-            this.columnProductSearch.Width = 30;
-            // 
-            // columnProductId
-            // 
-            this.columnProductId.DataPropertyName = "Product.ProductId";
-            this.columnProductId.Frozen = true;
-            this.columnProductId.HeaderText = "Mã vạch";
-            this.columnProductId.MaxLength = 0;
-            this.columnProductId.Name = "columnProductId";
-            this.columnProductId.ReadOnly = true;
-            this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnProductId.ToolTipText = "Nhấn F3 để tìm kiếm mã hàng";
-            this.columnProductId.Width = 200;
-            // 
-            // columnProductName
-            // 
-            this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            this.columnProductName.Frozen = true;
-            this.columnProductName.HeaderText = "Tên hàng";
-            this.columnProductName.Name = "columnProductName";
-            this.columnProductName.ReadOnly = true;
-            this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnProductName.ToolTipText = "Nhấn F3 để tìm kiếm tên hàng";
-            this.columnProductName.Width = 400;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
-            this.quantityDataGridViewTextBoxColumn.MaxLength = 0;
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // columnPrice
-            // 
-            this.columnPrice.DataPropertyName = "Price";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            this.columnPrice.HeaderText = "Giá";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            this.columnPrice.Width = 200;
-            // 
-            // columnColor
-            // 
-            this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            this.columnColor.HeaderText = "Màu sắc";
-            this.columnColor.Name = "columnColor";
-            this.columnColor.ReadOnly = true;
-            // 
-            // columnSize
-            // 
-            this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            this.columnSize.HeaderText = "Kích cỡ";
-            this.columnSize.Name = "columnSize";
-            this.columnSize.ReadOnly = true;
-            // 
-            // columnType
-            // 
-            this.columnType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            this.columnType.HeaderText = "Phân loại";
-            this.columnType.Name = "columnType";
-            this.columnType.ReadOnly = true;
-            this.columnType.Visible = false;
             // 
             // bdsBill
             // 
@@ -433,6 +362,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 26;
+            this.btnAdd.TabStop = false;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Visible = false;
@@ -444,6 +374,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 4;
+            this.btnDelete.TabStop = false;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -511,6 +442,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(65, 22);
             this.textBox1.TabIndex = 49;
+            this.textBox1.TabStop = false;
             // 
             // txtQuantity
             // 
@@ -660,18 +592,22 @@
             reportDataSource5.Value = this.DepartmentBindingSource;
             reportDataSource6.Name = "AppFrame_Model_PurchaseOrder";
             reportDataSource6.Value = this.PurchaseOrderBindingSource;
+            reportDataSource7.Name = "AppFrame_Model_Receipt";
+            reportDataSource7.Value = this.ReceiptBindingSource;
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource1);
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource2);
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource3);
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource4);
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource5);
             this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource7);
             this.reportPurchaseOrder.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.PurchaseOrder.rdlc";
-            this.reportPurchaseOrder.Location = new System.Drawing.Point(904, 353);
+            this.reportPurchaseOrder.Location = new System.Drawing.Point(333, 353);
             this.reportPurchaseOrder.Margin = new System.Windows.Forms.Padding(0);
             this.reportPurchaseOrder.Name = "reportPurchaseOrder";
             this.reportPurchaseOrder.Size = new System.Drawing.Size(58, 33);
             this.reportPurchaseOrder.TabIndex = 37;
+            this.reportPurchaseOrder.TabStop = false;
             this.reportPurchaseOrder.Visible = false;
             // 
             // printBillDialog
@@ -705,6 +641,91 @@
             this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.Del;
             this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
+            // columnProductSearch
+            // 
+            this.columnProductSearch.Frozen = true;
+            this.columnProductSearch.HeaderText = "...";
+            this.columnProductSearch.Name = "columnProductSearch";
+            this.columnProductSearch.ReadOnly = true;
+            this.columnProductSearch.Text = "...";
+            this.columnProductSearch.ToolTipText = "...";
+            this.columnProductSearch.UseColumnTextForButtonValue = true;
+            this.columnProductSearch.Visible = false;
+            this.columnProductSearch.Width = 30;
+            // 
+            // columnProductId
+            // 
+            this.columnProductId.DataPropertyName = "Product.ProductId";
+            this.columnProductId.Frozen = true;
+            this.columnProductId.HeaderText = "Mã vạch";
+            this.columnProductId.MaxLength = 0;
+            this.columnProductId.Name = "columnProductId";
+            this.columnProductId.ReadOnly = true;
+            this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnProductId.ToolTipText = "Nhấn F3 để tìm kiếm mã hàng";
+            this.columnProductId.Width = 150;
+            // 
+            // columnProductName
+            // 
+            this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
+            this.columnProductName.Frozen = true;
+            this.columnProductName.HeaderText = "Tên hàng";
+            this.columnProductName.Name = "columnProductName";
+            this.columnProductName.ReadOnly = true;
+            this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnProductName.ToolTipText = "Nhấn F3 để tìm kiếm tên hàng";
+            this.columnProductName.Width = 200;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
+            this.quantityDataGridViewTextBoxColumn.MaxLength = 0;
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // columnPrice
+            // 
+            this.columnPrice.DataPropertyName = "Price";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            this.columnPrice.HeaderText = "Giá";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            this.columnPrice.Width = 150;
+            // 
+            // columnColor
+            // 
+            this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.columnColor.HeaderText = "Màu sắc";
+            this.columnColor.Name = "columnColor";
+            this.columnColor.ReadOnly = true;
+            this.columnColor.Width = 150;
+            // 
+            // columnSize
+            // 
+            this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.columnSize.HeaderText = "Kích cỡ";
+            this.columnSize.Name = "columnSize";
+            this.columnSize.ReadOnly = true;
+            this.columnSize.Width = 195;
+            // 
+            // columnType
+            // 
+            this.columnType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
+            this.columnType.HeaderText = "Phân loại";
+            this.columnType.Name = "columnType";
+            this.columnType.ReadOnly = true;
+            this.columnType.Visible = false;
+            // 
             // GoodsSaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,6 +747,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -794,6 +816,11 @@
         private System.Windows.Forms.BindingSource DepartmentBindingSource;
         private System.Windows.Forms.BindingSource PurchaseOrderBindingSource;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.BindingSource ReceiptBindingSource;
         private System.Windows.Forms.DataGridViewButtonColumn columnProductSearch;
         private AppFrame.Controls.DataGridViewNumberTextBoxColumn columnProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductName;
@@ -802,9 +829,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnType;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -83,6 +83,8 @@
     <menuitem name="mnuMainDeptStockStatisticReport" role="Administrator,Supervisor" />
     <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />
     <menuitem name="mnuAllStockReturnReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuAllStock" role="Administrator,Supervisor" />
+    
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />

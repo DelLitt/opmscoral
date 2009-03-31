@@ -34,6 +34,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -128,6 +129,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.ReceiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
@@ -142,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsReturnBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNewBill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PurchaseOrderDetailBindingSource
@@ -386,18 +389,18 @@
             this.mnuReturnGoods,
             this.mnuResetReturnGoods});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(103, 48);
             // 
             // mnuReturnGoods
             // 
             this.mnuReturnGoods.Name = "mnuReturnGoods";
-            this.mnuReturnGoods.Size = new System.Drawing.Size(108, 22);
+            this.mnuReturnGoods.Size = new System.Drawing.Size(102, 22);
             this.mnuReturnGoods.Text = "Trả";
             // 
             // mnuResetReturnGoods
             // 
             this.mnuResetReturnGoods.Name = "mnuResetReturnGoods";
-            this.mnuResetReturnGoods.Size = new System.Drawing.Size(108, 22);
+            this.mnuResetReturnGoods.Size = new System.Drawing.Size(102, 22);
             this.mnuResetReturnGoods.Text = "Hồi lại";
             // 
             // bdsBill
@@ -687,10 +690,13 @@
             reportDataSource3.Value = this.DepartmentBindingSource;
             reportDataSource4.Name = "AppFrame_Model_PurchaseOrder";
             reportDataSource4.Value = this.PurchaseOrderBindingSource;
+            reportDataSource5.Name = "AppFrame_Model_Receipt";
+            reportDataSource5.Value = this.ReceiptBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.ReturnPurchaseOrder.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(627, 390);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(0);
@@ -930,19 +936,19 @@
             this.mnuAddUncheckMenu,
             this.mnuRemoveUncheckMenu});
             this.ctxReturnBill.Name = "ctxReturnBill";
-            this.ctxReturnBill.Size = new System.Drawing.Size(271, 48);
+            this.ctxReturnBill.Size = new System.Drawing.Size(248, 48);
             // 
             // mnuAddUncheckMenu
             // 
             this.mnuAddUncheckMenu.Name = "mnuAddUncheckMenu";
-            this.mnuAddUncheckMenu.Size = new System.Drawing.Size(270, 22);
+            this.mnuAddUncheckMenu.Size = new System.Drawing.Size(247, 22);
             this.mnuAddUncheckMenu.Text = "Thêm mặt hàng trả không đối chứng";
             this.mnuAddUncheckMenu.Click += new System.EventHandler(this.tToolStripMenuItem_Click);
             // 
             // mnuRemoveUncheckMenu
             // 
             this.mnuRemoveUncheckMenu.Name = "mnuRemoveUncheckMenu";
-            this.mnuRemoveUncheckMenu.Size = new System.Drawing.Size(270, 22);
+            this.mnuRemoveUncheckMenu.Size = new System.Drawing.Size(247, 22);
             this.mnuRemoveUncheckMenu.Text = "Xoá mặt hàng trả không đối chứng";
             // 
             // bdsReturnBill
@@ -1091,6 +1097,10 @@
             this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
             this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
+            // ReceiptBindingSource
+            // 
+            this.ReceiptBindingSource.DataSource = typeof(AppFrame.Model.Receipt);
+            // 
             // GoodsSaleReturnForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 642);
@@ -1139,6 +1149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsReturnBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNewBill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1236,5 +1247,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource ReceiptBindingSource;
     }
 }

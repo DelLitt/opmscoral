@@ -582,5 +582,10 @@ namespace AppFrame.View
                 new ClientServerSettingForm().ShowDialog();                
             }
         }
+
+        private void mnuAllStock_Click(object sender, EventArgs e)
+        {
+            new AllStockReportViewer().ShowDialog();
+        }
     }
 }

@@ -171,6 +171,7 @@
     <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
+    <property name="ReceiptDAO" ref="AppFrame.DataLayer.IReceiptDAO"/>
   </object>
 
   <object id="AppFrame.Service.IStockOutDetailLogic" type="AppFrame.Logic.StockOutDetailLogicImpl, AppFrameClient">

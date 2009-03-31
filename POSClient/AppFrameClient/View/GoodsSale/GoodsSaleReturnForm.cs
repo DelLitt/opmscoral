@@ -353,6 +353,24 @@ namespace AppFrameClient.View.GoodsSale
                 eventArgs.RefPurchaseOrder = goodsSaleReturnController.ReturnPurchaseOrder;
                 eventArgs.ReturnPurchaseOrderDetails = ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODReturnList);
 
+                Receipt receipt = new Receipt();
+                receipt.PurchaseOrder = goodsSaleReturnController.ReturnPurchaseOrder;
+                receipt.ReceiptPK = new ReceiptPK
+                                        {
+                                            DepartmentId = CurrentDepartment.Get().DepartmentId
+                                        };
+                receipt.CreateDate = DateTime.Now;
+                receipt.UpdateDate = DateTime.Now;
+                receipt.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                receipt.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                receipt.ReceiptName = "HDDTH";
+                receipt.ReceiptNumber = goodsSaleReturnController.ReturnPurchaseOrder.PurchaseOrderPK.PurchaseOrderId;
+                receipt.TotalAmount = Int64.Parse(txtTotalAmount.Text);
+                receipt.CustomerPayment = Int64.Parse(txtPayment.Text);
+                receipt.Charge = Int64.Parse(txtCharge.Text);
+                receipt.ReturnAmount = Int64.Parse(txtReturnPayment.Text);
+                
+
                 if(pODNewList!=null && pODNewList.Count > 0 )
                 {
                    PurchaseOrder nextOrder = new PurchaseOrder();
@@ -375,14 +393,14 @@ namespace AppFrameClient.View.GoodsSale
                 if(!eventArgs.HasErrors)
                 {
                     MessageBox.Show("Lưu thành công !");
-                    PrintDirectlyToPrinter(eventArgs);
+                    PrintDirectlyToPrinter(eventArgs,receipt);
                     ClearForm();
                 }
                 
             }
         }
 
-        private void PrintReturnReceipt(GoodsSaleReturnEventArgs args)
+        private void PrintReturnReceipt(GoodsSaleReturnEventArgs args, Receipt receipt)
         {
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
             if (args.NextPurchaseOrder == null)
@@ -399,13 +417,14 @@ namespace AppFrameClient.View.GoodsSale
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(reportViewer1_RenderingComplete);
             //this.reportViewer1.LocalReport.Refresh();
+            
             this.reportViewer1.RefreshReport();
             
 
         }
 
         IList<Stream> streamList = new List<Stream>();
-        private void PrintDirectlyToPrinter(GoodsSaleReturnEventArgs args)
+        private void PrintDirectlyToPrinter(GoodsSaleReturnEventArgs args, Receipt receipt)
         {
 
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
@@ -423,6 +442,7 @@ namespace AppFrameClient.View.GoodsSale
                 ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
 
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
+            this.ReceiptBindingSource.DataSource = receipt;
             this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(reportViewer1_RenderingComplete);
             this.reportViewer1.LocalReport.Refresh();
 

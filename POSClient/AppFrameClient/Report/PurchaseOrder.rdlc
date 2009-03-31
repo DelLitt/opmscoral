@@ -1860,10 +1860,153 @@
         <rd:ObjectDataSourceType>AppFrame.Model.PurchaseOrder, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
+    <DataSet Name="AppFrame_Model_Receipt">
+      <Fields>
+        <Field Name="Charge">
+          <DataField>Charge</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerPayment">
+          <DataField>CustomerPayment</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder">
+          <DataField>PurchaseOrder</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrder</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptId">
+          <DataField>ReceiptId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptName">
+          <DataField>ReceiptName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptNumber">
+          <DataField>ReceiptNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptPK">
+          <DataField>ReceiptPK</DataField>
+          <rd:TypeName>AppFrame.Model.ReceiptPK</rd:TypeName>
+        </Field>
+        <Field Name="ReturnAmount">
+          <DataField>ReturnAmount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Model</rd:DataSetName>
+        <rd:TableName>Receipt</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Model.Receipt, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
   </DataSets>
   <Width>2.75in</Width>
   <Body>
     <ReportItems>
+      <List Name="list1">
+        <ZIndex>5</ZIndex>
+        <DataSetName>AppFrame_Model_Receipt</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox29">
+            <rd:DefaultName>textbox29</rd:DefaultName>
+            <Width>1.5in</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.125in</Height>
+            <Value>Khách trả:</Value>
+          </Textbox>
+          <Textbox Name="textbox5">
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.5in</Left>
+            <Height>0.125in</Height>
+            <Value>=Fields!CustomerPayment.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox30">
+            <Top>0.125in</Top>
+            <Width>1.5in</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Value>Thối lại:</Value>
+          </Textbox>
+          <Textbox Name="textbox22">
+            <Top>0.125in</Top>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>1.5in</Left>
+            <Value>=Fields!Charge.Value</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>1.5in</Top>
+        <Width>2.375in</Width>
+        <Height>0.25in</Height>
+      </List>
       <Textbox Name="textbox19">
         <Top>2.5in</Top>
         <Width>2.375in</Width>
@@ -1872,38 +2015,27 @@
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
         </Style>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.25in</Height>
         <Value>************</Value>
       </Textbox>
       <Textbox Name="textbox18">
         <rd:DefaultName>textbox18</rd:DefaultName>
-        <Top>1.875in</Top>
+        <Top>2in</Top>
         <Width>2.375in</Width>
         <Style>
           <FontFamily>Tahoma</FontFamily>
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
         </Style>
-        <ZIndex>4</ZIndex>
+        <ZIndex>3</ZIndex>
         <CanGrow>true</CanGrow>
-        <Height>0.625in</Height>
+        <Height>0.5in</Height>
         <Value>QUÝ KHÁCH VUI LÒNG GIỮ LẠI HÓA ĐƠN ĐỂ ĐỔI HÀNG BỊ LỖI TRONG VÒNG 3 NGÀY
 XIN CÁM ƠN QUÝ KHÁCH!
 </Value>
       </Textbox>
-      <Line Name="line1">
-        <Top>1.75in</Top>
-        <Width>2.375in</Width>
-        <Style>
-          <BorderStyle>
-            <Default>Solid</Default>
-          </BorderStyle>
-        </Style>
-        <ZIndex>3</ZIndex>
-        <Height>0in</Height>
-      </Line>
       <List Name="list2">
         <ZIndex>2</ZIndex>
         <DataSetName>AppFrame_Model_Department</DataSetName>
@@ -1959,7 +2091,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
               <FontStyle>Italic</FontStyle>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
               <PaddingRight>2pt</PaddingRight>
             </Style>
             <ZIndex>7</ZIndex>
@@ -2238,7 +2370,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Width>0.5in</Width>
           </TableColumn>
         </TableColumns>
-        <Height>0.5in</Height>
+        <Height>0.375in</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -2315,77 +2447,6 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>=Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection")</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.125in</Height>
-            </TableRow>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox5">
-                      <rd:DefaultName>textbox5</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Top>None</Top>
-                        </BorderStyle>
-                      </Style>
-                      <ZIndex>9</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox24">
-                      <rd:DefaultName>textbox24</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Top>None</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox23">
-                      <rd:DefaultName>textbox23</rd:DefaultName>
-                      <Style>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox25">
-                      <rd:DefaultName>textbox25</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Top>None</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>

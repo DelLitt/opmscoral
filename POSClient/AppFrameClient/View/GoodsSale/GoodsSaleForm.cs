@@ -191,6 +191,18 @@ namespace AppFrameClient.View.GoodsSale
                 EventUtility.fireEvent<GoodsSaleEventArgs>(FillProductToComboEvent, box, goodsSaleEventArgs);
             }
         }*/
+        private void CreateRowNumbers()
+        {
+            foreach(DataGridViewRow row in dgvBill.Rows)
+            {
+                dgvBill.Rows[row.Index].HeaderCell.Value = row.Index + 1;
+                dgvBill.InvalidateRow(row.Index);
+            }
+            dgvBill.Refresh();
+            dgvBill.Invalidate();
+            
+        }
+
 
         private void GoodsSaleForm_Load(object sender, EventArgs e)
         {
@@ -202,6 +214,7 @@ namespace AppFrameClient.View.GoodsSale
             this.reportPurchaseOrder.RefreshReport();
             txtBarcode.Focus();
             //btnAdd_Click(this, null);
+            
         }
 
 
@@ -469,6 +482,20 @@ namespace AppFrameClient.View.GoodsSale
             {
                 GoodsSaleController.PurchaseOrder.Customer = new Customer{CustomerName = txtCustomer.Text};
             }
+            Receipt receipt = new Receipt();
+            receipt.PurchaseOrder = GoodsSaleController.PurchaseOrder;
+            receipt.ReceiptPK = new ReceiptPK{ DepartmentId = CurrentDepartment.Get().DepartmentId};
+            receipt.CreateDate = DateTime.Now;
+            receipt.UpdateDate = DateTime.Now;
+            receipt.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+            receipt.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+            receipt.ReceiptName = "HDBH";
+            receipt.ReceiptNumber = GoodsSaleController.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId;
+            receipt.TotalAmount = Int64.Parse(txtTotalAmount.Text);
+            receipt.CustomerPayment = Int64.Parse(txtPayment.Text);
+            receipt.Charge = Int64.Parse(txtCharge.Text);
+            GoodsSaleController.PurchaseOrder.Receipts = new ArrayList();
+            GoodsSaleController.PurchaseOrder.Receipts.Add(receipt);
             GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
             EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
             if (eventArgs.HasErrors)
@@ -489,7 +516,7 @@ namespace AppFrameClient.View.GoodsSale
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
             this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(pODList);
-            
+            this.ReceiptBindingSource.DataSource = receipt;
 
             /*string deviceInfo = "<DeviceInfo>" +
             "  <OutputFormat>EMF</OutputFormat>" +
@@ -777,6 +804,7 @@ namespace AppFrameClient.View.GoodsSale
                     }
                     finally
                     {
+                        CreateRowNumbers();
                         CalculateCharge();
                         RemoveEmptyRowFromList(pODList);
                         ClearInput();
@@ -843,10 +871,49 @@ namespace AppFrameClient.View.GoodsSale
         private void systemHotkey2_Pressed(object sender, EventArgs e)
         {
             btnDelete_Click(sender,e);
+            CreateRowNumbers();
         }
 
         private void txtCharge_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void dgvBill_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            //this method overrides the DataGridView's RowPostPaint event 
+            //in order to automatically draw numbers on the row header cells
+            //and to automatically adjust the width of the column containing
+            //the row header cells so that it can accommodate the new row
+            //numbers,
+
+            //store a string representation of the row number in 'strRowNumber'
+            string strRowNumber = (e.RowIndex + 1).ToString();
+
+            //prepend leading zeros to the string if necessary to improve
+            //appearance. For example, if there are ten rows in the grid,
+            //row seven will be numbered as "07" instead of "7". Similarly, if 
+            //there are 100 rows in the grid, row seven will be numbered as "007".
+            while (strRowNumber.Length < dgvBill.RowCount.ToString().Length) strRowNumber = "0" + strRowNumber;
+
+            //determine the display size of the row number string using
+            //the DataGridView's current font.
+            SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
+
+            //adjust the width of the column that contains the row header cells 
+            //if necessary
+            if (dgvBill.RowHeadersWidth < (int)(size.Width + 20)) dgvBill.RowHeadersWidth = (int)(size.Width + 20);
+
+            //this brush will be used to draw the row number string on the
+            //row header cell using the system's current ControlText color
+            Brush b = SystemBrushes.ControlText;
+
+            //draw the row number string on the current row header cell using
+            //the brush defined above and the DataGridView's default font
+            e.Graphics.DrawString(strRowNumber, this.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+
+            //call the base object's OnRowPostPaint method
+            //dgvBill.OnRowPostPaint(e);
 
         }
     }

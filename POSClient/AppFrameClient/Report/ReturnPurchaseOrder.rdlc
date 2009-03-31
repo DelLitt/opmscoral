@@ -348,10 +348,152 @@
         <rd:ObjectDataSourceType>AppFrame.Model.PurchaseOrder, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
+    <DataSet Name="AppFrame_Model_Receipt">
+      <Fields>
+        <Field Name="Charge">
+          <DataField>Charge</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreateId">
+          <DataField>CreateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerPayment">
+          <DataField>CustomerPayment</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DelFlg">
+          <DataField>DelFlg</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentId">
+          <DataField>DepartmentId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ExclusiveKey">
+          <DataField>ExclusiveKey</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseOrder">
+          <DataField>PurchaseOrder</DataField>
+          <rd:TypeName>AppFrame.Model.PurchaseOrder</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptId">
+          <DataField>ReceiptId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptName">
+          <DataField>ReceiptName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptNumber">
+          <DataField>ReceiptNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReceiptPK">
+          <DataField>ReceiptPK</DataField>
+          <rd:TypeName>AppFrame.Model.ReceiptPK</rd:TypeName>
+        </Field>
+        <Field Name="ReturnAmount">
+          <DataField>ReturnAmount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="UpdateDate">
+          <DataField>UpdateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdateId">
+          <DataField>UpdateId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrame.Model</rd:DataSetName>
+        <rd:TableName>Receipt</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrame.Model.Receipt, AppFrame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
   </DataSets>
   <Width>2.75in</Width>
   <Body>
     <ReportItems>
+      <List Name="list2">
+        <ZIndex>7</ZIndex>
+        <DataSetName>AppFrame_Model_Receipt</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox34">
+            <Width>1.5in</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.125in</Height>
+            <Value>Khách trả:</Value>
+          </Textbox>
+          <Textbox Name="textbox44">
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.5in</Left>
+            <Height>0.125in</Height>
+            <Value>=Fields!CustomerPayment.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox45">
+            <Top>0.125in</Top>
+            <Width>1.5in</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Value>Thối lại:</Value>
+          </Textbox>
+          <Textbox Name="textbox46">
+            <Top>0.125in</Top>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>7pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Right</TextAlign>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>1.5in</Left>
+            <Value>=Fields!Charge.Value</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>3in</Top>
+        <Width>2.375in</Width>
+        <Height>0.25in</Height>
+      </List>
       <Line Name="line2">
         <Top>2in</Top>
         <Width>1.5in</Width>
@@ -360,12 +502,12 @@
             <Default>Dotted</Default>
           </BorderStyle>
         </Style>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Left>0.375in</Left>
         <Height>0in</Height>
       </Line>
       <Table Name="table2">
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrderDetail</DataSetName>
         <Top>1.125in</Top>
         <Width>2.375in</Width>
@@ -671,7 +813,7 @@
         </Footer>
       </Table>
       <Table Name="table1">
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
         <Top>2.125in</Top>
         <Width>2.375in</Width>
@@ -1070,17 +1212,6 @@
           </TableRows>
         </Footer>
       </Table>
-      <Line Name="line1">
-        <Top>3.125in</Top>
-        <Width>2.375in</Width>
-        <Style>
-          <BorderStyle>
-            <Default>Solid</Default>
-          </BorderStyle>
-        </Style>
-        <ZIndex>4</ZIndex>
-        <Height>0in</Height>
-      </Line>
       <List Name="list3">
         <ZIndex>3</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
@@ -1092,8 +1223,9 @@
               <FontStyle>Italic</FontStyle>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>7pt</FontSize>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
             </Style>
             <ZIndex>7</ZIndex>
             <CanGrow>true</CanGrow>
