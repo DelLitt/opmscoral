@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.returnMainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
@@ -39,17 +41,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.departmentId = new System.Windows.Forms.ComboBox();
-            this.posDataSet = new POSReports.posDataSet();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.returnMainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ReturnMainTableAdapter = new POSReports.posDataSetTableAdapters.ReturnMainTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnMainBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // returnMainBindingSource
+            // 
+            this.returnMainBindingSource.DataMember = "returnMain";
+            this.returnMainBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -162,11 +172,6 @@
             this.departmentId.TabIndex = 6;
             this.departmentId.ValueMember = "DEPARTMENT_ID";
             // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // departmentBindingSource
             // 
             this.departmentBindingSource.DataMember = "department";
@@ -188,11 +193,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(861, 453);
             this.reportViewer1.TabIndex = 10;
             // 
-            // returnMainBindingSource
-            // 
-            this.returnMainBindingSource.DataMember = "returnMain";
-            this.returnMainBindingSource.DataSource = this.posDataSet;
-            // 
             // ReturnMainTableAdapter
             // 
             this.ReturnMainTableAdapter.ClearBeforeFill = true;
@@ -207,11 +207,11 @@
             this.Name = "MainStockReturnReportViewer";
             this.Text = "MainStockReturnReportViewer";
             this.Load += new System.EventHandler(this.MainStockReturnReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.returnMainBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnMainBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

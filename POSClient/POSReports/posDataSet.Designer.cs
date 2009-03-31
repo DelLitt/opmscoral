@@ -11204,78 +11204,84 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
                 "          SUM(IFNULL(instock.instock_qty, 0)) AS instock_qty, SUM(IFNULL(prestoc" +
                 "k.error_qty, 0)) AS error_qty, SUM(IFNULL(prestock.dmg_qty, 0)) AS dmg_qty, \r\n  " +
                 "                    SUM(IFNULL(instkout.quantity, 0)) AS stkout_qty, SUM(IFNULL(" +
-                "tmpout.quantity, 0)) AS tmpout_qty, SUM(IFNULL(sprtn.quantity, 0)) AS rtn_qty, \r" +
-                "\n                      SUM(IFNULL(dmg.quantity, 0)) AS destroy_qty, SUM(IFNULL(b" +
-                "kpro.quantity, 0)) AS bkpro, SUM(IFNULL(stk.good_qty, 0) + IFNULL(instock.instoc" +
-                "k_qty, 0) \r\n                      + IFNULL(bkpro.quantity, 0) + ifnull(prestock." +
-                "error_qty,0) - IFNULL(tmpout.quantity, 0) - IFNULL(prestock.dmg_qty, 0) - IFNULL" +
-                "(instkout.quantity, 0) - IFNULL(sprtn.quantity, 0) \r\n                      - IFN" +
-                "ULL(dmg.quantity, 0)) AS realstock\r\nFROM         allproduct pr LEFT OUTER JOIN\r\n" +
-                "                          (SELECT     PRODUCT_ID, GOOD_COUNT AS good_qty\r\n      " +
-                "                      FROM          department_stock_history A\r\n                " +
-                "            WHERE      (DEPARTMENT_ID = @deptID) AND (CREATE_DATE =\r\n           " +
-                "                                            (SELECT     MAX(CREATE_DATE) AS Expr" +
-                "1\r\n                                                         FROM          depart" +
-                "ment_stock_history b\r\n                                                         W" +
-                "HERE      (CREATE_DATE < @FromDate) AND (PRODUCT_ID = A.PRODUCT_ID)\r\n           " +
-                "                                              GROUP BY PRODUCT_ID))\r\n           " +
-                "                 GROUP BY PRODUCT_ID) stk ON pr.product_id = stk.PRODUCT_ID LEFT" +
-                " OUTER JOIN\r\n                          (SELECT     PRODUCT_ID, SUM(ERROR_QUANTIT" +
-                "Y) AS error_qty, SUM(DAMAGE_QUANTITY + LOST_QUANTITY) AS dmg_qty\r\n              " +
-                "              FROM          department_stock\r\n                            WHERE " +
-                "     (CREATE_DATE >= @FromDate) AND (CREATE_DATE <= @ToDate) AND (DEPARTMENT_ID " +
-                "= @deptID)\r\n                            GROUP BY PRODUCT_ID) prestock ON prestoc" +
-                "k.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT " +
-                "    stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS instock_qty\r\n                      " +
-                "      FROM          department_stock_in dpstkin INNER JOIN\r\n                    " +
-                "                               department_stock_in_detail stkdt ON stkdt.STOCK_I" +
-                "N_ID = dpstkin.STOCK_IN_ID\r\n                            WHERE      (dpstkin.STOC" +
-                "K_IN_DATE >= @FromDate) AND (dpstkin.STOCK_IN_DATE <= @ToDate) AND (dpstkin.STOC" +
-                "K_IN_TYPE = 0) AND \r\n                                                   (dpstkin" +
-                ".DEPARTMENT_ID = @deptID)\r\n                            GROUP BY stkdt.PRODUCT_ID" +
-                ") instock ON pr.product_id = instock.PRODUCT_ID LEFT OUTER JOIN\r\n               " +
-                "           (SELECT     dstkd.PRODUCT_ID, SUM(dstkd.QUANTITY) AS quantity\r\n      " +
-                "                      FROM          purchase_order dstk INNER JOIN\r\n            " +
-                "                                       purchase_order_detail dstkd ON dstk.PURCH" +
-                "ASE_ORDER_ID = dstkd.PURCHASE_ORDER_ID\r\n                            WHERE      (" +
-                "dstk.CREATE_DATE >= @FromDate) AND (dstk.CREATE_DATE <= @ToDate) AND (dstk.ORDER" +
-                "_STATUS = 0)\r\n                            GROUP BY dstkd.PRODUCT_ID) instkout ON" +
-                " instkout.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          " +
-                "(SELECT     department_name, stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n  " +
-                "                          FROM          department_stock_out dpout INNER JOIN\r\n " +
-                "                                                  department_stock_out_detail st" +
-                "kd ON dpout.STOCK_OUT_ID = stkd.STOCK_OUT_ID \r\n                                 " +
-                "                  left join department dpt on dpt.department_id=dpout.department" +
-                "_id\r\n                            WHERE      (stkd.DEFECT_STATUS_ID = 4) AND (dpo" +
-                "ut.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <= @ToDate) AND \r\n    " +
-                "                                               (dpout.DEPARTMENT_ID = @deptID)\r\n" +
-                "                            GROUP BY stkd.PRODUCT_ID) tmpout ON tmpout.PRODUCT_I" +
-                "D = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT     stkd.PR" +
-                "ODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                            FROM      " +
-                "    department_stock_out dpout INNER JOIN\r\n                                     " +
-                "              department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = stkd.STOC" +
-                "K_OUT_ID\r\n                            WHERE      (stkd.DEFECT_STATUS_ID = 6) AND" +
-                " (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <= @ToDate) AND \r" +
-                "\n                                                   (dpout.DEPARTMENT_ID = @dept" +
-                "ID)\r\n                            GROUP BY stkd.PRODUCT_ID) sprtn ON sprtn.PRODUC" +
-                "T_ID = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT     stkd" +
-                ".PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                            FROM   " +
-                "       department_stock_out dpout INNER JOIN\r\n                                  " +
-                "                 department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = stkd.S" +
-                "TOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_STATUS_ID = 8) " +
-                "AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <= @ToDate) AN" +
-                "D \r\n                                                   (dpout.DEPARTMENT_ID = @d" +
-                "eptID)\r\n                            GROUP BY stkd.PRODUCT_ID) dmg ON dmg.PRODUCT" +
-                "_ID = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT     rtn.R" +
-                "ETURN_DATE, pord.PRODUCT_ID, SUM(rtn.QUANTITY) AS quantity\r\n                    " +
-                "        FROM          purchase_order_detail pord INNER JOIN\r\n                   " +
-                "                                return_po rtn ON rtn.PURCHASE_ORDER_ID = pord.PU" +
-                "RCHASE_ORDER_ID AND \r\n                                                   rtn.PUR" +
-                "CHASE_ORDER_DETAIL_ID = pord.PURCHASE_ORDER_DETAIL_ID\r\n                         " +
-                "   WHERE      (rtn.RETURN_DATE >= @FromDate) AND (rtn.RETURN_DATE <= @ToDate) AN" +
-                "D (rtn.DEPARTMENT_ID = @deptID)\r\n                            GROUP BY rtn.RETURN" +
-                "_DATE, pord.PRODUCT_ID) bkpro ON bkpro.PRODUCT_ID = pr.product_id\r\nGROUP BY pr.t" +
-                "ype_name, pr.product_name, pr.color_name, pr.size_name";
+                "tmpout.quantity, 0)-ifnull(restock.restock_qty,0)) AS tmpout_qty, SUM(IFNULL(spr" +
+                "tn.quantity, 0)) AS rtn_qty, \r\n                      SUM(IFNULL(dmg.quantity, 0)" +
+                ") AS destroy_qty, SUM(IFNULL(bkpro.quantity, 0)) AS bkpro, SUM(IFNULL(stk.good_q" +
+                "ty, 0) + IFNULL(instock.instock_qty, 0) \r\n                      + IFNULL(bkpro.q" +
+                "uantity, 0) - IFNULL(prestock.dmg_qty, 0) - IFNULL(instkout.quantity, 0) - IFNUL" +
+                "L(sprtn.quantity, 0) \r\n                      - IFNULL(dmg.quantity, 0)) AS reals" +
+                "tock\r\nFROM         allproduct pr LEFT OUTER JOIN\r\n                          (SEL" +
+                "ECT     PRODUCT_ID, GOOD_COUNT AS good_qty\r\n                            FROM    " +
+                "      department_stock_history A\r\n                            WHERE      (DEPART" +
+                "MENT_ID = @deptID) AND (CREATE_DATE =\r\n                                         " +
+                "              (SELECT     MAX(CREATE_DATE) AS Expr1\r\n                           " +
+                "                              FROM          department_stock_history b\r\n        " +
+                "                                                 WHERE      (CREATE_DATE < @From" +
+                "Date) AND (PRODUCT_ID = A.PRODUCT_ID)\r\n                                         " +
+                "                GROUP BY PRODUCT_ID))\r\n                            GROUP BY PROD" +
+                "UCT_ID) stk ON pr.product_id = stk.PRODUCT_ID LEFT OUTER JOIN\r\n                 " +
+                "         (SELECT     PRODUCT_ID, SUM(ERROR_QUANTITY) AS error_qty, SUM(DAMAGE_QU" +
+                "ANTITY + LOST_QUANTITY) AS dmg_qty\r\n                            FROM          de" +
+                "partment_stock\r\n                            WHERE      (DEPARTMENT_ID = @deptID)" +
+                "\r\n                            GROUP BY PRODUCT_ID) prestock ON prestock.PRODUCT_" +
+                "ID = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT     stkdt." +
+                "PRODUCT_ID, SUM(stkdt.QUANTITY) AS instock_qty\r\n                            FROM" +
+                "          department_stock_in dpstkin INNER JOIN\r\n                              " +
+                "                     department_stock_in_detail stkdt ON stkdt.STOCK_IN_ID = dps" +
+                "tkin.STOCK_IN_ID\r\n                            WHERE      (dpstkin.STOCK_IN_DATE " +
+                ">= @FromDate) AND (dpstkin.STOCK_IN_DATE <= @ToDate) AND (dpstkin.STOCK_IN_TYPE " +
+                "= 0) AND \r\n                                                   (dpstkin.DEPARTMEN" +
+                "T_ID = @deptID)\r\n                            GROUP BY stkdt.PRODUCT_ID) instock " +
+                "ON pr.product_id = instock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                       " +
+                "   (SELECT     stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS restock_qty\r\n           " +
+                "                 FROM          department_stock_in dpstkin INNER JOIN\r\n         " +
+                "                                          department_stock_in_detail stkdt ON st" +
+                "kdt.STOCK_IN_ID = dpstkin.STOCK_IN_ID\r\n                            WHERE      (d" +
+                "pstkin.STOCK_IN_DATE <=@ToDate) AND (dpstkin.STOCK_IN_TYPE = 1) AND \r\n          " +
+                "                                         (dpstkin.DEPARTMENT_ID = @deptID)\r\n    " +
+                "                        GROUP BY stkdt.PRODUCT_ID) restock ON pr.product_id = re" +
+                "stock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                          (SELECT     dstkd." +
+                "PRODUCT_ID, SUM(dstkd.QUANTITY) AS quantity\r\n                            FROM   " +
+                "       purchase_order dstk INNER JOIN\r\n                                         " +
+                "          purchase_order_detail dstkd ON dstk.PURCHASE_ORDER_ID = dstkd.PURCHASE" +
+                "_ORDER_ID\r\n                            WHERE      (dstk.CREATE_DATE >= @FromDate" +
+                ") AND (dstk.CREATE_DATE <= @ToDate) AND (dstk.ORDER_STATUS = 0)\r\n               " +
+                "             GROUP BY dstkd.PRODUCT_ID) instkout ON instkout.PRODUCT_ID = pr.pro" +
+                "duct_id LEFT OUTER JOIN\r\n\r\n                          (SELECT     department_name" +
+                ", stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                            F" +
+                "ROM          department_stock_out dpout INNER JOIN\r\n                            " +
+                "                       department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = " +
+                "stkd.STOCK_OUT_ID \r\n                                                   left join" +
+                " department dpt on dpt.department_id=dpout.department_id\r\n                      " +
+                "      WHERE      (stkd.DEFECT_STATUS_ID = 4) AND (dpout.STOCK_OUT_DATE <= @ToDat" +
+                "e) AND \r\n                                                   (dpout.DEPARTMENT_ID" +
+                " = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) tmpout ON tmp" +
+                "out.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n\r\n                          (SEL" +
+                "ECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                       " +
+                "     FROM          department_stock_out dpout INNER JOIN\r\n                      " +
+                "                             department_stock_out_detail stkd ON dpout.STOCK_OUT" +
+                "_ID = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_STA" +
+                "TUS_ID = 6) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <=" +
+                " @ToDate) AND \r\n                                                   (dpout.DEPART" +
+                "MENT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) sprtn " +
+                "ON sprtn.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (" +
+                "SELECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                    " +
+                "        FROM          department_stock_out dpout INNER JOIN\r\n                   " +
+                "                                department_stock_out_detail stkd ON dpout.STOCK_" +
+                "OUT_ID = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_" +
+                "STATUS_ID = 8) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE" +
+                " <= @ToDate) AND \r\n                                                   (dpout.DEP" +
+                "ARTMENT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) dmg" +
+                " ON dmg.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (S" +
+                "ELECT     rtn.RETURN_DATE, pord.PRODUCT_ID, SUM(rtn.QUANTITY) AS quantity\r\n     " +
+                "                       FROM          purchase_order_detail pord INNER JOIN\r\n    " +
+                "                                               return_po rtn ON rtn.PURCHASE_ORD" +
+                "ER_ID = pord.PURCHASE_ORDER_ID AND \r\n                                           " +
+                "        rtn.PURCHASE_ORDER_DETAIL_ID = pord.PURCHASE_ORDER_DETAIL_ID\r\n          " +
+                "                  WHERE      (rtn.RETURN_DATE >= @FromDate) AND (rtn.RETURN_DATE" +
+                " <= @ToDate) AND (rtn.DEPARTMENT_ID = @deptID)\r\n                            GROU" +
+                "P BY rtn.RETURN_DATE, pord.PRODUCT_ID) bkpro ON bkpro.PRODUCT_ID = pr.product_id" +
+                "\r\nGROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@deptID";

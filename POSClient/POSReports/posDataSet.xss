@@ -13,7 +13,7 @@
     <Shape ID="DesignTable:supplierStockout" ZOrder="14" X="15" Y="250" Height="75" Width="245" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="159" SplitterPosition="24" />
     <Shape ID="DesignTable:stockStatistic" ZOrder="12" X="558" Y="177" Height="75" Width="223" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="24" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:stockIn" ZOrder="7" X="22" Y="362" Height="75" Width="217" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="197" SplitterPosition="24" />
-    <Shape ID="DesignTable:deptStockStatistic" ZOrder="11" X="564" Y="265" Height="92" Width="251" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="218" SplitterPosition="24" />
+    <Shape ID="DesignTable:deptStockStatistic" ZOrder="11" X="564" Y="265" Height="75" Width="269" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:returnPOrder" ZOrder="10" X="312" Y="386" Height="75" Width="217" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="140" SplitterPosition="24" />
     <Shape ID="DesignTable:departmentStockIn" ZOrder="8" X="580" Y="384" Height="75" Width="269" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="197" SplitterPosition="24" />
     <Shape ID="DesignTable:department" ZOrder="9" X="23" Y="49" Height="51" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
