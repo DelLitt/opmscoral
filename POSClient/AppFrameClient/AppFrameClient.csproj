@@ -170,6 +170,7 @@
     <Compile Include="Advice\ConfirmDialogDisplayAdvice.cs" />
     <Compile Include="Advice\MenuPermissionAdvice.cs" />
     <Compile Include="Advice\UpdateStatusDisplayAdvice.cs" />
+    <Compile Include="Common\AppFrameSetting.cs" />
     <Compile Include="Common\AppFrameUser.cs" />
     <Compile Include="Common\ClientSetting.cs" />
     <Compile Include="Common\Code39Ex.cs" />
@@ -247,6 +248,12 @@
     </Compile>
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SplashScreen.cs">
       <SubType>Form</SubType>
@@ -1065,6 +1072,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>

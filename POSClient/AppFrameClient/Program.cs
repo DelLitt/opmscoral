@@ -7,6 +7,7 @@ using AppFrame.Utility;
 using AppFrame.View;
 using AppFrameClient;
 using AppFrameClient.Common;
+using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using Spring.Context;
@@ -31,11 +32,15 @@ namespace AppFrame
             splashScreen = new SplashScreen();
             splashScreen.Show();
             splashScreen.Refresh();
+            
             IApplicationContext ctx = ContextRegistry.GetContext();
             MainForm mainForm = null;
             mainForm = ctx.GetObject(FormConstants.MAIN_FORM) as MainForm;
             mainForm.Shown += new EventHandler(mainForm_Shown);            
             Application.Run(mainForm);
+            //splashScreen.Close();
+            //Application.Run(new SettingForm());                
+
             //Application.Run(new ProductMasterSearchDepartmentForm());
         }
 
