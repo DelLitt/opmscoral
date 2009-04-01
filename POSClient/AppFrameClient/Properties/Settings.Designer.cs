@@ -45,5 +45,65 @@ namespace AppFrameClient.Properties {
                 this["IsClient"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Import")]
+        public string SyncImportPath {
+            get {
+                return ((string)(this["SyncImportPath"]));
+            }
+            set {
+                this["SyncImportPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Success")]
+        public string SyncSuccessPath {
+            get {
+                return ((string)(this["SyncSuccessPath"]));
+            }
+            set {
+                this["SyncSuccessPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Error")]
+        public string SyncErrorPath {
+            get {
+                return ((string)(this["SyncErrorPath"]));
+            }
+            set {
+                this["SyncErrorPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Export")]
+        public string SyncExportPath {
+            get {
+                return ((string)(this["SyncExportPath"]));
+            }
+            set {
+                this["SyncExportPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cboPrinters")]
+        public string PrinterName {
+            get {
+                return ((string)(this["PrinterName"]));
+            }
+            set {
+                this["PrinterName"] = value;
+            }
+        }
     }
 }

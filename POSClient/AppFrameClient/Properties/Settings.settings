@@ -13,5 +13,20 @@
     <Setting Name="IsClient" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="SyncImportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\POS\Import</Value>
+    </Setting>
+    <Setting Name="SyncSuccessPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\POS\Success</Value>
+    </Setting>
+    <Setting Name="SyncErrorPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\POS\Error</Value>
+    </Setting>
+    <Setting Name="SyncExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\POS\Export</Value>
+    </Setting>
+    <Setting Name="PrinterName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cboPrinters</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
