@@ -12,6 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
+using Microsoft.Reporting.WinForms;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -247,6 +248,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 ProductMaster selectedProductMaster = productMasterBindingSource[selectedRows[0].Index] as ProductMaster;
                 ProductMasterSearchDepartmentEventArgs eventArgs = new ProductMasterSearchDepartmentEventArgs();
                 eventArgs.SelectedProductMaster = selectedProductMaster;
+                eventArgs.AvailableInStock = chkInStock.Checked;
                 EventUtility.fireEvent(SearchProductsEvent,this,eventArgs);
                 IList productsInDepartment = eventArgs.ProductsInDepartment;
                 deptStockList.Clear();
@@ -265,6 +267,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnSelect_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selection = dgvProducts.SelectedRows;
+            if(selection.Count == 0 )
+            {
+                return;
+            }
             if (SelectProductEvent != null)
             {
                 ProductMasterSearchDepartmentEventArgs eventArgs = new ProductMasterSearchDepartmentEventArgs();

@@ -357,7 +357,7 @@ namespace AppFrame.DataLayer
                                                                " AND p.ProductId = dsid.DepartmentStockInDetailPK.ProductId " +
                                                                " AND pm.ProductMasterId = p.ProductMaster.ProductMasterId " +
                                                                " AND p.ProductMaster.ProductMasterId = " + searchProductMaster.ProductMasterId
-                                                               )
+                                                               ).SetMaxResults(CommonConstants.MAX_QUERY_RESULT)
                                                                .List();
                                        /*foreach (DepartmentStockInDetail detail in list)
                                        {

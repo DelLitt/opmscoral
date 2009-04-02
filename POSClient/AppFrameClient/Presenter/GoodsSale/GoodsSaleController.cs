@@ -38,7 +38,16 @@ namespace AppFrameClient.Presenter.GoodsSale
                 goodsSaleView.FillProductToComboEvent += new EventHandler<GoodsSaleEventArgs>(goodsSaleView_FillProductToComboEvent);
                 goodsSaleView.LoadGoodsEvent += new EventHandler<GoodsSaleEventArgs>(goodsSaleView_LoadGoodsEvent);
                 goodsSaleView.SavePurchaseOrderEvent += new EventHandler<GoodsSaleEventArgs>(goodsSaleView_SavePurchaseOrderEvent);
+                goodsSaleView.FindRefPurchaseOrder += new EventHandler<GoodsSaleEventArgs>(goodsSaleView_FindRefPurchaseOrder);
             }
+        }
+
+        void goodsSaleView_FindRefPurchaseOrder(object sender, GoodsSaleEventArgs e)
+        {
+            PurchaseOrderPK pk = new PurchaseOrderPK { DepartmentId = CurrentDepartment.Get().DepartmentId, PurchaseOrderId = e.RefPurchaseOrder.PurchaseOrderPK.PurchaseOrderId };
+            PurchaseOrder purchaseOrder = PurchaseOrderLogic.FindById(pk);
+                e.RefPurchaseOrder = purchaseOrder;
+            
         }
 
         void goodsSaleView_SavePurchaseOrderEvent(object sender, GoodsSaleEventArgs e)
@@ -68,9 +77,12 @@ namespace AppFrameClient.Presenter.GoodsSale
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
             objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
-            objectCriteria.AddGreaterCriteria("GoodQuantity", (long) 0);
+            if(!e.NotAvailableInStock)
+            {
+                objectCriteria.AddGreaterCriteria("GoodQuantity", (long) 0);
+            }
             IList result = DepartmentStockLogic.FindAll(objectCriteria) ;
-            if(result == null)
+            if(!e.NotAvailableInStock && (result == null || result.Count == 0))
             {
                 throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
             }

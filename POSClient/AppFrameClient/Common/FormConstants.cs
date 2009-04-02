@@ -77,5 +77,6 @@ namespace AppFrameClient.Common
         public static string LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM = "LoadDepartmentStockInToFileFormView";
         public static string SERVER_MODE = "0";
         public static string CLIENT_MODE = "1";
+        public static string GOODS_RETURN_CHILD_FORM = "GoodsReturnChildView";
     }
 }

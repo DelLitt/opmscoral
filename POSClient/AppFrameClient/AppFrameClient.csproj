@@ -249,6 +249,12 @@
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsSale\GoodsReturnChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsSale\GoodsReturnChildForm.Designer.cs">
+      <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1072,6 +1078,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsSale\GoodsReturnChildForm.resx">
+      <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>

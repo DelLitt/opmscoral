@@ -8,7 +8,7 @@
     <property name="ConfigSections" value="databaseSettings"/>
   </object>
 
-  <db:provider id="DbProvider" provider="MySql-5.2.3" connectionString="Data Source=localhost;Database=pos;User ID=dbadmin;password=1qw45DCM9rl;Port=3306;"/>
+  <db:provider id="DbProvider" provider="MySql-5.2.3" connectionString="Data Source=localhost;Database=posclient;User ID=dbadmin;password=1qw45DCM9rl;Port=3306;"/>
 
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate20">
     <property name="DbProvider" ref="DbProvider"/>

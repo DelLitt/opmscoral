@@ -15,6 +15,7 @@ using AppFrame.Common;
 using AppFrame.Controls;
 using AppFrame.Exceptions;
 using AppFrame.Model;
+using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
 using AppFrame.View.GoodsSale;
@@ -280,38 +281,7 @@ namespace AppFrameClient.View.GoodsSale
             {
                 if (dgvBill.Columns[e.ColumnIndex].Name.Equals("columnProductId"))
                 {
-                    /*string productIdValue = (string)dgvBill[e.ColumnIndex, e.RowIndex].Value;
-                    if(string.IsNullOrEmpty(productIdValue) || productIdValue.Length != CommonConstants.PRODUCT_ID_LENGTH)
-                    {
-                        throw new PresentationException("InvalidBarCode");
-                    }
-
-                    GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
-                    int selectedIndex = dgvBill.CurrentCell.OwningRow.Index;
-                    goodsSaleEventArgs.SelectedIndex = selectedIndex;
-                    goodsSaleEventArgs.SelectedPurchaseOrderDetail = bdsBill[selectedIndex] as PurchaseOrderDetail;
-                    goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId =
-                        dgvBill.CurrentCell.Value as string;
-                    EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
-
-                    // event has been modified
-                    pODList[selectedIndex] = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
-                    GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
-                    txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
                     
-                    CalculateCharge();
-                    
-                    // check if last item of list has data, if has data then we add new row.
-                    PurchaseOrderDetail lastDetail = pODList[pODList.Count - 1];
-                    // in case has data we add new
-                    if(!string.IsNullOrEmpty(lastDetail.ProductMaster.ProductMasterId))
-                    {
-                        btnAdd_Click(this, null);                        
-                    }
-                    else
-                    {
-                        // do nothing, because we has new row already
-                    }*/
                 }
                 else
                 {
@@ -324,7 +294,7 @@ namespace AppFrameClient.View.GoodsSale
             catch(Exception ex)
             {
                 dgvBill[e.ColumnIndex, e.RowIndex].Value = "";
-                MessageBox.Show("Mã sản phẩm không hợp lệ hoặc lỗi khi nhập");
+                //MessageBox.Show("Mã sản phẩm không hợp lệ hoặc lỗi khi nhập");
             }
             finally
             {
@@ -422,21 +392,25 @@ namespace AppFrameClient.View.GoodsSale
                 MessageBox.Show("Đơn hàng rỗng, vì vậy không hợp lệ");
                 return false;
             }
-            if(string.IsNullOrEmpty(txtTotalAmount.Text) || int.Parse(txtTotalAmount.Text) <= 0 )
+            
+            if (int.Parse(txtCharge.Text) < 0)
             {
-                MessageBox.Show("Giá trị đơn hàng phải lớn hơn 0");
-                return false;
-            }
-            if(string.IsNullOrEmpty(txtPayment.Text))
-            {
-                MessageBox.Show("Hãy nhập vào số tiền khách hàng trả !");
-                return false;
-            }
-            if(int.Parse(txtCharge.Text)<0)
-            {
+                if (string.IsNullOrEmpty(txtTotalAmount.Text) || int.Parse(txtTotalAmount.Text) <= 0)
+                {
+                    MessageBox.Show("Giá trị đơn hàng phải lớn hơn 0");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(txtPayment.Text))
+                {
+                    MessageBox.Show("Hãy nhập vào số tiền khách hàng trả !");
+                    return false;
+                }
+
                 MessageBox.Show("Số tiền trả chưa đủ !");
                 return false;
-            }
+            }   
+            
             return true;
         }
 
@@ -491,12 +465,17 @@ namespace AppFrameClient.View.GoodsSale
             receipt.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             receipt.ReceiptName = "HDBH";
             receipt.ReceiptNumber = GoodsSaleController.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId;
-            receipt.TotalAmount = Int64.Parse(txtTotalAmount.Text);
-            receipt.CustomerPayment = Int64.Parse(txtPayment.Text);
-            receipt.Charge = Int64.Parse(txtCharge.Text);
+            receipt.TotalAmount = Int64.Parse(string.IsNullOrEmpty(txtTotalAmount.Text)?"0":txtTotalAmount.Text);
+            receipt.CustomerPayment = Int64.Parse(string.IsNullOrEmpty(txtPayment.Text)?"0":txtPayment.Text);
+            receipt.Charge = Int64.Parse(string.IsNullOrEmpty(txtCharge.Text)?"0":txtCharge.Text);
             GoodsSaleController.PurchaseOrder.Receipts = new ArrayList();
             GoodsSaleController.PurchaseOrder.Receipts.Add(receipt);
+                        
             GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
+            if(ReturnPurchaseOrder!=null)
+            {
+                eventArgs.RefPurchaseOrder = ReturnPurchaseOrder;
+            }
             EventUtility.fireEvent(SavePurchaseOrderEvent, this, eventArgs);
             if (eventArgs.HasErrors)
             {
@@ -681,6 +660,8 @@ namespace AppFrameClient.View.GoodsSale
         }
 
         private ProductMasterSearchDepartmentForm form = null;
+        private PurchaseOrder ReturnPurchaseOrder = null;
+
         private void dgvBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             /*if(dgvBill.CurrentCell.ColumnIndex == 0)
@@ -915,6 +896,218 @@ namespace AppFrameClient.View.GoodsSale
             //call the base object's OnRowPostPaint method
             //dgvBill.OnRowPostPaint(e);
 
+        }
+
+        private void btnPOLookup_Click(object sender, EventArgs e)
+        {
+            GoodsReturnChildForm form = GlobalUtility.GetFormObject<GoodsReturnChildForm>(FormConstants.GOODS_RETURN_CHILD_FORM);
+            form.SelectReturnGoodsEvent += new EventHandler<GoodsSaleReturnEventArgs>(form_SelectReturnGoodsEvent);
+            form.ShowDialog();
+        }
+
+        void form_SelectReturnGoodsEvent(object sender, GoodsSaleReturnEventArgs e)
+        {
+            foreach (PurchaseOrderDetail returnPO in e.ReturnPurchaseOrderDetails)
+            {
+                returnPO.Price = 0 - returnPO.Price;
+                pODList.Add(returnPO);
+            }
+            
+            GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+            txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+
+            CreateRowNumbers();
+            CalculateCharge();
+            RemoveEmptyRowFromList(pODList);
+            ClearReturnInput();
+            ClearInput();
+            txtBarcode.Focus();
+            ReturnPurchaseOrder = e.RefPurchaseOrder;
+        }
+
+        private void ClearReturnInput()
+        {
+            txtRetBarCode.Text = "";
+            txtRetPrice.Text = "";
+            txtRetProductName.Text = "";
+            txtRetQuantity.Text = "1";
+            txtRefPurchaseOrder.Text = "";
+            txtNote.Text = "";
+        }
+
+        private void txtRetBarcodeShortcut_Pressed(object sender, EventArgs e)
+        {
+            txtRetBarCode.Focus();
+        }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
+            GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
+            PurchaseOrder searchRetPurchaseOrder = new PurchaseOrder();
+            searchRetPurchaseOrder.PurchaseOrderPK = new PurchaseOrderPK
+                                                                       {
+                                                                           PurchaseOrderId = txtRefPurchaseOrder.Text,
+                                                                           DepartmentId =
+                                                                               CurrentDepartment.Get().DepartmentId
+                                                                       };
+            
+            // if purchase order id is UNDEFINED
+            if (!string.IsNullOrEmpty(txtRefPurchaseOrder.Text) && txtRefPurchaseOrder.Text.Trim().Equals("000"))
+            {
+                
+                if (string.IsNullOrEmpty(txtRetProductName.Text) // product id is notavailable
+                   && (string.IsNullOrEmpty(txtRetBarCode.Text) // bar code is not available 
+                   && !"000".Equals(txtRetBarCode.Text)))       // bar code is not undefined barcode
+                {
+                    MessageBox.Show(
+                        "Nếu muốn trả hàng không đối chứng, xin nhập hoá đơn là 000 và mã vạch ( nếu không biết ) là 000.");
+                    return;
+                }
+                
+                //searchRetPurchaseOrder.PurchaseOrderPK.PurchaseOrderId = deptId + "UNDEF";
+            }
+            
+            eventArgs.RefPurchaseOrder = searchRetPurchaseOrder;
+            EventUtility.fireEvent(FindRefPurchaseOrder,this,eventArgs);
+
+            PurchaseOrder retPurchaseOrder = eventArgs.RefPurchaseOrder;
+            PurchaseOrderDetail retOrderDetail = null;
+            if (retPurchaseOrder != null)
+            {
+                foreach (PurchaseOrderDetail orderDetail in retPurchaseOrder.PurchaseOrderDetails)
+                {
+                    if (orderDetail.Product.ProductId == txtRetBarCode.Text)
+                    {
+                        retOrderDetail = orderDetail;
+                        break;
+                    }
+                }
+            }
+            if (retOrderDetail != null)
+            {
+                retOrderDetail.Quantity = Int64.Parse(txtRetQuantity.Text);
+                retOrderDetail.Price = 0 - retOrderDetail.Price;
+                pODList.Add(retOrderDetail);
+                bdsBill.EndEdit();
+                ClearInput();
+            }
+            else // in case undefined order
+            {
+                // if it's UNDEFINED purchase order
+                if(!string.IsNullOrEmpty(txtRefPurchaseOrder.Text) && txtRefPurchaseOrder.Text.Trim().Equals("000"))
+                {
+                    // create new undefined order
+                    PurchaseOrder undefPurchaseOrder = new PurchaseOrder();
+                    undefPurchaseOrder.PurchaseOrderPK = new PurchaseOrderPK
+                    {
+                        PurchaseOrderId = txtRefPurchaseOrder.Text.Trim(),
+                        DepartmentId =
+                            CurrentDepartment.Get().DepartmentId
+                    };
+                    ReturnPurchaseOrder = undefPurchaseOrder;
+                    // if defined barcode
+                    if(!string.IsNullOrEmpty(txtRetProductName.Text))
+                    {
+                        PurchaseOrderDetail specialDetail = new PurchaseOrderDetail { Product = new Product()};
+                        specialDetail.Product.ProductId = txtRetBarCode.Text;
+                        if (!string.IsNullOrEmpty(specialDetail.Product.ProductId)
+                            && specialDetail.Product.ProductId.Equals("000"))
+                        {
+                            specialDetail.Product.ProductId = string.Format("{0:000000000000}", 0);
+                        }
+                        try    // if null , will go to exception
+                        {
+                            GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                            goodsSaleEventArgs.SelectedPurchaseOrderDetail = specialDetail;
+                            goodsSaleEventArgs.NotAvailableInStock = true;
+                            EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+                            
+                            txtRetProductName.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductMaster.ProductName;
+                            txtRetPrice.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Price.ToString();
+                            specialDetail = goodsSaleEventArgs.SelectedPurchaseOrderDetail;
+                            specialDetail.PurchaseOrder = ReturnPurchaseOrder;
+                            specialDetail.PurchaseOrderDetailPK = new PurchaseOrderDetailPK
+                                                                      {
+                                                                          DepartmentId = CurrentDepartment.Get().DepartmentId,
+                                                                          PurchaseOrderId = ReturnPurchaseOrder.PurchaseOrderPK.PurchaseOrderId
+                                                                      };
+                            specialDetail.Quantity = 1;
+                            specialDetail.Price = 0 - specialDetail.Price;
+                            pODList.Add(specialDetail);
+                            bdsBill.EndEdit();
+                        }
+                        catch (Exception ex)
+                        {
+                            // do nothing
+                        }
+                        finally
+                        {
+                            GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+                            txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+
+                            CreateRowNumbers();
+                            CalculateCharge();
+                            RemoveEmptyRowFromList(pODList);
+                            ClearReturnInput();
+                            ClearInput();
+                            txtBarcode.Focus();
+                        }
+                    }
+                }
+            }
+        }
+        public event EventHandler<GoodsSaleEventArgs> FindRefPurchaseOrder;
+
+        private void txtRetBarCode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtRetBarCode.Text) && txtRetBarCode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
+            {
+                txtRetProductName.Text = "";
+                string returnBarcode = txtRetBarCode.Text.Trim();
+                try
+                {
+                    GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail = new PurchaseOrderDetail{Product = new Product()};
+                    goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = returnBarcode;
+                    goodsSaleEventArgs.NotAvailableInStock = true; // load even it do not available in stock
+                    EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+
+                    txtRetProductName.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductMaster.ProductName;
+                    txtRetPrice.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Price.ToString();
+                    
+                }
+                catch (Exception ex)
+                {
+                    throw new BusinessException("Mã vạch không hợp lệ hoặc hàng không tồn tại");
+                    //pODList.RemoveAt(pODList.Count - 1);
+                }
+                finally
+                {
+                    //ClearReturnInput();
+                }
+            }
+        }
+
+        private ProductMasterSearchDepartmentForm goodsReturnForm = null;
+        private void btnRetBarcodeLookup_Click(object sender, EventArgs e)
+        {
+            goodsReturnForm = GlobalUtility.GetOnlyChildFormObject<ProductMasterSearchDepartmentForm>(GlobalCache.Instance().MainForm, FormConstants.PRODUCT_MASTER_SEARCH_DEPARMENT_FORM);
+            goodsReturnForm.SelectProductEvent += new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(formReturn_SelectProductEvent);
+            if (goodsReturnForm != null)
+                goodsReturnForm.Show();
+        }
+
+        private void formReturn_SelectProductEvent(object sender, ProductMasterSearchDepartmentEventArgs e)
+        {
+            txtRetBarCode.Text = e.ReturnProduct.ProductId;
+            //txtGoodsName.Text = e.ReturnProduct.ProductMaster.ProductFullName;
+            txtRetQuantity.Text = "1";
+            if (goodsReturnForm != null)
+            {
+                goodsReturnForm.SelectProductEvent -= new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(formReturn_SelectProductEvent);
+                goodsReturnForm.Close();
+            }            
         }
     }
 }

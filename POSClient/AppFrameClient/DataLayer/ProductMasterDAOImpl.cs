@@ -515,7 +515,7 @@ namespace AppFrame.DataLayer
                                            //queryString += " AND p.ProductId = dsid.DepartmentStockInDetailPK.ProductId ";
                                            queryString += " AND ds.DepartmentStockPK.DepartmentId=" + CurrentDepartment.Get().DepartmentId;
                                            queryString += " AND p.ProductId = ds.DepartmentStockPK.ProductId";
-                                           queryString += " AND ds.GoodQuantity > 0 ";
+                                           //queryString += " AND ds.GoodQuantity > 0 ";
                                        }
 
                                        // ORDER BY ProductName

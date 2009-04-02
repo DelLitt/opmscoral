@@ -50,6 +50,10 @@ namespace AppFrameClient.Presenter.GoodsIO
             }
             ObjectCriteria stockCrit = new ObjectCriteria();
             stockCrit.AddSearchInCriteria("DepartmentStockPK.ProductId", productIds);
+            if(e.AvailableInStock)
+            {
+                stockCrit.AddGreaterCriteria("GoodQuantity", (long) 0);
+            }
             IList stockList = DepartmentStockLogic.FindAll(stockCrit);
             if (stockList != null && stockList.Count > 0)
             {

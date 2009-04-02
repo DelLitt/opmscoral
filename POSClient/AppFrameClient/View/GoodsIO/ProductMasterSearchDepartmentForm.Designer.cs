@@ -66,6 +66,7 @@
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distributorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.chkInStock = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -374,9 +375,22 @@
             this.distributorDataGridViewTextBoxColumn.HeaderText = "Phân phối";
             this.distributorDataGridViewTextBoxColumn.Name = "distributorDataGridViewTextBoxColumn";
             // 
+            // chkInStock
+            // 
+            this.chkInStock.AutoSize = true;
+            this.chkInStock.Checked = true;
+            this.chkInStock.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkInStock.Location = new System.Drawing.Point(7, 498);
+            this.chkInStock.Name = "chkInStock";
+            this.chkInStock.Size = new System.Drawing.Size(214, 17);
+            this.chkInStock.TabIndex = 31;
+            this.chkInStock.Text = "Chỉ xem những sản phẩm còn trong kho";
+            this.chkInStock.UseVisualStyleBackColor = true;
+            // 
             // ProductMasterSearchDepartmentForm
             // 
             this.ClientSize = new System.Drawing.Size(942, 531);
+            this.Controls.Add(this.chkInStock);
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnClose);
@@ -433,5 +447,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private System.Windows.Forms.CheckBox chkInStock;
     }
 }
