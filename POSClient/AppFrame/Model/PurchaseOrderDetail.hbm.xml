@@ -96,7 +96,13 @@
         length="10"
     >
     </property>
-
+  <property
+      name="Note"
+      type="string"
+      column="NOTE"
+      length="200"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to PurchaseOrder -->

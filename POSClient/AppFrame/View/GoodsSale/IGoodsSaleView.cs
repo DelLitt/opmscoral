@@ -26,5 +26,6 @@ namespace AppFrame.View.GoodsSale
         event EventHandler<GoodsSaleEventArgs> FillProductToComboEvent;
 
         event EventHandler<GoodsSaleEventArgs> SavePurchaseOrderEvent;
+        event EventHandler<GoodsSaleEventArgs> FindRefPurchaseOrder;
     }
 }

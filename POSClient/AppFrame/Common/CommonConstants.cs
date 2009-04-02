@@ -15,5 +15,6 @@ namespace AppFrame.Common
 
         public static readonly string SERVER_SYNC_FORMAT = ".exp";
         public static readonly string CLIENT_SYNC_FORMAT = ".imp";
+        public static int MAX_QUERY_RESULT = 50;
     }
 }

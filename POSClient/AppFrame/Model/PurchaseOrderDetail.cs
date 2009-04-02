@@ -241,7 +241,7 @@ namespace AppFrame.Model
             }
         }
         public virtual ProductMaster ProductMaster { get; set; }
-
+        public virtual string Note { get; set; }
         #endregion
         
         #region IComparable Methods
