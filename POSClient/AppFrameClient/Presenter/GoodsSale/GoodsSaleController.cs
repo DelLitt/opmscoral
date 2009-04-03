@@ -57,9 +57,11 @@ namespace AppFrameClient.Presenter.GoodsSale
                 PurchaseOrderLogic.Add(this.PurchaseOrder);
                 e.HasErrors = false;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 e.HasErrors = true;
+                if(exception is BusinessException)
+                    throw exception;  
             }
             
             

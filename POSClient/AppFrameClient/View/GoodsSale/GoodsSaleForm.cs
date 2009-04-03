@@ -482,7 +482,25 @@ namespace AppFrameClient.View.GoodsSale
                 MessageBox.Show("Có lỗi khi lưu hoá đơn");
                 return;
             }
-            
+
+            IList returnDetails = new ArrayList();
+            IList purchaseDetails = GoodsSaleController.PurchaseOrder.PurchaseOrderDetails;
+            int maxIndex = GoodsSaleController.PurchaseOrder.PurchaseOrderDetails.Count-1;
+            PurchaseOrder purchaseOrder = GoodsSaleController.PurchaseOrder;
+            while(maxIndex >= 0)
+            {
+                PurchaseOrderDetail detail = (PurchaseOrderDetail)purchaseDetails[maxIndex];
+                if (detail.PurchaseOrder != null
+                   && detail.PurchaseOrder.PurchaseOrderPK != null
+                   && !string.IsNullOrEmpty(detail.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId)
+                   && !detail.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId.Equals(purchaseOrder.PurchaseOrderPK.PurchaseOrderId) )
+                {
+                    returnDetails.Add(detail);
+                    purchaseDetails.RemoveAt(maxIndex);
+                }
+                maxIndex -= 1;
+            }
+
             /*printForm = new GoodsSalePrintForm();
             printForm.FillForm(GoodsSaleController.PurchaseOrder);
             printForm.Show();
@@ -732,7 +750,9 @@ namespace AppFrameClient.View.GoodsSale
                 for (int j = list.Count - 1; j >= i + 1; j--)
                 {
                     PurchaseOrderDetail compdetail = (PurchaseOrderDetail)list[j];
-                    if (detail.Product.ProductId == compdetail.Product.ProductId)
+                    if (detail.Product.ProductId == compdetail.Product.ProductId
+                        && (detail.PurchaseOrderDetailPK!=null && compdetail.PurchaseOrderDetailPK!= null)
+                        && compdetail.PurchaseOrderDetailPK.PurchaseOrderId == detail.PurchaseOrderDetailPK.PurchaseOrderId)
                     {
                         detail.Quantity += compdetail.Quantity;
                         list.RemoveAt(j);
@@ -1108,6 +1128,11 @@ namespace AppFrameClient.View.GoodsSale
                 goodsReturnForm.SelectProductEvent -= new EventHandler<AppFrame.Presenter.GoodsIO.ProductMasterSearchDepartmentEventArgs>(formReturn_SelectProductEvent);
                 goodsReturnForm.Close();
             }            
+        }
+
+        private void dgvBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
