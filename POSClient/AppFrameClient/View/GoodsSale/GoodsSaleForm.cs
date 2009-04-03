@@ -82,6 +82,8 @@ namespace AppFrameClient.View.GoodsSale
             txtTotalAmount.Text = "";
             txtCharge.Text = "";
             txtTax.Text = "";
+            PurchaseOrderBill = null;
+            ReturnPurchaseOrder = null;
         }
 
         public event EventHandler<AppFrame.Presenter.GoodsSale.GoodsSaleEventArgs> AddGoodsEvent;
@@ -212,7 +214,7 @@ namespace AppFrameClient.View.GoodsSale
             txtEmployee.Text = ClientInfo.getInstance().LoggedUser.Name;
             txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
             //this.reportPurchaseOrder.RefreshReport();
-            this.reportPurchaseOrder.RefreshReport();
+            //this.reportPurchaseOrder.RefreshReport();
             txtBarcode.Focus();
             //btnAdd_Click(this, null);
             
@@ -495,6 +497,10 @@ namespace AppFrameClient.View.GoodsSale
                    && !string.IsNullOrEmpty(detail.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId)
                    && !detail.PurchaseOrder.PurchaseOrderPK.PurchaseOrderId.Equals(purchaseOrder.PurchaseOrderPK.PurchaseOrderId) )
                 {
+                    if(detail.Price < 0 )
+                    {
+                        detail.Price = 0 - detail.Price;
+                    }
                     returnDetails.Add(detail);
                     purchaseDetails.RemoveAt(maxIndex);
                 }
@@ -510,10 +516,96 @@ namespace AppFrameClient.View.GoodsSale
             /*reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("Department",CurrentDepartment.Get()));
             reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrder",GoodsSaleController.PurchaseOrder));
             reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrderDetail", pODList));*/
+            PurchaseOrderBill = new LocalReport();
+            bool isReturnOrder = false;
+            if(returnDetails.Count > 0 )
+            {
+                PurchaseOrderBill.ReportEmbeddedResource = "AppFrameClient.Report.ReturnPurchaseOrder.rdlc";
+
+                receipt.ReceiptName = "HDDTH";
+                if (purchaseDetails.Count == 0)
+                {
+                    receipt.ReceiptNumber = receipt.ReceiptNumber + "RET";
+                }
+                isReturnOrder = true;
+            }
+            else
+            {
+                receipt.ReceiptName = "HDBH";
+                PurchaseOrderBill.ReportEmbeddedResource = "AppFrameClient.Report.PurchaseOrder.rdlc";
+                
+            }
+
+            this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
+            PurchaseOrderDetailCollection printPOD = new PurchaseOrderDetailCollection();
+            foreach (PurchaseOrderDetail detail in purchaseDetails)
+            {
+                printPOD.Add(detail);
+            }
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(printPOD);
+            this.ReceiptBindingSource.DataSource = receipt;
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
+
+            if (isReturnOrder)
+            {
+                
+                PurchaseOrderDetailBindingSource.DataSource = ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(returnDetails);
+
+                ReportDataSource PODataRDS = new ReportDataSource("AppFrame_Model_PurchaseOrder");
+
+                PODataRDS.Value = PurchaseOrderBindingSource;
+                PurchaseOrderBill.DataSources.Add(PODataRDS);
+
+                ReportDataSource PODetRDS = new ReportDataSource("AppFrame_Collection_PurchaseOrderDetailCollection");
+                PODetRDS.Value = PurchaseOrderDetailCollectionBindingSource;
+                PurchaseOrderBill.DataSources.Add(PODetRDS);
+
+                ReportDataSource DepartmentRDS = new ReportDataSource("AppFrame_Model_Department");
+                DepartmentRDS.Value = DepartmentBindingSource;
+                PurchaseOrderBill.DataSources.Add(DepartmentRDS);
+
+                ReportDataSource ReceiptRDS = new ReportDataSource("AppFrame_Model_Receipt");
+                ReceiptRDS.Value = ReceiptBindingSource;
+                PurchaseOrderBill.DataSources.Add(ReceiptRDS);
+
+
+                ReportDataSource POReturnDetRDS = new ReportDataSource("AppFrame_Model_PurchaseOrderDetail");
+                POReturnDetRDS.Value = PurchaseOrderDetailBindingSource;
+                PurchaseOrderBill.DataSources.Add(POReturnDetRDS);
+                
+            }
+            else
+            {
+                ReportDataSource PODataRDS = new ReportDataSource("AppFrame_Model_PurchaseOrder");
+                PODataRDS.Value = PurchaseOrderBindingSource;
+                PurchaseOrderBill.DataSources.Add(PODataRDS);
+
+                ReportDataSource PODetRDS = new ReportDataSource("AppFrame_Collection_PurchaseOrderDetailCollection");
+                PODetRDS.Value = PurchaseOrderDetailCollectionBindingSource;
+                PurchaseOrderBill.DataSources.Add(PODetRDS);
+
+                ReportDataSource DepartmentRDS = new ReportDataSource("AppFrame_Model_Department");
+                DepartmentRDS.Value = DepartmentBindingSource;
+                PurchaseOrderBill.DataSources.Add(DepartmentRDS);
+
+                ReportDataSource ReceiptRDS = new ReportDataSource("AppFrame_Model_Receipt");
+                ReceiptRDS.Value = ReceiptBindingSource;
+                PurchaseOrderBill.DataSources.Add(ReceiptRDS);
+                
+            }
+
+            /*this.PurchaseOrderDetailBindingSource.DataSource =
+                ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
+
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
+
+
+
+            this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
+
             this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
             this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(pODList);
-            this.ReceiptBindingSource.DataSource = receipt;
+            this.ReceiptBindingSource.DataSource = receipt;*/
 
             /*string deviceInfo = "<DeviceInfo>" +
             "  <OutputFormat>EMF</OutputFormat>" +
@@ -531,6 +623,7 @@ namespace AppFrameClient.View.GoodsSale
             ClearGoodsSaleForm();
         }
 
+        private LocalReport PurchaseOrderBill = null;
         private void PrintDirectlyToPrinter()
         {
             streamList.Clear();
@@ -556,6 +649,7 @@ namespace AppFrameClient.View.GoodsSale
             
 
         }
+
         IList<Stream> streamList = new List<Stream>();
         private Stream CreateStream(string name, string fileNameExtension, Encoding encoding,
                               string mimeType, bool willSeek)
@@ -590,9 +684,13 @@ namespace AppFrameClient.View.GoodsSale
           "  <MarginBottom>0.0in</MarginBottom>" +
           "</DeviceInfo>";
             Warning[] warnings;
-            
-            this.reportPurchaseOrder.LocalReport.Refresh();
-            this.reportPurchaseOrder.LocalReport.Render("Image", deviceInfo, CreateStream, out warnings);
+            if(PurchaseOrderBill == null)
+            {
+                return;
+            }
+            /*this.reportPurchaseOrder.LocalReport.Refresh();
+            this.reportPurchaseOrder.LocalReport.Render("Image", deviceInfo, CreateStream, out warnings);*/
+            PurchaseOrderBill.Render("Image", deviceInfo, CreateStream, out warnings);
             if (streamList.Count > 0)
             {
                 foreach (Stream stream in streamList)
@@ -1131,6 +1229,11 @@ namespace AppFrameClient.View.GoodsSale
         }
 
         private void dgvBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnReturnOrder_Click(object sender, EventArgs e)
         {
 
         }

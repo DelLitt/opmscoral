@@ -43,6 +43,7 @@
             this.PurchaseOrderDetailCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReceiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -129,11 +130,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.ReceiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
@@ -144,7 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsReturnBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNewBill)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PurchaseOrderDetailBindingSource
@@ -162,6 +162,10 @@
             // PurchaseOrderBindingSource
             // 
             this.PurchaseOrderBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrder);
+            // 
+            // ReceiptBindingSource
+            // 
+            this.ReceiptBindingSource.DataSource = typeof(AppFrame.Model.Receipt);
             // 
             // btnHelp
             // 
@@ -389,18 +393,18 @@
             this.mnuReturnGoods,
             this.mnuResetReturnGoods});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(103, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 48);
             // 
             // mnuReturnGoods
             // 
             this.mnuReturnGoods.Name = "mnuReturnGoods";
-            this.mnuReturnGoods.Size = new System.Drawing.Size(102, 22);
+            this.mnuReturnGoods.Size = new System.Drawing.Size(108, 22);
             this.mnuReturnGoods.Text = "Trả";
             // 
             // mnuResetReturnGoods
             // 
             this.mnuResetReturnGoods.Name = "mnuResetReturnGoods";
-            this.mnuResetReturnGoods.Size = new System.Drawing.Size(102, 22);
+            this.mnuResetReturnGoods.Size = new System.Drawing.Size(108, 22);
             this.mnuResetReturnGoods.Text = "Hồi lại";
             // 
             // bdsBill
@@ -936,19 +940,19 @@
             this.mnuAddUncheckMenu,
             this.mnuRemoveUncheckMenu});
             this.ctxReturnBill.Name = "ctxReturnBill";
-            this.ctxReturnBill.Size = new System.Drawing.Size(248, 48);
+            this.ctxReturnBill.Size = new System.Drawing.Size(271, 48);
             // 
             // mnuAddUncheckMenu
             // 
             this.mnuAddUncheckMenu.Name = "mnuAddUncheckMenu";
-            this.mnuAddUncheckMenu.Size = new System.Drawing.Size(247, 22);
+            this.mnuAddUncheckMenu.Size = new System.Drawing.Size(270, 22);
             this.mnuAddUncheckMenu.Text = "Thêm mặt hàng trả không đối chứng";
             this.mnuAddUncheckMenu.Click += new System.EventHandler(this.tToolStripMenuItem_Click);
             // 
             // mnuRemoveUncheckMenu
             // 
             this.mnuRemoveUncheckMenu.Name = "mnuRemoveUncheckMenu";
-            this.mnuRemoveUncheckMenu.Size = new System.Drawing.Size(247, 22);
+            this.mnuRemoveUncheckMenu.Size = new System.Drawing.Size(270, 22);
             this.mnuRemoveUncheckMenu.Text = "Xoá mặt hàng trả không đối chứng";
             // 
             // bdsReturnBill
@@ -1097,10 +1101,6 @@
             this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
             this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
-            // ReceiptBindingSource
-            // 
-            this.ReceiptBindingSource.DataSource = typeof(AppFrame.Model.Receipt);
-            // 
             // GoodsSaleReturnForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 642);
@@ -1137,6 +1137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).EndInit();
@@ -1149,7 +1150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsReturnBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsNewBill)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
