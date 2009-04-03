@@ -310,7 +310,8 @@ namespace AppFrameClient.View.GoodsSale
         {
             if (string.IsNullOrEmpty(txtPayment.Text))
             {
-                txtCharge.Text = "0";
+                long payment = 0;
+                txtCharge.Text = (payment - long.Parse(txtTotalAmount.Text)).ToString();
             }
             else
             {
@@ -546,13 +547,9 @@ namespace AppFrameClient.View.GoodsSale
             this.ReceiptBindingSource.DataSource = receipt;
             this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
 
-            if (isReturnOrder)
-            {
-                
                 PurchaseOrderDetailBindingSource.DataSource = ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(returnDetails);
 
                 ReportDataSource PODataRDS = new ReportDataSource("AppFrame_Model_PurchaseOrder");
-
                 PODataRDS.Value = PurchaseOrderBindingSource;
                 PurchaseOrderBill.DataSources.Add(PODataRDS);
 
@@ -573,26 +570,7 @@ namespace AppFrameClient.View.GoodsSale
                 POReturnDetRDS.Value = PurchaseOrderDetailBindingSource;
                 PurchaseOrderBill.DataSources.Add(POReturnDetRDS);
                 
-            }
-            else
-            {
-                ReportDataSource PODataRDS = new ReportDataSource("AppFrame_Model_PurchaseOrder");
-                PODataRDS.Value = PurchaseOrderBindingSource;
-                PurchaseOrderBill.DataSources.Add(PODataRDS);
-
-                ReportDataSource PODetRDS = new ReportDataSource("AppFrame_Collection_PurchaseOrderDetailCollection");
-                PODetRDS.Value = PurchaseOrderDetailCollectionBindingSource;
-                PurchaseOrderBill.DataSources.Add(PODetRDS);
-
-                ReportDataSource DepartmentRDS = new ReportDataSource("AppFrame_Model_Department");
-                DepartmentRDS.Value = DepartmentBindingSource;
-                PurchaseOrderBill.DataSources.Add(DepartmentRDS);
-
-                ReportDataSource ReceiptRDS = new ReportDataSource("AppFrame_Model_Receipt");
-                ReceiptRDS.Value = ReceiptBindingSource;
-                PurchaseOrderBill.DataSources.Add(ReceiptRDS);
-                
-            }
+            
 
             /*this.PurchaseOrderDetailBindingSource.DataSource =
                 ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
