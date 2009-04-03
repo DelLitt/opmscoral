@@ -97,7 +97,14 @@
         column="NEXT_PURCHASE_ORDER_ID"
         length="20"
     >
-  </property>   
+  </property>
+  <many-to-one
+        name="Product"
+        class="Product"
+        lazy ="false"
+    >
+    <column name="PRODUCT_ID" />
+  </many-to-one>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->

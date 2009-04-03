@@ -171,7 +171,7 @@ namespace AppFrame.Model
             }
         }
         public virtual string NextPurchaseOrderId { get; set; }
-
+        public virtual Product Product { get; set; }
         #endregion
         
         #region IComparable Methods
