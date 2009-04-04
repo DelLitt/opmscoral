@@ -587,5 +587,27 @@ namespace AppFrame.View
         {
             new AllStockReportViewer().ShowDialog();
         }
+
+        private void mnuAddEmployee_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<EmployeeForm>(this, FormConstants.EMPLOYEE_FORM);
+            form.Show();
+        }
+
+        private void mnuEmployeeManagement_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<EmployeeListForm>(this, FormConstants.EMPLOYEE_LIST_FORM);
+            form.Show();
+        }
+
+        private void mnuDeptReStockReport_Click(object sender, EventArgs e)
+        {
+            new DeptReStockReportViewer().ShowDialog();
+        }
+
+        private void mnuDeptTempStockOutReport_Click(object sender, EventArgs e)
+        {
+            new  DeptTempStockoutReportViewer().ShowDialog();
+        }
     }
 }

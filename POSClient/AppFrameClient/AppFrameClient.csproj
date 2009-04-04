@@ -255,6 +255,12 @@
     <Compile Include="View\GoodsSale\GoodsReturnChildForm.Designer.cs">
       <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SalePoints\EmployeeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SalePoints\EmployeeListForm.Designer.cs">
+      <DependentUpon>EmployeeListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1082,6 +1088,9 @@
     <EmbeddedResource Include="View\GoodsSale\GoodsReturnChildForm.resx">
       <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
+      <DependentUpon>EmployeeListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1294,6 +1303,8 @@
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Logic\dummy.txt" />
+    <None Include="Properties\DataSources\AppFrame.Collection.EmployeeInfoCollection.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo1.datasource" />
     <None Include="Resources\ready-to-use.jpg" />
     <None Include="Resources\FlashImage.jpg" />
   </ItemGroup>

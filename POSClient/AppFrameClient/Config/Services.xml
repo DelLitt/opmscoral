@@ -57,6 +57,7 @@
 
   <object id="AppFrame.Service.IEmployeeDetailLogic" type="AppFrame.Logic.EmployeeDetailLogicImpl, AppFrameClient">
     <property name="EmployeeDetailDAO" ref="AppFrame.DataLayer.IEmployeeDetailDAO"/>
+    <property name="EmployeeDAO" ref="AppFrame.DataLayer.IEmployeeDAO"/>
   </object>
 
   <object id="AppFrame.Service.IPurchaseOrderDetailLogic" type="AppFrame.Logic.PurchaseOrderDetailLogicImpl, AppFrameClient">

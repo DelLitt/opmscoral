@@ -48,13 +48,13 @@
             this.updateIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsSalePointList = new System.Windows.Forms.BindingSource(this.components);
             this.cmnDepartments = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuSetMainDepartment = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsSalePointList = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -73,8 +73,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartments)).BeginInit();
-            this.cmnDepartments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSalePointList)).BeginInit();
+            this.cmnDepartments.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,6 +239,10 @@
             this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
             this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
             // 
+            // bdsSalePointList
+            // 
+            this.bdsSalePointList.DataSource = typeof(AppFrame.Model.Department);
+            // 
             // cmnDepartments
             // 
             this.cmnDepartments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -282,10 +286,6 @@
             this.mnuDelete.Size = new System.Drawing.Size(228, 22);
             this.mnuDelete.Text = "Xóa";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
-            // 
-            // bdsSalePointList
-            // 
-            this.bdsSalePointList.DataSource = typeof(AppFrame.Model.Department);
             // 
             // btnDelete
             // 
@@ -363,6 +363,7 @@
             this.label5.Size = new System.Drawing.Size(38, 14);
             this.label5.TabIndex = 33;
             this.label5.Text = "người";
+            this.label5.Visible = false;
             // 
             // lblEmployeesNumber
             // 
@@ -373,6 +374,7 @@
             this.lblEmployeesNumber.Size = new System.Drawing.Size(61, 14);
             this.lblEmployeesNumber.TabIndex = 32;
             this.lblEmployeesNumber.Text = "Nhân viên";
+            this.lblEmployeesNumber.Visible = false;
             // 
             // lblAddress
             // 
@@ -403,6 +405,7 @@
             this.txtEmployeesNumber.Name = "txtEmployeesNumber";
             this.txtEmployeesNumber.Size = new System.Drawing.Size(90, 22);
             this.txtEmployeesNumber.TabIndex = 28;
+            this.txtEmployeesNumber.Visible = false;
             // 
             // txtAddress
             // 
@@ -493,8 +496,8 @@
             this.Text = "SalePointList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartments)).EndInit();
-            this.cmnDepartments.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsSalePointList)).EndInit();
+            this.cmnDepartments.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

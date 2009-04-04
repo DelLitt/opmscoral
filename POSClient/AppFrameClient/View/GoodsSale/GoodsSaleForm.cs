@@ -653,7 +653,7 @@ namespace AppFrameClient.View.GoodsSale
           "<DeviceInfo>" +
           "  <OutputFormat>EMF</OutputFormat>" +
           "  <PageWidth>2.8in</PageWidth>" +
-          "  <PageHeight>5in</PageHeight>" +
+          "  <PageHeight>8in</PageHeight>" +
           "  <DpiX>180</DpiX>" +
           "  <DpiY>180</DpiY>" +
           "  <MarginTop>0.0in</MarginTop>" +

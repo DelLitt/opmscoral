@@ -85,6 +85,7 @@
             this.txtTimeOfService.Name = "txtTimeOfService";
             this.txtTimeOfService.Size = new System.Drawing.Size(116, 22);
             this.txtTimeOfService.TabIndex = 4;
+            this.txtTimeOfService.Visible = false;
             // 
             // label1
             // 
@@ -124,6 +125,7 @@
             this.label4.Size = new System.Drawing.Size(59, 14);
             this.label4.TabIndex = 9;
             this.label4.Text = "Cửa hàng";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -134,6 +136,7 @@
             this.label5.Size = new System.Drawing.Size(65, 14);
             this.label5.TabIndex = 10;
             this.label5.Text = "Thâm niên";
+            this.label5.Visible = false;
             // 
             // txtDepartmentName
             // 
@@ -144,6 +147,7 @@
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Size = new System.Drawing.Size(319, 22);
             this.txtDepartmentName.TabIndex = 12;
+            this.txtDepartmentName.Visible = false;
             // 
             // txtEmployeeId
             // 
@@ -204,6 +208,7 @@
             this.btnReset.TabIndex = 18;
             this.btnReset.Text = "Bỏ qua";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnHelp
             // 

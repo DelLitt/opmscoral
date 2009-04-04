@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Logic;
@@ -31,7 +32,7 @@ namespace AppFrameClient.Presenter.SalePoints
                 //employeeView.CloseEmployeeFormEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_CloseEmployeeFormEvent);
                 employeeView.HelpEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_HelpEvent);
                 employeeView.ResetEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_ResetEmployeeEvent);
-                //employeeView.SaveEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_SaveEmployeeEvent);
+                employeeView.SaveEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeView_SaveEmployeeEvent);
             }
         }
 
@@ -80,14 +81,17 @@ namespace AppFrameClient.Presenter.SalePoints
             ResultEventArgs.EmployeeInfo = EmployeeInfoModel;
             int selectedEmployee = e.SelectedEmployee;
             ResultEventArgs.SelectedEmployee = selectedEmployee;
-            if (selectedEmployee == -1)
+            
+            EmployeeDetailLogic.Add(e.EmployeeInfo);
+            
+            /*if (selectedEmployee == -1)
             {
                 EventUtility.fireEvent(CompletedAddEmployeeEvent, this, ResultEventArgs);
             }
             else
             {
                 EventUtility.fireEvent(CompletedEditEmployeeEvent, this, ResultEventArgs);    
-            }
+            }*/
         }
 
         void employeeView_ResetEmployeeEvent(object sender, EmployeeEventArgs e)
@@ -195,6 +199,30 @@ namespace AppFrameClient.Presenter.SalePoints
 
 
         public event System.EventHandler<EmployeeEventArgs> CompletedEditEmployeeEvent;
+
+        #endregion
+
+        #region IEmployeeController Members
+
+        public IEmployeeListView employeeListView;
+        public IEmployeeListView EmployeeListView
+        {
+            get
+            {
+                return employeeListView;
+            }
+            set
+            {
+                employeeListView = value;
+                employeeListView.LoadEmployeesEvent += new System.EventHandler<EmployeeEventArgs>(employeeListView_LoadEmployeesEvent);
+            }
+        }
+
+        void employeeListView_LoadEmployeesEvent(object sender, EmployeeEventArgs e)
+        {
+            IList list = EmployeeDetailLogic.FindAll(null);
+            e.EmployeeList = list;
+        }
 
         #endregion
     }

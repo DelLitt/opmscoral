@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtDepartmentName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtEmployeesNumber = new System.Windows.Forms.TextBox();
@@ -102,6 +102,7 @@
             this.txtEmployeesNumber.Name = "txtEmployeesNumber";
             this.txtEmployeesNumber.Size = new System.Drawing.Size(90, 22);
             this.txtEmployeesNumber.TabIndex = 3;
+            this.txtEmployeesNumber.Visible = false;
             // 
             // lblDepartmentName
             // 
@@ -142,6 +143,7 @@
             this.lblEmployeesNumber.Size = new System.Drawing.Size(61, 14);
             this.lblEmployeesNumber.TabIndex = 7;
             this.lblEmployeesNumber.Text = "Nhân viên";
+            this.lblEmployeesNumber.Visible = false;
             // 
             // label5
             // 
@@ -152,6 +154,7 @@
             this.label5.Size = new System.Drawing.Size(38, 14);
             this.label5.TabIndex = 8;
             this.label5.Text = "người";
+            this.label5.Visible = false;
             // 
             // lblEmployeesList
             // 
@@ -168,14 +171,14 @@
             this.dgvEmployees.AllowUserToAddRows = false;
             this.dgvEmployees.AllowUserToDeleteRows = false;
             this.dgvEmployees.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -184,21 +187,21 @@
             this.delFlgDataGridViewTextBoxColumn});
             this.dgvEmployees.ContextMenuStrip = this.cmnEmployees;
             this.dgvEmployees.DataSource = this.bdsEmployeeSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployees.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployees.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmployees.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvEmployees.Location = new System.Drawing.Point(12, 172);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployees.Size = new System.Drawing.Size(984, 267);
+            this.dgvEmployees.Size = new System.Drawing.Size(811, 65);
             this.dgvEmployees.TabIndex = 10;
-            this.dgvEmployees.VirtualMode = true;
+            this.dgvEmployees.Visible = false;
             this.dgvEmployees.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvEmployees_RowPrePaint);
             // 
             // dataGridViewTextBoxColumn1
@@ -286,62 +289,67 @@
             // btnCheckAll
             // 
             this.btnCheckAll.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckAll.Location = new System.Drawing.Point(12, 445);
+            this.btnCheckAll.Location = new System.Drawing.Point(12, 243);
             this.btnCheckAll.Name = "btnCheckAll";
             this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnCheckAll.TabIndex = 11;
             this.btnCheckAll.Text = "Chọn hết";
             this.btnCheckAll.UseVisualStyleBackColor = true;
+            this.btnCheckAll.Visible = false;
             this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
             // 
             // btnUncheckAll
             // 
             this.btnUncheckAll.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUncheckAll.Location = new System.Drawing.Point(96, 445);
+            this.btnUncheckAll.Location = new System.Drawing.Point(96, 243);
             this.btnUncheckAll.Name = "btnUncheckAll";
             this.btnUncheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnUncheckAll.TabIndex = 12;
             this.btnUncheckAll.Text = "Bỏ chọn";
             this.btnUncheckAll.UseVisualStyleBackColor = true;
+            this.btnUncheckAll.Visible = false;
             this.btnUncheckAll.Click += new System.EventHandler(this.btnUncheckAll_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(500, 445);
+            this.btnAdd.Location = new System.Drawing.Point(500, 243);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(660, 445);
+            this.btnDelete.Location = new System.Drawing.Point(660, 243);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(581, 445);
+            this.btnEdit.Location = new System.Drawing.Point(581, 243);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Visible = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(921, 535);
+            this.btnClose.Location = new System.Drawing.Point(748, 273);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
@@ -352,7 +360,7 @@
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(12, 535);
+            this.btnHelp.Location = new System.Drawing.Point(12, 273);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
             this.btnHelp.TabIndex = 17;
@@ -366,6 +374,7 @@
             this.txtDeparmentCost.Name = "txtDeparmentCost";
             this.txtDeparmentCost.Size = new System.Drawing.Size(193, 22);
             this.txtDeparmentCost.TabIndex = 18;
+            this.txtDeparmentCost.Visible = false;
             // 
             // lblDepartmentCost
             // 
@@ -376,6 +385,7 @@
             this.lblDepartmentCost.Size = new System.Drawing.Size(73, 14);
             this.lblDepartmentCost.TabIndex = 19;
             this.lblDepartmentCost.Text = "Chi phí thuê";
+            this.lblDepartmentCost.Visible = false;
             // 
             // label8
             // 
@@ -390,7 +400,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(500, 535);
+            this.btnSave.Location = new System.Drawing.Point(500, 273);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 23);
             this.btnSave.TabIndex = 21;
@@ -401,7 +411,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(585, 535);
+            this.btnReset.Location = new System.Drawing.Point(585, 273);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 22;
@@ -449,7 +459,7 @@
             // 
             // txtActiveDepartment
             // 
-            this.txtActiveDepartment.Location = new System.Drawing.Point(981, 18);
+            this.txtActiveDepartment.Location = new System.Drawing.Point(791, 43);
             this.txtActiveDepartment.Name = "txtActiveDepartment";
             this.txtActiveDepartment.Size = new System.Drawing.Size(23, 20);
             this.txtActiveDepartment.TabIndex = 27;
@@ -470,29 +480,29 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 567);
+            this.ClientSize = new System.Drawing.Size(840, 319);
             this.Controls.Add(this.btnActive);
             this.Controls.Add(this.dgvEmployees);
             this.Controls.Add(this.lblActiveDepartment);
-            this.Controls.Add(this.txtActiveDepartment);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtActiveDepartment);
             this.Controls.Add(this.txtDepartmentId);
             this.Controls.Add(this.lblDepartmentCost);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpCreateDate);
             this.Controls.Add(this.txtDeparmentCost);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblEmployeesList);
+            this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.lblEmployeesNumber);
             this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnCheckAll);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblEmployeesNumber);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.txtEmployeesNumber);

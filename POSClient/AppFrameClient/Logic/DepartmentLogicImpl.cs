@@ -76,7 +76,10 @@ namespace AppFrame.Logic
         {
             /*var maxId = EmployeeDetailDAO.SelectSpecificType(null, Projections.Max("EmployeePK.EmployeeId"));
             var employeeId = maxId == null ? 0 : (Int64.Parse(maxId.ToString()));*/
-
+            if(employees == null)
+            {
+                return;
+            }
             foreach (EmployeeInfo employeeInfo in employees)
             { 
                 if(string.IsNullOrEmpty(employeeInfo.EmployeePK.EmployeeId))

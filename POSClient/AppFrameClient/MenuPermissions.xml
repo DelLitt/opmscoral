@@ -41,7 +41,8 @@
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />
     <menuitem name="mnuSalePointManagement" role="NotImplement" />
-    <menuitem name="mnuEmployeeManagement" role="NotImplement" />
+    <menuitem name="mnuEmployeeManagement" role="Administrator,Supervisor" />
+    <menuitem name="mnuAddEmployee" role="Administrator,Supervisor" />
     <menuitem name="mnuChamCong" role="NotImplement" />
     <menuitem name="mnuUserAccount" role="Administrator,Supervisor" />
   </menu>
@@ -73,6 +74,8 @@
     <menuitem name="mnuGoodsImportReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsExportReport" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptStockInReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuDeptReStockReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuDeptTempStockOutReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsSendbackReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTotalReport" role="NotImplement" />         
     <menuitem name="mnuMixReport" role="NotImplement" />

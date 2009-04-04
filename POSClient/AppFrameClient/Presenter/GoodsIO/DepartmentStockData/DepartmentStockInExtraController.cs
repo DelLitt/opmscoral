@@ -81,7 +81,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.SyncFromMainToDepartment.Department = e.Department;
             criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
+            //criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
             e.SyncFromMainToDepartment.Department.Employees = EmployeeLogic.FindAll(criteria);
             //foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
             foreach (StockOut departmentStockIn in e.SyncFromMainToDepartment.StockOutList)

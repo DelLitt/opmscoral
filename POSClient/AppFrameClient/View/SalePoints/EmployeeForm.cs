@@ -75,11 +75,14 @@ namespace AppFrameClient.View.SalePoints
         {
             FormToModel();
             EmployeeEventArgs eventArgs = new EmployeeEventArgs();
-
             eventArgs.EmployeeInfo = EmployeeController.EmployeeInfoModel;
             eventArgs.SelectedEmployee = ObjectConverter.Convert<Int32>(txtHiddenSelectedEmployeeId.Text);
             EventUtility.fireEvent(SaveEmployeeEvent,this,eventArgs);
-            this.Close();
+            if(!eventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu nhân viên thành công");
+            }
+            btnReset_Click(null,null);
         }
 
         public override void FormToModel()
@@ -171,6 +174,14 @@ namespace AppFrameClient.View.SalePoints
         {
             EmployeeEventArgs eventArgs = new EmployeeEventArgs();
             EventUtility.fireEvent(CloseEmployeeFormEvent, this, eventArgs);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtEmployeeName.Text = "";
+            txtAddress.Text = "";
+            txtSalary.Text = "";
+            EmployeeController.EmployeeInfoModel = null;
         }
     }
 }
