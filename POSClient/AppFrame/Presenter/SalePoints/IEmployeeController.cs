@@ -29,6 +29,8 @@ namespace AppFrame.Presenter.SalePoints
 
         #region Model use in Controller
         EmployeeInfo EmployeeInfoModel { get; set; }
+        IEmployeeListView EmployeeListView { get; set; }
+
         #endregion
     }
 }

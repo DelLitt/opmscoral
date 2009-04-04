@@ -29,7 +29,7 @@ namespace AppFrame.Common
                 if (departmentLogic != null)
                 {
                     IList deptList = departmentLogic.FindAll(criteria);
-                    if (deptList.Count > 0)
+                    if (deptList!= null && deptList.Count > 0)
                     {
                         _currentDepartment = deptList[0] as Department;
                     }

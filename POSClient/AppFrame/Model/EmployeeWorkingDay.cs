@@ -160,6 +160,9 @@ namespace AppFrame.Model
             }
         }
 
+        public virtual DateTime StartTime { get; set; }
+        public virtual DateTime EndTime { get; set; }
+        public virtual Department Department { get; set; }
         #endregion
         
         #region IComparable Methods

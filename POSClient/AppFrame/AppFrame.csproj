@@ -170,6 +170,7 @@
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
+    <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
     <Compile Include="Collection\LoginModelCollection.cs" />
     <Compile Include="Collection\ProductReportCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
@@ -668,6 +669,7 @@
     <Compile Include="View\Reports\IStockOutReportView.cs" />
     <Compile Include="View\Reports\IReportStockInParamView.cs" />
     <Compile Include="View\Reports\IReportStockInView.cs" />
+    <Compile Include="View\SalePoints\IEmployeeListView.cs" />
     <Compile Include="View\SalePoints\IEmployeeView.cs" />
     <Compile Include="View\SalePoints\ISalePointListView.cs" />
     <Compile Include="View\SalePoints\ISalePointView.cs" />

@@ -18,18 +18,12 @@
             type="DateTime"
             length="19">
         </key-property>
-        <key-property 
-            name="Period" 
-            column="PERIOD" 
+      <!--<key-property
+            name="DepartmentId"
+            column="DEPARTMENT_ID"
             type="Int64"
-            length="10">
-        </key-property>
-        <key-property 
-            name="DepartmentId" 
-            column="DEPARTMENT_ID" 
-            type="Int64"
-            length="10">
-        </key-property>
+            >
+      </key-property>-->
     </composite-id>    
 
     <property
@@ -39,6 +33,12 @@
         length="19"
     >
     </property>
+  <property
+            name="Period"
+            column="PERIOD"
+            type="Int64"
+            length="10">
+  </property>
     <property
         name="CreateId"
         type="string"
@@ -74,20 +74,38 @@
         length="10"
     >
     </property>
-
+  <property
+      name="StartTime"
+      type="DateTime"
+      column="START_TIME"
+      length="19"
+    >
+  </property>
+  <property
+        name="EndTime"
+        type="DateTime"
+        column="END_TIME"
+        length="19"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to Employee -->
-    <many-to-one
+    <!--<many-to-one
         name="Employee"
 	    class="Employee"
-	    update="false"
-	    insert="false"
+      lazy ="false"  
 	>
     	<column name="EMPLOYEE_ID" />
     	<column name="DEPARTMENT_ID" />
-	</many-to-one>
-	
+	</many-to-one>-->
+  <many-to-one
+      name="Department"
+    class="Department"
+    lazy ="false"
+	>     
+    <column name="DEPARTMENT_ID" />
+  </many-to-one>
     <!-- end of derived association(s) -->
   
 

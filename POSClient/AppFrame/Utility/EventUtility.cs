@@ -85,8 +85,8 @@ namespace AppFrame.Utility
                 }
                 else
                 {
-                    //MessageBox.Show("Có lỗi xảy ra khi thực hiện chương trình. Chương trình vẫn tiếp tục bình thường, xin vui lòng kiểm tra lại dữ liệu");
-                    throw exp;
+                    MessageBox.Show("Có lỗi xảy ra khi thực hiện chương trình. Chương trình vẫn tiếp tục bình thường, xin vui lòng kiểm tra lại dữ liệu");
+                    //throw exp;
                 }
                 //throw exp;
             }

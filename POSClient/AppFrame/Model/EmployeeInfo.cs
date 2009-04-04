@@ -217,6 +217,7 @@ namespace AppFrame.Model
             set { employeeName = value; }
         }
 
+        public virtual string Barcode { get; set; }
         #endregion
         
         #region IComparable Methods

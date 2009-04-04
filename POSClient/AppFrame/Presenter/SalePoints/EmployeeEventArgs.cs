@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Model;
@@ -50,5 +51,7 @@ namespace AppFrame.Presenter.SalePoints
         }
         public EmployeeInfo EditedEmployee { get; set; }
         public EmployeeInfo AddedEmployee { get; set; }
+
+        public IList EmployeeList { get; set; }
     }
 }

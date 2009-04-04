@@ -112,6 +112,13 @@
          length="500"
     >
   </property>
+  <property
+        name="Barcode"
+        type="string"
+        column="BARCODE"
+        length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->

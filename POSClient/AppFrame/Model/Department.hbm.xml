@@ -110,9 +110,9 @@
         />
     </bag>
     <!-- bi-directional one-to-many association to EmployeeInfo -->
-    <bag
+    <!--<bag
         name="Employees"
-        lazy="false"
+        lazy="true"
         inverse="true"
 		cascade="none"
     >
@@ -122,7 +122,7 @@
         <one-to-many 
             class="EmployeeInfo"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to ScheduleTemplate -->
     <bag
         name="ScheduleTemplates"

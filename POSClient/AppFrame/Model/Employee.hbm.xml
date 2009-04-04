@@ -67,14 +67,12 @@
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to Department -->
-    <many-to-one
+    <!--<many-to-one
         name="Department"
-	    class="Department"
-	    update="false"
-	    insert="false"
+	    class="Department"	    
 	>
     	<column name="DEPARTMENT_ID" />
-	</many-to-one>
+	</many-to-one>-->
 	
     <!-- end of derived association(s) -->
   
@@ -83,7 +81,7 @@
         name="EmployeeWorkingDays"
         lazy="true"
         inverse="true"
-		cascade="none"
+		    cascade="none"
     >
         <key>
             <column name="EMPLOYEE_ID" />

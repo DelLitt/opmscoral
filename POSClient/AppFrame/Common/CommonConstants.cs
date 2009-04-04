@@ -16,5 +16,9 @@ namespace AppFrame.Common
         public static readonly string SERVER_SYNC_FORMAT = ".exp";
         public static readonly string CLIENT_SYNC_FORMAT = ".imp";
         public static int MAX_QUERY_RESULT = 50;
+        public static string UNDEFINED_BARCODE = "000000000000";
+        public static string UNDEFINED_BARCODE_MARK ="000";
+        public static int UNDEFINED_BARCODE_MARK_LENGTH = 3;
+        public static int EMPLOYEE_BARCODE_LENGTH = 8;
     }
 }

@@ -7,11 +7,11 @@ namespace AppFrame.Model
     [Serializable]
     public class EmployeeWorkingDayPK
     {
-        public virtual Int64 DepartmentId
+        /*public virtual Int64 DepartmentId
         {
             get;
             set;
-        }
+        }*/
         public virtual string EmployeeId
         {
             get;
@@ -22,11 +22,11 @@ namespace AppFrame.Model
             get;
             set;
         }
-        public virtual Int64 Period
+        /*public virtual Int64 Period
         {
             get;
             set;
-        }
+        }*/
         #region Equals and GetHashCode Methods
         // override object.Equals
         public override bool Equals(object obj)
