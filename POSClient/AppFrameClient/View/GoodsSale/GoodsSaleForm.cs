@@ -1003,6 +1003,10 @@ namespace AppFrameClient.View.GoodsSale
 
         void form_SelectReturnGoodsEvent(object sender, GoodsSaleReturnEventArgs e)
         {
+            if(GoodsSaleController.PurchaseOrder == null)
+            {
+                btnAdd_Click(null,null);
+            }
             foreach (PurchaseOrderDetail returnPO in e.ReturnPurchaseOrderDetails)
             {
                 returnPO.Price = 0 - returnPO.Price;
@@ -1025,6 +1029,7 @@ namespace AppFrameClient.View.GoodsSale
         {
             txtRetBarCode.Text = "";
             txtRetPrice.Text = "";
+            txtRetPrice.ReadOnly = true;
             txtRetProductName.Text = "";
             txtRetQuantity.Text = "1";
             txtRefPurchaseOrder.Text = "";
@@ -1038,6 +1043,10 @@ namespace AppFrameClient.View.GoodsSale
 
         private void btnInput_Click(object sender, EventArgs e)
         {
+            if(GoodsSaleController.PurchaseOrder == null)
+            {
+                btnAdd_Click(null,e);
+            }
             string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
             GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
             PurchaseOrder searchRetPurchaseOrder = new PurchaseOrder();
@@ -1053,11 +1062,10 @@ namespace AppFrameClient.View.GoodsSale
             {
                 
                 if (string.IsNullOrEmpty(txtRetProductName.Text) // product id is notavailable
-                   && (string.IsNullOrEmpty(txtRetBarCode.Text) // bar code is not available 
-                   && !"000".Equals(txtRetBarCode.Text)))       // bar code is not undefined barcode
+                   && string.IsNullOrEmpty(txtRetBarCode.Text)) // bar code is not available 
                 {
                     MessageBox.Show(
-                        "Nếu muốn trả hàng không đối chứng, xin nhập hoá đơn là 000 và mã vạch ( nếu không biết ) là 000.");
+                        "Nếu muốn trả hàng không đối chứng, xin nhập hoá đơn là 000 và chọn một mã vạch phù hợp.");
                     return;
                 }
                 
@@ -1103,14 +1111,21 @@ namespace AppFrameClient.View.GoodsSale
                     };
                     ReturnPurchaseOrder = undefPurchaseOrder;
                     // if defined barcode
-                    if(!string.IsNullOrEmpty(txtRetProductName.Text))
-                    {
+                    /*if(!string.IsNullOrEmpty(txtRetProductName.Text))
+                    {*/
                         PurchaseOrderDetail specialDetail = new PurchaseOrderDetail { Product = new Product()};
                         specialDetail.Product.ProductId = txtRetBarCode.Text;
-                        if (!string.IsNullOrEmpty(specialDetail.Product.ProductId)
-                            && specialDetail.Product.ProductId.Equals("000"))
+                    
+                    if (!string.IsNullOrEmpty(specialDetail.Product.ProductId)
+                            && specialDetail.Product.ProductId.Equals(CommonConstants.UNDEFINED_BARCODE_MARK))
                         {
                             specialDetail.Product.ProductId = string.Format("{0:000000000000}", 0);
+                            if(CheckUtility.IsNullOrEmpty(txtRetPrice.Text))
+                            {
+                                /*MessageBox.Show("Xin hãy nhập giá của sản phẩm không có mã vạch");
+                                return;*/
+                            }
+                            specialDetail.Price = Int64.Parse(txtRetPrice.Text);
                         }
                         try    // if null , will go to exception
                         {
@@ -1136,6 +1151,7 @@ namespace AppFrameClient.View.GoodsSale
                         catch (Exception ex)
                         {
                             // do nothing
+                            MessageBox.Show("Không có mã vạch này");
                         }
                         finally
                         {
@@ -1149,7 +1165,7 @@ namespace AppFrameClient.View.GoodsSale
                             ClearInput();
                             txtBarcode.Focus();
                         }
-                    }
+                    //}
                 }
             }
         }
@@ -1157,30 +1173,35 @@ namespace AppFrameClient.View.GoodsSale
 
         private void txtRetBarCode_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtRetBarCode.Text) && txtRetBarCode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
-            {
-                txtRetProductName.Text = "";
-                string returnBarcode = txtRetBarCode.Text.Trim();
-                try
+            if (!string.IsNullOrEmpty(txtRetBarCode.Text))
+            {   
+                if (txtRetBarCode.Text.Length == CommonConstants.PRODUCT_ID_LENGTH)
                 {
-                    GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
-                    goodsSaleEventArgs.SelectedPurchaseOrderDetail = new PurchaseOrderDetail{Product = new Product()};
-                    goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = returnBarcode;
-                    goodsSaleEventArgs.NotAvailableInStock = true; // load even it do not available in stock
-                    EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
+                    txtRetProductName.Text = "";
+                    string returnBarcode = txtRetBarCode.Text.Trim();
+                    try
+                    {
+                        GoodsSaleEventArgs goodsSaleEventArgs = new GoodsSaleEventArgs();
+                        goodsSaleEventArgs.SelectedPurchaseOrderDetail = new PurchaseOrderDetail
+                                                                             {Product = new Product()};
+                        goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = returnBarcode;
+                        goodsSaleEventArgs.NotAvailableInStock = true; // load even it do not available in stock
+                        EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
-                    txtRetProductName.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductMaster.ProductName;
-                    txtRetPrice.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Price.ToString();
-                    
-                }
-                catch (Exception ex)
-                {
-                    throw new BusinessException("Mã vạch không hợp lệ hoặc hàng không tồn tại");
-                    //pODList.RemoveAt(pODList.Count - 1);
-                }
-                finally
-                {
-                    //ClearReturnInput();
+                        txtRetProductName.Text =
+                            goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductMaster.ProductName;
+                        txtRetPrice.Text = goodsSaleEventArgs.SelectedPurchaseOrderDetail.Price.ToString();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new BusinessException("Mã vạch không hợp lệ hoặc hàng không tồn tại");
+                        //pODList.RemoveAt(pODList.Count - 1);
+                    }
+                    finally
+                    {
+                        //ClearReturnInput();
+                    }
                 }
             }
         }
@@ -1214,6 +1235,34 @@ namespace AppFrameClient.View.GoodsSale
         private void btnReturnOrder_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtRetBarCode_Enter(object sender, EventArgs e)
+        {
+            txtRetBarCode.BackColor = Color.LightGreen;
+        }
+
+        private void txtRetBarCode_Leave(object sender, EventArgs e)
+        {
+            txtRetBarCode.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtRetPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRetPrice_Enter(object sender, EventArgs e)
+        {
+            if(!txtRetPrice.ReadOnly)
+            {
+                txtRetPrice.BackColor = Color.LightYellow;
+            }
+        }
+
+        private void txtRetPrice_Leave(object sender, EventArgs e)
+        {
+            txtRetPrice.BackColor = Color.FromKnownColor(KnownColor.Control);
         }
     }
 }

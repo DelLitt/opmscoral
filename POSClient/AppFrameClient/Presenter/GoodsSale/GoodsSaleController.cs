@@ -88,8 +88,21 @@ namespace AppFrameClient.Presenter.GoodsSale
             {
                 throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
             }
-            DepartmentStock stock = (DepartmentStock)result[0];            
-            Product product = stock.Product;
+            Product product = null;
+            if (result.Count == 1)
+            {
+                DepartmentStock stock = (DepartmentStock) result[0];
+                product = stock.Product;
+            }
+            /*else
+            {
+                if(CommonConstants.UNDEFINED_BARCODE.Equals(e.SelectedPurchaseOrderDetail.Product.ProductId))
+                {
+                    Product undefProduct = ProductLogic.FindById(e.SelectedPurchaseOrderDetail.Product.ProductId);
+                    product = undefProduct;
+                }
+            }*/
+            
             detail.Product = product;
             detail.ProductMaster = product.ProductMaster;
             DepartmentPrice price = DepartmentPriceLogic.FindById(new DepartmentPricePK { DepartmentId = 0,ProductMasterId = detail.ProductMaster.ProductMasterId} );
