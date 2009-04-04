@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+
+  <!-- Referenced by main application context configuration file -->
+  <!-- Property placeholder configurer for database settings -->
+  <object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+    <property name="ConfigSections" value="databaseSettings"/>
+  </object>
+
+  <db:provider id="DbProvider" provider="MySql-5.2.3" connectionString="Data Source=localhost;Database=pos;User ID=dbadmin;password=1qw45DCM9rl;Port=3306;"/>
+
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate20">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="MappingAssemblies">
+      <list>
+          <value>AppFrame</value>
+          <value>AppFrameClient</value>
+
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+
+        <entry key="connection.provider"
+               value="NHibernate.Connection.DriverConnectionProvider"/>
+
+        <entry key="dialect"
+               value="NHibernate.Dialect.MySQLDialect"/>
+
+        <entry key="connection.driver_class"
+               value="NHibernate.Driver.MySqlDataDriver"/>
+        <entry key="show_sql"
+               value="true"/>
+      </dictionary>
+    </property>
+
+  </object>
+
+
+  <object id="transactionManager" type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate20">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="HibernateTemplate" type="Spring.Data.NHibernate.HibernateTemplate" singleton="true">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+    <property name="TemplateFlushMode" value="Auto" />
+    <property name="CacheQueries" value="true" />
+  </object>
+
+  <!-- Data Access Objects -->
+  <object id="AppFrame.DataLayer.IDepartmentReturnDAO" type="AppFrame.DataLayer.DepartmentReturnDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentCostDAO" type="AppFrame.DataLayer.DepartmentCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentPriceDAO" type="AppFrame.DataLayer.DepartmentPriceDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockOutCostDAO" type="AppFrame.DataLayer.StockOutCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IReceiptDAO" type="AppFrame.DataLayer.ReceiptDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockDAO" type="AppFrame.DataLayer.DepartmentStockDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICustomersDAO" type="AppFrame.DataLayer.CustomerDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockOutDAO" type="AppFrame.DataLayer.StockOutDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockInCostDAO" type="AppFrame.DataLayer.DepartmentStockInCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockDAO" type="AppFrame.DataLayer.StockDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IEmployeeWorkingDayDAO" type="AppFrame.DataLayer.EmployeeWorkingDayDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPurchaseOrderDetailLogDAO" type="AppFrame.DataLayer.PurchaseOrderDetailLogDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IEmployeeDetailDAO" type="AppFrame.DataLayer.EmployeeDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPurchaseOrderDetailDAO" type="AppFrame.DataLayer.PurchaseOrderDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ISupplierDAO" type="AppFrame.DataLayer.SupplierDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IBlockInDetailDAO" type="AppFrame.DataLayer.BlockInDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPackagerDAO" type="AppFrame.DataLayer.PackagerDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IContractDAO" type="AppFrame.DataLayer.ContractDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IProductColorDAO" type="AppFrame.DataLayer.ProductColorDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockInDetailDAO" type="AppFrame.DataLayer.DepartmentStockInDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IReceiptOutDAO" type="AppFrame.DataLayer.ReceiptOutDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICountryDAO" type="AppFrame.DataLayer.CountryDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICategoryDAO" type="AppFrame.DataLayer.CategoryDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ITaxDAO" type="AppFrame.DataLayer.TaxDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentReturnDetailDAO" type="AppFrame.DataLayer.DepartmentReturnDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IManufacturerDAO" type="AppFrame.DataLayer.ManufacturerDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IGiftDAO" type="AppFrame.DataLayer.GiftDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IReturnProductDAO" type="AppFrame.DataLayer.ReturnProductDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICustomerDetailDAO" type="AppFrame.DataLayer.CustomerDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentDAO" type="AppFrame.DataLayer.DepartmentDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPromotionDAO" type="AppFrame.DataLayer.PromotionDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICouponTypeDAO" type="AppFrame.DataLayer.CouponTypeDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPurchaseOrderLogDAO" type="AppFrame.DataLayer.PurchaseOrderLogDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockOutDAO" type="AppFrame.DataLayer.DepartmentStockOutDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentPromotionDAO" type="AppFrame.DataLayer.DepartmentPromotionDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPurchaseOrderDAO" type="AppFrame.DataLayer.PurchaseOrderDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockOutDetailDAO" type="AppFrame.DataLayer.StockOutDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockInDetailDAO" type="AppFrame.DataLayer.StockInDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockInDAO" type="AppFrame.DataLayer.DepartmentStockInDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IProductSizeDAO" type="AppFrame.DataLayer.ProductSizeDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IBlockInCostDAO" type="AppFrame.DataLayer.BlockInCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IProductMasterDAO" type="AppFrame.DataLayer.ProductMasterDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDistributorDAO" type="AppFrame.DataLayer.DistributorDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IEmployeeDAO" type="AppFrame.DataLayer.EmployeeDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentReturnCostDAO" type="AppFrame.DataLayer.DepartmentReturnCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ICouponDAO" type="AppFrame.DataLayer.CouponDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPurchaseOrderPromotionDAO" type="AppFrame.DataLayer.PurchaseOrderPromotionDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ISimilarProductDAO" type="AppFrame.DataLayer.SimilarProductDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockOutCostDAO" type="AppFrame.DataLayer.DepartmentStockOutCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IBlockInDAO" type="AppFrame.DataLayer.BlockInDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IEmployeeRewardDAO" type="AppFrame.DataLayer.EmployeeRewardDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockOutDetailDAO" type="AppFrame.DataLayer.DepartmentStockOutDetailDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IReturnBlockInDAO" type="AppFrame.DataLayer.ReturnBlockInDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IProductTypeDAO" type="AppFrame.DataLayer.ProductTypeDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockInDAO" type="AppFrame.DataLayer.StockInDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IStockHistoryDAO" type="AppFrame.DataLayer.StockHistoryDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="AppFrame.DataLayer.IDepartmentStockHistoryDAO" type="AppFrame.DataLayer.DepartmentStockHistoryDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
+  <object id="AppFrame.DataLayer.IReturnPoDAO" type="AppFrame.DataLayer.ReturnPoDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IScheduleTemplateDAO" type="AppFrame.DataLayer.ScheduleTemplateDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IEmployeeDayoffDAO" type="AppFrame.DataLayer.EmployeeDayoffDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IProductDAO" type="AppFrame.DataLayer.ProductDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPublishedCouponDAO" type="AppFrame.DataLayer.PublishedCouponDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IReceiptOutCostDAO" type="AppFrame.DataLayer.ReceiptOutCostDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IOtherTransactionLogDAO" type="AppFrame.DataLayer.OtherTransactionLogDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="AppFrame.DataLayer.ISyncStatusDAO" type="AppFrame.DataLayer.SyncStatusDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <!-- Data Access Objects -->
+  <object id="LoginDaoImpl" type="AppFrameClient.DataLayer.LoginDaoImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+  <object id="RoleDaoImpl" type="AppFrameClient.DataLayer.RoleDaoImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
+</objects>
