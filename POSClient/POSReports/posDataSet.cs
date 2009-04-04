@@ -2,7 +2,7 @@
     
     
     public partial class posDataSet {
-        partial class receiptInGeneralDataTable
+        partial class purchaseOrderDataTable
         {
         }
 
@@ -15,7 +15,7 @@
 namespace POSReports.posDataSetTableAdapters {
 
 
-    public partial class ReceiptInGeneralTableAdapter
+    public partial class PurchaseOrderTableAdapter
     {
     }
 }

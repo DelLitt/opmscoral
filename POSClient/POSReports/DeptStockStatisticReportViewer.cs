@@ -52,7 +52,7 @@ namespace POSReports
 
             } catch (Exception ex)
             {
-                MessageBox.Show("Co loi , lien he nguoi quan tri");
+                MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ người quản trị!");
             }
         }
 

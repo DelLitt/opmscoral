@@ -27,7 +27,7 @@ namespace POSReports {
         
         private reStockinProductDataTable tablereStockinProduct;
         
-        private receiptInGeneralDataTable tablereceiptInGeneral;
+        private purchaseOrderDataTable tablepurchaseOrder;
         
         private purchaseDetailsDataTable tablepurchaseDetails;
         
@@ -54,6 +54,8 @@ namespace POSReports {
         private deptTempStockoutDataTable tabledeptTempStockout;
         
         private deptReStockDataTable tabledeptReStock;
+        
+        private mainStockOutDataTable tablemainStockOut;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -84,8 +86,8 @@ namespace POSReports {
                 if ((ds.Tables["reStockinProduct"] != null)) {
                     base.Tables.Add(new reStockinProductDataTable(ds.Tables["reStockinProduct"]));
                 }
-                if ((ds.Tables["receiptInGeneral"] != null)) {
-                    base.Tables.Add(new receiptInGeneralDataTable(ds.Tables["receiptInGeneral"]));
+                if ((ds.Tables["purchaseOrder"] != null)) {
+                    base.Tables.Add(new purchaseOrderDataTable(ds.Tables["purchaseOrder"]));
                 }
                 if ((ds.Tables["purchaseDetails"] != null)) {
                     base.Tables.Add(new purchaseDetailsDataTable(ds.Tables["purchaseDetails"]));
@@ -126,6 +128,9 @@ namespace POSReports {
                 if ((ds.Tables["deptReStock"] != null)) {
                     base.Tables.Add(new deptReStockDataTable(ds.Tables["deptReStock"]));
                 }
+                if ((ds.Tables["mainStockOut"] != null)) {
+                    base.Tables.Add(new mainStockOutDataTable(ds.Tables["mainStockOut"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -156,9 +161,9 @@ namespace POSReports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public receiptInGeneralDataTable receiptInGeneral {
+        public purchaseOrderDataTable purchaseOrder {
             get {
-                return this.tablereceiptInGeneral;
+                return this.tablepurchaseOrder;
             }
         }
         
@@ -280,6 +285,15 @@ namespace POSReports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public mainStockOutDataTable mainStockOut {
+            get {
+                return this.tablemainStockOut;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -341,8 +355,8 @@ namespace POSReports {
                 if ((ds.Tables["reStockinProduct"] != null)) {
                     base.Tables.Add(new reStockinProductDataTable(ds.Tables["reStockinProduct"]));
                 }
-                if ((ds.Tables["receiptInGeneral"] != null)) {
-                    base.Tables.Add(new receiptInGeneralDataTable(ds.Tables["receiptInGeneral"]));
+                if ((ds.Tables["purchaseOrder"] != null)) {
+                    base.Tables.Add(new purchaseOrderDataTable(ds.Tables["purchaseOrder"]));
                 }
                 if ((ds.Tables["purchaseDetails"] != null)) {
                     base.Tables.Add(new purchaseDetailsDataTable(ds.Tables["purchaseDetails"]));
@@ -383,6 +397,9 @@ namespace POSReports {
                 if ((ds.Tables["deptReStock"] != null)) {
                     base.Tables.Add(new deptReStockDataTable(ds.Tables["deptReStock"]));
                 }
+                if ((ds.Tables["mainStockOut"] != null)) {
+                    base.Tables.Add(new mainStockOutDataTable(ds.Tables["mainStockOut"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -419,10 +436,10 @@ namespace POSReports {
                     this.tablereStockinProduct.InitVars();
                 }
             }
-            this.tablereceiptInGeneral = ((receiptInGeneralDataTable)(base.Tables["receiptInGeneral"]));
+            this.tablepurchaseOrder = ((purchaseOrderDataTable)(base.Tables["purchaseOrder"]));
             if ((initTable == true)) {
-                if ((this.tablereceiptInGeneral != null)) {
-                    this.tablereceiptInGeneral.InitVars();
+                if ((this.tablepurchaseOrder != null)) {
+                    this.tablepurchaseOrder.InitVars();
                 }
             }
             this.tablepurchaseDetails = ((purchaseDetailsDataTable)(base.Tables["purchaseDetails"]));
@@ -503,6 +520,12 @@ namespace POSReports {
                     this.tabledeptReStock.InitVars();
                 }
             }
+            this.tablemainStockOut = ((mainStockOutDataTable)(base.Tables["mainStockOut"]));
+            if ((initTable == true)) {
+                if ((this.tablemainStockOut != null)) {
+                    this.tablemainStockOut.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -514,8 +537,8 @@ namespace POSReports {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablereStockinProduct = new reStockinProductDataTable();
             base.Tables.Add(this.tablereStockinProduct);
-            this.tablereceiptInGeneral = new receiptInGeneralDataTable();
-            base.Tables.Add(this.tablereceiptInGeneral);
+            this.tablepurchaseOrder = new purchaseOrderDataTable();
+            base.Tables.Add(this.tablepurchaseOrder);
             this.tablepurchaseDetails = new purchaseDetailsDataTable();
             base.Tables.Add(this.tablepurchaseDetails);
             this.tableTmpStockout = new TmpStockoutDataTable();
@@ -542,6 +565,8 @@ namespace POSReports {
             base.Tables.Add(this.tabledeptTempStockout);
             this.tabledeptReStock = new deptReStockDataTable();
             base.Tables.Add(this.tabledeptReStock);
+            this.tablemainStockOut = new mainStockOutDataTable();
+            base.Tables.Add(this.tablemainStockOut);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -550,7 +575,7 @@ namespace POSReports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializereceiptInGeneral() {
+        private bool ShouldSerializepurchaseOrder() {
             return false;
         }
         
@@ -620,6 +645,11 @@ namespace POSReports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializemainStockOut() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -674,7 +704,7 @@ namespace POSReports {
         
         public delegate void reStockinProductRowChangeEventHandler(object sender, reStockinProductRowChangeEvent e);
         
-        public delegate void receiptInGeneralRowChangeEventHandler(object sender, receiptInGeneralRowChangeEvent e);
+        public delegate void purchaseOrderRowChangeEventHandler(object sender, purchaseOrderRowChangeEvent e);
         
         public delegate void purchaseDetailsRowChangeEventHandler(object sender, purchaseDetailsRowChangeEvent e);
         
@@ -701,6 +731,8 @@ namespace POSReports {
         public delegate void deptTempStockoutRowChangeEventHandler(object sender, deptTempStockoutRowChangeEvent e);
         
         public delegate void deptReStockRowChangeEventHandler(object sender, deptReStockRowChangeEvent e);
+        
+        public delegate void mainStockOutRowChangeEventHandler(object sender, mainStockOutRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1015,7 +1047,7 @@ namespace POSReports {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class receiptInGeneralDataTable : global::System.Data.TypedTableBase<receiptInGeneralRow> {
+        public partial class purchaseOrderDataTable : global::System.Data.TypedTableBase<purchaseOrderRow> {
             
             private global::System.Data.DataColumn columnPURCHASE_ORDER_ID;
             
@@ -1031,16 +1063,24 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnPrice;
             
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn columndepartment_name;
+            
+            private global::System.Data.DataColumn columnaddress;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralDataTable() {
-                this.TableName = "receiptInGeneral";
+            public purchaseOrderDataTable() {
+                this.TableName = "purchaseOrder";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal receiptInGeneralDataTable(global::System.Data.DataTable table) {
+            internal purchaseOrderDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1056,7 +1096,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected receiptInGeneralDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected purchaseOrderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1111,6 +1151,34 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1119,28 +1187,28 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralRow this[int index] {
+            public purchaseOrderRow this[int index] {
                 get {
-                    return ((receiptInGeneralRow)(this.Rows[index]));
+                    return ((purchaseOrderRow)(this.Rows[index]));
                 }
             }
             
-            public event receiptInGeneralRowChangeEventHandler receiptInGeneralRowChanging;
+            public event purchaseOrderRowChangeEventHandler purchaseOrderRowChanging;
             
-            public event receiptInGeneralRowChangeEventHandler receiptInGeneralRowChanged;
+            public event purchaseOrderRowChangeEventHandler purchaseOrderRowChanged;
             
-            public event receiptInGeneralRowChangeEventHandler receiptInGeneralRowDeleting;
+            public event purchaseOrderRowChangeEventHandler purchaseOrderRowDeleting;
             
-            public event receiptInGeneralRowChangeEventHandler receiptInGeneralRowDeleted;
+            public event purchaseOrderRowChangeEventHandler purchaseOrderRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddreceiptInGeneralRow(receiptInGeneralRow row) {
+            public void AddpurchaseOrderRow(purchaseOrderRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralRow AddreceiptInGeneralRow(string PURCHASE_ORDER_ID, System.DateTime CREATE_DATE, string TYPE_NAME, string PRODUCT_NAME, string product_id, decimal Quantity, decimal Price) {
-                receiptInGeneralRow rowreceiptInGeneralRow = ((receiptInGeneralRow)(this.NewRow()));
+            public purchaseOrderRow AddpurchaseOrderRow(string PURCHASE_ORDER_ID, System.DateTime CREATE_DATE, string TYPE_NAME, string PRODUCT_NAME, string product_id, decimal Quantity, decimal Price, string color_name, string size_name, string department_name, string address) {
+                purchaseOrderRow rowpurchaseOrderRow = ((purchaseOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PURCHASE_ORDER_ID,
                         CREATE_DATE,
@@ -1148,22 +1216,32 @@ namespace POSReports {
                         PRODUCT_NAME,
                         product_id,
                         Quantity,
-                        Price};
-                rowreceiptInGeneralRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowreceiptInGeneralRow);
-                return rowreceiptInGeneralRow;
+                        Price,
+                        color_name,
+                        size_name,
+                        department_name,
+                        address};
+                rowpurchaseOrderRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowpurchaseOrderRow);
+                return rowpurchaseOrderRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public purchaseOrderRow FindByPURCHASE_ORDER_ID(string PURCHASE_ORDER_ID) {
+                return ((purchaseOrderRow)(this.Rows.Find(new object[] {
+                            PURCHASE_ORDER_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public override global::System.Data.DataTable Clone() {
-                receiptInGeneralDataTable cln = ((receiptInGeneralDataTable)(base.Clone()));
+                purchaseOrderDataTable cln = ((purchaseOrderDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new receiptInGeneralDataTable();
+                return new purchaseOrderDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1175,6 +1253,10 @@ namespace POSReports {
                 this.columnproduct_id = base.Columns["product_id"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnPrice = base.Columns["Price"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
+                this.columndepartment_name = base.Columns["department_name"];
+                this.columnaddress = base.Columns["address"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1193,62 +1275,77 @@ namespace POSReports {
                 base.Columns.Add(this.columnQuantity);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnPURCHASE_ORDER_ID}, true));
                 this.columnPURCHASE_ORDER_ID.AllowDBNull = false;
+                this.columnPURCHASE_ORDER_ID.Unique = true;
                 this.columnPURCHASE_ORDER_ID.MaxLength = 20;
                 this.columnTYPE_NAME.MaxLength = 500;
                 this.columnPRODUCT_NAME.MaxLength = 500;
                 this.columnproduct_id.MaxLength = 20;
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
+                this.columnaddress.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralRow NewreceiptInGeneralRow() {
-                return ((receiptInGeneralRow)(this.NewRow()));
+            public purchaseOrderRow NewpurchaseOrderRow() {
+                return ((purchaseOrderRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new receiptInGeneralRow(builder);
+                return new purchaseOrderRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Type GetRowType() {
-                return typeof(receiptInGeneralRow);
+                return typeof(purchaseOrderRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.receiptInGeneralRowChanged != null)) {
-                    this.receiptInGeneralRowChanged(this, new receiptInGeneralRowChangeEvent(((receiptInGeneralRow)(e.Row)), e.Action));
+                if ((this.purchaseOrderRowChanged != null)) {
+                    this.purchaseOrderRowChanged(this, new purchaseOrderRowChangeEvent(((purchaseOrderRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.receiptInGeneralRowChanging != null)) {
-                    this.receiptInGeneralRowChanging(this, new receiptInGeneralRowChangeEvent(((receiptInGeneralRow)(e.Row)), e.Action));
+                if ((this.purchaseOrderRowChanging != null)) {
+                    this.purchaseOrderRowChanging(this, new purchaseOrderRowChangeEvent(((purchaseOrderRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.receiptInGeneralRowDeleted != null)) {
-                    this.receiptInGeneralRowDeleted(this, new receiptInGeneralRowChangeEvent(((receiptInGeneralRow)(e.Row)), e.Action));
+                if ((this.purchaseOrderRowDeleted != null)) {
+                    this.purchaseOrderRowDeleted(this, new purchaseOrderRowChangeEvent(((purchaseOrderRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.receiptInGeneralRowDeleting != null)) {
-                    this.receiptInGeneralRowDeleting(this, new receiptInGeneralRowChangeEvent(((receiptInGeneralRow)(e.Row)), e.Action));
+                if ((this.purchaseOrderRowDeleting != null)) {
+                    this.purchaseOrderRowDeleting(this, new purchaseOrderRowChangeEvent(((purchaseOrderRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemovereceiptInGeneralRow(receiptInGeneralRow row) {
+            public void RemovepurchaseOrderRow(purchaseOrderRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1274,7 +1371,7 @@ namespace POSReports {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "receiptInGeneralDataTable";
+                attribute2.FixedValue = "purchaseOrderDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3456,6 +3553,16 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnExpr1;
             
+            private global::System.Data.DataColumn columndepartment_name;
+            
+            private global::System.Data.DataColumn columnaddress;
+            
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn columnprice;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public returnPOrderDataTable() {
                 this.TableName = "returnPOrder";
@@ -3536,6 +3643,41 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn priceColumn {
+                get {
+                    return this.columnprice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3564,7 +3706,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public returnPOrderRow AddreturnPOrderRow(string purchase_order_id, uint purchase_order_detail_id, string type_name, string product_id, string product_name, System.DateTime return_date, decimal Expr1) {
+            public returnPOrderRow AddreturnPOrderRow(string purchase_order_id, uint purchase_order_detail_id, string type_name, string product_id, string product_name, System.DateTime return_date, decimal Expr1, string department_name, string address, string color_name, string size_name, uint price) {
                 returnPOrderRow rowreturnPOrderRow = ((returnPOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         purchase_order_id,
@@ -3573,7 +3715,12 @@ namespace POSReports {
                         product_id,
                         product_name,
                         return_date,
-                        Expr1};
+                        Expr1,
+                        department_name,
+                        address,
+                        color_name,
+                        size_name,
+                        price};
                 rowreturnPOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowreturnPOrderRow);
                 return rowreturnPOrderRow;
@@ -3607,6 +3754,11 @@ namespace POSReports {
                 this.columnproduct_name = base.Columns["product_name"];
                 this.columnreturn_date = base.Columns["return_date"];
                 this.columnExpr1 = base.Columns["Expr1"];
+                this.columndepartment_name = base.Columns["department_name"];
+                this.columnaddress = base.Columns["address"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
+                this.columnprice = base.Columns["price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3625,6 +3777,16 @@ namespace POSReports {
                 base.Columns.Add(this.columnreturn_date);
                 this.columnExpr1 = new global::System.Data.DataColumn("Expr1", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr1);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpurchase_order_id,
                                 this.columnpurchase_order_detail_id}, true));
@@ -3634,6 +3796,10 @@ namespace POSReports {
                 this.columntype_name.MaxLength = 500;
                 this.columnproduct_id.MaxLength = 20;
                 this.columnproduct_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
+                this.columnaddress.MaxLength = 500;
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3777,6 +3943,10 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnprice;
             
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public departmentStockInDataTable() {
                 this.TableName = "departmentStockIn";
@@ -3871,6 +4041,20 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3899,7 +4083,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public departmentStockInRow AdddepartmentStockInRow(string type_name, uint department_id, string department_name, string stock_in_id, System.DateTime stock_in_date, string product_id, string product_name, decimal _sum_dstkdin_quantity_, decimal price) {
+            public departmentStockInRow AdddepartmentStockInRow(string type_name, uint department_id, string department_name, string stock_in_id, System.DateTime stock_in_date, string product_id, string product_name, decimal _sum_dstkdin_quantity_, decimal price, string color_name, string size_name) {
                 departmentStockInRow rowdepartmentStockInRow = ((departmentStockInRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         type_name,
@@ -3910,7 +4094,9 @@ namespace POSReports {
                         product_id,
                         product_name,
                         _sum_dstkdin_quantity_,
-                        price};
+                        price,
+                        color_name,
+                        size_name};
                 rowdepartmentStockInRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdepartmentStockInRow);
                 return rowdepartmentStockInRow;
@@ -3947,6 +4133,8 @@ namespace POSReports {
                 this.columnproduct_name = base.Columns["product_name"];
                 this._columnsum_dstkdin_quantity_ = base.Columns["sum(dstkdin_quantity)"];
                 this.columnprice = base.Columns["price"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3971,6 +4159,10 @@ namespace POSReports {
                 base.Columns.Add(this._columnsum_dstkdin_quantity_);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columndepartment_id,
                                 this.columnstock_in_id,
@@ -3984,6 +4176,8 @@ namespace POSReports {
                 this.columnproduct_id.MaxLength = 20;
                 this.columnproduct_name.MaxLength = 500;
                 this._columnsum_dstkdin_quantity_.Caption = "sum(dstkdin.quantity)";
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5172,6 +5366,10 @@ namespace POSReports {
             
             private global::System.Data.DataColumn _columnsum_quantity_;
             
+            private global::System.Data.DataColumn columnaddress;
+            
+            private global::System.Data.DataColumn columnstock_out_date;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public deptTempStockoutDataTable() {
                 this.TableName = "deptTempStockout";
@@ -5252,6 +5450,20 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn stock_out_dateColumn {
+                get {
+                    return this.columnstock_out_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5280,7 +5492,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public deptTempStockoutRow AdddeptTempStockoutRow(string department_name, string type_name, string product_id, string product_name, string color_name, string size_name, decimal _sum_quantity_) {
+            public deptTempStockoutRow AdddeptTempStockoutRow(string department_name, string type_name, string product_id, string product_name, string color_name, string size_name, decimal _sum_quantity_, string address, System.DateTime stock_out_date) {
                 deptTempStockoutRow rowdeptTempStockoutRow = ((deptTempStockoutRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         department_name,
@@ -5289,7 +5501,9 @@ namespace POSReports {
                         product_name,
                         color_name,
                         size_name,
-                        _sum_quantity_};
+                        _sum_quantity_,
+                        address,
+                        stock_out_date};
                 rowdeptTempStockoutRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdeptTempStockoutRow);
                 return rowdeptTempStockoutRow;
@@ -5316,6 +5530,8 @@ namespace POSReports {
                 this.columncolor_name = base.Columns["color_name"];
                 this.columnsize_name = base.Columns["size_name"];
                 this._columnsum_quantity_ = base.Columns["sum(quantity)"];
+                this.columnaddress = base.Columns["address"];
+                this.columnstock_out_date = base.Columns["stock_out_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5336,6 +5552,10 @@ namespace POSReports {
                 this._columnsum_quantity_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnsum_quantity_");
                 this._columnsum_quantity_.ExtendedProperties.Add("Generator_UserColumnName", "sum(quantity)");
                 base.Columns.Add(this._columnsum_quantity_);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
+                this.columnstock_out_date = new global::System.Data.DataColumn("stock_out_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstock_out_date);
                 this.columndepartment_name.MaxLength = 500;
                 this.columntype_name.MaxLength = 500;
                 this.columnproduct_id.AllowDBNull = false;
@@ -5343,6 +5563,7 @@ namespace POSReports {
                 this.columnproduct_name.MaxLength = 500;
                 this.columncolor_name.MaxLength = 500;
                 this.columnsize_name.MaxLength = 500;
+                this.columnaddress.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5484,6 +5705,8 @@ namespace POSReports {
             
             private global::System.Data.DataColumn _columnsum_dstk_stock_in_cost_;
             
+            private global::System.Data.DataColumn columnaddress;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public deptReStockDataTable() {
                 this.TableName = "deptReStock";
@@ -5571,6 +5794,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5599,7 +5829,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public deptReStockRow AdddeptReStockRow(string department_name, string type_name, string product_id, string product_name, string color_name, string size_name, decimal _sum_quantity_, decimal _sum_dstk_stock_in_cost_) {
+            public deptReStockRow AdddeptReStockRow(string department_name, string type_name, string product_id, string product_name, string color_name, string size_name, decimal _sum_quantity_, decimal _sum_dstk_stock_in_cost_, string address) {
                 deptReStockRow rowdeptReStockRow = ((deptReStockRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         department_name,
@@ -5609,7 +5839,8 @@ namespace POSReports {
                         color_name,
                         size_name,
                         _sum_quantity_,
-                        _sum_dstk_stock_in_cost_};
+                        _sum_dstk_stock_in_cost_,
+                        address};
                 rowdeptReStockRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdeptReStockRow);
                 return rowdeptReStockRow;
@@ -5637,6 +5868,7 @@ namespace POSReports {
                 this.columnsize_name = base.Columns["size_name"];
                 this._columnsum_quantity_ = base.Columns["sum(quantity)"];
                 this._columnsum_dstk_stock_in_cost_ = base.Columns["sum(dstk_stock_in_cost)"];
+                this.columnaddress = base.Columns["address"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5661,6 +5893,8 @@ namespace POSReports {
                 this._columnsum_dstk_stock_in_cost_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnsum_dstk_stock_in_cost_");
                 this._columnsum_dstk_stock_in_cost_.ExtendedProperties.Add("Generator_UserColumnName", "sum(dstk_stock_in_cost)");
                 base.Columns.Add(this._columnsum_dstk_stock_in_cost_);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
                 this.columndepartment_name.MaxLength = 500;
                 this.columntype_name.MaxLength = 500;
                 this.columnproduct_id.AllowDBNull = false;
@@ -5669,6 +5903,7 @@ namespace POSReports {
                 this.columncolor_name.MaxLength = 500;
                 this.columnsize_name.MaxLength = 500;
                 this._columnsum_dstk_stock_in_cost_.Caption = "sum(dstk.stock_in_cost)";
+                this.columnaddress.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5746,6 +5981,329 @@ namespace POSReports {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "deptReStockDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class mainStockOutDataTable : global::System.Data.TypedTableBase<mainStockOutRow> {
+            
+            private global::System.Data.DataColumn columnstock_out_date;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columnproduct_id;
+            
+            private global::System.Data.DataColumn columnproduct_name;
+            
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn _columnsum_quantity_;
+            
+            private global::System.Data.DataColumn columndepartment_name;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutDataTable() {
+                this.TableName = "mainStockOut";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal mainStockOutDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected mainStockOutDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn stock_out_dateColumn {
+                get {
+                    return this.columnstock_out_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_idColumn {
+                get {
+                    return this.columnproduct_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_nameColumn {
+                get {
+                    return this.columnproduct_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn _sum_quantity_Column {
+                get {
+                    return this._columnsum_quantity_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutRow this[int index] {
+                get {
+                    return ((mainStockOutRow)(this.Rows[index]));
+                }
+            }
+            
+            public event mainStockOutRowChangeEventHandler mainStockOutRowChanging;
+            
+            public event mainStockOutRowChangeEventHandler mainStockOutRowChanged;
+            
+            public event mainStockOutRowChangeEventHandler mainStockOutRowDeleting;
+            
+            public event mainStockOutRowChangeEventHandler mainStockOutRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddmainStockOutRow(mainStockOutRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutRow AddmainStockOutRow(System.DateTime stock_out_date, string type_name, string product_id, string product_name, string color_name, string size_name, decimal _sum_quantity_, string department_name) {
+                mainStockOutRow rowmainStockOutRow = ((mainStockOutRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        stock_out_date,
+                        type_name,
+                        product_id,
+                        product_name,
+                        color_name,
+                        size_name,
+                        _sum_quantity_,
+                        department_name};
+                rowmainStockOutRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmainStockOutRow);
+                return rowmainStockOutRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                mainStockOutDataTable cln = ((mainStockOutDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new mainStockOutDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnstock_out_date = base.Columns["stock_out_date"];
+                this.columntype_name = base.Columns["type_name"];
+                this.columnproduct_id = base.Columns["product_id"];
+                this.columnproduct_name = base.Columns["product_name"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
+                this._columnsum_quantity_ = base.Columns["sum(quantity)"];
+                this.columndepartment_name = base.Columns["department_name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnstock_out_date = new global::System.Data.DataColumn("stock_out_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstock_out_date);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_id);
+                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_name);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
+                this._columnsum_quantity_ = new global::System.Data.DataColumn("sum(quantity)", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._columnsum_quantity_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnsum_quantity_");
+                this._columnsum_quantity_.ExtendedProperties.Add("Generator_UserColumnName", "sum(quantity)");
+                base.Columns.Add(this._columnsum_quantity_);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
+                this.columntype_name.MaxLength = 500;
+                this.columnproduct_id.AllowDBNull = false;
+                this.columnproduct_id.MaxLength = 20;
+                this.columnproduct_name.MaxLength = 500;
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutRow NewmainStockOutRow() {
+                return ((mainStockOutRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new mainStockOutRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(mainStockOutRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.mainStockOutRowChanged != null)) {
+                    this.mainStockOutRowChanged(this, new mainStockOutRowChangeEvent(((mainStockOutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.mainStockOutRowChanging != null)) {
+                    this.mainStockOutRowChanging(this, new mainStockOutRowChangeEvent(((mainStockOutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.mainStockOutRowDeleted != null)) {
+                    this.mainStockOutRowDeleted(this, new mainStockOutRowChangeEvent(((mainStockOutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.mainStockOutRowDeleting != null)) {
+                    this.mainStockOutRowDeleting(this, new mainStockOutRowChangeEvent(((mainStockOutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovemainStockOutRow(mainStockOutRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                posDataSet ds = new posDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "mainStockOutDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5950,23 +6508,23 @@ namespace POSReports {
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class receiptInGeneralRow : global::System.Data.DataRow {
+        public partial class purchaseOrderRow : global::System.Data.DataRow {
             
-            private receiptInGeneralDataTable tablereceiptInGeneral;
+            private purchaseOrderDataTable tablepurchaseOrder;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal receiptInGeneralRow(global::System.Data.DataRowBuilder rb) : 
+            internal purchaseOrderRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablereceiptInGeneral = ((receiptInGeneralDataTable)(this.Table));
+                this.tablepurchaseOrder = ((purchaseOrderDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string PURCHASE_ORDER_ID {
                 get {
-                    return ((string)(this[this.tablereceiptInGeneral.PURCHASE_ORDER_IDColumn]));
+                    return ((string)(this[this.tablepurchaseOrder.PURCHASE_ORDER_IDColumn]));
                 }
                 set {
-                    this[this.tablereceiptInGeneral.PURCHASE_ORDER_IDColumn] = value;
+                    this[this.tablepurchaseOrder.PURCHASE_ORDER_IDColumn] = value;
                 }
             }
             
@@ -5974,14 +6532,14 @@ namespace POSReports {
             public System.DateTime CREATE_DATE {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablereceiptInGeneral.CREATE_DATEColumn]));
+                        return ((global::System.DateTime)(this[this.tablepurchaseOrder.CREATE_DATEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CREATE_DATE\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CREATE_DATE\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.CREATE_DATEColumn] = value;
+                    this[this.tablepurchaseOrder.CREATE_DATEColumn] = value;
                 }
             }
             
@@ -5989,14 +6547,14 @@ namespace POSReports {
             public string TYPE_NAME {
                 get {
                     try {
-                        return ((string)(this[this.tablereceiptInGeneral.TYPE_NAMEColumn]));
+                        return ((string)(this[this.tablepurchaseOrder.TYPE_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE_NAME\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE_NAME\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.TYPE_NAMEColumn] = value;
+                    this[this.tablepurchaseOrder.TYPE_NAMEColumn] = value;
                 }
             }
             
@@ -6004,14 +6562,14 @@ namespace POSReports {
             public string PRODUCT_NAME {
                 get {
                     try {
-                        return ((string)(this[this.tablereceiptInGeneral.PRODUCT_NAMEColumn]));
+                        return ((string)(this[this.tablepurchaseOrder.PRODUCT_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PRODUCT_NAME\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRODUCT_NAME\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.PRODUCT_NAMEColumn] = value;
+                    this[this.tablepurchaseOrder.PRODUCT_NAMEColumn] = value;
                 }
             }
             
@@ -6019,14 +6577,14 @@ namespace POSReports {
             public string product_id {
                 get {
                     try {
-                        return ((string)(this[this.tablereceiptInGeneral.product_idColumn]));
+                        return ((string)(this[this.tablepurchaseOrder.product_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'product_id\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_id\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.product_idColumn] = value;
+                    this[this.tablepurchaseOrder.product_idColumn] = value;
                 }
             }
             
@@ -6034,14 +6592,14 @@ namespace POSReports {
             public decimal Quantity {
                 get {
                     try {
-                        return ((decimal)(this[this.tablereceiptInGeneral.QuantityColumn]));
+                        return ((decimal)(this[this.tablepurchaseOrder.QuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.QuantityColumn] = value;
+                    this[this.tablepurchaseOrder.QuantityColumn] = value;
                 }
             }
             
@@ -6049,75 +6607,175 @@ namespace POSReports {
             public decimal Price {
                 get {
                     try {
-                        return ((decimal)(this[this.tablereceiptInGeneral.PriceColumn]));
+                        return ((decimal)(this[this.tablepurchaseOrder.PriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'receiptInGeneral\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'purchaseOrder\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablereceiptInGeneral.PriceColumn] = value;
+                    this[this.tablepurchaseOrder.PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablepurchaseOrder.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'purchaseOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepurchaseOrder.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablepurchaseOrder.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'purchaseOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepurchaseOrder.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablepurchaseOrder.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'purchaseOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepurchaseOrder.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tablepurchaseOrder.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'purchaseOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepurchaseOrder.addressColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsCREATE_DATENull() {
-                return this.IsNull(this.tablereceiptInGeneral.CREATE_DATEColumn);
+                return this.IsNull(this.tablepurchaseOrder.CREATE_DATEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCREATE_DATENull() {
-                this[this.tablereceiptInGeneral.CREATE_DATEColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.CREATE_DATEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsTYPE_NAMENull() {
-                return this.IsNull(this.tablereceiptInGeneral.TYPE_NAMEColumn);
+                return this.IsNull(this.tablepurchaseOrder.TYPE_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetTYPE_NAMENull() {
-                this[this.tablereceiptInGeneral.TYPE_NAMEColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.TYPE_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsPRODUCT_NAMENull() {
-                return this.IsNull(this.tablereceiptInGeneral.PRODUCT_NAMEColumn);
+                return this.IsNull(this.tablepurchaseOrder.PRODUCT_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPRODUCT_NAMENull() {
-                this[this.tablereceiptInGeneral.PRODUCT_NAMEColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.PRODUCT_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Isproduct_idNull() {
-                return this.IsNull(this.tablereceiptInGeneral.product_idColumn);
+                return this.IsNull(this.tablepurchaseOrder.product_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Setproduct_idNull() {
-                this[this.tablereceiptInGeneral.product_idColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.product_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsQuantityNull() {
-                return this.IsNull(this.tablereceiptInGeneral.QuantityColumn);
+                return this.IsNull(this.tablepurchaseOrder.QuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetQuantityNull() {
-                this[this.tablereceiptInGeneral.QuantityColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.QuantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsPriceNull() {
-                return this.IsNull(this.tablereceiptInGeneral.PriceColumn);
+                return this.IsNull(this.tablepurchaseOrder.PriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPriceNull() {
-                this[this.tablereceiptInGeneral.PriceColumn] = global::System.Convert.DBNull;
+                this[this.tablepurchaseOrder.PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tablepurchaseOrder.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tablepurchaseOrder.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tablepurchaseOrder.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tablepurchaseOrder.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablepurchaseOrder.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablepurchaseOrder.department_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsaddressNull() {
+                return this.IsNull(this.tablepurchaseOrder.addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetaddressNull() {
+                this[this.tablepurchaseOrder.addressColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7696,6 +8354,81 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablereturnPOrder.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'returnPOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturnPOrder.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tablereturnPOrder.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'returnPOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturnPOrder.addressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablereturnPOrder.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'returnPOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturnPOrder.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablereturnPOrder.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'returnPOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturnPOrder.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint price {
+                get {
+                    try {
+                        return ((uint)(this[this.tablereturnPOrder.priceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'price\' in table \'returnPOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturnPOrder.priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Istype_nameNull() {
                 return this.IsNull(this.tablereturnPOrder.type_nameColumn);
             }
@@ -7743,6 +8476,56 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetExpr1Null() {
                 this[this.tablereturnPOrder.Expr1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablereturnPOrder.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablereturnPOrder.department_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsaddressNull() {
+                return this.IsNull(this.tablereturnPOrder.addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetaddressNull() {
+                this[this.tablereturnPOrder.addressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tablereturnPOrder.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tablereturnPOrder.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tablereturnPOrder.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tablereturnPOrder.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IspriceNull() {
+                return this.IsNull(this.tablereturnPOrder.priceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetpriceNull() {
+                this[this.tablereturnPOrder.priceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7882,6 +8665,36 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabledepartmentStockIn.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'departmentStockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledepartmentStockIn.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabledepartmentStockIn.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'departmentStockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledepartmentStockIn.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Istype_nameNull() {
                 return this.IsNull(this.tabledepartmentStockIn.type_nameColumn);
             }
@@ -7939,6 +8752,26 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetpriceNull() {
                 this[this.tabledepartmentStockIn.priceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tabledepartmentStockIn.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tabledepartmentStockIn.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tabledepartmentStockIn.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tabledepartmentStockIn.size_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8807,6 +9640,36 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tabledeptTempStockout.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'deptTempStockout\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptTempStockout.addressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime stock_out_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledeptTempStockout.stock_out_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stock_out_date\' in table \'deptTempStockout\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptTempStockout.stock_out_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Isdepartment_nameNull() {
                 return this.IsNull(this.tabledeptTempStockout.department_nameColumn);
             }
@@ -8864,6 +9727,26 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Set_sum_quantity_Null() {
                 this[this.tabledeptTempStockout._sum_quantity_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsaddressNull() {
+                return this.IsNull(this.tabledeptTempStockout.addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetaddressNull() {
+                this[this.tabledeptTempStockout.addressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isstock_out_dateNull() {
+                return this.IsNull(this.tabledeptTempStockout.stock_out_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setstock_out_dateNull() {
+                this[this.tabledeptTempStockout.stock_out_dateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8997,6 +9880,21 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tabledeptReStock.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'deptReStock\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptReStock.addressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Isdepartment_nameNull() {
                 return this.IsNull(this.tabledeptReStock.department_nameColumn);
             }
@@ -9065,6 +9963,216 @@ namespace POSReports {
             public void Set_sum_dstk_stock_in_cost_Null() {
                 this[this.tabledeptReStock._sum_dstk_stock_in_cost_Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsaddressNull() {
+                return this.IsNull(this.tabledeptReStock.addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetaddressNull() {
+                this[this.tabledeptReStock.addressColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class mainStockOutRow : global::System.Data.DataRow {
+            
+            private mainStockOutDataTable tablemainStockOut;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal mainStockOutRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemainStockOut = ((mainStockOutDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime stock_out_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemainStockOut.stock_out_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stock_out_date\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.stock_out_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablemainStockOut.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_id {
+                get {
+                    return ((string)(this[this.tablemainStockOut.product_idColumn]));
+                }
+                set {
+                    this[this.tablemainStockOut.product_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablemainStockOut.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.product_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablemainStockOut.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablemainStockOut.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal _sum_quantity_ {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablemainStockOut._sum_quantity_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sum(quantity)\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut._sum_quantity_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablemainStockOut.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'mainStockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemainStockOut.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isstock_out_dateNull() {
+                return this.IsNull(this.tablemainStockOut.stock_out_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setstock_out_dateNull() {
+                this[this.tablemainStockOut.stock_out_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tablemainStockOut.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tablemainStockOut.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tablemainStockOut.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tablemainStockOut.product_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tablemainStockOut.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tablemainStockOut.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tablemainStockOut.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tablemainStockOut.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Is_sum_quantity_Null() {
+                return this.IsNull(this.tablemainStockOut._sum_quantity_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Set_sum_quantity_Null() {
+                this[this.tablemainStockOut._sum_quantity_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablemainStockOut.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablemainStockOut.department_nameColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9102,20 +10210,20 @@ namespace POSReports {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class receiptInGeneralRowChangeEvent : global::System.EventArgs {
+        public class purchaseOrderRowChangeEvent : global::System.EventArgs {
             
-            private receiptInGeneralRow eventRow;
+            private purchaseOrderRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralRowChangeEvent(receiptInGeneralRow row, global::System.Data.DataRowAction action) {
+            public purchaseOrderRowChangeEvent(purchaseOrderRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public receiptInGeneralRow Row {
+            public purchaseOrderRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9531,6 +10639,37 @@ namespace POSReports {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class mainStockOutRowChangeEvent : global::System.EventArgs {
+            
+            private mainStockOutRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutRowChangeEvent(mainStockOutRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public mainStockOutRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace POSReports.posDataSetTableAdapters {
@@ -9754,7 +10893,7 @@ ORDER BY stock_in.STOCK_IN_DATE";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ReceiptInGeneralTableAdapter : global::System.ComponentModel.Component {
+    public partial class PurchaseOrderTableAdapter : global::System.ComponentModel.Component {
         
         private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
         
@@ -9767,7 +10906,7 @@ ORDER BY stock_in.STOCK_IN_DATE";
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public ReceiptInGeneralTableAdapter() {
+        public PurchaseOrderTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -9858,7 +10997,7 @@ ORDER BY stock_in.STOCK_IN_DATE";
             this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "receiptInGeneral";
+            tableMapping.DataSetTable = "purchaseOrder";
             tableMapping.ColumnMappings.Add("PURCHASE_ORDER_ID", "PURCHASE_ORDER_ID");
             tableMapping.ColumnMappings.Add("CREATE_DATE", "CREATE_DATE");
             tableMapping.ColumnMappings.Add("TYPE_NAME", "TYPE_NAME");
@@ -9866,6 +11005,10 @@ ORDER BY stock_in.STOCK_IN_DATE";
             tableMapping.ColumnMappings.Add("product_id", "product_id");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             tableMapping.ColumnMappings.Add("Price", "Price");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
+            tableMapping.ColumnMappings.Add("address", "address");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -9877,19 +11020,19 @@ ORDER BY stock_in.STOCK_IN_DATE";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        purchase_order.CREATE_DATE, purchase_order_detail.PURCHASE_ORDER_ID, product_type.TYPE_NAME, purchase_order_detail.PRODUCT_ID AS product_id, 
-                         product_master.PRODUCT_NAME, SUM(purchase_order_detail.QUANTITY) AS Quantity, SUM(purchase_order_detail.PRICE) AS Price
-FROM            product INNER JOIN
-                         product_master ON product.PRODUCT_MASTER_ID = product_master.PRODUCT_MASTER_ID INNER JOIN
-                         product_type ON product_master.TYPE_ID = product_type.TYPE_ID INNER JOIN
-                         purchase_order_detail ON product.PRODUCT_ID = purchase_order_detail.PRODUCT_ID INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT        purchase_order.CREATE_DATE, department_name, address, purchase_order_detail.PURCHASE_ORDER_ID, TYPE_NAME, purchase_order_detail.PRODUCT_ID AS product_id, 
+                         PRODUCT_NAME, color_name, size_name, SUM(purchase_order_detail.QUANTITY) AS Quantity, SUM(purchase_order_detail.PRICE) AS Price
+FROM            allproduct pr INNER JOIN 
+                         purchase_order_detail ON pr.PRODUCT_ID = purchase_order_detail.PRODUCT_ID INNER JOIN
                          purchase_order ON purchase_order_detail.PURCHASE_ORDER_ID = purchase_order.PURCHASE_ORDER_ID
-WHERE        (product_master.DEL_FLG = 0) AND (purchase_order_detail.DEL_FLG = 0) AND (purchase_order.CREATE_DATE >= @FromDate) AND 
-                         (purchase_order.CREATE_DATE <= @ToDate)
-GROUP BY product_type.TYPE_NAME, product_master.PRODUCT_NAME, purchase_order.PURCHASE_ORDER_ID";
+left join department dpt on dpt.department_id=purchase_order.department_id
+WHERE        (purchase_order_detail.DEL_FLG = 0) AND (purchase_order.CREATE_DATE >= @FromDate) AND 
+                         (purchase_order.CREATE_DATE <= @ToDate) and purchase_order.department_id >=@FromDept and purchase_order.department_id <=@ToDept
+GROUP BY purchase_order.create_date, TYPE_NAME, PRODUCT_NAME, color_name, size_name 
+order by purchase_order.create_date";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@FromDate";
@@ -9905,23 +11048,26 @@ GROUP BY product_type.TYPE_NAME, product_master.PRODUCT_NAME, purchase_order.PUR
             param.IsNullable = true;
             param.SourceColumn = "CREATE_DATE";
             this._commandCollection[0].Parameters.Add(param);
-            this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        purchase_order.CREATE_DATE, purchase_order_detail.PURCHASE_ORDER_ID, product_type.TYPE_NAME, purchase_order_detail.PRODUCT_ID AS product_id, 
-                         product_master.PRODUCT_NAME, purchase_order_detail.QUANTITY AS Quantity, purchase_order_detail.PRICE AS Price
-FROM            product INNER JOIN
-                         product_master ON product.PRODUCT_MASTER_ID = product_master.PRODUCT_MASTER_ID INNER JOIN
-                         product_type ON product_master.TYPE_ID = product_type.TYPE_ID INNER JOIN
-                         purchase_order_detail ON product.PRODUCT_ID = purchase_order_detail.PRODUCT_ID INNER JOIN
-                         purchase_order ON purchase_order_detail.PURCHASE_ORDER_ID = purchase_order.PURCHASE_ORDER_ID
-WHERE        (product_master.DEL_FLG = 0) AND (purchase_order_detail.DEL_FLG = 0)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@FromDept";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEPARTMENT_ID";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@ToDept";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEPARTMENT_ID";
+            this._commandCollection[0].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(posDataSet.receiptInGeneralDataTable dataTable, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual int Fill(posDataSet.purchaseOrderDataTable dataTable, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate, int FromDept, int ToDept) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((FromDate.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
@@ -9935,6 +11081,8 @@ WHERE        (product_master.DEL_FLG = 0) AND (purchase_order_detail.DEL_FLG = 0
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(FromDept));
+            this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ToDept));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -9945,7 +11093,7 @@ WHERE        (product_master.DEL_FLG = 0) AND (purchase_order_detail.DEL_FLG = 0
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual posDataSet.receiptInGeneralDataTable GetData(global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual posDataSet.purchaseOrderDataTable GetData(global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate, int FromDept, int ToDept) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((FromDate.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
@@ -9959,21 +11107,11 @@ WHERE        (product_master.DEL_FLG = 0) AND (purchase_order_detail.DEL_FLG = 0
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            posDataSet.receiptInGeneralDataTable dataTable = new posDataSet.receiptInGeneralDataTable();
+            this.Adapter.SelectCommand.Parameters[2].Value = ((int)(FromDept));
+            this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ToDept));
+            posDataSet.purchaseOrderDataTable dataTable = new posDataSet.purchaseOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(posDataSet.receiptInGeneralDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
         }
     }
     
@@ -10758,30 +11896,30 @@ ORDER BY so.STOCK_OUT_DATE";
                 "\n\r\n                            )\r\n                            GROUP BY a.PRODUCT" +
                 "_ID ) as stk on pr.product_id=stk.product_id\r\n    left join (select product_id, " +
                 "sum(error_quantity) as error_qty,\r\n      sum(damage_quantity+lost_quantity) as d" +
-                "mg_qty from stock\r\n      where create_date>=@FromDate and create_date<=@ToDate g" +
-                "roup by product_id) as prestock\r\n    on prestock.product_id=pr.product_id\r\n    l" +
-                "eft join (select product_id, sum(quantity) as instock_qty from stock_in inner jo" +
-                "in\r\n      stock_in_detail stkdt on stkdt.stock_in_id=stock_in.stock_in_id\r\n     " +
-                " where stock_in_date>=@FromDate and stock_in_date<=@ToDate and stock_in.stock_in" +
-                "_type=0\r\n      group by product_id) as instock on pr.product_id=instock.product_" +
-                "id\r\n    left join (select stock_out_date, product_id, sum(quantity) as quantity " +
-                "from stock_out stkout inner join\r\n      stock_out_detail stkoutd on stkout.stock" +
-                "out_id=stkoutd.stockout_id\r\n      where stock_out_date>=@FromDate and stock_out_" +
-                "date<=@ToDate and stkout.defect_status_id=0\r\n      group by product_id) as instk" +
-                "out on instkout.product_id=pr.product_id\r\n    left join (SELECT product_id, sum(" +
-                "quantity) as quantity from stock_out inner join\r\n      stock_out_detail stkd on " +
-                "stock_out.stockout_id=stkd.stockout_id\r\n      where stkd.defect_status_id=4 and " +
-                "stock_out_date>=@FromDate and stock_out_date<=@ToDate\r\n      group by product_id" +
-                ") as tmpout on tmpout.product_id=pr.product_id\r\n    left join (SELECT product_id" +
-                ", sum(quantity) as quantity from stock_out inner join\r\n      stock_out_detail st" +
-                "kd on stock_out.stockout_id=stkd.stockout_id\r\n      where stkd.defect_status_id=" +
-                "5 and stock_out_date>=@FromDate and stock_out_date<=@ToDate\r\n      group by prod" +
-                "uct_id) as sprtn on sprtn.product_id=pr.product_id\r\n    left join (SELECT produc" +
-                "t_id, sum(quantity) as quantity from stock_out inner join\r\n      stock_out_detai" +
-                "l stkd on stock_out.stockout_id=stkd.stockout_id\r\n      where stkd.defect_status" +
-                "_id=8 and stock_out_date>=@FromDate and stock_out_date<=@ToDate\r\n      group by " +
-                "product_id) as dmg on dmg.product_id=pr.product_id\r\ngroup by type_name, product_" +
-                "name, color_name, size_name";
+                "mg_qty from stock\r\n      where create_date<=@ToDate group by product_id) as pres" +
+                "tock\r\n    on prestock.product_id=pr.product_id\r\n    left join (select product_id" +
+                ", sum(quantity) as instock_qty from stock_in inner join\r\n      stock_in_detail s" +
+                "tkdt on stkdt.stock_in_id=stock_in.stock_in_id\r\n      where stock_in_date>=@From" +
+                "Date and stock_in_date<=@ToDate and stock_in.stock_in_type=0\r\n      group by pro" +
+                "duct_id) as instock on pr.product_id=instock.product_id\r\n    left join (select s" +
+                "tock_out_date, product_id, sum(quantity) as quantity from stock_out stkout inner" +
+                " join\r\n      stock_out_detail stkoutd on stkout.stockout_id=stkoutd.stockout_id\r" +
+                "\n      where stock_out_date>=@FromDate and stock_out_date<=@ToDate and stkout.de" +
+                "fect_status_id=0\r\n      group by product_id) as instkout on instkout.product_id=" +
+                "pr.product_id\r\n    left join (SELECT product_id, sum(quantity) as quantity from " +
+                "stock_out inner join\r\n      stock_out_detail stkd on stock_out.stockout_id=stkd." +
+                "stockout_id\r\n      where stkd.defect_status_id=4 and stock_out_date>=@FromDate a" +
+                "nd stock_out_date<=@ToDate\r\n      group by product_id) as tmpout on tmpout.produ" +
+                "ct_id=pr.product_id\r\n    left join (SELECT product_id, sum(quantity) as quantity" +
+                " from stock_out inner join\r\n      stock_out_detail stkd on stock_out.stockout_id" +
+                "=stkd.stockout_id\r\n      where stkd.defect_status_id=5 and stock_out_date>=@From" +
+                "Date and stock_out_date<=@ToDate\r\n      group by product_id) as sprtn on sprtn.p" +
+                "roduct_id=pr.product_id\r\n    left join (SELECT product_id, sum(quantity) as quan" +
+                "tity from stock_out inner join\r\n      stock_out_detail stkd on stock_out.stockou" +
+                "t_id=stkd.stockout_id\r\n      where stkd.defect_status_id=8 and stock_out_date>=@" +
+                "FromDate and stock_out_date<=@ToDate\r\n      group by product_id) as dmg on dmg.p" +
+                "roduct_id=pr.product_id\r\ngroup by type_name, product_name, color_name, size_name" +
+                "";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@FromDate";
@@ -11209,79 +12347,80 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
                 ") AS destroy_qty, SUM(IFNULL(bkpro.quantity, 0)) AS bkpro, SUM(IFNULL(stk.good_q" +
                 "ty, 0) + IFNULL(instock.instock_qty, 0) \r\n                      + IFNULL(bkpro.q" +
                 "uantity, 0) - IFNULL(prestock.dmg_qty, 0) - IFNULL(instkout.quantity, 0) - IFNUL" +
-                "L(sprtn.quantity, 0) \r\n                      - IFNULL(dmg.quantity, 0)) AS reals" +
-                "tock\r\nFROM         allproduct pr LEFT OUTER JOIN\r\n                          (SEL" +
-                "ECT     PRODUCT_ID, GOOD_COUNT AS good_qty\r\n                            FROM    " +
-                "      department_stock_history A\r\n                            WHERE      (DEPART" +
-                "MENT_ID = @deptID) AND (CREATE_DATE =\r\n                                         " +
-                "              (SELECT     MAX(CREATE_DATE) AS Expr1\r\n                           " +
-                "                              FROM          department_stock_history b\r\n        " +
-                "                                                 WHERE      (CREATE_DATE < @From" +
-                "Date) AND (PRODUCT_ID = A.PRODUCT_ID)\r\n                                         " +
-                "                GROUP BY PRODUCT_ID))\r\n                            GROUP BY PROD" +
-                "UCT_ID) stk ON pr.product_id = stk.PRODUCT_ID LEFT OUTER JOIN\r\n                 " +
-                "         (SELECT     PRODUCT_ID, SUM(ERROR_QUANTITY) AS error_qty, SUM(DAMAGE_QU" +
-                "ANTITY + LOST_QUANTITY) AS dmg_qty\r\n                            FROM          de" +
-                "partment_stock\r\n                            WHERE      (DEPARTMENT_ID = @deptID)" +
-                "\r\n                            GROUP BY PRODUCT_ID) prestock ON prestock.PRODUCT_" +
-                "ID = pr.product_id LEFT OUTER JOIN\r\n                          (SELECT     stkdt." +
-                "PRODUCT_ID, SUM(stkdt.QUANTITY) AS instock_qty\r\n                            FROM" +
-                "          department_stock_in dpstkin INNER JOIN\r\n                              " +
-                "                     department_stock_in_detail stkdt ON stkdt.STOCK_IN_ID = dps" +
-                "tkin.STOCK_IN_ID\r\n                            WHERE      (dpstkin.STOCK_IN_DATE " +
-                ">= @FromDate) AND (dpstkin.STOCK_IN_DATE <= @ToDate) AND (dpstkin.STOCK_IN_TYPE " +
-                "= 0) AND \r\n                                                   (dpstkin.DEPARTMEN" +
-                "T_ID = @deptID)\r\n                            GROUP BY stkdt.PRODUCT_ID) instock " +
-                "ON pr.product_id = instock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                       " +
-                "   (SELECT     stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS restock_qty\r\n           " +
-                "                 FROM          department_stock_in dpstkin INNER JOIN\r\n         " +
-                "                                          department_stock_in_detail stkdt ON st" +
-                "kdt.STOCK_IN_ID = dpstkin.STOCK_IN_ID\r\n                            WHERE      (d" +
-                "pstkin.STOCK_IN_DATE <=@ToDate) AND (dpstkin.STOCK_IN_TYPE = 1) AND \r\n          " +
-                "                                         (dpstkin.DEPARTMENT_ID = @deptID)\r\n    " +
-                "                        GROUP BY stkdt.PRODUCT_ID) restock ON pr.product_id = re" +
-                "stock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                          (SELECT     dstkd." +
-                "PRODUCT_ID, SUM(dstkd.QUANTITY) AS quantity\r\n                            FROM   " +
-                "       purchase_order dstk INNER JOIN\r\n                                         " +
-                "          purchase_order_detail dstkd ON dstk.PURCHASE_ORDER_ID = dstkd.PURCHASE" +
-                "_ORDER_ID\r\n                            WHERE      (dstk.CREATE_DATE >= @FromDate" +
-                ") AND (dstk.CREATE_DATE <= @ToDate) AND (dstk.ORDER_STATUS = 0)\r\n               " +
-                "             GROUP BY dstkd.PRODUCT_ID) instkout ON instkout.PRODUCT_ID = pr.pro" +
-                "duct_id LEFT OUTER JOIN\r\n\r\n                          (SELECT     department_name" +
-                ", stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                            F" +
-                "ROM          department_stock_out dpout INNER JOIN\r\n                            " +
-                "                       department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = " +
-                "stkd.STOCK_OUT_ID \r\n                                                   left join" +
-                " department dpt on dpt.department_id=dpout.department_id\r\n                      " +
-                "      WHERE      (stkd.DEFECT_STATUS_ID = 4) AND (dpout.STOCK_OUT_DATE <= @ToDat" +
-                "e) AND \r\n                                                   (dpout.DEPARTMENT_ID" +
-                " = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) tmpout ON tmp" +
-                "out.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n\r\n                          (SEL" +
-                "ECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                       " +
-                "     FROM          department_stock_out dpout INNER JOIN\r\n                      " +
-                "                             department_stock_out_detail stkd ON dpout.STOCK_OUT" +
-                "_ID = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_STA" +
-                "TUS_ID = 6) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <=" +
-                " @ToDate) AND \r\n                                                   (dpout.DEPART" +
-                "MENT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) sprtn " +
-                "ON sprtn.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (" +
-                "SELECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                    " +
-                "        FROM          department_stock_out dpout INNER JOIN\r\n                   " +
-                "                                department_stock_out_detail stkd ON dpout.STOCK_" +
-                "OUT_ID = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_" +
-                "STATUS_ID = 8) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE" +
-                " <= @ToDate) AND \r\n                                                   (dpout.DEP" +
-                "ARTMENT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) dmg" +
-                " ON dmg.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (S" +
-                "ELECT     rtn.RETURN_DATE, pord.PRODUCT_ID, SUM(rtn.QUANTITY) AS quantity\r\n     " +
-                "                       FROM          purchase_order_detail pord INNER JOIN\r\n    " +
-                "                                               return_po rtn ON rtn.PURCHASE_ORD" +
-                "ER_ID = pord.PURCHASE_ORDER_ID AND \r\n                                           " +
-                "        rtn.PURCHASE_ORDER_DETAIL_ID = pord.PURCHASE_ORDER_DETAIL_ID\r\n          " +
-                "                  WHERE      (rtn.RETURN_DATE >= @FromDate) AND (rtn.RETURN_DATE" +
-                " <= @ToDate) AND (rtn.DEPARTMENT_ID = @deptID)\r\n                            GROU" +
-                "P BY rtn.RETURN_DATE, pord.PRODUCT_ID) bkpro ON bkpro.PRODUCT_ID = pr.product_id" +
-                "\r\nGROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name";
+                "L(sprtn.quantity, 0) \r\n                      - IFNULL(dmg.quantity, 0)-IFNULL(tm" +
+                "pout.quantity, 0)+ifnull(restock.restock_qty,0)) AS realstock\r\nFROM         allp" +
+                "roduct pr LEFT OUTER JOIN\r\n                          (SELECT     PRODUCT_ID, GOO" +
+                "D_COUNT AS good_qty, error_count as perror_qty \r\n                            FRO" +
+                "M          department_stock_history A\r\n                            WHERE      (D" +
+                "EPARTMENT_ID = @deptID) AND (CREATE_DATE =\r\n                                    " +
+                "                   (SELECT     MAX(CREATE_DATE) AS Expr1\r\n                      " +
+                "                                   FROM          department_stock_history b\r\n   " +
+                "                                                      WHERE      (CREATE_DATE < " +
+                "@FromDate) AND (PRODUCT_ID = A.PRODUCT_ID)\r\n                                    " +
+                "                     GROUP BY PRODUCT_ID))\r\n                            GROUP BY" +
+                " PRODUCT_ID) stk ON pr.product_id = stk.PRODUCT_ID LEFT OUTER JOIN\r\n            " +
+                "              (SELECT     PRODUCT_ID, SUM(ERROR_QUANTITY) AS error_qty, SUM(DAMA" +
+                "GE_QUANTITY + LOST_QUANTITY) AS dmg_qty\r\n                            FROM       " +
+                "   department_stock\r\n                            WHERE      (DEPARTMENT_ID = @de" +
+                "ptID and create_date<=@ToDate)\r\n                            GROUP BY PRODUCT_ID)" +
+                " prestock ON prestock.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n              " +
+                "            (SELECT     stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS instock_qty\r\n  " +
+                "                          FROM          department_stock_in dpstkin INNER JOIN\r\n" +
+                "                                                   department_stock_in_detail st" +
+                "kdt ON stkdt.STOCK_IN_ID = dpstkin.STOCK_IN_ID\r\n                            WHER" +
+                "E      (dpstkin.STOCK_IN_DATE >= @FromDate) AND (dpstkin.STOCK_IN_DATE <= @ToDat" +
+                "e) AND \r\n                                                   (dpstkin.DEPARTMENT_" +
+                "ID = @deptID)\r\n                            GROUP BY stkdt.PRODUCT_ID) instock ON" +
+                " pr.product_id = instock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                         " +
+                " (SELECT     stkdt.PRODUCT_ID, SUM(stkdt.QUANTITY) AS restock_qty\r\n             " +
+                "               FROM          department_stock_in dpstkin INNER JOIN\r\n           " +
+                "                                        department_stock_in_detail stkdt ON stkd" +
+                "t.STOCK_IN_ID = dpstkin.STOCK_IN_ID\r\n                            WHERE      (dps" +
+                "tkin.STOCK_IN_DATE <=@ToDate) AND (dpstkin.STOCK_IN_TYPE = 1) AND \r\n            " +
+                "                                       (dpstkin.DEPARTMENT_ID = @deptID)\r\n      " +
+                "                      GROUP BY stkdt.PRODUCT_ID) restock ON pr.product_id = rest" +
+                "ock.PRODUCT_ID LEFT OUTER JOIN\r\n\r\n                          (SELECT     dstkd.PR" +
+                "ODUCT_ID, SUM(dstkd.QUANTITY) AS quantity\r\n                            FROM     " +
+                "     purchase_order dstk INNER JOIN\r\n                                           " +
+                "        purchase_order_detail dstkd ON dstk.PURCHASE_ORDER_ID = dstkd.PURCHASE_O" +
+                "RDER_ID\r\n                            WHERE      (dstk.CREATE_DATE >= @FromDate) " +
+                "AND (dstk.CREATE_DATE <= @ToDate) AND (dstk.ORDER_STATUS = 0)\r\n                 " +
+                "           GROUP BY dstkd.PRODUCT_ID) instkout ON instkout.PRODUCT_ID = pr.produ" +
+                "ct_id LEFT OUTER JOIN\r\n\r\n                          (SELECT     department_name, " +
+                "stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                            FRO" +
+                "M          department_stock_out dpout INNER JOIN\r\n                              " +
+                "                     department_stock_out_detail stkd ON dpout.STOCK_OUT_ID = st" +
+                "kd.STOCK_OUT_ID \r\n                                                   left join d" +
+                "epartment dpt on dpt.department_id=dpout.department_id\r\n                        " +
+                "    WHERE      (stkd.DEFECT_STATUS_ID = 4) AND (dpout.STOCK_OUT_DATE <= @ToDate)" +
+                " AND \r\n                                                   (dpout.DEPARTMENT_ID =" +
+                " @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) tmpout ON tmpou" +
+                "t.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n\r\n                          (SELEC" +
+                "T     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                         " +
+                "   FROM          department_stock_out dpout INNER JOIN\r\n                        " +
+                "                           department_stock_out_detail stkd ON dpout.STOCK_OUT_I" +
+                "D = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_STATU" +
+                "S_ID = 6) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <= @" +
+                "ToDate) AND \r\n                                                   (dpout.DEPARTME" +
+                "NT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) sprtn ON" +
+                " sprtn.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (SE" +
+                "LECT     stkd.PRODUCT_ID, SUM(stkd.QUANTITY) AS quantity\r\n                      " +
+                "      FROM          department_stock_out dpout INNER JOIN\r\n                     " +
+                "                              department_stock_out_detail stkd ON dpout.STOCK_OU" +
+                "T_ID = stkd.STOCK_OUT_ID\r\n                            WHERE      (stkd.DEFECT_ST" +
+                "ATUS_ID = 8) AND (dpout.STOCK_OUT_DATE >= @FromDate) AND (dpout.STOCK_OUT_DATE <" +
+                "= @ToDate) AND \r\n                                                   (dpout.DEPAR" +
+                "TMENT_ID = @deptID)\r\n                            GROUP BY stkd.PRODUCT_ID) dmg O" +
+                "N dmg.PRODUCT_ID = pr.product_id LEFT OUTER JOIN\r\n                          (SEL" +
+                "ECT     rtn.RETURN_DATE, pord.PRODUCT_ID, SUM(rtn.QUANTITY) AS quantity\r\n       " +
+                "                     FROM          purchase_order_detail pord INNER JOIN\r\n      " +
+                "                                             return_po rtn ON rtn.PURCHASE_ORDER" +
+                "_ID = pord.PURCHASE_ORDER_ID AND \r\n                                             " +
+                "      rtn.PURCHASE_ORDER_DETAIL_ID = pord.PURCHASE_ORDER_DETAIL_ID\r\n            " +
+                "                WHERE      (rtn.RETURN_DATE >= @FromDate) AND (rtn.RETURN_DATE <" +
+                "= @ToDate) AND (rtn.DEPARTMENT_ID = @deptID)\r\n                            GROUP " +
+                "BY rtn.RETURN_DATE, pord.PRODUCT_ID) bkpro ON bkpro.PRODUCT_ID = pr.product_id\r\n" +
+                "GROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@deptID";
@@ -11474,6 +12613,11 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
             tableMapping.ColumnMappings.Add("product_name", "product_name");
             tableMapping.ColumnMappings.Add("return_date", "return_date");
             tableMapping.ColumnMappings.Add("Expr1", "Expr1");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
+            tableMapping.ColumnMappings.Add("address", "address");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("price", "price");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11488,49 +12632,62 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        rtnpr.return_date, rtnpr.purchase_order_id, rtnpr.purchase_order_detail_id, type_name, pordd.product_id, product_name, SUM(rtnpr.quantity) AS Expr1
+            this._commandCollection[0].CommandText = @"SELECT        department_name, address, rtnpr.return_date, rtnpr.purchase_order_id, rtnpr.purchase_order_detail_id, type_name, pordd.product_id, product_name, color_name, size_name, SUM(rtnpr.quantity) AS Expr1, pordd.price 
 FROM            return_po rtnpr INNER JOIN
                          purchase_order pord ON pord.purchase_order_id = rtnpr.purchase_order_id INNER JOIN
                          purchase_order_detail pordd ON pordd.purchase_order_detail_id = rtnpr.purchase_order_detail_id AND 
                          pord.purchase_order_id = pordd.purchase_order_id INNER JOIN
                          allproduct pr ON pr.product_id = pordd.product_id
+left join department dp on dp.department_id=pord.department_id 
 WHERE        (rtnpr.return_date >= @FromDate) AND (rtnpr.return_date <= @ToDate) AND (pord.department_id = @deptID)
 GROUP BY type_name, pordd.product_id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@deptID";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 1024;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            this._commandCollection[0].Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@FromDate";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.DbType = global::System.Data.DbType.Object;
             param.Size = 1024;
             param.IsNullable = true;
             param.SourceColumn = "return_date";
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@ToDate";
-            param.DbType = global::System.Data.DbType.DateTime;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.DbType = global::System.Data.DbType.Object;
             param.Size = 1024;
             param.IsNullable = true;
             param.SourceColumn = "return_date";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@deptID";
+            param.DbType = global::System.Data.DbType.Object;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "";
             this._commandCollection[0].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(posDataSet.returnPOrderDataTable dataTable, int deptID, System.DateTime FromDate, System.DateTime ToDate) {
+        public virtual int Fill(posDataSet.returnPOrderDataTable dataTable, object FromDate, object ToDate, object deptID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate));
-            this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate));
+            if ((FromDate == null)) {
+                throw new global::System.ArgumentNullException("FromDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((object)(FromDate));
+            }
+            if ((ToDate == null)) {
+                throw new global::System.ArgumentNullException("ToDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((object)(ToDate));
+            }
+            if ((deptID == null)) {
+                throw new global::System.ArgumentNullException("deptID");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((object)(deptID));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -11541,11 +12698,26 @@ GROUP BY type_name, pordd.product_id";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual posDataSet.returnPOrderDataTable GetData(int deptID, System.DateTime FromDate, System.DateTime ToDate) {
+        public virtual posDataSet.returnPOrderDataTable GetData(object FromDate, object ToDate, object deptID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate));
-            this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate));
+            if ((FromDate == null)) {
+                throw new global::System.ArgumentNullException("FromDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((object)(FromDate));
+            }
+            if ((ToDate == null)) {
+                throw new global::System.ArgumentNullException("ToDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((object)(ToDate));
+            }
+            if ((deptID == null)) {
+                throw new global::System.ArgumentNullException("deptID");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((object)(deptID));
+            }
             posDataSet.returnPOrderDataTable dataTable = new posDataSet.returnPOrderDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -11676,6 +12848,8 @@ GROUP BY type_name, pordd.product_id";
             tableMapping.ColumnMappings.Add("product_name", "product_name");
             tableMapping.ColumnMappings.Add("sum(dstkdin.quantity)", "sum(dstkdin_quantity)");
             tableMapping.ColumnMappings.Add("price", "price");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -11690,13 +12864,13 @@ GROUP BY type_name, pordd.product_id";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT type_name, dstkin.department_id, department_name, dstkin.stock_in_id, dstkin.stock_in_date, dstkdin.product_id, product_name, sum(dstkdin.quantity), sum(dstkdin.price*dstkdin.quantity) as price 
+            this._commandCollection[0].CommandText = @"SELECT type_name, dstkin.department_id, department_name, dstkin.stock_in_id, dstkin.stock_in_date, dstkdin.product_id, product_name, color_name, size_name, sum(dstkdin.quantity), sum(dstkdin.price*dstkdin.quantity) as price 
 from department_stock_in dstkin inner join department_stock_in_detail dstkdin on dstkin.stock_in_id=dstkdin.stock_in_id
 inner join department dp on dp.department_id=dstkin.department_id
 inner join allproduct pr on pr.product_id=dstkdin.product_id
 where dstkin.stock_in_date>=@FromDate and dstkin.stock_in_date<=@ToDate and dstkin.department_id=@deptID
 group by type_name, dstkin.stock_in_date, product_name
-order by  type_name asc, dstkin.stock_in_date
+order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
 ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -13117,26 +14291,26 @@ order by  type_name asc, dstkin.stock_in_date
                 "y) as instock_qty from stock_in inner join\r\n      stock_in_detail stkdt on stkdt" +
                 ".stock_in_id=stock_in.stock_in_id\r\n      where stock_in_date>=@FromDate and stoc" +
                 "k_in_date<=@ToDate\r\n      group by product_id) as instock on pr.product_id=insto" +
-                "ck.product_id\r\nleft join (select product_id, sum(quantity) as outstock_qty from " +
-                "stock_out inner join\r\n      stock_out_detail stkdt on stkdt.stockout_id=stock_ou" +
-                "t.stockout_id\r\n      where stock_out_date>=@FromDate and stock_out_date<=@ToDate" +
-                "\r\n      group by product_id) as stkout on stkout.product_id=pr.product_id\r\n\r\nlef" +
-                "t join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty\r\n                        " +
-                "    FROM          department_stock_history A\r\n                            WHERE " +
-                "   A.CREATE_DATE = ( SELECT max(b.CREATE_DATE)\r\n                                " +
-                "       FROM department_stock_history b where\r\n                                  " +
-                "     (b.CREATE_DATE <@FromDate ) AND b.Product_id = a.Product_ID\r\n              " +
-                "                         GROUP BY b.product_id)\r\n                            GRO" +
-                "UP BY a.PRODUCT_ID ) as dstk on pr.product_id=dstk.product_id\r\nleft join (select" +
-                " product_id, sum(quantity) as instock_qty from department_stock_in inner join\r\n " +
-                "     department_stock_in_detail stkdt on stkdt.stock_in_id=department_stock_in.s" +
-                "tock_in_id\r\n      where stock_in_date>=@FromDate and stock_in_date<=@ToDate\r\n   " +
-                "   group by product_id) as dinstock on pr.product_id=dinstock.product_id\r\n\r\nleft" +
-                " join (select product_id, sum(quantity) as outstock_qty from department_stock_ou" +
-                "t dstkout inner join\r\n      department_stock_out_detail stkdt on stkdt.stock_out" +
-                "_id=dstkout.stock_out_id\r\n      where stock_out_date>=@FromDate and stock_out_da" +
-                "te<=@ToDate\r\n      group by product_id) as dstkout on stkout.product_id=pr.produ" +
-                "ct_id\r\ngroup by type_name, product_name, color_name, size_name";
+                "ck.product_id\r\n\r\nleft join (select product_id, sum(quantity) as outstock_qty fro" +
+                "m stock_out inner join\r\n      stock_out_detail stkdt on stkdt.stockout_id=stock_" +
+                "out.stockout_id\r\n      where stock_out_date>=@FromDate and stock_out_date<=@ToDa" +
+                "te\r\n      group by product_id) as stkout on stkout.product_id=pr.product_id\r\n\r\nl" +
+                "eft join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty\r\n                      " +
+                "      FROM          department_stock_history A\r\n                            WHER" +
+                "E    A.CREATE_DATE = ( SELECT max(b.CREATE_DATE)\r\n                              " +
+                "         FROM department_stock_history b where\r\n                                " +
+                "       (b.CREATE_DATE <@FromDate ) AND b.Product_id = a.Product_ID\r\n            " +
+                "                           GROUP BY b.product_id)\r\n                            G" +
+                "ROUP BY a.PRODUCT_ID ) as dstk on pr.product_id=dstk.product_id\r\nleft join (sele" +
+                "ct product_id, sum(quantity) as instock_qty from department_stock_in inner join\r" +
+                "\n      department_stock_in_detail stkdt on stkdt.stock_in_id=department_stock_in" +
+                ".stock_in_id\r\n      where stock_in_date>=@FromDate and stock_in_date<=@ToDate\r\n " +
+                "     group by product_id) as dinstock on pr.product_id=dinstock.product_id\r\n\r\nle" +
+                "ft join (select product_id, sum(quantity) as outstock_qty from department_stock_" +
+                "out dstkout inner join\r\n      department_stock_out_detail stkdt on stkdt.stock_o" +
+                "ut_id=dstkout.stock_out_id\r\n      where stock_out_date>=@FromDate and stock_out_" +
+                "date<=@ToDate\r\n      group by product_id) as dstkout on stkout.product_id=pr.pro" +
+                "duct_id\r\ngroup by type_name, product_name, color_name, size_name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@FromDate";
@@ -13536,6 +14710,8 @@ group by type_name, product_name, color_name, size_name";
             tableMapping.ColumnMappings.Add("color_name", "color_name");
             tableMapping.ColumnMappings.Add("size_name", "size_name");
             tableMapping.ColumnMappings.Add("sum(quantity)", "sum(quantity)");
+            tableMapping.ColumnMappings.Add("address", "address");
+            tableMapping.ColumnMappings.Add("stock_out_date", "stock_out_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13550,7 +14726,7 @@ group by type_name, product_name, color_name, size_name";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"select dpt.department_name, type_name, pr.product_id, product_name, color_name, size_name, sum(quantity)
+            this._commandCollection[0].CommandText = @"select stock_out_date, dpt.department_name, address, type_name, pr.product_id, product_name, color_name, size_name, sum(quantity)
 from allproduct pr
   left join (department_stock_out dstk inner join department_stock_out_detail dstkd on dstk.stock_out_id=dstkd.stock_out_id) on dstkd.product_id=pr.product_id
   left join department dpt on dpt.department_id=dstk.department_id
@@ -13752,6 +14928,7 @@ group by type_name, product_name, color_name, size_name";
             tableMapping.ColumnMappings.Add("size_name", "size_name");
             tableMapping.ColumnMappings.Add("sum(quantity)", "sum(quantity)");
             tableMapping.ColumnMappings.Add("sum(dstk.stock_in_cost)", "sum(dstk_stock_in_cost)");
+            tableMapping.ColumnMappings.Add("address", "address");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13766,7 +14943,7 @@ group by type_name, product_name, color_name, size_name";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"select dpt.department_name, type_name, pr.product_id, product_name, color_name, size_name, sum(quantity), sum(dstk.stock_in_cost)
+            this._commandCollection[0].CommandText = @"select dpt.department_name, address, type_name, pr.product_id, product_name, color_name, size_name, sum(quantity), sum(dstk.stock_in_cost)
 from allproduct pr
   left join (department_stock_in dstk inner join department_stock_in_detail dstkd on dstk.stock_in_id=dstkd.stock_in_id) on dstkd.product_id=pr.product_id
   left join department dpt on dpt.department_id=dstk.department_id
@@ -13840,6 +15017,205 @@ group by type_name, product_name, color_name, size_name";
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             posDataSet.deptReStockDataTable dataTable = new posDataSet.deptReStockDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class MainStockOutTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public MainStockOutTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "mainStockOut";
+            tableMapping.ColumnMappings.Add("stock_out_date", "stock_out_date");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("product_id", "product_id");
+            tableMapping.ColumnMappings.Add("product_name", "product_name");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("sum(quantity)", "sum(quantity)");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::POSReports.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"select stock_out_date, department_name, type_name,  stkod.product_id, product_name, color_name, size_name, sum(quantity)
+from stock_out stko inner join stock_out_detail stkod on stko.stockout_id=stkod.stockout_id
+inner join allproduct pr on pr.product_id=stkod.product_id
+left join department dp on dp.department_id=stko.department_id
+where stko.department_id=@deptID and stock_out_date>=@FromDate and stock_out_date<=@ToDate and stko.defect_status_id=0
+group by type_name, product_name, color_name, size_name";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@deptID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@FromDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "stock_out_date";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@ToDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.Size = 1024;
+            param.IsNullable = true;
+            param.SourceColumn = "stock_out_date";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(posDataSet.mainStockOutDataTable dataTable, int deptID, System.DateTime FromDate, System.DateTime ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual posDataSet.mainStockOutDataTable GetData(int deptID, System.DateTime FromDate, System.DateTime ToDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate));
+            posDataSet.mainStockOutDataTable dataTable = new posDataSet.mainStockOutDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

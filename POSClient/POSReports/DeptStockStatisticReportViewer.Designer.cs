@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.deptStockStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.departmentId = new System.Windows.Forms.ComboBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.departmentId = new System.Windows.Forms.ComboBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.DeptStockStatisticTableAdapter = new POSReports.posDataSetTableAdapters.DeptStockStatisticTableAdapter();
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
@@ -85,23 +85,6 @@
             this.tableLayoutPanel1.TabIndex = 6;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // departmentId
-            // 
-            this.departmentId.DataSource = this.bindingSource1;
-            this.departmentId.DisplayMember = "DEPARTMENT_NAME";
-            this.departmentId.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.departmentId.FormattingEnabled = true;
-            this.departmentId.Location = new System.Drawing.Point(107, 39);
-            this.departmentId.Name = "departmentId";
-            this.departmentId.Size = new System.Drawing.Size(194, 27);
-            this.departmentId.TabIndex = 8;
-            this.departmentId.ValueMember = "DEPARTMENT_ID";
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "department";
-            this.bindingSource1.DataSource = this.posDataSet;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -133,16 +116,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 19);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Cửa hàng";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -154,12 +127,39 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "XEM BÁO CÁO";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(5, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Cửa hàng";
+            // 
+            // departmentId
+            // 
+            this.departmentId.DataSource = this.bindingSource1;
+            this.departmentId.DisplayMember = "DEPARTMENT_NAME";
+            this.departmentId.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentId.FormattingEnabled = true;
+            this.departmentId.Location = new System.Drawing.Point(107, 39);
+            this.departmentId.Name = "departmentId";
+            this.departmentId.Size = new System.Drawing.Size(194, 27);
+            this.departmentId.TabIndex = 8;
+            this.departmentId.ValueMember = "DEPARTMENT_ID";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "department";
+            this.bindingSource1.DataSource = this.posDataSet;
+            // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "posDataSet_deptStockStatistic";
-            reportDataSource2.Value = this.deptStockStatisticBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "posDataSet_deptStockStatistic";
+            reportDataSource1.Value = this.deptStockStatisticBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptStockStatisticReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
@@ -182,7 +182,7 @@
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeptStockStatisticReportViewer";
-            this.Text = "DeptStockStatisticReportViewer";
+            this.Text = "BÁO CÁO TỒN KHO CỬA HÀNG";
             this.Load += new System.EventHandler(this.DeptStockStatisticReportViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.deptStockStatisticBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();

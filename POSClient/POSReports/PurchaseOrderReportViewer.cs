@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
@@ -18,13 +19,17 @@ namespace POSReports
 
         private void PurchaseOrrderReportViewer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
+            
             // TODO: This line of code loads data into the 'posDataSet.receiptInGeneral' table. You can move, or remove it, as needed.
             try
             {
-                //this.ReceiptInGeneralTableAdapter.Fill(this.posDataSet.receiptInGeneral);
-
-                //this.reportViewer1.RefreshReport();
-
+                this.departmentTableAdapter.Fill(this.posDataSet.department);
+                if (CurrentDepartment.Get().DepartmentId != 0)
+                {
+                    departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                    departmentId.Visible = false;
+                }
             }
             catch (System.Exception ex)
             {
@@ -36,8 +41,20 @@ namespace POSReports
         {
             try
             {
-                this.ReceiptInGeneralTableAdapter.Fill(this.posDataSet.receiptInGeneral, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
-
+                Object dept = departmentId.SelectedValue;
+                int frmDept, toDept = 0;
+                if (Int32.Parse(dept.ToString()) != 0)
+                {
+                    frmDept = Int32.Parse(dept.ToString());
+                    toDept = Int32.Parse(dept.ToString());
+                } else
+                {
+                    frmDept = 1;
+                    toDept = 100;
+                }
+                //this.ReceiptInGeneralTableAdapter.Fill(this.posDataSet.receiptInGeneral, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
+                this.purchaseOrderTableAdapter.Fill(posDataSet.purchaseOrder, ZeroTime(dtpFrom.Value),
+                                                    MaxTime(dtpTo.Value),frmDept,toDept);
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
@@ -72,23 +89,5 @@ namespace POSReports
                 999);
         }
 
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.ReceiptInGeneralTableAdapter.FillBy(this.posDataSet.receiptInGeneral);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace POSReports
 {
-    partial class PurchaseOrderReportViewer
+    partial class DeptReStockReportViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.posDataSet = new POSReports.posDataSet();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -39,34 +37,19 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.purchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purchaseOrderTableAdapter = new POSReports.posDataSetTableAdapters.PurchaseOrderTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.departmentId = new System.Windows.Forms.ComboBox();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.posDataSet = new POSReports.posDataSet();
+            this.deptReStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DeptReStockTableAdapter = new POSReports.posDataSetTableAdapters.DeptReStockTableAdapter();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deptReStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "posDataSet_purchaseOrder";
-            reportDataSource3.Value = this.purchaseOrderBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.PurchaseOrderReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 68);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(784, 454);
-            this.reportViewer1.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
@@ -92,7 +75,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 68);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // label1
             // 
@@ -140,7 +123,7 @@
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(603, 37);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 26);
+            this.button1.Size = new System.Drawing.Size(113, 28);
             this.button1.TabIndex = 3;
             this.button1.Text = "Tạo báo cáo";
             this.button1.UseVisualStyleBackColor = true;
@@ -157,15 +140,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "XEM BÁO CÁO";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // purchaseOrderBindingSource
-            // 
-            this.purchaseOrderBindingSource.DataMember = "purchaseOrder";
-            this.purchaseOrderBindingSource.DataSource = this.posDataSet;
-            // 
-            // purchaseOrderTableAdapter
-            // 
-            this.purchaseOrderTableAdapter.ClearBeforeFill = true;
             // 
             // label4
             // 
@@ -189,6 +163,32 @@
             this.departmentId.TabIndex = 7;
             this.departmentId.ValueMember = "DEPARTMENT_ID";
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource3.Name = "posDataSet_deptReStock";
+            reportDataSource3.Value = this.deptReStockBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptReStockReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 68);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(784, 454);
+            this.reportViewer1.TabIndex = 9;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // deptReStockBindingSource
+            // 
+            this.deptReStockBindingSource.DataMember = "deptReStock";
+            this.deptReStockBindingSource.DataSource = this.posDataSet;
+            // 
+            // DeptReStockTableAdapter
+            // 
+            this.DeptReStockTableAdapter.ClearBeforeFill = true;
+            // 
             // departmentBindingSource
             // 
             this.departmentBindingSource.DataMember = "department";
@@ -198,20 +198,20 @@
             // 
             this.departmentTableAdapter.ClearBeforeFill = true;
             // 
-            // PurchaseOrderReportViewer
+            // DeptReStockReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 522);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "PurchaseOrderReportViewer";
-            this.Text = "BÁO CÁO BÁN HÀNG";
-            this.Load += new System.EventHandler(this.PurchaseOrrderReportViewer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            this.Name = "DeptReStockReportViewer";
+            this.Text = "BÁO CÁO TÁI NHẬP TẠI CỬA HÀNG";
+            this.Load += new System.EventHandler(this.DeptReStockReportViewer_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deptReStockBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -219,19 +219,19 @@
 
         #endregion
 
-        private posDataSet posDataSet;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dtpFrom;
-        private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.BindingSource purchaseOrderBindingSource;
-        private POSReports.posDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderTableAdapter;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox departmentId;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource deptReStockBindingSource;
+        private posDataSet posDataSet;
+        private POSReports.posDataSetTableAdapters.DeptReStockTableAdapter DeptReStockTableAdapter;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private POSReports.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter;
     }

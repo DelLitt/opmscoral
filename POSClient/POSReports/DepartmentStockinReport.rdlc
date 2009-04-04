@@ -2,12 +2,10 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="posConnectionString">
-      <rd:DataSourceID>52590d88-2c40-4a0d-bef4-4f917028da10</rd:DataSourceID>
+      <rd:DataSourceID>8ad3023e-900b-4a7a-9517-f94025bc5e6e</rd:DataSourceID>
       <ConnectionProperties>
-        <DataProvider>
-        </DataProvider>
-        <ConnectString>
-        </ConnectString>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos</ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -58,16 +56,24 @@
           <DataField>price</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="color_name">
+          <DataField>color_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="size_name">
+          <DataField>size_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandText>SELECT type_name, dstkin.department_id, department_name, dstkin.stock_in_id, dstkin.stock_in_date, dstkdin.product_id, product_name, sum(dstkdin.quantity), sum(dstkdin.price*dstkdin.quantity) as price 
+        <CommandText>SELECT type_name, dstkin.department_id, department_name, dstkin.stock_in_id, dstkin.stock_in_date, dstkdin.product_id, product_name, color_name, size_name, sum(dstkdin.quantity), sum(dstkdin.price*dstkdin.quantity) as price 
 from department_stock_in dstkin inner join department_stock_in_detail dstkdin on dstkin.stock_in_id=dstkdin.stock_in_id
 inner join department dp on dp.department_id=dstkin.department_id
 inner join allproduct pr on pr.product_id=dstkdin.product_id
 where dstkin.stock_in_date&gt;=@FromDate and dstkin.stock_in_date&lt;=@ToDate and dstkin.department_id=@deptID
 group by type_name, dstkin.stock_in_date, product_name
-order by  type_name asc, dstkin.stock_in_date
+order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
 </CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -80,11 +86,12 @@ order by  type_name asc, dstkin.stock_in_date
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>9.25in</Width>
+  <Width>10.125in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
+        <Width>9.25in</Width>
         <Style>
           <FontFamily>Times New Roman</FontFamily>
           <FontSize>20pt</FontSize>
@@ -98,7 +105,7 @@ order by  type_name asc, dstkin.stock_in_date
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.33in</Height>
-        <Value>BÁO CÁO PHÂN PHỐI HÀNG</Value>
+        <Value>BÁO CÁO NHẬP HÀNG</Value>
       </Textbox>
       <List Name="List1">
         <Sorting>
@@ -124,11 +131,11 @@ order by  type_name asc, dstkin.stock_in_date
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value>="CỬA HÀNG NHẬN: "&amp;Fields!department_name.Value</Value>
+            <Value>="CỬA HÀNG: "&amp;Fields!department_name.Value</Value>
           </Textbox>
           <Table Name="table1">
             <DataSetName>posDataSet_departmentStockIn</DataSetName>
-            <Top>0.875in</Top>
+            <Top>0.625in</Top>
             <TableGroups>
               <TableGroup>
                 <Grouping Name="table1_type_name">
@@ -148,6 +155,31 @@ order by  type_name asc, dstkin.stock_in_date
                       <TableCells>
                         <TableCell>
                           <ReportItems>
+                            <Textbox Name="textbox39">
+                              <rd:DefaultName>textbox39</rd:DefaultName>
+                              <Style>
+                                <BackgroundColor>#8fb3f3</BackgroundColor>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>41</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
                             <Textbox Name="type_name">
                               <rd:DefaultName>type_name</rd:DefaultName>
                               <Style>
@@ -165,7 +197,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>11</ZIndex>
+                              <ZIndex>40</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!type_name.Value</Value>
                             </Textbox>
@@ -190,7 +222,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>10</ZIndex>
+                              <ZIndex>39</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -216,7 +248,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>9</ZIndex>
+                              <ZIndex>38</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -242,7 +274,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>8</ZIndex>
+                              <ZIndex>37</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -268,7 +300,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>36</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!sum_dstkdin_quantity_.Value)</Value>
                             </Textbox>
@@ -293,7 +325,7 @@ order by  type_name asc, dstkin.stock_in_date
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>6</ZIndex>
+                              <ZIndex>35</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!price.Value)</Value>
                             </Textbox>
@@ -305,11 +337,553 @@ order by  type_name asc, dstkin.stock_in_date
                   </TableRows>
                 </Header>
               </TableGroup>
+              <TableGroup>
+                <Grouping Name="table1_Group2">
+                  <GroupExpressions>
+                    <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                  </GroupExpressions>
+                  <Parent>=Fields!type_name.Value</Parent>
+                </Grouping>
+                <Header>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox40">
+                              <rd:DefaultName>textbox40</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>34</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox14">
+                              <rd:DefaultName>textbox14</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>33</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="product_name">
+                              <rd:DefaultName>product_name</rd:DefaultName>
+                              <Style>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>32</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Fields!product_name.Value</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox16">
+                              <rd:DefaultName>textbox16</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>31</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox17">
+                              <rd:DefaultName>textbox17</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>30</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox18">
+                              <rd:DefaultName>textbox18</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>29</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox19">
+                              <rd:DefaultName>textbox19</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>28</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.25in</Height>
+                    </TableRow>
+                  </TableRows>
+                </Header>
+                <Footer>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox44">
+                              <rd:DefaultName>textbox44</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>20</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox20">
+                              <rd:DefaultName>textbox20</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>19</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox21">
+                              <rd:DefaultName>textbox21</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>18</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox22">
+                              <rd:DefaultName>textbox22</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>17</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox23">
+                              <rd:DefaultName>textbox23</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>16</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox24">
+                              <rd:DefaultName>textbox24</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>15</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox25">
+                              <rd:DefaultName>textbox25</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>14</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.25in</Height>
+                    </TableRow>
+                  </TableRows>
+                </Footer>
+              </TableGroup>
+              <TableGroup>
+                <Grouping Name="table1_Group3">
+                  <GroupExpressions>
+                    <GroupExpression>=Fields!color_name.Value</GroupExpression>
+                  </GroupExpressions>
+                </Grouping>
+                <Header>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox41">
+                              <rd:DefaultName>textbox41</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>27</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox26">
+                              <rd:DefaultName>textbox26</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>26</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox27">
+                              <rd:DefaultName>textbox27</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>25</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="color_name">
+                              <Visibility>
+                                <ToggleItem>product_name</ToggleItem>
+                              </Visibility>
+                              <Style>
+                                <BorderColor>
+                                  <Default>LightGrey</Default>
+                                </BorderColor>
+                                <BorderStyle>
+                                  <Default>Solid</Default>
+                                </BorderStyle>
+                                <FontFamily>Times New Roman</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>24</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value>=Fields!color_name.Value</Value>
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox29">
+                              <rd:DefaultName>textbox29</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>23</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox30">
+                              <rd:DefaultName>textbox30</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>22</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox31">
+                              <rd:DefaultName>textbox31</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>21</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.25in</Height>
+                    </TableRow>
+                  </TableRows>
+                </Header>
+                <Footer>
+                  <TableRows>
+                    <TableRow>
+                      <TableCells>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox43">
+                              <rd:DefaultName>textbox43</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>13</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox32">
+                              <rd:DefaultName>textbox32</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>12</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox33">
+                              <rd:DefaultName>textbox33</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>11</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox34">
+                              <rd:DefaultName>textbox34</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>10</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox35">
+                              <rd:DefaultName>textbox35</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>9</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox36">
+                              <rd:DefaultName>textbox36</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>8</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                        <TableCell>
+                          <ReportItems>
+                            <Textbox Name="textbox37">
+                              <rd:DefaultName>textbox37</rd:DefaultName>
+                              <Style>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                              <ZIndex>7</ZIndex>
+                              <CanGrow>true</CanGrow>
+                              <Value />
+                            </Textbox>
+                          </ReportItems>
+                        </TableCell>
+                      </TableCells>
+                      <Height>0.25in</Height>
+                    </TableRow>
+                  </TableRows>
+                </Footer>
+              </TableGroup>
             </TableGroups>
+            <Width>9.75in</Width>
             <Details>
               <TableRows>
                 <TableRow>
                   <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox42">
+                          <rd:DefaultName>textbox42</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>6</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
                     <TableCell>
                       <ReportItems>
                         <Textbox Name="textbox3">
@@ -337,17 +911,9 @@ order by  type_name asc, dstkin.stock_in_date
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="stock_in_id">
-                          <rd:DefaultName>stock_in_id</rd:DefaultName>
+                        <Textbox Name="textbox15">
+                          <rd:DefaultName>textbox15</rd:DefaultName>
                           <Style>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Times New Roman</FontFamily>
-                            <FontSize>12pt</FontSize>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -355,23 +921,15 @@ order by  type_name asc, dstkin.stock_in_date
                           </Style>
                           <ZIndex>4</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!stock_in_id.Value</Value>
+                          <Value />
                         </Textbox>
                       </ReportItems>
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="stock_in_date">
-                          <rd:DefaultName>stock_in_date</rd:DefaultName>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
                           <Style>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Times New Roman</FontFamily>
-                            <FontSize>12pt</FontSize>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -379,14 +937,16 @@ order by  type_name asc, dstkin.stock_in_date
                           </Style>
                           <ZIndex>3</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!stock_in_date.Value</Value>
+                          <Value />
                         </Textbox>
                       </ReportItems>
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="product_name">
-                          <rd:DefaultName>product_name</rd:DefaultName>
+                        <Textbox Name="size_name">
+                          <Visibility>
+                            <ToggleItem>department_name</ToggleItem>
+                          </Visibility>
                           <Style>
                             <BorderColor>
                               <Default>LightGrey</Default>
@@ -403,7 +963,7 @@ order by  type_name asc, dstkin.stock_in_date
                           </Style>
                           <ZIndex>2</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!product_name.Value</Value>
+                          <Value>=Fields!size_name.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -473,6 +1033,32 @@ order by  type_name asc, dstkin.stock_in_date
                   <TableCells>
                     <TableCell>
                       <ReportItems>
+                        <Textbox Name="textbox38">
+                          <rd:DefaultName>textbox38</rd:DefaultName>
+                          <Style>
+                            <Color>White</Color>
+                            <BackgroundColor>CornflowerBlue</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>48</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Ngày nhập</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
                         <Textbox Name="textbox2">
                           <rd:DefaultName>textbox2</rd:DefaultName>
                           <Style>
@@ -491,7 +1077,7 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>17</ZIndex>
+                          <ZIndex>47</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Chủng loại</Value>
                         </Textbox>
@@ -517,9 +1103,9 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>16</ZIndex>
+                          <ZIndex>46</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>Số HĐ</Value>
+                          <Value>Tên hàng</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -543,9 +1129,9 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>15</ZIndex>
+                          <ZIndex>45</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>Ngày xuất</Value>
+                          <Value>Màu sắc</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -569,9 +1155,9 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>14</ZIndex>
+                          <ZIndex>44</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>Tên hàng</Value>
+                          <Value>Kích cỡ</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -596,7 +1182,7 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>13</ZIndex>
+                          <ZIndex>43</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Số lương</Value>
                         </Textbox>
@@ -623,7 +1209,7 @@ order by  type_name asc, dstkin.stock_in_date
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>12</ZIndex>
+                          <ZIndex>42</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Tổng giá</Value>
                         </Textbox>
@@ -637,6 +1223,9 @@ order by  type_name asc, dstkin.stock_in_date
             </Header>
             <TableColumns>
               <TableColumn>
+                <Width>1.25in</Width>
+              </TableColumn>
+              <TableColumn>
                 <Width>1.625in</Width>
               </TableColumn>
               <TableColumn>
@@ -646,7 +1235,7 @@ order by  type_name asc, dstkin.stock_in_date
                 <Width>1.5in</Width>
               </TableColumn>
               <TableColumn>
-                <Width>2in</Width>
+                <Width>1.25in</Width>
               </TableColumn>
               <TableColumn>
                 <Width>1in</Width>
@@ -655,7 +1244,6 @@ order by  type_name asc, dstkin.stock_in_date
                 <Width>1.375in</Width>
               </TableColumn>
             </TableColumns>
-            <Height>0.62in</Height>
           </Table>
         </ReportItems>
         <Top>0.33in</Top>
@@ -669,10 +1257,9 @@ order by  type_name asc, dstkin.stock_in_date
           </GroupExpressions>
           <PageBreakAtEnd>true</PageBreakAtEnd>
         </Grouping>
-        <Height>1.87in</Height>
       </List>
     </ReportItems>
-    <Height>2.375in</Height>
+    <Height>2.575in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>
