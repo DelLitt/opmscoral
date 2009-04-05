@@ -21,7 +21,7 @@ namespace POSReports
         {
             this.departmentTableAdapter.Fill(this.posDataSet.department);
             // TODO: This line of code loads data into the 'posDataSet.returnPOrder' table. You can move, or remove it, as needed.
-            this.reportViewer1.RefreshReport();
+//            this.reportViewer1.RefreshReport();
             if (CurrentDepartment.Get().DepartmentId != 0)
             {
                 comboBox1.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
@@ -59,7 +59,7 @@ namespace POSReports
             try
             {
                 object id = comboBox1.SelectedValue;
-                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder,Int32.Parse(id.ToString()),ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value));
+                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder, ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value), Int32.Parse(id.ToString()));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

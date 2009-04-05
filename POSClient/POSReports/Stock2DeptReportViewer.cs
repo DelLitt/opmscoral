@@ -10,22 +10,25 @@ using AppFrame.Common;
 
 namespace POSReports
 {
-    public partial class MainStockReturnReportViewer : Form
+    public partial class Stock2DeptReportViewer : Form
     {
-        public MainStockReturnReportViewer()
+        public Stock2DeptReportViewer()
         {
             InitializeComponent();
         }
 
-        private void MainStockReturnReportViewer_Load(object sender, EventArgs e)
+        private void Stock2DeptReportViewer_Load(object sender, EventArgs e)
         {
-            this.departmentTableAdapter.Fill(posDataSet.department);
+            // TODO: This line of code loads data into the 'posDataSet.stockOut' table. You can move, or remove it, as needed.
+            //this.StockOutTableAdapter.Fill(this.posDataSet.stockOut);
+            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
+            this.departmentTableAdapter.Fill(this.posDataSet.department);
             if (CurrentDepartment.Get().DepartmentId != 0)
             {
-                this.departmentId.SelectedValue = Int32.Parse(CurrentDepartment.Get().DepartmentId.ToString());
+                departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
                 departmentId.Visible = false;
             }
-            //this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
 
         public static DateTime ZeroTime(DateTime value)
@@ -52,19 +55,17 @@ namespace POSReports
                 999);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void reportViewer1_Load(object sender, EventArgs e)
         {
             try
             {
-                this.ReturnMainTableAdapter.Fill(this.posDataSet.returnMain,
-                                                 Int32.Parse(departmentId.SelectedValue.ToString()),
-                                                 ZeroTime(fromDate.Value), MaxTime(toDate.Value));
+                this.StockOutTableAdapter.Fill(this.posDataSet.stockOut, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value),
+                                               Int32.Parse(departmentId.SelectedValue.ToString()));
                 this.reportViewer1.RefreshReport();
-            }
-            catch (Exception)
+            }catch(Exception ex)
             {
-
-                MessageBox.Show("Có lỗi xảy ra, vui lòng liên hệ với người quản trị!");
+                MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ nguwofi quản trị!");
             }
         }
     }

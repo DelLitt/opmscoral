@@ -142,6 +142,7 @@
     </Compile>
     <Compile Include="posDataSet.cs">
       <DependentUpon>posDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="posDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -215,6 +216,10 @@
       <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Stock2DeptReport.rdlc" />
+    <EmbeddedResource Include="Stock2DeptReportViewer.resx">
+      <DependentUpon>Stock2DeptReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StockInReport.rdlc" />
     <EmbeddedResource Include="StockInReportViewer.resx">
       <DependentUpon>StockInReportViewer.cs</DependentUpon>
@@ -280,6 +285,12 @@
     </Compile>
     <Compile Include="ReturnPOrderReportViewer.Designer.cs">
       <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock2DeptReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock2DeptReportViewer.Designer.cs">
+      <DependentUpon>Stock2DeptReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="StockInReportViewer.cs">
       <SubType>Form</SubType>
