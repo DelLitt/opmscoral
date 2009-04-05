@@ -163,6 +163,35 @@ namespace AppFrame.Model
         public virtual DateTime StartTime { get; set; }
         public virtual DateTime EndTime { get; set; }
         public virtual Department Department { get; set; }
+
+        public virtual string DisplayStartTime 
+        { 
+            get
+            {
+                if(StartTime.CompareTo(DateTime.MinValue)== 0)
+                {
+                    return "";
+                }
+                else
+                {
+                    return StartTime.ToString("HH:mm:ss");
+                }
+            }
+        }
+        public virtual string DisplayEndTime
+        {
+            get
+            {
+                if (EndTime.CompareTo(DateTime.MinValue) == 0)
+                {
+                    return "";
+                }
+                else
+                {
+                    return EndTime.ToString("HH:mm:ss");
+                }
+            }
+        }
         #endregion
         
         #region IComparable Methods
