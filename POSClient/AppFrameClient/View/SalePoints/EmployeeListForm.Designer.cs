@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.bdsEmployee = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +52,14 @@
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsEmployee = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmployee
             // 
+            this.dgvEmployee.AllowUserToAddRows = false;
+            this.dgvEmployee.AllowUserToDeleteRows = false;
             this.dgvEmployee.AutoGenerateColumns = false;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -79,20 +83,57 @@
             this.dgvEmployee.DataSource = this.bdsEmployee;
             this.dgvEmployee.Location = new System.Drawing.Point(13, 13);
             this.dgvEmployee.Name = "dgvEmployee";
-            this.dgvEmployee.Size = new System.Drawing.Size(592, 407);
+            this.dgvEmployee.Size = new System.Drawing.Size(807, 407);
             this.dgvEmployee.TabIndex = 0;
+            this.dgvEmployee.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellContentDoubleClick);
+            this.dgvEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellContentClick);
+            // 
+            // bdsEmployee
+            // 
+            this.bdsEmployee.DataSource = typeof(AppFrame.Collection.EmployeeInfoCollection);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(745, 426);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Đóng";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(168, 430);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "In mã vạch";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(249, 430);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(99, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Xóa nhân viên";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "EmployeePK.EmployeeId";
             this.Column1.HeaderText = "Mã nhân viên";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // employeeNameDataGridViewTextBoxColumn
             // 
             this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
             this.employeeNameDataGridViewTextBoxColumn.HeaderText = "Tên nhân viên";
             this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
+            this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.employeeNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // startDateDataGridViewTextBoxColumn
             // 
@@ -101,24 +142,28 @@
             this.startDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.startDateDataGridViewTextBoxColumn.HeaderText = "Ngày bắt đầu";
             this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressDataGridViewTextBoxColumn
             // 
             this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
             this.addressDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // salaryDataGridViewTextBoxColumn
             // 
             this.salaryDataGridViewTextBoxColumn.DataPropertyName = "Salary";
             this.salaryDataGridViewTextBoxColumn.HeaderText = "Lương";
             this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
+            this.salaryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "Mã vạch";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // birthdayDataGridViewTextBoxColumn
             // 
@@ -197,25 +242,13 @@
             this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
             this.departmentDataGridViewTextBoxColumn.Visible = false;
             // 
-            // bdsEmployee
-            // 
-            this.bdsEmployee.DataSource = typeof(AppFrame.Collection.EmployeeInfoCollection);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(530, 430);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Đóng";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // EmployeeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 465);
+            this.ClientSize = new System.Drawing.Size(832, 465);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvEmployee);
             this.Name = "EmployeeListForm";
@@ -232,6 +265,8 @@
         private System.Windows.Forms.DataGridView dgvEmployee;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource bdsEmployee;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;

@@ -165,6 +165,7 @@
             this.lblEmployeesList.Size = new System.Drawing.Size(120, 14);
             this.lblEmployeesList.TabIndex = 9;
             this.lblEmployeesList.Text = "Danh sách nhân viên";
+            this.lblEmployeesList.Visible = false;
             // 
             // dgvEmployees
             // 
@@ -246,38 +247,38 @@
             this.mnuEdit,
             this.mnuDelete});
             this.cmnEmployees.Name = "contextMenuStrip1";
-            this.cmnEmployees.Size = new System.Drawing.Size(229, 98);
+            this.cmnEmployees.Size = new System.Drawing.Size(211, 98);
             // 
             // mnuSetMainSalePoint
             // 
             this.mnuSetMainSalePoint.Name = "mnuSetMainSalePoint";
-            this.mnuSetMainSalePoint.Size = new System.Drawing.Size(228, 22);
+            this.mnuSetMainSalePoint.Size = new System.Drawing.Size(210, 22);
             this.mnuSetMainSalePoint.Text = "Thiết lập làm cửa hàng chính";
             this.mnuSetMainSalePoint.Click += new System.EventHandler(this.mnuSetMainSalePoint_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(207, 6);
             // 
             // mnuAdd
             // 
             this.mnuAdd.Name = "mnuAdd";
-            this.mnuAdd.Size = new System.Drawing.Size(228, 22);
+            this.mnuAdd.Size = new System.Drawing.Size(210, 22);
             this.mnuAdd.Text = "Thêm";
             this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuEdit
             // 
             this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(228, 22);
+            this.mnuEdit.Size = new System.Drawing.Size(210, 22);
             this.mnuEdit.Text = "Sửa";
             this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(228, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(210, 22);
             this.mnuDelete.Text = "Xóa";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 

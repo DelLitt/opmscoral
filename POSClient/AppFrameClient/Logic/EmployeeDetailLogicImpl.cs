@@ -98,7 +98,7 @@ namespace AppFrame.Logic
                 employeeInfo.Employee.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
 
                 EmployeeDetailDAO.Update(employeeInfo);
-                EmployeeDAO.Update(employeeInfo.Employee);
+                //EmployeeDAO.Update(employeeInfo.Employee);
 
             }
 

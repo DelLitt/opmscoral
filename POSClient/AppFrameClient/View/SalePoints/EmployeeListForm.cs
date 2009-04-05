@@ -57,10 +57,18 @@ namespace AppFrameClient.View.SalePoints
         private void EmployeeListForm_Load(object sender, EventArgs e)
         {
             empInfoList = new EmployeeInfoCollection(bdsEmployee);
-            EmployeeEventArgs eventArgs = new EmployeeEventArgs();
-            EventUtility.fireEvent(LoadEmployeesEvent,this,eventArgs);
+            RefreshEmployeeList();
 
-            if(eventArgs.EmployeeList!= null && eventArgs.EmployeeList.Count > 0)
+        }
+
+        private void RefreshEmployeeList()
+        {
+
+            empInfoList.Clear();
+            EmployeeEventArgs eventArgs = new EmployeeEventArgs();
+            EventUtility.fireEvent(LoadEmployeesEvent, this, eventArgs);
+
+            if (eventArgs.EmployeeList != null && eventArgs.EmployeeList.Count > 0)
             {
                 foreach (EmployeeInfo employeeInfo in eventArgs.EmployeeList)
                 {
@@ -70,6 +78,27 @@ namespace AppFrameClient.View.SalePoints
                 dgvEmployee.Refresh();
                 dgvEmployee.Invalidate();
             }
+        }
+
+        private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvEmployee.CurrentCell == null)
+            {
+                return;
+            }
+            int selectedIndex = dgvEmployee.CurrentCell.RowIndex;
+
+            EmployeeEventArgs eventArgs = new EmployeeEventArgs();
+            eventArgs.EmployeeInfo = empInfoList[selectedIndex];
+            eventArgs.SelectedEmployee = selectedIndex;
+            EventUtility.fireEvent(EditEmployeeEvent, this, eventArgs);
+            RefreshEmployeeList();
+        }
+
+        private void dgvEmployee_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
         }
     }
 }

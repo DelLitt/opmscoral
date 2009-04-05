@@ -56,6 +56,7 @@ namespace AppFrameClient.View
 
         private void SecuritySettings_Load(object sender, EventArgs e)
         {
+            lstEmployee.Items.Clear();
             SecurityEventArgs eventArgs = new SecurityEventArgs();
             EventUtility.fireEvent(InitSecuritySettingsEvent, this, eventArgs);
             IList departmentList = eventArgs.departmentList;
@@ -64,6 +65,19 @@ namespace AppFrameClient.View
             cboDepartment.DisplayMember = "DepartmentName";
             cboDepartment.Refresh();
             cboDepartment.Invalidate();
+
+            lstEmployee.Items.Clear();
+            if (eventArgs.employees != null && eventArgs.employees.Count > 0)
+            {
+                foreach (EmployeeInfo employeeInfo in eventArgs.employees)
+                {
+                    ListViewItem item =
+                        new ListViewItem(new string[] {employeeInfo.EmployeePK.EmployeeId, employeeInfo.EmployeeName});
+                    lstEmployee.Items.Add(item);
+                }
+            }
+
+
             loginList = new LoginModelCollection(bdsUserInfo);
             bdsUserInfo.ResetBindings(true);
             loginList.Clear();
@@ -127,18 +141,7 @@ namespace AppFrameClient.View
 
         private void cboDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstEmployee.Items.Clear();
-            Department selectedDepartment = (Department)cboDepartment.SelectedValue;
-            if (selectedDepartment != null)
-            {
-                IList employees = selectedDepartment.Employees;
-                foreach (EmployeeInfo employeeInfo in employees)
-                {
-                    ListViewItem item = new ListViewItem(new string[] {employeeInfo.EmployeePK.EmployeeId, employeeInfo.EmployeeName});
-                    lstEmployee.Items.Add(item);
-                }
-            }
-
+            
         }
 
         private void btnCreateFromEmployee_Click(object sender, EventArgs e)

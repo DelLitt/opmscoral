@@ -47,18 +47,13 @@ namespace AppFrameClient.Presenter.SalePoints
             {
                 salePointView = value;
                 salePointView.AddEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(salePointView_AddEmployeeEvent);
-                salePointView.EditEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(salePointView_EditEmployeeEvent);
+                //salePointView.EditEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(salePointView_EditEmployeeEvent);
             }
         }
 
         void salePointView_EditEmployeeEvent(object sender, EmployeeEventArgs e)
         {
-            EmployeeForm form = GlobalUtility.GetFormObject<EmployeeForm>(FormConstants.EMPLOYEE_FORM);
-            EmployeeInfoModel = e.EmployeeInfo;
-            form.ModelToForm();
-            form.txtHiddenSelectedEmployeeId.Text = e.SelectedEmployee.ToString();
-            form.ShowDialog((Form) sender);
-            e.EditedEmployee = EmployeeInfoModel;
+            
         }
 
         void salePointView_AddEmployeeEvent(object sender, EmployeeEventArgs e)
@@ -215,7 +210,19 @@ namespace AppFrameClient.Presenter.SalePoints
             {
                 employeeListView = value;
                 employeeListView.LoadEmployeesEvent += new System.EventHandler<EmployeeEventArgs>(employeeListView_LoadEmployeesEvent);
+                employeeListView.EditEmployeeEvent += new System.EventHandler<EmployeeEventArgs>(employeeListView_EditEmployeeEvent);
             }
+        }
+
+        void employeeListView_EditEmployeeEvent(object sender, EmployeeEventArgs e)
+        {
+            EmployeeForm form = GlobalUtility.GetFormObject<EmployeeForm>(FormConstants.EMPLOYEE_FORM);
+            EmployeeInfoModel = e.EmployeeInfo;
+            form.ModelToForm();
+            form.txtHiddenSelectedEmployeeId.Text = e.SelectedEmployee.ToString();
+            form.Status = ViewStatus.OPENDIALOG;
+            form.ShowDialog((Form)sender);
+            e.EditedEmployee = EmployeeInfoModel;           
         }
 
         void employeeListView_LoadEmployeesEvent(object sender, EmployeeEventArgs e)

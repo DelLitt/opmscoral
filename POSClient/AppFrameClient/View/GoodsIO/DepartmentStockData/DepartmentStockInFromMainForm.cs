@@ -992,7 +992,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void systemHotkey1_Pressed(object sender, EventArgs e)
         {
-            if (dgvDeptStockIn.CurrentCell != null)
+            if (dgvDeptStockIn.Focused && dgvDeptStockIn.CurrentCell != null)
             {
                 Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
                 

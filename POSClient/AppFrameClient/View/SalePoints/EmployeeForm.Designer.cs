@@ -30,7 +30,6 @@
         {
             this.txtEmployeeName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtTimeOfService = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +58,7 @@
             this.txtEmployeeName.Location = new System.Drawing.Point(110, 59);
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(476, 22);
-            this.txtEmployeeName.TabIndex = 0;
+            this.txtEmployeeName.TabIndex = 1;
             this.txtEmployeeName.TextChanged += new System.EventHandler(this.txtEmployeeName_TextChanged);
             // 
             // txtAddress
@@ -68,20 +67,12 @@
             this.txtAddress.Location = new System.Drawing.Point(110, 87);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(476, 22);
-            this.txtAddress.TabIndex = 1;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(110, 115);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(116, 22);
-            this.textBox4.TabIndex = 3;
+            this.txtAddress.TabIndex = 2;
             // 
             // txtTimeOfService
             // 
             this.txtTimeOfService.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimeOfService.Location = new System.Drawing.Point(470, 143);
+            this.txtTimeOfService.Location = new System.Drawing.Point(535, 120);
             this.txtTimeOfService.Name = "txtTimeOfService";
             this.txtTimeOfService.Size = new System.Drawing.Size(116, 22);
             this.txtTimeOfService.TabIndex = 4;
@@ -147,6 +138,7 @@
             this.txtDepartmentName.Name = "txtDepartmentName";
             this.txtDepartmentName.Size = new System.Drawing.Size(319, 22);
             this.txtDepartmentName.TabIndex = 12;
+            this.txtDepartmentName.TabStop = false;
             this.txtDepartmentName.Visible = false;
             // 
             // txtEmployeeId
@@ -157,7 +149,8 @@
             this.txtEmployeeId.Location = new System.Drawing.Point(110, 31);
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.Size = new System.Drawing.Size(116, 22);
-            this.txtEmployeeId.TabIndex = 13;
+            this.txtEmployeeId.TabIndex = 1;
+            this.txtEmployeeId.TabStop = false;
             // 
             // label7
             // 
@@ -183,7 +176,7 @@
             this.btnClose.Location = new System.Drawing.Point(654, 189);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(87, 25);
-            this.btnClose.TabIndex = 16;
+            this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -194,7 +187,7 @@
             this.btnSave.Location = new System.Drawing.Point(329, 189);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 25);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -205,7 +198,7 @@
             this.btnReset.Location = new System.Drawing.Point(422, 189);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(87, 25);
-            this.btnReset.TabIndex = 18;
+            this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Bỏ qua";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -216,7 +209,8 @@
             this.btnHelp.Location = new System.Drawing.Point(12, 189);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(87, 25);
-            this.btnHelp.TabIndex = 19;
+            this.btnHelp.TabIndex = 8;
+            this.btnHelp.TabStop = false;
             this.btnHelp.Text = "Giúp đỡ";
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
@@ -226,7 +220,7 @@
             this.txtSalary.Location = new System.Drawing.Point(110, 143);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(217, 22);
-            this.txtSalary.TabIndex = 20;
+            this.txtSalary.TabIndex = 3;
             // 
             // label8
             // 
@@ -244,7 +238,7 @@
             this.dtpCreateDate.Location = new System.Drawing.Point(592, 30);
             this.dtpCreateDate.Name = "dtpCreateDate";
             this.dtpCreateDate.Size = new System.Drawing.Size(107, 22);
-            this.dtpCreateDate.TabIndex = 22;
+            this.dtpCreateDate.TabIndex = 4;
             // 
             // txtHiddenDepartmentId
             // 
@@ -282,16 +276,15 @@
             this.Controls.Add(this.picEmployeePic);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtEmployeeId);
-            this.Controls.Add(this.txtDepartmentName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimeOfService);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtEmployeeName);
+            this.Controls.Add(this.txtDepartmentName);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "EmployeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -308,7 +301,6 @@
 
         private System.Windows.Forms.TextBox txtEmployeeName;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtTimeOfService;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

@@ -82,6 +82,10 @@ namespace AppFrameClient.View.SalePoints
             {
                 MessageBox.Show("Lưu nhân viên thành công");
             }
+            if(Status == ViewStatus.OPENDIALOG)
+            {
+                Close();
+            }
             btnReset_Click(null,null);
         }
 
@@ -108,7 +112,7 @@ namespace AppFrameClient.View.SalePoints
             EmployeeInfo employeeInfo = EmployeeController.EmployeeInfoModel;
             if (employeeInfo == null)
                 return;
-            txtDepartmentName.Text = employeeInfo.Employee.Department.DepartmentName;
+            //txtDepartmentName.Text = employeeInfo.Employee.Department.DepartmentName;
             //txtDepartmentId.Text = employeeInfo.DepartmentId.ToString();
             if (   employeeInfo.EmployeePK != null 
                 && employeeInfo.EmployeePK.EmployeeId != null)

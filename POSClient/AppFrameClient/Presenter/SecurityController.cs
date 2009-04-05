@@ -35,6 +35,8 @@ namespace AppFrameClient.Presenter
         {
             IList list = DepartmentLogic.FindAll(null);
             e.departmentList = list;
+            IList empList = EmployeeInfoLogic.FindAll(null);
+            e.employees = empList;
             IList loginList = LoginLogic.FindAll(null);
             e.userInfoList = loginList;
 
@@ -43,6 +45,11 @@ namespace AppFrameClient.Presenter
         public AppFrame.Logic.ILoginLogic LoginLogic
         {
             get;set;
+        }
+
+        public AppFrame.Logic.IEmployeeDetailLogic EmployeeInfoLogic
+        {
+            get; set;
         }
 
         #endregion

@@ -36,6 +36,7 @@
     <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
@@ -72,7 +73,7 @@
   <menu name="mnuReport" role="Administrator,Supervisor">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />    
     <menuitem name="mnuGoodsImportReport" role="Administrator,Supervisor" />
-    <menuitem name="mnuGoodsExportReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuGoodsExportReport" role="NotImplement" />
     <menuitem name="mnuDeptStockInReport" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptReStockReport" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptTempStockOutReport" role="Administrator,Supervisor" />
@@ -81,7 +82,7 @@
     <menuitem name="mnuMixReport" role="NotImplement" />
     <menuitem name="mnuRestockinReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTempStockoutReport" role="Administrator,Supervisor" />
-    <menuitem name="mnuGoodsSaleDepartmentDetail" role="Administrator,Supervisor" />    
+    <menuitem name="mnuGoodsSaleDepartmentDetail" role="NotImplement" />    
     <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
     <menuitem name="mnuMainDeptStockStatisticReport" role="Administrator,Supervisor" />
     <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />

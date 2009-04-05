@@ -405,10 +405,11 @@ namespace AppFrame.View
 
         private void mnuDeptStockInReport_Click(object sender, EventArgs e)
         {
-            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentStockInReportForm>(this,
+            /*Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentStockInReportForm>(this,
                                                                                           FormConstants.
                                                                                               DEPARTMENT_STOCK_IN_REPORT_FORM);
-            form.Show();
+            form.Show();*/
+            new Stock2DeptReportViewer().ShowDialog();
         }
 
         private void mnuProcessDepartmentStockDefect_Click(object sender, EventArgs e)
@@ -548,7 +549,8 @@ namespace AppFrame.View
 
         private void mnuAllStockReturnReport_Click(object sender, EventArgs e)
         {
-            new AllStockReportViewer().ShowDialog();
+            //new AllStockReportViewer().ShowDialog();
+            new MainStockReturnReportViewer().ShowDialog();
         }
 
         private void mnuReturnMainStockReport_Click(object sender, EventArgs e)
@@ -608,6 +610,16 @@ namespace AppFrame.View
         private void mnuDeptTempStockOutReport_Click(object sender, EventArgs e)
         {
             new  DeptTempStockoutReportViewer().ShowDialog();
+        }
+
+        private void mnuSalePoint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuDepartmentStockIn_Click(object sender, EventArgs e)
+        {
+            new DepartmentStockinReportViewer().ShowDialog();
         }
     }
 }

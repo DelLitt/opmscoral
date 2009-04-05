@@ -1264,5 +1264,10 @@ namespace AppFrameClient.View.GoodsSale
         {
             txtRetPrice.BackColor = Color.FromKnownColor(KnownColor.Control);
         }
+
+        private void SaveOrderShortcut_Pressed(object sender, EventArgs e)
+        {
+            btnPrint_Click(null, e);
+        }
     }
 }
