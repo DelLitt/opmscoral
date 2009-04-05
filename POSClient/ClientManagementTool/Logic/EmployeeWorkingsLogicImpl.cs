@@ -30,7 +30,7 @@ namespace ClientManagementTool.Logic
         void employeeWorkingView_LoadEmployeesWorkingDay(object sender, EmployeeWorkingsLogicEventArg e)
         {
             ObjectCriteria wDayCrit = new ObjectCriteria();
-            //wDayCrit.AddEqCriteria("Department.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            wDayCrit.AddEqCriteria("Department.DepartmentId", CurrentDepartment.Get().DepartmentId);
             wDayCrit.AddBetweenCriteria("EmployeeWorkingDayPK.WorkingDay", DateUtility.ZeroTime(DateTime.Now),
                                         DateUtility.MaxTime(DateTime.Now));
 
@@ -66,51 +66,54 @@ namespace ClientManagementTool.Logic
             if (list != null && list.Count == 1)
             {
                 EmployeeInfo info = (EmployeeInfo)list[0];
-                EmployeeWorkingDay workingDay = new EmployeeWorkingDay();
-                workingDay.CreateDate = DateTime.Now;
-                workingDay.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                workingDay.UpdateDate = DateTime.Now;
-                workingDay.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                workingDay.StartTime = DateTime.Now;
-                workingDay.EmployeeWorkingDayPK = new EmployeeWorkingDayPK
-                                               {
-                                                   //DepartmentId = CurrentDepartment.Get().DepartmentId,
-                                                   EmployeeId = info.EmployeePK.EmployeeId,
-                                                   WorkingDay = DateTime.Now
-                                               };
+                EmployeeWorkingDay workingDay = e.EmployeeWorkingDay;
+                if (workingDay == null)
+                {
+                    workingDay = new EmployeeWorkingDay();
+                    workingDay.CreateDate = DateTime.Now;
+                    workingDay.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    workingDay.UpdateDate = DateTime.Now;
+                    workingDay.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    //workingDay.StartTime = DateTime.Now;
+                    
+                    workingDay.EndTime = DateTime.MinValue;
+                    workingDay.EmployeeWorkingDayPK = new EmployeeWorkingDayPK
+                                                          {
+                                                              //DepartmentId = CurrentDepartment.Get().DepartmentId,
+                                                              EmployeeId = info.EmployeePK.EmployeeId,
+                                                              WorkingDay = DateTime.Now
+                                                          };
 
-                workingDay.Employee = info.Employee;
-                workingDay.Department = CurrentDepartment.Get();
-                workingDay.DelFlg = 0;
-                workingDay.ExclusiveKey = 1;
+                    workingDay.Employee = info.Employee;
+                    workingDay.Department = CurrentDepartment.Get();
+                    workingDay.DelFlg = 0;
+                    workingDay.ExclusiveKey = 1;
+                }
 
                 ObjectCriteria wDayCrit = new ObjectCriteria();
-                //wDayCrit.AddEqCriteria("EmployeeWorkingDayPK.DepartmentId", workingDay.EmployeeWorkingDayPK.DepartmentId);
+                wDayCrit.AddEqCriteria("Department.DepartmentId", workingDay.Department.DepartmentId);
                 wDayCrit.AddEqCriteria("EmployeeWorkingDayPK.EmployeeId", workingDay.EmployeeWorkingDayPK.EmployeeId);
                 wDayCrit.AddBetweenCriteria("EmployeeWorkingDayPK.WorkingDay", DateUtility.ZeroTime(DateTime.Now),
                                             DateUtility.MaxTime(DateTime.Now));
 
-                /*IList wDayResult = EmployeeWorkingDayLogic.FindAll(wDayCrit);
+                IList wDayResult = EmployeeWorkingDayLogic.FindAll(wDayCrit);
                 if (wDayResult == null || wDayResult.Count == 0)
                 {
                     workingDay.StartTime = DateTime.Now;
-
+                    EmployeeWorkingDayLogic.Add(workingDay);
+                    
                 }
                 else
                 {
-                    int count = wDayResult.Count;
-                    if ((count % 2) == 0)
-                    {
-                        workingDay.StartTime = DateTime.Now;
-                    }
-                    else
-                    {
-                        workingDay.EndTime = DateTime.Now;
-                    }
-                }*/
-               
-                EmployeeWorkingDayLogic.Add(workingDay);
+                    EmployeeWorkingDay currWDay = (EmployeeWorkingDay) wDayResult[0];
+                    currWDay.EndTime = DateTime.Now;
+                    workingDay.EndTime = currWDay.EndTime;
+                    EmployeeWorkingDayLogic.Update(currWDay);
+
+                }
+
                 e.EmployeeWorkingDay = workingDay;
+                
 
                 e.HasErrors = false;
             }

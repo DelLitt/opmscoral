@@ -62,9 +62,17 @@ namespace ClientManagementTool.View.Management
         {
             EmployeeWorkingsLogicEventArg eventArg = new EmployeeWorkingsLogicEventArg();
             eventArg.EmployeeId = txtEmployeeId.Text;
+            EmployeeWorkingDay day = GetFromWorkingList(txtEmployeeId.Text, ewdList);
+            if(day!=null)
+            {
+                eventArg.EmployeeWorkingDay = day;
+            }
+            
+
             bool hasCheckOut = IsCheckOut(txtEmployeeId.Text, ewdList);
             if (!hasCheckOut)
             {
+
                 EventUtility.fireEvent(SaveEmployeeWorkingDay, this, eventArg);
                 if(eventArg.HasErrors)
                 {
@@ -75,7 +83,12 @@ namespace ClientManagementTool.View.Management
                     MessageBox.Show("Có nhân viên quét thẻ ...");
                     if(eventArg.EmployeeWorkingDay!=null)
                     {
-                        ewdList.Add(eventArg.EmployeeWorkingDay);
+                        int listIndex = -1;
+                        if(!UpdateEndTimeInList(ewdList,eventArg.EmployeeWorkingDay))
+                        {
+                            ewdList.Add(eventArg.EmployeeWorkingDay);    
+                        }
+                        
                         bdsEmployeeWorking.EndEdit();
                         dgvEmployeeWorking.Refresh();
                         dgvEmployeeWorking.Invalidate();
@@ -88,6 +101,38 @@ namespace ClientManagementTool.View.Management
                 MessageBox.Show("Nhân viên này đã check-out");
             }
             ClearInput();
+        }
+
+        private EmployeeWorkingDay GetFromWorkingList(string text, EmployeeWorkingDaysCollection collection)
+        {
+            if(string.IsNullOrEmpty(txtEmployeeId.Text))
+            {
+                return null;
+            }
+            foreach (EmployeeWorkingDay day in collection)
+            {
+                if(day.Employee.EmployeeInfo.Barcode.Equals(txtEmployeeId.Text))
+                {
+                    return day;
+                }
+            }
+            return null;
+        }
+
+        private bool UpdateEndTimeInList(EmployeeWorkingDaysCollection collection, EmployeeWorkingDay day)
+        {
+            foreach (EmployeeWorkingDay workingDay in collection)
+            {
+                if(workingDay.EmployeeWorkingDayPK.EmployeeId.Equals(day.EmployeeWorkingDayPK.EmployeeId)
+                    && workingDay.Department.DepartmentId == day.Department.DepartmentId
+                    && workingDay.EmployeeWorkingDayPK.WorkingDay.CompareTo(day.EmployeeWorkingDayPK.WorkingDay) == 0
+                    )
+                {
+                    workingDay.EndTime = day.EndTime;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void ClearInput()
@@ -103,14 +148,23 @@ namespace ClientManagementTool.View.Management
                 return false;
             }
             int count = 0;
+            
             foreach (EmployeeWorkingDay day in collection)
             {
                 if(day.Employee.EmployeeInfo.Barcode.Equals(text))
                 {
-                    count += 1;
+                    //count += 1;
+                    if(day.EndTime.CompareTo(day.StartTime)< 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
             }
-            return (count >= 2);
+            return false;
         }
 
         private void EmployeeWorkingsForm_Load(object sender, EventArgs e)
@@ -145,7 +199,13 @@ namespace ClientManagementTool.View.Management
         private void timer1_Tick(object sender, EventArgs e)
         {
             txtTime.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            txtTime.Refresh();
             this.Refresh();
+        }
+
+        private void dgvEmployeeWorking_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -122,8 +122,9 @@
             this.dgvEmployeeWorking.Location = new System.Drawing.Point(12, 87);
             this.dgvEmployeeWorking.Name = "dgvEmployeeWorking";
             this.dgvEmployeeWorking.ReadOnly = true;
-            this.dgvEmployeeWorking.Size = new System.Drawing.Size(552, 250);
+            this.dgvEmployeeWorking.Size = new System.Drawing.Size(575, 250);
             this.dgvEmployeeWorking.TabIndex = 3;
+            this.dgvEmployeeWorking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployeeWorking_CellContentClick);
             // 
             // bdsEmployeeWorking
             // 
@@ -131,7 +132,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(489, 343);
+            this.btnClose.Location = new System.Drawing.Point(516, 343);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 4;
@@ -173,6 +174,7 @@
             this.Column1.HeaderText = "Mã NV";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 80;
             // 
             // Employee
             // 
@@ -180,37 +182,34 @@
             this.Employee.HeaderText = "Tên nhân viên";
             this.Employee.Name = "Employee";
             this.Employee.ReadOnly = true;
-            this.Employee.Width = 250;
+            this.Employee.Width = 150;
             // 
             // WorkingDay
             // 
             this.WorkingDay.DataPropertyName = "EmployeeWorkingDayPK.WorkingDay";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
             this.WorkingDay.DefaultCellStyle = dataGridViewCellStyle2;
-            this.WorkingDay.HeaderText = "Ngày quẹt thẻ";
+            this.WorkingDay.HeaderText = "Ngày";
             this.WorkingDay.Name = "WorkingDay";
             this.WorkingDay.ReadOnly = true;
-            this.WorkingDay.Width = 150;
             // 
             // StartTime
             // 
-            this.StartTime.DataPropertyName = "StartTime";
+            this.StartTime.DataPropertyName = "DisplayStartTime";
             dataGridViewCellStyle3.Format = "HH:mm:ss";
             this.StartTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.StartTime.HeaderText = "Bắt đầu";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
-            this.StartTime.Visible = false;
             // 
             // EndTime
             // 
-            this.EndTime.DataPropertyName = "EndTime";
+            this.EndTime.DataPropertyName = "DisplayEndTime";
             dataGridViewCellStyle4.Format = "HH:mm:ss";
             this.EndTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.EndTime.HeaderText = "Kết thúc";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
-            this.EndTime.Visible = false;
             // 
             // Period
             // 
@@ -288,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 372);
+            this.ClientSize = new System.Drawing.Size(595, 372);
             this.Controls.Add(this.btnInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
