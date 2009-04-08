@@ -160,7 +160,7 @@
             // 
             this.lblEmployeesList.AutoSize = true;
             this.lblEmployeesList.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeesList.Location = new System.Drawing.Point(9, 153);
+            this.lblEmployeesList.Location = new System.Drawing.Point(9, 182);
             this.lblEmployeesList.Name = "lblEmployeesList";
             this.lblEmployeesList.Size = new System.Drawing.Size(120, 14);
             this.lblEmployeesList.TabIndex = 9;
@@ -197,7 +197,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEmployees.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmployees.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvEmployees.Location = new System.Drawing.Point(12, 172);
+            this.dgvEmployees.Location = new System.Drawing.Point(12, 201);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployees.Size = new System.Drawing.Size(811, 65);
@@ -290,7 +290,7 @@
             // btnCheckAll
             // 
             this.btnCheckAll.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckAll.Location = new System.Drawing.Point(12, 243);
+            this.btnCheckAll.Location = new System.Drawing.Point(12, 272);
             this.btnCheckAll.Name = "btnCheckAll";
             this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnCheckAll.TabIndex = 11;
@@ -302,7 +302,7 @@
             // btnUncheckAll
             // 
             this.btnUncheckAll.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUncheckAll.Location = new System.Drawing.Point(96, 243);
+            this.btnUncheckAll.Location = new System.Drawing.Point(96, 272);
             this.btnUncheckAll.Name = "btnUncheckAll";
             this.btnUncheckAll.Size = new System.Drawing.Size(75, 23);
             this.btnUncheckAll.TabIndex = 12;
@@ -314,7 +314,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(500, 243);
+            this.btnAdd.Location = new System.Drawing.Point(500, 272);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 13;
@@ -326,7 +326,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(660, 243);
+            this.btnDelete.Location = new System.Drawing.Point(660, 272);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 14;
@@ -338,7 +338,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(581, 243);
+            this.btnEdit.Location = new System.Drawing.Point(581, 272);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 15;
@@ -350,7 +350,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(748, 273);
+            this.btnClose.Location = new System.Drawing.Point(748, 149);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
@@ -361,7 +361,7 @@
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(12, 273);
+            this.btnHelp.Location = new System.Drawing.Point(12, 149);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(75, 23);
             this.btnHelp.TabIndex = 17;
@@ -401,7 +401,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(500, 273);
+            this.btnSave.Location = new System.Drawing.Point(500, 149);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 23);
             this.btnSave.TabIndex = 21;
@@ -412,7 +412,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(585, 273);
+            this.btnReset.Location = new System.Drawing.Point(585, 149);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 22;
@@ -481,30 +481,30 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 319);
+            this.ClientSize = new System.Drawing.Size(840, 181);
             this.Controls.Add(this.btnActive);
-            this.Controls.Add(this.dgvEmployees);
             this.Controls.Add(this.lblActiveDepartment);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvEmployees);
             this.Controls.Add(this.txtActiveDepartment);
             this.Controls.Add(this.txtDepartmentId);
             this.Controls.Add(this.lblDepartmentCost);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpCreateDate);
             this.Controls.Add(this.txtDeparmentCost);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblEmployeesList);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblEmployeesNumber);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnCheckAll);
-            this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.txtEmployeesNumber);
             this.Controls.Add(this.txtAddress);

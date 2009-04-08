@@ -346,6 +346,10 @@ namespace AppFrameClient.View.GoodsSale
                 ObjectConverter.ConvertToNonGenericList<PurchaseOrderDetail>(pODList);
                 bdsBill.EndEdit();
                 dgvBill.Focus();
+
+                GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+                txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+                CalculateCharge();
             }
             
             
@@ -1268,6 +1272,12 @@ namespace AppFrameClient.View.GoodsSale
         private void SaveOrderShortcut_Pressed(object sender, EventArgs e)
         {
             btnPrint_Click(null, e);
+        }
+
+        private void QuickSaveOrderShortcut_Pressed(object sender, EventArgs e)
+        {
+            txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
+            btnPrint_Click(null,e);
         }
     }
 }

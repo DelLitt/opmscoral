@@ -560,8 +560,22 @@ namespace AppFrame.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-            Stream inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.MenuPermissions.xml");
+            Stream inStream = null;
+            if(ClientSetting.IsClient())
+            {
+                inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientMenuPermissions.xml");    
+            }
+            else
+            {
+                if(ClientSetting.IsServer())
+                {
+                    inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ServerMenuPermissions.xml");    
+                }
+                else
+                {
+                    inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.NAMenuPermissions.xml");    
+                }
+            }
 
             // load menu permission
             MenuItemPermission menuItemPermission = new MenuItemPermission(MenuItemPermission.INVISIBLE);

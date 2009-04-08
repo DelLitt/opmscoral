@@ -29,6 +29,14 @@ namespace AppFrame
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if(!ClientSetting.IsClient() && !ClientSetting.IsServer())
+            {
+                ClientServerSettingForm settingForm = new ClientServerSettingForm();
+                settingForm.ShowDialog();
+                settingForm.Refresh();
+            }
+
             splashScreen = new SplashScreen();
             splashScreen.Show();
             splashScreen.Refresh();

@@ -1302,6 +1302,9 @@
     <EmbeddedResource Include="View\WaitingForm.resx">
       <DependentUpon>WaitingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientMenuPermissions.xml" />
+    <EmbeddedResource Include="ServerMenuPermissions.xml" />
+    <EmbeddedResource Include="NAMenuPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
     <None Include="Properties\DataSources\AppFrame.Collection.EmployeeInfoCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo1.datasource" />

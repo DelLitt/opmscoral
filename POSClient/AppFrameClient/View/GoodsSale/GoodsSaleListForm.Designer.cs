@@ -52,14 +52,6 @@
             this.lblCustomer = new System.Windows.Forms.Label();
             this.txtBillNumber = new System.Windows.Forms.TextBox();
             this.dgvSaleList = new System.Windows.Forms.DataGridView();
-            this.bdsPurchaseOrders = new System.Windows.Forms.BindingSource(this.components);
-            this.chkMorningSort = new System.Windows.Forms.CheckBox();
-            this.chkEveningSort = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.txtTotalAmount = new System.Windows.Forms.TextBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +60,14 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsPurchaseOrders = new System.Windows.Forms.BindingSource(this.components);
+            this.chkMorningSort = new System.Windows.Forms.CheckBox();
+            this.chkEveningSort = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.txtTotalAmount = new System.Windows.Forms.TextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).BeginInit();
@@ -288,13 +288,80 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSaleList.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvSaleList.Location = new System.Drawing.Point(11, 119);
+            this.dgvSaleList.Location = new System.Drawing.Point(17, 124);
             this.dgvSaleList.Name = "dgvSaleList";
             this.dgvSaleList.ReadOnly = true;
             this.dgvSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSaleList.Size = new System.Drawing.Size(993, 330);
             this.dgvSaleList.TabIndex = 3;
             this.dgvSaleList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PurchaseOrderPK.PurchaseOrderId";
+            this.Column1.HeaderText = "Số hóa đơn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "PurchaseOrderDescription";
+            this.Column2.HeaderText = "Tên hàng";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 300;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "PurchasePrice";
+            dataGridViewCellStyle2.Format = "##,##0";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.HeaderText = "Tổng tiền";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // CreateDate
+            // 
+            this.CreateDate.DataPropertyName = "CreateDate";
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
+            this.CreateDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CreateDate.HeaderText = "Ngày phát hành";
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Customer.CustomerName";
+            this.Column4.HeaderText = "Tên khách";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "CreateId";
+            this.Column5.HeaderText = "Tên nhân viên";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Ca trực";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 200;
+            // 
+            // delFlgDataGridViewTextBoxColumn
+            // 
+            this.delFlgDataGridViewTextBoxColumn.DataPropertyName = "DelFlg";
+            this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
+            this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
+            this.delFlgDataGridViewTextBoxColumn.ReadOnly = true;
+            this.delFlgDataGridViewTextBoxColumn.Visible = false;
             // 
             // bdsPurchaseOrders
             // 
@@ -369,73 +436,6 @@
             // 
             this.saveFileDialog1.DefaultExt = "xls";
             this.saveFileDialog1.Filter = "Excel Report (*.xls)|*.xls";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "PurchaseOrderPK.PurchaseOrderId";
-            this.Column1.HeaderText = "Số hóa đơn";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "PurchaseOrderDescription";
-            this.Column2.HeaderText = "Tên hàng";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 300;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "PurchasePrice";
-            dataGridViewCellStyle2.Format = "##,##0";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column3.HeaderText = "Tổng tiền";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // CreateDate
-            // 
-            this.CreateDate.DataPropertyName = "CreateDate";
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            this.CreateDate.DefaultCellStyle = dataGridViewCellStyle3;
-            this.CreateDate.HeaderText = "Ngày phát hành";
-            this.CreateDate.Name = "CreateDate";
-            this.CreateDate.ReadOnly = true;
-            this.CreateDate.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Customer.CustomerName";
-            this.Column4.HeaderText = "Tên khách";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "CreateId";
-            this.Column5.HeaderText = "Tên nhân viên";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Ca trực";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 200;
-            // 
-            // delFlgDataGridViewTextBoxColumn
-            // 
-            this.delFlgDataGridViewTextBoxColumn.DataPropertyName = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
-            this.delFlgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.delFlgDataGridViewTextBoxColumn.Visible = false;
             // 
             // GoodsSaleListForm
             // 
