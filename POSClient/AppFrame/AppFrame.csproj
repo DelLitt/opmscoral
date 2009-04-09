@@ -553,6 +553,7 @@
     <Compile Include="Presenter\GoodsSale\IGoodsSaleReturnController.cs" />
     <Compile Include="Presenter\IAuthService.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
+    <Compile Include="Presenter\IStockOutConfirmController.cs" />
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
     <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
@@ -573,6 +574,7 @@
     <Compile Include="Presenter\SalePoints\SalePointEventArgs.cs" />
     <Compile Include="Presenter\SalePoints\SalePointListEventArgs.cs" />
     <Compile Include="Presenter\SecurityEventArgs.cs" />
+    <Compile Include="Presenter\StockOutConfirmEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -647,6 +649,7 @@
     <Compile Include="View\GoodsIO\IProductMasterSearchOrCreateView.cs" />
     <Compile Include="View\GoodsIO\IProductMasterView.cs" />
     <Compile Include="View\GoodsIO\IStockCreateView.cs" />
+    <Compile Include="View\GoodsIO\IStockOutConfirmView.cs" />
     <Compile Include="View\GoodsIO\IStockSearchView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IInventoryCheckingView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IMainStockInSearchView.cs" />
