@@ -30,8 +30,8 @@
 
         <entry key="connection.driver_class"
                value="NHibernate.Driver.MySqlDataDriver"/>
-        <entry key="show_sql"
-               value="true"/>
+        <!--<entry key="show_sql"
+               value="true"/>-->
       </dictionary>
     </property>
 
