@@ -439,7 +439,7 @@
             <Width>1.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <FontWeight>700</FontWeight>
               <TextAlign>Right</TextAlign>
               <PaddingRight>2pt</PaddingRight>
@@ -452,7 +452,7 @@
           <Textbox Name="textbox5">
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <FontWeight>700</FontWeight>
               <TextAlign>Right</TextAlign>
               <PaddingRight>2pt</PaddingRight>
@@ -468,7 +468,7 @@
             <Width>1.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <FontWeight>700</FontWeight>
               <TextAlign>Right</TextAlign>
               <PaddingRight>2pt</PaddingRight>
@@ -481,7 +481,7 @@
             <Top>0.25in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <FontWeight>700</FontWeight>
               <TextAlign>Right</TextAlign>
               <PaddingRight>2pt</PaddingRight>
@@ -516,6 +516,7 @@
           <FontFamily>Tahoma</FontFamily>
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
         </Style>
         <ZIndex>3</ZIndex>
         <CanGrow>true</CanGrow>
@@ -532,7 +533,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Top>0.25in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>2</ZIndex>
@@ -543,7 +544,8 @@ XIN CÁM ƠN QUÝ KHÁCH!
           <Textbox Name="textbox11">
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>1</ZIndex>
@@ -557,8 +559,9 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Width>0.75in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <TextAlign>Right</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
@@ -572,14 +575,28 @@ XIN CÁM ƠN QUÝ KHÁCH!
         <ZIndex>1</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
         <ReportItems>
+          <Textbox Name="textbox12">
+            <Top>0.75in</Top>
+            <Width>0.5in</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <TextAlign>Right</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Value>SHĐ:</Value>
+          </Textbox>
           <Textbox Name="textbox21">
             <rd:DefaultName>textbox21</rd:DefaultName>
             <Top>0.25in</Top>
             <Style>
               <FontStyle>Italic</FontStyle>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <TextAlign>Right</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingRight>2pt</PaddingRight>
             </Style>
             <ZIndex>6</ZIndex>
@@ -589,67 +606,61 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Value>="Ngày :" + Day(Today()).ToString()  + "/" + Month(Today()).ToString() + "/" + Year(Today()).ToString()</Value>
           </Textbox>
           <Textbox Name="textbox17">
-            <Top>0.75in</Top>
+            <Top>0.25in</Top>
+            <Width>0.75in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>5</ZIndex>
             <CanGrow>true</CanGrow>
-            <Left>0.75in</Left>
-            <Value>=IIf(Hour(Fields!CreateDate.Value)&gt;=14,"Ca chiều","Ca sáng")</Value>
+            <Left>0.5in</Left>
+            <Height>0.25in</Height>
+            <Value>=IIf(Hour(Fields!CreateDate.Value)&gt;=16,"Chiều","Sáng")</Value>
           </Textbox>
           <Textbox Name="textbox16">
-            <Top>0.75in</Top>
-            <Width>0.75in</Width>
+            <Top>0.25in</Top>
+            <Width>0.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
               <TextAlign>Right</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <ZIndex>4</ZIndex>
             <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
             <Value>Ca trực:</Value>
           </Textbox>
           <Textbox Name="textbox15">
             <Top>0.5in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>8pt</FontSize>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>3</ZIndex>
             <CanGrow>true</CanGrow>
-            <Left>0.75in</Left>
+            <Left>0.5in</Left>
             <Height>0.25in</Height>
             <Value>=Fields!CreateId.Value</Value>
           </Textbox>
-          <Textbox Name="textbox14">
-            <Top>0.25in</Top>
-            <Width>1.25in</Width>
+          <Textbox Name="textbox13">
+            <Top>0.5in</Top>
+            <Width>0.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
-              <PaddingLeft>2pt</PaddingLeft>
+              <FontSize>8pt</FontSize>
+              <TextAlign>Right</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <ZIndex>2</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value>=" SHD:" + Fields!PurchaseOrderPK.Value.PurchaseOrderId</Value>
-          </Textbox>
-          <Textbox Name="textbox13">
-            <Top>0.5in</Top>
-            <Width>0.75in</Width>
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
-              <TextAlign>Right</TextAlign>
-            </Style>
-            <ZIndex>1</ZIndex>
-            <CanGrow>true</CanGrow>
-            <Height>0.25in</Height>
-            <Value>Nhân viên:</Value>
+            <Value>NV:</Value>
           </Textbox>
           <Textbox Name="textbox9">
             <rd:DefaultName>textbox9</rd:DefaultName>
@@ -664,9 +675,22 @@ XIN CÁM ƠN QUÝ KHÁCH!
               <PaddingTop>1pt</PaddingTop>
               <PaddingBottom>1pt</PaddingBottom>
             </Style>
+            <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
             <Value>HOÁ ĐƠN BÁN HÀNG</Value>
+          </Textbox>
+          <Textbox Name="textbox14">
+            <Top>0.75in</Top>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>0.5in</Left>
+            <Value>= Fields!PurchaseOrderPK.Value.PurchaseOrderId</Value>
           </Textbox>
         </ReportItems>
         <Top>0.5in</Top>
@@ -686,11 +710,12 @@ XIN CÁM ƠN QUÝ KHÁCH!
                     <Textbox Name="textbox4">
                       <rd:DefaultName>textbox4</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
                         <TextAlign>Center</TextAlign>
                       </Style>
                       <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=RowNumber("table1")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -700,7 +725,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>ProductMaster</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <TextAlign>Left</TextAlign>
                       </Style>
                       <ZIndex>2</ZIndex>
@@ -715,7 +740,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>Quantity_2</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -731,7 +756,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>Price_2</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
@@ -759,7 +784,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>textbox1</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
@@ -777,7 +802,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -794,7 +819,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Right</TextAlign>
@@ -813,7 +838,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                       <rd:DefaultName>textbox10</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Right</TextAlign>
@@ -845,7 +870,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
             <Width>0.5in</Width>
           </TableColumn>
         </TableColumns>
-        <Height>0.625in</Height>
+        <Height>0.62499in</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -874,7 +899,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -894,7 +919,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -914,7 +939,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8.5pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>2pt</PaddingRight>
