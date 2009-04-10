@@ -513,6 +513,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DialogResult dResult = MessageBox.Show("Bạn muốn xuất hàng cho cửa hàng " + cbbDept.SelectedText + " ?", "Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2);
+
+            if(dResult != System.Windows.Forms.DialogResult.Yes)
+            {
+                return;
+            }
+
             bool isNeedClearData = (deptSI == null || deptSI.DepartmentStockInPK == null || string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId));
             DepartmentStockIn result = SaveDeptStockIn(true);
 

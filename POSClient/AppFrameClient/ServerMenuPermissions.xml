@@ -82,7 +82,7 @@
     <menuitem name="mnuMixReport" role="NotImplement" />
     <menuitem name="mnuRestockinReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTempStockoutReport" role="Administrator,Supervisor" />
-    <menuitem name="mnuGoodsSaleDepartmentDetail" role="NotImplement" />
+    <menuitem name="mnuGoodsSaleDepartmentDetail" role="Administrator,Supervisor" />
     <menuitem name="mnuStockCollection" role="Administrator,Supervisor" />
     <menuitem name="mnuMainDeptStockStatisticReport" role="Administrator,Supervisor" />
     <menuitem name="mnuMainReturnPOReport" role="Administrator,Supervisor" />

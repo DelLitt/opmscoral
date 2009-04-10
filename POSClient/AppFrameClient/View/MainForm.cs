@@ -317,10 +317,12 @@ namespace AppFrame.View
 
         private void mnuGoodsImportReport_Click(object sender, EventArgs e)
         {
-            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<frmStockinStatistic>(this, FormConstants.REPORT_STOCK_IN_FORM);
-            stockInReportForm.Show();
-//            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<MainStockInSearchReportForm>(this, FormConstants.MAIN_STOCK_IN_SEARCH_REPORT_FORM);
-//            stockInReportForm.Show();
+            /*Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<frmStockinStatistic>(this, FormConstants.REPORT_STOCK_IN_FORM);
+            stockInReportForm.Show();*/
+
+        //            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<MainStockInSearchReportForm>(this, FormConstants.MAIN_STOCK_IN_SEARCH_REPORT_FORM);
+        //            stockInReportForm.Show();
+            new StockInReportViewer().ShowDialog();
 
         }
 
