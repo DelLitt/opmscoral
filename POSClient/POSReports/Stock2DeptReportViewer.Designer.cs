@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.stockOutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -39,17 +41,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.departmentId = new System.Windows.Forms.ComboBox();
-            this.posDataSet = new POSReports.posDataSet();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.stockOutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.StockOutTableAdapter = new POSReports.posDataSetTableAdapters.StockOutTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // stockOutBindingSource
+            // 
+            this.stockOutBindingSource.DataMember = "stockOut";
+            this.stockOutBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -127,6 +137,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Tạo báo cáo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -162,11 +173,6 @@
             this.departmentId.TabIndex = 7;
             this.departmentId.ValueMember = "DEPARTMENT_ID";
             // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // departmentBindingSource
             // 
             this.departmentBindingSource.DataMember = "department";
@@ -189,11 +195,6 @@
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // stockOutBindingSource
-            // 
-            this.stockOutBindingSource.DataMember = "stockOut";
-            this.stockOutBindingSource.DataSource = this.posDataSet;
-            // 
             // StockOutTableAdapter
             // 
             this.StockOutTableAdapter.ClearBeforeFill = true;
@@ -208,11 +209,11 @@
             this.Name = "Stock2DeptReportViewer";
             this.Text = "BÁO CÁO PHÂN PHỐI HÀNG";
             this.Load += new System.EventHandler(this.Stock2DeptReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stockOutBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

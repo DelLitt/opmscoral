@@ -58,12 +58,18 @@ namespace POSReports
 
         private void reportViewer1_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             try
             {
                 this.StockOutTableAdapter.Fill(this.posDataSet.stockOut, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value),
                                                Int32.Parse(departmentId.SelectedValue.ToString()));
                 this.reportViewer1.RefreshReport();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ nguwofi quản trị!");
             }
