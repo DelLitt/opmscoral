@@ -951,8 +951,15 @@ namespace AppFrameClient.View.GoodsSale
 
         private void systemHotkey2_Pressed(object sender, EventArgs e)
         {
+            if(!dgvBill.Focused || dgvBill.CurrentCell==null)
+            {
+                return;
+            }
             btnDelete_Click(sender,e);
             CreateRowNumbers();
+            CalculateCharge();
+            RemoveEmptyRowFromList(pODList);
+
         }
 
         private void txtCharge_TextChanged(object sender, EventArgs e)
@@ -1098,7 +1105,13 @@ namespace AppFrameClient.View.GoodsSale
                 retOrderDetail.Price = 0 - retOrderDetail.Price;
                 pODList.Add(retOrderDetail);
                 bdsBill.EndEdit();
+                
+                CreateRowNumbers();
+                CalculateCharge();
+                RemoveEmptyRowFromList(pODList);
+                ClearReturnInput();
                 ClearInput();
+                txtBarcode.Focus();
             }
             else // in case undefined order
             {
@@ -1278,6 +1291,66 @@ namespace AppFrameClient.View.GoodsSale
         {
             txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
             btnPrint_Click(null,e);
+        }
+
+        private void FindRetOrder_Pressed(object sender, EventArgs e)
+        {
+            btnPOLookup_Click(null,null);
+        }
+
+        private void FindRetBarcode_Pressed(object sender, EventArgs e)
+        {
+            btnRetBarcodeLookup_Click(null,null);
+        }
+
+        private void dgvBillRow1_Pressed(object sender, EventArgs e)
+        {
+            if(dgvBill.Rows.Count < 1 )
+            {
+                return;
+            }
+            dgvBill.CurrentCell = dgvBill[2, 0];
+            dgvBill.Focus();
+        }
+
+        private void dgvBillRow2_Pressed(object sender, EventArgs e)
+        {
+            if (dgvBill.Rows.Count < 2)
+            {
+                return;
+            }
+            dgvBill.CurrentCell = dgvBill[2, 1];
+            dgvBill.Focus();
+        }
+
+        private void dgvBillRow4_Pressed(object sender, EventArgs e)
+        {
+            if (dgvBill.Rows.Count < 4)
+            {
+                return;
+            }
+            dgvBill.CurrentCell = dgvBill[2, 3];
+            dgvBill.Focus();
+        }
+
+        private void dgvBillRow3_Pressed(object sender, EventArgs e)
+        {
+            if (dgvBill.Rows.Count < 3)
+            {
+                return;
+            }
+            dgvBill.CurrentCell = dgvBill[2, 2];
+            dgvBill.Focus();
+        }
+
+        private void dgvBillRow5_Pressed(object sender, EventArgs e)
+        {
+            if (dgvBill.Rows.Count < 5)
+            {
+                return;
+            }
+            dgvBill.CurrentCell = dgvBill[2, 4];
+            dgvBill.Focus();
         }
     }
 }

@@ -513,7 +513,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult dResult = MessageBox.Show("Bạn muốn xuất hàng cho cửa hàng " + cbbDept.SelectedText + " ?", "Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2);
+            
+            string deptName = "";
+            try
+            {
+                int index = cbbDept.SelectedIndex;
+                deptName = ((Department)bdsDept[index]).DepartmentName;
+            }
+            catch (Exception)
+            {
+                
+            }
+            DialogResult dResult = MessageBox.Show("Bạn muốn xuất hàng cho cửa hàng " + deptName + " ?", "Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2);
 
             if(dResult != System.Windows.Forms.DialogResult.Yes)
             {

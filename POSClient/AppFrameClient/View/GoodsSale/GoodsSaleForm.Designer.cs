@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource57 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource58 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource59 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource60 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource61 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource62 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource63 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsSaleForm));
             this.ProductReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderDetailReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -140,6 +140,13 @@
             this.txtRetBarcodeShortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.SaveOrderShortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.QuickSaveOrderShortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.dgvBillRow1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.dgvBillRow2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.dgvBillRow3 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.dgvBillRow4 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.dgvBillRow5 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.FindRetBarcode = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.FindRetOrder = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
@@ -186,8 +193,8 @@
             this.dgvBill.AllowUserToAddRows = false;
             this.dgvBill.AllowUserToDeleteRows = false;
             this.dgvBill.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.PowderBlue;
-            this.dgvBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.PowderBlue;
+            this.dgvBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
             this.dgvBill.AutoGenerateColumns = false;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -210,21 +217,21 @@
             this.purchaseOrderDataGridViewTextBoxColumn,
             this.taxDataGridViewTextBoxColumn});
             this.dgvBill.DataSource = this.bdsBill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.Format = "##,##0";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle42.Format = "##,##0";
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle42;
             this.dgvBill.Location = new System.Drawing.Point(13, 240);
             this.dgvBill.MultiSelect = false;
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.RowHeadersWidth = 30;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.dgvBill.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.Black;
+            this.dgvBill.RowsDefaultCellStyle = dataGridViewCellStyle43;
             this.dgvBill.Size = new System.Drawing.Size(985, 286);
             this.dgvBill.TabIndex = 20;
             this.dgvBill.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvBill_RowPostPaint);
@@ -408,10 +415,10 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.Format = "N0";
+            dataGridViewCellStyle44.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle44;
             this.quantityDataGridViewTextBoxColumn.Frozen = true;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.MaxLength = 0;
@@ -423,10 +430,10 @@
             // columnPrice
             // 
             this.columnPrice.DataPropertyName = "Price";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.Format = "N0";
+            dataGridViewCellStyle45.NullValue = null;
+            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle45;
             this.columnPrice.Frozen = true;
             this.columnPrice.HeaderText = "Giá";
             this.columnPrice.Name = "columnPrice";
@@ -1055,27 +1062,27 @@
             // 
             // reportPurchaseOrder
             // 
-            reportDataSource8.Name = "AppFrame_Collection_ProductReportCollection";
-            reportDataSource8.Value = this.ProductReportCollectionBindingSource;
-            reportDataSource9.Name = "AppFrame_Collection_PurchaseOrderDetailReportCollection";
-            reportDataSource9.Value = this.PurchaseOrderDetailReportCollectionBindingSource;
-            reportDataSource10.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
-            reportDataSource10.Value = this.PurchaseOrderDetailCollectionBindingSource;
-            reportDataSource11.Name = "AppFrame_Model_PurchaseOrderDetail";
-            reportDataSource11.Value = this.PurchaseOrderDetailBindingSource;
-            reportDataSource12.Name = "AppFrame_Model_Department";
-            reportDataSource12.Value = this.DepartmentBindingSource;
-            reportDataSource13.Name = "AppFrame_Model_PurchaseOrder";
-            reportDataSource13.Value = this.PurchaseOrderBindingSource;
-            reportDataSource14.Name = "AppFrame_Model_Receipt";
-            reportDataSource14.Value = this.ReceiptBindingSource;
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource11);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource12);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource13);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource14);
+            reportDataSource57.Name = "AppFrame_Collection_ProductReportCollection";
+            reportDataSource57.Value = this.ProductReportCollectionBindingSource;
+            reportDataSource58.Name = "AppFrame_Collection_PurchaseOrderDetailReportCollection";
+            reportDataSource58.Value = this.PurchaseOrderDetailReportCollectionBindingSource;
+            reportDataSource59.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
+            reportDataSource59.Value = this.PurchaseOrderDetailCollectionBindingSource;
+            reportDataSource60.Name = "AppFrame_Model_PurchaseOrderDetail";
+            reportDataSource60.Value = this.PurchaseOrderDetailBindingSource;
+            reportDataSource61.Name = "AppFrame_Model_Department";
+            reportDataSource61.Value = this.DepartmentBindingSource;
+            reportDataSource62.Name = "AppFrame_Model_PurchaseOrder";
+            reportDataSource62.Value = this.PurchaseOrderBindingSource;
+            reportDataSource63.Name = "AppFrame_Model_Receipt";
+            reportDataSource63.Value = this.ReceiptBindingSource;
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource57);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource58);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource59);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource60);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource61);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource62);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource63);
             this.reportPurchaseOrder.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.PurchaseOrder.rdlc";
             this.reportPurchaseOrder.Location = new System.Drawing.Point(357, 532);
             this.reportPurchaseOrder.Margin = new System.Windows.Forms.Padding(0);
@@ -1130,6 +1137,41 @@
             // 
             this.QuickSaveOrderShortcut.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
             this.QuickSaveOrderShortcut.Pressed += new System.EventHandler(this.QuickSaveOrderShortcut_Pressed);
+            // 
+            // dgvBillRow1
+            // 
+            this.dgvBillRow1.Shortcut = System.Windows.Forms.Shortcut.Ctrl1;
+            this.dgvBillRow1.Pressed += new System.EventHandler(this.dgvBillRow1_Pressed);
+            // 
+            // dgvBillRow2
+            // 
+            this.dgvBillRow2.Shortcut = System.Windows.Forms.Shortcut.Ctrl2;
+            this.dgvBillRow2.Pressed += new System.EventHandler(this.dgvBillRow2_Pressed);
+            // 
+            // dgvBillRow3
+            // 
+            this.dgvBillRow3.Shortcut = System.Windows.Forms.Shortcut.Ctrl3;
+            this.dgvBillRow3.Pressed += new System.EventHandler(this.dgvBillRow3_Pressed);
+            // 
+            // dgvBillRow4
+            // 
+            this.dgvBillRow4.Shortcut = System.Windows.Forms.Shortcut.Ctrl4;
+            this.dgvBillRow4.Pressed += new System.EventHandler(this.dgvBillRow4_Pressed);
+            // 
+            // dgvBillRow5
+            // 
+            this.dgvBillRow5.Shortcut = System.Windows.Forms.Shortcut.Ctrl5;
+            this.dgvBillRow5.Pressed += new System.EventHandler(this.dgvBillRow5_Pressed);
+            // 
+            // FindRetBarcode
+            // 
+            this.FindRetBarcode.Shortcut = System.Windows.Forms.Shortcut.CtrlM;
+            this.FindRetBarcode.Pressed += new System.EventHandler(this.FindRetBarcode_Pressed);
+            // 
+            // FindRetOrder
+            // 
+            this.FindRetOrder.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+            this.FindRetOrder.Pressed += new System.EventHandler(this.FindRetOrder_Pressed);
             // 
             // GoodsSaleForm
             // 
@@ -1283,5 +1325,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseOrderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
         private AppFrame.Controls.HotKey.SystemHotkey QuickSaveOrderShortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey dgvBillRow1;
+        private AppFrame.Controls.HotKey.SystemHotkey dgvBillRow2;
+        private AppFrame.Controls.HotKey.SystemHotkey dgvBillRow3;
+        private AppFrame.Controls.HotKey.SystemHotkey dgvBillRow4;
+        private AppFrame.Controls.HotKey.SystemHotkey dgvBillRow5;
+        private AppFrame.Controls.HotKey.SystemHotkey FindRetBarcode;
+        private AppFrame.Controls.HotKey.SystemHotkey FindRetOrder;
     }
 }
