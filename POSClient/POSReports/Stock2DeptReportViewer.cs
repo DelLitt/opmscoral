@@ -71,7 +71,7 @@ namespace POSReports
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ nguwofi quản trị!");
+                MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ người quản trị!");
             }
         }
     }
