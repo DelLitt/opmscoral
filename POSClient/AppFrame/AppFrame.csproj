@@ -233,6 +233,8 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentTimelineDAO.cs" />
     <Compile Include="DataLayer\ISyncStatusDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockHistoryDAO.cs" />
     <Compile Include="DataLayer\IBlockInCostDAO.cs" />
@@ -302,6 +304,8 @@
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="Logic\IDepartmentManagementLogic.cs" />
+    <Compile Include="Logic\IDepartmentTimelineLogic.cs" />
     <Compile Include="Logic\ISyncStatusLogic.cs" />
     <Compile Include="Logic\IAuthoriseLogic.cs" />
     <Compile Include="Common\IPermission.cs" />
@@ -404,6 +408,8 @@
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\DepartmentCost.cs" />
     <Compile Include="Model\DepartmentCostPK.cs" />
+    <Compile Include="Model\DepartmentManagement.cs" />
+    <Compile Include="Model\DepartmentManagementPK.cs" />
     <Compile Include="Model\DepartmentPrice.cs" />
     <Compile Include="Model\DepartmentPricePK.cs" />
     <Compile Include="Model\DepartmentPromotion.cs" />
@@ -431,6 +437,8 @@
     <Compile Include="Model\DepartmentStockProductMasterView.cs" />
     <Compile Include="Model\DepartmentStockProductMasterViewPK.cs" />
     <Compile Include="Model\DepartmentStockSearchResult.cs" />
+    <Compile Include="Model\DepartmentTimeline.cs" />
+    <Compile Include="Model\DepartmentTimelinePK.cs" />
     <Compile Include="Model\Distributor.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeDayoff.cs" />
@@ -721,6 +729,8 @@
     <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockHistory.hbm.xml" />
     <EmbeddedResource Include="Model\SyncStatus.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentManagement.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
