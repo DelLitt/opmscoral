@@ -187,6 +187,7 @@ namespace ClientManagementTool.View.Management
                 dgvEmployeeWorking.Invalidate();
 
             }
+            timer1.Start();
         }
 
         #region IEmployeeWorkingsView Members
