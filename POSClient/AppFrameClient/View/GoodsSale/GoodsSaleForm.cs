@@ -81,9 +81,10 @@ namespace AppFrameClient.View.GoodsSale
             txtPayment.Text = "";
             txtTotalAmount.Text = "";
             txtCharge.Text = "";
-            txtTax.Text = "";
+            txtTax.Text = "10%";
             PurchaseOrderBill = null;
             ReturnPurchaseOrder = null;
+            GoodsSaleController.PurchaseOrder = null;
         }
 
         public event EventHandler<AppFrame.Presenter.GoodsSale.GoodsSaleEventArgs> AddGoodsEvent;
@@ -209,6 +210,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void GoodsSaleForm_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             Department currentDepartment = CurrentDepartment.Get();
             txtDepartment.Text = currentDepartment.DepartmentName;
             txtEmployee.Text = ClientInfo.getInstance().LoggedUser.Name;
@@ -603,6 +605,9 @@ namespace AppFrameClient.View.GoodsSale
             this.reportPurchaseOrder.LocalReport.Refresh();
             PrintDirectlyToPrinter();
             ClearGoodsSaleForm();
+            ClearReturnInput();
+            ClearInput();
+
         }
 
         private LocalReport PurchaseOrderBill = null;
@@ -800,6 +805,7 @@ namespace AppFrameClient.View.GoodsSale
         private void GoodsSaleForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             goodsSaleController.PurchaseOrder = null;
+            timer1.Stop();
         }
 
         
@@ -901,6 +907,7 @@ namespace AppFrameClient.View.GoodsSale
             txtBarcode.Text = "";
             txtGoodsName.Text = "";
             txtQuantity.Text = "1";
+            txtTax.Text = "10%";
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -944,9 +951,9 @@ namespace AppFrameClient.View.GoodsSale
         private void btnReset_Click(object sender, EventArgs e)
         {
             ClearGoodsSaleForm();
-            GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
-            txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
             GoodsSaleController.PurchaseOrder = null;
+            PurchaseOrderBill = null;
+            ReturnPurchaseOrder = null;
         }
 
         private void systemHotkey2_Pressed(object sender, EventArgs e)
@@ -1023,7 +1030,9 @@ namespace AppFrameClient.View.GoodsSale
                 returnPO.Price = 0 - returnPO.Price;
                 pODList.Add(returnPO);
             }
-            
+            bdsBill.EndEdit();
+            dgvBill.Refresh();
+            dgvBill.Invalidate();
             GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
             txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
 
@@ -1105,7 +1114,12 @@ namespace AppFrameClient.View.GoodsSale
                 retOrderDetail.Price = 0 - retOrderDetail.Price;
                 pODList.Add(retOrderDetail);
                 bdsBill.EndEdit();
-                
+                dgvBill.Refresh();
+                dgvBill.Invalidate();
+
+                GoodsSaleController.PurchaseOrder.PurchasePrice = CalculateTotalPrice(pODList);
+                txtTotalAmount.Text = GoodsSaleController.PurchaseOrder.PurchasePrice.ToString();
+
                 CreateRowNumbers();
                 CalculateCharge();
                 RemoveEmptyRowFromList(pODList);
@@ -1164,6 +1178,8 @@ namespace AppFrameClient.View.GoodsSale
                             specialDetail.Price = 0 - specialDetail.Price;
                             pODList.Add(specialDetail);
                             bdsBill.EndEdit();
+                            dgvBill.Refresh();
+                            dgvBill.Invalidate();
                         }
                         catch (Exception ex)
                         {
@@ -1351,6 +1367,126 @@ namespace AppFrameClient.View.GoodsSale
             }
             dgvBill.CurrentCell = dgvBill[2, 4];
             dgvBill.Focus();
+        }
+
+        private void txtPayment_Enter(object sender, EventArgs e)
+        {
+            txtPayment.BackColor = Color.LightBlue;
+        }
+
+        private void txtPayment_Leave(object sender, EventArgs e)
+        {
+            txtPayment.BackColor = Color.FromKnownColor(KnownColor.Window);
+        }
+
+        private void btnPrint_Enter(object sender, EventArgs e)
+        {
+            btnPrint.BackColor = Color.LightBlue;
+        }
+
+        private void btnReset_Enter(object sender, EventArgs e)
+        {
+            btnReset.BackColor = Color.LightBlue;
+        }
+
+        private void btnClose_Enter(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.LightBlue;
+        }
+
+        private void btnPrint_Leave(object sender, EventArgs e)
+        {
+            btnPrint.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void btnReset_Leave(object sender, EventArgs e)
+        {
+            btnReset.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void btnClose_Leave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void btnRetBarcodeLookup_Enter(object sender, EventArgs e)
+        {
+            btnRetBarcodeLookup.BackColor = Color.LightBlue;
+        }
+
+        private void txtRefPurchaseOrder_Enter(object sender, EventArgs e)
+        {
+            txtRefPurchaseOrder.BackColor = Color.LightBlue;
+        }
+
+        private void btnPOLookup_Enter(object sender, EventArgs e)
+        {
+            btnPOLookup.BackColor = Color.LightBlue;
+        }
+
+        private void txtNote_Enter(object sender, EventArgs e)
+        {
+            txtNote.BackColor = Color.LightBlue;
+        }
+
+        private void btnInput_Enter(object sender, EventArgs e)
+        {
+            btnInput.BackColor = Color.LightBlue;
+        }
+
+        private void dgvBill_Enter(object sender, EventArgs e)
+        {
+            dgvBill.BackgroundColor = Color.LightBlue;
+        }
+
+        private void btnRetBarcodeLookup_Leave(object sender, EventArgs e)
+        {
+            btnRetBarcodeLookup.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtRefPurchaseOrder_Leave(object sender, EventArgs e)
+        {
+            txtRefPurchaseOrder.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void btnPOLookup_Leave(object sender, EventArgs e)
+        {
+            btnPOLookup.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtNote_Leave(object sender, EventArgs e)
+        {
+            txtNote.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void btnInput_Leave(object sender, EventArgs e)
+        {
+            btnInput.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void dgvBill_Leave(object sender, EventArgs e)
+        {
+            dgvBill.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void lblCharge_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPayment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTax_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotalAmount_Click(object sender, EventArgs e)
+        {
+            txtWorkingTime.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }

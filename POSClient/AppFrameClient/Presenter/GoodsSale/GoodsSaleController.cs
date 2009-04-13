@@ -60,8 +60,7 @@ namespace AppFrameClient.Presenter.GoodsSale
             catch (Exception exception)
             {
                 e.HasErrors = true;
-                if(exception is BusinessException)
-                    throw exception;  
+                throw exception;  
             }
             
             

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnBillChoosing = new System.Windows.Forms.Button();
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +115,11 @@
             this.btnBillChoosing.UseVisualStyleBackColor = true;
             this.btnBillChoosing.Click += new System.EventHandler(this.btnBillChoosing_Click);
             // 
+            // systemHotkey1
+            // 
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
             // SearchGoodsSaleListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,5 +159,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnBillChoosing;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
     }
 }

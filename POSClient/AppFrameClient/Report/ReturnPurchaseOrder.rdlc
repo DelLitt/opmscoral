@@ -496,7 +496,7 @@
       </List>
       <Table Name="table2">
         <ZIndex>5</ZIndex>
-        <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
+        <DataSetName>AppFrame_Model_PurchaseOrderDetail</DataSetName>
         <Top>1.625in</Top>
         <Width>2.375in</Width>
         <Details>

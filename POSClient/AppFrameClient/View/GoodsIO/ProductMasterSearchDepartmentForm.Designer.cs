@@ -67,6 +67,7 @@
             this.distributorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.chkInStock = new System.Windows.Forms.CheckBox();
+            this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -387,6 +388,11 @@
             this.chkInStock.Text = "Chỉ xem những sản phẩm còn trong kho";
             this.chkInStock.UseVisualStyleBackColor = true;
             // 
+            // systemHotkey2
+            // 
+            this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+            this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
+            // 
             // ProductMasterSearchDepartmentForm
             // 
             this.ClientSize = new System.Drawing.Size(942, 531);
@@ -448,5 +454,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private System.Windows.Forms.CheckBox chkInStock;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
     }
 }

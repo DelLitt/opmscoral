@@ -42,5 +42,10 @@ namespace AppFrameClient.View.GoodsSale
         {
 
         }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            btnSearch_Click(sender,null);
+        }
     }
 }
