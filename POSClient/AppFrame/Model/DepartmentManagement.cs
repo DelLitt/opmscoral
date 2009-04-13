@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AppFrame.Model
 {
+    [Serializable]
     public class DepartmentManagement : System.IComparable
     {
         public virtual DepartmentManagementPK DepartmentManagementPK { get; set; }

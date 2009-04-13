@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AppFrame.Model
 {
+    [Serializable]
     public class DepartmentTimelinePK
     {
         public virtual long DepartmentId {

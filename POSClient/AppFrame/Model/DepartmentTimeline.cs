@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AppFrame.Model
 {
+    [Serializable]
     public class DepartmentTimeline : System.IComparable
     {
         public virtual DepartmentTimelinePK DepartmentTimelinePK { get; set; }

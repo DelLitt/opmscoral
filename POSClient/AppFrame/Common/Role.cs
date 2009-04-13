@@ -6,6 +6,11 @@ namespace AppFrame.Common
     [Serializable]
     public class Role 
     {
+
+        public Role(string roleName)
+        {
+            name = roleName;
+        }
         private string name;
         public virtual string Name
         {
@@ -13,7 +18,7 @@ namespace AppFrame.Common
             set { name = value; }
         }
 
-        public bool ExistInList(IList<Role> list)
+        public virtual bool ExistInList(IList<Role> list)
         {
             for (int i = 0; i < list.Count - 1; i++)
             {

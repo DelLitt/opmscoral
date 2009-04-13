@@ -9,5 +9,8 @@ namespace AppFrame.Presenter
     {
         void login();
         void logout();
+
+        event EventHandler<BaseEventArgs> PostLogin;
+        event EventHandler<BaseEventArgs> PreLogout;
     }
 }
