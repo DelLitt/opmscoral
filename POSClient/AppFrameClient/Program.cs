@@ -32,7 +32,11 @@ namespace AppFrame
 
             if(!ClientSetting.IsClient() && !ClientSetting.IsServer())
             {
-                ClientServerSettingForm settingForm = new ClientServerSettingForm();
+                ClientServerSettingForm clientServerSettingForm = new ClientServerSettingForm();
+                clientServerSettingForm.ShowDialog();
+                clientServerSettingForm.Refresh();
+
+                SettingForm settingForm = new SettingForm();
                 settingForm.ShowDialog();
                 settingForm.Refresh();
             }

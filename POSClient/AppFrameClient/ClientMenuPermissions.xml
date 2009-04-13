@@ -100,7 +100,7 @@
     <menuitem name="mnuSyncToMainForm" role="Administrator,Manager" />
     <menuitem name="mnuLoadToMain" role="NotImplement" />
     <menuitem name="mnuLoadToDept" role="NotImplement" />
-    <menuitem name="mnuSystemConfiguration" role="NotImplement" />
+    <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
 
   </menu>
   <menu name="mnuHelp" role="*">

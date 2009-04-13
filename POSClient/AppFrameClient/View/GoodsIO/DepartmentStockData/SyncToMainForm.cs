@@ -15,6 +15,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -27,6 +28,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            DialogResult dResult = MessageBox.Show(
+                "Kết sổ cho ngày hôm nay? Xin lưu ý nếu bạn đã kết sổ thì phải đợi đến hôm sau mới có thể tiếp tục.",
+                "Kết sổ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if(dResult== DialogResult.No)
+            {
+               return; 
+            }
+
             var configurationAppSettings = new AppSettingsReader();
             syncResultBindingSource.DataSource = null;
 //            // Create new SaveFileDialog object
@@ -49,7 +58,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //            // Show the dialog and process the result
 //            if (DialogSave.ShowDialog() == DialogResult.OK)
 //            {
-            var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof (String));
+            //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof (String));
+            var exportPath = ClientSetting.SyncExportPath;
+            
             if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + exportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
@@ -117,20 +128,41 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
+
+            DialogResult dResult = MessageBox.Show(
+                "Kết sổ cho ngày hôm nay? Xin lưu ý nếu bạn đã kết sổ thì phải đợi đến hôm sau mới có thể tiếp tục.",
+                "Kết sổ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dResult == DialogResult.No)
+            {
+                return;
+            }
+
             var configurationAppSettings = new AppSettingsReader();
-            var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
+            
+            //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
+            //var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
+            //var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
+
+            var importPath = ClientSetting.SyncImportPath;
+            var successPath = ClientSetting.SyncSuccessPath;
+            var errorPath = ClientSetting.SyncErrorPath;
+
+
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
                 return;
             }
-            var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
+
             if (string.IsNullOrEmpty(successPath) || !Directory.Exists(successPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + successPath + "!Hãy kiễm tra file cấu hình phần SyncImportSuccessPath");
                 return;
             }
-            var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
+
+
+            
+
             if (string.IsNullOrEmpty(errorPath) || !Directory.Exists(errorPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + errorPath + "!Hãy kiễm tra file cấu hình phần SyncImportErrorPath");

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnExportPath;
             this.label1 = new System.Windows.Forms.Label();
             this.txtSyncExportPath = new System.Windows.Forms.TextBox();
             this.btnDefault = new System.Windows.Forms.Button();
@@ -42,6 +43,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cboPrinters = new System.Windows.Forms.ComboBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.exportPathDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnImportPath = new System.Windows.Forms.Button();
+            this.btnErrorPath = new System.Windows.Forms.Button();
+            this.btnSuccessPath = new System.Windows.Forms.Button();
+            this.importPathDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.errorPathDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.successPathDialog = new System.Windows.Forms.FolderBrowserDialog();
+            btnExportPath = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +64,6 @@
             // 
             // txtSyncExportPath
             // 
-            this.txtSyncExportPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncImportPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtSyncExportPath.Location = new System.Drawing.Point(117, 33);
             this.txtSyncExportPath.Name = "txtSyncExportPath";
             this.txtSyncExportPath.Size = new System.Drawing.Size(172, 20);
@@ -94,7 +102,6 @@
             // 
             // txtSyncImportPath
             // 
-            this.txtSyncImportPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncExportPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtSyncImportPath.Location = new System.Drawing.Point(117, 59);
             this.txtSyncImportPath.Name = "txtSyncImportPath";
             this.txtSyncImportPath.Size = new System.Drawing.Size(172, 20);
@@ -103,7 +110,6 @@
             // 
             // txtSyncErrorPath
             // 
-            this.txtSyncErrorPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncErrorPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtSyncErrorPath.Location = new System.Drawing.Point(117, 85);
             this.txtSyncErrorPath.Name = "txtSyncErrorPath";
             this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
@@ -112,7 +118,6 @@
             // 
             // txtSyncSuccessPath
             // 
-            this.txtSyncSuccessPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncSuccessPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtSyncSuccessPath.Location = new System.Drawing.Point(117, 111);
             this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
             this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
@@ -157,7 +162,6 @@
             // 
             // cboPrinters
             // 
-            this.cboPrinters.DataBindings.Add(new System.Windows.Forms.Binding("Name", global::AppFrameClient.Properties.Settings.Default, "PrinterName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.cboPrinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPrinters.FormattingEnabled = true;
             this.cboPrinters.Location = new System.Drawing.Point(117, 142);
@@ -165,11 +169,55 @@
             this.cboPrinters.Size = new System.Drawing.Size(172, 21);
             this.cboPrinters.TabIndex = 12;
             // 
+            // btnExportPath
+            // 
+            btnExportPath.Location = new System.Drawing.Point(295, 30);
+            btnExportPath.Name = "btnExportPath";
+            btnExportPath.Size = new System.Drawing.Size(31, 23);
+            btnExportPath.TabIndex = 13;
+            btnExportPath.Text = "...";
+            btnExportPath.UseVisualStyleBackColor = true;
+            btnExportPath.Click += new System.EventHandler(this.btnExportPath_Click);
+            // 
+            // btnImportPath
+            // 
+            this.btnImportPath.Location = new System.Drawing.Point(295, 57);
+            this.btnImportPath.Name = "btnImportPath";
+            this.btnImportPath.Size = new System.Drawing.Size(31, 23);
+            this.btnImportPath.TabIndex = 14;
+            this.btnImportPath.Text = "...";
+            this.btnImportPath.UseVisualStyleBackColor = true;
+            this.btnImportPath.Click += new System.EventHandler(this.btnImportPath_Click);
+            // 
+            // btnErrorPath
+            // 
+            this.btnErrorPath.Location = new System.Drawing.Point(295, 83);
+            this.btnErrorPath.Name = "btnErrorPath";
+            this.btnErrorPath.Size = new System.Drawing.Size(31, 23);
+            this.btnErrorPath.TabIndex = 15;
+            this.btnErrorPath.Text = "...";
+            this.btnErrorPath.UseVisualStyleBackColor = true;
+            this.btnErrorPath.Click += new System.EventHandler(this.btnErrorPath_Click);
+            // 
+            // btnSuccessPath
+            // 
+            this.btnSuccessPath.Location = new System.Drawing.Point(295, 109);
+            this.btnSuccessPath.Name = "btnSuccessPath";
+            this.btnSuccessPath.Size = new System.Drawing.Size(31, 23);
+            this.btnSuccessPath.TabIndex = 16;
+            this.btnSuccessPath.Text = "...";
+            this.btnSuccessPath.UseVisualStyleBackColor = true;
+            this.btnSuccessPath.Click += new System.EventHandler(this.btnSuccessPath_Click);
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(398, 287);
+            this.Controls.Add(this.btnSuccessPath);
+            this.Controls.Add(this.btnErrorPath);
+            this.Controls.Add(this.btnImportPath);
+            this.Controls.Add(btnExportPath);
             this.Controls.Add(this.cboPrinters);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -184,7 +232,8 @@
             this.Controls.Add(this.txtSyncExportPath);
             this.Controls.Add(this.label1);
             this.Name = "SettingForm";
-            this.Text = "Cấu hình";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cấu hình hệ thống";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingForm_FormClosing);
             this.ResumeLayout(false);
@@ -208,5 +257,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboPrinters;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.FolderBrowserDialog exportPathDialog;
+        private System.Windows.Forms.Button btnImportPath;
+        private System.Windows.Forms.Button btnErrorPath;
+        private System.Windows.Forms.Button btnSuccessPath;
+        private System.Windows.Forms.FolderBrowserDialog importPathDialog;
+        private System.Windows.Forms.FolderBrowserDialog errorPathDialog;
+        private System.Windows.Forms.FolderBrowserDialog successPathDialog;
     }
 }

@@ -46,6 +46,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(504, 258);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
@@ -65,6 +66,7 @@
             // 
             // btnSyncToMain
             // 
+            this.btnSyncToMain.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSyncToMain.Location = new System.Drawing.Point(12, 12);
             this.btnSyncToMain.Name = "btnSyncToMain";
             this.btnSyncToMain.Size = new System.Drawing.Size(189, 85);

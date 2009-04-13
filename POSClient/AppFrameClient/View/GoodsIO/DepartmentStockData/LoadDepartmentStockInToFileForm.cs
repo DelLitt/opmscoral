@@ -16,6 +16,7 @@ using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -86,8 +87,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
+            DialogResult dResult = MessageBox.Show(
+                "Bạn muốn xuất hàng cho cửa hàng ? ",
+                "Xuất hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dResult == DialogResult.No)
+            {
+                return;
+            }
+
             var configurationAppSettings = new AppSettingsReader();
-            var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
+            //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
+            var exportPath = ClientSetting.SyncExportPath;
             if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + exportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");

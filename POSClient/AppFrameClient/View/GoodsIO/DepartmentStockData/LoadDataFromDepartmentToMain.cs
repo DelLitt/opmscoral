@@ -15,6 +15,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 using ArrayList=System.Collections.ArrayList;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -28,20 +29,37 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
+
+            DialogResult dResult = MessageBox.Show(
+                "Bạn muốn nhập hàng cho cửa hàng ? ",
+                "Nhập hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dResult == DialogResult.No)
+            {
+                return;
+            }
+
             var configurationAppSettings = new AppSettingsReader();
-            var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
+            //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
+            var importPath = ClientSetting.SyncImportPath;
+            //var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
+            //var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
+
+            var successPath = ClientSetting.SyncSuccessPath;
+            var errorPath = ClientSetting.SyncErrorPath;
+
+
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
                 return;
             }
-            var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
+            
             if (string.IsNullOrEmpty(successPath) || !Directory.Exists(successPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + successPath + "!Hãy kiễm tra file cấu hình phần SyncImportSuccessPath");
                 return;
             }
-            var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
+            
             if (string.IsNullOrEmpty(errorPath) || !Directory.Exists(errorPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + errorPath + "!Hãy kiễm tra file cấu hình phần SyncImportErrorPath");

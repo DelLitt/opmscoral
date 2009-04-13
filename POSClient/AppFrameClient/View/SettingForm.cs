@@ -20,13 +20,18 @@ namespace AppFrameClient.View
 
         private void SettingForm_Load(object sender, EventArgs e)
         {   
+            ClientSetting.Reload();
             cboPrinters.Items.Clear();
+            txtSyncImportPath.Text = ClientSetting.SyncImportPath;
+            txtSyncExportPath.Text = ClientSetting.SyncExportPath;
+            txtSyncErrorPath.Text = ClientSetting.SyncErrorPath;
+            txtSyncSuccessPath.Text = ClientSetting.SyncSuccessPath;
             PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
             foreach (string printerName in printerNames)
             {
                 cboPrinters.Items.Add(printerName);    
             }
-            
+            cboPrinters.SelectedItem = ClientSetting.PrinterName;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -39,7 +44,7 @@ namespace AppFrameClient.View
             ClientSetting.Save();
             
             MessageBox.Show("Lưu cấu hình thành công!");
-            
+            ClientSetting.Reload();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -56,6 +61,30 @@ namespace AppFrameClient.View
         private void SettingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ClientSetting.Save();
+        }
+
+        private void btnExportPath_Click(object sender, EventArgs e)
+        {
+            exportPathDialog.ShowDialog();
+            txtSyncExportPath.Text = exportPathDialog.SelectedPath;
+        }
+
+        private void btnImportPath_Click(object sender, EventArgs e)
+        {
+            importPathDialog.ShowDialog();
+            txtSyncImportPath.Text = importPathDialog.SelectedPath;
+        }
+
+        private void btnErrorPath_Click(object sender, EventArgs e)
+        {
+            errorPathDialog.ShowDialog();
+            txtSyncErrorPath.Text = errorPathDialog.SelectedPath;
+        }
+
+        private void btnSuccessPath_Click(object sender, EventArgs e)
+        {
+            successPathDialog.ShowDialog();
+            txtSyncSuccessPath.Text = successPathDialog.SelectedPath;
         }
     }
 }
