@@ -22,14 +22,31 @@ namespace AppFrame.Presenter
             //loginForm.ShowDialog();
             loginForm.Show();
             //GlobalCache.Instance().MainForm.Focus();
+            if(PostLogin!=null)
+            {
+                EventUtility.fireEvent(PostLogin,this,new BaseEventArgs());
+            }
         }
 
         public void logout()
         {
+            if (PreLogout != null)
+            {
+                EventUtility.fireEvent(PreLogout, this, new BaseEventArgs());
+            }
             AuthManager authManager = SecurityUtility.LoadAuthenticationModule();
             authManager.logout();
             GlobalUtility.CloseAllChildForm(GlobalUtility.GetFormObject(FormConstants.MAIN_FORM));
         }
+
+        #endregion
+
+        #region IAuthService Members
+
+
+        public event EventHandler<BaseEventArgs> PostLogin;
+
+        public event EventHandler<BaseEventArgs> PreLogout;
 
         #endregion
     }
