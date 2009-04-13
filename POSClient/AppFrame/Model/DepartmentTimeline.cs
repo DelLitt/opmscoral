@@ -46,12 +46,12 @@ namespace AppFrame.Model
         /// <param name="obj">An object to compare with this instance. 
         ///                 </param><exception cref="T:System.ArgumentException"><paramref name="obj"/> is not the same type as this instance. 
         ///                 </exception><filterpriority>2</filterpriority>
-        public int CompareTo(object obj)
+        public virtual int CompareTo(object obj)
         {
             return 0;
         }
 
-        public bool Equals(DepartmentTimeline other)
+        public virtual bool Equals(DepartmentTimeline other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

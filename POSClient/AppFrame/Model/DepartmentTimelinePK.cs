@@ -11,5 +11,24 @@ namespace AppFrame.Model
             get;
             set;}
         public virtual long Period { get; set; }
+
+        #region Equals and GetHashCode Methods
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return base.Equals(obj);
+
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        #endregion
     }
 }
