@@ -11,6 +11,7 @@ using AppFrame.Common;
 using AppFrame.Presenter;
 using AppFrame.Utility;
 using ClientManagementTool.Common;
+using ClientManagementTool.Model;
 using ClientManagementTool.View.Management;
 
 namespace ClientManagementTool.View
@@ -42,7 +43,18 @@ namespace ClientManagementTool.View
 
         private void loginMenu_Click(object sender, EventArgs e)
         {
+            AuthService.PostLogin += new EventHandler<BaseEventArgs>(AuthService_PostLogin);
             AuthService.login();
+        }
+
+        void AuthService_PostLogin(object sender, BaseEventArgs e)
+        {
+            BaseUser loggedUser = ClientInfo.getInstance().LoggedUser;
+            if(loggedUser.IsInRole(PosRole.Manager))
+            {
+                // process period for manager here 
+            }
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)

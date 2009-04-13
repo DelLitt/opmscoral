@@ -127,6 +127,7 @@
     <Compile Include="Logic\EmployeeWorkingsLogicEventArg.cs" />
     <Compile Include="Logic\EmployeeWorkingsLogicImpl.cs" />
     <Compile Include="Logic\IEmployeeWorkingsLogic.cs" />
+    <Compile Include="Model\PosRole.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,9 +205,6 @@
     <EmbeddedResource Include="View\Management\DepartmentManagement.resx">
       <DependentUpon>DepartmentManagement.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
