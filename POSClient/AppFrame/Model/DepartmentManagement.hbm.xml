@@ -54,5 +54,27 @@
         length="50"
     >
     </property>
+
+  <property
+        name="WorkingDay"
+        type="DateTime"
+        column="WORKING_DAY"
+        length="19"
+    >
+  </property>
+  <property
+        name="StartTime"
+        type="DateTime"
+        column="START_TIME"
+        length="19"
+    >
+  </property>
+  <property
+        name="EndTime"
+        type="DateTime"
+        column="END_TIME"
+        length="19"
+    >
+  </property>
 </class>
 </hibernate-mapping>

@@ -80,7 +80,7 @@ namespace AppFrame.Common
         /// </summary>
         /// <param name="checkRole"></param>
         /// <returns></returns>
-        public bool IsInRole(Role checkRole)
+        public virtual bool IsInRole(Role checkRole)
         {
             
             // if checkRole = * so everyone can use

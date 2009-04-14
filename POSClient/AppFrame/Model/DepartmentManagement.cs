@@ -31,6 +31,24 @@ namespace AppFrame.Model
             set;
         }
 
+        public virtual DateTime WorkingDay
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime StartTime
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime EndTime
+        {
+            get;
+            set;
+        }
+
         public virtual bool Equals(DepartmentManagement other)
         {
             if (ReferenceEquals(null, other)) return false;
