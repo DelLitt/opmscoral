@@ -95,5 +95,16 @@ namespace AppFrame.Logic
         {
             return DepartmentManagementDAO.FindPaging(criteria);
         }
+
+
+        #region IDepartmentManagementLogic Members
+
+
+        public DepartmentManagement FindLastPeriod()
+        {
+            return DepartmentManagementDAO.FindLastPeriod();
+        }
+
+        #endregion
     }
 }

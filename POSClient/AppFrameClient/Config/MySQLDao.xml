@@ -249,6 +249,13 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
 
+  <object id="AppFrame.DataLayer.IDepartmentTimelineDAO" type="AppFrame.DataLayer.DepartmentTimelineDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  
+  <object id="AppFrame.DataLayer.IDepartmentManagementDAO" type="AppFrame.DataLayer.DepartmentManagementDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <!-- Data Access Objects -->
   <object id="LoginDaoImpl" type="AppFrameClient.DataLayer.LoginDaoImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>

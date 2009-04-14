@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
@@ -318,5 +319,41 @@ namespace AppFrame.DataLayer
                 hibernateCriteria.AddOrder(order);
             }
         }
+
+        #region IDepartmentManagementDAO Members
+
+
+        public DepartmentManagement FindLastPeriod()
+        {
+            return (DepartmentManagement) HibernateTemplate.Execute(
+                delegate (ISession session)
+                    {
+                        try
+                        {
+                            string sql = "SELECT DISTINCT dm from DepartmentManagement dm WHERE dm.EndTime < dm.StartTime ORDER BY dm.StartTime DESC";
+                            IList result = session.CreateQuery(sql).SetMaxResults(5).List();
+                            
+                            // if we has more than 1 result
+                            if(result.Count > 1)
+                            {
+                                // fix department management
+                                foreach (DepartmentManagement departmentManagement in result)
+                                {
+                                    departmentManagement.EndTime = DateTime.Now;
+                                    session.Update(departmentManagement);
+                                }    
+                            }
+                            return result[0];
+                        }
+                        catch (Exception)
+                        {
+
+                            return null;
+                        }
+                    }
+                                              );
+        }
+
+        #endregion
     }
 }

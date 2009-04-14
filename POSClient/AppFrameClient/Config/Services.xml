@@ -316,6 +316,15 @@
   <object id="AppFrame.Service.IOtherTransactionLogLogic" type="AppFrame.Logic.OtherTransactionLogLogicImpl, AppFrameClient">
     <property name="OtherTransactionLogDAO" ref="AppFrame.DataLayer.IOtherTransactionLogDAO"/>
   </object>
+
+  <object id="AppFrame.Service.IDepartmentTimelineLogic" type="AppFrame.Logic.DepartmentTimelineLogicImpl, AppFrameClient">
+    <property name="DepartmentTimelineDAO" ref="AppFrame.DataLayer.IDepartmentTimelineDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentManagementLogic" type="AppFrame.Logic.DepartmentManagementLogicImpl, AppFrameClient">
+    <property name="DepartmentManagementDAO" ref="AppFrame.DataLayer.IDepartmentManagementDAO"/>
+  </object>
+  
   <!-- Logic Objects -->
   <object id="LocalLoginLogic" type="AppFrameClient.Logic.LoginLogic, AppFrameClient">
     <property name="LoginDao" ref="LoginDaoImpl" />
