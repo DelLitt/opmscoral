@@ -2887,8 +2887,6 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnSTOCK_IN_ID;
             
-            private global::System.Data.DataColumn columnSTOCK_IN_DATE;
-            
             private global::System.Data.DataColumn columntype_name;
             
             private global::System.Data.DataColumn columnPRODUCT_ID;
@@ -2902,6 +2900,8 @@ namespace POSReports {
             private global::System.Data.DataColumn columncolor_name;
             
             private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn columnstock_in_date;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public stockInDataTable() {
@@ -2937,13 +2937,6 @@ namespace POSReports {
             public global::System.Data.DataColumn STOCK_IN_IDColumn {
                 get {
                     return this.columnSTOCK_IN_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn STOCK_IN_DATEColumn {
-                get {
-                    return this.columnSTOCK_IN_DATE;
                 }
             }
             
@@ -2997,6 +2990,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn stock_in_dateColumn {
+                get {
+                    return this.columnstock_in_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3025,18 +3025,18 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public stockInRow AddstockInRow(string STOCK_IN_ID, System.DateTime STOCK_IN_DATE, string type_name, string PRODUCT_ID, string product_name, decimal quantity, decimal price, string color_name, string size_name) {
+            public stockInRow AddstockInRow(string STOCK_IN_ID, string type_name, string PRODUCT_ID, string product_name, decimal quantity, decimal price, string color_name, string size_name, string stock_in_date) {
                 stockInRow rowstockInRow = ((stockInRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         STOCK_IN_ID,
-                        STOCK_IN_DATE,
                         type_name,
                         PRODUCT_ID,
                         product_name,
                         quantity,
                         price,
                         color_name,
-                        size_name};
+                        size_name,
+                        stock_in_date};
                 rowstockInRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstockInRow);
                 return rowstockInRow;
@@ -3064,7 +3064,6 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
                 this.columnSTOCK_IN_ID = base.Columns["STOCK_IN_ID"];
-                this.columnSTOCK_IN_DATE = base.Columns["STOCK_IN_DATE"];
                 this.columntype_name = base.Columns["type_name"];
                 this.columnPRODUCT_ID = base.Columns["PRODUCT_ID"];
                 this.columnproduct_name = base.Columns["product_name"];
@@ -3072,14 +3071,13 @@ namespace POSReports {
                 this.columnprice = base.Columns["price"];
                 this.columncolor_name = base.Columns["color_name"];
                 this.columnsize_name = base.Columns["size_name"];
+                this.columnstock_in_date = base.Columns["stock_in_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
                 this.columnSTOCK_IN_ID = new global::System.Data.DataColumn("STOCK_IN_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSTOCK_IN_ID);
-                this.columnSTOCK_IN_DATE = new global::System.Data.DataColumn("STOCK_IN_DATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTOCK_IN_DATE);
                 this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntype_name);
                 this.columnPRODUCT_ID = new global::System.Data.DataColumn("PRODUCT_ID", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3094,6 +3092,8 @@ namespace POSReports {
                 base.Columns.Add(this.columncolor_name);
                 this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsize_name);
+                this.columnstock_in_date = new global::System.Data.DataColumn("stock_in_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstock_in_date);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnSTOCK_IN_ID,
                                 this.columnPRODUCT_ID}, true));
@@ -3105,6 +3105,7 @@ namespace POSReports {
                 this.columnproduct_name.MaxLength = 500;
                 this.columncolor_name.MaxLength = 500;
                 this.columnsize_name.MaxLength = 500;
+                this.columnstock_in_date.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6510,8 +6511,6 @@ namespace POSReports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class stockOutDataTable : global::System.Data.TypedTableBase<stockOutRow> {
             
-            private global::System.Data.DataColumn columnstock_out_date;
-            
             private global::System.Data.DataColumn columntype_name;
             
             private global::System.Data.DataColumn columnproduct_id;
@@ -6529,6 +6528,8 @@ namespace POSReports {
             private global::System.Data.DataColumn _columnsum_quantity_;
             
             private global::System.Data.DataColumn columnprice;
+            
+            private global::System.Data.DataColumn columnstock_out_date;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public stockOutDataTable() {
@@ -6558,13 +6559,6 @@ namespace POSReports {
             protected stockOutDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn stock_out_dateColumn {
-                get {
-                    return this.columnstock_out_date;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6631,6 +6625,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn stock_out_dateColumn {
+                get {
+                    return this.columnstock_out_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6659,10 +6660,9 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public stockOutRow AddstockOutRow(System.DateTime stock_out_date, string type_name, string product_id, string product_name, string color_name, string size_name, uint department_id, string department_name, decimal _sum_quantity_, int price) {
+            public stockOutRow AddstockOutRow(string type_name, string product_id, string product_name, string color_name, string size_name, uint department_id, string department_name, decimal _sum_quantity_, int price, string stock_out_date) {
                 stockOutRow rowstockOutRow = ((stockOutRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        stock_out_date,
                         type_name,
                         product_id,
                         product_name,
@@ -6671,7 +6671,8 @@ namespace POSReports {
                         department_id,
                         department_name,
                         _sum_quantity_,
-                        price};
+                        price,
+                        stock_out_date};
                 rowstockOutRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstockOutRow);
                 return rowstockOutRow;
@@ -6691,7 +6692,6 @@ namespace POSReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
-                this.columnstock_out_date = base.Columns["stock_out_date"];
                 this.columntype_name = base.Columns["type_name"];
                 this.columnproduct_id = base.Columns["product_id"];
                 this.columnproduct_name = base.Columns["product_name"];
@@ -6701,12 +6701,11 @@ namespace POSReports {
                 this.columndepartment_name = base.Columns["department_name"];
                 this._columnsum_quantity_ = base.Columns["sum(quantity)"];
                 this.columnprice = base.Columns["price"];
+                this.columnstock_out_date = base.Columns["stock_out_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
-                this.columnstock_out_date = new global::System.Data.DataColumn("stock_out_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstock_out_date);
                 this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntype_name);
                 this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(string), null, global::System.Data.MappingType.Element);
@@ -6727,6 +6726,8 @@ namespace POSReports {
                 base.Columns.Add(this._columnsum_quantity_);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
+                this.columnstock_out_date = new global::System.Data.DataColumn("stock_out_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstock_out_date);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columndepartment_id}, false));
                 this.columntype_name.MaxLength = 500;
@@ -6738,6 +6739,7 @@ namespace POSReports {
                 this.columndepartment_id.Unique = true;
                 this.columndepartment_name.MaxLength = 500;
                 this.columnprice.AllowDBNull = false;
+                this.columnstock_out_date.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9150,21 +9152,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime STOCK_IN_DATE {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablestockIn.STOCK_IN_DATEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'STOCK_IN_DATE\' in table \'stockIn\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablestockIn.STOCK_IN_DATEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string type_name {
                 get {
                     try {
@@ -9265,13 +9252,18 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsSTOCK_IN_DATENull() {
-                return this.IsNull(this.tablestockIn.STOCK_IN_DATEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetSTOCK_IN_DATENull() {
-                this[this.tablestockIn.STOCK_IN_DATEColumn] = global::System.Convert.DBNull;
+            public string stock_in_date {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockIn.stock_in_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stock_in_date\' in table \'stockIn\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockIn.stock_in_dateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9332,6 +9324,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Setsize_nameNull() {
                 this[this.tablestockIn.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isstock_in_dateNull() {
+                return this.IsNull(this.tablestockIn.stock_in_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setstock_in_dateNull() {
+                this[this.tablestockIn.stock_in_dateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11746,21 +11748,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime stock_out_date {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablestockOut.stock_out_dateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stock_out_date\' in table \'stockOut\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablestockOut.stock_out_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string type_name {
                 get {
                     try {
@@ -11886,13 +11873,18 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Isstock_out_dateNull() {
-                return this.IsNull(this.tablestockOut.stock_out_dateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Setstock_out_dateNull() {
-                this[this.tablestockOut.stock_out_dateColumn] = global::System.Convert.DBNull;
+            public string stock_out_date {
+                get {
+                    try {
+                        return ((string)(this[this.tablestockOut.stock_out_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'stock_out_date\' in table \'stockOut\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablestockOut.stock_out_dateColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11963,6 +11955,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Set_sum_quantity_Null() {
                 this[this.tablestockOut._sum_quantity_Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isstock_out_dateNull() {
+                return this.IsNull(this.tablestockOut.stock_out_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setstock_out_dateNull() {
+                this[this.tablestockOut.stock_out_dateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -14588,7 +14590,6 @@ ORDER BY so.STOCK_OUT_DATE";
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "stockIn";
             tableMapping.ColumnMappings.Add("STOCK_IN_ID", "STOCK_IN_ID");
-            tableMapping.ColumnMappings.Add("STOCK_IN_DATE", "STOCK_IN_DATE");
             tableMapping.ColumnMappings.Add("type_name", "type_name");
             tableMapping.ColumnMappings.Add("PRODUCT_ID", "PRODUCT_ID");
             tableMapping.ColumnMappings.Add("product_name", "product_name");
@@ -14596,6 +14597,7 @@ ORDER BY so.STOCK_OUT_DATE";
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("color_name", "color_name");
             tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("stock_in_date", "stock_in_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -14610,7 +14612,7 @@ ORDER BY so.STOCK_OUT_DATE";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        stock_in.STOCK_IN_ID, stock_in.STOCK_IN_DATE, allproduct.type_name, stock_in_detail.PRODUCT_ID, allproduct.product_name, SUM(stock_in_detail.QUANTITY) 
+            this._commandCollection[0].CommandText = @"SELECT        stock_in.STOCK_IN_ID, date_format(stock_in.STOCK_IN_DATE, '%d/%m/%Y') as stock_in_date, allproduct.type_name, stock_in_detail.PRODUCT_ID, allproduct.product_name, SUM(stock_in_detail.QUANTITY) 
                          AS quantity, SUM(stock_in_detail.PRICE) AS price, allproduct.color_name, allproduct.size_name
 FROM            stock_in INNER JOIN
                          stock_in_detail ON stock_in.STOCK_IN_ID = stock_in_detail.STOCK_IN_ID INNER JOIN
@@ -14620,14 +14622,14 @@ GROUP BY allproduct.type_name, allproduct.product_name, allproduct.color_name, a
 ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@FromDate";
+            param.ParameterName = "@ToDate";
             param.DbType = global::System.Data.DbType.DateTime;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
             param.IsNullable = true;
             param.SourceColumn = "STOCK_IN_DATE";
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@ToDate";
+            param.ParameterName = "@FromDate";
             param.DbType = global::System.Data.DbType.DateTime;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
             param.IsNullable = true;
@@ -14638,16 +14640,16 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(posDataSet.stockInDataTable dataTable, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual int Fill(posDataSet.stockInDataTable dataTable, global::System.Nullable<global::System.DateTime> ToDate, global::System.Nullable<global::System.DateTime> FromDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(ToDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -14662,16 +14664,16 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual posDataSet.stockInDataTable GetData(global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual posDataSet.stockInDataTable GetData(global::System.Nullable<global::System.DateTime> ToDate, global::System.Nullable<global::System.DateTime> FromDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(FromDate.Value));
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(ToDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(ToDate.Value));
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -17822,7 +17824,6 @@ group by type_name, product_name, color_name, size_name";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "stockOut";
-            tableMapping.ColumnMappings.Add("stock_out_date", "stock_out_date");
             tableMapping.ColumnMappings.Add("type_name", "type_name");
             tableMapping.ColumnMappings.Add("product_id", "product_id");
             tableMapping.ColumnMappings.Add("product_name", "product_name");
@@ -17832,6 +17833,7 @@ group by type_name, product_name, color_name, size_name";
             tableMapping.ColumnMappings.Add("department_name", "department_name");
             tableMapping.ColumnMappings.Add("sum(quantity)", "sum(quantity)");
             tableMapping.ColumnMappings.Add("price", "price");
+            tableMapping.ColumnMappings.Add("stock_out_date", "stock_out_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -17846,7 +17848,7 @@ group by type_name, product_name, color_name, size_name";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"select stock_out_date, type_name, pr.product_id, product_name, color_name, size_name, dpt.department_id, dpt.department_name, sum(quantity), price
+            this._commandCollection[0].CommandText = @"select date_format(stock_out_date,'%d/%m/%Y') as stock_out_date, type_name, pr.product_id, product_name, color_name, size_name, dpt.department_id, dpt.department_name, sum(quantity), price
 from allproduct pr left join
   (stock_out stk inner join stock_out_detail stkd on stkd.stockout_id=stk.stockout_id) on pr.product_id=stkd.product_id
   left join department dpt on dpt.department_id=stk.department_id
