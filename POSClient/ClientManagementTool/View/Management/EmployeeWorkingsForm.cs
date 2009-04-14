@@ -11,6 +11,7 @@ using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Utility;
 using ClientManagementTool.Logic;
+using ClientManagementTool.Model;
 
 namespace ClientManagementTool.View.Management
 {
@@ -69,9 +70,16 @@ namespace ClientManagementTool.View.Management
             }
             
 
-            bool hasCheckOut = IsCheckOut(txtEmployeeId.Text, ewdList);
-            if (!hasCheckOut)
+            WorkingDayStatus workingDayStatus = IsCheckOut(txtEmployeeId.Text, ewdList);
+            // if not checking het or checking in
+            if (   workingDayStatus== WorkingDayStatus.NotCheckingYet 
+                || workingDayStatus == WorkingDayStatus.CheckingIn )
             {
+                // if manager check out
+                if(ClientInfo.getInstance().LoggedUser.IsInRole(PosRole.Manager))
+                {
+                    
+                }
 
                 EventUtility.fireEvent(SaveEmployeeWorkingDay, this, eventArg);
                 if(eventArg.HasErrors)
@@ -98,7 +106,7 @@ namespace ClientManagementTool.View.Management
             }
             else
             {
-                MessageBox.Show("Nhân viên này đã check-out");
+                MessageBox.Show("Nhân viên này đã check-out hoặc mã vạch rỗng");
             }
             ClearInput();
         }
@@ -141,11 +149,11 @@ namespace ClientManagementTool.View.Management
             txtEmployeeId.Focus();
         }
 
-        private bool IsCheckOut(string text, EmployeeWorkingDaysCollection collection)
+        private WorkingDayStatus IsCheckOut(string text, EmployeeWorkingDaysCollection collection)
         {
             if(string.IsNullOrEmpty(text))
             {
-                return false;
+                return WorkingDayStatus.Unknown;
             }
             int count = 0;
             
@@ -154,18 +162,19 @@ namespace ClientManagementTool.View.Management
                 if(day.Employee.EmployeeInfo.Barcode.Equals(text))
                 {
                     //count += 1;
-                    if(day.EndTime.CompareTo(day.StartTime)< 0)
+                    if(day.EndTime.CompareTo(day.StartTime)<= 0)
                     {
-                        return false;
+                        return WorkingDayStatus.CheckingIn;
                     }
                     else
                     {
-                        return true;
+                        return WorkingDayStatus.CheckedOut;
                     }
                 }
             }
-            return false;
+            return WorkingDayStatus.NotCheckingYet;
         }
+        
 
         private void EmployeeWorkingsForm_Load(object sender, EventArgs e)
         {
@@ -208,5 +217,9 @@ namespace ClientManagementTool.View.Management
         {
 
         }
+    }
+    public enum WorkingDayStatus
+    {
+        NotCheckingYet,CheckingIn,CheckedOut,Unknown
     }
 }

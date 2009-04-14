@@ -11,12 +11,13 @@ using AppFrame.Common;
 using AppFrame.Presenter;
 using AppFrame.Utility;
 using ClientManagementTool.Common;
+using ClientManagementTool.Logic;
 using ClientManagementTool.Model;
 using ClientManagementTool.View.Management;
 
 namespace ClientManagementTool.View
 {
-    public partial class MainForm : Form
+    public partial class MainForm : BaseForm,IMainView
     {
         public MainForm()
         {
@@ -53,6 +54,8 @@ namespace ClientManagementTool.View
             if(loggedUser.IsInRole(PosRole.Manager))
             {
                 // process period for manager here 
+                //MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                //EventUtility.fireEvent(ProcessPeriodEvent,this,eventArgs);
             }
 
         }
@@ -84,5 +87,29 @@ namespace ClientManagementTool.View
         {
 
         }
+
+        #region IMainView Members
+
+        private ClientManagementTool.Logic.IMainLogic mainLogic;
+        public ClientManagementTool.Logic.IMainLogic MainLogic
+        {
+            get
+            {
+                return mainLogic;
+            }
+            set
+            {
+                mainLogic = value;
+                mainLogic.MainView = this;
+            }
+        }
+
+        public event EventHandler<ClientManagementTool.Logic.MainLogicEventArgs> ProcessPeriodEvent;
+
+        public event EventHandler<ClientManagementTool.Logic.MainLogicEventArgs> StartPeriodEvent;
+
+        public event EventHandler<ClientManagementTool.Logic.MainLogicEventArgs> EndPeriodEvent;
+
+        #endregion
     }
 }
