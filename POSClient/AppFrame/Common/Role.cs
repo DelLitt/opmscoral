@@ -6,7 +6,10 @@ namespace AppFrame.Common
     [Serializable]
     public class Role 
     {
-
+        public Role()
+        {
+            name = "Guest";
+        }
         public Role(string roleName)
         {
             name = roleName;
