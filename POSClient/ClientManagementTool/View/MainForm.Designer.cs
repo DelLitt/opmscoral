@@ -41,6 +41,9 @@
             this.employeeWorkingMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeWorkingSearchMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeWorkingReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.enterPeriodMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.leavePeriodMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +64,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
             // menuStrip1
@@ -83,27 +86,27 @@
             this.logoutMenu,
             this.exitMenu});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(51, 20);
+            this.fileMenu.Size = new System.Drawing.Size(54, 20);
             this.fileMenu.Text = "Tác vụ";
             // 
             // loginMenu
             // 
             this.loginMenu.Name = "loginMenu";
-            this.loginMenu.Size = new System.Drawing.Size(152, 22);
+            this.loginMenu.Size = new System.Drawing.Size(132, 22);
             this.loginMenu.Text = "Đăng nhập";
             this.loginMenu.Click += new System.EventHandler(this.loginMenu_Click);
             // 
             // logoutMenu
             // 
             this.logoutMenu.Name = "logoutMenu";
-            this.logoutMenu.Size = new System.Drawing.Size(152, 22);
+            this.logoutMenu.Size = new System.Drawing.Size(132, 22);
             this.logoutMenu.Text = "Đăng xuất";
             this.logoutMenu.Click += new System.EventHandler(this.logoutMenu_Click);
             // 
             // exitMenu
             // 
             this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(152, 22);
+            this.exitMenu.Size = new System.Drawing.Size(132, 22);
             this.exitMenu.Text = "Thoát";
             this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
             // 
@@ -112,43 +115,65 @@
             this.employeeManagementMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.employeeWorkingMenu,
             this.employeeWorkingSearchMenu,
-            this.employeeWorkingReport});
+            this.employeeWorkingReport,
+            this.toolStripMenuItem1,
+            this.enterPeriodMenu,
+            this.leavePeriodMenu});
             this.employeeManagementMenu.Name = "employeeManagementMenu";
-            this.employeeManagementMenu.Size = new System.Drawing.Size(106, 20);
+            this.employeeManagementMenu.Size = new System.Drawing.Size(115, 20);
             this.employeeManagementMenu.Text = "Quản lý nhân viên";
             // 
             // employeeWorkingMenu
             // 
             this.employeeWorkingMenu.Name = "employeeWorkingMenu";
-            this.employeeWorkingMenu.Size = new System.Drawing.Size(193, 22);
+            this.employeeWorkingMenu.Size = new System.Drawing.Size(209, 22);
             this.employeeWorkingMenu.Text = "Chấm công";
             this.employeeWorkingMenu.Click += new System.EventHandler(this.employeeWorkingMenu_Click);
             // 
             // employeeWorkingSearchMenu
             // 
             this.employeeWorkingSearchMenu.Name = "employeeWorkingSearchMenu";
-            this.employeeWorkingSearchMenu.Size = new System.Drawing.Size(193, 22);
+            this.employeeWorkingSearchMenu.Size = new System.Drawing.Size(209, 22);
             this.employeeWorkingSearchMenu.Text = "Xem thông tin ngày công";
             // 
             // employeeWorkingReport
             // 
             this.employeeWorkingReport.Name = "employeeWorkingReport";
-            this.employeeWorkingReport.Size = new System.Drawing.Size(193, 22);
+            this.employeeWorkingReport.Size = new System.Drawing.Size(209, 22);
             this.employeeWorkingReport.Text = "Báo cáo ngày công";
             this.employeeWorkingReport.Click += new System.EventHandler(this.employeeWorkingReport_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(206, 6);
+            // 
+            // enterPeriodMenu
+            // 
+            this.enterPeriodMenu.Name = "enterPeriodMenu";
+            this.enterPeriodMenu.Size = new System.Drawing.Size(209, 22);
+            this.enterPeriodMenu.Text = "Vào ca";
+            this.enterPeriodMenu.Click += new System.EventHandler(this.mnuEnterPeriod_Click);
+            // 
+            // leavePeriodMenu
+            // 
+            this.leavePeriodMenu.Name = "leavePeriodMenu";
+            this.leavePeriodMenu.Size = new System.Drawing.Size(209, 22);
+            this.leavePeriodMenu.Text = "Kết thúc ca";
+            this.leavePeriodMenu.Click += new System.EventHandler(this.mnuLeavePeriod_Click);
             // 
             // menuHelp
             // 
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(55, 20);
+            this.menuHelp.Size = new System.Drawing.Size(61, 20);
             this.menuHelp.Text = "Giúp đỡ";
             // 
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(103, 22);
+            this.menuAbout.Size = new System.Drawing.Size(107, 22);
             this.menuAbout.Text = "About";
             // 
             // label1
@@ -199,5 +224,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuAbout;
         public System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem enterPeriodMenu;
+        private System.Windows.Forms.ToolStripMenuItem leavePeriodMenu;
     }
 }

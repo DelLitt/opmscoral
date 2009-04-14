@@ -244,6 +244,14 @@
     <property name="DepartmentReturnCostDAO" ref="AppFrame.DataLayer.IDepartmentReturnCostDAO"/>
   </object>
 
+  <object id="AppFrame.Service.IDepartmentTimelineLogic" type="AppFrame.Logic.DepartmentTimelineLogicImpl, AppFrameClient">
+    <property name="DepartmentTimelineDAO" ref="AppFrame.DataLayer.IDepartmentTimelineDAO"/>
+  </object>
+
+  <object id="AppFrame.Service.IDepartmentManagementLogic" type="AppFrame.Logic.DepartmentManagementLogicImpl, AppFrameClient">
+    <property name="DepartmentManagementDAO" ref="AppFrame.DataLayer.IDepartmentManagementDAO"/>
+  </object>
+
   <object id="AppFrame.Service.ICouponLogic" type="AppFrame.Logic.CouponLogicImpl, AppFrameClient">
     <property name="CouponDAO" ref="AppFrame.DataLayer.ICouponDAO"/>
   </object>

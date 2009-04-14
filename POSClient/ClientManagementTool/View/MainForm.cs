@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Model;
 using AppFrame.Presenter;
 using AppFrame.Utility;
 using ClientManagementTool.Common;
@@ -54,8 +55,25 @@ namespace ClientManagementTool.View
             if(loggedUser.IsInRole(PosRole.Manager))
             {
                 // process period for manager here 
-                //MainLogicEventArgs eventArgs = new MainLogicEventArgs();
-                //EventUtility.fireEvent(ProcessPeriodEvent,this,eventArgs);
+                MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
+                EventUtility.fireEvent(ProcessPeriodEvent,this,eventArgs);
+                LoginModel userInfo = eventArgs.UserInfo;
+                if(eventArgs.DepartmentManagement==null)
+                {
+                    DialogResult result = MessageBox.Show("Ca trực đang trống. Bạn có muốn vào ca hay không ? ",
+                                                          "Vào ca trực", MessageBoxButtons.YesNo,
+                                                          MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);                    
+                    if(result == DialogResult.Yes)
+                    {
+                        EventUtility.fireEvent(StartPeriodEvent,this,eventArgs);
+                        if(eventArgs.HasErrors)
+                        {
+                            MessageBox.Show("Có lỗi khi thực hiện vào ca. Liên hệ người quản trị.", "Lỗi");
+                            return;
+                        }
+                    }
+                }
             }
 
         }
@@ -111,5 +129,72 @@ namespace ClientManagementTool.View
         public event EventHandler<ClientManagementTool.Logic.MainLogicEventArgs> EndPeriodEvent;
 
         #endregion
+
+        private void mnuEnterPeriod_Click(object sender, EventArgs e)
+        {
+            BaseUser loggedUser = ClientInfo.getInstance().LoggedUser;
+            if (loggedUser.IsInRole(PosRole.Manager))
+            {
+                // process period for manager here 
+                MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
+                EventUtility.fireEvent(ProcessPeriodEvent, this, eventArgs);
+                LoginModel userInfo = eventArgs.UserInfo;
+                if (eventArgs.DepartmentManagement == null)
+                {
+                    EventUtility.fireEvent(StartPeriodEvent, this, eventArgs);
+                    if (eventArgs.HasErrors)
+                    {
+                        MessageBox.Show("Có lỗi khi thực hiện vào ca. Liên hệ người quản trị.", "Lỗi");
+                        return;
+                    }
+                }
+                else
+                {
+                    if (!userInfo.EmployeeInfo.EmployeePK.EmployeeId.Equals(eventArgs.DepartmentManagement.DepartmentManagementPK.EmployeeId))
+                    {
+                        MessageBox.Show("Ca trực đã có người quản lý.", "Lỗi");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bạn đã vào ca rồi.", "Lỗi");                        
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không đủ quyền hạn", "Lỗi");                                
+            }
+        }
+        
+
+        private void mnuLeavePeriod_Click(object sender, EventArgs e)
+        {
+            BaseUser loggedUser = ClientInfo.getInstance().LoggedUser;
+            if (loggedUser.IsInRole(PosRole.Manager))
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn kết thúc ca trực hay không ? ",
+                                                      "Thoát ca trực", MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.Yes)
+                {
+                    MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                    eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
+                    EventUtility.fireEvent(EndPeriodEvent, this, eventArgs);
+                    if (eventArgs.HasErrors)
+                    {
+                        MessageBox.Show("Có lỗi khi thoát ca. Liên hệ người quản trị");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bạn đã kết thúc ca trực. Nhấn OK để thoát.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không đủ quyền hạn", "Lỗi");
+            }
+        }
     }
 }

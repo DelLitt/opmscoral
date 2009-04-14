@@ -15,5 +15,7 @@ namespace ClientManagementTool.Logic
         IEmployeeDetailLogic EmployeeInfoLogic { get; set; }
         IEmployeeLogic EmployeeLogic { get; set; }
         IDepartmentTimelineLogic DepartmentTimelineLogic { get; set; }
+        IDepartmentManagementLogic DepartmentManagementLogic { get; set; }
+        ILoginLogic LoginLogic { get; set; }
     }
 }
