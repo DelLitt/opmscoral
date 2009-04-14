@@ -236,6 +236,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void dgvDeptStockIn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            CalculateTotalStorePrice();
 //            try
 //            {
 //                var departmentStockInEventArgs = new DepartmentStockInEventArgs();

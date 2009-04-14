@@ -20,6 +20,7 @@ namespace AppFrameClient.View
     {
         private LoginModelCollection loginList;
         private LoginModel SaveModel;
+        private IList employeeList = new ArrayList();
         public SecuritySettingsForm()
         {
             InitializeComponent();
@@ -56,6 +57,8 @@ namespace AppFrameClient.View
 
         private void SecuritySettings_Load(object sender, EventArgs e)
         {
+            
+            employeeList.Clear();
             lstEmployee.Items.Clear();
             SecurityEventArgs eventArgs = new SecurityEventArgs();
             EventUtility.fireEvent(InitSecuritySettingsEvent, this, eventArgs);
@@ -74,6 +77,8 @@ namespace AppFrameClient.View
                     ListViewItem item =
                         new ListViewItem(new string[] {employeeInfo.EmployeePK.EmployeeId, employeeInfo.EmployeeName});
                     lstEmployee.Items.Add(item);
+                    // add employee list
+                    employeeList.Add(employeeInfo);
                 }
             }
 
@@ -168,7 +173,6 @@ namespace AppFrameClient.View
                     ListViewItem selectedItem = selectedItems[0];
                     SaveModel.Username = selectedItem.Text.ToLower();
                     SaveModel.EmployeeInfo = GetEmployeeInfoFromListEmployee(selectedItem);
-                    
 
                 }
                 
@@ -307,8 +311,8 @@ namespace AppFrameClient.View
 
         private EmployeeInfo GetEmployeeInfoFromListEmployee(ListViewItem item)
         {
-            Department department = (Department)cboDepartment.SelectedItem;
-            foreach (EmployeeInfo employeeInfo in department.Employees)
+            //Department department = (Department)cboDepartment.SelectedItem;
+            foreach (EmployeeInfo employeeInfo in employeeList)
             {
                 if(employeeInfo.EmployeePK.EmployeeId.Equals(item.Text.Trim().ToUpper()))
                 {
