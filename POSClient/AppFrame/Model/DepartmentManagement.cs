@@ -30,13 +30,7 @@ namespace AppFrame.Model
             get;
             set;
         }
-
-        public virtual DateTime WorkingDay
-        {
-            get;
-            set;
-        }
-
+        
         public virtual DateTime StartTime
         {
             get;

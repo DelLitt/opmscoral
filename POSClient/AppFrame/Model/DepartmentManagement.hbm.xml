@@ -18,6 +18,13 @@
         type="string"
         length="20">
     </key-property>
+    <key-property
+        name="WorkingDay"
+        type="DateTime"
+        column="WORKING_DAY"
+        length="19"
+    >
+    </key-property>
   </composite-id>
 
     <property
@@ -54,14 +61,7 @@
         length="50"
     >
     </property>
-
-  <property
-        name="WorkingDay"
-        type="DateTime"
-        column="WORKING_DAY"
-        length="19"
-    >
-  </property>
+    
   <property
         name="StartTime"
         type="DateTime"

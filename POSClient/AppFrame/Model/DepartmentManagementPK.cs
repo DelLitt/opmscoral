@@ -13,6 +13,7 @@ namespace AppFrame.Model
             set;}
         public virtual long DepartmentId { get; set; }
 
+        public virtual DateTime WorkingDay { get; set; }
         #region Equals and GetHashCode Methods
         // override object.Equals
         public override bool Equals(object obj)
