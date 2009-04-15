@@ -381,7 +381,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             var eventArgs = new DepartmentStockInEventArgs();
             EventUtility.fireEvent(FillDepartmentEvent, this, eventArgs);
-            bdsDept.DataSource = eventArgs.DepartmentList;
+
+            IList departmentList = new ArrayList();
+            departmentList.Add(new Department { DepartmentId = 0, DepartmentName = "--- Hãy chọn cửa hàng xuất ---" });
+            foreach (Department department in eventArgs.DepartmentList)
+            {
+                departmentList.Add(department);
+            }
+            
+            bdsDept.DataSource = departmentList;
+            
             deptSIDetailList = new DepartmentStockInDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSIDetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
@@ -519,6 +528,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             try
             {
                 int index = cbbDept.SelectedIndex;
+                if(index == 0 )
+                {
+                    MessageBox.Show("Bạn hãy chọn cửa hàng để xuất hàng", "Cảnh báo", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return;
+                }
                 deptName = ((Department)bdsDept[index]).DepartmentName;
             }
             catch (Exception)

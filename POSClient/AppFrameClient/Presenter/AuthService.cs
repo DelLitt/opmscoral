@@ -20,23 +20,30 @@ namespace AppFrame.Presenter
             Form loginForm = GlobalUtility.GetOnlyChildFormObject<AuthForm>(GlobalCache.Instance().MainForm,FormConstants.LOGIN_FORM);
             loginForm.StartPosition = FormStartPosition.CenterScreen;
             //loginForm.ShowDialog();
+            loginForm.FormClosed += new FormClosedEventHandler(loginForm_FormClosed);
             loginForm.Show();
             //GlobalCache.Instance().MainForm.Focus();
-            if(PostLogin!=null)
+            
+        }
+
+        void loginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!ClientInfo.getInstance().LoggedUser.IsGuest && PostLogin != null)
             {
-                EventUtility.fireEvent(PostLogin,this,new BaseEventArgs());
+                EventUtility.fireEvent(PostLogin, this, new BaseEventArgs());
             }
         }
 
         public void logout()
         {
-            if (PreLogout != null)
-            {
-                EventUtility.fireEvent(PreLogout, this, new BaseEventArgs());
-            }
+            
             AuthManager authManager = SecurityUtility.LoadAuthenticationModule();
             authManager.logout();
             GlobalUtility.CloseAllChildForm(GlobalUtility.GetFormObject(FormConstants.MAIN_FORM));
+            if (ClientInfo.getInstance().LoggedUser.IsGuest && PreLogout != null)
+            {
+                EventUtility.fireEvent(PreLogout, this, new BaseEventArgs());
+            }
         }
 
         #endregion

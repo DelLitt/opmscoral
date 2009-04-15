@@ -345,5 +345,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
 
         #endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
