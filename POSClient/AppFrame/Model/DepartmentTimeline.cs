@@ -52,13 +52,6 @@ namespace AppFrame.Model
             return 0;
         }
 
-        public virtual bool Equals(DepartmentTimeline other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Equals(other.DepartmentTimelinePK, DepartmentTimelinePK);
-        }
-
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

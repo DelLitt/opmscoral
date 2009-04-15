@@ -94,7 +94,8 @@
     <!-- bi-directional many-to-one association to DepartmentStockOut -->
     <many-to-one
         name="DepartmentStockOut"
-	    class="DepartmentStockOut"	    
+	    class="DepartmentStockOut"
+      lazy="false"        
 	>
     	<column name="STOCK_OUT_ID" />
     	<column name="DEPARTMENT_ID" />

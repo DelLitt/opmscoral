@@ -12,6 +12,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
     {
         public Form ParentForm { get; set; }
 
+        public bool IsConfirmPeriod { get; set; }
         public string ProductId { get; set; }
         public string ProductName { get; set; }
         public IList ProductSizeList { get; set; }
