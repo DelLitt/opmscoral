@@ -102,5 +102,55 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        #region ILoginLogic Members
+
+
+        public IList FindAll(object o)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LoginModel FindById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LoginModel Add(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList FindAll(ObjectCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region ILoginLogic Members
+
+
+        public void ProcessUser(LoginModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

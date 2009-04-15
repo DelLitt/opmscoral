@@ -64,7 +64,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockOutView_GetSyncDataEvent(object sender, DepartmentStockOutEventArgs e)
         {
-            e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData();
+            e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData(e.IsConfirmPeriod);
         }
 
         public void _departmentStockOutView_LoadProductSizeEvent(object sender, DepartmentStockOutEventArgs e)

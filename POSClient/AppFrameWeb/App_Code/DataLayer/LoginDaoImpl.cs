@@ -36,6 +36,41 @@ namespace AppFrame.DataLayer
             return HibernateTemplate.Get(typeof (LoginModel), Username) as LoginModel;
         }
 
-        
+
+
+        #region ILoginDao Members
+
+
+        public LoginModel FindById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LoginModel Add(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(LoginModel data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.IList FindAll(ObjectCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

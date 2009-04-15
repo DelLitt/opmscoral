@@ -452,6 +452,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(
+                "Bạn hãy kiểm tra kỹ trước khi lưu số liệu bởi vì sau khi lưu sẽ không thay đổi được nữa. Bạn có chắc chắn muốn lưu","Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             // first remove all blank row
             int count = 0;
             int length = deptSODetailList.Count;
@@ -1108,7 +1111,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //int selectedIndex = 0;
             //mainStockInEventArgs.SelectedIndex = selectedIndex;
             //mainStockInEventArgs.SelectedStockInDetail = deptSODetailList[selectedIndex];
-            mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.SelectedText } } };
+            mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.Text } } };
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
             EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
@@ -1122,6 +1125,55 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void deleteStock_Pressed(object sender, EventArgs e)
         {
             btnDelete_Click(sender,e);
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 2)
+            {
+                var eventArgs = new DepartmentStockOutEventArgs();
+                eventArgs.ProductId = txtBarcode.Text;
+                EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
+                if (eventArgs.EventResult == null)
+                {
+                    MessageBox.Show("Không tìm thấy mã vạch này");
+                    return;
+                }
+                bool found = false;
+                foreach (DepartmentStockOutDetail detail in deptSODetailList)
+                {
+                    if (eventArgs.SelectedDepartmentStockOutDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    MessageBox.Show("Mã vạch đã được nhập");
+                    return;
+                }
+                if (eventArgs.DepartmentStock != null)
+                {
+                    found = false;
+                    foreach (Stock detail in departmentStockList)
+                    {
+                        if (eventArgs.DepartmentStock.Product.ProductId.Equals(detail.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        departmentStockList.Add(eventArgs.DepartmentStock);
+                    }
+                }
+                deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
+                deptSODetailList.EndNew(deptSODetailList.Count - 1);
+                cbbStockOutType.Enabled = false;
+                LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
+            }
         }
     }
 }

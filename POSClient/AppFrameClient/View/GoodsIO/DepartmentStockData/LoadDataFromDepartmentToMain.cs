@@ -31,8 +31,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
 
             DialogResult dResult = MessageBox.Show(
-                "Bạn muốn nhập hàng cho cửa hàng ? ",
-                "Nhập hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                "Bạn muốn đồng bộ từ cửa hàng ? ",
+                "Đồng bộ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dResult == DialogResult.No)
             {
                 return;
@@ -116,7 +116,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     if (fail)
                     {
-                        File.Move(importPath, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
 //                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }

@@ -28,12 +28,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            bool isConfirmPeriod = false;
             DialogResult dResult = MessageBox.Show(
-                "Kết sổ cho ngày hôm nay? Xin lưu ý nếu bạn đã kết sổ thì phải đợi đến hôm sau mới có thể tiếp tục.",
-                "Kết sổ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if(dResult== DialogResult.No)
+                "Bạn xác định kết sổ cho ngày hôm nay ? Nếu phải, bấm Yes, còn nếu không, bấm No. Không làm gì, bấm Cancel",
+                "Kết sổ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if(dResult == DialogResult.Cancel)
             {
-               return; 
+                return;
+            }
+            if(dResult== DialogResult.Yes)
+            {
+                isConfirmPeriod = true;
             }
 
             var configurationAppSettings = new AppSettingsReader();
@@ -73,6 +78,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "-SyncUp-" +
                                   DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.CLIENT_SYNC_FORMAT;
                 var eventArgs = new DepartmentStockOutEventArgs();
+                
+                eventArgs.IsConfirmPeriod = isConfirmPeriod;
+                
                 EventUtility.fireEvent(GetSyncDataEvent, this, eventArgs);
                 SyncFromDepartmentToMain syncData = eventArgs.SyncFromDepartmentToMain;
                 if (syncData != null)
