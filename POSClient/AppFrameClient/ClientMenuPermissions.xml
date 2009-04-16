@@ -63,9 +63,9 @@
   </menu>
 
   <menu name="mnuSale" role="Administrator,Manager,Supervisor,Accountant">
-    <menuitem name="mnuGoodsSale" role="Administrator,Manager,Accountant" />
+    <menuitem name="mnuGoodsSale" role="Administrator,Supervisor,Manager,Accountant" />
     <menuitem name="mnuGoodsSaleExchange" role="NotImplement" />
-    <menuitem name="mnuGoodsSaleReturn" role="Administrator,Manager,Accountant" />
+    <menuitem name="mnuGoodsSaleReturn" role="NotImplement" />
     <menuitem name="mnuGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDayGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
@@ -96,8 +96,8 @@
     <menuitem name="mnuBackupData" role="NotImplement" />
     <menuitem name="mnuDeleteData" role="NotImplement" />
     <menuitem name="mnuRecoverData" role="NotImplement" />
-    <menuitem name="mnuSynchronizeData" role="Administrator,Supervisor" />
-    <menuitem name="mnuSyncToMainForm" role="Administrator,Manager" />
+    <menuitem name="mnuSynchronizeData" role="Administrator,Supervisor,Manager" />
+    <menuitem name="mnuSyncToMainForm" role="Administrator,,Supervisor,Manager" />
     <menuitem name="mnuLoadToMain" role="NotImplement" />
     <menuitem name="mnuLoadToDept" role="NotImplement" />
     <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
