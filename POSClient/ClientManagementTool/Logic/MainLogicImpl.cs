@@ -44,12 +44,12 @@ namespace ClientManagementTool.Logic
             dm.UpdateId = e.UserInfo.Username;
             dm.CreateDate = DateTime.Now;
             dm.UpdateDate = DateTime.Now;
-            dm.WorkingDay = DateTime.Now;
             dm.StartTime = DateTime.Now;
             dm.DepartmentManagementPK = new DepartmentManagementPK
                                             {
                                                 DepartmentId = CurrentDepartment.Get().DepartmentId,
-                                                EmployeeId = e.UserInfo.EmployeeInfo.EmployeePK.EmployeeId
+                                                EmployeeId = e.UserInfo.EmployeeInfo.EmployeePK.EmployeeId,
+                                                WorkingDay = DateTime.Now
                                             };
             DepartmentManagementLogic.Add(dm);
         }
@@ -60,6 +60,7 @@ namespace ClientManagementTool.Logic
             LoginModel UserInfo = LoginLogic.FindById(UserId);
             if(UserInfo.EmployeeInfo!=null)
             {
+                e.UserInfo = UserInfo;
                 DepartmentManagement lastManagement = DepartmentManagementLogic.FindLastPeriod();
                 e.DepartmentManagement = lastManagement;
             }

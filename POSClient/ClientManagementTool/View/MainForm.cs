@@ -75,7 +75,7 @@ namespace ClientManagementTool.View
                     }
                 }
             }
-
+            AuthService.PostLogin -= new EventHandler<BaseEventArgs>(AuthService_PostLogin);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -132,6 +132,11 @@ namespace ClientManagementTool.View
 
         private void mnuEnterPeriod_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Bạn muốn vào ca trực ?", "Ca trực",MessageBoxButtons.YesNo);
+            if(result == DialogResult.No)
+            {
+                return;    
+            }
             BaseUser loggedUser = ClientInfo.getInstance().LoggedUser;
             if (loggedUser.IsInRole(PosRole.Manager))
             {
@@ -147,6 +152,10 @@ namespace ClientManagementTool.View
                     {
                         MessageBox.Show("Có lỗi khi thực hiện vào ca. Liên hệ người quản trị.", "Lỗi");
                         return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bạn đã vào ca trực. Nhấn OK để thoát.");
                     }
                 }
                 else
@@ -180,6 +189,19 @@ namespace ClientManagementTool.View
                 {
                     MainLogicEventArgs eventArgs = new MainLogicEventArgs();
                     eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
+                    EventUtility.fireEvent(ProcessPeriodEvent, this, eventArgs);
+                    LoginModel userInfo = eventArgs.UserInfo;
+                    if (eventArgs.DepartmentManagement == null)
+                    {
+                        MessageBox.Show("Chưa vào ca nên không thể chấm dứt ca.", "Lỗi");
+                            return;
+                        
+                    }
+                    if (!userInfo.EmployeeInfo.EmployeePK.EmployeeId.Equals(eventArgs.DepartmentManagement.DepartmentManagementPK.EmployeeId))
+                    {
+                        MessageBox.Show("Ca trực đã có người quản lý.", "Lỗi");
+                        return;
+                    }
                     EventUtility.fireEvent(EndPeriodEvent, this, eventArgs);
                     if (eventArgs.HasErrors)
                     {
