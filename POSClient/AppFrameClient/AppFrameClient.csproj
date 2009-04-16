@@ -266,6 +266,12 @@
     <Compile Include="View\GoodsSale\GoodsReturnChildForm.Designer.cs">
       <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsSale\PurchaseOrderViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsSale\PurchaseOrderViewer.Designer.cs">
+      <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1101,6 +1107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsSale\GoodsReturnChildForm.resx">
       <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsSale\PurchaseOrderViewer.resx">
+      <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
