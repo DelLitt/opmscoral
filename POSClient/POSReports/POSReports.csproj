@@ -195,6 +195,7 @@
       <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrderPeriod.rdlc" />
     <EmbeddedResource Include="PurchaseOrderReport.rdlc" />
     <EmbeddedResource Include="PurchaseOrderReportViewer.resx">
       <DependentUpon>PurchaseOrderReportViewer.cs</DependentUpon>
