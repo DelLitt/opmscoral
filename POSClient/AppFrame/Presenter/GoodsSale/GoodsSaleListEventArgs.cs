@@ -10,6 +10,8 @@ namespace AppFrame.Presenter.GoodsSale
 {
     public class GoodsSaleListEventArgs  : BaseEventArgs
     {
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
         public PurchaseOrderCollection PurchaseOrders { get; set; }
         public ObjectCriteria PurchaseOrderSearchCriteria { get; set; }
         public PurchaseOrder SelectedOrder { get; set; }
