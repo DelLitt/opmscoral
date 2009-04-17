@@ -13,6 +13,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
 using AppFrame.View.GoodsSale;
+using AppFrameClient.ViewModel;
 using Aspose.Cells;
 
 namespace AppFrameClient.View.GoodsSale
@@ -41,6 +42,11 @@ namespace AppFrameClient.View.GoodsSale
 
             GoodsSaleListEventArgs goodsSaleListEventArgs = new GoodsSaleListEventArgs();
             goodsSaleListEventArgs.PurchaseOrderSearchCriteria = CreateCriteria();
+            DateTime firstOfMonth = DateTime.ParseExact(txtDateFrom.Text, "dd/MM/yyyy", null);
+            DateTime lastOfMonth = DateTime.ParseExact(txtDateTo.Text, "dd/MM/yyyy", null);
+            goodsSaleListEventArgs.FromDate = DateUtility.ZeroTime(firstOfMonth);
+            goodsSaleListEventArgs.ToDate = DateUtility.MaxTime(lastOfMonth);
+
             EventUtility.fireEvent(GoodsSaleListSearchEvent, this, goodsSaleListEventArgs);
         }
 
@@ -80,12 +86,14 @@ namespace AppFrameClient.View.GoodsSale
 
         void goodsSaleListController_CompletedGoodsSaleListSearchEvent(object sender, GoodsSaleListEventArgs e)
         {
-            e.PurchaseOrders.ParentBindingSource = bdsPurchaseOrders;
-            bdsPurchaseOrders.DataSource = e.PurchaseOrders;
+            //e.PurchaseOrders.ParentBindingSource = bdsPurchaseOrders;
+            bdsPurchaseOrders.DataSource = e.PurchaseOrderViewList;
+            bdsPurchaseOrders.EndEdit();
+            bdsPurchaseOrders.ResetBindings(false);
             long totalAmount = 0;
-            foreach (PurchaseOrder purchaseOrder in e.PurchaseOrders)
+            foreach (PurchaseOrderView view in e.PurchaseOrderViewList)
             {
-                totalAmount += purchaseOrder.PurchasePrice;
+                totalAmount += (view.SellAmount - view.ReturnAmount);
             }
             txtTotalAmount.Text = totalAmount.ToString("##,#00");
         }

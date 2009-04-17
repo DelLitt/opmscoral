@@ -16,6 +16,7 @@ using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
 using AppFrame.View.GoodsSale;
 //using Aspose.Cells;
+using AppFrameClient.ViewModel;
 using Aspose.Cells;
 using ArrayList=System.Collections.ArrayList;
 
@@ -46,6 +47,8 @@ namespace AppFrameClient.View.GoodsSale
             
             GoodsSaleListEventArgs goodsSaleListEventArgs = new GoodsSaleListEventArgs();
             goodsSaleListEventArgs.PurchaseOrderSearchCriteria = CreateCriteria();
+            goodsSaleListEventArgs.FromDate = DateUtility.ZeroTime(dtpFromDate.Value);
+            goodsSaleListEventArgs.ToDate = DateUtility.MaxTime(dtpToDate.Value);
             EventUtility.fireEvent(GoodsSaleListSearchEvent,this,goodsSaleListEventArgs);
         }
 
@@ -70,13 +73,13 @@ namespace AppFrameClient.View.GoodsSale
 
         void goodsSaleListController_CompletedGoodsSaleListSearchEvent(object sender, GoodsSaleListEventArgs e)
         {
-            e.PurchaseOrders.ParentBindingSource = bdsPurchaseOrders;
-            bdsPurchaseOrders.DataSource = e.PurchaseOrders;
+            //e.PurchaseOrders.ParentBindingSource = bdsPurchaseOrders;
+            bdsPurchaseOrders.DataSource = e.PurchaseOrderViewList;
 
             long totalAmount = 0;
-            foreach(PurchaseOrder purchaseOrder in e.PurchaseOrders)
+            foreach (PurchaseOrderView view in e.PurchaseOrderViewList)
             {
-                totalAmount += purchaseOrder.PurchasePrice;
+                totalAmount += (view.SellAmount - view.ReturnAmount);
             }
             txtTotalAmount.Text = totalAmount.ToString("##,##0");
         }

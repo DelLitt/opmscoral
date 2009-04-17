@@ -16,5 +16,6 @@ namespace AppFrameClient.ViewModel
         public IList ReturnPOList { get; set; }
         public long ReturnAmount { get; set; }
         public string ReturnDescription { get; set; }
+        public DateTime IssueDate { get; set; }
     }
 }

@@ -1332,6 +1332,7 @@
     <Content Include="Logic\dummy.txt" />
     <None Include="Properties\DataSources\AppFrame.Collection.EmployeeInfoCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo1.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.PurchaseOrderView.datasource" />
     <None Include="Resources\ready-to-use.jpg" />
     <None Include="Resources\FlashImage.jpg" />
   </ItemGroup>

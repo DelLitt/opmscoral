@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
+using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.GoodsSale
 {
@@ -28,7 +29,14 @@ namespace AppFrameClient.View.GoodsSale
         {
             DataGridViewSelectedRowCollection selectedRows = dgvSaleList.SelectedRows;
             GoodsSaleListEventArgs eventArgs = new GoodsSaleListEventArgs();
-            eventArgs.SelectedOrder = bdsPurchaseOrders[dgvSaleList.CurrentCell.OwningRow.Index] as PurchaseOrder;
+            PurchaseOrderView view = bdsPurchaseOrders[dgvSaleList.CurrentCell.OwningRow.Index] as PurchaseOrderView;
+            if(view == null || view.PurchaseOrder == null)
+            {
+                MessageBox.Show("Bạn nên chọn hóa đơn bán hàng, không nên chọn hóa đơn trả hàng");
+                return;
+            }
+
+            eventArgs.SelectedOrder = view.PurchaseOrder;
             EventUtility.fireEvent(SelectGoodsSaleEvent,this,eventArgs);
             Close();
         }
