@@ -25,7 +25,7 @@ namespace POSReports
             if (CurrentDepartment.Get().DepartmentId != 0)
             {
                 comboBox1.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
-                comboBox1.Visible = false;
+                comboBox1.Enabled = false;
             }
         }
 
