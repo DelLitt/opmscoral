@@ -248,6 +248,7 @@
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
+    <Compile Include="ViewModel\PurchaseOrderView.cs" />
     <Compile Include="View\ClientServerSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -46,7 +46,7 @@ namespace AppFrameClient.View.GoodsSale
             // search from date 1 to date 2
             DateTime dateTime = new DateTime();
             objectCriteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(DateTime.Now))
-                .AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(DateTime.Now));
+                .AddLesserOrEqualsCriteria("CreateDate", DateTime.Now);
 
             GoodsSaleListController.PurchaseOrderCriteria = objectCriteria;
             return objectCriteria;
