@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using AppFrame.Collection;
@@ -12,5 +13,6 @@ namespace AppFrame.Presenter.GoodsSale
         public PurchaseOrderCollection PurchaseOrders { get; set; }
         public ObjectCriteria PurchaseOrderSearchCriteria { get; set; }
         public PurchaseOrder SelectedOrder { get; set; }
+        public IList PurchaseOrderViewList { get; set; }
     }
 }
