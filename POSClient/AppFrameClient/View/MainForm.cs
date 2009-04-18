@@ -642,5 +642,10 @@ namespace AppFrame.View
         {
             new SettingForm().ShowDialog();
         }
+
+        private void mnuGoodsSaleStatisticReport_Click(object sender, EventArgs e)
+        {
+            new GoodsSaleStatisticReportViewer().ShowDialog();
+        }
     }
 }

@@ -72,6 +72,7 @@
   </menu>
   <menu name="mnuReport" role="Administrator,Supervisor">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />
+    <menuitem name="mnuGoodsSaleStatisticReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsImportReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsExportReport" role="NotImplement" />
     <menuitem name="mnuDeptStockInReport" role="Administrator,Supervisor" />
