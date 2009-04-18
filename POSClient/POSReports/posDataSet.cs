@@ -2,6 +2,10 @@
     
     
     public partial class posDataSet {
+        partial class supplierStockoutDataTable
+        {
+        }
+    
         partial class purchaseOrderDataTable
         {
         }

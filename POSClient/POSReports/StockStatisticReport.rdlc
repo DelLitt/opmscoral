@@ -304,7 +304,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>27</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -376,7 +376,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>24</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value+Fields!instock_qty.Value-Fields!tmpout_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value+Fields!instock_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -525,7 +525,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>19</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -597,7 +597,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>16</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value+Fields!instock_qty.Value-Fields!tmpout_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value+Fields!instock_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -746,7 +746,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>11</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -818,7 +818,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>8</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value+Fields!instock_qty.Value-Fields!tmpout_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
+                          <Value>=Sum(Fields!prestk_qty.Value+Fields!instock_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -947,7 +947,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!prestk_qty.Value+Fields!dmg_qty.Value+Fields!error_qty.Value</Value>
+                      <Value>=Fields!prestk_qty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1015,7 +1015,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!prestk_qty.Value+Fields!error_qty.Value+Fields!dmg_qty.Value+Fields!instock_qty.Value-Fields!tmpout_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
+                      <Value>=Sum(Fields!prestk_qty.Value+Fields!instock_qty.Value-Fields!stkout_qty.Value-Fields!destroy_qty.Value-Fields!rtn_qty.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1286,7 +1286,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
         <Height>1.26749in</Height>
       </Table>
     </ReportItems>
-    <Height>2.59208in</Height>
+    <Height>2.25in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>

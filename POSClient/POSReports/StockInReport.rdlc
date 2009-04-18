@@ -166,7 +166,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>34</ZIndex>
+                              <ZIndex>41</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!type_name.Value</Value>
                             </Textbox>
@@ -191,7 +191,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>33</ZIndex>
+                              <ZIndex>40</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -217,7 +217,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>32</ZIndex>
+                              <ZIndex>39</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -243,7 +243,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>31</ZIndex>
+                              <ZIndex>38</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -269,7 +269,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>30</ZIndex>
+                              <ZIndex>37</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!quantity.Value)</Value>
                             </Textbox>
@@ -294,9 +294,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>29</ZIndex>
+                              <ZIndex>36</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -319,9 +319,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>28</ZIndex>
+                              <ZIndex>35</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value />
+                              <Value>=Sum(Fields!price.Value*Fields!quantity.Value)</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -370,7 +370,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>27</ZIndex>
+                              <ZIndex>34</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -396,7 +396,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>26</ZIndex>
+                              <ZIndex>33</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!product_name.Value</Value>
                             </Textbox>
@@ -421,7 +421,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>25</ZIndex>
+                              <ZIndex>32</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -447,7 +447,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>24</ZIndex>
+                              <ZIndex>31</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -473,7 +473,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>23</ZIndex>
+                              <ZIndex>30</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!quantity.Value)</Value>
                             </Textbox>
@@ -498,9 +498,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>22</ZIndex>
+                              <ZIndex>29</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -523,9 +523,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>21</ZIndex>
+                              <ZIndex>28</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value />
+                              <Value>=Sum(Fields!price.Value*Fields!quantity.Value)</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -574,7 +574,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>20</ZIndex>
+                              <ZIndex>27</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -600,7 +600,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>19</ZIndex>
+                              <ZIndex>26</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -626,7 +626,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>18</ZIndex>
+                              <ZIndex>25</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!color_name.Value</Value>
                             </Textbox>
@@ -651,7 +651,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>17</ZIndex>
+                              <ZIndex>24</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -677,7 +677,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>23</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!quantity.Value)</Value>
                             </Textbox>
@@ -702,9 +702,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>22</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -727,9 +727,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>14</ZIndex>
+                              <ZIndex>21</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value />
+                              <Value>=Sum(Fields!price.Value*Fields!quantity.Value)</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -778,7 +778,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>13</ZIndex>
+                              <ZIndex>20</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -804,7 +804,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>12</ZIndex>
+                              <ZIndex>19</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -830,7 +830,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>11</ZIndex>
+                              <ZIndex>18</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -856,7 +856,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>10</ZIndex>
+                              <ZIndex>17</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!size_name.Value</Value>
                             </Textbox>
@@ -881,7 +881,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>9</ZIndex>
+                              <ZIndex>16</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!quantity.Value)</Value>
                             </Textbox>
@@ -906,9 +906,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>8</ZIndex>
+                              <ZIndex>15</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -931,9 +931,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>14</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value />
+                              <Value>=Sum(Fields!price.Value*Fields!quantity.Value)</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -1115,7 +1115,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value />
+                          <Value>=Fields!quantity.Value*Fields!price.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1158,7 +1158,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>41</ZIndex>
+                          <ZIndex>48</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Chủng loại</Value>
                         </Textbox>
@@ -1185,7 +1185,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>40</ZIndex>
+                          <ZIndex>47</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Tên hàng</Value>
                         </Textbox>
@@ -1212,7 +1212,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>39</ZIndex>
+                          <ZIndex>46</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Màu sắc</Value>
                         </Textbox>
@@ -1239,7 +1239,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>38</ZIndex>
+                          <ZIndex>45</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Kích cỡ</Value>
                         </Textbox>
@@ -1267,7 +1267,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>37</ZIndex>
+                          <ZIndex>44</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Số lượng</Value>
                         </Textbox>
@@ -1295,7 +1295,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>36</ZIndex>
+                          <ZIndex>43</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Đơn giá</Value>
                         </Textbox>
@@ -1323,7 +1323,7 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>35</ZIndex>
+                          <ZIndex>42</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Tổng giá nhập</Value>
                         </Textbox>
@@ -1358,6 +1358,155 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
                 <Width>1in</Width>
               </TableColumn>
             </TableColumns>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox39">
+                          <rd:DefaultName>textbox39</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>13</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Tổng cộng</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox40">
+                          <rd:DefaultName>textbox40</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>12</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox41">
+                          <rd:DefaultName>textbox41</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>11</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox42">
+                          <rd:DefaultName>textbox42</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>10</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox43">
+                          <rd:DefaultName>textbox43</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>9</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=sum(Fields!quantity.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox44">
+                          <rd:DefaultName>textbox44</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox45">
+                          <rd:DefaultName>textbox45</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>7</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=sum(Fields!price.Value*Fields!quantity.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
           </Table>
         </ReportItems>
         <Top>0.33in</Top>
@@ -1371,10 +1520,9 @@ ORDER BY stock_in.STOCK_IN_DATE DESC, stock_in_detail.PRODUCT_ID</CommandText>
           </GroupExpressions>
           <PageBreakAtEnd>true</PageBreakAtEnd>
         </Grouping>
-        <Height>1.75in</Height>
       </List>
     </ReportItems>
-    <Height>2.25in</Height>
+    <Height>2.33in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>

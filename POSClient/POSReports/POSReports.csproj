@@ -134,6 +134,12 @@
     <Compile Include="DeptTempStockoutReportViewer.Designer.cs">
       <DependentUpon>DeptTempStockoutReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoodsSaleStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsSaleStatisticReportViewer.Designer.cs">
+      <DependentUpon>GoodsSaleStatisticReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainStockReturnReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,10 @@
     <EmbeddedResource Include="DeptTempStockOutReport.rdlc" />
     <EmbeddedResource Include="DeptTempStockoutReportViewer.resx">
       <DependentUpon>DeptTempStockoutReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsSaleStatistic.rdlc" />
+    <EmbeddedResource Include="GoodsSaleStatisticReportViewer.resx">
+      <DependentUpon>GoodsSaleStatisticReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainStockReturnReport.rdlc" />
     <EmbeddedResource Include="MainStockReturnReportViewer.resx">

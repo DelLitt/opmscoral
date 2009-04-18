@@ -86,6 +86,26 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
   <Width>7.125in</Width>
   <Body>
     <ReportItems>
+      <Textbox Name="textbox34">
+        <rd:DefaultName>textbox34</rd:DefaultName>
+        <Top>0.5in</Top>
+        <Style>
+          <FontStyle>Italic</FontStyle>
+          <FontFamily>Times New Roman</FontFamily>
+          <FontSize>12pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.5in</Left>
+        <Height>0.25in</Height>
+        <Value>="Tổng số lượng xuất: "&amp;sum(Fields!sum_quantity_.Value)</Value>
+      </Textbox>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Style>
@@ -185,7 +205,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>23</ZIndex>
+                              <ZIndex>29</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!type_name.Value</Value>
                             </Textbox>
@@ -210,7 +230,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>22</ZIndex>
+                              <ZIndex>28</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -236,7 +256,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>21</ZIndex>
+                              <ZIndex>27</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -262,7 +282,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>20</ZIndex>
+                              <ZIndex>26</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -288,7 +308,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>19</ZIndex>
+                              <ZIndex>25</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!sum_quantity_.Value)</Value>
                             </Textbox>
@@ -313,9 +333,9 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>18</ZIndex>
+                              <ZIndex>24</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -364,7 +384,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>17</ZIndex>
+                              <ZIndex>23</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -390,7 +410,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>22</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!product_name.Value</Value>
                             </Textbox>
@@ -415,7 +435,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>21</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -441,7 +461,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>14</ZIndex>
+                              <ZIndex>20</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -467,7 +487,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>13</ZIndex>
+                              <ZIndex>19</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!sum_quantity_.Value)</Value>
                             </Textbox>
@@ -492,9 +512,9 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>12</ZIndex>
+                              <ZIndex>18</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -543,7 +563,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>11</ZIndex>
+                              <ZIndex>17</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -569,7 +589,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>10</ZIndex>
+                              <ZIndex>16</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -595,7 +615,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>9</ZIndex>
+                              <ZIndex>15</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Fields!color_name.Value</Value>
                             </Textbox>
@@ -620,7 +640,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>8</ZIndex>
+                              <ZIndex>14</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>
                               </Value>
@@ -646,7 +666,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>13</ZIndex>
                               <CanGrow>true</CanGrow>
                               <Value>=Sum(Fields!sum_quantity_.Value)</Value>
                             </Textbox>
@@ -671,9 +691,9 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                                 <PaddingTop>2pt</PaddingTop>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                              <ZIndex>6</ZIndex>
+                              <ZIndex>12</ZIndex>
                               <CanGrow>true</CanGrow>
-                              <Value>=Sum(Fields!price.Value)</Value>
+                              <Value />
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -872,7 +892,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>29</ZIndex>
+                          <ZIndex>35</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Chủng loại</Value>
                         </Textbox>
@@ -899,7 +919,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>28</ZIndex>
+                          <ZIndex>34</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Tên hàng</Value>
                         </Textbox>
@@ -926,7 +946,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>27</ZIndex>
+                          <ZIndex>33</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Màu sắc</Value>
                         </Textbox>
@@ -953,7 +973,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>26</ZIndex>
+                          <ZIndex>32</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Kích cỡ</Value>
                         </Textbox>
@@ -981,7 +1001,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>25</ZIndex>
+                          <ZIndex>31</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Số lượng</Value>
                         </Textbox>
@@ -1009,7 +1029,7 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
-                          <ZIndex>24</ZIndex>
+                          <ZIndex>30</ZIndex>
                           <CanGrow>true</CanGrow>
                           <Value>Giá bán</Value>
                         </Textbox>
@@ -1041,9 +1061,144 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
                 <Width>1in</Width>
               </TableColumn>
             </TableColumns>
+            <Footer>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>11</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Tổng cộng</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox29">
+                          <rd:DefaultName>textbox29</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>10</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox30">
+                          <rd:DefaultName>textbox30</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>9</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox31">
+                          <rd:DefaultName>textbox31</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox32">
+                          <rd:DefaultName>textbox32</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>7</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=sum(Fields!sum_quantity_.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox33">
+                          <rd:DefaultName>textbox33</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontStyle>Italic</FontStyle>
+                            <FontFamily>Times New Roman</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>700</FontWeight>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>6</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                </TableRow>
+              </TableRows>
+            </Footer>
           </Table>
         </ReportItems>
-        <Top>0.33in</Top>
+        <Top>0.75in</Top>
         <Style>
           <FontFamily>Times New Roman</FontFamily>
           <FontSize>12pt</FontSize>
@@ -1054,10 +1209,9 @@ group by department_name, stock_out_date, type_name, product_name, color_name, s
           </GroupExpressions>
           <PageBreakAtEnd>true</PageBreakAtEnd>
         </Grouping>
-        <Height>1.54in</Height>
       </List>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.54in</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
