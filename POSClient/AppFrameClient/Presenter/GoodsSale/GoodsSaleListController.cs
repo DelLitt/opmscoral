@@ -119,13 +119,16 @@ namespace AppFrameClient.Presenter.GoodsSale
                 view.PurchaseOrderId = order.PurchaseOrderPK.PurchaseOrderId;
 
                 long SellAmount = 0;
+                long SellQuantity = 0;
                 string SellDescription = "";
                 long RetAmount = 0;
+                long RetQuantity = 0;
                 string RetDescription = "";
                 foreach (PurchaseOrderDetail detail in order.PurchaseOrderDetails)
                 {
                     SellDescription += detail.Product.ProductMaster.ProductName + " ";
                     SellAmount += detail.Quantity*detail.Price;
+                    SellQuantity += detail.Quantity;
                 }
                 
                 ObjectCriteria criteria = new ObjectCriteria();
@@ -148,13 +151,16 @@ namespace AppFrameClient.Presenter.GoodsSale
                         }
                     }
                     RetAmount += returnPo.Quantity * retPrice;
+                    RetQuantity += returnPo.Quantity;
                 }
 
                 view.ReturnPOList = returnPOList;
                 view.SellDescription = SellDescription;
                 view.SellAmount = SellAmount;
+                view.SellQuantity = SellQuantity;
                 view.ReturnAmount = RetAmount;
                 view.ReturnDescription = RetDescription;
+                view.ReturnQuantity = RetQuantity;
                 view.IssueDate = order.CreateDate;
                 collection.Add(view);
             }
@@ -209,6 +215,7 @@ namespace AppFrameClient.Presenter.GoodsSale
                         }
                     }
                 retNAView.ReturnAmount += returnPo.Quantity * retPrice;
+                retNAView.ReturnQuantity += returnPo.Quantity;
                 retNAView.ReturnPOList.Add(returnPo);
             }
             collection.Add(retNAView);

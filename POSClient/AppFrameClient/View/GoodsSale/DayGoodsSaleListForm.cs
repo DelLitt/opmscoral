@@ -78,11 +78,17 @@ namespace AppFrameClient.View.GoodsSale
             bdsPurchaseOrders.DataSource = e.PurchaseOrderViewList;
             bdsPurchaseOrders.ResetBindings(false);
             long totalAmount = 0;
+            long sellQty = 0;
+            long retQty = 0;
             foreach (PurchaseOrderView view in e.PurchaseOrderViewList)
             {
                 totalAmount += (view.SellAmount - view.ReturnAmount);
+                sellQty += view.SellQuantity;
+                retQty += view.ReturnQuantity;
             }
             txtTotalAmount.Text = totalAmount.ToString("##,#00");
+            txtSellQty.Text = sellQty.ToString();
+            txtRetQty.Text = retQty.ToString();
         }
 
         
