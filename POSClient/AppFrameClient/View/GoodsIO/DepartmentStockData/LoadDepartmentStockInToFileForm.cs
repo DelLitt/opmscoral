@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
@@ -18,6 +19,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -85,8 +87,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             Close();
         }
 
+        private bool CheckPOSSyncDriveExist()
+        {
+            IList list = ClientUtility.GetPOSSyncDrives();
+            if (list.Count == 0)
+            {
+                MessageBox.Show("Không có USB đồng bộ nào");
+                return false;
+            }
+            if (list.Count > 1)
+            {
+                MessageBox.Show("Có nhiều hơn 1 USB đồng bộ.Bạn hãy để lại một USB đồng bộ thôi");
+                return false;
+            }
+            return true;
+        }
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
+            if(!CheckPOSSyncDriveExist())
+                return;
+            string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
                 "Bạn muốn xuất hàng cho cửa hàng ? ",
                 "Xuất hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -97,7 +117,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
-            var exportPath = ClientSetting.SyncExportPath;
+            var exportPath = POSSyncDrive + ClientSetting.SyncExportPath;
             if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + exportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");

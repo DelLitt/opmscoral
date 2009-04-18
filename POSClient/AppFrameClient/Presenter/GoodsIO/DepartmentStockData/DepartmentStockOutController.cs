@@ -64,6 +64,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockOutView_GetSyncDataEvent(object sender, DepartmentStockOutEventArgs e)
         {
+            // first process all timeline
+            DepartmentTimelineLogic.ProcessPeriod(e.IsConfirmPeriod);
+            // then get data
             e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData(e.IsConfirmPeriod);
         }
 
@@ -292,6 +295,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             get ; 
             set ; 
+        }
+        public IDepartmentTimelineLogic DepartmentTimelineLogic
+        {
+            get; set;
         }
 
         private IList RemoveDuplicateName(IList prdlist)

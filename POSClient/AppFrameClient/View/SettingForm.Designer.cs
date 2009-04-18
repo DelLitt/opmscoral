@@ -53,11 +53,11 @@
             this.txtMySQLDump = new System.Windows.Forms.TextBox();
             this.backupDBDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.txtBackupDB = new System.Windows.Forms.TextBox();
-            this.cboPrinters = new System.Windows.Forms.ComboBox();
             this.txtSyncSuccessPath = new System.Windows.Forms.TextBox();
             this.txtSyncErrorPath = new System.Windows.Forms.TextBox();
             this.txtSyncImportPath = new System.Windows.Forms.TextBox();
             this.txtSyncExportPath = new System.Windows.Forms.TextBox();
+            this.cboPrinters = new System.Windows.Forms.ComboBox();
             btnExportPath = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -74,11 +74,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 36);
+            this.label1.Location = new System.Drawing.Point(71, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 13);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Đường dẫn xuất file từ KHO-> CH:";
+            this.label1.Text = "Đường dẫn xuất file: ";
             // 
             // btnDefault
             // 
@@ -113,11 +113,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 62);
+            this.label2.Location = new System.Drawing.Point(66, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 13);
+            this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Đường dẫn nhập file từ CH-> KHO:";
+            this.label2.Text = "Đường dẫn nhập file:";
             // 
             // label3
             // 
@@ -216,21 +216,51 @@
             // 
             // txtMySQLDump
             // 
-            this.txtMySQLDump.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "MySQLDump", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtMySQLDump.Location = new System.Drawing.Point(184, 188);
             this.txtMySQLDump.Name = "txtMySQLDump";
             this.txtMySQLDump.Size = new System.Drawing.Size(173, 20);
             this.txtMySQLDump.TabIndex = 23;
-            this.txtMySQLDump.Text = global::AppFrameClient.Properties.Settings.Default.MySQLDump;
+            this.txtMySQLDump.Text = "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin";
             // 
             // txtBackupDB
             // 
-            this.txtBackupDB.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "DBBackupPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtBackupDB.Location = new System.Drawing.Point(184, 134);
             this.txtBackupDB.Name = "txtBackupDB";
             this.txtBackupDB.Size = new System.Drawing.Size(172, 20);
             this.txtBackupDB.TabIndex = 24;
-            this.txtBackupDB.Text = global::AppFrameClient.Properties.Settings.Default.DBBackupPath;
+            this.txtBackupDB.Text = "\\POS\\BackupDB";
+            // 
+            // txtSyncSuccessPath
+            // 
+            this.txtSyncSuccessPath.Location = new System.Drawing.Point(185, 111);
+            this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
+            this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
+            this.txtSyncSuccessPath.TabIndex = 7;
+            this.txtSyncSuccessPath.Text = "\\POS\\Success";
+            // 
+            // txtSyncErrorPath
+            // 
+            this.txtSyncErrorPath.Location = new System.Drawing.Point(185, 85);
+            this.txtSyncErrorPath.Name = "txtSyncErrorPath";
+            this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
+            this.txtSyncErrorPath.TabIndex = 6;
+            this.txtSyncErrorPath.Text = "\\POS\\Error";
+            // 
+            // txtSyncImportPath
+            // 
+            this.txtSyncImportPath.Location = new System.Drawing.Point(185, 59);
+            this.txtSyncImportPath.Name = "txtSyncImportPath";
+            this.txtSyncImportPath.Size = new System.Drawing.Size(172, 20);
+            this.txtSyncImportPath.TabIndex = 5;
+            this.txtSyncImportPath.Text = "\\POS\\CH-KHO";
+            // 
+            // txtSyncExportPath
+            // 
+            this.txtSyncExportPath.Location = new System.Drawing.Point(185, 33);
+            this.txtSyncExportPath.Name = "txtSyncExportPath";
+            this.txtSyncExportPath.Size = new System.Drawing.Size(172, 20);
+            this.txtSyncExportPath.TabIndex = 1;
+            this.txtSyncExportPath.Text = "\\POS\\KHO-CH";
             // 
             // cboPrinters
             // 
@@ -240,40 +270,6 @@
             this.cboPrinters.Name = global::AppFrameClient.Properties.Settings.Default.PrinterName;
             this.cboPrinters.Size = new System.Drawing.Size(172, 21);
             this.cboPrinters.TabIndex = 12;
-            // 
-            // txtSyncSuccessPath
-            // 
-            this.txtSyncSuccessPath.Location = new System.Drawing.Point(185, 111);
-            this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
-            this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
-            this.txtSyncSuccessPath.TabIndex = 7;
-            this.txtSyncSuccessPath.Text = global::AppFrameClient.Properties.Settings.Default.SyncSuccessPath;
-            // 
-            // txtSyncErrorPath
-            // 
-            this.txtSyncErrorPath.Location = new System.Drawing.Point(185, 85);
-            this.txtSyncErrorPath.Name = "txtSyncErrorPath";
-            this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
-            this.txtSyncErrorPath.TabIndex = 6;
-            this.txtSyncErrorPath.Text = global::AppFrameClient.Properties.Settings.Default.SyncErrorPath;
-            // 
-            // txtSyncImportPath
-            // 
-            this.txtSyncImportPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncImportPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtSyncImportPath.Location = new System.Drawing.Point(185, 59);
-            this.txtSyncImportPath.Name = "txtSyncImportPath";
-            this.txtSyncImportPath.Size = new System.Drawing.Size(172, 20);
-            this.txtSyncImportPath.TabIndex = 5;
-            this.txtSyncImportPath.Text = global::AppFrameClient.Properties.Settings.Default.SyncImportPath;
-            // 
-            // txtSyncExportPath
-            // 
-            this.txtSyncExportPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AppFrameClient.Properties.Settings.Default, "SyncExportPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtSyncExportPath.Location = new System.Drawing.Point(185, 33);
-            this.txtSyncExportPath.Name = "txtSyncExportPath";
-            this.txtSyncExportPath.Size = new System.Drawing.Size(172, 20);
-            this.txtSyncExportPath.TabIndex = 1;
-            this.txtSyncExportPath.Text = global::AppFrameClient.Properties.Settings.Default.SyncExportPath;
             // 
             // SettingForm
             // 

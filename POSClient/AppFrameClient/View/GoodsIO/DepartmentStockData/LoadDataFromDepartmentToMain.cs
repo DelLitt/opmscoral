@@ -11,11 +11,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
+using AppFrameClient.Utility;
 using ArrayList=System.Collections.ArrayList;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -27,9 +29,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             InitializeComponent();
         }
 
+        private bool CheckPOSSyncDriveExist()
+        {
+            IList list = ClientUtility.GetPOSSyncDrives();
+            if (list.Count == 0)
+            {
+                MessageBox.Show("Không có USB đồng bộ nào");
+                return false;
+            }
+            if (list.Count > 1)
+            {
+                MessageBox.Show("Có nhiều hơn 1 USB đồng bộ.Bạn hãy để lại một USB đồng bộ thôi");
+                return false;
+            }
+            return true;
+        }
+
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
-
+            if(!CheckPOSSyncDriveExist())
+                return;
+            string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
                 "Bạn muốn đồng bộ từ cửa hàng ? ",
                 "Đồng bộ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -40,12 +60,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
-            var importPath = ClientSetting.SyncImportPath;
+            var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
             //var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
             //var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
 
-            var successPath = ClientSetting.SyncSuccessPath;
-            var errorPath = ClientSetting.SyncErrorPath;
+            var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
+            var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
 
 
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
@@ -116,13 +136,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     if (fail)
                     {
-                        File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        ClientUtility.MoveFileToSpecificDir(errorPath,fileName);
 //                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }
                     else
                     {
-                        File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        ClientUtility.MoveFileToSpecificDir(successPath, fileName);
                         result.Status = "Thành công";
                     }
                 }

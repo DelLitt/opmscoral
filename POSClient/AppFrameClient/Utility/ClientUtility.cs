@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Management;
 using System.Text;
+using AppFrame.Common;
+using AppFrame.Exceptions;
+using AppFrame.Utility;
 using AppFrameClient.Common;
 using MySql.Data.MySqlClient;
 
@@ -15,7 +21,16 @@ namespace AppFrameClient.Utility
         public static void DumpDatabase()
         {
             string mySQLDumpPath = ClientSetting.MySQLDumpPath+"\\mysqldump.exe";
-            string dbBackupPath = ClientSetting.DBBackupPath;
+            if(!File.Exists(mySQLDumpPath))
+            {
+                throw new BusinessException("Tập thực  thi mysqldump không tồn tại trên đường dẫn. Xin xem lại trong cấu hình hệ thống");
+            }
+            string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
+            string dbBackupPath = POSSyncDrive + ClientSetting.DBBackupPath;
+            if(!Directory.Exists(dbBackupPath))
+            {
+                throw new BusinessException("Đường dẫn backup dữ liệu không tồn tại. Xin xem lại trong cấu hình hệ thống");    
+            }
             string backupFileName = string.Format("POSBackup_{0}.sql", DateTime.Now.ToString("yyyyHHmmss"));
             try
             {
@@ -61,6 +76,100 @@ namespace AppFrameClient.Utility
             cn.Open();
             cmd.ExecuteNonQuery();
             cn.Close();
+        }
+        public static IList GetUSBDrives()
+        {
+            IList usbList = new ArrayList();
+            foreach (ManagementObject drive in new ManagementObjectSearcher(
+                "select * from Win32_DiskDrive where InterfaceType='USB'").Get())
+            {
+                // associate physical disks with partitions
+                foreach (ManagementObject partition in new ManagementObjectSearcher(
+                    "ASSOCIATORS OF {Win32_DiskDrive.DeviceID='" + drive["DeviceID"]
+                      + "'} WHERE AssocClass = Win32_DiskDriveToDiskPartition").Get())
+                {   
+                    // associate partitions with logical disks (drive letter volumes)
+                    foreach (ManagementObject disk in new ManagementObjectSearcher(
+                        "ASSOCIATORS OF {Win32_DiskPartition.DeviceID='"
+                          + partition["DeviceID"]
+                          + "'} WHERE AssocClass = Win32_LogicalDiskToPartition").Get())
+                    {
+                        usbList.Add(disk["Name"]);
+                    }
+                }
+
+                // this may display nothing if the physical disk
+            }
+            return usbList;
+        }
+
+        public static IList GetPOSSyncDrives()
+        {
+            IList posSyncDrives = new ArrayList();
+            IList usbList = GetUSBDrives();
+            foreach (string usbDrive in usbList)
+            {
+               if(CheckPOSSyncDrive(usbDrive))
+               {
+                   posSyncDrives.Add(usbDrive);
+               }
+            }
+            return posSyncDrives;
+        }
+        public static bool CheckPOSSyncDrive(string usbDrive)
+        {
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncSuccessPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncImportPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncExportPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncErrorPath))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static void MoveFileToSpecificDir(string path, string fileName)
+        {
+            try
+            {
+                string specificDeptPath = null;
+                string testName = fileName.Substring(fileName.LastIndexOf("\\")+1,
+                                                         fileName.Length - (fileName.LastIndexOf("\\")+1));
+                if (fileName.IndexOf("SyncUp") > 0)
+                {
+                    long deptId = Int64.Parse(testName.Substring(0, 1));
+                    specificDeptPath = path + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(CurrentDepartment.Get(deptId).DepartmentName);
+                }
+
+                if (fileName.IndexOf("SyncDown") > 0)
+                {
+                    specificDeptPath = path + "\\" + testName.Substring(0,testName.IndexOf(" - "));
+                }
+
+                if (specificDeptPath == null) throw new Exception();
+                if (!Directory.Exists(specificDeptPath))
+                {
+                    Directory.CreateDirectory(specificDeptPath);
+                }
+                File.Move(fileName, specificDeptPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\")+1, fileName.Length - (fileName.LastIndexOf("\\")+1)));
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    File.Move(fileName, path + "\\" + fileName.Substring(fileName.LastIndexOf("\\")+1, fileName.Length - (fileName.LastIndexOf("\\")+1)));
+                }
+                catch (Exception) { }
+            }
         }
     }
 }

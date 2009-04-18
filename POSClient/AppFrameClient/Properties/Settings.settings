@@ -14,16 +14,16 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SyncImportPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\POS\Import</Value>
+      <Value Profile="(Default)">\POS\CH-KHO</Value>
     </Setting>
     <Setting Name="SyncSuccessPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\POS\Success</Value>
+      <Value Profile="(Default)">\POS\Success</Value>
     </Setting>
     <Setting Name="SyncErrorPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\POS\Error</Value>
+      <Value Profile="(Default)">\POS\Error</Value>
     </Setting>
     <Setting Name="SyncExportPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\POS\Export</Value>
+      <Value Profile="(Default)">\POS\KHO-CH</Value>
     </Setting>
     <Setting Name="PrinterName" Type="System.String" Scope="User">
       <Value Profile="(Default)">cboPrinters</Value>
@@ -32,7 +32,7 @@
       <Value Profile="(Default)">C:\Program Files\MySQL\MySQL Server 5.1\bin</Value>
     </Setting>
     <Setting Name="DBBackupPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\POS\BackupDB</Value>
+      <Value Profile="(Default)">\POS\BackupDB</Value>
     </Setting>
   </Settings>
 </SettingsFile>

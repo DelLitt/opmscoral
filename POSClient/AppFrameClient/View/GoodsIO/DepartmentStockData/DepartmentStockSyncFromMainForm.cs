@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
@@ -18,6 +19,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -150,10 +152,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             Close();
         }
-        
+        private bool CheckPOSSyncDriveExist()
+        {
+            IList list = ClientUtility.GetPOSSyncDrives();
+            if (list.Count == 0)
+            {
+                MessageBox.Show("Không có USB đồng bộ nào");
+                return false;
+            }
+            if (list.Count > 1)
+            {
+                MessageBox.Show("Có nhiều hơn 1 USB đồng bộ.Bạn hãy để lại một USB đồng bộ thôi");
+                return false;
+            }
+            return true;
+        }
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
-
+            if(!CheckPOSSyncDriveExist())
+                return;
+            string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
                 "Bạn muốn nhập hàng cho cửa hàng ? ",
                 "Nhập hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -164,21 +182,24 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
-            var importPath = ClientSetting.SyncImportPath;
+            var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
+            var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
+            var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
+
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
                 return;
             }
             //var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
-            var successPath = ClientSetting.SyncSuccessPath;
+            
             if (string.IsNullOrEmpty(successPath) || !Directory.Exists(successPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + successPath + "!Hãy kiễm tra file cấu hình phần SyncImportSuccessPath");
                 return;
             }
             //var errorPath = (string)configurationAppSettings.GetValue("SyncImportErrorPath", typeof(String));
-            var errorPath = ClientSetting.SyncErrorPath;
+            
             if (string.IsNullOrEmpty(errorPath) || !Directory.Exists(errorPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + errorPath + "!Hãy kiễm tra file cấu hình phần SyncImportErrorPath");
@@ -208,29 +229,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     BinaryFormatter bf = new BinaryFormatter();
                     SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment)bf.Deserialize(stream);
                     Department dept;
-                    if (syncFMTD == null
-                    || syncFMTD.Department == null
-                    || (CurrentDepartment.CurrentActiveDepartment(out dept) 
-                         && syncFMTD.Department.DepartmentId != 
-                                                    CurrentDepartment.Get().DepartmentId))
+                    if (syncFMTD == null || syncFMTD.Department == null)
                     {
                         fail = true;
                     }
                     else
                     {
-                        var eventArgs = new DepartmentStockInEventArgs();
-                        //eventArgs.DepartmentStockIn = deptStockIn;
-                        eventArgs.SyncFromMainToDepartment = syncFMTD;
-                        EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
-                        if (eventArgs.EventResult != null)
+                        if (CurrentDepartment.CurrentActiveDepartment(out dept)
+                         && syncFMTD.Department.DepartmentId == CurrentDepartment.Get().DepartmentId)
                         {
-                            fail = false;
+                            var eventArgs = new DepartmentStockInEventArgs();
+                            //eventArgs.DepartmentStockIn = deptStockIn;
+                            eventArgs.SyncFromMainToDepartment = syncFMTD;
+                            EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
+                            if (eventArgs.EventResult != null)
+                            {
+                                fail = false;
+                            }
+                            else
+                            {
+                                fail = true;
+                            }
                         }
-                        else
-                        {
-                            fail = true;
-                        }
-
                     }
                     /*deptStockIn = (DepartmentStockIn)bf.Deserialize(stream);
                     Department dept;
@@ -264,13 +284,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     if (fail)
                     {
-                        File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        ClientUtility.MoveFileToSpecificDir(errorPath,fileName);
 //                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }
                     else
                     {
-                        File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                        ClientUtility.MoveFileToSpecificDir(successPath, fileName);
                         result.Status = "Thành công";
                     }
                 }

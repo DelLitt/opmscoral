@@ -48,7 +48,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Import")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\POS\\CH-KHO")]
         public string SyncImportPath {
             get {
                 return ((string)(this["SyncImportPath"]));
@@ -60,7 +60,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Success")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\POS\\Success")]
         public string SyncSuccessPath {
             get {
                 return ((string)(this["SyncSuccessPath"]));
@@ -72,7 +72,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Error")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\POS\\Error")]
         public string SyncErrorPath {
             get {
                 return ((string)(this["SyncErrorPath"]));
@@ -84,7 +84,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\Export")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\POS\\KHO-CH")]
         public string SyncExportPath {
             get {
                 return ((string)(this["SyncExportPath"]));
@@ -120,7 +120,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\BackupDB")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\POS\\BackupDB")]
         public string DBBackupPath {
             get {
                 return ((string)(this["DBBackupPath"]));

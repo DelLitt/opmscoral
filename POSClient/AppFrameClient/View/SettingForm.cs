@@ -27,6 +27,8 @@ namespace AppFrameClient.View
             txtSyncExportPath.Text = ClientSetting.SyncExportPath;
             txtSyncErrorPath.Text = ClientSetting.SyncErrorPath;
             txtSyncSuccessPath.Text = ClientSetting.SyncSuccessPath;
+            txtBackupDB.Text = ClientSetting.DBBackupPath;
+            txtMySQLDump.Text = ClientSetting.MySQLDumpPath;
             PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
             foreach (string printerName in printerNames)
             {
@@ -76,31 +78,37 @@ namespace AppFrameClient.View
         private void btnExportPath_Click(object sender, EventArgs e)
         {
             exportPathDialog.ShowDialog();
-            txtSyncExportPath.Text = exportPathDialog.SelectedPath;
+            string selectedPath = exportPathDialog.SelectedPath;
+
+            txtSyncExportPath.Text = selectedPath.Length > 2 ? selectedPath.Substring(2): selectedPath;
         }
 
         private void btnImportPath_Click(object sender, EventArgs e)
         {
             importPathDialog.ShowDialog();
-            txtSyncImportPath.Text = importPathDialog.SelectedPath;
+            string selectedPath = importPathDialog.SelectedPath;
+            txtSyncImportPath.Text = selectedPath.Length > 2 ? selectedPath.Substring(2) : selectedPath;
         }
 
         private void btnErrorPath_Click(object sender, EventArgs e)
         {
             errorPathDialog.ShowDialog();
-            txtSyncErrorPath.Text = errorPathDialog.SelectedPath;
+            string selectedPath = errorPathDialog.SelectedPath;
+            txtSyncErrorPath.Text = selectedPath.Length > 2 ? selectedPath.Substring(2) : selectedPath;
         }
 
         private void btnSuccessPath_Click(object sender, EventArgs e)
         {
             successPathDialog.ShowDialog();
-            txtSyncSuccessPath.Text = successPathDialog.SelectedPath;
+            string selectedPath = successPathDialog.SelectedPath;
+            txtSyncSuccessPath.Text = selectedPath.Length > 2 ? selectedPath.Substring(2) : selectedPath;
         }
 
         private void btnBackupDB_Click(object sender, EventArgs e)
         {
             backupDBDialog.ShowDialog();
-            txtBackupDB.Text = backupDBDialog.SelectedPath;
+            string selectedPath = backupDBDialog.SelectedPath;
+            txtBackupDB.Text = selectedPath.Length > 2 ? selectedPath.Substring(2) : selectedPath;
         }
 
         private void btnMySQLDump_Click(object sender, EventArgs e)
