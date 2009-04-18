@@ -648,7 +648,7 @@ namespace POSReports {
             this.DataSetName = "posDataSet";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/posDataSet.xsd";
-            this.EnforceConstraints = true;
+            this.EnforceConstraints = false;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablereStockinProduct = new reStockinProductDataTable();
             base.Tables.Add(this.tablereStockinProduct);
