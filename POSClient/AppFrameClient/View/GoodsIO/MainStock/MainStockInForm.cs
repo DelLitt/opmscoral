@@ -812,7 +812,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);*/
                 e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 140 + XCentered(priceTotalSize.Width, 140), (float)25);
                 e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + priceTotalSize.Height), (int)(1.35 * 100), (int)(0.45 * 100)));
-                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(barCodeSize.Width, 140), (float)88);
+                e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black), (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)88);
                 //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
                 
             }                  

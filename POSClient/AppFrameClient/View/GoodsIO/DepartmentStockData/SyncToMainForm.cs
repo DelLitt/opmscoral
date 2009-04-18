@@ -16,6 +16,7 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -41,6 +42,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 isConfirmPeriod = true;
             }
 
+            // dump db
+            ClientUtility.DumpDatabase();
+
+            // sync
             var configurationAppSettings = new AppSettingsReader();
             syncResultBindingSource.DataSource = null;
 //            // Create new SaveFileDialog object
@@ -89,6 +94,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(stream, syncData);
                     stream.Close();
+                    ClientUtility.CleanDatabase();
                     MessageBox.Show("Đồng bộ thành công");
                     result.FileName = fileName;
                     result.Status = "Thành công";
@@ -136,7 +142,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
-
             DialogResult dResult = MessageBox.Show(
                 "Kết sổ cho ngày hôm nay? Xin lưu ý nếu bạn đã kết sổ thì phải đợi đến hôm sau mới có thể tiếp tục.",
                 "Kết sổ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);

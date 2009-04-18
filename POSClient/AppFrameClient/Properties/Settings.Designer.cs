@@ -105,5 +105,29 @@ namespace AppFrameClient.Properties {
                 this["PrinterName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin")]
+        public string MySQLDump {
+            get {
+                return ((string)(this["MySQLDump"]));
+            }
+            set {
+                this["MySQLDump"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\POS\\BackupDB")]
+        public string DBBackupPath {
+            get {
+                return ((string)(this["DBBackupPath"]));
+            }
+            set {
+                this["DBBackupPath"] = value;
+            }
+        }
     }
 }

@@ -86,6 +86,29 @@ namespace AppFrameClient.Common
                 AFCSetting.Default.PrinterName = value;
             }
         }
+        public static string MySQLDumpPath
+        {
+            get
+            {
+                return AFCSetting.Default.MySQLDump;
+            }
+            set
+            {
+                AFCSetting.Default.MySQLDump = value;                
+            }
+        }
+        public static string DBBackupPath
+        {
+            get
+            {
+                return AFCSetting.Default.DBBackupPath;
+            }
+            set
+            {
+                AFCSetting.Default.DBBackupPath = value;
+            }
+        }
+
         public static void Reset()
         {
             AFCSetting.Default.Reset();

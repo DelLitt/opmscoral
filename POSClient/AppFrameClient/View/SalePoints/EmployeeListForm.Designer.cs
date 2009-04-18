@@ -52,6 +52,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.barCodeDocument = new System.Drawing.Printing.PrintDocument();
+            this.barCodePrintDialog = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployee)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +85,7 @@
             this.dgvEmployee.DataSource = this.bdsEmployee;
             this.dgvEmployee.Location = new System.Drawing.Point(13, 13);
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployee.Size = new System.Drawing.Size(807, 407);
             this.dgvEmployee.TabIndex = 0;
             this.dgvEmployee.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellContentDoubleClick);
@@ -244,6 +247,15 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // barCodeDocument
+            // 
+            this.barCodeDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barCodeDocument_PrintPage);
+            // 
+            // barCodePrintDialog
+            // 
+            this.barCodePrintDialog.Document = this.barCodeDocument;
+            this.barCodePrintDialog.UseEXDialog = true;
+            // 
             // EmployeeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,5 +298,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
+        private System.Drawing.Printing.PrintDocument barCodeDocument;
+        private System.Windows.Forms.PrintDialog barCodePrintDialog;
     }
 }
