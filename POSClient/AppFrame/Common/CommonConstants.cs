@@ -20,5 +20,7 @@ namespace AppFrame.Common
         public static string UNDEFINED_BARCODE_MARK ="000";
         public static int UNDEFINED_BARCODE_MARK_LENGTH = 3;
         public static int EMPLOYEE_BARCODE_LENGTH = 8;
+        public static string LAST_SYNCTIME_SERVER_FILE = "_LastSyncTime.exp";
+        public static string LAST_SYNCTIME_CLIENT_FILE = "_LastSyncTime.imp";
     }
 }

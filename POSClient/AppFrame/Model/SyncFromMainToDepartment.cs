@@ -11,5 +11,7 @@ namespace AppFrame.Model
     {
         public IList StockOutList { get; set; }
         public Department Department { get; set; }
+        public IList EmployeeList { get; set; }
+        public DateTime LastSyncDate { get; set; }
     }
 }
