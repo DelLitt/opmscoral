@@ -322,7 +322,7 @@ namespace AppFrame.View
 
         //            Form stockInReportForm = GlobalUtility.GetOnlyChildFormObject<MainStockInSearchReportForm>(this, FormConstants.MAIN_STOCK_IN_SEARCH_REPORT_FORM);
         //            stockInReportForm.Show();
-            new StockInReportViewer().ShowDialog();
+            new StockInReportViewer().Show();
 
         }
 
@@ -411,7 +411,7 @@ namespace AppFrame.View
                                                                                           FormConstants.
                                                                                               DEPARTMENT_STOCK_IN_REPORT_FORM);
             form.Show();*/
-            new Stock2DeptReportViewer().ShowDialog();
+            new Stock2DeptReportViewer().Show();
         }
 
         private void mnuProcessDepartmentStockDefect_Click(object sender, EventArgs e)
@@ -439,7 +439,7 @@ namespace AppFrame.View
                                                                           FormConstants.
                                                                               MAIN_REMAIN_STOCK_REPORT_FORM);
             form.Show();*/
-            new StockStatisticReportViewer().ShowDialog();
+            new StockStatisticReportViewer().Show();
         }
 
         private void mnuFindStockByBarcode_Click(object sender, EventArgs e)
@@ -483,27 +483,27 @@ namespace AppFrame.View
 
         private void mnuGoodsSaleDepartmentReport_Click(object sender, EventArgs e)
         {
-            new PurchaseOrderReportViewer().ShowDialog();
+            new PurchaseOrderReportViewer().Show();
         }
 
         private void mnuGoodsSendbackReport_Click(object sender, EventArgs e)
         {
-            new SupplierStockoutReportViewer().ShowDialog();
+            new SupplierStockoutReportViewer().Show();
         }
 
         private void mnuRestockinReport_Click(object sender, EventArgs e)
         {
-            new RestockinReportViewer().ShowDialog();
+            new RestockinReportViewer().Show();
         }
 
         private void mnuTempStockoutReport_Click(object sender, EventArgs e)
         {
-            new TempStockoutReportViewer().ShowDialog();
+            new TempStockoutReportViewer().Show();
         }
 
         private void mnuGoodsSaleDepartmentDetail_Click(object sender, EventArgs e)
         {
-            new PurchaseDetailsReportViewer().ShowDialog();
+            new PurchaseDetailsReportViewer().Show();
         }
 
         private void mnuUserAccount_Click_1(object sender, EventArgs e)
@@ -523,7 +523,7 @@ namespace AppFrame.View
                                 MessageBoxButtons.OK);
                 return;
             }
-            new ReturnPOrderReportViewer().ShowDialog();
+            new ReturnPOrderReportViewer().Show();
         }
 
         private void mnuDeptStockStatisticReport_Click(object sender, EventArgs e)
@@ -536,28 +536,28 @@ namespace AppFrame.View
                                 MessageBoxButtons.OK);
                 return;
             }
-            new DeptStockStatisticReportViewer().ShowDialog();
+            new DeptStockStatisticReportViewer().Show();
         }
 
         private void mnuMainDeptStockStatisticReport_Click(object sender, EventArgs e)
         {
-            new DeptStockStatisticReportViewer().ShowDialog();
+            new DeptStockStatisticReportViewer().Show();
         }
 
         private void mnuMainReturnPOReport_Click(object sender, EventArgs e)
         {
-            new ReturnPOrderReportViewer().ShowDialog();
+            new ReturnPOrderReportViewer().Show();
         }
 
         private void mnuAllStockReturnReport_Click(object sender, EventArgs e)
         {
             //new AllStockReportViewer().ShowDialog();
-            new MainStockReturnReportViewer().ShowDialog();
+            new MainStockReturnReportViewer().Show();
         }
 
         private void mnuReturnMainStockReport_Click(object sender, EventArgs e)
         {
-            new MainStockReturnReportViewer().ShowDialog();
+            new MainStockReturnReportViewer().Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -597,13 +597,13 @@ namespace AppFrame.View
         {
             if(!ClientSetting.IsClient() && !ClientSetting.IsServer())
             {
-                new ClientServerSettingForm().ShowDialog();                
+                new ClientServerSettingForm().Show();                
             }
         }
 
         private void mnuAllStock_Click(object sender, EventArgs e)
         {
-            new AllStockReportViewer().ShowDialog();
+            new AllStockReportViewer().Show();
         }
 
         private void mnuAddEmployee_Click(object sender, EventArgs e)
@@ -620,12 +620,12 @@ namespace AppFrame.View
 
         private void mnuDeptReStockReport_Click(object sender, EventArgs e)
         {
-            new DeptReStockReportViewer().ShowDialog();
+            new DeptReStockReportViewer().Show();
         }
 
         private void mnuDeptTempStockOutReport_Click(object sender, EventArgs e)
         {
-            new  DeptTempStockoutReportViewer().ShowDialog();
+            new  DeptTempStockoutReportViewer().Show();
         }
 
         private void mnuSalePoint_Click(object sender, EventArgs e)
@@ -635,7 +635,7 @@ namespace AppFrame.View
 
         private void mnuDepartmentStockIn_Click(object sender, EventArgs e)
         {
-            new DepartmentStockinReportViewer().ShowDialog();
+            new DepartmentStockinReportViewer().Show();
         }
 
         private void mnuSystemConfiguration_Click(object sender, EventArgs e)
@@ -645,7 +645,7 @@ namespace AppFrame.View
 
         private void mnuGoodsSaleStatisticReport_Click(object sender, EventArgs e)
         {
-            new GoodsSaleStatisticReportViewer().ShowDialog();
+            new GoodsSaleStatisticReportViewer().Show();
         }
     }
 }
