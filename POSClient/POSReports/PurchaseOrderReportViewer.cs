@@ -35,6 +35,8 @@ namespace POSReports
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+            this.reportViewer1.RefreshReport();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,8 +56,9 @@ namespace POSReports
                 }
                 //this.ReceiptInGeneralTableAdapter.Fill(this.posDataSet.receiptInGeneral, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
                 this.reportViewer1.LocalReport.Refresh();
-                this.purchaseOrderTableAdapter.Fill(posDataSet.purchaseOrder, ZeroTime(dtpFrom.Value),
-                                                    MaxTime(dtpTo.Value),frmDept,toDept);
+                //this.purchaseOrderTableAdapter.Fill(posDataSet.PurchaseOrderReport,Int32.Parse(dept.ToString()), ZeroTime(dtpFrom.Value),MaxTime(dtpTo.Value));
+                this.purchaseOrderReportTableAdapter1.Fill(posDataSet.PurchaseOrderReport, Int32.Parse(dept.ToString()),
+                                                           ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
                 this.reportViewer1.LocalReport.Refresh();
                 this.reportViewer1.RefreshReport();
             }

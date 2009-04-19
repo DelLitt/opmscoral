@@ -52,7 +52,7 @@ namespace POSReports
 
             try
             {
-                this.StockStatisticTableAdapter.Fill(posDataSet.stockStatistic, ZeroTime(ToDate.Value), MaxTime(ToDate.Value));
+                this.stockStatisticTableAdapter1.Fill(posDataSet.StockStatistic, ZeroTime(ToDate.Value), MaxTime(ToDate.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

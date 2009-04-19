@@ -192,6 +192,8 @@
     <EmbeddedResource Include="DeptTempStockoutReportViewer.resx">
       <DependentUpon>DeptTempStockoutReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GoodsPurchaseOrderDetailReport.rdlc" />
+    <EmbeddedResource Include="GoodsPurchaseOrders.rdlc" />
     <EmbeddedResource Include="GoodsSaleStatistic.rdlc" />
     <EmbeddedResource Include="GoodsSaleStatisticReportViewer.resx">
       <DependentUpon>GoodsSaleStatisticReportViewer.cs</DependentUpon>
@@ -205,7 +207,7 @@
       <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseOrderReport.rdlc" />
+    <EmbeddedResource Include="PurchaseOrderDetailReport.rdlc" />
     <EmbeddedResource Include="PurchaseOrderReportViewer.resx">
       <DependentUpon>PurchaseOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
@@ -66,7 +67,8 @@ namespace POSReports
         {
             try
             {
-                this.PurchaseDetailsTableAdapter.Fill(this.posDataSet.purchaseDetails, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
+                object dept = departments.SelectedValue;
+                this.purchaseOrderDetailReportTableAdapter1.Fill(this.posDataSet.PurchaseOrderDetailReport, Int32.Parse(dept.ToString()),ZeroTime(fromDate.Value), MaxTime(toDate.Value));
 
                 this.reportViewer1.RefreshReport();
             }
@@ -75,6 +77,27 @@ namespace POSReports
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
+
+            // TODO: This line of code loads data into the 'posDataSet.receiptInGeneral' table. You can move, or remove it, as needed.
+            try
+            {
+                this.departmentTableAdapter1.Fill(this.posDataSet.department);
+                if (CurrentDepartment.Get().DepartmentId != 0)
+                {
+                    departments.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                    departments.Enabled = false;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            this.reportViewer1.RefreshReport();
         }
 
     }

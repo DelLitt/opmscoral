@@ -39,7 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.StockStatisticTableAdapter = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
+            this.stockStatisticTableAdapter1 = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.stockStatisticBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -48,12 +48,13 @@
             // 
             // stockStatisticBindingSource
             // 
-            this.stockStatisticBindingSource.DataMember = "stockStatistic";
+            this.stockStatisticBindingSource.DataMember = "StockStatistic";
             this.stockStatisticBindingSource.DataSource = this.posDataSet;
             // 
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
@@ -137,9 +138,9 @@
             this.reportViewer1.Size = new System.Drawing.Size(996, 568);
             this.reportViewer1.TabIndex = 5;
             // 
-            // StockStatisticTableAdapter
+            // stockStatisticTableAdapter1
             // 
-            this.StockStatisticTableAdapter.ClearBeforeFill = true;
+            this.stockStatisticTableAdapter1.ClearBeforeFill = true;
             // 
             // StockStatisticReportViewer
             // 
@@ -172,5 +173,6 @@
         private posDataSet posDataSet;
         private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter StockStatisticTableAdapter;
         private System.Windows.Forms.BindingSource departmentBindingSource;
+        private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter stockStatisticTableAdapter1;
     }
 }
