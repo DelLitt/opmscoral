@@ -53,8 +53,10 @@ namespace POSReports
                     toDept = 100;
                 }
                 //this.ReceiptInGeneralTableAdapter.Fill(this.posDataSet.receiptInGeneral, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
+                this.reportViewer1.LocalReport.Refresh();
                 this.purchaseOrderTableAdapter.Fill(posDataSet.purchaseOrder, ZeroTime(dtpFrom.Value),
                                                     MaxTime(dtpTo.Value),frmDept,toDept);
+                this.reportViewer1.LocalReport.Refresh();
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
