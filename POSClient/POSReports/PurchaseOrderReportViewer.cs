@@ -28,7 +28,7 @@ namespace POSReports
                 if (CurrentDepartment.Get().DepartmentId != 0)
                 {
                     departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
-                    departmentId.Visible = false;
+                    departmentId.Enabled = false;
                 }
             }
             catch (System.Exception ex)

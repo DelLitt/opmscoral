@@ -65,32 +65,59 @@
           <DataField>doutstock</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="moutqty">
+          <DataField>moutqty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="maindmg">
+          <DataField>maindmg</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="dpoutqty">
+          <DataField>dpoutqty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="dpdmg">
+          <DataField>dpdmg</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="mainrtn">
+          <DataField>mainrtn</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="saleqty">
+          <DataField>saleqty</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="rtnpr">
+          <DataField>rtnpr</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandText>select type_name, pr.product_id, product_name, color_name, size_name, sum(ifnull(stk.good_qty,0)) as preqty,
-  sum(instock.instock_qty) as inqty, sum(ifnull(stkout.outstock_qty,0)) as outqty, sum(ifnull(dstk.good_qty,0)) as dpreqty,
-  sum(ifnull(dinstock.instock_qty,0)) as dinstock, sum(ifnull(dstkout.outstock_qty,0)) as doutstock
+        <CommandText>select type_name, pr.product_id, product_name, color_name, size_name,
+  sum(ifnull(stk.good_qty,0)) as preqty,
+  sum(ifnull(instock.instock_qty,0)) as inqty,
+  sum(ifnull(dstk.good_qty,0)) as dpreqty,
+  sum(ifnull(mainout.quantity,0)) as moutqty,
+  sum(ifnull(mainout.damage_quantity,0)+ifnull(mainout.lost_quantity,0)) as maindmg,
+  sum(ifnull(dpout.quantity,0)) as dpoutqty,
+  sum(ifnull(dpout.lost_quantity,0)+ifnull(dpout.damage_quantity,0)) as dpdmg,
+  sum(ifnull(mainrtn.quantity,0)+ifnull(mainrtn.errqty,0)) as mainrtn,
+  sum(ifnull(po.quantity,0)) as saleqty,
+  sum(ifnull(rtnpr.quantity,0)) as rtnpr
   from allproduct pr
 
-left join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty
+  left join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty
                             FROM          stock_history A
                             WHERE    A.CREATE_DATE = ( SELECT max(b.CREATE_DATE)
                                        FROM stock_history b where
                                        (b.CREATE_DATE &lt;@FromDate ) AND b.Product_id = a.Product_ID
                                        GROUP BY b.product_id
-
                             )
                             GROUP BY a.PRODUCT_ID ) as stk on pr.product_id=stk.product_id
 
-    left join (select product_id, sum(quantity) as instock_qty from stock_in inner join
-      stock_in_detail stkdt on stkdt.stock_in_id=stock_in.stock_in_id
-      where stock_in_date&gt;=@FromDate and stock_in_date&lt;=@ToDate
-      group by product_id) as instock on pr.product_id=instock.product_id
-left join (select product_id, sum(quantity) as outstock_qty from stock_out inner join
-      stock_out_detail stkdt on stkdt.stockout_id=stock_out.stockout_id
-      where stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate
-      group by product_id) as stkout on stkout.product_id=pr.product_id
 
 left join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty
                             FROM          department_stock_history A
@@ -99,16 +126,33 @@ left join (SELECT  A.PRODUCT_ID, A.GOOD_COUNT AS good_qty
                                        (b.CREATE_DATE &lt;@FromDate ) AND b.Product_id = a.Product_ID
                                        GROUP BY b.product_id)
                             GROUP BY a.PRODUCT_ID ) as dstk on pr.product_id=dstk.product_id
-left join (select product_id, sum(quantity) as instock_qty from department_stock_in inner join
-      department_stock_in_detail stkdt on stkdt.stock_in_id=department_stock_in.stock_in_id
-      where stock_in_date&gt;=@FromDate and stock_in_date&lt;=@ToDate
-      group by product_id) as dinstock on pr.product_id=dinstock.product_id
 
-left join (select product_id, sum(quantity) as outstock_qty from department_stock_out dstkout inner join
-      department_stock_out_detail stkdt on stkdt.stock_out_id=dstkout.stock_out_id
-      where stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate
-      group by product_id) as dstkout on stkout.product_id=pr.product_id
-group by type_name, product_name, color_name, size_name</CommandText>
+
+    left join (select product_id, sum(quantity) as instock_qty from stock_in inner join
+      stock_in_detail stkdt on stkdt.stock_in_id=stock_in.stock_in_id
+      where stock_in_date&gt;=@FromDate and stock_in_date&lt;=@ToDate and stock_in.stock_in_type=0
+      group by product_id)       as instock on pr.product_id=instock.product_id
+
+left join (select product_id, sum(quantity) as quantity, sum(lost_quantity) as lost_quantity, sum(damage_quantity) as damage_quantity
+from stock_out stko inner join stock_out_detail stkod on stko.stockout_id=stkod.stockout_id
+where stko.defect_status_id in (0, 5, 7, 8) and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and stko.del_flg=0 group by product_id) as mainout on mainout.product_id=pr.product_id
+
+left join (select product_id, quantity, lost_quantity, damage_quantity
+from department_stock_out stko inner join department_stock_out_detail stkod on stko.stock_out_id=stkod.stock_out_id
+where stko.defect_status_id in (5, 7, 8) and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and stko.del_flg=0) as dpout on dpout.product_id=pr.product_id
+
+left join (select product_id, quantity, ifnull(error_quantity,0)+ifnull(lost_quantity,0)+ifnull(damage_quantity,0) as errqty
+from department_stock_out stko inner join department_stock_out_detail stkod on stko.stock_out_id=stkod.stock_out_id
+where stko.defect_status_id=6 and stock_out_date&gt;=@FromDate and stock_out_date&lt;=@ToDate and stko.del_flg=0) as mainrtn on mainrtn.product_id=pr.product_id
+
+left join (select product_id, sum(quantity) as quantity
+from purchase_order po inner join purchase_order_detail pod on po.purchase_order_id=pod.purchase_order_id
+where po.create_date&gt;=@FromDate and po.create_date&lt;=@ToDate and po.del_flg=0 group by product_id) as po on po.product_id=pr.product_id
+
+left join (select product_id, sum(quantity) as quantity from return_po where return_date&gt;=@FromDate and return_date&lt;=@ToDate and del_flg=0 group by product_id) as rtnpr on rtnpr.product_id=pr.product_id
+
+group by type_name, product_name, color_name, size_name
+order by pr.product_id</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
@@ -139,7 +183,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.33in</Height>
-        <Value>BÁO CÁO TỒN KHO TOÀN BỘ CỬA HÀNG</Value>
+        <Value>BÁO CÁO TỔNG KHO</Value>
       </Textbox>
       <Table Name="table1">
         <DataSetName>posDataSet_allStock</DataSetName>
@@ -285,7 +329,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>27</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!preqty.Value)</Value>
+                          <Value>=Sum(Fields!preqty.Value+Fields!dpreqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -310,7 +354,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>26</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!inqty.Value)</Value>
+                          <Value>=sum(Fields!inqty.Value+Fields!rtnpr.Value+Fields!mainrtn.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -335,7 +379,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>25</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!outqty.Value+Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!saleqty.Value+Fields!dpoutqty.Value+Fields!dpdmg.Value+Fields!maindmg.Value+Fields!moutqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -360,7 +404,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>24</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!preqty.Value+Fields!inqty.Value-Fields!outqty.Value-Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!preqty.Value+Fields!dpreqty.Value+Fields!inqty.Value+Fields!mainrtn.Value+Fields!rtnpr.Value-Fields!moutqty.Value-Fields!maindmg.Value-Fields!dpoutqty.Value-Fields!dpdmg.Value-Fields!saleqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -514,7 +558,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>19</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!preqty.Value)</Value>
+                          <Value>=Sum(Fields!preqty.Value+Fields!dpreqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -539,7 +583,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>18</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!inqty.Value)</Value>
+                          <Value>=sum(Fields!inqty.Value+Fields!rtnpr.Value+Fields!mainrtn.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -564,7 +608,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>17</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!outqty.Value+Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!saleqty.Value+Fields!dpoutqty.Value+Fields!dpdmg.Value+Fields!maindmg.Value+Fields!moutqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -589,7 +633,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>16</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!preqty.Value+Fields!inqty.Value-Fields!outqty.Value-Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!preqty.Value+Fields!dpreqty.Value+Fields!inqty.Value+Fields!mainrtn.Value+Fields!rtnpr.Value-Fields!moutqty.Value-Fields!maindmg.Value-Fields!dpoutqty.Value-Fields!dpdmg.Value-Fields!saleqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -743,7 +787,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>11</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!preqty.Value)</Value>
+                          <Value>=Sum(Fields!preqty.Value+Fields!dpreqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -768,7 +812,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>10</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!inqty.Value)</Value>
+                          <Value>=sum(Fields!inqty.Value+Fields!rtnpr.Value+Fields!mainrtn.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -793,7 +837,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>9</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!outqty.Value+Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!saleqty.Value+Fields!dpoutqty.Value+Fields!dpdmg.Value+Fields!maindmg.Value+Fields!moutqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -818,7 +862,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                           </Style>
                           <ZIndex>8</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!preqty.Value+Fields!inqty.Value-Fields!outqty.Value-Fields!doutstock.Value)</Value>
+                          <Value>=sum(Fields!preqty.Value+Fields!dpreqty.Value+Fields!inqty.Value+Fields!mainrtn.Value+Fields!rtnpr.Value-Fields!moutqty.Value-Fields!maindmg.Value-Fields!dpoutqty.Value-Fields!dpdmg.Value-Fields!saleqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -952,7 +996,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>3</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!preqty.Value</Value>
+                      <Value>=Fields!preqty.Value+Fields!dpreqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -976,7 +1020,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!inqty.Value</Value>
+                      <Value>=Fields!inqty.Value+Fields!rtnpr.Value+Fields!mainrtn.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1000,7 +1044,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!outqty.Value+Fields!doutstock.Value</Value>
+                      <Value>=Fields!saleqty.Value+Fields!dpoutqty.Value+Fields!dpdmg.Value+Fields!maindmg.Value+Fields!moutqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1023,7 +1067,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!preqty.Value+Fields!inqty.Value-Fields!outqty.Value-Fields!doutstock.Value</Value>
+                      <Value>=Fields!preqty.Value+Fields!dpreqty.Value+Fields!inqty.Value+Fields!mainrtn.Value+Fields!rtnpr.Value-Fields!moutqty.Value-Fields!maindmg.Value-Fields!dpoutqty.Value-Fields!dpdmg.Value-Fields!saleqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

@@ -29,20 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.allStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.ToDate = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.posDataSet = new POSReports.posDataSet();
-            this.allStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AllStockTableAdapter = new POSReports.posDataSetTableAdapters.AllStockTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allStockBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // allStockBindingSource
+            // 
+            this.allStockBindingSource.DataMember = "allStock";
+            this.allStockBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -88,17 +99,6 @@
             this.ToDate.Size = new System.Drawing.Size(194, 26);
             this.ToDate.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(309, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Xem báo cáo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -110,27 +110,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "XEM BÁO CÁO";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(309, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 30);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Xem báo cáo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "posDataSet_allStock";
-            reportDataSource2.Value = this.allStockBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "posDataSet_allStock";
+            reportDataSource1.Value = this.allStockBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.AllStockReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(902, 406);
             this.reportViewer1.TabIndex = 8;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // allStockBindingSource
-            // 
-            this.allStockBindingSource.DataMember = "allStock";
-            this.allStockBindingSource.DataSource = this.posDataSet;
             // 
             // AllStockTableAdapter
             // 
@@ -144,12 +145,12 @@
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AllStockReportViewer";
-            this.Text = "AllStockReportViewer";
+            this.Text = "BÁO CÁO TỔNG KHO";
             this.Load += new System.EventHandler(this.AllStockReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.allStockBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.allStockBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
