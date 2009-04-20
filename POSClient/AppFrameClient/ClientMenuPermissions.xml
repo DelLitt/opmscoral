@@ -69,6 +69,9 @@
     <menuitem name="mnuGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDayGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDeptGoodsPurchaseOrderPeriodReport" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDeptPurchaseOrderReport" role="Administrator,Manager,Supervisor" />
+
   </menu>
   <menu name="mnuReport" role="NotImplement">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />

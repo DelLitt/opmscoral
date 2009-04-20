@@ -696,7 +696,7 @@ namespace AppFrameClient.View.GoodsSale
             PurchaseOrderDetailCollection newList = new PurchaseOrderDetailCollection();
             foreach (PurchaseOrderDetail detail in list)
             {
-                PurchaseOrderDetail newDetail = null;
+               PurchaseOrderDetail newDetail = null;
                if(!ExistInList(newList,detail,out newDetail))
                {
                    newList.Add(detail);
@@ -704,7 +704,7 @@ namespace AppFrameClient.View.GoodsSale
                else
                {
                    newDetail.Quantity += detail.Quantity;
-                   newDetail.Price += detail.Price;
+                   //newDetail.Price = detail.Price;
                }
             }
 

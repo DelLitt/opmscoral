@@ -647,5 +647,15 @@ namespace AppFrame.View
         {
             new GoodsSaleStatisticReportViewer().Show();
         }
+
+        private void mnuDeptGoodsPurchaseOrderPeriodReport_Click(object sender, EventArgs e)
+        {
+            new GoodsSaleStatisticReportViewer().Show();
+        }
+
+        private void mnuDeptPurchaseOrderReport_Click(object sender, EventArgs e)
+        {
+            new PurchaseOrderReportViewer().Show();
+        }
     }
 }
