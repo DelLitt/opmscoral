@@ -2,6 +2,30 @@
     
     
     public partial class posDataSet {
+        partial class workingdayDataTable
+        {
+        }
+    
+        partial class returnPOrderDataTable
+        {
+        }
+    
+        partial class TmpStockoutDataTable
+        {
+        }
+    
+        partial class PurchaseOrderPeriodDataTable
+        {
+        }
+    
+        partial class deptStockStatisticDataTable
+        {
+        }
+    
+        partial class allStockDataTable
+        {
+        }
+    
         partial class supplierStockoutDataTable
         {
         }

@@ -57,6 +57,7 @@
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
@@ -163,8 +164,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptStockStatisticReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(905, 449);
+            this.reportViewer1.Size = new System.Drawing.Size(905, 569);
             this.reportViewer1.TabIndex = 7;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // DeptStockStatisticTableAdapter
             // 
@@ -178,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 523);
+            this.ClientSize = new System.Drawing.Size(905, 643);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeptStockStatisticReportViewer";

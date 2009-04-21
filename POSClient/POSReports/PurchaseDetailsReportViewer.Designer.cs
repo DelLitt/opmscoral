@@ -178,6 +178,7 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(984, 568);
             this.reportViewer1.TabIndex = 1;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // purchaseOrderDetailReportTableAdapter1

@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.purchaseDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reStockinProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
+            this.purchaseDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseDetailsTableAdapter = new POSReports.posDataSetTableAdapters.PurchaseDetailsTableAdapter();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,23 +42,28 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.reStockinProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RestockinProductTableAdapter = new POSReports.posDataSetTableAdapters.RestockinProductTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseDetailsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reStockinProductBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseDetailsBindingSource)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // reStockinProductBindingSource
+            // 
+            this.reStockinProductBindingSource.DataMember = "reStockinProduct";
+            this.reStockinProductBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // purchaseDetailsBindingSource
             // 
             this.purchaseDetailsBindingSource.DataMember = "purchaseDetails";
             this.purchaseDetailsBindingSource.DataSource = this.posDataSet;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // PurchaseDetailsTableAdapter
             // 
@@ -84,7 +90,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(809, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(883, 74);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -158,13 +164,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.RestockinReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(809, 433);
+            this.reportViewer1.Size = new System.Drawing.Size(883, 568);
             this.reportViewer1.TabIndex = 2;
-            // 
-            // reStockinProductBindingSource
-            // 
-            this.reStockinProductBindingSource.DataMember = "reStockinProduct";
-            this.reStockinProductBindingSource.DataSource = this.posDataSet;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // RestockinProductTableAdapter
             // 
@@ -174,17 +176,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 507);
+            this.ClientSize = new System.Drawing.Size(883, 642);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RestockinReportViewer";
             this.Text = "RestockinReportViewer";
             this.Load += new System.EventHandler(this.RestockinReportViewer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseDetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reStockinProductBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseDetailsBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reStockinProductBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

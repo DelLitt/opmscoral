@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.supplierStockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,13 +40,22 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.supplierStockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.posDataSet = new POSReports.posDataSet();
             this.SupplierStockoutTableAdapter = new POSReports.posDataSetTableAdapters.SupplierStockoutTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierStockoutBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // supplierStockoutBindingSource
+            // 
+            this.supplierStockoutBindingSource.DataMember = "supplierStockout";
+            this.supplierStockoutBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -67,7 +78,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(819, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 74);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // label1
@@ -141,18 +152,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.SupplierStockoutReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(819, 417);
+            this.reportViewer1.Size = new System.Drawing.Size(876, 564);
             this.reportViewer1.TabIndex = 4;
-            // 
-            // supplierStockoutBindingSource
-            // 
-            this.supplierStockoutBindingSource.DataMember = "supplierStockout";
-            this.supplierStockoutBindingSource.DataSource = this.posDataSet;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // SupplierStockoutTableAdapter
             // 
@@ -162,16 +164,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 491);
+            this.ClientSize = new System.Drawing.Size(876, 638);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SupplierStockoutReportViewer";
             this.Text = "SupplierStockoutReportViewer";
             this.Load += new System.EventHandler(this.SupplierStockoutReportViewer_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierStockoutBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

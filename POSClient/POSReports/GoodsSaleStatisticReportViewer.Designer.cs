@@ -63,6 +63,7 @@
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
@@ -194,9 +195,11 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.GoodsSaleStatistic.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 75);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(1);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(972, 555);
+            this.reportViewer1.Size = new System.Drawing.Size(984, 555);
             this.reportViewer1.TabIndex = 10;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // PurchaseOrderPeriodBindingSource
             // 

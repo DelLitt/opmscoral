@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.returnMainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,6 +59,7 @@
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
@@ -85,7 +86,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(861, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 74);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // label2
@@ -184,14 +185,15 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "posDataSet_returnMain";
-            reportDataSource2.Value = this.returnMainBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "posDataSet_returnMain";
+            reportDataSource1.Value = this.returnMainBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.MainStockReturnReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(861, 453);
+            this.reportViewer1.Size = new System.Drawing.Size(876, 572);
             this.reportViewer1.TabIndex = 10;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // ReturnMainTableAdapter
             // 
@@ -201,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 527);
+            this.ClientSize = new System.Drawing.Size(876, 646);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainStockReturnReportViewer";

@@ -65,8 +65,7 @@ namespace POSReports
         {
             try
             {
-                this.StockOutTableAdapter.Fill(this.posDataSet.stockOut, ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value),
-                                               Int32.Parse(departmentId.SelectedValue.ToString()));
+                this.StockOutTableAdapter.Fill(this.posDataSet.stockOut, Int32.Parse(departmentId.SelectedValue.ToString()),ZeroTime(dtpFrom.Value), MaxTime(dtpTo.Value));
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

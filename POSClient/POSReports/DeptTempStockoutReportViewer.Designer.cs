@@ -59,6 +59,7 @@
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
@@ -84,7 +85,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 68);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 68);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // label1
@@ -187,8 +188,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptTempStockOutReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 68);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(784, 454);
+            this.reportViewer1.Size = new System.Drawing.Size(879, 575);
             this.reportViewer1.TabIndex = 8;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // DeptTempStockoutTableAdapter
             // 
@@ -202,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 522);
+            this.ClientSize = new System.Drawing.Size(879, 643);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeptTempStockoutReportViewer";

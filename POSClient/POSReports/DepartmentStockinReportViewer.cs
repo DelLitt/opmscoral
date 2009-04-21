@@ -56,8 +56,8 @@ namespace POSReports
             try
             {
                 int test = Int32.Parse(comboBox1.SelectedValue.ToString());
-                this.DepartmentStockInTableAdapter.Fill(posDataSet.departmentStockIn, ZeroTime(fromDate.Value),
-                                                        MaxTime(toDate.Value), test);
+                this.DepartmentStockInTableAdapter.Fill(posDataSet.departmentStockIn, test,ZeroTime(fromDate.Value),
+                                                        MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             } catch(Exception ex)
             {

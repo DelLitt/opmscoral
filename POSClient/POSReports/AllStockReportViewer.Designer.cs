@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(902, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(923, 74);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // label2
@@ -130,8 +130,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.AllStockReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(902, 406);
+            this.reportViewer1.Size = new System.Drawing.Size(923, 534);
             this.reportViewer1.TabIndex = 8;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // AllStockTableAdapter
             // 
@@ -141,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 480);
+            this.ClientSize = new System.Drawing.Size(923, 608);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AllStockReportViewer";

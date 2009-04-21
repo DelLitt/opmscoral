@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.deptReStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -39,17 +41,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.departmentId = new System.Windows.Forms.ComboBox();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.posDataSet = new POSReports.posDataSet();
-            this.deptReStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DeptReStockTableAdapter = new POSReports.posDataSetTableAdapters.DeptReStockTableAdapter();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.DeptReStockTableAdapter = new POSReports.posDataSetTableAdapters.DeptReStockTableAdapter();
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deptReStockBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // deptReStockBindingSource
+            // 
+            this.deptReStockBindingSource.DataMember = "deptReStock";
+            this.deptReStockBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -74,7 +85,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 68);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 68);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // label1
@@ -163,36 +174,27 @@
             this.departmentId.TabIndex = 7;
             this.departmentId.ValueMember = "DEPARTMENT_ID";
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "posDataSet_deptReStock";
-            reportDataSource3.Value = this.deptReStockBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptReStockReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 68);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(784, 454);
-            this.reportViewer1.TabIndex = 9;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // deptReStockBindingSource
-            // 
-            this.deptReStockBindingSource.DataMember = "deptReStock";
-            this.deptReStockBindingSource.DataSource = this.posDataSet;
-            // 
-            // DeptReStockTableAdapter
-            // 
-            this.DeptReStockTableAdapter.ClearBeforeFill = true;
-            // 
             // departmentBindingSource
             // 
             this.departmentBindingSource.DataMember = "department";
             this.departmentBindingSource.DataSource = this.posDataSet;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "posDataSet_deptReStock";
+            reportDataSource2.Value = this.deptReStockBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptReStockReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 68);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(878, 562);
+            this.reportViewer1.TabIndex = 9;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
+            // 
+            // DeptReStockTableAdapter
+            // 
+            this.DeptReStockTableAdapter.ClearBeforeFill = true;
             // 
             // departmentTableAdapter
             // 
@@ -202,16 +204,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 522);
+            this.ClientSize = new System.Drawing.Size(878, 630);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeptReStockReportViewer";
             this.Text = "BÁO CÁO TÁI NHẬP TẠI CỬA HÀNG";
             this.Load += new System.EventHandler(this.DeptReStockReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.deptReStockBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deptReStockBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
 

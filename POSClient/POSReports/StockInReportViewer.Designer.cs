@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.stockInBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,14 +40,23 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.stockInBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.posDataSet = new POSReports.posDataSet();
             this.StockStatisticTableAdapter = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
             this.StockInTableAdapter = new POSReports.posDataSetTableAdapters.StockInTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // stockInBindingSource
+            // 
+            this.stockInBindingSource.DataMember = "stockIn";
+            this.stockInBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -68,7 +79,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 74);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // label1
@@ -142,18 +153,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockInReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(784, 452);
+            this.reportViewer1.Size = new System.Drawing.Size(879, 566);
             this.reportViewer1.TabIndex = 6;
-            // 
-            // stockInBindingSource
-            // 
-            this.stockInBindingSource.DataMember = "stockIn";
-            this.stockInBindingSource.DataSource = this.posDataSet;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // StockStatisticTableAdapter
             // 
@@ -167,16 +169,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 526);
+            this.ClientSize = new System.Drawing.Size(879, 640);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StockInReportViewer";
             this.Text = "BÁO CÁO NHẬP HÀNG";
             this.Load += new System.EventHandler(this.StockInReportViewer_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockInBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -59,7 +59,7 @@ namespace POSReports
             try
             {
                 object id = comboBox1.SelectedValue;
-                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder, ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value), Int32.Parse(id.ToString()));
+                this.ReturnPOrderTableAdapter.Fill(this.posDataSet.returnPOrder,Int32.Parse(id.ToString()), ZeroTime(this.fromDate.Value), MaxTime(this.toDate.Value) );
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)

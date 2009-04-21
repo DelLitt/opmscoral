@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.TmpStockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,13 +40,22 @@
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.posDataSet = new POSReports.posDataSet();
-            this.TmpStockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TmpStockoutTableAdapter = new POSReports.posDataSetTableAdapters.TmpStockoutTableAdapter();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TmpStockoutBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // TmpStockoutBindingSource
+            // 
+            this.TmpStockoutBindingSource.DataMember = "TmpStockout";
+            this.TmpStockoutBindingSource.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.EnforceConstraints = false;
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tableLayoutPanel1
             // 
@@ -67,7 +78,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.22222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.77778F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 74);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label1
@@ -141,18 +152,9 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.TempStockoutReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(741, 396);
+            this.reportViewer1.Size = new System.Drawing.Size(876, 566);
             this.reportViewer1.TabIndex = 3;
-            // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // TmpStockoutBindingSource
-            // 
-            this.TmpStockoutBindingSource.DataMember = "TmpStockout";
-            this.TmpStockoutBindingSource.DataSource = this.posDataSet;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // TmpStockoutTableAdapter
             // 
@@ -162,16 +164,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 470);
+            this.ClientSize = new System.Drawing.Size(876, 640);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TempStockoutReportViewer";
             this.Text = "TempStockoutReportViewer";
             this.Load += new System.EventHandler(this.TempStockoutReportViewer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TmpStockoutBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TmpStockoutBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
