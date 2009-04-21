@@ -90,6 +90,13 @@
         length="10"
     >
     </property>
+  <property
+        name="Price"
+        type="Int64"
+        column="PRICE"
+        length="10"
+    >
+  </property>
    <!-- bi-directional many-to-one association to PurchaseOrder -->
   <property
         name="NextPurchaseOrderId"
