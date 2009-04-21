@@ -67,7 +67,7 @@
     <menuitem name="mnuGoodsSaleExchange" role="NotImplement" />
     <menuitem name="mnuGoodsSaleReturn" role="NotImplement" />
     <menuitem name="mnuGoodsSaleList" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDayGoodsSaleList" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDayGoodsSaleList" role="NotImplement" />
     <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptGoodsPurchaseOrderPeriodReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptPurchaseOrderReport" role="Administrator,Manager,Supervisor" />

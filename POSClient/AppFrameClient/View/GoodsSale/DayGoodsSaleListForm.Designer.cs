@@ -31,20 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.chkEveningSort = new System.Windows.Forms.CheckBox();
             this.chkMorningSort = new System.Windows.Forms.CheckBox();
             this.dgvSaleList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsPurchaseOrders = new System.Windows.Forms.BindingSource(this.components);
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -63,17 +58,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRetQty = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseOrderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsPurchaseOrders = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BindingSource
@@ -170,55 +170,9 @@
             this.dgvSaleList.Size = new System.Drawing.Size(984, 361);
             this.dgvSaleList.TabIndex = 45;
             // 
-            // Column1
+            // bdsPurchaseOrders
             // 
-            this.Column1.DataPropertyName = "PurchaseOrderId";
-            this.Column1.HeaderText = "Số hóa đơn";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "SellDescription";
-            this.Column2.HeaderText = "Hàng bán";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "SellAmount";
-            this.Column3.HeaderText = "Tiền bán";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "ReturnDescription";
-            this.Column4.HeaderText = "Hàng trả";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "ReturnAmount";
-            this.Column5.HeaderText = "Tổng tiền trả";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 150;
-            // 
-            // ReturnDescription
-            // 
-            this.ReturnDescription.DataPropertyName = "IssueDate";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
-            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ReturnDescription.HeaderText = "Ngày phát hành";
-            this.ReturnDescription.Name = "ReturnDescription";
-            this.ReturnDescription.ReadOnly = true;
-            this.ReturnDescription.Width = 150;
+            this.bdsPurchaseOrders.DataSource = typeof(AppFrameClient.ViewModel.PurchaseOrderView);
             // 
             // btnHelp
             // 
@@ -388,6 +342,56 @@
             this.txtRetQty.Size = new System.Drawing.Size(100, 20);
             this.txtRetQty.TabIndex = 57;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PurchaseOrderId";
+            this.Column1.HeaderText = "Số hóa đơn";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "SellDescription";
+            this.Column2.HeaderText = "Hàng bán";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "SellAmount";
+            this.Column3.HeaderText = "Tiền bán";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ReturnDescription";
+            this.Column4.HeaderText = "Hàng trả";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "ReturnAmount";
+            this.Column5.HeaderText = "Tổng tiền trả";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 120;
+            // 
+            // ReturnDescription
+            // 
+            this.ReturnDescription.DataPropertyName = "IssueDate";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
+            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ReturnDescription.HeaderText = "Ngày phát hành";
+            this.ReturnDescription.Name = "ReturnDescription";
+            this.ReturnDescription.ReadOnly = true;
+            this.ReturnDescription.Width = 150;
+            // 
             // purchaseOrderIdDataGridViewTextBoxColumn
             // 
             this.purchaseOrderIdDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrderId";
@@ -436,10 +440,6 @@
             this.returnDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.returnDescriptionDataGridViewTextBoxColumn.Visible = false;
             // 
-            // bdsPurchaseOrders
-            // 
-            this.bdsPurchaseOrders.DataSource = typeof(AppFrameClient.ViewModel.PurchaseOrderView);
-            // 
             // DayGoodsSaleListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,9 +464,9 @@
             this.Load += new System.EventHandler(this.DayGoodsSaleListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,6 +495,10 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource BindingSource;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox txtSellQty;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtRetQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -507,9 +511,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sellAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnDescriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox txtSellQty;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtRetQty;
     }
 }
