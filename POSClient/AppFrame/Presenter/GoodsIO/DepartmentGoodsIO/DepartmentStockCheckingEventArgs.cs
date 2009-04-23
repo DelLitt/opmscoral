@@ -14,6 +14,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public System.Collections.IList ReturnStockViewList { get; set; }
 
         public DepartmentStock ScannedStock { get; set; }
+        public DepartmentStockView ScannedStockView { get; set; }
         public System.Collections.IList SaveStockList { get; set; }
+        public System.Collections.IList SaveStockViewList { get; set; }
     }
 }

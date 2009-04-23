@@ -169,6 +169,7 @@
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockViewCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
     <Compile Include="Collection\LoginModelCollection.cs" />
@@ -437,6 +438,7 @@
     <Compile Include="Model\DepartmentStockProductMasterView.cs" />
     <Compile Include="Model\DepartmentStockProductMasterViewPK.cs" />
     <Compile Include="Model\DepartmentStockSearchResult.cs" />
+    <Compile Include="Model\DepartmentStockView.cs" />
     <Compile Include="Model\DepartmentTimeline.cs" />
     <Compile Include="Model\DepartmentTimelinePK.cs" />
     <Compile Include="Model\Distributor.cs" />
