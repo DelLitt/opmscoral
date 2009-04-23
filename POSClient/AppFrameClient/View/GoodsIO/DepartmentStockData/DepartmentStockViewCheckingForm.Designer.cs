@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    partial class DepartmentStockCheckingForm
+    partial class DepartmentStockViewCheckingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -220,7 +220,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
-            this.btnClose.Text = "Đóng";
+            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -275,18 +275,20 @@
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.Size = new System.Drawing.Size(960, 313);
             this.dgvStock.TabIndex = 24;
+            this.dgvStock.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellDoubleClick);
+            this.dgvStock.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellContentDoubleClick);
             this.dgvStock.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
             // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "Product.ProductId";
+            this.Column1.DataPropertyName = "ProductMaster.ProductMasterId";
             this.Column1.HeaderText = "Loại hàng";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "Product.ProductMaster.ProductName";
+            this.Column2.DataPropertyName = "ProductMaster.ProductName";
             this.Column2.HeaderText = "Tên hàng";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -294,14 +296,14 @@
             // 
             // Column3
             // 
-            this.Column3.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            this.Column3.DataPropertyName = "ProductMaster.ProductColor.ColorName";
             this.Column3.HeaderText = "Màu sắc";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
-            this.Column4.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            this.Column4.DataPropertyName = "ProductMaster.ProductSize.SizeName";
             this.Column4.HeaderText = "Kích cỡ";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -397,9 +399,9 @@
             this.button4.TabIndex = 33;
             this.button4.Text = "Lưu kết quả kiểm kê tạm thời";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // DepartmentStockCheckingForm
+            // DepartmentStockViewCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
             this.Controls.Add(this.button4);
@@ -412,7 +414,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.label11);
-            this.Name = "DepartmentStockCheckingForm";
+            this.Name = "DepartmentStockViewCheckingForm";
             this.Load += new System.EventHandler(this.DepartmentStockCheckingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -446,6 +448,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvStock;
         private System.Windows.Forms.Label label11;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -456,7 +460,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
-        private System.Windows.Forms.Button button4;
     }
 }

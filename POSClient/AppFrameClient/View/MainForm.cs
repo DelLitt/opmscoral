@@ -359,9 +359,13 @@ namespace AppFrame.View
 
         private void mnuDeptStockChecking_Click(object sender, EventArgs e)
         {
-            Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockCheckingForm>(this,
+            //Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockCheckingForm>(this,
+            //                                                                                         FormConstants.
+            //                                                                                             DEPARTMENT_STOCK_CHECKING_FORM);
+            
+            Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockViewCheckingForm>(this,
                                                                                                      FormConstants.
-                                                                                                         DEPARTMENT_STOCK_CHECKING_FORM);
+                                                                                                         DEPARTMENT_STOCK_VIEW_CHECKING_FORM);
             //deptStockCheckingForm.Show();
             ShowFormWithActiveDepartment(deptStockCheckingForm, new Department());
         }

@@ -69,6 +69,8 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.btnTempSave = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -293,6 +295,7 @@
             this.btnConfirm.TabIndex = 18;
             this.btnConfirm.Text = "XÁC NHẬN";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Visible = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // label3
@@ -348,7 +351,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(534, 483);
+            this.button1.Location = new System.Drawing.Point(571, 483);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 3;
@@ -403,9 +406,31 @@
             this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
             this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
+            // btnTempSave
+            // 
+            this.btnTempSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTempSave.Location = new System.Drawing.Point(379, 483);
+            this.btnTempSave.Name = "btnTempSave";
+            this.btnTempSave.Size = new System.Drawing.Size(167, 23);
+            this.btnTempSave.TabIndex = 23;
+            this.btnTempSave.Text = "Lưu kết quả kiểm kê tạm";
+            this.btnTempSave.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(232, 483);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 23);
+            this.button5.TabIndex = 24;
+            this.button5.Text = "Xuất ra Excel";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // InventoryCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 562);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnTempSave);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtBarcode);
@@ -465,5 +490,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
+        private System.Windows.Forms.Button btnTempSave;
+        private System.Windows.Forms.Button button5;
     }
 }

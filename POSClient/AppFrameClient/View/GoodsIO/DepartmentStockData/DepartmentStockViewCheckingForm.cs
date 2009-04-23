@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +11,15 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    public partial class DepartmentStockCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
+    public partial class DepartmentStockViewCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
     {
-        public event EventHandler RestrictDepartmentStocksChecked;
-        private DepartmentStockCollection stockList = null;
-        public DepartmentStockCheckingForm()
+        private DepartmentStockViewCollection stockList = null;
+        public DepartmentStockViewCheckingForm()
         {
             InitializeComponent();
         }
@@ -57,45 +56,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void LoadGoodsByProductId(string id)
         {
-            if(this.Status == ViewStatus.OPENDIALOG)
-            {
-                bool checkInList = false;
-                if(RestrictDepartmentStocks!=null)
-                {
-                    foreach (DepartmentStock departmentStock in RestrictDepartmentStocks)
-                    {
-                        if(departmentStock.Product.ProductId.Equals(id))
-                        {
-                            checkInList = true;                            
-                        }
-                    }
-                }
-                if(!checkInList)
-                {
-                    string productName = "";
-                    if(RestrictProductMaster!=null)
-                    {
-                        productName = RestrictProductMaster.ProductName;    
-                    }
-                    MessageBox.Show("Mã vạch không phải của mặt hàng " + productName + " cần kiểm tra", "Lỗi");
-                    return;
-                }
-            }
             DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
             checkingEventArgs.InputBarcode = id;
             EventUtility.fireEvent(LoadGoodsByProductIdEvent, this, checkingEventArgs);
-            DepartmentStock stock = checkingEventArgs.ScannedStock;
+            DepartmentStockView stock = checkingEventArgs.ScannedStockView;
             if (stock == null)
             {
                 MessageBox.Show("Không tìm thấy mã vạch trong kho", "Lỗi");
                 return;
             }
 
-            txtProductType.Text = stock.Product.ProductMaster.ProductType.TypeName;
-            txtProductName.Text = stock.Product.ProductMaster.ProductName;
+            txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
+            txtProductName.Text = stock.ProductMaster.ProductName;
             txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
-            txtDescription.Text = stock.Product.ProductMaster.Description;
-            pictureBox1.ImageLocation = stock.Product.ProductMaster.ImagePath;
+            txtDescription.Text = stock.ProductMaster.Description;
+            pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
             if(!CheckUtility.IsNullOrEmpty(pictureBox1.ImageLocation))
             {
                 pictureBox1.Load();
@@ -118,7 +93,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else // create new stock defect row
             {
                     stockList.AddNew();
-                    DepartmentStock defect = checkingEventArgs.ScannedStock;
+                    DepartmentStockView defect = checkingEventArgs.ScannedStockView;
                     stockList[stockList.Count - 1] = defect;
                     
                     stockList[stockList.Count - 1].GoodQuantity = 1;
@@ -137,13 +112,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             txtBarcode.Focus();
         }
 
-        private bool HasInStockDefectList(DepartmentStock stock, DepartmentStockCollection list, out int stockDefIndex)
+        private bool HasInStockDefectList(DepartmentStockView stock, DepartmentStockViewCollection list, out int stockDefIndex)
         {
             int count = 0;
-            foreach (DepartmentStock stockDefect in list)
+            foreach (DepartmentStockView stockDefect in list)
             {
-                if (stockDefect.DepartmentStockPK.DepartmentId == stock.DepartmentStockPK.DepartmentId
-                    && stockDefect.Product.ProductId.Equals(stock.DepartmentStockPK.ProductId))
+                if (stockDefect.ProductMaster.ProductMasterId.Equals(stock.ProductMaster.ProductMasterId))
                 {
                     stockDefIndex = count;
                     return true;
@@ -156,24 +130,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockCheckingForm_Load(object sender, EventArgs e)
         {
-            stockList = new DepartmentStockCollection(bdsStockDefect);
+            stockList = new DepartmentStockViewCollection(bdsStockDefect);
             bdsStockDefect.DataSource = stockList;
+            bdsStockDefect.EndEdit();
             bdsStockDefect.ResetBindings(true);
-            if(Status == ViewStatus.OPENDIALOG)
-            {
-                button4.Enabled = false;
-                if(RestrictDepartmentStocks!=null && RestrictDepartmentStocks.Count > 0)
-                {
-                    foreach (DepartmentStock departmentStock in RestrictDepartmentStocks)
-                    {
-                        stockList.Add(departmentStock);                        
-                    }                        
-                    bdsStockDefect.EndEdit();
-                    dgvStock.Refresh();
-                    dgvStock.Invalidate();
-                }
-                
-            }
+            dgvStock.Refresh();
+            dgvStock.Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -183,29 +145,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Không có gì để lưu");
             }
             DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
-            checkingEventArgs.SaveStockList = ObjectConverter.ConvertToNonGenericList(stockList);
-            
-            if(Status == ViewStatus.OPENDIALOG )
-            {
-                if(!CheckDepartmentDataIntegrity())
-                {
-                    DialogResult result =MessageBox.Show(
-                        "Số liệu trong chương trình không khớp với số liệu kiểm kê thực tế. Bạn vẫn muốn chấp nhận kết quả kiểm kê này ?",
-                        "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                    if(result == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                this.RestrictDepartmentStocks = checkingEventArgs.SaveStockList;
-                if(this.RestrictDepartmentStocksChecked!=null)
-                {
-                    RestrictDepartmentStocksChecked(this, null);    
-                }
-                Close();
-                return;
-            }
-            if (!CheckDepartmentDataIntegrity())
+            checkingEventArgs.SaveStockViewList = ObjectConverter.ConvertToNonGenericList(stockList);
+            if(!CheckDepartmentDataIntegrity())
                 return;
             EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
             MessageBox.Show("Lưu kết quả thành công");
@@ -215,9 +156,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             for (int i = 0; i < stockList.Count; i++)
             {
-                DepartmentStock defect = stockList[i];
+                DepartmentStockView defect = stockList[i];
 
-                if (defect.ErrorQuantity < 0 || defect.GoodQuantity < 0 || defect.DamageQuantity < 0 || defect.LostQuantity < 0 || defect.UnconfirmQuantity < 0)
+                if (   defect.ErrorQuantity < 0 
+                    || defect.GoodQuantity < 0 
+                    || defect.DamageQuantity < 0 
+                    || defect.LostQuantity < 0 
+                    || defect.UnconfirmQuantity < 0)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
                     dgvStock.CurrentCell = dgvStock[5, i];
@@ -253,23 +198,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if(Status == ViewStatus.OPENDIALOG)
-            {
-                foreach (DepartmentStock departmentStock in RestrictDepartmentStocks)
-                {
-                     departmentStock.GoodQuantity = departmentStock.OldGoodQuantity ;
-                     departmentStock.ErrorQuantity = departmentStock.OldErrorQuantity ;
-                     departmentStock.UnconfirmQuantity = departmentStock.OldUnconfirmQuantity ;
-                     departmentStock.DamageQuantity = departmentStock.OldDamageQuantity ;
-                     departmentStock.LostQuantity = departmentStock.OldLostQuantity ;
-                }
-            }
             Close();
         }
 
         private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DepartmentStock defect = stockList[e.RowIndex];
+            DepartmentStockView defect = stockList[e.RowIndex];
             long currError = defect.ErrorQuantity - defect.OldErrorQuantity;
             long currDamage = defect.DamageQuantity - defect.OldDamageQuantity;
             long currLost = defect.LostQuantity - defect.OldLostQuantity;
@@ -311,7 +245,81 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             txtBarcode.Focus();
         }
 
-        public IList RestrictDepartmentStocks { get; set; }
-        public ProductMaster RestrictProductMaster { get; set; }
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStock_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvStock_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dgvStock.CurrentCell == null)
+            {
+                return;
+            }
+            DataGridViewSelectedCellCollection cellCollection = dgvStock.SelectedCells;
+            if(cellCollection.Count <= 0)
+            {
+                return;
+            }
+            DepartmentStockCheckingForm form = GlobalUtility.GetFormObject<DepartmentStockCheckingForm>(FormConstants.DEPARTMENT_STOCK_CHECKING_FORM);
+            form.Status = ViewStatus.OPENDIALOG;
+            form.RestrictDepartmentStocksChecked += new EventHandler(form_RestrictDepartmentStocksChecked);
+            form.RestrictDepartmentStocks = stockList[cellCollection[0].RowIndex].DepartmentStocks;
+            form.RestrictProductMaster = stockList[cellCollection[0].RowIndex].ProductMaster;
+            form.Closing += new CancelEventHandler(form_Closing);
+            // save current checking value
+            foreach (DepartmentStock departmentStock in form.RestrictDepartmentStocks)
+            {
+                departmentStock.OldGoodQuantity = departmentStock.GoodQuantity;
+                departmentStock.OldErrorQuantity = departmentStock.ErrorQuantity;
+                departmentStock.OldUnconfirmQuantity = departmentStock.UnconfirmQuantity;
+                departmentStock.OldDamageQuantity = departmentStock.DamageQuantity;
+                departmentStock.OldLostQuantity = departmentStock.LostQuantity;
+            }
+            this.Enabled = false;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
+
+        }
+
+        void form_Closing(object sender, CancelEventArgs e)
+        {
+            this.Enabled = true;
+        }
+
+        void form_RestrictDepartmentStocksChecked(object sender, EventArgs e)
+        {
+            DepartmentStockCheckingForm form = (DepartmentStockCheckingForm)sender;
+            ProductMaster master = form.RestrictProductMaster;
+            foreach (DepartmentStockView stockView in stockList)
+            {
+                if (stockView.ProductMaster.ProductMasterId.Equals(master.ProductMasterId))
+                {
+                    stockView.DepartmentStocks = form.RestrictDepartmentStocks;
+                    stockView.GoodQuantity = 0;
+                    stockView.ErrorQuantity = 0;
+                    stockView.UnconfirmQuantity = 0;
+                    stockView.LostQuantity = 0;
+                    stockView.DamageQuantity = 0;
+                    foreach (DepartmentStock stock in stockView.DepartmentStocks)
+                    {
+                        stockView.GoodQuantity += stock.GoodQuantity;
+                        stockView.ErrorQuantity += stock.ErrorQuantity;
+                        stockView.UnconfirmQuantity += stock.UnconfirmQuantity;
+                        stockView.LostQuantity += stock.LostQuantity;
+                        stockView.DamageQuantity += stock.DamageQuantity;
+                    }
+                    bdsStockDefect.EndEdit();
+                    dgvStock.Refresh();
+                    dgvStock.Invalidate();
+                    return;
+                }
+            }
+        }
     }
 }

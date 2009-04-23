@@ -253,6 +253,7 @@
     <Compile Include="DataLayer\TaxDAOImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
     <Compile Include="ViewModel\PurchaseOrderView.cs" />
@@ -261,6 +262,12 @@
     </Compile>
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.Designer.cs">
+      <DependentUpon>DepartmentStockViewCheckingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\StockOutConfirmForm.cs">
       <SubType>Form</SubType>
@@ -1109,6 +1116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.resx">
+      <DependentUpon>DepartmentStockViewCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\StockOutConfirmForm.resx">
       <DependentUpon>StockOutConfirmForm.cs</DependentUpon>
