@@ -665,20 +665,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         for (int i = 0; i < count; i++)
                         {
                             barcodePrintDocument.Print();
-                            var remainToPrint = (int)numericUpDownBarcode.Value;
-                            if(remainToPrint -3 < 0 )
-                            {
-                                numericUpDownBarcode.Value = 1;                                
-                            }
-                            else
-                            {
-                                numericUpDownBarcode.Value = (remainToPrint - 3);
-                            }
                         }
                         
                     }
                     catch (Exception)
                     {
+                    }
+                    finally
+                    {
+                        numericUpDownBarcode.Value = 3;
                     }
 
                 }
