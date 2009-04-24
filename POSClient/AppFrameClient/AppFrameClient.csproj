@@ -187,6 +187,7 @@
     <Compile Include="DataLayer\BlockInDetailDAOImpl.cs" />
     <Compile Include="DataLayer\CategoryDAOImpl.cs" />
     <Compile Include="DataLayer\ContractDAOImpl.cs" />
+    <Compile Include="DataLayer\DepartmentStockTempDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentManagementDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentTimelineDAOImpl.cs" />
     <Compile Include="DataLayer\SyncStatusDAOImpl.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="DataLayer\StockOutDetailDAOImpl.cs" />
     <Compile Include="DataLayer\SupplierDAOImpl.cs" />
     <Compile Include="DataLayer\TaxDAOImpl.cs" />
+    <Compile Include="Logic\DepartmentStockTempLogicImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />

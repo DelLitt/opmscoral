@@ -6,6 +6,7 @@ using System.Text;
 using AppFrame;
 using AppFrame.Common;
 using AppFrame.Exceptions;
+using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
@@ -133,6 +134,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             get;
             set;
+        }
+
+        public IDepartmentStockTempLogic DepartmentStockTempLogic
+        {
+            get; set;
         }
 
         #endregion

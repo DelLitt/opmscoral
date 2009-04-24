@@ -9,6 +9,7 @@ using AppFrame.Exceptions;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.MainStock;
+using AppFrame.Utility.Mapper;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using Spring.Transaction.Interceptor;
 
@@ -35,30 +36,156 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             foreach (DepartmentStockView stockView in e.SaveStockViewList)
             {
+                long checkedGoodQty = stockView.GoodQuantity;
+                long checkedErrorQty = stockView.ErrorQuantity;
+                long checkedLostQty = stockView.LostQuantity;
+                long checkedDamageQty = stockView.DamageQuantity;
+                long checkedUnconfirmQty = stockView.UnconfirmQuantity;
                 long goodQuantity, errorQuantity, lostQuantity, damageQuantity, unconfirmQuantity;
-                GetCheckingQuantities(stockView.DepartmentStocks,out goodQuantity,out errorQuantity,out lostQuantity,out damageQuantity,out unconfirmQuantity);
-                // if normal quantity
+                GetCheckingQuantities(stockView.DepartmentStocks, out goodQuantity, out errorQuantity, out lostQuantity, out damageQuantity, out unconfirmQuantity);
+                bool NeedFixing = false;
+                if (checkedGoodQty != goodQuantity
+                       || checkedErrorQty != errorQuantity
+                       || checkedLostQty != lostQuantity
+                       || checkedDamageQty != damageQuantity
+                       || checkedUnconfirmQty != unconfirmQuantity)
+                {
+                    NeedFixing = true;
+                }
+
+                // if after checking quantity is equal with checked values
                 if(stockView.Quantity == 
                     (stockView.GoodQuantity+stockView.ErrorQuantity+
                      stockView.DamageQuantity+stockView.LostQuantity+stockView.UnconfirmQuantity))
                 {
-                    long checkedGoodQty = stockView.GoodQuantity;
-                    long checkedErrorQty = stockView.ErrorQuantity;
-                    long checkedLostQty = stockView.LostQuantity;
-                    long checkedDamageQty = stockView.DamageQuantity;
-                    long checkedUnconfirmQty = stockView.UnconfirmQuantity;
-
+                    
+                    
                     foreach (DepartmentStock stock in stockView.DepartmentStocks)
                     {
-                        if(stockView.UnconfirmQuantity!=unconfirmQuantity)
+                        if(NeedFixing)
                         {
-                            
+                            stock.GoodQuantity = stock.Quantity;
+                            AutoFixing(stock, ref checkedErrorQty, ref checkedDamageQty, ref checkedLostQty, ref checkedUnconfirmQty);
                         }
-                    }                    
+                        stock.UpdateDate = DateTime.Now;
+                        stock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                        DepartmentStockLogic.Update(stock);
+                    }
+                    
+                }
+                else // in case quantity does not equal checked values.
+                {
+                    // we do auto fixing
+                    IList departmentStocks = stockView.DepartmentStocks;
+                    for( int i =0;i < departmentStocks.Count;i++)
+                    {
+                        DepartmentStock stock = (DepartmentStock) departmentStocks[i];
+                        // if not last item
+                        if (i < departmentStocks.Count - 1)
+                        {
+                            if (checkedGoodQty >= stock.Quantity)
+                            {
+                                stock.GoodQuantity = stock.Quantity;
+                                checkedGoodQty -= stock.Quantity;
+                            }
+                            else
+                            {
+                                stock.GoodQuantity = checkedGoodQty;
+                                checkedGoodQty = 0;
+                            }
+                        }
+                        else
+                        {
+                            stock.GoodQuantity = checkedGoodQty;
+                            checkedGoodQty = 0;
+                        }
+                        // do auto fixing here
+                        if(NeedFixing)
+                        {
+                            // if not last item
+                            if( i < departmentStocks.Count - 1)
+                            {
+                                // fixing
+                                AutoFixing(stock, ref checkedErrorQty, ref checkedDamageQty, ref checkedLostQty, ref checkedUnconfirmQty);
+                            }
+                            else // last fixing
+                            {
+                                // don't need to fix, just map the remain quantities to stock
+                                stock.ErrorQuantity = checkedErrorQty;
+                                stock.DamageQuantity = checkedDamageQty;
+                                stock.LostQuantity = checkedLostQty;
+                                stock.UnconfirmQuantity = checkedUnconfirmQty;
+                            }
+                        }
+                        DepartmentStockTempMapper mapper = new DepartmentStockTempMapper();
+                        DepartmentStockTempLogic.Add(mapper.Convert(stock));
+                    }
                 }
             } 
         }
-
+        private void AutoFixing(DepartmentStock stock, ref long errorQuantity,ref long damageQuantity,ref long lostQuantity,ref long unconfirmQuantity)
+        {
+            if (errorQuantity > 0)
+            {
+                if (stock.GoodQuantity >= errorQuantity)
+                {
+                    stock.ErrorQuantity = errorQuantity;
+                    stock.GoodQuantity -= errorQuantity;
+                    errorQuantity = 0;
+                }
+                else
+                {
+                    stock.ErrorQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    errorQuantity -= stock.ErrorQuantity;
+                }
+            }
+            if (lostQuantity > 0)
+            {
+                if (stock.GoodQuantity >= lostQuantity)
+                {
+                    stock.LostQuantity = lostQuantity;
+                    stock.GoodQuantity -= lostQuantity;
+                    lostQuantity = 0;
+                }
+                else
+                {
+                    stock.LostQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    lostQuantity -= stock.LostQuantity;
+                }
+            }
+            if (damageQuantity > 0)
+            {
+                if (stock.GoodQuantity >= damageQuantity)
+                {
+                    stock.DamageQuantity = damageQuantity;
+                    stock.GoodQuantity -= damageQuantity;
+                    damageQuantity = 0;
+                }
+                else
+                {
+                    stock.DamageQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    damageQuantity -= stock.DamageQuantity;
+                }
+            }
+            if (unconfirmQuantity > 0)
+            {
+                if (stock.GoodQuantity >= unconfirmQuantity)
+                {
+                    stock.UnconfirmQuantity = unconfirmQuantity;
+                    stock.GoodQuantity -= unconfirmQuantity;
+                    unconfirmQuantity = 0;
+                }
+                else
+                {
+                    stock.UnconfirmQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    unconfirmQuantity -= stock.UnconfirmQuantity;
+                }
+            } 
+        }
         private void GetCheckingQuantities(IList stocks, out long goods, out long errors, out long losses, out long damages, out long unconfirms)
         {
             goods = errors = losses = damages = unconfirms = 0;
@@ -79,6 +206,18 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if(product==null)
             {
                 return;
+            }
+
+            // search in temp stock
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DepartmentStockTempPK.ProductId", product.ProductId);
+            criteria.AddEqCriteria("DepartmentStockTempPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            IList tempList =DepartmentStockTempLogic.FindAll(criteria);
+            if(tempList!=null && tempList.Count > 0)
+            {
+                e.UnconfirmTempBarcode = true;
+                throw new BusinessException("Mã vạch này đã kiểm trước đó và chưa được xác nhận. Xin liên hệ người quản lý kho.");
             }
             // search in stock
             ProductMaster searchProductMaster = product.ProductMaster;
@@ -134,6 +273,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
         public IDepartmentStockLogic DepartmentStockLogic { get; set; }
+        public IDepartmentStockTempLogic DepartmentStockTempLogic { get; set; }
         public IProductLogic ProductLogic { get; set; }
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IDepartmentStockInLogic DepartmentStockInLogic { get; set; }

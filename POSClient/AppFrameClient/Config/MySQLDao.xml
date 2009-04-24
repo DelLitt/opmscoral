@@ -68,6 +68,9 @@
   <object id="AppFrame.DataLayer.IDepartmentStockDAO" type="AppFrame.DataLayer.DepartmentStockDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+  <object id="AppFrame.DataLayer.IDepartmentStockTempDAO" type="AppFrame.DataLayer.DepartmentStockTempDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <object id="AppFrame.DataLayer.ICustomersDAO" type="AppFrame.DataLayer.CustomerDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>

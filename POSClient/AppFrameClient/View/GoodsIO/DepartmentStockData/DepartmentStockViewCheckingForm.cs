@@ -62,6 +62,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             DepartmentStockView stock = checkingEventArgs.ScannedStockView;
             if (stock == null)
             {
+                if(!checkingEventArgs.UnconfirmTempBarcode)
                 MessageBox.Show("Không tìm thấy mã vạch trong kho", "Lỗi");
                 return;
             }
@@ -143,14 +144,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (stockList.Count < 1)
             {
                 MessageBox.Show("Không có gì để lưu");
+                return;
             }
             DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
             checkingEventArgs.SaveStockViewList = ObjectConverter.ConvertToNonGenericList(stockList);
-            if(!CheckDepartmentDataIntegrity())
-                return;
+            if (!CheckDepartmentDataIntegrity())
+            {
+                DialogResult result =
+                    MessageBox.Show(
+                        "Kết quả kiểm kê không khớp với số liệu trong chương trình. Bạn vẫn muốn lưu kết quả ?","Cảnh báo",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if(result == DialogResult.No)
+                {
+                    return;    
+                }
+                
+            }
             EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
-            MessageBox.Show("Lưu kết quả thành công");
-            ClearForm();
+            if (!checkingEventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu kết quả thành công");
+                ClearForm();
+            }
         }
         private bool CheckDepartmentDataIntegrity()
         {
