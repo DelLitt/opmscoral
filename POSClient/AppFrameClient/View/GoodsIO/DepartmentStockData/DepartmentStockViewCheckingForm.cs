@@ -296,10 +296,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             DepartmentStockCheckingForm form = (DepartmentStockCheckingForm)sender;
             ProductMaster master = form.RestrictProductMaster;
-            foreach (DepartmentStockView stockView in stockList)
+            for(int i=0; i < stockList.Count;i++)
             {
+                DepartmentStockView stockView = stockList[i];
                 if (stockView.ProductMaster.ProductMasterId.Equals(master.ProductMasterId))
                 {
+                    bool isReadOnly = false;
                     stockView.DepartmentStocks = form.RestrictDepartmentStocks;
                     stockView.GoodQuantity = 0;
                     stockView.ErrorQuantity = 0;
@@ -313,10 +315,29 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         stockView.UnconfirmQuantity += stock.UnconfirmQuantity;
                         stockView.LostQuantity += stock.LostQuantity;
                         stockView.DamageQuantity += stock.DamageQuantity;
+                        if(    stock.GoodQuantity > 0 
+                            || stock.ErrorQuantity > 0 
+                            || stock.DamageQuantity > 0
+                            || stock.LostQuantity > 0
+                            || stock.UnconfirmQuantity > 0)
+                        {
+                            isReadOnly = true;
+                        }
                     }
+                    dgvStock.Rows[i].ReadOnly = isReadOnly;
+                    foreach (DataGridViewCell cell in dgvStock.Rows[i].Cells)
+                    {
+                        if (cell.ColumnIndex >= 5)
+                        {
+                            cell.ReadOnly = isReadOnly;
+                        }
+                    }
+                    
+
                     bdsStockDefect.EndEdit();
                     dgvStock.Refresh();
                     dgvStock.Invalidate();
+
                     return;
                 }
             }
