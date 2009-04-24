@@ -17,5 +17,6 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public DepartmentStockView ScannedStockView { get; set; }
         public System.Collections.IList SaveStockList { get; set; }
         public System.Collections.IList SaveStockViewList { get; set; }
+        public bool UnconfirmTempBarcode { get; set; }
     }
 }

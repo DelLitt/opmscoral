@@ -16,6 +16,8 @@ namespace AppFrame.Model
         public IList PurchaseOrderList { get; set; }
         public IList ReturnPoList { get; set; }
         public IList DepartmentTimelineList { get; set; }
+        public IList DepartmentStockTempList { get; set; }
+
         
     }
 }
