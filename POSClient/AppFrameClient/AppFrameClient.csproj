@@ -289,6 +289,12 @@
     <Compile Include="View\GoodsSale\PurchaseOrderViewer.Designer.cs">
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.Designer.cs">
+      <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1130,6 +1136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsSale\PurchaseOrderViewer.resx">
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventory\DepartmentStockAdhocCheckingForm.resx">
+      <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
