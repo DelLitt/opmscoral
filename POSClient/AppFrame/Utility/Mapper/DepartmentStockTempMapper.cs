@@ -29,6 +29,7 @@ namespace AppFrame.Utility.Mapper
             temp.DepartmentId = temp.DepartmentStockTempPK.DepartmentId;
             temp.Product = source.Product;
             temp.ProductMaster = source.Product.ProductMaster;
+            temp.Quantity = source.Quantity;
             temp.GoodQuantity = source.GoodQuantity;
             temp.ErrorQuantity = source.ErrorQuantity;
             temp.DamageQuantity = source.DamageQuantity;

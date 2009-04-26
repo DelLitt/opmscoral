@@ -169,6 +169,7 @@
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockTempCollection.cs" />
     <Compile Include="Collection\DepartmentStockViewCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
@@ -566,6 +567,8 @@
     <Compile Include="Presenter\GoodsSale\IGoodsSaleListController.cs" />
     <Compile Include="Presenter\GoodsSale\IGoodsSaleReturnController.cs" />
     <Compile Include="Presenter\IAuthService.cs" />
+    <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
+    <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
     <Compile Include="Presenter\IStockOutConfirmController.cs" />
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
@@ -681,6 +684,7 @@
     <Compile Include="View\IEditCustomerView.cs" />
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\INewCustomerView.cs" />
+    <Compile Include="View\Inventory\IDepartmentStockAdhocProcessingView.cs" />
     <Compile Include="View\ISecurityView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
     <Compile Include="View\Reports\IDepartmentStockInReportView.cs" />
@@ -802,9 +806,6 @@
     <EmbeddedResource Include="Model\StockOutDetail.hbm.xml" />
     <EmbeddedResource Include="Model\Supplier.hbm.xml" />
     <EmbeddedResource Include="Model\Tax.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Inventory\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
