@@ -9,17 +9,19 @@ using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
+using AppFrame.Presenter.Inventory;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrame.View.Inventory;
 using AppFrameClient.Common;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.Inventory
 {
-    public partial class DepartmentStockAdhocCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
+    public partial class DepartmentStockAdhocCheckingForm : BaseForm, IDepartmentStockAdhocProcessingView
     {
-        private DepartmentStockViewCollection stockList = null;
+        private DepartmentStockTempViewCollection stockList = null;
         public DepartmentStockAdhocCheckingForm()
         {
             InitializeComponent();
@@ -27,26 +29,7 @@ namespace AppFrameClient.View.Inventory
 
         #region IDepartmentStockCheckingView Members
 
-        public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> FillProductMasterToComboEvent;
-
-        public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> LoadGoodsByProductIdEvent;
-
-        public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> SaveInventoryCheckingEvent;
-
-        private AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController departmentStockCheckingController;        
-        public AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController DepartmentStockCheckingController
-        {
-            get
-            {
-                return departmentStockCheckingController;
-            }
-            set
-            {
-                departmentStockCheckingController = value;
-                departmentStockCheckingController.DepartmentStockCheckingView = this;
-            }
-        }
-
+        
         #endregion
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -54,9 +37,9 @@ namespace AppFrameClient.View.Inventory
             
         }
 
-        private void LoadGoodsByProductId(string id)
+        private void LoadGoods()
         {
-            DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
+            /*DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
             checkingEventArgs.InputBarcode = id;
             EventUtility.fireEvent(LoadGoodsByProductIdEvent, this, checkingEventArgs);
             DepartmentStockView stock = checkingEventArgs.ScannedStockView;
@@ -108,7 +91,7 @@ namespace AppFrameClient.View.Inventory
             }
             bdsStockDefect.EndEdit();
             dgvStock.Refresh();
-            dgvStock.Invalidate();
+            dgvStock.Invalidate();*/
             
         }
 
@@ -130,12 +113,27 @@ namespace AppFrameClient.View.Inventory
 
         private void DepartmentStockCheckingForm_Load(object sender, EventArgs e)
         {
-            stockList = new DepartmentStockViewCollection(bdsStockDefect);
+            stockList = new DepartmentStockTempViewCollection(bdsStockDefect);
             bdsStockDefect.DataSource = stockList;
             bdsStockDefect.EndEdit();
             bdsStockDefect.ResetBindings(true);
             dgvStock.Refresh();
             dgvStock.Invalidate();
+
+            stockList.Clear();
+            DepartmentStockAdhocProcessingEventArgs eventArgs = new DepartmentStockAdhocProcessingEventArgs();
+
+            EventUtility.fireEvent(LoadAdhocStocksEvent,this,eventArgs);
+            if(eventArgs.DeptStockAdhocList!= null && eventArgs.DeptStockAdhocList.Count > 0)
+            {
+                foreach (DepartmentStockTempView stockTempView in eventArgs.DeptStockAdhocList)
+                {
+                    stockList.Add(stockTempView);
+                }
+                bdsStockDefect.EndEdit();
+                dgvStock.Refresh();
+                dgvStock.Invalidate();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -145,13 +143,13 @@ namespace AppFrameClient.View.Inventory
                 MessageBox.Show("Không có gì để lưu");
                 return;
             }
-            DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
-            checkingEventArgs.SaveStockViewList = ObjectConverter.ConvertToNonGenericList(stockList);
+            DepartmentStockAdhocProcessingEventArgs checkingEventArgs = new DepartmentStockAdhocProcessingEventArgs();
+            checkingEventArgs.DeptStockProcessedList = ObjectConverter.ConvertToNonGenericList(stockList);
             if (!CheckDepartmentDataIntegrity())
             {
                 DialogResult result =
                     MessageBox.Show(
-                        "Kết quả kiểm kê không khớp với số liệu trong chương trình. Bạn vẫn muốn lưu kết quả ?","Cảnh báo",
+                        "Kết quả xử lý không hoàn tất. Bạn vẫn muốn lưu kết quả ?", "Cảnh báo",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 if(result == DialogResult.No)
                 {
@@ -159,7 +157,7 @@ namespace AppFrameClient.View.Inventory
                 }
                 
             }
-            EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
+            EventUtility.fireEvent(ProcessAdhocStocksEvent, this, checkingEventArgs);
             if (!checkingEventArgs.HasErrors)
             {
                 MessageBox.Show("Lưu kết quả thành công");
@@ -170,7 +168,7 @@ namespace AppFrameClient.View.Inventory
         {
             for (int i = 0; i < stockList.Count; i++)
             {
-                DepartmentStockView defect = stockList[i];
+                DepartmentStockTempView defect = stockList[i];
 
                 if (   defect.ErrorQuantity < 0 
                        || defect.GoodQuantity < 0 
@@ -216,7 +214,7 @@ namespace AppFrameClient.View.Inventory
 
         private void dgvStock_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DepartmentStockView defect = stockList[e.RowIndex];
+            DepartmentStockTempView defect = stockList[e.RowIndex];
             long currError = defect.ErrorQuantity - defect.OldErrorQuantity;
             long currDamage = defect.DamageQuantity - defect.OldDamageQuantity;
             long currLost = defect.LostQuantity - defect.OldLostQuantity;
@@ -258,7 +256,7 @@ namespace AppFrameClient.View.Inventory
             {
                 return;
             }
-            DepartmentStockCheckingForm form = GlobalUtility.GetFormObject<DepartmentStockCheckingForm>(FormConstants.DEPARTMENT_STOCK_CHECKING_FORM);
+            /*DepartmentStockCheckingForm form = GlobalUtility.GetFormObject<DepartmentStockCheckingForm>(FormConstants.DEPARTMENT_STOCK_CHECKING_FORM);
             form.Status = ViewStatus.OPENDIALOG;
             form.RestrictDepartmentStocksChecked += new EventHandler(form_RestrictDepartmentStocksChecked);
             form.RestrictDepartmentStocks = stockList[cellCollection[0].RowIndex].DepartmentStocks;
@@ -275,7 +273,7 @@ namespace AppFrameClient.View.Inventory
             }
             this.Enabled = false;
             form.StartPosition = FormStartPosition.CenterScreen;
-            form.Show();
+            form.Show();*/
 
         }
 
@@ -290,7 +288,7 @@ namespace AppFrameClient.View.Inventory
             ProductMaster master = form.RestrictProductMaster;
             for(int i=0; i < stockList.Count;i++)
             {
-                DepartmentStockView stockView = stockList[i];
+                /*DepartmentStockView stockView = stockList[i];
                 if (stockView.ProductMaster.ProductMasterId.Equals(master.ProductMasterId))
                 {
                     bool isReadOnly = false;
@@ -331,7 +329,7 @@ namespace AppFrameClient.View.Inventory
                     dgvStock.Invalidate();
 
                     return;
-                }
+                }*/
             }
         }
 
@@ -339,5 +337,26 @@ namespace AppFrameClient.View.Inventory
         {
 
         }
+
+        #region Implementation of IDepartmentStockAdhocProcessingView
+
+        private IDepartmentStockAdhocProcessingController departmentStockAdhocProcessingController;
+        public IDepartmentStockAdhocProcessingController DepartmentStockAdhocProcessingController
+        {
+            get
+            {
+                return departmentStockAdhocProcessingController;
+            }
+            set
+            {
+                departmentStockAdhocProcessingController = value;
+                departmentStockAdhocProcessingController.DepartmentStockAdhocProcessingView = this;
+            }
+        }
+
+        public event EventHandler<DepartmentStockAdhocProcessingEventArgs> LoadAdhocStocksEvent;
+        public event EventHandler<DepartmentStockAdhocProcessingEventArgs> ProcessAdhocStocksEvent;
+
+        #endregion
     }
 }
