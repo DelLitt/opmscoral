@@ -37,6 +37,7 @@
     <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
+    <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
   </menu>
   <menu name="mnuSalePoint" role="NotImplement">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />

@@ -69,21 +69,25 @@ namespace AppFrameClient.Presenter.GoodsSale
         void goodsSaleView_LoadGoodsEvent(object sender, GoodsSaleEventArgs e)
         {
             PurchaseOrderDetail detail = e.SelectedPurchaseOrderDetail;
+            bool NotAvailableInStock = e.NotAvailableInStock;
             /*ProductMaster prodMaster = ProductMasterLogic.FindById(e.SelectedPurchaseOrderDetail.ProductMaster.ProductMasterId);
             if (prodMaster == null)
             {
                 return;
             }*/
             //Product product = ProductLogic.FindProduct(e.SelectedPurchaseOrderDetail.Product.ProductId,CurrentDepartment.Get().DepartmentId);
+            // TEMP FIXING
+            NotAvailableInStock = true;
+
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);
             objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
-            if(!e.NotAvailableInStock)
+            if(!NotAvailableInStock)
             {
                 objectCriteria.AddGreaterCriteria("GoodQuantity", (long) 0);
             }
             IList result = DepartmentStockLogic.FindAll(objectCriteria) ;
-            if(!e.NotAvailableInStock && (result == null || result.Count == 0))
+            if(!NotAvailableInStock && (result == null || result.Count == 0))
             {
                 throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
             }

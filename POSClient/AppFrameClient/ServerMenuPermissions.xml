@@ -28,16 +28,18 @@
 
 
   </menu>
-  <menu name="mnuDeptStock" role="NotImplement">
-    <menuitem name="mnuDeptStockChecking" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
+  <menu name="mnuDeptStock" role="Administrator,Manager,Supervisor">
+    <menuitem name="mnuDeptStockChecking" role="NotImplement" />
+    <menuitem name="mnuDepartmentReturnGoods" role="NotImplement" />
+    <menuitem name="mnuProcessDepartmentStockDefect" role="NotImplement" />
+    <menuitem name="mnuDepartmentReStockIn" role="NotImplement" />
+    <menuitem name="mnuDeptStockStatisticReport" role="NotImplement" />
+    <menuitem name="mnuReturnPOReport" role="NotImplement" />
+    <menuitem name="mnuReturnMainStockReport" role="NotImplement" />
+    <menuitem name="mnuDepartmentStockIn" role="NotImplement" />
+    <menuitem name="mnuProcessDeptAtStock" role="Administrator,Supervisor" />
   </menu>
+  
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />

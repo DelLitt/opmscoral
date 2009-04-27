@@ -18,6 +18,7 @@ using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.View.GoodsSale;
+using AppFrameClient.View.Inventory;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
 using POSReports;
@@ -660,6 +661,14 @@ namespace AppFrame.View
         private void mnuDeptPurchaseOrderReport_Click(object sender, EventArgs e)
         {
             new PurchaseOrderReportViewer().Show();
+        }
+
+        private void mnuProcessDeptAtStock_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentStockAdhocCheckingForm>(this,
+                                                                                               FormConstants.
+                                                                                                   DEPARTMENT_STOCK_ADHOC_CHECKING_VIEW);
+            form.Show();
         }
     }
 }

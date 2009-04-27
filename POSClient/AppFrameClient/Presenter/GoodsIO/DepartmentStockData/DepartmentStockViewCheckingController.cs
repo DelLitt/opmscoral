@@ -76,7 +76,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 else // in case quantity does not equal checked values.
                 {
                     // we do auto fixing
+                    
                     IList departmentStocks = stockView.DepartmentStocks;
+                    SortListByQuantity(departmentStocks);
                     for( int i =0;i < departmentStocks.Count;i++)
                     {
                         DepartmentStock stock = (DepartmentStock) departmentStocks[i];
@@ -99,11 +101,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                             stock.GoodQuantity = checkedGoodQty;
                             checkedGoodQty = 0;
                         }
-                        // do auto fixing here
+                    }
+                    // do auto fixing here
+                    for( int i =departmentStocks.Count -1;i >= 0;i--)
+                    {
+                        DepartmentStock stock = (DepartmentStock)departmentStocks[i];
                         if(NeedFixing)
                         {
                             // if not last item
-                            if( i < departmentStocks.Count - 1)
+                            if( i > 0)
                             {
                                 // fixing
                                 AutoFixing(stock, ref checkedErrorQty, ref checkedDamageQty, ref checkedLostQty, ref checkedUnconfirmQty);
@@ -123,6 +129,43 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
             } 
         }
+
+        private void AdjustGoodQuantity(IList temps, long goodQuantity)
+        {
+            for (int i = 0; i < temps.Count; i++)
+            {
+                DepartmentStock stockTemp = (DepartmentStock)temps[i];
+                if (i == temps.Count - 1)
+                {
+                    stockTemp.GoodQuantity = goodQuantity;
+                    return;
+                }
+
+                stockTemp.GoodQuantity = stockTemp.Quantity;
+                goodQuantity -= stockTemp.GoodQuantity;
+            }
+        }
+
+        private void SortListByQuantity(IList temps)
+        {
+            DepartmentStock stockTemp = null;
+            for (int i = 0; i < temps.Count - 1; i++)
+            {
+                DepartmentStock stockTemp1 = (DepartmentStock)temps[i];
+                for (int j = i + 1; j < temps.Count; j++)
+                {
+                    DepartmentStock stockTemp2 = (DepartmentStock)temps[j];
+                    if (stockTemp1.GoodQuantity > stockTemp2.GoodQuantity)
+                    {
+                        stockTemp = stockTemp1;
+                        stockTemp1 = stockTemp2;
+                        stockTemp2 = stockTemp;
+                    }
+                }
+
+            }
+        }
+
         private void AutoFixing(DepartmentStock stock, ref long errorQuantity,ref long damageQuantity,ref long lostQuantity,ref long unconfirmQuantity)
         {
             if (errorQuantity > 0)

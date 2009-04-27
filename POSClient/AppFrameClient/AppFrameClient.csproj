@@ -259,6 +259,7 @@
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
+    <Compile Include="ViewModel\DepartmentStockTempCollection.cs" />
     <Compile Include="ViewModel\DepartmentStockTempView.cs" />
     <Compile Include="ViewModel\DepartmentStockTempViewCollection.cs" />
     <Compile Include="ViewModel\PurchaseOrderView.cs" />

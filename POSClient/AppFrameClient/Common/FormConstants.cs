@@ -81,5 +81,6 @@ namespace AppFrameClient.Common
         public static string CLIENT_MODE = "1";
         public static string GOODS_RETURN_CHILD_FORM = "GoodsReturnChildView";
         public static string EMPLOYEE_LIST_FORM = "EmployeeListView";
+        public static string DEPARTMENT_STOCK_ADHOC_CHECKING_VIEW = "DepartmentStockAdhocCheckingView";
     }
 }

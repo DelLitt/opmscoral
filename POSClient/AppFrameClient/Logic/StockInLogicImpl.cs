@@ -378,5 +378,33 @@ namespace AppFrame.Logic
         }
 
         #endregion
+
+        #region IStockInLogic Members
+
+
+        public string FindMaxId()
+        {
+            string dateStr = DateTime.Now.ToString("yyMMdd");
+            var criteria = new ObjectCriteria();
+            criteria.AddGreaterCriteria("StockInId", dateStr + "00000");
+            var maxId = StockInDAO.SelectSpecificType(criteria, Projections.Max("StockInId"));
+            var stockInId = maxId == null ? dateStr + "00001" : string.Format("{0:00000000000}", (Int64.Parse(maxId.ToString()) + 1));
+        }
+
+        #endregion
+
+        #region IStockInLogic Members
+
+
+        public void AddFixedStockIn(StockIn stockIn)
+        {
+            StockInDAO.Add(stockIn);
+            foreach (StockInDetail inDetail in stockIn.StockInDetails)
+            {
+                StockInDetailDAO.Add(inDetail);
+            }
+        }
+
+        #endregion
     }
 }

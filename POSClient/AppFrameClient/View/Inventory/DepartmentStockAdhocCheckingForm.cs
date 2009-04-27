@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -237,7 +238,173 @@ namespace AppFrameClient.View.Inventory
 
         private void button4_Click(object sender, EventArgs e)
         {
+            DepartmentStockAdhocProcessingEventArgs eventArgs = new DepartmentStockAdhocProcessingEventArgs();
+            eventArgs.DeptStockProcessedList = new ArrayList();
+            foreach (DepartmentStockTempView tempView in stockList)
+            {
+                long checkedGoodQty = tempView.GoodQuantity;
+                long checkedErrorQty = tempView.ErrorQuantity;
+                long checkedDamageQty = tempView.DamageQuantity;
+                long checkedLostQty = tempView.LostQuantity;
+                long checkedUnconfirmQty = tempView.UnconfirmQuantity;
 
+                long goodQty = 0;
+                long errorQty = 0;
+                long damageQty = 0;
+                long lostQty = 0;
+                long unconfirmQty = 0;
+
+                foreach(DepartmentStockTemp stockTemp in tempView.DepartmentStockTemps)
+                {
+                    goodQty += stockTemp.GoodQuantity;
+                    errorQty += stockTemp.ErrorQuantity;
+                    damageQty += stockTemp.DamageQuantity;
+                    lostQty += stockTemp.LostQuantity;
+                    unconfirmQty += stockTemp.UnconfirmQuantity;
+                }
+
+                bool needAdjust = false;
+                
+                if(    checkedGoodQty!=goodQty 
+                    || checkedErrorQty!= errorQty 
+                    || checkedLostQty != lostQty
+                    || checkedUnconfirmQty != unconfirmQty
+                    || checkedDamageQty != damageQty)
+                {
+                    needAdjust = true;
+                }
+                SortListByQuantity(tempView.DepartmentStockTemps);
+                IList departmentStocks = tempView.DepartmentStockTemps;
+                if (needAdjust)
+                {
+                    AdjustGoodQuantity(tempView.DepartmentStockTemps,checkedGoodQty);
+                    for(int i=departmentStocks.Count;i>= 0;i--)
+                    {
+                        DepartmentStockTemp stock = (DepartmentStockTemp) departmentStocks[i];
+                        if (i > 0)
+                        {
+                            // fixing
+                            AutoFixing(stock, ref checkedErrorQty, ref checkedDamageQty, ref checkedLostQty, ref checkedUnconfirmQty);
+                        }
+                        else // last fixing
+                        {
+                            // don't need to fix, just map the remain quantities to stock
+                            stock.ErrorQuantity = checkedErrorQty;
+                            stock.DamageQuantity = checkedDamageQty;
+                            stock.LostQuantity = checkedLostQty;
+                            stock.UnconfirmQuantity = checkedUnconfirmQty;
+                        }
+                        
+                    }
+                }
+                foreach (DepartmentStockTemp stockTemp in departmentStocks)
+                {
+                    eventArgs.DeptStockProcessedList.Add(stockTemp);    
+                }
+                
+            }
+
+            EventUtility.fireEvent(ProcessAdhocStocksEvent,this,eventArgs);
+
+        }
+
+        private void AutoFixing(DepartmentStockTemp stock, ref long errorQuantity, ref long damageQuantity, ref long lostQuantity, ref long unconfirmQuantity)
+        {
+            if (errorQuantity > 0)
+            {
+                if (stock.GoodQuantity >= errorQuantity)
+                {
+                    stock.ErrorQuantity = errorQuantity;
+                    stock.GoodQuantity -= errorQuantity;
+                    errorQuantity = 0;
+                }
+                else
+                {
+                    stock.ErrorQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    errorQuantity -= stock.ErrorQuantity;
+                }
+            }
+            if (lostQuantity > 0)
+            {
+                if (stock.GoodQuantity >= lostQuantity)
+                {
+                    stock.LostQuantity = lostQuantity;
+                    stock.GoodQuantity -= lostQuantity;
+                    lostQuantity = 0;
+                }
+                else
+                {
+                    stock.LostQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    lostQuantity -= stock.LostQuantity;
+                }
+            }
+            if (damageQuantity > 0)
+            {
+                if (stock.GoodQuantity >= damageQuantity)
+                {
+                    stock.DamageQuantity = damageQuantity;
+                    stock.GoodQuantity -= damageQuantity;
+                    damageQuantity = 0;
+                }
+                else
+                {
+                    stock.DamageQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    damageQuantity -= stock.DamageQuantity;
+                }
+            }
+            if (unconfirmQuantity > 0)
+            {
+                if (stock.GoodQuantity >= unconfirmQuantity)
+                {
+                    stock.UnconfirmQuantity = unconfirmQuantity;
+                    stock.GoodQuantity -= unconfirmQuantity;
+                    unconfirmQuantity = 0;
+                }
+                else
+                {
+                    stock.UnconfirmQuantity = stock.GoodQuantity;
+                    stock.GoodQuantity = 0;
+                    unconfirmQuantity -= stock.UnconfirmQuantity;
+                }
+            }
+        }
+        private void AdjustGoodQuantity(IList temps,long goodQuantity)
+        {
+            for(int i=0;i<temps.Count;i++)
+            {
+                DepartmentStockTemp stockTemp = (DepartmentStockTemp)temps[i];
+                if(i == temps.Count - 1)
+                {
+                    stockTemp.GoodQuantity = goodQuantity;
+                    return;
+                }
+                
+                stockTemp.GoodQuantity = stockTemp.Quantity;
+                goodQuantity -= stockTemp.GoodQuantity;
+            }
+        }
+
+        private void SortListByQuantity(IList temps)
+        {
+            DepartmentStockTemp stockTemp = null;
+            for(int i=0;i < temps.Count-1; i++)
+            {
+                DepartmentStockTemp stockTemp1 = (DepartmentStockTemp) temps[i];
+                for (int j = i + 1; j < temps.Count;j++ )
+                {
+                    DepartmentStockTemp stockTemp2 = (DepartmentStockTemp)temps[j];
+                    if(stockTemp1.GoodQuantity>stockTemp2.GoodQuantity)
+                    {
+                        stockTemp = stockTemp1;
+                        stockTemp1 = stockTemp2;
+                        stockTemp2 = stockTemp;
+                    }
+                }
+
+            }
         }
 
         private void dgvStock_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -245,6 +412,7 @@ namespace AppFrameClient.View.Inventory
 
         }
 
+        private DepartmentStockTempView selectedTempView = null;
         private void dgvStock_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dgvStock.CurrentCell == null)
@@ -256,14 +424,18 @@ namespace AppFrameClient.View.Inventory
             {
                 return;
             }
-            /*DepartmentStockCheckingForm form = GlobalUtility.GetFormObject<DepartmentStockCheckingForm>(FormConstants.DEPARTMENT_STOCK_CHECKING_FORM);
-            form.Status = ViewStatus.OPENDIALOG;
-            form.RestrictDepartmentStocksChecked += new EventHandler(form_RestrictDepartmentStocksChecked);
-            form.RestrictDepartmentStocks = stockList[cellCollection[0].RowIndex].DepartmentStocks;
-            form.RestrictProductMaster = stockList[cellCollection[0].RowIndex].ProductMaster;
-            form.Closing += new CancelEventHandler(form_Closing);
-            // save current checking value
-            foreach (DepartmentStock departmentStock in form.RestrictDepartmentStocks)
+            dgvStock.Enabled = false;
+            int startY = dgvStock.Location.Y + dgvStock.ColumnHeadersHeight + (cellCollection[0].OwningRow.Height*(cellCollection[0].RowIndex+1));
+            int maxY = dgvStock.Size.Height + pnlSelectedStocks.Location.Y;
+            if(maxY < startY + pnlSelectedStocks.Size.Height)
+            {
+                startY = startY - cellCollection[0].OwningRow.Height - pnlSelectedStocks.Size.Height;
+            }
+            pnlSelectedStocks.Location = new Point(pnlSelectedStocks.Location.X, startY);
+            pnlSelectedStocks.Visible = true;
+            selectedTempView = stockList[cellCollection[0].RowIndex];           
+            DepartmentStockTempCollection selectedStockList = new DepartmentStockTempCollection(bdsSelectedStock);
+            foreach (DepartmentStockTemp departmentStock in selectedTempView.DepartmentStockTemps)
             {
                 departmentStock.OldGoodQuantity = departmentStock.GoodQuantity;
                 departmentStock.OldErrorQuantity = departmentStock.ErrorQuantity;
@@ -271,10 +443,14 @@ namespace AppFrameClient.View.Inventory
                 departmentStock.OldDamageQuantity = departmentStock.DamageQuantity;
                 departmentStock.OldLostQuantity = departmentStock.LostQuantity;
             }
-            this.Enabled = false;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Show();*/
-
+            bdsSelectedStock.EndEdit();
+            dgvSelectedStock.Refresh();
+            dgvSelectedStock.Invalidate();
+            foreach (DepartmentStockTemp stockTemp in selectedTempView.DepartmentStockTemps)
+            {
+               selectedStockList.Add(stockTemp); 
+            }
+            // save current checking value
         }
 
         void form_Closing(object sender, CancelEventArgs e)
@@ -358,5 +534,70 @@ namespace AppFrameClient.View.Inventory
         public event EventHandler<DepartmentStockAdhocProcessingEventArgs> ProcessAdhocStocksEvent;
 
         #endregion
+
+        private void dgvSelectedStock_VisibleChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dgvSelectedStock_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSaveSelectedStocks_Click(object sender, EventArgs e)
+        {
+                DialogResult result = MessageBox.Show("Bạn muốn lưu kết quả ?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                                MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.No)
+                {
+                    dgvStock.Focus();
+                    return;
+                }
+
+                pnlSelectedStocks.Visible = false;
+                if (selectedTempView != null)
+                {
+                    DepartmentStockTempCollection editedStockTemps = (DepartmentStockTempCollection)bdsSelectedStock.DataSource;
+                    selectedTempView.DepartmentStockTemps.Clear();
+                    selectedTempView.Quantity = 0;
+                    selectedTempView.RealQuantity = 0;
+                    selectedTempView.GoodQuantity = 0;
+                    selectedTempView.ErrorQuantity = 0;
+                    selectedTempView.DamageQuantity = 0;
+                    selectedTempView.LostQuantity = 0;
+                    selectedTempView.UnconfirmQuantity = 0;
+                    foreach (DepartmentStockTemp stockTemp in editedStockTemps)
+                    {
+                        selectedTempView.GoodQuantity += stockTemp.GoodQuantity;
+                        selectedTempView.ErrorQuantity += stockTemp.ErrorQuantity;
+                        selectedTempView.LostQuantity += stockTemp.LostQuantity;
+                        selectedTempView.DamageQuantity += stockTemp.DamageQuantity;
+                        selectedTempView.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
+                        /*selectedTempView.Quantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity +
+                                                    stockTemp.DamageQuantity + stockTemp.UnconfirmQuantity +
+                                                    stockTemp.LostQuantity;*/
+                        selectedTempView.RealQuantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity +
+                                                    stockTemp.DamageQuantity + stockTemp.UnconfirmQuantity +
+                                                    stockTemp.LostQuantity;
+                        selectedTempView.DepartmentStockTemps.Add(stockTemp);
+                    }
+
+                    editedStockTemps = null;
+                    selectedTempView = null;
+                    bdsStockDefect.EndEdit();
+                    dgvStock.Enabled = true;
+                    dgvStock.Focus();
+                    dgvStock.Refresh();
+                    dgvStock.Invalidate();
+                }
+            
+        }
+
+        private void btnCloseSelectedStocks_Click(object sender, EventArgs e)
+        {
+            pnlSelectedStocks.Visible = false;
+            dgvStock.Enabled = true;
+        }
     }
 }
