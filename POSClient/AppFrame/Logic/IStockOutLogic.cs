@@ -64,5 +64,6 @@ namespace AppFrame.Logic
         void Add(DepartmentStockIn stockIn);
 
         void Update(DepartmentStockIn stockIn);
+        void AddFixedStockOut(StockOut stockOut);
     }
 }

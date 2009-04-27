@@ -13,5 +13,7 @@ namespace AppFrame.Presenter.Inventory
         IProductLogic ProductLogic { get; set; }
         IProductMasterLogic ProductMasterLogic { get; set; }
         IDepartmentStockTempLogic DepartmentStockTempLogic { get; set; }
+        IStockOutLogic StockOutLogic { get; set; }
+
     }
 }

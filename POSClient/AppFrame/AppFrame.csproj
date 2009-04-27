@@ -169,7 +169,6 @@
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
-    <Compile Include="Collection\DepartmentStockTempCollection.cs" />
     <Compile Include="Collection\DepartmentStockViewCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />

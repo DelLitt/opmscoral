@@ -58,5 +58,7 @@ namespace AppFrame.Logic
         IList FindByProductMaster(DateTime fromDate,DateTime toDate);
         void AddReStock(StockIn data);
         IList FindReStockIn(string id);
+        string FindMaxId();
+        void AddFixedStockIn(StockIn stockIn);
     }
 }
