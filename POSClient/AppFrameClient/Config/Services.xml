@@ -200,6 +200,8 @@
 
 
   <object id="AppFrame.Service.IDepartmentStockInLogic" type="AppFrame.Logic.DepartmentStockInLogicImpl, AppFrameClient">
+    <property name="DepartmentStockOutDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDAO"/>
+    <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
     <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
