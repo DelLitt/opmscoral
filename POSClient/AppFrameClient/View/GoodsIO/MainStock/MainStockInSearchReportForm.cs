@@ -17,7 +17,7 @@ using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
-using Aspose.Cells;
+//using Aspose.Cells;
 
 namespace AppFrameClient.View.GoodsIO.MainStock
 {
@@ -142,7 +142,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            DialogResult result = saveFileDialog1.ShowDialog();
+            /*DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -174,7 +174,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             saveFileDialog1.ShowDialog();
 
             workbook.Save(fileName);
-            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");
+            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
         }
     }
 }

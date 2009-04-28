@@ -15,7 +15,7 @@ using AppFrame.Presenter.Report;
 using AppFrame.Utility;
 using AppFrame.View.Reports;
 using AppFrameClient.ViewModel;
-using Aspose.Cells;
+//using Aspose.Cells;
 using POSReports;
 
 namespace AppFrameClient.View.Reports
@@ -303,7 +303,7 @@ namespace AppFrameClient.View.Reports
         /// <param name="e"></param>
         private void view_detail_Click(object sender, EventArgs e)
         {
-            if (resultList == null || resultList.Count == 0)
+            /*if (resultList == null || resultList.Count == 0)
             {
                 MessageBox.Show("Không có thông tin để báo cáo");
                 return;
@@ -538,7 +538,7 @@ namespace AppFrameClient.View.Reports
 
 
             workbook.Save(fileName);
-            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");
+            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
         }
     }
 }

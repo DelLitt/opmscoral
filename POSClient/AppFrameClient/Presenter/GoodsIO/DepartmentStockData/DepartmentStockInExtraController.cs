@@ -65,6 +65,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockInView_LoadDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
         {
+            var stockTempCri = new ObjectCriteria();
+            stockTempCri.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_YES);
+            stockTempCri.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+
+            IList processedStockTemps = DepartmentStockTempLogic.FindAll(stockTempCri);
+            e.SyncFromMainToDepartment.DepartmentStockTemps = processedStockTemps;
+            
             var criteria = new ObjectCriteria();
             /*criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
@@ -467,6 +474,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 {
                     get;
                     set;
+                }
+
+                public IDepartmentStockTempLogic DepartmentStockTempLogic
+                {
+                    get; set;
                 }
                 #endregion
             }

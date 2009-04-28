@@ -14,7 +14,7 @@ using AppFrame.Presenter.Report;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.Reports;
-using Aspose.Cells;
+//using Aspose.Cells;
 
 namespace AppFrameClient.View.Reports
 {
@@ -53,7 +53,7 @@ namespace AppFrameClient.View.Reports
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = saveFileDialog1.ShowDialog();
+            /*DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -303,7 +303,7 @@ namespace AppFrameClient.View.Reports
 
 
             workbook.Save(fileName);
-            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");
+            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
 
             
         }

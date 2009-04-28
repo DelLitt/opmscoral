@@ -13,7 +13,7 @@ using AppFrame.Presenter.GoodsSale;
 using AppFrame.Utility;
 using AppFrame.View.GoodsSale;
 using AppFrameClient.ViewModel;
-using Aspose.Cells;
+//using Aspose.Cells;
 
 namespace AppFrameClient.View.GoodsSale
 {
@@ -114,7 +114,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = saveFileDialog1.ShowDialog();
+            /*DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -138,7 +138,7 @@ namespace AppFrameClient.View.GoodsSale
             sheet.Cells.ImportDataTable(test, true, 10, 1);
             
             workbook.Save(fileName);
-            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");
+            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
         }
     }
 }

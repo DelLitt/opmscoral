@@ -389,6 +389,7 @@ namespace AppFrame.Logic
             criteria.AddGreaterCriteria("StockInId", dateStr + "00000");
             var maxId = StockInDAO.SelectSpecificType(criteria, Projections.Max("StockInId"));
             var stockInId = maxId == null ? dateStr + "00001" : string.Format("{0:00000000000}", (Int64.Parse(maxId.ToString()) + 1));
+            return stockInId;
         }
 
         #endregion
@@ -399,6 +400,7 @@ namespace AppFrame.Logic
         public void AddFixedStockIn(StockIn stockIn)
         {
             StockInDAO.Add(stockIn);
+
             foreach (StockInDetail inDetail in stockIn.StockInDetails)
             {
                 StockInDetailDAO.Add(inDetail);

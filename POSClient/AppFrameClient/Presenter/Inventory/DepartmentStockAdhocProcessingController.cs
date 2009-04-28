@@ -43,15 +43,8 @@ namespace AppFrameClient.Presenter.Inventory
             try
             {
 
-                StockOut stockOut = new StockOut();
-                stockOut.CreateDate = DateTime.Now;
-                stockOut.UpdateDate = DateTime.Now;
-                stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                stockOut.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                stockOut.StockOutDate = DateTime.Now;
-                stockOut.StockOutDetails = new ArrayList();
-                stockOut.StockoutId = StockOutLogic.FindMaxId() + 1;
-
+                long departmentId = -1;
+                StockOut stockOut = null;
                 StockIn stockIn = new StockIn();
                 stockIn.CreateDate = DateTime.Now;
                 stockIn.UpdateDate = DateTime.Now;
@@ -59,19 +52,42 @@ namespace AppFrameClient.Presenter.Inventory
                 stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.StockInDate = DateTime.Now;
                 stockIn.StockInId = StockInLogic.FindMaxId();
-                stockIn.StockInDetails = new ArrayList();
-                long stockOutMaxId = StockOutDetailLogic.FindMaxId() + 1;
-                foreach (DepartmentStockTemp stockTemp in e.DeptStockProcessedList)
+                stockIn.StockInDetails = new ArrayList();        
+                long stockOutDetailMaxId = StockOutDetailLogic.FindMaxId() + 1;
+                long stockOutMaxId = StockOutLogic.FindMaxId()+1;
+                for (int i=0; i< e.DeptStockProcessedList.Count;i++)
                 {
+                    DepartmentStockTemp stockTemp = (DepartmentStockTemp) e.DeptStockProcessedList[i];
+                    if(stockTemp.DepartmentStockTempPK.DepartmentId != departmentId)
+                    {
+                        departmentId = stockTemp.DepartmentStockTempPK.DepartmentId;
+
+                        if (stockOut != null)
+                        {
+                            StockOutLogic.AddFixedStockOut(stockOut);            
+                        }
+                        stockOut = new StockOut();
+                        stockOut.CreateDate = DateTime.Now;
+                        stockOut.UpdateDate = DateTime.Now;
+                        stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                        stockOut.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                        stockOut.StockOutDate = DateTime.Now;
+                        stockOut.StockOutDetails = new ArrayList();
+                        stockOut.DepartmentId = departmentId;
+                        stockOut.DefectStatus = new StockDefectStatus{ DefectStatusId = 0};
+                        
+                        stockOut.StockoutId =  stockOutMaxId++;
+                    }
+
                     stockTemp.Fixed = 1;
                     stockTemp.UpdateDate = DateTime.Now;
                     stockTemp.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                    DepartmentStockTempLogic.Add(stockTemp);
+                    DepartmentStockTempLogic.Update(stockTemp);
                     long realQty = stockTemp.GoodQuantity + stockTemp.ErrorQuantity + stockTemp.DamageQuantity +
                                    stockTemp.LostQuantity + stockTemp.UnconfirmQuantity;
                     if(stockTemp.Quantity < realQty)
                     {
-                        long stockInQty = stockTemp.Quantity - realQty;
+                        long stockInQty = realQty - stockTemp.Quantity;
                         StockOutDetail stockOutDetail = new StockOutDetail();
                         stockOutDetail.CreateDate = DateTime.Now;
                         stockOutDetail.UpdateDate = DateTime.Now;
@@ -79,8 +95,12 @@ namespace AppFrameClient.Presenter.Inventory
                         stockOutDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                         stockOutDetail.Quantity = stockInQty;
                         stockOutDetail.Product = stockTemp.Product;
+                        stockOutDetail.StockOutId = stockOut.StockoutId;
+                        stockOutDetail.StockOut = stockOut;
+                        stockOutDetail.DefectStatus = new StockDefectStatus{DefectStatusId = 0};
+                        stockOutDetail.Description = "Export goods";
                         stockOutDetail.ProductMaster = stockTemp.ProductMaster;
-                        stockOutDetail.StockOutDetailId = stockOutMaxId++;
+                        stockOutDetail.StockOutDetailId = stockOutDetailMaxId++;
                         stockOut.StockOutDetails.Add(stockOutDetail);
 
                         StockInDetail stockInDetail = new StockInDetail();
@@ -88,6 +108,8 @@ namespace AppFrameClient.Presenter.Inventory
                         stockInDetail.UpdateDate = DateTime.Now;
                         stockInDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                         stockInDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                        stockInDetail.StockInType = 0;
+                        stockInDetail.StockIn = stockIn;
 
                         stockInDetail.Quantity = stockInQty;
                         stockInDetail.Product = stockTemp.Product;
@@ -98,12 +120,15 @@ namespace AppFrameClient.Presenter.Inventory
                                                                 StockInId = stockIn.StockInId
                                                             };
                         stockIn.StockInDetails.Add(stockInDetail);
-
+                        if(i == e.DeptStockProcessedList.Count -1)
+                        {
+                            StockOutLogic.AddFixedStockOut(stockOut);
+                        }
                     }
 
                 }
-                StockInLogic.AddFixedStockIn(stockIn);
-                StockOutLogic.AddFixedStockOut(stockOut);
+                StockInLogic.AddFixedStockIn(stockIn);            
+                
             }
             catch (Exception)
             {
@@ -117,6 +142,7 @@ namespace AppFrameClient.Presenter.Inventory
         {
             ObjectCriteria criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_NO);    
             criteria.AddOrder("ProductMaster.ProductMasterId", true);
             IList list = DepartmentStockTempLogic.FindAll(criteria);
             IList deptStockTempList = null;

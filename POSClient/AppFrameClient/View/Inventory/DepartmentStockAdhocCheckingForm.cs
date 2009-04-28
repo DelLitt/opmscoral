@@ -96,10 +96,10 @@ namespace AppFrameClient.View.Inventory
             
         }
 
-        private bool HasInStockDefectList(DepartmentStockView stock, DepartmentStockViewCollection list, out int stockDefIndex)
+        private bool HasInStockDefectList(DepartmentStockTempView stock, DepartmentStockTempViewCollection list, out int stockDefIndex)
         {
             int count = 0;
-            foreach (DepartmentStockView stockDefect in list)
+            foreach (DepartmentStockTempView stockDefect in list)
             {
                 if (stockDefect.ProductMaster.ProductMasterId.Equals(stock.ProductMaster.ProductMasterId))
                 {
@@ -273,7 +273,7 @@ namespace AppFrameClient.View.Inventory
                 {
                     needAdjust = true;
                 }
-                SortListByQuantity(tempView.DepartmentStockTemps);
+                SortListByProductId(tempView.DepartmentStockTemps);
                 IList departmentStocks = tempView.DepartmentStockTemps;
                 if (needAdjust)
                 {
@@ -303,9 +303,32 @@ namespace AppFrameClient.View.Inventory
                 }
                 
             }
-
+            SortStockTempByDeptId(eventArgs.DeptStockProcessedList);
             EventUtility.fireEvent(ProcessAdhocStocksEvent,this,eventArgs);
+            if(!eventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu kết quả thành công !");
+                ClearForm();
+            }
+        }
 
+        private void SortStockTempByDeptId(IList list)
+        {
+            DepartmentStockTemp swap = null;
+            for (int i = 0; i < list.Count-1;i++ )
+            {
+                DepartmentStockTemp stockTemp1 = (DepartmentStockTemp) list[i];
+                for (int j = i+1; j < list.Count; j++)
+                {
+                    DepartmentStockTemp stockTemp2 = (DepartmentStockTemp)list[j];
+                    if(stockTemp1.DepartmentId > stockTemp2.DepartmentId)
+                    {
+                        swap = stockTemp1;
+                        stockTemp1 = stockTemp2;
+                        stockTemp2 = swap;
+                    }
+                }
+            }
         }
 
         private void AutoFixing(DepartmentStockTemp stock, ref long errorQuantity, ref long damageQuantity, ref long lostQuantity, ref long unconfirmQuantity)
@@ -373,30 +396,56 @@ namespace AppFrameClient.View.Inventory
         }
         private void AdjustGoodQuantity(IList temps,long goodQuantity)
         {
-            for(int i=0;i<temps.Count;i++)
+            long qty = 0;
+            foreach (DepartmentStockTemp stockTemp in temps)
             {
-                DepartmentStockTemp stockTemp = (DepartmentStockTemp)temps[i];
-                if(i == temps.Count - 1)
+                qty += stockTemp.Quantity;      
+            }
+            if (qty < goodQuantity)
+            {
+
+                for (int i = 0; i < temps.Count; i++)
                 {
-                    stockTemp.GoodQuantity = goodQuantity;
-                    return;
+                    DepartmentStockTemp stockTemp = (DepartmentStockTemp) temps[i];
+                    if (i == temps.Count - 1)
+                    {
+                        stockTemp.GoodQuantity = goodQuantity;
+                        return;
+                    }
+
+                    stockTemp.GoodQuantity = stockTemp.Quantity;
+                    goodQuantity -= stockTemp.GoodQuantity;
                 }
-                
-                stockTemp.GoodQuantity = stockTemp.Quantity;
-                goodQuantity -= stockTemp.GoodQuantity;
+            }
+            else
+            {
+                for (int i = temps.Count - 1; i >=0; i--)
+                {
+                    DepartmentStockTemp stockTemp = (DepartmentStockTemp)temps[i];
+                    if (i == 0)
+                    {
+                        stockTemp.GoodQuantity = goodQuantity;
+                        return;
+                    }
+
+                    stockTemp.GoodQuantity = stockTemp.Quantity;
+                    goodQuantity -= stockTemp.GoodQuantity;
+                }
             }
         }
 
-        private void SortListByQuantity(IList temps)
+        private void SortListByProductId(IList temps)
         {
             DepartmentStockTemp stockTemp = null;
             for(int i=0;i < temps.Count-1; i++)
             {
                 DepartmentStockTemp stockTemp1 = (DepartmentStockTemp) temps[i];
+                long prdId1 = Int64.Parse(stockTemp1.Product.ProductId);
                 for (int j = i + 1; j < temps.Count;j++ )
                 {
                     DepartmentStockTemp stockTemp2 = (DepartmentStockTemp)temps[j];
-                    if(stockTemp1.GoodQuantity>stockTemp2.GoodQuantity)
+                    long prdId2 = Int64.Parse(stockTemp2.Product.ProductId);
+                    if(prdId1>prdId2)
                     {
                         stockTemp = stockTemp1;
                         stockTemp1 = stockTemp2;
@@ -574,9 +623,7 @@ namespace AppFrameClient.View.Inventory
                         selectedTempView.LostQuantity += stockTemp.LostQuantity;
                         selectedTempView.DamageQuantity += stockTemp.DamageQuantity;
                         selectedTempView.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
-                        /*selectedTempView.Quantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity +
-                                                    stockTemp.DamageQuantity + stockTemp.UnconfirmQuantity +
-                                                    stockTemp.LostQuantity;*/
+                        selectedTempView.Quantity += stockTemp.Quantity;
                         selectedTempView.RealQuantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity +
                                                     stockTemp.DamageQuantity + stockTemp.UnconfirmQuantity +
                                                     stockTemp.LostQuantity;

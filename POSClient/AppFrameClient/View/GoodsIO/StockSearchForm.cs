@@ -12,7 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
-using Aspose.Cells;
+//using Aspose.Cells;
 
 namespace AppFrameClient.View.GoodsIO
 {
@@ -147,7 +147,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            DialogResult result = saveFileDialog1.ShowDialog();
+            /*DialogResult result = saveFileDialog1.ShowDialog();
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -171,7 +171,7 @@ namespace AppFrameClient.View.GoodsIO
 
 
             int count = 0;
-            IDictionary<string, IDictionary<string, IDictionary<string, IDictionary<string, UniversalStockReportObject>>>> map = new Dictionary<string, IDictionary<string, IDictionary<string, IDictionary<string, UniversalStockReportObject>>>>();
+            IDictionary<string, IDictionary<string, IDictionary<string, IDictionary<string, UniversalStockReportObject>>>> map = new Dictionary<string, IDictionary<string, IDictionary<string, IDictionary<string, UniversalStockReportObject>>>>();*/
             //            for (int i = 0; i < dgvStockProducts.RowCount; i++)
             //            {
             //                if (i == pSODetResultList.Count)
@@ -180,7 +180,7 @@ namespace AppFrameClient.View.GoodsIO
             //                }
             //                StockInResultDetail siRetDetail = pSODetResultList[i];
 
-            foreach (UniversalStockReportObject stockInDetail in eventArgs.ReportList)
+            /*foreach (UniversalStockReportObject stockInDetail in eventArgs.ReportList)
             {
                 IDictionary<string, IDictionary<string, IDictionary<string, UniversalStockReportObject>>> proNameMap =
                         null;
@@ -349,7 +349,7 @@ namespace AppFrameClient.View.GoodsIO
 
 
             workbook.Save(fileName);
-            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");
+            MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
 
             
         }
