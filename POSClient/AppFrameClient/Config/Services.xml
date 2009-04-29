@@ -175,6 +175,7 @@
 
   <object id="AppFrame.Service.IPurchaseOrderLogic" type="AppFrame.Logic.PurchaseOrderLogicImpl, AppFrameClient">
     <property name="PurchaseOrderDAO" ref="AppFrame.DataLayer.IPurchaseOrderDAO"/>
+    <property name="ProductDAO" ref="AppFrame.DataLayer.IProductDAO"/>
     <property name="PurchaseOrderDetailDAO" ref="AppFrame.DataLayer.IPurchaseOrderDetailDAO"/>
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
@@ -200,6 +201,8 @@
 
 
   <object id="AppFrame.Service.IDepartmentStockInLogic" type="AppFrame.Logic.DepartmentStockInLogicImpl, AppFrameClient">
+
+    <property name="DepartmentStockTempDAO" ref="AppFrame.DataLayer.IDepartmentStockTempDAO"/>
     <property name="DepartmentStockOutDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDAO"/>
     <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
     <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>

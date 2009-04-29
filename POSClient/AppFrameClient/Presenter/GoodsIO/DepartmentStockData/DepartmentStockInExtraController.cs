@@ -65,6 +65,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockInView_LoadDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
         {
+            e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
             var stockTempCri = new ObjectCriteria();
             stockTempCri.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_YES);
             stockTempCri.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
@@ -83,7 +84,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             //criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentId", e.Department.DepartmentId);
             //e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
-            e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
+            
             e.SyncFromMainToDepartment.StockOutList = StockOutLogic.FindAll(criteria);
             e.SyncFromMainToDepartment.Department = e.Department;
             criteria = new ObjectCriteria();
@@ -106,6 +107,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     if (price != null)
                     {
                         detail.Price = price.Price;
+                        
                     }
                 }
             }

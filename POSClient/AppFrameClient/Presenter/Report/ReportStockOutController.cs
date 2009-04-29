@@ -158,21 +158,32 @@ namespace AppFrameClient.Presenter.Report
         void departmentStockOutReportView_ConfirmStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
             IList list = e.ConfirmDepartmentStockOutList;
+
             StockOutMapper mapper = new StockOutMapper();
             StockOutDetailMapper detailMapper = new StockOutDetailMapper();
+            DeptRetProdStockInMapper drpsiMapper = new DeptRetProdStockInMapper();
+            DeptRetProdStockInDetailMapper drpsiDetMapper = new DeptRetProdStockInDetailMapper();
             foreach (DepartmentStockOut departmentStockOut in list)
             {
                 
                 StockOut stockOut = mapper.Convert(departmentStockOut);
+                StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
+                stockIn.StockInDetails = new ArrayList();
                 stockOut.NotUpdateMainStock = true;
                 IList detlist = new ArrayList();
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
+                    StockInDetail detailStockIn = drpsiDetMapper.Convert(detail);
+                    stockIn.StockInDetails.Add(detailStockIn);
                     StockOutDetail detailStockOut = detailMapper.Convert(detail);
                     detlist.Add(detailStockOut);                                           
                 }
                 stockOut.StockOutDetails = detlist;
+                StockInLogic.AddForStockOutToProducer(stockIn);
                 StockOutLogic.Add(stockOut);
+                departmentStockOut.ConfirmFlg = 2;
+                departmentStockOut.StockOutDate = DateTime.Now;
+                DepartmentStockOutLogic.Update(departmentStockOut);
             }
             MessageBox.Show(" Lưu thành công !");
             e.HasErrors = false;
@@ -209,7 +220,13 @@ namespace AppFrameClient.Presenter.Report
             get;set;
             
         }
-        
+        public AppFrame.Logic.IStockInLogic StockInLogic
+        {
+            get;
+            set;
+
+        }
+
         #endregion
     }
 }

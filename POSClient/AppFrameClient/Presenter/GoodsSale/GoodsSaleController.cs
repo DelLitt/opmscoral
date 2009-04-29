@@ -91,12 +91,46 @@ namespace AppFrameClient.Presenter.GoodsSale
             {
                 throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
             }
+            
+
             Product product = null;
+            bool NeedSwitchPrdId = false;
             if (result.Count == 1)
             {
                 DepartmentStock stock = (DepartmentStock) result[0];
                 product = stock.Product;
+                if(stock.GoodQuantity == 0)
+                {
+                    NeedSwitchPrdId = true;
+                }
             }
+            // START ---- don ma
+
+            /*if (product != null && NeedSwitchPrdId)
+            {
+                ObjectCriteria prdCrit = new ObjectCriteria();
+                prdCrit.AddEqCriteria("ProductMaster.ProductName", product.ProductMaster.ProductName);
+                IList productIdsList = ProductLogic.FindAll(prdCrit);
+                if (productIdsList != null && productIdsList.Count > 0)
+                {
+                    IList productIds = new ArrayList();
+                    foreach (Product prd in productIdsList)
+                    {
+                        productIds.Add(prd.ProductId);
+                    }
+                    prdCrit = new ObjectCriteria();
+                    prdCrit.AddSearchInCriteria("DepartmentStockPK.ProductId", productIds);
+                    prdCrit.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+                    IList allStocks = DepartmentStockLogic.FindAll(prdCrit);
+                    if(allStocks != null && allStocks.Count > 0)
+                    {
+                        SortByProductId(allStocks);
+                        
+                    }
+                }
+            }
+*/
+            // END ---- don ma
             /*else
             {
                 if(CommonConstants.UNDEFINED_BARCODE.Equals(e.SelectedPurchaseOrderDetail.Product.ProductId))
@@ -115,6 +149,28 @@ namespace AppFrameClient.Presenter.GoodsSale
             }
             detail.Price = price.Price;
             e.SelectedPurchaseOrderDetail = detail;
+        }
+
+        private void SortByProductId(IList temps)
+        {
+            DepartmentStock stockTemp =null;
+            for(int i=0;i < temps.Count-1; i++)
+            {
+                DepartmentStock stockTemp1 = (DepartmentStock) temps[i];
+                long prdId1 = Int64.Parse(stockTemp1.Product.ProductId);
+                for (int j = i + 1; j < temps.Count;j++ )
+                {
+                    DepartmentStock stockTemp2 = (DepartmentStock)temps[j];
+                    long prdId2 = Int64.Parse(stockTemp2.Product.ProductId);
+                    if(prdId1>prdId2)
+                    {
+                        stockTemp = stockTemp1;
+                        stockTemp1 = stockTemp2;
+                        stockTemp2 = stockTemp;
+                    }
+                }
+
+            }
         }
 
         void goodsSaleView_FillProductToComboEvent(object sender, GoodsSaleEventArgs e)

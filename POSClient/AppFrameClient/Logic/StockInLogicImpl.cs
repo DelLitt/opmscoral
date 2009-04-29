@@ -407,6 +407,38 @@ namespace AppFrame.Logic
             }
         }
 
+        public void AddForStockOutToProducer(StockIn stockIn)
+        {
+            string dateStr = stockIn.StockInDate.ToString("yyMMdd");
+            var criteria = new ObjectCriteria();
+            var maxId = StockInDAO.SelectSpecificType(criteria, Projections.Max("StockInId"));
+            var stockInId = maxId == null ? dateStr + "00001" : string.Format("{0:00000000000}", (Int64.Parse(maxId.ToString()) + 1));
+            stockIn.StockInId = stockInId;
+            StockInDAO.Add(stockIn);
+
+            foreach (StockInDetail stockInDetail in stockIn.StockInDetails)
+            {
+                // add dept stock in
+                var detailPK = new StockInDetailPK { ProductId = stockInDetail.Product.ProductId, StockInId = stockInId };
+                stockInDetail.StockInDetailPK = detailPK;
+                StockInDetailDAO.Add(stockInDetail);
+                
+                ObjectCriteria stockCriteria = new ObjectCriteria();
+                stockCriteria.AddEqCriteria("Product.ProductId", stockInDetail.Product.ProductId);
+                IList stockList = StockDAO.FindAll(stockCriteria);
+                // increase good
+                if (stockList != null)
+                {
+                    Stock stock = (Stock)stockList[0];
+                    stock.GoodQuantity += stockInDetail.Quantity;
+                    stock.Quantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity +
+                                     stock.UnconfirmQuantity + stock.LostQuantity;
+                    StockDAO.Update(stock);
+                }
+            }
+
+        }
+
         #endregion
     }
 }
