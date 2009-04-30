@@ -112,7 +112,19 @@
           <WallThickness>50</WallThickness>
         </ThreeDProperties>
         <PointWidth>0</PointWidth>
-        <Top>0.5in</Top>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <DynamicSeries>
+              <Grouping Name="chart1_SeriesGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!quantity.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!quantity.Value</Label>
+            </DynamicSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>0.625in</Top>
         <Subtype>Plain</Subtype>
         <ValueAxis>
           <Axis>
@@ -140,6 +152,7 @@
           </Axis>
         </ValueAxis>
         <Type>Column</Type>
+        <Width>8.5in</Width>
         <CategoryGroupings>
           <CategoryGrouping>
             <DynamicCategories>
@@ -172,7 +185,8 @@
           <BackgroundColor>White</BackgroundColor>
         </Style>
         <Title />
-        <Height>2.75in</Height>
+        <Height>2.625in</Height>
+        <Left>0.375in</Left>
       </Chart>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
