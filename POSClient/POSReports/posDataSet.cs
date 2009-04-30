@@ -2,6 +2,10 @@
     
     
     public partial class posDataSet {
+        partial class CustomizeReportDataTable
+        {
+        }
+    
         partial class workingdayDataTable
         {
         }
