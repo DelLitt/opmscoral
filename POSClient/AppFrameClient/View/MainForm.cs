@@ -670,5 +670,10 @@ namespace AppFrame.View
                                                                                                    DEPARTMENT_STOCK_ADHOC_CHECKING_VIEW);
             form.Show();
         }
+
+        private void mnuMixReport_Click(object sender, EventArgs e)
+        {
+            new CustomizeReportViewer().Show();
+        }
     }
 }
