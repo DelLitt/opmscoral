@@ -21,6 +21,8 @@ namespace POSReports
             // TODO: This line of code loads data into the 'posDataSet.CustomizeReport' table. You can move, or remove it, as needed.
             //this.CustomizeReportTableAdapter.Fill(this.posDataSet.CustomizeReport);
             this.customizeReport.RefreshReport();
+            cboReportType.SelectedIndex = 0;
+            cboSortOrder.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,15 +34,25 @@ namespace POSReports
                 DateTime fromDate = dtpFromDate.Value;
                 DateTime toDate = dtpToDate.Value;
                 int limit = Int32.Parse(txtTotalRecord.Text);
-                CustomizeReportTableAdapter.Fill(posDataSet.CustomizeReport, ReportType, SortOrder, fromDate, toDate);
+                CustomizeReportTableAdapter.Fill(posDataSet.CustomizeReport, ReportType, SortOrder,limit, fromDate, toDate);
                 this.customizeReport.RefreshReport();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
 
                 MessageBox.Show(" Có lỗi khi tạo báo cáo");
             }
             
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customizeReport_Load(object sender, EventArgs e)
+        {
 
         }
     }

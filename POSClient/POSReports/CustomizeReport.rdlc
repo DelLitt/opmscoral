@@ -63,6 +63,105 @@
   <Width>9.25in</Width>
   <Body>
     <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>1in</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>2</ZIndex>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>1in</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup1">
+                <GroupExpressions>
+                  <GroupExpression />
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox4">
+                  <rd:DefaultName>textbox4</rd:DefaultName>
+                  <Style>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Top>3.75in</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.25in</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup1">
+                <GroupExpressions>
+                  <GroupExpression />
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox3">
+                  <rd:DefaultName>textbox3</rd:DefaultName>
+                  <Style>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>2in</Width>
+        <Corner>
+          <ReportItems>
+            <Textbox Name="textbox2">
+              <rd:DefaultName>textbox2</rd:DefaultName>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <Value />
+            </Textbox>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.25in</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox5">
+                    <rd:DefaultName>textbox5</rd:DefaultName>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value />
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>0.5in</Height>
+        <Left>0.375in</Left>
+      </Matrix>
       <Chart Name="chart1">
         <Legend>
           <Visible>true</Visible>
@@ -95,7 +194,7 @@
             <Visible>true</Visible>
           </Axis>
         </CategoryAxis>
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <DataSetName>posDataSet_CustomizeReport</DataSetName>
         <PlotArea>
           <Style>
@@ -117,10 +216,10 @@
             <DynamicSeries>
               <Grouping Name="chart1_SeriesGroup1">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!quantity.Value</GroupExpression>
+                  <GroupExpression>=Fields!type_name.Value</GroupExpression>
                 </GroupExpressions>
               </Grouping>
-              <Label>=Fields!quantity.Value</Label>
+              <Label>=Fields!type_name.Value</Label>
             </DynamicSeries>
           </SeriesGrouping>
         </SeriesGroupings>
@@ -200,278 +299,10 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.33in</Height>
         <Value>Báo cáo hỗn hợp</Value>
       </Textbox>
-      <Matrix Name="matrix1">
-        <MatrixColumns>
-          <MatrixColumn>
-            <Width>0.7in</Width>
-          </MatrixColumn>
-        </MatrixColumns>
-        <DataSetName>posDataSet_CustomizeReport</DataSetName>
-        <RowGroupings>
-          <RowGrouping>
-            <Width>0.875in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_type_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!type_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Sorting>
-                <SortBy>
-                  <SortExpression>=Fields!type_name.Value</SortExpression>
-                  <Direction>Ascending</Direction>
-                </SortBy>
-              </Sorting>
-              <ReportItems>
-                <Textbox Name="type_name">
-                  <rd:DefaultName>type_name</rd:DefaultName>
-                  <Style>
-                    <BackgroundColor>#8fb3f3</BackgroundColor>
-                    <BorderColor>
-                      <Default>LightGrey</Default>
-                    </BorderColor>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <FontFamily>Tahoma</FontFamily>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!type_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.875in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_product_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Sorting>
-                <SortBy>
-                  <SortExpression>=Fields!product_name.Value</SortExpression>
-                  <Direction>Ascending</Direction>
-                </SortBy>
-              </Sorting>
-              <Visibility>
-                <Hidden>true</Hidden>
-                <ToggleItem>type_name</ToggleItem>
-              </Visibility>
-              <ReportItems>
-                <Textbox Name="product_name">
-                  <rd:DefaultName>product_name</rd:DefaultName>
-                  <Style>
-                    <BackgroundColor>#c7d9f9</BackgroundColor>
-                    <BorderColor>
-                      <Default>LightGrey</Default>
-                    </BorderColor>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <FontFamily>Tahoma</FontFamily>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.7in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_color_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!color_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Sorting>
-                <SortBy>
-                  <SortExpression>=Fields!color_name.Value</SortExpression>
-                  <Direction>Ascending</Direction>
-                </SortBy>
-              </Sorting>
-              <Visibility>
-                <Hidden>true</Hidden>
-                <ToggleItem>product_name</ToggleItem>
-              </Visibility>
-              <ReportItems>
-                <Textbox Name="color_name">
-                  <rd:DefaultName>color_name</rd:DefaultName>
-                  <Style>
-                    <BackgroundColor>#e6eefc</BackgroundColor>
-                    <BorderColor>
-                      <Default>LightGrey</Default>
-                    </BorderColor>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <FontFamily>Tahoma</FontFamily>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!color_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.7in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_size_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!size_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Sorting>
-                <SortBy>
-                  <SortExpression>=Fields!size_name.Value</SortExpression>
-                  <Direction>Ascending</Direction>
-                </SortBy>
-              </Sorting>
-              <Visibility>
-                <Hidden>true</Hidden>
-                <ToggleItem>color_name</ToggleItem>
-              </Visibility>
-              <ReportItems>
-                <Textbox Name="size_name">
-                  <rd:DefaultName>size_name</rd:DefaultName>
-                  <Style>
-                    <BackgroundColor>#e6eefc</BackgroundColor>
-                    <BorderColor>
-                      <Default>LightGrey</Default>
-                    </BorderColor>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <FontFamily>Tahoma</FontFamily>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!size_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-        </RowGroupings>
-        <Top>3.625in</Top>
-        <ColumnGroupings>
-          <ColumnGrouping>
-            <Height>0.21in</Height>
-            <DynamicColumns>
-              <Grouping Name="matrix1_selldate">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!selldate.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Sorting>
-                <SortBy>
-                  <SortExpression>=Fields!selldate.Value</SortExpression>
-                  <Direction>Ascending</Direction>
-                </SortBy>
-              </Sorting>
-              <ReportItems>
-                <Textbox Name="selldate">
-                  <rd:DefaultName>selldate</rd:DefaultName>
-                  <Style>
-                    <BackgroundColor>#8fb3f3</BackgroundColor>
-                    <BorderColor>
-                      <Default>LightGrey</Default>
-                    </BorderColor>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <FontFamily>Tahoma</FontFamily>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!selldate.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicColumns>
-          </ColumnGrouping>
-        </ColumnGroupings>
-        <Width>3.85in</Width>
-        <Corner>
-          <ReportItems>
-            <Textbox Name="textbox3">
-              <rd:DefaultName>textbox3</rd:DefaultName>
-              <Style>
-                <BorderColor>
-                  <Default>LightGrey</Default>
-                </BorderColor>
-                <BorderStyle>
-                  <Default>Solid</Default>
-                </BorderStyle>
-                <FontFamily>Tahoma</FontFamily>
-                <FontSize>9pt</FontSize>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-              <CanGrow>true</CanGrow>
-              <Value>
-              </Value>
-            </Textbox>
-          </ReportItems>
-        </Corner>
-        <MatrixRows>
-          <MatrixRow>
-            <Height>0.21in</Height>
-            <MatrixCells>
-              <MatrixCell>
-                <ReportItems>
-                  <Textbox Name="textbox2">
-                    <rd:DefaultName>textbox2</rd:DefaultName>
-                    <Style>
-                      <BorderColor>
-                        <Default>LightGrey</Default>
-                      </BorderColor>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>=Sum(Fields!quantity.Value)</Value>
-                  </Textbox>
-                </ReportItems>
-              </MatrixCell>
-            </MatrixCells>
-          </MatrixRow>
-        </MatrixRows>
-        <Height>0.42in</Height>
-        <Left>0.125in</Left>
-      </Matrix>
     </ReportItems>
     <Height>5.25in</Height>
   </Body>
