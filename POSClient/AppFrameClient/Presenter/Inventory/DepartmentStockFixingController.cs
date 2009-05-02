@@ -14,31 +14,28 @@ using Spring.Transaction.Interceptor;
 
 namespace AppFrameClient.Presenter.Inventory
 {
-    public class DepartmentStockAdhocProcessingController : IDepartmentStockAdhocProcessingController
+    public class DepartmentStockFixingController : IDepartmentStockFixingController
     {
         #region Implementation of IDepartmentStockAdhocProcessingController
 
-        private IDepartmentStockAdhocProcessingView _departmentStockAdhocProcessingView;
-
-        private IProductLogic _productLogic;
-
-        private IProductMasterLogic _productMasterLogic;
-
-        private IDepartmentStockTempLogic _departmentStockTempLogic;
-
-        public IDepartmentStockAdhocProcessingView DepartmentStockAdhocProcessingView
+        private IDepartmentStockFixingView _departmentStockAdhocProcessingView;
+        
+        public IDepartmentStockFixingView DepartmentStockAdhocProcessingView
         {
-            get { return _departmentStockAdhocProcessingView; }
+            get
+            {
+                return _departmentStockAdhocProcessingView;
+            }
             set
             {
                 _departmentStockAdhocProcessingView = value;
-                _departmentStockAdhocProcessingView.LoadAdhocStocksEvent += new EventHandler<DepartmentStockAdhocProcessingEventArgs>(_departmentStockAdhocProcessingView_LoadAdhocStocksEvent);
-                _departmentStockAdhocProcessingView.ProcessAdhocStocksEvent += new EventHandler<DepartmentStockAdhocProcessingEventArgs>(_departmentStockAdhocProcessingView_ProcessAdhocStocksEvent);
+                _departmentStockAdhocProcessingView.LoadAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewLoadAdhocStocksEvent);
+                _departmentStockAdhocProcessingView.ProcessAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewProcessAdhocStocksEvent);
             }
         }
 
         [Transaction(ReadOnly=false)]
-        void _departmentStockAdhocProcessingView_ProcessAdhocStocksEvent(object sender, DepartmentStockAdhocProcessingEventArgs e)
+        void DepartmentStockAdhocProcessingViewProcessAdhocStocksEvent(object sender, DepartmentStockFixingEventArgs e)
         {
             try
             {
@@ -46,21 +43,24 @@ namespace AppFrameClient.Presenter.Inventory
                 long departmentId = -1;
                 StockOut stockOut = null;
                 StockIn stockIn = new StockIn();
+                
                 stockIn.CreateDate = DateTime.Now;
                 stockIn.UpdateDate = DateTime.Now;
                 stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.StockInDate = DateTime.Now;
                 stockIn.StockInId = StockInLogic.FindMaxId();
-                stockIn.StockInDetails = new ArrayList();        
+                stockIn.StockInDetails = new ArrayList();
+        
                 long stockOutDetailMaxId = StockOutDetailLogic.FindMaxId() + 1;
                 long stockOutMaxId = StockOutLogic.FindMaxId()+1;
+
                 for (int i=0; i< e.DeptStockProcessedList.Count;i++)
                 {
-                    DepartmentStockTemp stockTemp = (DepartmentStockTemp) e.DeptStockProcessedList[i];
-                    if(stockTemp.DepartmentStockTempPK.DepartmentId != departmentId)
+                    DepartmentStock stockTemp = (DepartmentStock)e.DeptStockProcessedList[i];
+                    if(stockTemp.DepartmentStockPK.DepartmentId != departmentId)
                     {
-                        departmentId = stockTemp.DepartmentStockTempPK.DepartmentId;
+                        departmentId = stockTemp.DepartmentStockPK.DepartmentId;
 
                         if (stockOut != null)
                         {
@@ -79,21 +79,21 @@ namespace AppFrameClient.Presenter.Inventory
                         stockOut.StockoutId =  stockOutMaxId++;
                     }
 
-                    stockTemp.Fixed = 1;
-                    stockTemp.UpdateDate = DateTime.Now;
+                    /*stockTemp.Fixed = 1;*/
+                    /*stockTemp.UpdateDate = DateTime.Now;
                     stockTemp.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                    DepartmentStockTempLogic.Update(stockTemp);
+                    DepartmentStockLogic.Update(stockTemp);*/
                     long realQty = stockTemp.GoodQuantity + stockTemp.ErrorQuantity + stockTemp.DamageQuantity +
                                    stockTemp.LostQuantity + stockTemp.UnconfirmQuantity;
-                    if(stockTemp.Quantity < realQty)
+                    if(stockTemp.GoodQuantity < 0)
                     {
-                        long stockInQty = realQty - stockTemp.Quantity;
+                        long needStockMoreQty = stockTemp.GoodQuantity;
                         StockOutDetail stockOutDetail = new StockOutDetail();
                         stockOutDetail.CreateDate = DateTime.Now;
                         stockOutDetail.UpdateDate = DateTime.Now;
                         stockOutDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                         stockOutDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                        stockOutDetail.Quantity = stockInQty;
+                        stockOutDetail.Quantity = needStockMoreQty;
                         stockOutDetail.Product = stockTemp.Product;
                         stockOutDetail.StockOutId = stockOut.StockoutId;
                         stockOutDetail.StockOut = stockOut;
@@ -111,7 +111,7 @@ namespace AppFrameClient.Presenter.Inventory
                         stockInDetail.StockInType = 0;
                         stockInDetail.StockIn = stockIn;
 
-                        stockInDetail.Quantity = stockInQty;
+                        stockInDetail.Quantity = needStockMoreQty;
                         stockInDetail.Product = stockTemp.Product;
                         stockInDetail.ProductMaster = stockTemp.ProductMaster;
                         stockInDetail.StockInDetailPK = new StockInDetailPK
@@ -138,59 +138,18 @@ namespace AppFrameClient.Presenter.Inventory
             
         }
 
-        void _departmentStockAdhocProcessingView_LoadAdhocStocksEvent(object sender, DepartmentStockAdhocProcessingEventArgs e)
+        void DepartmentStockAdhocProcessingViewLoadAdhocStocksEvent(object sender, DepartmentStockFixingEventArgs e)
         {
             ObjectCriteria criteria = new ObjectCriteria();
-            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_NO);    
-            criteria.AddOrder("ProductMaster.ProductMasterId", true);
-            IList list = DepartmentStockTempLogic.FindAll(criteria);
-            IList deptStockTempList = null;
+            criteria.AddLesserCriteria("Quantity", 0);
+            criteria.AddEqCriteria("DelFlg", 0);
+            criteria.AddOrder("DepartmentStockPK.DepartmentId", true);
+            IList list = DepartmentStockLogic.FindAll(criteria);
             if (list != null && list.Count > 0)
             {
-                 deptStockTempList = new ArrayList();
-                
-                foreach (DepartmentStockTemp stockTemp in list)
-                {
-                    int viewIndex = -1;
-                    if(HasInList(stockTemp,deptStockTempList,out viewIndex))
-                    {
-                        DepartmentStockTempView view = (DepartmentStockTempView) deptStockTempList[viewIndex];
-                        view.Quantity += stockTemp.Quantity;
-                        
-                        view.GoodQuantity += stockTemp.GoodQuantity;
-                        view.ErrorQuantity += stockTemp.ErrorQuantity;
-                        view.DamageQuantity += stockTemp.DamageQuantity;
-                        view.LostQuantity += stockTemp.LostQuantity;
-                        view.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
-                        view.RealQuantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity + stockTemp.DamageQuantity +
-                                        stockTemp.LostQuantity + stockTemp.UnconfirmQuantity;
-                        view.DepartmentStockTemps.Add(stockTemp);
-                    }
-                    else
-                    {
-                        DepartmentStockTempView view = new DepartmentStockTempView();
-                        view.Quantity += stockTemp.Quantity;
-                        view.GoodQuantity += stockTemp.GoodQuantity;
-                        view.ErrorQuantity += stockTemp.ErrorQuantity;
-                        view.DamageQuantity += stockTemp.DamageQuantity;
-                        view.LostQuantity += stockTemp.LostQuantity;
-                        view.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
-                        view.RealQuantity += stockTemp.GoodQuantity + stockTemp.ErrorQuantity + stockTemp.DamageQuantity +
-                                        stockTemp.LostQuantity + stockTemp.UnconfirmQuantity;
-
-                        view.ProductMaster = stockTemp.ProductMaster;
-                        view.DepartmentStockTemps = new ArrayList();
-                        view.DepartmentStockTemps.Add(stockTemp);
-                        deptStockTempList.Add(view);
-                    }
-                }
-
+                 
+                e.DeptStockAdhocList = list;
             }
-
-            e.DeptStockAdhocList = deptStockTempList;
-
-
 
         }
 
@@ -215,20 +174,17 @@ namespace AppFrameClient.Presenter.Inventory
 
         public IProductLogic ProductLogic
         {
-            get { return _productLogic; }
-            set { _productLogic = value; }
+            get; set;
         }
 
         public IProductMasterLogic ProductMasterLogic
         {
-            get { return _productMasterLogic; }
-            set { _productMasterLogic = value; }
+            get; set;
         }
 
-        public IDepartmentStockTempLogic DepartmentStockTempLogic
+        public IDepartmentStockLogic DepartmentStockLogic
         {
-            get { return _departmentStockTempLogic; }
-            set { _departmentStockTempLogic = value; }
+            get; set;
         }
 
         public IStockOutLogic StockOutLogic

@@ -256,6 +256,7 @@
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
+    <Compile Include="Presenter\Inventory\DepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
@@ -294,6 +295,12 @@
     </Compile>
     <Compile Include="View\GoodsSale\PurchaseOrderViewer.Designer.cs">
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventory\DepartmentStockFixingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventory\DepartmentStockFixingForm.Designer.cs">
+      <DependentUpon>DepartmentStockFixingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.cs">
       <SubType>Form</SubType>
@@ -1142,6 +1149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsSale\PurchaseOrderViewer.resx">
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventory\DepartmentStockFixingForm.resx">
+      <DependentUpon>DepartmentStockFixingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Inventory\DepartmentStockAdhocCheckingForm.resx">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
