@@ -562,6 +562,8 @@
     <Compile Include="Presenter\GoodsSale\IGoodsSaleListController.cs" />
     <Compile Include="Presenter\GoodsSale\IGoodsSaleReturnController.cs" />
     <Compile Include="Presenter\IAuthService.cs" />
+    <Compile Include="Presenter\Inventory\DepartmentStockFixingEventArgs.cs" />
+    <Compile Include="Presenter\Inventory\IDepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
     <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
@@ -679,6 +681,7 @@
     <Compile Include="View\IEditCustomerView.cs" />
     <Compile Include="View\ILoginView.cs" />
     <Compile Include="View\INewCustomerView.cs" />
+    <Compile Include="View\Inventory\IDepartmentStockFixingView.cs" />
     <Compile Include="View\Inventory\IDepartmentStockAdhocProcessingView.cs" />
     <Compile Include="View\ISecurityView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
