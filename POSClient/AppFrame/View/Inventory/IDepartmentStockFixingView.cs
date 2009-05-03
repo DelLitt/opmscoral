@@ -8,7 +8,7 @@ namespace AppFrame.View.Inventory
 {
     public interface IDepartmentStockFixingView
     {
-        IDepartmentStockFixingController DepartmentStockAdhocProcessingController { get; set; }
+        IDepartmentStockFixingController DepartmentStockFixingController { get; set; }
         event EventHandler<DepartmentStockFixingEventArgs> LoadAdhocStocksEvent;
         event EventHandler<DepartmentStockFixingEventArgs> ProcessAdhocStocksEvent;
     }
