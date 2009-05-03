@@ -13,10 +13,11 @@
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.5in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <BottomMargin>0.5in</BottomMargin>
   <rd:ReportID>9c7fb063-65c3-4fd1-b5b8-936f30455bd7</rd:ReportID>
+  <PageWidth>11in</PageWidth>
   <DataSets>
     <DataSet Name="posDataSet_CustomizeReport">
       <Fields>
@@ -60,6 +61,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <Code />
   <Width>9.25in</Width>
   <Body>
     <ReportItems>
@@ -307,5 +309,6 @@
     <Height>5.25in</Height>
   </Body>
   <Language>en-US</Language>
-  <TopMargin>1in</TopMargin>
+  <TopMargin>0.5in</TopMargin>
+  <PageHeight>8.5in</PageHeight>
 </Report>
