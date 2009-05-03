@@ -51,6 +51,7 @@ namespace AppFrameClient.Presenter.Inventory
                 stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.StockInDate = DateTime.Now;
+                stockIn.StockInType = 2; // stock in for fixing department stock quantity
                 stockIn.StockInId = StockInLogic.FindMaxId();
                 stockIn.StockInDetails = new ArrayList();        
                 long stockOutDetailMaxId = StockOutDetailLogic.FindMaxId() + 1;
