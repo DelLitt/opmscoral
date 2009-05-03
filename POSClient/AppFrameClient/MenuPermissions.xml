@@ -38,6 +38,7 @@
     <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
+    <menuitem name="mnuDeptStockFixing" role="NotImplement" />
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
@@ -84,6 +85,7 @@
     <menuitem name="mnuGoodsSendbackReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTotalReport" role="NotImplement" />         
     <menuitem name="mnuMixReport" role="NotImplement" />
+    <menuitem name="mnuMixDeptReport" role="NotImplement" />
     <menuitem name="mnuRestockinReport" role="Administrator,Supervisor" />
     <menuitem name="mnuTempStockoutReport" role="Administrator,Supervisor" />
     <menuitem name="mnuGoodsSaleDepartmentDetail" role="NotImplement" />    

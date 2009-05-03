@@ -675,5 +675,13 @@ namespace AppFrame.View
         {
             new CustomizeReportViewer().Show();
         }
+
+        private void mnuDeptStockFixing_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentStockFixingForm>(this,
+                                                                                        FormConstants.
+                                                                                            DEPARTMENT_STOCK_FIXING_FORM);
+            form.Show();
+        }
     }
 }

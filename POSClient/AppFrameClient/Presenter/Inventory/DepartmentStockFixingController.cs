@@ -18,19 +18,19 @@ namespace AppFrameClient.Presenter.Inventory
     {
         #region Implementation of IDepartmentStockAdhocProcessingController
 
-        private IDepartmentStockFixingView _departmentStockAdhocProcessingView;
-        
-        public IDepartmentStockFixingView DepartmentStockAdhocProcessingView
+        private IDepartmentStockFixingView _departmentStockFixingView;
+
+        public IDepartmentStockFixingView DepartmentStockFixingView
         {
             get
             {
-                return _departmentStockAdhocProcessingView;
+                return _departmentStockFixingView;
             }
             set
             {
-                _departmentStockAdhocProcessingView = value;
-                _departmentStockAdhocProcessingView.LoadAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewLoadAdhocStocksEvent);
-                _departmentStockAdhocProcessingView.ProcessAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewProcessAdhocStocksEvent);
+                _departmentStockFixingView = value;
+                _departmentStockFixingView.LoadAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewLoadAdhocStocksEvent);
+                _departmentStockFixingView.ProcessAdhocStocksEvent += new EventHandler<DepartmentStockFixingEventArgs>(DepartmentStockAdhocProcessingViewProcessAdhocStocksEvent);
             }
         }
 
@@ -48,6 +48,7 @@ namespace AppFrameClient.Presenter.Inventory
                 stockIn.UpdateDate = DateTime.Now;
                 stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                stockIn.StockInType = 2; // fixing stockin
                 stockIn.StockInDate = DateTime.Now;
                 stockIn.StockInId = StockInLogic.FindMaxId();
                 stockIn.StockInDetails = new ArrayList();
@@ -62,7 +63,7 @@ namespace AppFrameClient.Presenter.Inventory
                     {
                         departmentId = stockTemp.DepartmentStockPK.DepartmentId;
 
-                        if (stockOut != null)
+                        if (stockOut != null && stockOut.StockOutDetails.Count > 0 )
                         {
                             StockOutLogic.AddFixedStockOut(stockOut);            
                         }
@@ -87,7 +88,7 @@ namespace AppFrameClient.Presenter.Inventory
                                    stockTemp.LostQuantity + stockTemp.UnconfirmQuantity;
                     if(stockTemp.GoodQuantity < 0)
                     {
-                        long needStockMoreQty = stockTemp.GoodQuantity;
+                        long needStockMoreQty = 0 - stockTemp.GoodQuantity;
                         StockOutDetail stockOutDetail = new StockOutDetail();
                         stockOutDetail.CreateDate = DateTime.Now;
                         stockOutDetail.UpdateDate = DateTime.Now;
@@ -124,11 +125,18 @@ namespace AppFrameClient.Presenter.Inventory
                         {
                             StockOutLogic.AddFixedStockOut(stockOut);
                         }
+                        stockTemp.GoodQuantity += needStockMoreQty;
+                        stockTemp.Quantity += needStockMoreQty;
+                        DepartmentStockLogic.Update(stockTemp);
                     }
 
                 }
-                StockInLogic.AddFixedStockIn(stockIn);            
-                
+
+                if (stockIn.StockInDetails.Count > 0)
+                {
+                    StockInLogic.AddFixedStockIn(stockIn);
+                }
+
             }
             catch (Exception)
             {
@@ -141,8 +149,8 @@ namespace AppFrameClient.Presenter.Inventory
         void DepartmentStockAdhocProcessingViewLoadAdhocStocksEvent(object sender, DepartmentStockFixingEventArgs e)
         {
             ObjectCriteria criteria = new ObjectCriteria();
-            criteria.AddLesserCriteria("Quantity", 0);
-            criteria.AddEqCriteria("DelFlg", 0);
+            criteria.AddLesserCriteria("GoodQuantity", (long)0);
+            criteria.AddEqCriteria("DelFlg", (long)0);
             criteria.AddOrder("DepartmentStockPK.DepartmentId", true);
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list != null && list.Count > 0)

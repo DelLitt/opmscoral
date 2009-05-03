@@ -186,6 +186,10 @@ namespace AppFrameClient.View.Inventory
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if(stockList.Count <= 0 )
+            {
+                MessageBox.Show("Không có gì để xử lý");
+            }
             DepartmentStockFixingEventArgs eventArgs = new DepartmentStockFixingEventArgs();
             eventArgs.DeptStockProcessedList = new ArrayList();
             #region unused code
@@ -517,17 +521,17 @@ namespace AppFrameClient.View.Inventory
 
         #region Implementation of IDepartmentStockAdhocProcessingView
 
-        private IDepartmentStockFixingController departmentStockAdhocProcessingController;
-        public IDepartmentStockFixingController DepartmentStockAdhocProcessingController
+        private IDepartmentStockFixingController departmentStockFixingController;
+        public IDepartmentStockFixingController DepartmentStockFixingController
         {
             get
             {
-                return departmentStockAdhocProcessingController;
+                return departmentStockFixingController;
             }
             set
             {
-                departmentStockAdhocProcessingController = value;
-                departmentStockAdhocProcessingController.DepartmentStockAdhocProcessingView = this;
+                departmentStockFixingController = value;
+                departmentStockFixingController.DepartmentStockFixingView = this;
             }
         }
 

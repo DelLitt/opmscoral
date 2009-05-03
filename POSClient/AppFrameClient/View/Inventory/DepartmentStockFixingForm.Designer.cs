@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -46,10 +46,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvStock = new System.Windows.Forms.DataGridView();
-            this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
-            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.btnAutoProcessing = new System.Windows.Forms.Button();
-            this.bdsSelectedStock = new System.Windows.Forms.BindingSource(this.components);
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductMaster = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +56,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.btnAutoProcessing = new System.Windows.Forms.Button();
+            this.bdsSelectedStock = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
@@ -125,9 +125,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(277, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(489, 23);
+            this.label1.Size = new System.Drawing.Size(368, 23);
             this.label1.TabIndex = 23;
-            this.label1.Text = "XỬ LÝ SỐ LIỆU KIỂM KÊ HÀNG HÓA TẠI KHO CỬA HÀNG";
+            this.label1.Text = "XỬ LÝ SỐ LƯỢNG ÂM TẠI KHO CỬA HÀNG";
             // 
             // btnConfirm
             // 
@@ -214,14 +214,14 @@
             this.dgvStock.AllowUserToAddRows = false;
             this.dgvStock.AllowUserToDeleteRows = false;
             this.dgvStock.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
@@ -241,24 +241,7 @@
             this.dgvStock.Size = new System.Drawing.Size(960, 367);
             this.dgvStock.StandardTab = true;
             this.dgvStock.TabIndex = 24;
-            
             this.dgvStock.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
-            // 
-            // systemHotkey1
-            // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
-            // 
-            // btnAutoProcessing
-            // 
-            this.btnAutoProcessing.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoProcessing.Location = new System.Drawing.Point(374, 527);
-            this.btnAutoProcessing.Name = "btnAutoProcessing";
-            this.btnAutoProcessing.Size = new System.Drawing.Size(233, 23);
-            this.btnAutoProcessing.TabIndex = 33;
-            this.btnAutoProcessing.Text = "Tự động xử lý và lưu kết quả kiểm kê";
-            this.btnAutoProcessing.UseVisualStyleBackColor = true;
-            this.btnAutoProcessing.Click += new System.EventHandler(this.button4_Click);
             // 
             // Column8
             // 
@@ -292,8 +275,8 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "Quantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.HeaderText = "Tồn";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -338,6 +321,22 @@
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Width = 80;
+            // 
+            // systemHotkey1
+            // 
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // btnAutoProcessing
+            // 
+            this.btnAutoProcessing.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoProcessing.Location = new System.Drawing.Point(374, 527);
+            this.btnAutoProcessing.Name = "btnAutoProcessing";
+            this.btnAutoProcessing.Size = new System.Drawing.Size(233, 23);
+            this.btnAutoProcessing.TabIndex = 33;
+            this.btnAutoProcessing.Text = "Tự động xử lý và lưu kết quả ";
+            this.btnAutoProcessing.UseVisualStyleBackColor = true;
+            this.btnAutoProcessing.Click += new System.EventHandler(this.button4_Click);
             // 
             // DepartmentStockFixingForm
             // 
