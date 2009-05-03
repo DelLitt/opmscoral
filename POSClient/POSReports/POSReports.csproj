@@ -110,6 +110,12 @@
     <Compile Include="AllStockReportViewer.Designer.cs">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomizeDepartmentReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeDepartmentReportViewer.Designer.cs">
+      <DependentUpon>CustomizeDepartmentReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomizeReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,10 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeDepartmentReportViewer.resx">
+      <DependentUpon>CustomizeDepartmentReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeDepartmentReport.rdlc" />
     <EmbeddedResource Include="CustomizeReport.rdlc" />
     <EmbeddedResource Include="CustomizeReportViewer.resx">
       <DependentUpon>CustomizeReportViewer.cs</DependentUpon>
