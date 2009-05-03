@@ -683,5 +683,10 @@ namespace AppFrame.View
                                                                                             DEPARTMENT_STOCK_FIXING_FORM);
             form.Show();
         }
+
+        private void mnuMixDeptReport_Click(object sender, EventArgs e)
+        {
+            new CustomizeDepartmentReportViewer().Show();
+        }
     }
 }

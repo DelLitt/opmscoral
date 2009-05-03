@@ -108,6 +108,7 @@
             this.mnuAllStockReturnReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuMixReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMixDeptReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAllStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStockCollection = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +149,6 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
-            this.mnuMixDeptReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -769,6 +769,13 @@
             this.mnuMixReport.Text = "Báo cáo hỗn hợp";
             this.mnuMixReport.Click += new System.EventHandler(this.mnuMixReport_Click);
             // 
+            // mnuMixDeptReport
+            // 
+            this.mnuMixDeptReport.Name = "mnuMixDeptReport";
+            this.mnuMixDeptReport.Size = new System.Drawing.Size(275, 22);
+            this.mnuMixDeptReport.Text = "Báo cáo hỗn hợp - tình hình cửa hàng";
+            this.mnuMixDeptReport.Click += new System.EventHandler(this.mnuMixDeptReport_Click);
+            // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
@@ -1053,12 +1060,6 @@
             // 
             this.timerProgress.Interval = 50;
             this.timerProgress.Tick += new System.EventHandler(this.timerProgress_Tick);
-            // 
-            // mnuMixDeptReport
-            // 
-            this.mnuMixDeptReport.Name = "mnuMixDeptReport";
-            this.mnuMixDeptReport.Size = new System.Drawing.Size(275, 22);
-            this.mnuMixDeptReport.Text = "Báo cáo hỗn hợp - tình hình cửa hàng";
             // 
             // MainForm
             // 
