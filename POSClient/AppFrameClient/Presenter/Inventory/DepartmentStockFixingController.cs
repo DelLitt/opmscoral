@@ -48,8 +48,9 @@ namespace AppFrameClient.Presenter.Inventory
                 stockIn.UpdateDate = DateTime.Now;
                 stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                stockIn.StockInType = 2; // fixing stockin
+                stockIn.StockInType = 2; // fixing stockin for negative quantity.
                 stockIn.StockInDate = DateTime.Now;
+                stockIn.Description = " Import goods for fixing negative quantity";
                 stockIn.StockInId = StockInLogic.FindMaxId();
                 stockIn.StockInDetails = new ArrayList();
         
@@ -99,8 +100,8 @@ namespace AppFrameClient.Presenter.Inventory
                         stockOutDetail.StockOutId = stockOut.StockoutId;
                         stockOutDetail.StockOut = stockOut;
                         stockOutDetail.DefectStatus = new StockDefectStatus{DefectStatusId = 0};
-                        stockOutDetail.Description = "Export goods";
-                        stockOutDetail.ProductMaster = stockTemp.ProductMaster;
+                        stockOutDetail.Description = "Export goods for compensate negative quantity";
+                        stockOutDetail.ProductMaster = stockTemp.Product.ProductMaster;
                         stockOutDetail.StockOutDetailId = stockOutDetailMaxId++;
                         stockOut.StockOutDetails.Add(stockOutDetail);
 
@@ -111,10 +112,10 @@ namespace AppFrameClient.Presenter.Inventory
                         stockInDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                         stockInDetail.StockInType = 0;
                         stockInDetail.StockIn = stockIn;
-
+                        stockInDetail.StockInType = 2; // fixing stock in for negative quantity
                         stockInDetail.Quantity = needStockMoreQty;
                         stockInDetail.Product = stockTemp.Product;
-                        stockInDetail.ProductMaster = stockTemp.ProductMaster;
+                        stockInDetail.ProductMaster = stockTemp.Product.ProductMaster;
                         stockInDetail.StockInDetailPK = new StockInDetailPK
                                                             {
                                                                 ProductId = stockTemp.Product.ProductId,

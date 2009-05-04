@@ -168,8 +168,12 @@ namespace AppFrameClient.Presenter.Report
                 
                 StockOut stockOut = mapper.Convert(departmentStockOut);
                 StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
+                stockIn.StockInDate = DateTime.Now;
+                stockIn.StockInType = 3; // stock in for stock out to manufacturers
                 stockIn.StockInDetails = new ArrayList();
                 stockOut.NotUpdateMainStock = true;
+                stockOut.StockOutDate = DateTime.Now;
+                
                 IList detlist = new ArrayList();
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
