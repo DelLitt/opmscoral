@@ -206,7 +206,7 @@
           <BackgroundColor>White</BackgroundColor>
         </Style>
         <Title />
-        <Height>3in</Height>
+        <Height>3.75in</Height>
         <Left>0.375in</Left>
       </Chart>
     </ReportItems>
