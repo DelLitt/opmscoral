@@ -108,7 +108,7 @@
     <menuitem name="mnuLoadToMain" role="NotImplement" />
     <menuitem name="mnuLoadToDept" role="NotImplement" />
     <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
-
+    <menuitem name="mnuImportByFile" role="NotImplement" />    
   </menu>
   <menu name="mnuHelp" role="*">
     <menuitem name="mnuHelpAbout" role="*">

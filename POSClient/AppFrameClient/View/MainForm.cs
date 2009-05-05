@@ -21,6 +21,7 @@ using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Inventory;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
+using ImportPOSData;
 using POSReports;
 using Spring.Context;
 using Spring.Context.Support;
@@ -695,6 +696,11 @@ namespace AppFrame.View
             loginForm.StartPosition = FormStartPosition.CenterScreen;
             loginForm.Show();
 
+        }
+
+        private void mnuImportByFile_Click(object sender, EventArgs e)
+        {
+            new ImportPOSDataForm().ShowDialog();
         }
     }
 }

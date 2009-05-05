@@ -255,6 +255,11 @@
     <Compile Include="Logic\DepartmentStockTempLogicImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
+    <Compile Include="MasterDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MasterDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
@@ -313,6 +318,24 @@
     </Compile>
     <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\ProductColorMasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Masters\ProductColorMasterForm.Designer.cs">
+      <DependentUpon>ProductColorMasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\ProductSizeMasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Masters\ProductSizeMasterForm.Designer.cs">
+      <DependentUpon>ProductSizeMasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\ProductTypeMasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Masters\ProductTypeMasterForm.Designer.cs">
+      <DependentUpon>ProductTypeMasterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.cs">
       <SubType>Form</SubType>
@@ -1165,6 +1188,15 @@
     <EmbeddedResource Include="View\Inventory\DepartmentStockAdhocCheckingForm.resx">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Masters\ProductColorMasterForm.resx">
+      <DependentUpon>ProductColorMasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Masters\ProductSizeMasterForm.resx">
+      <DependentUpon>ProductSizeMasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Masters\ProductTypeMasterForm.resx">
+      <DependentUpon>ProductTypeMasterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1383,6 +1415,17 @@
     <EmbeddedResource Include="ServerMenuPermissions.xml" />
     <EmbeddedResource Include="NAMenuPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
+    <None Include="MasterDB.xsc">
+      <DependentUpon>MasterDB.xsd</DependentUpon>
+    </None>
+    <None Include="MasterDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MasterDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MasterDB.xss">
+      <DependentUpon>MasterDB.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockTempCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.EmployeeInfoCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo1.datasource" />
@@ -1398,6 +1441,10 @@
     <ProjectReference Include="..\AppFrame\AppFrame.csproj">
       <Project>{73A362AB-99CF-4AA1-8278-01CAED2516F0}</Project>
       <Name>AppFrame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportPOSData\ImportPOSData.csproj">
+      <Project>{53EA70B6-957C-4D8A-BD43-1450C7433920}</Project>
+      <Name>ImportPOSData</Name>
     </ProjectReference>
     <ProjectReference Include="..\POSReports\POSReports.csproj">
       <Project>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</Project>
