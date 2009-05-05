@@ -11,12 +11,12 @@ using Microsoft.Office.Interop.Excel;
 
 namespace ImportPOSData
 {
-    public partial class Form1 : Form
+    public partial class ImportPOSDataForm : Form
     {
         public readonly int START_ROW = 3;
         private DataAccessLayer dal = new DataAccessLayer();
 
-        public Form1()
+        public ImportPOSDataForm()
         {
             InitializeComponent();
         }

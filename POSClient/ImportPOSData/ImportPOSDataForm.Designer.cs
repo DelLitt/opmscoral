@@ -1,6 +1,6 @@
 ﻿namespace ImportPOSData
 {
-    partial class Form1
+    partial class ImportPOSDataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -102,7 +102,7 @@
             // 
             // errorBindingSource
             // 
-            this.errorBindingSource.DataSource = typeof(ImportPOSData.ErrorObject);
+            this.errorBindingSource.DataSource = typeof(ErrorObject);
             // 
             // rowNumberDataGridViewTextBoxColumn
             // 
