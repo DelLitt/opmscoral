@@ -1,4 +1,5 @@
-﻿using AppFrame.Common;
+﻿using System.Web.UI.WebControls;
+using AppFrame.Common;
 using AppFrame.Model;
 
 namespace AppFrame.Presenter
@@ -24,8 +25,16 @@ namespace AppFrame.Presenter
             get { return loginModel; }
             set { loginModel = value; }
         }
-
+        public string OldPassword
+        {
+            get; set;
+        }
+        public string NewPassword
+        {
+            get; set;
+        }
         private bool isValid;
 
     }
+    
 }

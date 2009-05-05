@@ -677,6 +677,7 @@
     <Compile Include="View\GoodsSale\IGoodsSaleReturnView.cs" />
     <Compile Include="View\GoodsSale\IGoodsSaleView.cs" />
     <Compile Include="View\GoodsSale\IMonthGoodsSaleListView.cs" />
+    <Compile Include="View\IChangePasswordView.cs" />
     <Compile Include="View\ICustomerView.cs" />
     <Compile Include="View\IEditCustomerView.cs" />
     <Compile Include="View\ILoginView.cs" />

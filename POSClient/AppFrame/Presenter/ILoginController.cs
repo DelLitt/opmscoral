@@ -10,7 +10,7 @@ namespace AppFrame.Presenter
     {
         event EventHandler<T> CompleteLoginLogicEvent;
         ILoginView<T> LoginView { get; set;}
-
+        IChangePasswordView<T> ChangePasswordView { get; set; }
         #region logic using in controller
 
         ILoginLogic LoginLogic { get; set; }

@@ -41,5 +41,6 @@ namespace AppFrame.Logic
         IList FindAll(ObjectCriteria criteria);
 
         void ProcessUser(LoginModel model);
+        void ChangePassword(string username, string password, string newPassword);
     }
 }
