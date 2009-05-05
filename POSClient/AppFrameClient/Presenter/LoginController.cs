@@ -28,6 +28,32 @@ namespace AppFrame.Presenter
             }
         }
 
+        private IChangePasswordView<LoginEventArgs> changePasswordView;
+        public IChangePasswordView<LoginEventArgs> ChangePasswordView
+        {
+            get { return changePasswordView; }
+            set { changePasswordView = value;
+            changePasswordView.ChangePasswordEvent += new EventHandler<LoginEventArgs>(changePasswordView_ChangePasswordEvent);
+            }
+        }
+
+        void changePasswordView_ChangePasswordEvent(object sender, LoginEventArgs e)
+        {
+            try
+            {
+                string Username = ClientInfo.getInstance().LoggedUser.Name;
+                string Password = e.OldPassword;
+                string NewPassword = e.NewPassword;
+                LoginLogic.ChangePassword(Username, Password, NewPassword);
+            }
+            catch (Exception)
+            {
+                e.HasErrors = true;                
+                throw;
+            }
+            
+        }
+
         private void mView_LoginEvent(object sender, LoginEventArgs e)
         {
             ILog logger = LogManager.GetLogger("AppFrame");

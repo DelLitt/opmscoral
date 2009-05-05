@@ -266,6 +266,12 @@
     <Compile Include="ViewModel\DepartmentStockTempView.cs" />
     <Compile Include="ViewModel\DepartmentStockTempViewCollection.cs" />
     <Compile Include="ViewModel\PurchaseOrderView.cs" />
+    <Compile Include="View\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ClientServerSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1134,6 +1140,9 @@
     <EmbeddedResource Include="Config\MySQLDao.xml">
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>

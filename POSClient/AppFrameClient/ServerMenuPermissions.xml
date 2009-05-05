@@ -8,7 +8,7 @@
     </menuitem>
     <menuitem name="mnuFileExit" role="*">
     </menuitem>
-    <menuitem name="mnuFileChangePassword" role="NotImplement" />
+    <menuitem name="mnuFileChangePassword" role="Administrator,Supervisor,Manager,Supervisor,Accountant" />
   </menu>
   <menu name="mnuWareHouse" role="Administrator,Supervisor">
     <menuitem name="mnuImportGoods" role="Administrator,Supervisor" />

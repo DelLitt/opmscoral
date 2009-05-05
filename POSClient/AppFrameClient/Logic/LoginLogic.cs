@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using AppFrame.Common;
 using AppFrame.DataLayer;
+using AppFrame.Exceptions;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
+using Spring.Transaction.Interceptor;
 using ArrayList=System.Collections.ArrayList;
 
 namespace AppFrameClient.Logic
@@ -145,6 +148,22 @@ namespace AppFrameClient.Logic
             {
                 LoginDao.Add(model);
             }
+        }
+
+        [Transaction(ReadOnly = false)]
+        public void ChangePassword(string username, string password, string newPassword)
+        {
+           LoginModel model = LoginDao.getInfo(username, password);
+
+            if (model != null)
+            {
+                model.Password = newPassword;
+                LoginDao.Update(model);
+            }
+            else
+            {
+                throw new BusinessException(" Mật khẩu cũ bị sai");
+            } 
         }
 
         #endregion

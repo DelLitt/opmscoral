@@ -188,37 +188,38 @@
             // mnuFileLogin
             // 
             this.mnuFileLogin.Name = "mnuFileLogin";
-            this.mnuFileLogin.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileLogin.Size = new System.Drawing.Size(152, 22);
             this.mnuFileLogin.Text = "Đăng nhập";
             this.mnuFileLogin.Click += new System.EventHandler(this.mnuFileLogin_Click);
             // 
             // mnuFileLogout
             // 
             this.mnuFileLogout.Name = "mnuFileLogout";
-            this.mnuFileLogout.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileLogout.Size = new System.Drawing.Size(152, 22);
             this.mnuFileLogout.Text = "Đăng xuất";
             this.mnuFileLogout.Click += new System.EventHandler(this.mnuFileLogout_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuFileChangePassword
             // 
             this.mnuFileChangePassword.Name = "mnuFileChangePassword";
-            this.mnuFileChangePassword.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileChangePassword.Size = new System.Drawing.Size(152, 22);
             this.mnuFileChangePassword.Text = "Đổi mật khẩu";
+            this.mnuFileChangePassword.Click += new System.EventHandler(this.mnuFileChangePassword_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(142, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(145, 22);
+            this.mnuFileExit.Size = new System.Drawing.Size(152, 22);
             this.mnuFileExit.Text = "Thoát";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 

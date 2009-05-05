@@ -688,5 +688,13 @@ namespace AppFrame.View
         {
             new CustomizeDepartmentReportViewer().Show();
         }
+
+        private void mnuFileChangePassword_Click(object sender, EventArgs e)
+        {
+            Form loginForm = GlobalUtility.GetOnlyChildFormObject<ChangePasswordForm>(GlobalCache.Instance().MainForm, FormConstants.CHANGE_PASSWORD_FORM);
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
+            loginForm.Show();
+
+        }
     }
 }
