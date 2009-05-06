@@ -186,6 +186,7 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerDepartmentDetailReport.rdlc" />
     <EmbeddedResource Include="CustomizeDepartmentReportViewer.resx">
       <DependentUpon>CustomizeDepartmentReportViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +239,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="RestockinReport.rdlc" />
     <EmbeddedResource Include="RestockinReportViewer.resx">
       <DependentUpon>RestockinReportViewer.cs</DependentUpon>
