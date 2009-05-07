@@ -121,12 +121,12 @@ namespace AppFrameClient.Presenter.Inventory
                                                                 StockInId = stockIn.StockInId
                                                             };
                         stockIn.StockInDetails.Add(stockInDetail);
-                        if(i == e.DeptStockProcessedList.Count -1)
-                        {
-                            StockOutLogic.AddFixedStockOut(stockOut);
-                        }
+                        
                     }
-
+                    if (i == e.DeptStockProcessedList.Count - 1)
+                    {
+                        StockOutLogic.AddFixedStockOut(stockOut);
+                    }
                 }
                 StockInLogic.AddFixedStockIn(stockIn);            
                 

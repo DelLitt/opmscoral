@@ -57,10 +57,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\antlr.runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Cells, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Aspose\Aspose.Cells\Bin\Net2.0\Aspose.Cells.dll</HintPath>
-    </Reference>
     <Reference Include="BarcodeLib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\BarcodeLib.dll</HintPath>
@@ -90,6 +86,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Log4PostSharp, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\PostSharp 1.0.12\PlugIns\Log4PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4PostSharp.Weaver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\PostSharp 1.0.12\PlugIns\Log4PostSharp.Weaver.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -106,6 +110,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp.Public, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\Spring.Aop.dll</HintPath>

@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using log4net.Config;
+using Log4PostSharp;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -32,5 +34,13 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 
+
+
+
+
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// Configure log4net.
+[assembly: XmlConfigurator(Watch = true)]
+//[assembly: Log(AttributeTargetTypes = "AppFrame.Logic.*", EntryLevel = LogLevel.Error, ExitLevel = LogLevel.Error, ExceptionLevel = LogLevel.Error)]
