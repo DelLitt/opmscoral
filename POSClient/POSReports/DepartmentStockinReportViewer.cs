@@ -55,8 +55,15 @@ namespace POSReports
         {
             try
             {
+                
                 int test = Int32.Parse(comboBox1.SelectedValue.ToString());
-                this.DepartmentStockInTableAdapter.Fill(posDataSet.departmentStockIn, test,ZeroTime(fromDate.Value),
+                // just take 3 days before
+                DateTime fromDay = ZeroTime(fromDate.Value);
+                if(ZeroTime(DateTime.Now).Subtract(fromDay).Days > 3)
+                {
+                    fromDay = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+                }
+                this.DepartmentStockInTableAdapter.Fill(posDataSet.departmentStockIn, test, fromDay,
                                                         MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
             } catch(Exception ex)

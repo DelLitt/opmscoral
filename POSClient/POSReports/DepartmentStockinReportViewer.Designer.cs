@@ -208,7 +208,7 @@
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DepartmentStockinReportViewer";
-            this.Text = "DepartmentStockinReportViewer";
+            this.Text = "Báo cáo nhập hàng vào cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockinReportViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.departmentStockInBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();

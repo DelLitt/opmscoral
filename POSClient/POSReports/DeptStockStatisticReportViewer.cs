@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using Microsoft.Reporting.WinForms;
 
 namespace POSReports
 {
@@ -46,8 +47,21 @@ namespace POSReports
         {
             try
             {
+                ReportParameter[] parameters = new ReportParameter[1];
+                
+                if(!string.IsNullOrEmpty(txtFilter.Text))
+                {
+                    parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());    
+                }
+                else
+                {
+                    parameters[0] = new ReportParameter("StrFilter", "");    
+                }
+
                 object deptId = departmentId.SelectedValue;
                 this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()),ZeroTime(toDate.Value),MaxTime(toDate.Value) );
+                
+                this.reportViewer1.LocalReport.SetParameters(parameters);
                 this.reportViewer1.RefreshReport();
 
             } catch (Exception ex)
