@@ -10,6 +10,7 @@ using System.Management;
 using System.Text;
 using AppFrame.Common;
 using AppFrame.Exceptions;
+using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrameClient.Common;
 using MySql.Data.MySqlClient;
@@ -147,12 +148,12 @@ namespace AppFrameClient.Utility
                 if (fileName.IndexOf("SyncUp") > 0)
                 {
                     long deptId = Int64.Parse(testName.Substring(0, 1));
-                    specificDeptPath = path + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(CurrentDepartment.Get(deptId).DepartmentName);
+                    specificDeptPath = path + "\\" + deptId.ToString();
                 }
 
                 if (fileName.IndexOf("SyncDown") > 0)
                 {
-                    specificDeptPath = path + "\\" + testName.Substring(0,testName.IndexOf(" - "));
+                    specificDeptPath = path + "\\" + testName.Substring(0,testName.IndexOf("_SyncDown_"));
                 }
 
                 if (specificDeptPath == null) throw new Exception();
@@ -169,6 +170,34 @@ namespace AppFrameClient.Utility
                     File.Move(fileName, path + "\\" + fileName.Substring(fileName.LastIndexOf("\\")+1, fileName.Length - (fileName.LastIndexOf("\\")+1)));
                 }
                 catch (Exception) { }
+            }
+        }
+
+        public static string EnsureExportPath(string path, Department department)
+        {
+            string ensurePath = path + "\\" + department.DepartmentId;
+            bool result = false;
+            if(!Directory.Exists(ensurePath))
+            {
+                try
+                {
+                    Directory.CreateDirectory(ensurePath);
+                    result = true;
+                }
+                catch (Exception)
+                {
+                    
+                    
+                }
+                
+            }
+            if(result)
+            {
+                return ensurePath;
+            }
+            else
+            {
+                return path;
             }
         }
     }

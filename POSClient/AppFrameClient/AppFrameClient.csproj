@@ -288,11 +288,107 @@
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.Designer.cs">
+      <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.Designer.cs">
+      <DependentUpon>DepartmentRemainStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.Designer.cs">
+      <DependentUpon>DepartmentReStockInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.Designer.cs">
+      <DependentUpon>DepartmentStockCheckingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.Designer.cs">
+      <DependentUpon>DepartmentStockInDetailSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.Designer.cs">
+      <DependentUpon>DepartmentStockInExtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.Designer.cs">
+      <DependentUpon>DepartmentStockInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.Designer.cs">
+      <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.Designer.cs">
+      <DependentUpon>DepartmentStockInSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.Designer.cs">
+      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.Designer.cs">
+      <DependentUpon>DepartmentStockSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
+      <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockViewCheckingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.Designer.cs">
+      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.Designer.cs">
+      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.Designer.cs">
+      <DependentUpon>SyncToMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\ProductMasterEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\ProductMasterEditForm.Designer.cs">
+      <DependentUpon>ProductMasterEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\StockOutConfirmForm.cs">
       <SubType>Form</SubType>
@@ -611,54 +707,6 @@
     <Compile Include="View\GoodsIO\BarcodePreviewForm.Designer.cs">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.Designer.cs">
-      <DependentUpon>DepartmentReStockInForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.Designer.cs">
-      <DependentUpon>DepartmentStockCheckingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.Designer.cs">
-      <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.Designer.cs">
-      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
-      <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.Designer.cs">
-      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.Designer.cs">
-      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.Designer.cs">
-      <DependentUpon>SyncToMainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -748,48 +796,6 @@
     </Compile>
     <Compile Include="View\GoodsIO\ProductMasterFormForBarcodeView.Designer.cs">
       <DependentUpon>ProductMasterFormForBarcodeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.Designer.cs">
-      <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.Designer.cs">
-      <DependentUpon>DepartmentRemainStockForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.Designer.cs">
-      <DependentUpon>DepartmentStockInDetailSearchForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.Designer.cs">
-      <DependentUpon>DepartmentStockInExtraForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.Designer.cs">
-      <DependentUpon>DepartmentStockInForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.Designer.cs">
-      <DependentUpon>DepartmentStockInSearchForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.Designer.cs">
-      <DependentUpon>DepartmentStockSearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\GoodsInput.cs">
       <SubType>Form</SubType>
@@ -1175,8 +1181,56 @@
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.resx">
+      <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.resx">
+      <DependentUpon>DepartmentRemainStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.resx">
+      <DependentUpon>DepartmentReStockInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.resx">
+      <DependentUpon>DepartmentStockCheckingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.resx">
+      <DependentUpon>DepartmentStockInDetailSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.resx">
+      <DependentUpon>DepartmentStockInExtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.resx">
+      <DependentUpon>DepartmentStockInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.resx">
+      <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.resx">
+      <DependentUpon>DepartmentStockInSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.resx">
+      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.resx">
+      <DependentUpon>DepartmentStockSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
+      <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.resx">
       <DependentUpon>DepartmentStockViewCheckingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.resx">
+      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.resx">
+      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.resx">
+      <DependentUpon>SyncToMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\ProductMasterEditForm.resx">
+      <DependentUpon>ProductMasterEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\StockOutConfirmForm.resx">
       <DependentUpon>StockOutConfirmForm.cs</DependentUpon>
@@ -1216,32 +1270,6 @@
     <EmbeddedResource Include="View\GoodsIO\BarcodePreviewForm.resx">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.resx">
-      <DependentUpon>DepartmentReStockInForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.resx">
-      <DependentUpon>DepartmentStockCheckingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.resx">
-      <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.resx">
-      <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.resx">
-      <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.resx">
-      <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.resx">
-      <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.resx">
-      <DependentUpon>SyncToMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockOutConfirmForm.resx">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
@@ -1288,34 +1316,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\ProductMasterFormForBarcodeView.resx">
       <DependentUpon>ProductMasterFormForBarcodeView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.resx">
-      <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.resx">
-      <DependentUpon>DepartmentRemainStockForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.resx">
-      <DependentUpon>DepartmentStockInDetailSearchForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.resx">
-      <DependentUpon>DepartmentStockInExtraForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.resx">
-      <DependentUpon>DepartmentStockInForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.resx">
-      <DependentUpon>DepartmentStockInSearchForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.resx">
-      <DependentUpon>DepartmentStockSearchForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\ProductMasterCreateControl.resx">

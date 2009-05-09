@@ -170,7 +170,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
             if(!CheckPOSSyncDriveExist())
+            {
                 return;
+            }
+                
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
                 "Bạn muốn nhập hàng cho cửa hàng ? ",
@@ -207,15 +210,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.SERVER_SYNC_FORMAT);
-
-            if (fileNames.Length == 0)
+            /*string[] extraFileNames =
+                Directory.GetFiles(importPath + "\\" + CurrentDepartment.Get().DepartmentId.ToString(),
+                                   "*" + CommonConstants.SERVER_SYNC_FORMAT);*/
+            IList fileNameList = new ArrayList();
+            if (fileNames.Length == 0 /*&& extraFileNames.Length == 0*/)
             {
                 MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");
                 return;
             }
+            foreach (string fileName in fileNames)
+            {
+                fileNameList.Add(fileName);
+            }
+            /*foreach (string extraFileName in extraFileNames)
+            {
+                fileNameList.Add(extraFileName);
+            }*/
             IList resultList = new ArrayList();
             StringBuilder errorStr = new StringBuilder();
-            foreach (string fileName in fileNames)
+            foreach (string fileName in fileNameList)
             {
                 SyncResult result = new SyncResult();
                 result.FileName = fileName;

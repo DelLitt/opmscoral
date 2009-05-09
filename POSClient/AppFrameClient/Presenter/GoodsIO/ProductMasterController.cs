@@ -33,6 +33,32 @@ namespace AppFrameClient.Presenter.GoodsIO
             }
         }
 
+        private IProductMasterEditView productMasterEditView;
+        public IProductMasterEditView ProductMasterEditView
+        {
+            get
+            {
+                return productMasterEditView;
+            }
+            set
+            {
+                productMasterEditView = value;
+                productMasterEditView.LoadProductMasters += new EventHandler<ProductMasterEventArgs>(productMasterEditView_LoadProductMasters);
+                productMasterEditView.SaveProductMasters += new EventHandler<ProductMasterEventArgs>(productMasterEditView_SaveProductMasters);
+            }
+        }
+
+        void productMasterEditView_SaveProductMasters(object sender, ProductMasterEventArgs e)
+        {
+            
+            //ProductMasterLogic.FindAll();
+        }
+
+        void productMasterEditView_LoadProductMasters(object sender, ProductMasterEventArgs e)
+        {
+            
+        }
+
         #endregion
 
         private void productMasterView_InitProductMasterEvent(object sender, ProductMasterEventArgs e)

@@ -140,7 +140,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         && deptEvent.SyncFromMainToDepartment.StockOutList!=null
                         && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0 )
                     {
-                        string fileName = exportPath + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(department.DepartmentName) + " - SyncDown_" + 
+                        string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" + 
                                                               DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
                         SyncResult result = new SyncResult();
                         result.FileName = fileName;
