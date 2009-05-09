@@ -465,6 +465,7 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductColor.cs" />
     <Compile Include="Model\ProductMaster.cs" />
+    <Compile Include="Model\ProductMasterView.cs" />
     <Compile Include="Model\ProductSize.cs" />
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\Promotion.cs" />
@@ -660,6 +661,7 @@
     <Compile Include="View\GoodsIO\IDepartmentStockOutReportView.cs" />
     <Compile Include="View\GoodsIO\IGoodsInput.cs" />
     <Compile Include="View\GoodsIO\IGoodsIOSearchView.cs" />
+    <Compile Include="View\GoodsIO\IProductMasterEditView.cs" />
     <Compile Include="View\GoodsIO\IProductMasterSearchDepartmentView.cs" />
     <Compile Include="View\GoodsIO\IProductMasterSearchOrCreateView.cs" />
     <Compile Include="View\GoodsIO\IProductMasterView.cs" />

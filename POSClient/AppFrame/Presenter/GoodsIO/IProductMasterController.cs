@@ -11,6 +11,7 @@ namespace AppFrame.Presenter.GoodsIO
     {
         #region View use in ISalePointController
         IProductMasterView ProductMasterView { get; set; }
+        IProductMasterEditView ProductMasterEditView { get; set; }
         #endregion
 
         #region Logic use in ISalePointController

@@ -6,10 +6,14 @@ using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Model;
 
+
 namespace AppFrame.Presenter.GoodsIO
 {
     public class ProductMasterEventArgs : BaseEventArgs
     {
+
+        public ProductMasterView ProductMasterView { get; set; }
+            
         public Form ParentForm { get; set; }
         public string ProductMasterId { get; set; }
         public ProductMaster ProductMaster { get; set; }
