@@ -22,5 +22,12 @@ namespace AppFrame.Common
         public static int EMPLOYEE_BARCODE_LENGTH = 8;
         public static string LAST_SYNCTIME_SERVER_FILE = "_LastSyncTime.exp";
         public static string LAST_SYNCTIME_CLIENT_FILE = "_LastSyncTime.imp";
+
+        public static string ACTION_SAVE_PRODUCT_MASTER = "Lưu sản phẩm";
+        public static string ACTION_UPDATE_PRODUCT_MASTER = "Cập nhật sản phẩm";
+
+        public static string ACTION_UPDATE_PRICE = "Cập nhật giá";
+        public static string ACTION_ADD_STOCK_IN = "Nhập kho chính";
+        public static string ACTION_UPDATE_STOCK_IN = "Sửa nhập kho chính";
     }
 }
