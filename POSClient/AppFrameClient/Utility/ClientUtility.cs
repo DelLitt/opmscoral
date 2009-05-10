@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using AppFrame.Common;
 using AppFrame.Exceptions;
@@ -193,11 +194,13 @@ namespace AppFrameClient.Utility
         {
             string ensurePath = path + "\\" + department.DepartmentId;
             bool result = false;
-            if(!Directory.Exists(ensurePath))
-            {
+            
                 try
                 {
-                    Directory.CreateDirectory(ensurePath);
+                    if(!Directory.Exists(ensurePath))
+                    {
+                        Directory.CreateDirectory(ensurePath);
+                    }
                     result = true;
                 }
                 catch (Exception)
@@ -205,8 +208,7 @@ namespace AppFrameClient.Utility
                     
                     
                 }
-                
-            }
+            
             if(result)
             {
                 return ensurePath;
@@ -215,6 +217,51 @@ namespace AppFrameClient.Utility
             {
                 return path;
             }
+        }
+        public enum SyncType { SyncUp, SyncDown }
+        public static DateTime GetLastSyncTime(string exportPath,Department department,SyncType syncType)
+        {
+            DateTime lastSyncTime = DateTime.MinValue;
+            string[] syncTimeFiles = Directory.GetFiles(exportPath, "*.synctime");
+            string mark = "_Status";
+            if(syncType == SyncType.SyncUp)
+            {
+                mark += "SyncUp";
+            }
+            if (syncType == SyncType.SyncDown)
+            {
+                mark += "SyncDown";
+            }
+            foreach (string file in syncTimeFiles)
+            {
+                if(file.IndexOf(department.DepartmentId + mark) >=0 )
+                {
+                    Stream stream = File.OpenRead(exportPath +"\\"+file);
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    lastSyncTime  = (DateTime)formatter.Deserialize(stream);
+                    stream.Close();
+                }
+            }
+            return lastSyncTime;
+        }
+
+        public static void WriteLastSyncTime(string exportPath,Department department,SyncType syncType)
+        {
+            DateTime lastSyncTime = DateTime.Now;
+            string mark = "_Status";
+            if (syncType == SyncType.SyncUp)
+            {
+                mark += "SyncUp";
+            }
+            if (syncType == SyncType.SyncDown)
+            {
+                mark += "SyncDown";
+            }
+            string lastSyncFile = exportPath + "\\" + department.DepartmentId + mark +".synctime";
+            Stream stream = File.Open(lastSyncFile, FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream,lastSyncTime);
+            stream.Close();
         }
     }
 }

@@ -65,6 +65,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockInView_LoadDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
         {
+            DateTime lastSyncTime = e.LastSyncTime;
             e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
             var stockTempCri = new ObjectCriteria();
             stockTempCri.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_YES);
@@ -83,6 +84,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             //criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
             //criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentId", e.Department.DepartmentId);
+            criteria.AddGreaterOrEqualsCriteria("CreateDate", lastSyncTime);
             //e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
             
             e.SyncFromMainToDepartment.StockOutList = StockOutLogic.FindAll(criteria);
@@ -92,6 +94,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             //criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
             e.SyncFromMainToDepartment.Department.Employees = EmployeeLogic.FindAll(criteria);
             //foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
+            if(e.StockOutList == null && e.StockOutList.Count == 0)
+            {
+                return; // don't need to get detail
+            }
             foreach (StockOut departmentStockIn in e.SyncFromMainToDepartment.StockOutList)
             {
 

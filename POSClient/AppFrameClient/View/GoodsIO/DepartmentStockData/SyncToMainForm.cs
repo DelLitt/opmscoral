@@ -84,9 +84,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 // dump db
                 ClientUtility.DumpDatabase();
-                //exportPath = ClientUtility.EnsureExportPath(exportPath, CurrentDepartment.Get());
+                exportPath = ClientUtility.EnsureExportPath(exportPath, CurrentDepartment.Get());
                 // get last sync time
-                string[] syncTimeFiles = Directory.GetFiles(exportPath, "*.synctime");
+                DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
                 SyncResult result = new SyncResult();
                 string fileName = exportPath + "\\" + CurrentDepartment.Get().DepartmentId + "_SyncUp_" +
                                   DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.CLIENT_SYNC_FORMAT;
@@ -107,6 +107,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     result.FileName = fileName;
                     result.Status = "Thành công";
                     ClientUtility.CleanDatabase();
+                    // write last sync time
+                    ClientUtility.WriteLastSyncTime(exportPath,CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
                     MessageBox.Show("Đồng bộ thành công");
 
                 }

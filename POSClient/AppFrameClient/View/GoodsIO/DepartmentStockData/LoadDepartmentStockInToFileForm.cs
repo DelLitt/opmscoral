@@ -132,7 +132,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 IList departmentList = deptEvent.DepartmentList;
                 foreach (Department department in departmentList)
                 {
+                    exportPath = ClientUtility.EnsureExportPath(exportPath, department);
+                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath,department);
                     deptEvent = new DepartmentStockInEventArgs();
+                    deptEvent.LastSyncTime = lastSyncTime;
                     deptEvent.Department = department;
                     EventUtility.fireEvent(LoadDepartemntStockInForExportEvent, this, deptEvent);
 
@@ -149,30 +152,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         Stream stream = File.Open(fileName, FileMode.Create);
                         BinaryFormatter bf = new BinaryFormatter();
                         bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
-                        stream.Close();                        
+                        stream.Close();    
+                        // write last sync time
+                        ClientUtility.WriteLastSyncTime(exportPath,department);
                     }
-
-                    /*if (deptEvent.DepartmentStockInList != null && deptEvent.DepartmentStockInList.Count > 0)
-                    {
-                        foreach (DepartmentStockIn stockIn in deptEvent.DepartmentStockInList)
-                        {
-                            string fileName = exportPath + "\\" + StringUtility.ConvertUnicodeToUnmarkVI(department.DepartmentName) + " - Ma lo_" + stockIn.DepartmentStockInPK.StockInId + "_" +
-                                                              stockIn.StockInDate.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
-                            SyncResult result = new SyncResult();
-                            result.FileName = fileName;
-                            result.Status = "Thành công";
-                            resultList.Add(result);
-                            Stream stream = File.Open(fileName, FileMode.Create);
-                            BinaryFormatter bf = new BinaryFormatter();
-                            bf.Serialize(stream, stockIn);
-                            stream.Close();
-
-                            var eventArgs = new DepartmentStockInEventArgs();
-                            eventArgs.DepartmentStockIn = stockIn;
-                            EventUtility.fireEvent(UpdateDepartemntStockInForExportEvent, this, eventArgs);
-
-                        }
-                    }*/
+                    
                 }
             }
             catch (Exception)
