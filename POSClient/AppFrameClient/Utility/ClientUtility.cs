@@ -13,6 +13,7 @@ using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrameClient.Common;
+using log4net;
 using MySql.Data.MySqlClient;
 
 namespace AppFrameClient.Utility
@@ -171,6 +172,21 @@ namespace AppFrameClient.Utility
                 }
                 catch (Exception) { }
             }
+        }
+
+        public static void Log(ILog logger, string message)
+        {
+            //MDC.Set("user", ClientInfo.getInstance().LoggedUser.Name);
+            log4net.GlobalContext.Properties["user"] = ClientInfo.getInstance().LoggedUser.Name;
+            logger.Error(message); //now log error
+        }
+
+        public static void Log(ILog logger, string message, string action)
+        {
+            //MDC.Set("user", ClientInfo.getInstance().LoggedUser.Name);
+            log4net.GlobalContext.Properties["user"] = ClientInfo.getInstance().LoggedUser.Name;
+            log4net.GlobalContext.Properties["action"] = action;
+            logger.Error(message); //now log error
         }
 
         public static string EnsureExportPath(string path, Department department)

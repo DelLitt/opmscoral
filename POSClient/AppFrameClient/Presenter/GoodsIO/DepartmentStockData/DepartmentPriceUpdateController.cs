@@ -12,12 +12,14 @@ using AppFrame.Presenter.SalePoints;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Utility;
 using NHibernate.Criterion;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
     public class DepartmentPriceUpdateController : IDepartmentPriceUpdateController
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region View use in IDepartmentPriceUpdateController
 
         private IDepartmentPriceUpdateView _departmentPriceUpdateView;
@@ -81,12 +83,16 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void departmentStockDetailView_SaveDepartmentPriceEvent(object sender, DepartmentPriceUpdateEventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+
             foreach (DepartmentPrice price in e.DepartmentPriceList)
             {
                 price.UpdateDate = DateTime.Now;
                 price.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                 DepartmentPriceLogic.Update(price);
+                sb.Append(price.ToString()).Append("\r\n");
             }
+            ClientUtility.Log(logger, sb.ToString(), CommonConstants.ACTION_UPDATE_PRICE);
         }
 
         #region Logic use in IDepartmentPriceUpdateController

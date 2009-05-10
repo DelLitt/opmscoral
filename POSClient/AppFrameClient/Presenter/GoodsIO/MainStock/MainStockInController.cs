@@ -13,6 +13,7 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.MainStock
 {
@@ -20,7 +21,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
     {
 
         #region IDepartmentStockInExtraController Members
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IMainStockInView mainStockInView;
         public IMainStockInView MainStockInView
         {
@@ -242,13 +243,16 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void _departmentStockInView_SaveStockInEvent(object sender, MainStockInEventArgs e)
         {
+
             if (string.IsNullOrEmpty(e.StockIn.StockInId))
             {
                 StockInLogic.Add(e.StockIn);
+                ClientUtility.Log(logger, e.StockIn.ToString(), CommonConstants.ACTION_ADD_STOCK_IN);
             }
             else
             {
                 StockInLogic.Update(e.StockIn);
+                ClientUtility.Log(logger, e.StockIn.ToString(), CommonConstants.ACTION_UPDATE_STOCK_IN);
             }
             e.EventResult = "Success";
         }

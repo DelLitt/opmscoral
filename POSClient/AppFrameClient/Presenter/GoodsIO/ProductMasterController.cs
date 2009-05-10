@@ -9,13 +9,14 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.SalePoints;
 using AppFrame.View.GoodsIO;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO
 {
     public class ProductMasterController : IProductMasterController
     {
         #region View use in IProductMasterController
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IProductMasterView _productMasterView;
         public IProductMasterView ProductMasterView
         {
@@ -118,22 +119,41 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         public void productMasterView_SaveProductMasterEvent(object sender, ProductMasterEventArgs e)
         {
-            if (e.ProductMaster != null && !string.IsNullOrEmpty(e.ProductMaster.ProductMasterId))
+            try
             {
-                ProductMasterLogic.Update(e.ProductMaster);
+                if (e.ProductMaster != null && !string.IsNullOrEmpty(e.ProductMaster.ProductMasterId))
+                {
+                    ProductMasterLogic.Update(e.ProductMaster);
+                    ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
+                }
+                else
+                {
+                    if (e.CreatedProductMasterList != null)
+                    {
+                        ProductMasterLogic.AddAll(e.CreatedProductMasterList);
+
+                        StringBuilder sb = new StringBuilder("Tổng số lượng sản phẩm: ")
+                            .Append(e.CreatedProductMasterList.Count).Append("\r\n");
+                        
+                        foreach (ProductMaster pm in e.CreatedProductMasterList)
+                        {
+                            sb.Append(pm.ToString()).Append("\r\n");
+                        }
+                        ClientUtility.Log(logger, sb.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
+                    }
+                    else if (e.ProductMaster != null)
+                    {
+                        e.ProductMaster = ProductMasterLogic.Add(e.ProductMaster);
+                        ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
+                    }
+                }
+                e.EventResult = "Success";
             }
-            else
+            catch (Exception ex)
             {
-                if (e.CreatedProductMasterList != null)
-                {
-                    ProductMasterLogic.AddAll(e.CreatedProductMasterList);
-                }
-                else if (e.ProductMaster != null)
-                {
-                    e.ProductMaster = ProductMasterLogic.Add(e.ProductMaster);
-                }
+
+                throw;
             }
-            e.EventResult = "Success";
         }
 
         public void productMasterView_DeleteProductMasterEvent(object sender, ProductMasterEventArgs e)

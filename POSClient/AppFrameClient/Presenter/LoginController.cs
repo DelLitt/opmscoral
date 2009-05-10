@@ -5,13 +5,14 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrame.View;
+using AppFrameClient.Utility;
 using Common.Logging;
 
 namespace AppFrame.Presenter
 {
     public class LoginController : AsyncController, ILoginController<LoginEventArgs>
     {
-        
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private LoginEventArgs loginEventArgs;
         private ILoginLogic loginLogic;
         private ILoginView<LoginEventArgs> mView;
@@ -39,16 +40,19 @@ namespace AppFrame.Presenter
 
         void changePasswordView_ChangePasswordEvent(object sender, LoginEventArgs e)
         {
+            ClientInfo clientInfo = ClientInfo.getInstance();
             try
             {
                 string Username = ClientInfo.getInstance().LoggedUser.Name;
                 string Password = e.OldPassword;
                 string NewPassword = e.NewPassword;
                 LoginLogic.ChangePassword(Username, Password, NewPassword);
+                ClientUtility.Log(logger, "Người dùng " + clientInfo.LoggedUser.Name + " thay đổi mật khẩu thành công", "Đổi mật khẩu");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                e.HasErrors = true;                
+                e.HasErrors = true;
+                ClientUtility.Log(logger, "Người dùng " + clientInfo.LoggedUser.Name + " thay đổi mật khẩu thất bại: " + ex.Message, "Đổi mật khẩu");
                 throw;
             }
             
@@ -56,7 +60,6 @@ namespace AppFrame.Presenter
 
         private void mView_LoginEvent(object sender, LoginEventArgs e)
         {
-            ILog logger = LogManager.GetLogger("AppFrame");
             logger.Info("Enter " + this.GetType() + " method " + "mView_LoginEvent");
             //BaseUser baseUser = loginLogic.doAuthentication(e.LoginModel);
             AuthManager authManager = SecurityUtility.LoadAuthenticationModule();
@@ -76,6 +79,7 @@ namespace AppFrame.Presenter
             }
             EventUtility.fireEvent(CompleteLoginLogicEvent, this, ResultEventArgs);
             logger.Info("Leave " + this.GetType() + " method " + "mView_LoginEvent");
+            ClientUtility.Log(logger, "Người dùng " + clientInfo.LoggedUser.Name + " đăng nhập vào hệ thống", "Đăng nhập");
         }
 
         public event EventHandler<LoginEventArgs> CompleteLoginLogicEvent;

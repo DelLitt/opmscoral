@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using AppFrame.Common;
+using Common.Logging;
+using log4net.Repository.Hierarchy;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
@@ -39,6 +41,7 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly=false)]
         public ProductMaster Add(ProductMaster data)
         {
+            ILog logger = LogManager.GetLogger("AppFrame");
             //string deptId = string.Format("{0:000}", CurrentDepartment.Get().DepartmentId);
             // always insert goods at main stock
             string deptId = "000";
@@ -62,6 +65,7 @@ namespace AppFrame.Logic
                 data.Barcode = "000" + data.ProductMasterId;
             }*/
             ProductMasterDAO.Add(data);
+            
             return data;
         }
 
@@ -105,7 +109,6 @@ namespace AppFrame.Logic
                     ProductMasterDAO.Add(productMaster);                    
                 }
             }
-            
             /*            if (data.ProductType != null)
                         {
                             data.Barcode = string.Format("{0:000}", data.ProductType.TypeId) + data.ProductMasterId;

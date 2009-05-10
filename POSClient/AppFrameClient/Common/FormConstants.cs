@@ -84,5 +84,7 @@ namespace AppFrameClient.Common
         public static string DEPARTMENT_STOCK_ADHOC_CHECKING_VIEW = "DepartmentStockAdhocCheckingView";
         public static string DEPARTMENT_STOCK_FIXING_FORM = "DepartmentStockFixingView";
         public static string CHANGE_PASSWORD_FORM = "ChangePasswordView";
+
+        public static string POS_LOG_FORM = "PosLogView";
     }
 }

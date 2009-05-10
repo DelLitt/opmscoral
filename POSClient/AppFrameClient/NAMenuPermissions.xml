@@ -98,7 +98,7 @@
   </menu>
   <menu name="mnuTool" role="NotImplement">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />
-    <menuitem name="mnuDiaryTracking" role="NotImplement" />
+    <menuitem name="mnuDiaryTracking" role="Administrator" />
     <menuitem name="mnuBackupData" role="NotImplement" />
     <menuitem name="mnuDeleteData" role="NotImplement" />
     <menuitem name="mnuRecoverData" role="NotImplement" />

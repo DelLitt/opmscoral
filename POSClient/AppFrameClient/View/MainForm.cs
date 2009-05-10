@@ -14,6 +14,7 @@ using AppFrame.Utility;
 using AppFrame.View.Reports;
 using AppFrameClient;
 using AppFrameClient.Common;
+using AppFrameClient.Utility;
 using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.View.GoodsIO.MainStock;
@@ -21,7 +22,6 @@ using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Inventory;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
-using ImportPOSData;
 using POSReports;
 using Spring.Context;
 using Spring.Context.Support;
@@ -31,6 +31,7 @@ namespace AppFrame.View
 {
     public partial class MainForm : Form
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IAuthService authService;
         private delegate void showProcess();
 
@@ -57,6 +58,7 @@ namespace AppFrame.View
 
         private void mnuFileLogout_Click(object sender, EventArgs e)
         {
+            ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
             this.AuthService.logout();
 
         }
@@ -701,6 +703,13 @@ namespace AppFrame.View
         private void mnuImportByFile_Click(object sender, EventArgs e)
         {
             new ImportPOSDataForm().ShowDialog();
+        }
+
+        private void mnuDiaryTracking_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<PosLogForm>(this, 
+                FormConstants.POS_LOG_FORM);
+            form.Show();
         }
     }
 }

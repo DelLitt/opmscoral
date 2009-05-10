@@ -32,6 +32,9 @@
                value="NHibernate.Driver.MySqlDataDriver"/>
         <!--<entry key="show_sql"
                value="true"/>-->
+        <entry key="show_sql"
+               value="true"/>
+
       </dictionary>
     </property>
 
@@ -247,7 +250,21 @@
   <object id="AppFrame.DataLayer.IOtherTransactionLogDAO" type="AppFrame.DataLayer.OtherTransactionLogDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
-
+  <object id="AppFrame.DataLayer.IDepartmentStockTempDAO" type="AppFrame.DataLayer.DepartmentStockTempDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.ISyncStatusDAO" type="AppFrame.DataLayer.SyncStatusDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentTimelineDAO" type="AppFrame.DataLayer.DepartmentTimelineDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IDepartmentManagementDAO" type="AppFrame.DataLayer.DepartmentManagementDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  <object id="AppFrame.DataLayer.IPosLogDAO" type="AppFrame.DataLayer.PosLogDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   <object id="AppFrame.DataLayer.ISyncStatusDAO" type="AppFrame.DataLayer.SyncStatusDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -267,5 +284,6 @@
   <object id="RoleDaoImpl" type="AppFrameClient.DataLayer.RoleDaoImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+
   
 </objects>
