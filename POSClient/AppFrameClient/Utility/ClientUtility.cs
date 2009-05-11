@@ -190,7 +190,7 @@ namespace AppFrameClient.Utility
             logger.Error(message); //now log error
         }
 
-        public static string EnsureExportPath(string path, Department department)
+        public static string EnsureSyncPath(string path, Department department)
         {
             string ensurePath = path + "\\" + department.DepartmentId;
             bool result = false;

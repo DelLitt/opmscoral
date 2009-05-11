@@ -66,8 +66,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
-
-
+            // get import path of this department
+            
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
@@ -86,9 +86,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 return;
             }
 
-            string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.CLIENT_SYNC_FORMAT);
-
-            if (fileNames.Length == 0)
+            //string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.CLIENT_SYNC_FORMAT);
+            string[] syncDirs  = Directory.GetDirectories(importPath);
+            IList fileNames = new ArrayList();
+            foreach (string syncDir in syncDirs)
+            {
+                string[] deptFileNames = Directory.GetFiles(syncDir, "*" + CommonConstants.CLIENT_SYNC_FORMAT);
+                foreach (string deptFileName in deptFileNames)
+                {
+                    fileNames.Add(deptFileName);
+                }
+            }
+            if (fileNames.Count == 0)
             {
                 MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");
                 return;

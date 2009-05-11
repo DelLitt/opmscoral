@@ -188,6 +188,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
+            // get import path of this department
+            importPath = importPath + "\\" + CurrentDepartment.Get().DepartmentId;
+            errorPath = ClientUtility.EnsureSyncPath(errorPath, CurrentDepartment.Get());
+            successPath = ClientUtility.EnsureSyncPath(successPath, CurrentDepartment.Get()); 
 
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
@@ -210,9 +214,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.SERVER_SYNC_FORMAT);
-            /*string[] extraFileNames =
+            string[] extraFileNames =
                 Directory.GetFiles(importPath + "\\" + CurrentDepartment.Get().DepartmentId.ToString(),
-                                   "*" + CommonConstants.SERVER_SYNC_FORMAT);*/
+                                   "*" + CommonConstants.SERVER_SYNC_FORMAT);
             IList fileNameList = new ArrayList();
             if (fileNames.Length == 0 /*&& extraFileNames.Length == 0*/)
             {

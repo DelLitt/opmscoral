@@ -117,10 +117,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
-            var exportPath = POSSyncDrive + ClientSetting.SyncExportPath;
-            if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
+            var configExportPath = POSSyncDrive + ClientSetting.SyncExportPath;
+            if (string.IsNullOrEmpty(configExportPath) || !Directory.Exists(configExportPath))
             {
-                MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + exportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
+                MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + configExportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
                 return;
             }
             IList resultList = new ArrayList();
@@ -132,7 +132,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 IList departmentList = deptEvent.DepartmentList;
                 foreach (Department department in departmentList)
                 {
-                    exportPath = ClientUtility.EnsureExportPath(exportPath, department);
+                    var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
                     DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     deptEvent = new DepartmentStockInEventArgs();
                     deptEvent.LastSyncTime = lastSyncTime;

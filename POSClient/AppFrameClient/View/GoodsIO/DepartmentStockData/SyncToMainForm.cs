@@ -51,27 +51,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             // sync
             var configurationAppSettings = new AppSettingsReader();
             syncResultBindingSource.DataSource = null;
-//            // Create new SaveFileDialog object
-//            SaveFileDialog DialogSave = new SaveFileDialog();
-//
-//            // Default file extension
-//            DialogSave.DefaultExt = "xac";
-//
-//            // Available file extensions
-//            DialogSave.Filter = "POS file (*.xac)|*.xac";
-//
-//            // Adds a extension if the user does not
-//            DialogSave.AddExtension = true;
-//
-//            // Restores the selected directory, next time
-//            DialogSave.RestoreDirectory = true;
-//
-//            // Startup directory
-//            DialogSave.InitialDirectory = @"C:/";
-//            // Show the dialog and process the result
-//            if (DialogSave.ShowDialog() == DialogResult.OK)
-//            {
-            //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof (String));
             var exportPath = POSSyncDrive + ClientSetting.SyncExportPath;
             
             if (string.IsNullOrEmpty(exportPath) || !Directory.Exists(exportPath))
@@ -84,7 +63,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 // dump db
                 ClientUtility.DumpDatabase();
-                exportPath = ClientUtility.EnsureExportPath(exportPath, CurrentDepartment.Get());
+                exportPath = ClientUtility.EnsureSyncPath(exportPath, CurrentDepartment.Get());
                 // get last sync time
                 DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
                 SyncResult result = new SyncResult();
