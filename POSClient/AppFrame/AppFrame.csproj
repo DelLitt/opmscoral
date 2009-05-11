@@ -233,6 +233,7 @@
     <Compile Include="DataLayer\IDepartmentStockTempDAO.cs" />
     <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
     <Compile Include="DataLayer\IDepartmentTimelineDAO.cs" />
+    <Compile Include="DataLayer\IPosLogDAO.cs" />
     <Compile Include="DataLayer\ISyncStatusDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockHistoryDAO.cs" />
     <Compile Include="DataLayer\IBlockInCostDAO.cs" />
@@ -305,6 +306,7 @@
     <Compile Include="Logic\IDepartmentStockTempLogic.cs" />
     <Compile Include="Logic\IDepartmentManagementLogic.cs" />
     <Compile Include="Logic\IDepartmentTimelineLogic.cs" />
+    <Compile Include="Logic\IPosLogLogic.cs" />
     <Compile Include="Logic\ISyncStatusLogic.cs" />
     <Compile Include="Logic\IAuthoriseLogic.cs" />
     <Compile Include="Common\IPermission.cs" />
@@ -462,6 +464,7 @@
     </Compile>
     <Compile Include="Model\OtherTransactionLog.cs" />
     <Compile Include="Model\Packager.cs" />
+    <Compile Include="Model\PosLog.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductColor.cs" />
     <Compile Include="Model\ProductMaster.cs" />
@@ -567,11 +570,13 @@
     <Compile Include="Presenter\Inventory\IDepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
     <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
+    <Compile Include="Presenter\IPosLogController.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
     <Compile Include="Presenter\IStockOutConfirmController.cs" />
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
     <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
+    <Compile Include="Presenter\PosLogEventArgs.cs" />
     <Compile Include="Presenter\Report\IReportStockInController.cs" />
     <Compile Include="Presenter\Report\IReportStockOutController.cs" />
     <Compile Include="Presenter\Report\ReportStockInEventArgs.cs" />
@@ -686,6 +691,7 @@
     <Compile Include="View\INewCustomerView.cs" />
     <Compile Include="View\Inventory\IDepartmentStockFixingView.cs" />
     <Compile Include="View\Inventory\IDepartmentStockAdhocProcessingView.cs" />
+    <Compile Include="View\IPosLogView.cs" />
     <Compile Include="View\ISecurityView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
     <Compile Include="View\Reports\IDepartmentStockInReportView.cs" />
@@ -745,6 +751,7 @@
     <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockTemp.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
+    <Content Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
     <EmbeddedResource Include="Model\BlockInCost.hbm.xml" />
