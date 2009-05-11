@@ -751,7 +751,7 @@
     <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockTemp.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
-    <Content Include="Model\PosLog.hbm.xml" />
+    <EmbeddedResource Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
     <EmbeddedResource Include="Model\BlockInCost.hbm.xml" />
