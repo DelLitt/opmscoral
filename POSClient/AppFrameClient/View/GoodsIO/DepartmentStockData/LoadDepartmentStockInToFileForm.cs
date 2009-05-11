@@ -133,7 +133,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (Department department in departmentList)
                 {
                     exportPath = ClientUtility.EnsureExportPath(exportPath, department);
-                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath,department);
+                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     deptEvent = new DepartmentStockInEventArgs();
                     deptEvent.LastSyncTime = lastSyncTime;
                     deptEvent.Department = department;
@@ -154,7 +154,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
                         stream.Close();    
                         // write last sync time
-                        ClientUtility.WriteLastSyncTime(exportPath,department);
+                        ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     }
                     
                 }

@@ -94,7 +94,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             //criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
             e.SyncFromMainToDepartment.Department.Employees = EmployeeLogic.FindAll(criteria);
             //foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
-            if(e.StockOutList == null && e.StockOutList.Count == 0)
+            if(e.StockOutList == null || e.StockOutList.Count == 0)
             {
                 return; // don't need to get detail
             }

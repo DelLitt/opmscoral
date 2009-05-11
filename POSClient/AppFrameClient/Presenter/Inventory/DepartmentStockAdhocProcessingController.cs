@@ -123,7 +123,8 @@ namespace AppFrameClient.Presenter.Inventory
                         stockIn.StockInDetails.Add(stockInDetail);
                         
                     }
-                    if (i == e.DeptStockProcessedList.Count - 1)
+                    
+                    if (i == e.DeptStockProcessedList.Count - 1) // last item
                     {
                         StockOutLogic.AddFixedStockOut(stockOut);
                     }

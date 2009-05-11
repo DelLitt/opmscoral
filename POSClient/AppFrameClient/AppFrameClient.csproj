@@ -195,6 +195,7 @@
     <Compile Include="DataLayer\DepartmentStockTempDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentManagementDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentTimelineDAOImpl.cs" />
+    <Compile Include="DataLayer\PosLogDAOImpl.cs" />
     <Compile Include="DataLayer\SyncStatusDAOImpl.cs" />
     <Compile Include="DataLayer\CountryDAOImpl.cs" />
     <Compile Include="DataLayer\CouponDAOImpl.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Logic\DepartmentStockTempLogicImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
+    <Compile Include="Logic\PosLogLogicImpl.cs" />
     <Compile Include="MasterDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -268,6 +270,7 @@
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
+    <Compile Include="Presenter\PosLogController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInDetailMapper.cs" />
@@ -437,6 +440,18 @@
     </Compile>
     <Compile Include="View\Masters\ProductTypeMasterForm.Designer.cs">
       <DependentUpon>ProductTypeMasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PosLogDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PosLogDetailForm.Designer.cs">
+      <DependentUpon>PosLogDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PosLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PosLogForm.Designer.cs">
+      <DependentUpon>PosLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.cs">
       <SubType>Form</SubType>
@@ -1255,6 +1270,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Masters\ProductTypeMasterForm.resx">
       <DependentUpon>ProductTypeMasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PosLogDetailForm.resx">
+      <DependentUpon>PosLogDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PosLogForm.resx">
+      <DependentUpon>PosLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>

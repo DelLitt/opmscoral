@@ -97,5 +97,10 @@ namespace AppFrameClient.View
                 form.ShowDialog();
             }
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

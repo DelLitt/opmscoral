@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
             this.chkImportDateFrom = new System.Windows.Forms.CheckBox();
@@ -163,9 +163,9 @@
             // dateDataGridViewTextBoxColumn
             // 
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy hh:mm:ss";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy hh:mm:ss";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày lưu vết";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -242,6 +242,7 @@
             this.btnReset.TabIndex = 13;
             this.btnReset.Text = "Bỏ qua";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // txtUsername
             // 

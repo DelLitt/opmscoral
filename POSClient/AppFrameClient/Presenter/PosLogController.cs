@@ -39,11 +39,17 @@ namespace AppFrameClient.Presenter
         private void posLogView_SearchPosLogEvent(object sender, PosLogEventArgs e)
         {
             var criteria = new ObjectCriteria();
-            criteria.AddLikeCriteria("PosUser", e.Username + "%");
-            criteria.AddEqCriteria("PosAction", e.Action);
+            if(!string.IsNullOrEmpty(e.Username))
+            {
+                criteria.AddLikeCriteria("PosUser", e.Username + "%");    
+            }
+            if(!string.IsNullOrEmpty(e.Action))
+            {
+                criteria.AddLikeCriteria("PosAction", e.Action + "%");    
+            }
             criteria.AddGreaterOrEqualsCriteria("Date", DateUtility.ZeroTime(e.LogDateFrom));
             criteria.AddLesserOrEqualsCriteria("Date", DateUtility.MaxTime(e.LogDateTo));
-            IList list = PosLogLogic.FindAll(criteria);
+            IList list = PosLogLogic.FindAll(null);
             e.PosLogList = list;
         }
 

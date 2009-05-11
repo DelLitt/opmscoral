@@ -22,6 +22,7 @@ using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Inventory;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
+using ImportPOSData;
 using POSReports;
 using Spring.Context;
 using Spring.Context.Support;

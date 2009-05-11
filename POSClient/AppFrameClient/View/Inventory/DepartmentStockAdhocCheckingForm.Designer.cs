@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -256,20 +256,17 @@
             this.dgvStock.AllowUserToAddRows = false;
             this.dgvStock.AllowUserToDeleteRows = false;
             this.dgvStock.AutoGenerateColumns = false;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.oldGoodQuantityDataGridViewTextBoxColumn,
-            this.ProductMaster,
-            this.dataGridViewTextBoxColumn1,
-            this.Column2,
             this.quantityDataGridViewTextBoxColumn,
             this.Column1,
             this.goodQuantityDataGridViewTextBoxColumn,
@@ -289,7 +286,10 @@
             this.updateDateDataGridViewTextBoxColumn,
             this.updateIdDataGridViewTextBoxColumn,
             this.exclusiveKeyDataGridViewTextBoxColumn,
-            this.delFlgDataGridViewTextBoxColumn});
+            this.delFlgDataGridViewTextBoxColumn,
+            this.ProductMaster,
+            this.dataGridViewTextBoxColumn1,
+            this.Column2});
             this.dgvStock.DataSource = this.bdsStockDefect;
             this.dgvStock.Location = new System.Drawing.Point(12, 126);
             this.dgvStock.MultiSelect = false;
@@ -333,8 +333,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Tồn";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Width = 80;
@@ -342,17 +342,17 @@
             // Column1
             // 
             this.Column1.DataPropertyName = "RealQuantity";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column1.HeaderText = "Tồn thực";
             this.Column1.Name = "Column1";
             // 
             // goodQuantityDataGridViewTextBoxColumn
             // 
             this.goodQuantityDataGridViewTextBoxColumn.DataPropertyName = "GoodQuantity";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle49.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.goodQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.goodQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.goodQuantityDataGridViewTextBoxColumn.HeaderText = "Tốt";
             this.goodQuantityDataGridViewTextBoxColumn.Name = "goodQuantityDataGridViewTextBoxColumn";
             this.goodQuantityDataGridViewTextBoxColumn.Width = 80;
@@ -360,9 +360,9 @@
             // errorQuantityDataGridViewTextBoxColumn
             // 
             this.errorQuantityDataGridViewTextBoxColumn.DataPropertyName = "ErrorQuantity";
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.errorQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.errorQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.errorQuantityDataGridViewTextBoxColumn.HeaderText = "Lỗi";
             this.errorQuantityDataGridViewTextBoxColumn.Name = "errorQuantityDataGridViewTextBoxColumn";
             this.errorQuantityDataGridViewTextBoxColumn.Width = 80;
@@ -370,9 +370,9 @@
             // damageQuantityDataGridViewTextBoxColumn
             // 
             this.damageQuantityDataGridViewTextBoxColumn.DataPropertyName = "DamageQuantity";
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.damageQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.damageQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.damageQuantityDataGridViewTextBoxColumn.HeaderText = "Hư";
             this.damageQuantityDataGridViewTextBoxColumn.Name = "damageQuantityDataGridViewTextBoxColumn";
             this.damageQuantityDataGridViewTextBoxColumn.Width = 80;
@@ -380,9 +380,9 @@
             // lostQuantityDataGridViewTextBoxColumn
             // 
             this.lostQuantityDataGridViewTextBoxColumn.DataPropertyName = "LostQuantity";
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle52.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.lostQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.lostQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.lostQuantityDataGridViewTextBoxColumn.HeaderText = "Mất";
             this.lostQuantityDataGridViewTextBoxColumn.Name = "lostQuantityDataGridViewTextBoxColumn";
             this.lostQuantityDataGridViewTextBoxColumn.Width = 80;
@@ -390,9 +390,9 @@
             // unconfirmQuantityDataGridViewTextBoxColumn
             // 
             this.unconfirmQuantityDataGridViewTextBoxColumn.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle53.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.unconfirmQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.unconfirmQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.unconfirmQuantityDataGridViewTextBoxColumn.HeaderText = "KXĐ";
             this.unconfirmQuantityDataGridViewTextBoxColumn.Name = "unconfirmQuantityDataGridViewTextBoxColumn";
             this.unconfirmQuantityDataGridViewTextBoxColumn.Width = 80;
@@ -513,14 +513,14 @@
             this.dgvSelectedStock.AllowUserToAddRows = false;
             this.dgvSelectedStock.AllowUserToDeleteRows = false;
             this.dgvSelectedStock.AutoGenerateColumns = false;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSelectedStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSelectedStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSelectedStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectedStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -576,16 +576,16 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Quantity";
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn7.HeaderText = "Tồn thực";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // GoodQuantity
             // 
             this.GoodQuantity.DataPropertyName = "GoodQuantity";
-            dataGridViewCellStyle56.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.GoodQuantity.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.GoodQuantity.DefaultCellStyle = dataGridViewCellStyle11;
             this.GoodQuantity.HeaderText = "Tốt";
             this.GoodQuantity.Name = "GoodQuantity";
             this.GoodQuantity.Width = 80;
@@ -593,8 +593,8 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "ErrorQuantity";
-            dataGridViewCellStyle57.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle12;
             this.Column3.HeaderText = "Lỗi";
             this.Column3.Name = "Column3";
             this.Column3.Width = 80;
@@ -602,8 +602,8 @@
             // Column4
             // 
             this.Column4.DataPropertyName = "DamageQuantity";
-            dataGridViewCellStyle58.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column4.HeaderText = "Hư";
             this.Column4.Name = "Column4";
             this.Column4.Width = 80;
@@ -611,8 +611,8 @@
             // Column5
             // 
             this.Column5.DataPropertyName = "LostQuantity";
-            dataGridViewCellStyle59.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column5.HeaderText = "Mất";
             this.Column5.Name = "Column5";
             this.Column5.Width = 80;
@@ -620,8 +620,8 @@
             // Column6
             // 
             this.Column6.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle60.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle15;
             this.Column6.HeaderText = "KXĐ";
             this.Column6.Name = "Column6";
             this.Column6.Width = 80;

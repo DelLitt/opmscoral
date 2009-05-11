@@ -397,10 +397,13 @@ namespace AppFrameClient.View.Inventory
         private void AdjustGoodQuantity(IList temps,long goodQuantity)
         {
             long qty = 0;
+            // get total quantity
             foreach (DepartmentStockTemp stockTemp in temps)
             {
                 qty += stockTemp.Quantity;      
             }
+
+            // check quantity and audit value
             if (qty < goodQuantity)
             {
 
@@ -475,11 +478,12 @@ namespace AppFrameClient.View.Inventory
             }
             dgvStock.Enabled = false;
             int startY = dgvStock.Location.Y + dgvStock.ColumnHeadersHeight + (cellCollection[0].OwningRow.Height*(cellCollection[0].RowIndex+1));
-            int maxY = dgvStock.Size.Height + pnlSelectedStocks.Location.Y;
+            int maxY = dgvStock.Size.Height + dgvStock.Location.Y;
             if(maxY < startY + pnlSelectedStocks.Size.Height)
             {
                 startY = startY - cellCollection[0].OwningRow.Height - pnlSelectedStocks.Size.Height;
             }
+
             pnlSelectedStocks.Location = new Point(pnlSelectedStocks.Location.X, startY);
             pnlSelectedStocks.Visible = true;
             selectedTempView = stockList[cellCollection[0].RowIndex];           
