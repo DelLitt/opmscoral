@@ -11,7 +11,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
     public class DepartmentStockOutEventArgs : BaseEventArgs
     {
         public Form ParentForm { get; set; }
-
+        public DateTime LastSyncTime { get; set; }
         public bool IsConfirmPeriod { get; set; }
         public string ProductId { get; set; }
         public string ProductName { get; set; }

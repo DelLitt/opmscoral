@@ -58,7 +58,7 @@ namespace AppFrame.Logic
         long FindMaxId();
         IList FindStockOut(DateTime date, DateTime toDate);
         void ProcessErrorGoods(IList list, IList outList, IList stockOutList, IList goodsList);
-        SyncFromDepartmentToMain GetSyncData(bool IsSubmitPeriod);
+        SyncFromDepartmentToMain GetSyncData(bool IsSubmitPeriod,DateTime lastSyncTime);
         void SyncToMain(SyncFromDepartmentToMain sync);
     }
 }
