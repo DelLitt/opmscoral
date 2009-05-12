@@ -13,12 +13,13 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.MainStock
 {
     public class MainStockOutController : IMainStockOutController
     {
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region IDepartmentStockInExtraController Members
 
         private IMainStockOutView mainStockOutView;
@@ -239,6 +240,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             if (e.StockOut.StockoutId == 0)
             {
                 StockOutLogic.Add(e.StockOut);
+                ClientUtility.Log(logger, e.StockOut.ToString(), "Xuất kho");
                 e.EventResult = "Success";
             }
         }

@@ -15,6 +15,7 @@ using AppFrame.Presenter.SalePoints;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Utility;
 using NHibernate.Criterion;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
@@ -88,7 +89,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.EventResult = "Success";
         }
         #endregion
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public virtual void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
 
@@ -121,11 +122,27 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             {
                 //StockOutLogic.Add(stockIn);   
                 DepartmentStockInLogic.Add(stockIn);
+                if (!e.IsForSync)
+                {
+                    ClientUtility.Log(logger, stockIn.ToString(), "Nhập kho cửa hàng");
+                }
+                else
+                {
+                    ClientUtility.Log(logger, "Đồng bộ về cửa hàng.\r\n" + stockIn.ToString(), "Đồng bộ về cửa hàng");
+                }
             }
             else
             {
                 //StockOutLogic.Update(stockIn);   
                 DepartmentStockInLogic.Update(stockIn);
+                if (!e.IsForSync)
+                {
+                    ClientUtility.Log(logger, "Chỉnh sửa " + stockIn.ToString(), "Chỉnh sửa Nhập kho cửa hàng");
+                }
+                else
+                {
+                    ClientUtility.Log(logger, "Đồng bộ về cửa hàng.\r\n" + stockIn.ToString(), "Đồng bộ về cửa hàng");
+                }
             }
             if (stockIn.DepartmentStockInPK != null && e.IsForSync)
             {
@@ -177,6 +194,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 DepartmentStockInLogic.Sync(stockIn);*/
                 var syncFromMainToDepartment = e.SyncFromMainToDepartment;
                 DepartmentStockInLogic.Sync(syncFromMainToDepartment);
+                ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ cửa hàng về kho");
                 e.EventResult = "Success";
             }
             catch (Exception)

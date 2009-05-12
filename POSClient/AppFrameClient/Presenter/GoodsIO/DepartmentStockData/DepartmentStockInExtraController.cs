@@ -12,6 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
@@ -370,7 +371,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
             }
         }
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public override void departmentStockInView_SaveDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
             var stockIn = e.DepartmentStockIn;
@@ -380,17 +381,42 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 if(e.ExportGoodsToDepartment)
                 {
                     // execute stock out saving
-                    StockOutLogic.Add(stockIn);    
+                    StockOutLogic.Add(stockIn);
+                    if (!e.IsForSync)
+                    {
+                        ClientUtility.Log(logger, stockIn.ToString(), "Xuất hàng ra cửa hàng");
+                    }
+                    else
+                    {
+                        ClientUtility.Log(logger, "Đồng bộ về cửa hàng.\r\n" + stockIn.ToString(), "Xuất hàng ra cửa hàng");
+                    }
+
                 }
                 else
                 {
-                    DepartmentStockInLogic.Add(stockIn);    
+                    DepartmentStockInLogic.Add(stockIn);
+                    if (!e.IsForSync)
+                    {
+                        ClientUtility.Log(logger, stockIn.ToString(), "Nhập kho cửa hàng");
+                    }
+                    else
+                    {
+                        ClientUtility.Log(logger, "Đồng bộ về cửa hàng.\r\n" + stockIn.ToString(), "Đồng bộ về cửa hàng");
+                    }
                 }
                 
             }
             else
             {
                 DepartmentStockInLogic.Update(stockIn);
+                if (!e.IsForSync)
+                {
+                    ClientUtility.Log(logger, stockIn.ToString(), "Nhập kho cửa hàng");
+                }
+                else
+                {
+                    ClientUtility.Log(logger, "Đồng bộ về cửa hàng.\r\n" + stockIn.ToString(), "Đồng bộ về cửa hàng");
+                }
             }
             if (stockIn.DepartmentStockInPK != null && e.IsForSync)
             {

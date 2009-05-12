@@ -13,6 +13,7 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
@@ -55,10 +56,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
             }
         }
-
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public void _departmentStockOutView_SyncToMainEvent(object sender, DepartmentStockOutEventArgs e)
         {
             DepartmentStockOutLogic.SyncToMain(e.SyncFromDepartmentToMain);
+            ClientUtility.Log(logger, e.SyncFromDepartmentToMain.ToString(), "Đồng bộ về kho");
             e.EventResult = "Success";
         }
 
@@ -259,6 +261,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if (e.DepartmentStockOut.DepartmentStockOutPK == null || e.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
             {
                 DepartmentStockOutLogic.Add(e.DepartmentStockOut);
+                ClientUtility.Log(logger, e.DepartmentStockOut.ToString(), "Lưu xuất kho cửa hàng");
                 e.EventResult = "Success";
             }
         }
