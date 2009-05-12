@@ -214,9 +214,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.SERVER_SYNC_FORMAT);
-            string[] extraFileNames =
+            /*string[] extraFileNames =
                 Directory.GetFiles(importPath + "\\" + CurrentDepartment.Get().DepartmentId.ToString(),
-                                   "*" + CommonConstants.SERVER_SYNC_FORMAT);
+                                   "*" + CommonConstants.SERVER_SYNC_FORMAT);*/
             IList fileNameList = new ArrayList();
             if (fileNames.Length == 0 /*&& extraFileNames.Length == 0*/)
             {

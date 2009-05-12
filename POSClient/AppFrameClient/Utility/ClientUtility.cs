@@ -147,16 +147,16 @@ namespace AppFrameClient.Utility
                 string specificDeptPath = null;
                 string testName = fileName.Substring(fileName.LastIndexOf("\\")+1,
                                                          fileName.Length - (fileName.LastIndexOf("\\")+1));
-                if (fileName.IndexOf("SyncUp") > 0)
-                {
+                /*if (fileName.IndexOf("SyncUp") > 0)
+                {*/
                     long deptId = Int64.Parse(testName.Substring(0, 1));
                     specificDeptPath = path + "\\" + deptId.ToString();
-                }
+                /*}
 
                 if (fileName.IndexOf("SyncDown") > 0)
                 {
                     specificDeptPath = path + "\\" + testName.Substring(0,testName.IndexOf("_SyncDown_"));
-                }
+                }*/
 
                 if (specificDeptPath == null) throw new Exception();
                 if (!Directory.Exists(specificDeptPath))
@@ -236,7 +236,7 @@ namespace AppFrameClient.Utility
             {
                 if(file.IndexOf(department.DepartmentId + mark) >=0 )
                 {
-                    Stream stream = File.OpenRead(exportPath +"\\"+file);
+                    Stream stream = File.OpenRead(file);
                     BinaryFormatter formatter = new BinaryFormatter();
                     lastSyncTime  = (DateTime)formatter.Deserialize(stream);
                     stream.Close();

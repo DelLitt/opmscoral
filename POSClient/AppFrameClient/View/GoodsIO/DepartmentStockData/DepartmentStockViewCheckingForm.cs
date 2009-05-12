@@ -78,16 +78,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             int stockDefIndex = -1;
-            if (dgvStock.CurrentCell != null)
+            if (dgvStocks.CurrentCell != null)
             {
-                stockDefIndex = dgvStock.CurrentCell.RowIndex;
+                stockDefIndex = dgvStocks.CurrentCell.RowIndex;
             }
             if (HasInStockDefectList(stock, stockList, out stockDefIndex))
             {
                 if (stockDefIndex > -1 && stockDefIndex < stockList.Count)
                 {
                     stockList[stockDefIndex].GoodQuantity += 1;
-                    dgvStock.CurrentCell = dgvStock[5, stockDefIndex];
+                    dgvStocks.CurrentCell = dgvStocks[5, stockDefIndex];
                 }
 
             }
@@ -104,11 +104,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     stockList[stockList.Count - 1].OldUnconfirmQuantity = stockList[stockList.Count - 1].UnconfirmQuantity = 0;
 
                     txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
-                    dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
+                    dgvStocks.CurrentCell = dgvStocks[5, stockList.Count - 1];
             }
             bdsStockDefect.EndEdit();
-            dgvStock.Refresh();
-            dgvStock.Invalidate();
+            dgvStocks.Refresh();
+            dgvStocks.Invalidate();
             txtBarcode.Text = "";
             txtBarcode.Focus();
         }
@@ -135,8 +135,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             bdsStockDefect.DataSource = stockList;
             bdsStockDefect.EndEdit();
             bdsStockDefect.ResetBindings(true);
-            dgvStock.Refresh();
-            dgvStock.Invalidate();
+            dgvStocks.Refresh();
+            dgvStocks.Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -180,8 +180,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     || defect.UnconfirmQuantity < 0)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Có số lượng âm");
-                    dgvStock.CurrentCell = dgvStock[5, i];
-                    dgvStock.Focus();
+                    dgvStocks.CurrentCell = dgvStocks[5, i];
+                    dgvStocks.Focus();
                     return false;
                 }
 
@@ -190,8 +190,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 if (defect.Quantity != totalQuantity)
                 {
                     MessageBox.Show("Lỗi ở dòng thứ " + (i + 1) + " : Số lượng tồn không khớp với số lượng kiểm kê");
-                    dgvStock.CurrentCell = dgvStock[5, i];
-                    dgvStock.Focus();
+                    dgvStocks.CurrentCell = dgvStocks[5, i];
+                    dgvStocks.Focus();
                     return false;
                 }
             }
@@ -223,17 +223,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             long currDamage = defect.DamageQuantity - defect.OldDamageQuantity;
             long currLost = defect.LostQuantity - defect.OldLostQuantity;
             long currUnconfirm = defect.UnconfirmQuantity - defect.OldUnconfirmQuantity;
-
             defect.GoodQuantity = defect.GoodQuantity - currUnconfirm - currError - currLost - currDamage;
-
             defect.OldDamageQuantity = defect.DamageQuantity;
             defect.OldErrorQuantity = defect.ErrorQuantity;
             defect.OldLostQuantity = defect.LostQuantity;
             defect.OldUnconfirmQuantity = defect.UnconfirmQuantity;
 
             bdsStockDefect.EndEdit();
-            dgvStock.Refresh();
-            dgvStock.Invalidate();
+            dgvStocks.Refresh();
+            dgvStocks.Invalidate();
 
         }
 
@@ -272,11 +270,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void dgvStock_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvStock.CurrentCell == null)
+            if(dgvStocks.CurrentCell == null)
             {
                 return;
             }
-            DataGridViewSelectedCellCollection cellCollection = dgvStock.SelectedCells;
+            DataGridViewSelectedCellCollection cellCollection = dgvStocks.SelectedCells;
             if(cellCollection.Count <= 0)
             {
                 return;
@@ -339,8 +337,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             isReadOnly = true;
                         }
                     }
-                    dgvStock.Rows[i].ReadOnly = isReadOnly;
-                    foreach (DataGridViewCell cell in dgvStock.Rows[i].Cells)
+                    dgvStocks.Rows[i].ReadOnly = isReadOnly;
+                    foreach (DataGridViewCell cell in dgvStocks.Rows[i].Cells)
                     {
                         if (cell.ColumnIndex >= 5)
                         {
@@ -350,12 +348,50 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     
 
                     bdsStockDefect.EndEdit();
-                    dgvStock.Refresh();
-                    dgvStock.Invalidate();
+                    dgvStocks.Refresh();
+                    dgvStocks.Invalidate();
 
                     return;
                 }
             }
+        }
+
+        private void mnuSum_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedCellCollection selectedCells = dgvStocks.SelectedCells;
+            try
+            {
+                long sumQty = 0;
+                foreach (DataGridViewCell cell in selectedCells)
+                {
+                    long qty = Int64.Parse(cell.Value.ToString());
+                    sumQty += qty;
+                }
+                txtSum.Text = sumQty.ToString();
+            }
+            catch (Exception)
+            {
+                txtSum.Text = "N/A";
+            }
+        }
+
+        private void dgvStocks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvStocks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            long totalQty = 0;
+            long totalGoodQty = 0;
+            foreach (DepartmentStockView stockView in stockList)
+            {
+                totalQty += stockView.Quantity;
+                totalGoodQty += stockView.GoodQuantity;
+            }
+
+            txtQuantity.Text = totalQty.ToString();
+            txtGoodQuantity.Text = totalGoodQty.ToString();
         }
     }
 }

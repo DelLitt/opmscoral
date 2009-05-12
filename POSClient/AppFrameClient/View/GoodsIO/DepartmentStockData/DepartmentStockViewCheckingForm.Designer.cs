@@ -54,7 +54,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.dgvStocks = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,10 +68,18 @@
             this.label11 = new System.Windows.Forms.Label();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.button4 = new System.Windows.Forms.Button();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtGoodQuantity = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSum = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuSum = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -206,7 +214,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(748, 507);
+            this.button3.Location = new System.Drawing.Point(748, 555);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
@@ -216,7 +224,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(897, 507);
+            this.btnClose.Location = new System.Drawing.Point(897, 555);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
@@ -227,7 +235,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(534, 507);
+            this.button1.Location = new System.Drawing.Point(534, 555);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 26;
@@ -245,11 +253,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
             // 
-            // dgvStock
+            // dgvStocks
             // 
-            this.dgvStock.AllowUserToAddRows = false;
-            this.dgvStock.AllowUserToDeleteRows = false;
-            this.dgvStock.AutoGenerateColumns = false;
+            this.dgvStocks.AllowUserToAddRows = false;
+            this.dgvStocks.AllowUserToDeleteRows = false;
+            this.dgvStocks.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,9 +265,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -270,14 +278,17 @@
             this.columnDamage,
             this.columnLost,
             this.Column7});
-            this.dgvStock.DataSource = this.bdsStockDefect;
-            this.dgvStock.Location = new System.Drawing.Point(12, 188);
-            this.dgvStock.Name = "dgvStock";
-            this.dgvStock.Size = new System.Drawing.Size(960, 313);
-            this.dgvStock.TabIndex = 24;
-            this.dgvStock.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellDoubleClick);
-            this.dgvStock.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellContentDoubleClick);
-            this.dgvStock.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
+            this.dgvStocks.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvStocks.DataSource = this.bdsStockDefect;
+            this.dgvStocks.Location = new System.Drawing.Point(12, 188);
+            this.dgvStocks.Name = "dgvStocks";
+            this.dgvStocks.Size = new System.Drawing.Size(960, 313);
+            this.dgvStocks.TabIndex = 24;
+            this.dgvStocks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellDoubleClick);
+            this.dgvStocks.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStocks_RowPostPaint);
+            this.dgvStocks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellContentDoubleClick);
+            this.dgvStocks.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
+            this.dgvStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStocks_CellContentClick);
             // 
             // Column1
             // 
@@ -393,7 +404,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(338, 507);
+            this.button4.Location = new System.Drawing.Point(338, 555);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(190, 23);
             this.button4.TabIndex = 33;
@@ -402,9 +413,70 @@
             this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // txtQuantity
+            // 
+            this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuantity.Location = new System.Drawing.Point(522, 501);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(63, 20);
+            this.txtQuantity.TabIndex = 34;
+            // 
+            // txtGoodQuantity
+            // 
+            this.txtGoodQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGoodQuantity.Location = new System.Drawing.Point(591, 501);
+            this.txtGoodQuantity.Name = "txtGoodQuantity";
+            this.txtGoodQuantity.Size = new System.Drawing.Size(58, 20);
+            this.txtGoodQuantity.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(441, 504);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Tổng số lượng";
+            // 
+            // txtSum
+            // 
+            this.txtSum.BackColor = System.Drawing.SystemColors.Control;
+            this.txtSum.Location = new System.Drawing.Point(243, 555);
+            this.txtSum.Name = "txtSum";
+            this.txtSum.Size = new System.Drawing.Size(64, 20);
+            this.txtSum.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(200, 558);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Sum =";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSum});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 26);
+            // 
+            // mnuSum
+            // 
+            this.mnuSum.Name = "mnuSum";
+            this.mnuSum.Size = new System.Drawing.Size(119, 22);
+            this.mnuSum.Text = "Tính tổng";
+            this.mnuSum.Click += new System.EventHandler(this.mnuSum_Click);
+            // 
             // DepartmentStockViewCheckingForm
             // 
-            this.ClientSize = new System.Drawing.Size(984, 562);
+            this.ClientSize = new System.Drawing.Size(984, 581);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSum);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtGoodQuantity);
+            this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -413,7 +485,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dgvStock);
+            this.Controls.Add(this.dgvStocks);
             this.Controls.Add(this.label11);
             this.Name = "DepartmentStockViewCheckingForm";
             this.Load += new System.EventHandler(this.DepartmentStockCheckingForm_Load);
@@ -421,7 +493,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,7 +520,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dgvStock;
+        private System.Windows.Forms.DataGridView dgvStocks;
         private System.Windows.Forms.Label label11;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private System.Windows.Forms.Button button4;
@@ -461,5 +534,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtGoodQuantity;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSum;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuSum;
     }
 }
