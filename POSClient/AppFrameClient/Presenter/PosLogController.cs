@@ -49,7 +49,8 @@ namespace AppFrameClient.Presenter
             }
             criteria.AddGreaterOrEqualsCriteria("Date", DateUtility.ZeroTime(e.LogDateFrom));
             criteria.AddLesserOrEqualsCriteria("Date", DateUtility.MaxTime(e.LogDateTo));
-            IList list = PosLogLogic.FindAll(null);
+            criteria.AddOrder("Date", false);
+            IList list = PosLogLogic.FindAll(criteria);
             e.PosLogList = list;
         }
 

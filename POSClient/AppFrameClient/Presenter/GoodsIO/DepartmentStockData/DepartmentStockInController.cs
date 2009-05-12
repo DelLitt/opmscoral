@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using AppFrame;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
@@ -16,6 +17,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Utility;
+using Microsoft.ReportingServices.Diagnostics.Utilities;
 using NHibernate.Criterion;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
@@ -114,6 +116,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     if (price.DepartmentPricePK.ProductMasterId.Equals(detail.Product.ProductMaster.ProductMasterId))
                     {
                         detail.Price = price.Price;
+                    }
+                    if(price.Price <= 0)
+                    {
+                        throw new BusinessException(" Giá hàng của " + detail.Product.ProductMaster.ProductName + " bằng 0 hoặc âm. Đề nghị điều chỉnh trước khi xuất ra cửa hàng.");
                     }
                 }
             }

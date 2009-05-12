@@ -59,9 +59,8 @@ namespace AppFrame.View
 
         private void mnuFileLogout_Click(object sender, EventArgs e)
         {
-            ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
             this.AuthService.logout();
-
+            ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
         }
 
         private void mnuCustomerNew_Click(object sender, EventArgs e)
