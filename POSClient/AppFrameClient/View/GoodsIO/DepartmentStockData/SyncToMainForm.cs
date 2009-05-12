@@ -72,7 +72,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 var eventArgs = new DepartmentStockOutEventArgs();
                 
                 eventArgs.IsConfirmPeriod = isConfirmPeriod;
-                
+                eventArgs.LastSyncTime = lastSyncTime;
                 EventUtility.fireEvent(GetSyncDataEvent, this, eventArgs);
                 SyncFromDepartmentToMain syncData = eventArgs.SyncFromDepartmentToMain;
                 if (syncData != null)
@@ -87,7 +87,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     result.Status = "Thành công";
                     ClientUtility.CleanDatabase();
                     // write last sync time
-                    ClientUtility.WriteLastSyncTime(exportPath,CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
+                    //ClientUtility.WriteLastSyncTime(exportPath,CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
                     MessageBox.Show("Đồng bộ thành công");
 
                 }

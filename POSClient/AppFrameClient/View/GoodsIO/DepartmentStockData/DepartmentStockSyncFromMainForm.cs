@@ -190,8 +190,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
             // get import path of this department
             importPath = importPath + "\\" + CurrentDepartment.Get().DepartmentId;
-            errorPath = ClientUtility.EnsureSyncPath(errorPath, CurrentDepartment.Get());
-            successPath = ClientUtility.EnsureSyncPath(successPath, CurrentDepartment.Get()); 
+            //errorPath = ClientUtility.EnsureSyncPath(errorPath, CurrentDepartment.Get());
+            //successPath = ClientUtility.EnsureSyncPath(successPath, CurrentDepartment.Get()); 
 
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
@@ -311,6 +311,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
                         ClientUtility.MoveFileToSpecificDir(successPath, fileName);
+                        string origFileName = fileName.Substring(fileName.LastIndexOf("\\")+1, fileName.Length - (fileName.LastIndexOf("\\")+1));
+                        string[] separateFileNames = origFileName.Split('.');
+                        string updateTimeStr =
+                            separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
+                        DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
+                        ClientUtility.WriteLastSyncTime(updateTime,importPath, CurrentDepartment.Get(), ClientUtility.SyncType.SyncDown);
                         result.Status = "Thành công";
                     }
                 }

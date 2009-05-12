@@ -154,7 +154,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
                         stream.Close();    
                         // write last sync time
-                        ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
+                        //ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     }
                     
                 }

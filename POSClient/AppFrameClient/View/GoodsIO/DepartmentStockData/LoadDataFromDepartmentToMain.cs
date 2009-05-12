@@ -154,6 +154,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
                         ClientUtility.MoveFileToSpecificDir(successPath, fileName);
+                        string origFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1, fileName.Length - (fileName.LastIndexOf("\\") + 1));
+                        string[] separateFileNames = origFileName.Split('.');
+                        string updateTimeStr =
+                            separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncUp_") + 8);
+                        DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
+                        string syncPath = fileName.Substring(0, fileName.LastIndexOf("\\"));
+                        long deptId = Int32.Parse(origFileName.Substring(0, origFileName.IndexOf("_")));
+                        Department department = new Department{ DepartmentId = deptId};
+                        ClientUtility.WriteLastSyncTime(updateTime, syncPath,department , ClientUtility.SyncType.SyncUp);
                         result.Status = "Thành công";
                     }
                 }

@@ -245,7 +245,7 @@ namespace AppFrameClient.Utility
             return lastSyncTime;
         }
 
-        public static void WriteLastSyncTime(string exportPath,Department department,SyncType syncType)
+        public static void WriteLastSyncTime(DateTime syncTime,string exportPath,Department department,SyncType syncType)
         {
             DateTime lastSyncTime = DateTime.Now;
             string mark = "_Status";

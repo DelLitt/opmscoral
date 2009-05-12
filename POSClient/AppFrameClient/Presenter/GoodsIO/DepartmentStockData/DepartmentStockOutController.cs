@@ -69,7 +69,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             // first process all timeline
             DepartmentTimelineLogic.ProcessPeriod(e.IsConfirmPeriod);
             // then get data
-            e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData(e.IsConfirmPeriod);
+            e.SyncFromDepartmentToMain = DepartmentStockOutLogic.GetSyncData(e.IsConfirmPeriod,e.LastSyncTime);
         }
 
         public void _departmentStockOutView_LoadProductSizeEvent(object sender, DepartmentStockOutEventArgs e)
