@@ -218,6 +218,7 @@ namespace AppFrameClient.Utility
                 return path;
             }
         }
+
         public enum SyncType { SyncUp, SyncDown }
         public static DateTime GetLastSyncTime(string exportPath,Department department,SyncType syncType)
         {

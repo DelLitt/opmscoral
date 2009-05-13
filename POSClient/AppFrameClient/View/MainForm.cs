@@ -711,5 +711,10 @@ namespace AppFrame.View
                 FormConstants.POS_LOG_FORM);
             form.Show();
         }
+
+        private void mnuDanhmucHanghoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
