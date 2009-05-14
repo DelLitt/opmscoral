@@ -51,11 +51,13 @@ namespace POSReports
                 
                 if(!string.IsNullOrEmpty(txtFilter.Text))
                 {
-                    parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());    
+                    parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());
+                    this.deptStockStatisticBindingSource.Filter = "product_name like '%" + txtFilter.Text + "%'";
                 }
                 else
                 {
-                    parameters[0] = new ReportParameter("StrFilter", "");    
+                    parameters[0] = new ReportParameter("StrFilter", "");
+                    this.deptStockStatisticBindingSource.Filter = "";
                 }
 
                 object deptId = departmentId.SelectedValue;
@@ -77,6 +79,9 @@ namespace POSReports
             
             // TODO: This line of code loads data into the 'posDataSet.deptStockStatistic' table. You can move, or remove it, as needed.
 //            this.DeptStockStatisticTableAdapter.Fill(this.posDataSet.deptStockStatistic);
+            BindingSource tempBindingSource = new BindingSource(this.deptStockStatisticBindingSource, "");
+            this.reportViewer1.LocalReport.DataSources[0].Value = tempBindingSource;
+
             if(CurrentDepartment.Get().DepartmentId!=0)
             {
                 departmentId.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();

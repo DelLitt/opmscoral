@@ -103,5 +103,10 @@ namespace POSReports
                 cboIsolatedBy.SelectedIndex = 0;
             }
         }
+
+        private void cboSortOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

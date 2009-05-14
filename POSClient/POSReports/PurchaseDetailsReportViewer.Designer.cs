@@ -75,8 +75,8 @@
             this.tableLayoutPanel1.Controls.Add(this.fromDate, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.toDate, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.departments, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -142,9 +142,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(613, 39);
+            this.button1.Location = new System.Drawing.Point(613, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 30);
+            this.button1.Size = new System.Drawing.Size(118, 26);
             this.button1.TabIndex = 5;
             this.button1.Text = "Xem báo cáo";
             this.button1.UseVisualStyleBackColor = true;
