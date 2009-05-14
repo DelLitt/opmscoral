@@ -76,17 +76,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.SyncFromMainToDepartment.DepartmentStockTemps = processedStockTemps;
             
             var criteria = new ObjectCriteria();
-            /*criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("DepartmentStockInPK.DepartmentId", e.Department.DepartmentId);
-            e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);*/
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            //criteria.AddEqCriteria("StockInType", CommonConstants.DEL_FLG_NO);
-            //criteria.AddEqCriteria("ExportStatus", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentId", e.Department.DepartmentId);
             criteria.AddGreaterOrEqualsCriteria("CreateDate", lastSyncTime);
-            //e.DepartmentStockInList = DepartmentStockInLogic.FindAll(criteria);
             
             e.SyncFromMainToDepartment.StockOutList = StockOutLogic.FindAll(criteria);
             e.SyncFromMainToDepartment.Department = e.Department;

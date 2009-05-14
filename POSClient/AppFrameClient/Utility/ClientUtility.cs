@@ -261,7 +261,7 @@ namespace AppFrameClient.Utility
             string lastSyncFile = exportPath + "\\" + department.DepartmentId + mark +".synctime";
             Stream stream = File.Open(lastSyncFile, FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream,lastSyncTime);
+            formatter.Serialize(stream, syncTime);
             stream.Close();
         }
     }
