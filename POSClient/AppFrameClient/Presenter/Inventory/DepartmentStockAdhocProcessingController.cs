@@ -150,7 +150,7 @@ namespace AppFrameClient.Presenter.Inventory
             IList deptStockTempList = null;
             if (list != null && list.Count > 0)
             {
-                 deptStockTempList = new ArrayList();
+                deptStockTempList = new ArrayList();
                 
                 foreach (DepartmentStockTemp stockTemp in list)
                 {

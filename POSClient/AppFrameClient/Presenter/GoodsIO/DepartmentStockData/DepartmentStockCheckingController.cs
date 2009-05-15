@@ -40,34 +40,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         void departmentStockCheckingView_LoadTempInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         void departmentStockCheckingView_SaveTempInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)
         {
-            if (e.SaveStockList != null && e.SaveStockList.Count > 0)
-            {
-
-
-                foreach (DepartmentStock stock in e.SaveStockList)
-                {
-                    if (stock.DamageQuantity == 0 && stock.OldDamageQuantity == 0
-                        && stock.ErrorQuantity == 0 && stock.OldErrorQuantity == 0
-                        && stock.LostQuantity == 0 && stock.OldLostQuantity == 0
-                        && stock.UnconfirmQuantity == 0 && stock.OldUnconfirmQuantity == 0)
-                    {
-                        continue;
-                    }
-
-                    stock.CreateDate = DateTime.Now;
-                    stock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                    stock.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                    stock.UpdateDate = DateTime.Now;
-                    stock.DelFlg = 0;
-
-                    DepartmentStockTempLogic.Update(stock);
-                }
-            }
+            
         }
 
         void inventoryCheckingView_SaveInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)

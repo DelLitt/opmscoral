@@ -8,9 +8,11 @@ using AppFrame.Common;
 using AppFrame.Exceptions;
 using AppFrame.Logic;
 using AppFrame.Model;
+using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.Utility.Mapper;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.ViewModel;
 using Spring.Transaction.Interceptor;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
@@ -29,8 +31,97 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 departmentStockCheckingView = value;
                 departmentStockCheckingView.LoadGoodsByProductIdEvent += new EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs>(departmentStockCheckingView_LoadGoodsByProductIdEvent);
                 departmentStockCheckingView.SaveInventoryCheckingEvent += new EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs>(departmentStockCheckingView_SaveInventoryCheckingEvent);
+                departmentStockCheckingView.SaveTempInventoryCheckingEvent += new EventHandler<DepartmentStockCheckingEventArgs>(departmentStockCheckingView_SaveTempInventoryCheckingEvent);
+                departmentStockCheckingView.LoadTempInventoryCheckingEvent += new EventHandler<DepartmentStockCheckingEventArgs>(departmentStockCheckingView_LoadTempInventoryCheckingEvent);
             }
         }
+
+        void departmentStockCheckingView_LoadTempInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)
+        {
+            // search in temp stock
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DepartmentStockTempPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("TempSave", CommonConstants.DEL_FLG_NO);
+            criteria.AddOrder("ProductMaster.ProductMasterId", true);
+            IList list = DepartmentStockTempLogic.FindAll(criteria);
+            IList deptStockTempList = null;
+            if (list != null && list.Count > 0)
+            {
+                deptStockTempList = new ArrayList();
+
+                foreach (DepartmentStockTemp stockTempSave in list)
+                {
+                    int viewIndex = -1;
+                    DepartmentStock stockTemp = new DepartmentStockMapper().Convert(stockTempSave);
+                    if (HasInList(stockTemp, deptStockTempList, out viewIndex))
+                    {
+                        DepartmentStockView view = (DepartmentStockView)deptStockTempList[viewIndex];
+
+                        view.Quantity += stockTemp.Quantity;
+                        view.GoodQuantity += stockTemp.GoodQuantity;
+                        view.ErrorQuantity += stockTemp.ErrorQuantity;
+                        view.DamageQuantity += stockTemp.DamageQuantity;
+                        view.LostQuantity += stockTemp.LostQuantity;
+                        view.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
+                        view.DepartmentStocks.Add(stockTemp);
+                    }
+                    else
+                    {
+                        DepartmentStockView view = new DepartmentStockView();
+                        
+                        view.Quantity += stockTemp.Quantity;
+                        view.GoodQuantity += stockTemp.GoodQuantity;
+                        view.ErrorQuantity += stockTemp.ErrorQuantity;
+                        view.DamageQuantity += stockTemp.DamageQuantity;
+                        view.LostQuantity += stockTemp.LostQuantity;
+                        view.UnconfirmQuantity += stockTemp.UnconfirmQuantity;
+                        view.ProductMaster = stockTemp.ProductMaster;
+                        view.DepartmentStocks = new ArrayList();
+                        view.DepartmentStocks.Add(stockTemp);
+                        deptStockTempList.Add(view);
+                    }
+                }
+
+            }
+
+            e.ReturnStockViewList = deptStockTempList;
+        }
+
+        private bool HasInList(DepartmentStock temp, IList list, out int index)
+        {
+            bool hasInList = false;
+            index = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                index = i;
+                DepartmentStockView view = (DepartmentStockView)list[i];
+                if (view.ProductMaster.ProductMasterId.Equals(
+                                    temp.Product.ProductMaster.ProductMasterId))
+                {
+                    hasInList = true;
+                    break;
+                }
+            }
+
+            return hasInList;
+        }
+
+        void departmentStockCheckingView_SaveTempInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)
+        {
+            try
+            {
+                DepartmentStockTempLogic.TempSave(e.SaveStockViewList);     
+            }
+            catch (Exception)
+            {
+
+                e.HasErrors = true;
+            }
+            
+        }
+
         [Transaction(ReadOnly = false)]
         void departmentStockCheckingView_SaveInventoryCheckingEvent(object sender, AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs e)
         {
