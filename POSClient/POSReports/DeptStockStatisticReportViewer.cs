@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Model;
 using Microsoft.Reporting.WinForms;
 
 namespace POSReports
@@ -59,7 +60,20 @@ namespace POSReports
                     parameters[0] = new ReportParameter("StrFilter", "");
                     this.deptStockStatisticBindingSource.Filter = "";
                 }
-
+                if(comboBox1.SelectedIndex != -1)
+                {
+                    ProductType productType = (ProductType) comboBox1.SelectedItem;
+                    if(productType.TypeId != 0)
+                    {
+                        string extraFilterStr = "";
+                        if(!string.IsNullOrEmpty(deptStockStatisticBindingSource.Filter))
+                        {
+                            extraFilterStr += " AND ";
+                        }
+                        
+                        deptStockStatisticBindingSource.Filter += extraFilterStr + " type_name = '" + productType.TypeName + "'";
+                    }
+                }
                 object deptId = departmentId.SelectedValue;
                 this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()),ZeroTime(toDate.Value),MaxTime(toDate.Value) );
                 
@@ -74,11 +88,18 @@ namespace POSReports
 
         private void DeptStockStatisticReportViewer_Load(object sender, EventArgs e)
         {
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add(new ProductType {TypeId = 0, TypeName = "Tất cả cửa hàng"});
             departmentTableAdapter.Fill(this.posDataSet.department);
-            
+            product_typeTableAdapter1.Fill(posDataSet.product_type);
+            foreach(posDataSet.product_typeRow row in posDataSet.product_type)
+            {
+                comboBox1.Items.Add(new ProductType {TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME});
+            }
+            comboBox1.DisplayMember = "TypeName";
             
             // TODO: This line of code loads data into the 'posDataSet.deptStockStatistic' table. You can move, or remove it, as needed.
-//            this.DeptStockStatisticTableAdapter.Fill(this.posDataSet.deptStockStatistic);
+            // this.DeptStockStatisticTableAdapter.Fill(this.posDataSet.deptStockStatistic);
             BindingSource tempBindingSource = new BindingSource(this.deptStockStatisticBindingSource, "");
             this.reportViewer1.LocalReport.DataSources[0].Value = tempBindingSource;
 
