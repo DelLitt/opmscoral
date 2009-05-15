@@ -31,6 +31,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> LoadGoodsByProductIdEvent;
 
         public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> SaveInventoryCheckingEvent;
+        public event EventHandler<DepartmentStockCheckingEventArgs> SaveTempInventoryCheckingEvent;
+        public event EventHandler<DepartmentStockCheckingEventArgs> LoadTempInventoryCheckingEvent;
 
         private AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController departmentStockCheckingController;        
         public AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController DepartmentStockCheckingController
@@ -213,6 +215,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Bạn muốn thoát ? ", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                            MessageBoxDefaultButton.Button1);
+            if(result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
             Close();
         }
 
@@ -260,7 +268,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            if (stockList.Count < 1)
+            {
+                MessageBox.Show("Không có gì để lưu");
+                return;
+            }
+            DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
+            checkingEventArgs.SaveStockViewList = ObjectConverter.ConvertToNonGenericList(stockList);
+            
+            EventUtility.fireEvent(SaveTempInventoryCheckingEvent, this, checkingEventArgs);
+            if (!checkingEventArgs.HasErrors)
+            {
+                MessageBox.Show("Lưu kết quả tạm thành công");
+            }
         }
 
         private void dgvStock_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -392,6 +412,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             txtQuantity.Text = totalQty.ToString();
             txtGoodQuantity.Text = totalGoodQty.ToString();
+        }
+
+        private void btnTempLoad_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

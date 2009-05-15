@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -65,16 +65,17 @@
             this.columnDamage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuSum = new System.Windows.Forms.ToolStripMenuItem();
             this.label11 = new System.Windows.Forms.Label();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnTempSave = new System.Windows.Forms.Button();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.txtGoodQuantity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSum = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuSum = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTempLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
@@ -214,7 +215,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(748, 555);
+            this.button3.Location = new System.Drawing.Point(816, 555);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
@@ -235,7 +236,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(534, 555);
+            this.button1.Location = new System.Drawing.Point(591, 555);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 26;
@@ -323,9 +324,9 @@
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "##,##0";
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Format = "##,##0";
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle15;
             this.Quantity.HeaderText = "Tồn";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
@@ -334,10 +335,10 @@
             // columnGood
             // 
             this.columnGood.DataPropertyName = "GoodQuantity";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle3.Format = "##,##0";
-            this.columnGood.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle16.Format = "##,##0";
+            this.columnGood.DefaultCellStyle = dataGridViewCellStyle16;
             this.columnGood.HeaderText = "Tốt";
             this.columnGood.Name = "columnGood";
             this.columnGood.Width = 60;
@@ -345,10 +346,10 @@
             // columnError
             // 
             this.columnError.DataPropertyName = "ErrorQuantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle4.Format = "##,##0";
-            this.columnError.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle17.Format = "##,##0";
+            this.columnError.DefaultCellStyle = dataGridViewCellStyle17;
             this.columnError.HeaderText = "Lỗi";
             this.columnError.Name = "columnError";
             this.columnError.Width = 60;
@@ -356,10 +357,10 @@
             // columnDamage
             // 
             this.columnDamage.DataPropertyName = "DamageQuantity";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle5.Format = "##,##0";
-            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle18.Format = "##,##0";
+            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle18;
             this.columnDamage.HeaderText = "Hư";
             this.columnDamage.Name = "columnDamage";
             this.columnDamage.Width = 60;
@@ -367,10 +368,10 @@
             // columnLost
             // 
             this.columnLost.DataPropertyName = "LostQuantity";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle6.Format = "##,##0";
-            this.columnLost.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle19.Format = "##,##0";
+            this.columnLost.DefaultCellStyle = dataGridViewCellStyle19;
             this.columnLost.HeaderText = "Mất";
             this.columnLost.Name = "columnLost";
             this.columnLost.Width = 60;
@@ -378,13 +379,27 @@
             // Column7
             // 
             this.Column7.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle7.Format = "##,##0";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle20.Format = "##,##0";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle20;
             this.Column7.HeaderText = "Không xác định";
             this.Column7.Name = "Column7";
             this.Column7.Width = 144;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSum});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 26);
+            // 
+            // mnuSum
+            // 
+            this.mnuSum.Name = "mnuSum";
+            this.mnuSum.Size = new System.Drawing.Size(126, 22);
+            this.mnuSum.Text = "Tính tổng";
+            this.mnuSum.Click += new System.EventHandler(this.mnuSum_Click);
             // 
             // label11
             // 
@@ -401,23 +416,24 @@
             this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
             this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
-            // button4
+            // btnTempSave
             // 
-            this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(338, 555);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 23);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "Lưu kết quả kiểm kê tạm thời";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnTempSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTempSave.Location = new System.Drawing.Point(338, 555);
+            this.btnTempSave.Name = "btnTempSave";
+            this.btnTempSave.Size = new System.Drawing.Size(77, 23);
+            this.btnTempSave.TabIndex = 33;
+            this.btnTempSave.Text = "Lưu tạm";
+            this.btnTempSave.UseVisualStyleBackColor = true;
+            this.btnTempSave.Visible = false;
+            this.btnTempSave.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtQuantity
             // 
             this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQuantity.Location = new System.Drawing.Point(522, 501);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(63, 20);
             this.txtQuantity.TabIndex = 34;
             // 
@@ -426,6 +442,7 @@
             this.txtGoodQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGoodQuantity.Location = new System.Drawing.Point(591, 501);
             this.txtGoodQuantity.Name = "txtGoodQuantity";
+            this.txtGoodQuantity.ReadOnly = true;
             this.txtGoodQuantity.Size = new System.Drawing.Size(58, 20);
             this.txtGoodQuantity.TabIndex = 35;
             // 
@@ -455,38 +472,37 @@
             this.label7.TabIndex = 38;
             this.label7.Text = "Sum =";
             // 
-            // contextMenuStrip1
+            // btnTempLoad
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSum});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 26);
-            // 
-            // mnuSum
-            // 
-            this.mnuSum.Name = "mnuSum";
-            this.mnuSum.Size = new System.Drawing.Size(119, 22);
-            this.mnuSum.Text = "Tính tổng";
-            this.mnuSum.Click += new System.EventHandler(this.mnuSum_Click);
+            this.btnTempLoad.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTempLoad.Location = new System.Drawing.Point(421, 555);
+            this.btnTempLoad.Name = "btnTempLoad";
+            this.btnTempLoad.Size = new System.Drawing.Size(77, 23);
+            this.btnTempLoad.TabIndex = 39;
+            this.btnTempLoad.Text = "Đọc tạm";
+            this.btnTempLoad.UseVisualStyleBackColor = true;
+            this.btnTempLoad.Visible = false;
+            this.btnTempLoad.Click += new System.EventHandler(this.btnTempLoad_Click);
             // 
             // DepartmentStockViewCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(984, 581);
+            this.Controls.Add(this.btnTempLoad);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSum);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtGoodQuantity);
             this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnTempSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtBarcode);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dgvStocks);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.button1);
             this.Name = "DepartmentStockViewCheckingForm";
             this.Load += new System.EventHandler(this.DepartmentStockCheckingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -523,7 +539,7 @@
         private System.Windows.Forms.DataGridView dgvStocks;
         private System.Windows.Forms.Label label11;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTempSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -541,5 +557,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuSum;
+        private System.Windows.Forms.Button btnTempLoad;
     }
 }
