@@ -54,6 +54,7 @@ namespace AppFrame.Logic
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
-        
+
+        void TempSave(IList saveStockViewList);
     }
 }

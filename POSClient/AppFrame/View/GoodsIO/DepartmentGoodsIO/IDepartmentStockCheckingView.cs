@@ -17,6 +17,9 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
 
         #region Controller
         IDepartmentStockCheckingController DepartmentStockCheckingController { get; set; }
-        #endregion 
+        #endregion
+
+        event EventHandler<DepartmentStockCheckingEventArgs> SaveTempInventoryCheckingEvent;
+        event EventHandler<DepartmentStockCheckingEventArgs> LoadTempInventoryCheckingEvent;
     }
 }

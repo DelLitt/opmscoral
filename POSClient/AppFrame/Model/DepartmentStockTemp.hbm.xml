@@ -138,6 +138,13 @@
         length="10"
     >
   </property>
+  <property
+        name="TempSave"
+        type="Int64"
+        column="TEMPSAVE"
+        length="10"
+    >
+  </property>
     <!-- end of derived association(s) -->
   
 

@@ -175,6 +175,7 @@ namespace AppFrame.Model
         }
         public virtual ProductMaster ProductMaster { get; set; }
         public virtual long Fixed { get; set; }
+        public virtual long TempSave { get; set; }
         #endregion
         
         #region IComparable Methods
