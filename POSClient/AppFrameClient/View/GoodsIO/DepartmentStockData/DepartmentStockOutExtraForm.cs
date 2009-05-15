@@ -452,9 +452,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Bạn hãy kiểm tra kỹ trước khi lưu số liệu bởi vì sau khi lưu sẽ không thay đổi được nữa. Bạn có chắc chắn muốn lưu","Xác nhận",
+            DialogResult result = MessageBox.Show(
+                "Bạn hãy kiểm tra kỹ trước khi lưu số liệu bởi vì sau khi lưu sẽ không thay đổi được nữa. Bạn có chắc chắn muốn lưu ?","Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
             // first remove all blank row
             int count = 0;
             int length = deptSODetailList.Count;
