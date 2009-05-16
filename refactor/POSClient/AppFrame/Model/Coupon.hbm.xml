@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="Coupon"
+	    table="coupon"
+>
+
+    <id
+        name="CouponId"
+        type="Int64"
+        column="COUPON_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="CouponName"
+        type="string"
+        column="COUPON_NAME"
+        length="500"
+    >
+    </property>
+    <property
+        name="DiscountValue"
+        type="Int64"
+        column="DISCOUNT_VALUE"
+        length="10"
+    >
+    </property>
+    <property
+        name="DiscountPercent"
+        type="Int64"
+        column="DISCOUNT_PERCENT"
+        length="10"
+    >
+    </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to CouponType -->
+    <many-to-one
+        name="CouponType"
+        class="CouponType"
+        not-null="true"
+    >
+    </many-to-one>
+    <!-- bi-directional one-to-many association to PublishedCoupon -->
+    <bag
+        name="PublishedCoupons"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="COUPON_ID" />
+        </key>
+        <one-to-many 
+            class="PublishedCoupon"
+        />
+    </bag>
+
+</class>
+</hibernate-mapping>

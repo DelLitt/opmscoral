@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="ReturnPo"
+	    table="return_po"
+>
+
+    <composite-id name="ReturnPoPK" class="ReturnPoPK">
+        <key-property 
+            name="PurchaseOrderId" 
+            column="PURCHASE_ORDER_ID" 
+            type="string"
+            length="20">
+        </key-property>
+        <key-property 
+            name="PurchaseOrderDetailId" 
+            column="PURCHASE_ORDER_DETAIL_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+        <key-property 
+            name="DepartmentId" 
+            column="DEPARTMENT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+      <key-property
+            name="CreateDate"
+            type="DateTime"
+            column="CREATE_DATE"
+            length="19"
+        >
+      </key-property>
+    </composite-id>    
+
+    <property
+        name="ReturnDate"
+        type="DateTime"
+        column="RETURN_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="Description"
+        type="string"
+        column="DESCRIPTION"
+        length="5000"
+    >
+    </property>
+    <property
+        name="Quantity"
+        type="Int64"
+        column="QUANTITY"
+        length="10"
+    >
+    </property>
+    
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+  <property
+        name="Price"
+        type="Int64"
+        column="PRICE"
+        length="10"
+    >
+  </property>
+   <!-- bi-directional many-to-one association to PurchaseOrder -->
+  <property
+        name="NextPurchaseOrderId"
+        type="string"
+        column="NEXT_PURCHASE_ORDER_ID"
+        length="20"
+    >
+  </property>
+  <many-to-one
+        name="Product"
+        class="Product"
+        lazy ="false"
+    >
+    <column name="PRODUCT_ID" />
+  </many-to-one>
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>
