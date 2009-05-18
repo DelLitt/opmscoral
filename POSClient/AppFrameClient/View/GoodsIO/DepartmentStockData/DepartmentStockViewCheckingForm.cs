@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
@@ -143,6 +146,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             if (stockList.Count < 1)
             {
                 MessageBox.Show("Không có gì để lưu");
@@ -167,8 +171,36 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 MessageBox.Show("Lưu kết quả thành công");
                 ClearForm();
+                // clear all temp files
+                ClearTempFiles();
             }
         }
+
+        private void ClearTempFiles()
+        {
+            try
+            {
+                string saveTempPath = Environment.CurrentDirectory + "\\CheckingTemp";
+                if (!Directory.Exists(saveTempPath))
+                {
+                    Directory.CreateDirectory(saveTempPath);
+                }
+
+                string[] files = Directory.GetFiles(saveTempPath, "*.tmpchk");
+                foreach (string file in files)
+                {
+                    if(File.Exists(file))
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                
+            }
+        }
+
         private bool CheckDepartmentDataIntegrity()
         {
             for (int i = 0; i < stockList.Count; i++)
@@ -268,18 +300,23 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (stockList.Count < 1)
+            try
             {
-                MessageBox.Show("Không có gì để lưu");
-                return;
+                string saveTempPath = Environment.CurrentDirectory + "\\CheckingTemp";
+                if(!Directory.Exists(saveTempPath))
+                {
+                    Directory.CreateDirectory(saveTempPath); 
+                }
+                string saveTempFile = saveTempPath + "\\" + "deptChecking" + DateTime.Now.ToString("yyyyMMdd") + ".tmpchk";
+                Stream stream = File.Open(saveTempFile, FileMode.Create);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(stream, ObjectConverter.ConvertToNonGenericList(stockList));
+                stream.Close();
+                MessageBox.Show("Lưu tạm thành công !", "Thành công");
             }
-            DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
-            checkingEventArgs.SaveStockViewList = ObjectConverter.ConvertToNonGenericList(stockList);
-            
-            EventUtility.fireEvent(SaveTempInventoryCheckingEvent, this, checkingEventArgs);
-            if (!checkingEventArgs.HasErrors)
+            catch (Exception)
             {
-                MessageBox.Show("Lưu kết quả tạm thành công");
+                MessageBox.Show("Lưu tạm thất bại !", "Thất bại");
             }
         }
 
@@ -416,7 +453,38 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnTempLoad_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Bạn muốn đọc từ file tạm ?","Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                            MessageBoxDefaultButton.Button2);
+            if(result == DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                string saveTempPath = Environment.CurrentDirectory + "\\CheckingTemp";
+                if (!Directory.Exists(saveTempPath))
+                {
+                    Directory.CreateDirectory(saveTempPath);
+                }
+                string saveTempFile = saveTempPath + "\\" + "deptChecking" + DateTime.Now.ToString("yyyyMMdd") + ".tmpchk";
+                Stream stream = File.Open(saveTempFile, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
 
+                IList stockTempList = (IList) bf.Deserialize(stream);
+                stream.Close();
+                stockList.Clear();
+                foreach (DepartmentStockView stockView in stockTempList)
+                {
+                    stockList.Add(stockView);
+                }
+                bdsStockDefect.EndEdit();
+                dgvStocks.Refresh();
+                dgvStocks.Invalidate();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Có lỗi khi đọc file tạm.");
+            }
         }
     }
 }
