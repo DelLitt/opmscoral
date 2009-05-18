@@ -6,6 +6,7 @@ using System.Text;
 
 namespace AppFrame.Model
 {
+    [Serializable]
     public class DepartmentStockView
     {
         public virtual Int64 GoodQuantity { get; set; }
