@@ -214,6 +214,9 @@
     <Compile Include="Controls\DataGridViewCalendarColumn.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DataGridViewCoralTextBoxColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\DataGridViewEditComboBoxColumn.cs">
       <SubType>Component</SubType>
     </Compile>
