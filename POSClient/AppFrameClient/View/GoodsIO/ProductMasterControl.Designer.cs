@@ -133,6 +133,7 @@
             // 
             // cbbProductType
             // 
+            this.cbbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProductType.FormattingEnabled = true;
             this.cbbProductType.Location = new System.Drawing.Point(105, 112);
             this.cbbProductType.Name = "cbbProductType";
@@ -141,6 +142,7 @@
             // 
             // cbbProductColor
             // 
+            this.cbbProductColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProductColor.FormattingEnabled = true;
             this.cbbProductColor.Location = new System.Drawing.Point(105, 141);
             this.cbbProductColor.Name = "cbbProductColor";
@@ -149,6 +151,7 @@
             // 
             // cbbProductSize
             // 
+            this.cbbProductSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProductSize.FormattingEnabled = true;
             this.cbbProductSize.Location = new System.Drawing.Point(105, 170);
             this.cbbProductSize.Name = "cbbProductSize";
@@ -157,6 +160,7 @@
             // 
             // cbbCountry
             // 
+            this.cbbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCountry.FormattingEnabled = true;
             this.cbbCountry.Location = new System.Drawing.Point(105, 199);
             this.cbbCountry.Name = "cbbCountry";
@@ -165,6 +169,7 @@
             // 
             // cbbManufacturer
             // 
+            this.cbbManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbManufacturer.FormattingEnabled = true;
             this.cbbManufacturer.Location = new System.Drawing.Point(105, 228);
             this.cbbManufacturer.Name = "cbbManufacturer";
@@ -182,6 +187,7 @@
             // 
             // cbbPackager
             // 
+            this.cbbPackager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPackager.FormattingEnabled = true;
             this.cbbPackager.Location = new System.Drawing.Point(105, 257);
             this.cbbPackager.Name = "cbbPackager";
@@ -199,6 +205,7 @@
             // 
             // cbbDistributor
             // 
+            this.cbbDistributor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDistributor.FormattingEnabled = true;
             this.cbbDistributor.Location = new System.Drawing.Point(105, 286);
             this.cbbDistributor.Name = "cbbDistributor";

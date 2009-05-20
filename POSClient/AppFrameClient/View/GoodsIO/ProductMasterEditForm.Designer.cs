@@ -58,16 +58,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProductName = new System.Windows.Forms.TextBox();
-            this.lstColors = new System.Windows.Forms.ListBox();
-            this.lstSize = new System.Windows.Forms.ListBox();
             this.bdsProductMaster = new System.Windows.Forms.BindingSource(this.components);
+            this.lstColors = new System.Windows.Forms.CheckedListBox();
+            this.lstSizes = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsProductMaster)).BeginInit();
             this.SuspendLayout();
             // 
             // picProduct
             // 
-            this.picProduct.Location = new System.Drawing.Point(340, 162);
+            this.picProduct.Location = new System.Drawing.Point(340, 252);
             this.picProduct.Name = "picProduct";
             this.picProduct.Size = new System.Drawing.Size(195, 196);
             this.picProduct.TabIndex = 97;
@@ -75,7 +75,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(495, 362);
+            this.btnSelect.Location = new System.Drawing.Point(495, 454);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(40, 25);
             this.btnSelect.TabIndex = 84;
@@ -85,7 +85,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 368);
+            this.label9.Location = new System.Drawing.Point(6, 460);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 96;
@@ -93,7 +93,7 @@
             // 
             // txtImagePath
             // 
-            this.txtImagePath.Location = new System.Drawing.Point(102, 365);
+            this.txtImagePath.Location = new System.Drawing.Point(102, 457);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(387, 20);
             this.txtImagePath.TabIndex = 76;
@@ -117,7 +117,7 @@
             // 
             // btnCreateDistributor
             // 
-            this.btnCreateDistributor.Location = new System.Drawing.Point(293, 334);
+            this.btnCreateDistributor.Location = new System.Drawing.Point(293, 424);
             this.btnCreateDistributor.Name = "btnCreateDistributor";
             this.btnCreateDistributor.Size = new System.Drawing.Size(40, 25);
             this.btnCreateDistributor.TabIndex = 83;
@@ -126,7 +126,7 @@
             // 
             // btnCreatePackager
             // 
-            this.btnCreatePackager.Location = new System.Drawing.Point(293, 305);
+            this.btnCreatePackager.Location = new System.Drawing.Point(293, 395);
             this.btnCreatePackager.Name = "btnCreatePackager";
             this.btnCreatePackager.Size = new System.Drawing.Size(40, 25);
             this.btnCreatePackager.TabIndex = 82;
@@ -135,7 +135,7 @@
             // 
             // btnCreateManufacturer
             // 
-            this.btnCreateManufacturer.Location = new System.Drawing.Point(293, 276);
+            this.btnCreateManufacturer.Location = new System.Drawing.Point(293, 366);
             this.btnCreateManufacturer.Name = "btnCreateManufacturer";
             this.btnCreateManufacturer.Size = new System.Drawing.Size(40, 25);
             this.btnCreateManufacturer.TabIndex = 81;
@@ -144,7 +144,7 @@
             // 
             // btnCreateCountry
             // 
-            this.btnCreateCountry.Location = new System.Drawing.Point(293, 247);
+            this.btnCreateCountry.Location = new System.Drawing.Point(293, 337);
             this.btnCreateCountry.Name = "btnCreateCountry";
             this.btnCreateCountry.Size = new System.Drawing.Size(40, 25);
             this.btnCreateCountry.TabIndex = 80;
@@ -153,12 +153,13 @@
             // 
             // btnCreateSize
             // 
-            this.btnCreateSize.Location = new System.Drawing.Point(293, 192);
+            this.btnCreateSize.Location = new System.Drawing.Point(293, 236);
             this.btnCreateSize.Name = "btnCreateSize";
             this.btnCreateSize.Size = new System.Drawing.Size(40, 25);
             this.btnCreateSize.TabIndex = 79;
             this.btnCreateSize.Text = "...";
             this.btnCreateSize.UseVisualStyleBackColor = true;
+            this.btnCreateSize.Click += new System.EventHandler(this.btnCreateSize_Click);
             // 
             // btnCreateColor
             // 
@@ -180,8 +181,9 @@
             // 
             // cbbDistributor
             // 
+            this.cbbDistributor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDistributor.FormattingEnabled = true;
-            this.cbbDistributor.Location = new System.Drawing.Point(102, 337);
+            this.cbbDistributor.Location = new System.Drawing.Point(102, 427);
             this.cbbDistributor.Name = "cbbDistributor";
             this.cbbDistributor.Size = new System.Drawing.Size(185, 21);
             this.cbbDistributor.TabIndex = 75;
@@ -189,7 +191,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 340);
+            this.label7.Location = new System.Drawing.Point(7, 430);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 94;
@@ -197,8 +199,9 @@
             // 
             // cbbPackager
             // 
+            this.cbbPackager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPackager.FormattingEnabled = true;
-            this.cbbPackager.Location = new System.Drawing.Point(102, 308);
+            this.cbbPackager.Location = new System.Drawing.Point(102, 398);
             this.cbbPackager.Name = "cbbPackager";
             this.cbbPackager.Size = new System.Drawing.Size(185, 21);
             this.cbbPackager.TabIndex = 74;
@@ -206,7 +209,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 311);
+            this.label6.Location = new System.Drawing.Point(7, 401);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 93;
@@ -214,8 +217,9 @@
             // 
             // cbbManufacturer
             // 
+            this.cbbManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbManufacturer.FormattingEnabled = true;
-            this.cbbManufacturer.Location = new System.Drawing.Point(102, 279);
+            this.cbbManufacturer.Location = new System.Drawing.Point(102, 369);
             this.cbbManufacturer.Name = "cbbManufacturer";
             this.cbbManufacturer.Size = new System.Drawing.Size(185, 21);
             this.cbbManufacturer.TabIndex = 73;
@@ -223,7 +227,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 282);
+            this.label5.Location = new System.Drawing.Point(7, 372);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 92;
@@ -231,14 +235,16 @@
             // 
             // cbbCountry
             // 
+            this.cbbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCountry.FormattingEnabled = true;
-            this.cbbCountry.Location = new System.Drawing.Point(102, 250);
+            this.cbbCountry.Location = new System.Drawing.Point(102, 340);
             this.cbbCountry.Name = "cbbCountry";
             this.cbbCountry.Size = new System.Drawing.Size(185, 21);
             this.cbbCountry.TabIndex = 72;
             // 
             // cbbProductType
             // 
+            this.cbbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbProductType.FormattingEnabled = true;
             this.cbbProductType.Location = new System.Drawing.Point(102, 106);
             this.cbbProductType.Name = "cbbProductType";
@@ -265,7 +271,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(7, 253);
+            this.label15.Location = new System.Drawing.Point(7, 343);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 13);
             this.label15.TabIndex = 89;
@@ -274,7 +280,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 192);
+            this.label4.Location = new System.Drawing.Point(8, 236);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 88;
@@ -317,26 +323,25 @@
             // lstColors
             // 
             this.lstColors.FormattingEnabled = true;
-            this.lstColors.Location = new System.Drawing.Point(102, 133);
+            this.lstColors.Location = new System.Drawing.Point(102, 135);
             this.lstColors.Name = "lstColors";
-            this.lstColors.Size = new System.Drawing.Size(185, 56);
-            this.lstColors.TabIndex = 98;
+            this.lstColors.Size = new System.Drawing.Size(184, 94);
+            this.lstColors.TabIndex = 100;
             // 
-            // lstSize
+            // lstSizes
             // 
-            this.lstSize.FormattingEnabled = true;
-            this.lstSize.Location = new System.Drawing.Point(102, 192);
-            this.lstSize.Name = "lstSize";
-            this.lstSize.Size = new System.Drawing.Size(185, 56);
-            this.lstSize.TabIndex = 99;
-            this.lstSize.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            this.lstSizes.FormattingEnabled = true;
+            this.lstSizes.Location = new System.Drawing.Point(102, 236);
+            this.lstSizes.Name = "lstSizes";
+            this.lstSizes.Size = new System.Drawing.Size(184, 94);
+            this.lstSizes.TabIndex = 101;
             // 
             // ProductMasterEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 421);
-            this.Controls.Add(this.lstSize);
+            this.ClientSize = new System.Drawing.Size(547, 516);
+            this.Controls.Add(this.lstSizes);
             this.Controls.Add(this.lstColors);
             this.Controls.Add(this.picProduct);
             this.Controls.Add(this.btnSelect);
@@ -408,8 +413,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.ListBox lstColors;
-        private System.Windows.Forms.ListBox lstSize;
         private System.Windows.Forms.BindingSource bdsProductMaster;
+        private System.Windows.Forms.CheckedListBox lstColors;
+        private System.Windows.Forms.CheckedListBox lstSizes;
     }
 }

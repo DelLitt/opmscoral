@@ -59,5 +59,10 @@ namespace AppFrameClient.View.GoodsIO
                 
             }
         }
+
+        private void btnCreateSize_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

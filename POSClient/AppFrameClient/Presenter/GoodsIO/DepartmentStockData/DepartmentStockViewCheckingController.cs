@@ -356,16 +356,19 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             // search in stock
             ProductMaster searchProductMaster = product.ProductMaster;
             ObjectCriteria searchByProductMasterCriteria = new ObjectCriteria();
-            searchByProductMasterCriteria.AddEqCriteria("Department", CurrentDepartment.Get());
+            /*searchByProductMasterCriteria.AddEqCriteria("Department", CurrentDepartment.Get());
             searchByProductMasterCriteria.AddEqCriteria("ProductMaster", searchProductMaster);
             searchByProductMasterCriteria.AddOrder("CreateDate", false);
             searchByProductMasterCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            IList productsStockIn = DepartmentStockInDetailLogic.FindAllProductMaster(searchProductMaster);
+            IList productsStockIn = DepartmentStockInDetailLogic.FindAllProductMaster(searchProductMaster);*/
+            searchByProductMasterCriteria.AddEqCriteria("ProductMaster", searchProductMaster);
+            IList productsStockIn = ProductLogic.FindAll(searchByProductMasterCriteria);
             IList productsInStock = new ArrayList();
             IList productIds = new ArrayList();
-            foreach (DepartmentStockInDetail detail in productsStockIn)
+            //foreach (DepartmentStockInDetail detail in productsStockIn)
+            foreach (Product detail in productsStockIn)
             {
-                productIds.Add(detail.Product.ProductId);
+                productIds.Add(detail.ProductId);
             }
             ObjectCriteria stockCrit = new ObjectCriteria();
             stockCrit.AddSearchInCriteria("DepartmentStockPK.ProductId", productIds);

@@ -72,9 +72,9 @@ namespace AppFrameClient.View.GoodsIO
             // 
             // picProduct
             // 
-            this.picProduct.Location = new System.Drawing.Point(118, 533);
+            this.picProduct.Location = new System.Drawing.Point(119, 533);
             this.picProduct.Name = "picProduct";
-            this.picProduct.Size = new System.Drawing.Size(290, 88);
+            this.picProduct.Size = new System.Drawing.Size(96, 88);
             this.picProduct.TabIndex = 28;
             this.picProduct.TabStop = false;
             // 
@@ -83,7 +83,7 @@ namespace AppFrameClient.View.GoodsIO
             this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterControl.Location = new System.Drawing.Point(5, 24);
             this.productMasterControl.Name = "productMasterControl";
-            this.productMasterControl.Size = new System.Drawing.Size(577, 503);
+            this.productMasterControl.Size = new System.Drawing.Size(541, 503);
             this.productMasterControl.TabIndex = 0;
             this.productMasterControl.Load += new System.EventHandler(this.productMasterUserControl_Load);
             // 
@@ -102,7 +102,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 670);
+            this.ClientSize = new System.Drawing.Size(570, 670);
             this.Controls.Add(this.btnRevert);
             this.Controls.Add(this.picProduct);
             this.Controls.Add(this.btnSave);

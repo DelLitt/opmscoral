@@ -303,6 +303,16 @@ namespace AppFrameClient.View.GoodsIO
             IList productSizeList = productMasterControl.lbxProductSize.SelectedItems;
             IList productColorList = productMasterControl.lbxProductColor.SelectedItems;
             var productMasters = new List<ProductMaster>();
+            if(string.IsNullOrEmpty(productMasterControl.txtProductName.Text))
+            {
+                MessageBox.Show("Hãy nhập tên sản phẩm !");
+                return;
+            }
+            if(productMasterControl.cbbProductType.SelectedIndex < 0 )
+            {
+                MessageBox.Show("Hãy chọn loại sản phẩm !");
+                return;
+            }
             if (ProductMaster == null)
             {
                 if (productSizeList.Count == 0 || productColorList.Count == 0)

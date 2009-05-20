@@ -486,5 +486,33 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Có lỗi khi đọc file tạm.");
             }
         }
+
+        private void dgvStocks_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DepartmentStockView stock = stockList[dgvStocks.CurrentCell.RowIndex];
+
+                txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
+                txtProductName.Text = stock.ProductMaster.ProductName;
+                txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
+                txtDescription.Text = stock.ProductMaster.Description;
+                pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
+                if (!CheckUtility.IsNullOrEmpty(pictureBox1.ImageLocation))
+                {
+                    pictureBox1.Load();
+                }
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

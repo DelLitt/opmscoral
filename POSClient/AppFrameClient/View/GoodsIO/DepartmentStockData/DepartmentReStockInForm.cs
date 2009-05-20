@@ -235,5 +235,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             Close();
         }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.Green;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.FromKnownColor(KnownColor.Window);
+        }
     }
 }

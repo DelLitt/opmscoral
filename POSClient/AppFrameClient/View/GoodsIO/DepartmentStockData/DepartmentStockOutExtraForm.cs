@@ -1179,5 +1179,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
             }
         }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.Green;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.FromKnownColor(KnownColor.Window);
+        }
     }
 }
