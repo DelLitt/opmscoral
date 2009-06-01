@@ -160,6 +160,7 @@
     <Compile Include="Advice\AuthoriseLogicMixin.cs" />
     <Compile Include="Advice\InsertUserInfoToLogicAdvice.cs" />
     <Compile Include="Collection\BaseCollection.cs" />
+    <Compile Include="Collection\DepartmentCostCollection.cs" />
     <Compile Include="Collection\DepartmentStockCollection.cs" />
     <Compile Include="Collection\DepartmentStockInDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
@@ -522,6 +523,7 @@
     <Compile Include="Model\UniversalStockReportObject.cs" />
     <Compile Include="ObjectCriteria.cs" />
     <Compile Include="Presenter\CustomerEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentCostEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentPriceUpdateEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockCheckingEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockDetailEventArgs.cs" />
@@ -529,6 +531,9 @@
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockInSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostEditView.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostListView.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailController.cs" />
@@ -659,6 +664,7 @@
     <Compile Include="Utility\SecurityUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="View\Dummy.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentCostCreateView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailView.cs" />
