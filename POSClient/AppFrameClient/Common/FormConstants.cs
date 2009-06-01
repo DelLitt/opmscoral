@@ -86,5 +86,6 @@ namespace AppFrameClient.Common
         public static string CHANGE_PASSWORD_FORM = "ChangePasswordView";
 
         public static string POS_LOG_FORM = "PosLogView";
+        public static string DEPARTMENT_COST_FORM = "DepartmentCostCreateView";
     }
 }

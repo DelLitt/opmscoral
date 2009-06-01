@@ -294,6 +294,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MasterDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentCostController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
@@ -317,6 +318,12 @@
     </Compile>
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.Designer.cs">
+      <DependentUpon>DepartmentCostCreateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.cs">
       <SubType>Form</SubType>
@@ -1228,6 +1235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.resx">
+      <DependentUpon>DepartmentCostCreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.resx">
       <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>

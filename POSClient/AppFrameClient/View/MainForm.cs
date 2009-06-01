@@ -716,5 +716,12 @@ namespace AppFrame.View
         {
 
         }
+
+        private void mnuDepartmentCost_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentCostCreateForm>(this,
+                 FormConstants.DEPARTMENT_COST_FORM);
+            form.Show();
+        }
     }
 }

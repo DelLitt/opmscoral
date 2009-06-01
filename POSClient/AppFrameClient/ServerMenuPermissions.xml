@@ -38,7 +38,8 @@
     <menuitem name="mnuReturnMainStockReport" role="NotImplement" />
     <menuitem name="mnuDepartmentStockIn" role="NotImplement" />
     <menuitem name="mnuProcessDeptAtStock" role="Administrator,Supervisor" />
-    <menuitem name="mnuDeptStockFixing" role="Administrator,Supervisor" />    
+    <menuitem name="mnuDeptStockFixing" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentCost" role="NotImplement" />
   </menu>
   
   <menu name="mnuSalePoint" role="Administrator,Supervisor">

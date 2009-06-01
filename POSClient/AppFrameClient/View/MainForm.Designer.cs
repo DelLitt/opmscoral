@@ -69,6 +69,7 @@
             this.mnuDeptStockFixing = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcessDeptAtStock = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDepartmentCost = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentReStockIn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDeptStockStatisticReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -424,6 +425,7 @@
             this.mnuDeptStockFixing,
             this.mnuProcessDeptAtStock,
             this.toolStripMenuItem19,
+            this.mnuDepartmentCost,
             this.mnuDepartmentReStockIn,
             this.toolStripMenuItem20,
             this.mnuDeptStockStatisticReport,
@@ -473,6 +475,13 @@
             // 
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
             this.toolStripMenuItem19.Size = new System.Drawing.Size(274, 6);
+            // 
+            // mnuDepartmentCost
+            // 
+            this.mnuDepartmentCost.Name = "mnuDepartmentCost";
+            this.mnuDepartmentCost.Size = new System.Drawing.Size(277, 22);
+            this.mnuDepartmentCost.Text = "Quản lý chi phí cửa hàng";
+            this.mnuDepartmentCost.Click += new System.EventHandler(this.mnuDepartmentCost_Click);
             // 
             // mnuDepartmentReStockIn
             // 
@@ -1221,6 +1230,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStockFixing;
         private System.Windows.Forms.ToolStripMenuItem mnuMixDeptReport;
         private System.Windows.Forms.ToolStripMenuItem mnuImportByFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuDepartmentCost;
 
     }
 }
