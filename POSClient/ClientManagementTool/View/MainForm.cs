@@ -29,6 +29,8 @@ namespace ClientManagementTool.View
         {
             Form form = GlobalUtility.GetOnlyChildFormObject<EmployeeWorkingsForm>(this,
                                                                                    FormConstants.EMPLOYEE_WORKINGS_FORM);
+            
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
 
@@ -217,6 +219,16 @@ namespace ClientManagementTool.View
             {
                 MessageBox.Show("Không đủ quyền hạn", "Lỗi");
             }
+        }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_RightToolStripPanel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

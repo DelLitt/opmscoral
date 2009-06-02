@@ -29,20 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtEmployeeId = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.txtTime = new System.Windows.Forms.TextBox();
             this.dgvEmployeeWorking = new System.Windows.Forms.DataGridView();
-            this.bdsEmployeeWorking = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClose = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnInput = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WorkingDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +52,11 @@
             this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsEmployeeWorking = new System.Windows.Forms.BindingSource(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnInput = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeWorking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployeeWorking)).BeginInit();
             this.SuspendLayout();
@@ -99,8 +99,8 @@
             // 
             this.dgvEmployeeWorking.AllowUserToAddRows = false;
             this.dgvEmployeeWorking.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGreen;
-            this.dgvEmployeeWorking.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightGreen;
+            this.dgvEmployeeWorking.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEmployeeWorking.AutoGenerateColumns = false;
             this.dgvEmployeeWorking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployeeWorking.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -126,48 +126,6 @@
             this.dgvEmployeeWorking.TabIndex = 3;
             this.dgvEmployeeWorking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployeeWorking_CellContentClick);
             // 
-            // bdsEmployeeWorking
-            // 
-            this.bdsEmployeeWorking.DataSource = typeof(AppFrame.Collection.EmployeeWorkingDaysCollection);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(516, 343);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(408, 61);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(156, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(405, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Ngày xem";
-            // 
-            // btnInput
-            // 
-            this.btnInput.Location = new System.Drawing.Point(203, 61);
-            this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(75, 23);
-            this.btnInput.TabIndex = 7;
-            this.btnInput.Text = "Nhập";
-            this.btnInput.UseVisualStyleBackColor = true;
-            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "EmployeeWorkingDayPK.EmployeeId";
@@ -187,8 +145,8 @@
             // WorkingDay
             // 
             this.WorkingDay.DataPropertyName = "EmployeeWorkingDayPK.WorkingDay";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.WorkingDay.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
+            this.WorkingDay.DefaultCellStyle = dataGridViewCellStyle6;
             this.WorkingDay.HeaderText = "Ngày";
             this.WorkingDay.Name = "WorkingDay";
             this.WorkingDay.ReadOnly = true;
@@ -196,8 +154,8 @@
             // StartTime
             // 
             this.StartTime.DataPropertyName = "DisplayStartTime";
-            dataGridViewCellStyle3.Format = "HH:mm:ss";
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Format = "HH:mm:ss";
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle7;
             this.StartTime.HeaderText = "Bắt đầu";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
@@ -205,8 +163,8 @@
             // EndTime
             // 
             this.EndTime.DataPropertyName = "DisplayEndTime";
-            dataGridViewCellStyle4.Format = "HH:mm:ss";
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Format = "HH:mm:ss";
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle8;
             this.EndTime.HeaderText = "Kết thúc";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
@@ -283,10 +241,53 @@
             this.employeeDataGridViewTextBoxColumn.ReadOnly = true;
             this.employeeDataGridViewTextBoxColumn.Visible = false;
             // 
+            // bdsEmployeeWorking
+            // 
+            this.bdsEmployeeWorking.DataSource = typeof(AppFrame.Collection.EmployeeWorkingDaysCollection);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(516, 343);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(408, 61);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(156, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(405, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Ngày xem";
+            // 
+            // btnInput
+            // 
+            this.btnInput.Location = new System.Drawing.Point(203, 61);
+            this.btnInput.Name = "btnInput";
+            this.btnInput.Size = new System.Drawing.Size(75, 23);
+            this.btnInput.TabIndex = 7;
+            this.btnInput.Text = "Nhập";
+            this.btnInput.UseVisualStyleBackColor = true;
+            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
+            // 
             // EmployeeWorkingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(595, 372);
             this.Controls.Add(this.btnInput);
             this.Controls.Add(this.label2);
@@ -297,8 +298,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEmployeeId);
             this.Name = "EmployeeWorkingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chấm công";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EmployeeWorkingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeWorking)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployeeWorking)).EndInit();
