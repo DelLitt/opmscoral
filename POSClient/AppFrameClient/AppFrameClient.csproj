@@ -1487,6 +1487,7 @@
     <EmbeddedResource Include="ServerMenuPermissions.xml" />
     <EmbeddedResource Include="NAMenuPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
+    <None Include="Resources\AChayLogo.PNG" />
     <None Include="MasterDB.xsc">
       <DependentUpon>MasterDB.xsd</DependentUpon>
     </None>

@@ -723,5 +723,11 @@ namespace AppFrame.View
                  FormConstants.DEPARTMENT_COST_FORM);
             form.Show();
         }
+
+        private void mnuChamCong_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

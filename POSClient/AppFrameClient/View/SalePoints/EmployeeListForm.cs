@@ -120,31 +120,40 @@ namespace AppFrameClient.View.SalePoints
                 try
                 {
                     int count = selectedCollection.Count;
-                    for (int i = 0; i < count; i += 3)
+                    
+                    int index = 0;
+                    int collectCount = selectedCollection.Count;
+                    foreach (DataGridViewRow row in selectedCollection)
                     {
-                        if (count - i > 3)
+                        if(index == 0)
                         {
-                            printArray = new EmployeeInfo[3];
+                            if(collectCount > 6 )
+                            {
+                                printArray = new EmployeeInfo[6];            
+                            }
+                            else
+                            {
+                                printArray = new EmployeeInfo[collectCount];
+                            }
                         }
-                        else
+
+                        EmployeeInfo info = empInfoList[row.Index];
+                        printArray[index] = info;
+                        index += 1;
+                        collectCount -= 1;
+                        if(index > 5 || collectCount <= 0)
                         {
-                            printArray = new EmployeeInfo[count-i];
+                            barCodeDocument.Print();
+                            index = 0;
                         }
-                        printArray[0] = empInfoList[selectedCollection[i].Index];
-                        if (i + 1 < count)
-                        {
-                            printArray[1] = empInfoList[selectedCollection[i + 1].Index];
-                        }
-                        if (i + 2 < count)
-                        {
-                            printArray[2] = empInfoList[selectedCollection[i + 2].Index];
-                        }
-                        barCodeDocument.Print();
+                        
                     }
+                    
 
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
+                    printArray = null;
                 }
                 finally
                 {
@@ -163,57 +172,76 @@ namespace AppFrameClient.View.SalePoints
             }
             var height = 87;
             var numberToPrint = printArray.Count();
-            for (int i = 0; i < numberToPrint; i++)
+            var rowsToPrint = numberToPrint / 3;
+            if( numberToPrint % 3 > 0)
             {
-
-
-            string code = printArray[i].EmployeePK.EmployeeId;
-            BarcodeLib.Barcode barcode = new Barcode();
-            string employeeName = printArray[i].EmployeeName;
-            Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, code, Color.Black, Color.White, (int)(1.35 * e.Graphics.DpiX), (int)(0.45 * e.Graphics.DpiY));
-            
-
-
-            Bitmap bitmap1 = new Bitmap(imageBC);
-            bitmap1.SetResolution(204, 204);
-            
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-
-            // draw title string
-
-            // calculate scale for title
-            var titleStrSize = e.Graphics.MeasureString(employeeName+ "0000", new Font("Arial", 10));
-            float currTitleSize = new Font("Arial", 10).Size;
-            float scaledTitleSize = (150 * currTitleSize) / titleStrSize.Width;
-            Font _empFont = null;
-            if (employeeName.Length < 17)
-            {
-                _empFont = new Font("Arial", 7);
+                rowsToPrint += 1;
             }
-            else
+            for (int j = 0; j < 3; j++)
             {
-                _empFont = new Font("Arial", scaledTitleSize);                
-            }
-            Font _titleFont = new Font("Arial", 7);
-
-            var barCodeSize = e.Graphics.MeasureString(code, _titleFont);
-            var empCodeSize = e.Graphics.MeasureString(employeeName, _empFont);
-            /*Bitmap bitmapName = new Bitmap(nameString, true);
-            Bitmap bitmapPrice = new Bitmap(priceString, true);*/
-            
-
-                System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
-
-                //(i % 3) * 124, (i / 3) * 87, 117, 79 
-                /*e.Graphics.DrawString(nameString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(nameSize.Width, 140), 25);
-                e.Graphics.DrawString(priceString, _titleFont, new SolidBrush(Color.Black), (i % 3) * 135 + XCentered(priceSize.Width, 140), (float)22.5 + nameSize.Height);*/
-                e.Graphics.DrawString(code, _titleFont, new SolidBrush(Color.Black), (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)25);
-                e.Graphics.DrawImage(bitmap1, new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + barCodeSize.Height), (int)(1.35 * 100), (int)(0.45 * 100)));
-                e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black), (i % 3) * 140 + XCentered(empCodeSize.Width, 140), (float)88);
                 
-                //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
+                for (int i = 0; i < 2; i++)
+                {
+                    int index = (j*2) + i;
+                    if(index > (printArray.Count() - 1))
+                    {
+                        break;
+                    }
+                    string code = printArray[index].EmployeePK.EmployeeId;
+                    BarcodeLib.Barcode barcode = new Barcode();
+                    string employeeName = printArray[index].EmployeeName;
+                    Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, code, Color.Black, Color.White,
+                                                   (int) (3.35*e.Graphics.DpiX), (int) (0.6*e.Graphics.DpiY));
 
+                    Bitmap bitmapBarcode = new Bitmap(imageBC);
+                    bitmapBarcode.SetResolution(204, 204);
+
+                    e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+
+                    // draw title string
+
+                    // calculate scale for title
+                    var titleStrSize = e.Graphics.MeasureString(employeeName + "0000", new Font("Arial", 10));
+                    float currTitleSize = new Font("Arial", 10).Size;
+                    float scaledTitleSize = (220*currTitleSize)/titleStrSize.Width;
+                    Font _empFont = null;
+                    if (employeeName.Length < 17)
+                    {
+                        _empFont = new Font("Arial", 8);
+                    }
+                    else
+                    {
+                        _empFont = new Font("Arial", scaledTitleSize);
+                    }
+                    Font _titleFont = new Font("Arial", 7);
+                    
+                    var barCodeSize = e.Graphics.MeasureString(code, _titleFont);
+                    var empCodeSize = e.Graphics.MeasureString(employeeName, _empFont);
+                    Bitmap logoAChay = new Bitmap(AppFrameClient.Properties.Resources.AChayLogo);
+
+                    /*Bitmap bitmapName = new Bitmap(nameString, true);
+                    Bitmap bitmapPrice = new Bitmap(priceString, true);*/
+                    Rectangle boundRec = new Rectangle((i%2)*(int) (3.6*100)+ 50 , (j%3)*(int)(2.3*100)+ 50 , (int) (3.45*100), (int) (2.15*100));
+                    e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), boundRec);
+
+                    
+                    e.Graphics.DrawImage(bitmapBarcode,
+                                         new Rectangle((i % 2) * 360 + (int)XCentered((float)(3.45 * 100), 360) + 50,
+                                                       (int)((j%3)*230 + 25) + 50 , (int)(3.35 * 100),(int)(0.6 * 100)));
+                    System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
+                    e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 60, ((j % 3) * 230 + 25 + 60) + 70 );
+
+                    e.Graphics.DrawString(code, _titleFont, new SolidBrush(Color.Black),
+                                          (i % 2) * 360 +  XCentered(barCodeSize.Width,360) + 50 , 
+                                          (float)((j % 3) * 230 + 25 + 60) + 50 );
+                    
+                    e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black),
+                        (i % 2) * 360 + + 70 + XCentered(empCodeSize.Width, 345) + 50 , 
+                        (float)((j % 3) * 230 + 25 + 70 + _titleFont.Height + 50));
+                    
+
+                }
             }
         }
         private float XCentered(float localWidth, float globalWidth)
