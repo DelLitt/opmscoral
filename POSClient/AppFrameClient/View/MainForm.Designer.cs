@@ -183,7 +183,7 @@
             this.mnuHelp});
             this.mnuMenu.Location = new System.Drawing.Point(0, 0);
             this.mnuMenu.Name = "mnuMenu";
-            this.mnuMenu.Size = new System.Drawing.Size(1016, 24);
+            this.mnuMenu.Size = new System.Drawing.Size(1008, 24);
             this.mnuMenu.TabIndex = 1;
             this.mnuMenu.Text = "Khách";
             // 
@@ -1082,7 +1082,7 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 544);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1016, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1008, 22);
             this.statusStrip.TabIndex = 5;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -1223,7 +1223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 566);
+            this.ClientSize = new System.Drawing.Size(1008, 566);
             this.Controls.Add(this.toolStripClient);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lblStatus);

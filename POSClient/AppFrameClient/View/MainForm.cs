@@ -155,6 +155,7 @@ namespace AppFrame.View
             }
             else
             {
+                goodsSale.WindowState = FormWindowState.Maximized;
                 goodsSale.Show();    
             }
             
@@ -774,6 +775,7 @@ namespace AppFrame.View
             else
             {
                 goodsSale.Show();
+                goodsSale.WindowState = FormWindowState.Maximized;
             }
         }
 
