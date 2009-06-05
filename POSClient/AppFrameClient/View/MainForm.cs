@@ -595,10 +595,25 @@ namespace AppFrame.View
 
             // register main form
             GlobalCache.Instance().MainForm = this;
-
+            
             // check menu permission
             MenuUtility.setPermission(clientInfo.LoggedUser, ref this.mnuMenu, menuItemPermission);
             //CheckClientServer();
+            toolStripClient.Focus();
+            if(ClientSetting.IsClient())
+            {
+                toolStripClient.Visible = true;
+                // load and set permissions
+                Stream toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientToolStripPermissions.xml");    
+                ToolStripItemPermission toolStripItemPermission = new ToolStripItemPermission(ToolStripItemPermission.INVISIBLE);
+                toolStripItemPermission.loadRoles(toolStripInStream);
+                GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
+                MenuUtility.setPermission(this,clientInfo,ref this.toolStripClient,toolStripItemPermission);
+            }
+            else
+            {
+                toolStripClient.Visible = false;
+            }
         }
 
         private void CheckClientServer()
@@ -727,6 +742,47 @@ namespace AppFrame.View
         private void mnuChamCong_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tsbLogin_Click(object sender, EventArgs e)
+        {
+            this.AuthService.login();
+        }
+
+        private void tsbLogout_Click(object sender, EventArgs e)
+        {
+            this.AuthService.logout();
+            ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
+        }
+
+        private void tsbEnterPeriod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbSale_Click(object sender, EventArgs e)
+        {
+            Form goodsSale = GlobalUtility.GetOnlyChildFormObject<GoodsSaleForm>(this, FormConstants.GOODS_SALE_FORM);
+            Department department = null;
+            // if it does not have active department or department is HQ
+            if (!CurrentDepartment.CurrentActiveDepartment(out department))
+            {
+                MessageBox.Show("Cửa hàng chính chưa được thiết lập! Xin vui lòng thiết lập cửa hàng chính trước.", "Lỗi",
+                                MessageBoxButtons.OK);
+                goodsSale.Close();
+            }
+            else
+            {
+                goodsSale.Show();
+            }
+        }
+
+        private void tsbSync_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SyncToMainForm>(this,
+                                                                          FormConstants.
+                                                                              SYNC_TO_MAIN_FORM);
+            form.Show();
         }
         
     }

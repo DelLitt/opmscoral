@@ -26,6 +26,11 @@ namespace AppFrame.Advice
                 mainForm.lblStatus.Text = resManager.GetString("loggedUserString");
             }
             MenuUtility.setPermission(mainForm, clientInfo);
+            if (ClientSetting.IsClient())
+            {
+                MenuUtility.setPermission(mainForm, clientInfo, ref mainForm.toolStripClient,
+                                          GlobalCache.Instance().ClientToolStripPermission);
+            }
             //((MainForm) mainForm).setMenuPermissions();
 
         }

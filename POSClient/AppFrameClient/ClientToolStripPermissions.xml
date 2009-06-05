@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<toolstrip>
+  <toolstripitem name="tsbLogin" role="%" />
+  <toolstripitem name="tsbLogout" role="@" />
+  <toolstripitem name="tsbEnterPeriod" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbLeavePeriod" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbSale" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbCost" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbWorkload" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbTempStockOut" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbReStockIn" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbSync" role="Manager,Administrator,Supervisor" />  
+</toolstrip>

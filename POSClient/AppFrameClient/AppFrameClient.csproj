@@ -288,12 +288,19 @@
     <Compile Include="Logic\DepartmentStockTempLogicImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
+    <Compile Include="Logic\EmployeeWorkingsLogicEventArg.cs" />
+    <Compile Include="Logic\EmployeeWorkingsLogicImpl.cs" />
+    <Compile Include="Logic\IEmployeeWorkingsLogic.cs" />
+    <Compile Include="Logic\IMainLogic.cs" />
+    <Compile Include="Logic\MainLogicEventArgs.cs" />
+    <Compile Include="Logic\MainLogicImpl.cs" />
     <Compile Include="Logic\PosLogLogicImpl.cs" />
     <Compile Include="MasterDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MasterDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\PosRole.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentCostController.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockFixingController.cs" />
@@ -312,6 +319,12 @@
     </Compile>
     <Compile Include="View\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeManagementForm.Designer.cs">
+      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ClientServerSettingForm.cs">
       <SubType>Form</SubType>
@@ -451,6 +464,7 @@
     <Compile Include="View\GoodsSale\PurchaseOrderViewer.Designer.cs">
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IEmployeeManagementView.cs" />
     <Compile Include="View\Inventory\DepartmentStockFixingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -463,6 +477,19 @@
     <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Management\DepartmentManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\DepartmentManagement.Designer.cs">
+      <DependentUpon>DepartmentManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Management\EmployeeWorkingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\EmployeeWorkingsForm.Designer.cs">
+      <DependentUpon>EmployeeWorkingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Management\IEmployeeWorkingsView.cs" />
     <Compile Include="View\Masters\ProductColorMasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1233,6 +1260,9 @@
     <EmbeddedResource Include="View\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeManagementForm.resx">
+      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1307,6 +1337,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Inventory\DepartmentStockAdhocCheckingForm.resx">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Management\DepartmentManagement.resx">
+      <DependentUpon>DepartmentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Management\EmployeeWorkingsForm.resx">
+      <DependentUpon>EmployeeWorkingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Masters\ProductColorMasterForm.resx">
       <DependentUpon>ProductColorMasterForm.cs</DependentUpon>
@@ -1486,7 +1522,69 @@
     <EmbeddedResource Include="ClientMenuPermissions.xml" />
     <EmbeddedResource Include="ServerMenuPermissions.xml" />
     <EmbeddedResource Include="NAMenuPermissions.xml" />
+    <EmbeddedResource Include="ClientToolStripPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
+    <None Include="Resources\white folder documents.png" />
+    <None Include="Resources\User-Male.png" />
+    <None Include="Resources\User-Female.png" />
+    <None Include="Resources\User.png" />
+    <None Include="Resources\USB.png" />
+    <None Include="Resources\Tools.png" />
+    <None Include="Resources\Task Schedule.png" />
+    <None Include="Resources\Subscription Folder.png" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\Stats.png" />
+    <None Include="Resources\StandBy.png" />
+    <None Include="Resources\Software.png" />
+    <None Include="Resources\Shutdown.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Set Program Access and Defaults.png" />
+    <None Include="Resources\Select.png" />
+    <None Include="Resources\Security.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\Restart.png" />
+    <None Include="Resources\Refresh.png" />
+    <None Include="Resources\Public.png" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\Organize.png" />
+    <None Include="Resources\Options.png" />
+    <None Include="Resources\Music.png" />
+    <None Include="Resources\Maintenance.png" />
+    <None Include="Resources\Mail.png" />
+    <None Include="Resources\LogOff.png" />
+    <None Include="Resources\Locker.png" />
+    <None Include="Resources\Link Folder.png" />
+    <None Include="Resources\Keys.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\History.png" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\HD.png" />
+    <None Include="Resources\Harddisk.png" />
+    <None Include="Resources\Harddisk%28OS%29.png" />
+    <None Include="Resources\Halt.png" />
+    <None Include="Resources\Graphics.png" />
+    <None Include="Resources\Good.png" />
+    <None Include="Resources\globe.png" />
+    <None Include="Resources\globe disconnected.png" />
+    <None Include="Resources\Error.png" />
+    <None Include="Resources\Edit.png" />
+    <None Include="Resources\Download.png" />
+    <None Include="Resources\disk5.png" />
+    <None Include="Resources\disk5.jpg" />
+    <None Include="Resources\Desktop.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\computer on.png" />
+    <None Include="Resources\computer off.png" />
+    <None Include="Resources\Cofigure.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\Close Folder.png" />
+    <None Include="Resources\classic folder documents.png" />
+    <None Include="Resources\Calender.png" />
+    <None Include="Resources\box2.png" />
+    <None Include="Resources\black folder documents.png" />
+    <None Include="Resources\Alert.png" />
+    <None Include="Resources\Address Book.png" />
+    <None Include="Resources\Add.png" />
     <None Include="Resources\AChayLogo.PNG" />
     <None Include="MasterDB.xsc">
       <DependentUpon>MasterDB.xsd</DependentUpon>
@@ -1523,9 +1621,6 @@
       <Project>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</Project>
       <Name>POSReports</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
