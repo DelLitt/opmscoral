@@ -9,6 +9,7 @@ namespace AppFrame.Common
     {
         private static GlobalCache globalCache = null;
         private Form mainForm;
+        public ToolStripItemPermission ClientToolStripPermission { get; set;}
         public string WarningText { get; set; }
 
         private GlobalCache()

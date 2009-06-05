@@ -59,7 +59,54 @@ namespace AppFrame.Utility
             mainForm.Refresh();
             mainMenu.Refresh();
         }
+        public static void setPermission(Form mainForm,ClientInfo clientInfo,ref ToolStrip toolStrip,ToolStripItemPermission toolStripPermission)
+        {
+            setPermission(clientInfo.LoggedUser,ref toolStrip,toolStripPermission);    
+        }
 
+        private static void setPermission(BaseUser baseUser, ref ToolStrip toolStrip, ToolStripItemPermission toolStripPermission)
+        {
+            for (int i = 0; i < toolStrip.Items.Count ; i++)
+            {
+                // 1. get Menu Item
+                ToolStripItem toolStripMenuItem = toolStrip.Items[i] as ToolStripItem;
+                // 2. Set permission
+                setPermission(baseUser, ref toolStripMenuItem, toolStripPermission);
+                // 3. Set permission for child
+
+            }
+        }
+
+        private static void setPermission(BaseUser baseUser, ref ToolStripItem toolStripMenuItem, ToolStripItemPermission toolStripPermission)
+        {
+            // 1. get Menu Item
+            // 2. Check role of user
+            if (toolStripMenuItem == null)
+                return;
+            bool hasPermission = toolStripPermission.HasPermission(toolStripMenuItem.Name, baseUser);
+            // 3. Process menu presentation base on user's role.
+            if (hasPermission)
+            {
+                toolStripMenuItem.Enabled = true;
+                toolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                switch (toolStripPermission.DeniedAction)
+                {
+                    case MenuItemPermission.DISABLED:
+                        toolStripMenuItem.Enabled = false;
+                        break;
+                    case MenuItemPermission.INVISIBLE:
+                        toolStripMenuItem.Visible = false;
+                        break;
+                    case MenuItemPermission.POPUP:
+                        break;
+                    case MenuItemPermission.NORMAL:
+                        break;
+                }
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -68,7 +115,7 @@ namespace AppFrame.Utility
         /// <param name="menuItemPermission"></param>
         public static void setPermission(BaseUser user, ref MenuStrip menuStrip, MenuItemPermission menuItemPermission)
         {
-            for (int i = 0; i < menuStrip.Items.Count - 1; i++)
+            for (int i = 0; i < menuStrip.Items.Count ; i++)
             {
                 // 1. get Menu Item
                 ToolStripMenuItem toolStripMenuItem = menuStrip.Items[i] as ToolStripMenuItem;

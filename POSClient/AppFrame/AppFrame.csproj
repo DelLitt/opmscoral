@@ -199,6 +199,7 @@
     <Compile Include="Common\IView.cs" />
     <Compile Include="Common\LogicItemPermission.cs" />
     <Compile Include="Common\RoleEqualityComparer.cs" />
+    <Compile Include="Common\ToolStripItemPermission.cs" />
     <Compile Include="Controls\ComplexBindingSource.cs">
       <SubType>Component</SubType>
     </Compile>
