@@ -219,6 +219,7 @@
     <Compile Include="DataLayer\BlockInDetailDAOImpl.cs" />
     <Compile Include="DataLayer\CategoryDAOImpl.cs" />
     <Compile Include="DataLayer\ContractDAOImpl.cs" />
+    <Compile Include="DataLayer\SubStockDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentStockTempDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentManagementDAOImpl.cs" />
     <Compile Include="DataLayer\DepartmentTimelineDAOImpl.cs" />
@@ -285,6 +286,7 @@
     <Compile Include="DataLayer\StockOutDetailDAOImpl.cs" />
     <Compile Include="DataLayer\SupplierDAOImpl.cs" />
     <Compile Include="DataLayer\TaxDAOImpl.cs" />
+    <Compile Include="Logic\SubStockLogicImpl.cs" />
     <Compile Include="Logic\DepartmentStockTempLogicImpl.cs" />
     <Compile Include="Logic\DepartmentManagementLogicImpl.cs" />
     <Compile Include="Logic\DepartmentTimelineLogicImpl.cs" />
@@ -525,6 +527,12 @@
     </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.Designer.cs">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SalePoints\SalePointSubStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SalePoints\SalePointSubStock.Designer.cs">
+      <DependentUpon>SalePointSubStock.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SettingForm.cs">
       <SubType>Form</SubType>
@@ -1361,6 +1369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\SalePoints\EmployeeListForm.resx">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SalePoints\SalePointSubStock.resx">
+      <DependentUpon>SalePointSubStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>

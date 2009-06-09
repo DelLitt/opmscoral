@@ -12,6 +12,7 @@ using AppFrame.Presenter.SalePoints;
 using AppFrame.Utility;
 using AppFrame.Utility.Mapper;
 using AppFrame.View.SalePoints;
+using AppFrameClient.Common;
 
 namespace AppFrameClient.View.SalePoints
 {
@@ -151,6 +152,15 @@ namespace AppFrameClient.View.SalePoints
         private void btnSave_Click(object sender, EventArgs e)
         {
             FormToModel();
+            Department dept = SalePointController.DepartmentModel;
+            if(dept!= null && dept.Active == 1)
+            {
+                if(ClientSetting.IsServer())
+                {
+                    MessageBox.Show("Ở chế độ máy chủ, không thể active cửa hàng nào");
+                    return;
+                }
+            }
             SalePointEventArgs eventArgs = new SalePointEventArgs();
             eventArgs.Department = SalePointController.DepartmentModel;
             EventUtility.fireEvent(SaveDepartmentEvent, this, eventArgs);

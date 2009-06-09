@@ -44,6 +44,7 @@
   
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentSubStock" role="Administrator,Supervisor" />
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />
     <menuitem name="mnuSalePointManagement" role="NotImplement" />
     <menuitem name="mnuEmployeeManagement" role="Administrator,Supervisor" />

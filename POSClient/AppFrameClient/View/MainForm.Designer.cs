@@ -163,6 +163,7 @@
             this.tsbTempStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbReStockIn = new System.Windows.Forms.ToolStripButton();
             this.tsbSync = new System.Windows.Forms.ToolStripButton();
+            this.mnuDepartmentSubStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -965,6 +966,7 @@
             // 
             this.mnuSalePoint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDefineSalePoint,
+            this.mnuDepartmentSubStock,
             this.mnuListSalePoints,
             this.mnuSalePointManagement,
             this.toolStripMenuItem8,
@@ -983,72 +985,72 @@
             // mnuDefineSalePoint
             // 
             this.mnuDefineSalePoint.Name = "mnuDefineSalePoint";
-            this.mnuDefineSalePoint.Size = new System.Drawing.Size(206, 22);
+            this.mnuDefineSalePoint.Size = new System.Drawing.Size(243, 22);
             this.mnuDefineSalePoint.Text = "Tạo cửa hàng";
             this.mnuDefineSalePoint.Click += new System.EventHandler(this.defineSalepointToolStripMenuItem_Click);
             // 
             // mnuListSalePoints
             // 
             this.mnuListSalePoints.Name = "mnuListSalePoints";
-            this.mnuListSalePoints.Size = new System.Drawing.Size(206, 22);
-            this.mnuListSalePoints.Text = "Danh sách cửa hàng";
+            this.mnuListSalePoints.Size = new System.Drawing.Size(243, 22);
+            this.mnuListSalePoints.Text = "Danh sách cửa hàng và kho phụ";
             this.mnuListSalePoints.Click += new System.EventHandler(this.mnuListSalePoints_Click);
             // 
             // mnuSalePointManagement
             // 
             this.mnuSalePointManagement.Name = "mnuSalePointManagement";
-            this.mnuSalePointManagement.Size = new System.Drawing.Size(206, 22);
+            this.mnuSalePointManagement.Size = new System.Drawing.Size(243, 22);
             this.mnuSalePointManagement.Text = "Quản lý cửa hàng";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(240, 6);
             // 
             // mnuAddEmployee
             // 
             this.mnuAddEmployee.Name = "mnuAddEmployee";
-            this.mnuAddEmployee.Size = new System.Drawing.Size(206, 22);
+            this.mnuAddEmployee.Size = new System.Drawing.Size(243, 22);
             this.mnuAddEmployee.Text = "Tạo mới nhân viên";
             this.mnuAddEmployee.Click += new System.EventHandler(this.mnuAddEmployee_Click);
             // 
             // mnuEmployeeManagement
             // 
             this.mnuEmployeeManagement.Name = "mnuEmployeeManagement";
-            this.mnuEmployeeManagement.Size = new System.Drawing.Size(206, 22);
+            this.mnuEmployeeManagement.Size = new System.Drawing.Size(243, 22);
             this.mnuEmployeeManagement.Text = "Quản lý nhân viên";
             this.mnuEmployeeManagement.Click += new System.EventHandler(this.mnuEmployeeManagement_Click);
             // 
             // toolStripMenuItem18
             // 
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-            this.toolStripMenuItem18.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem18.Size = new System.Drawing.Size(240, 6);
             // 
             // mnuDepartmentCost
             // 
             this.mnuDepartmentCost.Name = "mnuDepartmentCost";
-            this.mnuDepartmentCost.Size = new System.Drawing.Size(206, 22);
+            this.mnuDepartmentCost.Size = new System.Drawing.Size(243, 22);
             this.mnuDepartmentCost.Text = "Quản lý chi phí cửa hàng";
             this.mnuDepartmentCost.Click += new System.EventHandler(this.mnuDepartmentCost_Click);
             // 
             // mnuChamCong
             // 
             this.mnuChamCong.Name = "mnuChamCong";
-            this.mnuChamCong.Size = new System.Drawing.Size(206, 22);
+            this.mnuChamCong.Size = new System.Drawing.Size(243, 22);
             this.mnuChamCong.Text = "Chấm công";
             this.mnuChamCong.Click += new System.EventHandler(this.mnuChamCong_Click);
             // 
             // mnuUserAccount
             // 
             this.mnuUserAccount.Name = "mnuUserAccount";
-            this.mnuUserAccount.Size = new System.Drawing.Size(206, 22);
+            this.mnuUserAccount.Size = new System.Drawing.Size(243, 22);
             this.mnuUserAccount.Text = "Quản lý tài khoản";
             this.mnuUserAccount.Click += new System.EventHandler(this.mnuUserAccount_Click_1);
             // 
             // toolStripMenuItem22
             // 
             this.toolStripMenuItem22.Name = "toolStripMenuItem22";
-            this.toolStripMenuItem22.Size = new System.Drawing.Size(203, 6);
+            this.toolStripMenuItem22.Size = new System.Drawing.Size(240, 6);
             // 
             // mnuHelp
             // 
@@ -1219,6 +1221,13 @@
             this.tsbSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSync.Click += new System.EventHandler(this.tsbSync_Click);
             // 
+            // mnuDepartmentSubStock
+            // 
+            this.mnuDepartmentSubStock.Name = "mnuDepartmentSubStock";
+            this.mnuDepartmentSubStock.Size = new System.Drawing.Size(243, 22);
+            this.mnuDepartmentSubStock.Text = "Tạo kho phụ";
+            this.mnuDepartmentSubStock.Click += new System.EventHandler(this.mnuDepartmentSubStock_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1383,6 +1392,7 @@
         private System.Windows.Forms.ToolStripButton tsbWorkload;
         private System.Windows.Forms.ToolStripButton tsbSync;
         public System.Windows.Forms.ToolStrip toolStripClient;
+        private System.Windows.Forms.ToolStripMenuItem mnuDepartmentSubStock;
 
     }
 }

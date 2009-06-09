@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using AppFrame;
 using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
@@ -141,7 +142,37 @@ namespace AppFrameClient.Presenter.SalePoints
             get { return departmentModel; }
             set { departmentModel = value; }
         }
-        
+
+        private ISalePointSubStockView salePointSubStockView;
+        public ISalePointSubStockView SalePointSubStockView
+        {
+            get
+            {
+                return salePointSubStockView;
+            }
+            set
+            {
+                salePointSubStockView = value;
+                salePointSubStockView.LoadDepartmentsEvent += new EventHandler<SalePointEventArgs>(salePointSubStockView_LoadDepartmentsEvent);
+                salePointSubStockView.SaveDepartmentSubStockEvent += new EventHandler<SalePointEventArgs>(salePointSubStockView_SaveDepartmentSubStockEvent);
+            }
+        }
+
+        void salePointSubStockView_SaveDepartmentSubStockEvent(object sender, SalePointEventArgs e)
+        {
+            if(e.SavingSubStock!= null)
+            {
+                DepartmentLogic.AddSubStock(e.SavingSubStock);
+            }
+        }
+
+        void salePointSubStockView_LoadDepartmentsEvent(object sender, SalePointEventArgs e)
+        {
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddLesserCriteria("DepartmentId", (long)10000);
+            IList departmentList = DepartmentLogic.FindAll(criteria);
+            e.DepartmentList = departmentList;
+        }
 
         #endregion
 

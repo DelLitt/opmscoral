@@ -786,6 +786,13 @@ namespace AppFrame.View
                                                                               SYNC_TO_MAIN_FORM);
             form.Show();
         }
+
+        private void mnuDepartmentSubStock_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SalePointSubStock>(this,
+                                                                           FormConstants.SALEPOINT_SUB_STOCK);
+            form.Show();
+        }
         
     }
 }

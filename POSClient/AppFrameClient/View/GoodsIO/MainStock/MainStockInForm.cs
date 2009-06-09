@@ -765,7 +765,6 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             
           
             BarcodeLib.Barcode barcode = new Barcode();
-            
             string barCodeStr = deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId;            
             Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, barCodeStr, Color.Black, Color.White, (int)(1.35 * e.Graphics.DpiX), (int)(0.45 * e.Graphics.DpiY));
             

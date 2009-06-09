@@ -57,7 +57,9 @@ namespace AppFrame.Logic
         [Transaction(ReadOnly=false)]
         public Department Add(Department data)
         {
-            var maxId = DepartmentDAO.SelectSpecificType(null, Projections.Max("DepartmentId"));
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddLesserCriteria("DepartmentId", (long)10000);
+            var maxId = DepartmentDAO.SelectSpecificType(objectCriteria, Projections.Max("DepartmentId"));
             var departmentId = maxId == null ? 1 : (Int64.Parse(maxId.ToString()) + 1);
             data.DepartmentId = departmentId;
             if (data.Active == 1)
@@ -250,6 +252,21 @@ namespace AppFrame.Logic
         public Department LoadDepartment(Department department)
         {
             return DepartmentDAO.LoadDepartment(department);
+        }
+
+        public void AddSubStock(Department department)
+        {
+            // lower range
+            long subStockMin = Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(7,'0'));
+            // higher range
+            long subStockMax = Int64.Parse(department.DepartmentId.ToString().PadRight(4, '0').PadRight(7,'9'));
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddBetweenCriteria("DepartmentId",subStockMin,subStockMax );
+            var maxId = DepartmentDAO.SelectSpecificType(objectCriteria, Projections.Max("DepartmentId"));
+            var departmentId = maxId == null ?  Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(7,'0')) + 1 : (Int64.Parse(maxId.ToString()) + 1);
+
+            department.DepartmentId = departmentId;
+            DepartmentDAO.Add(department);
         }
 
         #endregion
