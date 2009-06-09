@@ -235,6 +235,7 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayer\ISubStockDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockTempDAO.cs" />
     <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
     <Compile Include="DataLayer\IDepartmentTimelineDAO.cs" />
@@ -308,6 +309,7 @@
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="Logic\ISubStockLogic.cs" />
     <Compile Include="Logic\IDepartmentStockTempLogic.cs" />
     <Compile Include="Logic\IDepartmentManagementLogic.cs" />
     <Compile Include="Logic\IDepartmentTimelineLogic.cs" />
@@ -515,6 +517,7 @@
     <Compile Include="Model\StockOutCostPK.cs" />
     <Compile Include="Model\StockOutDetail.cs" />
     <Compile Include="Model\StockOutDetailPK.cs" />
+    <Compile Include="Model\SubStock.cs" />
     <Compile Include="Model\Supplier.cs" />
     <Compile Include="Model\SyncFromDepartmentToMain.cs" />
     <Compile Include="Model\SyncFromMainToDepartment.cs" />
@@ -712,6 +715,7 @@
     <Compile Include="View\SalePoints\IEmployeeListView.cs" />
     <Compile Include="View\SalePoints\IEmployeeView.cs" />
     <Compile Include="View\SalePoints\ISalePointListView.cs" />
+    <Compile Include="View\SalePoints\ISalePointSubStockView.cs" />
     <Compile Include="View\SalePoints\ISalePointView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -761,6 +765,7 @@
     <EmbeddedResource Include="Model\DepartmentManagement.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockTemp.hbm.xml" />
+    <EmbeddedResource Include="Model\SubStock.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />

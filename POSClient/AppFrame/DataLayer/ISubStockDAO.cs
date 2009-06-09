@@ -5,59 +5,59 @@ using NHibernate.Criterion;
 
 namespace AppFrame.DataLayer
 {
-    public interface ISubStockDAO
+    public interface IStockDAO
     {
         /// <summary>
-        /// Find SubStock object by id. Return null if nothing is found
+        /// Find Stock object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of SubStock</param>
+        /// <param name="id">Id of Stock</param>
         /// <returns></returns>
-        SubStock FindById(object id);
+        Stock FindById(object id);
         
         /// <summary>
-        /// Add SubStock to database.
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        SubStock Add(SubStock data);
-        
-        /// <summary>
-        /// Update SubStock to database.
+        /// Add Stock to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update(SubStock data);
+        Stock Add(Stock data);
         
         /// <summary>
-        /// Delete SubStock from database.
+        /// Update Stock to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete(SubStock data);
+        void Update(Stock data);
         
         /// <summary>
-        /// Delete SubStock from database.
+        /// Delete Stock from database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        void Delete(Stock data);
+        
+        /// <summary>
+        /// Delete Stock from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         void DeleteById(object id);
         
         /// <summary>
-        /// Find all SubStock from database. No pagination.
+        /// Find all Stock from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         IList FindAll(ObjectCriteria criteria);
         
         /// <summary>
-        /// Find all SubStock from database. Has pagination.
+        /// Find all Stock from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
         
         /// <summary>
-        /// Find min, max, count... SubStock from database.
+        /// Find min, max, count... Stock from database.
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>

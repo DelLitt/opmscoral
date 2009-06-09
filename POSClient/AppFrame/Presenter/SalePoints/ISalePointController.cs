@@ -36,6 +36,8 @@ namespace AppFrame.Presenter.SalePoints
 
         #region Model use in Controller
         Department DepartmentModel { get; set; }
+        ISalePointSubStockView SalePointSubStockView { get; set; }
+
         #endregion
 
         #region methods in Controller

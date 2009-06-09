@@ -1,70 +1,69 @@
 using System;
 using System.Collections;
-using AppFrame.DataLayer;
 using AppFrame.Model;
+using System.Collections.Generic;
 
 namespace AppFrame.Logic
 {
-    public interface IDepartmentLogic
+    public interface ISubStockLogic
     {
-
-        IDepartmentDAO DepartmentDAO { get; set;}
-
-        IEmployeeDetailDAO EmployeeDetailDAO { get; set;}
-
-        IEmployeeDAO EmployeeDAO { get; set;}
-
         /// <summary>
-        /// Find Department object by id. Return null if nothing is found
+        /// Find SubStock object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of Department</param>
+        /// <param name="id">Id of SubStock</param>
         /// <returns></returns>
-        Department FindById(object id);
+        SubStock FindById(object id);
         
         /// <summary>
-        /// Add Department to database.
+        /// Add SubStock to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        Department Add(Department data);
+        SubStock Add(SubStock data);
         
         /// <summary>
-        /// Update Department to database.
+        /// Update SubStock to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update(Department data);
+        void Update(SubStock data);
         
         /// <summary>
-        /// Delete Department from database.
+        /// Delete SubStock from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete(Department data);
+        void Delete(SubStock data);
         
         /// <summary>
-        /// Delete Department from database.
+        /// Delete SubStock from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         void DeleteById(object id);
         
         /// <summary>
-        /// Find all Department from database. No pagination.
+        /// Find all SubStock from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         IList FindAll(ObjectCriteria criteria);
         
         /// <summary>
-        /// Find all Department from database. Has pagination.
+        /// Find all SubStock from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
 
+        void CreateOrUpdateSubStock(IList<SubStock> stockList, IList<ReturnProduct> returnProductList, IList<StockInDetail> stockInDetailList);
 
-        Department LoadDepartment(Department department);
-        void AddSubStock(Department department);
+        IList FindByQuery(ObjectCriteria criteria);
+
+        IList FindByQueryForSubStockIn(ObjectCriteria criteria);
+        IList FindByProductMasterName();
+        IList FindAllErrors();
+        IList FindByProductMasterName(ProductMaster master);
+        IList FindAllProductMasters();
     }
 }

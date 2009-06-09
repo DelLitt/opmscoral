@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using AppFrame.Common;
@@ -22,5 +23,8 @@ namespace AppFrame.Presenter.SalePoints
             get { return employees; }
             set { employees = value; }
         }
+
+        public IList DepartmentList { get; set; }
+        public Department SavingSubStock { get; set; }
     }
 }
