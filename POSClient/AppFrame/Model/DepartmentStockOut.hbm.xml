@@ -77,7 +77,13 @@
         length="10"
     >
   </property>
-
+  <property
+        name="OtherDepartmentId"
+        type="Int64"
+        column="OTHER_DEPARTMENT_ID"
+        length="10"
+    >
+  </property>
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- end of derived association(s) -->

@@ -20,5 +20,6 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockOutEventArgs> LoadGoodsByNameColorSizeEvent;
         event EventHandler<DepartmentStockOutEventArgs> GetSyncDataEvent;
         event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
+        event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
     }
 }
