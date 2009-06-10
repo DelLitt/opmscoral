@@ -322,17 +322,17 @@
     <Compile Include="View\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeManagementForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\EmployeeManagementForm.Designer.cs">
-      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\ClientServerSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeManagementForm.Designer.cs">
+      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.cs">
       <SubType>Form</SubType>
@@ -1266,6 +1266,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientToolStripPermissions.xml" />
     <Content Include="Common\dummy.txt" />
     <EmbeddedResource Include="Config\MySQLDao.xml">
     </EmbeddedResource>
@@ -1274,11 +1275,11 @@
     <EmbeddedResource Include="View\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmployeeManagementForm.resx">
-      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeManagementForm.resx">
+      <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.resx">
       <DependentUpon>DepartmentFastStockOutForm.cs</DependentUpon>
@@ -1542,69 +1543,68 @@
     <EmbeddedResource Include="ClientMenuPermissions.xml" />
     <EmbeddedResource Include="ServerMenuPermissions.xml" />
     <EmbeddedResource Include="NAMenuPermissions.xml" />
-    <EmbeddedResource Include="ClientToolStripPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
-    <None Include="Resources\white folder documents.png" />
-    <None Include="Resources\User-Male.png" />
-    <None Include="Resources\User-Female.png" />
-    <None Include="Resources\User.png" />
-    <None Include="Resources\USB.png" />
-    <None Include="Resources\Tools.png" />
-    <None Include="Resources\Task Schedule.png" />
-    <None Include="Resources\Subscription Folder.png" />
-    <None Include="Resources\Stop.png" />
-    <None Include="Resources\Stats.png" />
-    <None Include="Resources\StandBy.png" />
-    <None Include="Resources\Software.png" />
-    <None Include="Resources\Shutdown.png" />
-    <None Include="Resources\Settings.png" />
-    <None Include="Resources\Set Program Access and Defaults.png" />
-    <None Include="Resources\Select.png" />
-    <None Include="Resources\Security.png" />
-    <None Include="Resources\Search.png" />
-    <None Include="Resources\Restart.png" />
-    <None Include="Resources\Refresh.png" />
-    <None Include="Resources\Public.png" />
-    <None Include="Resources\Printer.png" />
-    <None Include="Resources\Organize.png" />
-    <None Include="Resources\Options.png" />
-    <None Include="Resources\Music.png" />
-    <None Include="Resources\Maintenance.png" />
-    <None Include="Resources\Mail.png" />
-    <None Include="Resources\LogOff.png" />
-    <None Include="Resources\Locker.png" />
-    <None Include="Resources\Link Folder.png" />
-    <None Include="Resources\Keys.png" />
-    <None Include="Resources\Info.png" />
-    <None Include="Resources\History.png" />
-    <None Include="Resources\Help.png" />
-    <None Include="Resources\HD.png" />
-    <None Include="Resources\Harddisk.png" />
-    <None Include="Resources\Harddisk%28OS%29.png" />
-    <None Include="Resources\Halt.png" />
-    <None Include="Resources\Graphics.png" />
-    <None Include="Resources\Good.png" />
-    <None Include="Resources\globe.png" />
-    <None Include="Resources\globe disconnected.png" />
-    <None Include="Resources\Error.png" />
-    <None Include="Resources\Edit.png" />
-    <None Include="Resources\Download.png" />
-    <None Include="Resources\disk5.png" />
-    <None Include="Resources\disk5.jpg" />
-    <None Include="Resources\Desktop.png" />
-    <None Include="Resources\Delete.png" />
-    <None Include="Resources\computer on.png" />
-    <None Include="Resources\computer off.png" />
-    <None Include="Resources\Cofigure.png" />
-    <None Include="Resources\Close.png" />
-    <None Include="Resources\Close Folder.png" />
-    <None Include="Resources\classic folder documents.png" />
-    <None Include="Resources\Calender.png" />
-    <None Include="Resources\box2.png" />
-    <None Include="Resources\black folder documents.png" />
-    <None Include="Resources\Alert.png" />
-    <None Include="Resources\Address Book.png" />
-    <None Include="Resources\Add.png" />
+    <Content Include="Resources\Add.png" />
+    <Content Include="Resources\Address Book.png" />
+    <Content Include="Resources\Alert.png" />
+    <Content Include="Resources\black folder documents.png" />
+    <Content Include="Resources\box2.png" />
+    <Content Include="Resources\Calender.png" />
+    <Content Include="Resources\classic folder documents.png" />
+    <Content Include="Resources\Close Folder.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\Cofigure.png" />
+    <Content Include="Resources\computer off.png" />
+    <Content Include="Resources\computer on.png" />
+    <Content Include="Resources\Delete.png" />
+    <Content Include="Resources\Desktop.png" />
+    <Content Include="Resources\disk5.jpg" />
+    <Content Include="Resources\disk5.png" />
+    <Content Include="Resources\Download.png" />
+    <Content Include="Resources\Edit.png" />
+    <Content Include="Resources\Error.png" />
+    <Content Include="Resources\globe disconnected.png" />
+    <Content Include="Resources\globe.png" />
+    <Content Include="Resources\Good.png" />
+    <Content Include="Resources\Graphics.png" />
+    <Content Include="Resources\Halt.png" />
+    <Content Include="Resources\Harddisk%28OS%29.png" />
+    <Content Include="Resources\Harddisk.png" />
+    <Content Include="Resources\HD.png" />
+    <Content Include="Resources\Help.png" />
+    <Content Include="Resources\History.png" />
+    <Content Include="Resources\Info.png" />
+    <Content Include="Resources\Keys.png" />
+    <Content Include="Resources\Link Folder.png" />
+    <Content Include="Resources\Locker.png" />
+    <Content Include="Resources\LogOff.png" />
+    <Content Include="Resources\Mail.png" />
+    <Content Include="Resources\Maintenance.png" />
+    <Content Include="Resources\Music.png" />
+    <Content Include="Resources\Options.png" />
+    <Content Include="Resources\Organize.png" />
+    <Content Include="Resources\Printer.png" />
+    <Content Include="Resources\Public.png" />
+    <Content Include="Resources\Refresh.png" />
+    <Content Include="Resources\Restart.png" />
+    <Content Include="Resources\Search.png" />
+    <Content Include="Resources\Security.png" />
+    <Content Include="Resources\Select.png" />
+    <Content Include="Resources\Set Program Access and Defaults.png" />
+    <Content Include="Resources\Settings.png" />
+    <Content Include="Resources\Shutdown.png" />
+    <Content Include="Resources\Software.png" />
+    <Content Include="Resources\StandBy.png" />
+    <Content Include="Resources\Stats.png" />
+    <Content Include="Resources\Stop.png" />
+    <Content Include="Resources\Subscription Folder.png" />
+    <Content Include="Resources\Task Schedule.png" />
+    <Content Include="Resources\Tools.png" />
+    <Content Include="Resources\USB.png" />
+    <Content Include="Resources\User-Female.png" />
+    <Content Include="Resources\User-Male.png" />
+    <Content Include="Resources\User.png" />
+    <Content Include="Resources\white folder documents.png" />
     <None Include="Resources\AChayLogo.PNG" />
     <None Include="MasterDB.xsc">
       <DependentUpon>MasterDB.xsd</DependentUpon>
