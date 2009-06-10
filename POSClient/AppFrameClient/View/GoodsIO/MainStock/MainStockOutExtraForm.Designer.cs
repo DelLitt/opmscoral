@@ -595,7 +595,7 @@
             this.Controls.Add(this.dgvDeptStockOut);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainStockOutExtraForm";
-            this.Text = "Nhập hàng hoá";
+            this.Text = "Xuất hàng hoá";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);

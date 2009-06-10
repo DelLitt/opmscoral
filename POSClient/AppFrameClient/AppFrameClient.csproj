@@ -334,6 +334,12 @@
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.Designer.cs">
+      <DependentUpon>DepartmentFastStockOutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1273,6 +1279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.resx">
+      <DependentUpon>DepartmentFastStockOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.resx">
       <DependentUpon>DepartmentCostCreateForm.cs</DependentUpon>

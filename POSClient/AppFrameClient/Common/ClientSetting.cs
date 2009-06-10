@@ -21,6 +21,14 @@ namespace AppFrameClient.Common
                        ? false
                        : AFCSetting.Default.IsClient.Equals("0");
         }
+
+        public static bool IsSubStock()
+        {
+            return string.IsNullOrEmpty(AFCSetting.Default.IsClient)
+                       ? false
+                       : AFCSetting.Default.IsClient.Equals("2");
+        }
+
         public static void Save()
         {
             AFCSetting.Default.Save();

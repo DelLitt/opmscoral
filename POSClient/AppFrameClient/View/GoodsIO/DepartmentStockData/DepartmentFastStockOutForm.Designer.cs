@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    partial class DepartmentStockOutExtraForm
+    partial class DepartmentFastStockOutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -90,11 +90,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.deleteStock = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdoStockOut = new System.Windows.Forms.RadioButton();
+            this.rdoFastStockOut = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bdsStockIn
@@ -480,7 +484,7 @@
             this.lstColor.Location = new System.Drawing.Point(354, 75);
             this.lstColor.Name = "lstColor";
             this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(202, 88);
+            this.lstColor.Size = new System.Drawing.Size(202, 102);
             this.lstColor.TabIndex = 4;
             // 
             // colorBindingSource
@@ -497,7 +501,7 @@
             this.lstSize.Location = new System.Drawing.Point(625, 75);
             this.lstSize.Name = "lstSize";
             this.lstSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSize.Size = new System.Drawing.Size(186, 88);
+            this.lstSize.Size = new System.Drawing.Size(186, 102);
             this.lstSize.TabIndex = 5;
             // 
             // sizeBindingSource
@@ -575,18 +579,17 @@
             // 
             // cboDepartment
             // 
-            this.cboDepartment.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(354, 169);
+            this.cboDepartment.Location = new System.Drawing.Point(354, 185);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(457, 26);
+            this.cboDepartment.Size = new System.Drawing.Size(457, 22);
             this.cboDepartment.TabIndex = 116;
             this.cboDepartment.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(295, 172);
+            this.label2.Location = new System.Drawing.Point(295, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 14);
             this.label2.TabIndex = 117;
@@ -603,9 +606,43 @@
             this.deleteStock.Shortcut = System.Windows.Forms.Shortcut.Del;
             this.deleteStock.Pressed += new System.EventHandler(this.deleteStock_Pressed);
             // 
-            // DepartmentStockOutExtraForm
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdoStockOut);
+            this.groupBox1.Controls.Add(this.rdoFastStockOut);
+            this.groupBox1.Location = new System.Drawing.Point(15, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(271, 50);
+            this.groupBox1.TabIndex = 121;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Phương thức";
+            // 
+            // rdoStockOut
+            // 
+            this.rdoStockOut.AutoSize = true;
+            this.rdoStockOut.Location = new System.Drawing.Point(126, 21);
+            this.rdoStockOut.Name = "rdoStockOut";
+            this.rdoStockOut.Size = new System.Drawing.Size(122, 18);
+            this.rdoStockOut.TabIndex = 119;
+            this.rdoStockOut.TabStop = true;
+            this.rdoStockOut.Text = "Xuất bình thường";
+            this.rdoStockOut.UseVisualStyleBackColor = true;
+            // 
+            // rdoFastStockOut
+            // 
+            this.rdoFastStockOut.AutoSize = true;
+            this.rdoFastStockOut.Location = new System.Drawing.Point(6, 21);
+            this.rdoFastStockOut.Name = "rdoFastStockOut";
+            this.rdoFastStockOut.Size = new System.Drawing.Size(88, 18);
+            this.rdoFastStockOut.TabIndex = 118;
+            this.rdoFastStockOut.TabStop = true;
+            this.rdoFastStockOut.Text = "Xuất nhanh";
+            this.rdoFastStockOut.UseVisualStyleBackColor = true;
+            // 
+            // DepartmentFastStockOutForm
             // 
             this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label2);
@@ -634,7 +671,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvDeptStockIn);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "DepartmentStockOutExtraForm";
+            this.Name = "DepartmentFastStockOutForm";
             this.Text = "Phân phối hàng hoá trong kho cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
@@ -642,6 +679,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -703,5 +742,8 @@
         private System.Windows.Forms.Label label2;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private AppFrame.Controls.HotKey.SystemHotkey deleteStock;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdoStockOut;
+        private System.Windows.Forms.RadioButton rdoFastStockOut;
     }
 }
