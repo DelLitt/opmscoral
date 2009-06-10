@@ -584,7 +584,15 @@ namespace AppFrame.View
                 }
                 else
                 {
-                    inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.NAMenuPermissions.xml");    
+                    if(ClientSetting.IsSubStock())
+                    {
+                        inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.SubStockMenuPermissions.xml");        
+                    }
+                    else
+                    {
+                        inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.NAMenuPermissions.xml");        
+                    }
+                    
                 }
             }
 
@@ -791,6 +799,13 @@ namespace AppFrame.View
         {
             Form form = GlobalUtility.GetOnlyChildFormObject<SalePointSubStock>(this,
                                                                            FormConstants.SALEPOINT_SUB_STOCK);
+            form.Show();
+        }
+
+        private void mnuSubStockOut_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentFastStockOutForm>(this,
+                                                                            FormConstants.DEPARTMENT_FAST_STOCK_OUT_VIEW);
             form.Show();
         }
         

@@ -87,7 +87,7 @@
             this.cbbStockOutType = new System.Windows.Forms.ComboBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.cboDepartment = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblDepartments = new System.Windows.Forms.Label();
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.deleteStock = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -560,6 +560,7 @@
             // 
             // cbbStockOutType
             // 
+            this.cbbStockOutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbStockOutType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbStockOutType.FormattingEnabled = true;
             this.cbbStockOutType.Location = new System.Drawing.Point(82, 134);
@@ -579,22 +580,21 @@
             // 
             // cboDepartment
             // 
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(354, 185);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(457, 22);
             this.cboDepartment.TabIndex = 116;
-            this.cboDepartment.Visible = false;
             // 
-            // label2
+            // lblDepartments
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(295, 188);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 14);
-            this.label2.TabIndex = 117;
-            this.label2.Text = "Nơi đến:";
-            this.label2.Visible = false;
+            this.lblDepartments.AutoSize = true;
+            this.lblDepartments.Location = new System.Drawing.Point(295, 188);
+            this.lblDepartments.Name = "lblDepartments";
+            this.lblDepartments.Size = new System.Drawing.Size(53, 14);
+            this.lblDepartments.TabIndex = 117;
+            this.lblDepartments.Text = "Nơi đến:";
             // 
             // systemHotkey1
             // 
@@ -627,6 +627,7 @@
             this.rdoStockOut.TabStop = true;
             this.rdoStockOut.Text = "Xuất bình thường";
             this.rdoStockOut.UseVisualStyleBackColor = true;
+            this.rdoStockOut.CheckedChanged += new System.EventHandler(this.rdoStockOut_CheckedChanged);
             // 
             // rdoFastStockOut
             // 
@@ -638,6 +639,7 @@
             this.rdoFastStockOut.TabStop = true;
             this.rdoFastStockOut.Text = "Xuất nhanh";
             this.rdoFastStockOut.UseVisualStyleBackColor = true;
+            this.rdoFastStockOut.Click += new System.EventHandler(this.rdoFastStockOut_Click);
             // 
             // DepartmentFastStockOutForm
             // 
@@ -645,7 +647,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblDepartments);
             this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lstSize);
@@ -739,7 +741,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.ComboBox cboDepartment;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDepartments;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private AppFrame.Controls.HotKey.SystemHotkey deleteStock;
         private System.Windows.Forms.GroupBox groupBox1;

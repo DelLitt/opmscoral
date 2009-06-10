@@ -242,6 +242,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> LoadGoodsByNameColorSizeEvent;
         public event EventHandler<DepartmentStockOutEventArgs> GetSyncDataEvent;
         public event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
+        public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
         private IDepartmentStockOutController _mainStockOutController;
         public IDepartmentStockOutController DepartmentStockOutController
         {

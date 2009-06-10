@@ -27,7 +27,10 @@ namespace AppFrameClient.View
             {
                 Properties.Settings.Default.IsClient = FormConstants.CLIENT_MODE;    
             }
-
+            if (radioButton3.Checked)
+            {
+                Properties.Settings.Default.IsClient = FormConstants.SUB_STOCK_MODE;
+            }
             Properties.Settings.Default.Save();
             Close();
         }

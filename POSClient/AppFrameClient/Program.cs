@@ -32,7 +32,9 @@ namespace AppFrame
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if(!ClientSetting.IsClient() && !ClientSetting.IsServer())
+            if(    !ClientSetting.IsClient() 
+                && !ClientSetting.IsServer()
+                && !ClientSetting.IsSubStock())
             {
                 ClientServerSettingForm clientServerSettingForm = new ClientServerSettingForm();
                 clientServerSettingForm.ShowDialog();

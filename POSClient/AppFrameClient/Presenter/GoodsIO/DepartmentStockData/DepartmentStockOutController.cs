@@ -53,8 +53,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     _departmentStockOutView_GetSyncDataEvent);
                 mainStockInView.SyncToMainEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_SyncToMainEvent);
+                mainStockInView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_LoadAllDepartments);
 
             }
+        }
+
+        void mainStockInView_LoadAllDepartments(object sender, DepartmentStockOutEventArgs e)
+        {
+            IList list = DepartmentLogic.FindAll(null);
+            e.DepartmentsList = list;
         }
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public void _departmentStockOutView_SyncToMainEvent(object sender, DepartmentStockOutEventArgs e)
@@ -242,7 +249,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             {
                 return;
             }
-            Stock stock = list[0] as Stock;
+            DepartmentStock stock = list[0] as DepartmentStock;
             e.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail();
             e.SelectedDepartmentStockOutDetail.Product = stock.Product;
             e.SelectedDepartmentStockOutDetail.Quantity = stock.Quantity;
@@ -302,6 +309,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public IDepartmentTimelineLogic DepartmentTimelineLogic
         {
             get; set;
+        }
+        public IDepartmentLogic DepartmentLogic
+        {
+            get;
+            set;
         }
 
         private IList RemoveDuplicateName(IList prdlist)

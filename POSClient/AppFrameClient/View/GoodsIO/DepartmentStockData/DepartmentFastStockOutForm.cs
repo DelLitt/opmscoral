@@ -311,6 +311,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
+            rdoFastStockOut.Checked = true;
             IList list = new ArrayList();
             if (ClientSetting.IsSubStock())
             {
@@ -320,8 +321,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 list.Add(new StockDefectStatus { DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
                 list.Add(new StockDefectStatus { DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });    
-            }
             
+            }
+            DepartmentStockOutEventArgs eventArgs = new DepartmentStockOutEventArgs();
+            EventUtility.fireEvent(LoadAllDepartments,this,eventArgs);
+            if(eventArgs.DepartmentsList!= null && eventArgs.DepartmentsList.Count > 0)
+            {
+                BindingSource bdsDepartment = new BindingSource();
+                bdsDepartment.DataSource = typeof (Department);
+                cboDepartment.DataSource = bdsDepartment;
+                cboDepartment.DisplayMember = "DepartmentName";
+                foreach (Department department in eventArgs.DepartmentsList)
+                {
+                    if (department.DepartmentId != CurrentDepartment.Get().DepartmentId)
+                    {
+                        bdsDepartment.Add(department);
+                    }
+                }
+                bdsDepartment.EndEdit();
+                cboDepartment.Refresh();
+                cboDepartment.Invalidate();
+            }
+
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
 
@@ -446,6 +467,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> LoadGoodsByNameColorSizeEvent;
         public event EventHandler<DepartmentStockOutEventArgs> GetSyncDataEvent;
         public event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
+        public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
 
         #endregion
 
@@ -1147,6 +1169,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 if (eventArgs.EventResult == null)
                 {
                     MessageBox.Show("Không tìm thấy mã vạch này");
+                    txtBarcode.Text = "";
                     return;
                 }
                 bool found = false;
@@ -1160,6 +1183,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
                 if (found)
                 {
+                    txtBarcode.Text = "";
                     MessageBox.Show("Mã vạch đã được nhập");
                     return;
                 }
@@ -1178,6 +1202,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         departmentStockList.Add(eventArgs.DepartmentStock);
                     }
+                }
+                if(eventArgs.SelectedDepartmentStockOutDetail.Quantity > 0 )
+                {
+                    eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = 1;    
+                }
+                else
+                {
+                    MessageBox.Show("Mặt hàng này trong kho đã hết. Xin vui lòng kiểm tra lại.");
+                    txtBarcode.Text = "";
+                    return;
                 }
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
@@ -1254,10 +1288,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
                     deptSO.StockOutDate = dtpImportDate.Value;
                     deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+                    deptSO.OtherDepartmentId = ((Department) cboDepartment.SelectedItem).DepartmentId;
                     deptSO.DepartmentStockOutDetails = deptSODetailList;
                     //            deptSO.Description = txtDexcription.Text;
                     var ea = new DepartmentStockOutEventArgs();
                     ea.DepartmentStockOut = deptSO;
+                    
+                    ea.DepartmentStockList = departmentStockList;
                     EventUtility.fireEvent(SaveStockOutEvent, this, ea);
                     if (eventArgs.EventResult != null)
                     {
@@ -1286,12 +1323,24 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void txtBarcode_Enter(object sender, EventArgs e)
         {
-            txtBarcode.BackColor = Color.Green;
+            txtBarcode.BackColor = Color.LightGreen;
         }
 
         private void txtBarcode_Leave(object sender, EventArgs e)
         {
             txtBarcode.BackColor = Color.FromKnownColor(KnownColor.Window);
+        }
+
+        private void rdoFastStockOut_Click(object sender, EventArgs e)
+        {
+            cbbStockOutType.Enabled = false;
+            btnReset.Enabled = false;
+        }
+
+        private void rdoStockOut_CheckedChanged(object sender, EventArgs e)
+        {
+            cbbStockOutType.Enabled = true;
+            btnReset.Enabled = true;
         }
     }
 }

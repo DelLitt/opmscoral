@@ -79,6 +79,7 @@ namespace AppFrameClient.Common
         public static string LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM = "LoadDepartmentStockInToFileFormView";
         public static string SERVER_MODE = "0";
         public static string CLIENT_MODE = "1";
+        public static string SUB_STOCK_MODE = "2";
         public static string GOODS_RETURN_CHILD_FORM = "GoodsReturnChildView";
         public static string EMPLOYEE_LIST_FORM = "EmployeeListView";
         public static string DEPARTMENT_STOCK_ADHOC_CHECKING_VIEW = "DepartmentStockAdhocCheckingView";
@@ -89,5 +90,7 @@ namespace AppFrameClient.Common
         public static string DEPARTMENT_COST_FORM = "DepartmentCostCreateView";
         public static string EMPLOYEE_WORKINGS_FORM = "EmployeeWorkingView";
         public static string SALEPOINT_SUB_STOCK = "SalePointSubStockView";
+        public static string DEPARTMENT_FAST_STOCK_OUT_VIEW = "DepartmentFastStockOutView";
+        
     }
 }

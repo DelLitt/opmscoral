@@ -1543,6 +1543,7 @@
     <EmbeddedResource Include="ClientMenuPermissions.xml" />
     <EmbeddedResource Include="ServerMenuPermissions.xml" />
     <EmbeddedResource Include="NAMenuPermissions.xml" />
+    <EmbeddedResource Include="SubStockMenuPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
     <Content Include="Resources\Add.png" />
     <Content Include="Resources\Address Book.png" />
