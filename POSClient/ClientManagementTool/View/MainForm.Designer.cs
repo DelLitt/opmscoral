@@ -47,10 +47,6 @@
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnShowMenu = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -158,7 +154,7 @@
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(107, 22);
+            this.menuAbout.Size = new System.Drawing.Size(103, 22);
             this.menuAbout.Text = "About";
             // 
             // label1
@@ -170,45 +166,11 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "label1";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.toolStrip1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(93, 496);
-            this.panel1.TabIndex = 10;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(93, 496);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnShowMenu
-            // 
-            this.btnShowMenu.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnShowMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnShowMenu.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnShowMenu.Location = new System.Drawing.Point(93, 24);
-            this.btnShowMenu.Name = "btnShowMenu";
-            this.btnShowMenu.Size = new System.Drawing.Size(21, 496);
-            this.btnShowMenu.TabIndex = 11;
-            this.btnShowMenu.Text = "<<";
-            this.btnShowMenu.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 542);
-            this.Controls.Add(this.btnShowMenu);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
@@ -218,8 +180,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client Management";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,8 +204,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem enterPeriodMenu;
         private System.Windows.Forms.ToolStripMenuItem leavePeriodMenu;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnShowMenu;
-        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
