@@ -640,6 +640,7 @@
             this.rdoFastStockOut.Text = "Xuất nhanh";
             this.rdoFastStockOut.UseVisualStyleBackColor = true;
             this.rdoFastStockOut.Click += new System.EventHandler(this.rdoFastStockOut_Click);
+            this.rdoFastStockOut.CheckedChanged += new System.EventHandler(this.rdoFastStockOut_CheckedChanged);
             // 
             // DepartmentFastStockOutForm
             // 

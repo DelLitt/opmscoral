@@ -311,7 +311,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
+            cbbStockOutType.Enabled = false;
+            btnReset.Enabled = false;
+            cboProductMasters.Enabled = false;
             rdoFastStockOut.Checked = true;
+
             IList list = new ArrayList();
             if (ClientSetting.IsSubStock())
             {
@@ -769,6 +773,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         departmentStockList.Add(eventArgs.DepartmentStock);
                     }
                 }
+                eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = 1;
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 cbbStockOutType.Enabled = false;
@@ -779,8 +784,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void LockField(int rowIndex, DepartmentStockOutDetail stockOutDetail)
         {
             stockOutDetail.DefectStatus = cbbStockOutType.SelectedItem as StockDefectStatus;
+            StockDefectStatus defectStatus = stockOutDetail.DefectStatus;
             // Xuat tam de sua hang
-            if (cbbStockOutType.SelectedIndex == 0)
+            if (defectStatus.DefectStatusId == 4)
             {
                 for (int i = 0; i < dgvDeptStockIn.ColumnCount; i++)
                 {
@@ -796,7 +802,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
             // Xuất trả về kho chính
-            else if (cbbStockOutType.SelectedIndex == 1)
+            else if (defectStatus.DefectStatusId == 6)
             {
                 for (int i = 0; i < dgvDeptStockIn.ColumnCount; i++)
                 {
@@ -812,7 +818,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
             //Xuất đi cửa hàng khác
-            else if (cbbStockOutType.SelectedIndex == 2)
+            else if (defectStatus.DefectStatusId == 7)
             {
                 for (int i = 0; i < dgvDeptStockIn.ColumnCount; i++)
                 {
@@ -824,6 +830,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     else
                     {
                         dgvDeptStockIn[i, rowIndex].Style.ForeColor = Color.Black;
+                        dgvDeptStockIn[i, rowIndex].Style.BackColor = Color.LightYellow;
                     }
                 }
             }
@@ -831,25 +838,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void PopulateGridByProductMaster(IList colorList, IList sizeList)
         {
-//            var mainStockInEventArgs = new DepartmentStockOutEventArgs();
-//            EventUtility.fireEvent<DepartmentStockInEventArgs>(LoadAllGoodsByNameEvent, this, mainStockInEventArgs);
-//            IList list = mainStockInEventArgs.ProductMasterList;
-//            if (dgvDeptStockIn.SelectedRows.Count <= 0)
-//            {
-//                dgvDeptStockIn.CurrentCell = dgvDeptStockIn[1, 0];
-//            }
-//            foreach (ProductMaster productMaster in list)
-//            {
-//                StockInDetail stockInDetail = deptSODetailList.AddNew();
-//                stockInDetail.StockInDetailPK = new StockInDetailPK();
-//                if (stockInDetail.Product == null)
-//                {
-//                    stockInDetail.Product = new Product();
-//                }
-//                stockInDetail.Product.ProductMaster = productMaster;
-//                deptSODetailList.EndNew(deptSODetailList.Count - 1);
-//            }
-
             IList selectedProductMasterList = new ArrayList();
             foreach (ProductColor color in colorList)
             {
@@ -929,6 +917,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         }
                     }
                     detail.DefectStatus = defectStatus;
+                    detail.GoodQuantity = 1;
                     deptSODetailList.Add(detail);
                     deptSODetailList.EndNew(deptSODetailList.Count - 1);
                     LockField(deptSODetailList.Count - 1, detail);
@@ -1339,8 +1328,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void rdoStockOut_CheckedChanged(object sender, EventArgs e)
         {
-            cbbStockOutType.Enabled = true;
-            btnReset.Enabled = true;
+            cbbStockOutType.Enabled = false;
+            btnReset.Enabled = false;
+            if (!rdoStockOut.Checked)
+            {
+                cboProductMasters.Enabled = false;
+            }
+            else
+            {
+                cboProductMasters.Enabled = true;
+            }
+        }
+
+        private void rdoFastStockOut_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdoFastStockOut.Checked)
+            {
+                cboProductMasters.Enabled = false;
+            }
+            else
+            {
+                cboProductMasters.Enabled = true;                
+            }
         }
     }
 }
