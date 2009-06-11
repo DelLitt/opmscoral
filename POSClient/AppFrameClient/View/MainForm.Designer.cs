@@ -75,6 +75,7 @@
             this.mnuReturnPOReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReturnMainStockReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSubStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -164,7 +165,6 @@
             this.tsbTempStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbReStockIn = new System.Windows.Forms.ToolStripButton();
             this.tsbSync = new System.Windows.Forms.ToolStripButton();
-            this.mnuSubStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -435,6 +435,7 @@
             // 
             this.mnuDeptStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDeptStockChecking,
+            this.mnuSubStockOut,
             this.mnuDepartmentReturnGoods,
             this.mnuProcessDepartmentStockDefect,
             this.mnuDeptStockFixing,
@@ -445,8 +446,7 @@
             this.mnuDeptStockStatisticReport,
             this.mnuReturnPOReport,
             this.mnuReturnMainStockReport,
-            this.mnuDepartmentStockIn,
-            this.mnuSubStockOut});
+            this.mnuDepartmentStockIn});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(92, 20);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -530,6 +530,13 @@
             this.mnuDepartmentStockIn.Size = new System.Drawing.Size(277, 22);
             this.mnuDepartmentStockIn.Text = "Báo cáo nhập hàng";
             this.mnuDepartmentStockIn.Click += new System.EventHandler(this.mnuDepartmentStockIn_Click);
+            // 
+            // mnuSubStockOut
+            // 
+            this.mnuSubStockOut.Name = "mnuSubStockOut";
+            this.mnuSubStockOut.Size = new System.Drawing.Size(277, 22);
+            this.mnuSubStockOut.Text = "Xuất hàng trong kho phụ";
+            this.mnuSubStockOut.Click += new System.EventHandler(this.mnuSubStockOut_Click);
             // 
             // mnuWareHouse
             // 
@@ -1229,13 +1236,6 @@
             this.tsbSync.Text = "Đồng bộ";
             this.tsbSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSync.Click += new System.EventHandler(this.tsbSync_Click);
-            // 
-            // mnuSubStockOut
-            // 
-            this.mnuSubStockOut.Name = "mnuSubStockOut";
-            this.mnuSubStockOut.Size = new System.Drawing.Size(277, 22);
-            this.mnuSubStockOut.Text = "Xuất hàng trong kho phụ";
-            this.mnuSubStockOut.Click += new System.EventHandler(this.mnuSubStockOut_Click);
             // 
             // MainForm
             // 

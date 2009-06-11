@@ -174,9 +174,9 @@
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(340, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(395, 19);
+            this.label7.Size = new System.Drawing.Size(306, 19);
             this.label7.TabIndex = 85;
-            this.label7.Text = "PHÂN PHỐI HÀNG HOÁ TRONG KHO CỬA HÀNG";
+            this.label7.Text = "PHÂN PHỐI HÀNG HOÁ TRONG KHO ";
             // 
             // dtpImportDate
             // 
