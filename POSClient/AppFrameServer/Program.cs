@@ -1,5 +1,7 @@
 using System;
+using System.ServiceModel;
 using System.Windows.Forms;
+using AppFrameServer.Services;
 
 namespace AppFrameServer
 {
@@ -11,9 +13,13 @@ namespace AppFrameServer
         [STAThread]
         private static void Main()
         {
+            
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
+            
         }
     }
 }
