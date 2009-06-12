@@ -199,6 +199,12 @@
     </Reference>
     <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -309,6 +315,7 @@
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\PosLogController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
+    <Compile Include="Services\ThreadedServiceHost.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInDetailMapper.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInMapper.cs" />
@@ -316,6 +323,12 @@
     <Compile Include="ViewModel\DepartmentStockTempView.cs" />
     <Compile Include="ViewModel\DepartmentStockTempViewCollection.cs" />
     <Compile Include="ViewModel\PurchaseOrderView.cs" />
+    <Compile Include="View\AppFrameConsumerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AppFrameConsumerForm.Designer.cs">
+      <DependentUpon>AppFrameConsumerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1272,6 +1285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AppFrameConsumerForm.resx">
+      <DependentUpon>AppFrameConsumerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1642,6 +1658,9 @@
       <Project>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</Project>
       <Name>POSReports</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
