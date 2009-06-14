@@ -21,15 +21,10 @@ class Request
     public $updateDate = '';
     public $updateUser = '';
     public $requestCost = '';
-    public $tempCustomerName = '';
-    public $tempCompanyName = '';
-    public $tempAddress = '';
-    public $tempPhone = '';
-    public $tempFax = '';
 
-    public $contract = null;
-    public $customer = null;
-    public $company = null;
+    public $contract = '';
+    public $customer = '';
+    public $company = '';
         // EmployeeRequest
     public $employeeRequests = array();
         // RequestStatus

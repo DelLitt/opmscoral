@@ -11,8 +11,8 @@ class RequestStatus
     public $updateUser = '';
     public $description = '';
 
-    public $statusTypeMaster = null;
-    public $request = null;
+    public $statusTypeMaster = '';
+    public $request = '';
 }
 
 ?>

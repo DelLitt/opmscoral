@@ -4,14 +4,14 @@ class RoleMasterModel extends Model {
 
     function insert($RoleMaster) {
 		$sql = 'INSERT INTO role_master(';
-        $sql .= '    ROLE_ID, ';
+        
         $sql .= '    ROLE_NAME ';
         $sql .= ') VALUES (';
 		$sql .= '   ?,  ?)';
 		
         $paramArr = array();
-        $paramArr[] = $RoleMaster->roleId;
-        $paramArr[] = $RoleMaster->roleName;
+        
+        $paramArr[] = isset($RoleMaster['roleName']) ? $RoleMaster['roleName'] : null;
     
         $this->db->query($sql, $paramArr);
 		$this->db->affected_rows(); 
@@ -24,8 +24,8 @@ class RoleMasterModel extends Model {
         $sql .= '    ROLE_ID = ? ' ;
 		
         $paramArr = array();
-        $paramArr[] = $RoleMaster->roleName;
-        $paramArr[] = $RoleMaster->roleId;
+        $paramArr[] = isset($RoleMaster['roleName']) ? $RoleMaster['roleName'] : null;
+        $paramArr[] = isset($RoleMaster['roleId']) ? $RoleMaster['roleId'] : null;
     
         $this->db->query($sql, $paramArr);
 		$this->db->affected_rows(); 
@@ -33,18 +33,18 @@ class RoleMasterModel extends Model {
 	
 	function findById($id) {
 		$sql = 'SELECT ';
-        $sql .= '    role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    role_master.ROLE_ID as role_master_ROLE_ID';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME';
         $sql .= ' FROM role_master';
 		$sql .= ' WHERE ';
         $sql .= '    role_master.ROLE_ID = ?';
 		$query = $this->db->query($sql, array($id));
         if ($query->num_rows() > 0)
         {
-            $row = $query->row();
-            $result = new RoleMaster();
-        	$result->roleId = $row['role_master.ROLE_ID'];
-            $result->roleName = $row['role_master.ROLE_NAME'];
+            $row = $query->result_array();
+            $result = array();
+        	$result['roleId'] = $row[0]['role_master_ROLE_ID'];
+            $result['roleName'] = $row[0]['role_master_ROLE_NAME'];
             return $result;
         } else {
             return null;
@@ -53,18 +53,18 @@ class RoleMasterModel extends Model {
 	
 	function findAll($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    role_master_ROLE_ID as role_master.ROLE_ID ';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME ';
         $sql .= ' FROM role_master';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -72,19 +72,19 @@ class RoleMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -102,10 +102,10 @@ class RoleMasterModel extends Model {
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new RoleMaster();
-        	    $result->roleId = $row['role_master.ROLE_ID'];
-                $result->roleName = $row['role_master.ROLE_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['roleId'] = $row['role_master_ROLE_ID'];
+                $result['roleName'] = $row['role_master_ROLE_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;
@@ -115,17 +115,17 @@ class RoleMasterModel extends Model {
 	}
 	
 	function count($criteria) {
-		$sql = 'SELECT COUNT(*)';
+		$sql = 'SELECT COUNT(*) as COUNT_VALUE ';
         $sql .= ' FROM role_master ';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -133,7 +133,7 @@ class RoleMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
@@ -142,24 +142,24 @@ class RoleMasterModel extends Model {
 	    }
     
     	$query = $this->db->query($sql, $paramArr);
-        $row = $query->row();
-		return $row->COUNTER;	
+        $row = $query->result_array();
+		return $row[0]['COUNT_VALUE'];	
 	}
 	
-	function findPaging($criteria, $pageNumber, $recordPerPage) {
+	function findPaging($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    role_master.ROLE_ID as role_master_ROLE_ID ';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME ';
         $sql .= ' FROM role_master';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -167,19 +167,19 @@ class RoleMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -192,17 +192,17 @@ class RoleMasterModel extends Model {
 		    }
 	    }
 
-		$sql .= ' LIMIT ' . ($pageNumber * $recordPerPage) . ' ' . $recordPerPage;
+		$sql .= ' LIMIT ' . ($criteria['pageNumber']) . ', ' . ($criteria['recordPerPage']);
 
     	$query = $this->db->query($sql, $paramArr);
 
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new RoleMaster();
-        	    $result->roleId = $row['role_master.ROLE_ID'];
-                $result->roleName = $row['role_master.ROLE_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['roleId'] = $row['role_master_ROLE_ID'];
+                $result['roleName'] = $row['role_master_ROLE_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;

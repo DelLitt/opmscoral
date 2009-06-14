@@ -1,8 +1,8 @@
 <html>
-
 <head>
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='/index.php/mystyle.css' />
 <title>Mã khách hàng</title>
 <script type="text/javascript">
 	function ShowDiv(idShow, idHide) 
@@ -20,7 +20,7 @@
 
 <body>
 <center>
-<form id="mainform">
+<form id="mainform" action="companycontroller/action/save">
 <table border="0" width="40%" cellspacing="0" cellpadding="0" id="table1">
 	<tr>
 		<td nowrap width="1%">
@@ -67,7 +67,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="left">
-			<input type="button" value="Lưu" >
+			<input type="submit" value="Lưu" >
 			<input type="button" value="Bỏ qua">
 		</td>
 	</tr>

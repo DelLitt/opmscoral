@@ -15,7 +15,7 @@ class ReplacePart
     public $updateDate = '';
     public $updateUser = '';
 
-    public $request = null;
+    public $request = '';
 }
 
 ?>

@@ -2,121 +2,109 @@
 
 class ObjectCriteria
 {
-    public $where = array();
-    public $operator = array();
-    public $order = array();
-
-    function clearAllCriteria()
+    function clearAllCriteria(&$criteria)
     {
-        $where = array();
+        $criteria['where'] = array();
     }
 
-    function addEqCriteria($propertyName, $value)
+    function addEqCriteria(&$criteria, $propertyName, $value)
     {
         if ($value != FALSE)
         {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' = ';
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' = ';
+        }
+    }
+
+    function addGreaterOrEqualsCriteria(&$criteria, $propertyName, $value)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' >= ';
         }
         return $this;
     }
 
-    function addGreaterOrEqualsCriteria($propertyName, $value)
+	function addGreaterCriteria(&$criteria, $propertyName, $value)
     {
         if ($value != FALSE)
         {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' >= ';
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' > ';
+        }
+    }
+
+    function addLesserOrEqualsCriteria(&$criteria, $propertyName, $value)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' <= ';
+        }
+    }
+
+	function addLesserCriteria(&$criteria, $propertyName, $value)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' < ';
+        }
+    }
+
+	function addNotEqualCriteria(&$criteria, $propertyName, $value)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = $value;
+            $criteria['operator'][$propertyName] = ' <> ';
+        }
+    }
+
+	function addLikeCriteria(&$criteria, $propertyName, $value)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = $value.'%';
+            $criteria['operator'][$propertyName] = ' like ';
+        }
+    }
+
+	function addIsNullCriteria(&$criteria, $propertyName)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = '';
+            $criteria['operator'][$propertyName] = ' is null ';
+        }
+    }
+
+	function addIsNotNullCriteria(&$criteria, $propertyName)
+    {
+        if ($value != FALSE)
+        {
+            $criteria['where'][$propertyName] = '';
+            $criteria['operator'][$propertyName] = ' is not null ';
         }
         return $this;
     }
 
-	function addGreaterCriteria($propertyName, $value)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' > ';
-        }
-        return $this;
-    }
-
-    function addLesserOrEqualsCriteria($propertyName, $value)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' <= ';
-        }
-        return $this;
-    }
-
-	function addLesserCriteria($propertyName, $value)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' < ';
-        }
-        return $this;
-    }
-
-	function addNotEqualCriteria($propertyName, $value)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' <> ';
-        }
-        return $this;
-    }
-
-	function addLikeCriteria($propertyName, $value)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = $value;
-            $operator[$propertyName] = ' like ';
-        }
-        return $this;
-    }
-
-	function addIsNullCriteria($propertyName)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = '';
-            $operator[$propertyName] = ' is null ';
-        }
-        return $this;
-    }
-
-	function addIsNotNullCriteria($propertyName)
-    {
-        if ($value != FALSE)
-        {
-            $where[$propertyName] = '';
-            $operator[$propertyName] = ' is not null ';
-        }
-        return $this;
-    }
-
-    function addOrder($propertyName, $isAscending)
+    function addOrder(&$criteria, $propertyName, $isAscending)
     {
         if ($isAscending == FALSE)
         {
-            $order[$propertyName] = ' ASC ';
+            $criteria['order'][$propertyName] = ' ASC ';
         }
         else
         {
-            $order[$propertyName] = ' DESC ';
+            $criteria['order'][$propertyName] = ' DESC ';
         }
-        return $this;
     }
 
-    function clearOrder()
+    function clearOrder(&$criteria)
     {
-        $order = array();
+        $criteria['order'] = array();
     }
 }
 

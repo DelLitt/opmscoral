@@ -15,7 +15,7 @@ class Employee
     public $updateDate = '';
     public $updateUser = '';
 
-    public $roleMaster = null;
+    public $roleMaster = '';
         // EmployeeRequest
     public $employeeRequests = array();
 }

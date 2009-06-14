@@ -6,19 +6,19 @@ class Contract
 {
     public $contractId = ''; 		
     public $contractNumber = '';
-    public $customerId = '';
-    public $companyId = '';
     public $contractDate = '';
     public $createDate = '';
     public $createUser = '';
     public $updateDate = '';
     public $updateUser = '';
 
-        // Request
-    public $requests = array();
         // ContractMachine
     public $contractMachines = array();
-    public $contractTypeMaster = null;
+        // Request
+    public $requests = array();
+    public $customer = '';
+    public $company = '';
+    public $contractTypeMaster = '';
 }
 
 ?>

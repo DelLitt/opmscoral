@@ -15,6 +15,8 @@ class Customer
     public $updateDate = '';
     public $updateUser = '';
 
+        // Contract
+    public $contracts = array();
         // Request
     public $requests = array();
 }

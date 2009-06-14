@@ -12,11 +12,9 @@ class Company
     public $createUser = '';
     public $updateDate = '';
     public $updateUser = '';
-    public $fax = '';
-    public $representName = '';
-    public $representPhone = '';
-    public $representFax = '';
 
+        // Contract
+    public $contracts = array();
         // Request
     public $requests = array();
 }

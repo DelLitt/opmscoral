@@ -4,7 +4,7 @@ class EmployeeModel extends Model {
 
     function insert($Employee) {
 		$sql = 'INSERT INTO employee(';
-        $sql .= '    EMPLOYEE_ID, ';
+        
         $sql .= '    EMPLOYEE_NAME, ';
         $sql .= '    ROLE_ID, ';
         $sql .= '    ADDRESS, ';
@@ -13,24 +13,26 @@ class EmployeeModel extends Model {
         $sql .= '    CREATE_DATE, ';
         $sql .= '    CREATE_USER, ';
         $sql .= '    UPDATE_DATE, ';
-        $sql .= '    UPDATE_USER ';
+        $sql .= '    UPDATE_USER, ';
+        $sql .= '    DESCRIPTION ';
         $sql .= '    ROLE_MASTER_ROLE_ID, ';
         $sql .= ') VALUES (';
-		$sql .= '   ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?)';
+		$sql .= '   ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?,  ?)';
 		
         $paramArr = array();
-        $paramArr[] = $Employee->employeeId;
-        $paramArr[] = $Employee->employeeName;
-        $paramArr[] = $Employee->roleId;
-        $paramArr[] = $Employee->address;
-        $paramArr[] = $Employee->phone;
-        $paramArr[] = $Employee->loginName;
-        $paramArr[] = $Employee->createDate;
-        $paramArr[] = $Employee->createUser;
-        $paramArr[] = $Employee->updateDate;
-        $paramArr[] = $Employee->updateUser;
+        
+        $paramArr[] = isset($Employee['employeeName']) ? $Employee['employeeName'] : null;
+        $paramArr[] = isset($Employee['roleId']) ? $Employee['roleId'] : null;
+        $paramArr[] = isset($Employee['address']) ? $Employee['address'] : null;
+        $paramArr[] = isset($Employee['phone']) ? $Employee['phone'] : null;
+        $paramArr[] = isset($Employee['loginName']) ? $Employee['loginName'] : null;
+        $paramArr[] = isset($Employee['createDate']) ? $Employee['createDate'] : null;
+        $paramArr[] = isset($Employee['createUser']) ? $Employee['createUser'] : null;
+        $paramArr[] = isset($Employee['updateDate']) ? $Employee['updateDate'] : null;
+        $paramArr[] = isset($Employee['updateUser']) ? $Employee['updateUser'] : null;
+        $paramArr[] = isset($Employee['description']) ? $Employee['description'] : null;
 		if ($Employee->roleMaster != null) {
-        	$paramArr[] = $Employee->roleMaster->roleId;
+        	$paramArr[] = isset($Employee['roleMaster.roleId']) ? $Employee['roleMaster.roleId'] : null;
         } else {
         	$paramArr[] = '';
         }
@@ -50,26 +52,24 @@ class EmployeeModel extends Model {
         $sql .= '    ,CREATE_USER = ? ';
         $sql .= '    ,UPDATE_DATE = ? ';
         $sql .= '    ,UPDATE_USER = ? ';
+        $sql .= '    ,DESCRIPTION = ? ';
         $sql .= '    ,ROLE_MASTER_ROLE_ID = ? ';
 		$sql .= ' WHERE ';
         $sql .= '    EMPLOYEE_ID = ? ' ;
 		
         $paramArr = array();
-        $paramArr[] = $Employee->employeeName;
-        $paramArr[] = $Employee->roleId;
-        $paramArr[] = $Employee->address;
-        $paramArr[] = $Employee->phone;
-        $paramArr[] = $Employee->loginName;
-        $paramArr[] = $Employee->createDate;
-        $paramArr[] = $Employee->createUser;
-        $paramArr[] = $Employee->updateDate;
-        $paramArr[] = $Employee->updateUser;
-		if ($Employee->roleMaster != null) {
-        	$paramArr[] = $Employee->roleMaster->roleId;
-        } else {
-        	$paramArr[] = '';
-        }
-        $paramArr[] = $Employee->employeeId;
+        $paramArr[] = isset($Employee['employeeName']) ? $Employee['employeeName'] : null;
+        $paramArr[] = isset($Employee['roleId']) ? $Employee['roleId'] : null;
+        $paramArr[] = isset($Employee['address']) ? $Employee['address'] : null;
+        $paramArr[] = isset($Employee['phone']) ? $Employee['phone'] : null;
+        $paramArr[] = isset($Employee['loginName']) ? $Employee['loginName'] : null;
+        $paramArr[] = isset($Employee['createDate']) ? $Employee['createDate'] : null;
+        $paramArr[] = isset($Employee['createUser']) ? $Employee['createUser'] : null;
+        $paramArr[] = isset($Employee['updateDate']) ? $Employee['updateDate'] : null;
+        $paramArr[] = isset($Employee['updateUser']) ? $Employee['updateUser'] : null;
+        $paramArr[] = isset($Employee['description']) ? $Employee['description'] : null;
+       	$paramArr[] = isset($Employee['roleMaster.roleId']) ? $Employee['roleMaster.roleId'] : null;
+        $paramArr[] = isset($Employee['employeeId']) ? $Employee['employeeId'] : null;
     
         $this->db->query($sql, $paramArr);
 		$this->db->affected_rows(); 
@@ -77,18 +77,19 @@ class EmployeeModel extends Model {
 	
 	function findById($id) {
 		$sql = 'SELECT ';
-        $sql .= '    employee.EMPLOYEE_ID ';
-        $sql .= '    ,employee.EMPLOYEE_NAME ';
-        $sql .= '    ,employee.ROLE_ID ';
-        $sql .= '    ,employee.ADDRESS ';
-        $sql .= '    ,employee.PHONE ';
-        $sql .= '    ,employee.LOGIN_NAME ';
-        $sql .= '    ,employee.CREATE_DATE ';
-        $sql .= '    ,employee.CREATE_USER ';
-        $sql .= '    ,employee.UPDATE_DATE ';
-        $sql .= '    ,employee.UPDATE_USER ';
-        $sql .= '    ,role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    employee.EMPLOYEE_ID as employee_EMPLOYEE_ID';
+        $sql .= '    ,employee.EMPLOYEE_NAME as employee_EMPLOYEE_NAME';
+        $sql .= '    ,employee.ROLE_ID as employee_ROLE_ID';
+        $sql .= '    ,employee.ADDRESS as employee_ADDRESS';
+        $sql .= '    ,employee.PHONE as employee_PHONE';
+        $sql .= '    ,employee.LOGIN_NAME as employee_LOGIN_NAME';
+        $sql .= '    ,employee.CREATE_DATE as employee_CREATE_DATE';
+        $sql .= '    ,employee.CREATE_USER as employee_CREATE_USER';
+        $sql .= '    ,employee.UPDATE_DATE as employee_UPDATE_DATE';
+        $sql .= '    ,employee.UPDATE_USER as employee_UPDATE_USER';
+        $sql .= '    ,employee.DESCRIPTION as employee_DESCRIPTION';
+        $sql .= '    ,role_master.ROLE_ID as role_master_ROLE_ID';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME';
         $sql .= ' FROM employee';
 		$sql .= '    LEFT OUTER JOIN role_master ON ';
         $sql .= '        role_master.ROLE_ID ';
@@ -97,21 +98,21 @@ class EmployeeModel extends Model {
 		$query = $this->db->query($sql, array($id));
         if ($query->num_rows() > 0)
         {
-            $row = $query->row();
-            $result = new Employee();
-        	$result->employeeId = $row['employee.EMPLOYEE_ID'];
-            $result->employeeName = $row['employee.EMPLOYEE_NAME'];
-            $result->roleId = $row['employee.ROLE_ID'];
-            $result->address = $row['employee.ADDRESS'];
-            $result->phone = $row['employee.PHONE'];
-            $result->loginName = $row['employee.LOGIN_NAME'];
-            $result->createDate = $row['employee.CREATE_DATE'];
-            $result->createUser = $row['employee.CREATE_USER'];
-            $result->updateDate = $row['employee.UPDATE_DATE'];
-            $result->updateUser = $row['employee.UPDATE_USER'];
-             $result->roleMaster = new RoleMaster();
-        	$result->roleMaster->roleId = $row['role_master.ROLE_ID'];
-			$result->roleMaster->roleName = $row['role_master.ROLE_NAME'];
+            $row = $query->result_array();
+            $result = array();
+        	$result['employeeId'] = $row[0]['employee_EMPLOYEE_ID'];
+            $result['employeeName'] = $row[0]['employee_EMPLOYEE_NAME'];
+            $result['roleId'] = $row[0]['employee_ROLE_ID'];
+            $result['address'] = $row[0]['employee_ADDRESS'];
+            $result['phone'] = $row[0]['employee_PHONE'];
+            $result['loginName'] = $row[0]['employee_LOGIN_NAME'];
+            $result['createDate'] = $row[0]['employee_CREATE_DATE'];
+            $result['createUser'] = $row[0]['employee_CREATE_USER'];
+            $result['updateDate'] = $row[0]['employee_UPDATE_DATE'];
+            $result['updateUser'] = $row[0]['employee_UPDATE_USER'];
+            $result['description'] = $row[0]['employee_DESCRIPTION'];
+        	$result['roleMaster.roleId'] = $row[0]['role_master_ROLE_ID'];
+			$result['roleMaster.roleName'] = $row[0]['role_master_ROLE_NAME'];
             return $result;
         } else {
             return null;
@@ -120,30 +121,31 @@ class EmployeeModel extends Model {
 	
 	function findAll($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    employee.EMPLOYEE_ID ';
-        $sql .= '    ,employee.EMPLOYEE_NAME ';
-        $sql .= '    ,employee.ROLE_ID ';
-        $sql .= '    ,employee.ADDRESS ';
-        $sql .= '    ,employee.PHONE ';
-        $sql .= '    ,employee.LOGIN_NAME ';
-        $sql .= '    ,employee.CREATE_DATE ';
-        $sql .= '    ,employee.CREATE_USER ';
-        $sql .= '    ,employee.UPDATE_DATE ';
-        $sql .= '    ,employee.UPDATE_USER ';
-        $sql .= '    ,role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    employee_EMPLOYEE_ID as employee.EMPLOYEE_ID ';
+        $sql .= '    ,employee.EMPLOYEE_NAME as employee_EMPLOYEE_NAME ';
+        $sql .= '    ,employee.ROLE_ID as employee_ROLE_ID ';
+        $sql .= '    ,employee.ADDRESS as employee_ADDRESS ';
+        $sql .= '    ,employee.PHONE as employee_PHONE ';
+        $sql .= '    ,employee.LOGIN_NAME as employee_LOGIN_NAME ';
+        $sql .= '    ,employee.CREATE_DATE as employee_CREATE_DATE ';
+        $sql .= '    ,employee.CREATE_USER as employee_CREATE_USER ';
+        $sql .= '    ,employee.UPDATE_DATE as employee_UPDATE_DATE ';
+        $sql .= '    ,employee.UPDATE_USER as employee_UPDATE_USER ';
+        $sql .= '    ,employee.DESCRIPTION as employee_DESCRIPTION ';
+        $sql .= '    ,role_master.ROLE_ID as role_master_ROLE_ID ';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME ';
         $sql .= ' FROM employee';
 		$sql .= '    LEFT OUTER JOIN role_master ON ';
         $sql .= '        role_master.ROLE_ID ';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -151,19 +153,19 @@ class EmployeeModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -181,21 +183,21 @@ class EmployeeModel extends Model {
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new Employee();
-        	    $result->employeeId = $row['employee.EMPLOYEE_ID'];
-                $result->employeeName = $row['employee.EMPLOYEE_NAME'];
-                $result->roleId = $row['employee.ROLE_ID'];
-                $result->address = $row['employee.ADDRESS'];
-                $result->phone = $row['employee.PHONE'];
-                $result->loginName = $row['employee.LOGIN_NAME'];
-                $result->createDate = $row['employee.CREATE_DATE'];
-                $result->createUser = $row['employee.CREATE_USER'];
-                $result->updateDate = $row['employee.UPDATE_DATE'];
-                $result->updateUser = $row['employee.UPDATE_USER'];
-                 $result->roleMaster = new RoleMaster();
-        	    $result->roleMaster->roleId = $row['role_master.ROLE_ID'];
-			    $result->roleMaster->roleName = $row['role_master.ROLE_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['employeeId'] = $row['employee_EMPLOYEE_ID'];
+                $result['employeeName'] = $row['employee_EMPLOYEE_NAME'];
+                $result['roleId'] = $row['employee_ROLE_ID'];
+                $result['address'] = $row['employee_ADDRESS'];
+                $result['phone'] = $row['employee_PHONE'];
+                $result['loginName'] = $row['employee_LOGIN_NAME'];
+                $result['createDate'] = $row['employee_CREATE_DATE'];
+                $result['createUser'] = $row['employee_CREATE_USER'];
+                $result['updateDate'] = $row['employee_UPDATE_DATE'];
+                $result['updateUser'] = $row['employee_UPDATE_USER'];
+                $result['description'] = $row['employee_DESCRIPTION'];
+        	    $result['roleMaster.roleId'] = $row['role_master_ROLE_ID'];
+			    $result['roleMaster.roleName'] = $row['role_master_ROLE_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;
@@ -205,19 +207,19 @@ class EmployeeModel extends Model {
 	}
 	
 	function count($criteria) {
-		$sql = 'SELECT COUNT(*)';
+		$sql = 'SELECT COUNT(*) as COUNT_VALUE ';
         $sql .= ' FROM employee ';
 		$sql .= '    LEFT OUTER JOIN role_master ON ';
         $sql .= '        role_master.ROLE_ID ';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -225,7 +227,7 @@ class EmployeeModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
@@ -234,36 +236,37 @@ class EmployeeModel extends Model {
 	    }
     
     	$query = $this->db->query($sql, $paramArr);
-        $row = $query->row();
-		return $row->COUNTER;	
+        $row = $query->result_array();
+		return $row[0]['COUNT_VALUE'];	
 	}
 	
-	function findPaging($criteria, $pageNumber, $recordPerPage) {
+	function findPaging($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    employee.EMPLOYEE_ID ';
-        $sql .= '    ,employee.EMPLOYEE_NAME ';
-        $sql .= '    ,employee.ROLE_ID ';
-        $sql .= '    ,employee.ADDRESS ';
-        $sql .= '    ,employee.PHONE ';
-        $sql .= '    ,employee.LOGIN_NAME ';
-        $sql .= '    ,employee.CREATE_DATE ';
-        $sql .= '    ,employee.CREATE_USER ';
-        $sql .= '    ,employee.UPDATE_DATE ';
-        $sql .= '    ,employee.UPDATE_USER ';
-        $sql .= '    ,role_master.ROLE_ID ';
-        $sql .= '    ,role_master.ROLE_NAME ';
+        $sql .= '    employee.EMPLOYEE_ID as employee_EMPLOYEE_ID ';
+        $sql .= '    ,employee.EMPLOYEE_NAME as employee_EMPLOYEE_NAME ';
+        $sql .= '    ,employee.ROLE_ID as employee_ROLE_ID ';
+        $sql .= '    ,employee.ADDRESS as employee_ADDRESS ';
+        $sql .= '    ,employee.PHONE as employee_PHONE ';
+        $sql .= '    ,employee.LOGIN_NAME as employee_LOGIN_NAME ';
+        $sql .= '    ,employee.CREATE_DATE as employee_CREATE_DATE ';
+        $sql .= '    ,employee.CREATE_USER as employee_CREATE_USER ';
+        $sql .= '    ,employee.UPDATE_DATE as employee_UPDATE_DATE ';
+        $sql .= '    ,employee.UPDATE_USER as employee_UPDATE_USER ';
+        $sql .= '    ,employee.DESCRIPTION as employee_DESCRIPTION ';
+        $sql .= '    ,role_master.ROLE_ID as role_master_ROLE_ID ';
+        $sql .= '    ,role_master.ROLE_NAME as role_master_ROLE_NAME ';
         $sql .= ' FROM employee';
 		$sql .= '    LEFT OUTER JOIN role_master ON ';
         $sql .= '        role_master.ROLE_ID ';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -271,19 +274,19 @@ class EmployeeModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -296,28 +299,28 @@ class EmployeeModel extends Model {
 		    }
 	    }
 
-		$sql .= ' LIMIT ' . ($pageNumber * $recordPerPage) . ' ' . $recordPerPage;
+		$sql .= ' LIMIT ' . ($criteria['pageNumber']) . ', ' . ($criteria['recordPerPage']);
 
     	$query = $this->db->query($sql, $paramArr);
 
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new Employee();
-        	    $result->employeeId = $row['employee.EMPLOYEE_ID'];
-                $result->employeeName = $row['employee.EMPLOYEE_NAME'];
-                $result->roleId = $row['employee.ROLE_ID'];
-                $result->address = $row['employee.ADDRESS'];
-                $result->phone = $row['employee.PHONE'];
-                $result->loginName = $row['employee.LOGIN_NAME'];
-                $result->createDate = $row['employee.CREATE_DATE'];
-                $result->createUser = $row['employee.CREATE_USER'];
-                $result->updateDate = $row['employee.UPDATE_DATE'];
-                $result->updateUser = $row['employee.UPDATE_USER'];
-                 $result->roleMaster = new RoleMaster();
-        	    $result->roleMaster->roleId = $row['role_master.ROLE_ID'];
-			    $result->roleMaster->roleName = $row['role_master.ROLE_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['employeeId'] = $row['employee_EMPLOYEE_ID'];
+                $result['employeeName'] = $row['employee_EMPLOYEE_NAME'];
+                $result['roleId'] = $row['employee_ROLE_ID'];
+                $result['address'] = $row['employee_ADDRESS'];
+                $result['phone'] = $row['employee_PHONE'];
+                $result['loginName'] = $row['employee_LOGIN_NAME'];
+                $result['createDate'] = $row['employee_CREATE_DATE'];
+                $result['createUser'] = $row['employee_CREATE_USER'];
+                $result['updateDate'] = $row['employee_UPDATE_DATE'];
+                $result['updateUser'] = $row['employee_UPDATE_USER'];
+                $result['description'] = $row['employee_DESCRIPTION'];
+        	    $result['roleMaster.roleId'] = $row['role_master_ROLE_ID'];
+			    $result['roleMaster.roleName'] = $row['role_master_ROLE_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;

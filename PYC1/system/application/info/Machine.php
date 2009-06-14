@@ -19,7 +19,7 @@ class Machine
     public $updateDate = '';
     public $updateUser = '';
 
-    public $machineTypeMaster = null;
+    public $machineTypeMaster = '';
         // ContractMachine
     public $contractMachines = array();
 }

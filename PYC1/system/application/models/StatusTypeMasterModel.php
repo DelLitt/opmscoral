@@ -4,14 +4,14 @@ class StatusTypeMasterModel extends Model {
 
     function insert($StatusTypeMaster) {
 		$sql = 'INSERT INTO status_type_master(';
-        $sql .= '    STATUS_TYPE, ';
+        
         $sql .= '    STATUS_NAME ';
         $sql .= ') VALUES (';
 		$sql .= '   ?,  ?)';
 		
         $paramArr = array();
-        $paramArr[] = $StatusTypeMaster->statusType;
-        $paramArr[] = $StatusTypeMaster->statusName;
+        
+        $paramArr[] = isset($StatusTypeMaster['statusName']) ? $StatusTypeMaster['statusName'] : null;
     
         $this->db->query($sql, $paramArr);
 		$this->db->affected_rows(); 
@@ -24,8 +24,8 @@ class StatusTypeMasterModel extends Model {
         $sql .= '    STATUS_TYPE = ? ' ;
 		
         $paramArr = array();
-        $paramArr[] = $StatusTypeMaster->statusName;
-        $paramArr[] = $StatusTypeMaster->statusType;
+        $paramArr[] = isset($StatusTypeMaster['statusName']) ? $StatusTypeMaster['statusName'] : null;
+        $paramArr[] = isset($StatusTypeMaster['statusType']) ? $StatusTypeMaster['statusType'] : null;
     
         $this->db->query($sql, $paramArr);
 		$this->db->affected_rows(); 
@@ -33,18 +33,18 @@ class StatusTypeMasterModel extends Model {
 	
 	function findById($id) {
 		$sql = 'SELECT ';
-        $sql .= '    status_type_master.STATUS_TYPE ';
-        $sql .= '    ,status_type_master.STATUS_NAME ';
+        $sql .= '    status_type_master.STATUS_TYPE as status_type_master_STATUS_TYPE';
+        $sql .= '    ,status_type_master.STATUS_NAME as status_type_master_STATUS_NAME';
         $sql .= ' FROM status_type_master';
 		$sql .= ' WHERE ';
         $sql .= '    status_type_master.STATUS_TYPE = ?';
 		$query = $this->db->query($sql, array($id));
         if ($query->num_rows() > 0)
         {
-            $row = $query->row();
-            $result = new StatusTypeMaster();
-        	$result->statusType = $row['status_type_master.STATUS_TYPE'];
-            $result->statusName = $row['status_type_master.STATUS_NAME'];
+            $row = $query->result_array();
+            $result = array();
+        	$result['statusType'] = $row[0]['status_type_master_STATUS_TYPE'];
+            $result['statusName'] = $row[0]['status_type_master_STATUS_NAME'];
             return $result;
         } else {
             return null;
@@ -53,18 +53,18 @@ class StatusTypeMasterModel extends Model {
 	
 	function findAll($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    status_type_master.STATUS_TYPE ';
-        $sql .= '    ,status_type_master.STATUS_NAME ';
+        $sql .= '    status_type_master_STATUS_TYPE as status_type_master.STATUS_TYPE ';
+        $sql .= '    ,status_type_master.STATUS_NAME as status_type_master_STATUS_NAME ';
         $sql .= ' FROM status_type_master';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -72,19 +72,19 @@ class StatusTypeMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -102,10 +102,10 @@ class StatusTypeMasterModel extends Model {
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new StatusTypeMaster();
-        	    $result->statusType = $row['status_type_master.STATUS_TYPE'];
-                $result->statusName = $row['status_type_master.STATUS_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['statusType'] = $row['status_type_master_STATUS_TYPE'];
+                $result['statusName'] = $row['status_type_master_STATUS_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;
@@ -115,17 +115,17 @@ class StatusTypeMasterModel extends Model {
 	}
 	
 	function count($criteria) {
-		$sql = 'SELECT COUNT(*)';
+		$sql = 'SELECT COUNT(*) as COUNT_VALUE ';
         $sql .= ' FROM status_type_master ';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -133,7 +133,7 @@ class StatusTypeMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
@@ -142,24 +142,24 @@ class StatusTypeMasterModel extends Model {
 	    }
     
     	$query = $this->db->query($sql, $paramArr);
-        $row = $query->row();
-		return $row->COUNTER;	
+        $row = $query->result_array();
+		return $row[0]['COUNT_VALUE'];	
 	}
 	
-	function findPaging($criteria, $pageNumber, $recordPerPage) {
+	function findPaging($criteria) {
 		$sql = 'SELECT ';
-        $sql .= '    status_type_master.STATUS_TYPE ';
-        $sql .= '    ,status_type_master.STATUS_NAME ';
+        $sql .= '    status_type_master.STATUS_TYPE as status_type_master_STATUS_TYPE ';
+        $sql .= '    ,status_type_master.STATUS_NAME as status_type_master_STATUS_NAME ';
         $sql .= ' FROM status_type_master';
 		$paramArr = array();
-	    if ($criteria != null) {
-	    	if (count($criteria->where) > 0) {
-	    		$countCriteria = count($criteria->where);
+	    if ($criteria != null && count($criteria) > 0) {
+	    	if (count($criteria['where']) > 0) {
+	    		$countCriteria = count($criteria['where']);
 				$sql .= ' WHERE ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->where as $key => $value) {
+		        foreach ($criteria['where'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' AND ';
 		            } else {
@@ -167,19 +167,19 @@ class StatusTypeMasterModel extends Model {
 		            }
 		            $index++;
 		            
-		            $sql .= $key . ' ' . $criteria->operator[$key] . ' ' . $value . $concator;
+		            $sql .= $key . ' ' . $criteria['operator'][$key] . ' ' . $value . $concator;
 		            if ($value != null) {
 						$paramArr[] = $value;
 		            }
 		        }
 		    }
-	    	if (count($criteria->order) > 0) {
-				$countCriteria = count($criteria->order);
+	    	if (count($criteria['order']) > 0) {
+				$countCriteria = count($criteria['order']);
 				$sql .= ' ORDER BY ';
 				$concator = '';
 				
 				$index = 0;
-		        foreach ($criteria->order as $key => $value) {
+		        foreach ($criteria['order'] as $key => $value) {
 		            if ($index != $countCriteria - 1) {
 		            	$concator = ' , ';
 		            } else {
@@ -192,17 +192,17 @@ class StatusTypeMasterModel extends Model {
 		    }
 	    }
 
-		$sql .= ' LIMIT ' . ($pageNumber * $recordPerPage) . ' ' . $recordPerPage;
+		$sql .= ' LIMIT ' . ($criteria['pageNumber']) . ', ' . ($criteria['recordPerPage']);
 
     	$query = $this->db->query($sql, $paramArr);
 
         if ($query->num_rows() > 0)
         {
         	$resultList = array();
-        	foreach ($query->result() as $row) {
-                $result = new StatusTypeMaster();
-        	    $result->statusType = $row['status_type_master.STATUS_TYPE'];
-                $result->statusName = $row['status_type_master.STATUS_NAME'];
+        	foreach ($query->result_array() as $row) {
+                $result = array();
+        	    $result['statusType'] = $row['status_type_master_STATUS_TYPE'];
+                $result['statusName'] = $row['status_type_master_STATUS_NAME'];
                 $resultList[] = $result;
 			}
             return $resultList;
