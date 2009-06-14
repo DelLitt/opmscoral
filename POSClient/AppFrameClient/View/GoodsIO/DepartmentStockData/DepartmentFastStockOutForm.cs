@@ -472,6 +472,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> GetSyncDataEvent;
         public event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
         public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
+        public event EventHandler<DepartmentStockOutEventArgs> DispatchDepartmentStockOut;
 
         #endregion
 
@@ -565,6 +566,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
+
                 MessageBox.Show("Lưu thành công");
                 if (isNeedClearData)
                 {
@@ -1285,6 +1287,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     
                     ea.DepartmentStockList = departmentStockList;
                     EventUtility.fireEvent(SaveStockOutEvent, this, ea);
+                    EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));
                     if (eventArgs.EventResult != null)
                     {
                         MessageBox.Show("Lưu thành công");

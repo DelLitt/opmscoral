@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame;
@@ -13,11 +14,12 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Services;
 using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
-    public class DepartmentStockOutController : IDepartmentStockOutController
+    public class DepartmentStockOutController : IDepartmentStockOutController,ServerServiceCallback
     {
 
         #region IDepartmentStockInExtraController Members
@@ -54,8 +56,32 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 mainStockInView.SyncToMainEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_SyncToMainEvent);
                 mainStockInView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_LoadAllDepartments);
+                mainStockInView.DispatchDepartmentStockOut += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_DispatchDepartmentStockOut);
 
             }
+        }
+
+        void mainStockInView_DispatchDepartmentStockOut(object sender, DepartmentStockOutEventArgs e)
+        {
+            
+            Department destDept = DepartmentLogic.FindById(e.DepartmentStockOut.OtherDepartmentId);
+            if (destDept != null)
+            {
+                foreach (DepartmentStockOutDetail detail in e.DepartmentStockOut.DepartmentStockOutDetails)
+                {
+                    string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                    DepartmentPricePK pricePk = new DepartmentPricePK
+                                                    {
+                                                        DepartmentId = 0,
+                                                        ProductMasterId = prdMasterId
+                                                    };
+                    detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
+                }
+                                
+                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
+            }
+
         }
 
         void mainStockInView_LoadAllDepartments(object sender, DepartmentStockOutEventArgs e)
@@ -315,7 +341,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get;
             set;
         }
-
+        public IDepartmentPriceLogic DepartmentPriceLogic
+        {
+            get;
+            set;
+        }
         private IList RemoveDuplicateName(IList prdlist)
         {
             IList list = new ArrayList();
@@ -339,6 +369,16 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
             }
             return true;
+        }
+
+        public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
+        {
+            // do nothing
+        }
+
+        public void NotifyConnected()
+        {
+            // do nothing            
         }
     }
 }

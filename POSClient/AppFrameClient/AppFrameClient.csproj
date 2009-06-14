@@ -214,6 +214,7 @@
     <Compile Include="Advice\ConfirmDialogDisplayAdvice.cs" />
     <Compile Include="Advice\MenuPermissionAdvice.cs" />
     <Compile Include="Advice\UpdateStatusDisplayAdvice.cs" />
+    <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />
     <Compile Include="Common\AppFrameUser.cs" />
     <Compile Include="Common\ClientSetting.cs" />
@@ -315,8 +316,10 @@
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\PosLogController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
+    <Compile Include="Services\ServerServiceConsumer.cs" />
     <Compile Include="Services\ThreadedServiceHost.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
+    <Compile Include="Utility\Mapper\FastDepartmentStockInMapper.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInDetailMapper.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInMapper.cs" />
     <Compile Include="ViewModel\DepartmentStockTempCollection.cs" />
@@ -1641,6 +1644,7 @@
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.PurchaseOrderView.datasource" />
     <None Include="Resources\ready-to-use.jpg" />
     <None Include="Resources\FlashImage.jpg" />
+    <None Include="Test.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

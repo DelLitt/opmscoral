@@ -11,6 +11,7 @@ namespace AppFrameClient.Services
     public class ThreadedServiceHost<TService, TContract>
     {
         const int SleepTime = 100;
+        
         private ServiceHost m_serviceHost = null;
         private Thread m_thread;
         private string
