@@ -14,6 +14,7 @@ using AppFrame.Utility;
 using AppFrame.View.Reports;
 using AppFrameClient;
 using AppFrameClient.Common;
+using AppFrameClient.Services;
 using AppFrameClient.Utility;
 using AppFrameClient.View;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
@@ -574,6 +575,10 @@ namespace AppFrame.View
             Stream inStream = null;
             if(ClientSetting.IsClient())
             {
+                // run service in client
+                ServerServiceConsumer consumer = (ServerServiceConsumer)GlobalUtility.GetObject("ServerServiceConsumer");
+                
+                // load menu
                 inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientMenuPermissions.xml");    
             }
             else
