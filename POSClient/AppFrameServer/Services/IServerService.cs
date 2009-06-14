@@ -16,12 +16,12 @@ namespace AppFrameServer.Services
     public interface IServerService
     {
         [OperationContract()]
-        void JoinDistributingGroup(Department department, BaseUser user);
+        void JoinDistributingGroup(Department department);
         
         [OperationContract(IsOneWay = true)]
-        void MakeDepartmentStockOut(Department department, BaseUser user,DepartmentStockOut stockOut);
+        void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
-        void ExitDistributingGroup(Department department, BaseUser user);
+        void ExitDistributingGroup(Department department);
     }
 }

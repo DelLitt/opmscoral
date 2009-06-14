@@ -10,6 +10,9 @@ namespace AppFrameServer.Services
     public interface IDepartmentStockOutCallback
     {
         [OperationContract(IsOneWay = true)]
-        void NotifyNewDepartmentStockOut(Department department,DepartmentStockOut stockOut);
+        void NotifyNewDepartmentStockOut(Department department,DepartmentStockOut stockOut,DepartmentPrice price);
+        
+        [OperationContract(IsOneWay = true)]
+        void NotifyConnected();
     }
 }
