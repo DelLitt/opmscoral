@@ -35,6 +35,7 @@ namespace AppFrame.View
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IAuthService authService;
+        private ServerServiceConsumer consumer = null;
         private delegate void showProcess();
 
         public MainForm()
@@ -576,7 +577,7 @@ namespace AppFrame.View
             if(ClientSetting.IsClient())
             {
                 // run service in client
-                ServerServiceConsumer consumer = (ServerServiceConsumer)GlobalUtility.GetObject("ServerServiceConsumer");
+                consumer = new ServerServiceConsumer();
                 
                 // load menu
                 inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientMenuPermissions.xml");    

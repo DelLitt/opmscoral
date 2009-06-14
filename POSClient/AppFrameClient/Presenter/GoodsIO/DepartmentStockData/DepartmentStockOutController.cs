@@ -77,7 +77,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                                                     };
                     detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                 }
-                                
+
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                 serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
             }
@@ -374,6 +374,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
             // do nothing
+            MessageBox.Show("Send back OK !");
         }
 
         public void NotifyConnected()

@@ -11,17 +11,17 @@ namespace AppFrameClient.Services
 {
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace = "http://localhost:8001/ServerService/", ConfigurationName = "ServerService", CallbackContract = typeof(ServerServiceCallback), SessionMode = System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(Namespace = "http://localhost:8001/", ConfigurationName = "ServerService", CallbackContract = typeof(ServerServiceCallback), SessionMode = System.ServiceModel.SessionMode.Required)]
     public interface ServerService
     {
 
-        [System.ServiceModel.OperationContractAttribute(Action = "http://localhost:8001/ServerService/ServerService/JoinDistributingGroup", ReplyAction = "http://localhost:8001/ServerService/ServerService/JoinDistributingGroupResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action = "http://localhost:8001/ServerService/JoinDistributingGroup", ReplyAction = "http://localhost:8001/ServerService/ServerService/JoinDistributingGroupResponse")]
         void JoinDistributingGroup(AppFrame.Model.Department department);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ServerService/MakeDepartmentStockOut")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockOut")]
         void MakeDepartmentStockOut(AppFrame.Model.Department department, AppFrame.Model.DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ServerService/ExitDistributingGroup")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ExitDistributingGroup")]
         void ExitDistributingGroup(AppFrame.Model.Department department);
     }
 
@@ -29,10 +29,10 @@ namespace AppFrameClient.Services
     public interface ServerServiceCallback
     {
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ServerService/NotifyNewDepartmentStockOut")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyNewDepartmentStockOut")]
         void NotifyNewDepartmentStockOut(AppFrame.Model.Department department, AppFrame.Model.DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ServerService/NotifyConnected")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyConnected")]
         void NotifyConnected();
     }
 
