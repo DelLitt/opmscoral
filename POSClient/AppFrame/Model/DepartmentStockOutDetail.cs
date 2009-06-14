@@ -191,6 +191,7 @@ namespace AppFrame.Model
         }
         public virtual ProductMaster ProductMaster { get; set; }
         public virtual StockDefectStatus DefectStatus { get; set; }
+        public virtual DepartmentPrice DepartmentPrice { get; set; }
         #endregion
         
         #region IComparable Methods

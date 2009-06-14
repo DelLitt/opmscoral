@@ -62,5 +62,6 @@ namespace AppFrame.Logic
         void UpdateExportStatus(DepartmentStockIn data);
 
         void Sync(SyncFromMainToDepartment syncFromMainToDepartment);
+        void SyncFromSubStock(DepartmentStockIn stockIn);
     }
 }
