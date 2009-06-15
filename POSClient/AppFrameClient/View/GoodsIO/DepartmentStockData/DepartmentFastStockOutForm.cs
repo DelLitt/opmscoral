@@ -1281,6 +1281,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptSO.StockOutDate = dtpImportDate.Value;
                     deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
                     deptSO.OtherDepartmentId = ((Department) cboDepartment.SelectedItem).DepartmentId;
+                    deptSO.ConfirmFlg = 3;
                     deptSO.DepartmentStockOutDetails = deptSODetailList;
                     //            deptSO.Description = txtDexcription.Text;
                     var ea = new DepartmentStockOutEventArgs();
