@@ -21,6 +21,10 @@ namespace AppFrameClient.Services
 
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
+            if(CurrentDepartment.Get().DepartmentId != department.DepartmentId)
+            {
+                return;    
+            }
             DepartmentStockIn stockIn;
             // convert from stock out to stock in
             stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
