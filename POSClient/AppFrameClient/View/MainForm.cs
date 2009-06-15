@@ -576,8 +576,7 @@ namespace AppFrame.View
             Stream inStream = null;
             if(ClientSetting.IsClient())
             {
-                // run service in client
-                consumer = new ServerServiceConsumer();
+                
                 
                 // load menu
                 inStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientMenuPermissions.xml");    
@@ -624,6 +623,8 @@ namespace AppFrame.View
                 toolStripItemPermission.loadRoles(toolStripInStream);
                 GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
                 MenuUtility.setPermission(this,clientInfo,ref this.toolStripClient,toolStripItemPermission);
+                // run service in client
+                consumer = new ServerServiceConsumer();
             }
             else
             {

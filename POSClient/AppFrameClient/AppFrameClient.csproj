@@ -1282,7 +1282,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientToolStripPermissions.xml" />
+    <EmbeddedResource Include="ClientToolStripPermissions.xml" />
     <Content Include="Common\dummy.txt" />
     <EmbeddedResource Include="Config\MySQLDao.xml">
     </EmbeddedResource>
