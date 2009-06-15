@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.Serialization;
 
 namespace AppFrame.Model
 {
@@ -8,6 +9,30 @@ namespace AppFrame.Model
     /// Department object for NHibernate mapped table 'department'.
     /// </summary>
     [Serializable]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "Department", Namespace = "http://localhost:8001/")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOut))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutPK))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutCost[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutCost))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutCostPK))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutDetail[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentStockOutDetail))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Product))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BlockInDetail))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BlockInDetailPK))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BlockIn))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ProductMaster))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Packager))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ProductColor))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Country))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Category))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Manufacturer))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ProductSize))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Distributor))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ProductType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StockDefectStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentPrice))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(DepartmentPricePK))]
     public class Department : System.IComparable
     {
         #region Member Variables
@@ -49,6 +74,7 @@ namespace AppFrame.Model
                 return _departmentName + " - " + _address;
             }
         }
+        [DataMember]
         public virtual Int64 DepartmentId
         {
             get
@@ -60,7 +86,7 @@ namespace AppFrame.Model
                 _departmentId = value;
             }
         }
-
+        [DataMember]
         public virtual string DepartmentName
         {
             get
@@ -72,6 +98,7 @@ namespace AppFrame.Model
                 _departmentName = value;
             }
         }
+        [DataMember]
         public virtual string Address
         {
             get
@@ -83,6 +110,7 @@ namespace AppFrame.Model
                 _address = value;
             }
         }
+        [DataMember]
         public virtual Int64 ManagerId
         {
             get
@@ -94,6 +122,7 @@ namespace AppFrame.Model
                 _managerId = value;
             }
         }
+        [DataMember]
         public virtual DateTime CreateDate
         {
             get
@@ -105,6 +134,7 @@ namespace AppFrame.Model
                 _createDate = value;
             }
         }
+        [DataMember]
         public virtual string CreateId
         {
             get
@@ -116,6 +146,7 @@ namespace AppFrame.Model
                 _createId = value;
             }
         }
+        [DataMember]
         public virtual DateTime UpdateDate
         {
             get
@@ -127,6 +158,7 @@ namespace AppFrame.Model
                 _updateDate = value;
             }
         }
+        [DataMember]
         public virtual string UpdateId
         {
             get
@@ -138,6 +170,7 @@ namespace AppFrame.Model
                 _updateId = value;
             }
         }
+        [DataMember]
         public virtual Int64 ExclusiveKey
         {
             get
@@ -149,6 +182,7 @@ namespace AppFrame.Model
                 _exclusiveKey = value;
             }
         }
+        [DataMember]
         public virtual Int64 DelFlg
         {
             get

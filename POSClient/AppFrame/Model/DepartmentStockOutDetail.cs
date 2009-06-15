@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.Serialization;
 
 namespace AppFrame.Model
 {
@@ -8,6 +9,7 @@ namespace AppFrame.Model
     /// DepartmentStockOutDetail object for NHibernate mapped table 'department_stock_out_detail'.
     /// </summary>
     [Serializable]
+    [DataContract(Name = "DepartmentStockOutDetail", Namespace = "http://localhost:8001/")]
     public class DepartmentStockOutDetail : System.IComparable
     {
     	#region Member Variables
@@ -37,13 +39,20 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
+        [DataMember]
         public virtual Int64 StockOutDetailId { get; set; }
 		//public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
+        [DataMember]
         public virtual Int64 GoodQuantity { get; set; }
+        [DataMember]
         public virtual Int64 DamageQuantity { get; set; }
+        [DataMember]
         public virtual Int64 ErrorQuantity { get; set; }
+        [DataMember]
         public virtual Int64 LostQuantity { get; set; }
+        [DataMember]
         public virtual Int64 UnconfirmQuantity { get; set; }
+        [DataMember]
         public virtual Int64 StockOutId
         {
             get
@@ -55,6 +64,7 @@ namespace AppFrame.Model
                 _stockOutId = value;
             }
         }
+        [DataMember]
         public virtual string ProductId
         {
             get
@@ -66,6 +76,7 @@ namespace AppFrame.Model
                 _productId = value;
             }
         }
+        [DataMember]
         public virtual Int64 DepartmentId
         {
             get
@@ -77,7 +88,7 @@ namespace AppFrame.Model
                 _departmentId = value;
             }
         }
-
+        [DataMember]
         public virtual Int64 Quantity
         {
             get
@@ -89,6 +100,7 @@ namespace AppFrame.Model
                 _quantity = value;
             }
         }
+        [DataMember]
         public virtual string Description
         {
             get
@@ -100,6 +112,7 @@ namespace AppFrame.Model
                 _description = value;
             }
         }
+        [DataMember]
         public virtual DateTime CreateDate
         {
             get
@@ -111,6 +124,7 @@ namespace AppFrame.Model
                 _createDate = value;
             }
         }
+        [DataMember]
         public virtual string CreateId
         {
             get
@@ -122,6 +136,7 @@ namespace AppFrame.Model
                 _createId = value;
             }
         }
+        [DataMember]
         public virtual DateTime UpdateDate
         {
             get
@@ -133,6 +148,7 @@ namespace AppFrame.Model
                 _updateDate = value;
             }
         }
+        [DataMember]
         public virtual string UpdateId
         {
             get
@@ -144,6 +160,7 @@ namespace AppFrame.Model
                 _updateId = value;
             }
         }
+        [DataMember]
         public virtual Int64 ExclusiveKey
         {
             get
@@ -155,6 +172,7 @@ namespace AppFrame.Model
                 _exclusiveKey = value;
             }
         }
+        [DataMember]
         public virtual Int64 DelFlg
         {
             get
@@ -166,7 +184,7 @@ namespace AppFrame.Model
                 _delFlg = value;
             }
         }
-
+        
         public virtual DepartmentStockOut DepartmentStockOut
         {
             get
@@ -178,6 +196,7 @@ namespace AppFrame.Model
                 _departmentStockOut = value;
             }
         }
+        [DataMember]
         public virtual Product Product
         {
             get
@@ -189,8 +208,11 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
+        [DataMember]
         public virtual ProductMaster ProductMaster { get; set; }
+        [DataMember]
         public virtual StockDefectStatus DefectStatus { get; set; }
+        [DataMember]
         public virtual DepartmentPrice DepartmentPrice { get; set; }
         #endregion
         

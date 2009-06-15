@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.Serialization;
 using AppFrame.Common;
 
 namespace AppFrame.Model
@@ -9,6 +10,7 @@ namespace AppFrame.Model
     /// Product object for NHibernate mapped table 'product'.
     /// </summary>
     [Serializable]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "Product", Namespace = "http://localhost:8001/")]
     public class Product : System.IComparable
     {
     	#region Member Variables
@@ -63,9 +65,11 @@ namespace AppFrame.Model
                 _productFullName = value;     
             }
         }
+        [DataMember]
         public virtual Int64 Price { get; set; }
+        [DataMember]
         public virtual Int64 Quantity { get; set; }
-
+        [DataMember]
         public virtual string ProductId
         {
             get
@@ -77,7 +81,7 @@ namespace AppFrame.Model
                 _productId = value;
             }
         }
-
+        [DataMember]
         public virtual DateTime CreateDate
         {
             get
@@ -89,6 +93,7 @@ namespace AppFrame.Model
                 _createDate = value;
             }
         }
+        [DataMember]
         public virtual string CreateId
         {
             get
@@ -100,6 +105,7 @@ namespace AppFrame.Model
                 _createId = value;
             }
         }
+        [DataMember]
         public virtual DateTime UpdateDate
         {
             get
@@ -111,6 +117,7 @@ namespace AppFrame.Model
                 _updateDate = value;
             }
         }
+        [DataMember]
         public virtual string UpdateId
         {
             get
@@ -122,6 +129,7 @@ namespace AppFrame.Model
                 _updateId = value;
             }
         }
+        [DataMember]
         public virtual Int64 ExclusiveKey
         {
             get
@@ -133,6 +141,7 @@ namespace AppFrame.Model
                 _exclusiveKey = value;
             }
         }
+        [DataMember]
         public virtual Int64 DelFlg
         {
             get
@@ -157,8 +166,8 @@ namespace AppFrame.Model
                 _blockInDetail = value;
             }
         }
-        
 
+        [DataMember]
         public virtual ProductMaster ProductMaster
         {
             get
@@ -173,7 +182,7 @@ namespace AppFrame.Model
         
         
         // StockOutDetail
-        public virtual IList StockOutDetails
+        /*public virtual IList StockOutDetails
         {
             get
             {
@@ -281,7 +290,7 @@ namespace AppFrame.Model
             {
                 _purchaseOrderDetails = value;
             }
-        }
+        }*/
         
 
         #endregion

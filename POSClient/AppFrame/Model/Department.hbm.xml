@@ -96,7 +96,7 @@
     <!-- Associations -->
   
     <!-- bi-directional one-to-many association to DepartmentCost -->
-    <bag
+    <!--<bag
         name="DepartmentCosts"
         lazy="true"
         inverse="true"
@@ -108,7 +108,7 @@
         <one-to-many 
             class="DepartmentCost"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to EmployeeInfo -->
     <!--<bag
         name="Employees"
@@ -126,8 +126,7 @@
     <!-- bi-directional one-to-many association to ScheduleTemplate -->
     <bag
         name="ScheduleTemplates"
-        lazy="true"
-        inverse="true"
+        lazy="false"        
 		cascade="none"
     >
         <key>

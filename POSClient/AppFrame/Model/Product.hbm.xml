@@ -94,7 +94,7 @@
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
     <!-- bi-directional one-to-many association to StockOutDetail -->
-    <bag
+    <!--<bag
         name="StockOutDetails"
         lazy="true"
         inverse="true"
@@ -106,9 +106,9 @@
         <one-to-many 
             class="StockOutDetail"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to StockInDetail -->
-    <bag
+    <!--<bag
         name="StockInDetails"
         lazy="true"
         inverse="true"
@@ -120,9 +120,9 @@
         <one-to-many 
             class="StockInDetail"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to Stock -->
-    <bag
+    <!--<bag
         name="Stocks"
         lazy="true"
         inverse="true"
@@ -134,9 +134,9 @@
         <one-to-many 
             class="Stock"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to DepartmentStockOutDetail -->
-    <bag
+    <!--<bag
         name="DepartmentStockOutDetails"
         lazy="true"
         inverse="true"
@@ -148,9 +148,9 @@
         <one-to-many 
             class="DepartmentStockOutDetail"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to DepartmentStockInDetail -->
-    <bag
+    <!--<bag
         name="DepartmentStockInDetails"
         lazy="true"
         inverse="true"
@@ -162,9 +162,9 @@
         <one-to-many 
             class="DepartmentStockInDetail"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to DepartmentPromotion -->
-    <bag
+    <!--<bag
         name="DepartmentPromotions"
         lazy="true"
         inverse="true"
@@ -176,9 +176,9 @@
         <one-to-many 
             class="DepartmentPromotion"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to DepartmentStock -->
-    <bag
+    <!--<bag
         name="DepartmentStocks"
         lazy="true"
         inverse="true"
@@ -190,9 +190,9 @@
         <one-to-many 
             class="DepartmentStock"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional one-to-many association to PurchaseOrderDetail -->
-    <bag
+    <!--<bag
         name="PurchaseOrderDetails"
         lazy="true"
         inverse="true"
@@ -204,7 +204,7 @@
         <one-to-many 
             class="PurchaseOrderDetail"
         />
-    </bag>
+    </bag>-->
 
 </class>
 </hibernate-mapping>

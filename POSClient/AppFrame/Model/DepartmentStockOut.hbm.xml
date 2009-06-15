@@ -91,9 +91,8 @@
     <!-- bi-directional one-to-many association to DepartmentStockOutCost -->
     <bag
         name="DepartmentStockOutCosts"
-        lazy="true"
-        inverse="true"
-		cascade="none"
+        lazy="false"      
+		
     >
         <key>
             <column name="STOCK_OUT_ID" />

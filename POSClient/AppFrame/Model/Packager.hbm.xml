@@ -66,7 +66,7 @@
     <!-- Associations -->
   
     <!-- bi-directional one-to-many association to ProductMaster -->
-    <bag
+    <!--<bag
         name="ProductMasters"
         lazy="true"
         inverse="true"
@@ -78,7 +78,7 @@
         <one-to-many 
             class="ProductMaster"
         />
-    </bag>
+    </bag>-->
 
 </class>
 </hibernate-mapping>

@@ -139,7 +139,7 @@ namespace AppFrame.Model
 
         
         // ProductMaster
-        public virtual IList ProductMasters
+        /*public virtual IList ProductMasters
         {
             get
             {
@@ -149,7 +149,7 @@ namespace AppFrame.Model
             {
                 _productMasters = value;
             }
-        }
+        }*/
         
 
         #endregion

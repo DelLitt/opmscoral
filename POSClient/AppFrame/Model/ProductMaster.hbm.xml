@@ -142,7 +142,7 @@
       <column name="SIZE_ID" />
     </many-to-one>
     <!-- bi-directional one-to-many association to Product -->
-    <bag
+    <!--<bag
         name="Products"
         lazy="true"
         inverse="true"
@@ -154,7 +154,7 @@
         <one-to-many 
             class="Product"
         />
-    </bag>
+    </bag>-->
     <!-- bi-directional many-to-one association to Distributor -->
     <many-to-one
         name="Distributor"
