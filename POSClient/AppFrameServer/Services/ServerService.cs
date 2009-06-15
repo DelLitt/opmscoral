@@ -19,13 +19,26 @@ namespace AppFrameServer.Services
         {
             // Subscribe the guest to the beer inventory
             IDepartmentStockOutCallback guest = OperationContext.Current.GetCallbackChannel<IDepartmentStockOutCallback>();
-
-            if (!_callbackList.Contains(guest))
+            if (department.DepartmentId > 999999)
             {
-                _callbackList.Add(guest);
-                guest.NotifyConnected();
-            } 
+                if (!_callbackSubStockList.Contains(guest))
+                {
+                    _callbackSubStockList.Add(guest);
+                    guest.NotifyConnected();
+                }
+            }
+            else
+            {
+                if (!_callbackList.Contains(guest))
+                {
+                    _callbackList.Add(guest);
+                    guest.NotifyConnected();
+                }    
+            }
+             
         }
+
+
         public void RequestDepartmentStockOut(long departmentId)
         {
             _callbackSubStockList.ForEach(
@@ -41,6 +54,23 @@ namespace AppFrameServer.Services
                      }
                  }); 
         }
+
+        public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
+        {
+            _callbackSubStockList.ForEach(
+                 delegate(IDepartmentStockOutCallback callback)
+                 {
+                     try
+                     {
+                         callback.NotifyStockOutSuccess(sourceDeptId, destDeptId, deptStockId);
+                     }
+                     catch (Exception)
+                     {
+
+                     }
+                 });
+        }
+
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
             _callbackList.ForEach(
@@ -65,6 +95,10 @@ namespace AppFrameServer.Services
             if (_callbackList.Contains(guest))
             {
                 _callbackList.Remove(guest);
+            }
+            if (_callbackSubStockList.Contains(guest))
+            {
+                _callbackSubStockList.Remove(guest);
             }
         }
     }

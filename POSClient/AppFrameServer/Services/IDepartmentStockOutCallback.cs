@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -7,7 +8,6 @@ using AppFrame.Model;
 
 namespace AppFrameServer.Services
 {
-    [XmlSerializerFormat]
     public interface IDepartmentStockOutCallback
     {
         [OperationContract(IsOneWay = true)]
@@ -17,7 +17,7 @@ namespace AppFrameServer.Services
         void NotifyConnected();
 
         [OperationContract(IsOneWay = true)]
-        void NotifyStockOutSuccess(long departmentId,long stockOutId);
+        void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId);
 
         [OperationContract(IsOneWay = true)]
         void NotifyRequestDepartmentStockOut(long departmentId);

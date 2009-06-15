@@ -22,5 +22,12 @@ namespace AppFrameServer.Services
 
         [OperationContract(IsOneWay = true)]
         void ExitDistributingGroup(Department department);
+
+        [OperationContract(IsOneWay = true)]
+        void RequestDepartmentStockOut(long departmentId);
+
+        [OperationContract(IsOneWay = true)]
+        void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
+
     }
 }
