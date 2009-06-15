@@ -7,6 +7,7 @@ using System.Threading;
 using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
+using AppFrame.Utility;
 using AppFrameClient.Utility.Mapper;
 
 namespace AppFrameClient.Services
@@ -35,7 +36,8 @@ namespace AppFrameClient.Services
 
         public ServerServiceConsumer()
         {
-            
+            IDepartmentStockInLogic deptStockInLogic = (IDepartmentStockInLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockInLogic");
+            DepartmentStockInLogic = deptStockInLogic;
             
             m_thread = new Thread(new ThreadStart(ThreadMethod));
             m_thread.Start();
@@ -51,9 +53,13 @@ namespace AppFrameClient.Services
                     {
                         ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                         serverService.JoinDistributingGroup(CurrentDepartment.Get());
+                        Thread.Sleep(500);
                     }
-                    // Wait until thread is stopped
-                    Thread.Sleep(SleepTime);
+                    else
+                    {
+                        // Wait until thread is stopped
+                        Thread.Sleep(SleepTime);    
+                    }
                 }
                 
         }
