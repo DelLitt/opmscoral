@@ -14,6 +14,7 @@ namespace AppFrameServer.Services
     public class ServerService : IServerService
     {
         private static List<IDepartmentStockOutCallback> _callbackList = new List<IDepartmentStockOutCallback>();
+        private static List<IDepartmentStockOutCallback> _callbackSubStockList = new List<IDepartmentStockOutCallback>();
         public void JoinDistributingGroup(Department department)
         {
             // Subscribe the guest to the beer inventory
@@ -25,7 +26,21 @@ namespace AppFrameServer.Services
                 guest.NotifyConnected();
             } 
         }
+        public void RequestDepartmentStockOut(long departmentId)
+        {
+            _callbackSubStockList.ForEach(
+                 delegate(IDepartmentStockOutCallback callback)
+                 {
+                     try
+                     {
+                         callback.NotifyRequestDepartmentStockOut(departmentId);
+                     }
+                     catch (Exception)
+                     {
 
+                     }
+                 }); 
+        }
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
             _callbackList.ForEach(
@@ -39,7 +54,6 @@ namespace AppFrameServer.Services
                         {   
                             
                         }
-                        
                     });
         }
 
