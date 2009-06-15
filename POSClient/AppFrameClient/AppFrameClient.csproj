@@ -1644,7 +1644,6 @@
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.PurchaseOrderView.datasource" />
     <None Include="Resources\ready-to-use.jpg" />
     <None Include="Resources\FlashImage.jpg" />
-    <None Include="Test.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

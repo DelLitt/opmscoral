@@ -1204,6 +1204,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtBarcode.Text = "";
                     return;
                 }
+                
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 cbbStockOutType.Enabled = false;

@@ -270,7 +270,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddEqCriteria("Product.ProductId", e.ProductId);
+            criteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            criteria.AddEqCriteria("DepartmentStockPK.ProductId", e.ProductId);
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)
             {
@@ -375,7 +376,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
             // do nothing
-            MessageBox.Show("Send back OK !");
+            //MessageBox.Show("Send back OK !");
         }
 
         
