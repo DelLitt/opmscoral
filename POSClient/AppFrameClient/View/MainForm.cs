@@ -36,6 +36,7 @@ namespace AppFrame.View
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IAuthService authService;
         private ServerServiceConsumer consumer = null;
+        private SubStockConsumer subStockConsumer = null;
         private delegate void showProcess();
 
         public MainForm()
@@ -629,6 +630,10 @@ namespace AppFrame.View
             else
             {
                 toolStripClient.Visible = false;
+                if(ClientSetting.IsSubStock())
+                {
+                    subStockConsumer= new SubStockConsumer();
+                }
             }
         }
 
