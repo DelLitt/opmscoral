@@ -384,5 +384,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             // do nothing            
         }
+
+        public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
+        {
+            
+        }
+
+        public void NotifyRequestDepartmentStockOut(long departmentId)
+        {
+            
+        }
     }
 }
