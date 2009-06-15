@@ -21,10 +21,16 @@ namespace AppFrameClient.Services
         void JoinDistributingGroup(Department department);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockOut")]
-        void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price);
+        void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ExitDistributingGroup")]
         void ExitDistributingGroup(Department department);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockOut")]
+        void RequestDepartmentStockOut(long departmentId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutSuccess")]
+        void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -32,10 +38,16 @@ namespace AppFrameClient.Services
     {
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyNewDepartmentStockOut")]
-        void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price);
+        void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyConnected")]
         void NotifyConnected();
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockOutSuccess")]
+        void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyRequestDepartmentStockOut")]
+        void NotifyRequestDepartmentStockOut(long departmentId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -78,7 +90,7 @@ namespace AppFrameClient.Services
             base.Channel.JoinDistributingGroup(department);
         }
 
-        public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
+        public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price)
         {
             base.Channel.MakeDepartmentStockOut(department, stockOut, price);
         }
@@ -86,6 +98,16 @@ namespace AppFrameClient.Services
         public void ExitDistributingGroup(Department department)
         {
             base.Channel.ExitDistributingGroup(department);
+        }
+
+        public void RequestDepartmentStockOut(long departmentId)
+        {
+            base.Channel.RequestDepartmentStockOut(departmentId);
+        }
+
+        public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
+        {
+            base.Channel.InformDepartmentStockOutSuccess(sourceDeptId, destDeptId, deptStockId);
         }
 
 }

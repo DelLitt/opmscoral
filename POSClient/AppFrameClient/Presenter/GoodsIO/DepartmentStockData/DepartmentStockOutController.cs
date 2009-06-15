@@ -79,7 +79,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
 
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
-                serverService.JoinDistributingGroup(destDept);
+                //serverService.JoinDistributingGroup(destDept);
                 serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
             }
 

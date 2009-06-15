@@ -14,10 +14,11 @@ namespace AppFrameClient.Services
 {
     public class ServerServiceConsumer : ServerServiceCallback
     {
-        const int SleepTime = 200;
+        const int SleepTime = 1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
+        private ServerServiceClient serverService = null;
 
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
@@ -30,12 +31,25 @@ namespace AppFrameClient.Services
             stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
             // call method to sync
             DepartmentStockInLogic.SyncFromSubStock(stockIn);
+            serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
         }
 
         
         public void NotifyConnected()
         {
             connected = true;
+        }
+
+        public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
+        {
+            // don't need to implement
+        }
+
+        
+
+        public void NotifyRequestDepartmentStockOut(long departmentId)
+        {
+            // don't need to implement
         }
 
         public ServerServiceConsumer()
@@ -55,13 +69,14 @@ namespace AppFrameClient.Services
                 {
                     if(!connected)
                     {
-                        ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                        serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                         serverService.JoinDistributingGroup(CurrentDepartment.Get());
                         Thread.Sleep(500);
                     }
                     else
                     {
                         // Wait until thread is stopped
+                        serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
                         Thread.Sleep(SleepTime);    
                     }
                 }
@@ -71,6 +86,11 @@ namespace AppFrameClient.Services
         #region Logic use in IDepartmentStockInController
 
         public IDepartmentStockInLogic DepartmentStockInLogic
+        {
+            get;
+            set;
+        }
+        public IDepartmentStockOutLogic DepartmentStockOutLogic
         {
             get;
             set;

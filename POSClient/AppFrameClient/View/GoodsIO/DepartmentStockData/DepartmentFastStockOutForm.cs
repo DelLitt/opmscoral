@@ -1291,7 +1291,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));
                     if (eventArgs.EventResult != null)
                     {
-                        MessageBox.Show("Lưu thành công");
+                        //MessageBox.Show("Lưu thành công");
                         if (isNeedClearData)
                         {
                             deptSO = new DepartmentStockOut();

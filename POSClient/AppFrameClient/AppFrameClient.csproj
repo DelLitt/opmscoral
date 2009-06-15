@@ -317,6 +317,7 @@
     <Compile Include="Presenter\PosLogController.cs" />
     <Compile Include="Presenter\StockOutConfirmController.cs" />
     <Compile Include="Services\ServerServiceConsumer.cs" />
+    <Compile Include="Services\SubStockConsumer.cs" />
     <Compile Include="Services\ThreadedServiceHost.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
     <Compile Include="Utility\Mapper\FastDepartmentStockInMapper.cs" />
