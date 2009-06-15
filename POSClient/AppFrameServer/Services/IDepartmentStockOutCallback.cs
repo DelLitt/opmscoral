@@ -7,6 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrameServer.Services
 {
+    [XmlSerializerFormat]
     public interface IDepartmentStockOutCallback
     {
         [OperationContract(IsOneWay = true)]

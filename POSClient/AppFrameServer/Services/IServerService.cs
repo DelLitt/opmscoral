@@ -9,8 +9,7 @@ using AppFrame.Model;
 namespace AppFrameServer.Services
 {
     [ServiceContract(
-        Name = "ServerService",
-        Namespace = "http://localhost:8001/ServerService/",
+        Name = "ServerService",Namespace = "http://localhost:8001/",
         SessionMode = SessionMode.Required,
         CallbackContract = typeof(IDepartmentStockOutCallback))]
     public interface IServerService
