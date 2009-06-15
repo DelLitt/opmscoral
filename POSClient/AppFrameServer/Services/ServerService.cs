@@ -30,7 +30,17 @@ namespace AppFrameServer.Services
         {
             _callbackList.ForEach(
                 delegate(IDepartmentStockOutCallback callback)
-                { callback.NotifyNewDepartmentStockOut(department, stockOut,price); });
+                    {
+                        try
+                        {
+                            callback.NotifyNewDepartmentStockOut(department, stockOut, price);
+                        }
+                        catch (Exception)
+                        {   
+                            
+                        }
+                        
+                    });
         }
 
         public void ExitDistributingGroup(Department department)
