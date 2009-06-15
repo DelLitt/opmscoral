@@ -79,6 +79,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
 
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                serverService.JoinDistributingGroup(destDept);
                 serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
             }
 
@@ -377,6 +378,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             MessageBox.Show("Send back OK !");
         }
 
+        
         public void NotifyConnected()
         {
             // do nothing            

@@ -27,6 +27,7 @@ namespace AppFrameClient.Services
             DepartmentStockInLogic.SyncFromSubStock(stockIn);
         }
 
+        
         public void NotifyConnected()
         {
             connected = true;
