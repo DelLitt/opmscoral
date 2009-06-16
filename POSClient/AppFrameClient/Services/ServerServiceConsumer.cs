@@ -8,6 +8,7 @@ using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrameClient.Utility.Mapper;
 
 namespace AppFrameClient.Services
@@ -22,6 +23,7 @@ namespace AppFrameClient.Services
 
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             if(CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;    
@@ -31,13 +33,16 @@ namespace AppFrameClient.Services
             stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
             // call method to sync
             DepartmentStockInLogic.SyncFromSubStock(stockIn);
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
             serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
         }
 
         
         public void NotifyConnected()
         {
             connected = true;
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối thành công!";
         }
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
@@ -69,15 +74,19 @@ namespace AppFrameClient.Services
                 {
                     if(!connected)
                     {
+                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
                         serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                         serverService.JoinDistributingGroup(CurrentDepartment.Get());
                         Thread.Sleep(500);
+                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
                     }
                     else
                     {
                         // Wait until thread is stopped
+                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
                         serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
-                        Thread.Sleep(SleepTime);    
+                        Thread.Sleep(SleepTime);
+                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
                     }
                 }
                 

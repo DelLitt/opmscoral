@@ -10,6 +10,7 @@ using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
+using AppFrame.View;
 
 namespace AppFrameClient.Services
 {
@@ -49,8 +50,10 @@ namespace AppFrameClient.Services
                     {
                         try
                         {
+                            ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
                             serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = "Kết nối với dịch vụ.";
                         }
                         catch (Exception)
                         {
@@ -61,7 +64,8 @@ namespace AppFrameClient.Services
                     else
                     {
                         // Wait until thread is stopped
-                        Thread.Sleep(SleepTime);    
+                        Thread.Sleep(SleepTime);
+                        //((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
                     }
                 }
                 
@@ -76,6 +80,7 @@ namespace AppFrameClient.Services
         public void NotifyConnected()
         {
             connected = true;
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối thành công!";
         }
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
@@ -100,6 +105,7 @@ namespace AppFrameClient.Services
             {
                 return;
             }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
             objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);

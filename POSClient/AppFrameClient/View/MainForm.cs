@@ -814,6 +814,7 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<LoadDataFromDepartmentToMain>(this,
                                                                           FormConstants.
                                                                               LOAD_DATA_TO_MAIN_STOCK_FORM);
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
 
@@ -872,6 +873,7 @@ namespace AppFrame.View
         {
             DepartmentStockOutExtraForm baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutExtraForm>(this, FormConstants.DEPARTMENT_STOCK_OUT_FORM);
             //baseStockOutForm.Show();
+            baseStockOutForm.WindowState = FormWindowState.Maximized;
             ShowFormWithActiveDepartment(baseStockOutForm, new Department());
         }
 
@@ -880,6 +882,7 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentReStockInForm>(this,
                                                                                       FormConstants.
                                                                                           DEPARTMENT_RESTOCK_IN_FORM);
+            form.WindowState = FormWindowState.Maximized;
             //form.Show();
             ShowFormWithActiveDepartment(form, new Department());
         }
@@ -893,6 +896,7 @@ namespace AppFrame.View
             Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockViewCheckingForm>(this,
                                                                                                      FormConstants.
                                                                                                          DEPARTMENT_STOCK_VIEW_CHECKING_FORM);
+            deptStockCheckingForm.WindowState = FormWindowState.Maximized;
             //deptStockCheckingForm.Show();
             ShowFormWithActiveDepartment(deptStockCheckingForm, new Department());
         }
@@ -900,6 +904,7 @@ namespace AppFrame.View
         private void tsbStockOut_Click(object sender, EventArgs e)
         {
             Form departmentStockIn = GlobalUtility.GetOnlyChildFormObject<DepartmentStockInFromMainForm>(this, FormConstants.DEPARTMENT_STOCK_IN_EXTRA_FORM);
+            departmentStockIn.WindowState = FormWindowState.Maximized;
             departmentStockIn.Show();
         }
 
@@ -908,6 +913,7 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<LoadDepartmentStockInToFileForm>(this,
                                                                           FormConstants.
                                                                               LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM);
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
 
@@ -916,13 +922,15 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<SyncToMainForm>(this,
                                                                           FormConstants.
                                                                               SYNC_TO_MAIN_FORM);
+            form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
 
         private void tsbDeptSyncDown_Click(object sender, EventArgs e)
         {
             Form departmentStockIn = GlobalUtility.GetFormObject<DepartmentStockSyncFromMainForm>(FormConstants.DEPARTMENT_STOCK_SYNC_FROM_MAIN_FORM);
-            departmentStockIn.ShowDialog();
+            departmentStockIn.WindowState = FormWindowState.Maximized;
+            departmentStockIn.Show();
         }
         
     }

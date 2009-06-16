@@ -351,6 +351,12 @@
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.Designer.cs">
+      <DependentUpon>DepartmentFastStockInForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1300,6 +1306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.resx">
+      <DependentUpon>DepartmentFastStockInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.resx">
       <DependentUpon>DepartmentFastStockOutForm.cs</DependentUpon>

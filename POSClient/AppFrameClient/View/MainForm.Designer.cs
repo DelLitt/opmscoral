@@ -171,6 +171,7 @@
             this.tsbSyncDown = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncDown = new System.Windows.Forms.ToolStripButton();
+            this.ServiceStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -1103,7 +1104,8 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
-            this.toolStripStatusLabel});
+            this.toolStripStatusLabel,
+            this.ServiceStatus});
             this.statusStrip.Location = new System.Drawing.Point(0, 544);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1008, 22);
@@ -1159,7 +1161,7 @@
             this.tsbLogin.Image = global::AppFrameClient.Properties.Resources.LogOff;
             this.tsbLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogin.Name = "tsbLogin";
-            this.tsbLogin.Size = new System.Drawing.Size(81, 51);
+            this.tsbLogin.Size = new System.Drawing.Size(71, 51);
             this.tsbLogin.Text = "Đăng nhập";
             this.tsbLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogin.Click += new System.EventHandler(this.tsbLogin_Click);
@@ -1169,7 +1171,7 @@
             this.tsbLogout.Image = global::AppFrameClient.Properties.Resources.User;
             this.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogout.Name = "tsbLogout";
-            this.tsbLogout.Size = new System.Drawing.Size(81, 51);
+            this.tsbLogout.Size = new System.Drawing.Size(71, 51);
             this.tsbLogout.Text = "Đăng xuất";
             this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
@@ -1179,7 +1181,7 @@
             this.tsbEnterPeriod.Image = global::AppFrameClient.Properties.Resources.Restart;
             this.tsbEnterPeriod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEnterPeriod.Name = "tsbEnterPeriod";
-            this.tsbEnterPeriod.Size = new System.Drawing.Size(81, 51);
+            this.tsbEnterPeriod.Size = new System.Drawing.Size(71, 51);
             this.tsbEnterPeriod.Text = "Vào ca";
             this.tsbEnterPeriod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbEnterPeriod.Click += new System.EventHandler(this.tsbEnterPeriod_Click);
@@ -1199,7 +1201,7 @@
             this.tsbSale.Image = global::AppFrameClient.Properties.Resources.Address_Book;
             this.tsbSale.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSale.Name = "tsbSale";
-            this.tsbSale.Size = new System.Drawing.Size(81, 51);
+            this.tsbSale.Size = new System.Drawing.Size(71, 51);
             this.tsbSale.Text = "Bán hàng";
             this.tsbSale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSale.Click += new System.EventHandler(this.tsbSale_Click);
@@ -1317,6 +1319,12 @@
             this.tsbDeptSyncDown.Text = "Nhập đ.bộ";
             this.tsbDeptSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptSyncDown.Click += new System.EventHandler(this.tsbDeptSyncDown_Click);
+            // 
+            // ServiceStatus
+            // 
+            this.ServiceStatus.Name = "ServiceStatus";
+            this.ServiceStatus.Size = new System.Drawing.Size(109, 17);
+            this.ServiceStatus.Text = "Chuẩn bị kết nối ....";
             // 
             // MainForm
             // 
@@ -1491,6 +1499,7 @@
         private System.Windows.Forms.ToolStripButton tsbSyncDown;
         private System.Windows.Forms.ToolStripButton tsbDeptSyncUp;
         private System.Windows.Forms.ToolStripButton tsbDeptSyncDown;
+        public System.Windows.Forms.ToolStripStatusLabel ServiceStatus;
 
     }
 }
