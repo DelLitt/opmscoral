@@ -473,6 +473,20 @@ namespace AppFrameClient.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap USBInput {
+            get {
+                object obj = ResourceManager.GetObject("USBInput", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap USBOutput {
+            get {
+                object obj = ResourceManager.GetObject("USBOutput", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap User {
             get {
                 object obj = ResourceManager.GetObject("User", resourceCulture);

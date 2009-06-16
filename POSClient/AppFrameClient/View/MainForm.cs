@@ -52,6 +52,7 @@ namespace AppFrame.View
 
         private void mnuFileExit_Click(object sender, EventArgs e)
         {
+            Close();
             Application.Exit();
         }
 
@@ -633,6 +634,15 @@ namespace AppFrame.View
                 if(ClientSetting.IsSubStock())
                 {
                     subStockConsumer= new SubStockConsumer();
+
+                    // load toolstrip
+                    toolStripClient.Visible = true;
+                    // load and set permissions
+                    Stream toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.SubStockToolStripPermissions.xml");
+                    ToolStripItemPermission toolStripItemPermission = new ToolStripItemPermission(ToolStripItemPermission.INVISIBLE);
+                    toolStripItemPermission.loadRoles(toolStripInStream);
+                    GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
+                    MenuUtility.setPermission(this, clientInfo, ref this.toolStripClient, toolStripItemPermission);
                 }
             }
         }
@@ -801,9 +811,9 @@ namespace AppFrame.View
 
         private void tsbSync_Click(object sender, EventArgs e)
         {
-            Form form = GlobalUtility.GetOnlyChildFormObject<SyncToMainForm>(this,
+            Form form = GlobalUtility.GetOnlyChildFormObject<LoadDataFromDepartmentToMain>(this,
                                                                           FormConstants.
-                                                                              SYNC_TO_MAIN_FORM);
+                                                                              LOAD_DATA_TO_MAIN_STOCK_FORM);
             form.Show();
         }
 
@@ -819,6 +829,100 @@ namespace AppFrame.View
             Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentFastStockOutForm>(this,
                                                                             FormConstants.DEPARTMENT_FAST_STOCK_OUT_VIEW);
             form.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(consumer != null)
+            {
+                consumer.Stop();
+                consumer = null;
+            }
+            if(subStockConsumer !=null)
+            {
+                subStockConsumer.Stop();
+                subStockConsumer = null;
+            }
+        }
+
+        private void tsbLeavePeriod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbCost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbFastStockOut_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentFastStockOutForm>(this,
+                                                                            FormConstants.DEPARTMENT_FAST_STOCK_OUT_VIEW);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void tsbWorkload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbDeptStockOut_Click(object sender, EventArgs e)
+        {
+            DepartmentStockOutExtraForm baseStockOutForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockOutExtraForm>(this, FormConstants.DEPARTMENT_STOCK_OUT_FORM);
+            //baseStockOutForm.Show();
+            ShowFormWithActiveDepartment(baseStockOutForm, new Department());
+        }
+
+        private void tsbReStockIn_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentReStockInForm>(this,
+                                                                                      FormConstants.
+                                                                                          DEPARTMENT_RESTOCK_IN_FORM);
+            //form.Show();
+            ShowFormWithActiveDepartment(form, new Department());
+        }
+
+        private void tsbDeptStockCheck_Click(object sender, EventArgs e)
+        {
+            //Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockCheckingForm>(this,
+            //                                                                                         FormConstants.
+            //                                                                                             DEPARTMENT_STOCK_CHECKING_FORM);
+
+            Form deptStockCheckingForm = GlobalUtility.GetOnlyChildFormObject<DepartmentStockViewCheckingForm>(this,
+                                                                                                     FormConstants.
+                                                                                                         DEPARTMENT_STOCK_VIEW_CHECKING_FORM);
+            //deptStockCheckingForm.Show();
+            ShowFormWithActiveDepartment(deptStockCheckingForm, new Department());
+        }
+
+        private void tsbStockOut_Click(object sender, EventArgs e)
+        {
+            Form departmentStockIn = GlobalUtility.GetOnlyChildFormObject<DepartmentStockInFromMainForm>(this, FormConstants.DEPARTMENT_STOCK_IN_EXTRA_FORM);
+            departmentStockIn.Show();
+        }
+
+        private void tsbSyncDown_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<LoadDepartmentStockInToFileForm>(this,
+                                                                          FormConstants.
+                                                                              LOAD_DATA_FROM_MAIN_STOCK_TO_FILE_FORM);
+            form.Show();
+        }
+
+        private void tsbDeptSyncUp_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<SyncToMainForm>(this,
+                                                                          FormConstants.
+                                                                              SYNC_TO_MAIN_FORM);
+            form.Show();
+        }
+
+        private void tsbDeptSyncDown_Click(object sender, EventArgs e)
+        {
+            Form departmentStockIn = GlobalUtility.GetFormObject<DepartmentStockSyncFromMainForm>(FormConstants.DEPARTMENT_STOCK_SYNC_FROM_MAIN_FORM);
+            departmentStockIn.ShowDialog();
         }
         
     }

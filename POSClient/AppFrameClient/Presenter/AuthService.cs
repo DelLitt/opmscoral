@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrameClient.Common;
 using AppFrameClient.View;
 
@@ -40,6 +41,9 @@ namespace AppFrame.Presenter
             AuthManager authManager = SecurityUtility.LoadAuthenticationModule();
             authManager.logout();
             GlobalUtility.CloseAllChildForm(GlobalUtility.GetFormObject(FormConstants.MAIN_FORM));
+            MenuUtility.setPermission(GlobalCache.Instance().MainForm, ClientInfo.getInstance(), ref ((MainForm)GlobalCache.Instance().MainForm).toolStripClient,
+                                          GlobalCache.Instance().ClientToolStripPermission);
+
             if (ClientInfo.getInstance().LoggedUser.IsGuest && PreLogout != null)
             {
                 EventUtility.fireEvent(PreLogout, this, new BaseEventArgs());

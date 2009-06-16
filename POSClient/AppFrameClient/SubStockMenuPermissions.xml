@@ -31,7 +31,7 @@
   <menu name="mnuDeptStock" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuProcessDepartmentStockDefect" role="NotImplement" />
     <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
@@ -39,19 +39,19 @@
     <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
     <menuitem name="mnuDeptStockFixing" role="NotImplement" />
-    <menuitem name="mnuDepartmentCost" role="Administrator,Supervisor,Manager" />
+    <menuitem name="mnuDepartmentCost" role="NotImplement" />
     <menuitem name="mnuSubStockOut" role="Administrator,Supervisor,Manager" />    
     
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor">
     <menuitem name="mnuDefineSalePoint" role="NotImplement" />
-    <menuitem name="mnuDepartmentSubStock" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentSubStock" role="NotImplement" />
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />
     <menuitem name="mnuSalePointManagement" role="NotImplement" />
-    <menuitem name="mnuEmployeeManagement" role="Administrator,Supervisor" />
+    <menuitem name="mnuEmployeeManagement" role="NotImplement" />
     <menuitem name="mnuAddEmployee" role="NotImplement" />
     <menuitem name="mnuChamCong" role="NotImplement" />
-    <menuitem name="mnuUserAccount" role="Administrator,Supervisor" />
+    <menuitem name="mnuUserAccount" role="NotImplement" />
   </menu>
   <menu name="productToolStripMenuItem" role="NotImplement">
     <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
@@ -68,7 +68,7 @@
     <menuitem name="searchDepartmentStockInMenuItem" role="Administrator" />
   </menu>
 
-  <menu name="mnuSale" role="Administrator,Manager,Supervisor,Accountant">
+  <menu name="mnuSale" role="NotImplement">
     <menuitem name="mnuGoodsSale" role="Administrator,Supervisor,Manager,Accountant" />
     <menuitem name="mnuGoodsSaleExchange" role="NotImplement" />
     <menuitem name="mnuGoodsSaleReturn" role="NotImplement" />

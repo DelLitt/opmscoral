@@ -64,6 +64,7 @@
             this.mnuDeptPurchaseOrderReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStock = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStockChecking = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSubStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentReturnGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcessDepartmentStockDefect = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStockFixing = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,6 @@
             this.mnuReturnPOReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReturnMainStockReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockIn = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSubStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -161,10 +161,16 @@
             this.tsbLeavePeriod = new System.Windows.Forms.ToolStripButton();
             this.tsbSale = new System.Windows.Forms.ToolStripButton();
             this.tsbCost = new System.Windows.Forms.ToolStripButton();
+            this.tsbFastStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbWorkload = new System.Windows.Forms.ToolStripButton();
-            this.tsbTempStockOut = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbReStockIn = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptStockCheck = new System.Windows.Forms.ToolStripButton();
+            this.tsbStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbSync = new System.Windows.Forms.ToolStripButton();
+            this.tsbSyncDown = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptSyncUp = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptSyncDown = new System.Windows.Forms.ToolStripButton();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -458,6 +464,13 @@
             this.mnuDeptStockChecking.Text = "Kiểm kê kho cửa hàng";
             this.mnuDeptStockChecking.Click += new System.EventHandler(this.mnuDeptStockChecking_Click);
             // 
+            // mnuSubStockOut
+            // 
+            this.mnuSubStockOut.Name = "mnuSubStockOut";
+            this.mnuSubStockOut.Size = new System.Drawing.Size(277, 22);
+            this.mnuSubStockOut.Text = "Xuất hàng trong kho phụ";
+            this.mnuSubStockOut.Click += new System.EventHandler(this.mnuSubStockOut_Click);
+            // 
             // mnuDepartmentReturnGoods
             // 
             this.mnuDepartmentReturnGoods.Name = "mnuDepartmentReturnGoods";
@@ -530,13 +543,6 @@
             this.mnuDepartmentStockIn.Size = new System.Drawing.Size(277, 22);
             this.mnuDepartmentStockIn.Text = "Báo cáo nhập hàng";
             this.mnuDepartmentStockIn.Click += new System.EventHandler(this.mnuDepartmentStockIn_Click);
-            // 
-            // mnuSubStockOut
-            // 
-            this.mnuSubStockOut.Name = "mnuSubStockOut";
-            this.mnuSubStockOut.Size = new System.Drawing.Size(277, 22);
-            this.mnuSubStockOut.Text = "Xuất hàng trong kho phụ";
-            this.mnuSubStockOut.Click += new System.EventHandler(this.mnuSubStockOut_Click);
             // 
             // mnuWareHouse
             // 
@@ -1131,10 +1137,16 @@
             this.tsbLeavePeriod,
             this.tsbSale,
             this.tsbCost,
+            this.tsbFastStockOut,
             this.tsbWorkload,
-            this.tsbTempStockOut,
+            this.tsbDeptStockOut,
             this.tsbReStockIn,
-            this.tsbSync});
+            this.tsbDeptStockCheck,
+            this.tsbStockOut,
+            this.tsbSync,
+            this.tsbSyncDown,
+            this.tsbDeptSyncUp,
+            this.tsbDeptSyncDown});
             this.toolStripClient.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStripClient.Location = new System.Drawing.Point(0, 24);
             this.toolStripClient.Name = "toolStripClient";
@@ -1147,7 +1159,7 @@
             this.tsbLogin.Image = global::AppFrameClient.Properties.Resources.LogOff;
             this.tsbLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogin.Name = "tsbLogin";
-            this.tsbLogin.Size = new System.Drawing.Size(71, 51);
+            this.tsbLogin.Size = new System.Drawing.Size(81, 51);
             this.tsbLogin.Text = "Đăng nhập";
             this.tsbLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogin.Click += new System.EventHandler(this.tsbLogin_Click);
@@ -1157,7 +1169,7 @@
             this.tsbLogout.Image = global::AppFrameClient.Properties.Resources.User;
             this.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogout.Name = "tsbLogout";
-            this.tsbLogout.Size = new System.Drawing.Size(71, 51);
+            this.tsbLogout.Size = new System.Drawing.Size(81, 51);
             this.tsbLogout.Text = "Đăng xuất";
             this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
@@ -1167,7 +1179,7 @@
             this.tsbEnterPeriod.Image = global::AppFrameClient.Properties.Resources.Restart;
             this.tsbEnterPeriod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEnterPeriod.Name = "tsbEnterPeriod";
-            this.tsbEnterPeriod.Size = new System.Drawing.Size(71, 51);
+            this.tsbEnterPeriod.Size = new System.Drawing.Size(81, 51);
             this.tsbEnterPeriod.Text = "Vào ca";
             this.tsbEnterPeriod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbEnterPeriod.Click += new System.EventHandler(this.tsbEnterPeriod_Click);
@@ -1180,13 +1192,14 @@
             this.tsbLeavePeriod.Size = new System.Drawing.Size(71, 51);
             this.tsbLeavePeriod.Text = "Thoát ca";
             this.tsbLeavePeriod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbLeavePeriod.Click += new System.EventHandler(this.tsbLeavePeriod_Click);
             // 
             // tsbSale
             // 
             this.tsbSale.Image = global::AppFrameClient.Properties.Resources.Address_Book;
             this.tsbSale.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSale.Name = "tsbSale";
-            this.tsbSale.Size = new System.Drawing.Size(71, 51);
+            this.tsbSale.Size = new System.Drawing.Size(81, 51);
             this.tsbSale.Text = "Bán hàng";
             this.tsbSale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSale.Click += new System.EventHandler(this.tsbSale_Click);
@@ -1199,6 +1212,17 @@
             this.tsbCost.Size = new System.Drawing.Size(71, 51);
             this.tsbCost.Text = "Chi phí";
             this.tsbCost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbCost.Click += new System.EventHandler(this.tsbCost_Click);
+            // 
+            // tsbFastStockOut
+            // 
+            this.tsbFastStockOut.Image = global::AppFrameClient.Properties.Resources.Download;
+            this.tsbFastStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFastStockOut.Name = "tsbFastStockOut";
+            this.tsbFastStockOut.Size = new System.Drawing.Size(71, 51);
+            this.tsbFastStockOut.Text = "Xuất nhanh";
+            this.tsbFastStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbFastStockOut.Click += new System.EventHandler(this.tsbFastStockOut_Click);
             // 
             // tsbWorkload
             // 
@@ -1208,34 +1232,91 @@
             this.tsbWorkload.Size = new System.Drawing.Size(71, 51);
             this.tsbWorkload.Text = "Chấm công";
             this.tsbWorkload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbWorkload.Click += new System.EventHandler(this.tsbWorkload_Click);
             // 
-            // tsbTempStockOut
+            // tsbDeptStockOut
             // 
-            this.tsbTempStockOut.Image = global::AppFrameClient.Properties.Resources.Link_Folder;
-            this.tsbTempStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbTempStockOut.Name = "tsbTempStockOut";
-            this.tsbTempStockOut.Size = new System.Drawing.Size(71, 51);
-            this.tsbTempStockOut.Text = "Tạm xuất";
-            this.tsbTempStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptStockOut.Image = global::AppFrameClient.Properties.Resources.Link_Folder;
+            this.tsbDeptStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptStockOut.Name = "tsbDeptStockOut";
+            this.tsbDeptStockOut.Size = new System.Drawing.Size(71, 51);
+            this.tsbDeptStockOut.Text = "Xuất hàng";
+            this.tsbDeptStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptStockOut.Click += new System.EventHandler(this.tsbDeptStockOut_Click);
             // 
             // tsbReStockIn
             // 
             this.tsbReStockIn.Image = global::AppFrameClient.Properties.Resources.Close_Folder;
             this.tsbReStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbReStockIn.Name = "tsbReStockIn";
-            this.tsbReStockIn.Size = new System.Drawing.Size(71, 51);
+            this.tsbReStockIn.Size = new System.Drawing.Size(57, 51);
             this.tsbReStockIn.Text = "Tái nhập";
             this.tsbReStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbReStockIn.Click += new System.EventHandler(this.tsbReStockIn_Click);
+            // 
+            // tsbDeptStockCheck
+            // 
+            this.tsbDeptStockCheck.Image = global::AppFrameClient.Properties.Resources.Organize;
+            this.tsbDeptStockCheck.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptStockCheck.Name = "tsbDeptStockCheck";
+            this.tsbDeptStockCheck.Size = new System.Drawing.Size(53, 51);
+            this.tsbDeptStockCheck.Text = "Kiểm kê";
+            this.tsbDeptStockCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptStockCheck.Click += new System.EventHandler(this.tsbDeptStockCheck_Click);
+            // 
+            // tsbStockOut
+            // 
+            this.tsbStockOut.Image = global::AppFrameClient.Properties.Resources.Download;
+            this.tsbStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbStockOut.Name = "tsbStockOut";
+            this.tsbStockOut.Size = new System.Drawing.Size(65, 51);
+            this.tsbStockOut.Text = "Xuất hàng";
+            this.tsbStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbStockOut.Click += new System.EventHandler(this.tsbStockOut_Click);
             // 
             // tsbSync
             // 
-            this.tsbSync.Image = global::AppFrameClient.Properties.Resources.USB;
+            this.tsbSync.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbSync.Image = global::AppFrameClient.Properties.Resources.USBInput;
             this.tsbSync.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSync.Name = "tsbSync";
-            this.tsbSync.Size = new System.Drawing.Size(57, 51);
-            this.tsbSync.Text = "Đồng bộ";
+            this.tsbSync.Size = new System.Drawing.Size(67, 51);
+            this.tsbSync.Text = "Nhập đ.bộ";
             this.tsbSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSync.Click += new System.EventHandler(this.tsbSync_Click);
+            // 
+            // tsbSyncDown
+            // 
+            this.tsbSyncDown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbSyncDown.Image = global::AppFrameClient.Properties.Resources.USBOutput;
+            this.tsbSyncDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSyncDown.Name = "tsbSyncDown";
+            this.tsbSyncDown.Size = new System.Drawing.Size(62, 51);
+            this.tsbSyncDown.Text = "Xuất đ.bộ";
+            this.tsbSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbSyncDown.Click += new System.EventHandler(this.tsbSyncDown_Click);
+            // 
+            // tsbDeptSyncUp
+            // 
+            this.tsbDeptSyncUp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbDeptSyncUp.Image = global::AppFrameClient.Properties.Resources.USBOutput;
+            this.tsbDeptSyncUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptSyncUp.Name = "tsbDeptSyncUp";
+            this.tsbDeptSyncUp.Size = new System.Drawing.Size(62, 51);
+            this.tsbDeptSyncUp.Text = "Xuất đ.bộ";
+            this.tsbDeptSyncUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptSyncUp.Click += new System.EventHandler(this.tsbDeptSyncUp_Click);
+            // 
+            // tsbDeptSyncDown
+            // 
+            this.tsbDeptSyncDown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbDeptSyncDown.Image = global::AppFrameClient.Properties.Resources.USBInput;
+            this.tsbDeptSyncDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptSyncDown.Name = "tsbDeptSyncDown";
+            this.tsbDeptSyncDown.Size = new System.Drawing.Size(67, 51);
+            this.tsbDeptSyncDown.Text = "Nhập đ.bộ";
+            this.tsbDeptSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptSyncDown.Click += new System.EventHandler(this.tsbDeptSyncDown_Click);
             // 
             // MainForm
             // 
@@ -1253,6 +1334,7 @@
             this.Text = "POS Client";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.mnuMenu.ResumeLayout(false);
             this.mnuMenu.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -1395,7 +1477,7 @@
         private System.Windows.Forms.ToolStripButton tsbEnterPeriod;
         private System.Windows.Forms.ToolStripButton tsbLeavePeriod;
         private System.Windows.Forms.ToolStripButton tsbSale;
-        private System.Windows.Forms.ToolStripButton tsbTempStockOut;
+        private System.Windows.Forms.ToolStripButton tsbDeptStockOut;
         private System.Windows.Forms.ToolStripButton tsbReStockIn;
         private System.Windows.Forms.ToolStripButton tsbCost;
         private System.Windows.Forms.ToolStripButton tsbWorkload;
@@ -1403,6 +1485,12 @@
         public System.Windows.Forms.ToolStrip toolStripClient;
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentSubStock;
         private System.Windows.Forms.ToolStripMenuItem mnuSubStockOut;
+        private System.Windows.Forms.ToolStripButton tsbFastStockOut;
+        private System.Windows.Forms.ToolStripButton tsbStockOut;
+        private System.Windows.Forms.ToolStripButton tsbDeptStockCheck;
+        private System.Windows.Forms.ToolStripButton tsbSyncDown;
+        private System.Windows.Forms.ToolStripButton tsbDeptSyncUp;
+        private System.Windows.Forms.ToolStripButton tsbDeptSyncDown;
 
     }
 }

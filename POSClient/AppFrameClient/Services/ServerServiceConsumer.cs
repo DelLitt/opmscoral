@@ -82,7 +82,16 @@ namespace AppFrameClient.Services
                 }
                 
         }
-
+        /// <summary>
+        /// Request the end of the thread method.
+        /// </summary>
+        public void Stop()
+        {
+            lock (this)
+            {
+                m_running = false;
+            }
+        }
         #region Logic use in IDepartmentStockInController
 
         public IDepartmentStockInLogic DepartmentStockInLogic

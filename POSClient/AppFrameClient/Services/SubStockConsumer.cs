@@ -47,8 +47,15 @@ namespace AppFrameClient.Services
                 {
                     if(!connected)
                     {
-                        serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
-                        serverService.JoinDistributingGroup(CurrentDepartment.Get());
+                        try
+                        {
+                            serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                            serverService.JoinDistributingGroup(CurrentDepartment.Get());
+                        }
+                        catch (Exception)
+                        {
+                         
+                        }
                         Thread.Sleep(500);
                     }
                     else
@@ -117,7 +124,16 @@ namespace AppFrameClient.Services
                serverService.MakeDepartmentStockOut(destDept,departmentStockOut,new DepartmentPrice()); 
             }
         }
-
+        /// <summary>
+        /// Request the end of the thread method.
+        /// </summary>
+        public void Stop()
+        {
+            lock (this)
+            {
+                m_running = false;
+            }
+        }
         #region Logic use in IDepartmentStockInController
 
         public IDepartmentStockInLogic DepartmentStockInLogic

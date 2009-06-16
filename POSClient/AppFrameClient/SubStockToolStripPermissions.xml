@@ -3,18 +3,18 @@
 <toolstrip>
   <toolstripitem name="tsbLogin" role="%" />
   <toolstripitem name="tsbLogout" role="@" />
-  <toolstripitem name="tsbEnterPeriod" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbLeavePeriod" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbSale" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbCost" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbWorkload" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbEnterPeriod" role="NotImplement" />
+  <toolstripitem name="tsbLeavePeriod" role="NotImplement" />
+  <toolstripitem name="tsbSale" role="NotImplement" />
+  <toolstripitem name="tsbCost" role="NotImplement" />
+  <toolstripitem name="tsbWorkload" role="NotImplement" />
+  <toolstripitem name="tsbFastStockOut" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockOut" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbReStockIn" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbSync" role="NotImplement" />
   <toolstripitem name="tsbSyncDown" role="NotImplement" />
   <toolstripitem name="tsbDeptSyncUp" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptSyncDown" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbFastStockOut" role="NotImplement" />
   <toolstripitem name="tsbStockOut" role="NotImplement" />
   <toolstripitem name="tsbStockIn" role="NotImplement" />
   <toolstripitem name="tsbStockCheck" role="NotImplement" />
