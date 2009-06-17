@@ -153,7 +153,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 mainStockInEventArgs.ComboBoxDisplayMember = "ProductMasterId";
             }
-            EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, sender, mainStockInEventArgs);
+            //EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, sender, mainStockInEventArgs);
         }
 
         #endregion
@@ -311,7 +311,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
-            cbbStockOutType.Enabled = false;
+            /*cbbStockOutType.Enabled = false;
             btnReset.Enabled = false;
             cboProductMasters.Enabled = false;
             rdoFastStockOut.Checked = true;
@@ -401,7 +401,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //                txtDexcription.Text = deptSO.Description;
             }
             deptSO.DepartmentStockOutDetails =
-                    ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
+                    ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);*/
             
             
         }
@@ -538,7 +538,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSO = new DepartmentStockOut();
             }
-            bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
+            /*bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
             deptSO.StockOutDate = dtpImportDate.Value;
             deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
@@ -567,7 +567,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 //MessageBox.Show("Có lỗi khi lưu");
-            }
+            }*/
         }
 
         private void dgvDeptStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -668,7 +668,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = "" } } };
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
-            EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
+            //EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
             
         }
 
@@ -678,7 +678,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-            if (cbbStockOutType.SelectedIndex < 0)
+            /*if (cbbStockOutType.SelectedIndex < 0)
             {
                 MessageBox.Show("Hãy chọn Loại để xuất kho");
                 return;
@@ -762,12 +762,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 cbbStockOutType.Enabled = false;
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
-            }
+            }*/
         }
 
         private void LockField(int rowIndex, DepartmentStockOutDetail stockOutDetail)
         {
-            stockOutDetail.DefectStatus = cbbStockOutType.SelectedItem as StockDefectStatus;
+            //stockOutDetail.DefectStatus = cbbStockOutType.SelectedItem as StockDefectStatus;
             StockDefectStatus defectStatus = stockOutDetail.DefectStatus;
             // Xuat tam de sua hang
             if (defectStatus.DefectStatusId == 4)
@@ -857,7 +857,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var eventArgs = new DepartmentStockOutEventArgs();
             eventArgs.SelectedProductMasterList = selectedProductMasterList;
-            EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
+            //EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
             if (eventArgs.FoundDepartmentStockOutDetailList != null && eventArgs.FoundDepartmentStockOutDetailList.Count > 0)
             {
                 foreach (DepartmentStockOutDetail detail in eventArgs.FoundDepartmentStockOutDetailList)
@@ -881,9 +881,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                      // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
                      // DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
                      // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác" });
-                    StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+                    //StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
                     
-                    if (defectStatus.DefectStatusId == 4)
+                    /*if (defectStatus.DefectStatusId == 4)
                     {
                         // if xuattam, so we check error quantity
                         if (detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
@@ -901,7 +901,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         }
                     }
                     detail.DefectStatus = defectStatus;
-                    detail.GoodQuantity = 1;
+                    detail.GoodQuantity = 1;*/
                     deptSODetailList.Add(detail);
                     deptSODetailList.EndNew(deptSODetailList.Count - 1);
                     LockField(deptSODetailList.Count - 1, detail);
@@ -993,7 +993,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void cboProductMasters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProductMaster proMaster = cboProductMasters.SelectedItem as ProductMaster;
+            /*ProductMaster proMaster = cboProductMasters.SelectedItem as ProductMaster;
             if (proMaster == null)
             {
                 return;
@@ -1055,7 +1055,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             colorBindingSource.DataSource = colorList;
             sizeBindingSource.DataSource = sizeList;
-            productMasterList = mainStockInEventArgs.FoundProductMasterList;
+            productMasterList = mainStockInEventArgs.FoundProductMasterList;*/
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1067,9 +1067,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //            txtPriceOut.Text = "";
             txtSumProduct.Text = "";
             txtSumValue.Text = "";
-            ClearSelectionOnListBox(lstColor);
+            /*ClearSelectionOnListBox(lstColor);
             ClearSelectionOnListBox(lstSize);
-            cboProductMasters.Text = "";
+            cboProductMasters.Text = "";*/
         }
 
         private void ClearSelectionOnListBox(ListBox color)
@@ -1082,7 +1082,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var proMaster = cboProductMasters.SelectedItem as ProductMaster;
+            /*var proMaster = cboProductMasters.SelectedItem as ProductMaster;
             int i = cboProductMasters.SelectedIndex;
             if (proMaster == null)
             {
@@ -1096,12 +1096,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             form.ShowDialog();
             cboProductMasters.SelectedIndex = i;
             cboProductMasters.SelectedItem = proMaster;
-            cboProductMasters.DroppedDown = false;
+            cboProductMasters.DroppedDown = false;*/
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            cbbStockOutType.Enabled = true;
+            //cbbStockOutType.Enabled = true;
             deptSODetailList.Clear();
         }
 
@@ -1116,10 +1116,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //int selectedIndex = 0;
             //mainStockInEventArgs.SelectedIndex = selectedIndex;
             //mainStockInEventArgs.SelectedStockInDetail = deptSODetailList[selectedIndex];
-            mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.Text } } };
+            //mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = cboProductMasters.Text } } };
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
-            EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
+            //EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
         }
 
         private void systemHotkey1_Pressed(object sender, EventArgs e)
@@ -1138,7 +1138,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 var eventArgs = new DepartmentStockOutEventArgs();
                 eventArgs.ProductId = txtBarcode.Text;
-                EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
+                //EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
                 if (eventArgs.EventResult == null)
                 {
                     MessageBox.Show("Không tìm thấy mã vạch này");
@@ -1189,7 +1189,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
-                cbbStockOutType.Enabled = false;
+                //cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
                 if(rdoFastStockOut.Checked)
@@ -1259,7 +1259,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         deptSO = new DepartmentStockOut();
                     }
-                    bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
+                    /*bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
                     deptSO.StockOutDate = dtpImportDate.Value;
                     deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
                     deptSO.OtherDepartmentId = ((Department) cboDepartment.SelectedItem).DepartmentId;
@@ -1271,8 +1271,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     
                     ea.DepartmentStockList = departmentStockList;
                     EventUtility.fireEvent(SaveStockOutEvent, this, ea);
-                    EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));
-                    if (eventArgs.EventResult != null)
+                    EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));*/
+                    /*if (eventArgs.EventResult != null)
                     {
                         //MessageBox.Show("Lưu thành công");
                         if (isNeedClearData)
@@ -1292,7 +1292,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     else
                     {
                         //MessageBox.Show("Có lỗi khi lưu");
-                    }
+                    }*/
                 }
             }
         }
@@ -1309,13 +1309,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void rdoFastStockOut_Click(object sender, EventArgs e)
         {
-            cbbStockOutType.Enabled = false;
-            btnReset.Enabled = false;
+            /*cbbStockOutType.Enabled = false;
+            btnReset.Enabled = false;*/
         }
 
         private void rdoStockOut_CheckedChanged(object sender, EventArgs e)
         {
-            cbbStockOutType.Enabled = false;
+            /*cbbStockOutType.Enabled = false;
             btnReset.Enabled = false;
             if (!rdoStockOut.Checked)
             {
@@ -1324,19 +1324,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 cboProductMasters.Enabled = true;
-            }
+            }*/
         }
 
         private void rdoFastStockOut_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdoFastStockOut.Checked)
+            /*if(rdoFastStockOut.Checked)
             {
                 cboProductMasters.Enabled = false;
             }
             else
             {
                 cboProductMasters.Enabled = true;                
-            }
+            }*/
         }
     }
 }
