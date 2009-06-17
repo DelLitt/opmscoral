@@ -7,7 +7,9 @@ using AFCSetting = AppFrameClient.Properties.Settings;
 namespace AppFrameClient.Common
 {
     public class ClientSetting
-    {   
+    {
+        
+
         public static bool IsClient()
         {
             return string.IsNullOrEmpty(AFCSetting.Default.IsClient)
@@ -114,6 +116,17 @@ namespace AppFrameClient.Common
             set
             {
                 AFCSetting.Default.DBBackupPath = value;
+            }
+        }
+        public static string MarketDept
+        {
+            get
+            {
+                return AFCSetting.Default.DeptMarket;
+            }
+            set
+            {
+                AFCSetting.Default.DeptMarket = value;                
             }
         }
 

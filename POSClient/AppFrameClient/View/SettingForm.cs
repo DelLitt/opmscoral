@@ -20,7 +20,13 @@ namespace AppFrameClient.View
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
-        {   
+        {
+            if(ClientSetting.IsSubStock())
+            {
+                lblDepartment.Visible = true;
+                cboDepartment.Visible = true;
+            }
+            this.departmentTableAdapter.Fill(this.masterDB.Department);
             ClientSetting.Reload();
             cboPrinters.Items.Clear();
             txtSyncImportPath.Text = ClientSetting.SyncImportPath;
@@ -29,6 +35,7 @@ namespace AppFrameClient.View
             txtSyncSuccessPath.Text = ClientSetting.SyncSuccessPath;
             txtBackupDB.Text = ClientSetting.DBBackupPath;
             txtMySQLDump.Text = ClientSetting.MySQLDumpPath;
+            cboDepartment.SelectedValue = ClientSetting.MarketDept;
             PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
             foreach (string printerName in printerNames)
             {
@@ -53,6 +60,7 @@ namespace AppFrameClient.View
             ClientSetting.SyncErrorPath = txtSyncErrorPath.Text;
             ClientSetting.SyncSuccessPath = txtSyncSuccessPath.Text;
             ClientSetting.PrinterName = (string)cboPrinters.SelectedItem;
+            ClientSetting.MarketDept = cboDepartment.SelectedValue.ToString();
             ClientSetting.Save();
             
             MessageBox.Show("Lưu cấu hình thành công!");

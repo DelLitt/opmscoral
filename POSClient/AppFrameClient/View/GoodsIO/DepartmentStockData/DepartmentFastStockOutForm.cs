@@ -314,6 +314,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             cbbStockOutType.Enabled = false;
             btnReset.Enabled = false;
             cboProductMasters.Enabled = false;
+            
             rdoFastStockOut.Checked = true;
 
             IList list = new ArrayList();
@@ -339,7 +340,24 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     if (department.DepartmentId != CurrentDepartment.Get().DepartmentId)
                     {
-                        bdsDepartment.Add(department);
+                        if (!ClientSetting.IsSubStock())
+                        {
+                            bdsDepartment.Add(department);
+                        }
+                        else
+                        {
+                            string departmentId = department.DepartmentId.ToString();
+                            string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                            if(currentSubStock.StartsWith(departmentId))
+                            {
+                                bdsDepartment.Add(department);
+                            }
+                            if(ClientSetting.MarketDept.Equals(departmentId))
+                            {
+                                bdsDepartment.Add(department);
+                            }
+                        }
+
                     }
                 }
                 bdsDepartment.EndEdit();
@@ -349,7 +367,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
-
+            
+            foreach (Department department in cboDepartment.Items)
+            {
+                string departmentId = department.DepartmentId.ToString();
+                string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                if (currentSubStock.StartsWith(departmentId))
+                {
+                    cboDepartment.SelectedItem = department;
+                    cboDepartment.Enabled = false;
+                    break;
+                }
+            }
             deptSODetailList = new DepartmentStockOutDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
@@ -402,7 +431,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             deptSO.DepartmentStockOutDetails =
                     ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
-            
+
             
         }
 
@@ -560,6 +589,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSO.StockOutDate = dtpImportDate.Value;
             deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
+            deptSO.OtherDepartmentId = ((Department)cboDepartment.SelectedItem).DepartmentId;
+            deptSO.ConfirmFlg = 3;
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockOutEventArgs();
             eventArgs.DepartmentStockOut = deptSO;
@@ -1350,10 +1381,22 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if(rdoFastStockOut.Checked)
             {
                 cboProductMasters.Enabled = false;
+                foreach (Department department in cboDepartment.Items)
+                {
+                    string departmentId = department.DepartmentId.ToString();
+                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    if (currentSubStock.StartsWith(departmentId))
+                    {
+                        cboDepartment.SelectedItem = department;
+                        cboDepartment.Enabled = false;
+                        break;
+                    }
+                }
             }
             else
             {
-                cboProductMasters.Enabled = true;                
+                cboProductMasters.Enabled = true;
+                cboDepartment.Enabled = true;
             }
         }
     }

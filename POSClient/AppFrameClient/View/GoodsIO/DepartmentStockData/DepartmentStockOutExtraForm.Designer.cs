@@ -556,6 +556,7 @@
             // 
             // cbbStockOutType
             // 
+            this.cbbStockOutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbStockOutType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbStockOutType.FormattingEnabled = true;
             this.cbbStockOutType.Location = new System.Drawing.Point(82, 134);

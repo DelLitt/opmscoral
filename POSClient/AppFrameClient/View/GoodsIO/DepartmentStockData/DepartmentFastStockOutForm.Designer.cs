@@ -634,10 +634,10 @@
             this.rdoFastStockOut.AutoSize = true;
             this.rdoFastStockOut.Location = new System.Drawing.Point(6, 21);
             this.rdoFastStockOut.Name = "rdoFastStockOut";
-            this.rdoFastStockOut.Size = new System.Drawing.Size(88, 18);
+            this.rdoFastStockOut.Size = new System.Drawing.Size(104, 18);
             this.rdoFastStockOut.TabIndex = 118;
             this.rdoFastStockOut.TabStop = true;
-            this.rdoFastStockOut.Text = "Xuất nhanh";
+            this.rdoFastStockOut.Text = "Xuất bán ngay";
             this.rdoFastStockOut.UseVisualStyleBackColor = true;
             this.rdoFastStockOut.Click += new System.EventHandler(this.rdoFastStockOut_Click);
             this.rdoFastStockOut.CheckedChanged += new System.EventHandler(this.rdoFastStockOut_CheckedChanged);

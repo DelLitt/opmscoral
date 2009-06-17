@@ -42,7 +42,35 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 _departmentStockInView.SyncDepartmentStockInEvent += new System.EventHandler<DepartmentStockInEventArgs>(departmentStockInView_SyncDepartmentStockInEvent);
                 _departmentStockInView.FindByBarcodeEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FindByBarcodeEvent);
                 _departmentStockInView.SaveReDepartmentStockInEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_SaveReDepartmentStockInEvent);
+                _departmentStockInView.FindBarcodeEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FindBarcodeEvent);
+                _departmentStockInView.LoadAllDepartments += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadAllDepartments);
             }
+        }
+
+        void _departmentStockInView_LoadAllDepartments(object sender, DepartmentStockInEventArgs e)
+        {
+            IList list = DepartmentLogic.FindAll(null);
+            e.DepartmentList = list;
+        }
+
+        void _departmentStockInView_FindBarcodeEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            criteria.AddEqCriteria("DepartmentStockPK.ProductId", e.ProductId);
+            IList list = DepartmentStockLogic.FindAll(criteria);
+            if (list.Count == 0)
+            {
+                return;
+            }
+            DepartmentStock stock = list[0] as DepartmentStock;
+            e.SelectedDepartmentStockInDetail = new DepartmentStockInDetail();
+            e.SelectedDepartmentStockInDetail.Product = stock.Product;
+            e.SelectedDepartmentStockInDetail.Quantity = 1;
+
+            e.DepartmentStock = stock;
+            e.EventResult = "Success";
         }
 
         void _departmentStockInView_SaveReDepartmentStockInEvent(object sender, DepartmentStockInEventArgs e)

@@ -153,10 +153,10 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ServiceStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerProgress = new System.Windows.Forms.Timer(this.components);
             this.toolStripClient = new System.Windows.Forms.ToolStrip();
             this.tsbLogin = new System.Windows.Forms.ToolStripButton();
-            this.tsbLogout = new System.Windows.Forms.ToolStripButton();
             this.tsbEnterPeriod = new System.Windows.Forms.ToolStripButton();
             this.tsbLeavePeriod = new System.Windows.Forms.ToolStripButton();
             this.tsbSale = new System.Windows.Forms.ToolStripButton();
@@ -171,7 +171,7 @@
             this.tsbSyncDown = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncDown = new System.Windows.Forms.ToolStripButton();
-            this.ServiceStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsbLogout = new System.Windows.Forms.ToolStripButton();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -1123,6 +1123,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Ready";
             // 
+            // ServiceStatus
+            // 
+            this.ServiceStatus.Name = "ServiceStatus";
+            this.ServiceStatus.Size = new System.Drawing.Size(109, 17);
+            this.ServiceStatus.Text = "Chuẩn bị kết nối ....";
+            // 
             // timerProgress
             // 
             this.timerProgress.Interval = 50;
@@ -1134,7 +1140,6 @@
             this.toolStripClient.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripClient.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbLogin,
-            this.tsbLogout,
             this.tsbEnterPeriod,
             this.tsbLeavePeriod,
             this.tsbSale,
@@ -1148,7 +1153,8 @@
             this.tsbSync,
             this.tsbSyncDown,
             this.tsbDeptSyncUp,
-            this.tsbDeptSyncDown});
+            this.tsbDeptSyncDown,
+            this.tsbLogout});
             this.toolStripClient.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStripClient.Location = new System.Drawing.Point(0, 24);
             this.toolStripClient.Name = "toolStripClient";
@@ -1165,16 +1171,6 @@
             this.tsbLogin.Text = "Đăng nhập";
             this.tsbLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogin.Click += new System.EventHandler(this.tsbLogin_Click);
-            // 
-            // tsbLogout
-            // 
-            this.tsbLogout.Image = global::AppFrameClient.Properties.Resources.User;
-            this.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLogout.Name = "tsbLogout";
-            this.tsbLogout.Size = new System.Drawing.Size(71, 51);
-            this.tsbLogout.Text = "Đăng xuất";
-            this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
             // 
             // tsbEnterPeriod
             // 
@@ -1222,7 +1218,7 @@
             this.tsbFastStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFastStockOut.Name = "tsbFastStockOut";
             this.tsbFastStockOut.Size = new System.Drawing.Size(71, 51);
-            this.tsbFastStockOut.Text = "Xuất nhanh";
+            this.tsbFastStockOut.Text = "Xuất hàng";
             this.tsbFastStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbFastStockOut.Click += new System.EventHandler(this.tsbFastStockOut_Click);
             // 
@@ -1251,7 +1247,7 @@
             this.tsbReStockIn.Image = global::AppFrameClient.Properties.Resources.Close_Folder;
             this.tsbReStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbReStockIn.Name = "tsbReStockIn";
-            this.tsbReStockIn.Size = new System.Drawing.Size(57, 51);
+            this.tsbReStockIn.Size = new System.Drawing.Size(71, 51);
             this.tsbReStockIn.Text = "Tái nhập";
             this.tsbReStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbReStockIn.Click += new System.EventHandler(this.tsbReStockIn_Click);
@@ -1320,11 +1316,15 @@
             this.tsbDeptSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptSyncDown.Click += new System.EventHandler(this.tsbDeptSyncDown_Click);
             // 
-            // ServiceStatus
+            // tsbLogout
             // 
-            this.ServiceStatus.Name = "ServiceStatus";
-            this.ServiceStatus.Size = new System.Drawing.Size(109, 17);
-            this.ServiceStatus.Text = "Chuẩn bị kết nối ....";
+            this.tsbLogout.Image = global::AppFrameClient.Properties.Resources.User;
+            this.tsbLogout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLogout.Name = "tsbLogout";
+            this.tsbLogout.Size = new System.Drawing.Size(64, 51);
+            this.tsbLogout.Text = "Đăng xuất";
+            this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
             // 
             // MainForm
             // 

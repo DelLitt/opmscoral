@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnExportPath;
             this.label1 = new System.Windows.Forms.Label();
             this.btnDefault = new System.Windows.Forms.Button();
@@ -58,7 +59,16 @@
             this.txtSyncImportPath = new System.Windows.Forms.TextBox();
             this.txtSyncExportPath = new System.Windows.Forms.TextBox();
             this.cboPrinters = new System.Windows.Forms.ComboBox();
+            this.cboDepartment = new System.Windows.Forms.ComboBox();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.masterDB = new AppFrameClient.MasterDB();
+            this.masterDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             btnExportPath = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExportPath
@@ -82,7 +92,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(302, 252);
+            this.btnDefault.Location = new System.Drawing.Point(302, 254);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -92,7 +102,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(383, 252);
+            this.btnClose.Location = new System.Drawing.Point(383, 254);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -102,7 +112,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(221, 252);
+            this.btnSave.Location = new System.Drawing.Point(221, 254);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -271,11 +281,55 @@
             this.cboPrinters.Size = new System.Drawing.Size(172, 21);
             this.cboPrinters.TabIndex = 12;
             // 
+            // cboDepartment
+            // 
+            this.cboDepartment.DataSource = this.departmentBindingSource;
+            this.cboDepartment.DisplayMember = "DEPARTMENT_NAME";
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartment.FormattingEnabled = true;
+            this.cboDepartment.Location = new System.Drawing.Point(184, 215);
+            this.cboDepartment.Name = "cboDepartment";
+            this.cboDepartment.Size = new System.Drawing.Size(173, 21);
+            this.cboDepartment.TabIndex = 25;
+            this.cboDepartment.ValueMember = "DEPARTMENT_ID";
+            this.cboDepartment.Visible = false;
+            // 
+            // lblDepartment
+            // 
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Location = new System.Drawing.Point(66, 218);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(112, 13);
+            this.lblDepartment.TabIndex = 26;
+            this.lblDepartment.Text = "Nơi xuất của kho phụ:";
+            this.lblDepartment.Visible = false;
+            // 
+            // masterDB
+            // 
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // masterDBBindingSource
+            // 
+            this.masterDBBindingSource.DataSource = this.masterDB;
+            this.masterDBBindingSource.Position = 0;
+            // 
+            // departmentBindingSource
+            // 
+            this.departmentBindingSource.DataMember = "Department";
+            this.departmentBindingSource.DataSource = this.masterDBBindingSource;
+            // 
+            // departmentTableAdapter
+            // 
+            this.departmentTableAdapter.ClearBeforeFill = true;
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 287);
+            this.ClientSize = new System.Drawing.Size(470, 291);
+            this.Controls.Add(this.lblDepartment);
+            this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.txtBackupDB);
             this.Controls.Add(this.txtMySQLDump);
             this.Controls.Add(this.btnBackupDB);
@@ -304,6 +358,9 @@
             this.Text = "Cấu hình hệ thống";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +397,11 @@
         private System.Windows.Forms.FolderBrowserDialog backupDBDialog;
         private System.Windows.Forms.TextBox txtSyncSuccessPath;
         private System.Windows.Forms.TextBox txtBackupDB;
+        private System.Windows.Forms.ComboBox cboDepartment;
+        private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.BindingSource masterDBBindingSource;
+        private MasterDB masterDB;
+        private System.Windows.Forms.BindingSource departmentBindingSource;
+        private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
     }
 }

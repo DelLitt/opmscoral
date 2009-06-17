@@ -42,5 +42,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos</Value>
     </Setting>
+    <Setting Name="DeptMarket" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

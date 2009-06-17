@@ -74,11 +74,16 @@ namespace AppFrameClient.Services
                 {
                     if(!connected)
                     {
-                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
-                        serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
-                        serverService.JoinDistributingGroup(CurrentDepartment.Get());
-                        Thread.Sleep(500);
-                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
+                        try
+                        {
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
+                            serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                            serverService.JoinDistributingGroup(CurrentDepartment.Get());
+                            Thread.Sleep(500);
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
+                        }
+                        catch (Exception) { }
+                        
                     }
                     else
                     {

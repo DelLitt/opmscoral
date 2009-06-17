@@ -24,10 +24,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private const int QUANTITY_POS = 6;
         private const int PRICE_POS = 7;
         private const int SELL_PRICE_POS = 8;
-        private DepartmentStockOutDetailCollection deptSODetailList;
+        private DepartmentStockInDetailCollection deptSODetailList;
         private IList CurrentRowProductColorList { get; set; }
         private IList CurrentRowProductSizeList { get; set; }
-        public DepartmentStockOut deptSO { get; set; }
+        public DepartmentStockIn deptSO { get; set; }
         private IList productMasterList { get; set; }
 
         private IList departmentStockList { get; set; }
@@ -49,7 +49,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         }
 
-        private DepartmentStockOutDetail CreateNewStockInDetail()
+        private DepartmentStockInDetail CreateNewStockInDetail()
         {
             var deptSIDet = deptSODetailList.AddNew();
             deptSIDet.Product = new Product();
@@ -65,7 +65,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             // create DepartmentStockIn
             if (deptSO == null)
             {
-                deptSO = new DepartmentStockOut();
+                deptSO = new DepartmentStockIn();
             }
             deptSO.CreateDate = DateTime.Now;
             deptSO.UpdateDate = DateTime.Now;
@@ -79,8 +79,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //
 //            }
 
-            deptSO.DepartmentStockOutDetails =
-                ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
+            deptSO.DepartmentStockInDetails =
+                ObjectConverter.ConvertToNonGenericList<DepartmentStockInDetail>(deptSODetailList);
             bdsStockIn.EndEdit();
 
 //            for (int j = 0; j < maxAddedItemsCount; j++)
@@ -136,14 +136,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void FillProductToComboBox(object sender, string name)
         {
-            var mainStockInEventArgs = new DepartmentStockOutEventArgs();
+            var mainStockInEventArgs = new DepartmentStockInEventArgs();
             if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
             {
                 return;
             }
             int selectedIndex = dgvDeptStockIn.CurrentRow.Index;
             mainStockInEventArgs.SelectedIndex = selectedIndex;
-            mainStockInEventArgs.SelectedDepartmentStockOutDetail = deptSODetailList[selectedIndex];
+            mainStockInEventArgs.SelectedDepartmentStockInDetail = deptSODetailList[selectedIndex];
             mainStockInEventArgs.IsFillToComboBox = true;
             if (name.Equals("columnProductName"))
             {
@@ -161,144 +161,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void dgvDeptStockIn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             CalculateTotalStorePrice();
-//            try
-//            {
-//                var mainStockInEventArgs = new DepartmentStockOutEventArgs();
-//                if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
-//                {
-//                    return;
-//                }
-//                int selectedIndex = dgvDeptStockIn.CurrentRow.Index;
-//                mainStockInEventArgs.SelectedIndex = selectedIndex;
-//                mainStockInEventArgs.SelectedStockOutDetail = deptSODetailList[selectedIndex];
-//
-//                // bind the quantity, price and sellprice
-//                long qty = NumberUtility.ParseLong(dgvDeptStockIn[QUANTITY_POS, selectedIndex].Value);
-//                long inPrice = NumberUtility.ParseLong(dgvDeptStockIn[PRICE_POS, selectedIndex].Value);
-//                long sellPrice = NumberUtility.ParseLong(dgvDeptStockIn[SELL_PRICE_POS, selectedIndex].Value);
-//
-//                if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
-//                {
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductMasterId =
-//                        dgvDeptStockIn.CurrentCell.Value as string;
-//                    if (e.ColumnIndex == 1)
-//                    {
-//                        EventUtility.fireEvent(LoadGoodsByIdEvent, this, mainStockInEventArgs);
-//                    }
-//                    else
-//                    {
-//                        EventUtility.fireEvent(LoadGoodsByNameEvent, this, mainStockInEventArgs);
-//                    }
-//
-//                    // load goods to current row
-//                    var loadGoods =
-//                        mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster;
-//                    deptSODetailList[selectedIndex] = mainStockInEventArgs.SelectedStockInDetail;
-//                    bdsStockIn.EndEdit();
-//
-//                }
-//                else if (e.ColumnIndex == 3)
-//                {
-//                    // get the product name
-//                    var name = dgvDeptStockIn[2, dgvDeptStockIn.CurrentCell.RowIndex].Value as string;
-//                    if (string.IsNullOrEmpty(name))
-//                    {
-//                        // ignore
-//                        return;
-//                    }
-//                    // get the color (if selected)
-//                    ProductColor color = null;
-//                    var colorStr = dgvDeptStockIn.CurrentCell.Value as string;
-//                    if (CurrentRowProductColorList != null)
-//                    {
-//                        foreach (ProductColor c in CurrentRowProductColorList)
-//                        {
-//                            if (c.ColorName.Equals(colorStr))
-//                            {
-//                                color = c;
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductName = name;
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductColor = color;
-//                    EventUtility.fireEvent(LoadGoodsByNameColorEvent, this, mainStockInEventArgs);
-//                    // load goods to current row
-//                    var loadGoods =
-//                        mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster;
-//                    deptSODetailList[selectedIndex] = mainStockInEventArgs.SelectedStockInDetail;
-//                    bdsStockIn.EndEdit();
-//                }
-//                else if (e.ColumnIndex == 4)
-//                {
-//                    // get the product name
-//                    var name = dgvDeptStockIn[2, dgvDeptStockIn.CurrentCell.RowIndex].Value as string;
-//                    if (string.IsNullOrEmpty(name))
-//                    {
-//                        // ignore
-//                        return;
-//                    }
-//                    // get the color (if selected)
-//                    // get the color (if selected)
-//                    ProductColor color = null;
-//                    var colorStr = dgvDeptStockIn[3, dgvDeptStockIn.CurrentCell.RowIndex].Value as string;
-//                    if (CurrentRowProductColorList != null)
-//                    {
-//                        foreach (ProductColor c in CurrentRowProductColorList)
-//                        {
-//                            if (c.ColorName.Equals(colorStr))
-//                            {
-//                                color = c;
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//                    // get the color (if selected)
-//                    ProductSize size = null;
-//                    var sizeStr = dgvDeptStockIn.CurrentCell.Value as string;
-//                    if (CurrentRowProductSizeList != null)
-//                    {
-//                        foreach (ProductSize c in CurrentRowProductSizeList)
-//                        {
-//                            if (c.SizeName.Equals(sizeStr))
-//                            {
-//                                size = c;
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductName = name;
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductSize = size;
-//                    mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductColor = color;
-//                    EventUtility.fireEvent(LoadGoodsByNameColorSizeEvent, this, mainStockInEventArgs);
-//                    // load goods to current row
-//                    var loadGoods =
-//                        mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster;
-//                    deptSODetailList[selectedIndex] = mainStockInEventArgs.SelectedStockInDetail;
-//                    bdsStockIn.EndEdit();
-//                }
-//                if (deptSODetailList[selectedIndex] != null)
-//                {
-//                    deptSODetailList[selectedIndex].Quantity = qty;
-//                    deptSODetailList[selectedIndex].Price = inPrice;
-//                    deptSODetailList[selectedIndex].SellPrice = sellPrice;
-//                    CalculateTotalStorePrice();
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show("Mã sản phẩm không hợp lệ hoặc lỗi khi nhập");
-//            }
+
         }
 
         private void CalculateTotalStorePrice()
         {
             long totalInPrice = 0;
             long totalProduct = 0;
-            foreach (DepartmentStockOutDetail detail in deptSODetailList)
+            foreach (DepartmentStockInDetail detail in deptSODetailList)
             {
                 if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
                 {
@@ -311,23 +181,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
-            /*cbbStockOutType.Enabled = false;
-            btnReset.Enabled = false;
-            cboProductMasters.Enabled = false;
-            rdoFastStockOut.Checked = true;
-
-            IList list = new ArrayList();
-            if (ClientSetting.IsSubStock())
-            {
-                list.Add(new StockDefectStatus {DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác"});
-            }
-            else
-            {
-                list.Add(new StockDefectStatus { DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
-                list.Add(new StockDefectStatus { DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });    
+            rdoFastStockIn.Checked = true;
             
-            }
-            DepartmentStockOutEventArgs eventArgs = new DepartmentStockOutEventArgs();
+            DepartmentStockInEventArgs eventArgs = new DepartmentStockInEventArgs();
             EventUtility.fireEvent(LoadAllDepartments,this,eventArgs);
             if(eventArgs.DepartmentsList!= null && eventArgs.DepartmentsList.Count > 0)
             {
@@ -347,63 +203,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cboDepartment.Invalidate();
             }
 
-            cbbStockOutType.DataSource = list;
-            cbbStockOutType.DisplayMember = "DefectStatusName";
-
-            deptSODetailList = new DepartmentStockOutDetailCollection(bdsStockIn);
+            deptSODetailList = new DepartmentStockInDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
-            
-            // create DepartmentStockIn
-            if (deptSO == null)
-            {
-                deptSO = new DepartmentStockOut();
-                deptSO.CreateDate = DateTime.Now;
-                deptSO.UpdateDate = DateTime.Now;
-                deptSO.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                deptSO.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                deptSO.ExclusiveKey = 0;
-                CreateNewStockInDetail();
-//                btnBarcode.Visible = false;
-//                numericUpDownBarcode.Visible = false;
-//                btnPreview.Visible = false;
-                // load products to extra combo box
-                LoadProductMasterToComboBox();
-                deptSODetailList.RemoveAt(0);
-                bdsStockIn.EndEdit();
 
-            }
-            else
-            {
-//                btnBarcode.Visible = true;
-//                numericUpDownBarcode.Visible = true;
-//                btnPreview.Visible = true;
-                IList deptStockInDetails = deptSO.DepartmentStockOutDetails;
-                foreach (DepartmentStockOutDetail detail in deptStockInDetails)
-                {
-                    if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
-                    {
-                        deptSODetailList.Add(detail);
-                        //detail.OldQuantity = detail.Quantity;
-                    }
-                }
-
-                for (int i = 0; i < dgvDeptStockIn.Columns.Count; i++)
-                {
-                    dgvDeptStockIn.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    if (i != QUANTITY_POS
-                            && i != PRICE_POS
-                            && i != SELL_PRICE_POS)
-                    {
-                        dgvDeptStockIn.Columns[i].ReadOnly = true;
-                    }
-                }
-//                txtDexcription.Text = deptSO.Description;
-            }
-            deptSO.DepartmentStockOutDetails =
-                    ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);*/
-            
-            
         }
 
        
@@ -455,6 +258,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> SyncDepartmentStockInEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
         public event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadAllDepartments;
+        public event EventHandler<DepartmentStockInEventArgs> FindBarcodeEvent;
 
         #endregion
 
@@ -479,7 +284,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             int length = deptSODetailList.Count;
             for (int i = 0; i < length - count; i++)
             {
-                DepartmentStockOutDetail detail = deptSODetailList[i];
+                DepartmentStockInDetail detail = deptSODetailList[i];
                 if (string.IsNullOrEmpty(detail.Product.ProductMaster.ProductMasterId)
                     && string.IsNullOrEmpty(detail.Product.ProductMaster.ProductName))
                 {
@@ -496,47 +301,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             // validate quantity
             int line = 1;
-            foreach (DepartmentStockOutDetail detail in deptSODetailList)
+            foreach (DepartmentStockInDetail detail in deptSODetailList)
             {
                 foreach (DepartmentStock stock in departmentStockList)
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
-                        if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
+                        if (detail.Quantity < 0)
                         {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
-                            return;
-                        }
-                        if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
-                        {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Mất phải là số dương nhỏ hơn hoặc bằng " + stock.LostQuantity);
-                            return;
-                        }
-                        if (detail.DamageQuantity < 0 || detail.DamageQuantity > stock.DamageQuantity)
-                        {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Lỗi phải là số dương nhỏ hơn hoặc bằng " + stock.DamageQuantity);
-                            return;
-                        }
-                        if (detail.ErrorQuantity < 0 || detail.ErrorQuantity > stock.ErrorQuantity)
-                        {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Hư phải là số dương nhỏ hơn hoặc bằng " + stock.ErrorQuantity);
+                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng phải là số dương. ");
                             return;
                         }
                     }
                 }
-                if ((detail.DefectStatus.DefectStatusId == 4 && detail.ErrorQuantity == 0)
-                    || (detail.DefectStatus.DefectStatusId == 6 && detail.DamageQuantity + detail.GoodQuantity + detail.ErrorQuantity == 0)
-                    || (detail.DefectStatus.DefectStatusId == 7 && detail.GoodQuantity == 0)) 
-                {
-                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng xuất phải lớn hơn 0.");
-                    return;
-                }
+                
                 line++;
             }
 
             if (deptSO == null)
             {
-                deptSO = new DepartmentStockOut();
+                deptSO = new DepartmentStockIn();
             }
             /*bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
             deptSO.StockOutDate = dtpImportDate.Value;
@@ -606,10 +390,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
-            DepartmentStockOutDetail detail = deptSODetailList[selectedIndex];
+            DepartmentStockInDetail detail = deptSODetailList[selectedIndex];
             if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (detail.StockOutDetailId != 0)
+                /*if (detail.DepartmentStockInDetailPK.ProductId != 0)
                 {
                     detail.DelFlg = 1;
                     for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)
@@ -637,7 +421,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     bdsStockIn.EndEdit();
                     dgvDeptStockIn.Refresh();
                     dgvDeptStockIn.Invalidate();
-                }
+                }*/
             }
             CalculateTotalStorePrice();
         }
@@ -860,10 +644,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
             if (eventArgs.FoundDepartmentStockOutDetailList != null && eventArgs.FoundDepartmentStockOutDetailList.Count > 0)
             {
-                foreach (DepartmentStockOutDetail detail in eventArgs.FoundDepartmentStockOutDetailList)
+                foreach (DepartmentStockInDetail detail in eventArgs.FoundDepartmentStockOutDetailList)
                 {
                     bool found = false;
-                    foreach (DepartmentStockOutDetail detail1 in deptSODetailList)
+                    foreach (DepartmentStockInDetail detail1 in deptSODetailList)
                     {
                         if (detail.Product.ProductId.Equals(detail1.Product.ProductId))
                         {
@@ -904,7 +688,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     detail.GoodQuantity = 1;*/
                     deptSODetailList.Add(detail);
                     deptSODetailList.EndNew(deptSODetailList.Count - 1);
-                    LockField(deptSODetailList.Count - 1, detail);
+                    
                 }
                 foreach (DepartmentStock def in eventArgs.DepartmentStockList)
                 {
@@ -1060,7 +844,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void button3_Click(object sender, EventArgs e)
         {
-            deptSO = new DepartmentStockOut();
+            deptSO = new DepartmentStockIn();
             deptSODetailList.Clear();
 //            txtDexcription.Text = "";
 //            txtPriceIn.Text = "";
@@ -1136,9 +920,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             if(!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 12)
             {
-                var eventArgs = new DepartmentStockOutEventArgs();
+                var eventArgs = new DepartmentStockInEventArgs();
                 eventArgs.ProductId = txtBarcode.Text;
-                //EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
+                EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
                 if (eventArgs.EventResult == null)
                 {
                     MessageBox.Show("Không tìm thấy mã vạch này");
@@ -1146,9 +930,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                 }
                 bool found = false;
-                foreach (DepartmentStockOutDetail detail in deptSODetailList)
+                foreach (DepartmentStockInDetail detail in deptSODetailList)
                 {
-                    if (eventArgs.SelectedDepartmentStockOutDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                    if (eventArgs.SelectedDepartmentStockInDetail.Product.ProductId.Equals(detail.Product.ProductId))
                     {
                         found = true;
                         break;
@@ -1176,9 +960,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         departmentStockList.Add(eventArgs.DepartmentStock);
                     }
                 }
-                if(eventArgs.SelectedDepartmentStockOutDetail.Quantity > 0 )
+                if(eventArgs.SelectedDepartmentStockInDetail.Quantity > 0 )
                 {
-                    eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = 1;    
+                    eventArgs.SelectedDepartmentStockInDetail.Quantity = 1;    
                 }
                 else
                 {
@@ -1187,12 +971,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                 }
                 
-                deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
+                deptSODetailList.Add(eventArgs.SelectedDepartmentStockInDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 //cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
-                LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
-                if(rdoFastStockOut.Checked)
+                
+                /*if(rdoFastStockIn.Checked)
                 {
                     // do fast stock out in here
                     // first remove all blank row
@@ -1258,7 +1042,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     if (deptSO == null)
                     {
                         deptSO = new DepartmentStockOut();
-                    }
+                    }*/
                     /*bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
                     deptSO.StockOutDate = dtpImportDate.Value;
                     deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
@@ -1294,9 +1078,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         //MessageBox.Show("Có lỗi khi lưu");
                     }*/
                 }
-            }
         }
-
+        
         private void txtBarcode_Enter(object sender, EventArgs e)
         {
             txtBarcode.BackColor = Color.LightGreen;
