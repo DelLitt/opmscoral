@@ -1632,6 +1632,8 @@
     <Content Include="Resources\Task Schedule.png" />
     <Content Include="Resources\Tools.png" />
     <Content Include="Resources\USB.png" />
+    <Content Include="Resources\USBInput.png" />
+    <Content Include="Resources\USBOutput.png" />
     <Content Include="Resources\User-Female.png" />
     <Content Include="Resources\User-Male.png" />
     <Content Include="Resources\User.png" />
