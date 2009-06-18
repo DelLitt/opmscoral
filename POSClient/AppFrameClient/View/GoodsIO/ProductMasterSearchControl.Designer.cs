@@ -55,7 +55,7 @@
             this.cbbDistributor.FormattingEnabled = true;
             this.cbbDistributor.Location = new System.Drawing.Point(86, 87);
             this.cbbDistributor.Name = "cbbDistributor";
-            this.cbbDistributor.Size = new System.Drawing.Size(159, 21);
+            this.cbbDistributor.Size = new System.Drawing.Size(102, 21);
             this.cbbDistributor.TabIndex = 71;
             // 
             // label7
@@ -70,15 +70,15 @@
             // cbbPackager
             // 
             this.cbbPackager.FormattingEnabled = true;
-            this.cbbPackager.Location = new System.Drawing.Point(576, 61);
+            this.cbbPackager.Location = new System.Drawing.Point(464, 61);
             this.cbbPackager.Name = "cbbPackager";
-            this.cbbPackager.Size = new System.Drawing.Size(159, 21);
+            this.cbbPackager.Size = new System.Drawing.Size(103, 21);
             this.cbbPackager.TabIndex = 69;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(494, 64);
+            this.label6.Location = new System.Drawing.Point(382, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 68;
@@ -87,15 +87,15 @@
             // cbbManufacturer
             // 
             this.cbbManufacturer.FormattingEnabled = true;
-            this.cbbManufacturer.Location = new System.Drawing.Point(329, 60);
+            this.cbbManufacturer.Location = new System.Drawing.Point(270, 60);
             this.cbbManufacturer.Name = "cbbManufacturer";
-            this.cbbManufacturer.Size = new System.Drawing.Size(159, 21);
+            this.cbbManufacturer.Size = new System.Drawing.Size(109, 21);
             this.cbbManufacturer.TabIndex = 67;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(251, 63);
+            this.label5.Location = new System.Drawing.Point(192, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 66;
@@ -106,23 +106,23 @@
             this.cbbCountry.FormattingEnabled = true;
             this.cbbCountry.Location = new System.Drawing.Point(86, 60);
             this.cbbCountry.Name = "cbbCountry";
-            this.cbbCountry.Size = new System.Drawing.Size(159, 21);
+            this.cbbCountry.Size = new System.Drawing.Size(102, 21);
             this.cbbCountry.TabIndex = 65;
             // 
             // cbbProductSize
             // 
             this.cbbProductSize.FormattingEnabled = true;
-            this.cbbProductSize.Location = new System.Drawing.Point(576, 33);
+            this.cbbProductSize.Location = new System.Drawing.Point(464, 33);
             this.cbbProductSize.Name = "cbbProductSize";
-            this.cbbProductSize.Size = new System.Drawing.Size(159, 21);
+            this.cbbProductSize.Size = new System.Drawing.Size(103, 21);
             this.cbbProductSize.TabIndex = 64;
             // 
             // cbbProductColor
             // 
             this.cbbProductColor.FormattingEnabled = true;
-            this.cbbProductColor.Location = new System.Drawing.Point(329, 33);
+            this.cbbProductColor.Location = new System.Drawing.Point(270, 33);
             this.cbbProductColor.Name = "cbbProductColor";
-            this.cbbProductColor.Size = new System.Drawing.Size(159, 21);
+            this.cbbProductColor.Size = new System.Drawing.Size(109, 21);
             this.cbbProductColor.TabIndex = 63;
             // 
             // cbbProductType
@@ -130,14 +130,14 @@
             this.cbbProductType.FormattingEnabled = true;
             this.cbbProductType.Location = new System.Drawing.Point(85, 33);
             this.cbbProductType.Name = "cbbProductType";
-            this.cbbProductType.Size = new System.Drawing.Size(159, 21);
+            this.cbbProductType.Size = new System.Drawing.Size(103, 21);
             this.cbbProductType.TabIndex = 62;
             // 
             // txtProductMasterId
             // 
             this.txtProductMasterId.Location = new System.Drawing.Point(85, 7);
             this.txtProductMasterId.Name = "txtProductMasterId";
-            this.txtProductMasterId.Size = new System.Drawing.Size(159, 20);
+            this.txtProductMasterId.Size = new System.Drawing.Size(103, 20);
             this.txtProductMasterId.TabIndex = 61;
             // 
             // lblProductMasterId
@@ -161,7 +161,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(494, 36);
+            this.label4.Location = new System.Drawing.Point(382, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 58;
@@ -170,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 36);
+            this.label3.Location = new System.Drawing.Point(192, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 57;
@@ -188,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(251, 10);
+            this.label1.Location = new System.Drawing.Point(192, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 55;
@@ -196,23 +196,23 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(329, 7);
+            this.txtProductName.Location = new System.Drawing.Point(270, 7);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(406, 20);
+            this.txtProductName.Size = new System.Drawing.Size(297, 20);
             this.txtProductName.TabIndex = 54;
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(329, 87);
+            this.txtBarcode.Location = new System.Drawing.Point(270, 87);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(159, 20);
+            this.txtBarcode.Size = new System.Drawing.Size(109, 20);
             this.txtBarcode.TabIndex = 73;
             this.txtBarcode.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(251, 90);
+            this.label8.Location = new System.Drawing.Point(192, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 72;
@@ -244,7 +244,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtProductName);
             this.Name = "ProductMasterSearchControl";
-            this.Size = new System.Drawing.Size(741, 115);
+            this.Size = new System.Drawing.Size(572, 115);
             this.ResumeLayout(false);
             this.PerformLayout();
 

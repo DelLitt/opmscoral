@@ -104,7 +104,7 @@
             this.dgvProductMaster.MultiSelect = false;
             this.dgvProductMaster.Name = "dgvProductMaster";
             this.dgvProductMaster.ReadOnly = true;
-            this.dgvProductMaster.Size = new System.Drawing.Size(921, 334);
+            this.dgvProductMaster.Size = new System.Drawing.Size(800, 334);
             this.dgvProductMaster.TabIndex = 18;
             this.dgvProductMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductMaster_CellDoubleClick);
             // 
@@ -265,7 +265,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(855, 500);
+            this.btnClose.Location = new System.Drawing.Point(734, 500);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 19;
@@ -275,7 +275,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(774, 500);
+            this.btnSelect.Location = new System.Drawing.Point(653, 500);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 20;
@@ -285,7 +285,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(780, 131);
+            this.btnSearch.Location = new System.Drawing.Point(720, 131);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 21;
@@ -300,7 +300,7 @@
             // btnPrint
             // 
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(681, 500);
+            this.btnPrint.Location = new System.Drawing.Point(560, 500);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(87, 23);
             this.btnPrint.TabIndex = 22;
@@ -310,16 +310,17 @@
             // 
             // productMasterSearchControl
             // 
+            this.productMasterSearchControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterSearchControl.Location = new System.Drawing.Point(1, 34);
             this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(918, 120);
+            this.productMasterSearchControl.Size = new System.Drawing.Size(808, 120);
             this.productMasterSearchControl.TabIndex = 0;
             // 
             // ProductMasterSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 531);
+            this.ClientSize = new System.Drawing.Size(818, 531);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnSelect);

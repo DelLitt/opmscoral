@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,6 +51,13 @@
             this.lblCustomer = new System.Windows.Forms.Label();
             this.txtBillNumber = new System.Windows.Forms.TextBox();
             this.dgvSaleList = new System.Windows.Forms.DataGridView();
+            this.purchaseOrderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sellDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sellAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsPurchaseOrders = new System.Windows.Forms.BindingSource(this.components);
             this.chkMorningSort = new System.Windows.Forms.CheckBox();
             this.chkEveningSort = new System.Windows.Forms.CheckBox();
@@ -63,13 +70,6 @@
             this.txtRetQty = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSellQty = new System.Windows.Forms.TextBox();
-            this.purchaseOrderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purchaseOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sellDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sellAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).BeginInit();
@@ -88,7 +88,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(929, 484);
+            this.btnClose.Location = new System.Drawing.Point(742, 484);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 34;
@@ -124,7 +124,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(11, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(984, 101);
+            this.groupBox2.Size = new System.Drawing.Size(806, 101);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm hóa đơn";
@@ -133,9 +133,9 @@
             // 
             this.dtpToDate.CustomFormat = "dd/MM/yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(614, 16);
+            this.dtpToDate.Location = new System.Drawing.Point(552, 16);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpToDate.Size = new System.Drawing.Size(135, 22);
             this.dtpToDate.TabIndex = 45;
             // 
             // dtpFromDate
@@ -144,13 +144,13 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(374, 16);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpFromDate.Size = new System.Drawing.Size(141, 22);
             this.dtpFromDate.TabIndex = 44;
             // 
             // lblWorkingTime
             // 
             this.lblWorkingTime.AutoSize = true;
-            this.lblWorkingTime.Location = new System.Drawing.Point(561, 47);
+            this.lblWorkingTime.Location = new System.Drawing.Point(386, 47);
             this.lblWorkingTime.Name = "lblWorkingTime";
             this.lblWorkingTime.Size = new System.Drawing.Size(47, 14);
             this.lblWorkingTime.TabIndex = 43;
@@ -159,9 +159,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(821, 16);
+            this.btnSearch.Location = new System.Drawing.Point(693, 16);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(157, 73);
+            this.btnSearch.Size = new System.Drawing.Size(107, 73);
             this.btnSearch.TabIndex = 42;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -172,7 +172,7 @@
             this.cboEmployee.FormattingEnabled = true;
             this.cboEmployee.Location = new System.Drawing.Point(98, 67);
             this.cboEmployee.Name = "cboEmployee";
-            this.cboEmployee.Size = new System.Drawing.Size(385, 22);
+            this.cboEmployee.Size = new System.Drawing.Size(270, 22);
             this.cboEmployee.TabIndex = 41;
             // 
             // label8
@@ -187,7 +187,7 @@
             // chkEvening
             // 
             this.chkEvening.AutoSize = true;
-            this.chkEvening.Location = new System.Drawing.Point(693, 46);
+            this.chkEvening.Location = new System.Drawing.Point(518, 46);
             this.chkEvening.Name = "chkEvening";
             this.chkEvening.Size = new System.Drawing.Size(56, 18);
             this.chkEvening.TabIndex = 38;
@@ -198,7 +198,7 @@
             // chkMorning
             // 
             this.chkMorning.AutoSize = true;
-            this.chkMorning.Location = new System.Drawing.Point(614, 46);
+            this.chkMorning.Location = new System.Drawing.Point(439, 46);
             this.chkMorning.Name = "chkMorning";
             this.chkMorning.Size = new System.Drawing.Size(53, 18);
             this.chkMorning.TabIndex = 37;
@@ -209,7 +209,7 @@
             // lblToDate
             // 
             this.lblToDate.AutoSize = true;
-            this.lblToDate.Location = new System.Drawing.Point(580, 19);
+            this.lblToDate.Location = new System.Drawing.Point(518, 19);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(28, 14);
             this.lblToDate.TabIndex = 36;
@@ -238,7 +238,7 @@
             // 
             this.txtCustomer.Location = new System.Drawing.Point(98, 42);
             this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.Size = new System.Drawing.Size(369, 22);
+            this.txtCustomer.Size = new System.Drawing.Size(270, 22);
             this.txtCustomer.TabIndex = 24;
             // 
             // lblCustomer
@@ -262,14 +262,14 @@
             this.dgvSaleList.AllowUserToAddRows = false;
             this.dgvSaleList.AllowUserToDeleteRows = false;
             this.dgvSaleList.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaleList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaleList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvSaleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSaleList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseOrderIdDataGridViewTextBoxColumn,
@@ -280,22 +280,80 @@
             this.returnAmountDataGridViewTextBoxColumn,
             this.ReturnDescription});
             this.dgvSaleList.DataSource = this.bdsPurchaseOrders;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Format = "##,##0";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSaleList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.Format = "##,##0";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSaleList.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSaleList.Location = new System.Drawing.Point(17, 124);
             this.dgvSaleList.Name = "dgvSaleList";
             this.dgvSaleList.ReadOnly = true;
             this.dgvSaleList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSaleList.Size = new System.Drawing.Size(993, 330);
+            this.dgvSaleList.Size = new System.Drawing.Size(800, 330);
             this.dgvSaleList.TabIndex = 3;
             this.dgvSaleList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // purchaseOrderIdDataGridViewTextBoxColumn
+            // 
+            this.purchaseOrderIdDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrderId";
+            this.purchaseOrderIdDataGridViewTextBoxColumn.HeaderText = "Số hóa đơn";
+            this.purchaseOrderIdDataGridViewTextBoxColumn.Name = "purchaseOrderIdDataGridViewTextBoxColumn";
+            this.purchaseOrderIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseOrderIdDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // purchaseOrderDataGridViewTextBoxColumn
+            // 
+            this.purchaseOrderDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrder";
+            this.purchaseOrderDataGridViewTextBoxColumn.HeaderText = "PurchaseOrder";
+            this.purchaseOrderDataGridViewTextBoxColumn.Name = "purchaseOrderDataGridViewTextBoxColumn";
+            this.purchaseOrderDataGridViewTextBoxColumn.ReadOnly = true;
+            this.purchaseOrderDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sellDescriptionDataGridViewTextBoxColumn
+            // 
+            this.sellDescriptionDataGridViewTextBoxColumn.DataPropertyName = "SellDescription";
+            this.sellDescriptionDataGridViewTextBoxColumn.HeaderText = "Hàng bán ra";
+            this.sellDescriptionDataGridViewTextBoxColumn.Name = "sellDescriptionDataGridViewTextBoxColumn";
+            this.sellDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sellDescriptionDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // sellAmountDataGridViewTextBoxColumn
+            // 
+            this.sellAmountDataGridViewTextBoxColumn.DataPropertyName = "SellAmount";
+            this.sellAmountDataGridViewTextBoxColumn.HeaderText = "Tiền bán";
+            this.sellAmountDataGridViewTextBoxColumn.Name = "sellAmountDataGridViewTextBoxColumn";
+            this.sellAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sellAmountDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // returnDescriptionDataGridViewTextBoxColumn
+            // 
+            this.returnDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ReturnDescription";
+            this.returnDescriptionDataGridViewTextBoxColumn.HeaderText = "Hàng trả";
+            this.returnDescriptionDataGridViewTextBoxColumn.Name = "returnDescriptionDataGridViewTextBoxColumn";
+            this.returnDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.returnDescriptionDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // returnAmountDataGridViewTextBoxColumn
+            // 
+            this.returnAmountDataGridViewTextBoxColumn.DataPropertyName = "ReturnAmount";
+            this.returnAmountDataGridViewTextBoxColumn.HeaderText = "Tiền trả";
+            this.returnAmountDataGridViewTextBoxColumn.Name = "returnAmountDataGridViewTextBoxColumn";
+            this.returnAmountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.returnAmountDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // ReturnDescription
+            // 
+            this.ReturnDescription.DataPropertyName = "IssueDate";
+            dataGridViewCellStyle8.Format = "dd/MM/yyyy HH:mm:ss";
+            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ReturnDescription.HeaderText = "Ngày phát hành";
+            this.ReturnDescription.Name = "ReturnDescription";
+            this.ReturnDescription.ReadOnly = true;
+            this.ReturnDescription.Width = 150;
             // 
             // bdsPurchaseOrders
             // 
@@ -352,7 +410,7 @@
             // 
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(615, 458);
+            this.lblTotalAmount.Location = new System.Drawing.Point(572, 460);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(63, 14);
             this.lblTotalAmount.TabIndex = 46;
@@ -361,10 +419,10 @@
             // txtTotalAmount
             // 
             this.txtTotalAmount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(684, 456);
+            this.txtTotalAmount.Location = new System.Drawing.Point(641, 457);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
-            this.txtTotalAmount.Size = new System.Drawing.Size(320, 22);
+            this.txtTotalAmount.Size = new System.Drawing.Size(176, 22);
             this.txtTotalAmount.TabIndex = 47;
             // 
             // saveFileDialog1
@@ -376,7 +434,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(417, 459);
+            this.label3.Location = new System.Drawing.Point(372, 460);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 14);
             this.label3.TabIndex = 66;
@@ -384,7 +442,7 @@
             // 
             // txtRetQty
             // 
-            this.txtRetQty.Location = new System.Drawing.Point(511, 456);
+            this.txtRetQty.Location = new System.Drawing.Point(466, 457);
             this.txtRetQty.Name = "txtRetQty";
             this.txtRetQty.ReadOnly = true;
             this.txtRetQty.Size = new System.Drawing.Size(100, 20);
@@ -394,7 +452,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(217, 459);
+            this.label4.Location = new System.Drawing.Point(172, 460);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 14);
             this.label4.TabIndex = 64;
@@ -402,75 +460,17 @@
             // 
             // txtSellQty
             // 
-            this.txtSellQty.Location = new System.Drawing.Point(311, 456);
+            this.txtSellQty.Location = new System.Drawing.Point(266, 457);
             this.txtSellQty.Name = "txtSellQty";
             this.txtSellQty.ReadOnly = true;
             this.txtSellQty.Size = new System.Drawing.Size(100, 20);
             this.txtSellQty.TabIndex = 63;
             // 
-            // purchaseOrderIdDataGridViewTextBoxColumn
-            // 
-            this.purchaseOrderIdDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrderId";
-            this.purchaseOrderIdDataGridViewTextBoxColumn.HeaderText = "Số hóa đơn";
-            this.purchaseOrderIdDataGridViewTextBoxColumn.Name = "purchaseOrderIdDataGridViewTextBoxColumn";
-            this.purchaseOrderIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.purchaseOrderIdDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // purchaseOrderDataGridViewTextBoxColumn
-            // 
-            this.purchaseOrderDataGridViewTextBoxColumn.DataPropertyName = "PurchaseOrder";
-            this.purchaseOrderDataGridViewTextBoxColumn.HeaderText = "PurchaseOrder";
-            this.purchaseOrderDataGridViewTextBoxColumn.Name = "purchaseOrderDataGridViewTextBoxColumn";
-            this.purchaseOrderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.purchaseOrderDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sellDescriptionDataGridViewTextBoxColumn
-            // 
-            this.sellDescriptionDataGridViewTextBoxColumn.DataPropertyName = "SellDescription";
-            this.sellDescriptionDataGridViewTextBoxColumn.HeaderText = "Hàng bán ra";
-            this.sellDescriptionDataGridViewTextBoxColumn.Name = "sellDescriptionDataGridViewTextBoxColumn";
-            this.sellDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sellDescriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // sellAmountDataGridViewTextBoxColumn
-            // 
-            this.sellAmountDataGridViewTextBoxColumn.DataPropertyName = "SellAmount";
-            this.sellAmountDataGridViewTextBoxColumn.HeaderText = "Tiền bán";
-            this.sellAmountDataGridViewTextBoxColumn.Name = "sellAmountDataGridViewTextBoxColumn";
-            this.sellAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sellAmountDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // returnDescriptionDataGridViewTextBoxColumn
-            // 
-            this.returnDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ReturnDescription";
-            this.returnDescriptionDataGridViewTextBoxColumn.HeaderText = "Hàng trả";
-            this.returnDescriptionDataGridViewTextBoxColumn.Name = "returnDescriptionDataGridViewTextBoxColumn";
-            this.returnDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.returnDescriptionDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // returnAmountDataGridViewTextBoxColumn
-            // 
-            this.returnAmountDataGridViewTextBoxColumn.DataPropertyName = "ReturnAmount";
-            this.returnAmountDataGridViewTextBoxColumn.HeaderText = "Tiền trả";
-            this.returnAmountDataGridViewTextBoxColumn.Name = "returnAmountDataGridViewTextBoxColumn";
-            this.returnAmountDataGridViewTextBoxColumn.ReadOnly = true;
-            this.returnAmountDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // ReturnDescription
-            // 
-            this.ReturnDescription.DataPropertyName = "IssueDate";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
-            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ReturnDescription.HeaderText = "Ngày phát hành";
-            this.ReturnDescription.Name = "ReturnDescription";
-            this.ReturnDescription.ReadOnly = true;
-            this.ReturnDescription.Width = 150;
-            // 
             // GoodsSaleListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 520);
+            this.ClientSize = new System.Drawing.Size(818, 520);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtRetQty);
             this.Controls.Add(this.label4);

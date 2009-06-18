@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -46,6 +46,10 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.btnAutoProcessing = new System.Windows.Forms.Button();
+            this.bdsSelectedStock = new System.Windows.Forms.BindingSource(this.components);
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductMaster = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +60,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsStockDefect = new System.Windows.Forms.BindingSource(this.components);
-            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.btnAutoProcessing = new System.Windows.Forms.Button();
-            this.bdsSelectedStock = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
@@ -69,7 +69,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(615, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(463, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(116, 66);
             this.pictureBox1.TabIndex = 27;
@@ -78,7 +78,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(364, 14);
+            this.label6.Location = new System.Drawing.Point(212, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 26;
@@ -86,7 +86,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(418, 11);
+            this.txtDescription.Location = new System.Drawing.Point(266, 11);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
@@ -98,7 +98,7 @@
             this.txtProductName.Location = new System.Drawing.Point(64, 34);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(288, 20);
+            this.txtProductName.Size = new System.Drawing.Size(195, 20);
             this.txtProductName.TabIndex = 23;
             // 
             // label4
@@ -132,7 +132,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Enabled = false;
-            this.btnConfirm.Location = new System.Drawing.Point(781, 17);
+            this.btnConfirm.Location = new System.Drawing.Point(601, 15);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(173, 60);
             this.btnConfirm.TabIndex = 18;
@@ -154,7 +154,7 @@
             this.groupBox1.Controls.Add(this.txtProductType);
             this.groupBox1.Location = new System.Drawing.Point(12, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(960, 85);
+            this.groupBox1.Size = new System.Drawing.Size(800, 85);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
@@ -189,7 +189,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(897, 527);
+            this.btnClose.Location = new System.Drawing.Point(737, 527);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
@@ -200,7 +200,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(613, 527);
+            this.button1.Location = new System.Drawing.Point(453, 527);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 23);
             this.button1.TabIndex = 26;
@@ -214,14 +214,14 @@
             this.dgvStock.AllowUserToAddRows = false;
             this.dgvStock.AllowUserToDeleteRows = false;
             this.dgvStock.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
@@ -238,10 +238,26 @@
             this.dgvStock.Location = new System.Drawing.Point(12, 126);
             this.dgvStock.MultiSelect = false;
             this.dgvStock.Name = "dgvStock";
-            this.dgvStock.Size = new System.Drawing.Size(960, 367);
+            this.dgvStock.Size = new System.Drawing.Size(800, 367);
             this.dgvStock.StandardTab = true;
             this.dgvStock.TabIndex = 24;
             this.dgvStock.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
+            // 
+            // systemHotkey1
+            // 
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // btnAutoProcessing
+            // 
+            this.btnAutoProcessing.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoProcessing.Location = new System.Drawing.Point(214, 527);
+            this.btnAutoProcessing.Name = "btnAutoProcessing";
+            this.btnAutoProcessing.Size = new System.Drawing.Size(233, 23);
+            this.btnAutoProcessing.TabIndex = 33;
+            this.btnAutoProcessing.Text = "Tự động xử lý và lưu kết quả ";
+            this.btnAutoProcessing.UseVisualStyleBackColor = true;
+            this.btnAutoProcessing.Click += new System.EventHandler(this.button4_Click);
             // 
             // Column8
             // 
@@ -256,7 +272,7 @@
             this.ProductMaster.HeaderText = "Tên sản phẩm";
             this.ProductMaster.Name = "ProductMaster";
             this.ProductMaster.ReadOnly = true;
-            this.ProductMaster.Width = 135;
+            this.ProductMaster.Width = 115;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -264,6 +280,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Màu sắc";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
             // 
             // Column2
             // 
@@ -271,16 +288,17 @@
             this.Column2.HeaderText = "Cỡ";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "Tồn";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
+            this.Column1.Width = 60;
             // 
             // Column3
             // 
@@ -288,7 +306,7 @@
             this.Column3.HeaderText = "Tốt";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 80;
+            this.Column3.Width = 60;
             // 
             // Column4
             // 
@@ -296,7 +314,7 @@
             this.Column4.HeaderText = "Lỗi";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 80;
+            this.Column4.Width = 60;
             // 
             // Column5
             // 
@@ -304,7 +322,7 @@
             this.Column5.HeaderText = "Hư";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 80;
+            this.Column5.Width = 60;
             // 
             // Column6
             // 
@@ -312,7 +330,7 @@
             this.Column6.HeaderText = "Mất";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            this.Column6.Width = 80;
+            this.Column6.Width = 60;
             // 
             // Column7
             // 
@@ -320,27 +338,11 @@
             this.Column7.HeaderText = "KXĐ";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 80;
-            // 
-            // systemHotkey1
-            // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
-            // 
-            // btnAutoProcessing
-            // 
-            this.btnAutoProcessing.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoProcessing.Location = new System.Drawing.Point(374, 527);
-            this.btnAutoProcessing.Name = "btnAutoProcessing";
-            this.btnAutoProcessing.Size = new System.Drawing.Size(233, 23);
-            this.btnAutoProcessing.TabIndex = 33;
-            this.btnAutoProcessing.Text = "Tự động xử lý và lưu kết quả ";
-            this.btnAutoProcessing.UseVisualStyleBackColor = true;
-            this.btnAutoProcessing.Click += new System.EventHandler(this.button4_Click);
+            this.Column7.Width = 60;
             // 
             // DepartmentStockFixingForm
             // 
-            this.ClientSize = new System.Drawing.Size(984, 562);
+            this.ClientSize = new System.Drawing.Size(818, 562);
             this.Controls.Add(this.btnAutoProcessing);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);

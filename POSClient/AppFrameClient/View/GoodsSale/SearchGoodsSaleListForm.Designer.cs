@@ -41,6 +41,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Location = new System.Drawing.Point(832, 484);
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox2
@@ -107,7 +108,7 @@
             // btnBillChoosing
             // 
             this.btnBillChoosing.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBillChoosing.Location = new System.Drawing.Point(811, 484);
+            this.btnBillChoosing.Location = new System.Drawing.Point(714, 484);
             this.btnBillChoosing.Name = "btnBillChoosing";
             this.btnBillChoosing.Size = new System.Drawing.Size(112, 23);
             this.btnBillChoosing.TabIndex = 51;

@@ -247,38 +247,38 @@
             this.mnuEdit,
             this.mnuDelete});
             this.cmnEmployees.Name = "contextMenuStrip1";
-            this.cmnEmployees.Size = new System.Drawing.Size(211, 98);
+            this.cmnEmployees.Size = new System.Drawing.Size(229, 98);
             // 
             // mnuSetMainSalePoint
             // 
             this.mnuSetMainSalePoint.Name = "mnuSetMainSalePoint";
-            this.mnuSetMainSalePoint.Size = new System.Drawing.Size(210, 22);
+            this.mnuSetMainSalePoint.Size = new System.Drawing.Size(228, 22);
             this.mnuSetMainSalePoint.Text = "Thiết lập làm cửa hàng chính";
             this.mnuSetMainSalePoint.Click += new System.EventHandler(this.mnuSetMainSalePoint_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(207, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 6);
             // 
             // mnuAdd
             // 
             this.mnuAdd.Name = "mnuAdd";
-            this.mnuAdd.Size = new System.Drawing.Size(210, 22);
+            this.mnuAdd.Size = new System.Drawing.Size(228, 22);
             this.mnuAdd.Text = "Thêm";
             this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuEdit
             // 
             this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(210, 22);
+            this.mnuEdit.Size = new System.Drawing.Size(228, 22);
             this.mnuEdit.Text = "Sửa";
             this.mnuEdit.Click += new System.EventHandler(this.mnuEdit_Click);
             // 
             // mnuDelete
             // 
             this.mnuDelete.Name = "mnuDelete";
-            this.mnuDelete.Size = new System.Drawing.Size(210, 22);
+            this.mnuDelete.Size = new System.Drawing.Size(228, 22);
             this.mnuDelete.Text = "Xóa";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
@@ -350,7 +350,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(748, 149);
+            this.btnClose.Location = new System.Drawing.Point(731, 149);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 16;
@@ -460,7 +460,7 @@
             // 
             // txtActiveDepartment
             // 
-            this.txtActiveDepartment.Location = new System.Drawing.Point(791, 43);
+            this.txtActiveDepartment.Location = new System.Drawing.Point(765, 43);
             this.txtActiveDepartment.Name = "txtActiveDepartment";
             this.txtActiveDepartment.Size = new System.Drawing.Size(23, 20);
             this.txtActiveDepartment.TabIndex = 27;
@@ -481,13 +481,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 181);
+            this.ClientSize = new System.Drawing.Size(818, 181);
             this.Controls.Add(this.btnActive);
             this.Controls.Add(this.lblActiveDepartment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvEmployees);
-            this.Controls.Add(this.txtActiveDepartment);
             this.Controls.Add(this.txtDepartmentId);
+            this.Controls.Add(this.txtActiveDepartment);
             this.Controls.Add(this.lblDepartmentCost);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpCreateDate);
@@ -499,8 +499,8 @@
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblEmployeesNumber);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.btnUncheckAll);

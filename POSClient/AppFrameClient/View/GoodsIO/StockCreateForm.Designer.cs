@@ -137,13 +137,13 @@
             this.dgvStockInDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockInDetail.Location = new System.Drawing.Point(17, 95);
             this.dgvStockInDetail.Name = "dgvStockInDetail";
-            this.dgvStockInDetail.Size = new System.Drawing.Size(969, 334);
+            this.dgvStockInDetail.Size = new System.Drawing.Size(800, 334);
             this.dgvStockInDetail.TabIndex = 8;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(899, 435);
+            this.btnSave.Location = new System.Drawing.Point(730, 435);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 25);
             this.btnSave.TabIndex = 9;
@@ -163,7 +163,7 @@
             // 
             // btnAcceptAll
             // 
-            this.btnAcceptAll.Location = new System.Drawing.Point(778, 435);
+            this.btnAcceptAll.Location = new System.Drawing.Point(609, 435);
             this.btnAcceptAll.Name = "btnAcceptAll";
             this.btnAcceptAll.Size = new System.Drawing.Size(115, 25);
             this.btnAcceptAll.TabIndex = 11;
@@ -173,7 +173,7 @@
             // 
             // btnRejectAll
             // 
-            this.btnRejectAll.Location = new System.Drawing.Point(684, 435);
+            this.btnRejectAll.Location = new System.Drawing.Point(515, 435);
             this.btnRejectAll.Name = "btnRejectAll";
             this.btnRejectAll.Size = new System.Drawing.Size(88, 25);
             this.btnRejectAll.TabIndex = 12;
@@ -183,7 +183,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(603, 435);
+            this.btnReset.Location = new System.Drawing.Point(434, 435);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 25);
             this.btnReset.TabIndex = 13;
@@ -195,7 +195,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 463);
+            this.ClientSize = new System.Drawing.Size(818, 463);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnRejectAll);
             this.Controls.Add(this.btnAcceptAll);

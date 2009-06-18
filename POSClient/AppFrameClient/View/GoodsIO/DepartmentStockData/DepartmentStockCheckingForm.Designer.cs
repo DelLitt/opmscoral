@@ -76,7 +76,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(615, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(511, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(116, 66);
             this.pictureBox1.TabIndex = 27;
@@ -85,7 +85,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(364, 14);
+            this.label6.Location = new System.Drawing.Point(260, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 26;
@@ -93,7 +93,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(418, 11);
+            this.txtDescription.Location = new System.Drawing.Point(314, 11);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
@@ -105,7 +105,7 @@
             this.txtProductName.Location = new System.Drawing.Point(64, 34);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(288, 20);
+            this.txtProductName.Size = new System.Drawing.Size(189, 20);
             this.txtProductName.TabIndex = 23;
             // 
             // label4
@@ -123,7 +123,7 @@
             this.txtStockQuantity.Location = new System.Drawing.Point(64, 59);
             this.txtStockQuantity.Name = "txtStockQuantity";
             this.txtStockQuantity.ReadOnly = true;
-            this.txtStockQuantity.Size = new System.Drawing.Size(97, 20);
+            this.txtStockQuantity.Size = new System.Drawing.Size(189, 20);
             this.txtStockQuantity.TabIndex = 19;
             // 
             // label1
@@ -139,9 +139,9 @@
             // btnConfirm
             // 
             this.btnConfirm.Enabled = false;
-            this.btnConfirm.Location = new System.Drawing.Point(781, 17);
+            this.btnConfirm.Location = new System.Drawing.Point(658, 13);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(173, 60);
+            this.btnConfirm.Size = new System.Drawing.Size(114, 60);
             this.btnConfirm.TabIndex = 18;
             this.btnConfirm.Text = "XÁC NHẬN";
             this.btnConfirm.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             this.groupBox1.Controls.Add(this.txtProductType);
             this.groupBox1.Location = new System.Drawing.Point(12, 97);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(960, 85);
+            this.groupBox1.Size = new System.Drawing.Size(800, 85);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
@@ -190,7 +190,7 @@
             this.txtProductType.Location = new System.Drawing.Point(64, 11);
             this.txtProductType.Name = "txtProductType";
             this.txtProductType.ReadOnly = true;
-            this.txtProductType.Size = new System.Drawing.Size(129, 20);
+            this.txtProductType.Size = new System.Drawing.Size(189, 20);
             this.txtProductType.TabIndex = 0;
             // 
             // txtBarcode
@@ -206,7 +206,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(748, 507);
+            this.button3.Location = new System.Drawing.Point(588, 507);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
@@ -216,7 +216,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(897, 507);
+            this.btnClose.Location = new System.Drawing.Point(737, 507);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
@@ -227,7 +227,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(534, 507);
+            this.button1.Location = new System.Drawing.Point(374, 507);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 26;
@@ -273,7 +273,7 @@
             this.dgvStock.DataSource = this.bdsStockDefect;
             this.dgvStock.Location = new System.Drawing.Point(12, 188);
             this.dgvStock.Name = "dgvStock";
-            this.dgvStock.Size = new System.Drawing.Size(960, 313);
+            this.dgvStock.Size = new System.Drawing.Size(800, 313);
             this.dgvStock.TabIndex = 24;
             this.dgvStock.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellEndEdit);
             // 
@@ -295,7 +295,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(338, 507);
+            this.button4.Location = new System.Drawing.Point(178, 507);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(190, 23);
             this.button4.TabIndex = 33;
@@ -316,7 +316,7 @@
             this.Column2.HeaderText = "Tên hàng";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
+            this.Column2.Width = 150;
             // 
             // Column3
             // 
@@ -324,6 +324,7 @@
             this.Column3.HeaderText = "Màu sắc";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 70;
             // 
             // Column4
             // 
@@ -397,13 +398,13 @@
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Beige;
             dataGridViewCellStyle7.Format = "##,##0";
             this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column7.HeaderText = "Không xác định";
+            this.Column7.HeaderText = "KXD";
             this.Column7.Name = "Column7";
-            this.Column7.Width = 144;
+            this.Column7.Width = 60;
             // 
             // DepartmentStockCheckingForm
             // 
-            this.ClientSize = new System.Drawing.Size(984, 562);
+            this.ClientSize = new System.Drawing.Size(818, 562);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);

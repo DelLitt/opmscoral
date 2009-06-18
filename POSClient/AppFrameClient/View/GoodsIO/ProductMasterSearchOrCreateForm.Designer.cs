@@ -79,7 +79,7 @@
             this.productMasterTabControl.Location = new System.Drawing.Point(0, 0);
             this.productMasterTabControl.Name = "productMasterTabControl";
             this.productMasterTabControl.SelectedIndex = 0;
-            this.productMasterTabControl.Size = new System.Drawing.Size(996, 503);
+            this.productMasterTabControl.Size = new System.Drawing.Size(824, 503);
             this.productMasterTabControl.TabIndex = 2;
             // 
             // productMasterSearchTab
@@ -93,7 +93,7 @@
             this.productMasterSearchTab.Location = new System.Drawing.Point(4, 23);
             this.productMasterSearchTab.Name = "productMasterSearchTab";
             this.productMasterSearchTab.Padding = new System.Windows.Forms.Padding(3);
-            this.productMasterSearchTab.Size = new System.Drawing.Size(988, 476);
+            this.productMasterSearchTab.Size = new System.Drawing.Size(816, 476);
             this.productMasterSearchTab.TabIndex = 0;
             this.productMasterSearchTab.Text = "Tìm kiếm mặt hàng";
             this.productMasterSearchTab.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(823, 453);
+            this.btnSelect.Location = new System.Drawing.Point(647, 453);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(81, 23);
             this.btnSelect.TabIndex = 4;
@@ -120,7 +120,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(910, 453);
+            this.btnCancel.Location = new System.Drawing.Point(734, 453);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -130,7 +130,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(790, 121);
+            this.btnSearch.Location = new System.Drawing.Point(715, 121);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 2;
@@ -170,7 +170,7 @@
             this.dgvProductMaster.MultiSelect = false;
             this.dgvProductMaster.Name = "dgvProductMaster";
             this.dgvProductMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductMaster.Size = new System.Drawing.Size(976, 297);
+            this.dgvProductMaster.Size = new System.Drawing.Size(800, 297);
             this.dgvProductMaster.TabIndex = 1;
             this.dgvProductMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductMaster_CellDoubleClick);
             // 
@@ -314,16 +314,17 @@
             // 
             // productMasterSearchControl
             // 
+            this.productMasterSearchControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterSearchControl.Location = new System.Drawing.Point(9, 24);
             this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(976, 120);
+            this.productMasterSearchControl.Size = new System.Drawing.Size(800, 120);
             this.productMasterSearchControl.TabIndex = 0;
             // 
             // ProductMasterSearchOrCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 503);
+            this.ClientSize = new System.Drawing.Size(818, 503);
             this.Controls.Add(this.productMasterTabControl);
             this.Controls.Add(this.splitter1);
             this.Name = "ProductMasterSearchOrCreateForm";

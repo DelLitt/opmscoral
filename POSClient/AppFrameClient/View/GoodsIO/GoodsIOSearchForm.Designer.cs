@@ -119,13 +119,13 @@
             this.dgvBlockInDetail.Location = new System.Drawing.Point(14, 122);
             this.dgvBlockInDetail.Name = "dgvBlockInDetail";
             this.dgvBlockInDetail.ReadOnly = true;
-            this.dgvBlockInDetail.Size = new System.Drawing.Size(812, 271);
+            this.dgvBlockInDetail.Size = new System.Drawing.Size(800, 271);
             this.dgvBlockInDetail.TabIndex = 7;
             this.dgvBlockInDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBlockInDetail_CellDoubleClick);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(738, 400);
+            this.btnDelete.Location = new System.Drawing.Point(727, 400);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(87, 25);
             this.btnDelete.TabIndex = 8;
@@ -135,7 +135,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(644, 400);
+            this.btnCreate.Location = new System.Drawing.Point(633, 400);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(87, 25);
             this.btnCreate.TabIndex = 9;
@@ -181,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 437);
+            this.ClientSize = new System.Drawing.Size(818, 437);
             this.Controls.Add(this.chkImportDateTo);
             this.Controls.Add(this.chkImportDateFrom);
             this.Controls.Add(this.chkDelete);

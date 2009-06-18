@@ -108,7 +108,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(921, 477);
+            this.btnClose.Location = new System.Drawing.Point(739, 477);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 41;
@@ -165,7 +165,7 @@
             this.dgvDepartments.Location = new System.Drawing.Point(14, 170);
             this.dgvDepartments.Name = "dgvDepartments";
             this.dgvDepartments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDepartments.Size = new System.Drawing.Size(982, 301);
+            this.dgvDepartments.Size = new System.Drawing.Size(800, 301);
             this.dgvDepartments.TabIndex = 35;
             this.dgvDepartments.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvDepartment_RowPrePaint);
             // 
@@ -290,7 +290,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(664, 477);
+            this.btnDelete.Location = new System.Drawing.Point(482, 477);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 39;
@@ -302,7 +302,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(504, 477);
+            this.btnAdd.Location = new System.Drawing.Point(322, 477);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 38;
@@ -314,7 +314,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(585, 477);
+            this.btnEdit.Location = new System.Drawing.Point(403, 477);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 40;
@@ -412,7 +412,7 @@
             this.txtAddress.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(96, 68);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(726, 22);
+            this.txtAddress.Size = new System.Drawing.Size(546, 22);
             this.txtAddress.TabIndex = 27;
             // 
             // lblStartingDay
@@ -430,12 +430,12 @@
             this.txtDepartmentName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartmentName.Location = new System.Drawing.Point(96, 40);
             this.txtDepartmentName.Name = "txtDepartmentName";
-            this.txtDepartmentName.Size = new System.Drawing.Size(726, 22);
+            this.txtDepartmentName.Size = new System.Drawing.Size(546, 22);
             this.txtDepartmentName.TabIndex = 26;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(828, 15);
+            this.btnSearch.Location = new System.Drawing.Point(648, 19);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(145, 75);
             this.btnSearch.TabIndex = 51;
@@ -459,7 +459,7 @@
             this.groupBox1.Controls.Add(this.lblStartingDay);
             this.groupBox1.Location = new System.Drawing.Point(14, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(992, 132);
+            this.groupBox1.Size = new System.Drawing.Size(800, 132);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điều kiện tìm kiếm";
@@ -467,7 +467,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(810, 477);
+            this.btnSave.Location = new System.Drawing.Point(628, 477);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 23);
             this.btnSave.TabIndex = 53;
@@ -480,16 +480,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 567);
+            this.ClientSize = new System.Drawing.Size(818, 567);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvDepartments);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnUncheckAll);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblEmployeesList);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCheckAll);
             this.Name = "SalePointListForm";

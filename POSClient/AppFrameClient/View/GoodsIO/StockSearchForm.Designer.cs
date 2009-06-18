@@ -90,7 +90,7 @@
             this.dgvStockList.DataSource = this.stockBindingSource;
             this.dgvStockList.Location = new System.Drawing.Point(8, 154);
             this.dgvStockList.Name = "dgvStockList";
-            this.dgvStockList.Size = new System.Drawing.Size(961, 288);
+            this.dgvStockList.Size = new System.Drawing.Size(800, 288);
             this.dgvStockList.TabIndex = 1;
             // 
             // productMasterDataGridViewTextBoxColumn
@@ -224,7 +224,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(783, 125);
+            this.btnSearch.Location = new System.Drawing.Point(733, 125);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 2;
@@ -234,7 +234,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(894, 448);
+            this.btnClose.Location = new System.Drawing.Point(733, 447);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -254,7 +254,7 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(813, 448);
+            this.btnExcel.Location = new System.Drawing.Point(652, 447);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(75, 23);
             this.btnExcel.TabIndex = 87;
@@ -265,6 +265,7 @@
             // 
             // productMasterControl
             // 
+            this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterControl.Location = new System.Drawing.Point(2, 28);
             this.productMasterControl.Name = "productMasterControl";
             this.productMasterControl.Size = new System.Drawing.Size(958, 120);
@@ -296,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 473);
+            this.ClientSize = new System.Drawing.Size(818, 473);
             this.Controls.Add(this.txtSumQty);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExcel);

@@ -106,12 +106,12 @@
             this.txtDetail.Multiline = true;
             this.txtDetail.Name = "txtDetail";
             this.txtDetail.ReadOnly = true;
-            this.txtDetail.Size = new System.Drawing.Size(858, 408);
+            this.txtDetail.Size = new System.Drawing.Size(800, 408);
             this.txtDetail.TabIndex = 7;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(798, 559);
+            this.btnClose.Location = new System.Drawing.Point(740, 559);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 8;
@@ -123,7 +123,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(365, 9);
+            this.label7.Location = new System.Drawing.Point(306, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 19);
             this.label7.TabIndex = 18;
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 586);
+            this.ClientSize = new System.Drawing.Size(818, 586);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtDetail);

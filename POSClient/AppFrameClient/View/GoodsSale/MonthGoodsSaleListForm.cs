@@ -152,5 +152,25 @@ namespace AppFrameClient.View.GoodsSale
             workbook.Save(fileName);
             MessageBox.Show("Xuất ra tập tin báo cáo thành công!");*/
         }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDateFrom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDateTo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

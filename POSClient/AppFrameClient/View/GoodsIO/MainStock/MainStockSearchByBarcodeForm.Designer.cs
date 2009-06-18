@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvStockList = new System.Windows.Forms.DataGridView();
-            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtpImportDateTo = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +48,14 @@
             this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtpImportDateTo = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
@@ -90,78 +90,8 @@
             this.dgvStockList.DataSource = this.stockBindingSource;
             this.dgvStockList.Location = new System.Drawing.Point(2, 183);
             this.dgvStockList.Name = "dgvStockList";
-            this.dgvStockList.Size = new System.Drawing.Size(961, 342);
+            this.dgvStockList.Size = new System.Drawing.Size(800, 342);
             this.dgvStockList.TabIndex = 1;
-            // 
-            // stockBindingSource
-            // 
-            this.stockBindingSource.DataSource = typeof(AppFrame.Model.Stock);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(783, 154);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Tìm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(885, 531);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(378, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 19);
-            this.label7.TabIndex = 86;
-            this.label7.Text = "TÌM KIẾM KHO";
-            // 
-            // dtpImportDateTo
-            // 
-            this.dtpImportDateTo.CustomFormat = "dd/MM/yyyy";
-            this.dtpImportDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateTo.Location = new System.Drawing.Point(674, 123);
-            this.dtpImportDateTo.Name = "dtpImportDateTo";
-            this.dtpImportDateTo.Size = new System.Drawing.Size(184, 22);
-            this.dtpImportDateTo.TabIndex = 92;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(579, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 14);
-            this.label3.TabIndex = 91;
-            this.label3.Text = "Đến ngày";
-            // 
-            // dtpImportDateFrom
-            // 
-            this.dtpImportDateFrom.CustomFormat = "dd/MM/yyyy";
-            this.dtpImportDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateFrom.Location = new System.Drawing.Point(382, 123);
-            this.dtpImportDateFrom.Name = "dtpImportDateFrom";
-            this.dtpImportDateFrom.Size = new System.Drawing.Size(191, 22);
-            this.dtpImportDateFrom.TabIndex = 90;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 14);
-            this.label2.TabIndex = 89;
-            this.label2.Text = "Từ ngày";
             // 
             // productMasterDataGridViewTextBoxColumn
             // 
@@ -289,18 +219,89 @@
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.Visible = false;
             // 
+            // stockBindingSource
+            // 
+            this.stockBindingSource.DataSource = typeof(AppFrame.Model.Stock);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(727, 151);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Tìm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(727, 531);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(322, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 19);
+            this.label7.TabIndex = 86;
+            this.label7.Text = "TÌM KIẾM KHO";
+            // 
+            // dtpImportDateTo
+            // 
+            this.dtpImportDateTo.CustomFormat = "dd/MM/yyyy";
+            this.dtpImportDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpImportDateTo.Location = new System.Drawing.Point(618, 123);
+            this.dtpImportDateTo.Name = "dtpImportDateTo";
+            this.dtpImportDateTo.Size = new System.Drawing.Size(166, 22);
+            this.dtpImportDateTo.TabIndex = 92;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(523, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 14);
+            this.label3.TabIndex = 91;
+            this.label3.Text = "Đến ngày";
+            // 
+            // dtpImportDateFrom
+            // 
+            this.dtpImportDateFrom.CustomFormat = "dd/MM/yyyy";
+            this.dtpImportDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpImportDateFrom.Location = new System.Drawing.Point(326, 123);
+            this.dtpImportDateFrom.Name = "dtpImportDateFrom";
+            this.dtpImportDateFrom.Size = new System.Drawing.Size(191, 22);
+            this.dtpImportDateFrom.TabIndex = 90;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(240, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 14);
+            this.label2.TabIndex = 89;
+            this.label2.Text = "Từ ngày";
+            // 
             // productMasterControl
             // 
+            this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMasterControl.Location = new System.Drawing.Point(2, 28);
             this.productMasterControl.Name = "productMasterControl";
-            this.productMasterControl.Size = new System.Drawing.Size(958, 120);
+            this.productMasterControl.Size = new System.Drawing.Size(800, 120);
             this.productMasterControl.TabIndex = 0;
             // 
             // MainStockSearchByBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 566);
+            this.ClientSize = new System.Drawing.Size(818, 566);
             this.Controls.Add(this.dtpImportDateTo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpImportDateFrom);

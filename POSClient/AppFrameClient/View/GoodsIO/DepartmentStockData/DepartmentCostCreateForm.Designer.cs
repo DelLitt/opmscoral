@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.masterDB1 = new AppFrameClient.MasterDB();
             this.dgvCost = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,14 +71,14 @@
             this.dgvCost.AllowUserToAddRows = false;
             this.dgvCost.AllowUserToDeleteRows = false;
             this.dgvCost.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -89,7 +89,7 @@
             this.dgvCost.DataSource = this.bdsCost;
             this.dgvCost.Location = new System.Drawing.Point(12, 229);
             this.dgvCost.Name = "dgvCost";
-            this.dgvCost.Size = new System.Drawing.Size(983, 397);
+            this.dgvCost.Size = new System.Drawing.Size(800, 397);
             this.dgvCost.TabIndex = 20;
             this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
             // 
@@ -142,7 +142,7 @@
             "Chi ra"});
             this.cboCostType.Location = new System.Drawing.Point(105, 66);
             this.cboCostType.Name = "cboCostType";
-            this.cboCostType.Size = new System.Drawing.Size(270, 24);
+            this.cboCostType.Size = new System.Drawing.Size(205, 24);
             this.cboCostType.TabIndex = 1;
             // 
             // txtCostName
@@ -150,7 +150,7 @@
             this.txtCostName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostName.Location = new System.Drawing.Point(105, 93);
             this.txtCostName.Name = "txtCostName";
-            this.txtCostName.Size = new System.Drawing.Size(270, 23);
+            this.txtCostName.Size = new System.Drawing.Size(205, 23);
             this.txtCostName.TabIndex = 3;
             // 
             // txtCostDescription
@@ -159,7 +159,7 @@
             this.txtCostDescription.Location = new System.Drawing.Point(105, 119);
             this.txtCostDescription.Multiline = true;
             this.txtCostDescription.Name = "txtCostDescription";
-            this.txtCostDescription.Size = new System.Drawing.Size(650, 55);
+            this.txtCostDescription.Size = new System.Drawing.Size(707, 55);
             this.txtCostDescription.TabIndex = 4;
             // 
             // cboDepartment
@@ -169,24 +169,24 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(105, 27);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(270, 24);
+            this.cboDepartment.Size = new System.Drawing.Size(205, 24);
             this.cboDepartment.TabIndex = 5;
             this.cboDepartment.TabStop = false;
             // 
             // txtCostDate
             // 
             this.txtCostDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCostDate.Location = new System.Drawing.Point(442, 27);
+            this.txtCostDate.Location = new System.Drawing.Point(362, 27);
             this.txtCostDate.Name = "txtCostDate";
             this.txtCostDate.ReadOnly = true;
-            this.txtCostDate.Size = new System.Drawing.Size(313, 23);
+            this.txtCostDate.Size = new System.Drawing.Size(256, 23);
             this.txtCostDate.TabIndex = 6;
             this.txtCostDate.TabStop = false;
             // 
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(780, 14);
+            this.btnCreate.Location = new System.Drawing.Point(638, 14);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 37);
             this.btnCreate.TabIndex = 7;
@@ -197,7 +197,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(780, 57);
+            this.btnEdit.Location = new System.Drawing.Point(638, 57);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 41);
             this.btnEdit.TabIndex = 8;
@@ -208,7 +208,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(879, 14);
+            this.btnCancel.Location = new System.Drawing.Point(737, 14);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 37);
             this.btnCancel.TabIndex = 9;
@@ -219,7 +219,7 @@
             // btnQuit
             // 
             this.btnQuit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(879, 57);
+            this.btnQuit.Location = new System.Drawing.Point(737, 57);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 41);
             this.btnQuit.TabIndex = 10;
@@ -241,7 +241,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(394, 31);
+            this.label2.Location = new System.Drawing.Point(314, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 14);
             this.label2.TabIndex = 14;
@@ -261,7 +261,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(398, 70);
+            this.label4.Location = new System.Drawing.Point(318, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 14);
             this.label4.TabIndex = 16;
@@ -301,9 +301,9 @@
             // 
             this.txtCost.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCost.Format = null;
-            this.txtCost.Location = new System.Drawing.Point(442, 66);
+            this.txtCost.Location = new System.Drawing.Point(362, 66);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(313, 27);
+            this.txtCost.Size = new System.Drawing.Size(256, 27);
             this.txtCost.TabIndex = 2;
             this.txtCost.Text = "0";
             this.txtCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -317,7 +317,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 666);
+            this.ClientSize = new System.Drawing.Size(818, 666);
             this.Controls.Add(this.txtCost);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

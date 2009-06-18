@@ -124,7 +124,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(535, 183);
+            this.btnSave.Location = new System.Drawing.Point(447, 183);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 23);
             this.btnSave.TabIndex = 49;
@@ -141,7 +141,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(620, 183);
+            this.btnReset.Location = new System.Drawing.Point(532, 183);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 50;
@@ -162,7 +162,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(772, 183);
+            this.btnClose.Location = new System.Drawing.Point(684, 183);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 44;
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 240);
+            this.ClientSize = new System.Drawing.Size(818, 240);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cboDepartments);
             this.Controls.Add(this.txtDepartmentName);
@@ -283,10 +283,10 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpCreateDate);
             this.Controls.Add(this.txtDeparmentCost);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblDepartmentName);
             this.Controls.Add(this.txtAddress);

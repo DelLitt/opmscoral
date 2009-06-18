@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
             this.chkImportDateFrom = new System.Windows.Forms.CheckBox();
@@ -148,7 +148,7 @@
             this.dgvStockInDetail.DataSource = this.posLogBindingSource;
             this.dgvStockInDetail.Location = new System.Drawing.Point(17, 95);
             this.dgvStockInDetail.Name = "dgvStockInDetail";
-            this.dgvStockInDetail.Size = new System.Drawing.Size(969, 334);
+            this.dgvStockInDetail.Size = new System.Drawing.Size(800, 334);
             this.dgvStockInDetail.TabIndex = 8;
             this.dgvStockInDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockInDetail_CellDoubleClick);
             this.dgvStockInDetail.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockInDetail_CellContentDoubleClick);
@@ -163,9 +163,9 @@
             // dateDataGridViewTextBoxColumn
             // 
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy hh:mm:ss";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy hh:mm:ss";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày lưu vết";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -236,7 +236,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(911, 435);
+            this.btnReset.Location = new System.Drawing.Point(742, 435);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 25);
             this.btnReset.TabIndex = 13;
@@ -265,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 463);
+            this.ClientSize = new System.Drawing.Size(818, 463);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnReset);
