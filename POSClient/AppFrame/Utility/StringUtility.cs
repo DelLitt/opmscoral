@@ -74,6 +74,22 @@ namespace AppFrame.Utility
 
             return stringBuilder.ToString();
         }
-        
+        public const int StartYear = 2009;
+        private const string arrNum = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static string ConvertDateToFourChar(DateTime dateTime)
+        {
+            StringBuilder retStr = new StringBuilder();
+            string strDate = dateTime.ToString("yyyyMMdd");
+            int year = Int32.Parse(strDate.Substring(0, 4));
+            char numYear = arrNum[(year - StartYear)];
+            int month = Int32.Parse(strDate.Substring(4, 2));
+            char numMonth = arrNum[month-1];
+            int day = Int32.Parse(strDate.Substring(6));
+            char numDay = arrNum[day-1];
+            retStr.Append(numYear);
+            retStr.Append(numMonth);
+            retStr.Append(numDay);
+            return retStr.ToString();
+        }
     }
 }
