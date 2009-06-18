@@ -69,6 +69,7 @@
             this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -195,7 +196,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(562, 423);
+            this.label6.Location = new System.Drawing.Point(504, 423);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 14);
             this.label6.TabIndex = 83;
@@ -205,11 +206,11 @@
             // txtSumValue
             // 
             this.txtSumValue.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumValue.Location = new System.Drawing.Point(638, 420);
+            this.txtSumValue.Location = new System.Drawing.Point(580, 420);
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumValue.Size = new System.Drawing.Size(173, 22);
+            this.txtSumValue.Size = new System.Drawing.Size(158, 22);
             this.txtSumValue.TabIndex = 82;
             this.txtSumValue.Visible = false;
             // 
@@ -227,7 +228,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(736, 472);
+            this.button1.Location = new System.Drawing.Point(721, 472);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -262,7 +263,7 @@
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 134);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
-            this.dgvDeptStockIn.Size = new System.Drawing.Size(800, 280);
+            this.dgvDeptStockIn.Size = new System.Drawing.Size(785, 280);
             this.dgvDeptStockIn.TabIndex = 8;
             this.dgvDeptStockIn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
             this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
@@ -303,7 +304,7 @@
             this.txtSumProduct.Name = "txtSumProduct";
             this.txtSumProduct.ReadOnly = true;
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
+            this.txtSumProduct.Size = new System.Drawing.Size(118, 22);
             this.txtSumProduct.TabIndex = 111;
             // 
             // systemHotkey1
@@ -367,7 +368,7 @@
             this.txtGoodsDescription.Name = "txtGoodsDescription";
             this.txtGoodsDescription.ReadOnly = true;
             this.txtGoodsDescription.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtGoodsDescription.Size = new System.Drawing.Size(729, 22);
+            this.txtGoodsDescription.Size = new System.Drawing.Size(714, 22);
             this.txtGoodsDescription.TabIndex = 123;
             // 
             // button2
@@ -386,7 +387,7 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(383, 75);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(425, 22);
+            this.cboDepartment.Size = new System.Drawing.Size(413, 22);
             this.cboDepartment.TabIndex = 125;
             // 
             // label2
@@ -409,6 +410,10 @@
             this.lblMessage.Size = new System.Drawing.Size(116, 14);
             this.lblMessage.TabIndex = 127;
             this.lblMessage.Text = "Đang chờ nhập ...";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // SearchCreate
             // 
@@ -456,12 +461,13 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
             this.quantity.HeaderText = "Số lượng";
             this.quantity.Name = "quantity";
             this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantity.Width = 150;
+            this.quantity.Width = 140;
             // 
             // columnColor
             // 
@@ -592,11 +598,11 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtSumValue);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvDeptStockIn);
+            this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DepartmentFastStockInForm";
             this.Text = "Phân phối hàng hoá trong kho cửa hàng";
@@ -648,6 +654,7 @@
         private System.Windows.Forms.ComboBox cboDepartment;
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewButtonColumn SearchCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProducType;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnProductId;

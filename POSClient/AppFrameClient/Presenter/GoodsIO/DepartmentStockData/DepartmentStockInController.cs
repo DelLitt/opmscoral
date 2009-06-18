@@ -56,7 +56,17 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         void _departmentStockInView_SaveStockInBackEvent(object sender, DepartmentStockInEventArgs e)
         {
-            DepartmentStockInLogic.AddStockInBack(e.DepartmentStockIn);
+            try
+            {
+                DepartmentStockInLogic.AddStockInBack(e.DepartmentStockIn);
+                e.EventResult = "Success !";
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+            
         }
 
         void _departmentStockInView_LoadAllDepartments(object sender, DepartmentStockInEventArgs e)

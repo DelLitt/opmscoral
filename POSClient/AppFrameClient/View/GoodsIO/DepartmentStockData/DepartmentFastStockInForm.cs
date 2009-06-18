@@ -349,22 +349,23 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSO = new DepartmentStockIn();
             }
-            bool isNeedClearData = deptSO.DepartmentStockInPK == null;
+            deptSO.DepartmentStockInPK = new DepartmentStockInPK
+                                             {
+                                                 DepartmentId = CurrentDepartment.Get().DepartmentId
+                                             };
             deptSO.StockInDate = DateTime.Now;
             
             deptSO.DepartmentStockInDetails = deptSODetailList;
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockIn = deptSO;
-            EventUtility.fireEvent(this.SaveDepartmentStockInEvent, this, eventArgs);
+            EventUtility.fireEvent(SaveStockInBackEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
 
                 lblMessage.ForeColor = Color.Blue;
                 lblMessage.Text = "Lưu thành công !";
-                if (isNeedClearData)
-                {
-                    deptSO = new DepartmentStockIn();
+                deptSO = new DepartmentStockIn();
                     deptSODetailList.Clear();
 //                    txtDexcription.Text = "";
 //                    txtPriceIn.Text = "";
@@ -372,7 +373,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtSumProduct.Text = "";
                     txtSumValue.Text = "";
                     //CreateNewStockInDetail();
-                }
+                
             }
             else
             {
@@ -1150,6 +1151,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 cboDepartment.Enabled = true;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            txtInputDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }
