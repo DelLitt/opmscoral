@@ -10,6 +10,13 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
 {
     public class DepartmentStockInEventArgs : BaseEventArgs
     {
+        public DepartmentStock DepartmentStock { get; set;}
+
+        public IList DepartmentsList
+        {
+            get;
+            set;
+        }
         public DateTime LastSyncTime { get; set;}
         public SyncFromMainToDepartment SyncFromMainToDepartment { get; set; }
         public IList StockOutList { get; set;}

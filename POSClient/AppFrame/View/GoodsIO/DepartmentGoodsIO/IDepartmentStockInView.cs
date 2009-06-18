@@ -19,6 +19,8 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockInEventArgs> SyncDepartmentStockInEvent;
         event EventHandler<DepartmentStockInEventArgs> FindByBarcodeEvent;
         event EventHandler<DepartmentStockInEventArgs> SaveReDepartmentStockInEvent;
+        event EventHandler<DepartmentStockInEventArgs> LoadAllDepartments;
+        event EventHandler<DepartmentStockInEventArgs> FindBarcodeEvent;
         
         #endregion
         
