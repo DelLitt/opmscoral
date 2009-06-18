@@ -91,6 +91,6 @@ namespace AppFrameClient.Common
         public static string EMPLOYEE_WORKINGS_FORM = "EmployeeWorkingView";
         public static string SALEPOINT_SUB_STOCK = "SalePointSubStockView";
         public static string DEPARTMENT_FAST_STOCK_OUT_VIEW = "DepartmentFastStockOutView";
-        
+        public static string DEPARTMENT_FAST_STOCK_IN_VIEW = "DepartmentFastStockInView";
     }
 }

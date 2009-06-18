@@ -172,6 +172,7 @@
             this.tsbDeptSyncUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncDown = new System.Windows.Forms.ToolStripButton();
             this.tsbLogout = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptStockIn = new System.Windows.Forms.ToolStripButton();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -1147,6 +1148,7 @@
             this.tsbFastStockOut,
             this.tsbWorkload,
             this.tsbDeptStockOut,
+            this.tsbDeptStockIn,
             this.tsbReStockIn,
             this.tsbDeptStockCheck,
             this.tsbStockOut,
@@ -1247,7 +1249,7 @@
             this.tsbReStockIn.Image = global::AppFrameClient.Properties.Resources.Close_Folder;
             this.tsbReStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbReStockIn.Name = "tsbReStockIn";
-            this.tsbReStockIn.Size = new System.Drawing.Size(71, 51);
+            this.tsbReStockIn.Size = new System.Drawing.Size(57, 51);
             this.tsbReStockIn.Text = "Tái nhập";
             this.tsbReStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbReStockIn.Click += new System.EventHandler(this.tsbReStockIn_Click);
@@ -1325,6 +1327,16 @@
             this.tsbLogout.Text = "Đăng xuất";
             this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
+            // 
+            // tsbDeptStockIn
+            // 
+            this.tsbDeptStockIn.Image = global::AppFrameClient.Properties.Resources.box2;
+            this.tsbDeptStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptStockIn.Name = "tsbDeptStockIn";
+            this.tsbDeptStockIn.Size = new System.Drawing.Size(71, 51);
+            this.tsbDeptStockIn.Text = "Nhập hàng";
+            this.tsbDeptStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptStockIn.Click += new System.EventHandler(this.tsbDeptStockIn_Click);
             // 
             // MainForm
             // 
@@ -1500,6 +1512,7 @@
         private System.Windows.Forms.ToolStripButton tsbDeptSyncUp;
         private System.Windows.Forms.ToolStripButton tsbDeptSyncDown;
         public System.Windows.Forms.ToolStripStatusLabel ServiceStatus;
+        private System.Windows.Forms.ToolStripButton tsbDeptStockIn;
 
     }
 }

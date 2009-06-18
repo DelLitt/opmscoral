@@ -44,13 +44,25 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 _departmentStockInView.SaveReDepartmentStockInEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_SaveReDepartmentStockInEvent);
                 _departmentStockInView.FindBarcodeEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FindBarcodeEvent);
                 _departmentStockInView.LoadAllDepartments += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadAllDepartments);
+                _departmentStockInView.SaveStockInBackEvent += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_SaveStockInBackEvent);
+                _departmentStockInView.DispatchDepartmentStockIn += new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_DispatchDepartmentStockIn);
             }
+        }
+
+        void _departmentStockInView_DispatchDepartmentStockIn(object sender, DepartmentStockInEventArgs e)
+        {
+            
+        }
+
+        void _departmentStockInView_SaveStockInBackEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            DepartmentStockInLogic.AddStockInBack(e.DepartmentStockIn);
         }
 
         void _departmentStockInView_LoadAllDepartments(object sender, DepartmentStockInEventArgs e)
         {
             IList list = DepartmentLogic.FindAll(null);
-            e.DepartmentList = list;
+            e.DepartmentsList = list;
         }
 
         void _departmentStockInView_FindBarcodeEvent(object sender, DepartmentStockInEventArgs e)

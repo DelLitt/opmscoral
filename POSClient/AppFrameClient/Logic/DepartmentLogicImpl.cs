@@ -257,13 +257,13 @@ namespace AppFrame.Logic
         public void AddSubStock(Department department)
         {
             // lower range
-            long subStockMin = Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(7,'0'));
+            long subStockMin = Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(5,'0'));
             // higher range
-            long subStockMax = Int64.Parse(department.DepartmentId.ToString().PadRight(4, '0').PadRight(7,'9'));
+            long subStockMax = Int64.Parse(department.DepartmentId.ToString().PadRight(4, '0').PadRight(5,'9'));
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddBetweenCriteria("DepartmentId",subStockMin,subStockMax );
             var maxId = DepartmentDAO.SelectSpecificType(objectCriteria, Projections.Max("DepartmentId"));
-            var departmentId = maxId == null ?  Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(7,'0')) + 1 : (Int64.Parse(maxId.ToString()) + 1);
+            var departmentId = maxId == null ?  Int64.Parse(department.DepartmentId.ToString().PadRight(4,'0').PadRight(5,'0')) + 1 : (Int64.Parse(maxId.ToString()) + 1);
 
             department.DepartmentId = departmentId;
             DepartmentDAO.Add(department);

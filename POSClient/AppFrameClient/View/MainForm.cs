@@ -928,7 +928,14 @@ namespace AppFrame.View
 
         private void tsbDeptSyncDown_Click(object sender, EventArgs e)
         {
-            Form departmentStockIn = GlobalUtility.GetFormObject<DepartmentStockSyncFromMainForm>(FormConstants.DEPARTMENT_STOCK_SYNC_FROM_MAIN_FORM);
+            Form departmentStockIn = GlobalUtility.GetOnlyChildFormObject<DepartmentStockSyncFromMainForm>(this,FormConstants.DEPARTMENT_STOCK_SYNC_FROM_MAIN_FORM);
+            departmentStockIn.WindowState = FormWindowState.Maximized;
+            departmentStockIn.Show();
+        }
+
+        private void tsbDeptStockIn_Click(object sender, EventArgs e)
+        {
+            Form departmentStockIn = GlobalUtility.GetOnlyChildFormObject<DepartmentFastStockInForm>(this,FormConstants.DEPARTMENT_FAST_STOCK_IN_VIEW);
             departmentStockIn.WindowState = FormWindowState.Maximized;
             departmentStockIn.Show();
         }
