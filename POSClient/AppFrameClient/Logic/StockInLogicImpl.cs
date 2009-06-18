@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using AppFrame.Common;
+using AppFrame.Utility;
 using NHibernate.Criterion;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
 using AppFrame.DataLayer;
+using System.Collections.Generic;
 
 namespace AppFrame.Logic
 {
@@ -42,7 +44,7 @@ namespace AppFrame.Logic
             data.StockInType = (long) 1;
             data.StockInId = stockInId;
             StockInDAO.Add(data);
-
+            
             foreach (StockInDetail stockInDetail in data.StockInDetails)
             {
                 // add dept stock in
@@ -87,13 +89,13 @@ namespace AppFrame.Logic
             var stockInId = maxId == null ? dateStr + "00001" : string.Format("{0:00000000000}", (Int64.Parse(maxId.ToString()) + 1));
 
             data.StockInId = stockInId;
-            criteria = new ObjectCriteria();
+            /*criteria = new ObjectCriteria();
             criteria.AddGreaterCriteria("ProductId", dateStr + "000000");
 
             maxId = ProductDAO.SelectSpecificType(criteria, Projections.Max("ProductId"));
             var productId = (maxId == null) 
                 ? Int64.Parse(dateStr + "000001")
-                : (Int64.Parse(maxId.ToString()) + 1);
+                : (Int64.Parse(maxId.ToString()) + 1);*/
 
             maxId = StockDAO.SelectSpecificType(null, Projections.Max("StockId"));
             var stockId = maxId == null ? 1 : Int64.Parse(maxId.ToString()) + 1;
@@ -103,14 +105,35 @@ namespace AppFrame.Logic
             data.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
             data.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             StockInDAO.Add(data);
-
+            IDictionary<string, string> maxPrdIdList = new Dictionary<string, string>();
             foreach (StockInDetail stockInDetail in data.StockInDetails)
             {
                 // add product
                 Product product = stockInDetail.Product;
                 if (string.IsNullOrEmpty(product.ProductId))
                 {
-                    product.ProductId = string.Format("{0:000000000000}", productId++);
+                    // find master ID
+                    string masterId = product.ProductMaster.ProductMasterId;
+                    masterId = masterId.Substring(6);
+                    // search in product table to get latest number
+                    string nextPrdId = GetProductIdFromList(maxPrdIdList,masterId);
+                    if (nextPrdId == null)
+                    {
+                        string shortDate = StringUtility.ConvertDateToFourChar(DateTime.Now);
+                        ObjectCriteria prdCrit = new ObjectCriteria();
+                        prdCrit.AddLikeCriteria("ProductId", masterId + shortDate + "%");
+                        var maxIPrdId = ProductDAO.SelectSpecificType(prdCrit, Projections.Max("ProductId"));
+                        string productId = (maxIPrdId == null)
+                                            ? masterId + shortDate + "01"
+                                            : IncreaseMaxProductId(maxIPrdId.ToString());
+                        
+                        nextPrdId = productId;
+                        maxPrdIdList[masterId] = nextPrdId;
+                    }
+                    product.ProductId = nextPrdId;
+                    // increase product id and grant to the dictionary
+                    nextPrdId = IncreaseMaxProductId(nextPrdId);
+                    maxPrdIdList[masterId] = nextPrdId;
                     product.CreateDate = DateTime.Now;
                     product.UpdateDate = DateTime.Now;
                     product.Quantity = stockInDetail.Quantity;
@@ -171,7 +194,25 @@ namespace AppFrame.Logic
 
             return data;
         }
-        
+
+        private string IncreaseMaxProductId(string s)
+        {
+            int nextId = Int32.Parse(s.Substring(10))+1;
+            return s.Substring(0, 10)+ string.Format("{0:00}", nextId);
+        }
+
+        private string GetProductIdFromList(IDictionary<string, string> dictionary,string prdMasterId)
+        {
+            foreach (string key in dictionary.Keys)
+            {
+                if(key.Equals(prdMasterId))
+                {
+                    return dictionary[key];
+                }
+            }
+            return null;   
+        }
+
         /// <summary>
         /// Update StockIn to database.
         /// </summary>
