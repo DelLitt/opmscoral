@@ -2,6 +2,7 @@
 
 <toolstrip>
   <toolstripitem name="tsbLogin" role="%" />
+  <toolstripitem name="tsbQuit" role="%" />
   <toolstripitem name="tsbLogout" role="@" />
   <toolstripitem name="tsbEnterPeriod" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbLeavePeriod" role="Manager,Administrator,Supervisor" />

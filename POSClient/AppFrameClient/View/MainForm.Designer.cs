@@ -164,6 +164,7 @@
             this.tsbFastStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbWorkload = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptStockOut = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeptStockIn = new System.Windows.Forms.ToolStripButton();
             this.tsbReStockIn = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptStockCheck = new System.Windows.Forms.ToolStripButton();
             this.tsbStockOut = new System.Windows.Forms.ToolStripButton();
@@ -172,7 +173,18 @@
             this.tsbDeptSyncUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptSyncDown = new System.Windows.Forms.ToolStripButton();
             this.tsbLogout = new System.Windows.Forms.ToolStripButton();
-            this.tsbDeptStockIn = new System.Windows.Forms.ToolStripButton();
+            this.tsbQuit = new System.Windows.Forms.ToolStripButton();
+            this.F1Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F2Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F3Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F10Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F9Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F8Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F7Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F6Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F5Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F4Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.F11Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -1156,7 +1168,8 @@
             this.tsbSyncDown,
             this.tsbDeptSyncUp,
             this.tsbDeptSyncDown,
-            this.tsbLogout});
+            this.tsbLogout,
+            this.tsbQuit});
             this.toolStripClient.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStripClient.Location = new System.Drawing.Point(0, 24);
             this.toolStripClient.Name = "toolStripClient";
@@ -1244,6 +1257,16 @@
             this.tsbDeptStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptStockOut.Click += new System.EventHandler(this.tsbDeptStockOut_Click);
             // 
+            // tsbDeptStockIn
+            // 
+            this.tsbDeptStockIn.Image = global::AppFrameClient.Properties.Resources.box2;
+            this.tsbDeptStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeptStockIn.Name = "tsbDeptStockIn";
+            this.tsbDeptStockIn.Size = new System.Drawing.Size(71, 51);
+            this.tsbDeptStockIn.Text = "Nhập hàng";
+            this.tsbDeptStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeptStockIn.Click += new System.EventHandler(this.tsbDeptStockIn_Click);
+            // 
             // tsbReStockIn
             // 
             this.tsbReStockIn.Image = global::AppFrameClient.Properties.Resources.Close_Folder;
@@ -1328,15 +1351,70 @@
             this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
             // 
-            // tsbDeptStockIn
+            // tsbQuit
             // 
-            this.tsbDeptStockIn.Image = global::AppFrameClient.Properties.Resources.box2;
-            this.tsbDeptStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDeptStockIn.Name = "tsbDeptStockIn";
-            this.tsbDeptStockIn.Size = new System.Drawing.Size(71, 51);
-            this.tsbDeptStockIn.Text = "Nhập hàng";
-            this.tsbDeptStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbDeptStockIn.Click += new System.EventHandler(this.tsbDeptStockIn_Click);
+            this.tsbQuit.Image = global::AppFrameClient.Properties.Resources.Shutdown;
+            this.tsbQuit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQuit.Name = "tsbQuit";
+            this.tsbQuit.Size = new System.Drawing.Size(42, 51);
+            this.tsbQuit.Text = "Thoát";
+            this.tsbQuit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbQuit.Click += new System.EventHandler(this.tsbQuit_Click);
+            // 
+            // F1Shortcut
+            // 
+            this.F1Shortcut.Shortcut = System.Windows.Forms.Shortcut.F1;
+            this.F1Shortcut.Pressed += new System.EventHandler(this.F1Shortcut_Pressed);
+            // 
+            // F2Shortcut
+            // 
+            this.F2Shortcut.Shortcut = System.Windows.Forms.Shortcut.F2;
+            this.F2Shortcut.Pressed += new System.EventHandler(this.F2Shortcut_Pressed);
+            // 
+            // F3Shortcut
+            // 
+            this.F3Shortcut.Shortcut = System.Windows.Forms.Shortcut.F3;
+            this.F3Shortcut.Pressed += new System.EventHandler(this.F3Shortcut_Pressed);
+            // 
+            // F10Shortcut
+            // 
+            this.F10Shortcut.Shortcut = System.Windows.Forms.Shortcut.F10;
+            this.F10Shortcut.Pressed += new System.EventHandler(this.F10Shortcut_Pressed);
+            // 
+            // F9Shortcut
+            // 
+            this.F9Shortcut.Shortcut = System.Windows.Forms.Shortcut.F9;
+            this.F9Shortcut.Pressed += new System.EventHandler(this.F9Shortcut_Pressed);
+            // 
+            // F8Shortcut
+            // 
+            this.F8Shortcut.Shortcut = System.Windows.Forms.Shortcut.F8;
+            this.F8Shortcut.Pressed += new System.EventHandler(this.F8Shortcut_Pressed);
+            // 
+            // F7Shortcut
+            // 
+            this.F7Shortcut.Shortcut = System.Windows.Forms.Shortcut.F7;
+            this.F7Shortcut.Pressed += new System.EventHandler(this.F7Shortcut_Pressed);
+            // 
+            // F6Shortcut
+            // 
+            this.F6Shortcut.Shortcut = System.Windows.Forms.Shortcut.F6;
+            this.F6Shortcut.Pressed += new System.EventHandler(this.F6Shortcut_Pressed);
+            // 
+            // F5Shortcut
+            // 
+            this.F5Shortcut.Shortcut = System.Windows.Forms.Shortcut.F5;
+            this.F5Shortcut.Pressed += new System.EventHandler(this.F5Shortcut_Pressed);
+            // 
+            // F4Shortcut
+            // 
+            this.F4Shortcut.Shortcut = System.Windows.Forms.Shortcut.F4;
+            this.F4Shortcut.Pressed += new System.EventHandler(this.F4Shortcut_Pressed);
+            // 
+            // F11Shortcut
+            // 
+            this.F11Shortcut.Shortcut = System.Windows.Forms.Shortcut.F11;
+            this.F11Shortcut.Pressed += new System.EventHandler(this.F11Shortcut_Pressed);
             // 
             // MainForm
             // 
@@ -1513,6 +1591,18 @@
         private System.Windows.Forms.ToolStripButton tsbDeptSyncDown;
         public System.Windows.Forms.ToolStripStatusLabel ServiceStatus;
         private System.Windows.Forms.ToolStripButton tsbDeptStockIn;
+        private System.Windows.Forms.ToolStripButton tsbQuit;
+        private AppFrame.Controls.HotKey.SystemHotkey F1Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F2Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F3Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F10Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F9Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F8Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F7Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F6Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F5Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F4Shortcut;
+        private AppFrame.Controls.HotKey.SystemHotkey F11Shortcut;
 
     }
 }

@@ -60,20 +60,30 @@
             this.txtSyncExportPath = new System.Windows.Forms.TextBox();
             this.cboPrinters = new System.Windows.Forms.ComboBox();
             this.cboDepartment = new System.Windows.Forms.ComboBox();
-            this.lblDepartment = new System.Windows.Forms.Label();
-            this.masterDB = new AppFrameClient.MasterDB();
-            this.masterDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDB = new AppFrameClient.MasterDB();
+            this.lblDepartment = new System.Windows.Forms.Label();
             this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
+            this.grpSync = new System.Windows.Forms.GroupBox();
+            this.grpPrinting = new System.Windows.Forms.GroupBox();
+            this.grpSubStock = new System.Windows.Forms.GroupBox();
+            this.grpService = new System.Windows.Forms.GroupBox();
+            this.cboBinding = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             btnExportPath = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
+            this.grpSync.SuspendLayout();
+            this.grpPrinting.SuspendLayout();
+            this.grpSubStock.SuspendLayout();
+            this.grpService.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExportPath
             // 
-            btnExportPath.Location = new System.Drawing.Point(363, 30);
+            btnExportPath.Location = new System.Drawing.Point(344, 16);
             btnExportPath.Name = "btnExportPath";
             btnExportPath.Size = new System.Drawing.Size(31, 23);
             btnExportPath.TabIndex = 13;
@@ -84,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 36);
+            this.label1.Location = new System.Drawing.Point(52, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 0;
@@ -92,7 +102,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(302, 254);
+            this.btnDefault.Location = new System.Drawing.Point(314, 373);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -102,7 +112,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(383, 254);
+            this.btnClose.Location = new System.Drawing.Point(395, 373);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -112,7 +122,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(221, 254);
+            this.btnSave.Location = new System.Drawing.Point(233, 373);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -123,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 62);
+            this.label2.Location = new System.Drawing.Point(47, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 8;
@@ -132,7 +142,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 88);
+            this.label3.Location = new System.Drawing.Point(96, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 9;
@@ -141,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 111);
+            this.label4.Location = new System.Drawing.Point(52, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 10;
@@ -150,7 +160,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 164);
+            this.label5.Location = new System.Drawing.Point(70, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 11;
@@ -158,7 +168,7 @@
             // 
             // btnImportPath
             // 
-            this.btnImportPath.Location = new System.Drawing.Point(363, 57);
+            this.btnImportPath.Location = new System.Drawing.Point(344, 43);
             this.btnImportPath.Name = "btnImportPath";
             this.btnImportPath.Size = new System.Drawing.Size(31, 23);
             this.btnImportPath.TabIndex = 14;
@@ -168,7 +178,7 @@
             // 
             // btnErrorPath
             // 
-            this.btnErrorPath.Location = new System.Drawing.Point(363, 83);
+            this.btnErrorPath.Location = new System.Drawing.Point(344, 69);
             this.btnErrorPath.Name = "btnErrorPath";
             this.btnErrorPath.Size = new System.Drawing.Size(31, 23);
             this.btnErrorPath.TabIndex = 15;
@@ -178,7 +188,7 @@
             // 
             // btnSuccessPath
             // 
-            this.btnSuccessPath.Location = new System.Drawing.Point(363, 109);
+            this.btnSuccessPath.Location = new System.Drawing.Point(344, 95);
             this.btnSuccessPath.Name = "btnSuccessPath";
             this.btnSuccessPath.Size = new System.Drawing.Size(31, 23);
             this.btnSuccessPath.TabIndex = 16;
@@ -188,7 +198,7 @@
             // 
             // btnMySQLDump
             // 
-            this.btnMySQLDump.Location = new System.Drawing.Point(363, 188);
+            this.btnMySQLDump.Location = new System.Drawing.Point(345, 147);
             this.btnMySQLDump.Name = "btnMySQLDump";
             this.btnMySQLDump.Size = new System.Drawing.Size(31, 23);
             this.btnMySQLDump.TabIndex = 18;
@@ -199,7 +209,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(61, 193);
+            this.label6.Location = new System.Drawing.Point(43, 152);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 13);
             this.label6.TabIndex = 19;
@@ -207,7 +217,7 @@
             // 
             // btnBackupDB
             // 
-            this.btnBackupDB.Location = new System.Drawing.Point(362, 132);
+            this.btnBackupDB.Location = new System.Drawing.Point(343, 118);
             this.btnBackupDB.Name = "btnBackupDB";
             this.btnBackupDB.Size = new System.Drawing.Size(31, 23);
             this.btnBackupDB.TabIndex = 22;
@@ -218,7 +228,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(91, 137);
+            this.label7.Location = new System.Drawing.Point(72, 123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 21;
@@ -226,7 +236,7 @@
             // 
             // txtMySQLDump
             // 
-            this.txtMySQLDump.Location = new System.Drawing.Point(184, 188);
+            this.txtMySQLDump.Location = new System.Drawing.Point(166, 147);
             this.txtMySQLDump.Name = "txtMySQLDump";
             this.txtMySQLDump.Size = new System.Drawing.Size(173, 20);
             this.txtMySQLDump.TabIndex = 23;
@@ -234,7 +244,7 @@
             // 
             // txtBackupDB
             // 
-            this.txtBackupDB.Location = new System.Drawing.Point(184, 134);
+            this.txtBackupDB.Location = new System.Drawing.Point(165, 120);
             this.txtBackupDB.Name = "txtBackupDB";
             this.txtBackupDB.Size = new System.Drawing.Size(172, 20);
             this.txtBackupDB.TabIndex = 24;
@@ -242,7 +252,7 @@
             // 
             // txtSyncSuccessPath
             // 
-            this.txtSyncSuccessPath.Location = new System.Drawing.Point(185, 111);
+            this.txtSyncSuccessPath.Location = new System.Drawing.Point(166, 97);
             this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
             this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncSuccessPath.TabIndex = 7;
@@ -250,7 +260,7 @@
             // 
             // txtSyncErrorPath
             // 
-            this.txtSyncErrorPath.Location = new System.Drawing.Point(185, 85);
+            this.txtSyncErrorPath.Location = new System.Drawing.Point(166, 71);
             this.txtSyncErrorPath.Name = "txtSyncErrorPath";
             this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncErrorPath.TabIndex = 6;
@@ -258,7 +268,7 @@
             // 
             // txtSyncImportPath
             // 
-            this.txtSyncImportPath.Location = new System.Drawing.Point(185, 59);
+            this.txtSyncImportPath.Location = new System.Drawing.Point(166, 45);
             this.txtSyncImportPath.Name = "txtSyncImportPath";
             this.txtSyncImportPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncImportPath.TabIndex = 5;
@@ -266,7 +276,7 @@
             // 
             // txtSyncExportPath
             // 
-            this.txtSyncExportPath.Location = new System.Drawing.Point(185, 33);
+            this.txtSyncExportPath.Location = new System.Drawing.Point(166, 19);
             this.txtSyncExportPath.Name = "txtSyncExportPath";
             this.txtSyncExportPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncExportPath.TabIndex = 1;
@@ -276,7 +286,7 @@
             // 
             this.cboPrinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPrinters.FormattingEnabled = true;
-            this.cboPrinters.Location = new System.Drawing.Point(185, 161);
+            this.cboPrinters.Location = new System.Drawing.Point(167, 15);
             this.cboPrinters.Name = global::AppFrameClient.Properties.Settings.Default.PrinterName;
             this.cboPrinters.Size = new System.Drawing.Size(172, 21);
             this.cboPrinters.TabIndex = 12;
@@ -287,82 +297,152 @@
             this.cboDepartment.DisplayMember = "DEPARTMENT_NAME";
             this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(184, 215);
+            this.cboDepartment.Location = new System.Drawing.Point(167, 19);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(173, 21);
             this.cboDepartment.TabIndex = 25;
             this.cboDepartment.ValueMember = "DEPARTMENT_ID";
             this.cboDepartment.Visible = false;
             // 
-            // lblDepartment
+            // departmentBindingSource
             // 
-            this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(66, 218);
-            this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(112, 13);
-            this.lblDepartment.TabIndex = 26;
-            this.lblDepartment.Text = "Nơi xuất của kho phụ:";
-            this.lblDepartment.Visible = false;
-            // 
-            // masterDB
-            // 
-            this.masterDB.DataSetName = "MasterDB";
-            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.departmentBindingSource.DataMember = "Department";
+            this.departmentBindingSource.DataSource = this.masterDBBindingSource;
             // 
             // masterDBBindingSource
             // 
             this.masterDBBindingSource.DataSource = this.masterDB;
             this.masterDBBindingSource.Position = 0;
             // 
-            // departmentBindingSource
+            // masterDB
             // 
-            this.departmentBindingSource.DataMember = "Department";
-            this.departmentBindingSource.DataSource = this.masterDBBindingSource;
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblDepartment
+            // 
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Location = new System.Drawing.Point(49, 22);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(112, 13);
+            this.lblDepartment.TabIndex = 26;
+            this.lblDepartment.Text = "Nơi xuất của kho phụ:";
+            this.lblDepartment.Visible = false;
             // 
             // departmentTableAdapter
             // 
             this.departmentTableAdapter.ClearBeforeFill = true;
             // 
+            // grpSync
+            // 
+            this.grpSync.Controls.Add(this.txtSyncImportPath);
+            this.grpSync.Controls.Add(this.label1);
+            this.grpSync.Controls.Add(this.txtSyncExportPath);
+            this.grpSync.Controls.Add(this.txtMySQLDump);
+            this.grpSync.Controls.Add(this.label6);
+            this.grpSync.Controls.Add(this.txtBackupDB);
+            this.grpSync.Controls.Add(this.btnMySQLDump);
+            this.grpSync.Controls.Add(this.txtSyncErrorPath);
+            this.grpSync.Controls.Add(this.label2);
+            this.grpSync.Controls.Add(this.btnBackupDB);
+            this.grpSync.Controls.Add(this.label3);
+            this.grpSync.Controls.Add(this.label7);
+            this.grpSync.Controls.Add(btnExportPath);
+            this.grpSync.Controls.Add(this.btnImportPath);
+            this.grpSync.Controls.Add(this.btnErrorPath);
+            this.grpSync.Controls.Add(this.btnSuccessPath);
+            this.grpSync.Controls.Add(this.txtSyncSuccessPath);
+            this.grpSync.Controls.Add(this.label4);
+            this.grpSync.Location = new System.Drawing.Point(13, 13);
+            this.grpSync.Name = "grpSync";
+            this.grpSync.Size = new System.Drawing.Size(457, 180);
+            this.grpSync.TabIndex = 27;
+            this.grpSync.TabStop = false;
+            this.grpSync.Text = "Đồng bộ";
+            // 
+            // grpPrinting
+            // 
+            this.grpPrinting.Controls.Add(this.cboPrinters);
+            this.grpPrinting.Controls.Add(this.label5);
+            this.grpPrinting.Location = new System.Drawing.Point(13, 199);
+            this.grpPrinting.Name = "grpPrinting";
+            this.grpPrinting.Size = new System.Drawing.Size(457, 42);
+            this.grpPrinting.TabIndex = 28;
+            this.grpPrinting.TabStop = false;
+            this.grpPrinting.Text = "In ấn";
+            // 
+            // grpSubStock
+            // 
+            this.grpSubStock.Controls.Add(this.cboDepartment);
+            this.grpSubStock.Controls.Add(this.lblDepartment);
+            this.grpSubStock.Location = new System.Drawing.Point(12, 247);
+            this.grpSubStock.Name = "grpSubStock";
+            this.grpSubStock.Size = new System.Drawing.Size(457, 53);
+            this.grpSubStock.TabIndex = 29;
+            this.grpSubStock.TabStop = false;
+            this.grpSubStock.Text = "Kho phụ";
+            // 
+            // grpService
+            // 
+            this.grpService.Controls.Add(this.cboBinding);
+            this.grpService.Controls.Add(this.label8);
+            this.grpService.Location = new System.Drawing.Point(13, 307);
+            this.grpService.Name = "grpService";
+            this.grpService.Size = new System.Drawing.Size(456, 59);
+            this.grpService.TabIndex = 30;
+            this.grpService.TabStop = false;
+            this.grpService.Text = "Dịch vụ";
+            // 
+            // cboBinding
+            // 
+            this.cboBinding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBinding.FormattingEnabled = true;
+            this.cboBinding.Items.AddRange(new object[] {
+            "TcpBinding",
+            "HttpBinding"});
+            this.cboBinding.Location = new System.Drawing.Point(167, 19);
+            this.cboBinding.Name = "cboBinding";
+            this.cboBinding.Size = new System.Drawing.Size(173, 21);
+            this.cboBinding.TabIndex = 27;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(70, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Giao thức kết nối:";
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 291);
-            this.Controls.Add(this.lblDepartment);
-            this.Controls.Add(this.cboDepartment);
-            this.Controls.Add(this.txtBackupDB);
-            this.Controls.Add(this.txtMySQLDump);
-            this.Controls.Add(this.btnBackupDB);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnMySQLDump);
-            this.Controls.Add(this.btnSuccessPath);
-            this.Controls.Add(this.btnErrorPath);
-            this.Controls.Add(this.btnImportPath);
-            this.Controls.Add(btnExportPath);
-            this.Controls.Add(this.cboPrinters);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSyncSuccessPath);
-            this.Controls.Add(this.txtSyncErrorPath);
-            this.Controls.Add(this.txtSyncImportPath);
+            this.ClientSize = new System.Drawing.Size(482, 408);
+            this.Controls.Add(this.grpService);
+            this.Controls.Add(this.grpSubStock);
+            this.Controls.Add(this.grpPrinting);
+            this.Controls.Add(this.grpSync);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDefault);
-            this.Controls.Add(this.txtSyncExportPath);
-            this.Controls.Add(this.label1);
             this.Name = "SettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cấu hình hệ thống";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
+            this.grpSync.ResumeLayout(false);
+            this.grpSync.PerformLayout();
+            this.grpPrinting.ResumeLayout(false);
+            this.grpPrinting.PerformLayout();
+            this.grpSubStock.ResumeLayout(false);
+            this.grpSubStock.PerformLayout();
+            this.grpService.ResumeLayout(false);
+            this.grpService.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -403,5 +483,11 @@
         private MasterDB masterDB;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
+        private System.Windows.Forms.GroupBox grpSync;
+        private System.Windows.Forms.GroupBox grpPrinting;
+        private System.Windows.Forms.GroupBox grpSubStock;
+        private System.Windows.Forms.GroupBox grpService;
+        private System.Windows.Forms.ComboBox cboBinding;
+        private System.Windows.Forms.Label label8;
     }
 }

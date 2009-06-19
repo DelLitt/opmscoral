@@ -8,7 +8,18 @@ namespace AppFrameClient.Common
 {
     public class ClientSetting
     {
-        
+        public static string ServiceBinding
+        {
+            get
+            {
+                return AFCSetting.Default.ServiceBinding;    
+            }
+            set
+            {
+                AFCSetting.Default.ServiceBinding = value;
+            }
+        }
+
 
         public static bool IsClient()
         {

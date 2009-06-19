@@ -30,6 +30,7 @@ namespace AppFrameClient.View
             txtSyncSuccessPath.Text = ClientSetting.SyncSuccessPath;
             txtBackupDB.Text = ClientSetting.DBBackupPath;
             txtMySQLDump.Text = ClientSetting.MySQLDumpPath;
+            cboBinding.SelectedItem = ClientSetting.ServiceBinding;
             cboDepartment.SelectedValue = ClientSetting.MarketDept;
             PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
             foreach (string printerName in printerNames)
@@ -40,9 +41,13 @@ namespace AppFrameClient.View
 
             if (ClientSetting.IsSubStock())
             {
-                lblDepartment.Visible = true;
-                cboDepartment.Visible = true;
+                grpSubStock.Visible = true;
             }
+            else
+            {
+                grpSubStock.Visible = false;
+            }
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -61,6 +66,7 @@ namespace AppFrameClient.View
             ClientSetting.SyncErrorPath = txtSyncErrorPath.Text;
             ClientSetting.SyncSuccessPath = txtSyncSuccessPath.Text;
             ClientSetting.PrinterName = (string)cboPrinters.SelectedItem;
+            ClientSetting.ServiceBinding = (string)cboBinding.SelectedItem;
             if (ClientSetting.IsSubStock())
             {
                 ClientSetting.MarketDept = cboDepartment.SelectedValue.ToString();

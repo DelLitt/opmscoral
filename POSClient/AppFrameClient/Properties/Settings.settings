@@ -45,5 +45,8 @@
     <Setting Name="DeptMarket" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="ServiceBinding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TcpBinding</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

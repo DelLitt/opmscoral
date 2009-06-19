@@ -152,5 +152,17 @@ namespace AppFrameClient.Properties {
                 this["DeptMarket"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TcpBinding")]
+        public string ServiceBinding {
+            get {
+                return ((string)(this["ServiceBinding"]));
+            }
+            set {
+                this["ServiceBinding"] = value;
+            }
+        }
     }
 }

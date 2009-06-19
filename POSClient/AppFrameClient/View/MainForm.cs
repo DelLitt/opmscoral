@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -938,6 +939,181 @@ namespace AppFrame.View
             Form departmentStockIn = GlobalUtility.GetOnlyChildFormObject<DepartmentFastStockInForm>(this,FormConstants.DEPARTMENT_FAST_STOCK_IN_VIEW);
             departmentStockIn.WindowState = FormWindowState.Maximized;
             departmentStockIn.Show();
+        }
+
+        private void tsbQuit_Click(object sender, EventArgs e)
+        {
+            Close();
+            Application.Exit();
+        }
+        private IList<ToolStripItem> GetItemVisible(ToolStrip client)
+        {
+            IList<ToolStripItem> list = new List<ToolStripItem>();
+            foreach (ToolStripItem item in toolStripClient.Items)
+            {
+                if(item.Visible == true)
+                {
+                    list.Add(item);
+                }
+            }
+            return list;
+        }
+
+        private void F1Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[0].PerformClick();
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+            
+        }
+        
+        private void F2Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[1].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+            
+        }
+
+        private void F3Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[2].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+            
+        }
+
+        private void F4Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[3].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F5Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[4].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F6Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[5].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F7Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[6].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F8Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[7].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F9Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[8].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F10Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[9].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        private void F11Shortcut_Pressed(object sender, EventArgs e)
+        {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[10].PerformClick();
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
         
     }
