@@ -24,7 +24,7 @@ using NHibernate.Criterion;
 
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
-    public class DepartmentStockInController : IDepartmentStockInController
+    public class DepartmentStockInController : IDepartmentStockInController,ServerServiceCallback
     {
         #region View use in IDepartmentStockInController
 
@@ -386,5 +386,30 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
 
         #endregion
+
+        public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
+        {
+            
+        }
+
+        public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            
+        }
+
+        public void NotifyConnected()
+        {
+            
+        }
+
+        public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
+        {
+            
+        }
+
+        public void NotifyRequestDepartmentStockOut(long departmentId)
+        {
+            
+        }
     }
 }

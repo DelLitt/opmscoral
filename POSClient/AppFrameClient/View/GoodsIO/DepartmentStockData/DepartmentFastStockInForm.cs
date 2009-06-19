@@ -1069,7 +1069,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     catch (Exception)
                     {
                         lblMessage.ForeColor = Color.Red;
-                        lblMessage.Text = " Không kết nối được với máy cửa hàng để thực hiện đồng bộ ! ";
+                        lblMessage.Text = " Không kết nối được với máy cửa hàng! ";
+                        deptSO = new DepartmentStockIn();
+                        deptSODetailList.Clear();
+                        //                    txtDexcription.Text = "";
+                        //                    txtPriceIn.Text = "";
+                        //                    txtPriceOut.Text = "";
+                        txtSumProduct.Text = "";
+                        txtSumValue.Text = "";
                         return;
                     }
                     EventUtility.fireEvent(SaveStockInBackEvent, this, ea);
