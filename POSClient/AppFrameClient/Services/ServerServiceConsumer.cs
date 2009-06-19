@@ -15,7 +15,7 @@ namespace AppFrameClient.Services
 {
     public class ServerServiceConsumer : ServerServiceCallback
     {
-        const int SleepTime = 1000;
+        const int SleepTime = 5*60*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -96,19 +96,29 @@ namespace AppFrameClient.Services
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
                             serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
-                            Thread.Sleep(500);
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
+                            Thread.Sleep(500);
+                            
                         }
                         catch (Exception) { }
                         
                     }
                     else
                     {
-                        // Wait until thread is stopped
-                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
-                        serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
-                        Thread.Sleep(SleepTime);
-                        ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                        try
+                        {
+                            // Wait until thread is stopped
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
+                            serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                            Thread.Sleep(SleepTime);     
+                        }
+                        catch (Exception)
+                        {
+                            
+                        }
+                        
+                        
                     }
                 }
                 
