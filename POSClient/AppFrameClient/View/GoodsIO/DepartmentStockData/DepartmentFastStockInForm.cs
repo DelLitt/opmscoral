@@ -1060,11 +1060,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     //            deptSO.Description = txtDexcription.Text;
                     var ea = new DepartmentStockInEventArgs();
                     ea.DepartmentStockIn = deptSO;
-                    
+                    ea.Department = (Department)cboDepartment.SelectedItem;
                     ea.DepartmentStockList = departmentStockList;
+                    try
+                    {
+                        EventUtility.fireEvent(DispatchDepartmentStockIn, this, ea);
+                    }
+                    catch (Exception)
+                    {
+                        lblMessage.ForeColor = Color.Red;
+                        lblMessage.Text = " Không kết nối được với máy cửa hàng để thực hiện đồng bộ ! ";
+                        return;
+                    }
                     EventUtility.fireEvent(SaveStockInBackEvent, this, ea);
-                    EventUtility.fireAsyncEvent(DispatchDepartmentStockIn,this,ea, new AsyncCallback(EndEvent));
-                    if (eventArgs.EventResult != null)
+                    if (ea.EventResult != null)
                     {
                          lblMessage.ForeColor = Color.Blue;
                          lblMessage.Text = "Lưu thành công !";
@@ -1081,7 +1090,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     else
                     {
                         lblMessage.ForeColor = Color.Red;
-                        lblMessage.Text = "Có lỗi khi lưu !";
+                        lblMessage.Text = "Có lỗi khi lưu ! ";
                     }
                 }
             }

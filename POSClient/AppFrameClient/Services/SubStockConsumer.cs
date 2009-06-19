@@ -77,6 +77,11 @@ namespace AppFrameClient.Services
             // don't need to implement
         }
 
+        public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            // don't need to implement            
+        }
+
         public void NotifyConnected()
         {
             connected = true;

@@ -23,6 +23,9 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockOut")]
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockIn")]
+        void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ExitDistributingGroup")]
         void ExitDistributingGroup(Department department);
 
@@ -39,6 +42,9 @@ namespace AppFrameClient.Services
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyNewDepartmentStockOut")]
         void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyNewDepartmentStockIn")]
+        void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyConnected")]
         void NotifyConnected();
@@ -93,6 +99,11 @@ namespace AppFrameClient.Services
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price)
         {
             base.Channel.MakeDepartmentStockOut(department, stockOut, price);
+        }
+
+        public void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            base.Channel.MakeDepartmentStockIn(department, stockOut);
         }
 
         public void ExitDistributingGroup(Department department)

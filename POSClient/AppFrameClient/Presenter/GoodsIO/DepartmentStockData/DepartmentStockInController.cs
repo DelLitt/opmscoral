@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame;
@@ -16,6 +17,7 @@ using AppFrame.Presenter.SalePoints;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Services;
 using AppFrameClient.Utility;
 using Microsoft.ReportingServices.Diagnostics.Utilities;
 using NHibernate.Criterion;
@@ -51,7 +53,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         void _departmentStockInView_DispatchDepartmentStockIn(object sender, DepartmentStockInEventArgs e)
         {
-            
+            Department destDept = DepartmentLogic.FindById(e.Department.DepartmentId);
+            if (destDept != null)
+            {
+                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                //serverService.JoinDistributingGroup(destDept);
+                serverService.MakeDepartmentStockIn(destDept, e.DepartmentStockIn);
+            }
         }
 
         void _departmentStockInView_SaveStockInBackEvent(object sender, DepartmentStockInEventArgs e)

@@ -379,7 +379,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             //MessageBox.Show("Send back OK !");
         }
 
-        
+        public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            // do nothing
+        }
+
+
         public void NotifyConnected()
         {
             // do nothing            

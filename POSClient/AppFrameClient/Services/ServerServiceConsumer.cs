@@ -38,7 +38,22 @@ namespace AppFrameClient.Services
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
         }
 
-        
+        public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockIn)
+        {
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            if (CurrentDepartment.Get().DepartmentId != department.DepartmentId)
+            {
+                return;
+            }
+            DepartmentStockOut stockOut;
+            // convert from stock out to stock in
+            stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
+            // call method to sync
+            DepartmentStockOutLogic.Add(stockOut);
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+        }
+    
+
         public void NotifyConnected()
         {
             connected = true;
@@ -61,6 +76,8 @@ namespace AppFrameClient.Services
         {
             IDepartmentStockInLogic deptStockInLogic = (IDepartmentStockInLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockInLogic");
             DepartmentStockInLogic = deptStockInLogic;
+            IDepartmentStockOutLogic deptStockOutLogic = (IDepartmentStockOutLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockOutLogic");
+            DepartmentStockOutLogic = deptStockOutLogic;
             
             m_thread = new Thread(new ThreadStart(ThreadMethod));
             m_thread.Start();
