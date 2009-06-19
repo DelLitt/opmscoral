@@ -101,7 +101,10 @@ namespace AppFrameClient.Services
                             Thread.Sleep(500);
                             
                         }
-                        catch (Exception) { }
+                        catch (Exception ex)
+                        {
+                            string s = ex.Message; 
+                        }
                         
                     }
                     else
