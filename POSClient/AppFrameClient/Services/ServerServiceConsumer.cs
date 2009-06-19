@@ -48,6 +48,7 @@ namespace AppFrameClient.Services
             DepartmentStockOut stockOut;
             // convert from stock out to stock in
             stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
+            
             // call method to sync
             DepartmentStockOutLogic.Add(stockOut);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";

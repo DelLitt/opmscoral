@@ -18,7 +18,7 @@ namespace AppFrameClient.Utility.Mapper
             stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
             stockIn.UpdateDate = DateTime.Now;
             stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-
+            stockIn.OtherDepartmentId = source.DepartmentStockInPK.DepartmentId;
             stockIn.StockOutDate = DateTime.Now;
             stockIn.DefectStatus = new StockDefectStatus
                                        {
