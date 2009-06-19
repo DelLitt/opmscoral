@@ -91,5 +91,13 @@ namespace AppFrame.Utility
             retStr.Append(numDay);
             return retStr.ToString();
         }
+
+        public static DateTime ConvertFourCharToDate(string substring)
+        {
+            int yearCount = 2009 + arrNum.IndexOf(substring.Substring(0, 1));
+            int monthCount = arrNum.IndexOf(substring.Substring(1, 1)) +1;
+            int dayCount = arrNum.IndexOf(substring.Substring(2, 1)) + 1;
+            return new DateTime(yearCount,monthCount,dayCount);
+        }
     }
 }
