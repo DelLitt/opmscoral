@@ -95,7 +95,7 @@ namespace AppFrameClient.Services
                         try
                         {
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
-                            serverService = new ServerServiceClient(new InstanceContext(this), "HttpBinding");
+                            serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
                             Thread.Sleep(500);
