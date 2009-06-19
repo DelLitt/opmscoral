@@ -12,6 +12,9 @@ namespace AppFrameServer.Services
     {
         [OperationContract(IsOneWay = true)]
         void NotifyNewDepartmentStockOut(Department department,DepartmentStockOut stockOut,DepartmentPrice price);
+
+        [OperationContract(IsOneWay = true)]
+        void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockOut);
         
         [OperationContract(IsOneWay = true)]
         void NotifyConnected();

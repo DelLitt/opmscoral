@@ -21,6 +21,9 @@ namespace AppFrameServer.Services
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
+        void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
+
+        [OperationContract(IsOneWay = true)]
         void ExitDistributingGroup(Department department);
 
         [OperationContract(IsOneWay = true)]

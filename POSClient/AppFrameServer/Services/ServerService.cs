@@ -87,6 +87,22 @@ namespace AppFrameServer.Services
                     });
         }
 
+        public void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            _callbackList.ForEach(
+               delegate(IDepartmentStockOutCallback callback)
+               {
+                   try
+                   {
+                       callback.NotifyNewDepartmentStockIn(department, stockOut);
+                   }
+                   catch (Exception)
+                   {
+
+                   }
+               });
+        }
+
         public void ExitDistributingGroup(Department department)
         {
             // Unsubscribe the guest from the beer inventory
