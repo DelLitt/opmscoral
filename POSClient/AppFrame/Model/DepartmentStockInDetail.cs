@@ -10,6 +10,7 @@ namespace AppFrame.Model
     /// DepartmentStockInDetail object for NHibernate mapped table 'department_stock_in_detail'.
     /// </summary>
     [Serializable]
+    [DataContract(Name = "DepartmentStockInDetail", Namespace = "http://localhost:8001/")]
     public class DepartmentStockInDetail : ClonableObject, System.IComparable
     {
     	#region Member Variables
@@ -43,13 +44,17 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
-
+        [DataMember]
 		public virtual DepartmentStockInDetailPK DepartmentStockInDetailPK { get; set; }
-        
+        [DataMember]
         public virtual long Price { get; set; }
+        [DataMember]
         public virtual long OnStorePrice { get; set; }
+        [DataMember]
         public virtual long OldQuantity { get; set; }
+        [DataMember]
         public virtual long StockQuantity { get; set; }
+        [DataMember]
         public virtual Int64 StockInId
         {
             get
@@ -61,6 +66,7 @@ namespace AppFrame.Model
                 _stockInId = value;
             }
         }
+        [DataMember]
         public virtual string ProductId
         {
             get
@@ -72,6 +78,7 @@ namespace AppFrame.Model
                 _productId = value;
             }
         }
+        [DataMember]
         public virtual Int64 DepartmentId
         {
             get
@@ -83,7 +90,7 @@ namespace AppFrame.Model
                 _departmentId = value;
             }
         }
-
+        [DataMember]
         public virtual Int64 Quantity
         {
             get
@@ -95,6 +102,7 @@ namespace AppFrame.Model
                 _quantity = value;
             }
         }
+        [DataMember]
         public virtual DateTime CreateDate
         {
             get
@@ -106,6 +114,7 @@ namespace AppFrame.Model
                 _createDate = value;
             }
         }
+        [DataMember]
         public virtual string CreateId
         {
             get
@@ -117,6 +126,7 @@ namespace AppFrame.Model
                 _createId = value;
             }
         }
+        [DataMember]
         public virtual DateTime UpdateDate
         {
             get
@@ -128,6 +138,7 @@ namespace AppFrame.Model
                 _updateDate = value;
             }
         }
+        [DataMember]
         public virtual string UpdateId
         {
             get
@@ -139,6 +150,7 @@ namespace AppFrame.Model
                 _updateId = value;
             }
         }
+        [DataMember]
         public virtual Int64 ExclusiveKey
         {
             get
@@ -150,6 +162,7 @@ namespace AppFrame.Model
                 _exclusiveKey = value;
             }
         }
+        [DataMember]
         public virtual Int64 DelFlg
         {
             get
@@ -173,6 +186,7 @@ namespace AppFrame.Model
                 _departmentStockIn = value;
             }
         }
+        [DataMember]
         public virtual Product Product
         {
             get;set;
@@ -184,7 +198,9 @@ namespace AppFrame.Model
                 _product = value;
             }*/
         }
+        [DataMember]
         public virtual ProductMaster ProductMaster { get; set; }
+        [DataMember]
         public virtual Int64 Sold { get; set; }
         #endregion
         
