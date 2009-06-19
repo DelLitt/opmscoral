@@ -81,7 +81,7 @@ namespace AppFrameClient.View.GoodsSale
             txtPayment.Text = "";
             txtTotalAmount.Text = "";
             txtCharge.Text = "";
-            txtTax.Text = "10%";
+            txtTax.Text = "5%";
             PurchaseOrderBill = null;
             ReturnPurchaseOrder = null;
             GoodsSaleController.PurchaseOrder = null;
