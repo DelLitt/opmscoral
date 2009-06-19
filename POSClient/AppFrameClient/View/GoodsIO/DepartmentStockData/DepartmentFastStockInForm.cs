@@ -1064,7 +1064,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ea.DepartmentStockList = departmentStockList;
                     try
                     {
-                        EventUtility.fireEvent(DispatchDepartmentStockIn, this, ea);
+                        EventUtility.fireAsyncEvent(DispatchDepartmentStockIn, this, ea,new AsyncCallback(EndEvent));
                     }
                     catch (Exception)
                     {
