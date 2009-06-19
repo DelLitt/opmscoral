@@ -116,7 +116,11 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception)
                         {
-                            
+                            if(serverService.State == CommunicationState.Faulted
+                               || serverService.State == CommunicationState.Closed)
+                            {
+                                connected = false;
+                            }
                         }
                         
                         
