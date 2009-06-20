@@ -78,6 +78,7 @@ namespace AppFrameClient.Presenter.GoodsIO
             criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
             criteria.AddEqCriteria("pm.Packager", e.Packager);
             criteria.AddEqCriteria("pm.Distributor", e.Distributor);
+            criteria.AddLikeCriteria("pm.Description", "%" + e.Description + "%");
             IList list = StockLogic.FindByQuery(criteria);
             if(!CheckUtility.IsNullOrEmpty(GlobalCache.Instance().WarningText))
             {

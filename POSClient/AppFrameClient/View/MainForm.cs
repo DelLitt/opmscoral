@@ -1115,6 +1115,11 @@ namespace AppFrame.View
 
             }
         }
+
+        private void mnuWareHouse_Click(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

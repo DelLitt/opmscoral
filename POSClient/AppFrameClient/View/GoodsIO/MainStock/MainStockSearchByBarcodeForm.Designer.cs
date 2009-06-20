@@ -36,6 +36,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Manufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Packager = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +58,8 @@
             this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +78,7 @@
             this.quantityDataGridViewTextBoxColumn,
             this.ProductColor,
             this.ProductSize,
+            this.Description,
             this.Country,
             this.Manufacturer,
             this.Packager,
@@ -135,12 +139,20 @@
             this.ProductSize.Name = "ProductSize";
             this.ProductSize.ReadOnly = true;
             // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Product.ProductMaster.Description";
+            this.Description.HeaderText = "Ghi chú";
+            this.Description.Name = "Description";
+            this.Description.Width = 150;
+            // 
             // Country
             // 
             this.Country.DataPropertyName = "Product.ProductMaster.Country.CountryName";
             this.Country.HeaderText = "Xuất xứ";
             this.Country.Name = "Country";
             this.Country.ReadOnly = true;
+            this.Country.Visible = false;
             // 
             // Manufacturer
             // 
@@ -148,6 +160,7 @@
             this.Manufacturer.HeaderText = "Sản xuất";
             this.Manufacturer.Name = "Manufacturer";
             this.Manufacturer.ReadOnly = true;
+            this.Manufacturer.Visible = false;
             // 
             // Packager
             // 
@@ -155,6 +168,7 @@
             this.Packager.HeaderText = "Đóng gói";
             this.Packager.Name = "Packager";
             this.Packager.ReadOnly = true;
+            this.Packager.Visible = false;
             // 
             // Distributor
             // 
@@ -162,6 +176,7 @@
             this.Distributor.HeaderText = "Phân phối";
             this.Distributor.Name = "Distributor";
             this.Distributor.ReadOnly = true;
+            this.Distributor.Visible = false;
             // 
             // stockIdDataGridViewTextBoxColumn
             // 
@@ -297,11 +312,30 @@
             this.productMasterControl.Size = new System.Drawing.Size(800, 120);
             this.productMasterControl.TabIndex = 0;
             // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(88, 155);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(185, 22);
+            this.txtDescription.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 159);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Ghi chú";
+            // 
             // MainStockSearchByBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 566);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.dtpImportDateTo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpImportDateFrom);
@@ -340,6 +374,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Packager;
@@ -352,5 +387,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exclusiveKeyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label1;
     }
 }

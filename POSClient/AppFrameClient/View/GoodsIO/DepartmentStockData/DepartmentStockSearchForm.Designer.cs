@@ -32,6 +32,8 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,11 +77,29 @@
             this.label7.TabIndex = 44;
             this.label7.Text = "TÌM KIẾM KHO";
             // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(315, 124);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(344, 22);
+            this.txtDescription.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(261, 128);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 14);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Ghi chú";
+            // 
             // DepartmentStockSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 466);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dgvProduct);
@@ -100,5 +120,7 @@
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label1;
     }
 }
