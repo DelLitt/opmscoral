@@ -50,16 +50,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDeptStockIn = new System.Windows.Forms.DataGridView();
-            this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
-            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSumProduct = new System.Windows.Forms.TextBox();
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
             this.columnProductName = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -73,6 +63,18 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
+            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSumProduct = new System.Windows.Forms.TextBox();
+            this.chkContinuePrint = new System.Windows.Forms.CheckBox();
+            this.chkPrintPrice = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -218,7 +220,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(557, 433);
+            this.label6.Location = new System.Drawing.Point(653, 433);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 14);
             this.label6.TabIndex = 61;
@@ -227,11 +229,11 @@
             // txtSumValue
             // 
             this.txtSumValue.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumValue.Location = new System.Drawing.Point(633, 429);
+            this.txtSumValue.Location = new System.Drawing.Point(729, 425);
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumValue.Size = new System.Drawing.Size(176, 22);
+            this.txtSumValue.Size = new System.Drawing.Size(80, 22);
             this.txtSumValue.TabIndex = 60;
             // 
             // label5
@@ -287,6 +289,7 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
+            this.dgvDeptStockIn.AllowUserToDeleteRows = false;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -305,104 +308,13 @@
             this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(9, 114);
-            this.dgvDeptStockIn.MultiSelect = false;
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
+            this.dgvDeptStockIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeptStockIn.Size = new System.Drawing.Size(800, 310);
             this.dgvDeptStockIn.TabIndex = 53;
             this.dgvDeptStockIn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
             this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
             this.dgvDeptStockIn.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDeptStockIn_EditingControlShowing);
-            // 
-            // ctxMenuDept
-            // 
-            this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCreateDupItem,
-            this.mnuCreateNewItem});
-            this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
-            this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
-            // 
-            // mnuCreateDupItem
-            // 
-            this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
-            this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
-            // 
-            // mnuCreateNewItem
-            // 
-            this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
-            this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
-            // 
-            // bdsStockIn
-            // 
-            this.bdsStockIn.DataSource = typeof(AppFrame.Collection.StockInDetailCollection);
-            // 
-            // numericUpDownBarcode
-            // 
-            this.numericUpDownBarcode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownBarcode.Location = new System.Drawing.Point(102, 429);
-            this.numericUpDownBarcode.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numericUpDownBarcode.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
-            this.numericUpDownBarcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownBarcode.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDownBarcode.TabIndex = 74;
-            this.numericUpDownBarcode.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownBarcode.ValueChanged += new System.EventHandler(this.numericUpDownBarcode_ValueChanged);
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.Location = new System.Drawing.Point(159, 429);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(87, 23);
-            this.btnPreview.TabIndex = 75;
-            this.btnPreview.Text = "Xem trước";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // barcodePrintDocument
-            // 
-            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
-            // 
-            // barcodePrintDialog
-            // 
-            this.barcodePrintDialog.UseEXDialog = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(346, 433);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 14);
-            this.label13.TabIndex = 114;
-            this.label13.Text = "Tổng sản phẩm";
-            // 
-            // txtSumProduct
-            // 
-            this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumProduct.Location = new System.Drawing.Point(444, 430);
-            this.txtSumProduct.Name = "txtSumProduct";
-            this.txtSumProduct.ReadOnly = true;
-            this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(107, 22);
-            this.txtSumProduct.TabIndex = 113;
             // 
             // SearchCreate
             // 
@@ -510,17 +422,132 @@
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
             // 
+            // ctxMenuDept
+            // 
+            this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCreateDupItem,
+            this.mnuCreateNewItem});
+            this.ctxMenuDept.Name = "ctxMenuDept";
+            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
+            this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
+            // 
+            // mnuCreateDupItem
+            // 
+            this.mnuCreateDupItem.Name = "mnuCreateDupItem";
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
+            this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
+            // 
+            // mnuCreateNewItem
+            // 
+            this.mnuCreateNewItem.Name = "mnuCreateNewItem";
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
+            this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
+            // 
+            // bdsStockIn
+            // 
+            this.bdsStockIn.DataSource = typeof(AppFrame.Collection.StockInDetailCollection);
+            // 
+            // numericUpDownBarcode
+            // 
+            this.numericUpDownBarcode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownBarcode.Location = new System.Drawing.Point(102, 429);
+            this.numericUpDownBarcode.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownBarcode.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
+            this.numericUpDownBarcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.numericUpDownBarcode.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDownBarcode.TabIndex = 74;
+            this.numericUpDownBarcode.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDownBarcode.ValueChanged += new System.EventHandler(this.numericUpDownBarcode_ValueChanged);
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Location = new System.Drawing.Point(159, 429);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(87, 23);
+            this.btnPreview.TabIndex = 75;
+            this.btnPreview.Text = "Xem trước";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
+            // barcodePrintDocument
+            // 
+            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
+            // 
+            // barcodePrintDialog
+            // 
+            this.barcodePrintDialog.UseEXDialog = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(459, 434);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 14);
+            this.label13.TabIndex = 114;
+            this.label13.Text = "Tổng sản phẩm";
+            // 
+            // txtSumProduct
+            // 
+            this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSumProduct.Location = new System.Drawing.Point(557, 428);
+            this.txtSumProduct.Name = "txtSumProduct";
+            this.txtSumProduct.ReadOnly = true;
+            this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSumProduct.Size = new System.Drawing.Size(90, 22);
+            this.txtSumProduct.TabIndex = 113;
+            // 
+            // chkContinuePrint
+            // 
+            this.chkContinuePrint.AutoSize = true;
+            this.chkContinuePrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkContinuePrint.Location = new System.Drawing.Point(252, 433);
+            this.chkContinuePrint.Name = "chkContinuePrint";
+            this.chkContinuePrint.Size = new System.Drawing.Size(92, 18);
+            this.chkContinuePrint.TabIndex = 115;
+            this.chkContinuePrint.Text = "In hàng loạt";
+            this.chkContinuePrint.UseVisualStyleBackColor = true;
+            // 
+            // chkPrintPrice
+            // 
+            this.chkPrintPrice.AutoSize = true;
+            this.chkPrintPrice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPrintPrice.Location = new System.Drawing.Point(351, 433);
+            this.chkPrintPrice.Name = "chkPrintPrice";
+            this.chkPrintPrice.Size = new System.Drawing.Size(56, 18);
+            this.chkPrintPrice.TabIndex = 116;
+            this.chkPrintPrice.Text = "In giá";
+            this.chkPrintPrice.UseVisualStyleBackColor = true;
+            // 
             // MainStockInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 485);
+            this.Controls.Add(this.chkPrintPrice);
+            this.Controls.Add(this.chkContinuePrint);
             this.Controls.Add(this.btnPreview);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.numericUpDownBarcode);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtStockInId);
+            this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown);
@@ -531,10 +558,10 @@
             this.Controls.Add(this.dtpImportDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtSumValue);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDexcription);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtSumValue);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvDeptStockIn);
@@ -600,5 +627,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.CheckBox chkContinuePrint;
+        private System.Windows.Forms.CheckBox chkPrintPrice;
     }
 }
