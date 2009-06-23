@@ -156,6 +156,24 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\globe disconnected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe disconnected.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Globe Disconnect.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Globe Connected.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Logic\" />
     <Folder Include="Model\" />
   </ItemGroup>
