@@ -15,6 +15,7 @@ namespace AppFrame.Presenter.GoodsIO
 
         #region Logic use in IProductMasterSearchOrCreateController
         IProductMasterLogic ProductMasterLogic { get; set; }
+        IProductLogic ProductLogic { get; set; }
         ICountryLogic CountryLogic { get; set; }
         IProductColorLogic ProductColorLogic { get; set; }
         IProductTypeLogic ProductTypeLogic { get; set; }

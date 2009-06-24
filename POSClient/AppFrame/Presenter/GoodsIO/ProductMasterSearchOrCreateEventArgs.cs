@@ -13,6 +13,7 @@ namespace AppFrame.Presenter.GoodsIO
         public Form ParentForm { get; set; }
         public ProductMaster ProductMaster { get; set; }
         public IList ProductMasterList { get; set; }
+        public IList ProductList { get; set; }
         public IList CountryList { get; set; }
         public IList ProductTypeList { get; set; }
         public IList ProductSizeList { get; set; }

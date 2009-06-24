@@ -68,5 +68,7 @@ namespace AppFrame.Model
             get;set;
         }
         public virtual ProductMaster ProductMaster { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string Position { get; set; }
     }
 }

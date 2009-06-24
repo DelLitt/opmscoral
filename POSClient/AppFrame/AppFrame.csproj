@@ -176,6 +176,7 @@
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
     <Compile Include="Collection\LoginModelCollection.cs" />
+    <Compile Include="Collection\ProductCollection.cs" />
     <Compile Include="Collection\ProductReportCollection.cs" />
     <Compile Include="Collection\PurchaseOrderCollection.cs" />
     <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />

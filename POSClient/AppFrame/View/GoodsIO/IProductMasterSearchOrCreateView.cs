@@ -10,6 +10,8 @@ namespace AppFrame.View.GoodsIO
         IProductMasterSearchOrCreateController ProductMasterSearchOrCreateController { set; }
         event EventHandler<ProductMasterSearchOrCreateEventArgs> SaveProductMasterEvent;
         event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchProductMasterEvent;
+        event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchCommonProductMasterEvent;
+        event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchRelevantProductsEvent;
         event EventHandler<ProductMasterSearchOrCreateEventArgs> SelectProductMasterEvent;
         event EventHandler<ProductMasterSearchOrCreateEventArgs> InitProductMasterSearchOrCreateEvent;
         event EventHandler<ProductMasterSearchOrCreateEventArgs> OpenProductMasterSearchOrCreateEvent;

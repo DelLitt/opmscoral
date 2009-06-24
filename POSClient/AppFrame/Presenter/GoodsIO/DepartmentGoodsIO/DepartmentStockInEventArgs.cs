@@ -29,5 +29,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         public Distributor Distributor { get; set; }
         public Packager Packager { get; set; }
         public Country Country { get; set; }
+        public string ProductId { get; set; }
+        public string Description { get; set; }
     }
 }
