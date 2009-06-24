@@ -1174,7 +1174,7 @@
             this.toolStripClient.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStripClient.Location = new System.Drawing.Point(0, 24);
             this.toolStripClient.Name = "toolStripClient";
-            this.toolStripClient.Size = new System.Drawing.Size(68, 520);
+            this.toolStripClient.Size = new System.Drawing.Size(65, 520);
             this.toolStripClient.TabIndex = 7;
             this.toolStripClient.Text = "toolStrip1";
             // 
@@ -1183,7 +1183,7 @@
             this.tsbLogin.Image = global::AppFrameClient.Properties.Resources.LogOff;
             this.tsbLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLogin.Name = "tsbLogin";
-            this.tsbLogin.Size = new System.Drawing.Size(65, 49);
+            this.tsbLogin.Size = new System.Drawing.Size(62, 49);
             this.tsbLogin.Text = "Đăng nhập";
             this.tsbLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLogin.Click += new System.EventHandler(this.tsbLogin_Click);
@@ -1193,7 +1193,7 @@
             this.tsbEnterPeriod.Image = global::AppFrameClient.Properties.Resources.Restart;
             this.tsbEnterPeriod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEnterPeriod.Name = "tsbEnterPeriod";
-            this.tsbEnterPeriod.Size = new System.Drawing.Size(65, 49);
+            this.tsbEnterPeriod.Size = new System.Drawing.Size(62, 49);
             this.tsbEnterPeriod.Text = "Vào ca";
             this.tsbEnterPeriod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbEnterPeriod.Click += new System.EventHandler(this.tsbEnterPeriod_Click);
@@ -1203,7 +1203,7 @@
             this.tsbLeavePeriod.Image = global::AppFrameClient.Properties.Resources.Shutdown;
             this.tsbLeavePeriod.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLeavePeriod.Name = "tsbLeavePeriod";
-            this.tsbLeavePeriod.Size = new System.Drawing.Size(65, 49);
+            this.tsbLeavePeriod.Size = new System.Drawing.Size(62, 49);
             this.tsbLeavePeriod.Text = "Thoát ca";
             this.tsbLeavePeriod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLeavePeriod.Click += new System.EventHandler(this.tsbLeavePeriod_Click);
@@ -1213,7 +1213,7 @@
             this.tsbSale.Image = global::AppFrameClient.Properties.Resources.Address_Book;
             this.tsbSale.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSale.Name = "tsbSale";
-            this.tsbSale.Size = new System.Drawing.Size(65, 49);
+            this.tsbSale.Size = new System.Drawing.Size(62, 49);
             this.tsbSale.Text = "Bán hàng";
             this.tsbSale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSale.Click += new System.EventHandler(this.tsbSale_Click);
@@ -1223,7 +1223,7 @@
             this.tsbCost.Image = global::AppFrameClient.Properties.Resources.Edit;
             this.tsbCost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCost.Name = "tsbCost";
-            this.tsbCost.Size = new System.Drawing.Size(65, 49);
+            this.tsbCost.Size = new System.Drawing.Size(62, 49);
             this.tsbCost.Text = "Chi phí";
             this.tsbCost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCost.Click += new System.EventHandler(this.tsbCost_Click);
@@ -1233,7 +1233,7 @@
             this.tsbFastStockOut.Image = global::AppFrameClient.Properties.Resources.Download;
             this.tsbFastStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFastStockOut.Name = "tsbFastStockOut";
-            this.tsbFastStockOut.Size = new System.Drawing.Size(65, 49);
+            this.tsbFastStockOut.Size = new System.Drawing.Size(62, 49);
             this.tsbFastStockOut.Text = "Xuất hàng";
             this.tsbFastStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbFastStockOut.Click += new System.EventHandler(this.tsbFastStockOut_Click);
@@ -1243,7 +1243,7 @@
             this.tsbWorkload.Image = global::AppFrameClient.Properties.Resources.History;
             this.tsbWorkload.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbWorkload.Name = "tsbWorkload";
-            this.tsbWorkload.Size = new System.Drawing.Size(65, 49);
+            this.tsbWorkload.Size = new System.Drawing.Size(62, 49);
             this.tsbWorkload.Text = "Chấm công";
             this.tsbWorkload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbWorkload.Click += new System.EventHandler(this.tsbWorkload_Click);
@@ -1253,7 +1253,7 @@
             this.tsbDeptStockOut.Image = global::AppFrameClient.Properties.Resources.Link_Folder;
             this.tsbDeptStockOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeptStockOut.Name = "tsbDeptStockOut";
-            this.tsbDeptStockOut.Size = new System.Drawing.Size(65, 49);
+            this.tsbDeptStockOut.Size = new System.Drawing.Size(62, 49);
             this.tsbDeptStockOut.Text = "Xuất hàng";
             this.tsbDeptStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptStockOut.Click += new System.EventHandler(this.tsbDeptStockOut_Click);
@@ -1263,7 +1263,7 @@
             this.tsbDeptStockIn.Image = global::AppFrameClient.Properties.Resources.box2;
             this.tsbDeptStockIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeptStockIn.Name = "tsbDeptStockIn";
-            this.tsbDeptStockIn.Size = new System.Drawing.Size(65, 49);
+            this.tsbDeptStockIn.Size = new System.Drawing.Size(62, 49);
             this.tsbDeptStockIn.Text = "Nhập hàng";
             this.tsbDeptStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptStockIn.Click += new System.EventHandler(this.tsbDeptStockIn_Click);
@@ -1300,44 +1300,44 @@
             // 
             // tsbSync
             // 
-            this.tsbSync.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbSync.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbSync.Image = global::AppFrameClient.Properties.Resources.USBInput;
             this.tsbSync.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSync.Name = "tsbSync";
-            this.tsbSync.Size = new System.Drawing.Size(67, 51);
+            this.tsbSync.Size = new System.Drawing.Size(61, 49);
             this.tsbSync.Text = "Nhập đ.bộ";
             this.tsbSync.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSync.Click += new System.EventHandler(this.tsbSync_Click);
             // 
             // tsbSyncDown
             // 
-            this.tsbSyncDown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbSyncDown.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbSyncDown.Image = global::AppFrameClient.Properties.Resources.USBOutput;
             this.tsbSyncDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSyncDown.Name = "tsbSyncDown";
-            this.tsbSyncDown.Size = new System.Drawing.Size(62, 51);
+            this.tsbSyncDown.Size = new System.Drawing.Size(58, 49);
             this.tsbSyncDown.Text = "Xuất đ.bộ";
             this.tsbSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbSyncDown.Click += new System.EventHandler(this.tsbSyncDown_Click);
             // 
             // tsbDeptSyncUp
             // 
-            this.tsbDeptSyncUp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbDeptSyncUp.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbDeptSyncUp.Image = global::AppFrameClient.Properties.Resources.USBOutput;
             this.tsbDeptSyncUp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeptSyncUp.Name = "tsbDeptSyncUp";
-            this.tsbDeptSyncUp.Size = new System.Drawing.Size(62, 51);
+            this.tsbDeptSyncUp.Size = new System.Drawing.Size(58, 49);
             this.tsbDeptSyncUp.Text = "Xuất đ.bộ";
             this.tsbDeptSyncUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptSyncUp.Click += new System.EventHandler(this.tsbDeptSyncUp_Click);
             // 
             // tsbDeptSyncDown
             // 
-            this.tsbDeptSyncDown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbDeptSyncDown.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbDeptSyncDown.Image = global::AppFrameClient.Properties.Resources.USBInput;
             this.tsbDeptSyncDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeptSyncDown.Name = "tsbDeptSyncDown";
-            this.tsbDeptSyncDown.Size = new System.Drawing.Size(67, 51);
+            this.tsbDeptSyncDown.Size = new System.Drawing.Size(61, 49);
             this.tsbDeptSyncDown.Text = "Nhập đ.bộ";
             this.tsbDeptSyncDown.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDeptSyncDown.Click += new System.EventHandler(this.tsbDeptSyncDown_Click);

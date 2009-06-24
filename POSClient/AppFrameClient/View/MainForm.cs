@@ -60,11 +60,13 @@ namespace AppFrame.View
         private void mnuFileLogin_Click(object sender, EventArgs e)
         {
             this.AuthService.login();
+            RenderFunctionKeysTextToToolStrip();
         }
 
         private void mnuFileLogout_Click(object sender, EventArgs e)
         {
             this.AuthService.logout();
+            RenderFunctionKeysTextToToolStrip();
             ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
         }
 
@@ -573,9 +575,13 @@ namespace AppFrame.View
         {
             new MainStockReturnReportViewer().Show();
         }
-
+        IList<string> toolStripTexts = new List<string>();
         private void MainForm_Load(object sender, EventArgs e)
         {
+            foreach (ToolStripItem item in toolStripClient.Items)
+            {
+                toolStripTexts.Add(item.Text);
+            }
             Stream inStream = null;
             if(ClientSetting.IsClient())
             {
@@ -645,6 +651,26 @@ namespace AppFrame.View
                     GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
                     MenuUtility.setPermission(this, clientInfo, ref this.toolStripClient, toolStripItemPermission);
                 }
+            }
+            if(toolStripClient.Visible == true)
+            {
+                RenderFunctionKeysTextToToolStrip();
+                
+            }
+        }
+
+        public void RenderFunctionKeysTextToToolStrip()
+        {
+            int count = 0;
+            int fcount = 1;
+            foreach (ToolStripItem item in toolStripClient.Items)
+            {
+                if (item.Visible == true)
+                {
+                    item.Text = "F" + fcount.ToString() + " - " + toolStripTexts[count];
+                    fcount += 1;
+                }
+                count++;
             }
         }
 
@@ -779,11 +805,13 @@ namespace AppFrame.View
         private void tsbLogin_Click(object sender, EventArgs e)
         {
             this.AuthService.login();
+            RenderFunctionKeysTextToToolStrip();
         }
 
         private void tsbLogout_Click(object sender, EventArgs e)
         {
             this.AuthService.logout();
+            RenderFunctionKeysTextToToolStrip();
             ClientUtility.Log(logger, "Người dùng " + ClientInfo.getInstance().LoggedUser.Name + " đăng xuất ra khỏi hệ thống", "Đăng xuất");
         }
 

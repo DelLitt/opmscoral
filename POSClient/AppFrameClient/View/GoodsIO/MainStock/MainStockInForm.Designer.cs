@@ -75,6 +75,9 @@
             this.txtSumProduct = new System.Windows.Forms.TextBox();
             this.chkContinuePrint = new System.Windows.Forms.CheckBox();
             this.chkPrintPrice = new System.Windows.Forms.CheckBox();
+            this.txtPNFilter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkNameFilter = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -85,7 +88,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(476, 457);
+            this.btnDelete.Location = new System.Drawing.Point(473, 581);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 73;
@@ -106,7 +109,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(402, 462);
+            this.label9.Location = new System.Drawing.Point(399, 586);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
             this.label9.TabIndex = 70;
@@ -125,7 +128,7 @@
             // numericUpDown
             // 
             this.numericUpDown.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown.Location = new System.Drawing.Point(345, 457);
+            this.numericUpDown.Location = new System.Drawing.Point(342, 581);
             this.numericUpDown.Maximum = new decimal(new int[] {
             20,
             0,
@@ -157,7 +160,7 @@
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(264, 457);
+            this.btnAddProduct.Location = new System.Drawing.Point(261, 581);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 67;
@@ -188,7 +191,7 @@
             // btnBarcode
             // 
             this.btnBarcode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBarcode.Location = new System.Drawing.Point(9, 429);
+            this.btnBarcode.Location = new System.Drawing.Point(6, 553);
             this.btnBarcode.Name = "btnBarcode";
             this.btnBarcode.Size = new System.Drawing.Size(87, 23);
             this.btnBarcode.TabIndex = 64;
@@ -209,7 +212,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(9, 457);
+            this.button4.Location = new System.Drawing.Point(6, 581);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 62;
@@ -220,7 +223,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(653, 433);
+            this.label6.Location = new System.Drawing.Point(650, 557);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 14);
             this.label6.TabIndex = 61;
@@ -229,7 +232,7 @@
             // txtSumValue
             // 
             this.txtSumValue.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumValue.Location = new System.Drawing.Point(729, 425);
+            this.txtSumValue.Location = new System.Drawing.Point(726, 549);
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -240,7 +243,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 97);
+            this.label5.Location = new System.Drawing.Point(6, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 14);
             this.label5.TabIndex = 59;
@@ -267,7 +270,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(183, 457);
+            this.btnSave.Location = new System.Drawing.Point(180, 581);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 55;
@@ -278,7 +281,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(734, 457);
+            this.button1.Location = new System.Drawing.Point(731, 581);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 54;
@@ -307,14 +310,15 @@
             this.Column3});
             this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
-            this.dgvDeptStockIn.Location = new System.Drawing.Point(9, 114);
+            this.dgvDeptStockIn.Location = new System.Drawing.Point(9, 162);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
             this.dgvDeptStockIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeptStockIn.Size = new System.Drawing.Size(800, 310);
+            this.dgvDeptStockIn.Size = new System.Drawing.Size(800, 368);
             this.dgvDeptStockIn.TabIndex = 53;
             this.dgvDeptStockIn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
             this.dgvDeptStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
             this.dgvDeptStockIn.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDeptStockIn_EditingControlShowing);
+            this.dgvDeptStockIn.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvDeptStockIn_Paint);
             // 
             // SearchCreate
             // 
@@ -452,7 +456,7 @@
             // numericUpDownBarcode
             // 
             this.numericUpDownBarcode.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownBarcode.Location = new System.Drawing.Point(102, 429);
+            this.numericUpDownBarcode.Location = new System.Drawing.Point(99, 553);
             this.numericUpDownBarcode.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -477,7 +481,7 @@
             // btnPreview
             // 
             this.btnPreview.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.Location = new System.Drawing.Point(159, 429);
+            this.btnPreview.Location = new System.Drawing.Point(156, 553);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(87, 23);
             this.btnPreview.TabIndex = 75;
@@ -497,7 +501,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(459, 434);
+            this.label13.Location = new System.Drawing.Point(456, 558);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 14);
             this.label13.TabIndex = 114;
@@ -506,7 +510,7 @@
             // txtSumProduct
             // 
             this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumProduct.Location = new System.Drawing.Point(557, 428);
+            this.txtSumProduct.Location = new System.Drawing.Point(554, 552);
             this.txtSumProduct.Name = "txtSumProduct";
             this.txtSumProduct.ReadOnly = true;
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -517,7 +521,7 @@
             // 
             this.chkContinuePrint.AutoSize = true;
             this.chkContinuePrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkContinuePrint.Location = new System.Drawing.Point(252, 433);
+            this.chkContinuePrint.Location = new System.Drawing.Point(249, 557);
             this.chkContinuePrint.Name = "chkContinuePrint";
             this.chkContinuePrint.Size = new System.Drawing.Size(92, 18);
             this.chkContinuePrint.TabIndex = 115;
@@ -528,41 +532,74 @@
             // 
             this.chkPrintPrice.AutoSize = true;
             this.chkPrintPrice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPrintPrice.Location = new System.Drawing.Point(351, 433);
+            this.chkPrintPrice.Location = new System.Drawing.Point(348, 557);
             this.chkPrintPrice.Name = "chkPrintPrice";
             this.chkPrintPrice.Size = new System.Drawing.Size(56, 18);
             this.chkPrintPrice.TabIndex = 116;
             this.chkPrintPrice.Text = "In giá";
             this.chkPrintPrice.UseVisualStyleBackColor = true;
             // 
+            // txtPNFilter
+            // 
+            this.txtPNFilter.Location = new System.Drawing.Point(100, 109);
+            this.txtPNFilter.Name = "txtPNFilter";
+            this.txtPNFilter.Size = new System.Drawing.Size(166, 20);
+            this.txtPNFilter.TabIndex = 117;
+            this.txtPNFilter.TextChanged += new System.EventHandler(this.txtPNFilter_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 14);
+            this.label1.TabIndex = 118;
+            this.label1.Text = "Tên sản phẩm";
+            // 
+            // chkNameFilter
+            // 
+            this.chkNameFilter.AutoSize = true;
+            this.chkNameFilter.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNameFilter.Location = new System.Drawing.Point(272, 112);
+            this.chkNameFilter.Name = "chkNameFilter";
+            this.chkNameFilter.Size = new System.Drawing.Size(114, 18);
+            this.chkNameFilter.TabIndex = 119;
+            this.chkNameFilter.Text = "Lọc theo tên sp";
+            this.chkNameFilter.UseVisualStyleBackColor = true;
+            this.chkNameFilter.CheckedChanged += new System.EventHandler(this.chkNameFilter_CheckedChanged);
+            // 
             // MainStockInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 485);
+            this.ClientSize = new System.Drawing.Size(818, 616);
+            this.Controls.Add(this.chkNameFilter);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPNFilter);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chkPrintPrice);
             this.Controls.Add(this.chkContinuePrint);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.numericUpDownBarcode);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtStockInId);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSumProduct);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.numericUpDown);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.btnBarcode);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.dtpImportDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDexcription);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtSumValue);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvDeptStockIn);
             this.Controls.Add(this.button1);
@@ -629,5 +666,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.CheckBox chkContinuePrint;
         private System.Windows.Forms.CheckBox chkPrintPrice;
+        private System.Windows.Forms.TextBox txtPNFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkNameFilter;
     }
 }

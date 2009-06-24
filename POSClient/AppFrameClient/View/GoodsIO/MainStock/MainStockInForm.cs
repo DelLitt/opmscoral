@@ -963,5 +963,45 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
 
         }
+
+        private void dgvDeptStockIn_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void chkNameFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvDeptStockIn.Refresh();
+            dgvDeptStockIn.Invalidate();
+        }
+
+        private void txtPNFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (chkNameFilter.Checked && !string.IsNullOrEmpty(txtPNFilter.Text))
+            {
+                string filterName = txtPNFilter.Text.Trim();
+                foreach (DataGridViewRow row in dgvDeptStockIn.Rows)
+                {
+                    string name = deptSIDetailList[row.Index].Product.ProductMaster.ProductName;
+                    if (name.IndexOf(filterName) >= 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dgvDeptStockIn.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+            dgvDeptStockIn.Refresh();
+            dgvDeptStockIn.Invalidate();
+        }
     }
 }
