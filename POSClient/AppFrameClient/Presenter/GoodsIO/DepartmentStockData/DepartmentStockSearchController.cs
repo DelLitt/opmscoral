@@ -39,19 +39,82 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void stockSearchView_SearchStockEvent(object sender, DepartmentStockSearchEventArgs e)
         {
-            var objectCriteria = new ObjectCriteria(true);
-            objectCriteria.AddEqCriteria("s.DelFlg", (long)0);
-            objectCriteria.AddEqCriteria("sdetail.DelFlg", (long)0);
-            objectCriteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
-            objectCriteria.AddLikeCriteria("pm.ProductName", e.ProductMasterName + "%");
-            objectCriteria.AddEqCriteria("pm.ProductType", e.ProductType);
-            objectCriteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
-            objectCriteria.AddEqCriteria("pm.ProductColor", e.ProductColor);
-            objectCriteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
-            objectCriteria.AddEqCriteria("pm.Country", e.Country);
-            objectCriteria.AddEqCriteria("s.DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            var criteria = new SubObjectCriteria("ProductMaster");
+            if (!string.IsNullOrEmpty(e.ProductMasterId))
+            {
+                criteria.AddLikeCriteria("ProductMasterId", "%" + e.ProductMasterId + "%");
+            }
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddLikeCriteria("ProductName", "%" +e.ProductMasterName + "%");
+            if (e.ProductType != null && e.ProductType.TypeId > 0)
+            {
+                criteria.AddEqCriteria("ProductType.TypeId", e.ProductType.TypeId);
+            }
+            if (e.ProductSize != null && e.ProductSize.SizeId > 0)
+            {
+                criteria.AddEqCriteria("ProductSize.SizeId", e.ProductSize.SizeId);
+            }
+            if (e.ProductColor != null && e.ProductColor.ColorId > 0)
+            {
+                criteria.AddEqCriteria("ProductColor.ColorId", e.ProductColor.ColorId);
+            }
+            if (e.Country != null && e.Country.CountryId > 0)
+            {
+                criteria.AddEqCriteria("Country.CountryId", e.Country.CountryId);
+            }
+            if (!string.IsNullOrEmpty(e.Description))
+            {
+                criteria.AddLikeCriteria("Description", "%" + e.Description +"%");
+            }
+            criteria.AddOrder("ProductName",true);
 
-            e.DepartmentStockList = DepartmentStockLogic.FindByQuery(objectCriteria);
+            var objectCriteria = new ObjectCriteria(true);
+            objectCriteria.AddEqCriteria("DelFlg", (long)0);
+            if (!string.IsNullOrEmpty(e.ProductId))
+            {
+                objectCriteria.AddLikeCriteria("DepartmentStockPK.ProductId", "%" + e.ProductMasterId + "%");   
+            }
+            objectCriteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            objectCriteria.AddSubCriteria("ProductMaster",criteria);
+
+            IList departmentStocks = DepartmentStockLogic.FindAll(objectCriteria);
+            IList stockViewList = new ArrayList();
+            // create stock view
+            if (departmentStocks != null && departmentStocks.Count > 0)
+            {
+                DepartmentStockView stockView = null;
+                foreach (DepartmentStock departmentStock in departmentStocks)
+                {
+                    if (stockView!=null)
+                    {
+                       if(!stockView.ProductMaster.ProductName.Equals(
+                           departmentStock.Product.ProductMaster.ProductName))
+                       {
+                           stockViewList.Add(stockView);
+                           stockView = null;
+                       }
+                    }
+                    if(stockView == null)
+                    {
+                        stockView = new DepartmentStockView();
+                        stockView.ProductMaster = departmentStock.Product.ProductMaster;
+                        stockView.DepartmentStocks = new ArrayList();
+                    }
+
+                    stockView.DepartmentStocks.Add(departmentStock);
+                    stockView.Quantity += departmentStock.Quantity;
+                    stockView.GoodQuantity += departmentStock.GoodQuantity;
+                    
+                }
+                // add last item
+                if(stockView!=null)
+                {
+                    stockViewList.Add(stockView);
+                    stockView = null;
+                }
+                e.DepartmentStockList = stockViewList;
+            }
+
         }
 
         public void stockSearchView_InitStockSearchEvent(object sender, DepartmentStockSearchEventArgs e)

@@ -40,22 +40,95 @@ namespace AppFrameClient.Presenter.GoodsIO
         {
             var subCriteria = new SubObjectCriteria("ProductMaster");
             subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");
-            subCriteria.AddEqCriteria("ProductType", e.ProductType);
-            subCriteria.AddEqCriteria("ProductSize", e.ProductSize);
-            subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
-            subCriteria.AddEqCriteria("Country", e.Country);
-            subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);
-            subCriteria.AddEqCriteria("Packager", e.Packager);
-            subCriteria.AddEqCriteria("Distributor", e.Distributor);
+            if (e.ProductType != null)
+            {
+                subCriteria.AddEqCriteria("ProductType", e.ProductType);
+            }
+            if (e.ProductSize != null)
+            {
+                subCriteria.AddEqCriteria("ProductSize", e.ProductSize);
+            }
+            if (e.ProductColor != null)
+            {
+                subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
+            }
+            if (e.Country != null)
+            {
+                subCriteria.AddEqCriteria("Country", e.Country);
+            }
+            if(e.Manufacturer!=null)
+            {
+                subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);    
+            }
+            if(e.Packager!=null)
+            {
+                subCriteria.AddEqCriteria("Packager", e.Packager);    
+            }
+            if (e.Distributor != null)
+            {
+                subCriteria.AddEqCriteria("Distributor", e.Distributor);
+            }
+            if (!string.IsNullOrEmpty(e.Description))
+            {
+                subCriteria.AddLikeCriteria("Description", e.Description);
+            }
 
             var criteria = new ObjectCriteria(true);
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddLikeCriteria("Product.ProductId", e.ProductMasterId + "%");
+            criteria.AddLikeCriteria("Product.ProductId", "%" + e.ProductMasterId + "%");
             criteria.AddSubCriteria("ProductMaster", subCriteria);
-            criteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(e.FromDate));
-            criteria.AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(e.ToDate));
+
+            /*criteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(e.FromDate));
+            criteria.AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(e.ToDate));*/
             IList list = StockLogic.FindAll(criteria);
+            if(e.RelevantProductFinding)
+            {
+                if(list!=null && list.Count > 0)
+                {
+                    IList extraList = new ArrayList();
+                    foreach (Stock stock in list)
+                    {
+                        Product product = stock.Product;
+                        subCriteria = new SubObjectCriteria("ProductMaster");
+                        subCriteria.AddLikeCriteria("ProductName", product.ProductMaster.ProductName);
+                        
+                        criteria = new ObjectCriteria(true);
+                        criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                        criteria.AddSubCriteria("ProductMaster", subCriteria);
+                        IList subList = StockLogic.FindAll(criteria);
+                        if(subList!=null && subList.Count > 0 )
+                        {
+                            foreach (Stock stock1 in subList)
+                            {
+                                AddStockToList(extraList, stock1); 
+                            }
+                        }
+                    }
+                    // add to original list
+                    foreach (Stock stock in extraList)
+                    {
+                        AddStockToList(list,stock);
+                    }
+                }
+            }
             e.StockList = list;
+        }
+
+        private void AddStockToList(IList list, Stock stock1)
+        {
+            bool found = false;
+            foreach (Stock stock in list)
+            {
+                if(stock.Product.ProductId.Equals(stock1.Product.ProductId))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found)
+            {
+                list.Add(stock1);
+            }
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -32,9 +33,29 @@ namespace AppFrameClient.Presenter.GoodsIO
                 _productMasterSearchOrCreateView.SaveProductMasterEvent += new System.EventHandler<ProductMasterSearchOrCreateEventArgs>(productMasterView_SaveProductMasterEvent);
                 _productMasterSearchOrCreateView.InitProductMasterSearchOrCreateEvent += new System.EventHandler<ProductMasterSearchOrCreateEventArgs>(productMasterView_InitProductMasterSearchOrCreateEvent);
                 _productMasterSearchOrCreateView.SearchProductMasterEvent += new System.EventHandler<ProductMasterSearchOrCreateEventArgs>(productMasterView_SearchProductMasterEvent);
+                _productMasterSearchOrCreateView.SearchCommonProductMasterEvent += new EventHandler<ProductMasterSearchOrCreateEventArgs>(_productMasterSearchOrCreateView_SearchCommonProductMasterEvent);
+                _productMasterSearchOrCreateView.SearchRelevantProductsEvent += new EventHandler<ProductMasterSearchOrCreateEventArgs>(_productMasterSearchOrCreateView_SearchRelevantProductsEvent);
                 _productMasterSearchOrCreateView.SelectProductMasterEvent += new System.EventHandler<ProductMasterSearchOrCreateEventArgs>(productMasterView_SelectProductMasterEvent);
                 _productMasterSearchOrCreateView.OpenProductMasterSearchOrCreateEvent += new System.EventHandler<ProductMasterSearchOrCreateEventArgs>(productMasterView_OpenProductMasterSearchOrCreateEvent);
             }
+        }
+
+        void _productMasterSearchOrCreateView_SearchRelevantProductsEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
+        {
+            var subCriteria = new SubObjectCriteria("ProductMaster");
+            subCriteria.AddEqCriteria("ProductName", e.ProductMasterName);
+
+            var criteria = new ObjectCriteria(true);
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddSubCriteria("ProductMaster", subCriteria);
+            IList list = ProductLogic.FindAll(criteria);
+            e.ProductList = list;
+
+        }
+
+        void _productMasterSearchOrCreateView_SearchCommonProductMasterEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
+        {
+            
         }
 
         public void productMasterView_OpenProductMasterSearchOrCreateEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
@@ -46,7 +67,7 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         private void productMasterView_SelectProductMasterEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void productMasterView_SearchProductMasterEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
@@ -125,6 +146,11 @@ namespace AppFrameClient.Presenter.GoodsIO
         {
             get;
             set;
+        }
+
+        public IProductLogic ProductLogic
+        {
+            get; set;
         }
 
         public ICountryLogic CountryLogic

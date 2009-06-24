@@ -60,6 +60,8 @@
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkRelevant = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -271,38 +273,46 @@
             // dtpImportDateTo
             // 
             this.dtpImportDateTo.CustomFormat = "dd/MM/yyyy";
+            this.dtpImportDateTo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpImportDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateTo.Location = new System.Drawing.Point(618, 123);
+            this.dtpImportDateTo.Location = new System.Drawing.Point(466, 112);
             this.dtpImportDateTo.Name = "dtpImportDateTo";
-            this.dtpImportDateTo.Size = new System.Drawing.Size(166, 22);
+            this.dtpImportDateTo.Size = new System.Drawing.Size(105, 21);
             this.dtpImportDateTo.TabIndex = 92;
+            this.dtpImportDateTo.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(523, 127);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(406, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 14);
+            this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 91;
             this.label3.Text = "Đến ngày";
+            this.label3.Visible = false;
             // 
             // dtpImportDateFrom
             // 
             this.dtpImportDateFrom.CustomFormat = "dd/MM/yyyy";
+            this.dtpImportDateFrom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpImportDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateFrom.Location = new System.Drawing.Point(326, 123);
+            this.dtpImportDateFrom.Location = new System.Drawing.Point(272, 112);
             this.dtpImportDateFrom.Name = "dtpImportDateFrom";
-            this.dtpImportDateFrom.Size = new System.Drawing.Size(191, 22);
+            this.dtpImportDateFrom.Size = new System.Drawing.Size(108, 21);
             this.dtpImportDateFrom.TabIndex = 90;
+            this.dtpImportDateFrom.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 127);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(219, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 14);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 89;
             this.label2.Text = "Từ ngày";
+            this.label2.Visible = false;
             // 
             // productMasterControl
             // 
@@ -329,11 +339,34 @@
             this.label1.TabIndex = 94;
             this.label1.Text = "Ghi chú";
             // 
+            // chkRelevant
+            // 
+            this.chkRelevant.AutoSize = true;
+            this.chkRelevant.Location = new System.Drawing.Point(326, 155);
+            this.chkRelevant.Name = "chkRelevant";
+            this.chkRelevant.Size = new System.Drawing.Size(245, 18);
+            this.chkRelevant.TabIndex = 95;
+            this.chkRelevant.Text = "Tìm thêm những sản phẩm có liên quan";
+            this.chkRelevant.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(577, 114);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(168, 18);
+            this.checkBox1.TabIndex = 96;
+            this.checkBox1.Text = "Tìm theo ngày nhập hàng";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            // 
             // MainStockSearchByBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 566);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkRelevant);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.dtpImportDateTo);
@@ -389,5 +422,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkRelevant;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

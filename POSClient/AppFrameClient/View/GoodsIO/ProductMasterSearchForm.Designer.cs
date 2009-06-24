@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvProductMaster = new System.Windows.Forms.DataGridView();
             this.productMasterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,16 +62,33 @@
             this.productPrintDialog = new System.Windows.Forms.PrintDialog();
             this.productPrintDocument = new System.Drawing.Printing.PrintDocument();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
+            this.chkContinuePrint = new System.Windows.Forms.CheckBox();
+            this.chkPricePrint = new System.Windows.Forms.CheckBox();
+            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
+            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(332, 12);
+            this.label7.Location = new System.Drawing.Point(331, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 19);
             this.label7.TabIndex = 17;
@@ -76,11 +97,15 @@
             // dgvProductMaster
             // 
             this.dgvProductMaster.AllowUserToAddRows = false;
+            this.dgvProductMaster.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductMaster.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProductMaster.AutoGenerateColumns = false;
             this.dgvProductMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductMaster.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productMasterIdDataGridViewTextBoxColumn,
-            this.productNameDataGridViewTextBoxColumn,
+            this.ProductName,
             this.barcodeDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.supplierIdDataGridViewTextBoxColumn,
@@ -104,9 +129,14 @@
             this.dgvProductMaster.MultiSelect = false;
             this.dgvProductMaster.Name = "dgvProductMaster";
             this.dgvProductMaster.ReadOnly = true;
-            this.dgvProductMaster.Size = new System.Drawing.Size(800, 334);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductMaster.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvProductMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductMaster.Size = new System.Drawing.Size(797, 133);
             this.dgvProductMaster.TabIndex = 18;
             this.dgvProductMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductMaster_CellDoubleClick);
+            this.dgvProductMaster.CurrentCellChanged += new System.EventHandler(this.dgvProductMaster_CurrentCellChanged);
+            this.dgvProductMaster.SelectionChanged += new System.EventHandler(this.dgvProductMaster_SelectionChanged);
             // 
             // productMasterIdDataGridViewTextBoxColumn
             // 
@@ -117,12 +147,13 @@
             this.productMasterIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.productMasterIdDataGridViewTextBoxColumn.Width = 78;
             // 
-            // productNameDataGridViewTextBoxColumn
+            // ProductName
             // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "Tên hàng";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "Tên hàng";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.Width = 300;
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
@@ -130,6 +161,7 @@
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "Mã vạch";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
             this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.barcodeDataGridViewTextBoxColumn.Visible = false;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -193,6 +225,7 @@
             this.productTypeDataGridViewTextBoxColumn.HeaderText = "Loại hàng";
             this.productTypeDataGridViewTextBoxColumn.Name = "productTypeDataGridViewTextBoxColumn";
             this.productTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productTypeDataGridViewTextBoxColumn.Width = 200;
             // 
             // productColorDataGridViewTextBoxColumn
             // 
@@ -200,6 +233,7 @@
             this.productColorDataGridViewTextBoxColumn.HeaderText = "Màu sắc";
             this.productColorDataGridViewTextBoxColumn.Name = "productColorDataGridViewTextBoxColumn";
             this.productColorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productColorDataGridViewTextBoxColumn.Visible = false;
             // 
             // productSizeDataGridViewTextBoxColumn
             // 
@@ -207,6 +241,7 @@
             this.productSizeDataGridViewTextBoxColumn.HeaderText = "Kích cỡ";
             this.productSizeDataGridViewTextBoxColumn.Name = "productSizeDataGridViewTextBoxColumn";
             this.productSizeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productSizeDataGridViewTextBoxColumn.Visible = false;
             // 
             // countryDataGridViewTextBoxColumn
             // 
@@ -214,6 +249,7 @@
             this.countryDataGridViewTextBoxColumn.HeaderText = "Xuất xứ";
             this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
             this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.countryDataGridViewTextBoxColumn.Visible = false;
             // 
             // manufacturerDataGridViewTextBoxColumn
             // 
@@ -221,6 +257,7 @@
             this.manufacturerDataGridViewTextBoxColumn.HeaderText = "Sản xuất";
             this.manufacturerDataGridViewTextBoxColumn.Name = "manufacturerDataGridViewTextBoxColumn";
             this.manufacturerDataGridViewTextBoxColumn.ReadOnly = true;
+            this.manufacturerDataGridViewTextBoxColumn.Visible = false;
             // 
             // delFlgDataGridViewTextBoxColumn
             // 
@@ -236,6 +273,7 @@
             this.packagerDataGridViewTextBoxColumn.HeaderText = "Đóng gói";
             this.packagerDataGridViewTextBoxColumn.Name = "packagerDataGridViewTextBoxColumn";
             this.packagerDataGridViewTextBoxColumn.ReadOnly = true;
+            this.packagerDataGridViewTextBoxColumn.Visible = false;
             // 
             // categoryDataGridViewTextBoxColumn
             // 
@@ -251,13 +289,14 @@
             this.distributorDataGridViewTextBoxColumn.HeaderText = "Phân phối";
             this.distributorDataGridViewTextBoxColumn.Name = "distributorDataGridViewTextBoxColumn";
             this.distributorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.distributorDataGridViewTextBoxColumn.Visible = false;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Column1";
+            this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
+            this.Column1.Width = 175;
             // 
             // productMasterBindingSource
             // 
@@ -285,9 +324,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(720, 131);
+            this.btnSearch.Location = new System.Drawing.Point(662, 31);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(147, 98);
             this.btnSearch.TabIndex = 21;
             this.btnSearch.Text = "Tìm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -299,28 +338,145 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(560, 500);
+            this.btnPrint.Location = new System.Drawing.Point(149, 500);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(87, 23);
             this.btnPrint.TabIndex = 22;
-            this.btnPrint.Text = "In sản phẩm";
+            this.btnPrint.Text = "In mã vạch";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // dgvProduct
+            // 
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvProduct.AutoGenerateColumns = false;
+            this.dgvProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.dgvProduct.DataSource = this.bdsProduct;
+            this.dgvProduct.Location = new System.Drawing.Point(9, 299);
+            this.dgvProduct.Name = "dgvProduct";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProduct.Size = new System.Drawing.Size(797, 184);
+            this.dgvProduct.TabIndex = 23;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ProductId";
+            this.Column2.HeaderText = "Mã vạch";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ProductMaster.ProductName";
+            this.Column3.HeaderText = "Tên hàng";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ProductMaster.ProductColor.ColorName";
+            this.Column4.HeaderText = "Màu sắc";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "ProductMaster.ProductSize.SizeName";
+            this.Column5.HeaderText = "Kích cỡ";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ProductMaster.Description";
+            this.Column6.HeaderText = "Diễn giải";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 150;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Vị trí";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 150;
+            // 
+            // chkContinuePrint
+            // 
+            this.chkContinuePrint.AutoSize = true;
+            this.chkContinuePrint.Location = new System.Drawing.Point(242, 503);
+            this.chkContinuePrint.Name = "chkContinuePrint";
+            this.chkContinuePrint.Size = new System.Drawing.Size(84, 18);
+            this.chkContinuePrint.TabIndex = 24;
+            this.chkContinuePrint.Text = "In liên tiếp";
+            this.chkContinuePrint.UseVisualStyleBackColor = true;
+            // 
+            // chkPricePrint
+            // 
+            this.chkPricePrint.AutoSize = true;
+            this.chkPricePrint.Location = new System.Drawing.Point(333, 503);
+            this.chkPricePrint.Name = "chkPricePrint";
+            this.chkPricePrint.Size = new System.Drawing.Size(56, 18);
+            this.chkPricePrint.TabIndex = 25;
+            this.chkPricePrint.Text = "In giá";
+            this.chkPricePrint.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownBarcode
+            // 
+            this.numericUpDownBarcode.Location = new System.Drawing.Point(84, 500);
+            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
+            this.numericUpDownBarcode.Size = new System.Drawing.Size(61, 22);
+            this.numericUpDownBarcode.TabIndex = 26;
+            this.numericUpDownBarcode.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 502);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 14);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Số lượng";
             // 
             // productMasterSearchControl
             // 
             this.productMasterSearchControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 34);
+            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 31);
             this.productMasterSearchControl.Name = "productMasterSearchControl";
             this.productMasterSearchControl.Size = new System.Drawing.Size(808, 120);
             this.productMasterSearchControl.TabIndex = 0;
+            // 
+            // barcodePrintDocument
+            // 
+            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
+            // 
+            // barcodePrintDialog
+            // 
+            this.barcodePrintDialog.UseEXDialog = true;
             // 
             // ProductMasterSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 531);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDownBarcode);
+            this.Controls.Add(this.chkPricePrint);
+            this.Controls.Add(this.chkContinuePrint);
+            this.Controls.Add(this.dgvProduct);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnSelect);
@@ -334,6 +490,9 @@
             this.Load += new System.EventHandler(this.ProductMasterSearchForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,8 +510,20 @@
         private System.Windows.Forms.PrintDialog productPrintDialog;
         private System.Drawing.Printing.PrintDocument productPrintDocument;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dgvProduct;
+        private System.Windows.Forms.CheckBox chkContinuePrint;
+        private System.Windows.Forms.CheckBox chkPricePrint;
+        private System.Windows.Forms.NumericUpDown numericUpDownBarcode;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.BindingSource bdsProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMasterIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierIdDataGridViewTextBoxColumn;
@@ -371,5 +542,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn distributorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Drawing.Printing.PrintDocument barcodePrintDocument;
+        private System.Windows.Forms.PrintDialog barcodePrintDialog;
     }
 }

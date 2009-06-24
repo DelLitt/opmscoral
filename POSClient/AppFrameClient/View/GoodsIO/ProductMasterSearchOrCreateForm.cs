@@ -45,6 +45,8 @@ namespace AppFrameClient.View.GoodsIO
 
         public event EventHandler<ProductMasterSearchOrCreateEventArgs> SaveProductMasterEvent;
         public event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchProductMasterEvent;
+        public event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchCommonProductMasterEvent;
+        public event EventHandler<ProductMasterSearchOrCreateEventArgs> SearchRelevantProductsEvent;
         public event EventHandler<ProductMasterSearchOrCreateEventArgs> SelectProductMasterEvent;
         public event EventHandler<ProductMasterSearchOrCreateEventArgs> InitProductMasterSearchOrCreateEvent;
         public event EventHandler<ProductMasterSearchOrCreateEventArgs> OpenProductMasterSearchOrCreateEvent;

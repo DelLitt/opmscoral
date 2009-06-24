@@ -84,9 +84,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     ((Manufacturer)productMasterControl.cbbManufacturer.SelectedItem) : null,
                 Distributor = productMasterControl.cbbDistributor.SelectedIndex > 0 ?
                     ((Distributor)productMasterControl.cbbDistributor.SelectedItem) : null,
-                FromDate = dtpImportDateFrom.Value,
-                ToDate = dtpImportDateTo.Value,
-                Description = txtDescription.Text
+                /*FromDate = dtpImportDateFrom.Value,
+                ToDate = dtpImportDateTo.Value,*/
+                Description = txtDescription.Text,
+                RelevantProductFinding = chkRelevant.Checked
             };
             EventUtility.fireEvent(BarcodeSearchStockEvent, sender, eventArgs);
             if(eventArgs.StockList== null || eventArgs.StockList.Count == 0)

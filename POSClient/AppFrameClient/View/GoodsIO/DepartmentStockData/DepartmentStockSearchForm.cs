@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
@@ -30,11 +31,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public static readonly int PRODUCT_SIZE_POS = 7;
         public static readonly int PRODUCT_COUNTRY_POS = 8;
         public static readonly int PRODUCT_SUPPLIER_POS = 9;
+
+        private DepartmentStockViewCollection stockViewList;
+        private DepartmentStockCollection stockList;
         public IList DepartmentStockSearchResultList { get; set; }
         public DepartmentStockSearchForm()
         {
             InitializeComponent();
-            dataTable.Columns.Add("Mã sản phẩm");
+            /*dataTable.Columns.Add("Mã sản phẩm");
             dataTable.Columns.Add("Tên mặt hàng");
             dataTable.Columns.Add("Số lượng");
             dataTable.Columns.Add("Tổng giá nhập vào");
@@ -43,7 +47,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             dataTable.Columns.Add("Màu sắc");
             dataTable.Columns.Add("Kích cỡ");
             dataTable.Columns.Add("Xuất xứ");
-            dataTable.Columns.Add("Nhà cung cấp");
+            dataTable.Columns.Add("Nhà cung cấp");*/
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -63,7 +67,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                 };
             EventUtility.fireEvent(SearchDepartmentStockEvent, this, eventArgs);
             DepartmentStockSearchResultList = eventArgs.DepartmentStockList;
-            PopulateDataGrid();
+            if(DepartmentStockSearchResultList!= null && DepartmentStockSearchResultList.Count > 0)
+            {
+                stockViewList.Clear();
+                foreach (DepartmentStockView departmentStockView in DepartmentStockSearchResultList)
+                {
+                    stockViewList.Add(departmentStockView);
+                }
+                bdsStockView.ResetBindings(false);
+                dgvStockView.Refresh();
+                dgvStockView.Invalidate();
+            }
         }
 
         private IDepartmentStockSearchController _departmentStockSearchController;
@@ -82,6 +96,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockSearchForm_Load(object sender, EventArgs e)
         {
+            stockViewList = new DepartmentStockViewCollection(bdsStockView);
+            bdsStockView.ResetBindings(true);
+
+            stockList = new DepartmentStockCollection(bdsStock);
+            bdsStock.ResetBindings(true);
+
             var eventArgs = new DepartmentStockSearchEventArgs();
             EventUtility.fireEvent(InitDepartmentStockSearchEvent, this, eventArgs);
 
@@ -107,11 +127,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 dataTable.Rows.Add(AddProductToDataGrid(result));
 
             }
-            dgvProduct.DataSource = dataTable;
-            dgvProduct.Columns[PRODUCT_IN_PRICE_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvProduct.Columns[PRODUCT_QUANTITY_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvProduct.Columns[PRODUCT_SELL_PRICE_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvProduct.Refresh();
+            dgvStockView.DataSource = dataTable;
+            dgvStockView.Columns[PRODUCT_IN_PRICE_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvStockView.Columns[PRODUCT_QUANTITY_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvStockView.Columns[PRODUCT_SELL_PRICE_POS].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvStockView.Refresh();
         }
 
         private static object[] AddProductToDataGrid(DepartmentStockSearchResult stockInDetail)
@@ -139,7 +159,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
             {
-                string productMasterId = dgvProduct[0, e.RowIndex].Value.ToString();
+                string productMasterId = dgvStockView[0, e.RowIndex].Value.ToString();
                 var departmentStockIn = GlobalUtility.GetFormObject<DepartmentStockInDetailSearchForm>(FormConstants.DEPARTMENT_STOCK_IN_DETAIL_SEARCH_FORM);
                 foreach (DepartmentStockSearchResult result in DepartmentStockSearchResultList)
                 {
@@ -151,10 +171,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
                 if (departmentStockIn.ProductMaster != null)
                 {
-                    departmentStockIn.SumStock = dgvProduct[PRODUCT_QUANTITY_POS, e.RowIndex].Value.ToString();
+                    departmentStockIn.SumStock = dgvStockView[PRODUCT_QUANTITY_POS, e.RowIndex].Value.ToString();
                     departmentStockIn.ShowDialog();
                 }
                 
+            }
+        }
+
+        private void dgvStockView_SelectionChanged(object sender, EventArgs e)
+        {
+            stockList.Clear();
+            if (dgvStockView.CurrentRow != null)
+            {
+                DataGridViewRow row = dgvStockView.CurrentRow;
+                DepartmentStockView stockView = stockViewList[row.Index];
+                if(stockView.DepartmentStocks != null && stockView.DepartmentStocks.Count > 0 )
+                {
+                    foreach (DepartmentStock stock in stockView.DepartmentStocks)
+                    {
+                        stockList.Add(stock);
+                    }
+                    bdsStock.ResetBindings(false);
+                    dgvStock.Refresh();
+                    dgvStock.Invalidate();
+                }
             }
         }
     }
