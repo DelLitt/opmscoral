@@ -29,12 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvProductMaster = new System.Windows.Forms.DataGridView();
+            this.productMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.productPrintDialog = new System.Windows.Forms.PrintDialog();
+            this.productPrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
+            this.chkContinuePrint = new System.Windows.Forms.CheckBox();
+            this.chkPricePrint = new System.Windows.Forms.CheckBox();
+            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
+            this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.productMasterIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,28 +71,12 @@
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distributorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.productPrintDialog = new System.Windows.Forms.PrintDialog();
-            this.productPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsProduct = new System.Windows.Forms.BindingSource(this.components);
-            this.chkContinuePrint = new System.Windows.Forms.CheckBox();
-            this.chkPricePrint = new System.Windows.Forms.CheckBox();
-            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.productMasterSearchControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
-            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
@@ -98,9 +98,9 @@
             // 
             this.dgvProductMaster.AllowUserToAddRows = false;
             this.dgvProductMaster.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProductMaster.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductMaster.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductMaster.AutoGenerateColumns = false;
             this.dgvProductMaster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductMaster.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -129,14 +129,146 @@
             this.dgvProductMaster.MultiSelect = false;
             this.dgvProductMaster.Name = "dgvProductMaster";
             this.dgvProductMaster.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProductMaster.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductMaster.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductMaster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductMaster.Size = new System.Drawing.Size(797, 133);
             this.dgvProductMaster.TabIndex = 18;
             this.dgvProductMaster.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductMaster_CellDoubleClick);
             this.dgvProductMaster.CurrentCellChanged += new System.EventHandler(this.dgvProductMaster_CurrentCellChanged);
             this.dgvProductMaster.SelectionChanged += new System.EventHandler(this.dgvProductMaster_SelectionChanged);
+            // 
+            // productMasterBindingSource
+            // 
+            this.productMasterBindingSource.DataSource = typeof(AppFrame.Model.ProductMaster);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(734, 500);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 19;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(653, 500);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect.TabIndex = 20;
+            this.btnSelect.Text = "Chọn";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(662, 31);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(147, 98);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Tìm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // productPrintDialog
+            // 
+            this.productPrintDialog.UseEXDialog = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(149, 500);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(87, 23);
+            this.btnPrint.TabIndex = 22;
+            this.btnPrint.Text = "In mã vạch";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // dgvProduct
+            // 
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProduct.AutoGenerateColumns = false;
+            this.dgvProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.dgvProduct.DataSource = this.bdsProduct;
+            this.dgvProduct.Location = new System.Drawing.Point(9, 299);
+            this.dgvProduct.Name = "dgvProduct";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProduct.Size = new System.Drawing.Size(797, 184);
+            this.dgvProduct.TabIndex = 23;
+            this.dgvProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentClick);
+            // 
+            // chkContinuePrint
+            // 
+            this.chkContinuePrint.AutoSize = true;
+            this.chkContinuePrint.Location = new System.Drawing.Point(242, 503);
+            this.chkContinuePrint.Name = "chkContinuePrint";
+            this.chkContinuePrint.Size = new System.Drawing.Size(84, 18);
+            this.chkContinuePrint.TabIndex = 24;
+            this.chkContinuePrint.Text = "In liên tiếp";
+            this.chkContinuePrint.UseVisualStyleBackColor = true;
+            // 
+            // chkPricePrint
+            // 
+            this.chkPricePrint.AutoSize = true;
+            this.chkPricePrint.Location = new System.Drawing.Point(333, 503);
+            this.chkPricePrint.Name = "chkPricePrint";
+            this.chkPricePrint.Size = new System.Drawing.Size(56, 18);
+            this.chkPricePrint.TabIndex = 25;
+            this.chkPricePrint.Text = "In giá";
+            this.chkPricePrint.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownBarcode
+            // 
+            this.numericUpDownBarcode.Location = new System.Drawing.Point(84, 500);
+            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
+            this.numericUpDownBarcode.Size = new System.Drawing.Size(61, 22);
+            this.numericUpDownBarcode.TabIndex = 26;
+            this.numericUpDownBarcode.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 502);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 14);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Số lượng";
+            // 
+            // barcodePrintDocument
+            // 
+            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
+            // 
+            // barcodePrintDialog
+            // 
+            this.barcodePrintDialog.UseEXDialog = true;
+            // 
+            // productMasterSearchControl
+            // 
+            this.productMasterSearchControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 31);
+            this.productMasterSearchControl.Name = "productMasterSearchControl";
+            this.productMasterSearchControl.Size = new System.Drawing.Size(808, 120);
+            this.productMasterSearchControl.TabIndex = 0;
             // 
             // productMasterIdDataGridViewTextBoxColumn
             // 
@@ -296,81 +428,7 @@
             this.Column1.HeaderText = "";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 175;
-            // 
-            // productMasterBindingSource
-            // 
-            this.productMasterBindingSource.DataSource = typeof(AppFrame.Model.ProductMaster);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(734, 500);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 19;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(653, 500);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnSelect.TabIndex = 20;
-            this.btnSelect.Text = "Chọn";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(662, 31);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(147, 98);
-            this.btnSearch.TabIndex = 21;
-            this.btnSearch.Text = "Tìm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // productPrintDialog
-            // 
-            this.productPrintDialog.UseEXDialog = true;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(149, 500);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(87, 23);
-            this.btnPrint.TabIndex = 22;
-            this.btnPrint.Text = "In mã vạch";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // dgvProduct
-            // 
-            this.dgvProduct.AllowUserToAddRows = false;
-            this.dgvProduct.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvProduct.AutoGenerateColumns = false;
-            this.dgvProduct.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dgvProduct.DataSource = this.bdsProduct;
-            this.dgvProduct.Location = new System.Drawing.Point(9, 299);
-            this.dgvProduct.Name = "dgvProduct";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduct.Size = new System.Drawing.Size(797, 184);
-            this.dgvProduct.TabIndex = 23;
+            this.Column1.Width = 150;
             // 
             // Column2
             // 
@@ -402,70 +460,13 @@
             this.Column6.DataPropertyName = "ProductMaster.Description";
             this.Column6.HeaderText = "Diễn giải";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 150;
+            this.Column6.Width = 250;
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Vị trí";
+            this.Column7.HeaderText = "";
             this.Column7.Name = "Column7";
-            this.Column7.Width = 150;
-            // 
-            // chkContinuePrint
-            // 
-            this.chkContinuePrint.AutoSize = true;
-            this.chkContinuePrint.Location = new System.Drawing.Point(242, 503);
-            this.chkContinuePrint.Name = "chkContinuePrint";
-            this.chkContinuePrint.Size = new System.Drawing.Size(84, 18);
-            this.chkContinuePrint.TabIndex = 24;
-            this.chkContinuePrint.Text = "In liên tiếp";
-            this.chkContinuePrint.UseVisualStyleBackColor = true;
-            // 
-            // chkPricePrint
-            // 
-            this.chkPricePrint.AutoSize = true;
-            this.chkPricePrint.Location = new System.Drawing.Point(333, 503);
-            this.chkPricePrint.Name = "chkPricePrint";
-            this.chkPricePrint.Size = new System.Drawing.Size(56, 18);
-            this.chkPricePrint.TabIndex = 25;
-            this.chkPricePrint.Text = "In giá";
-            this.chkPricePrint.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDownBarcode
-            // 
-            this.numericUpDownBarcode.Location = new System.Drawing.Point(84, 500);
-            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
-            this.numericUpDownBarcode.Size = new System.Drawing.Size(61, 22);
-            this.numericUpDownBarcode.TabIndex = 26;
-            this.numericUpDownBarcode.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 502);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 14);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Số lượng";
-            // 
-            // productMasterSearchControl
-            // 
-            this.productMasterSearchControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productMasterSearchControl.Location = new System.Drawing.Point(1, 31);
-            this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(808, 120);
-            this.productMasterSearchControl.TabIndex = 0;
-            // 
-            // barcodePrintDocument
-            // 
-            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
-            // 
-            // barcodePrintDialog
-            // 
-            this.barcodePrintDialog.UseEXDialog = true;
+            this.Column7.Width = 30;
             // 
             // ProductMasterSearchForm
             // 
@@ -515,13 +516,9 @@
         private System.Windows.Forms.CheckBox chkPricePrint;
         private System.Windows.Forms.NumericUpDown numericUpDownBarcode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.BindingSource bdsProduct;
+        private System.Drawing.Printing.PrintDocument barcodePrintDocument;
+        private System.Windows.Forms.PrintDialog barcodePrintDialog;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMasterIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn;
@@ -542,7 +539,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn distributorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Drawing.Printing.PrintDocument barcodePrintDocument;
-        private System.Windows.Forms.PrintDialog barcodePrintDialog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }

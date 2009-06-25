@@ -39,7 +39,14 @@ namespace AppFrameClient.Presenter.GoodsIO
         private void stockSearchView_BarcodeSearchStockEvent(object sender, StockSearchEventArgs e)
         {
             var subCriteria = new SubObjectCriteria("ProductMaster");
-            subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");
+            if(!string.IsNullOrEmpty(e.ProductMasterId))
+            {
+                subCriteria.AddLikeCriteria("ProductMasterId", "%" + e.ProductMasterId + "%");    
+            }
+            if(!string.IsNullOrEmpty(e.ProductMasterName))
+            {
+                subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");    
+            }
             if (e.ProductType != null)
             {
                 subCriteria.AddEqCriteria("ProductType", e.ProductType);
@@ -70,18 +77,21 @@ namespace AppFrameClient.Presenter.GoodsIO
             }
             if (!string.IsNullOrEmpty(e.Description))
             {
-                subCriteria.AddLikeCriteria("Description", e.Description);
+                subCriteria.AddLikeCriteria("Description", "%" + e.Description + "%");
             }
 
             var criteria = new ObjectCriteria(true);
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddLikeCriteria("Product.ProductId", "%" + e.ProductMasterId + "%");
+            bool searchByProductId = !string.IsNullOrEmpty(e.ProductId);
+            if(searchByProductId)
+            {
+                criteria.AddLikeCriteria("Product.ProductId", "%" + e.ProductId + "%");    
+            }
+            
             criteria.AddSubCriteria("ProductMaster", subCriteria);
 
-            /*criteria.AddGreaterOrEqualsCriteria("CreateDate", DateUtility.ZeroTime(e.FromDate));
-            criteria.AddLesserOrEqualsCriteria("CreateDate", DateUtility.MaxTime(e.ToDate));*/
             IList list = StockLogic.FindAll(criteria);
-            if(e.RelevantProductFinding)
+            if(searchByProductId && e.RelevantProductFinding)
             {
                 if(list!=null && list.Count > 0)
                 {
@@ -90,7 +100,7 @@ namespace AppFrameClient.Presenter.GoodsIO
                     {
                         Product product = stock.Product;
                         subCriteria = new SubObjectCriteria("ProductMaster");
-                        subCriteria.AddLikeCriteria("ProductName", product.ProductMaster.ProductName);
+                        subCriteria.AddEqCriteria("ProductName", product.ProductMaster.ProductName);
                         
                         criteria = new ObjectCriteria(true);
                         criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
@@ -142,16 +152,47 @@ namespace AppFrameClient.Presenter.GoodsIO
 
             var criteria = new ObjectCriteria(true);
             criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddLikeCriteria("pm.ProductMasterId", e.ProductMasterId + "%");
-            criteria.AddLikeCriteria("pm.ProductName", "%" + e.ProductMasterName + "%");
-            criteria.AddEqCriteria("pm.ProductType", e.ProductType);
-            criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);
-            criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);
-            criteria.AddEqCriteria("pm.Country", e.Country);
-            criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);
-            criteria.AddEqCriteria("pm.Packager", e.Packager);
-            criteria.AddEqCriteria("pm.Distributor", e.Distributor);
-            criteria.AddLikeCriteria("pm.Description", "%" + e.Description + "%");
+            if(!string.IsNullOrEmpty(e.ProductMasterId))
+            {
+                criteria.AddLikeCriteria("pm.ProductMasterId", "%" + e.ProductMasterId + "%");    
+            }
+            if(!string.IsNullOrEmpty(e.ProductMasterName))
+            {
+                criteria.AddLikeCriteria("pm.ProductName", "%" + e.ProductMasterName + "%");    
+            }
+            if(e.ProductType != null)
+            {
+                criteria.AddEqCriteria("pm.ProductType", e.ProductType);    
+            }
+            if(e.ProductSize!= null)
+            {
+                criteria.AddEqCriteria("pm.ProductSize", e.ProductSize);    
+            }
+            if(e.ProductColor!= null)
+            {
+                criteria.AddEqCriteria("pm.ProductColor", e.ProductColor);    
+            }
+            if(e.Country!=null)
+            {
+                criteria.AddEqCriteria("pm.Country", e.Country);    
+            }
+            if(e.Manufacturer!=null)
+            {
+                criteria.AddEqCriteria("pm.Manufacturer", e.Manufacturer);    
+            }
+            if(e.Packager!= null)
+            {
+                criteria.AddEqCriteria("pm.Packager", e.Packager);    
+            }
+            if(e.Distributor!=null)
+            {
+                criteria.AddEqCriteria("pm.Distributor", e.Distributor);    
+            }
+            if(!string.IsNullOrEmpty(e.Description))
+            {
+                criteria.AddLikeCriteria("pm.Description", "%" + e.Description + "%");    
+            }
+            
             IList list = StockLogic.FindByQuery(criteria);
             if(!CheckUtility.IsNullOrEmpty(GlobalCache.Instance().WarningText))
             {

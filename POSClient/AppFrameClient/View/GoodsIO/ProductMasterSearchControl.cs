@@ -14,5 +14,15 @@ namespace AppFrameClient.View.GoodsIO
         {
             InitializeComponent();
         }
+
+        private void txtProductMasterId_Enter(object sender, EventArgs e)
+        {
+            txtProductMasterId.BackColor = Color.LightGreen;
+        }
+
+        private void txtProductMasterId_Leave(object sender, EventArgs e)
+        {
+            txtProductMasterId.BackColor = Color.White;
+        }
     }
 }

@@ -69,26 +69,36 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnSearch_Click(object sender, EventArgs e)
         {
             stockBindingSource.Clear();
-            var eventArgs = new StockSearchEventArgs
+            StockSearchEventArgs eventArgs= null;
+            if (productMasterControl.Enabled)
             {
-                ProductMasterId = productMasterControl.txtProductMasterId.Text,
-                ProductMasterName = productMasterControl.txtProductName.Text,
-                ProductSize = productMasterControl.cbbProductSize.SelectedIndex > 0 ? ((ProductSize)productMasterControl.cbbProductSize.SelectedItem) : null,
-                ProductType = productMasterControl.cbbProductType.SelectedIndex > 0 ? ((ProductType)productMasterControl.cbbProductType.SelectedItem) : null,
-                ProductColor = productMasterControl.cbbProductColor.SelectedIndex > 0 ?
-                    ((ProductColor)productMasterControl.cbbProductColor.SelectedItem) : null,
-                Country = productMasterControl.cbbCountry.SelectedIndex > 0 ? 
-                    ((Country)productMasterControl.cbbCountry.SelectedItem) : null,
-                Packager = productMasterControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterControl.cbbPackager.SelectedItem) : null,
-                Manufacturer = productMasterControl.cbbManufacturer.SelectedIndex > 0 ?
-                    ((Manufacturer)productMasterControl.cbbManufacturer.SelectedItem) : null,
-                Distributor = productMasterControl.cbbDistributor.SelectedIndex > 0 ?
-                    ((Distributor)productMasterControl.cbbDistributor.SelectedItem) : null,
-                /*FromDate = dtpImportDateFrom.Value,
-                ToDate = dtpImportDateTo.Value,*/
-                Description = txtDescription.Text,
-                RelevantProductFinding = chkRelevant.Checked
-            };
+                eventArgs = new StockSearchEventArgs
+                {
+                    ProductMasterId = productMasterControl.txtProductMasterId.Text,
+                    ProductMasterName = productMasterControl.txtProductName.Text,
+                    ProductSize = productMasterControl.cbbProductSize.SelectedIndex > 0 ? ((ProductSize)productMasterControl.cbbProductSize.SelectedItem) : null,
+                    ProductType = productMasterControl.cbbProductType.SelectedIndex > 0 ? ((ProductType)productMasterControl.cbbProductType.SelectedItem) : null,
+                    ProductColor = productMasterControl.cbbProductColor.SelectedIndex > 0 ?
+                        ((ProductColor)productMasterControl.cbbProductColor.SelectedItem) : null,
+                    Country = productMasterControl.cbbCountry.SelectedIndex > 0 ?
+                        ((Country)productMasterControl.cbbCountry.SelectedItem) : null,
+                    Packager = productMasterControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterControl.cbbPackager.SelectedItem) : null,
+                    Manufacturer = productMasterControl.cbbManufacturer.SelectedIndex > 0 ?
+                        ((Manufacturer)productMasterControl.cbbManufacturer.SelectedItem) : null,
+                    Distributor = productMasterControl.cbbDistributor.SelectedIndex > 0 ?
+                        ((Distributor)productMasterControl.cbbDistributor.SelectedItem) : null,
+                    /*FromDate = dtpImportDateFrom.Value,
+                    ToDate = dtpImportDateTo.Value,*/
+                    Description = txtDescription.Text
+                    
+                };
+            }
+            if(eventArgs == null)
+            {
+                eventArgs = new StockSearchEventArgs();
+            }
+            eventArgs.ProductId = txtProductId.Text.Trim();
+            eventArgs.Description = txtDescription.Text.Trim();
             EventUtility.fireEvent(BarcodeSearchStockEvent, sender, eventArgs);
             if(eventArgs.StockList== null || eventArgs.StockList.Count == 0)
             {
@@ -118,6 +128,63 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void productMasterControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtProductId.Text))
+            {
+                productMasterControl.Enabled = false;
+                if(txtProductId.Text.Length == 12)
+                {
+                    stockBindingSource.Clear();
+                    StockSearchEventArgs eventArgs = null;
+                    if (eventArgs == null)
+                    {
+                        eventArgs = new StockSearchEventArgs();
+                    }
+                    eventArgs.ProductId = txtProductId.Text.Trim();
+                    eventArgs.Description = txtDescription.Text.Trim();
+                    EventUtility.fireEvent(BarcodeSearchStockEvent, sender, eventArgs);
+                    txtProductId.Text = "";
+                    if (eventArgs.StockList == null || eventArgs.StockList.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy sản phẩm nào.");
+                        return;
+                    }
+                    stockBindingSource.DataSource = eventArgs.StockList;
+                }
+            }
+            else
+            {
+                productMasterControl.Enabled = true;
+            }
+            
+        }
+
+        private void txtProductId_Enter(object sender, EventArgs e)
+        {
+            txtProductId.BackColor = Color.LightGreen;
+        }
+
+        private void txtProductId_Leave(object sender, EventArgs e)
+        {
+            txtProductId.BackColor = Color.White;
+        }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            txtProductId.Focus();
+        }
+
+        private void shortcutCtrlX_Pressed(object sender, EventArgs e)
+        {
+            productMasterControl.txtBarcode.Focus();
         }
     }
 }

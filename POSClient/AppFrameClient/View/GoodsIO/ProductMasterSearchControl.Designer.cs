@@ -146,6 +146,8 @@
             this.txtProductMasterId.Name = "txtProductMasterId";
             this.txtProductMasterId.Size = new System.Drawing.Size(103, 20);
             this.txtProductMasterId.TabIndex = 61;
+            this.txtProductMasterId.Leave += new System.EventHandler(this.txtProductMasterId_Leave);
+            this.txtProductMasterId.Enter += new System.EventHandler(this.txtProductMasterId_Enter);
             // 
             // lblProductMasterId
             // 

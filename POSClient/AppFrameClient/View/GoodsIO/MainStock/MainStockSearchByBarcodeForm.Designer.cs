@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStockList = new System.Windows.Forms.DataGridView();
             this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +64,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkRelevant = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtProductId = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.shortcutCtrlZ = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.shortcutCtrlX = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +77,9 @@
             this.dgvStockList.AllowUserToAddRows = false;
             this.dgvStockList.AllowUserToDeleteRows = false;
             this.dgvStockList.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStockList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStockList.AutoGenerateColumns = false;
             this.dgvStockList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -94,9 +103,11 @@
             this.delFlgDataGridViewTextBoxColumn,
             this.productDataGridViewTextBoxColumn});
             this.dgvStockList.DataSource = this.stockBindingSource;
-            this.dgvStockList.Location = new System.Drawing.Point(2, 183);
+            this.dgvStockList.Location = new System.Drawing.Point(2, 196);
             this.dgvStockList.Name = "dgvStockList";
-            this.dgvStockList.Size = new System.Drawing.Size(800, 342);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStockList.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvStockList.Size = new System.Drawing.Size(800, 329);
             this.dgvStockList.TabIndex = 1;
             // 
             // productMasterDataGridViewTextBoxColumn
@@ -242,9 +253,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(727, 151);
+            this.btnSearch.Location = new System.Drawing.Point(579, 32);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(168, 105);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Tìm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -275,9 +286,9 @@
             this.dtpImportDateTo.CustomFormat = "dd/MM/yyyy";
             this.dtpImportDateTo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpImportDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateTo.Location = new System.Drawing.Point(466, 112);
+            this.dtpImportDateTo.Location = new System.Drawing.Point(676, 2);
             this.dtpImportDateTo.Name = "dtpImportDateTo";
-            this.dtpImportDateTo.Size = new System.Drawing.Size(105, 21);
+            this.dtpImportDateTo.Size = new System.Drawing.Size(117, 21);
             this.dtpImportDateTo.TabIndex = 92;
             this.dtpImportDateTo.Visible = false;
             // 
@@ -285,7 +296,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(406, 116);
+            this.label3.Location = new System.Drawing.Point(616, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 91;
@@ -297,9 +308,9 @@
             this.dtpImportDateFrom.CustomFormat = "dd/MM/yyyy";
             this.dtpImportDateFrom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpImportDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpImportDateFrom.Location = new System.Drawing.Point(272, 112);
+            this.dtpImportDateFrom.Location = new System.Drawing.Point(669, 151);
             this.dtpImportDateFrom.Name = "dtpImportDateFrom";
-            this.dtpImportDateFrom.Size = new System.Drawing.Size(108, 21);
+            this.dtpImportDateFrom.Size = new System.Drawing.Size(117, 21);
             this.dtpImportDateFrom.TabIndex = 90;
             this.dtpImportDateFrom.Visible = false;
             // 
@@ -307,7 +318,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(219, 116);
+            this.label2.Location = new System.Drawing.Point(616, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 89;
@@ -321,19 +332,20 @@
             this.productMasterControl.Name = "productMasterControl";
             this.productMasterControl.Size = new System.Drawing.Size(800, 120);
             this.productMasterControl.TabIndex = 0;
+            this.productMasterControl.Load += new System.EventHandler(this.productMasterControl_Load);
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(88, 155);
+            this.txtDescription.Location = new System.Drawing.Point(88, 141);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(185, 22);
+            this.txtDescription.Size = new System.Drawing.Size(161, 22);
             this.txtDescription.TabIndex = 93;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 159);
+            this.label1.Location = new System.Drawing.Point(40, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 94;
@@ -342,9 +354,12 @@
             // chkRelevant
             // 
             this.chkRelevant.AutoSize = true;
-            this.chkRelevant.Location = new System.Drawing.Point(326, 155);
+            this.chkRelevant.Checked = true;
+            this.chkRelevant.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRelevant.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRelevant.Location = new System.Drawing.Point(357, 143);
             this.chkRelevant.Name = "chkRelevant";
-            this.chkRelevant.Size = new System.Drawing.Size(245, 18);
+            this.chkRelevant.Size = new System.Drawing.Size(212, 17);
             this.chkRelevant.TabIndex = 95;
             this.chkRelevant.Text = "Tìm thêm những sản phẩm có liên quan";
             this.chkRelevant.UseVisualStyleBackColor = true;
@@ -352,7 +367,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(577, 114);
+            this.checkBox1.Location = new System.Drawing.Point(135, 9);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(168, 18);
             this.checkBox1.TabIndex = 96;
@@ -360,11 +375,43 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
+            // txtProductId
+            // 
+            this.txtProductId.Location = new System.Drawing.Point(272, 115);
+            this.txtProductId.Name = "txtProductId";
+            this.txtProductId.Size = new System.Drawing.Size(297, 22);
+            this.txtProductId.TabIndex = 97;
+            this.txtProductId.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtProductId.Leave += new System.EventHandler(this.txtProductId_Leave);
+            this.txtProductId.Enter += new System.EventHandler(this.txtProductId_Enter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(219, 119);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 98;
+            this.label4.Text = "Mã vạch";
+            // 
+            // shortcutCtrlZ
+            // 
+            this.shortcutCtrlZ.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+            this.shortcutCtrlZ.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // shortcutCtrlX
+            // 
+            this.shortcutCtrlX.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
+            this.shortcutCtrlX.Pressed += new System.EventHandler(this.shortcutCtrlX_Pressed);
+            // 
             // MainStockSearchByBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 566);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtProductId);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.chkRelevant);
             this.Controls.Add(this.label1);
@@ -424,5 +471,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkRelevant;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txtProductId;
+        private System.Windows.Forms.Label label4;
+        private AppFrame.Controls.HotKey.SystemHotkey shortcutCtrlZ;
+        private AppFrame.Controls.HotKey.SystemHotkey shortcutCtrlX;
     }
 }

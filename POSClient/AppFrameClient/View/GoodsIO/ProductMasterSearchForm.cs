@@ -176,7 +176,7 @@ namespace AppFrameClient.View.GoodsIO
                 Distributor = productMasterSearchControl.cbbDistributor.SelectedIndex > 0 ? ((Distributor)productMasterSearchControl.cbbDistributor.SelectedItem) : null,
                 Barcode = productMasterSearchControl.txtBarcode.Text
             };
-            EventUtility.fireEvent(SearchProductMasterEvent, sender, eventArgs);
+            EventUtility.fireEvent(SearchCommonProductMasterEvent, sender, eventArgs);
             ProductMasterList = eventArgs.ProductMasterList;
             dgvProductMaster.DataSource = ProductMasterList;
             CurrentProductMasterSearchOrCreateEventArgs = eventArgs;
@@ -504,5 +504,10 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
         public event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
 #endregion
+
+        private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

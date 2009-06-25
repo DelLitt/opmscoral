@@ -55,7 +55,57 @@ namespace AppFrameClient.Presenter.GoodsIO
 
         void _productMasterSearchOrCreateView_SearchCommonProductMasterEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
         {
-            
+            var criteria = new ObjectCriteria();
+            if (!string.IsNullOrEmpty(e.ProductMasterId))
+            {
+                /*long value = 0;
+                Int64.TryParse(e.ProductMasterId, out value);*/
+                criteria.AddLikeCriteria("ProductMasterId", "%" + e.ProductMasterId + "%");
+            }
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");
+            if (e.ProductType != null && e.ProductType.TypeId > 0)
+            {
+                criteria.AddEqCriteria("ProductType.TypeId", e.ProductType.TypeId);
+            }
+            if (e.ProductSize != null && e.ProductSize.SizeId > 0)
+            {
+                criteria.AddEqCriteria("ProductSize.SizeId", e.ProductSize.SizeId);
+            }
+            if (e.ProductColor != null && e.ProductColor.ColorId > 0)
+            {
+                criteria.AddEqCriteria("ProductColor.ColorId", e.ProductColor.ColorId);
+            }
+            if (e.Country != null && e.Country.CountryId > 0)
+            {
+                criteria.AddEqCriteria("Country.CountryId", e.Country.CountryId);
+            }
+            IList list = ProductMasterLogic.FindAll(criteria);
+            IList returnList = new ArrayList();
+            if(list!=null && list.Count > 0)
+            {
+                foreach (ProductMaster master in list)
+                {
+                    AddNonDuplicateItem(returnList, master);
+                }
+            }
+            e.ProductMasterList = returnList;
+        }
+
+        private void AddNonDuplicateItem(IList list, ProductMaster master)
+        {
+            bool found = false;
+            foreach (ProductMaster productMaster in list)
+            {
+               if(productMaster.ProductName.Equals(master.ProductName))
+               {
+                   found = true;
+               }
+            }
+            if(!found)
+            {
+                list.Add(master);
+            }
         }
 
         public void productMasterView_OpenProductMasterSearchOrCreateEvent(object sender, ProductMasterSearchOrCreateEventArgs e)
@@ -77,10 +127,10 @@ namespace AppFrameClient.Presenter.GoodsIO
             {
                 /*long value = 0;
                 Int64.TryParse(e.ProductMasterId, out value);*/
-                criteria.AddEqCriteria("ProductMasterId", e.ProductMasterId); 
+                criteria.AddLikeCriteria("ProductMasterId", "%" + e.ProductMasterId + "%"); 
             }
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddLikeCriteria("ProductName", e.ProductMasterName + "%");
+            criteria.AddLikeCriteria("ProductName", "%" +e.ProductMasterName + "%");
             if (e.ProductType != null && e.ProductType.TypeId > 0) 
             {
                 criteria.AddEqCriteria("ProductType.TypeId", e.ProductType.TypeId);
