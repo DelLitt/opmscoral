@@ -623,35 +623,44 @@ namespace AppFrame.View
             MenuUtility.setPermission(clientInfo.LoggedUser, ref this.mnuMenu, menuItemPermission);
             //CheckClientServer();
             toolStripClient.Focus();
+            Stream toolStripInStream = null;
             if(ClientSetting.IsClient())
             {
                 toolStripClient.Visible = true;
                 // load and set permissions
-                Stream toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientToolStripPermissions.xml");    
-                ToolStripItemPermission toolStripItemPermission = new ToolStripItemPermission(ToolStripItemPermission.INVISIBLE);
-                toolStripItemPermission.loadRoles(toolStripInStream);
-                GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
-                MenuUtility.setPermission(this,clientInfo,ref this.toolStripClient,toolStripItemPermission);
+                toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ClientToolStripPermissions.xml");    
                 // run service in client
                 consumer = new ServerServiceConsumer();
+            }
+            else if (ClientSetting.IsSubStock())
+            {
+                subStockConsumer= new SubStockConsumer();
+                    // load toolstrip
+                    toolStripClient.Visible = true;
+                    // load and set permissions
+                    toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.SubStockToolStripPermissions.xml");
+                
+            }
+            else if(ClientSetting.IsServer())
+            {
+                // load toolstrip
+                toolStripClient.Visible = true;
+                // load and set permissions
+                toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ServerToolStripPermissions.xml");    
             }
             else
             {
                 toolStripClient.Visible = false;
-                if(ClientSetting.IsSubStock())
-                {
-                    subStockConsumer= new SubStockConsumer();
-
-                    // load toolstrip
-                    toolStripClient.Visible = true;
-                    // load and set permissions
-                    Stream toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.SubStockToolStripPermissions.xml");
-                    ToolStripItemPermission toolStripItemPermission = new ToolStripItemPermission(ToolStripItemPermission.INVISIBLE);
-                    toolStripItemPermission.loadRoles(toolStripInStream);
-                    GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
-                    MenuUtility.setPermission(this, clientInfo, ref this.toolStripClient, toolStripItemPermission);
-                }
             }
+            if(toolStripInStream != null)
+            {
+                ToolStripItemPermission toolStripItemPermission = new ToolStripItemPermission(ToolStripItemPermission.INVISIBLE);
+                toolStripItemPermission.loadRoles(toolStripInStream);
+                GlobalCache.Instance().ClientToolStripPermission = toolStripItemPermission;
+                MenuUtility.setPermission(this, clientInfo, ref this.toolStripClient, toolStripItemPermission);    
+            }
+            
+
             if(toolStripClient.Visible == true)
             {
                 RenderFunctionKeysTextToToolStrip();

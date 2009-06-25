@@ -150,6 +150,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     }
                     eventArgs.ProductId = txtProductId.Text.Trim();
                     eventArgs.Description = txtDescription.Text.Trim();
+                    eventArgs.RelevantProductFinding = chkRelevant.Checked;
                     EventUtility.fireEvent(BarcodeSearchStockEvent, sender, eventArgs);
                     txtProductId.Text = "";
                     if (eventArgs.StockList == null || eventArgs.StockList.Count == 0)
@@ -185,6 +186,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void shortcutCtrlX_Pressed(object sender, EventArgs e)
         {
             productMasterControl.txtBarcode.Focus();
+        }
+
+        private void shortcutSearch_Pressed(object sender, EventArgs e)
+        {
+
         }
     }
 }

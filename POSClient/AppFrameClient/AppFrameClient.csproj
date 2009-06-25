@@ -1575,6 +1575,7 @@
     <EmbeddedResource Include="NAMenuPermissions.xml" />
     <EmbeddedResource Include="SubStockMenuPermissions.xml" />
     <EmbeddedResource Include="SubStockToolStripPermissions.xml" />
+    <EmbeddedResource Include="ServerToolStripPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
     <Content Include="Resources\Add.png" />
     <Content Include="Resources\Address Book.png" />
