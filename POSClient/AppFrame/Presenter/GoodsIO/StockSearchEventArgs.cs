@@ -10,6 +10,7 @@ namespace AppFrame.Presenter.GoodsIO
 {
     public class StockSearchEventArgs : BaseEventArgs
     {
+        public string ProductId { get; set;}
         public string Description { get; set;}
         public Form ParentForm { get; set; }
         public IList CountryList { get; set; }
