@@ -97,6 +97,13 @@
         length="10"
     >
   </property>
+  <property
+        name="Position"
+        type="string"
+        column="POSITION"
+        length="200"
+    >
+  </property>
     <!-- Associations -->
   
     <!-- bi-directional many-to-one association to Product -->

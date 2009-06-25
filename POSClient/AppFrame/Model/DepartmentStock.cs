@@ -173,6 +173,7 @@ namespace AppFrame.Model
             }
         }
         public virtual ProductMaster ProductMaster { get; set; }
+        public virtual string Position { get; set; }
         #endregion
         
         #region IComparable Methods

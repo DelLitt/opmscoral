@@ -150,7 +150,7 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
-        
+        public virtual string Position { get; set; }
 
         #endregion
         
