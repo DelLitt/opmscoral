@@ -11,11 +11,13 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrame.View;
+using AppFrameClient.Utility;
 
 namespace AppFrameClient.Services
 {
     public class SubStockConsumer : ServerServiceCallback
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const int SleepTime = 200;
         private bool connected = false;
         private Thread m_thread;
@@ -51,9 +53,11 @@ namespace AppFrameClient.Services
                         try
                         {
                             ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = "Kết nối với dịch vụ.";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                         }
                         catch (Exception)
                         {
@@ -86,15 +90,18 @@ namespace AppFrameClient.Services
         {
             connected = true;
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối thành công!";
+            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
         }
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
         {
+            ClientUtility.Log(logger, deptDeptId + " notify " + sourceDeptId  + " stock-out success.");
             DepartmentStockOutPK departmentStockOutPk = new DepartmentStockOutPK
             {
                 DepartmentId = sourceDeptId,
                 StockOutId = stockOutId
             };
+            
             DepartmentStockOut deptStockOut = DepartmentStockOutLogic.FindById(departmentStockOutPk);
             if (deptStockOut != null && deptStockOut.OtherDepartmentId == deptDeptId)
             {
@@ -102,38 +109,47 @@ namespace AppFrameClient.Services
                 deptStockOut.UpdateDate = DateTime.Now;
                 DepartmentStockOutLogic.Update(deptStockOut);
             }
+            ClientUtility.Log(logger, " Notify stock-out success.");
         }
         
         public void NotifyRequestDepartmentStockOut(long departmentId)
         {
+            ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
             if(serverService == null)
             {
                 return;
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
             objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);
-
+            
             IList list = DepartmentStockOutLogic.FindAll(objectCriteria);
             Department destDept  = new Department
                                        {
                                            DepartmentId = departmentId
                                        } ;
-            foreach (DepartmentStockOut departmentStockOut in list)
+            if(list!= null && list.Count > 0 )
             {
-                foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                ClientUtility.Log(logger, " Has " + list.Count + " stock-outs for " + departmentId);
+                foreach (DepartmentStockOut departmentStockOut in list)
                 {
-                    string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
-                    DepartmentPricePK pricePk = new DepartmentPricePK
+                    foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                     {
-                        DepartmentId = 0,
-                        ProductMasterId = prdMasterId
-                    };
-                    detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
-                }
-               serverService.MakeDepartmentStockOut(destDept,departmentStockOut,new DepartmentPrice()); 
+                        string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                        DepartmentPricePK pricePk = new DepartmentPricePK
+                        {
+                            DepartmentId = 0,
+                            ProductMasterId = prdMasterId
+                        };
+                        detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
+                    }
+                    serverService.MakeDepartmentStockOut(destDept, departmentStockOut, new DepartmentPrice());
+                }    
             }
+            
+            ClientUtility.Log(logger, departmentId + " has been sent stock-out information.");
         }
         /// <summary>
         /// Request the end of the thread method.
@@ -143,6 +159,8 @@ namespace AppFrameClient.Services
             lock (this)
             {
                 m_running = false;
+                serverService.Close();
+                ClientUtility.Log(logger, " Close service.");
             }
         }
         #region Logic use in IDepartmentStockInController

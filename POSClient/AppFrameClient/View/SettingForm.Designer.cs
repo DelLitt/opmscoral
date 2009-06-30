@@ -302,7 +302,6 @@
             this.cboDepartment.Size = new System.Drawing.Size(173, 21);
             this.cboDepartment.TabIndex = 25;
             this.cboDepartment.ValueMember = "DEPARTMENT_ID";
-            this.cboDepartment.Visible = false;
             // 
             // departmentBindingSource
             // 
@@ -327,7 +326,6 @@
             this.lblDepartment.Size = new System.Drawing.Size(112, 13);
             this.lblDepartment.TabIndex = 26;
             this.lblDepartment.Text = "Nơi xuất của kho phụ:";
-            this.lblDepartment.Visible = false;
             // 
             // departmentTableAdapter
             // 

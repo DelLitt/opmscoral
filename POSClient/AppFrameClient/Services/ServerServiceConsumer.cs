@@ -9,12 +9,14 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrame.View;
+using AppFrameClient.Utility;
 using AppFrameClient.Utility.Mapper;
 
 namespace AppFrameClient.Services
 {
     public class ServerServiceConsumer : ServerServiceCallback
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const int SleepTime = 10*1000;
         private bool connected = false;
         private Thread m_thread;
@@ -23,16 +25,21 @@ namespace AppFrameClient.Services
 
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
+            
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            
             if(CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;    
             }
+            ClientUtility.Log(logger, " Have stock-out to ..." + department.DepartmentId);
             DepartmentStockIn stockIn;
             // convert from stock out to stock in
             stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
             // call method to sync
+            ClientUtility.Log(logger, " Do stock in");
             DepartmentStockInLogic.SyncFromSubStock(stockIn);
+            ClientUtility.Log(logger, " Completed and feed back ... ");
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
             serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
@@ -45,12 +52,15 @@ namespace AppFrameClient.Services
             {
                 return;
             }
+            ClientUtility.Log(logger, " Have stock-in back request to ..." + department.DepartmentId);
             DepartmentStockOut stockOut;
             // convert from stock out to stock in
+            ClientUtility.Log(logger, " Do stock out from ..." + department.DepartmentId);
             stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
             
             // call method to sync
             DepartmentStockOutLogic.Add(stockOut);
+            ClientUtility.Log(logger, " Completed and feeding back ..." );
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
             
         }
@@ -95,10 +105,13 @@ namespace AppFrameClient.Services
                     {
                         try
                         {
+                            
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(500);
                             
                         }
@@ -114,8 +127,10 @@ namespace AppFrameClient.Services
                         {
                             // Wait until thread is stopped
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(SleepTime);
                         }
                         catch (Exception)
@@ -124,8 +139,10 @@ namespace AppFrameClient.Services
                                || serverService.State == CommunicationState.Closed)
                             {
                                 connected = false;
+                                serverService.Close();
                             }
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
+                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(1000 * 5);
                         }
                         

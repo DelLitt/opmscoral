@@ -42,6 +42,7 @@ namespace AppFrameClient.View
             if (ClientSetting.IsSubStock())
             {
                 grpSubStock.Visible = true;
+                
             }
             else
             {
@@ -70,6 +71,10 @@ namespace AppFrameClient.View
             if (ClientSetting.IsSubStock())
             {
                 ClientSetting.MarketDept = cboDepartment.SelectedValue.ToString();
+            }
+            else
+            {
+                
             }
             ClientSetting.Save();
             

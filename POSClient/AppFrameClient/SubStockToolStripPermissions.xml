@@ -9,16 +9,16 @@
   <toolstripitem name="tsbSale" role="NotImplement" />
   <toolstripitem name="tsbCost" role="NotImplement" />
   <toolstripitem name="tsbWorkload" role="NotImplement" />
-  <toolstripitem name="tsbFastStockOut" role="NotImplement" />
+  <toolstripitem name="tsbFastStockOut" role="Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockOut" role="NotImplement" />
   <toolstripitem name="tsbDeptStockIn" role="NotImplement" />
   <toolstripitem name="tsbReStockIn" role="NotImplement" />
   <toolstripitem name="tsbSync" role="NotImplement" />
   <toolstripitem name="tsbSyncDown" role="NotImplement" />
-  <toolstripitem name="tsbDeptSyncUp" role="NotImplement" />
-  <toolstripitem name="tsbDeptSyncDown" role="NotImplement" />
-  <toolstripitem name="tsbStockOut" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbStockIn" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbStockCheck" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbDeptStockCheck" role="NotImplement" />
+  <toolstripitem name="tsbDeptSyncUp" role="Administrator,Supervisor" />
+  <toolstripitem name="tsbDeptSyncDown" role="Administrator,Supervisor" />
+  <toolstripitem name="tsbStockOut" role="NotImplement" />
+  <toolstripitem name="tsbStockIn" role="NotImplement" />
+  <toolstripitem name="tsbStockCheck" role="NotImplement" />
+  <toolstripitem name="tsbDeptStockCheck" role="Administrator,Supervisor" />
 </toolstrip>
