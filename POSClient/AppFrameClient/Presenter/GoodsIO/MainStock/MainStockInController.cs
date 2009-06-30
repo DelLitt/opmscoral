@@ -271,7 +271,13 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 }
                 else
                 {
-                    result = ProductMasterLogic.FindProductMasterByName(searchPM.ProductName, 50,true);
+                    //result = ProductMasterLogic.FindProductMasterByName(searchPM.ProductName, 50,true);
+                    ObjectCriteria criteria = new ObjectCriteria();
+                    criteria.AddLikeCriteria("ProductName", "%" + searchPM.ProductName + "%");
+                    criteria.AddOrder("ProductName", true);
+                    criteria.MaxResult = 200;
+                    result = ProductMasterLogic.FindAll(criteria);
+
                 }
                 if(result==null)
                 {
@@ -281,8 +287,10 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 BindingList<ProductMaster> productMasters = new BindingList<ProductMaster>();
                 if (result != null)
                 {
+                    result = RemoveDuplicateName(result);
                     foreach (ProductMaster master in result)
                     {
+
                         productMasters.Add(master);
                     }
                 }
@@ -302,11 +310,32 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 
                 comboBox.SelectionStart = comboBox.Text.Length;
                 //comboBox.DroppedDown = false;
-                comboBox.MaxDropDownItems = 10;
+                comboBox.MaxDropDownItems = 15;
             }
         }
-        
-
+        private IList RemoveDuplicateName(IList prdlist)
+        {
+            IList list = new ArrayList();
+            foreach (ProductMaster productMaster in prdlist)
+            {
+                if (NotInList(productMaster, list))
+                {
+                    list.Add(productMaster);
+                }
+            }
+            return list;
+        }
+        private bool NotInList(ProductMaster master, IList list)
+        {
+            foreach (ProductMaster productMaster in list)
+            {
+                if (productMaster.ProductName.Equals(master.ProductName))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         #endregion
 
         #region IDepartmentStockInExtraController Members

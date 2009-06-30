@@ -114,6 +114,10 @@ namespace AppFrame.DataLayer
                         AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
                     }
                 }
+                if(criteria.MaxResult > 0 )
+                {
+                    hibernateCriteria.SetMaxResults(criteria.MaxResult);
+                }
                 return hibernateCriteria.List();
             }
             finally 

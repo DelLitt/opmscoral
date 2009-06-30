@@ -89,7 +89,8 @@ namespace AppFrameClient.Presenter.GoodsIO
             }
             
             criteria.AddSubCriteria("ProductMaster", subCriteria);
-
+            criteria.AddOrder("ProductMaster.ProductName", true);
+            criteria.AddOrder("Product.ProductId",true);
             IList list = StockLogic.FindAll(criteria);
             if(searchByProductId && e.RelevantProductFinding)
             {
@@ -101,10 +102,10 @@ namespace AppFrameClient.Presenter.GoodsIO
                         Product product = stock.Product;
                         subCriteria = new SubObjectCriteria("ProductMaster");
                         subCriteria.AddEqCriteria("ProductName", product.ProductMaster.ProductName);
-                        
                         criteria = new ObjectCriteria(true);
                         criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
                         criteria.AddSubCriteria("ProductMaster", subCriteria);
+                        criteria.AddOrder("Product.ProductId", true);
                         IList subList = StockLogic.FindAll(criteria);
                         if(subList!=null && subList.Count > 0 )
                         {

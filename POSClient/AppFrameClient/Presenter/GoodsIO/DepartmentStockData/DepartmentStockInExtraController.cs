@@ -260,12 +260,18 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     if (e.IsFillToComboBox)
                     {
                         ProductMaster searchPM = e.SelectedDepartmentStockInDetail.Product.ProductMaster;
+                        var subCrit = new SubObjectCriteria("ProductMaster");
+                        subCrit.AddLikeCriteria("ProductName", "%" + searchPM.ProductName + "%");
+                        subCrit.AddOrder("ProductName", true);
+
                         var criteria = new ObjectCriteria(true);
-                        criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
+                        /*criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                         criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-                        criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");
-                        criteria.MaxResult = 50;
-                        IList list = StockLogic.FindByQueryForStockIn(criteria);
+                        criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");*/
+                        criteria.AddSubCriteria("ProductMaster", subCrit);
+                        criteria.MaxResult = 200;
+                        /*IList list = StockLogic.FindByQueryForStockIn(criteria);*/
+                        IList list = StockLogic.FindAll(criteria);
 //                        if (e.ComboBoxDisplayMember.Equals("ProductMasterId"))
 //                        {
 //                            result = ProductMasterLogic.FindProductMasterById(searchPM.ProductMasterId, 50,true);

@@ -15,7 +15,7 @@ namespace AppFrameClient.Services
 {
     public class ServerServiceConsumer : ServerServiceCallback
     {
-        const int SleepTime = 5*60*1000;
+        const int SleepTime = 10*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -52,6 +52,7 @@ namespace AppFrameClient.Services
             // call method to sync
             DepartmentStockOutLogic.Add(stockOut);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+            
         }
     
 
@@ -95,7 +96,7 @@ namespace AppFrameClient.Services
                         try
                         {
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
-                            serverService = new ServerServiceClient(new InstanceContext(this), "HttpBinding");
+                            serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
                             Thread.Sleep(500);
@@ -115,7 +116,7 @@ namespace AppFrameClient.Services
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
                             serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
-                            Thread.Sleep(SleepTime);     
+                            Thread.Sleep(SleepTime);
                         }
                         catch (Exception)
                         {
@@ -124,6 +125,8 @@ namespace AppFrameClient.Services
                             {
                                 connected = false;
                             }
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
+                            Thread.Sleep(1000 * 5);
                         }
                         
                         

@@ -159,13 +159,18 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             if (e.IsFillToComboBox)
             {
                 ProductMaster searchPM = e.SelectedStockOutDetail.Product.ProductMaster;
+                var subCrit = new SubObjectCriteria("ProductMaster");
+                subCrit.AddLikeCriteria("ProductName", "%" + searchPM.ProductName + "%");
+                subCrit.AddOrder("ProductName",true);
                 var criteria = new ObjectCriteria(true);
-                criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
+                /*criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddLikeCriteria("pm.ProductName","%" +searchPM.ProductName + "%");
                 criteria.MaxResult = 50;
-                IList list = StockLogic.FindByQueryForStockIn(criteria);
-
+                IList list = StockLogic.FindByQueryForStockIn(criteria);*/
+                criteria.AddSubCriteria("ProductMaster",subCrit);
+                criteria.MaxResult = 200;
+                IList list = StockLogic.FindAll(criteria);
                 if (list == null || list.Count == 0)
                 {
                     return;

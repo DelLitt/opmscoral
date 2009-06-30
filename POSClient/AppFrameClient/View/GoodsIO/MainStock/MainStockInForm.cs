@@ -979,12 +979,18 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             if (chkNameFilter.Checked && !string.IsNullOrEmpty(txtPNFilter.Text))
             {
+                bool found = false;
                 string filterName = txtPNFilter.Text.Trim();
                 foreach (DataGridViewRow row in dgvDeptStockIn.Rows)
                 {
                     string name = deptSIDetailList[row.Index].Product.ProductMaster.ProductName;
                     if (name.IndexOf(filterName) >= 0)
                     {
+                        if(!found)
+                        {
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[1, row.Index];
+                            found = true;
+                        }
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                     }
                     else

@@ -32,8 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvStockList = new System.Windows.Forms.DataGridView();
             this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
@@ -43,7 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpImportDateFrom = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkRelevant = new System.Windows.Forms.CheckBox();
@@ -52,6 +49,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.shortcutCtrlZ = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.shortcutCtrlX = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.shortcutSearch = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterSearchControl();
             this.productMasterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +70,6 @@
             this.exclusiveKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delFlgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shortcutSearch = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -115,29 +113,13 @@
             this.delFlgDataGridViewTextBoxColumn,
             this.productDataGridViewTextBoxColumn});
             this.dgvStockList.DataSource = this.stockBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStockList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvStockList.Location = new System.Drawing.Point(2, 196);
+            this.dgvStockList.Location = new System.Drawing.Point(2, 178);
             this.dgvStockList.MultiSelect = false;
             this.dgvStockList.Name = "dgvStockList";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvStockList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStockList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStockList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockList.Size = new System.Drawing.Size(800, 329);
+            this.dgvStockList.Size = new System.Drawing.Size(800, 356);
             this.dgvStockList.TabIndex = 1;
             // 
             // stockBindingSource
@@ -156,7 +138,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(727, 531);
+            this.btnClose.Location = new System.Drawing.Point(727, 540);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -217,15 +199,6 @@
             this.label2.TabIndex = 89;
             this.label2.Text = "Từ ngày";
             this.label2.Visible = false;
-            // 
-            // productMasterControl
-            // 
-            this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productMasterControl.Location = new System.Drawing.Point(2, 28);
-            this.productMasterControl.Name = "productMasterControl";
-            this.productMasterControl.Size = new System.Drawing.Size(800, 120);
-            this.productMasterControl.TabIndex = 0;
-            this.productMasterControl.Load += new System.EventHandler(this.productMasterControl_Load);
             // 
             // txtDescription
             // 
@@ -298,6 +271,20 @@
             this.shortcutCtrlX.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
             this.shortcutCtrlX.Pressed += new System.EventHandler(this.shortcutCtrlX_Pressed);
             // 
+            // shortcutSearch
+            // 
+            this.shortcutSearch.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+            this.shortcutSearch.Pressed += new System.EventHandler(this.shortcutSearch_Pressed);
+            // 
+            // productMasterControl
+            // 
+            this.productMasterControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productMasterControl.Location = new System.Drawing.Point(2, 28);
+            this.productMasterControl.Name = "productMasterControl";
+            this.productMasterControl.Size = new System.Drawing.Size(800, 120);
+            this.productMasterControl.TabIndex = 0;
+            this.productMasterControl.Load += new System.EventHandler(this.productMasterControl_Load);
+            // 
             // productMasterDataGridViewTextBoxColumn
             // 
             this.productMasterDataGridViewTextBoxColumn.DataPropertyName = "Product.ProductId";
@@ -318,6 +305,7 @@
             this.ProductName.HeaderText = "Tên sản phẩm";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
+            this.ProductName.Width = 130;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
@@ -436,11 +424,6 @@
             this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
             this.productDataGridViewTextBoxColumn.Visible = false;
             // 
-            // shortcutSearch
-            // 
-            this.shortcutSearch.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-            this.shortcutSearch.Pressed += new System.EventHandler(this.shortcutSearch_Pressed);
-            // 
             // MainStockSearchByBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -492,6 +475,7 @@
         private System.Windows.Forms.Label label4;
         private AppFrame.Controls.HotKey.SystemHotkey shortcutCtrlZ;
         private AppFrame.Controls.HotKey.SystemHotkey shortcutCtrlX;
+        private AppFrame.Controls.HotKey.SystemHotkey shortcutSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn productMasterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
@@ -511,6 +495,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exclusiveKeyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private AppFrame.Controls.HotKey.SystemHotkey shortcutSearch;
     }
 }

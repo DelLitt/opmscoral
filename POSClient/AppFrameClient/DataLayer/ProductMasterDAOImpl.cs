@@ -124,6 +124,10 @@ namespace AppFrame.DataLayer
                         AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
                     }
                 }
+                if(criteria.MaxResult > 0 )
+                {
+                    hibernateCriteria.SetMaxResults(criteria.MaxResult);
+                }
                 return hibernateCriteria.List();
             }
             finally
@@ -379,7 +383,7 @@ namespace AppFrame.DataLayer
                                        string queryString = "SELECT DISTINCT pm FROM ProductMaster pm ";
                                        if(!allDepartment)
                                        {
-                                           queryString += ", DepartmentPrice dp ";
+                                           queryString += ", DepartmentStock dp ";
                                        }
                                        queryString+=" WHERE pm.DelFlg = 0 ";
 
@@ -389,11 +393,12 @@ namespace AppFrame.DataLayer
                                        }
                                        if (!allDepartment) // if not search all so search by current department
                                        {
-                                           queryString += " AND pm.ProductMasterId = dp.DepartmentPricePK.ProductMasterId ";
-                                           queryString += " AND dp.DepartmentPricePK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
+                                           queryString += " AND pm.ProductMasterId = dp.Product.ProductMaster.ProductMasterId ";
+                                           queryString += " AND dp.DepartmentStockPK.DepartmentId = " + CurrentDepartment.Get().DepartmentId;
                                        } 
                                        
-                                       IList productMasters = session.CreateQuery(queryString).SetMaxResults(50)
+                                       IList productMasters = session.CreateQuery(queryString)
+                                           .SetMaxResults(limit)
                                            .List();
                                        return productMasters;
                                    }
