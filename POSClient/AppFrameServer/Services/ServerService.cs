@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using AppFrame.Common;
 using AppFrame.Model;
+using AppFrameServer.Utility;
 
 namespace AppFrameServer.Services
 {
@@ -13,18 +14,22 @@ namespace AppFrameServer.Services
         InstanceContextMode = InstanceContextMode.PerCall)]
     public class ServerService : IServerService
     {
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static List<IDepartmentStockOutCallback> _callbackList = new List<IDepartmentStockOutCallback>();
         private static List<IDepartmentStockOutCallback> _callbackSubStockList = new List<IDepartmentStockOutCallback>();
         public void JoinDistributingGroup(Department department)
         {
+            ServerUtility.Log(logger, department.DepartmentId + " joining the distributing group.");
             // Subscribe the guest to the beer inventory
             IDepartmentStockOutCallback guest = OperationContext.Current.GetCallbackChannel<IDepartmentStockOutCallback>();
-            if (department.DepartmentId > 999999)
+            if (department.DepartmentId > 9999)
             {
                 if (!_callbackSubStockList.Contains(guest))
                 {
+
                     _callbackSubStockList.Add(guest);
                     guest.NotifyConnected();
+                    ServerUtility.Log(logger, department.DepartmentId + " joined the substock group.");
                 }
             }
             else
@@ -32,6 +37,7 @@ namespace AppFrameServer.Services
                 if (!_callbackList.Contains(guest))
                 {
                     _callbackList.Add(guest);
+                    ServerUtility.Log(logger, department.DepartmentId + " joined the normal group.");
                     guest.NotifyConnected();
                 }    
             }
@@ -41,6 +47,7 @@ namespace AppFrameServer.Services
 
         public void RequestDepartmentStockOut(long departmentId)
         {
+            ServerUtility.Log(logger, departmentId + " request stock out.");
             _callbackSubStockList.ForEach(
                  delegate(IDepartmentStockOutCallback callback)
                  {
@@ -57,6 +64,7 @@ namespace AppFrameServer.Services
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
         {
+            ServerUtility.Log(logger, sourceDeptId + " inform stock out success to " + destDeptId);
             _callbackSubStockList.ForEach(
                  delegate(IDepartmentStockOutCallback callback)
                  {
@@ -73,6 +81,7 @@ namespace AppFrameServer.Services
 
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
+            ServerUtility.Log(logger, " Stock-out dispatching to " + department.DepartmentId );
             _callbackList.ForEach(
                 delegate(IDepartmentStockOutCallback callback)
                     {
@@ -89,6 +98,7 @@ namespace AppFrameServer.Services
 
         public void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut)
         {
+            ServerUtility.Log(logger, " Stock-in dispatching from " + department.DepartmentId);
             _callbackList.ForEach(
                delegate(IDepartmentStockOutCallback callback)
                {
@@ -105,15 +115,18 @@ namespace AppFrameServer.Services
 
         public void ExitDistributingGroup(Department department)
         {
+            ServerUtility.Log(logger, department.DepartmentId + " quitting distributing group. ");
             // Unsubscribe the guest from the beer inventory
             IDepartmentStockOutCallback guest = OperationContext.Current.GetCallbackChannel<IDepartmentStockOutCallback>();
 
             if (_callbackList.Contains(guest))
             {
+                ServerUtility.Log(logger, department.DepartmentId + " quit normal group. ");
                 _callbackList.Remove(guest);
             }
             if (_callbackSubStockList.Contains(guest))
             {
+                ServerUtility.Log(logger, department.DepartmentId + " quit substock group. ");
                 _callbackSubStockList.Remove(guest);
             }
         }

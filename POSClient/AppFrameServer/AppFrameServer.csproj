@@ -61,6 +61,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.2, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -117,6 +129,7 @@
     <Compile Include="Services\IServerService.cs" />
     <Compile Include="Services\ServerService.cs" />
     <Compile Include="Utility\Dummy.cs" />
+    <Compile Include="Utility\ServerUtility.cs" />
     <Compile Include="View\Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +184,9 @@
     <None Include="Resources\Globe Disconnect.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="server_log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Globe Connected.ico" />
   </ItemGroup>
   <ItemGroup>
