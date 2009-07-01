@@ -13,41 +13,41 @@ namespace AppFrameClient.Utility.Mapper
     {
         public DepartmentStockOut Convert(DepartmentStockIn source)
         {
-            DepartmentStockOut stockIn = new DepartmentStockOut();
-            stockIn.CreateDate = DateTime.Now;
-            stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-            stockIn.UpdateDate = DateTime.Now;
-            stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-            stockIn.OtherDepartmentId = source.DepartmentStockInPK.DepartmentId;
-            stockIn.StockOutDate = DateTime.Now;
-            stockIn.DefectStatus = new StockDefectStatus
+            DepartmentStockOut stockOut = new DepartmentStockOut();
+            stockOut.CreateDate = DateTime.Now;
+            stockOut.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+            stockOut.UpdateDate = DateTime.Now;
+            stockOut.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+            stockOut.OtherDepartmentId = source.DepartmentStockInPK.DepartmentId;
+            stockOut.StockOutDate = DateTime.Now;
+            stockOut.DefectStatus = new StockDefectStatus
                                        {
-                                           DefectStatusId = 6 // Xuat qua cua hang khac
+                                           DefectStatusId = 7 // Xuat qua cua hang khac
                                        };
-            stockIn.DepartmentStockOutPK = new DepartmentStockOutPK
+            stockOut.DepartmentStockOutPK = new DepartmentStockOutPK
                                               {
                                                  DepartmentId = CurrentDepartment.Get().DepartmentId
                                               };
             IList outDetails = new ArrayList();
-            foreach (DepartmentStockInDetail outDetail in source.DepartmentStockInDetails)
+            foreach (DepartmentStockInDetail stockInDetail in source.DepartmentStockInDetails)
             {
-                DepartmentStockOutDetail inDetail = new DepartmentStockOutDetail();
-                inDetail.CreateDate = DateTime.Now;
-                inDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                inDetail.UpdateDate = DateTime.Now;
-                inDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                inDetail.DefectStatus = new StockDefectStatus
+                DepartmentStockOutDetail outDetail = new DepartmentStockOutDetail();
+                outDetail.CreateDate = DateTime.Now;
+                outDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                outDetail.UpdateDate = DateTime.Now;
+                outDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                outDetail.DefectStatus = new StockDefectStatus
                 {
-                    DefectStatusId = 6 // Xuat qua cua hang khac
+                    DefectStatusId = 7 // Xuat qua cua hang khac
                 };
-                inDetail.Quantity = outDetail.Quantity;
-                inDetail.Product = outDetail.Product;
-                inDetail.ProductMaster = outDetail.Product.ProductMaster;
-                
-                outDetails.Add(inDetail);
+                outDetail.Quantity = stockInDetail.Quantity;
+                outDetail.GoodQuantity = stockInDetail.Quantity;
+                outDetail.Product = stockInDetail.Product;
+                outDetail.ProductMaster = stockInDetail.Product.ProductMaster;
+                outDetails.Add(outDetail);
             }
-            stockIn.DepartmentStockOutDetails = outDetails;
-            return stockIn;
+            stockOut.DepartmentStockOutDetails = outDetails;
+            return stockOut;
         }
     }
 }

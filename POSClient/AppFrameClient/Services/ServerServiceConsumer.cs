@@ -62,6 +62,7 @@ namespace AppFrameClient.Services
             DepartmentStockOutLogic.Add(stockOut);
             ClientUtility.Log(logger, " Completed and feeding back ..." );
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
             
         }
     
