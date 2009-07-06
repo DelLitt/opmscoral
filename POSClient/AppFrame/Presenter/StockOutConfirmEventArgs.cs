@@ -11,8 +11,10 @@ namespace AppFrame.Presenter
 {
     public class StockOutConfirmEventArgs : BaseEventArgs
     {
+        public string ProductMasterIdForPrice { get; set;}
         public ReportDateStockOutParam ReportDateStockOutParam { get; set; }
 
+        public DepartmentPrice DepartmentPrice { get; set; }
         public IList ResultStockOutList { get; set; }
         public IList ProductMastersInList { get; set; }
         public IList DepartmentsList { get; set; }
