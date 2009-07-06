@@ -1296,6 +1296,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\StockOutInvoice.rdlc" />
     <EmbeddedResource Include="View\AppFrameConsumerForm.resx">
       <DependentUpon>AppFrameConsumerForm.cs</DependentUpon>
     </EmbeddedResource>
