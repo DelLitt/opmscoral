@@ -247,6 +247,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 bool fail = true;
                 try
                 {
+                    // need to put a part of master data syncing.
+
                     stream = File.Open(fileName, FileMode.Open);
                     BinaryFormatter bf = new BinaryFormatter();
                     SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment)bf.Deserialize(stream);
@@ -274,29 +276,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             }
                         }
                     }
-                    /*deptStockIn = (DepartmentStockIn)bf.Deserialize(stream);
-                    Department dept;
-                    if (deptStockIn == null
-                    || deptStockIn.DepartmentStockInPK == null
-                    || (CurrentDepartment.CurrentActiveDepartment(out dept) && deptStockIn.DepartmentStockInPK.DepartmentId != CurrentDepartment.Get().DepartmentId))
-                    {
-                        fail = true;
-                    }
-                    else
-                    {
-                        var eventArgs = new DepartmentStockInEventArgs();
-                        eventArgs.DepartmentStockIn = deptStockIn;
-                        EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
-                        if (eventArgs.EventResult != null)
-                        {
-                            fail = false;
-                        }
-                        else
-                        {
-                            fail = true;
-                        }
-
-                    }*/
                 }
                 finally
                 {
@@ -308,7 +287,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
                         ClientUtility.MoveFileToSpecificDir(errorPath,fileName);
-//                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
+                        // errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }
                     else
@@ -318,7 +297,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         string origFileName = fileName.Substring(fileName.LastIndexOf("\\")+1, fileName.Length - (fileName.LastIndexOf("\\")+1));
                         string[] separateFileNames = origFileName.Split('.');
                         string updateTimeStr =
-                            separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
+                        separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
                         DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
                         ClientUtility.WriteLastSyncTime(updateTime,importPath, CurrentDepartment.Get(), ClientUtility.SyncType.SyncDown);
                         result.Status = "Thành công";

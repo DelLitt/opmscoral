@@ -23,6 +23,7 @@
     <menuitem name="mnuProcessStockDefect" role="Administrator,Supervisor" />
     <menuitem name="mnuTemporaryStockOut" role="Administrator,Supervisor" />
     <menuitem name="mnuDepartmentStockOutConfirm" role="Administrator,Supervisor" />
+    <menuitem name="mnuStockOutConfirm" role="Administrator,Supervisor" />
     <menuitem name="mnuMainReStockIn" role="Administrator,Supervisor" />
     <menuitem name="mnuFindStockByBarcode" role="Administrator,Supervisor" />    
 

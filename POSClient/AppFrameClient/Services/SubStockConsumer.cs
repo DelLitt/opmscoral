@@ -11,6 +11,7 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrame.View;
+using AppFrameClient.Common;
 using AppFrameClient.Utility;
 
 namespace AppFrameClient.Services
@@ -54,7 +55,7 @@ namespace AppFrameClient.Services
                         {
                             ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang kết nối ...";
                             ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
-                            serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                            serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = "Kết nối với dịch vụ.";
                             ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
             this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,20 +54,6 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDeptStockOut = new System.Windows.Forms.DataGridView();
-            this.cboProductMasters = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnInput = new System.Windows.Forms.Button();
-            this.lstColor = new System.Windows.Forms.ListBox();
-            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lstSize = new System.Windows.Forms.ListBox();
-            this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSumProduct = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbbStockOutType = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -86,6 +72,21 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboProductMasters = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnInput = new System.Windows.Forms.Button();
+            this.lstColor = new System.Windows.Forms.ListBox();
+            this.colorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lstSize = new System.Windows.Forms.ListBox();
+            this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSumProduct = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbbStockOutType = new System.Windows.Forms.ComboBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).BeginInit();
@@ -100,14 +101,14 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -117,7 +118,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
             // 
             // btnDelete
             // 
@@ -138,6 +139,9 @@
             this.txtBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtBarcode.Size = new System.Drawing.Size(204, 22);
             this.txtBarcode.TabIndex = 1;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
+            this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
+            this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
             // 
             // label3
             // 
@@ -274,6 +278,167 @@
             this.dgvDeptStockOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
             this.dgvDeptStockOut.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvDeptStockIn_KeyUp);
             // 
+            // SearchCreate
+            // 
+            this.SearchCreate.HeaderText = "......";
+            this.SearchCreate.Name = "SearchCreate";
+            this.SearchCreate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SearchCreate.Text = "......";
+            this.SearchCreate.ToolTipText = "Tìm mặt hàng /Tạo mặt hàng mới";
+            this.SearchCreate.UseColumnTextForButtonValue = true;
+            this.SearchCreate.Visible = false;
+            this.SearchCreate.Width = 50;
+            // 
+            // ProducType
+            // 
+            this.ProducType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ProducType.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProducType.HeaderText = "Chủng loại";
+            this.ProducType.Name = "ProducType";
+            this.ProducType.ReadOnly = true;
+            this.ProducType.Visible = false;
+            this.ProducType.Width = 80;
+            // 
+            // columnProductId
+            // 
+            this.columnProductId.DataPropertyName = "Product.ProductId";
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle2;
+            this.columnProductId.HeaderText = "Mã vạch";
+            this.columnProductId.Name = "columnProductId";
+            this.columnProductId.ReadOnly = true;
+            this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnProductId.Visible = false;
+            // 
+            // columnProductName
+            // 
+            this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.columnProductName.HeaderText = "Tên sản phẩm";
+            this.columnProductName.Name = "columnProductName";
+            this.columnProductName.ReadOnly = true;
+            this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnProductName.Width = 150;
+            // 
+            // columnColor
+            // 
+            this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            this.columnColor.DefaultCellStyle = dataGridViewCellStyle4;
+            this.columnColor.HeaderText = "Màu sắc";
+            this.columnColor.Name = "columnColor";
+            this.columnColor.ReadOnly = true;
+            this.columnColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // columnSize
+            // 
+            this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            this.columnSize.DefaultCellStyle = dataGridViewCellStyle5;
+            this.columnSize.HeaderText = "K.cỡ";
+            this.columnSize.Name = "columnSize";
+            this.columnSize.ReadOnly = true;
+            this.columnSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnSize.Width = 70;
+            // 
+            // quantity
+            // 
+            this.quantity.DataPropertyName = "Quantity";
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle6;
+            this.quantity.HeaderText = "Tồn";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.quantity.Width = 70;
+            // 
+            // Good
+            // 
+            this.Good.DataPropertyName = "GoodQuantity";
+            this.Good.HeaderText = "Tốt";
+            this.Good.Name = "Good";
+            this.Good.Width = 70;
+            // 
+            // Damage
+            // 
+            this.Damage.DataPropertyName = "ErrorQuantity";
+            this.Damage.HeaderText = "Lỗi";
+            this.Damage.Name = "Damage";
+            this.Damage.Width = 70;
+            // 
+            // error
+            // 
+            this.error.DataPropertyName = "DamageQuantity";
+            this.error.HeaderText = "Hư";
+            this.error.Name = "error";
+            this.error.Width = 70;
+            // 
+            // Lost
+            // 
+            this.Lost.DataPropertyName = "LostQuantity";
+            this.Lost.HeaderText = "Mất";
+            this.Lost.Name = "Lost";
+            this.Lost.Width = 70;
+            // 
+            // Unconfirm
+            // 
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Unconfirm.HeaderText = "KXD";
+            this.Unconfirm.Name = "Unconfirm";
+            this.Unconfirm.Width = 60;
+            // 
+            // Desc
+            // 
+            this.Desc.HeaderText = "Lý do";
+            this.Desc.Name = "Desc";
+            this.Desc.Visible = false;
+            // 
+            // delFlgDataGridViewTextBoxColumn
+            // 
+            this.delFlgDataGridViewTextBoxColumn.DataPropertyName = "DelFlg";
+            this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
+            this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
+            this.delFlgDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // Product
+            // 
+            this.Product.DataPropertyName = "Product.ProductMaster.Country.CountryName";
+            this.Product.HeaderText = "Xuất xứ";
+            this.Product.Name = "Product";
+            this.Product.ReadOnly = true;
+            this.Product.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Product.ProductMaster.Manufacturer.ManufacturerName";
+            this.Column1.HeaderText = "Sản xuất";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Product.ProductMaster.Packager.PackagerName";
+            this.Column2.HeaderText = "Đóng gói";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Product.ProductMaster.Distributor.DistributorName";
+            this.Column3.HeaderText = "Phân phối";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            // 
             // cboProductMasters
             // 
             this.cboProductMasters.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,6 +544,7 @@
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
             this.txtSumProduct.TabIndex = 111;
+            this.txtSumProduct.TextChanged += new System.EventHandler(this.txtSumProduct_TextChanged);
             // 
             // label11
             // 
@@ -392,6 +558,7 @@
             // 
             // cbbStockOutType
             // 
+            this.cbbStockOutType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbStockOutType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbStockOutType.FormattingEnabled = true;
             this.cbbStockOutType.Location = new System.Drawing.Point(82, 153);
@@ -409,166 +576,10 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // SearchCreate
+            // systemHotkey1
             // 
-            this.SearchCreate.HeaderText = "......";
-            this.SearchCreate.Name = "SearchCreate";
-            this.SearchCreate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SearchCreate.Text = "......";
-            this.SearchCreate.ToolTipText = "Tìm mặt hàng /Tạo mặt hàng mới";
-            this.SearchCreate.UseColumnTextForButtonValue = true;
-            this.SearchCreate.Visible = false;
-            this.SearchCreate.Width = 50;
-            // 
-            // ProducType
-            // 
-            this.ProducType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ProducType.DefaultCellStyle = dataGridViewCellStyle29;
-            this.ProducType.HeaderText = "Chủng loại";
-            this.ProducType.Name = "ProducType";
-            this.ProducType.ReadOnly = true;
-            this.ProducType.Visible = false;
-            this.ProducType.Width = 80;
-            // 
-            // columnProductId
-            // 
-            this.columnProductId.DataPropertyName = "Product.ProductId";
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle30;
-            this.columnProductId.HeaderText = "Mã vạch";
-            this.columnProductId.Name = "columnProductId";
-            this.columnProductId.ReadOnly = true;
-            this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnProductId.Visible = false;
-            // 
-            // columnProductName
-            // 
-            this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle31;
-            this.columnProductName.HeaderText = "Tên sản phẩm";
-            this.columnProductName.Name = "columnProductName";
-            this.columnProductName.ReadOnly = true;
-            this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnProductName.Width = 150;
-            // 
-            // columnColor
-            // 
-            this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Silver;
-            this.columnColor.DefaultCellStyle = dataGridViewCellStyle32;
-            this.columnColor.HeaderText = "Màu sắc";
-            this.columnColor.Name = "columnColor";
-            this.columnColor.ReadOnly = true;
-            this.columnColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // columnSize
-            // 
-            this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Silver;
-            this.columnSize.DefaultCellStyle = dataGridViewCellStyle33;
-            this.columnSize.HeaderText = "K.cỡ";
-            this.columnSize.Name = "columnSize";
-            this.columnSize.ReadOnly = true;
-            this.columnSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnSize.Width = 70;
-            // 
-            // quantity
-            // 
-            this.quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Silver;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle34;
-            this.quantity.HeaderText = "Tồn";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.quantity.Width = 70;
-            // 
-            // Good
-            // 
-            this.Good.DataPropertyName = "GoodQuantity";
-            this.Good.HeaderText = "Tốt";
-            this.Good.Name = "Good";
-            this.Good.Width = 70;
-            // 
-            // Damage
-            // 
-            this.Damage.DataPropertyName = "ErrorQuantity";
-            this.Damage.HeaderText = "Lỗi";
-            this.Damage.Name = "Damage";
-            this.Damage.Width = 70;
-            // 
-            // error
-            // 
-            this.error.DataPropertyName = "DamageQuantity";
-            this.error.HeaderText = "Hư";
-            this.error.Name = "error";
-            this.error.Width = 70;
-            // 
-            // Lost
-            // 
-            this.Lost.DataPropertyName = "LostQuantity";
-            this.Lost.HeaderText = "Mất";
-            this.Lost.Name = "Lost";
-            this.Lost.Width = 70;
-            // 
-            // Unconfirm
-            // 
-            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Silver;
-            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle35;
-            this.Unconfirm.HeaderText = "KXD";
-            this.Unconfirm.Name = "Unconfirm";
-            this.Unconfirm.Width = 60;
-            // 
-            // Desc
-            // 
-            this.Desc.HeaderText = "Lý do";
-            this.Desc.Name = "Desc";
-            this.Desc.Visible = false;
-            // 
-            // delFlgDataGridViewTextBoxColumn
-            // 
-            this.delFlgDataGridViewTextBoxColumn.DataPropertyName = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.HeaderText = "DelFlg";
-            this.delFlgDataGridViewTextBoxColumn.Name = "delFlgDataGridViewTextBoxColumn";
-            this.delFlgDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // Product
-            // 
-            this.Product.DataPropertyName = "Product.ProductMaster.Country.CountryName";
-            this.Product.HeaderText = "Xuất xứ";
-            this.Product.Name = "Product";
-            this.Product.ReadOnly = true;
-            this.Product.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Product.ProductMaster.Manufacturer.ManufacturerName";
-            this.Column1.HeaderText = "Sản xuất";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Product.ProductMaster.Packager.PackagerName";
-            this.Column2.HeaderText = "Đóng gói";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Product.ProductMaster.Distributor.DistributorName";
-            this.Column3.HeaderText = "Phân phối";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
             // MainStockOutExtraForm
             // 
@@ -664,5 +675,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
     }
 }

@@ -175,6 +175,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             list.Add(new StockDefectStatus { DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng"});
             list.Add(new StockDefectStatus { DefectStatusId = 5, DefectStatusName = "Xuất trả về nhà sản xuất" });
             list.Add(new StockDefectStatus { DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác ngoài hệ thống" });
+            list.Add(new StockDefectStatus { DefectStatusId = 9, DefectStatusName = "Xuất hàng mẫu" });
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
@@ -379,6 +380,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             stockOut.StockOutDate = dtpImportDate.Value;
             stockOut.StockOutDetails = stockOutDetailList;
             stockOut.DefectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
+            if(stockOut.DefectStatus.DefectStatusId == 9)
+            {
+                stockOut.NotUpdateMainStock = true;
+            }
 //            stockOut.Description = txtDexcription.Text;
             var eventArgs = new MainStockOutEventArgs();
             eventArgs.StockOut = stockOut;
@@ -468,7 +473,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             long totalAmt = 0;
             foreach (StockOutDetail outDetail in stockOutDetailList)
             {
-                totalQty += outDetail.Quantity;
+                totalQty += outDetail.GoodQuantity;
                 
             }
             txtSumProduct.Text = totalQty.ToString();
@@ -593,7 +598,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 for (int i = 0; i < dgvDeptStockOut.ColumnCount; i++)
                 {
-                    if (i != 8)
+                    if (i != 8 && i != 7 ) // for shoes
                     {
                         dgvDeptStockOut[i, rowIndex].ReadOnly = true;
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Gray;
@@ -601,6 +606,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     else
                     {
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Black;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.LightYellow;
                     }
                 }
             }
@@ -613,10 +619,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     {
                         dgvDeptStockOut[i, rowIndex].ReadOnly = true;
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Gray;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.White;
                     }
                     else
                     {
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Black;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.LightGreen;
                     }
                 }
             }
@@ -629,10 +637,29 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     {
                         dgvDeptStockOut[i, rowIndex].ReadOnly = true;
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Gray;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.White;
                     }
                     else
                     {
                         dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Black;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.LightGreen;
+                    }
+                }
+            }
+            else if (cbbStockOutType.SelectedIndex == 3) // xuất hàng mẫu
+            {
+                for (int i = 0; i < dgvDeptStockOut.ColumnCount; i++)
+                {
+                    if (i != 7)
+                    {
+                        dgvDeptStockOut[i, rowIndex].ReadOnly = true;
+                        dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Gray;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.White;
+                    }
+                    else
+                    {
+                        dgvDeptStockOut[i, rowIndex].Style.ForeColor = Color.Black;
+                        dgvDeptStockOut[i, rowIndex].Style.BackColor = Color.LightGreen;
                     }
                 }
             }
@@ -701,8 +728,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
                     if(defectStatus.DefectStatusId == 4 )
                     {
-                        // if xuattam, so we check error quantity
-                        if(detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        // if xuattam, so we check error quantity & good quantity ( for shoes )
+                        if(detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
                         {
                             continue;
                         }
@@ -932,6 +959,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             cbbStockOutType.Enabled = true;
             stockOutDetailList.Clear();
+            txtSumProduct.Text = "0";
         }
 
         private void cboProductMasters_DropDown(object sender, EventArgs e)
@@ -949,6 +977,83 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
             EventUtility.fireEvent<MainStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 12)
+            {
+                var eventArgs = new MainStockOutEventArgs();
+                eventArgs.ProductId = txtBarcode.Text;
+                EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
+                if (eventArgs.EventResult == null)
+                {
+                    MessageBox.Show("Không tìm thấy mã vạch này");
+                    return;
+                }
+                bool found = false;
+                StockOutDetail foundStockOutDetail = null;
+                foreach (StockOutDetail detail in stockOutDetailList)
+                {
+                    if (eventArgs.SelectedStockOutDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                    {
+                        found = true;
+                        foundStockOutDetail = detail;
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    //MessageBox.Show("Mã vạch đã được nhập");
+                    foundStockOutDetail.GoodQuantity += 1;
+                    return;
+                }
+                if (eventArgs.Stock != null)
+                {
+                    found = false;
+                    foreach (Stock detail in stockList)
+                    {
+                        if (eventArgs.Stock.Product.ProductId.Equals(detail.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        stockList.Add(eventArgs.Stock);
+                    }
+                }
+                // reset quantity to 1
+                eventArgs.SelectedStockOutDetail.GoodQuantity = 1;
+                stockOutDetailList.Add(eventArgs.SelectedStockOutDetail);
+                stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
+                cbbStockOutType.Enabled = false;
+                txtBarcode.Text = "";
+                LockField(stockOutDetailList.Count - 1, eventArgs.SelectedStockOutDetail);
+            
+            }
+            CalculateTotalStorePrice();
+        }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.LightGreen;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.White;
+        }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
+
+        private void txtSumProduct_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

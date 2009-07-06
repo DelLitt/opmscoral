@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvStockOutDetail = new System.Windows.Forms.DataGridView();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,11 +58,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvStockOut = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsDeptStockOut = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,16 +71,29 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownBarcode = new System.Windows.Forms.NumericUpDown();
+            this.chkPricePrint = new System.Windows.Forms.CheckBox();
+            this.chkContinuePrint = new System.Windows.Forms.CheckBox();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(449, 502);
+            this.label6.Location = new System.Drawing.Point(550, 498);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 40;
@@ -95,16 +104,17 @@
             this.dgvStockOutDetail.AllowUserToAddRows = false;
             this.dgvStockOutDetail.AllowUserToDeleteRows = false;
             this.dgvStockOutDetail.AutoGenerateColumns = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockOutDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockOutDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvStockOutDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockOutDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column9,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -118,16 +128,22 @@
             this.Column6,
             this.Column8});
             this.dgvStockOutDetail.DataSource = this.bdsDeptStockOutDetail;
-            this.dgvStockOutDetail.Location = new System.Drawing.Point(12, 314);
+            this.dgvStockOutDetail.Location = new System.Drawing.Point(12, 269);
             this.dgvStockOutDetail.Name = "dgvStockOutDetail";
             this.dgvStockOutDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockOutDetail.Size = new System.Drawing.Size(800, 178);
+            this.dgvStockOutDetail.Size = new System.Drawing.Size(800, 223);
             this.dgvStockOutDetail.TabIndex = 38;
+            this.dgvStockOutDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockOutDetail_CellContentClick);
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "StockOutDetail.Product.ProductId";
+            this.Column9.HeaderText = "Mã vạch";
+            this.Column9.Name = "Column9";
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "StockOutDetail.Product.ProductMaster.ProductType.TypeName";
-            this.dataGridViewTextBoxColumn1.Frozen = true;
             this.dataGridViewTextBoxColumn1.HeaderText = "Loại hàng";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -135,7 +151,6 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "StockOutDetail.Product.ProductMaster.ProductName";
-            this.dataGridViewTextBoxColumn2.Frozen = true;
             this.dataGridViewTextBoxColumn2.HeaderText = "Tên hàng";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -144,7 +159,6 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "StockOutDetail.Product.ProductMaster.ProductColor.ColorName";
-            this.dataGridViewTextBoxColumn3.Frozen = true;
             this.dataGridViewTextBoxColumn3.HeaderText = "Màu sắc";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -152,7 +166,6 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "StockOutDetail.Product.ProductMaster.ProductSize.SizeName";
-            this.dataGridViewTextBoxColumn4.Frozen = true;
             this.dataGridViewTextBoxColumn4.HeaderText = "Kích cỡ";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -161,9 +174,9 @@
             // Quantity
             // 
             this.Quantity.DataPropertyName = "TotalCount";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "##,##0";
-            this.Quantity.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Format = "##,##0";
+            this.Quantity.DefaultCellStyle = dataGridViewCellStyle16;
             this.Quantity.HeaderText = "Tổng cộng";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
@@ -172,58 +185,63 @@
             // columnGood
             // 
             this.columnGood.DataPropertyName = "GoodCount";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Format = "##,##0";
-            this.columnGood.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Format = "##,##0";
+            this.columnGood.DefaultCellStyle = dataGridViewCellStyle17;
             this.columnGood.HeaderText = "Tốt";
             this.columnGood.Name = "columnGood";
+            this.columnGood.Visible = false;
             this.columnGood.Width = 80;
             // 
             // columnError
             // 
             this.columnError.DataPropertyName = "ErrorCount";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Format = "##,##0";
-            this.columnError.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Format = "##,##0";
+            this.columnError.DefaultCellStyle = dataGridViewCellStyle18;
             this.columnError.HeaderText = "Lỗi";
             this.columnError.Name = "columnError";
+            this.columnError.Visible = false;
             this.columnError.Width = 60;
             // 
             // columnDamage
             // 
             this.columnDamage.DataPropertyName = "DamageCount";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Format = "##,##0";
-            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Format = "##,##0";
+            this.columnDamage.DefaultCellStyle = dataGridViewCellStyle19;
             this.columnDamage.HeaderText = "Hư";
             this.columnDamage.Name = "columnDamage";
+            this.columnDamage.Visible = false;
             this.columnDamage.Width = 65;
             // 
             // columnLost
             // 
             this.columnLost.DataPropertyName = "LostCount";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Format = "##,##0";
-            this.columnLost.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Format = "##,##0";
+            this.columnLost.DefaultCellStyle = dataGridViewCellStyle20;
             this.columnLost.HeaderText = "Mất";
             this.columnLost.Name = "columnLost";
             this.columnLost.ReadOnly = true;
+            this.columnLost.Visible = false;
             this.columnLost.Width = 60;
             // 
             // Column7
             // 
             this.Column7.DataPropertyName = "UnconfirmCount";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Format = "##,##0";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.Format = "##,##0";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle21;
             this.Column7.HeaderText = "K. xác định";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
+            this.Column7.Visible = false;
             this.Column7.Width = 90;
             // 
             // Column6
@@ -231,6 +249,7 @@
             this.Column6.HeaderText = "Số lô";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
             // 
             // Column8
             // 
@@ -238,6 +257,7 @@
             this.Column8.HeaderText = "Lý do";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
             this.Column8.Width = 200;
             // 
             // dtpTo
@@ -256,7 +276,7 @@
             // 
             // txtGrandTotalCount
             // 
-            this.txtGrandTotalCount.Location = new System.Drawing.Point(523, 498);
+            this.txtGrandTotalCount.Location = new System.Drawing.Point(618, 495);
             this.txtGrandTotalCount.Name = "txtGrandTotalCount";
             this.txtGrandTotalCount.Size = new System.Drawing.Size(94, 20);
             this.txtGrandTotalCount.TabIndex = 39;
@@ -264,11 +284,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 297);
+            this.label5.Location = new System.Drawing.Point(9, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 35;
             this.label5.Text = "Chi tiết";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -292,43 +313,12 @@
             this.Column4,
             this.Column5});
             this.dgvStockOut.DataSource = this.bdsDeptStockOut;
-            this.dgvStockOut.Location = new System.Drawing.Point(12, 109);
+            this.dgvStockOut.Location = new System.Drawing.Point(38, 109);
             this.dgvStockOut.Name = "dgvStockOut";
             this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockOut.Size = new System.Drawing.Size(744, 167);
+            this.dgvStockOut.Size = new System.Drawing.Size(744, 141);
             this.dgvStockOut.TabIndex = 29;
             this.dgvStockOut.SelectionChanged += new System.EventHandler(this.dgvStockOut_SelectionChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Số";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "DepartmentName";
-            this.Column2.HeaderText = "Cửa hàng";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "CreateDate";
-            this.Column3.HeaderText = "Ngày xuất";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "TotalQuantity";
-            this.Column4.HeaderText = "Số lượng";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "DepartmentStockOut.DefectStatus.DefectStatusName";
-            this.Column5.HeaderText = "Lý do";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 200;
             // 
             // btnSearch
             // 
@@ -405,7 +395,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(737, 528);
+            this.btnClose.Location = new System.Drawing.Point(737, 529);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 32;
@@ -415,7 +405,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(637, 529);
+            this.btnCancel.Location = new System.Drawing.Point(618, 529);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 31;
@@ -424,7 +414,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(415, 529);
+            this.btnSave.Location = new System.Drawing.Point(396, 529);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 30;
@@ -438,13 +428,13 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(296, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 29);
+            this.label1.Size = new System.Drawing.Size(358, 29);
             this.label1.TabIndex = 22;
-            this.label1.Text = "XÁC NHẬN XUẤT KHO VỀ CỬA HÀNG";
+            this.label1.Text = "DANH SÁCH PHIẾU XUẤT KHO";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(496, 528);
+            this.button1.Location = new System.Drawing.Point(477, 528);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 23);
             this.button1.TabIndex = 41;
@@ -452,11 +442,106 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 500);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Số lượng";
+            // 
+            // numericUpDownBarcode
+            // 
+            this.numericUpDownBarcode.Location = new System.Drawing.Point(76, 498);
+            this.numericUpDownBarcode.Name = "numericUpDownBarcode";
+            this.numericUpDownBarcode.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDownBarcode.TabIndex = 45;
+            this.numericUpDownBarcode.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // chkPricePrint
+            // 
+            this.chkPricePrint.AutoSize = true;
+            this.chkPricePrint.Location = new System.Drawing.Point(325, 501);
+            this.chkPricePrint.Name = "chkPricePrint";
+            this.chkPricePrint.Size = new System.Drawing.Size(52, 17);
+            this.chkPricePrint.TabIndex = 44;
+            this.chkPricePrint.Text = "In giá";
+            this.chkPricePrint.UseVisualStyleBackColor = true;
+            // 
+            // chkContinuePrint
+            // 
+            this.chkContinuePrint.AutoSize = true;
+            this.chkContinuePrint.Location = new System.Drawing.Point(234, 501);
+            this.chkContinuePrint.Name = "chkContinuePrint";
+            this.chkContinuePrint.Size = new System.Drawing.Size(74, 17);
+            this.chkContinuePrint.TabIndex = 43;
+            this.chkContinuePrint.Text = "In liên tiếp";
+            this.chkContinuePrint.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(141, 498);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(87, 23);
+            this.btnPrint.TabIndex = 42;
+            this.btnPrint.Text = "In mã vạch";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // barcodePrintDocument
+            // 
+            this.barcodePrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.barcodePrintDocument_PrintPage);
+            // 
+            // barcodePrintDialog
+            // 
+            this.barcodePrintDialog.UseEXDialog = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Số";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "DepartmentName";
+            this.Column2.HeaderText = "Nơi xuất";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "CreateDate";
+            this.Column3.HeaderText = "Ngày xuất";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "TotalQuantity";
+            this.Column4.HeaderText = "Số lượng";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "StockOut.DefectStatus.DefectStatusName";
+            this.Column5.HeaderText = "Lý do";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 200;
+            // 
             // StockOutConfirmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 562);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.numericUpDownBarcode);
+            this.Controls.Add(this.chkPricePrint);
+            this.Controls.Add(this.chkContinuePrint);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvStockOutDetail);
@@ -484,6 +569,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOutDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,11 +599,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource bdsDeptStockOutDetail;
         private System.Windows.Forms.BindingSource bdsDeptStockOut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -530,5 +612,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDownBarcode;
+        private System.Windows.Forms.CheckBox chkPricePrint;
+        private System.Windows.Forms.CheckBox chkContinuePrint;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Drawing.Printing.PrintDocument barcodePrintDocument;
+        private System.Windows.Forms.PrintDialog barcodePrintDialog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

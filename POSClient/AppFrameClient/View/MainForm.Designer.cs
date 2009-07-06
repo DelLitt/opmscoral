@@ -82,6 +82,7 @@
             this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.approveStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProcessStockDefect = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFindStockByBarcode = new System.Windows.Forms.ToolStripMenuItem();
@@ -566,6 +567,7 @@
             this.mnuImportGoods,
             this.approveStockToolStripMenuItem,
             this.mnuDepartmentStockOutConfirm,
+            this.mnuStockOutConfirm,
             this.mnuInventoryChecking,
             this.mnuProcessStockDefect,
             this.mnuFindStockByBarcode,
@@ -615,6 +617,13 @@
             this.mnuDepartmentStockOutConfirm.Size = new System.Drawing.Size(225, 22);
             this.mnuDepartmentStockOutConfirm.Text = "Xác nhận xuất kho từ cửa hàng";
             this.mnuDepartmentStockOutConfirm.Click += new System.EventHandler(this.mnuDepartmentStockOutConfirm_Click);
+            // 
+            // mnuStockOutConfirm
+            // 
+            this.mnuStockOutConfirm.Name = "mnuStockOutConfirm";
+            this.mnuStockOutConfirm.Size = new System.Drawing.Size(225, 22);
+            this.mnuStockOutConfirm.Text = "Danh sách phiếu xuất kho";
+            this.mnuStockOutConfirm.Click += new System.EventHandler(this.mnuStockOutConfirm_Click);
             // 
             // mnuInventoryChecking
             // 
@@ -1604,6 +1613,7 @@
         private AppFrame.Controls.HotKey.SystemHotkey F5Shortcut;
         private AppFrame.Controls.HotKey.SystemHotkey F4Shortcut;
         private AppFrame.Controls.HotKey.SystemHotkey F11Shortcut;
+        private System.Windows.Forms.ToolStripMenuItem mnuStockOutConfirm;
 
     }
 }

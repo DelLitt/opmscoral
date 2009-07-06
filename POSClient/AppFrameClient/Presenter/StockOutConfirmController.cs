@@ -28,6 +28,11 @@ namespace AppFrameClient.Presenter
             }
         }
 
+        void mainStockOutReportView_GetPriceEvent(object sender, StockOutConfirmEventArgs e)
+        {
+            
+        }
+
         void mainStockOutReportView_LoadStockOutsEvent(object sender, StockOutConfirmEventArgs e)
         {
             DateTime startTime = e.ReportDateStockOutParam.FromDate;

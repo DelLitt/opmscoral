@@ -1157,6 +1157,14 @@ namespace AppFrame.View
         {
 
         }
+
+        private void mnuStockOutConfirm_Click(object sender, EventArgs e)
+        {
+            StockOutConfirmForm form =
+                GlobalUtility.GetOnlyChildFormObject<StockOutConfirmForm>(this,FormConstants.STOCK_OUT_CONFIRM_FORM);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
         
     }
 }
