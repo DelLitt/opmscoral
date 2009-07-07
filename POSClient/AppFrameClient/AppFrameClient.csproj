@@ -740,7 +740,6 @@
     <None Include="Properties\DataSources\AppFrame.Collection.StockInDetailCollection1.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.StockOutDetailCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.DepartmentStock.datasource" />
-    <None Include="Properties\DataSources\AppFrame.Model.DepartmentStockDefect.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.LoginModel.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Packager.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.Product.datasource" />
@@ -1296,6 +1295,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Config\Services.xml">
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\DepartmentStockOutInvoice.rdlc" />
     <EmbeddedResource Include="Report\StockOutInvoice.rdlc" />
     <EmbeddedResource Include="View\AppFrameConsumerForm.resx">
       <DependentUpon>AppFrameConsumerForm.cs</DependentUpon>
@@ -1641,6 +1641,11 @@
     <Content Include="Resources\User-Male.png" />
     <Content Include="Resources\User.png" />
     <Content Include="Resources\white folder documents.png" />
+    <None Include="Properties\DataSources\AppFrame.Model.StockOut.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutDetailView.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutView.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockOutDetailView.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockOutView.datasource" />
     <None Include="Resources\AChayLogo.PNG" />
     <None Include="MasterDB.xsc">
       <DependentUpon>MasterDB.xsd</DependentUpon>
@@ -1653,7 +1658,6 @@
     <None Include="MasterDB.xss">
       <DependentUpon>MasterDB.xsd</DependentUpon>
     </None>
-    <None Include="Properties\DataSources\AppFrame.Collection.DepartmentStockTempCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Collection.EmployeeInfoCollection.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.EmployeeInfo1.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockTempViewCollection.datasource" />
