@@ -25,6 +25,7 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockInEventArgs> DispatchDepartmentStockIn;
         
         #endregion
-        
+
+        event EventHandler<DepartmentStockInEventArgs> FindByStockInIdEvent;
     }
 }

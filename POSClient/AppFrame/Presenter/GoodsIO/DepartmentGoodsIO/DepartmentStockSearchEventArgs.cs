@@ -10,6 +10,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
 {
     public class DepartmentStockInEventArgs : BaseEventArgs
     {
+        public string SelectedStockInId { get; set;}
+        public IList SelectedStockOutDetails { get; set; }
         public DepartmentStock DepartmentStock { get; set;}
 
         public IList DepartmentsList
