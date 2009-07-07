@@ -1008,6 +1008,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> FindBarcodeEvent;
         public event EventHandler<DepartmentStockInEventArgs> SaveStockInBackEvent;
         public event EventHandler<DepartmentStockInEventArgs> DispatchDepartmentStockIn;
+        public event EventHandler<DepartmentStockInEventArgs> FindByStockInIdEvent;
 
         #endregion
 
@@ -1048,6 +1049,71 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     cell.Value = Clipboard.GetText();
                 }
             }
+        }
+
+        private void dgvStockIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSearchStockIn_Click(object sender, EventArgs e)
+        {
+            DateTime fromDate = DateUtility.ZeroTime(dtpFrom.Value);
+            DateTime toDate = DateUtility.MaxTime(dtpTo.Value);
+            this.stock_inTableAdapter.Fill(masterDB.stock_in, fromDate, toDate);
+            bdsStockIn.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            if(dgvStockIn.CurrentRow!= null)
+            {
+                string stockInId = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
+                DepartmentStockInEventArgs ea = new DepartmentStockInEventArgs();
+                ea.SelectedStockInId = stockInId;
+                EventUtility.fireEvent(FindByStockInIdEvent,this,ea);
+                IList list = ea.SelectedStockOutDetails;
+
+                foreach (DepartmentStockInDetail stockInDetail in list)
+                {
+                    if(!IsInList(deptSIDetailList,stockInDetail))
+                    {
+                        deptSIDetailList.Add(stockInDetail);
+                    }
+                }
+            }
+            bdsStockIn.ResetBindings(false);
+            dgvDeptStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            panelStockIns.Visible = false;
+            //stockinBindingSource.Clear();
+        }
+
+        private bool IsInList(DepartmentStockInDetailCollection collection, DepartmentStockInDetail detail)
+        {
+            foreach (DepartmentStockInDetail inDetail in collection)
+            {
+                if(detail.Product.ProductId.Equals(inDetail.Product.ProductId))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelStockIns.Visible = true;
+            stock_inTableAdapter.Fill(masterDB.stock_in, DateTime.MinValue, DateTime.MinValue);
+            //stockinBindingSource.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panelStockIns.Visible = false;
+            //stockinBindingSource.Clear();
         }
     }
 }

@@ -53,8 +53,32 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadDepartemntStockInForExportEvent);
                         departmentStockInExtraView.UpdateDepartemntStockInForExportEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_UpdateDepartemntStockInForExportEvent);
+                        departmentStockInExtraView.FindByStockInIdEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindByStockInIdEvent);
                     }
                 }
+
+        public  void departmentStockInExtraView_FindByStockInIdEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("StockInDetailPK.StockInId", e.SelectedStockInId);
+            IList list = StockInDetailLogic.FindAll(objectCriteria);
+            IList stockOutList = new ArrayList();
+            foreach (StockInDetail inDetail in list)
+            {
+                DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
+                deptDetail.CreateDate = DateTime.Now;
+                deptDetail.UpdateDate = DateTime.Now;
+                deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                deptDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
+                deptDetail.Product = inDetail.Product;
+                deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                deptDetail.Quantity = inDetail.Quantity;
+                stockOutList.Add(deptDetail);
+            }
+            GetRemainStockNumber(stockOutList);
+            e.SelectedStockOutDetails = stockOutList;
+        }
 
         public void _departmentStockInView_UpdateDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
         {
@@ -481,6 +505,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         #endregion
 
                 #region IDepartmentStockInExtraController Members
+                public IStockInDetailLogic StockInDetailLogic
+                {
+                    get;
+                    set;
+                }
                 public IDepartmentLogic DepartmentLogic
                 {
                     get;
