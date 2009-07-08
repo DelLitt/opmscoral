@@ -8,6 +8,7 @@ namespace AppFrame.Presenter
     {
         private string status;
         private LoginModel loginModel;
+        public string ConfirmAction { get; set; }
         public string Status
         {
             get { return status; }
