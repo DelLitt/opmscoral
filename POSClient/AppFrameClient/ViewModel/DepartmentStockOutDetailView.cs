@@ -20,6 +20,7 @@ namespace AppFrameClient.ViewModel
         public virtual string ProductName { get; set; }
         public virtual string ColorName { get; set; }
         public virtual string SizeName { get; set; }
-        public virtual string Quantity { get; set; }
+        public virtual long Quantity { get; set; }
+        public virtual long Price { get; set; }
     }
 }

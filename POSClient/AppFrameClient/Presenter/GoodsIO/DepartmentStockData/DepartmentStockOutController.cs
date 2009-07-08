@@ -57,8 +57,27 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     _departmentStockOutView_SyncToMainEvent);
                 mainStockInView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_LoadAllDepartments);
                 mainStockInView.DispatchDepartmentStockOut += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_DispatchDepartmentStockOut);
+                mainStockInView.PrepareDepartmentStockOutForPrintEvent += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_PrepareDepartmentStockOutForPrintEvent);
 
             }
+        }
+
+        void mainStockInView_PrepareDepartmentStockOutForPrintEvent(object sender, DepartmentStockOutEventArgs e)
+        {
+            Department destDept = DepartmentLogic.FindById(e.DepartmentStockOut.OtherDepartmentId);
+            if (destDept != null)
+            {
+                foreach (DepartmentStockOutDetail detail in e.DepartmentStockOut.DepartmentStockOutDetails)
+                {
+                    string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                    DepartmentPricePK pricePk = new DepartmentPricePK
+                    {
+                        DepartmentId = 0,
+                        ProductMasterId = prdMasterId
+                    };
+                    detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
+                }
+            }            
         }
 
         void mainStockInView_DispatchDepartmentStockOut(object sender, DepartmentStockOutEventArgs e)

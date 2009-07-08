@@ -11,11 +11,8 @@
   </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
   <rd:DrawGrid>true</rd:DrawGrid>
-  <InteractiveWidth>8.5in</InteractiveWidth>
+  <InteractiveWidth>8.2in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
   <rd:ReportID>9b01d22b-59d6-49ce-acdc-ae53ba6daa42</rd:ReportID>
   <DataSets>
     <DataSet Name="AppFrameClient_ViewModel_DepartmentStockOutView">
@@ -39,6 +36,14 @@
         <Field Name="TotalQuantity">
           <DataField>TotalQuantity</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmployeeName">
+          <DataField>EmployeeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <Query>
@@ -96,11 +101,15 @@
         </Field>
         <Field Name="Quantity">
           <DataField>Quantity</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="SizeName">
           <DataField>SizeName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>
       <Query>
@@ -118,6 +127,91 @@
   <Width>6.92692in</Width>
   <Body>
     <ReportItems>
+      <List Name="list1">
+        <ZIndex>9</ZIndex>
+        <Left>0.25in</Left>
+        <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutView</DataSetName>
+        <ReportItems>
+          <Textbox Name="EmployeeName">
+            <Width>2.375in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.25in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!EmployeeName.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox13">
+            <rd:DefaultName>textbox13</rd:DefaultName>
+            <Width>1.25in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.125in</Left>
+            <Height>0.25in</Height>
+            <Value>TÊN KHÁCH:</Value>
+          </Textbox>
+          <Textbox Name="textbox15">
+            <rd:DefaultName>textbox15</rd:DefaultName>
+            <Width>0.75in</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.125in</Left>
+            <Height>0.25in</Height>
+            <Value>NGÀY:</Value>
+          </Textbox>
+          <Textbox Name="textbox16">
+            <rd:DefaultName>textbox16</rd:DefaultName>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>4.875in</Left>
+            <Height>0.25in</Height>
+            <Value>=Today().ToString("dd - MM - yyyy")</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>1.625in</Top>
+        <Width>6.25in</Width>
+        <Height>0.375in</Height>
+      </List>
+      <Textbox Name="textbox9">
+        <rd:DefaultName>textbox9</rd:DefaultName>
+        <Top>3.125in</Top>
+        <Width>6.25in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>8</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.25in</Left>
+        <Height>0.25in</Height>
+        <Value>Cửa hàng chỉ nhận đổi hàng lỗi trong vòng 1 tuần. Không bao đổi, trả mẫu quí khách đã chọn. Chân thành cám ơn.</Value>
+      </Textbox>
       <Textbox Name="textbox7">
         <Top>1.25in</Top>
         <Width>5.875in</Width>
@@ -129,7 +223,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>11</ZIndex>
+        <ZIndex>7</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>0.25in</Left>
         <Height>0.25in</Height>
@@ -146,7 +240,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>10</ZIndex>
+        <ZIndex>6</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>0.25in</Left>
         <Height>0.25in</Height>
@@ -164,7 +258,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>9</ZIndex>
+        <ZIndex>5</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>0.25in</Left>
         <Height>0.25in</Height>
@@ -176,69 +270,7 @@
         <Width>5.875in</Width>
         <Style>
           <FontWeight>600</FontWeight>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>8</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>0.25in</Left>
-        <Height>0.25in</Height>
-        <Value>MUA BÁN SỈ &amp; LẺ CÁC MẶT HÀNG GIẦY DÉP, GUỐC, TÚI XÁCH, PHỤ KIỆN THỜI TRANG</Value>
-      </Textbox>
-      <Textbox Name="textbox16">
-        <rd:DefaultName>textbox16</rd:DefaultName>
-        <Top>1.625in</Top>
-        <Width>1.375in</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>7</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>5in</Left>
-        <Height>0.25in</Height>
-        <Value>=Today().ToString("dd - MM - yyyy")</Value>
-      </Textbox>
-      <Textbox Name="textbox15">
-        <rd:DefaultName>textbox15</rd:DefaultName>
-        <Top>1.625in</Top>
-        <Width>0.75in</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>6</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>4.25in</Left>
-        <Height>0.25in</Height>
-        <Value>NGÀY:</Value>
-      </Textbox>
-      <Textbox Name="EmployeeName">
-        <Top>1.625in</Top>
-        <Width>2.375in</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>5</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>1.5in</Left>
-        <Height>0.25in</Height>
-        <Value />
-      </Textbox>
-      <Textbox Name="textbox13">
-        <rd:DefaultName>textbox13</rd:DefaultName>
-        <Top>1.625in</Top>
-        <Width>1.25in</Width>
-        <Style>
+          <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -248,7 +280,7 @@
         <CanGrow>true</CanGrow>
         <Left>0.25in</Left>
         <Height>0.25in</Height>
-        <Value>TÊN KHÁCH:</Value>
+        <Value>MUA BÁN SỈ &amp; LẺ CÁC MẶT HÀNG GIẦY DÉP, GUỐC, TÚI XÁCH, PHỤ KIỆN THỜI TRANG</Value>
       </Textbox>
       <Textbox Name="StockOutId">
         <Top>0.125in</Top>
@@ -303,7 +335,7 @@
       <Table Name="table1">
         <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutDetailView</DataSetName>
         <Top>2.25in</Top>
-        <Width>6.25in</Width>
+        <Width>6.25001in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -312,13 +344,14 @@
                   <ReportItems>
                     <Textbox Name="textbox5">
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=RowNumber("AppFrameClient_ViewModel_DepartmentStockOutDetailView")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -326,6 +359,7 @@
                   <ReportItems>
                     <Textbox Name="textbox12">
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -340,6 +374,7 @@
                   <ReportItems>
                     <Textbox Name="textbox14">
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -354,6 +389,7 @@
                   <ReportItems>
                     <Textbox Name="textbox18">
                       <Style>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -366,16 +402,18 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox1">
-                      <rd:DefaultName>textbox1</rd:DefaultName>
+                    <Textbox Name="Price">
+                      <rd:DefaultName>Price</rd:DefaultName>
                       <Style>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!Price.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -383,13 +421,15 @@
                   <ReportItems>
                     <Textbox Name="textbox32">
                       <Style>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!Price.Value*Fields!Quantity.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -605,7 +645,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Sum(Fields!Price.Value*Fields!Quantity.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -617,8 +657,7 @@
         <Left>0.25in</Left>
       </Table>
     </ReportItems>
-    <Height>3.5in</Height>
+    <Height>3.625in</Height>
   </Body>
   <Language>en-US</Language>
-  <TopMargin>1in</TopMargin>
 </Report>

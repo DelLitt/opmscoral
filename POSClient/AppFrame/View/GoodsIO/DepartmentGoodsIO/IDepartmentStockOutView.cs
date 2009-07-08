@@ -22,5 +22,6 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
         event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
         event EventHandler<DepartmentStockOutEventArgs> DispatchDepartmentStockOut;
+        event EventHandler<DepartmentStockOutEventArgs> PrepareDepartmentStockOutForPrintEvent;
     }
 }

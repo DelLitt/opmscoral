@@ -10,7 +10,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameClient", "AppFrameC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameServer", "AppFrameServer\AppFrameServer.csproj", "{C3773063-F4BA-4DCC-99C6-6C1F66397173}"
 	ProjectSection(ProjectDependencies) = postProject
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B} = {A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}
 		{73A362AB-99CF-4AA1-8278-01CAED2516F0} = {73A362AB-99CF-4AA1-8278-01CAED2516F0}
+		{53EA70B6-957C-4D8A-BD43-1450C7433920} = {53EA70B6-957C-4D8A-BD43-1450C7433920}
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AppFrameWeb", "AppFrameWeb\", "{C68BC794-1835-4AF1-BF4A-0F96312222EA}"
@@ -35,7 +37,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AppFrameWeb", "AppFrameWeb\
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5604"
+		VWDPort = "25327"
 		VWDDynamicPort = "true"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
@@ -44,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{15758B2B-06F
 	ProjectSection(SolutionItems) = preProject
 		dbPassword.txt = dbPassword.txt
 		SQL\DBScript.sql = SQL\DBScript.sql
+		SQL\update090610.sql = SQL\update090610.sql
+		SQL\update_20090608.sql = SQL\update_20090608.sql
 	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "POSClientSetup", "Setup1\Setup1.vdproj", "{49D02E2C-8CA5-4634-B268-DFD8C952F1EE}"
@@ -52,6 +56,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Libraries\Libraries.rar = Libraries\Libraries.rar
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportPOSData", "ImportPOSData\ImportPOSData.csproj", "{53EA70B6-957C-4D8A-BD43-1450C7433920}"
+	ProjectSection(ProjectDependencies) = postProject
+		{73A362AB-99CF-4AA1-8278-01CAED2516F0} = {73A362AB-99CF-4AA1-8278-01CAED2516F0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSReports", "POSReports\POSReports.csproj", "{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientManagementTool", "ClientManagementTool\ClientManagementTool.csproj", "{224C31A0-A5A8-4F6C-8373-6A8F6EC612FD}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -81,6 +94,18 @@ Global
 		{C68BC794-1835-4AF1-BF4A-0F96312222EA}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{49D02E2C-8CA5-4634-B268-DFD8C952F1EE}.Debug|Any CPU.ActiveCfg = Debug
 		{49D02E2C-8CA5-4634-B268-DFD8C952F1EE}.Release|Any CPU.ActiveCfg = Release
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224C31A0-A5A8-4F6C-8373-6A8F6EC612FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224C31A0-A5A8-4F6C-8373-6A8F6EC612FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224C31A0-A5A8-4F6C-8373-6A8F6EC612FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224C31A0-A5A8-4F6C-8373-6A8F6EC612FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

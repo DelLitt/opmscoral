@@ -651,12 +651,6 @@ namespace AppFrameClient.View.GoodsSale
 
         void printDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            /*e.PageSettings.PrinterResolution.X = 180;
-            e.PageSettings.PrinterResolution.Y = 180;
-            e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.X =
-            180;
-            e.PageSettings.PrinterSettings.DefaultPageSettings.PrinterResolution.Y =
-            180;*/
             
             string deviceInfo =
           "<DeviceInfo>" +

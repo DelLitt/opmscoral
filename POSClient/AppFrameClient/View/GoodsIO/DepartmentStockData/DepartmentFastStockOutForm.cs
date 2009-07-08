@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
@@ -15,6 +18,9 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
+using AppFrameClient.Utility.Mapper;
+using AppFrameClient.ViewModel;
+using Microsoft.Reporting.WinForms;
 
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -332,6 +338,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             DepartmentStockOutEventArgs eventArgs = new DepartmentStockOutEventArgs();
             EventUtility.fireEvent(LoadAllDepartments,this,eventArgs);
             string directDept = "";
+            string marketDept = "";
             if(eventArgs.DepartmentsList!= null && eventArgs.DepartmentsList.Count > 0)
             {
                 BindingSource bdsDepartment = new BindingSource();
@@ -358,6 +365,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             if(ClientSetting.MarketDept.Equals(departmentId))
                             {
                                 bdsDepartment.Add(department);
+                                marketDept = department.DepartmentName;
                             }
                         }
 
@@ -370,7 +378,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
-            if(string.IsNullOrEmpty(directDept))
+            if(!string.IsNullOrEmpty(directDept))
             {
                 rdoFastStockOut.Text = " Xuất đến " + directDept;
             }
@@ -508,6 +516,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> SyncToMainEvent;
         public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
         public event EventHandler<DepartmentStockOutEventArgs> DispatchDepartmentStockOut;
+        public event EventHandler<DepartmentStockOutEventArgs> PrepareDepartmentStockOutForPrintEvent;
 
         #endregion
 
@@ -614,12 +623,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
             }
+            if(rdoStockOut.Checked)
+            {
+                EventUtility.fireEvent(PrepareDepartmentStockOutForPrintEvent, this, eventArgs);
+                // do printing
+                DoPrinting(eventArgs.DepartmentStockOut);
+            }
             if (eventArgs.EventResult != null)
             {
 
-                label2.Text= "Lưu thành công";
+                lblInformation.Text= "Lưu thành công";
                 if (isNeedClearData)
                 {
+                    lblInformation.ForeColor = Color.Blue;
                     deptSO = new DepartmentStockOut();
                     deptSODetailList.Clear();
 //                    txtDexcription.Text = "";
@@ -635,6 +651,100 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 //MessageBox.Show("Có lỗi khi lưu");
+                lblInformation.ForeColor = Color.Red;
+                lblInformation.Text = "Lưu thất bại ...";
+            }
+        }
+        IList<Stream> streamList = new List<Stream>();
+        private LocalReport DeptStockOutInvoice;
+        private void DoPrinting(DepartmentStockOut deptStockOut)
+        {
+            // push data to local report
+            DeptStockOutInvoice = new LocalReport();
+            DeptStockOutInvoice.ReportEmbeddedResource = "AppFrameClient.Report.DepartmentStockOutInvoice.rdlc";
+
+            ReportDataSource DeptStockOutRDS = new ReportDataSource("AppFrameClient_ViewModel_DepartmentStockOutView");
+            BindingSource bdsHeader = new BindingSource();
+            DepartmentStockOutView deptSOView = new DepartmentStockOutViewMapper().Convert(deptStockOut);
+            deptSOView.EmployeeName = txtCustomerName.Text.Trim();
+            bdsHeader.DataSource = deptSOView;
+            DeptStockOutRDS.Value = bdsHeader;
+            DeptStockOutInvoice.DataSources.Add(DeptStockOutRDS);
+
+
+            ReportDataSource DeptStockOutDetailRDS = new ReportDataSource("AppFrameClient_ViewModel_DepartmentStockOutDetailView");
+            BindingSource bdsDetails = new BindingSource();
+            DepartmentStockOutViewDetailMapper detailMapper = new DepartmentStockOutViewDetailMapper();
+            foreach (DepartmentStockOutDetail outDetail in deptStockOut.DepartmentStockOutDetails)
+            {
+                DepartmentStockOutDetailView detailView = detailMapper.Convert(outDetail);
+                detailView.Price = outDetail.DepartmentPrice.Price;
+                bdsDetails.Add(detailView);
+            }
+            DeptStockOutDetailRDS.Value = bdsDetails;
+            DeptStockOutInvoice.DataSources.Add(DeptStockOutDetailRDS);
+
+            // do printing
+            streamList.Clear();
+            //const string printerName = "Epson TM-T88IV";
+            string printerName = ClientSetting.PrinterName;
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = printerName;
+
+            if (!printDoc.PrinterSettings.IsValid)
+            {
+                MessageBox.Show(String.Format("Can't find printer \"{0}\".", printerName));
+                return;
+            }
+            PageSettings pageSettings = printDoc.PrinterSettings.DefaultPageSettings;
+            pageSettings.PrinterResolution.X = 180;
+            pageSettings.PrinterResolution.Y = 180;
+
+            printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
+
+            printDoc.Print(); 
+        }
+        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding,
+                              string mimeType, bool willSeek)
+        {
+            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
+            //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create,FileAccess.ReadWrite);
+            Stream stream = new MemoryStream(new byte[1024 * 64]);
+            //Stream test1= new MemoryStream()
+            streamList.Add(stream);
+            return stream;
+        }
+        void printDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string deviceInfo =
+          "<DeviceInfo>" +
+          "  <OutputFormat>EMF</OutputFormat>" +
+          "  <PageWidth>8.2in</PageWidth>" +
+          "  <PageHeight>5in</PageHeight>" +
+          "  <DpiX>180</DpiX>" +
+          "  <DpiY>180</DpiY>" +
+          "  <MarginTop>0.0in</MarginTop>" +
+          "  <MarginLeft>0.3in</MarginLeft>" +
+          "  <MarginRight>0.0in</MarginRight>" +
+          "  <MarginBottom>0.3in</MarginBottom>" +
+          "</DeviceInfo>";
+            Warning[] warnings;
+            if (DeptStockOutInvoice == null)
+            {
+                return;
+            }
+            /*this.reportPurchaseOrder.LocalReport.Refresh();
+            this.reportPurchaseOrder.LocalReport.Render("Image", deviceInfo, CreateStream, out warnings);*/
+            DeptStockOutInvoice.Render("Image", deviceInfo, CreateStream, out warnings);
+            if (streamList.Count > 0)
+            {
+                foreach (Stream stream in streamList)
+                {
+                    stream.Position = 0;
+                }
+                Metafile pageImage = new Metafile(streamList[0]);
+
+                e.Graphics.DrawImage(pageImage, 0, 0);
             }
         }
 
@@ -1202,6 +1312,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void txtBarcode_TextChanged(object sender, EventArgs e)
         {
+            lblInformation.ForeColor = Color.Blue;
+            lblInformation.Text = "Chờ lệnh ...";
             if(!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 12)
             {
                 var eventArgs = new DepartmentStockOutEventArgs();
@@ -1260,6 +1372,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
+                CalculateTotalStorePrice();
                 if(rdoFastStockOut.Checked)
                 {
                     return;
@@ -1394,6 +1507,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             cbbStockOutType.Enabled = false;
             btnReset.Enabled = false;
+            txtCustomerName.Enabled = true;
+            txtCustomerName.Text = "";
             if (!rdoStockOut.Checked)
             {
                 cboProductMasters.Enabled = false;
@@ -1420,6 +1535,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if(rdoFastStockOut.Checked)
             {
                 cboProductMasters.Enabled = false;
+                txtCustomerName.Enabled = false;
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();

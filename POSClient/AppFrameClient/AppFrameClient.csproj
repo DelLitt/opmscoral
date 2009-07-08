@@ -320,6 +320,8 @@
     <Compile Include="Services\SubStockConsumer.cs" />
     <Compile Include="Services\ThreadedServiceHost.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockOutViewDetailMapper.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockOutViewMapper.cs" />
     <Compile Include="Utility\Mapper\FastDepartmentStockOutMapper.cs" />
     <Compile Include="Utility\Mapper\FastDepartmentStockInMapper.cs" />
     <Compile Include="Utility\Mapper\DeptRetProdStockInDetailMapper.cs" />

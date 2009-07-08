@@ -148,7 +148,12 @@ namespace AppFrame.Logic
 
         public void ProcessUser(LoginModel model)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public void ChangePassword(string username, string password, string newPassword)
+        {
+            
         }
 
         #endregion

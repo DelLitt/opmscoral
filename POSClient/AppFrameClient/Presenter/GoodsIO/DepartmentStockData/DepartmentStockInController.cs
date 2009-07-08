@@ -51,6 +51,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
+        public event EventHandler<DepartmentStockInEventArgs> CompletedSyncDepartmentStockInEvent;
+
         void _departmentStockInView_DispatchDepartmentStockIn(object sender, DepartmentStockInEventArgs e)
         {
             Department destDept = DepartmentLogic.FindById(e.Department.DepartmentId);
@@ -260,6 +262,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 DepartmentStockInLogic.Sync(syncFromMainToDepartment);
                 ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ cửa hàng về kho");
                 e.EventResult = "Success";
+                EventUtility.fireEvent(CompletedSyncDepartmentStockInEvent,this,e);
             }
             catch (Exception)
             {

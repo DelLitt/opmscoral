@@ -149,7 +149,7 @@ namespace AppFrameClient.Utility
                                                          fileName.Length - (fileName.LastIndexOf("\\")+1));
                 /*if (fileName.IndexOf("SyncUp") > 0)
                 {*/
-                    long deptId = Int64.Parse(testName.Substring(0, 1));
+                    long deptId = Int64.Parse(testName.Substring(0, testName.IndexOf("_")));
                     specificDeptPath = path + "\\" + deptId.ToString();
                 /*}
 
