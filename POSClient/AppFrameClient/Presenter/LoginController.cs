@@ -26,6 +26,21 @@ namespace AppFrame.Presenter
             {
                 mView = value;
                 mView.LoginEvent +=new EventHandler<LoginEventArgs>(mView_LoginEvent);
+                mView.ConfirmLoginEvent += new EventHandler<LoginEventArgs>(mView_ConfirmLoginEvent);
+            }
+        }
+
+        void mView_ConfirmLoginEvent(object sender, LoginEventArgs e)
+        {
+            bool loginResult = loginLogic.validate(e.LoginModel);
+            if(loginResult)
+            {
+                ClientUtility.Log(logger, "Người dùng " + e.LoginModel.Username + " đã " + e.ConfirmAction, "Xác nhận hành động");
+                
+            }
+            else
+            {
+                e.HasErrors = true;
             }
         }
 

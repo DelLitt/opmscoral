@@ -12,6 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
@@ -594,6 +595,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockOutEventArgs();
             eventArgs.DepartmentStockOut = deptSO;
+
+            // confirm before save
+            LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+            DialogResult isConfirmed = loginForm.ShowDialog();
+            if(isConfirmed!= System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
@@ -1319,6 +1328,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ea.DepartmentStockOut = deptSO;
                     
                     ea.DepartmentStockList = departmentStockList;
+                    // confirm before save
+                    LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+                    DialogResult isConfirmed = loginForm.ShowDialog();
+                    if (isConfirmed != System.Windows.Forms.DialogResult.OK)
+                    {
+                        return;
+                    }
+
                     EventUtility.fireEvent(SaveStockOutEvent, this, ea);
                     EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));
                     if (eventArgs.EventResult != null)

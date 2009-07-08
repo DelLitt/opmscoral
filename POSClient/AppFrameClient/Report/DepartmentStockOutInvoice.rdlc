@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <rd:DataSourceID>5406f144-5c83-4f32-bfeb-cbea23e2b84e</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
   <InteractiveHeight>11in</InteractiveHeight>
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.5in</InteractiveWidth>
@@ -8,6 +17,104 @@
   <LeftMargin>1in</LeftMargin>
   <BottomMargin>1in</BottomMargin>
   <rd:ReportID>9b01d22b-59d6-49ce-acdc-ae53ba6daa42</rd:ReportID>
+  <DataSets>
+    <DataSet Name="AppFrameClient_ViewModel_DepartmentStockOutView">
+      <Fields>
+        <Field Name="CreateDate">
+          <DataField>CreateDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Department">
+          <DataField>Department</DataField>
+          <rd:TypeName>AppFrame.Model.Department</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentName">
+          <DataField>DepartmentName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentStockOut">
+          <DataField>DepartmentStockOut</DataField>
+          <rd:TypeName>AppFrame.Model.DepartmentStockOut</rd:TypeName>
+        </Field>
+        <Field Name="TotalQuantity">
+          <DataField>TotalQuantity</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrameClient.ViewModel</rd:DataSetName>
+        <rd:TableName>DepartmentStockOutView</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrameClient.ViewModel.DepartmentStockOutView, AppFrameClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="AppFrameClient_ViewModel_DepartmentStockOutDetailView">
+      <Fields>
+        <Field Name="DamageCount">
+          <DataField>DamageCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ErrorCount">
+          <DataField>ErrorCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GoodCount">
+          <DataField>GoodCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="LostCount">
+          <DataField>LostCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="StockOutDetail">
+          <DataField>StockOutDetail</DataField>
+          <rd:TypeName>AppFrame.Model.DepartmentStockOutDetail</rd:TypeName>
+        </Field>
+        <Field Name="TotalCount">
+          <DataField>TotalCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="UnconfirmCount">
+          <DataField>UnconfirmCount</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ColorName">
+          <DataField>ColorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductId">
+          <DataField>ProductId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SizeName">
+          <DataField>SizeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>AppFrameClient.ViewModel</rd:DataSetName>
+        <rd:TableName>DepartmentStockOutDetailView</rd:TableName>
+        <rd:ObjectDataSourceType>AppFrameClient.ViewModel.DepartmentStockOutDetailView, AppFrameClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <Width>7in</Width>
   <Body>
     <ReportItems>
@@ -263,7 +370,7 @@
         <Value />
       </Textbox>
       <Table Name="table1">
-        <DataSetName>AppFrameClient_ViewModel_StockOutDetailView</DataSetName>
+        <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutDetailView</DataSetName>
         <Top>1.25in</Top>
         <Width>6.80192in</Width>
         <Details>
@@ -344,7 +451,6 @@
                   <ReportItems>
                     <Textbox Name="textbox32">
                       <Style>
-                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -565,7 +671,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>==Sum(Fields!Quantity.Value)</Value>
+                      <Value>=Sum(Fields!Quantity.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

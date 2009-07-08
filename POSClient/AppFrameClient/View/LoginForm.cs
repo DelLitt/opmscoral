@@ -16,7 +16,7 @@ namespace AppFrame.View
 
         private ILoginController<LoginEventArgs> loginController;
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
-
+        public bool IsConfirmed { get; set; }
         public LoginForm()
         {
             InitializeComponent();
@@ -77,16 +77,34 @@ namespace AppFrame.View
             button1.Enabled = false;
             // create model and raise event
             LoginModel model = new LoginModel();
-            model.Username = txtUsername.Text;
-            model.Password = txtPassword.Text;
+            model.Username = txtUsername.Text.Trim();
+            model.Password = txtPassword.Text.Trim();
             LoginEventArgs loginEventArgs = new LoginEventArgs();
             loginEventArgs.LoginModel = model;
             if (LoginEvent != null)
             {
                 //LoginEvent.BeginInvoke(this, model);
-                EventUtility.fireAsyncEvent<LoginEventArgs>(LoginEvent, this, loginEventArgs, new AsyncCallback(EndEvent));
-
+                //EventUtility.fireAsyncEvent<LoginEventArgs>(LoginEvent, this, loginEventArgs, new AsyncCallback(EndEvent));
+                EventUtility.fireEvent(ConfirmLoginEvent,this,loginEventArgs);
+                if(!loginEventArgs.HasErrors)
+                {
+                    IsConfirmed = true;
+                    ReturnResult();
+                }
             }
+        }
+
+        private void ReturnResult()
+        {
+            if (IsConfirmed)
+            {
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                DialogResult = DialogResult.Cancel;
+            }
+            Close();
         }
 
         private string result;
@@ -127,6 +145,7 @@ namespace AppFrame.View
 
 
         public event EventHandler<LoginEventArgs> LoginEvent;
+        public event EventHandler<LoginEventArgs> ConfirmLoginEvent;
 
         #endregion
 

@@ -15,5 +15,11 @@ namespace AppFrameClient.ViewModel
         public long DamageCount { get; set; }
         public long LostCount { get; set; }
         public long UnconfirmCount { get; set; }
+        // for printing
+        public virtual string ProductId { get; set; }
+        public virtual string ProductName { get; set; }
+        public virtual string ColorName { get; set; }
+        public virtual string SizeName { get; set; }
+        public virtual string Quantity { get; set; }
     }
 }

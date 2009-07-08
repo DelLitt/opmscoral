@@ -13,5 +13,8 @@ namespace AppFrameClient.ViewModel
         public virtual DateTime CreateDate { get; set; }
         public virtual DepartmentStockOut DepartmentStockOut { get; set; }
         public virtual Department Department { get; set; }
+        //for printing
+        public virtual string EmployeeName { get; set; }
+        public virtual string Description { get; set; }
     }
 }

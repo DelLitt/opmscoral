@@ -93,5 +93,6 @@ namespace AppFrameClient.Common
         public static string DEPARTMENT_FAST_STOCK_OUT_VIEW = "DepartmentFastStockOutView";
         public static string DEPARTMENT_FAST_STOCK_IN_VIEW = "DepartmentFastStockInView";
         public static string STOCK_OUT_CONFIRM_FORM = "StockOutConfirmView";
+        public static string CONFIRM_LOGIN_VIEW = "ConfirmLoginView";
     }
 }
