@@ -12,7 +12,6 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
-using AppFrame.View;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
@@ -312,6 +311,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             cbbStockOutType.Enabled = false;
             btnReset.Enabled = false;
             cboProductMasters.Enabled = false;
@@ -331,6 +331,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             DepartmentStockOutEventArgs eventArgs = new DepartmentStockOutEventArgs();
             EventUtility.fireEvent(LoadAllDepartments,this,eventArgs);
+            string directDept = "";
             if(eventArgs.DepartmentsList!= null && eventArgs.DepartmentsList.Count > 0)
             {
                 BindingSource bdsDepartment = new BindingSource();
@@ -352,6 +353,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             if(currentSubStock.StartsWith(departmentId))
                             {
                                 bdsDepartment.Add(department);
+                                directDept = department.DepartmentName;
                             }
                             if(ClientSetting.MarketDept.Equals(departmentId))
                             {
@@ -368,7 +370,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
-            
+            if(string.IsNullOrEmpty(directDept))
+            {
+                rdoFastStockOut.Text = " Xuất đến " + directDept;
+            }
             foreach (Department department in cboDepartment.Items)
             {
                 string departmentId = department.DepartmentId.ToString();
@@ -587,7 +592,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSO = new DepartmentStockOut();
             }
             bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
-            deptSO.StockOutDate = dtpImportDate.Value;
+            deptSO.StockOutDate = DateTime.Now;
             deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
             deptSO.OtherDepartmentId = ((Department)cboDepartment.SelectedItem).DepartmentId;
@@ -598,16 +603,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             // confirm before save
             LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
             DialogResult isConfirmed = loginForm.ShowDialog();
             if(isConfirmed!= System.Windows.Forms.DialogResult.OK)
             {
                 return;
             }
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
+            if(rdoFastStockOut.Checked)
+            {
+                EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+            }
             if (eventArgs.EventResult != null)
             {
 
-                MessageBox.Show("Lưu thành công");
+                label2.Text= "Lưu thành công";
                 if (isNeedClearData)
                 {
                     deptSO = new DepartmentStockOut();
@@ -1252,6 +1262,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
                 if(rdoFastStockOut.Checked)
                 {
+                    return;
                     // do fast stock out in here
                     // first remove all blank row
                     int count = 0;
@@ -1318,7 +1329,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         deptSO = new DepartmentStockOut();
                     }
                     bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
-                    deptSO.StockOutDate = dtpImportDate.Value;
+                    deptSO.StockOutDate = DateTime.Now;
                     deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
                     deptSO.OtherDepartmentId = ((Department) cboDepartment.SelectedItem).DepartmentId;
                     deptSO.ConfirmFlg = 3;
@@ -1390,6 +1401,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 cboProductMasters.Enabled = true;
+                foreach (Department department in cboDepartment.Items)
+                {
+                    string departmentId = department.DepartmentId.ToString();
+                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    if (!currentSubStock.StartsWith(departmentId))
+                    {
+                        cboDepartment.SelectedItem = department;
+                        cboDepartment.Enabled = false;
+                        break;
+                    }
+                }
             }
         }
 
@@ -1415,6 +1437,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cboProductMasters.Enabled = true;
                 cboDepartment.Enabled = true;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            txtTime.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            btnSave_Click(sender,e);
         }
     }
 }

@@ -11,6 +11,7 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Utility;
 
@@ -77,7 +78,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 stockOutList.Add(deptDetail);
             }
             GetRemainStockNumber(stockOutList);
+
             e.SelectedStockOutDetails = stockOutList;
+            EventUtility.fireEvent(CompletedFindByStockInEvent,this,e);
         }
 
         public void _departmentStockInView_UpdateDepartemntStockInForExportEvent(object sender, DepartmentStockInEventArgs e)
@@ -526,7 +529,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 {
                     get;set;
                 }
-                public AppFrame.Logic.IStockLogic StockLogic
+
+        public event EventHandler<DepartmentStockInEventArgs> CompletedFindByStockInEvent;
+
+        public AppFrame.Logic.IStockLogic StockLogic
                 {
                     get;
                     set;

@@ -1,4 +1,4 @@
-﻿namespace AppFrame.View
+﻿namespace AppFrameClient.View
 {
     partial class LoginForm
     {
@@ -121,4 +121,3 @@
         private System.Windows.Forms.Label lblStatus;
     }
 }
-

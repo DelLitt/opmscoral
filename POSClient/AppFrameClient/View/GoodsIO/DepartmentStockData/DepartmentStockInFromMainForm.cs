@@ -465,7 +465,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 departmentStockInController = (DepartmentStockInExtraController)value;
                 departmentStockInController.DepartmentStockInView = this;
                 departmentStockInController.DepartmentStockInExtraView = this;
+                departmentStockInController.CompletedFindByStockInEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInController_CompletedFindByStockInEvent);
             }
+        }
+
+        void departmentStockInController_CompletedFindByStockInEvent(object sender, DepartmentStockInEventArgs e)
+        {
+            IList list = e.SelectedStockOutDetails;
+
+            foreach (DepartmentStockInDetail stockInDetail in list)
+            {
+                if (!IsInList(deptSIDetailList, stockInDetail))
+                {
+                    deptSIDetailList.Add(stockInDetail);
+                }
+            }
+            this.Enabled = true;
+            bdsStockIn.ResetBindings(false);
+            dgvDeptStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            panelStockIns.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -650,6 +669,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             // validate quantity
             StringBuilder errMsg = new StringBuilder();
             int line = 1;
+            if(chkRemoveZero.Checked)
+            {
+                RemoveZeroLines();
+            }
             foreach (DepartmentStockInDetail detail in deptSIDetailList)
             {
                 if (detail.Quantity == 0)
@@ -713,6 +736,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return null;
             }
+        }
+
+        private void RemoveZeroLines()
+        {
+            int index = deptSIDetailList.Count - 1;
+            while(index >= 0)
+            {
+                DepartmentStockInDetail detail = deptSIDetailList[index];
+                if(detail.StockQuantity == 0 || detail.Quantity == 0)
+                {
+                    deptSIDetailList.RemoveAt(index);
+                }
+                index -= 1;
+            }
+
         }
 
         private void ClearSelectionOnListBox(ListBox color)
@@ -1073,21 +1111,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 string stockInId = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
                 DepartmentStockInEventArgs ea = new DepartmentStockInEventArgs();
                 ea.SelectedStockInId = stockInId;
-                EventUtility.fireEvent(FindByStockInIdEvent,this,ea);
-                IList list = ea.SelectedStockOutDetails;
-
-                foreach (DepartmentStockInDetail stockInDetail in list)
-                {
-                    if(!IsInList(deptSIDetailList,stockInDetail))
-                    {
-                        deptSIDetailList.Add(stockInDetail);
-                    }
-                }
+                
+                EventUtility.fireAsyncEvent(FindByStockInIdEvent,this,ea,new AsyncCallback(EndEvent));
+                this.Enabled = false;
+                //EventUtility.fireEvent(FindByStockInIdEvent,this,ea);
             }
-            bdsStockIn.ResetBindings(false);
-            dgvDeptStockIn.Refresh();
-            dgvStockIn.Invalidate();
-            panelStockIns.Visible = false;
             //stockinBindingSource.Clear();
         }
 
@@ -1114,6 +1142,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             panelStockIns.Visible = false;
             //stockinBindingSource.Clear();
+        }
+
+        private void btnFix_Click(object sender, EventArgs e)
+        {
+            foreach (DepartmentStockInDetail inDetail in deptSIDetailList)
+            {
+                if(inDetail.StockQuantity < inDetail.Quantity)
+                {
+                    inDetail.Quantity = inDetail.StockQuantity;
+                }
+            }
+            bdsStockIn.ResetBindings(false);
+            dgvDeptStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            MessageBox.Show("Sửa thành công !");
         }
     }
 }

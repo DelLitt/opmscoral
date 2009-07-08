@@ -5,11 +5,12 @@ using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Presenter;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrameClient.Common;
 using Spring.Context;
 using Spring.Context.Support;
 
-namespace AppFrame.View
+namespace AppFrameClient.View
 {
     public partial class LoginForm : BaseForm, ILoginView<LoginEventArgs>
     {
