@@ -675,15 +675,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             ReportDataSource DeptStockOutDetailRDS = new ReportDataSource("AppFrameClient_ViewModel_DepartmentStockOutDetailView");
             BindingSource bdsDetails = new BindingSource();
             DepartmentStockOutViewDetailMapper detailMapper = new DepartmentStockOutViewDetailMapper();
+            IList<DepartmentStockOutDetailView> viewList = new List<DepartmentStockOutDetailView>();
             foreach (DepartmentStockOutDetail outDetail in deptStockOut.DepartmentStockOutDetails)
             {
                 DepartmentStockOutDetailView detailView = detailMapper.Convert(outDetail);
                 detailView.Price = outDetail.DepartmentPrice.Price;
-                bdsDetails.Add(detailView);
+                viewList.Add(detailView);
             }
+            // remove duplicate
+            /*int count = viewList.Count;
+            for (int i = 0; i < count; i++ )
+            {
+                DepartmentStockOutDetailView detailView = viewList[i];
+                int last = count - 1;
+                while(last >=i)
+                {
+                    DepartmentStockOutDetailView otherView = viewList[last];
+                }
+            }*/
+                bdsDetails.DataSource = viewList;
             DeptStockOutDetailRDS.Value = bdsDetails;
             DeptStockOutInvoice.DataSources.Add(DeptStockOutDetailRDS);
-
+            
             // do printing
             streamList.Clear();
             //const string printerName = "Epson TM-T88IV";
@@ -709,7 +722,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         {
             //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create);
             //Stream stream = new FileStream(name + "." + fileNameExtension, FileMode.Create,FileAccess.ReadWrite);
-            Stream stream = new MemoryStream(new byte[1024 * 64]);
+            Stream stream = new MemoryStream(new byte[1024*256]);
             //Stream test1= new MemoryStream()
             streamList.Add(stream);
             return stream;
@@ -720,21 +733,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
           "<DeviceInfo>" +
           "  <OutputFormat>EMF</OutputFormat>" +
           "  <PageWidth>8.2in</PageWidth>" +
-          "  <PageHeight>5in</PageHeight>" +
+          "  <PageHeight>5.5in</PageHeight>" +
           "  <DpiX>180</DpiX>" +
           "  <DpiY>180</DpiY>" +
           "  <MarginTop>0.0in</MarginTop>" +
-          "  <MarginLeft>0.3in</MarginLeft>" +
-          "  <MarginRight>0.0in</MarginRight>" +
-          "  <MarginBottom>0.3in</MarginBottom>" +
+          "  <MarginLeft>0.2in</MarginLeft>" +
+          "  <MarginRight>0.2in</MarginRight>" +
+          "  <MarginBottom>0.0in</MarginBottom>" +
           "</DeviceInfo>";
             Warning[] warnings;
             if (DeptStockOutInvoice == null)
             {
                 return;
             }
-            /*this.reportPurchaseOrder.LocalReport.Refresh();
-            this.reportPurchaseOrder.LocalReport.Render("Image", deviceInfo, CreateStream, out warnings);*/
+            DeptStockOutInvoice.Refresh();
             DeptStockOutInvoice.Render("Image", deviceInfo, CreateStream, out warnings);
             if (streamList.Count > 0)
             {

@@ -9,11 +9,12 @@
       </ConnectionProperties>
     </DataSource>
   </DataSources>
-  <InteractiveHeight>11in</InteractiveHeight>
+  <InteractiveHeight>5.5in</InteractiveHeight>
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.2in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
   <rd:ReportID>9b01d22b-59d6-49ce-acdc-ae53ba6daa42</rd:ReportID>
+  <PageWidth>8.2in</PageWidth>
   <DataSets>
     <DataSet Name="AppFrameClient_ViewModel_DepartmentStockOutView">
       <Fields>
@@ -44,6 +45,10 @@
         <Field Name="EmployeeName">
           <DataField>EmployeeName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StockOutId">
+          <DataField>StockOutId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
       </Fields>
       <Query>
@@ -124,9 +129,27 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>6.92692in</Width>
+  <Width>8.2in</Width>
   <Body>
     <ReportItems>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.875in</Top>
+        <Width>2.75in</Width>
+        <Style>
+          <FontSize>20pt</FontSize>
+          <FontWeight>800</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>10</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.5in</Left>
+        <Height>0.375in</Height>
+        <Value>PHIẾU XUẤT HÀNG</Value>
+      </Textbox>
       <List Name="list1">
         <ZIndex>9</ZIndex>
         <Left>0.25in</Left>
@@ -172,12 +195,13 @@
             </Style>
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
-            <Left>4.125in</Left>
+            <Left>3.625in</Left>
             <Height>0.25in</Height>
             <Value>NGÀY:</Value>
           </Textbox>
           <Textbox Name="textbox16">
             <rd:DefaultName>textbox16</rd:DefaultName>
+            <Width>1.375in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -185,19 +209,19 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
             <CanGrow>true</CanGrow>
-            <Left>4.875in</Left>
+            <Left>4.375in</Left>
             <Height>0.25in</Height>
             <Value>=Today().ToString("dd - MM - yyyy")</Value>
           </Textbox>
         </ReportItems>
         <Top>1.625in</Top>
-        <Width>6.25in</Width>
+        <Width>6in</Width>
         <Height>0.375in</Height>
       </List>
       <Textbox Name="textbox9">
         <rd:DefaultName>textbox9</rd:DefaultName>
         <Top>3.125in</Top>
-        <Width>6.25in</Width>
+        <Width>6.125in</Width>
         <Style>
           <FontSize>8pt</FontSize>
           <TextAlign>Center</TextAlign>
@@ -208,16 +232,16 @@
         </Style>
         <ZIndex>8</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.25in</Left>
+        <Left>0.125in</Left>
         <Height>0.25in</Height>
         <Value>Cửa hàng chỉ nhận đổi hàng lỗi trong vòng 1 tuần. Không bao đổi, trả mẫu quí khách đã chọn. Chân thành cám ơn.</Value>
       </Textbox>
       <Textbox Name="textbox7">
         <Top>1.25in</Top>
-        <Width>5.875in</Width>
+        <Width>3.25in</Width>
         <Style>
-          <FontSize>9pt</FontSize>
-          <TextAlign>Center</TextAlign>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -231,10 +255,10 @@
       </Textbox>
       <Textbox Name="textbox6">
         <Top>1in</Top>
-        <Width>5.875in</Width>
+        <Width>3.25in</Width>
         <Style>
-          <FontSize>9pt</FontSize>
-          <TextAlign>Center</TextAlign>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -249,10 +273,10 @@
       <Textbox Name="textbox4">
         <rd:DefaultName>textbox4</rd:DefaultName>
         <Top>0.75in</Top>
-        <Width>5.875in</Width>
+        <Width>3.25in</Width>
         <Style>
-          <FontSize>9pt</FontSize>
-          <TextAlign>Center</TextAlign>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -267,10 +291,11 @@
       <Textbox Name="textbox3">
         <rd:DefaultName>textbox3</rd:DefaultName>
         <Top>0.5in</Top>
-        <Width>5.875in</Width>
+        <Width>4.75in</Width>
         <Style>
+          <FontSize>8pt</FontSize>
           <FontWeight>600</FontWeight>
-          <TextAlign>Center</TextAlign>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -286,6 +311,7 @@
         <Top>0.125in</Top>
         <Width>1.625in</Width>
         <Style>
+          <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -293,9 +319,9 @@
         </Style>
         <ZIndex>3</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>5in</Left>
+        <Left>4.625in</Left>
         <Height>0.25in</Height>
-        <Value />
+        <Value>=Sum(Fields!StockOutId.Value, "AppFrameClient_ViewModel_DepartmentStockOutView")</Value>
       </Textbox>
       <Textbox Name="textbox11">
         <Top>0.125in</Top>
@@ -309,7 +335,7 @@
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>4.25in</Left>
+        <Left>3.875in</Left>
         <Height>0.25in</Height>
         <Value>MÃ PX:</Value>
       </Textbox>
@@ -333,9 +359,10 @@
         <Value>CHERRI COLLECTION</Value>
       </Textbox>
       <Table Name="table1">
+        <NoRows>Không có hàng cần xuất</NoRows>
         <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutDetailView</DataSetName>
         <Top>2.25in</Top>
-        <Width>6.25001in</Width>
+        <Width>6.125in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -344,7 +371,11 @@
                   <ReportItems>
                     <Textbox Name="textbox5">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -359,8 +390,11 @@
                   <ReportItems>
                     <Textbox Name="textbox12">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>4pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -374,7 +408,11 @@
                   <ReportItems>
                     <Textbox Name="textbox14">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -389,9 +427,12 @@
                   <ReportItems>
                     <Textbox Name="textbox18">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingRight>4pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -405,10 +446,13 @@
                     <Textbox Name="Price">
                       <rd:DefaultName>Price</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingRight>4pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -421,10 +465,13 @@
                   <ReportItems>
                     <Textbox Name="textbox32">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
                         <FontSize>9pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingRight>4pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -438,6 +485,11 @@
             </TableRow>
           </TableRows>
         </Details>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
         <Header>
           <TableRows>
             <TableRow>
@@ -446,6 +498,10 @@
                   <ReportItems>
                     <Textbox Name="textbox33">
                       <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -461,7 +517,11 @@
                   <ReportItems>
                     <Textbox Name="textbox34">
                       <Style>
-                        <TextAlign>Center</TextAlign>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -476,6 +536,10 @@
                   <ReportItems>
                     <Textbox Name="textbox35">
                       <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -491,6 +555,10 @@
                   <ReportItems>
                     <Textbox Name="textbox36">
                       <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -506,6 +574,10 @@
                   <ReportItems>
                     <Textbox Name="textbox37">
                       <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -521,6 +593,10 @@
                   <ReportItems>
                     <Textbox Name="textbox38">
                       <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -539,22 +615,22 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.37461in</Width>
+            <Width>0.37732in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.06743in</Width>
+            <Width>2.08238in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.26343in</Width>
+            <Width>1.27257in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.57429in</Width>
+            <Width>0.57844in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.93653in</Width>
+            <Width>0.7731in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.03372in</Width>
+            <Width>1.04119in</Width>
           </TableColumn>
         </TableColumns>
         <Height>0.75in</Height>
@@ -566,6 +642,10 @@
                   <ReportItems>
                     <Textbox Name="textbox39">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -580,6 +660,10 @@
                   <ReportItems>
                     <Textbox Name="textbox40">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -594,6 +678,10 @@
                   <ReportItems>
                     <Textbox Name="textbox41">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -609,8 +697,12 @@
                   <ReportItems>
                     <Textbox Name="textbox42">
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingRight>4pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -624,6 +716,10 @@
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -639,8 +735,12 @@
                     <Textbox Name="textbox8">
                       <rd:DefaultName>textbox8</rd:DefaultName>
                       <Style>
+                        <BorderStyle>
+                          <Default>Dashed</Default>
+                        </BorderStyle>
+                        <FontWeight>600</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingRight>4pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -654,10 +754,11 @@
             </TableRow>
           </TableRows>
         </Footer>
-        <Left>0.25in</Left>
+        <Left>0.125in</Left>
       </Table>
     </ReportItems>
-    <Height>3.625in</Height>
+    <Height>5.5in</Height>
   </Body>
   <Language>en-US</Language>
+  <PageHeight>5.5in</PageHeight>
 </Report>

@@ -17,6 +17,7 @@ namespace AppFrameClient.Utility.Mapper
             view.DepartmentStockOut = source;
             view.DepartmentName = CurrentDepartment.Get().DepartmentName;
             view.Description = source.DefectStatus.DefectStatusName;
+            view.StockOutId = source.DepartmentStockOutPK.StockOutId;
 
             return view;
         }
