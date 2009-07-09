@@ -43,6 +43,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(187, 22);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // txtPassword
             // 
@@ -51,15 +52,16 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(187, 22);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(182, 116);
+            this.button1.Location = new System.Drawing.Point(214, 111);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 24);
+            this.button1.Size = new System.Drawing.Size(98, 29);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Đăng nhập";
+            this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -105,7 +107,7 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "Xác nhận";
             this.ResumeLayout(false);
             this.PerformLayout();
 
