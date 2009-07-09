@@ -15,7 +15,7 @@ namespace AppFrame.Controls
         public override PropertyDescriptorCollection GetProperties(Attribute[] attributes)
         {
             PropertyDescriptorCollection parentPDs = base.GetProperties(attributes);
-            Console.WriteLine("Load properties of " + GetClassName());
+            //Console.WriteLine("Load properties of " + GetClassName());
             return ComplexListPropertyHelper.GetList(parentPDs, GetClassName());
         }
         
@@ -36,7 +36,7 @@ namespace AppFrame.Controls
             list.CopyTo(array,0);
             PropertyDescriptorCollection newcols = new PropertyDescriptorCollection(array);
             return newcols;           */
-            Console.WriteLine("Load properties of " + GetClassName());
+            //Console.WriteLine("Load properties of " + GetClassName());
             return ComplexListPropertyHelper.GetList(parentPDs,GetClassName());
 
         }
