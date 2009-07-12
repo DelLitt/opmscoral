@@ -17,5 +17,6 @@ namespace AppFrameClient.ViewModel
         //for printing
         public virtual string EmployeeName { get; set; }
         public virtual string Description { get; set; }
+        public virtual string StockOutKind { get; set; }
     }
 }

@@ -314,6 +314,32 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             if (e.DepartmentStockOut.DepartmentStockOutPK == null || e.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
             {
+                if(e.DepartmentStockOut.DepartmentStockOutDetails!= null && e.DepartmentStockOut.DepartmentStockOutDetails.Count > 0)
+                {
+                    foreach (DepartmentStockOutDetail detail in e.DepartmentStockOut.DepartmentStockOutDetails)
+                    {
+                        string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                        DepartmentPricePK pricePk = new DepartmentPricePK
+                        {
+                            DepartmentId = 0,
+                            ProductMasterId = prdMasterId
+                        };
+                        detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
+                        if (detail.DepartmentPrice != null)
+                        {
+                            if ("1".Equals(detail.Description)) // if ban si
+                            {
+                                detail.Description = detail.DepartmentPrice.WholeSalePrice.ToString();
+                            }
+                            else
+                            {
+                                detail.Description = detail.DepartmentPrice.Price.ToString();
+                            }
+                        }
+                    }    
+                }
+                
+
                 DepartmentStockOutLogic.Add(e.DepartmentStockOut);
                 ClientUtility.Log(logger, e.DepartmentStockOut.ToString(), "Lưu xuất kho cửa hàng");
                 e.EventResult = "Success";

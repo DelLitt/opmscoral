@@ -18,18 +18,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
     public partial class DepartmentPriceUpdateForm : BaseForm, IDepartmentPriceUpdateView
     {
         #region Members
-        private const int MAX_COLUMNS = 11;
-        public static readonly int PRODUCT_ID_POS = 0;
-        public static readonly int PRODUCT_UPDATE_DATE_POS = 1;
-        public static readonly int PRODUCT_OLD_PRICE_POS = 2;
-        public static readonly int PRODUCT_NEW_PRICE_POS = 3;
-        public static readonly int PRODUCT_NAME_POS = 4;
-        public static readonly int PRODUCT_TYPE_POS = 5;
-        public static readonly int PRODUCT_COLOR_POS = 6;
-        public static readonly int PRODUCT_SIZE_POS = 7;
+        private const int MAX_COLUMNS = 9;
+        public static readonly int PRODUCT_NAME_POS = 0;
+        public static readonly int PRODUCT_COLOR_POS = 1;
+        public static readonly int PRODUCT_SIZE_POS = 2;
+        public static readonly int PRODUCT_OLD_PRICE_POS = 3;
+        public static readonly int PRODUCT_NEW_PRICE_POS = 4;
+        public static readonly int PRODUCT_OLD_WHOLE_PRICE_POS = 5;
+        public static readonly int PRODUCT_NEW_WHOLE_PRICE_POS = 6;
+        public static readonly int PRODUCT_ID_POS = 7;
+        public static readonly int PRODUCT_UPDATE_DATE_POS = 8;
+        /*public static readonly int PRODUCT_TYPE_POS = 5;
         public static readonly int PRODUCT_COUNTRY_POS = 8;
         public static readonly int PRODUCT_SUPPLIER_POS = 9;
-        public static readonly int PRODUCT_MANUFACTURER_POS = 10;
+        public static readonly int PRODUCT_MANUFACTURER_POS = 10;*/
+        
         private readonly DataTable dataTable = new DataTable();
         public IList DepartmentPriceList { get; set; }
         public DepartmentPriceUpdateEventArgs _currentEventArgs { get; set; }
@@ -54,17 +57,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public DepartmentPriceUpdateForm()
         {
             InitializeComponent();
-            dataTable.Columns.Add("Mã sản phẩm");
-            dataTable.Columns.Add("Ngày cập nhật");
-            dataTable.Columns.Add("Giá cũ");
-            dataTable.Columns.Add("Giá mới");
             dataTable.Columns.Add("Tên mặt hàng");
-            dataTable.Columns.Add("Chủng loại");
             dataTable.Columns.Add("Màu sắc");
             dataTable.Columns.Add("Kích cỡ");
-            dataTable.Columns.Add("Xuất xứ");
-            dataTable.Columns.Add("Nhà cung cấp");
-            dataTable.Columns.Add("Nhà sản xuất");
+            dataTable.Columns.Add("Giá cũ");
+            dataTable.Columns.Add("Giá mới");
+            dataTable.Columns.Add("Giá sĩ cũ");
+            dataTable.Columns.Add("Giá sĩ mới");
+            dataTable.Columns.Add("Mã sản phẩm");
+            dataTable.Columns.Add("Ngày cập nhật");
         }
 
         private void DepartmentPriceUpdateForm_Load(object sender, EventArgs e)
@@ -135,9 +136,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             for (int i = 0; i < dgvProduct.Columns.Count; i++ )
             {
-                if (i != PRODUCT_NEW_PRICE_POS)
+                if (i != PRODUCT_NEW_PRICE_POS && i != PRODUCT_NEW_WHOLE_PRICE_POS)
                 {
                     dgvProduct.Columns[i].ReadOnly = true;
+                }
+                else
+                {
+                    dgvProduct.Columns[i].DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
             dgvProduct.Refresh();
@@ -149,12 +154,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             obj[PRODUCT_ID_POS] = stockInDetail.ProductMaster.ProductMasterId;
             obj[PRODUCT_UPDATE_DATE_POS] = stockInDetail.UpdateDate.ToString("dd/MM/yyyy HH:mm:ss");
             obj[PRODUCT_OLD_PRICE_POS] = stockInDetail.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE"));
+            obj[PRODUCT_OLD_WHOLE_PRICE_POS] = stockInDetail.WholeSalePrice.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE"));
             obj[PRODUCT_ID_POS] = stockInDetail.ProductMaster.ProductMasterId;
             obj[PRODUCT_NAME_POS] = stockInDetail.ProductMaster.ProductName;
-            if (stockInDetail.ProductMaster.ProductType != null)
+            /*if (stockInDetail.ProductMaster.ProductType != null)
             {
                 obj[PRODUCT_TYPE_POS] = stockInDetail.ProductMaster.ProductType.TypeName;
-            }
+            }*/
             if (stockInDetail.ProductMaster.ProductSize != null)
             {
                 obj[PRODUCT_SIZE_POS] = stockInDetail.ProductMaster.ProductSize.SizeName;
@@ -163,7 +169,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 obj[PRODUCT_COLOR_POS] = stockInDetail.ProductMaster.ProductColor.ColorName;    
             }
-            if (stockInDetail.ProductMaster.Country != null)
+            /*if (stockInDetail.ProductMaster.Country != null)
             {
                 obj[PRODUCT_COUNTRY_POS] = stockInDetail.ProductMaster.Country.CountryName;
             }
@@ -174,7 +180,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (stockInDetail.ProductMaster.Distributor != null)
             {
                 obj[PRODUCT_SUPPLIER_POS] = stockInDetail.ProductMaster.Distributor.DistributorName;
-            }
+            }*/
 
             return obj;
         }
@@ -196,17 +202,33 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         if (oldPrice.ProductMaster.ProductMasterId.Equals(dgvProduct[PRODUCT_ID_POS, i].Value.ToString()))
                         {
                             long newPrice = 0;
+                            long newWholePrice = 0;
                             // validate input
-                            if (!NumberUtility.CheckLongNullIsZero(dgvProduct[PRODUCT_NEW_PRICE_POS, i].Value, out newPrice))
+                            if (!NumberUtility.CheckLongNullIsZero(dgvProduct[PRODUCT_NEW_PRICE_POS, i].Value, out newPrice)
+                             || !NumberUtility.CheckLongNullIsZero(dgvProduct[PRODUCT_NEW_WHOLE_PRICE_POS, i].Value, out newWholePrice))
                             {
                                 MessageBox.Show("Error at line: " + i + "");
+                                dgvProduct[PRODUCT_NEW_PRICE_POS, i].Selected = true;
                                 return;
                             }
-                            else if (newPrice != 0 && oldPrice.Price != newPrice)
+                            else 
                             {
-                                oldPrice.Price = newPrice;
-                                updatePriceList.Add(oldPrice);
-                                break;
+                                bool changed = false;
+                                if (newPrice != 0 && oldPrice.Price != newPrice)
+                                {
+                                    oldPrice.Price = newPrice;
+                                    changed = true;
+                                }
+                                if (newWholePrice != 0 && oldPrice.WholeSalePrice != newWholePrice)
+                                {
+                                    oldPrice.WholeSalePrice = newWholePrice;
+                                    changed = true;
+                                }
+                                if(changed)
+                                {
+                                    updatePriceList.Add(oldPrice);
+                                    break;    
+                                }
                             }
                         }
                     }
@@ -255,6 +277,47 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     cell.Value = Clipboard.GetText();
                 }
             }
+        }
+
+        private void btnPutPrice_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtWholeSalePrice.Text) 
+            && string.IsNullOrEmpty(txtPrice.Text))
+            {
+                MessageBox.Show("Không có giá để nhập đồng loạt !");
+                return;
+            }
+            try
+            {
+                if(!string.IsNullOrEmpty(txtPrice.Text))
+                {
+                    Int64.Parse(txtPrice.Text);    
+                }
+                if(!string.IsNullOrEmpty(txtWholeSalePrice.Text))
+                {
+                    Int64.Parse(txtWholeSalePrice.Text);    
+                }
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Kiểm tra lại số liệu cần đưa vào phải là số !");
+                return;
+            }
+            
+                DataGridViewSelectedCellCollection selectedCells = dgvProduct.SelectedCells;
+                foreach (DataGridViewCell cell in selectedCells)
+                {
+                    if(!string.IsNullOrEmpty(txtPrice.Text))
+                    {
+                        dgvProduct[PRODUCT_NEW_PRICE_POS,cell.RowIndex].Value = txtPrice.Text;
+                    }
+                    if (!string.IsNullOrEmpty(txtWholeSalePrice.Text))
+                    {
+                        dgvProduct[PRODUCT_NEW_WHOLE_PRICE_POS,cell.RowIndex].Value = txtWholeSalePrice.Text;
+                    }
+                }
+            
         }
     }
 }

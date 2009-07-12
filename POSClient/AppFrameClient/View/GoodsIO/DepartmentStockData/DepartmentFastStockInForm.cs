@@ -961,18 +961,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                 }
                 bool found = false;
+                DepartmentStockInDetail foundStockInDetail = null;
                 foreach (DepartmentStockInDetail detail in deptSODetailList)
                 {
                     if (eventArgs.SelectedDepartmentStockInDetail.Product.ProductId.Equals(detail.Product.ProductId))
                     {
                         found = true;
+                        foundStockInDetail = detail;
                         break;
                     }
                 }
                 if (found)
                 {
                     txtBarcode.Text = "";
-                    MessageBox.Show("Mã vạch đã được nhập");
+                    foundStockInDetail.Quantity += 1;
+                    bdsStockIn.ResetBindings(false);
+                    txtBarcode.Text = "";
+                    txtBarcode.Focus();
+                    dgvDeptStockIn.Refresh();
+                    dgvDeptStockIn.Invalidate();
+                    CalculateTotalStorePrice();
+                    //MessageBox.Show("Mã vạch đã được nhập");
                     return;
                 }
                 if (eventArgs.DepartmentStock != null)
@@ -1166,8 +1175,25 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             else
             {
-                cboDepartment.Enabled = true;
+                cboDepartment.Enabled = false;
+                foreach (Department department in cboDepartment.Items)
+                {
+                    string departmentId = department.DepartmentId.ToString();
+                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    if (!currentSubStock.StartsWith(departmentId))
+                    {
+                        cboDepartment.SelectedItem = department;
+                        cboDepartment.Enabled = false;
+                        break;
+                    }
+                }
+                UpdateStockOutDescription();  
             }
+        }
+
+        private void UpdateStockOutDescription()
+        {
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

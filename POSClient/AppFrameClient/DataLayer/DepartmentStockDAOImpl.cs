@@ -462,21 +462,30 @@ namespace AppFrame.DataLayer
             return (IList) HibernateTemplate.Execute(
                 delegate (ISession session)
                     {
-                        string sql = " SELECT dt FROM DepartmentStock dt " +
+                        try
+                        {
+                            string sql = " SELECT dt FROM DepartmentStock dt " +
                                      " WHERE dt.DelFlg = 0 " +
                                      " AND dt.Product.ProductMaster.ProductMasterId IN (";
-                        int i = 0;
-                        foreach (string id in ids)
-                        {
-                            sql += "'" + id + "'";
-                            if(i< (ids.Count - 2))
+                            int i = 0;
+                            foreach (string id in ids)
                             {
-                                sql += ",";
+                                sql += "'" + id + "'";
+                                if (i < (ids.Count - 2))
+                                {
+                                    sql += ",";
+                                }
+                                i += 1;
                             }
-                            i += 1;
+                            sql += " )";
+                            return session.CreateQuery(sql).List();    
                         }
-                        sql += " )";         
-                        return session.CreateQuery(sql).List();
+                        catch (Exception)
+                        {
+
+                            return null;
+                        }
+                        
                     }
                                );
         }

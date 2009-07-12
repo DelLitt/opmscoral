@@ -38,6 +38,11 @@
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.systemHotkey3 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtWholeSalePrice = new System.Windows.Forms.TextBox();
+            this.btnPutPrice = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,12 +61,12 @@
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Location = new System.Drawing.Point(6, 151);
             this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(800, 293);
+            this.dgvProduct.Size = new System.Drawing.Size(800, 279);
             this.dgvProduct.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(731, 450);
+            this.btnClose.Location = new System.Drawing.Point(731, 438);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -71,7 +76,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(650, 450);
+            this.btnSave.Location = new System.Drawing.Point(650, 438);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -114,11 +119,58 @@
             this.systemHotkey3.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
             this.systemHotkey3.Pressed += new System.EventHandler(this.systemHotkey3_Pressed);
             // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(313, 122);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 22);
+            this.txtPrice.TabIndex = 44;
+            // 
+            // txtWholeSalePrice
+            // 
+            this.txtWholeSalePrice.Location = new System.Drawing.Point(474, 122);
+            this.txtWholeSalePrice.Name = "txtWholeSalePrice";
+            this.txtWholeSalePrice.Size = new System.Drawing.Size(100, 22);
+            this.txtWholeSalePrice.TabIndex = 45;
+            // 
+            // btnPutPrice
+            // 
+            this.btnPutPrice.Location = new System.Drawing.Point(580, 122);
+            this.btnPutPrice.Name = "btnPutPrice";
+            this.btnPutPrice.Size = new System.Drawing.Size(75, 23);
+            this.btnPutPrice.TabIndex = 46;
+            this.btnPutPrice.Text = "Áp giá";
+            this.btnPutPrice.UseVisualStyleBackColor = true;
+            this.btnPutPrice.Click += new System.EventHandler(this.btnPutPrice_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(269, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 14);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Giá lẻ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(430, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 14);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Giá sỉ";
+            // 
             // DepartmentPriceUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 473);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPutPrice);
+            this.Controls.Add(this.txtWholeSalePrice);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnSave);
@@ -146,5 +198,10 @@
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey3;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtWholeSalePrice;
+        private System.Windows.Forms.Button btnPutPrice;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

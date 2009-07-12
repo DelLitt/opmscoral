@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
             this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +73,8 @@
             this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.deleteStock = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.SearchCreate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ProducType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductName = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
             this.columnColor = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
             this.columnSize = new AppFrame.Controls.DataGridViewEditComboBoxColumn();
@@ -105,14 +104,14 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -122,7 +121,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
             // 
             // btnDelete
             // 
@@ -252,11 +251,14 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
+            this.dgvDeptStockIn.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
-            this.ProducType,
             this.columnProductId,
+            this.Column4,
             this.columnProductName,
             this.columnColor,
             this.columnSize,
@@ -274,14 +276,6 @@
             this.Column3});
             this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDeptStockIn.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 213);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
             this.dgvDeptStockIn.Size = new System.Drawing.Size(800, 280);
@@ -467,57 +461,55 @@
             this.SearchCreate.Visible = false;
             this.SearchCreate.Width = 50;
             // 
-            // ProducType
-            // 
-            this.ProducType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ProducType.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ProducType.HeaderText = "Chủng loại";
-            this.ProducType.Name = "ProducType";
-            this.ProducType.ReadOnly = true;
-            this.ProducType.Visible = false;
-            // 
             // columnProductId
             // 
             this.columnProductId.DataPropertyName = "Product.ProductId";
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle2;
             this.columnProductId.HeaderText = "Mã vạch";
             this.columnProductId.Name = "columnProductId";
             this.columnProductId.ReadOnly = true;
             this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnProductId.Visible = false;
+            this.columnProductId.Width = 110;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "StockOutDetailId";
+            this.Column4.HeaderText = "Chung loai";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
             // 
             // columnProductName
             // 
             this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle3;
             this.columnProductName.HeaderText = "Tên sản phẩm";
             this.columnProductName.Name = "columnProductName";
             this.columnProductName.ReadOnly = true;
             this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.columnProductName.Width = 150;
+            this.columnProductName.Width = 120;
             // 
             // columnColor
             // 
             this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Silver;
-            this.columnColor.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            this.columnColor.DefaultCellStyle = dataGridViewCellStyle4;
             this.columnColor.HeaderText = "Màu sắc";
             this.columnColor.Name = "columnColor";
             this.columnColor.ReadOnly = true;
             this.columnColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.columnColor.Width = 80;
             // 
             // columnSize
             // 
             this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Silver;
-            this.columnSize.DefaultCellStyle = dataGridViewCellStyle20;
-            this.columnSize.HeaderText = "Kích cỡ";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            this.columnSize.DefaultCellStyle = dataGridViewCellStyle5;
+            this.columnSize.HeaderText = "K.cỡ";
             this.columnSize.Name = "columnSize";
             this.columnSize.ReadOnly = true;
             this.columnSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -527,8 +519,8 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Silver;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle6;
             this.quantity.HeaderText = "Tồn";
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
@@ -540,37 +532,37 @@
             this.Good.DataPropertyName = "GoodQuantity";
             this.Good.HeaderText = "Tốt";
             this.Good.Name = "Good";
-            this.Good.Width = 70;
+            this.Good.Width = 60;
             // 
             // Damage
             // 
             this.Damage.DataPropertyName = "ErrorQuantity";
             this.Damage.HeaderText = "Lỗi";
             this.Damage.Name = "Damage";
-            this.Damage.Width = 70;
+            this.Damage.Width = 60;
             // 
             // error
             // 
             this.error.DataPropertyName = "DamageQuantity";
             this.error.HeaderText = "Hư";
             this.error.Name = "error";
-            this.error.Width = 70;
+            this.error.Width = 60;
             // 
             // Lost
             // 
             this.Lost.DataPropertyName = "LostQuantity";
             this.Lost.HeaderText = "Mất";
             this.Lost.Name = "Lost";
-            this.Lost.Width = 70;
+            this.Lost.Width = 60;
             // 
             // Unconfirm
             // 
             this.Unconfirm.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Silver;
-            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle7;
             this.Unconfirm.HeaderText = "KXD";
             this.Unconfirm.Name = "Unconfirm";
-            this.Unconfirm.Width = 70;
+            this.Unconfirm.Width = 60;
             // 
             // Desc
             // 
@@ -700,8 +692,8 @@
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
         private AppFrame.Controls.HotKey.SystemHotkey deleteStock;
         private System.Windows.Forms.DataGridViewButtonColumn SearchCreate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProducType;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnProductName;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnColor;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnSize;

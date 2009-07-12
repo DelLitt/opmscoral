@@ -88,6 +88,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
@@ -103,14 +104,14 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -120,7 +121,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
             // 
             // btnDelete
             // 
@@ -486,7 +487,7 @@
             this.groupBox1.Controls.Add(this.rdoFastStockIn);
             this.groupBox1.Location = new System.Drawing.Point(15, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(389, 50);
+            this.groupBox1.Size = new System.Drawing.Size(208, 50);
             this.groupBox1.TabIndex = 121;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phương thức";
@@ -494,12 +495,12 @@
             // rdoStockIn
             // 
             this.rdoStockIn.AutoSize = true;
-            this.rdoStockIn.Location = new System.Drawing.Point(206, 21);
+            this.rdoStockIn.Location = new System.Drawing.Point(107, 21);
             this.rdoStockIn.Name = "rdoStockIn";
-            this.rdoStockIn.Size = new System.Drawing.Size(125, 18);
+            this.rdoStockIn.Size = new System.Drawing.Size(94, 18);
             this.rdoStockIn.TabIndex = 119;
             this.rdoStockIn.TabStop = true;
-            this.rdoStockIn.Text = "Nhập bình thường";
+            this.rdoStockIn.Text = "Nhập từ chợ";
             this.rdoStockIn.UseVisualStyleBackColor = true;
             this.rdoStockIn.CheckedChanged += new System.EventHandler(this.rdoStockIn_CheckedChanged);
             // 
@@ -508,10 +509,10 @@
             this.rdoFastStockIn.AutoSize = true;
             this.rdoFastStockIn.Location = new System.Drawing.Point(6, 21);
             this.rdoFastStockIn.Name = "rdoFastStockIn";
-            this.rdoFastStockIn.Size = new System.Drawing.Size(91, 18);
+            this.rdoFastStockIn.Size = new System.Drawing.Size(95, 18);
             this.rdoFastStockIn.TabIndex = 118;
             this.rdoFastStockIn.TabStop = true;
-            this.rdoFastStockIn.Text = "Nhập nhanh";
+            this.rdoFastStockIn.Text = "Nhập từ 142";
             this.rdoFastStockIn.UseVisualStyleBackColor = true;
             this.rdoFastStockIn.CheckedChanged += new System.EventHandler(this.rdoFastStockIn_CheckedChanged);
             // 
@@ -578,9 +579,21 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.ForeColor = System.Drawing.Color.Navy;
+            this.lblDescription.Location = new System.Drawing.Point(141, 531);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(188, 29);
+            this.lblDescription.TabIndex = 128;
+            this.lblDescription.Text = "Nhập hàng từ ...";
+            // 
             // DepartmentFastStockInForm
             // 
-            this.ClientSize = new System.Drawing.Size(808, 501);
+            this.ClientSize = new System.Drawing.Size(808, 616);
+            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboDepartment);
@@ -673,5 +686,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label lblDescription;
     }
 }

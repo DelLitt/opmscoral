@@ -153,7 +153,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
                 {
-                    totalProduct += detail.Quantity;
+                    totalProduct += detail.GoodQuantity;
                 }
             }
             
@@ -1003,6 +1003,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 if (eventArgs.EventResult == null)
                 {
                     MessageBox.Show("Không tìm thấy mã vạch này");
+                    
                     return;
                 }
                 bool found = false;
@@ -1018,8 +1019,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
                 if (found)
                 {
-                    //MessageBox.Show("Mã vạch đã được nhập");
                     foundStockOutDetail.GoodQuantity += 1;
+                    bdsStockIn.ResetBindings(false);
+                    txtBarcode.Text = "";
+                    txtBarcode.Focus();
+                    dgvDeptStockIn.Refresh();
+                    dgvDeptStockIn.Invalidate();
+                    CalculateTotalStorePrice();
                     return;
                 }
                 if (eventArgs.DepartmentStock != null)
@@ -1045,12 +1051,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
+                CalculateTotalStorePrice();
             }
         }
 
         private void txtBarcode_Enter(object sender, EventArgs e)
         {
-            txtBarcode.BackColor = Color.Green;
+            txtBarcode.BackColor = Color.LightGreen;
         }
 
         private void txtBarcode_Leave(object sender, EventArgs e)
