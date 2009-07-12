@@ -27,6 +27,13 @@
         length="10"
     >
     </property>
+  <property
+      name="WholeSalePrice"
+      type="Int64"
+      column="WHOLE_SALE_PRICE"
+      length="10"
+    >
+  </property>
     <property
         name="CreateDate"
         type="DateTime"
