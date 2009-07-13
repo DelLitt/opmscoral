@@ -18,5 +18,9 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
         #region Logic use in IDepartmentStockInSearchController
         IStockInLogic StockInLogic { get; set; }
         #endregion
+
+        #region events in view
+        event EventHandler<MainStockInSearchEventArgs> CompletedMainStockInSearchEvent;
+        #endregion
     }
 }

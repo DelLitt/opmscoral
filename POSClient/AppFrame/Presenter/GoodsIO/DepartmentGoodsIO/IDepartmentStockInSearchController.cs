@@ -17,5 +17,10 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         #region Logic use in IDepartmentStockInSearchController
         IDepartmentStockInLogic DepartmentStockInLogic { get; set; }
         #endregion
+
+        #region Events
+
+        event EventHandler<DepartmentStockInSearchEventArgs> CompletedSearchDepartmentStockInEvent;
+        #endregion
     }
 }

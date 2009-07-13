@@ -771,6 +771,9 @@
   <ItemGroup>
     <Content Include="Advice\dummy.txt" />
     <Content Include="Config\AppFrameSecurity.xml" />
+    <EmbeddedResource Include="Common\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CoralMessageBox.resx">
       <DependentUpon>CoralMessageBox.cs</DependentUpon>
     </EmbeddedResource>

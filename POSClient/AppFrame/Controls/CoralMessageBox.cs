@@ -23,4 +23,5 @@ namespace AppFrame.Controls
     public enum CoralMessageBoxButton { YesNo,YesNoCancel, OK, OKCancel,RetryCancel,AbortRetryIgnore }
     public enum CoralMessageBoxIcon { Asterisk,Error,Exclamation,Information,Question,None,Warning }
     public enum CoralMessageBoxDefaultButton { Button1,Button2,Button3 }
+    
 }
