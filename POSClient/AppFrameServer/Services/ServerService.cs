@@ -79,6 +79,23 @@ namespace AppFrameServer.Services
                  });
         }
 
+        public void InformDepartmentStockInSucess(Department department, DepartmentStockIn stockIn)
+        {
+            ServerUtility.Log(logger, department.DepartmentId + " inform stock in back success. ");
+            _callbackSubStockList.ForEach(
+                 delegate(IDepartmentStockOutCallback callback)
+                 {
+                     try
+                     {
+                         callback.NotifyStockInSuccess(department,stockIn);
+                     }
+                     catch (Exception)
+                     {
+
+                     }
+                 });
+        }
+
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
             ServerUtility.Log(logger, " Stock-out dispatching to " + department.DepartmentId );

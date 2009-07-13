@@ -23,6 +23,9 @@ namespace AppFrameServer.Services
         void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId);
 
         [OperationContract(IsOneWay = true)]
+        void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn);
+
+        [OperationContract(IsOneWay = true)]
         void NotifyRequestDepartmentStockOut(long departmentId);
     }
 }
