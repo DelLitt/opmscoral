@@ -440,6 +440,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             
         }
 
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
+        {
+            
+        }
+
         public void NotifyRequestDepartmentStockOut(long departmentId)
         {
             

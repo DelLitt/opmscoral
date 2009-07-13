@@ -18,7 +18,7 @@ namespace AppFrameClient.Services
     public class ServerServiceConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 45*1000;
+        const int SleepTime = 10*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -60,13 +60,31 @@ namespace AppFrameClient.Services
             stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
             
             // call method to sync
-            DepartmentStockOutLogic.Add(stockOut);
-            ClientUtility.Log(logger, " Completed and feeding back ..." );
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
-            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+            try
+            {
+                DepartmentStockOutLogic.Add(stockOut);
+                ClientUtility.Log(logger, " Completed and feeding back ...");
+                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+                serverService.InformDepartmentStockInSucess(department, stockIn);
+                ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+            }
+            catch (Exception ex)
+            {
+                ClientUtility.Log(logger, ex.Message);
+                try
+                {
+                    serverService.InformDepartmentStockInSucess(department, null);
+                }
+                catch (Exception exception)
+                {
+                    ClientUtility.Log(logger,exception.Message);
+                }
+                
+            }
+            
+            
             
         }
-    
 
         public void NotifyConnected()
         {
@@ -79,7 +97,11 @@ namespace AppFrameClient.Services
             // don't need to implement
         }
 
-        
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
+        {
+            //serverService.InformDepartmentStockInSucess(department,stockIn);
+        }
+
 
         public void NotifyRequestDepartmentStockOut(long departmentId)
         {

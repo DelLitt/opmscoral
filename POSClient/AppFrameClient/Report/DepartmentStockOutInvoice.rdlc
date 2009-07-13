@@ -262,7 +262,7 @@
         <CanGrow>true</CanGrow>
         <Left>0.0625in</Left>
         <Height>0.25in</Height>
-        <Value>ĐT: 0902 828950 - 01217583196</Value>
+        <Value>ĐT: 22439745 - 01217583196</Value>
       </Textbox>
       <Textbox Name="textbox6">
         <Top>0.94792in</Top>
@@ -376,7 +376,7 @@
         <ZIndex>1</ZIndex>
         <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutDetailView</DataSetName>
         <Top>1.40625in</Top>
-        <Width>5.88377in</Width>
+        <Width>5.88376in</Width>
         <Details>
           <TableRows>
             <TableRow>

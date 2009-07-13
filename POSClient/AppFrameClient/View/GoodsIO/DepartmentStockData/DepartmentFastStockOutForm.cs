@@ -308,7 +308,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 if (detail.DelFlg == CommonConstants.DEL_FLG_NO)
                 {
-                    totalProduct += detail.Quantity;
+                    totalProduct += detail.GoodQuantity;
                 }
             }
             
@@ -446,7 +446,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSO.DepartmentStockOutDetails =
                     ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
 
-            
+            UpdateStockOutDescription();
         }
 
        
@@ -635,7 +635,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
             if(rdoFastStockOut.Checked)
             {
-                EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+                //EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+                try
+                {
+                    EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);      
+                }
+                catch (Exception)
+                {
+                    lblInformation.ForeColor = Color.Red;
+                    lblInformation.Text = " Không kết nối được với máy cửa hàng! ";
+                    deptSO = new DepartmentStockOut();
+                    deptSODetailList.Clear();
+                    //                    txtDexcription.Text = "";
+                    //                    txtPriceIn.Text = "";
+                    //                    txtPriceOut.Text = "";
+                    txtSumProduct.Text = "";
+                    txtSumValue.Text = "";
+                    return;
+                }
+                
+
             }
             if(rdoStockOut.Checked)
             {
@@ -1568,11 +1587,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (!rdoStockOut.Checked)
             {
                 cboProductMasters.Enabled = false;
+                rdoWholesale.Enabled = false;
+                rdoRetail.Enabled = false;
+                rdoWholesale.Checked = false;
+                rdoRetail.Checked = true;
                 UpdateStockOutDescription();  
             }
             else
             {
                 cboProductMasters.Enabled = true;
+                rdoWholesale.Enabled = true;
+                rdoRetail.Enabled = true;
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();
@@ -1605,12 +1630,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         break;
                     }
                 }
+                rdoWholesale.Checked = false;
+                rdoRetail.Checked = true;
+                rdoWholesale.Enabled = false;
+                rdoRetail.Enabled = false;
+
                 UpdateStockOutDescription();  
             }
             else
             {
                 cboProductMasters.Enabled = true;
                 cboDepartment.Enabled = true;
+                rdoWholesale.Enabled = true;
+                rdoRetail.Enabled = true;
                 UpdateStockOutDescription();  
             }
         }

@@ -227,7 +227,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSODetailList = new DepartmentStockInDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
-
+            UpdateStockOutDescription();
         }
 
        
@@ -360,12 +360,40 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockIn = deptSO;
-            EventUtility.fireEvent(SaveStockInBackEvent, this, eventArgs);
+            eventArgs.Department = (Department)cboDepartment.SelectedItem;
+            eventArgs.DepartmentStockList = departmentStockList;
+            if(rdoFastStockIn.Checked)
+            {
+                try
+                {
+                    //EventUtility.fireAsyncEvent(DispatchDepartmentStockIn, this, eventArgs,new AsyncCallback(EndEvent));
+                    EventUtility.fireEvent(DispatchDepartmentStockIn, this, eventArgs);
+                }
+                catch (Exception)
+                {
+                    lblMessage.ForeColor = Color.Red;
+                    lblMessage.Text = " Không kết nối được với máy cửa hàng! ";
+                    deptSO = new DepartmentStockIn();
+                    deptSODetailList.Clear();
+                    //                    txtDexcription.Text = "";
+                    //                    txtPriceIn.Text = "";
+                    //                    txtPriceOut.Text = "";
+                    txtSumProduct.Text = "";
+                    txtSumValue.Text = "";
+                    return;
+                }
+            }
+            else
+            {
+                EventUtility.fireEvent(SaveStockInBackEvent, this, eventArgs);
+            }
+            
             if (eventArgs.EventResult != null)
             {
 
                 lblMessage.ForeColor = Color.Blue;
                 lblMessage.Text = "Lưu thành công !";
+                
                 deptSO = new DepartmentStockIn();
                     deptSODetailList.Clear();
 //                    txtDexcription.Text = "";
@@ -378,6 +406,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             else
             {
+                if (rdoFastStockIn.Checked)
+                {
+                    lblMessage.ForeColor = Color.Blue;
+                    lblMessage.Text = "Đã yêu cầu cửa hàng trả hàng ... ";
+                    return;
+                }
                 lblMessage.ForeColor = Color.Red;
                 lblMessage.Text = "Có lỗi khi lưu !";
             }
@@ -960,6 +994,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtBarcode.Text = "";
                     return;
                 }
+                txtGoodsDescription.Text = eventArgs.SelectedDepartmentStockInDetail.Product.ProductMaster.ProductFullName;
                 bool found = false;
                 DepartmentStockInDetail foundStockInDetail = null;
                 foreach (DepartmentStockInDetail detail in deptSODetailList)
@@ -1005,11 +1040,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockInDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 //cbbStockOutType.Enabled = false;
+                bdsStockIn.ResetBindings(false);
                 txtBarcode.Text = "";
+                txtBarcode.Focus();
+                dgvDeptStockIn.Refresh();
+                dgvDeptStockIn.Invalidate();
+                CalculateTotalStorePrice();
 
                 if (rdoFastStockIn.Checked)
                 {
-                    // do fast stock out in here
+                    #region unused code
+                    /*// do fast stock out in here
                     // first remove all blank row
                     int count = 0;
                     int length = deptSODetailList.Count;
@@ -1074,7 +1115,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ea.DepartmentStockList = departmentStockList;
                     try
                     {
-                        EventUtility.fireAsyncEvent(DispatchDepartmentStockIn, this, ea,new AsyncCallback(EndEvent));
+                        //EventUtility.fireAsyncEvent(DispatchDepartmentStockIn, this, ea,new AsyncCallback(EndEvent));
+                        EventUtility.fireEvent(DispatchDepartmentStockIn, this, ea);
                     }
                     catch (Exception)
                     {
@@ -1108,7 +1150,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         lblMessage.ForeColor = Color.Red;
                         lblMessage.Text = "Có lỗi khi lưu ! ";
-                    }
+                    }*/
+                    #endregion
                 }
             }
         }
@@ -1165,6 +1208,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 cboDepartment.Enabled = true;
             }
+            UpdateStockOutDescription();  
         }
 
         private void rdoStockIn_CheckedChanged(object sender, EventArgs e)
@@ -1187,18 +1231,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         break;
                     }
                 }
-                UpdateStockOutDescription();  
+                
             }
+            UpdateStockOutDescription();  
         }
 
         private void UpdateStockOutDescription()
         {
-            
+            string text = " NHẬP HÀNG TỪ ";
+            text += cboDepartment.Text;
+
+            lblDescription.Text = text;           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             txtInputDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void systemHotkey2_Pressed(object sender, EventArgs e)
+        {
+            btnSave_Click(sender,e);
         }
     }
 }

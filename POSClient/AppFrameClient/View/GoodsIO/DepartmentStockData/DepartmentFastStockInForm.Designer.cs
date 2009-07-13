@@ -89,6 +89,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblDescription = new System.Windows.Forms.Label();
+            this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
@@ -590,6 +591,11 @@
             this.lblDescription.TabIndex = 128;
             this.lblDescription.Text = "Nhập hàng từ ...";
             // 
+            // systemHotkey2
+            // 
+            this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
+            this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
+            // 
             // DepartmentFastStockInForm
             // 
             this.ClientSize = new System.Drawing.Size(808, 616);
@@ -687,5 +693,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label lblDescription;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
     }
 }

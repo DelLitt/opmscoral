@@ -59,9 +59,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if (destDept != null)
             {
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
-                //serverService.JoinDistributingGroup(destDept);
                 serverService.MakeDepartmentStockIn(destDept, e.DepartmentStockIn);
             }
+            e.EventResult = "Made Stock-in back";
         }
 
         void _departmentStockInView_SaveStockInBackEvent(object sender, DepartmentStockInEventArgs e)
@@ -406,6 +406,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
+        {
+            
+        }
+
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
         {
             
         }
