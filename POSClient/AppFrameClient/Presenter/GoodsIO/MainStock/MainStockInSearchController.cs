@@ -6,6 +6,7 @@ using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 
@@ -35,9 +36,11 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             criteria.AddLikeCriteria("StockInId", e.StockInId + "%");
             criteria.AddEqCriteria("DelFlg", (long)0);
             e.StockInList = StockInLogic.FindAll(criteria);
+            EventUtility.fireEvent(CompletedMainStockInSearchEvent,this,e);
         }
 
         public IStockInLogic StockInLogic { get; set; }
+        public event EventHandler<MainStockInSearchEventArgs> CompletedMainStockInSearchEvent;
 
         #region Implementation of IBaseController<StockCreateEventArgs>
 

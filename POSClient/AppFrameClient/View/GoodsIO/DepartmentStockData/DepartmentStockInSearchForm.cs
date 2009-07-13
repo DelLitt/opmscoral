@@ -33,11 +33,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 _departmentStockInSearchController = value;
                 _departmentStockInSearchController.DepartmentStockInSearchView = this;
+                _departmentStockInSearchController.CompletedSearchDepartmentStockInEvent += new EventHandler<DepartmentStockInSearchEventArgs>(_departmentStockInSearchController_CompletedSearchDepartmentStockInEvent);
             }
             get
             {
                 return _departmentStockInSearchController;
             }
+        }
+
+        void _departmentStockInSearchController_CompletedSearchDepartmentStockInEvent(object sender, DepartmentStockInSearchEventArgs e)
+        {
+            Enabled = true;
+            DepartmentStockInList = e.DepartmeneStockInList;
+            PopulateDataGrid();
         }
         public event EventHandler<DepartmentStockInSearchEventArgs> SearchDepartmentStockInEvent;
         #endregion
@@ -66,12 +74,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             var eventArgs = new DepartmentStockInSearchEventArgs
                                 {
                                     StockInId = txtBlockInDetailId.Text,
-                                    StockInDateFrom = chkImportDateFrom.Checked ? DateUtility.ZeroTime(dtpImportDateFrom.Value) : DateTime.MinValue,
-                                    StockInDateTo = chkImportDateTo.Checked ? DateUtility.MaxTime(dtpImportDateTo.Value) : DateTime.MaxValue
+                                    StockInDateFrom = chkImportDateFrom.Checked ? DateUtility.ZeroTime(dtpImportDateFrom.Value) : DateUtility.MaxTime(DateTime.Now.Subtract(new TimeSpan(3,0,0,0))),
+                                    StockInDateTo = chkImportDateTo.Checked ? DateUtility.MaxTime(dtpImportDateTo.Value) : DateUtility.MaxTime(DateTime.Now)
                                 };
-            EventUtility.fireEvent(SearchDepartmentStockInEvent, this, eventArgs);
-            DepartmentStockInList = eventArgs.DepartmeneStockInList;
-            PopulateDataGrid();
+            EventUtility.fireAsyncEvent(SearchDepartmentStockInEvent, this, eventArgs,new AsyncCallback(EndEvent));
+            Enabled = false;
+            /*DepartmentStockInList = eventArgs.DepartmeneStockInList;
+            PopulateDataGrid();*/
         }
 
         private void PopulateDataGrid()

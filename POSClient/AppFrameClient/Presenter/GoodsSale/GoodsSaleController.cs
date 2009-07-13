@@ -77,7 +77,7 @@ namespace AppFrameClient.Presenter.GoodsSale
             }*/
             //Product product = ProductLogic.FindProduct(e.SelectedPurchaseOrderDetail.Product.ProductId,CurrentDepartment.Get().DepartmentId);
             // TEMP FIXING
-            NotAvailableInStock = true;
+            NotAvailableInStock = false;
 
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("DepartmentStockPK.ProductId", e.SelectedPurchaseOrderDetail.Product.ProductId);

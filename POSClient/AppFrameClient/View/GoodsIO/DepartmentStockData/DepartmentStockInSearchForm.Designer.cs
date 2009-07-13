@@ -136,14 +136,14 @@
             this.dgvProduct.Location = new System.Drawing.Point(13, 132);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
-            this.dgvProduct.Size = new System.Drawing.Size(917, 270);
+            this.dgvProduct.Size = new System.Drawing.Size(656, 270);
             this.dgvProduct.TabIndex = 23;
             this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
             this.dgvProduct.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentDoubleClick);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(855, 408);
+            this.btnClose.Location = new System.Drawing.Point(594, 408);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 24;
@@ -153,7 +153,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(774, 408);
+            this.btnSelect.Location = new System.Drawing.Point(513, 408);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 25;
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 433);
+            this.ClientSize = new System.Drawing.Size(681, 433);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.btnClose);

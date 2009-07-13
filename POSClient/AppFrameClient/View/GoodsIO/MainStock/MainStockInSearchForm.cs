@@ -37,11 +37,20 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 _stockInSearchController = value;
                 _stockInSearchController.StockInSearchView = this;
+                _stockInSearchController.CompletedMainStockInSearchEvent += new EventHandler<MainStockInSearchEventArgs>(_stockInSearchController_CompletedMainStockInSearchEvent);
             }
             get
             {
                 return _stockInSearchController;
             }
+        }
+
+        void _stockInSearchController_CompletedMainStockInSearchEvent(object sender, MainStockInSearchEventArgs e)
+        {
+            Enabled = true;
+            StockInList = e.StockInList;
+           if(StockInList!= null)
+               PopulateDataGrid();            
         }
 
         public IDepartmentStockInSearchController DepartmentStockInSearchController
@@ -77,14 +86,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             var eventArgs = new MainStockInSearchEventArgs
                                 {
                                     StockInId = txtBlockInDetailId.Text,
-                                    StockInDateFrom = chkImportDateFrom.Checked ? DateUtility.ZeroTime(dtpImportDateFrom.Value) : DateTime.MinValue,
-                                    StockInDateTo = chkImportDateTo.Checked ? DateUtility.MaxTime(dtpImportDateTo.Value) : DateTime.MaxValue
+                                    StockInDateFrom = chkImportDateFrom.Checked ? DateUtility.ZeroTime(dtpImportDateFrom.Value) : DateUtility.ZeroTime(DateTime.Now.Subtract(new TimeSpan(3,0,0))),
+                                    StockInDateTo = chkImportDateTo.Checked ? DateUtility.MaxTime(dtpImportDateTo.Value) : DateUtility.MaxTime(DateTime.Now)
                                 };
-            EventUtility.fireEvent(SearchStockInEvent, this, eventArgs);
+            EventUtility.fireAsyncEvent(SearchStockInEvent, this, eventArgs,new AsyncCallback(EndEvent));
+            Enabled = false;
             CurrentEventArgs = eventArgs;
-            StockInList = eventArgs.StockInList;
+            /*StockInList = eventArgs.StockInList;
             if(StockInList!= null)
-                PopulateDataGrid();
+                PopulateDataGrid();*/
         }
 
         private void PopulateDataGrid()
