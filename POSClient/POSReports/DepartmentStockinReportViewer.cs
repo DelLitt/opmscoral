@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
@@ -22,7 +23,11 @@ namespace POSReports
             this.departmentTableAdapter.Fill(this.posDataSet.department);
             // TODO: This line of code loads data into the 'posDataSet.departmentStockIn' table. You can move, or remove it, as needed.
             //this.DepartmentStockInTableAdapter.Fill(this.posDataSet.departmentStockIn);
-
+            if (CurrentDepartment.Get().DepartmentId != 0)
+            {
+                comboBox1.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                comboBox1.Enabled = false;
+            }
             this.reportViewer1.RefreshReport();
         }
 

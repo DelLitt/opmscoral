@@ -46,11 +46,17 @@ namespace POSReports
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
+            /*BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            button1.Text = "Đang xử lý";
+            button1.Enabled = false;
+            backgroundWorker.RunWorkerAsync();*/
+            /*try
+            {*/
                 ReportParameter[] parameters = new ReportParameter[1];
-                
-                if(!string.IsNullOrEmpty(txtFilter.Text))
+
+                if (!string.IsNullOrEmpty(txtFilter.Text))
                 {
                     parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());
                     this.deptStockStatisticBindingSource.Filter = "product_name like '%" + txtFilter.Text + "%'";
@@ -60,30 +66,43 @@ namespace POSReports
                     parameters[0] = new ReportParameter("StrFilter", "");
                     this.deptStockStatisticBindingSource.Filter = "";
                 }
-                if(comboBox1.SelectedIndex != -1)
+                if (comboBox1.SelectedIndex != -1)
                 {
-                    ProductType productType = (ProductType) comboBox1.SelectedItem;
-                    if(productType.TypeId != 0)
+                    ProductType productType = (ProductType)comboBox1.SelectedItem;
+                    if (productType.TypeId != 0)
                     {
                         string extraFilterStr = "";
-                        if(!string.IsNullOrEmpty(deptStockStatisticBindingSource.Filter))
+                        if (!string.IsNullOrEmpty(deptStockStatisticBindingSource.Filter))
                         {
                             extraFilterStr += " AND ";
                         }
-                        
+
                         deptStockStatisticBindingSource.Filter += extraFilterStr + " type_name = '" + productType.TypeName + "'";
                     }
                 }
                 object deptId = departmentId.SelectedValue;
-                this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()),ZeroTime(toDate.Value),MaxTime(toDate.Value) );
+                this.DeptStockStatisticTableAdapter.Fill(posDataSet.deptStockStatistic, Int32.Parse(deptId.ToString()), ZeroTime(toDate.Value), MaxTime(toDate.Value));
                 
                 this.reportViewer1.LocalReport.SetParameters(parameters);
                 this.reportViewer1.RefreshReport();
 
-            } catch (Exception ex)
+            /*}
+            catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ người quản trị!");
-            }
+                //MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ người quản trị!");
+                MessageBox.Show(ex.StackTrace);
+            }*/
+
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
         }
 
         private void DeptStockStatisticReportViewer_Load(object sender, EventArgs e)
