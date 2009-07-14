@@ -135,7 +135,7 @@
             this.btnSyncToMain.TabIndex = 49;
             this.btnSyncToMain.Text = "Bắt đầu đồng bộ ";
             this.btnSyncToMain.UseVisualStyleBackColor = true;
-            this.btnSyncToMain.Click += new System.EventHandler(this.btnSyncToMain_Click);
+            this.btnSyncToMain.Click += new System.EventHandler(this.btnSyncFromMain_Click);
             // 
             // syncResultBindingSource
             // 

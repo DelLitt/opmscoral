@@ -82,8 +82,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadGoodsByNameColorSizeEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadPriceAndStockEvent;
-        public event EventHandler<DepartmentStockInEventArgs> LoadDepartemntStockInForExportEvent;
-        public event EventHandler<DepartmentStockInEventArgs> UpdateDepartemntStockInForExportEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadDepartmentStockInForExportEvent;
+        public event EventHandler<DepartmentStockInEventArgs> UpdateDepartmentStockInForExportEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadMasterDataForExportEvent;
+        public event EventHandler<DepartmentStockInEventArgs> SyncExportedMasterDataEvent;
 
         #endregion
 
@@ -107,8 +109,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             return true;
         }
-        private void btnSyncToMain_Click(object sender, EventArgs e)
+        private void btnSyncToDept_Click(object sender, EventArgs e)
         {
+
             if(!CheckPOSSyncDriveExist())
                 return;
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
@@ -131,6 +134,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             IList resultList = new ArrayList();
             try
             {
+                
+                // sync master data first
+                Department mstDataDept = new Department
+                                         {
+                                             DepartmentId = 0,
+                                             DepartmentName = "MasterData"
+                                         };
+                DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
+                var masterDataEvent = new DepartmentStockInEventArgs();
+                masterDataEvent.LastSyncTime = lastMasterDataSyncTime;
+                EventUtility.fireEvent(LoadMasterDataForExportEvent,this,masterDataEvent);
+                string masterDataFileName = configExportPath + "\\" + "MasterData_SyncDown_" +
+                                                              DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
+
+                SyncResult mstResult = new SyncResult();
+                mstResult.FileName = masterDataFileName;
+                mstResult.Status = "Thành công";
+                resultList.Add(mstResult);
+                Stream mstStream = File.Open(masterDataFileName, FileMode.Create);
+                BinaryFormatter mstBf = new BinaryFormatter();
+                mstBf.Serialize(mstStream, masterDataEvent.SyncFromMainToDepartment);
+                mstStream.Close();    
+
+                // sync stock-out to dept
                 var deptEvent = new DepartmentStockInEventArgs();
                 EventUtility.fireEvent(FillDepartmentEvent, this, deptEvent);
 
@@ -142,12 +169,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptEvent = new DepartmentStockInEventArgs();
                     deptEvent.LastSyncTime = lastSyncTime;
                     deptEvent.Department = department;
-                    EventUtility.fireEvent(LoadDepartemntStockInForExportEvent, this, deptEvent);
+                    EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
 
                     if(deptEvent.SyncFromMainToDepartment!=null 
                         && deptEvent.SyncFromMainToDepartment.StockOutList!=null
                         && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0 )
                     {
+                        //var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
                         string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" + 
                                                               DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
                         SyncResult result = new SyncResult();

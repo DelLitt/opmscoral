@@ -50,13 +50,72 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_FillDepartmentEvent);
                         departmentStockInExtraView.LoadPriceAndStockEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadPriceAndStockEvent);
-                        departmentStockInExtraView.LoadDepartemntStockInForExportEvent +=
+                        departmentStockInExtraView.LoadDepartmentStockInForExportEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_LoadDepartemntStockInForExportEvent);
-                        departmentStockInExtraView.UpdateDepartemntStockInForExportEvent +=
+                        departmentStockInExtraView.UpdateDepartmentStockInForExportEvent +=
                                     new EventHandler<DepartmentStockInEventArgs>(_departmentStockInView_UpdateDepartemntStockInForExportEvent);
                         departmentStockInExtraView.FindByStockInIdEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindByStockInIdEvent);
+                        departmentStockInExtraView.LoadMasterDataForExportEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadMasterDataForExportEvent);
+                        departmentStockInExtraView.SyncExportedMasterDataEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_SyncExportedMasterDataEvent);
                     }
                 }
+
+                void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)
+                {
+                    throw new NotImplementedException();
+                }
+
+                void departmentStockInExtraView_LoadMasterDataForExportEvent(object sender, DepartmentStockInEventArgs e)
+                {
+                    e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
+                    
+                    ObjectCriteria prdCrit = new ObjectCriteria();
+                    prdCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
+                    IList masterProductList1 = ProductLogic.FindAll(prdCrit);
+                    
+                    SubObjectCriteria subCrit = new SubObjectCriteria("ProductMaster");
+                    subCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
+                    prdCrit = new ObjectCriteria();
+                    prdCrit.AddSubCriteria("ProductMaster",subCrit);
+                    IList masterProductList2 = ProductLogic.FindAll(prdCrit);
+                    IList masterProductList = new ArrayList();
+                    if(masterProductList1!=null)
+                    {
+                        foreach (Product product in masterProductList1)
+                        {
+                            masterProductList.Add(product);
+                        }
+                    }
+                    if(masterProductList2!=null)
+                    {
+                        foreach (Product product in masterProductList2)
+                        {
+                            if (!ExistInList(masterProductList, product))
+                            {
+                                masterProductList.Add(product);
+                            }
+                        }
+                    }
+                    e.SyncFromMainToDepartment.ProductMasterList = masterProductList;
+
+                    ObjectCriteria deptPriceCrit = new ObjectCriteria();
+                    deptPriceCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
+
+                    IList masterDeptPriceList = DepartmentPriceLogic.FindAll(deptPriceCrit);
+                    e.SyncFromMainToDepartment.DepartmentPriceMasterList = masterDeptPriceList;
+                }
+
+        private bool ExistInList(IList list, Product product)
+        {
+            foreach (Product product1 in list)
+            {
+                if(product1.ProductId.Equals(product))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public  void departmentStockInExtraView_FindByStockInIdEvent(object sender, DepartmentStockInEventArgs e)
         {
@@ -529,6 +588,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 {
                     get;set;
                 }
+
+        public IProductLogic ProductLogic
+        {
+            get; set;
+        }
 
         public event EventHandler<DepartmentStockInEventArgs> CompletedFindByStockInEvent;
 
