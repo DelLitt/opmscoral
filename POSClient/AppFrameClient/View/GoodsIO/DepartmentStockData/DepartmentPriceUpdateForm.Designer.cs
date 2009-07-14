@@ -43,6 +43,7 @@
             this.btnPutPrice = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkAbsoluteFinding = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,11 +162,22 @@
             this.label2.TabIndex = 48;
             this.label2.Text = "Giá sỉ";
             // 
+            // chkAbsoluteFinding
+            // 
+            this.chkAbsoluteFinding.AutoSize = true;
+            this.chkAbsoluteFinding.Location = new System.Drawing.Point(661, 33);
+            this.chkAbsoluteFinding.Name = "chkAbsoluteFinding";
+            this.chkAbsoluteFinding.Size = new System.Drawing.Size(101, 18);
+            this.chkAbsoluteFinding.TabIndex = 49;
+            this.chkAbsoluteFinding.Text = "Tìm chính xác";
+            this.chkAbsoluteFinding.UseVisualStyleBackColor = true;
+            // 
             // DepartmentPriceUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 473);
+            this.Controls.Add(this.chkAbsoluteFinding);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPutPrice);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.Button btnPutPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chkAbsoluteFinding;
     }
 }

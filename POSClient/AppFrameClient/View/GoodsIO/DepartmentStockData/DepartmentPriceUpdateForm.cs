@@ -109,8 +109,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                     Country = productMasterSearchControl.cbbCountry.SelectedIndex > 0 ? ((Country)productMasterSearchControl.cbbCountry.SelectedItem) : null,
                                     Manufacturer = productMasterSearchControl.cbbManufacturer.SelectedIndex > 0 ? ((Manufacturer)productMasterSearchControl.cbbManufacturer.SelectedItem) : null,
                                     Distributor = productMasterSearchControl.cbbDistributor.SelectedIndex > 0 ? ((Distributor)productMasterSearchControl.cbbDistributor.SelectedItem) : null,
-                                    Packager = productMasterSearchControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterSearchControl.cbbPackager.SelectedItem) : null
+                                    Packager = productMasterSearchControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterSearchControl.cbbPackager.SelectedItem) : null,
+                                    AbsoluteFinding = chkAbsoluteFinding.Checked
                                 };
+
             EventUtility.fireEvent(SearchDepartmentPriceEvent, this, eventArgs);
 
             DepartmentPriceList = eventArgs.DepartmentPriceList;

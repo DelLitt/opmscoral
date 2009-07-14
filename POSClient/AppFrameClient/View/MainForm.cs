@@ -1165,6 +1165,11 @@ namespace AppFrame.View
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
+        private void mnuDepartmentStockOut_Click(object sender, EventArgs e)
+        {
+            new DepartmentStockOutReportViewer().Show();
+        }
         
     }
 }

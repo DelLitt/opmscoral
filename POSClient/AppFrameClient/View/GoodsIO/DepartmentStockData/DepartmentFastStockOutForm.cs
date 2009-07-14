@@ -561,13 +561,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             int line = 1;
             foreach (DepartmentStockOutDetail detail in deptSODetailList)
             {
+                // TEMP FIX
+                /*if(detail.GoodQuantity > detail.Quantity)
+                {
+                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + detail.Quantity);
+                    return;
+                }*/
                 foreach (DepartmentStock stock in departmentStockList)
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
                         if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
                         {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
+                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
                             return;
                         }
                         if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
@@ -653,8 +659,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtSumValue.Text = "";
                     return;
                 }
-                
-
             }
             if(rdoStockOut.Checked)
             {
@@ -771,27 +775,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             PageSettings pageSettings = printDoc.PrinterSettings.DefaultPageSettings;
             pageSettings.PrinterResolution.X = 180;
             pageSettings.PrinterResolution.Y = 180;
-            //pageSettings.Landscape = true;
-            /*pageSettings.PaperSize = new PaperSize();
-            pageSettings.PaperSize.Width = 550;
-            pageSettings.PaperSize.Height = 850;
-            pageSettings.Landscape = true;*/
+            
             
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
-            /*var barcodePrintDialog = new PrintDialog(); // instantiate new print preview dialog
-            barcodePrintDialog.Document = printDoc;
-            if (barcodePrintDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    printDoc.Print();
-                }
-                catch (Exception)
-                {
-                }
-
-            }*/
+            printDoc.EndPrint += new PrintEventHandler(printDoc_EndPrint);
             printDoc.Print(); 
+        }
+
+        void printDoc_EndPrint(object sender, PrintEventArgs e)
+        {
+            txtSumProduct.Text = "0";
+            txtBarcode.Focus();
+            txtCustomerName.Text = "";
         }
         private Stream CreateStream(string name, string fileNameExtension, Encoding encoding,
                               string mimeType, bool willSeek)
@@ -1431,16 +1426,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         departmentStockList.Add(eventArgs.DepartmentStock);
                     }
                 }
-                if(eventArgs.SelectedDepartmentStockOutDetail.Quantity > 0 )
-                {
+                // TEMP FIX FOR SALE
+                /*if(eventArgs.SelectedDepartmentStockOutDetail.Quantity > 0 )
+                {*/
                     eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = 1;    
-                }
+                /*}
                 else
                 {
                     MessageBox.Show("Mặt hàng này trong kho đã hết. Xin vui lòng kiểm tra lại.");
                     txtBarcode.Text = "";
                     return;
-                }
+                }*/
                 
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);

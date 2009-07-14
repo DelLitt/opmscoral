@@ -63,8 +63,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public void departmentStockDetailView_SearchDepartmentPriceEvent(object sender, DepartmentPriceUpdateEventArgs e)
         {
             var subCriteria = new SubObjectCriteria("ProductMaster");
-            subCriteria.AddLikeCriteria("ProductMasterId", e.ProductMasterId + "%");
-            subCriteria.AddLikeCriteria("ProductName", e.ProductMasterName + "%");
+            subCriteria.AddLikeCriteria("ProductMasterId", "%" + e.ProductMasterId + "%");
+            if(e.AbsoluteFinding)
+            {
+                subCriteria.AddEqCriteria("ProductName", e.ProductMasterName);
+            }
+            else
+            {
+                subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");    
+            }
             subCriteria.AddEqCriteria("ProductType", e.ProductType);
             subCriteria.AddEqCriteria("ProductSize",  e.ProductSize);
             subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
@@ -72,11 +79,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             subCriteria.AddEqCriteria("Packager", e.Packager);
             subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);
             subCriteria.AddEqCriteria("Distributor", e.Distributor);
-
+            subCriteria.AddOrder("ProductName",false);
+            subCriteria.AddOrder("ProductColor", false);
+            subCriteria.AddOrder("ProductSize", false);
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddSubCriteria("ProductMaster", subCriteria);
-            criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            /*criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", 0);*/
 
             e.DepartmentPriceList = DepartmentPriceLogic.FindAll(criteria);
         }

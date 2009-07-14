@@ -186,6 +186,7 @@
             this.F5Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.F4Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.F11Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.mnuDepartmentStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -467,7 +468,8 @@
             this.mnuDeptStockStatisticReport,
             this.mnuReturnPOReport,
             this.mnuReturnMainStockReport,
-            this.mnuDepartmentStockIn});
+            this.mnuDepartmentStockIn,
+            this.mnuDepartmentStockOut});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(85, 20);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -1426,6 +1428,13 @@
             this.F11Shortcut.Shortcut = System.Windows.Forms.Shortcut.F11;
             this.F11Shortcut.Pressed += new System.EventHandler(this.F11Shortcut_Pressed);
             // 
+            // mnuDepartmentStockOut
+            // 
+            this.mnuDepartmentStockOut.Name = "mnuDepartmentStockOut";
+            this.mnuDepartmentStockOut.Size = new System.Drawing.Size(258, 22);
+            this.mnuDepartmentStockOut.Text = "Báo cáo xuất hàng";
+            this.mnuDepartmentStockOut.Click += new System.EventHandler(this.mnuDepartmentStockOut_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1614,6 +1623,7 @@
         private AppFrame.Controls.HotKey.SystemHotkey F4Shortcut;
         private AppFrame.Controls.HotKey.SystemHotkey F11Shortcut;
         private System.Windows.Forms.ToolStripMenuItem mnuStockOutConfirm;
+        private System.Windows.Forms.ToolStripMenuItem mnuDepartmentStockOut;
 
     }
 }

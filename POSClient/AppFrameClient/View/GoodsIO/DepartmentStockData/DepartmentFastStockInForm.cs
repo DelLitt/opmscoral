@@ -345,7 +345,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 
                 line++;
             }
-
+            // confirm before save
+            LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult isConfirmed = loginForm.ShowDialog();
+            if (isConfirmed != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
             if (deptSO == null)
             {
                 deptSO = new DepartmentStockIn();
