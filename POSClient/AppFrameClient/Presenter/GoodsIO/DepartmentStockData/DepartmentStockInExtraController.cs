@@ -113,6 +113,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
                     IList masterDeptPriceList = DepartmentPriceLogic.FindAll(deptPriceCrit);
                     e.SyncFromMainToDepartment.DepartmentPriceMasterList = masterDeptPriceList;
+
+                    e.SyncFromMainToDepartment.DepartmentList = DepartmentLogic.FindAll(null);
+                    e.SyncFromMainToDepartment.EmployeeList = EmployeeLogic.FindAll(null);
                 }
 
         private bool ExistInList(IList list, Product product)
