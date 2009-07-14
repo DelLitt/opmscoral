@@ -64,5 +64,6 @@ namespace AppFrame.Logic
         void Sync(SyncFromMainToDepartment syncFromMainToDepartment);
         void SyncFromSubStock(DepartmentStockIn stockIn);
         void AddStockInBack(DepartmentStockIn stockIn);
+        void SyncMasterData(SyncFromMainToDepartment department);
     }
 }

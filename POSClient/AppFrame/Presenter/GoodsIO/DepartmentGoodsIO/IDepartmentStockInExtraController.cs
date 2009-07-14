@@ -13,6 +13,9 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
 
         IProductColorLogic ProductColorLogic { get; set; }
         IProductSizeLogic ProductSizeLogic { get; set; }
+        IProductLogic ProductLogic { get; set; }
+        IProductMasterLogic ProductMasterLogic { get; set; }
+        IDepartmentPriceLogic DepartmentPriceLogic { get; set; }
 
         event EventHandler<DepartmentStockInEventArgs> CompletedFindByStockInEvent;
     }
