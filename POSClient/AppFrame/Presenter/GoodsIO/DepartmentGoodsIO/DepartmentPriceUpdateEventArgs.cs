@@ -12,7 +12,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
     {
         public Form ParentForm { get; set; }
         public Department Department { get; set; }
-
+        public bool AbsoluteFinding { get; set; }
         public IList DepartmentPriceList { get; set; }
 
         public string ProductMasterId { get; set; }

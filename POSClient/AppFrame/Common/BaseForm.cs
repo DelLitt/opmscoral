@@ -24,8 +24,13 @@ namespace AppFrame.Common
                 showStatusStrip = value;
                 if(showStatusStrip)
                 {
-                    
+                    baseStatusStrip.Visible = true;
                 }
+                else
+                {
+                    baseStatusStrip.Visible = false;
+                }
+
             }
         }
         protected  void EndEvent(IAsyncResult iAsyncResult)
