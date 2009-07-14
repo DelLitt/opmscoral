@@ -260,7 +260,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 DepartmentStockInLogic.Sync(stockIn);*/
                 var syncFromMainToDepartment = e.SyncFromMainToDepartment;
                 DepartmentStockInLogic.Sync(syncFromMainToDepartment);
-                ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ cửa hàng về kho");
+                ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ kho về cửa hàng");
                 e.EventResult = "Success";
                 EventUtility.fireEvent(CompletedSyncDepartmentStockInEvent,this,e);
             }

@@ -62,7 +62,17 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
                 void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)
                 {
-                    throw new NotImplementedException();
+                    try
+                    {
+                        var syncFromMainToDepartment = e.SyncFromMainToDepartment;
+                        DepartmentStockInLogic.SyncMasterData(syncFromMainToDepartment);
+                        ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ cửa hàng về kho");
+                        e.EventResult = "Success";
+                    }
+                    catch (Exception)
+                    {
+                        e.EventResult = null;
+                    }
                 }
 
                 void departmentStockInExtraView_LoadMasterDataForExportEvent(object sender, DepartmentStockInEventArgs e)
