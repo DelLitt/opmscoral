@@ -147,7 +147,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>3.73958in</Left>
         <Height>0.25in</Height>
@@ -165,7 +165,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>3.3125in</Left>
         <Height>0.25in</Height>
@@ -184,14 +184,14 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>3.3125in</Left>
         <Height>0.375in</Height>
         <Value>PHIẾU XUẤT HÀNG</Value>
       </Textbox>
       <List Name="list1">
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Left>3.32292in</Left>
         <DataSetName>AppFrameClient_ViewModel_DepartmentStockOutView</DataSetName>
         <ReportItems>
@@ -229,24 +229,6 @@
         <Width>2.70833in</Width>
         <Height>0.26042in</Height>
       </List>
-      <Textbox Name="textbox9">
-        <rd:DefaultName>textbox9</rd:DefaultName>
-        <Top>2.1875in</Top>
-        <Width>5.88542in</Width>
-        <Style>
-          <FontSize>8pt</FontSize>
-          <TextAlign>Center</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>9</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>0.07292in</Left>
-        <Height>0.25in</Height>
-        <Value>Cửa hàng chỉ nhận đổi hàng lỗi trong vòng 1 tuần. Không bao đổi, trả mẫu quí khách đã chọn. Chân thành cám ơn.</Value>
-      </Textbox>
       <Textbox Name="textbox7">
         <Top>1.13542in</Top>
         <Width>3.25in</Width>
@@ -711,6 +693,7 @@
               <Height>0.25in</Height>
             </TableRow>
           </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
         </Footer>
         <Left>0.07292in</Left>
       </Table>
@@ -733,8 +716,31 @@
         <Value>="Ngày " &amp; Today().ToString("dd-MM-yyyy")</Value>
       </Textbox>
     </ReportItems>
-    <Height>5.5in</Height>
+    <Height>5.2in</Height>
   </Body>
   <Language>en-US</Language>
+  <PageFooter>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox9">
+        <rd:DefaultName>textbox9</rd:DefaultName>
+        <Width>5.88542in</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.09375in</Left>
+        <Height>0.25in</Height>
+        <Value>Cửa hàng chỉ nhận đổi hàng lỗi trong vòng 1 tuần. Không bao đổi, trả mẫu quí khách đã chọn. Chân thành cám ơn.</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>0.3in</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageFooter>
   <PageHeight>5.5in</PageHeight>
 </Report>
