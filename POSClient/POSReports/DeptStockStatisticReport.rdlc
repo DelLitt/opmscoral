@@ -2013,6 +2013,7 @@ GROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name</CommandText
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
         </Header>
         <TableColumns>
           <TableColumn>

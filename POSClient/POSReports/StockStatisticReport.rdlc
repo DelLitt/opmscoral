@@ -1299,6 +1299,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
         </Header>
         <TableColumns>
           <TableColumn>

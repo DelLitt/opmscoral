@@ -798,6 +798,7 @@ order by stock_out_date asc</CommandText>
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
         </Header>
         <TableColumns>
           <TableColumn>

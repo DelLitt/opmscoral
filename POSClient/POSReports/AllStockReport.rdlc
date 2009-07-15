@@ -1312,6 +1312,7 @@ order by pr.product_id</CommandText>
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
         </Header>
         <TableColumns>
           <TableColumn>

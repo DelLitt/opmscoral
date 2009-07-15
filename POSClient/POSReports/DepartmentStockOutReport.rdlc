@@ -108,7 +108,7 @@
         <CanGrow>true</CanGrow>
         <Left>1.125in</Left>
         <Height>0.25in</Height>
-        <Value>Fields!address.Value</Value>
+        <Value>=First(Fields!address.Value, "posDataSet_DepartmentStockOut")</Value>
       </Textbox>
       <Textbox Name="textbox61">
         <Top>0.75in</Top>
@@ -141,7 +141,7 @@
         <CanGrow>true</CanGrow>
         <Left>1.125in</Left>
         <Height>0.25in</Height>
-        <Value>Fields!department_name.Value</Value>
+        <Value>=First(Fields!department_name.Value, "posDataSet_DepartmentStockOut")</Value>
       </Textbox>
       <Textbox Name="textbox58">
         <rd:DefaultName>textbox58</rd:DefaultName>
@@ -1899,6 +1899,7 @@
             </TableRow>
           </TableRows>
           <RepeatOnNewPage>true</RepeatOnNewPage>
+          <FixedHeader>true</FixedHeader>
         </Header>
         <TableColumns>
           <TableColumn>
