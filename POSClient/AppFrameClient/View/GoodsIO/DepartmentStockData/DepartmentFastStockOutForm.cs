@@ -693,6 +693,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
         }
         IList<Stream> streamList = new List<Stream>();
+        private int currentIndex = 0;
         private LocalReport DeptStockOutInvoice;
         private void DoPrinting(DepartmentStockOut deptStockOut)
         {
@@ -775,8 +776,35 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             PageSettings pageSettings = printDoc.PrinterSettings.DefaultPageSettings;
             pageSettings.PrinterResolution.X = 180;
             pageSettings.PrinterResolution.Y = 180;
-            
-            
+
+
+            string deviceInfo =
+        "<DeviceInfo>" +
+        "  <OutputFormat>EMF</OutputFormat>" +
+        "  <PageWidth>8.2in</PageWidth>" +
+        "  <PageHeight>5.5in</PageHeight>" +
+        "  <DpiX>180</DpiX>" +
+        "  <DpiY>180</DpiY>" +
+        "  <MarginTop>0.0in</MarginTop>" +
+        "  <MarginLeft>0.0in</MarginLeft>" +
+        "  <MarginRight>0.0in</MarginRight>" +
+        "  <MarginBottom>0.0in</MarginBottom>" +
+        "</DeviceInfo>";
+            Warning[] warnings;
+            if (DeptStockOutInvoice == null)
+            {
+                return;
+            }
+            DeptStockOutInvoice.Refresh();
+            DeptStockOutInvoice.Render("Image", deviceInfo, CreateStream, out warnings);
+            if (streamList.Count > 0)
+            {
+                foreach (Stream stream in streamList)
+                {
+                    stream.Position = 0;
+                }
+            }
+
             printDoc.PrintPage += new PrintPageEventHandler(printDoc_PrintPage);
             printDoc.EndPrint += new PrintEventHandler(printDoc_EndPrint);
             printDoc.Print(); 
@@ -800,34 +828,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         }
         void printDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            string deviceInfo =
-          "<DeviceInfo>" +
-          "  <OutputFormat>EMF</OutputFormat>" +
-          "  <PageWidth>8.2in</PageWidth>" +
-          "  <PageHeight>5.5in</PageHeight>" +
-          "  <DpiX>180</DpiX>" +
-          "  <DpiY>180</DpiY>" +
-          "  <MarginTop>0.0in</MarginTop>" +
-          "  <MarginLeft>0.0in</MarginLeft>" +
-          "  <MarginRight>0.0in</MarginRight>" +
-          "  <MarginBottom>0.0in</MarginBottom>" +
-          "</DeviceInfo>";
-            Warning[] warnings;
-            if (DeptStockOutInvoice == null)
+            if(streamList.Count > 0 )
             {
-                return;
-            }
-            DeptStockOutInvoice.Refresh();
-            DeptStockOutInvoice.Render("Image", deviceInfo, CreateStream, out warnings);
-            if (streamList.Count > 0)
-            {
-                foreach (Stream stream in streamList)
-                {
-                    stream.Position = 0;
-                }
-                Metafile pageImage = new Metafile(streamList[0]);
-
+                Metafile pageImage = new Metafile(streamList[currentIndex]);
                 e.Graphics.DrawImage(pageImage, 0, 0);
+                currentIndex++;
+                e.HasMorePages = (currentIndex < streamList.Count);
             }
         }
 
