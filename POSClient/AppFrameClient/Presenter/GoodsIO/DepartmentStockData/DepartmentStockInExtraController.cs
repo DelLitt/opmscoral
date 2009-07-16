@@ -69,7 +69,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         ClientUtility.Log(logger, syncFromMainToDepartment.ToString(), "Đồng bộ từ cửa hàng về kho");
                         e.EventResult = "Success";
                     }
-                    catch (Exception)
+                    catch (Exception exception)
                     {
                         e.EventResult = null;
                     }
