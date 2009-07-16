@@ -697,6 +697,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private LocalReport DeptStockOutInvoice;
         private void DoPrinting(DepartmentStockOut deptStockOut)
         {
+            streamList = new List<Stream>();
             // push data to local report
             DeptStockOutInvoice = new LocalReport();
             DeptStockOutInvoice.ReportEmbeddedResource = "AppFrameClient.Report.DepartmentStockOutInvoice.rdlc";
@@ -815,6 +816,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             txtSumProduct.Text = "0";
             txtBarcode.Focus();
             txtCustomerName.Text = "";
+            // reset current index
+            currentIndex = 0;
+            streamList = new List<Stream>();
         }
         private Stream CreateStream(string name, string fileNameExtension, Encoding encoding,
                               string mimeType, bool willSeek)

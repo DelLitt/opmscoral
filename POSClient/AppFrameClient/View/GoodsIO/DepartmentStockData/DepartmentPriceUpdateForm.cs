@@ -110,7 +110,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                     Manufacturer = productMasterSearchControl.cbbManufacturer.SelectedIndex > 0 ? ((Manufacturer)productMasterSearchControl.cbbManufacturer.SelectedItem) : null,
                                     Distributor = productMasterSearchControl.cbbDistributor.SelectedIndex > 0 ? ((Distributor)productMasterSearchControl.cbbDistributor.SelectedItem) : null,
                                     Packager = productMasterSearchControl.cbbPackager.SelectedIndex > 0 ? ((Packager)productMasterSearchControl.cbbPackager.SelectedItem) : null,
-                                    AbsoluteFinding = chkAbsoluteFinding.Checked
+                                    AbsoluteFinding = chkAbsoluteFinding.Checked,
+                                    ZeroPrice = chkZeroPrice.Checked,
+                                    ZeroWholeSalePrice = chkZeroWholeSalePrice.Checked
                                 };
 
             EventUtility.fireEvent(SearchDepartmentPriceEvent, this, eventArgs);

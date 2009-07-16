@@ -44,6 +44,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.chkAbsoluteFinding = new System.Windows.Forms.CheckBox();
+            this.chkZeroPrice = new System.Windows.Forms.CheckBox();
+            this.chkZeroWholeSalePrice = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,11 +174,33 @@
             this.chkAbsoluteFinding.Text = "Tìm chính xác";
             this.chkAbsoluteFinding.UseVisualStyleBackColor = true;
             // 
+            // chkZeroPrice
+            // 
+            this.chkZeroPrice.AutoSize = true;
+            this.chkZeroPrice.Location = new System.Drawing.Point(661, 58);
+            this.chkZeroPrice.Name = "chkZeroPrice";
+            this.chkZeroPrice.Size = new System.Drawing.Size(102, 18);
+            this.chkZeroPrice.TabIndex = 50;
+            this.chkZeroPrice.Text = "Tìm giá lẻ = 0";
+            this.chkZeroPrice.UseVisualStyleBackColor = true;
+            // 
+            // chkZeroWholeSalePrice
+            // 
+            this.chkZeroWholeSalePrice.AutoSize = true;
+            this.chkZeroWholeSalePrice.Location = new System.Drawing.Point(661, 82);
+            this.chkZeroWholeSalePrice.Name = "chkZeroWholeSalePrice";
+            this.chkZeroWholeSalePrice.Size = new System.Drawing.Size(100, 18);
+            this.chkZeroWholeSalePrice.TabIndex = 51;
+            this.chkZeroWholeSalePrice.Text = "Tìm giá sỉ = 0";
+            this.chkZeroWholeSalePrice.UseVisualStyleBackColor = true;
+            // 
             // DepartmentPriceUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 473);
+            this.Controls.Add(this.chkZeroWholeSalePrice);
+            this.Controls.Add(this.chkZeroPrice);
             this.Controls.Add(this.chkAbsoluteFinding);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -216,5 +240,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkAbsoluteFinding;
+        private System.Windows.Forms.CheckBox chkZeroPrice;
+        private System.Windows.Forms.CheckBox chkZeroWholeSalePrice;
     }
 }

@@ -89,6 +89,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     prdCrit.AddSubCriteria("ProductMaster",subCrit);
                     IList masterProductList2 = ProductLogic.FindAll(prdCrit);
                     IList masterProductList = new ArrayList();
+
                     if(masterProductList1!=null)
                     {
                         foreach (Product product in masterProductList1)
@@ -122,7 +123,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             foreach (Product product1 in list)
             {
-                if(product1.ProductId.Equals(product))
+                if(product1.ProductId.Equals(product.ProductId))
                 {
                     return true;
                 }

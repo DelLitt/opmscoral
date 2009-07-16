@@ -72,18 +72,55 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             {
                 subCriteria.AddLikeCriteria("ProductName", "%" + e.ProductMasterName + "%");    
             }
-            subCriteria.AddEqCriteria("ProductType", e.ProductType);
-            subCriteria.AddEqCriteria("ProductSize",  e.ProductSize);
-            subCriteria.AddEqCriteria("ProductColor", e.ProductColor);
-            subCriteria.AddEqCriteria("Country", e.Country);
-            subCriteria.AddEqCriteria("Packager", e.Packager);
-            subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);
-            subCriteria.AddEqCriteria("Distributor", e.Distributor);
+            if(e.ProductType!=null)
+            {
+                subCriteria.AddEqCriteria("ProductType", e.ProductType);    
+            }
+            
+            if (e.ProductSize != null)
+            {
+                subCriteria.AddEqCriteria("ProductSize", e.ProductSize);    
+            }
+            
+            if (e.ProductColor != null)
+            {
+                subCriteria.AddEqCriteria("ProductColor", e.ProductColor);    
+            }
+            
+            if (e.Country != null)
+            {
+                subCriteria.AddEqCriteria("Country", e.Country);    
+            }
+            
+            
+            if (e.Packager != null)
+            {
+                subCriteria.AddEqCriteria("Packager", e.Packager);    
+            }
+            
+            if (e.Manufacturer != null)
+            {
+                subCriteria.AddEqCriteria("Manufacturer", e.Manufacturer);    
+            }
+            
+            if (e.Distributor != null)
+            {
+                subCriteria.AddEqCriteria("Distributor", e.Distributor);    
+            }
+
             subCriteria.AddOrder("ProductName",false);
             subCriteria.AddOrder("ProductColor", false);
             subCriteria.AddOrder("ProductSize", false);
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            if(e.ZeroPrice)
+            {
+                criteria.AddEqCriteria("Price", (long) 0);
+            }
+            if(e.ZeroWholeSalePrice)
+            {
+                criteria.AddEqCriteria("WholeSalePrice", (long) 0);
+            }
             criteria.AddSubCriteria("ProductMaster", subCriteria);
             /*criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", 0);*/
 

@@ -109,10 +109,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             return true;
         }
-        private void btnSyncToDept_Click(object sender, EventArgs e)
+
+        private IList resultList = null;
+        private void doSync()
         {
 
-            if(!CheckPOSSyncDriveExist())
+            if (!CheckPOSSyncDriveExist())
                 return;
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
@@ -131,20 +133,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + configExportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
                 return;
             }
-            IList resultList = new ArrayList();
+            resultList = new ArrayList();
             try
             {
-                
+
                 // sync master data first
                 Department mstDataDept = new Department
-                                         {
-                                             DepartmentId = 0,
-                                             DepartmentName = "MasterData"
-                                         };
+                {
+                    DepartmentId = 0,
+                    DepartmentName = "MasterData"
+                };
                 DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
                 var masterDataEvent = new DepartmentStockInEventArgs();
                 masterDataEvent.LastSyncTime = lastMasterDataSyncTime;
-                EventUtility.fireEvent(LoadMasterDataForExportEvent,this,masterDataEvent);
+                EventUtility.fireEvent(LoadMasterDataForExportEvent, this, masterDataEvent);
                 string masterDataFileName = configExportPath + "\\" + "MasterData_SyncDown_" +
                                                               DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
 
@@ -155,7 +157,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 Stream mstStream = File.Open(masterDataFileName, FileMode.Create);
                 BinaryFormatter mstBf = new BinaryFormatter();
                 mstBf.Serialize(mstStream, masterDataEvent.SyncFromMainToDepartment);
-                mstStream.Close();    
+                mstStream.Flush();
+                mstStream.Close();
 
                 // sync stock-out to dept
                 var deptEvent = new DepartmentStockInEventArgs();
@@ -165,18 +168,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (Department department in departmentList)
                 {
                     var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
-                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
+                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, department, ClientUtility.SyncType.SyncDown);
                     deptEvent = new DepartmentStockInEventArgs();
                     deptEvent.LastSyncTime = lastSyncTime;
                     deptEvent.Department = department;
                     EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
 
-                    if(deptEvent.SyncFromMainToDepartment!=null 
-                        && deptEvent.SyncFromMainToDepartment.StockOutList!=null
-                        && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0 )
+                    if (deptEvent.SyncFromMainToDepartment != null
+                        && deptEvent.SyncFromMainToDepartment.StockOutList != null
+                        && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0)
                     {
                         //var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
-                        string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" + 
+                        string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" +
                                                               DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
                         SyncResult result = new SyncResult();
                         result.FileName = fileName;
@@ -185,11 +188,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         Stream stream = File.Open(fileName, FileMode.Create);
                         BinaryFormatter bf = new BinaryFormatter();
                         bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
-                        stream.Close();    
+                        stream.Flush();
+                        stream.Close();
                         // write last sync time
                         //ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     }
-                    
+
                 }
             }
             catch (Exception)
@@ -197,7 +201,29 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 throw;
             }
             MessageBox.Show("Đồng bộ hoàn tất !");
-            syncResultBindingSource.DataSource = resultList;
+            
+        }
+        private void btnSyncToDept_Click(object sender, EventArgs e)
+        {
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            this.Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Enabled = true;
+            if (resultList != null)
+            {
+                syncResultBindingSource.DataSource = resultList;
+            }
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            doSync();
         }
     }
 }

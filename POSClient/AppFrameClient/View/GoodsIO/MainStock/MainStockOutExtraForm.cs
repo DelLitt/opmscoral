@@ -340,16 +340,28 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
             // validate quantity
             int line = 1;
+            long StockDefectId = ((StockDefectStatus) cbbStockOutType.SelectedItem).DefectStatusId;
             foreach (StockOutDetail detail in stockOutDetailList)
             {
                 foreach (Stock stock in stockList)
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
-                        if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
+                        if(StockDefectId == 9)
                         {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
-                            return;
+                            if (detail.GoodQuantity < 0)
+                            {
+                                MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương ");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
+                            {
+                                MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
+                                return;
+                            }   
                         }
                         if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
                         {
@@ -701,6 +713,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
 
             var eventArgs = new MainStockOutEventArgs();
+            eventArgs.DefectStatusId = ((StockDefectStatus)cbbStockOutType.SelectedItem).DefectStatusId;
             eventArgs.SelectedProductMasterList = selectedProductMasterList;
             EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
             if (eventArgs.FoundStockOutDetailList != null && eventArgs.FoundStockOutDetailList.Count > 0)
@@ -985,6 +998,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 var eventArgs = new MainStockOutEventArgs();
                 eventArgs.ProductId = txtBarcode.Text;
+                eventArgs.DefectStatusId = ((StockDefectStatus)cbbStockOutType.SelectedItem).DefectStatusId;
                 EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
                 if (eventArgs.EventResult == null)
                 {

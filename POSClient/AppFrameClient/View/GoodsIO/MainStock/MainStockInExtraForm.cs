@@ -832,10 +832,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-            //cboProductMasters.SelectedIndex;
-//            string productName = cboProductMasters.SelectedItem as string;
-//            BindingSource bindingSource = (BindingSource) cboProductMasters.DataSource;
-//            PopulateGridByProductMaster((ProductMaster) bindingSource[cboProductMasters.SelectedIndex]);
+            
             if (cboProductMasters.SelectedIndex < 0)
             {
                 MessageBox.Show("Hãy chọn 1 sản phẩm để nhập kho");
