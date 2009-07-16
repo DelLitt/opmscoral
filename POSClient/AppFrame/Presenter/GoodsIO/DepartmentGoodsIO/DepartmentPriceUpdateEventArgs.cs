@@ -10,6 +10,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
 {
     public class DepartmentPriceUpdateEventArgs : BaseEventArgs
     {
+        public bool ZeroWholeSalePrice { get; set;}
+        public bool ZeroPrice { get; set;}
         public Form ParentForm { get; set; }
         public Department Department { get; set; }
         public bool AbsoluteFinding { get; set; }
