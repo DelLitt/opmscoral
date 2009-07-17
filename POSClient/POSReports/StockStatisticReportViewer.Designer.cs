@@ -138,6 +138,7 @@
             this.reportViewer1.Size = new System.Drawing.Size(996, 568);
             this.reportViewer1.TabIndex = 5;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // stockStatisticTableAdapter1
             // 
