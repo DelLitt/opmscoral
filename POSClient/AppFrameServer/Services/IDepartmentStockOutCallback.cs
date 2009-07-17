@@ -27,5 +27,8 @@ namespace AppFrameServer.Services
 
         [OperationContract(IsOneWay = true)]
         void NotifyRequestDepartmentStockOut(long departmentId);
+
+        [OperationContract(IsOneWay = true)]
+        void NotifyRequestDepartmentStockIn(long departmentId);
     }
 }

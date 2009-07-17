@@ -47,13 +47,32 @@ namespace AppFrameServer.Services
 
         public void RequestDepartmentStockOut(long departmentId)
         {
-            ServerUtility.Log(logger, departmentId + " request stock out.");
+            ServerUtility.Log(logger, departmentId + " yeu cau thong tin xuat hang.");
+            // request stock-out from sub stocks
             _callbackSubStockList.ForEach(
                  delegate(IDepartmentStockOutCallback callback)
                  {
                      try
                      {
                          callback.NotifyRequestDepartmentStockOut(departmentId);
+                     }
+                     catch (Exception)
+                     {
+
+                     }
+                 }); 
+        }
+
+        public void RequestDepartmentStockIn(long departmentId)
+        {
+            ServerUtility.Log(logger, departmentId + " yeu cau thong tin xuat hang.");
+            // request stock-out from departments
+            _callbackList.ForEach(
+                 delegate(IDepartmentStockOutCallback callback)
+                 {
+                     try
+                     {
+                         callback.NotifyRequestDepartmentStockIn(departmentId);
                      }
                      catch (Exception)
                      {
@@ -98,12 +117,13 @@ namespace AppFrameServer.Services
 
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
         {
-            ServerUtility.Log(logger, " Stock-out dispatching to " + department.DepartmentId );
+            ServerUtility.Log(logger, " Xuat hang di " + department.DepartmentId );
             _callbackList.ForEach(
                 delegate(IDepartmentStockOutCallback callback)
                     {
                         try
                         {
+                            // dispatch stock-out to department
                             callback.NotifyNewDepartmentStockOut(department, stockOut, price);
                         }
                         catch (Exception)
