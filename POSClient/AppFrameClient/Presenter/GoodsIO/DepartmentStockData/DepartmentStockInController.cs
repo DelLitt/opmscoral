@@ -17,6 +17,7 @@ using AppFrame.Presenter.SalePoints;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 using AppFrameClient.Services;
 using AppFrameClient.Utility;
 using Microsoft.ReportingServices.Diagnostics.Utilities;
@@ -58,7 +59,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             Department destDept = DepartmentLogic.FindById(e.Department.DepartmentId);
             if (destDept != null)
             {
-                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
+                GlobalMessage.Instance.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đang gửi thông tin xuống cửa hàng ...");
+                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                 serverService.MakeDepartmentStockIn(destDept, e.DepartmentStockIn);
             }
             e.EventResult = "Made Stock-in back";
@@ -410,12 +412,23 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             
         }
 
-        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId)
         {
             
         }
 
+        public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
+        {
+            
+        }
+        
+
         public void NotifyRequestDepartmentStockOut(long departmentId)
+        {
+            
+        }
+
+        public void NotifyRequestDepartmentStockIn(long departmentId)
         {
             
         }

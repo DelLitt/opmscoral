@@ -41,7 +41,11 @@ namespace AppFrameClient.Utility.Mapper
                                                             DepartmentId    = source.OtherDepartmentId,
                                                             ProductId = outDetail.Product.ProductId
                                                          };
-                inDetail.Price = outDetail.DepartmentPrice.Price;
+                // check it in case stock-in back
+                if (outDetail.DepartmentPrice != null)
+                {
+                    inDetail.Price = outDetail.DepartmentPrice.Price;
+                }
 
                 stockInDetailList.Add(inDetail);
             }

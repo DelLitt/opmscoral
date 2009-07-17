@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
+using AppFrame;
 using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
@@ -66,7 +68,7 @@ namespace AppFrameClient.Services
                 DepartmentStockOutLogic.Add(stockOut);
                 ClientUtility.Log(logger, " Hoan tat va phan hoi ...");
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
-                serverService.InformDepartmentStockInSucess(department, stockIn);
+                serverService.InformDepartmentStockInSuccess(department, stockIn,stockOut.DepartmentStockOutPK.StockOutId);
                 ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
             }
             catch (Exception ex)
@@ -74,7 +76,7 @@ namespace AppFrameClient.Services
                 ClientUtility.Log(logger, ex.Message);
                 try
                 {
-                    serverService.InformDepartmentStockInSucess(department, null);
+                    serverService.InformDepartmentStockInSuccess(department, null,0);
                 }
                 catch (Exception exception)
                 {
@@ -98,15 +100,57 @@ namespace AppFrameClient.Services
             // don't need to implement
         }
 
-        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
             //serverService.InformDepartmentStockInSucess(department,stockIn);
+        }
+
+        public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
+        {
+            // don't need to implement
+
         }
 
 
         public void NotifyRequestDepartmentStockOut(long departmentId)
         {
             // don't need to implement
+        }
+
+        public void NotifyRequestDepartmentStockIn(long departmentId)
+        {
+            //ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
+            if (serverService == null)
+            {
+                return;
+            }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
+            objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);
+
+            IList list = DepartmentStockOutLogic.FindAll(objectCriteria);
+            Department destDept = new Department
+                                      {
+                           DepartmentId = CurrentDepartment.Get().DepartmentId
+            };
+            if (list != null && list.Count > 0)
+            {
+                ClientUtility.Log(logger, " Co " + list.Count + " phieu tra hang ve " + departmentId);
+                foreach (DepartmentStockOut departmentStockOut in list)
+                {
+                    foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                    {
+                        string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                    }
+                    FastDepartmentStockInMapper mapper = new FastDepartmentStockInMapper();
+                    DepartmentStockIn stockIn = mapper.Convert(departmentStockOut);
+                    serverService.InformDepartmentStockInSuccess(destDept, stockIn,departmentStockOut.DepartmentStockOutPK.StockOutId);
+                }
+            }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
+            ClientUtility.Log(logger, departmentId + " da duoc gui thong tin tra hang.");
         }
 
         public ServerServiceConsumer()

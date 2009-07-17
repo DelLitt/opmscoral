@@ -62,7 +62,7 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception)
                         {
-                         
+                            
                         }
                         Thread.Sleep(500);
                     }
@@ -96,7 +96,7 @@ namespace AppFrameClient.Services
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
         {
-            ClientUtility.Log(logger, deptDeptId + " notify " + sourceDeptId  + " stock-out success.");
+            ClientUtility.Log(logger, deptDeptId + " phan hoi den " + sourceDeptId + " da nhap hang thanh cong.");
             DepartmentStockOutPK departmentStockOutPk = new DepartmentStockOutPK
             {
                 DepartmentId = sourceDeptId,
@@ -110,27 +110,41 @@ namespace AppFrameClient.Services
                 deptStockOut.UpdateDate = DateTime.Now;
                 DepartmentStockOutLogic.Update(deptStockOut);
             }
-            ClientUtility.Log(logger, " Notify stock-out success.");
+            GlobalMessage.Instance.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã gửi thông tin thành công !");
+            ClientUtility.Log(logger, " Xuat hang hoan tat.");
         }
 
-        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn)
+        public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
             if(stockIn!=null)
             {
-                ClientUtility.Log(logger, department.DepartmentId + " notify stock-in-back success.");
+                if(stockIn.DepartmentStockInPK.DepartmentId!=CurrentDepartment.Get().DepartmentId)
+                {
+                    return;
+                }
+                ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
                 DepartmentStockInLogic.AddStockInBack(stockIn);
-                ClientUtility.Log(logger, " Notify stock-in success.");    
+                ClientUtility.Log(logger, " Nhap lai hang thanh cong.");
+                GlobalMessage.Instance.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
+                serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);
+                
             }
             else
             {
-                ClientUtility.Log(logger, department.DepartmentId + " notify stock-in-back failed.");
+                ClientUtility.Log(logger, department.DepartmentId + " nhap lai hang that bai.");
+                GlobalMessage.Instance.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
             }
+            
+        }
+
+        public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn,long stockOutId)
+        {
             
         }
 
         public void NotifyRequestDepartmentStockOut(long departmentId)
         {
-            ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
+            //ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
             if(serverService == null)
             {
                 return;
@@ -148,7 +162,7 @@ namespace AppFrameClient.Services
                                        } ;
             if(list!= null && list.Count > 0 )
             {
-                ClientUtility.Log(logger, " Has " + list.Count + " stock-outs for " + departmentId);
+                ClientUtility.Log(logger, " Co " + list.Count + " phieu xuat hang ve " + departmentId);
                 foreach (DepartmentStockOut departmentStockOut in list)
                 {
                     foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
@@ -161,12 +175,18 @@ namespace AppFrameClient.Services
                         };
                         detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                     }
-                    serverService.MakeDepartmentStockOut(destDept, departmentStockOut, new DepartmentPrice());
+                    serverService.MakeDepartmentStockOut(destDept, departmentStockOut,new DepartmentPrice());
                 }    
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
-            ClientUtility.Log(logger, departmentId + " has been sent stock-out information.");
+            ClientUtility.Log(logger, departmentId + " da duoc gui thong tin xuat hang.");
         }
+
+        public void NotifyRequestDepartmentStockIn(long departmentId)
+        {
+            
+        }
+
         /// <summary>
         /// Request the end of the thread method.
         /// </summary>

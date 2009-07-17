@@ -38,7 +38,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private IList departmentStockList { get; set; }
 
-        public DepartmentFastStockOutForm()
+        public DepartmentFastStockOutForm() : base() 
         {
             InitializeComponent();
             departmentStockList = new ArrayList();
@@ -447,6 +447,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
 
             UpdateStockOutDescription();
+
+            GlobalMessage.Instance.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
+        }
+
+        void Instance_HasNewMessageEvent(object sender, GlobalMessageEventArgs e)
+        {
+            if(e.IsError)
+            {
+               ShowError(lblInformation,e.Message); 
+            }
+            else
+            {
+                ShowMessage(lblInformation, e.Message);    
+            }
+            
         }
 
        
