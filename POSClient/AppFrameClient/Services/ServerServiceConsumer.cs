@@ -18,7 +18,7 @@ namespace AppFrameClient.Services
     public class ServerServiceConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 10*1000;
+        const int SleepTime = 5*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -33,14 +33,14 @@ namespace AppFrameClient.Services
             {
                 return;    
             }
-            ClientUtility.Log(logger, " Have stock-out to ..." + department.DepartmentId);
+            ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
             DepartmentStockIn stockIn;
             // convert from stock out to stock in
             stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
             // call method to sync
-            ClientUtility.Log(logger, " Do stock in");
+            ClientUtility.Log(logger, " Xu ly hang nhan.");
             DepartmentStockInLogic.SyncFromSubStock(stockIn);
-            ClientUtility.Log(logger, " Completed and feed back ... ");
+            ClientUtility.Log(logger, " Hoan tat va phan hoi ... ");
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
             serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
@@ -53,17 +53,18 @@ namespace AppFrameClient.Services
             {
                 return;
             }
-            ClientUtility.Log(logger, " Have stock-in back request to ..." + department.DepartmentId);
+            ClientUtility.Log(logger, department.DepartmentId + " tra hang ve " + stockIn.DepartmentStockInPK.DepartmentId);
             DepartmentStockOut stockOut;
             // convert from stock out to stock in
-            ClientUtility.Log(logger, " Do stock out from ..." + department.DepartmentId);
-            stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
             
             // call method to sync
             try
             {
+                stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
+                ClientUtility.Log(logger, department.DepartmentId + " xuat hang ...");
+                stockOut.ConfirmFlg = 3;
                 DepartmentStockOutLogic.Add(stockOut);
-                ClientUtility.Log(logger, " Completed and feeding back ...");
+                ClientUtility.Log(logger, " Hoan tat va phan hoi ...");
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                 serverService.InformDepartmentStockInSucess(department, stockIn);
                 ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
@@ -141,7 +142,7 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception ex)
                         {
-                            string s = ex.Message; 
+                            ClientUtility.Log(logger,ex.Message);
                         }
                         
                     }
@@ -159,17 +160,17 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception)
                         {
-                            if(serverService.State == CommunicationState.Faulted
+                            /*if(serverService.State == CommunicationState.Faulted
                                || serverService.State == CommunicationState.Closed)
-                            {
+                            {*/
                                 connected = false;
                                 serverService.Close();
-                            }
+                            /*}*/
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
                             //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
-                            Thread.Sleep(1000 * 5);
+                            Thread.Sleep(1000 * 3);
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Xử lý lại ... ";
                         }
-                        
                         
                     }
                 }
