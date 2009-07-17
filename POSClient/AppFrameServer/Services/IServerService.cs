@@ -36,7 +36,9 @@ namespace AppFrameServer.Services
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
 
         [OperationContract(IsOneWay = true)]
-        void InformDepartmentStockInSucess(Department department, DepartmentStockIn stockIn);
-        
+        void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId);
+
+        [OperationContract(IsOneWay = true)]
+        void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
     }
 }

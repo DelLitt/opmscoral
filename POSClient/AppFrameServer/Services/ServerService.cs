@@ -98,7 +98,7 @@ namespace AppFrameServer.Services
                  });
         }
 
-        public void InformDepartmentStockInSucess(Department department, DepartmentStockIn stockIn)
+        public void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
             ServerUtility.Log(logger, department.DepartmentId + " inform stock in back success. ");
             _callbackSubStockList.ForEach(
@@ -106,13 +106,31 @@ namespace AppFrameServer.Services
                  {
                      try
                      {
-                         callback.NotifyStockInSuccess(department,stockIn);
+                         callback.NotifyStockInSuccess(department,stockIn,stockOutId);
                      }
                      catch (Exception)
                      {
 
                      }
                  });
+        }
+
+        public void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn,long stockOutId)
+        {
+            ServerUtility.Log(logger, " Cap nhat co xuat hang o " + department.DepartmentId);
+            _callbackList.ForEach(
+                delegate(IDepartmentStockOutCallback callback)
+                {
+                    try
+                    {
+                        // update stock out flag in department
+                        callback.NotifyUpdateStockOutFlag(department, stockIn,stockOutId);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                });
         }
 
         public void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price)
