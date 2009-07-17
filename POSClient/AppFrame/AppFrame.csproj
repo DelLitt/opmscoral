@@ -200,7 +200,15 @@
     <Compile Include="Common\ClonableObject.cs" />
     <Compile Include="Common\Code39.cs" />
     <Compile Include="Common\CurrentDepartment.cs" />
+    <Compile Include="Common\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\GlobalCache.cs" />
+    <Compile Include="Common\GlobalMessage.cs" />
+    <Compile Include="Common\GlobalMessageEventArgs.cs" />
     <Compile Include="Common\IBaseController.cs" />
     <Compile Include="Common\IDefaultController.cs" />
     <Compile Include="Common\IView.cs" />
@@ -773,6 +781,9 @@
     <Content Include="Config\AppFrameSecurity.xml" />
     <EmbeddedResource Include="Common\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CoralMessageBox.resx">
       <DependentUpon>CoralMessageBox.cs</DependentUpon>
