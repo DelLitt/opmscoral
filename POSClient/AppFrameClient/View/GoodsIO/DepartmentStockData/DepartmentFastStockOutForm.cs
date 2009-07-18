@@ -448,7 +448,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             UpdateStockOutDescription();
 
-            GlobalMessage.Instance.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+            message.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
+        }
+
+        protected delegate void UpdateStatusDelegate(GlobalMessageEventArgs e);
+        protected void UpdateStatus(GlobalMessageEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                UpdateStatusDelegate dlg = new
+                    UpdateStatusDelegate(this.UpdateStatus);
+                this.Invoke(dlg, new object[] { e });
+                return;
+            }
+
+            //do something with the GUI control here
+            if (e.IsError)
+            {
+                ShowError(lblInformation, e.Message);
+            }
+            else
+            {
+                ShowMessage(lblInformation, e.Message);
+            }
         }
 
         void Instance_HasNewMessageEvent(object sender, GlobalMessageEventArgs e)
@@ -456,16 +479,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if(!e.Channel.Equals(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT))
             {
                 return;
-            }
-            if(e.IsError)
-            {
-               ShowError(lblInformation,e.Message); 
-            }
-            else
-            {
-                ShowMessage(lblInformation, e.Message);    
-            }
-            
+            } 
+            UpdateStatus(e);
         }
 
        
@@ -660,10 +675,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
             if(rdoFastStockOut.Checked)
             {
-                //EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+                
                 try
                 {
-                    EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);      
+                    EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+                    //EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);      
                 }
                 catch (Exception)
                 {

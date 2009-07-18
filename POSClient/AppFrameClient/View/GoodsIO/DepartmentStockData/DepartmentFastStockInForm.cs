@@ -228,7 +228,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
             UpdateStockOutDescription();
-            GlobalMessage.Instance.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+            message.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
         }
 
         void Instance_HasNewMessageEvent(object sender, GlobalMessageEventArgs e)
@@ -237,6 +238,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+            UpdateStatus(e);
+        }
+        protected delegate void UpdateStatusDelegate(GlobalMessageEventArgs e);
+        protected void UpdateStatus(GlobalMessageEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                UpdateStatusDelegate dlg = new
+                    UpdateStatusDelegate(this.UpdateStatus);
+                this.Invoke(dlg, new object[] { e });
+                return;
+            }
+
+            //do something with the GUI control here
             if (e.IsError)
             {
                 ShowError(lblMessage, e.Message);
@@ -246,7 +261,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 ShowMessage(lblMessage, e.Message);
             }
         }
-
        
 
         void dgvDeptStockIn_DataError(object sender, DataGridViewDataErrorEventArgs e)

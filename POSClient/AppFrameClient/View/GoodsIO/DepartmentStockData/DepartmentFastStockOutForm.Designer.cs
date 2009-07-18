@@ -866,7 +866,6 @@
         private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.Timer timer1;
         private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
-        private System.Windows.Forms.Label lblInformation;
         private System.Windows.Forms.DataGridViewButtonColumn SearchCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProducType;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnProductId;
@@ -891,5 +890,6 @@
         private System.Windows.Forms.RadioButton rdoRetail;
         private System.Windows.Forms.RadioButton rdoWholesale;
         private System.Windows.Forms.GroupBox grpPriceKind;
+        public System.Windows.Forms.Label lblInformation;
     }
 }

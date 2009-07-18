@@ -59,7 +59,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             Department destDept = DepartmentLogic.FindById(e.Department.DepartmentId);
             if (destDept != null)
             {
-                GlobalMessage.Instance.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đang gửi thông tin xuống cửa hàng ...");
+                GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+                message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đang gửi thông tin xuống cửa hàng ...");
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                 serverService.MakeDepartmentStockIn(destDept, e.DepartmentStockIn);
             }

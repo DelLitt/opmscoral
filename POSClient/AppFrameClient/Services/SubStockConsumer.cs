@@ -128,12 +128,14 @@ namespace AppFrameClient.Services
                 deptStockOut.UpdateDate = DateTime.Now;
                 DepartmentStockOutLogic.Update(deptStockOut);
             }
-            GlobalMessage.Instance.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã gửi thông tin thành công !");
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+            message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã gửi thông tin thành công !");
             ClientUtility.Log(logger, " Xuat hang hoan tat.");
         }
 
         public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
             if(stockIn!=null)
             {
                 if(stockIn.DepartmentStockInPK.DepartmentId!=CurrentDepartment.Get().DepartmentId)
@@ -143,14 +145,15 @@ namespace AppFrameClient.Services
                 ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
                 DepartmentStockInLogic.AddStockInBack(stockIn);
                 ClientUtility.Log(logger, " Nhap lai hang thanh cong.");
-                GlobalMessage.Instance.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
+               
+                message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
                 serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);
                 
             }
             else
             {
                 ClientUtility.Log(logger, department.DepartmentId + " nhap lai hang that bai.");
-                GlobalMessage.Instance.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
+                message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
             }
             
         }
