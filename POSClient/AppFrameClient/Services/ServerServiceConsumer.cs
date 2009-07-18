@@ -233,7 +233,7 @@ namespace AppFrameClient.Services
                                || serverService.State == CommunicationState.Closed)
                             {*/
                                 connected = false;
-                                serverService.Close();
+                                serverService = null;
                             /*}*/
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
                             //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
