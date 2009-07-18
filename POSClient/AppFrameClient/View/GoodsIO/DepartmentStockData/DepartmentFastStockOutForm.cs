@@ -453,6 +453,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         void Instance_HasNewMessageEvent(object sender, GlobalMessageEventArgs e)
         {
+            if(!e.Channel.Equals(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT))
+            {
+                return;
+            }
             if(e.IsError)
             {
                ShowError(lblInformation,e.Message); 

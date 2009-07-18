@@ -68,9 +68,27 @@ namespace AppFrameClient.Services
                     }
                     else
                     {
-                        // Wait until thread is stopped
-                        Thread.Sleep(SleepTime);
-                        //((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                        try
+                        {
+                            // Wait until thread is stopped
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
+                            serverService.RequestDepartmentStockIn(CurrentDepartment.Get().DepartmentId);
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                            Thread.Sleep(SleepTime);
+                        }
+                        catch (Exception)
+                        {
+                            /*if(serverService.State == CommunicationState.Faulted
+                               || serverService.State == CommunicationState.Closed)
+                            {*/
+                            connected = false;
+                            serverService.Close();
+                            /*}*/
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
+                            //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+                            Thread.Sleep(1000 * 3);
+                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Xử lý lại ... ";
+                        }
                     }
                 }
                 

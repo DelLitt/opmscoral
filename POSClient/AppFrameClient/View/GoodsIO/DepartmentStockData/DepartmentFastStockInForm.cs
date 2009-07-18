@@ -228,6 +228,23 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
             UpdateStockOutDescription();
+            GlobalMessage.Instance.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
+        }
+
+        void Instance_HasNewMessageEvent(object sender, GlobalMessageEventArgs e)
+        {
+            if (!e.Channel.Equals(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT))
+            {
+                return;
+            }
+            if (e.IsError)
+            {
+                ShowError(lblMessage, e.Message);
+            }
+            else
+            {
+                ShowMessage(lblMessage, e.Message);
+            }
         }
 
        

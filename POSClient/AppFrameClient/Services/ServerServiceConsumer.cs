@@ -46,6 +46,7 @@ namespace AppFrameClient.Services
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
             serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+            ClientUtility.Log(logger, " Hoan tat !");
         }
 
         public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockIn)
@@ -69,7 +70,8 @@ namespace AppFrameClient.Services
                 ClientUtility.Log(logger, " Hoan tat va phan hoi ...");
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                 serverService.InformDepartmentStockInSuccess(department, stockIn,stockOut.DepartmentStockOutPK.StockOutId);
-                ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+                ClientUtility.Log(logger, " Hoan tat !");
             }
             catch (Exception ex)
             {
@@ -107,7 +109,32 @@ namespace AppFrameClient.Services
 
         public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
         {
-            // don't need to implement
+            //ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
+            if (serverService == null)
+            {
+                return;
+            }
+            if(department.DepartmentId!= CurrentDepartment.Get().DepartmentId)
+            {
+                return;
+            }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            ClientUtility.Log(logger, "Cap nhat tra hang cho " + stockOutId.ToString());
+            DepartmentStockOutPK pk = new DepartmentStockOutPK
+                                          {
+                                             DepartmentId  = CurrentDepartment.Get().DepartmentId,
+                                             StockOutId = stockOutId
+                                          };
+
+            DepartmentStockOut stockOut = DepartmentStockOutLogic.FindById(pk);
+            if(stockOut == null)
+            {
+                ClientUtility.Log(logger, "Khong co phieu xuat hang: " + stockOutId.ToString() + " . Kiem tra lai ... ");
+                return;
+            }
+
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ...";
+            ClientUtility.Log(logger, "Cap nhat tra hang cho " + stockOutId.ToString());
 
         }
 
@@ -196,10 +223,8 @@ namespace AppFrameClient.Services
                         {
                             // Wait until thread is stopped
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
-                            //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
-                            //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(SleepTime);
                         }
                         catch (Exception)
