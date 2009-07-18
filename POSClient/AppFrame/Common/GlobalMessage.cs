@@ -9,13 +9,13 @@ namespace AppFrame.Common
     {
         private static GlobalMessage _globalMessage = null;
         private IDictionary<string, string> channels;
-
+        
         public event EventHandler<GlobalMessageEventArgs> HasNewMessageEvent;
-        private GlobalMessage()
+        public GlobalMessage()
         {
             channels = new Dictionary<string, string>();
         }
-        public static GlobalMessage Instance
+        /*public static GlobalMessage Instance
         {
             get
             {
@@ -25,7 +25,7 @@ namespace AppFrame.Common
                 }
                 return _globalMessage;
             }
-        }
+        }*/
         
         /// <summary>
         /// 
