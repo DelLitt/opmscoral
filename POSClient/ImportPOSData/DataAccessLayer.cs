@@ -41,11 +41,14 @@ namespace ImportPOSData
                 result =  connectionStr;
             else
             {
-                string strUserID = ConfigurationManager.AppSettings["DBUserID"];
+                /*string strUserID = ConfigurationManager.AppSettings["DBUserID"];
                 string strPswd = ConfigurationManager.AppSettings["DBUserPwd"];
                 string strDBName = ConfigurationManager.AppSettings["DBName"];
-                string strServer = ConfigurationManager.AppSettings["DBServer"];
-
+                string strServer = ConfigurationManager.AppSettings["DBServer"];*/
+                string strUserID = "dbadmin";
+                string strPswd = "1qw45DCM9rl";
+                string strDBName = "pos";
+                string strServer = "localhost";
                 //Use the Web.Config url to call web service.
                 connectionStr = "server=" + strServer + ";database=" + strDBName + ";User ID=" + strUserID + ";Password=" + strPswd + ";";
                 result = connectionStr;

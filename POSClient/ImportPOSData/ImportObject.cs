@@ -17,6 +17,9 @@ namespace ImportPOSData
         public string ProductName { get; set; }
         public string ProductId { get; set; }
         public long Price { get; set; }
+        public long MassPrice { get; set; }
         public long Quantity { get; set; }
+        public string Position { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -11,12 +11,12 @@ using Microsoft.Office.Interop.Excel;
 
 namespace ImportPOSData
 {
-    public partial class ImportPOSDataForm : Form
+    public partial class Form1 : Form
     {
         public readonly int START_ROW = 3;
         private DataAccessLayer dal = new DataAccessLayer();
 
-        public ImportPOSDataForm()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -220,7 +220,7 @@ namespace ImportPOSData
             }
         }
 
-        private ImportObject GetImportObject(int row, Worksheet ws, out ErrorObject errorObject, string sizeColumn, string sizeName)
+        private ImportObject GetImportObject(int row, Worksheet ws, out ErrorObject errorObject, string sizeName, string sizeColumn)
         {
             ImportObject obj = new ImportObject();
 
@@ -269,7 +269,10 @@ namespace ImportPOSData
             range = ws.get_Range("C" + row, "C" + row);
             name = range.Value2 != null ? range.Value2.ToString() : "";
             int value = 0;
-            if (name == string.Empty || !Int32.TryParse(name, out value) || value <= 0)
+            if (name == string.Empty) {
+            	name = "0";
+            }
+            if (name == string.Empty || !Int32.TryParse(name, out value) || value < 0)
             {
                 errorMsg.Append("Giá bán phải là số >= 0, tối đa " + Int32.MaxValue + " !!");
             }
@@ -282,7 +285,10 @@ namespace ImportPOSData
             range = ws.get_Range("D" + row, "D" + row);
             name = range.Value2 != null ? range.Value2.ToString() : "";
             value = 0;
-            if (name == string.Empty || !Int32.TryParse(name, out value) || value <= 0)
+            if (name == string.Empty) {
+            	name = "0";
+            }
+            if (name == string.Empty || !Int32.TryParse(name, out value) || value < 0)
             {
                 errorMsg.Append("Giá bán phải là số >= 0, tối đa " + Int32.MaxValue + " !!");
             }
@@ -325,17 +331,15 @@ namespace ImportPOSData
             name = range.Value2 != null ? range.Value2.ToString() : "";
             
             value = 0;
+            if (name == string.Empty) {
+            	name = "0";
+            }
             if (!Int32.TryParse(name, out value) || value < 0)
             {
                 errorMsg.Append("Số lượng phải là số > 0, tối đa " + Int32.MaxValue + " !!");
             }
             else
             {
-                if (value == 0) 
-                {
-                    errorObject = null;
-                    return null;
-                }
                 obj.Quantity = value;
             }
             
@@ -348,6 +352,11 @@ namespace ImportPOSData
                 errorObject = new ErrorObject{ErrorMessage = errorMsg.ToString(), RowNumber = row};
             }
 
+            if (value == 0) 
+            {
+                return null;
+            }
+            
             return obj;
         }
 
@@ -444,7 +453,7 @@ namespace ImportPOSData
             if (id == null || id.ToString() == string.Empty)
             {
                 id = dal.GetSingleValue("Select max(product_master_id) from product_master ");
-                if (id == null)
+                if (id == null || id.ToString() == string.Empty)
                 {
                     id = 1;
                 }
@@ -465,32 +474,32 @@ namespace ImportPOSData
 
 						
             // product
-            string dateStr = obj.ProductMasterId.Substring(5) + buildProductId();
-            id = dal.GetSingleValue("Select max(product_id) from product where product_id >= " + dateStr + "00");
+            string dateStr = obj.ProductMasterId.Substring(6) + buildProductId();
+            id = dal.GetSingleValue("Select max(product_id) from product where product_id >= '" + dateStr + "00' and product_id < '" + dateStr + "99'" );
             if (id == null || id.ToString() == string.Empty)
             {
                 id = dateStr + "01";
             }
             else
             {
-                id = Convert.ToInt64(id.ToString()) + 1;
+            	id = dateStr + string.Format("{0:00}", (Convert.ToInt64(id.ToString().Substring(id.ToString().Length - 2)) + 1));
             }
-            dal.ExecuteQuery("insert into product(product_id, product_master_id, quantity, price, whole_sale_price, create_date) values ('"
-                + string.Format("{0:00000000000}", Convert.ToInt64(id.ToString()))
+            dal.ExecuteQuery("insert into product(product_id, product_master_id, quantity, price, create_date) values ('"
+                + id
                 + "', '" + obj.ProductMasterId
-                + "', " + obj.Quantity + ", " + obj.Price + ", " + obj.MassPrice + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
-            obj.ProductId = string.Format("{0:00000000000}", Convert.ToInt64(id.ToString()));
+                + "', " + obj.Quantity + ", " + obj.Price + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+            obj.ProductId = id.ToString();
 
             // dept-price
             id = dal.GetSingleValue("Select product_master_id from department_price where product_master_id = '" + obj.ProductMasterId + "'");
             if (id == null || id.ToString() == string.Empty)
             {
-                dal.ExecuteQuery("insert into department_price(department_id, product_master_id, price) values ("
-                    + "0, '" + obj.ProductMasterId + "', " + obj.Price + ")" );
+                dal.ExecuteQuery("insert into department_price(department_id, product_master_id, price,  whole_sale_price) values ("
+                    + "0, '" + obj.ProductMasterId + "', " + obj.Price + ", " + obj.MassPrice + ")" );
             }
             else
             {
-                dal.ExecuteQuery("update department_price set price = " + obj.Price
+                dal.ExecuteQuery("update department_price set price = " + obj.Price + ", whole_sale_price = " + + obj.MassPrice
                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
             }
 
@@ -551,7 +560,7 @@ namespace ImportPOSData
 				case 11: month = "C";
 						break;
 				default: month = (i + 1) + "";
-			        break;
+						break;
 			}
 			int iDay = DateTime.Now.Day;
 			string day = "";
