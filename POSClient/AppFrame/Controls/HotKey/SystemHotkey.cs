@@ -37,12 +37,12 @@ namespace AppFrame.Controls.HotKey
 
         public new void Dispose()
         {
-            if (isRegistered)
+            /*if (isRegistered)
             {
                 if (UnregisterHotkey())
                     System.Diagnostics.Debug.WriteLine("Unreg: OK");
             }
-            System.Diagnostics.Debug.WriteLine("Disposed");
+            System.Diagnostics.Debug.WriteLine("Disposed");*/
         }
         #region Component Designer generated code
         /// <summary>
@@ -60,7 +60,7 @@ namespace AppFrame.Controls.HotKey
             if ((m.Msg==(int)Msgs.WM_HOTKEY)&&(m.WParam==(IntPtr)this.GetType().GetHashCode()))
             {
                 Handled=true;
-                System.Diagnostics.Debug.WriteLine("HOTKEY pressed!");
+                //System.Diagnostics.Debug.WriteLine("HOTKEY pressed!");
                 if (Pressed!=null) Pressed(this,EventArgs.Empty);
             }
         }
