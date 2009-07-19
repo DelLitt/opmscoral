@@ -126,7 +126,7 @@ namespace AppFrame.View
 
         private void productMasterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form productMasterCreateForm = GlobalUtility.GetOnlyChildFormObject<ProductMasterCreateForm>(this, FormConstants.PRODUCT_MASTER_CREATE_FORM);
+            Form productMasterCreateForm = GlobalUtility.GetOnlyChildFormObject<ProductMasterExtraForm>(this, FormConstants.PRODUCT_MASTER_EXTRA_FORM);
             productMasterCreateForm.Show();
         }
 
@@ -784,7 +784,7 @@ namespace AppFrame.View
 
         private void mnuImportByFile_Click(object sender, EventArgs e)
         {
-            new ImportPOSDataForm().ShowDialog();
+            new Form1().ShowDialog();
         }
 
         private void mnuDiaryTracking_Click(object sender, EventArgs e)

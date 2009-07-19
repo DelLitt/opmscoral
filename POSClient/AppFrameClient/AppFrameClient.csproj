@@ -355,6 +355,12 @@
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\ProductMasterExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\ProductMasterExtraForm.Designer.cs">
+      <DependentUpon>ProductMasterExtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1312,6 +1318,10 @@
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\ProductMasterExtraForm.resx">
+      <DependentUpon>ProductMasterExtraForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.resx">
       <DependentUpon>DepartmentFastStockInForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1644,6 +1654,8 @@
     <Content Include="Resources\User-Male.png" />
     <Content Include="Resources\User.png" />
     <Content Include="Resources\white folder documents.png" />
+    <None Include="Properties\DataSources\AppFrame.Model.ProductColor.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.ProductSize.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockOut.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutDetailView.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutView.datasource" />

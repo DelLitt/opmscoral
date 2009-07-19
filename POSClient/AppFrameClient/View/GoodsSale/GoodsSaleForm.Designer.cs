@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsSaleForm));
             this.ProductReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderDetailReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -148,6 +148,8 @@
             this.FindRetBarcode = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.FindRetOrder = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
@@ -159,6 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProductReportCollectionBindingSource
@@ -194,8 +197,8 @@
             this.dgvBill.AllowUserToAddRows = false;
             this.dgvBill.AllowUserToDeleteRows = false;
             this.dgvBill.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
-            this.dgvBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.PowderBlue;
+            this.dgvBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBill.AutoGenerateColumns = false;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -218,21 +221,21 @@
             this.purchaseOrderDataGridViewTextBoxColumn,
             this.taxDataGridViewTextBoxColumn});
             this.dgvBill.DataSource = this.bdsBill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Format = "##,##0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.Format = "##,##0";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBill.Location = new System.Drawing.Point(13, 322);
             this.dgvBill.MultiSelect = false;
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.RowHeadersWidth = 30;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvBill.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dgvBill.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBill.Size = new System.Drawing.Size(800, 303);
             this.dgvBill.TabIndex = 20;
             this.dgvBill.Enter += new System.EventHandler(this.dgvBill_Enter);
@@ -417,10 +420,10 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.quantityDataGridViewTextBoxColumn.Frozen = true;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.MaxLength = 0;
@@ -432,10 +435,10 @@
             // columnPrice
             // 
             this.columnPrice.DataPropertyName = "Price";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.columnPrice.DefaultCellStyle = dataGridViewCellStyle10;
             this.columnPrice.Frozen = true;
             this.columnPrice.HeaderText = "Giá";
             this.columnPrice.Name = "columnPrice";
@@ -1098,27 +1101,27 @@
             // 
             // reportPurchaseOrder
             // 
-            reportDataSource1.Name = "AppFrame_Collection_ProductReportCollection";
-            reportDataSource1.Value = this.ProductReportCollectionBindingSource;
-            reportDataSource2.Name = "AppFrame_Collection_PurchaseOrderDetailReportCollection";
-            reportDataSource2.Value = this.PurchaseOrderDetailReportCollectionBindingSource;
-            reportDataSource3.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
-            reportDataSource3.Value = this.PurchaseOrderDetailCollectionBindingSource;
-            reportDataSource4.Name = "AppFrame_Model_PurchaseOrderDetail";
-            reportDataSource4.Value = this.PurchaseOrderDetailBindingSource;
-            reportDataSource5.Name = "AppFrame_Model_Department";
-            reportDataSource5.Value = this.DepartmentBindingSource;
-            reportDataSource6.Name = "AppFrame_Model_PurchaseOrder";
-            reportDataSource6.Value = this.PurchaseOrderBindingSource;
-            reportDataSource7.Name = "AppFrame_Model_Receipt";
-            reportDataSource7.Value = this.ReceiptBindingSource;
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource7);
+            reportDataSource8.Name = "AppFrame_Collection_ProductReportCollection";
+            reportDataSource8.Value = this.ProductReportCollectionBindingSource;
+            reportDataSource9.Name = "AppFrame_Collection_PurchaseOrderDetailReportCollection";
+            reportDataSource9.Value = this.PurchaseOrderDetailReportCollectionBindingSource;
+            reportDataSource10.Name = "AppFrame_Collection_PurchaseOrderDetailCollection";
+            reportDataSource10.Value = this.PurchaseOrderDetailCollectionBindingSource;
+            reportDataSource11.Name = "AppFrame_Model_PurchaseOrderDetail";
+            reportDataSource11.Value = this.PurchaseOrderDetailBindingSource;
+            reportDataSource12.Name = "AppFrame_Model_Department";
+            reportDataSource12.Value = this.DepartmentBindingSource;
+            reportDataSource13.Name = "AppFrame_Model_PurchaseOrder";
+            reportDataSource13.Value = this.PurchaseOrderBindingSource;
+            reportDataSource14.Name = "AppFrame_Model_Receipt";
+            reportDataSource14.Value = this.ReceiptBindingSource;
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource8);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource9);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource10);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource11);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource12);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource13);
+            this.reportPurchaseOrder.LocalReport.DataSources.Add(reportDataSource14);
             this.reportPurchaseOrder.LocalReport.ReportEmbeddedResource = "AppFrameClient.Report.PurchaseOrder.rdlc";
             this.reportPurchaseOrder.Location = new System.Drawing.Point(357, 532);
             this.reportPurchaseOrder.Margin = new System.Windows.Forms.Padding(0);
@@ -1214,6 +1217,19 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // test1ToolStripMenuItem
+            // 
+            this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.test1ToolStripMenuItem.Text = "test1";
+            // 
             // GoodsSaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,6 +1251,16 @@
             this.Load += new System.EventHandler(this.GoodsSaleForm_Load);
             this.Shown += new System.EventHandler(this.GoodsSaleForm_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GoodsSaleForm_FormClosing);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.dgvBill, 0);
+            this.Controls.SetChildIndex(this.btnAdd, 0);
+            this.Controls.SetChildIndex(this.txtWorkingTime, 0);
+            this.Controls.SetChildIndex(this.btnHelp, 0);
+            this.Controls.SetChildIndex(this.lblWorkingTime, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.lblBillDate, 0);
+            this.Controls.SetChildIndex(this.txtBillDate, 0);
             ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).EndInit();
@@ -1248,6 +1274,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1374,5 +1401,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn delFlgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseOrderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
     }
 }
