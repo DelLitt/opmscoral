@@ -461,10 +461,10 @@ namespace ImportPOSData
                 {
                     id = Convert.ToInt32(id.ToString()) + 1;
                 }
-                dal.ExecuteQuery("insert into product_master(product_master_id, product_name, size_id, color_id, type_id, create_date) values ('" 
+                dal.ExecuteQuery("insert into product_master(product_master_id, product_name, size_id, color_id, type_id, create_date,description) values ('" 
                     + string.Format("{0:0000000000000}", Convert.ToInt64(id.ToString())) 
                     + "', '" + obj.ProductName.Replace("'", "''") 
-                    + "', " + obj.SizeId + ", " + obj.ColorId + ", " + obj.TypeId + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                    + "', " + obj.SizeId + ", " + obj.ColorId + ", " + obj.TypeId + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','"+obj.Description + "')");
                 obj.ProductMasterId = string.Format("{0:0000000000000}", Convert.ToInt64(id.ToString()));
             }
             else
@@ -520,11 +520,11 @@ namespace ImportPOSData
             {
                 id = Convert.ToInt64(id.ToString()) + 1;
             }
-            dal.ExecuteQuery("insert into stock(stock_id, product_id, product_master_id, quantity, good_quantity, description, create_date) values ("
+            dal.ExecuteQuery("insert into stock(stock_id, product_id, product_master_id, quantity, good_quantity, create_date) values ("
                 + id + ", '" 
                 + obj.ProductId
                 + "', '" + obj.ProductMasterId
-                + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + obj.Description + "', '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
 
         }
 
