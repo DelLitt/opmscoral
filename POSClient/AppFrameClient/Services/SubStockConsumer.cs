@@ -235,6 +235,21 @@ namespace AppFrameClient.Services
             
         }
 
+        public void NotifyMultiStockInSuccess(Department department, object[] stockInList, long id)
+        {
+            
+        }
+
+        public void NotifyStockInFail(Department department, DepartmentStockIn stockIn, long id)
+        {
+            
+        }
+
+        public void NotifyStockOutFail(long sourceId, long destId, long stockId)
+        {
+            
+        }
+
         /// <summary>
         /// Request the end of the thread method.
         /// </summary>

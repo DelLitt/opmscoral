@@ -23,6 +23,40 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockOut")]
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeMultiDepartmentStockOut")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Common.ClonableObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.StockDefectStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPrice))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPricePK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Country))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Distributor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Manufacturer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Packager))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductColor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductSize))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Department))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProductMaster))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Product))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOut))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        void MakeMultiDepartmentStockOut(Department department, object[] stockOutList, AppFrame.Model.DepartmentPrice price);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockIn")]
         void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
@@ -32,8 +66,57 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockOut")]
         void RequestDepartmentStockOut(long departmentId);
 
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockIn")]
+        void RequestDepartmentStockIn(long departmentId);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutSuccess")]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutFail")]
+        void InformDepartmentStockOutFail(long sourceDeptId, long destDeptId, long deptStockId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockInSuccess")]
+        void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformMultiDepartmentStockInSuccess")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Common.ClonableObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.StockDefectStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPrice))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPricePK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Country))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Distributor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Manufacturer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Packager))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductColor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductSize))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Department))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProductMaster))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Product))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOut))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        void InformMultiDepartmentStockInSuccess(Department department, object[] stockIn, long stockOutId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockInFail")]
+        void InformDepartmentStockInFail(Department department, DepartmentStockIn stockIn, long stockOutId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/UpdateStockInBackFlag")]
+        void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -52,8 +135,91 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockOutSuccess")]
         void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId);
 
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockInSuccess")]
+        void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyUpdateStockOutFlag")]
+        void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyRequestDepartmentStockOut")]
         void NotifyRequestDepartmentStockOut(long departmentId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyRequestDepartmentStockIn")]
+        void NotifyRequestDepartmentStockIn(long departmentId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyNewMultiDepartmentStockOut")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Common.ClonableObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.StockDefectStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPrice))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPricePK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Country))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Distributor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Manufacturer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Packager))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductColor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductSize))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Department))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProductMaster))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Product))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOut))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        void NotifyNewMultiDepartmentStockOut(Department department, object[] list, AppFrame.Model.DepartmentPrice price);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyMultiStockInSuccess")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Common.ClonableObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.StockDefectStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPrice))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentPricePK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Country))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Distributor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Manufacturer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.Packager))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductColor))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductSize))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.ProductType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.BlockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockOutCost))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInDetailPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AppFrame.Model.DepartmentStockInCostPK))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Department))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOutDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ProductMaster))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Product))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockOut))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockIn))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DepartmentStockInDetail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        void NotifyMultiStockInSuccess(Department department, object[] stockInList, long id);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockInFail")]
+        void NotifyStockInFail(Department department, DepartmentStockIn stockIn, long id);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockOutFail")]
+        void NotifyStockOutFail(long sourceId, long destId, long stockId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -101,6 +267,11 @@ namespace AppFrameClient.Services
             base.Channel.MakeDepartmentStockOut(department, stockOut, price);
         }
 
+        public void MakeMultiDepartmentStockOut(Department department, object[] stockOutList, AppFrame.Model.DepartmentPrice price)
+        {
+            base.Channel.MakeMultiDepartmentStockOut(department, stockOutList, price);
+        }
+
         public void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut)
         {
             base.Channel.MakeDepartmentStockIn(department, stockOut);
@@ -116,9 +287,39 @@ namespace AppFrameClient.Services
             base.Channel.RequestDepartmentStockOut(departmentId);
         }
 
+        public void RequestDepartmentStockIn(long departmentId)
+        {
+            base.Channel.RequestDepartmentStockIn(departmentId);
+        }
+
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
         {
             base.Channel.InformDepartmentStockOutSuccess(sourceDeptId, destDeptId, deptStockId);
+        }
+
+        public void InformDepartmentStockOutFail(long sourceDeptId, long destDeptId, long deptStockId)
+        {
+            base.Channel.InformDepartmentStockOutFail(sourceDeptId, destDeptId, deptStockId);
+        }
+
+        public void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId)
+        {
+            base.Channel.InformDepartmentStockInSuccess(department, stockIn, stockOutId);
+        }
+
+        public void InformMultiDepartmentStockInSuccess(Department department, object[] stockIn, long stockOutId)
+        {
+            base.Channel.InformMultiDepartmentStockInSuccess(department, stockIn, stockOutId);
+        }
+
+        public void InformDepartmentStockInFail(Department department, DepartmentStockIn stockIn, long stockOutId)
+        {
+            base.Channel.InformDepartmentStockInFail(department, stockIn, stockOutId);
+        }
+
+        public void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
+        {
+            base.Channel.UpdateStockInBackFlag(department, stockIn, stockOutId);
         }
     }
 }
