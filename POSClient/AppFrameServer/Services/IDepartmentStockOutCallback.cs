@@ -37,8 +37,13 @@ namespace AppFrameServer.Services
         [OperationContract(IsOneWay = true)]
         void NotifyNewMultiDepartmentStockOut(Department department, ArrayList list, DepartmentPrice price);
 
+        [OperationContract(IsOneWay = true)]
         void NotifyMultiStockInSuccess(Department department, ArrayList stockInList, long id);
+
+        [OperationContract(IsOneWay = true)]
         void NotifyStockInFail(Department department, DepartmentStockIn stockIn, long id);
+
+        [OperationContract(IsOneWay = true)]
         void NotifyStockOutFail(long sourceId, long destId, long stockId);
     }
 }
