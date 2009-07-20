@@ -13,7 +13,7 @@ namespace ImportPOSData
 {
     public partial class Form1 : Form
     {
-        public readonly int START_ROW = 3;
+        public readonly int START_ROW = 2;
         private DataAccessLayer dal = new DataAccessLayer();
 
         public Form1()
@@ -240,7 +240,7 @@ namespace ImportPOSData
             }
 
             // Name
-            range = ws.get_Range("C" + row, "C" + row);
+            range = ws.get_Range("B" + row, "B" + row);
             name = range.Value2 != null ? range.Value2.ToString() : "";
 
             if (name.Length > 500)
@@ -249,7 +249,7 @@ namespace ImportPOSData
             }
             else
             {
-                obj.ProductName = obj.TypeName + name;
+                obj.ProductName = obj.TypeName + " " + name;
             }
 
             // Color
