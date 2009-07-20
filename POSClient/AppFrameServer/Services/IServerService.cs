@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -21,6 +22,9 @@ namespace AppFrameServer.Services
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
+        void MakeMultiDepartmentStockOut(Department department, ArrayList stockOutList, DepartmentPrice price);
+
+        [OperationContract(IsOneWay = true)]
         void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
         [OperationContract(IsOneWay = true)]
@@ -36,7 +40,16 @@ namespace AppFrameServer.Services
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
 
         [OperationContract(IsOneWay = true)]
+        void InformDepartmentStockOutFail(long sourceDeptId, long destDeptId, long deptStockId);
+
+        [OperationContract(IsOneWay = true)]
         void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId);
+
+        [OperationContract(IsOneWay = true)]
+        void InformMultiDepartmentStockInSuccess(Department department, ArrayList stockIn, long stockOutId);
+
+        [OperationContract(IsOneWay = true)]
+        void InformDepartmentStockInFail(Department department, DepartmentStockIn stockIn, long stockOutId);
 
         [OperationContract(IsOneWay = true)]
         void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
