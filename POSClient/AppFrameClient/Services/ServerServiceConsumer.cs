@@ -208,6 +208,11 @@ namespace AppFrameClient.Services
             
         }
 
+        public void NotifyNewMultiDepartmentStockOut(Department department, object[] list, DepartmentPrice price)
+        {
+            
+        }
+
         public ServerServiceConsumer()
         {
             IDepartmentStockInLogic deptStockInLogic = (IDepartmentStockInLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockInLogic");

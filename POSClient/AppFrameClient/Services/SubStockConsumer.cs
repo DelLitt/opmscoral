@@ -211,15 +211,26 @@ namespace AppFrameClient.Services
                         };
                         detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                     }
-                    serverService.MakeDepartmentStockOut(destDept, departmentStockOut,new DepartmentPrice());
                 }
-                
+                object[] array =new object[list.Count];
+                int i = 0;
+                foreach (DepartmentStockOut @out in list)
+                {
+                    array[i] = @out;
+                    i++;
+                }
+                serverService.MakeMultiDepartmentStockOut(destDept,array, new DepartmentPrice());
                 ClientUtility.Log(logger, departmentId + " da duoc gui thong tin xuat hang.");
             }
             
         }
 
         public void NotifyRequestDepartmentStockIn(long departmentId)
+        {
+            
+        }
+
+        public void NotifyNewMultiDepartmentStockOut(Department department, object[] list, DepartmentPrice price)
         {
             
         }

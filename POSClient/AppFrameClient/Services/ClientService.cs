@@ -32,17 +32,8 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockOut")]
         void RequestDepartmentStockOut(long departmentId);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockIn")]
-        void RequestDepartmentStockIn(long departmentId);
-
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutSuccess")]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
-
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockInSuccess")]
-        void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId);
-
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/UpdateStockInBackFlag")]
-        void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -61,17 +52,8 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockOutSuccess")]
         void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockInSuccess")]
-        void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId);
-
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyUpdateStockOutFlag")]
-        void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
-
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyRequestDepartmentStockOut")]
         void NotifyRequestDepartmentStockOut(long departmentId);
-
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyRequestDepartmentStockIn")]
-        void NotifyRequestDepartmentStockIn(long departmentId);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -134,24 +116,9 @@ namespace AppFrameClient.Services
             base.Channel.RequestDepartmentStockOut(departmentId);
         }
 
-        public void RequestDepartmentStockIn(long departmentId)
-        {
-            base.Channel.RequestDepartmentStockIn(departmentId);
-        }
-
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
         {
             base.Channel.InformDepartmentStockOutSuccess(sourceDeptId, destDeptId, deptStockId);
-        }
-
-        public void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn, long stockOutId)
-        {
-            base.Channel.InformDepartmentStockInSuccess(department, stockIn, stockOutId);
-        }
-
-        public void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
-        {
-            base.Channel.UpdateStockInBackFlag(department, stockIn, stockOutId);
         }
     }
 }

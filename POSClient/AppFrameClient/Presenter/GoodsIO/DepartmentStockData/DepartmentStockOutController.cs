@@ -460,5 +460,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             
         }
+
+        public void NotifyNewMultiDepartmentStockOut(Department department, object[] list, DepartmentPrice price)
+        {
+            
+        }
     }
 }
