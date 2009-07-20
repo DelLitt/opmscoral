@@ -20,7 +20,7 @@ namespace AppFrameClient.Services
     public class ServerServiceConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 5*1000;
+        const int SleepTime = 8*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -29,12 +29,11 @@ namespace AppFrameClient.Services
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
             
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            
             if(CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;    
             }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
             DepartmentStockIn stockIn;
             // convert from stock out to stock in
@@ -61,11 +60,11 @@ namespace AppFrameClient.Services
 
         public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockIn)
         {
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             if (CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;
             }
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             ClientUtility.Log(logger, department.DepartmentId + " tra hang ve " + stockIn.DepartmentStockInPK.DepartmentId);
             DepartmentStockOut stockOut;
             // convert from stock out to stock in
@@ -161,7 +160,6 @@ namespace AppFrameClient.Services
             {
                 return;
             }
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
@@ -174,6 +172,7 @@ namespace AppFrameClient.Services
             };
             if (list != null && list.Count > 0)
             {
+                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
                 ClientUtility.Log(logger, " Co " + list.Count + " phieu tra hang ve " + departmentId);
                 foreach (DepartmentStockOut departmentStockOut in list)
                 {
@@ -185,9 +184,10 @@ namespace AppFrameClient.Services
                     DepartmentStockIn stockIn = mapper.Convert(departmentStockOut);
                     serverService.InformDepartmentStockInSuccess(destDept, stockIn,departmentStockOut.DepartmentStockOutPK.StockOutId);
                 }
+                
+                ClientUtility.Log(logger, departmentId + " da duoc gui thong tin tra hang.");
             }
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
-            ClientUtility.Log(logger, departmentId + " da duoc gui thong tin tra hang.");
+            
         }
 
         public ServerServiceConsumer()

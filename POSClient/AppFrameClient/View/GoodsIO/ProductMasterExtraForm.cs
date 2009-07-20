@@ -179,7 +179,14 @@ namespace AppFrameClient.View.GoodsIO
 
         private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtProductType.Text = ((ProductType) cbbProductType.SelectedItem).TypeName;
+            try
+            {
+                txtProductType.Text = ((ProductType)cbbProductType.SelectedItem).TypeName;
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
