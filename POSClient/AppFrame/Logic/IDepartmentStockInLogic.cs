@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using AppFrame.Common;
 using AppFrame.Model;
 
 namespace AppFrame.Logic
@@ -62,7 +63,7 @@ namespace AppFrame.Logic
         void UpdateExportStatus(DepartmentStockIn data);
 
         void Sync(SyncFromMainToDepartment syncFromMainToDepartment);
-        void SyncFromSubStock(DepartmentStockIn stockIn);
+        LogicResult SyncFromSubStock(DepartmentStockIn stockIn);
         void AddStockInBack(DepartmentStockIn stockIn);
         void SyncMasterData(SyncFromMainToDepartment department);
     }
