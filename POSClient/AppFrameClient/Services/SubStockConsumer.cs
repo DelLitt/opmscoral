@@ -19,7 +19,7 @@ namespace AppFrameClient.Services
     public class SubStockConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 8*1000;
+        const int SleepTime = 25*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
