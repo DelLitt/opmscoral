@@ -114,27 +114,36 @@ namespace AppFrameClient.Services
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
         {
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
             if(sourceDeptId!= CurrentDepartment.Get().DepartmentId)
             {
                 return;
             }
             ClientUtility.Log(logger, deptDeptId + " phan hoi den " + sourceDeptId + " da nhap hang thanh cong.");
-            DepartmentStockOutPK departmentStockOutPk = new DepartmentStockOutPK
+            try
             {
-                DepartmentId = sourceDeptId,
-                StockOutId = stockOutId
-            };
-            
-            DepartmentStockOut deptStockOut = DepartmentStockOutLogic.FindById(departmentStockOutPk);
-            if (deptStockOut != null && deptStockOut.OtherDepartmentId == deptDeptId)
-            {
-                deptStockOut.ConfirmFlg = 0;
-                deptStockOut.UpdateDate = DateTime.Now;
-                DepartmentStockOutLogic.Update(deptStockOut);
+                DepartmentStockOutPK departmentStockOutPk = new DepartmentStockOutPK
+                    {
+                        DepartmentId = sourceDeptId,
+                        StockOutId = stockOutId
+                    };
+
+                DepartmentStockOut deptStockOut = DepartmentStockOutLogic.FindById(departmentStockOutPk);
+                if (deptStockOut != null && deptStockOut.OtherDepartmentId == deptDeptId)
+                {
+                    deptStockOut.ConfirmFlg = 0;
+                    deptStockOut.UpdateDate = DateTime.Now;
+                    DepartmentStockOutLogic.Update(deptStockOut);
+                }
+
+                message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã xuất hàng thành công !");
+                ClientUtility.Log(logger, " Xuat hang hoan tat.");
             }
-            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
-            message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã gửi thông tin thành công !");
-            ClientUtility.Log(logger, " Xuat hang hoan tat.");
+            catch (Exception exp)
+            {
+                message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Xuất hàng thất bại !");
+                ClientUtility.Log(logger, exp.Message);
+            }
         }
 
         public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
