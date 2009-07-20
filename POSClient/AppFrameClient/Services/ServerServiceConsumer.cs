@@ -247,12 +247,12 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception)
                         {
-                            /*if(serverService.State == CommunicationState.Faulted
+                            if(serverService.State == CommunicationState.Faulted
                                || serverService.State == CommunicationState.Closed)
-                            {*/
+                            {
                                 connected = false;
                                 serverService = null;
-                            /*}*/
+                            }
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
                             //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(1000 * 3);
