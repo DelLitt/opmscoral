@@ -32,7 +32,6 @@ namespace AppFrameClient.Utility.Mapper
                 inDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 inDetail.UpdateDate = DateTime.Now;
                 inDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-
                 inDetail.Quantity = outDetail.Quantity;
                 inDetail.Product = outDetail.Product;
                 inDetail.ProductMaster = outDetail.Product.ProductMaster;

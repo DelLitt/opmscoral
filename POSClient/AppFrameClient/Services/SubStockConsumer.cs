@@ -19,7 +19,7 @@ namespace AppFrameClient.Services
     public class SubStockConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 25*1000;
+        const int SleepTime = 20*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -68,7 +68,8 @@ namespace AppFrameClient.Services
                     }
                     else
                     {
-                        try
+                        Thread.Sleep(500);
+                        /*try
                         {
                             // Wait until thread is stopped
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
@@ -78,17 +79,17 @@ namespace AppFrameClient.Services
                         }
                         catch (Exception)
                         {
-                            /*if(serverService.State == CommunicationState.Faulted
+                            if(serverService.State == CommunicationState.Faulted
                                || serverService.State == CommunicationState.Closed)
-                            {*/
+                            {
                             connected = false;
                             serverService = null;
-                            /*}*/
+                            }
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
                             //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                             Thread.Sleep(1000 * 3);
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Xử lý lại ... ";
-                        }
+                        }*/
                     }
                 }
                 

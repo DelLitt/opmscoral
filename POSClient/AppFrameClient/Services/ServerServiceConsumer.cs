@@ -20,7 +20,7 @@ namespace AppFrameClient.Services
     public class ServerServiceConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 8*1000;
+        const int SleepTime = 30*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -46,19 +46,29 @@ namespace AppFrameClient.Services
                 LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
                 if (logicResult.HasError)
                 {
-                    ClientUtility.Log(logger, " Co loi khi dong bo");
-                    return;
+                    if(logicResult.Messages != null)
+                    {
+                        foreach (string message in logicResult.Messages)
+                        {
+                            ClientUtility.Log(logger, message);
+                        }    
+                    }
                 }
-                ClientUtility.Log(logger, " Hoan tat va phan hoi ... ");
+                else
+                {
+                    ClientUtility.Log(logger, " Hoan tat va phan hoi ... " + stockOut.DepartmentStockOutPK.DepartmentId.ToString());
 
-                ServiceResult serviceResult = new ServiceResult();
-                serviceResult.HasError = logicResult.HasError;
-                serviceResult.Messages = logicResult.Messages;
+                    ServiceResult serviceResult = new ServiceResult();
+                    serviceResult.HasError = logicResult.HasError;
+                    serviceResult.Messages = logicResult.Messages;
 
-                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
-                serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId, stockOut.OtherDepartmentId, stockOut.DepartmentStockOutPK.StockOutId);
-                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
-                ClientUtility.Log(logger, " Hoan tat !");
+                    ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+                    serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
+                                                                  stockOut.OtherDepartmentId,
+                                                                  stockOut.DepartmentStockOutPK.StockOutId);
+                    ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+                    ClientUtility.Log(logger, " Hoan tat !");
+                }
             }
             catch (Exception exp)
             {
