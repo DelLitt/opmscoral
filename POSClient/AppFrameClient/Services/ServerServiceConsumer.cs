@@ -36,26 +36,34 @@ namespace AppFrameClient.Services
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
             DepartmentStockIn stockIn;
-            // convert from stock out to stock in
-            stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
-            // call method to sync
-            ClientUtility.Log(logger, " Xu ly hang nhan.");
-            LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
-            if(logicResult.HasError)
-            {
-                ClientUtility.Log(logger," Co loi khi dong bo");
-                return;
-            }
-            ClientUtility.Log(logger, " Hoan tat va phan hoi ... ");
-            
-            ServiceResult serviceResult = new ServiceResult();
-            serviceResult.HasError = logicResult.HasError;
-            serviceResult.Messages = logicResult.Messages;
 
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
-            serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,stockOut.OtherDepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
-            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
-            ClientUtility.Log(logger, " Hoan tat !");
+            try
+            {
+                // convert from stock out to stock in
+                stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
+                // call method to sync
+                ClientUtility.Log(logger, " Xu ly hang nhan.");
+                LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
+                if (logicResult.HasError)
+                {
+                    ClientUtility.Log(logger, " Co loi khi dong bo");
+                    return;
+                }
+                ClientUtility.Log(logger, " Hoan tat va phan hoi ... ");
+
+                ServiceResult serviceResult = new ServiceResult();
+                serviceResult.HasError = logicResult.HasError;
+                serviceResult.Messages = logicResult.Messages;
+
+                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+                serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId, stockOut.OtherDepartmentId, stockOut.DepartmentStockOutPK.StockOutId);
+                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+                ClientUtility.Log(logger, " Hoan tat !");
+            }
+            catch (Exception exp)
+            {
+                ClientUtility.Log(logger, exp.Message);
+            }
         }
 
         public void NotifyNewDepartmentStockIn(Department department, DepartmentStockIn stockIn)
