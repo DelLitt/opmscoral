@@ -35,9 +35,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.systemHotkey3 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtWholeSalePrice = new System.Windows.Forms.TextBox();
             this.btnPutPrice = new System.Windows.Forms.Button();
@@ -46,14 +43,19 @@
             this.chkAbsoluteFinding = new System.Windows.Forms.CheckBox();
             this.chkZeroPrice = new System.Windows.Forms.CheckBox();
             this.chkZeroWholeSalePrice = new System.Windows.Forms.CheckBox();
+            this.ctxShortcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.systemHotkey1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemHotkey2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemHotkey3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            this.ctxShortcuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // productMasterSearchControl
             // 
-            this.productMasterSearchControl.Location = new System.Drawing.Point(-3, 23);
+            this.productMasterSearchControl.Location = new System.Drawing.Point(0, 12);
             this.productMasterSearchControl.Name = "productMasterSearchControl";
-            this.productMasterSearchControl.Size = new System.Drawing.Size(751, 111);
+            this.productMasterSearchControl.Size = new System.Drawing.Size(751, 128);
             this.productMasterSearchControl.TabIndex = 0;
             // 
             // dgvProduct
@@ -89,9 +91,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(731, 122);
+            this.btnSearch.Location = new System.Drawing.Point(671, 92);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(135, 52);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Tìm";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -101,26 +103,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(365, 6);
+            this.label7.Location = new System.Drawing.Point(365, 1);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 19);
             this.label7.TabIndex = 43;
             this.label7.Text = "GIÁ HÀNG HÓA";
-            // 
-            // systemHotkey1
-            // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
-            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
-            // 
-            // systemHotkey2
-            // 
-            this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
-            this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
-            // 
-            // systemHotkey3
-            // 
-            this.systemHotkey3.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-            this.systemHotkey3.Pressed += new System.EventHandler(this.systemHotkey3_Pressed);
             // 
             // txtPrice
             // 
@@ -167,7 +154,7 @@
             // chkAbsoluteFinding
             // 
             this.chkAbsoluteFinding.AutoSize = true;
-            this.chkAbsoluteFinding.Location = new System.Drawing.Point(661, 33);
+            this.chkAbsoluteFinding.Location = new System.Drawing.Point(671, 20);
             this.chkAbsoluteFinding.Name = "chkAbsoluteFinding";
             this.chkAbsoluteFinding.Size = new System.Drawing.Size(101, 18);
             this.chkAbsoluteFinding.TabIndex = 49;
@@ -177,7 +164,7 @@
             // chkZeroPrice
             // 
             this.chkZeroPrice.AutoSize = true;
-            this.chkZeroPrice.Location = new System.Drawing.Point(661, 58);
+            this.chkZeroPrice.Location = new System.Drawing.Point(671, 45);
             this.chkZeroPrice.Name = "chkZeroPrice";
             this.chkZeroPrice.Size = new System.Drawing.Size(102, 18);
             this.chkZeroPrice.TabIndex = 50;
@@ -187,12 +174,45 @@
             // chkZeroWholeSalePrice
             // 
             this.chkZeroWholeSalePrice.AutoSize = true;
-            this.chkZeroWholeSalePrice.Location = new System.Drawing.Point(661, 82);
+            this.chkZeroWholeSalePrice.Location = new System.Drawing.Point(671, 69);
             this.chkZeroWholeSalePrice.Name = "chkZeroWholeSalePrice";
             this.chkZeroWholeSalePrice.Size = new System.Drawing.Size(100, 18);
             this.chkZeroWholeSalePrice.TabIndex = 51;
             this.chkZeroWholeSalePrice.Text = "Tìm giá sỉ = 0";
             this.chkZeroWholeSalePrice.UseVisualStyleBackColor = true;
+            // 
+            // ctxShortcuts
+            // 
+            this.ctxShortcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemHotkey1ToolStripMenuItem,
+            this.systemHotkey2ToolStripMenuItem,
+            this.systemHotkey3ToolStripMenuItem});
+            this.ctxShortcuts.Name = "ctxShortcuts";
+            this.ctxShortcuts.Size = new System.Drawing.Size(198, 92);
+            // 
+            // systemHotkey1ToolStripMenuItem
+            // 
+            this.systemHotkey1ToolStripMenuItem.Name = "systemHotkey1ToolStripMenuItem";
+            this.systemHotkey1ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.systemHotkey1ToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.systemHotkey1ToolStripMenuItem.Text = "systemHotkey1";
+            this.systemHotkey1ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // systemHotkey2ToolStripMenuItem
+            // 
+            this.systemHotkey2ToolStripMenuItem.Name = "systemHotkey2ToolStripMenuItem";
+            this.systemHotkey2ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.systemHotkey2ToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.systemHotkey2ToolStripMenuItem.Text = "systemHotkey2";
+            this.systemHotkey2ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
+            // 
+            // systemHotkey3ToolStripMenuItem
+            // 
+            this.systemHotkey3ToolStripMenuItem.Name = "systemHotkey3ToolStripMenuItem";
+            this.systemHotkey3ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.systemHotkey3ToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.systemHotkey3ToolStripMenuItem.Text = "systemHotkey3";
+            this.systemHotkey3ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey3_Pressed);
             // 
             // DepartmentPriceUpdateForm
             // 
@@ -200,24 +220,39 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 473);
             this.Controls.Add(this.chkZeroWholeSalePrice);
-            this.Controls.Add(this.chkZeroPrice);
-            this.Controls.Add(this.chkAbsoluteFinding);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.chkZeroPrice);
+            this.Controls.Add(this.chkAbsoluteFinding);
             this.Controls.Add(this.btnPutPrice);
             this.Controls.Add(this.txtWholeSalePrice);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvProduct);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.productMasterSearchControl);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DepartmentPriceUpdateForm";
             this.Text = "Cập nhật giá hàng hoá";
             this.Load += new System.EventHandler(this.DepartmentPriceUpdateForm_Load);
+            this.Controls.SetChildIndex(this.productMasterSearchControl, 0);
+            this.Controls.SetChildIndex(this.btnSearch, 0);
+            this.Controls.SetChildIndex(this.dgvProduct, 0);
+            this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.txtPrice, 0);
+            this.Controls.SetChildIndex(this.txtWholeSalePrice, 0);
+            this.Controls.SetChildIndex(this.btnPutPrice, 0);
+            this.Controls.SetChildIndex(this.chkAbsoluteFinding, 0);
+            this.Controls.SetChildIndex(this.chkZeroPrice, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.chkZeroWholeSalePrice, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            this.ctxShortcuts.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,9 +266,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label7;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey3;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtWholeSalePrice;
         private System.Windows.Forms.Button btnPutPrice;
@@ -242,5 +274,9 @@
         private System.Windows.Forms.CheckBox chkAbsoluteFinding;
         private System.Windows.Forms.CheckBox chkZeroPrice;
         private System.Windows.Forms.CheckBox chkZeroWholeSalePrice;
+        private System.Windows.Forms.ContextMenuStrip ctxShortcuts;
+        private System.Windows.Forms.ToolStripMenuItem systemHotkey1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem systemHotkey2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem systemHotkey3ToolStripMenuItem;
     }
 }

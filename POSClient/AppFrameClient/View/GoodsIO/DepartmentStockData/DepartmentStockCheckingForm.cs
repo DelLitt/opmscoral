@@ -316,5 +316,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         public IList RestrictDepartmentStocks { get; set; }
         public ProductMaster RestrictProductMaster { get; set; }
+
+        private void ctxShortcuts_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

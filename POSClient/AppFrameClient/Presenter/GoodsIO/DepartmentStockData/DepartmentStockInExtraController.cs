@@ -143,7 +143,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         public  void departmentStockInExtraView_FindByStockInIdEvent(object sender, DepartmentStockInEventArgs e)
         {
             ObjectCriteria objectCriteria = new ObjectCriteria();
-            objectCriteria.AddEqCriteria("StockInDetailPK.StockInId", e.SelectedStockInId);
+            objectCriteria.AddSearchInCriteria("StockInDetailPK.StockInId", e.SelectedStockInIds);
             IList list = StockInDetailLogic.FindAll(objectCriteria);
             IList stockOutList = new ArrayList();
             foreach (StockInDetail inDetail in list)

@@ -76,8 +76,6 @@
             this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label13 = new System.Windows.Forms.Label();
             this.txtSumProduct = new System.Windows.Forms.TextBox();
-            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.deleteStock = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoStockIn = new System.Windows.Forms.RadioButton();
             this.rdoFastStockIn = new System.Windows.Forms.RadioButton();
@@ -89,13 +87,17 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblDescription = new System.Windows.Forms.Label();
-            this.systemHotkey2 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.ctxShorcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.systemHotkey1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemHotkey2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.ctxShorcuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // bdsStockIn
@@ -105,14 +107,14 @@
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
@@ -122,7 +124,7 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
             // 
             // btnDelete
             // 
@@ -472,16 +474,6 @@
             this.txtSumProduct.Size = new System.Drawing.Size(118, 22);
             this.txtSumProduct.TabIndex = 111;
             // 
-            // systemHotkey1
-            // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
-            // 
-            // deleteStock
-            // 
-            this.deleteStock.Shortcut = System.Windows.Forms.Shortcut.Del;
-            this.deleteStock.Pressed += new System.EventHandler(this.deleteStock_Pressed);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdoStockIn);
@@ -591,14 +583,43 @@
             this.lblDescription.TabIndex = 128;
             this.lblDescription.Text = "Nhập hàng từ ...";
             // 
-            // systemHotkey2
+            // ctxShorcuts
             // 
-            this.systemHotkey2.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
-            this.systemHotkey2.Pressed += new System.EventHandler(this.systemHotkey2_Pressed);
+            this.ctxShorcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.systemHotkey1ToolStripMenuItem,
+            this.deleteStockToolStripMenuItem,
+            this.systemHotkey2ToolStripMenuItem});
+            this.ctxShorcuts.Name = "ctxShorcuts";
+            this.ctxShorcuts.Size = new System.Drawing.Size(197, 70);
+            // 
+            // systemHotkey1ToolStripMenuItem
+            // 
+            this.systemHotkey1ToolStripMenuItem.Name = "systemHotkey1ToolStripMenuItem";
+            this.systemHotkey1ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.systemHotkey1ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.systemHotkey1ToolStripMenuItem.Text = "systemHotkey1";
+            this.systemHotkey1ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // deleteStockToolStripMenuItem
+            // 
+            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
+            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.deleteStockToolStripMenuItem.Text = "deleteStock";
+            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.deleteStock_Pressed);
+            // 
+            // systemHotkey2ToolStripMenuItem
+            // 
+            this.systemHotkey2ToolStripMenuItem.Name = "systemHotkey2ToolStripMenuItem";
+            this.systemHotkey2ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.systemHotkey2ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.systemHotkey2ToolStripMenuItem.Text = "systemHotkey2";
+            this.systemHotkey2ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
             // DepartmentFastStockInForm
             // 
             this.ClientSize = new System.Drawing.Size(808, 616);
+            this.ContextMenuStrip = this.ctxShorcuts;
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.label2);
@@ -626,6 +647,29 @@
             this.Name = "DepartmentFastStockInForm";
             this.Text = "Phân phối hàng hoá trong kho cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.dgvDeptStockIn, 0);
+            this.Controls.SetChildIndex(this.txtSumValue, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.button4, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblStatus, 0);
+            this.Controls.SetChildIndex(this.txtBarcode, 0);
+            this.Controls.SetChildIndex(this.txtSumProduct, 0);
+            this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.txtInputDate, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.txtGoodsDescription, 0);
+            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.cboDepartment, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.lblMessage, 0);
+            this.Controls.SetChildIndex(this.lblDescription, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
@@ -633,6 +677,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.ctxShorcuts.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -662,8 +707,6 @@
         private System.Windows.Forms.BindingSource sizeBindingSource;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox txtSumProduct;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
-        private AppFrame.Controls.HotKey.SystemHotkey deleteStock;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdoStockIn;
         private System.Windows.Forms.RadioButton rdoFastStockIn;
@@ -693,6 +736,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label lblDescription;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey2;
+        private System.Windows.Forms.ContextMenuStrip ctxShorcuts;
+        private System.Windows.Forms.ToolStripMenuItem systemHotkey1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem systemHotkey2ToolStripMenuItem;
     }
 }

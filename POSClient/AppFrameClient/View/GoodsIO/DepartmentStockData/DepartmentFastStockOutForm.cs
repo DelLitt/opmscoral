@@ -563,9 +563,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Bạn hãy kiểm tra kỹ trước khi lưu số liệu bởi vì sau khi lưu sẽ không thay đổi được nữa. Bạn có chắc chắn muốn lưu ?",
-                lblCommandDescription.Text,
+            DialogResult result = MessageBox.Show(lblCommandDescription.Text +".Chắc chắn muốn lưu ?",
+                "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == System.Windows.Forms.DialogResult.No)
             {
@@ -726,6 +725,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 lblInformation.ForeColor = Color.Red;
                 lblInformation.Text = "Lưu thất bại ...";
             }
+            txtBarcode.Focus();
         }
         IList<Stream> streamList = new List<Stream>();
         private int currentIndex = 0;
@@ -1489,6 +1489,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 txtBarcode.Text = "";
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
                 CalculateTotalStorePrice();
+                txtBarcode.Focus();
                 if(rdoFastStockOut.Checked)
                 {
                     return;

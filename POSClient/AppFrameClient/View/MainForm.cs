@@ -676,10 +676,23 @@ namespace AppFrame.View
             {
                 if (item.Visible == true)
                 {
-                    item.Text = "F" + fcount.ToString() + " - " + toolStripTexts[count];
+                    string menuText = "F" + fcount.ToString() + " - " + toolStripTexts[count];
+                    item.Text = menuText;
+                    ctxShortcuts.Items[fcount-1].Text = menuText;
                     fcount += 1;
                 }
                 count++;
+            }
+            for(int i = 0;i <ctxShortcuts.Items.Count;i++)
+            {
+                if(i>(fcount-2))
+                {
+                    ctxShortcuts.Items[i].Visible = false;
+                }
+                else
+                {
+                    ctxShortcuts.Items[i].Visible = true;                    
+                }
             }
         }
 
@@ -1185,6 +1198,11 @@ namespace AppFrame.View
                 GlobalUtility.GetOnlyChildFormObject<SyncDatabaseImageForm>(this, FormConstants.SYNC_DATABASE_IMAGE_VIEW);
             form.WindowState = FormWindowState.Maximized;
             form.Show();
+        }
+
+        private void f12ShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         
     }

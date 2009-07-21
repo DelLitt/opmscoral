@@ -1108,11 +1108,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnChoose_Click(object sender, EventArgs e)
         {
-            if(dgvStockIn.CurrentRow!= null)
+            DataGridViewSelectedRowCollection collection = dgvStockIn.SelectedRows;
+            if(collection.Count > 0 )
             {
-                string stockInId = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
+                IList stockInIds = new ArrayList();
+                foreach (DataGridViewRow selectedRowCollection in collection)
+                {
+                    string stockInId = selectedRowCollection.Cells[0].Value.ToString();                        
+                }
+                
                 DepartmentStockInEventArgs ea = new DepartmentStockInEventArgs();
-                ea.SelectedStockInId = stockInId;
+                ea.SelectedStockInIds = stockInIds;
                 
                 EventUtility.fireAsyncEvent(FindByStockInIdEvent,this,ea,new AsyncCallback(EndEvent));
                 this.Enabled = false;
