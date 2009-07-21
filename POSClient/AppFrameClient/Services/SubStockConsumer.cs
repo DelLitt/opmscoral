@@ -137,12 +137,12 @@ namespace AppFrameClient.Services
                     DepartmentStockOutLogic.Update(deptStockOut);
                 }
 
-                message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đã xuất hàng thành công !");
+                message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, sourceDeptId + "đã xuất " + stockOutId+ " xuống " + deptDeptId + " thành công !");
                 ClientUtility.Log(logger, " Xuat hang hoan tat.");
             }
             catch (Exception exp)
             {
-                message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Xuất hàng thất bại !");
+                message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, sourceDeptId + "đã xuất " + stockOutId + " xuống " + deptDeptId + " thất bại !");
                 ClientUtility.Log(logger, exp.Message);
             }
         }
