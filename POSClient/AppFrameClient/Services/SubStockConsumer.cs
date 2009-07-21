@@ -64,11 +64,11 @@ namespace AppFrameClient.Services
                         {
                             
                         }
-                        Thread.Sleep(500);
+                        Thread.Sleep(100);
                     }
                     else
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(100);
                         /*try
                         {
                             // Wait until thread is stopped

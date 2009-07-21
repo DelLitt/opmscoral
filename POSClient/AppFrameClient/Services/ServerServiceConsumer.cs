@@ -326,7 +326,7 @@ namespace AppFrameClient.Services
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
                             ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
-                            Thread.Sleep(500);
+                            Thread.Sleep(100);
                             
                         }
                         catch (Exception ex)
