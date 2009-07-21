@@ -19,7 +19,7 @@ namespace AppFrameClient.Services
     public class SubStockConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 20*1000;
+        const int SleepTime = 10*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -82,8 +82,8 @@ namespace AppFrameClient.Services
                             if(serverService.State == CommunicationState.Faulted
                                || serverService.State == CommunicationState.Closed)
                             {
-                            connected = false;
-                            serverService = null;
+                                connected = false;
+                                serverService = null;
                             }
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
                             //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
@@ -227,17 +227,47 @@ namespace AppFrameClient.Services
 
         public void NotifyRequestDepartmentStockIn(long departmentId)
         {
-            
+            // do not implement
         }
 
         public void NotifyNewMultiDepartmentStockOut(Department department, DepartmentStockOut[] list, DepartmentPrice price)
         {
-            
+            // do not implement
         }
 
         public void NotifyMultiStockInSuccess(Department department, DepartmentStockIn[] stockInList, long id)
         {
-            
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+
+            try
+            {
+                foreach (DepartmentStockIn stockIn in stockInList)
+                {
+                    if (stockIn != null)
+                    {
+                        if (stockIn.DepartmentStockInPK.DepartmentId != CurrentDepartment.Get().DepartmentId)
+                        {
+                            return;
+                        }
+                        ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
+                        DepartmentStockInLogic.AddStockInBack(stockIn);
+                        ClientUtility.Log(logger, " Nhap lai hang thanh cong.");
+
+                        message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
+                        serverService.UpdateStockInBackFlag(department, stockIn, id);
+
+                    }
+                    else
+                    {
+                        ClientUtility.Log(logger, department.DepartmentId + " nhap lai hang that bai.");
+                        message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                ClientUtility.Log(logger, exception.Message); 
+            }
         }
 
         public void NotifyStockInFail(Department department, DepartmentStockIn stockIn, long id)
@@ -247,7 +277,10 @@ namespace AppFrameClient.Services
 
         public void NotifyStockOutFail(long sourceId, long destId, long stockId)
         {
-            
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+            string msg = sourceId + " xuat " + stockId + " den " + destId + " that bai";
+            ClientUtility.Log(logger, msg);
+            message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, " Đơn hàng " + stockId + " truyền thất bại!");
         }
 
         /// <summary>

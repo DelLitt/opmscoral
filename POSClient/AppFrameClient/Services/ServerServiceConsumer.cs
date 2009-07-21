@@ -20,7 +20,7 @@ namespace AppFrameClient.Services
     public class ServerServiceConsumer : ServerServiceCallback
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const int SleepTime = 30*1000;
+        const int SleepTime = 8*1000;
         private bool connected = false;
         private Thread m_thread;
         private bool m_running;
@@ -53,14 +53,17 @@ namespace AppFrameClient.Services
                             ClientUtility.Log(logger, message);
                         }    
                     }
+                    serverService.InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,
+                                                                  stockOut.OtherDepartmentId,
+                                                                  stockOut.DepartmentStockOutPK.StockOutId);
                 }
                 else
                 {
                     ClientUtility.Log(logger, " Hoan tat va phan hoi ... " + stockOut.DepartmentStockOutPK.DepartmentId.ToString());
-
+/*
                     ServiceResult serviceResult = new ServiceResult();
                     serviceResult.HasError = logicResult.HasError;
-                    serviceResult.Messages = logicResult.Messages;
+                    serviceResult.Messages = logicResult.Messages;*/
 
                     ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                     serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
@@ -122,6 +125,7 @@ namespace AppFrameClient.Services
         }
 
         public void NotifyConnected()
+
         {
             connected = true;
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối thành công!";
@@ -177,43 +181,106 @@ namespace AppFrameClient.Services
         public void NotifyRequestDepartmentStockIn(long departmentId)
         {
             //ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
-            if (serverService == null)
-            {
-                return;
-            }
-            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
-            ObjectCriteria objectCriteria = new ObjectCriteria();
-            objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
-            objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);
 
-            IList list = DepartmentStockOutLogic.FindAll(objectCriteria);
-            Department destDept = new Department
-                                      {
-                           DepartmentId = CurrentDepartment.Get().DepartmentId
-            };
-            if (list != null && list.Count > 0)
+            try
             {
-                ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
-                ClientUtility.Log(logger, " Co " + list.Count + " phieu tra hang ve " + departmentId);
-                foreach (DepartmentStockOut departmentStockOut in list)
+                ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
+                objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);
+
+                IList list = DepartmentStockOutLogic.FindAll(objectCriteria);
+                Department destDept = new Department
+                                          {
+                                              DepartmentId = CurrentDepartment.Get().DepartmentId
+                                          };
+                if (list != null && list.Count > 0)
                 {
-                    foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                    ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
+                    ClientUtility.Log(logger, " Co " + list.Count + " phieu tra hang ve " + departmentId);
+                    IList stockInList = new ArrayList();
+                    foreach (DepartmentStockOut departmentStockOut in list)
                     {
-                        string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                        foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
+                        {
+                            string prdMasterId = detail.Product.ProductMaster.ProductMasterId;
+                        }
+                        FastDepartmentStockInMapper mapper = new FastDepartmentStockInMapper();
+                        DepartmentStockIn stockIn = mapper.Convert(departmentStockOut);
+                        /*stockInList.Add(stockIn);*/
+                        serverService.InformDepartmentStockInSuccess(destDept,stockIn,departmentStockOut.DepartmentStockOutPK.DepartmentId);
                     }
-                    FastDepartmentStockInMapper mapper = new FastDepartmentStockInMapper();
-                    DepartmentStockIn stockIn = mapper.Convert(departmentStockOut);
-                    serverService.InformDepartmentStockInSuccess(destDept, stockIn,departmentStockOut.DepartmentStockOutPK.StockOutId);
+                    /*object[] array = new object[stockInList.Count];
+                    int i = 0;
+                    foreach (DepartmentStockIn @out in stockInList)
+                    {
+                        array[i] = @out;
+                        i++;
+                    }
+                    ClientUtility.Log(logger, departmentId + " da duoc gui thong tin tra hang.");
+                    serverService.InformMultiDepartmentStockInSuccess(destDept, array, array.Length);*/
                 }
-                
-                ClientUtility.Log(logger, departmentId + " da duoc gui thong tin tra hang.");
+            }
+            catch (Exception exception)
+            {
+                ClientUtility.Log(logger, exception.Message);
             }
             
         }
 
         public void NotifyNewMultiDepartmentStockOut(Department department, DepartmentStockOut[] list, DepartmentPrice price)
         {
+            if (CurrentDepartment.Get().DepartmentId != department.DepartmentId)
+            {
+                return;
+            }
             
+            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
+            ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
+            
+
+            try
+            {
+                foreach (DepartmentStockOut stockOut in list)
+                {
+                    DepartmentStockIn stockIn;
+                    // convert from stock out to stock in
+                    stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
+                    // call method to sync
+                    ClientUtility.Log(logger, " Xu ly hang nhan.");
+                    LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
+                    if (logicResult.HasError)
+                    {
+                        if (logicResult.Messages != null)
+                        {
+                            foreach (string message in logicResult.Messages)
+                            {
+                                ClientUtility.Log(logger, message);
+                            }
+                        }
+                        serverService.InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,
+                                                                      stockOut.OtherDepartmentId,
+                                                                      stockOut.DepartmentStockOutPK.StockOutId);
+                    }
+                    else
+                    {
+                        ClientUtility.Log(logger,
+                                          " Hoan tat va phan hoi ... " +
+                                          stockOut.DepartmentStockOutPK.DepartmentId.ToString());
+                        
+                        ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+                        serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
+                                                                      stockOut.OtherDepartmentId,
+                                                                      stockOut.DepartmentStockOutPK.StockOutId);
+                        ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+                        ClientUtility.Log(logger, " Hoan tat !");
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                ClientUtility.Log(logger, exp.Message);
+            }
         }
 
         public void NotifyMultiStockInSuccess(Department department, DepartmentStockIn[] stockInList, long id)
