@@ -67,19 +67,38 @@ namespace AppFrameServer.Services
         public void RequestDepartmentStockIn(long departmentId)
         {
             ServerUtility.Log(logger, departmentId + " yeu cau thong tin xuat hang.");
-            // request stock-out from departments
-            _callbackList.ForEach(
-                 delegate(IDepartmentStockOutCallback callback)
-                 {
-                     try
-                     {
-                         callback.NotifyRequestDepartmentStockIn(departmentId);
-                     }
-                     catch (Exception)
-                     {
+            if (departmentId > 9999)
+            {
+                // request stock-out from departments
+                _callbackList.ForEach(
+                    delegate(IDepartmentStockOutCallback callback)
+                        {
+                            try
+                            {
+                                callback.NotifyRequestDepartmentStockIn(departmentId);
+                            }
+                            catch (Exception)
+                            {
 
-                     }
-                 }); 
+                            }
+                        });
+            }
+            else
+            {
+                // request stock-out from departments
+                _callbackSubStockList.ForEach(
+                    delegate(IDepartmentStockOutCallback callback)
+                    {
+                        try
+                        {
+                            callback.NotifyRequestDepartmentStockIn(departmentId);
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    });                
+            }
         }
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
@@ -133,7 +152,7 @@ namespace AppFrameServer.Services
                  });
         }
 
-        public void InformMultiDepartmentStockInSuccess(Department department, ArrayList stockInList, long stockOutId)
+        public void InformMultiDepartmentStockInSuccess(Department department, DepartmentStockIn[] stockInList, long stockOutId)
         {
             ServerUtility.Log(logger, department.DepartmentId + " inform stock in back success. ");
             _callbackSubStockList.ForEach(
@@ -205,7 +224,7 @@ namespace AppFrameServer.Services
 
 
 
-        public void MakeMultiDepartmentStockOut(Department department, ArrayList stockOutList, DepartmentPrice price)
+        public void MakeMultiDepartmentStockOut(Department department, DepartmentStockOut[] stockOutList, DepartmentPrice price)
         {
             ServerUtility.Log(logger, " Xuat hang di " + department.DepartmentId);
             _callbackList.ForEach(

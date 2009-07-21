@@ -22,7 +22,7 @@ namespace AppFrameServer.Services
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
-        void MakeMultiDepartmentStockOut(Department department, ArrayList stockOutList, DepartmentPrice price);
+        void MakeMultiDepartmentStockOut(Department department, DepartmentStockOut[] stockOutList, DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
         void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
@@ -46,12 +46,13 @@ namespace AppFrameServer.Services
         void InformDepartmentStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId);
 
         [OperationContract(IsOneWay = true)]
-        void InformMultiDepartmentStockInSuccess(Department department, ArrayList stockIn, long stockOutId);
+        void InformMultiDepartmentStockInSuccess(Department department, DepartmentStockIn[] stockIn, long stockOutId);
 
         [OperationContract(IsOneWay = true)]
         void InformDepartmentStockInFail(Department department, DepartmentStockIn stockIn, long stockOutId);
 
         [OperationContract(IsOneWay = true)]
         void UpdateStockInBackFlag(Department department, DepartmentStockIn stockIn, long stockOutId);
+        
     }
 }
