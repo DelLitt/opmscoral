@@ -18,6 +18,7 @@ namespace AppFrameServer.Services
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static List<IDepartmentStockOutCallback> _callbackList = new List<IDepartmentStockOutCallback>();
         private static List<IDepartmentStockOutCallback> _callbackSubStockList = new List<IDepartmentStockOutCallback>();
+
         public void JoinDistributingGroup(Department department)
         {
             ServerUtility.Log(logger, department.DepartmentId + " joining the distributing group.");
