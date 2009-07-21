@@ -66,13 +66,16 @@ namespace AppFrameClient.Services
                     serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                   stockOut.OtherDepartmentId,
                                                                   stockOut.DepartmentStockOutPK.StockOutId);
-                    ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
                     ClientUtility.Log(logger, " Hoan tat !");
+                    ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
                 }
             }
             catch (Exception exp)
             {
                 ClientUtility.Log(logger, exp.Message);
+                serverService.InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,
+                                                                  stockOut.OtherDepartmentId,
+                                                                  stockOut.DepartmentStockOutPK.StockOutId);
             }
         }
 
@@ -208,12 +211,12 @@ namespace AppFrameClient.Services
             
         }
 
-        public void NotifyNewMultiDepartmentStockOut(Department department, object[] list, DepartmentPrice price)
+        public void NotifyNewMultiDepartmentStockOut(Department department, DepartmentStockOut[] list, DepartmentPrice price)
         {
             
         }
 
-        public void NotifyMultiStockInSuccess(Department department, object[] stockInList, long id)
+        public void NotifyMultiStockInSuccess(Department department, DepartmentStockIn[] stockInList, long id)
         {
             
         }

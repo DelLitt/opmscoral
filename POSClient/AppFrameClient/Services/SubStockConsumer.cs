@@ -212,7 +212,7 @@ namespace AppFrameClient.Services
                         detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                     }
                 }
-                object[] array =new object[list.Count];
+                DepartmentStockOut[] array = new DepartmentStockOut[list.Count];
                 int i = 0;
                 foreach (DepartmentStockOut @out in list)
                 {
@@ -230,12 +230,12 @@ namespace AppFrameClient.Services
             
         }
 
-        public void NotifyNewMultiDepartmentStockOut(Department department, object[] list, DepartmentPrice price)
+        public void NotifyNewMultiDepartmentStockOut(Department department, DepartmentStockOut[] list, DepartmentPrice price)
         {
             
         }
 
-        public void NotifyMultiStockInSuccess(Department department, object[] stockInList, long id)
+        public void NotifyMultiStockInSuccess(Department department, DepartmentStockIn[] stockInList, long id)
         {
             
         }
