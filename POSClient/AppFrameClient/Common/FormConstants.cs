@@ -95,5 +95,7 @@ namespace AppFrameClient.Common
         public static string STOCK_OUT_CONFIRM_FORM = "StockOutConfirmView";
         public static string CONFIRM_LOGIN_VIEW = "ConfirmLoginView";
         public static string PRODUCT_MASTER_EXTRA_FORM = "ProductMasterExtraView";
+        public static string LOAD_DATABASE_IMAGE_FORM = "LoadDatabaseImageView";
+        public static string SYNC_DATABASE_IMAGE_VIEW = "SyncDatabaseImageView";
     }
 }

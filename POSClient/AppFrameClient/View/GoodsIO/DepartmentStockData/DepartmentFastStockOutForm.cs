@@ -595,12 +595,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             int line = 1;
             foreach (DepartmentStockOutDetail detail in deptSODetailList)
             {
-                // TEMP FIX
-                /*if(detail.GoodQuantity > detail.Quantity)
-                {
-                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + detail.Quantity);
-                    return;
-                }*/
+                
                 foreach (DepartmentStock stock in departmentStockList)
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
@@ -608,21 +603,25 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
                             return;
                         }
                         if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Mất phải là số dương nhỏ hơn hoặc bằng " + stock.LostQuantity);
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
                             return;
                         }
                         if (detail.DamageQuantity < 0 || detail.DamageQuantity > stock.DamageQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Lỗi phải là số dương nhỏ hơn hoặc bằng " + stock.DamageQuantity);
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
                             return;
                         }
                         if (detail.ErrorQuantity < 0 || detail.ErrorQuantity > stock.ErrorQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Hư phải là số dương nhỏ hơn hoặc bằng " + stock.ErrorQuantity);
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
                             return;
                         }
                     }
@@ -632,6 +631,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     || (detail.DefectStatus.DefectStatusId == 7 && detail.GoodQuantity == 0)) 
                 {
                     MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng xuất phải lớn hơn 0.");
+                    dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
                     return;
                 }
                 line++;

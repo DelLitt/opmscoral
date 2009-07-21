@@ -23,7 +23,7 @@ using AppFrameClient.Utility;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    public partial class LoadDepartmentStockInToFileForm : BaseForm, IDepartmentStockInExtraView
+    public partial class LoadDatabaseImageForm : BaseForm, IDepartmentStockInExtraView
     {
         #region Implementation of IDepartmentStockInView
 
@@ -66,7 +66,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         #endregion
 
-        public LoadDepartmentStockInToFileForm()
+        public LoadDatabaseImageForm()
         {
             InitializeComponent();
         }
@@ -118,8 +118,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 return;
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
-                "Bạn muốn xuất hàng cho cửa hàng ? ",
-                "Xuất hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                "Bạn muốn tạo hình ảnh dữ liệu ? ",
+                "Tạo hình ảnh dữ liệu", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dResult == DialogResult.No)
             {
                 return;
@@ -141,12 +141,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 Department mstDataDept = new Department
                 {
                     DepartmentId = 0,
-                    DepartmentName = "MasterData"
+                    DepartmentName = "DataImage"
                 };
-                DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
+                //DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
                 var masterDataEvent = new DepartmentStockInEventArgs();
-                masterDataEvent.LastSyncTime = lastMasterDataSyncTime;
-                if(grpMasterData.Enabled)
+                masterDataEvent.LastSyncTime = DateTime.MinValue;
+                if(chkMasterData.Checked)
                 {
                     masterDataEvent.SyncProductMasters = chkPrdMaster.Checked;
                     masterDataEvent.SyncPrice = chkPrice.Checked;
@@ -156,59 +156,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 EventUtility.fireEvent(LoadMasterDataForExportEvent, this, masterDataEvent);
                 if (masterDataEvent.HasMasterDataToSync)
                 {
-                    string masterDataFileName = configExportPath + "\\" + "MasterData_SyncDown_" +
+                    string masterDataFileName = configExportPath + "\\" + "DataImage_SyncDown_" +
                                                 DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") +
                                                 CommonConstants.SERVER_SYNC_FORMAT;
-
-                    SyncResult mstResult = new SyncResult();
-                    mstResult.FileName = masterDataFileName;
-                    mstResult.Status = "Thành công";
-                    resultList.Add(mstResult);
+                    
                     Stream mstStream = File.Open(masterDataFileName, FileMode.Create);
                     BinaryFormatter mstBf = new BinaryFormatter();
                     mstBf.Serialize(mstStream, masterDataEvent.SyncFromMainToDepartment);
                     mstStream.Flush();
                     mstStream.Close();
+                    SyncResult mstResult = new SyncResult();
+                    mstResult.FileName = masterDataFileName;
+                    mstResult.Status = "Thành công";
+                    resultList.Add(mstResult);
                 }
-                // sync stock-out to dept
-                var deptEvent = new DepartmentStockInEventArgs();
-                EventUtility.fireEvent(FillDepartmentEvent, this, deptEvent);
 
-                IList departmentList = deptEvent.DepartmentList;
-                foreach (Department department in departmentList)
-                {
-                    var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
-                    DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, department, ClientUtility.SyncType.SyncDown);
-                    deptEvent = new DepartmentStockInEventArgs();
-                    deptEvent.LastSyncTime = lastSyncTime;
-                    deptEvent.Department = department;
-                    EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
-
-                    if (deptEvent.SyncFromMainToDepartment != null
-                        && deptEvent.SyncFromMainToDepartment.StockOutList != null
-                        && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0)
-                    {
-                        //var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
-                        string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" +
-                                                              DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
-                        SyncResult result = new SyncResult();
-                        result.FileName = fileName;
-                        result.Status = "Thành công";
-                        resultList.Add(result);
-                        Stream stream = File.Open(fileName, FileMode.Create);
-                        BinaryFormatter bf = new BinaryFormatter();
-                        bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
-                        stream.Flush();
-                        stream.Close();
-                        // write last sync time
-                        //ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
-                    }
-
-                }
             }
             catch (Exception)
             {
-                throw;
+                SyncResult mstResult = new SyncResult();
+                mstResult.FileName = "Chưa tạo được file image";
+                mstResult.Status = "Thất bại";
+                resultList.Add(mstResult);
             }
             MessageBox.Show("Đồng bộ hoàn tất !");
             

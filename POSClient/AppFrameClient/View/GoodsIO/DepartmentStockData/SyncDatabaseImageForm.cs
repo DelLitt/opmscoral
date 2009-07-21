@@ -24,24 +24,16 @@ using AppFrameClient.Utility;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    public partial class DepartmentStockSyncFromMainForm : BaseForm, IDepartmentStockInExtraView
+    public partial class SyncDatabaseImageForm : BaseForm, IDepartmentStockInExtraView
     {
-        public DepartmentStockSyncFromMainForm()
+        public SyncDatabaseImageForm()
         {
             InitializeComponent();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var fileOpen = new OpenFileDialog();
-            fileOpen.InitialDirectory = ".\\";
-            fileOpen.Filter = "POS (*.xac)|*.xac";
-            fileOpen.FilterIndex = 0;
-            fileOpen.RestoreDirectory = true;
-            if (fileOpen.ShowDialog() == DialogResult.OK)
-            {
-                txtFilePath.Text = fileOpen.FileName;
-            }
+            
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -194,8 +186,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
-                "Bạn muốn nhập hàng cho cửa hàng ? ",
-                "Nhập hàng cho cửa hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                "Bạn muốn đồng bộ hình ảnh dữ liệu ? ",
+                "Hình ảnh dữ liệu", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dResult == DialogResult.No)
             {
                 return;
@@ -203,7 +195,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
-            var masterPath = POSSyncDrive + ClientSetting.SyncImportPath;
+            var masterPath = POSSyncDrive + ClientSetting.SyncExportPath;
             var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
@@ -217,7 +209,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                 return;
             }
-            if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
+            /*if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
 
@@ -229,7 +221,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
                 
                 return;
-            }
+            }*/
             //var successPath = (string)configurationAppSettings.GetValue("SyncImportSuccessPath", typeof(String));
 
             if (string.IsNullOrEmpty(successPath) || !Directory.Exists(successPath))
@@ -259,7 +251,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     masterFileName = masterName;
                     if (!string.IsNullOrEmpty(masterFileName))
                     {
-                        if(masterFileName.IndexOf("MasterData")< 0)
+                        if (masterName.IndexOf("DataImage_SyncDown") < 0)
                         {
                             continue;
                         }
@@ -420,8 +412,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             string updateTimeStr =
                                 separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
                             DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
-                            ClientUtility.WriteLastSyncTime(updateTime, importPath, CurrentDepartment.Get(),
-                                                            ClientUtility.SyncType.SyncDown);
+                            /*ClientUtility.WriteLastSyncTime(updateTime, importPath, CurrentDepartment.Get(),
+                                                            ClientUtility.SyncType.SyncDown);*/
                             result.Status = "Thành công";
                         }
                     }

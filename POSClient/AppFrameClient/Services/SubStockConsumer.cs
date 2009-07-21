@@ -58,7 +58,7 @@ namespace AppFrameClient.Services
                             serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = "Kết nối với dịch vụ.";
-                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+                            //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                         }
                         catch (Exception)
                         {
@@ -158,15 +158,14 @@ namespace AppFrameClient.Services
                 }
                 ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
                 DepartmentStockInLogic.AddStockInBack(stockIn);
-                ClientUtility.Log(logger, " Nhap lai hang thanh cong.");
                
                 message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
                 serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);
-                
+                ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THANH CONG." + stockIn.ToString());    
             }
             else
             {
-                ClientUtility.Log(logger, department.DepartmentId + " nhap lai hang that bai.");
+                ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THAT BAI." + stockIn.ToString());    
                 message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
             }
             
@@ -185,7 +184,6 @@ namespace AppFrameClient.Services
                 return;
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
             ObjectCriteria objectCriteria = new ObjectCriteria();
             objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
             objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);

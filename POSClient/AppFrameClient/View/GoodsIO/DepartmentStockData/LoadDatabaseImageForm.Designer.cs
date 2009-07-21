@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    partial class LoadDepartmentStockInToFileForm
+    partial class LoadDatabaseImageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -164,7 +164,7 @@
             this.chkMasterData.UseVisualStyleBackColor = true;
             this.chkMasterData.CheckedChanged += new System.EventHandler(this.chkMasterData_CheckedChanged);
             // 
-            // LoadDepartmentStockInToFileForm
+            // LoadDatabaseImageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -175,8 +175,8 @@
             this.Controls.Add(this.btnSyncToMain);
             this.Controls.Add(this.chkMasterData);
             this.Controls.Add(this.grpMasterData);
-            this.Name = "LoadDepartmentStockInToFileForm";
-            this.Text = "Xuất hàng ra cửa hàng";
+            this.Name = "LoadDatabaseImageForm";
+            this.Text = "Tao hinh anh du lieu";
             this.Controls.SetChildIndex(this.grpMasterData, 0);
             this.Controls.SetChildIndex(this.chkMasterData, 0);
             this.Controls.SetChildIndex(this.btnSyncToMain, 0);

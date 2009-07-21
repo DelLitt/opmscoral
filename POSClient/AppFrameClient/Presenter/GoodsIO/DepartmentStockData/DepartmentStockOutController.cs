@@ -14,6 +14,7 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Common;
 using AppFrameClient.Services;
 using AppFrameClient.Utility;
 
@@ -21,7 +22,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
     public class DepartmentStockOutController : IDepartmentStockOutController,ServerServiceCallback
     {
-
+        //private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region IDepartmentStockInExtraController Members
 
         private IDepartmentStockOutView mainStockInView;
@@ -97,8 +98,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                 }
 
-                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), "TcpBinding");
-                //serverService.JoinDistributingGroup(destDept);
+                ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                 serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
             }
 
@@ -188,7 +188,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockOutView_LoadGoodsByNameColorSizeEvent(object sender, DepartmentStockOutEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void _departmentStockOutView_LoadStockStatusEvent(object sender, DepartmentStockOutEventArgs e)

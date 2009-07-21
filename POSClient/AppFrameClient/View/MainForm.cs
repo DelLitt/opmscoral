@@ -1170,6 +1170,22 @@ namespace AppFrame.View
         {
             new DepartmentStockOutReportViewer().Show();
         }
+
+        private void mnuExportDatabaseImage_Click(object sender, EventArgs e)
+        {
+            LoadDatabaseImageForm form =
+                GlobalUtility.GetOnlyChildFormObject<LoadDatabaseImageForm>(this, FormConstants.LOAD_DATABASE_IMAGE_FORM);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+        private void mnuImportDatabaseImage_Click(object sender, EventArgs e)
+        {
+            SyncDatabaseImageForm form =
+                GlobalUtility.GetOnlyChildFormObject<SyncDatabaseImageForm>(this, FormConstants.SYNC_DATABASE_IMAGE_VIEW);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
         
     }
 }

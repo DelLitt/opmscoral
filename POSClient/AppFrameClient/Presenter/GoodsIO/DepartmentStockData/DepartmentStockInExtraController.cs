@@ -78,45 +78,54 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 void departmentStockInExtraView_LoadMasterDataForExportEvent(object sender, DepartmentStockInEventArgs e)
                 {
                     e.SyncFromMainToDepartment = new SyncFromMainToDepartment();
-                    
-                    ObjectCriteria prdCrit = new ObjectCriteria();
-                    prdCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
-                    IList masterProductList1 = ProductLogic.FindAll(prdCrit);
-                    
-                    SubObjectCriteria subCrit = new SubObjectCriteria("ProductMaster");
-                    subCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
-                    prdCrit = new ObjectCriteria();
-                    prdCrit.AddSubCriteria("ProductMaster",subCrit);
-                    IList masterProductList2 = ProductLogic.FindAll(prdCrit);
-                    IList masterProductList = new ArrayList();
+                    if (e.SyncProductMasters)
+                    {
+                        ObjectCriteria prdCrit = new ObjectCriteria();
+                        prdCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
+                        IList masterProductList1 = ProductLogic.FindAll(prdCrit);
 
-                    if(masterProductList1!=null)
-                    {
-                        foreach (Product product in masterProductList1)
+                        SubObjectCriteria subCrit = new SubObjectCriteria("ProductMaster");
+                        subCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
+                        prdCrit = new ObjectCriteria();
+                        prdCrit.AddSubCriteria("ProductMaster", subCrit);
+                        IList masterProductList2 = ProductLogic.FindAll(prdCrit);
+                        IList masterProductList = new ArrayList();
+
+                        if (masterProductList1 != null)
                         {
-                            masterProductList.Add(product);
-                        }
-                    }
-                    if(masterProductList2!=null)
-                    {
-                        foreach (Product product in masterProductList2)
-                        {
-                            if (!ExistInList(masterProductList, product))
+                            foreach (Product product in masterProductList1)
                             {
                                 masterProductList.Add(product);
                             }
                         }
+                        if (masterProductList2 != null)
+                        {
+                            foreach (Product product in masterProductList2)
+                            {
+                                if (!ExistInList(masterProductList, product))
+                                {
+                                    masterProductList.Add(product);
+                                }
+                            }
+                        }
+                        e.SyncFromMainToDepartment.ProductMasterList = masterProductList;
+                        e.HasMasterDataToSync = true;
                     }
-                    e.SyncFromMainToDepartment.ProductMasterList = masterProductList;
+                    if (e.SyncPrice)
+                    {
+                        ObjectCriteria deptPriceCrit = new ObjectCriteria();
+                        deptPriceCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
 
-                    ObjectCriteria deptPriceCrit = new ObjectCriteria();
-                    deptPriceCrit.AddGreaterOrEqualsCriteria("UpdateDate", e.LastSyncTime);
-
-                    IList masterDeptPriceList = DepartmentPriceLogic.FindAll(deptPriceCrit);
-                    e.SyncFromMainToDepartment.DepartmentPriceMasterList = masterDeptPriceList;
-
-                    e.SyncFromMainToDepartment.DepartmentList = DepartmentLogic.FindAll(null);
-                    e.SyncFromMainToDepartment.EmployeeList = EmployeeLogic.FindAll(null);
+                        IList masterDeptPriceList = DepartmentPriceLogic.FindAll(deptPriceCrit);
+                        e.SyncFromMainToDepartment.DepartmentPriceMasterList = masterDeptPriceList;
+                        e.HasMasterDataToSync = true;
+                    }
+                    if (e.SyncDepartments)
+                    {
+                        e.SyncFromMainToDepartment.DepartmentList = DepartmentLogic.FindAll(null);
+                        e.SyncFromMainToDepartment.EmployeeList = EmployeeLogic.FindAll(null);
+                        e.HasMasterDataToSync = true;
+                    }
                 }
 
         private bool ExistInList(IList list, Product product)

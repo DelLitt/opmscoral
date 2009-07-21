@@ -113,6 +113,8 @@
     <menuitem name="mnuSyncToMainForm" role="Administrator,,Supervisor,Manager" />
     <menuitem name="mnuLoadToMain" role="NotImplement" />
     <menuitem name="mnuLoadToDept" role="NotImplement" />
+    <menuitem name="mnuImportDatabaseImage" role="NotImplement" />
+    <menuitem name="mnuExportDatabaseImage" role="NotImplement" />
     <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
     <menuitem name="mnuImportByFile" role="NotImplement" />    
   </menu>

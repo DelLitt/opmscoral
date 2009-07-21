@@ -76,6 +76,7 @@
             this.mnuReturnPOReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReturnMainStockReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDepartmentStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -186,7 +187,9 @@
             this.F5Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.F4Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.F11Shortcut = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.mnuDepartmentStockOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuExportDatabaseImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImportDatabaseImage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -561,6 +564,13 @@
             this.mnuDepartmentStockIn.Text = "Báo cáo nhập hàng";
             this.mnuDepartmentStockIn.Click += new System.EventHandler(this.mnuDepartmentStockIn_Click);
             // 
+            // mnuDepartmentStockOut
+            // 
+            this.mnuDepartmentStockOut.Name = "mnuDepartmentStockOut";
+            this.mnuDepartmentStockOut.Size = new System.Drawing.Size(258, 22);
+            this.mnuDepartmentStockOut.Text = "Báo cáo xuất hàng";
+            this.mnuDepartmentStockOut.Click += new System.EventHandler(this.mnuDepartmentStockOut_Click);
+            // 
             // mnuWareHouse
             // 
             this.mnuWareHouse.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -910,7 +920,10 @@
             this.mnuLoadToMain,
             this.toolStripMenuItem10,
             this.mnuSystemConfiguration,
-            this.mnuImportByFile});
+            this.mnuImportByFile,
+            this.toolStripMenuItem23,
+            this.mnuExportDatabaseImage,
+            this.mnuImportDatabaseImage});
             this.mnuTool.Name = "mnuTool";
             this.mnuTool.Size = new System.Drawing.Size(55, 20);
             this.mnuTool.Text = "Tiện ích";
@@ -1428,12 +1441,24 @@
             this.F11Shortcut.Shortcut = System.Windows.Forms.Shortcut.F11;
             this.F11Shortcut.Pressed += new System.EventHandler(this.F11Shortcut_Pressed);
             // 
-            // mnuDepartmentStockOut
+            // toolStripMenuItem23
             // 
-            this.mnuDepartmentStockOut.Name = "mnuDepartmentStockOut";
-            this.mnuDepartmentStockOut.Size = new System.Drawing.Size(258, 22);
-            this.mnuDepartmentStockOut.Text = "Báo cáo xuất hàng";
-            this.mnuDepartmentStockOut.Click += new System.EventHandler(this.mnuDepartmentStockOut_Click);
+            this.toolStripMenuItem23.Name = "toolStripMenuItem23";
+            this.toolStripMenuItem23.Size = new System.Drawing.Size(212, 6);
+            // 
+            // mnuExportDatabaseImage
+            // 
+            this.mnuExportDatabaseImage.Name = "mnuExportDatabaseImage";
+            this.mnuExportDatabaseImage.Size = new System.Drawing.Size(215, 22);
+            this.mnuExportDatabaseImage.Text = "Xuất hình ảnh dữ liệu";
+            this.mnuExportDatabaseImage.Click += new System.EventHandler(this.mnuExportDatabaseImage_Click);
+            // 
+            // mnuImportDatabaseImage
+            // 
+            this.mnuImportDatabaseImage.Name = "mnuImportDatabaseImage";
+            this.mnuImportDatabaseImage.Size = new System.Drawing.Size(215, 22);
+            this.mnuImportDatabaseImage.Text = "Nhập hình ảnh dữ liệu";
+            this.mnuImportDatabaseImage.Click += new System.EventHandler(this.mnuImportDatabaseImage_Click);
             // 
             // MainForm
             // 
@@ -1624,6 +1649,9 @@
         private AppFrame.Controls.HotKey.SystemHotkey F11Shortcut;
         private System.Windows.Forms.ToolStripMenuItem mnuStockOutConfirm;
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentStockOut;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem23;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportDatabaseImage;
+        private System.Windows.Forms.ToolStripMenuItem mnuImportDatabaseImage;
 
     }
 }

@@ -34,15 +34,14 @@ namespace AppFrameClient.Services
                 return;    
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
             DepartmentStockIn stockIn;
 
             try
             {
+                ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
                 // convert from stock out to stock in
                 stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                 // call method to sync
-                ClientUtility.Log(logger, " Xu ly hang nhan.");
                 LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
                 if (logicResult.HasError)
                 {
@@ -56,6 +55,8 @@ namespace AppFrameClient.Services
                     serverService.InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                   stockOut.OtherDepartmentId,
                                                                   stockOut.DepartmentStockOutPK.StockOutId);
+
+                    
                 }
                 else
                 {
@@ -69,8 +70,8 @@ namespace AppFrameClient.Services
                     serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                   stockOut.OtherDepartmentId,
                                                                   stockOut.DepartmentStockOutPK.StockOutId);
-                    ClientUtility.Log(logger, " Hoan tat !");
                     ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
+                    ClientUtility.Log(logger, " Đã nhập hàng " + stockIn.ToString());
                 }
             }
             catch (Exception exp)
@@ -89,22 +90,23 @@ namespace AppFrameClient.Services
                 return;
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            ClientUtility.Log(logger, department.DepartmentId + " tra hang ve " + stockIn.DepartmentStockInPK.DepartmentId);
+            
             DepartmentStockOut stockOut;
             // convert from stock out to stock in
             
             // call method to sync
             try
             {
+                ClientUtility.Log(logger, department.DepartmentId + " tra hang ve " + stockIn.DepartmentStockInPK.DepartmentId);
                 stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
                 ClientUtility.Log(logger, department.DepartmentId + " xuat hang ...");
                 stockOut.ConfirmFlg = 3;
                 DepartmentStockOutLogic.Add(stockOut);
-                ClientUtility.Log(logger, " Hoan tat va phan hoi ...");
+                ClientUtility.Log(logger, " Hoan tat và phản hồi ... ");
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                 serverService.InformDepartmentStockInSuccess(department, stockIn,stockOut.DepartmentStockOutPK.StockOutId);
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
-                ClientUtility.Log(logger, " Hoan tat !");
+                ClientUtility.Log(logger, " Hoan tat tra " + stockOut.ToString());
             }
             catch (Exception ex)
             {
@@ -129,6 +131,7 @@ namespace AppFrameClient.Services
         {
             connected = true;
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối thành công!";
+            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
         }
 
         public void NotifyStockOutSuccess(long sourceDeptId, long deptDeptId, long stockOutId)
@@ -153,7 +156,6 @@ namespace AppFrameClient.Services
                 return;
             }
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            ClientUtility.Log(logger, "Cap nhat tra hang cho " + stockOutId.ToString());
             DepartmentStockOutPK pk = new DepartmentStockOutPK
                                           {
                                              DepartmentId  = CurrentDepartment.Get().DepartmentId,
@@ -184,7 +186,6 @@ namespace AppFrameClient.Services
 
             try
             {
-                ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
                 ObjectCriteria objectCriteria = new ObjectCriteria();
                 objectCriteria.AddEqCriteria("OtherDepartmentId", departmentId);
                 objectCriteria.AddEqCriteria("ConfirmFlg", (long)3);
@@ -196,6 +197,7 @@ namespace AppFrameClient.Services
                                           };
                 if (list != null && list.Count > 0)
                 {
+                    
                     ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Gửi thông tin ...";
                     ClientUtility.Log(logger, " Co " + list.Count + " phieu tra hang ve " + departmentId);
                     IList stockInList = new ArrayList();
@@ -236,18 +238,16 @@ namespace AppFrameClient.Services
             }
             
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
-            ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
             
-
             try
             {
+                ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
                 foreach (DepartmentStockOut stockOut in list)
                 {
                     DepartmentStockIn stockIn;
                     // convert from stock out to stock in
                     stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                     // call method to sync
-                    ClientUtility.Log(logger, " Xu ly hang nhan.");
                     LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
                     if (logicResult.HasError)
                     {
@@ -273,7 +273,7 @@ namespace AppFrameClient.Services
                                                                       stockOut.OtherDepartmentId,
                                                                       stockOut.DepartmentStockOutPK.StockOutId);
                         ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
-                        ClientUtility.Log(logger, " Hoan tat !");
+                        ClientUtility.Log(logger, " Hoan tat nhập "  + stockIn.ToString());
                     }
                 }
             }
@@ -325,7 +325,7 @@ namespace AppFrameClient.Services
                             serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
-                            ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
+                            
                             Thread.Sleep(100);
                             
                         }
