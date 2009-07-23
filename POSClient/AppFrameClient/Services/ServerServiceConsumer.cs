@@ -100,7 +100,7 @@ namespace AppFrameClient.Services
                 ClientUtility.Log(logger, department.DepartmentId + " tra hang ve " + stockIn.DepartmentStockInPK.DepartmentId);
                 stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
                 ClientUtility.Log(logger, department.DepartmentId + " xuat hang ...");
-                stockOut.ConfirmFlg = 3;
+                stockOut.ConfirmFlg = 0;
                 DepartmentStockOutLogic.Add(stockOut);
                 ClientUtility.Log(logger, " Hoan tat và phản hồi ... ");
                 ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
@@ -147,10 +147,7 @@ namespace AppFrameClient.Services
         public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn, long stockOutId)
         {
             //ClientUtility.Log(logger, departmentId + " requesting stock-out information.");
-            if (serverService == null)
-            {
-                return;
-            }
+            
             if(department.DepartmentId!= CurrentDepartment.Get().DepartmentId)
             {
                 return;
@@ -168,7 +165,8 @@ namespace AppFrameClient.Services
                 ClientUtility.Log(logger, "Khong co phieu xuat hang: " + stockOutId.ToString() + " . Kiem tra lai ... ");
                 return;
             }
-
+            stockOut.ConfirmFlg = 0;
+            DepartmentStockOutLogic.Update(stockOut);
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ...";
             ClientUtility.Log(logger, "Cap nhat tra hang cho " + stockOutId.ToString());
 

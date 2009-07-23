@@ -142,26 +142,29 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public  void departmentStockInExtraView_FindByStockInIdEvent(object sender, DepartmentStockInEventArgs e)
         {
-            ObjectCriteria objectCriteria = new ObjectCriteria();
-            objectCriteria.AddSearchInCriteria("StockInDetailPK.StockInId", e.SelectedStockInIds);
-            IList list = StockInDetailLogic.FindAll(objectCriteria);
-            IList stockOutList = new ArrayList();
-            foreach (StockInDetail inDetail in list)
+            if (e.SelectedStockInIds.Count > 0)
             {
-                DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
-                deptDetail.CreateDate = DateTime.Now;
-                deptDetail.UpdateDate = DateTime.Now;
-                deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
-                deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                deptDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
-                deptDetail.Product = inDetail.Product;
-                deptDetail.ProductMaster = inDetail.Product.ProductMaster;
-                deptDetail.Quantity = inDetail.Quantity;
-                stockOutList.Add(deptDetail);
-            }
-            GetRemainStockNumber(stockOutList);
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddSearchInCriteria("StockInDetailPK.StockInId", e.SelectedStockInIds);
+                IList list = StockInDetailLogic.FindAll(objectCriteria);
+                IList stockOutList = new ArrayList();
+                foreach (StockInDetail inDetail in list)
+                {
+                    DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
+                    deptDetail.CreateDate = DateTime.Now;
+                    deptDetail.UpdateDate = DateTime.Now;
+                    deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    deptDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
+                    deptDetail.Product = inDetail.Product;
+                    deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                    deptDetail.Quantity = inDetail.Quantity;
+                    stockOutList.Add(deptDetail);
+                }
+                GetRemainStockNumber(stockOutList);
 
-            e.SelectedStockOutDetails = stockOutList;
+                e.SelectedStockOutDetails = stockOutList;
+            }
             EventUtility.fireEvent(CompletedFindByStockInEvent,this,e);
         }
 

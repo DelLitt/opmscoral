@@ -472,12 +472,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         void departmentStockInController_CompletedFindByStockInEvent(object sender, DepartmentStockInEventArgs e)
         {
             IList list = e.SelectedStockOutDetails;
-
-            foreach (DepartmentStockInDetail stockInDetail in list)
+            if (list != null && list.Count > 0)
             {
-                if (!IsInList(deptSIDetailList, stockInDetail))
+                foreach (DepartmentStockInDetail stockInDetail in list)
                 {
-                    deptSIDetailList.Add(stockInDetail);
+                    if (!IsInList(deptSIDetailList, stockInDetail))
+                    {
+                        deptSIDetailList.Add(stockInDetail);
+                    }
                 }
             }
             this.Enabled = true;
@@ -485,6 +487,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             dgvDeptStockIn.Refresh();
             dgvStockIn.Invalidate();
             panelStockIns.Visible = false;
+            CalculateTotalStorePrice();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1114,7 +1117,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 IList stockInIds = new ArrayList();
                 foreach (DataGridViewRow selectedRowCollection in collection)
                 {
-                    string stockInId = selectedRowCollection.Cells[0].Value.ToString();                        
+                    string stockInId = selectedRowCollection.Cells[0].Value.ToString();
+                    stockInIds.Add(stockInId);
                 }
                 
                 DepartmentStockInEventArgs ea = new DepartmentStockInEventArgs();
