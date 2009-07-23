@@ -217,6 +217,8 @@
             this.Name = "DepartmentStockOutReportViewer";
             this.Text = "Báo cáo nhập hàng vào cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockinReportViewer_Load);
+            this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentStockOutBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentStockInBindingSource)).EndInit();
@@ -224,6 +226,7 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

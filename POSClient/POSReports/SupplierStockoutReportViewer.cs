@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class SupplierStockoutReportViewer : Form
+    public partial class SupplierStockoutReportViewer : FormBase
     {
         public SupplierStockoutReportViewer()
         {
@@ -17,13 +19,7 @@ namespace POSReports
         }
 
         private void SupplierStockoutReportViewer_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'posDataSet.supplierStockout' table. You can move, or remove it, as needed.
-            //this.SupplierStockoutTableAdapter.Fill(this.posDataSet.supplierStockout);
-            // TODO: This line of code loads data into the 'posDataSet.supplierStockout' table. You can move, or remove it, as needed.
-            //this.SupplierStockoutTableAdapter.Fill(this.posDataSet.supplierStockout);
-
-        }
+        { }
 
         public static DateTime ZeroTime(DateTime value)
         {
@@ -48,10 +44,21 @@ namespace POSReports
                 59,
                 999);
         }
-
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            reqFromDate = ZeroTime(fromDate.Value);
+            reqToDate = MaxTime(toDate.Value);
+            
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+
+            /*try
             {
                 this.SupplierStockoutTableAdapter.Fill(this.posDataSet.supplierStockout, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
                 this.reportViewer1.RefreshReport();
@@ -59,7 +66,26 @@ namespace POSReports
             catch (Exception ex)
             {
                 
-            }
+            }*/
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            /*stockStatisticBindingSource.DataSource = aSyncDS;
+            stockStatisticBindingSource.ResetBindings(false);*/
+            StopShowProcessing();
+            reportViewer1.RefreshReport();
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.SupplierStockoutTableAdapter adapter = new SupplierStockoutTableAdapter();
+            adapter.ClearBeforeFill = true;
+            //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.supplierStockout, reqFromDate, reqToDate);
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 using Microsoft.Reporting.WinForms;
 using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class StockStatisticReportViewer : Form
+    public partial class StockStatisticReportViewer : FormBase
     {
         public StockStatisticReportViewer()
         {
@@ -58,27 +59,19 @@ namespace POSReports
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             reqFromDate = ZeroTime(ToDate.Value);
-            reqToDate = ZeroTime(ToDate.Value);
-            /*try
-            {
-                this.stockStatisticTableAdapter1.Fill(posDataSet.StockStatistic, ZeroTime(ToDate.Value), MaxTime(ToDate.Value));
-                
-                this.reportViewer1.RefreshReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi xảy ra khi xem báo cáo, hãy thử lại lần nữa hoặc liên hệ người quản trị!","Lỗi", MessageBoxButtons.OK);
-            }*/
+            reqToDate = MaxTime(ToDate.Value);
+            
             Enabled = false;
             backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+            
         }
         POSReports.posDataSet aSyncDS = new posDataSet();
         private DateTime reqFromDate, reqToDate;
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Enabled = true;
-            /*stockStatisticBindingSource.DataSource = aSyncDS;
-            stockStatisticBindingSource.ResetBindings(false);*/
+            StopShowProcessing();
             reportViewer1.RefreshReport();
         }
 

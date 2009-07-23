@@ -212,7 +212,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DeptStockStatisticReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(905, 569);
+            this.reportViewer1.Size = new System.Drawing.Size(905, 547);
             this.reportViewer1.TabIndex = 7;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -243,6 +243,8 @@
             this.Name = "DeptStockStatisticReportViewer";
             this.Text = "BÁO CÁO TỒN KHO CỬA HÀNG";
             this.Load += new System.EventHandler(this.DeptStockStatisticReportViewer_Load);
+            this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.deptStockStatisticBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -250,6 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

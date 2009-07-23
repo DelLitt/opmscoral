@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class DepartmentStockOutReportViewer : Form
+    public partial class DepartmentStockOutReportViewer : FormBase
     {
         public DepartmentStockOutReportViewer()
         {
@@ -54,11 +55,29 @@ namespace POSReports
                 59,
                 999);
         }
-
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
+        private int deptId = 0;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            deptId = Int32.Parse(comboBox1.SelectedValue.ToString());
+            // just take 3 days before
+            reqFromDate = ZeroTime(fromDate.Value);
+            if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
+            {
+                reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+            }
+            reqToDate = MaxTime(toDate.Value);
+
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+
+            /*try
             {
                 
                 int test = Int32.Parse(comboBox1.SelectedValue.ToString());
@@ -75,7 +94,23 @@ namespace POSReports
             } catch(Exception ex)
             {
                 
-            }
+            }*/
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            StopShowProcessing();
+            reportViewer1.RefreshReport();
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.DepartmentStockOutTableAdapter adapter = new DepartmentStockOutTableAdapter();
+            adapter.ClearBeforeFill = true;
+            adapter.Fill(posDataSet.DepartmentStockOut, deptId, reqFromDate, reqToDate);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class StockInReportViewer : Form
+    public partial class StockInReportViewer : FormBase
     {
         public StockInReportViewer()
         {
@@ -44,29 +46,44 @@ namespace POSReports
                 59,
                 999);
         }
-
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.StockInTableAdapter.Fill(this.posDataSet.stockIn, ZeroTime(fromDate.Value), MaxTime(toDate.Value));
-                this.reportViewer1.RefreshReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi trong khi rút trích dữ liệu, xin vui lòng thử lại lần nữa hoặc liên hệ người quản trị");
-            }
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            reqFromDate = ZeroTime(fromDate.Value);
+            reqToDate = MaxTime(toDate.Value);
+            
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+            
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            /*stockStatisticBindingSource.DataSource = aSyncDS;
+            stockStatisticBindingSource.ResetBindings(false);*/
+            StopShowProcessing();
+            reportViewer1.RefreshReport();
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.StockInTableAdapter adapter = new StockInTableAdapter();
+            adapter.ClearBeforeFill = true;
+            //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.stockIn, reqFromDate, reqToDate);
         }
 
         private void StockInReportViewer_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'posDataSet.stockIn' table. You can move, or remove it, as needed.
-            //this.StockInTableAdapter.Fill(this.posDataSet.stockIn);
-            // TODO: This line of code loads data into the 'posDataSet.stockStatistic' table. You can move, or remove it, as needed.
-    //        this.StockStatisticTableAdapter.Fill(this.posDataSet.stockStatistic);
-
-      //      this.reportViewer1.RefreshReport();
-          //  this.reportViewer1.RefreshReport();
+            
         }
     }
 }

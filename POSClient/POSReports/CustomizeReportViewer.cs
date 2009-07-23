@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 
 namespace POSReports
 {
-    public partial class CustomizeReportViewer : Form
+    public partial class CustomizeReportViewer : FormBase
     {
         public CustomizeReportViewer()
         {

@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class DepartmentStockinReportViewer : Form
+    public partial class DepartmentStockinReportViewer : FormBase
     {
         public DepartmentStockinReportViewer()
         {
@@ -55,26 +56,43 @@ namespace POSReports
                 999);
         }
 
-
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
+        private int deptId = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            deptId = Int32.Parse(comboBox1.SelectedValue.ToString());
+            // just take 3 days before
+            reqFromDate = ZeroTime(fromDate.Value);
+            if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
             {
-                
-                int test = Int32.Parse(comboBox1.SelectedValue.ToString());
-                // just take 3 days before
-                DateTime fromDay = ZeroTime(fromDate.Value);
-                if(ZeroTime(DateTime.Now).Subtract(fromDay).Days > 3)
-                {
-                    fromDay = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
-                }
-                this.DepartmentStockInTableAdapter.Fill(posDataSet.departmentStockIn, test, fromDay,
-                                                        MaxTime(toDate.Value));
-                this.reportViewer1.RefreshReport();
-            } catch(Exception ex)
-            {
-                
+                reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
             }
+            reqToDate = MaxTime(toDate.Value);
+
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+            
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            StopShowProcessing();
+            reportViewer1.RefreshReport(); 
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.DepartmentStockInTableAdapter adapter = new DepartmentStockInTableAdapter();
+            adapter.ClearBeforeFill = true;
+            adapter.Fill(posDataSet.departmentStockIn,deptId, reqFromDate, reqToDate);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
