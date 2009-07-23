@@ -70,11 +70,17 @@ namespace AppFrame.Common
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            ProgressBar.Value = ProgressBar.Value + 10;
-            if (ProgressBar.Value > 100)
+            int pbVal = ProgressBar.Value + 10;
+
+            if (pbVal > 100)
             {
                 ProgressBar.Value = 0;
             }
+            else
+            {
+                ProgressBar.Value = pbVal;
+            }
+            
         }
         public void StopShowProcessing()
         {
