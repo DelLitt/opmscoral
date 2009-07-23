@@ -464,7 +464,7 @@ namespace ImportPOSData
                 dal.ExecuteQuery("insert into product_master(product_master_id, product_name, size_id, color_id, type_id, create_date,description) values ('" 
                     + string.Format("{0:0000000000000}", Convert.ToInt64(id.ToString())) 
                     + "', '" + obj.ProductName.Replace("'", "''") 
-                    + "', " + obj.SizeId + ", " + obj.ColorId + ", " + obj.TypeId + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','"+obj.Description + "')");
+                    + "', " + obj.SizeId + ", " + obj.ColorId + ", " + obj.TypeId + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"+obj.Description + "')");
                 obj.ProductMasterId = string.Format("{0:0000000000000}", Convert.ToInt64(id.ToString()));
             }
             else
@@ -487,7 +487,7 @@ namespace ImportPOSData
             dal.ExecuteQuery("insert into product(product_id, product_master_id, quantity, price, create_date) values ('"
                 + id
                 + "', '" + obj.ProductMasterId
-                + "', " + obj.Quantity + ", " + obj.Price + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                + "', " + obj.Quantity + ", " + obj.Price + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
             obj.ProductId = id.ToString();
 
             // dept-price
@@ -508,7 +508,7 @@ namespace ImportPOSData
                 + stockInId + "', '"
                 + obj.ProductId
                 + "', " + obj.Quantity
-                + ", " + obj.Price + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                + ", " + obj.Price + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
             // stock
             id = dal.GetSingleValue("Select max(stock_id) from stock");
@@ -524,7 +524,7 @@ namespace ImportPOSData
                 + id + ", '" 
                 + obj.ProductId
                 + "', '" + obj.ProductMasterId
-                + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
         }
 
@@ -542,7 +542,7 @@ namespace ImportPOSData
             }
             dal.ExecuteQuery("insert into stock_in(stock_in_id, stock_in_date) values ('"
                 + string.Format("{0:00000000000}", Convert.ToInt64(id.ToString()))
-                + "', '" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')");
+                + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
 
             return string.Format("{0:00000000000}", Convert.ToInt64(id.ToString()));
         }
