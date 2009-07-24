@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class GoodsSaleStatisticReportViewer : Form
+    public partial class GoodsSaleStatisticReportViewer : FormBase
     {
         public GoodsSaleStatisticReportViewer()
         {
@@ -54,9 +55,22 @@ namespace POSReports
             this.reportViewer1.RefreshReport();
         }
 
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
+        private int deptId = 1;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            reqFromDate = ZeroTime(dtpFrom.Value);
+            reqToDate = MaxTime(dtpTo.Value);
+            deptId = Int32.Parse(departmentId.SelectedValue.ToString());
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+
+            /*try
             {
                 this.purchaseOrderPeriodTableAdapter.Fill(posDataSet.PurchaseOrderPeriod,
                                                   Int32.Parse(departmentId.SelectedValue.ToString()),
@@ -66,7 +80,24 @@ namespace POSReports
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra trong khi tạo báo cáo, vui lòng liên hệ người quản trị!");
-            }
+            }*/
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            StopShowProcessing();
+            reportViewer1.RefreshReport();
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.PurchaseOrderPeriodTableAdapter adapter = new PurchaseOrderPeriodTableAdapter();
+            adapter.ClearBeforeFill = true;
+            //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.PurchaseOrderPeriod, deptId, reqFromDate, reqToDate);
         }
     }
 }

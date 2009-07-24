@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class PurchaseOrderReportViewer : Form
+    public partial class PurchaseOrderReportViewer : FormBase
     {
         public PurchaseOrderReportViewer()
         {
@@ -39,9 +40,22 @@ namespace POSReports
             
         }
 
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
+        private int deptId = 1;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            reqFromDate = ZeroTime(dtpFrom.Value);
+            reqToDate = MaxTime(dtpTo.Value);
+            deptId = Int32.Parse(departmentId.SelectedValue.ToString());
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+
+            /*try
             {
                 Object dept = departmentId.SelectedValue;
                 int frmDept, toDept = 0;
@@ -66,8 +80,25 @@ namespace POSReports
             {
 
                 MessageBox.Show(ex.Message);
-            }
+            }*/
 
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            StopShowProcessing();
+            reportViewer1.RefreshReport(); 
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.PurchaseOrderReportTableAdapter adapter = new PurchaseOrderReportTableAdapter();
+            adapter.ClearBeforeFill = true;
+            //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.PurchaseOrderReport, deptId, reqFromDate, reqToDate);
         }
 
         public static DateTime ZeroTime(DateTime value)

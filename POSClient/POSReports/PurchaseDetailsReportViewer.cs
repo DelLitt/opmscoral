@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
 {
-    public partial class PurchaseDetailsReportViewer : Form
+    public partial class PurchaseDetailsReportViewer : FormBase
     {
         public PurchaseDetailsReportViewer()
         {
@@ -63,9 +64,22 @@ namespace POSReports
                 999);
         }
 
+        POSReports.posDataSet aSyncDS = new posDataSet();
+        private DateTime reqFromDate, reqToDate;
+        private int deptId = 1;
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            reqFromDate = ZeroTime(fromDate.Value);
+            reqToDate = MaxTime(toDate.Value);
+            deptId = Int32.Parse(departments.SelectedValue.ToString());
+            Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
+
+            /*try
             {
                 object dept = departments.SelectedValue;
                 this.purchaseOrderDetailReportTableAdapter1.Fill(this.posDataSet.PurchaseOrderDetailReport, Int32.Parse(dept.ToString()),ZeroTime(fromDate.Value), MaxTime(toDate.Value));
@@ -76,7 +90,23 @@ namespace POSReports
             {
 
                 MessageBox.Show(ex.Message);
-            }
+            }*/
+        }
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Enabled = true;
+            StopShowProcessing();
+            reportViewer1.RefreshReport();
+        }
+
+        void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            aSyncDS.EnforceConstraints = false;
+            aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter adapter = new PurchaseOrderDetailReportTableAdapter();
+            adapter.ClearBeforeFill = true;
+            //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.PurchaseOrderDetailReport, deptId, reqFromDate, reqToDate);
         }
 
         private void reportViewer1_Load(object sender, EventArgs e)

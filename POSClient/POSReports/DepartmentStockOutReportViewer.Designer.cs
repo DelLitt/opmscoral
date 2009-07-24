@@ -195,7 +195,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DepartmentStockOutReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(905, 532);
+            this.reportViewer1.Size = new System.Drawing.Size(905, 510);
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
