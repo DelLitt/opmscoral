@@ -25,20 +25,41 @@ namespace AppFrameClient.Services
         private Thread m_thread;
         private bool m_running;
         private ServerServiceClient serverService = null;
+        private bool IsDoingStockOut = false;
 
         public void NotifyNewDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price)
         {
-            
             if(CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;    
             }
+            IsDoingStockOut = true;
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             DepartmentStockIn stockIn;
 
             try
             {
                 ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
+
+                DepartmentStockInHistoryPK departmentStockInHistoryPk = new DepartmentStockInHistoryPK
+                                                    {
+                                                        SourceDepartmentId = stockOut.DepartmentStockOutPK.DepartmentId,
+                                                        DestDepartmentId = CurrentDepartment.Get().DepartmentId,
+                                                        StockOutId = stockOut.DepartmentStockOutPK.StockOutId
+                                                    };
+
+                ObjectCriteria deptHistCrit = new ObjectCriteria();
+                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.SourceDepartmentId", stockOut.DepartmentStockOutPK.DepartmentId);
+                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.StockOutId", stockOut.DepartmentStockOutPK.StockOutId);
+                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.DestDepartmentId", department.DepartmentId);
+
+                IList deptHistList = DepartmentStockInHistoryLogic.FindAll(deptHistCrit);
+                // if it has exist in history so don't need to continue
+                if(deptHistList!=null && deptHistList.Count > 0 )
+                {
+                    IsDoingStockOut = false;
+                    return;
+                }
                 // convert from stock out to stock in
                 stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                 // call method to sync
@@ -61,11 +82,18 @@ namespace AppFrameClient.Services
                 else
                 {
                     ClientUtility.Log(logger, " Hoan tat va phan hoi ... " + stockOut.DepartmentStockOutPK.DepartmentId.ToString());
-/*
-                    ServiceResult serviceResult = new ServiceResult();
-                    serviceResult.HasError = logicResult.HasError;
-                    serviceResult.Messages = logicResult.Messages;*/
-
+                    
+                    // add to stock in history for avoiding duplicate
+                    departmentStockInHistoryPk.StockInId = stockIn.DepartmentStockInPK.StockInId;
+                    DepartmentStockInHistory departmentStockInHistory = new DepartmentStockInHistory();
+                    departmentStockInHistory.DepartmentStockInHistoryPK = departmentStockInHistoryPk;
+                    departmentStockInHistory.Description = stockIn.ToString();
+                    departmentStockInHistory.CreateDate = DateTime.Now;
+                    departmentStockInHistory.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    departmentStockInHistory.UpdateDate = DateTime.Now;
+                    departmentStockInHistory.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    DepartmentStockInHistoryLogic.Add(departmentStockInHistory);
+                    
                     ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                     serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                   stockOut.OtherDepartmentId,
@@ -80,6 +108,10 @@ namespace AppFrameClient.Services
                 serverService.InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                   stockOut.OtherDepartmentId,
                                                                   stockOut.DepartmentStockOutPK.StockOutId);
+            }
+            finally
+            {
+                IsDoingStockOut = false;
             }
         }
 
@@ -227,21 +259,41 @@ namespace AppFrameClient.Services
             }
             
         }
-
+        
         public void NotifyNewMultiDepartmentStockOut(Department department, DepartmentStockOut[] list, DepartmentPrice price)
         {
             if (CurrentDepartment.Get().DepartmentId != department.DepartmentId)
             {
                 return;
             }
-            
+
+            IsDoingStockOut = true;
             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Đang nhận thông tin ...";
             
-            try
-            {
                 ClientUtility.Log(logger, department.DepartmentId + " dang nhan hang.");
                 foreach (DepartmentStockOut stockOut in list)
                 {
+                    try
+                    {
+                    DepartmentStockInHistoryPK departmentStockInHistoryPk = new DepartmentStockInHistoryPK
+                    {
+                        SourceDepartmentId = stockOut.DepartmentStockOutPK.DepartmentId,
+                        DestDepartmentId = CurrentDepartment.Get().DepartmentId,
+                        StockOutId = stockOut.DepartmentStockOutPK.StockOutId
+                    };
+
+                    ObjectCriteria deptHistCrit = new ObjectCriteria();
+                    deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.SourceDepartmentId", stockOut.DepartmentStockOutPK.DepartmentId);
+                    deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.StockOutId", stockOut.DepartmentStockOutPK.StockOutId);
+                    deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.DestDepartmentId", department.DepartmentId);
+
+                    IList deptHistList = DepartmentStockInHistoryLogic.FindAll(deptHistCrit);
+                    // if it has exist in history so don't need to continue
+                    if (deptHistList != null && deptHistList.Count > 0)
+                    {
+                        continue;
+                    }
+
                     DepartmentStockIn stockIn;
                     // convert from stock out to stock in
                     stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
@@ -265,20 +317,32 @@ namespace AppFrameClient.Services
                         ClientUtility.Log(logger,
                                           " Hoan tat va phan hoi ... " +
                                           stockOut.DepartmentStockOutPK.DepartmentId.ToString());
-                        
-                        ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
+
+                        // add to stock in history for avoiding duplicate
+                        departmentStockInHistoryPk.StockInId = stockIn.DepartmentStockInPK.StockInId;
+                        DepartmentStockInHistory departmentStockInHistory = new DepartmentStockInHistory();
+                        departmentStockInHistory.DepartmentStockInHistoryPK = departmentStockInHistoryPk;
+                        departmentStockInHistory.Description = stockIn.ToString();
+                        departmentStockInHistory.CreateDate = DateTime.Now;
+                        departmentStockInHistory.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                        departmentStockInHistory.UpdateDate = DateTime.Now;
+                        departmentStockInHistory.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                        DepartmentStockInHistoryLogic.Add(departmentStockInHistory);
+
                         serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
                                                                       stockOut.OtherDepartmentId,
                                                                       stockOut.DepartmentStockOutPK.StockOutId);
                         ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất ! ";
-                        ClientUtility.Log(logger, " Hoan tat nhập "  + stockIn.ToString());
+                        ClientUtility.Log(logger, " Hoan tat!");
+                    }
+                    }
+                    catch (Exception exp)
+                    {
+                        ClientUtility.Log(logger, exp.Message);
                     }
                 }
-            }
-            catch (Exception exp)
-            {
-                ClientUtility.Log(logger, exp.Message);
-            }
+            IsDoingStockOut = false;
+            
         }
 
         public void NotifyMultiStockInSuccess(Department department, DepartmentStockIn[] stockInList, long id)
@@ -302,6 +366,9 @@ namespace AppFrameClient.Services
             DepartmentStockInLogic = deptStockInLogic;
             IDepartmentStockOutLogic deptStockOutLogic = (IDepartmentStockOutLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockOutLogic");
             DepartmentStockOutLogic = deptStockOutLogic;
+
+            IDepartmentStockInHistoryLogic deptStockInHistoryLogic = (IDepartmentStockInHistoryLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockInHistoryLogic");
+            DepartmentStockInHistoryLogic = deptStockInHistoryLogic;
             
             m_thread = new Thread(new ThreadStart(ThreadMethod));
             m_thread.Start();
@@ -338,9 +405,13 @@ namespace AppFrameClient.Services
                         try
                         {
                             // Wait until thread is stopped
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
-                            serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                            if (!IsDoingStockOut)
+                            {
+                                ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text =
+                                    " Yêu cầu thông tin ... ";
+                                serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
+                                ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
+                            }
                             Thread.Sleep(SleepTime);
                         }
                         catch (Exception)
@@ -378,6 +449,13 @@ namespace AppFrameClient.Services
             get;
             set;
         }
+
+        public IDepartmentStockInHistoryLogic DepartmentStockInHistoryLogic
+        {
+            get;
+            set;
+        }
+
         public IDepartmentStockOutLogic DepartmentStockOutLogic
         {
             get;

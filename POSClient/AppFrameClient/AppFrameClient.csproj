@@ -215,6 +215,8 @@
     <Compile Include="Advice\MenuPermissionAdvice.cs" />
     <Compile Include="Advice\UpdateStatusDisplayAdvice.cs" />
     <Compile Include="Common\ChannelConstants.cs" />
+    <Compile Include="DataLayer\DepartmentStockInHistoryDAOImpl.cs" />
+    <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />
     <Compile Include="Common\AppFrameUser.cs" />

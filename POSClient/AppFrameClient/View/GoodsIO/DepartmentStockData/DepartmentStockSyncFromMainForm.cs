@@ -341,10 +341,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     Directory.GetFiles(importPath + "\\" + CurrentDepartment.Get().DepartmentId.ToString(),
                                        "*" + CommonConstants.SERVER_SYNC_FORMAT);*/
                 IList fileNameList = new ArrayList();
-                if (fileNames.Length == 0 /*&& extraFileNames.Length == 0*/)
+                if (fileNames.Length == 0)
                 {
-                    MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");
-
+                    if (resultList.Count == 0)
+                    {
+                        MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");    
+                    }
+                    MessageBox.Show("Đồng bộ hoàn tất !");
                     return;
                 }
                 foreach (string fileName in fileNames)

@@ -226,6 +226,10 @@
   <object id="AppFrame.DataLayer.IDepartmentStockHistoryDAO" type="AppFrame.DataLayer.DepartmentStockHistoryDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+
+  <object id="AppFrame.DataLayer.IDepartmentStockInHistoryDAO" type="AppFrame.DataLayer.DepartmentStockInHistoryDAOImpl, AppFrameClient">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
   
   <object id="AppFrame.DataLayer.IReturnPoDAO" type="AppFrame.DataLayer.ReturnPoDAOImpl, AppFrameClient">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>

@@ -8,6 +8,17 @@ namespace AppFrameClient.Common
 {
     public class ClientSetting
     {
+        public static bool NegativeStock
+        {
+            get
+            {
+                return AFCSetting.Default.NegativeStock;
+            }
+            set
+            {
+                AFCSetting.Default.NegativeStock = value;
+            }
+        }
         public static string ServiceBinding
         {
             get

@@ -48,5 +48,8 @@
     <Setting Name="ServiceBinding" Type="System.String" Scope="User">
       <Value Profile="(Default)">TcpBinding</Value>
     </Setting>
+    <Setting Name="NegativeStock" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

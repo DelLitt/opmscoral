@@ -646,7 +646,8 @@ namespace AppFrame.View
                 // load toolstrip
                 toolStripClient.Visible = true;
                 // load and set permissions
-                toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ServerToolStripPermissions.xml");    
+                toolStripInStream = this.GetType().Assembly.GetManifestResourceStream("AppFrameClient.ServerToolStripPermissions.xml");
+                ServiceStatus.Text = "...";
             }
             else
             {

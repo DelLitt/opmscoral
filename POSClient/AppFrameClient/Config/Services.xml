@@ -199,6 +199,9 @@
     <property name="DepartmentStockHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockHistoryDAO"/>
   </object>
 
+  <object id="AppFrame.Service.IDepartmentStockInHistoryLogic" type="AppFrame.Logic.DepartmentStockInHistoryLogicImpl, AppFrameClient">
+    <property name="DepartmentStockInHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockInHistoryDAO"/>
+  </object>
 
   <object id="AppFrame.Service.IDepartmentStockInLogic" type="AppFrame.Logic.DepartmentStockInLogicImpl, AppFrameClient">
 

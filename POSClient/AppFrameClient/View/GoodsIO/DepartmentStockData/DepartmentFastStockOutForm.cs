@@ -599,7 +599,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
-                        if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
+                        // TEMP FIXING FOR EXPORT NEGATIVE STOCK
+                        if (detail.GoodQuantity < 0 /*|| detail.GoodQuantity > stock.GoodQuantity*/)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
                             dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
@@ -1495,111 +1496,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                     // do fast stock out in here
                     // first remove all blank row
-                    int count = 0;
-                    int length = deptSODetailList.Count;
-                    for (int i = 0; i < length - count; i++)
-                    {
-                        DepartmentStockOutDetail detail = deptSODetailList[i];
-                        if (string.IsNullOrEmpty(detail.Product.ProductMaster.ProductMasterId)
-                            && string.IsNullOrEmpty(detail.Product.ProductMaster.ProductName))
-                        {
-                            deptSODetailList.RemoveAt(i - count);
-                            count++;
-                        }
-                    }
-
-                    if (deptSODetailList.Count == 0)
-                    {
-                        MessageBox.Show("Không có sản phẩm nào để nhập kho!!!!");
-                        return;
-                    }
-
-                    // validate quantity
-                    int line = 1;
-                    foreach (DepartmentStockOutDetail detail in deptSODetailList)
-                    {
-                        foreach (DepartmentStock stock in departmentStockList)
-                        {
-                            if (detail.Product.ProductId.Equals(stock.Product.ProductId))
-                            {
-                                if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
-                                {
-                                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
-                                    return;
-                                }
-                                if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
-                                {
-                                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Mất phải là số dương nhỏ hơn hoặc bằng " + stock.LostQuantity);
-                                    return;
-                                }
-                                if (detail.DamageQuantity < 0 || detail.DamageQuantity > stock.DamageQuantity)
-                                {
-                                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Lỗi phải là số dương nhỏ hơn hoặc bằng " + stock.DamageQuantity);
-                                    return;
-                                }
-                                if (detail.ErrorQuantity < 0 || detail.ErrorQuantity > stock.ErrorQuantity)
-                                {
-                                    MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Hư phải là số dương nhỏ hơn hoặc bằng " + stock.ErrorQuantity);
-                                    return;
-                                }
-                            }
-                        }
-                        if ((detail.DefectStatus.DefectStatusId == 4 && detail.ErrorQuantity == 0)
-                            || (detail.DefectStatus.DefectStatusId == 6 && detail.DamageQuantity + detail.GoodQuantity + detail.ErrorQuantity == 0)
-                            || (detail.DefectStatus.DefectStatusId == 7 && detail.GoodQuantity == 0))
-                        {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng xuất phải lớn hơn 0.");
-                            return;
-                        }
-                        line++;
-                    }
-
-                    if (deptSO == null)
-                    {
-                        deptSO = new DepartmentStockOut();
-                    }
-                    bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
-                    deptSO.StockOutDate = DateTime.Now;
-                    deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
-                    deptSO.OtherDepartmentId = ((Department) cboDepartment.SelectedItem).DepartmentId;
-                    deptSO.ConfirmFlg = 3;
-                    deptSO.DepartmentStockOutDetails = deptSODetailList;
-                    //            deptSO.Description = txtDexcription.Text;
-                    var ea = new DepartmentStockOutEventArgs();
-                    ea.DepartmentStockOut = deptSO;
-                    
-                    ea.DepartmentStockList = departmentStockList;
-                    // confirm before save
-                    LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
-                    DialogResult isConfirmed = loginForm.ShowDialog();
-                    if (isConfirmed != System.Windows.Forms.DialogResult.OK)
-                    {
-                        return;
-                    }
-
-                    EventUtility.fireEvent(SaveStockOutEvent, this, ea);
-                    EventUtility.fireAsyncEvent(DispatchDepartmentStockOut,this,ea, new AsyncCallback(EndEvent));
-                    if (eventArgs.EventResult != null)
-                    {
-                        //MessageBox.Show("Lưu thành công");
-                        if (isNeedClearData)
-                        {
-                            deptSO = new DepartmentStockOut();
-                            deptSODetailList.Clear();
-                            //                    txtDexcription.Text = "";
-                            //                    txtPriceIn.Text = "";
-                            //                    txtPriceOut.Text = "";
-                            txtSumProduct.Text = "";
-                            txtSumValue.Text = "";
-                            ClearSelectionOnListBox(lstColor);
-                            ClearSelectionOnListBox(lstSize);
-                            //CreateNewStockInDetail();
-                        }
-                    }
-                    else
-                    {
-                        //MessageBox.Show("Có lỗi khi lưu");
-                    }
                 }
             }
         }
