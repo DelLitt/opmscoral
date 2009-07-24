@@ -104,12 +104,13 @@ namespace AppFrameServer.Services
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
         {
-            ServerUtility.Log(logger, sourceDeptId + " inform stock out success to " + destDeptId);
+            ServerUtility.Log(logger, sourceDeptId + " xuat thanh cong xuong " + destDeptId);
             _callbackSubStockList.ForEach(
                  delegate(IDepartmentStockOutCallback callback)
                  {
                      try
                      {
+                         ServerUtility.Log(logger, sourceDeptId + " dang cap nhat " + deptStockId);
                          callback.NotifyStockOutSuccess(sourceDeptId, destDeptId, deptStockId);
                      }
                      catch (Exception)
