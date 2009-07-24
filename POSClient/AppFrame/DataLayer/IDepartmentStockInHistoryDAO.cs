@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using AppFrame.Common;
 using AppFrame.Model;
+using NHibernate.Criterion;
 
-namespace AppFrame.Logic
+namespace AppFrame.DataLayer
 {
-    public interface IDepartmentStockInHistoryLogic
+    public interface IDepartmentStockInHistoryDAO
     {
         /// <summary>
         /// Find DepartmentStockInHistory object by id. Return null if nothing is found
@@ -55,5 +55,14 @@ namespace AppFrame.Logic
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
+        
+        /// <summary>
+        /// Find min, max, count... DepartmentStockInHistory from database.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        object SelectSpecificType(ObjectCriteria criteria, IProjection type);
+        
     }
 }

@@ -258,6 +258,7 @@
     <Compile Include="Controls\NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayer\IDepartmentStockInHistoryDAO.cs" />
     <Compile Include="DataLayer\ISubStockDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockTempDAO.cs" />
     <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
@@ -332,6 +333,7 @@
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="Logic\IDepartmentStockInHistoryLogic.cs" />
     <Compile Include="Logic\ISubStockLogic.cs" />
     <Compile Include="Logic\IDepartmentStockTempLogic.cs" />
     <Compile Include="Logic\IDepartmentManagementLogic.cs" />
@@ -431,6 +433,8 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Contract.cs" />
     <Compile Include="Model\ContractPK.cs" />
+    <Compile Include="Model\DepartmentStockInHistory.cs" />
+    <Compile Include="Model\DepartmentStockInHistoryPK.cs" />
     <Compile Include="Model\DepartmentStockTempPK.cs" />
     <Compile Include="Model\DepartmentStockTemp.cs" />
     <Compile Include="Model\Country.cs" />
@@ -798,6 +802,7 @@
     <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockTemp.hbm.xml" />
     <EmbeddedResource Include="Model\SubStock.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockInHistory.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
     <EmbeddedResource Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
