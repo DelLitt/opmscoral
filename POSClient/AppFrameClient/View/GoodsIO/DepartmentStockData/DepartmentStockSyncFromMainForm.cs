@@ -326,8 +326,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                                                 DepartmentId = 0,
                                                                 DepartmentName = "MasterData"
                                                             };
-                                ClientUtility.WriteLastSyncTime(updateTime, importPath, masterDept,
-                                                                ClientUtility.SyncType.SyncDown);
+                                // BEGIN TEMP FIXING
+                                /*ClientUtility.WriteLastSyncTime(updateTime, importPath, masterDept,
+                                                                ClientUtility.SyncType.SyncDown);*/
+                                // END FIXING
                                 result.Status = "Thành công";
                             }
                         }

@@ -143,10 +143,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     DepartmentId = 0,
                     DepartmentName = "MasterData"
                 };
-                DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
+                // BEGIN TEMP FIXING
+                //DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
+                DateTime lastMasterDataSyncTime = DateTime.MinValue;
+                // END TEMP FIXING
                 var masterDataEvent = new DepartmentStockInEventArgs();
                 masterDataEvent.LastSyncTime = lastMasterDataSyncTime;
-                if(grpMasterData.Enabled)
+                if(chkMasterData.Checked)
                 {
                     masterDataEvent.SyncProductMasters = chkPrdMaster.Checked;
                     masterDataEvent.SyncPrice = chkPrice.Checked;
