@@ -901,7 +901,7 @@ namespace AppFrameClient.View.GoodsSale
             txtBarcode.Text = "";
             txtGoodsName.Text = "";
             txtQuantity.Text = "1";
-            txtTax.Text = "10%";
+            txtTax.Text = "5%";
         }
 
         private void label3_Click(object sender, EventArgs e)
