@@ -8,6 +8,28 @@ namespace AppFrameClient.Common
 {
     public class ClientSetting
     {
+        public static string SubStockDB
+        {
+            get
+            {
+                return AFCSetting.Default.SubStockDB; 
+            }
+            set
+            {
+                AFCSetting.Default.SubStockDB = value; 
+            }
+        }
+        public static string SalePointDB
+        {
+            get
+            {
+                return AFCSetting.Default.SalePointDB; 
+            }
+            set
+            {
+                AFCSetting.Default.SalePointDB = value; 
+            }
+        }
         public static bool NegativeStock
         {
             get
