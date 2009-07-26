@@ -646,7 +646,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
             deptSO.OtherDepartmentId = ((Department)cboDepartment.SelectedItem).DepartmentId;
-            deptSO.ConfirmFlg = 3;
+            //deptSO.ConfirmFlg = 3;
             
                 foreach (DepartmentStockOutDetail outDetail in deptSO.DepartmentStockOutDetails)
                 {
@@ -697,6 +697,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             if(rdoStockOut.Checked)
             {
+                if (eventArgs.DepartmentStockOut.DepartmentStockOutPK == null || eventArgs.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
+                {
+                    ShowError(lblInformation, "Có lỗi phát sinh làm chương trình không in được. Liên hệ nhà quản trị.");
+                }
                 EventUtility.fireEvent(PrepareDepartmentStockOutForPrintEvent, this, eventArgs);
                 // do printing
                 DoPrinting(eventArgs.DepartmentStockOut);

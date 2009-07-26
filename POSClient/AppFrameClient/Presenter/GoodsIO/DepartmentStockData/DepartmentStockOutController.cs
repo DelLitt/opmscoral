@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AppFrame;
 using AppFrame.Common;
+using AppFrame.Exceptions;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
@@ -329,10 +330,20 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         {
                             if ("1".Equals(detail.Description)) // if ban si
                             {
+                                if(detail.DepartmentPrice.WholeSalePrice == 0 )
+                                {
+                                    e.EventResult = " Error !";
+                                    throw new BusinessException(" Giá sỉ của " + detail.Product.ProductMaster.ProductName + " là 0 ?!");
+                                }
                                 detail.Description = detail.DepartmentPrice.WholeSalePrice.ToString();
                             }
                             else
                             {
+                                if (detail.DepartmentPrice.Price == 0)
+                                {
+                                    e.EventResult = " Error !";
+                                    throw new BusinessException(" Giá lẻ của " + detail.Product.ProductMaster.ProductName + " là 0 ?!");
+                                }
                                 detail.Description = detail.DepartmentPrice.Price.ToString();
                             }
                         }

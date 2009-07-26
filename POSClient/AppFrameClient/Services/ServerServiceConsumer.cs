@@ -51,7 +51,7 @@ namespace AppFrameClient.Services
                 ObjectCriteria deptHistCrit = new ObjectCriteria();
                 deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.SourceDepartmentId", stockOut.DepartmentStockOutPK.DepartmentId);
                 deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.StockOutId", stockOut.DepartmentStockOutPK.StockOutId);
-                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.DestDepartmentId", department.DepartmentId);
+                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.DestDepartmentId", CurrentDepartment.Get().DepartmentId);
 
                 IList deptHistList = DepartmentStockInHistoryLogic.FindAll(deptHistCrit);
                 // if it has exist in history so don't need to continue
@@ -62,6 +62,7 @@ namespace AppFrameClient.Services
                 }
                 // convert from stock out to stock in
                 stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
+                
                 // call method to sync
                 LogicResult logicResult = DepartmentStockInLogic.SyncFromSubStock(stockIn);
                 if (logicResult.HasError)
@@ -82,7 +83,6 @@ namespace AppFrameClient.Services
                 else
                 {
                     ClientUtility.Log(logger, " Hoan tat va phan hoi ... " + stockOut.DepartmentStockOutPK.DepartmentId.ToString());
-                    
                     // add to stock in history for avoiding duplicate
                     departmentStockInHistoryPk.StockInId = stockIn.DepartmentStockInPK.StockInId;
                     DepartmentStockInHistory departmentStockInHistory = new DepartmentStockInHistory();
@@ -92,7 +92,8 @@ namespace AppFrameClient.Services
                     departmentStockInHistory.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                     departmentStockInHistory.UpdateDate = DateTime.Now;
                     departmentStockInHistory.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
-                    DepartmentStockInHistoryLogic.Add(departmentStockInHistory);
+                    DepartmentStockInHistoryLogic.Add(departmentStockInHistory);    
+                    
                     
                     ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Hoàn tất và phản hồi ...";
                     serverService.InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,
