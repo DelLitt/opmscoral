@@ -463,5 +463,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         {
             
         }
+
+        public void NotifyInformMessage(long destDeptId, bool isError, string message)
+        {
+            
+        }
     }
 }

@@ -281,6 +281,19 @@ namespace AppFrameClient.Services
             message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, " Đơn hàng " + stockId + " truyền thất bại!");
         }
 
+        public void NotifyInformMessage(long destDeptId, bool isError, string message)
+        {
+           GlobalMessage globalChannel = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+           if(isError)
+           {
+               globalChannel.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT,message);
+           }
+           else
+           {
+               globalChannel.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, message);
+           }
+        }
+
         /// <summary>
         /// Request the end of the thread method.
         /// </summary>

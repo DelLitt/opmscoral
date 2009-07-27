@@ -360,6 +360,11 @@ namespace AppFrameClient.Services
             
         }
 
+        public void NotifyInformMessage(long destDeptId, bool isError, string message)
+        {
+            
+        }
+
         public ServerServiceConsumer()
         {
             IDepartmentStockInLogic deptStockInLogic = (IDepartmentStockInLogic)GlobalUtility.GetObject("AppFrame.Service.IDepartmentStockInLogic");

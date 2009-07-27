@@ -23,11 +23,17 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockOut")]
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
 
+        [System.ServiceModel.OperationContractAttribute(Action = "http://localhost:8001/ServerService/MakeRawDepartmentStockOut", ReplyAction = "http://localhost:8001/ServerService/MakeRawDepartmentStockOutResponse")]
+        void MakeRawDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeMultiDepartmentStockOut")]
         void MakeMultiDepartmentStockOut(Department department, DepartmentStockOut[] stockOutList, AppFrame.Model.DepartmentPrice price);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/MakeDepartmentStockIn")]
         void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://localhost:8001/ServerService/MakeRawDepartmentStockIn", ReplyAction = "http://localhost:8001/ServerService/MakeRawDepartmentStockInResponse")]
+        void MakeRawDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/ExitDistributingGroup")]
         void ExitDistributingGroup(Department department);
@@ -35,8 +41,20 @@ namespace AppFrameClient.Services
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockOut")]
         void RequestDepartmentStockOut(long departmentId);
 
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestRawDepartmentStockOut")]
+        void RequestRawDepartmentStockOut(long departmentId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestRawDepartmentStockIn")]
+        void RequestRawDepartmentStockIn(long departmentId);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/RequestDepartmentStockIn")]
         void RequestDepartmentStockIn(long departmentId);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://localhost:8001/ServerService/MakeAllShoesDepartmentStockInBack", ReplyAction = "http://localhost:8001/ServerService/MakeAllShoesDepartmentStockInBackResponse")]
+        DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId, long subStockId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformMessage")]
+        void InformMessage(long destDeptId, bool isError, string message);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutSuccess")]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
@@ -96,6 +114,9 @@ namespace AppFrameClient.Services
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyStockOutFail")]
         void NotifyStockOutFail(long sourceId, long destId, long stockId);
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyInformMessage")]
+        void NotifyInformMessage(long destDeptId, bool isError, string message);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -143,6 +164,11 @@ namespace AppFrameClient.Services
             base.Channel.MakeDepartmentStockOut(department, stockOut, price);
         }
 
+        public void MakeRawDepartmentStockOut(Department department, DepartmentStockOut stockOut, AppFrame.Model.DepartmentPrice price)
+        {
+            base.Channel.MakeRawDepartmentStockOut(department, stockOut, price);
+        }
+
         public void MakeMultiDepartmentStockOut(Department department, DepartmentStockOut[] stockOutList, AppFrame.Model.DepartmentPrice price)
         {
             base.Channel.MakeMultiDepartmentStockOut(department, stockOutList, price);
@@ -151,6 +177,11 @@ namespace AppFrameClient.Services
         public void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut)
         {
             base.Channel.MakeDepartmentStockIn(department, stockOut);
+        }
+
+        public void MakeRawDepartmentStockIn(Department department, DepartmentStockIn stockOut)
+        {
+            base.Channel.MakeRawDepartmentStockIn(department, stockOut);
         }
 
         public void ExitDistributingGroup(Department department)
@@ -163,9 +194,29 @@ namespace AppFrameClient.Services
             base.Channel.RequestDepartmentStockOut(departmentId);
         }
 
+        public void RequestRawDepartmentStockOut(long departmentId)
+        {
+            base.Channel.RequestRawDepartmentStockOut(departmentId);
+        }
+
+        public void RequestRawDepartmentStockIn(long departmentId)
+        {
+            base.Channel.RequestRawDepartmentStockIn(departmentId);
+        }
+
         public void RequestDepartmentStockIn(long departmentId)
         {
             base.Channel.RequestDepartmentStockIn(departmentId);
+        }
+
+        public DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId, long subStockId)
+        {
+            return base.Channel.MakeAllShoesDepartmentStockInBack(salePointId, subStockId);
+        }
+
+        public void InformMessage(long destDeptId, bool isError, string message)
+        {
+            base.Channel.InformMessage(destDeptId, isError, message);
         }
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
@@ -198,4 +249,5 @@ namespace AppFrameClient.Services
             base.Channel.UpdateStockInBackFlag(department, stockIn, stockOutId);
         }
     }
+
 }

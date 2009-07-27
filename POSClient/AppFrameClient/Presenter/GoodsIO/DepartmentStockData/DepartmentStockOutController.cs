@@ -100,7 +100,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
 
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
-                serverService.MakeDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
+                serverService.MakeRawDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
             }
 
         }
@@ -497,6 +497,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
 
         public void NotifyStockOutFail(long sourceId, long destId, long stockId)
+        {
+            
+        }
+
+        public void NotifyInformMessage(long destDeptId, bool isError, string message)
         {
             
         }
