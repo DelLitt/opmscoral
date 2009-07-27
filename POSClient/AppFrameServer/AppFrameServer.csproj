@@ -133,6 +133,8 @@
     <Compile Include="Utility\Dummy.cs" />
     <Compile Include="Utility\ServerUtility.cs" />
     <Compile Include="View\Dummy.cs" />
+    <Compile Include="View\Mapper\FastDepartmentStockInMapper.cs" />
+    <Compile Include="View\Mapper\FastDepartmentStockOutMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppFrame\AppFrame.csproj">

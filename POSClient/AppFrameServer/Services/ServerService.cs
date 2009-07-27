@@ -254,8 +254,9 @@ namespace AppFrameServer.Services
             DataAccessLayer dalSubStock = new DataAccessLayer(Properties.Settings.Default.SubStockDB);
             DataAccessLayer dalSalePoint = new DataAccessLayer(Properties.Settings.Default.SalePointDB);
 
-            try
-            {
+            /*try
+            {*/
+            
                 DepartmentStockIn stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                 // get max stock in id
                 string deptStr = string.Format("{0:000}", department.DepartmentId);
@@ -263,6 +264,7 @@ namespace AppFrameServer.Services
                 var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + "00000'";
                 //criteria.AddGreaterCriteria("DepartmentStockInPK.StockInId", dateStr + deptStr + "00000");
                 //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
+                ServerUtility.Log(logger,selectMaxIdSQL);
                 var maxId = dalSalePoint.GetSingleValue(selectMaxIdSQL);
                 var stockInId = maxId == null ? dateStr + deptStr + "00001" : string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
 
@@ -271,7 +273,7 @@ namespace AppFrameServer.Services
                 string selectHistory = " select stock_in_id from department_stock_in_history "
                                        + " where source_department_id " + stockOut.DepartmentStockOutPK.DepartmentId
                                        + " and stock_out_id = " + stockOut.DepartmentStockOutPK.StockOutId;
-
+                ServerUtility.Log(logger, selectHistory);
                 var existStockInId = dalSalePoint.GetSingleValue(selectHistory);
 
                 if(existStockInId == null || existStockInId.ToString() == string.Empty)
@@ -286,17 +288,19 @@ namespace AppFrameServer.Services
                                            + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
                                            + "'admin'" + ","
                                            + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                    ServerUtility.Log(logger, insertHistory);
                     dalSalePoint.ExecuteQuery(insertHistory);  
                 }
                 else
                 {
-                    InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
                     return;
                 }
-                
+            
+                DoStockIn(dalSalePoint, department, stockIn, true);
+            
                 //var stockInPk = new DepartmentStockInPK { DepartmentId = data.DepartmentId, StockInId = stockInId + "" };
 
-                string insertStockIn = " insert into department_stock_in(department_id,stock_in_id,stock_in_date,create_date,create_id,update_date,update_id,del_flg,exclusive_key) " +
+                /*string insertStockIn = " insert into department_stock_in(department_id,stock_in_id,stock_in_date,create_date,create_id,update_date,update_id,del_flg,exclusive_key) " +
                                        " values(" +
                                        department.DepartmentId + "," +
                                        "'" + stockInId + "'," +
@@ -364,7 +368,7 @@ namespace AppFrameServer.Services
                 ServerUtility.Log(logger,exception.Message);
                 ServerUtility.Log(logger,exception.StackTrace);
                 InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
-            }            
+            } */           
         }
 
         
@@ -553,6 +557,7 @@ namespace AppFrameServer.Services
             var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + "00000'";
             //criteria.AddGreaterCriteria("DepartmentStockInPK.StockInId", dateStr + deptStr + "00000");
             //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
+            ServerUtility.Log(logger, selectMaxIdSQL);
             var maxId = dal.GetSingleValue(selectMaxIdSQL);
             var stockInId = maxId == null ? dateStr + deptStr + "00001" : string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
             
@@ -568,6 +573,7 @@ namespace AppFrameServer.Services
                                    "0," +
                                    "1)";
             // insert department-stock-in
+            ServerUtility.Log(logger, insertStockIn);
             dal.ExecuteQuery(insertStockIn);
             // insert department-stock-in-details
             foreach (DepartmentStockInDetail inDetail in stockIn.DepartmentStockInDetails)
@@ -592,9 +598,10 @@ namespace AppFrameServer.Services
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
                     "'admin'," +
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                ServerUtility.Log(logger, insertStockInDetail);
                 dal.ExecuteQuery(insertStockInDetail);
                 // insert department-stock
-                string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
+                //string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
                 // stock
                 var id = dal.GetSingleValue("Select product_id from department_stock where product_id =" + inDetail.Product.ProductId);
                 if (id == null || id.ToString() == string.Empty)

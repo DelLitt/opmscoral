@@ -77,7 +77,34 @@ namespace AppFrameServer.DataLayer
                 connDB.Close();
             }
         }
-        
+
+        public void ExecuteUpdate(string SqlString)
+        {
+            /*try
+            {
+                connDB.Open();*/
+                DbCommand cmdDB = connDB.CreateCommand();
+                cmdDB.CommandText = SqlString;
+                cmdDB.ExecuteNonQuery();
+            /*}
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connDB.Close();
+            }*/
+        }
+
+        public object ExecuteScalar(string SqlString)
+        {
+                object obj;
+                DbCommand cmdDB = connDB.CreateCommand();
+                cmdDB.CommandText = SqlString;
+                obj = cmdDB.ExecuteScalar();
+                return obj;
+        }
         /// <summary> 
         /// Returns FirstRow and First column's value for the query (Just like Execute Scalar Function) 
         /// </summary> 
