@@ -600,7 +600,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
                         // TEMP FIXING FOR EXPORT NEGATIVE STOCK
-                        if (detail.GoodQuantity < 0 /*|| detail.GoodQuantity > stock.GoodQuantity*/)
+                        if (detail.GoodQuantity <= 0 /*|| detail.GoodQuantity > stock.GoodQuantity*/)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
                             dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
@@ -701,9 +701,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     ShowError(lblInformation, "Có lỗi phát sinh làm chương trình không in được. Liên hệ nhà quản trị.");
                 }
-                EventUtility.fireEvent(PrepareDepartmentStockOutForPrintEvent, this, eventArgs);
-                // do printing
-                DoPrinting(eventArgs.DepartmentStockOut);
+                if (eventArgs.EventResult != null)
+                {
+                    EventUtility.fireEvent(PrepareDepartmentStockOutForPrintEvent, this, eventArgs);
+                    // do printing
+                    DoPrinting(eventArgs.DepartmentStockOut);
+                }
+
             }
             if (eventArgs.EventResult != null)
             {

@@ -350,7 +350,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     }    
                 }
                 
-
                 DepartmentStockOutLogic.Add(e.DepartmentStockOut);
                 ClientUtility.Log(logger, e.DepartmentStockOut.ToString(), "Lưu xuất kho cửa hàng");
                 e.EventResult = "Success";

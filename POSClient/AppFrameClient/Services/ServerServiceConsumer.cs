@@ -51,7 +51,6 @@ namespace AppFrameClient.Services
                 ObjectCriteria deptHistCrit = new ObjectCriteria();
                 deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.SourceDepartmentId", stockOut.DepartmentStockOutPK.DepartmentId);
                 deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.StockOutId", stockOut.DepartmentStockOutPK.StockOutId);
-                deptHistCrit.AddEqCriteria("DepartmentStockInHistoryPK.DestDepartmentId", CurrentDepartment.Get().DepartmentId);
 
                 IList deptHistList = DepartmentStockInHistoryLogic.FindAll(deptHistCrit);
                 // if it has exist in history so don't need to continue
