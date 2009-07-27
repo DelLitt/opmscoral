@@ -280,7 +280,16 @@ namespace AppFrameServer.Services
                 //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
                 ServerUtility.Log(logger, selectMaxIdSQL);
                 var maxId = dalSalePoint.GetSingleValue(selectMaxIdSQL);
-                var stockInId = maxId == null ? dateStr + deptStr + "00001" : string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
+                string stockInId = "";
+                if(maxId == null || maxId.ToString() == string.Empty)
+                {
+                    stockInId = dateStr + deptStr + "00001"; 
+                }
+                else
+                {
+                    stockInId = string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));                    
+                }
+                 
 
 
                 // search in department_stock_in_history
@@ -321,7 +330,6 @@ namespace AppFrameServer.Services
                 InformMessage(stockOut.DepartmentStockOutPK.StockOutId, true,
                     stockOut.DepartmentStockOutPK.DepartmentId + " đã truyền " + stockOut.DepartmentStockOutPK.StockOutId + " xuống " + stockOut.OtherDepartmentId + " thất bại !");
             }
-
             #region unused code
             //var stockInPk = new DepartmentStockInPK { DepartmentId = data.DepartmentId, StockInId = stockInId + "" };
 
@@ -585,7 +593,15 @@ namespace AppFrameServer.Services
             //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
             ServerUtility.Log(logger, selectMaxIdSQL);
             var maxId = dal.GetSingleValue(selectMaxIdSQL);
-            var stockInId = maxId == null ? dateStr + deptStr + "00001" : string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
+            string stockInId = "";
+            if(maxId == null || maxId.ToString() == string.Empty)
+            {
+                stockInId = dateStr + deptStr + "00001"; 
+            }
+            else
+            {
+                stockInId = string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
+            }
             
             string insertStockIn = " insert into department_stock_in(department_id,stock_in_id,stock_in_date,create_date,create_id,update_date,update_id,del_flg,exclusive_key) " +
                                    " values(" +
@@ -636,11 +652,11 @@ namespace AppFrameServer.Services
                 if (id == null || id.ToString() == string.Empty)
                 {
                     string insertStock = "insert into department_stock(department_id, product_id, product_master_id, quantity, good_quantity, create_id,create_date,update_id,update_date) values ("
-                                         + id + ", '"
+                                         + department.DepartmentId + ", '"
                                          + inDetail.Product.ProductId + "', '"
                                          + inDetail.Product.ProductMaster.ProductMasterId + "', "
                                          + inDetail.Quantity + ", "
-                                         + inDetail.Quantity + ", '"
+                                         + inDetail.Quantity + ", "
                                          + "'admin'," + "'"
                                          + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
                                          + "'admin'," + "'"

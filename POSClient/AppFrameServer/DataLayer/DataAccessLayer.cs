@@ -19,7 +19,7 @@ namespace AppFrameServer.DataLayer
         Object DBType;
         DbConnection connDB;
         private DbTransaction transaction;
-        private static string connectionStr ="";
+        private string connectionStr ="";
 
         // <summary>
         // Constructor calling for Initialization
@@ -38,11 +38,7 @@ namespace AppFrameServer.DataLayer
         private String GetConnectionString(string strServerInput)
         {
             string result;
-
-            if (connectionStr.Length > 0)
-                result =  connectionStr;
-            else
-            {
+            
                 /*string strUserID = ConfigurationManager.AppSettings["DBUserID"];
                 string strPswd = ConfigurationManager.AppSettings["DBUserPwd"];
                 string strDBName = ConfigurationManager.AppSettings["DBName"];
@@ -54,7 +50,7 @@ namespace AppFrameServer.DataLayer
                 //Use the Web.Config url to call web service.
                 connectionStr = "Server=" + strServer + ";Database=" + strDBName + ";User ID=" + strUserID +";Password=" + strPswd + ";";
                 result = connectionStr;
-            }
+            
             return result;
         }
         /// <summary> 
