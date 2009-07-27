@@ -37,7 +37,7 @@ namespace AppFrameServer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.0.0.8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.0.0.7")]
         public string SalePointDB {
             get {
                 return ((string)(this["SalePointDB"]));

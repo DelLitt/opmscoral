@@ -27,6 +27,7 @@ namespace AppFrameServer.Services
         /// <param name="department"></param>
         /// <param name="stockOut"></param>
         /// <param name="price"></param>
+        [OperationContract]
         void MakeRawDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price);
         
         [OperationContract(IsOneWay = true)]
@@ -40,6 +41,7 @@ namespace AppFrameServer.Services
         /// </summary>
         /// <param name="department"></param>
         /// <param name="stockOut"></param>
+        [OperationContract]
         void MakeRawDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
         [OperationContract(IsOneWay = true)]
@@ -63,9 +65,20 @@ namespace AppFrameServer.Services
         [OperationContract(IsOneWay = true)]
         void RequestRawDepartmentStockIn(long departmentId);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="departmentId"></param>
         [OperationContract(IsOneWay = true)]
         void RequestDepartmentStockIn(long departmentId);
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="salePointId"></param>
+        /// <param name="subStockId"></param>
+        /// <returns></returns>
+        [OperationContract]
         DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId,long subStockId);
 
         [OperationContract(IsOneWay = true)]

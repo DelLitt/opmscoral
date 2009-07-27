@@ -6,7 +6,7 @@
       <Value Profile="(Default)">10.0.0.10</Value>
     </Setting>
     <Setting Name="SalePointDB" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10.0.0.8</Value>
+      <Value Profile="(Default)">10.0.0.7</Value>
     </Setting>
   </Settings>
 </SettingsFile>

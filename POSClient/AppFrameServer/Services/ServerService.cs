@@ -122,7 +122,18 @@ namespace AppFrameServer.Services
 
         public void InformMessage(long destDeptId, bool isError, string message)
         {
-            
+            _callbackSubStockList.ForEach(
+                  delegate(IDepartmentStockOutCallback callback)
+                  {
+                      try
+                      {
+                          callback.NotifyInformMessage(destDeptId,isError,message);
+                      }
+                      catch (Exception)
+                      {
+
+                      }
+                  }); 
         }
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
@@ -256,7 +267,9 @@ namespace AppFrameServer.Services
 
             /*try
             {*/
-            
+
+            try
+            {
                 DepartmentStockIn stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                 // get max stock in id
                 string deptStr = string.Format("{0:000}", department.DepartmentId);
@@ -264,19 +277,19 @@ namespace AppFrameServer.Services
                 var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + "00000'";
                 //criteria.AddGreaterCriteria("DepartmentStockInPK.StockInId", dateStr + deptStr + "00000");
                 //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
-                ServerUtility.Log(logger,selectMaxIdSQL);
+                ServerUtility.Log(logger, selectMaxIdSQL);
                 var maxId = dalSalePoint.GetSingleValue(selectMaxIdSQL);
                 var stockInId = maxId == null ? dateStr + deptStr + "00001" : string.Format("{0:00000000000000}", (Int64.Parse(maxId.ToString()) + 1));
 
 
                 // search in department_stock_in_history
                 string selectHistory = " select stock_in_id from department_stock_in_history "
-                                       + " where source_department_id " + stockOut.DepartmentStockOutPK.DepartmentId
+                                       + " where SOURCE_DEPARTMENT_ID = " + stockOut.DepartmentStockOutPK.DepartmentId
                                        + " and stock_out_id = " + stockOut.DepartmentStockOutPK.StockOutId;
                 ServerUtility.Log(logger, selectHistory);
                 var existStockInId = dalSalePoint.GetSingleValue(selectHistory);
 
-                if(existStockInId == null || existStockInId.ToString() == string.Empty)
+                if (existStockInId == null || existStockInId.ToString() == string.Empty)
                 {
                     string insertHistory = " insert into department_stock_in_history(stock_out_id,source_department_id,stock_in_id,dest_department_id,description,create_id,create_date,update_id,update_date ) values( "
                                            + stockOut.DepartmentStockOutPK.StockOutId + ","
@@ -289,86 +302,98 @@ namespace AppFrameServer.Services
                                            + "'admin'" + ","
                                            + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
                     ServerUtility.Log(logger, insertHistory);
-                    dalSalePoint.ExecuteQuery(insertHistory);  
+                    dalSalePoint.ExecuteQuery(insertHistory);
                 }
                 else
                 {
                     return;
                 }
-            
+
                 DoStockIn(dalSalePoint, department, stockIn, true);
-            
-                //var stockInPk = new DepartmentStockInPK { DepartmentId = data.DepartmentId, StockInId = stockInId + "" };
-
-                /*string insertStockIn = " insert into department_stock_in(department_id,stock_in_id,stock_in_date,create_date,create_id,update_date,update_id,del_flg,exclusive_key) " +
-                                       " values(" +
-                                       department.DepartmentId + "," +
-                                       "'" + stockInId + "'," +
-                                       "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
-                                       "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
-                                       "'admin'," +
-                                       "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
-                                       "'admin'," +
-                                       "0," +
-                                       "1)";
-                // insert department-stock-in
-                dalSalePoint.ExecuteQuery(insertStockIn);
-                // insert department-stock-in-details
-                foreach (DepartmentStockInDetail inDetail in stockIn.DepartmentStockInDetails)
-                {
-                    ProcessStockInDetail(inDetail, dalSalePoint);
-
-                    // insert department-stock-in-detail
-                    string insertStockInDetail =
-                        "insert into department_stock_in_detail(department_id,stock_in_id,product_id,product_master_id,quantity, price, del_flg,create_id,create_date,update_id,update_date) " +
-                        " values(" +
-                        department.DepartmentId + ",'" +
-                        stockInId + "','" +
-                        inDetail.Product.ProductId + "','" +
-                        inDetail.Product.ProductMaster.ProductMasterId + "'," +
-                        inDetail.Quantity + "," +
-                        inDetail.Price + "," +
-                        "0," +
-                        "'admin'," +
-                        "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
-                        "'admin'," +
-                        "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
-                    dalSalePoint.ExecuteQuery(insertStockInDetail);
-                    // insert department-stock
-                    string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
-                    // stock
-                    var id = dalSalePoint.GetSingleValue("Select product_id from department_stock where product_id =" + inDetail.Product.ProductId);
-                    if (id == null || id.ToString() == string.Empty)
-                    {
-                        dalSalePoint.ExecuteQuery("insert into department_stock(department_id, product_id, product_master_id, quantity, good_quantity, create_id,create_date,update_id,update_date) values ("
-                        + id + ", '"
-                        + inDetail.Product.ProductId + "', '"
-                        + inDetail.Product.ProductMaster.ProductMasterId + "', "
-                        + inDetail.Quantity + ", "
-                        + inDetail.Quantity + ", '"
-                        + "'admin'," + "'"
-                        + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
-                        + "'admin'," + "'"
-                        + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
-                    }
-                    else
-                    {
-                        dalSalePoint.ExecuteQuery(" update department_stock "
-                                  + " set quantity = quantity + " + inDetail.Quantity + " , "
-                                  + " good_quantity = good_quantity + " + inDetail.Quantity + " "
-                                  + " where product_id = '" + inDetail.Product.ProductId + "' "
-                                  + " and department_id = " + department.DepartmentId);
-                    }
-
-                }
-                InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
+                InformMessage(stockOut.DepartmentStockOutPK.StockOutId, false,
+                    stockOut.DepartmentStockOutPK.DepartmentId +  " đã truyền "+ stockOut.DepartmentStockOutPK.StockOutId +" xuống " + stockOut.OtherDepartmentId + " thành công !");
             }
             catch (Exception exception)
             {
                 ServerUtility.Log(logger,exception.Message);
-                ServerUtility.Log(logger,exception.StackTrace);
-                InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
-            } */           
+                ServerUtility.Log(logger, exception.StackTrace);
+                InformMessage(stockOut.DepartmentStockOutPK.StockOutId, true,
+                    stockOut.DepartmentStockOutPK.DepartmentId + " đã truyền " + stockOut.DepartmentStockOutPK.StockOutId + " xuống " + stockOut.OtherDepartmentId + " thất bại !");
+            }
+
+            #region unused code
+            //var stockInPk = new DepartmentStockInPK { DepartmentId = data.DepartmentId, StockInId = stockInId + "" };
+
+            /*string insertStockIn = " insert into department_stock_in(department_id,stock_in_id,stock_in_date,create_date,create_id,update_date,update_id,del_flg,exclusive_key) " +
+                                   " values(" +
+                                   department.DepartmentId + "," +
+                                   "'" + stockInId + "'," +
+                                   "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
+                                   "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
+                                   "'admin'," +
+                                   "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
+                                   "'admin'," +
+                                   "0," +
+                                   "1)";
+            // insert department-stock-in
+            dalSalePoint.ExecuteQuery(insertStockIn);
+            // insert department-stock-in-details
+            foreach (DepartmentStockInDetail inDetail in stockIn.DepartmentStockInDetails)
+            {
+                ProcessStockInDetail(inDetail, dalSalePoint);
+
+                // insert department-stock-in-detail
+                string insertStockInDetail =
+                    "insert into department_stock_in_detail(department_id,stock_in_id,product_id,product_master_id,quantity, price, del_flg,create_id,create_date,update_id,update_date) " +
+                    " values(" +
+                    department.DepartmentId + ",'" +
+                    stockInId + "','" +
+                    inDetail.Product.ProductId + "','" +
+                    inDetail.Product.ProductMaster.ProductMasterId + "'," +
+                    inDetail.Quantity + "," +
+                    inDetail.Price + "," +
+                    "0," +
+                    "'admin'," +
+                    "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
+                    "'admin'," +
+                    "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                dalSalePoint.ExecuteQuery(insertStockInDetail);
+                // insert department-stock
+                string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
+                // stock
+                var id = dalSalePoint.GetSingleValue("Select product_id from department_stock where product_id =" + inDetail.Product.ProductId);
+                if (id == null || id.ToString() == string.Empty)
+                {
+                    dalSalePoint.ExecuteQuery("insert into department_stock(department_id, product_id, product_master_id, quantity, good_quantity, create_id,create_date,update_id,update_date) values ("
+                    + id + ", '"
+                    + inDetail.Product.ProductId + "', '"
+                    + inDetail.Product.ProductMaster.ProductMasterId + "', "
+                    + inDetail.Quantity + ", "
+                    + inDetail.Quantity + ", '"
+                    + "'admin'," + "'"
+                    + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
+                    + "'admin'," + "'"
+                    + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+                }
+                else
+                {
+                    dalSalePoint.ExecuteQuery(" update department_stock "
+                              + " set quantity = quantity + " + inDetail.Quantity + " , "
+                              + " good_quantity = good_quantity + " + inDetail.Quantity + " "
+                              + " where product_id = '" + inDetail.Product.ProductId + "' "
+                              + " and department_id = " + department.DepartmentId);
+                }
+
+            }
+            InformDepartmentStockOutSuccess(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
+        }
+        catch (Exception exception)
+        {
+            ServerUtility.Log(logger,exception.Message);
+            ServerUtility.Log(logger,exception.StackTrace);
+            InformDepartmentStockOutFail(stockOut.DepartmentStockOutPK.DepartmentId,department.DepartmentId,stockOut.DepartmentStockOutPK.StockOutId);
+        } */
+            #endregion
         }
 
         
@@ -603,27 +628,35 @@ namespace AppFrameServer.Services
                 // insert department-stock
                 //string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
                 // stock
-                var id = dal.GetSingleValue("Select product_id from department_stock where product_id =" + inDetail.Product.ProductId);
+                string reqDeptStock = "Select product_id from department_stock where product_id ='" +
+                                      inDetail.Product.ProductId + "'";
+                ServerUtility.Log(logger, reqDeptStock);
+                var id = dal.GetSingleValue(reqDeptStock);
                 if (id == null || id.ToString() == string.Empty)
                 {
-                    dal.ExecuteQuery("insert into department_stock(department_id, product_id, product_master_id, quantity, good_quantity, create_id,create_date,update_id,update_date) values ("
-                    + id + ", '"
-                    + inDetail.Product.ProductId + "', '"
-                    + inDetail.Product.ProductMaster.ProductMasterId + "', "
-                    + inDetail.Quantity + ", "
-                    + inDetail.Quantity + ", '"
-                    + "'admin'," + "'"
-                    + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
-                    + "'admin'," + "'"
-                    + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+                    string insertStock = "insert into department_stock(department_id, product_id, product_master_id, quantity, good_quantity, create_id,create_date,update_id,update_date) values ("
+                                         + id + ", '"
+                                         + inDetail.Product.ProductId + "', '"
+                                         + inDetail.Product.ProductMaster.ProductMasterId + "', "
+                                         + inDetail.Quantity + ", "
+                                         + inDetail.Quantity + ", '"
+                                         + "'admin'," + "'"
+                                         + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
+                                         + "'admin'," + "'"
+                                         + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+
+                    ServerUtility.Log(logger, insertStock);
+                    dal.ExecuteQuery(insertStock);
                 }
                 else
                 {
-                    dal.ExecuteQuery(" update department_stock "
-                              + " set quantity = quantity + " + inDetail.Quantity + " , "
-                              + " good_quantity = good_quantity + " + inDetail.Quantity + " "
-                              + " where product_id = '" + inDetail.Product.ProductId + "' "
-                              + " and department_id = " + department.DepartmentId);
+                    string updateStock = " update department_stock "
+                                         + " set quantity = quantity + " + inDetail.Quantity + " , "
+                                         + " good_quantity = good_quantity + " + inDetail.Quantity + " "
+                                         + " where product_id = '" + inDetail.Product.ProductId + "' "
+                                         + " and department_id = " + department.DepartmentId;
+                    ServerUtility.Log(logger, updateStock);
+                    dal.ExecuteQuery(updateStock);
                 }
 
             }
