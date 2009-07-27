@@ -264,6 +264,7 @@ namespace AppFrameServer.Services
 
             DataAccessLayer dalSubStock = new DataAccessLayer(Properties.Settings.Default.SubStockDB);
             DataAccessLayer dalSalePoint = new DataAccessLayer(Properties.Settings.Default.SalePointDB);
+            //DataAccessLayer dalSalePoint = new DataAccessLayer("achay");
 
             /*try
             {*/
@@ -300,7 +301,7 @@ namespace AppFrameServer.Services
                                            + "'admin'" + ","
                                            + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "',"
                                            + "'admin'" + ","
-                                           + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                                           + "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "');";
                     ServerUtility.Log(logger, insertHistory);
                     dalSalePoint.ExecuteQuery(insertHistory);
                 }

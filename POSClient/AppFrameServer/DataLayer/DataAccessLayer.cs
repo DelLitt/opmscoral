@@ -29,6 +29,7 @@ namespace AppFrameServer.DataLayer
         public DataAccessLayer(string strServer)
         {
             connDB = new MySqlConnection(GetConnectionString(strServer));
+            
         }
         /// <summary>
         /// Create ConnectionString using TSPL Web service.-Chenjx
@@ -51,7 +52,7 @@ namespace AppFrameServer.DataLayer
                 string strDBName = "pos";
                 string strServer = strServerInput;
                 //Use the Web.Config url to call web service.
-                connectionStr = "server=" + strServer + ";database=" + strDBName + ";User ID=" + strUserID + ";Password=" + strPswd + ";";
+                connectionStr = "Server=" + strServer + ";Database=" + strDBName + ";User ID=" + strUserID +";Password=" + strPswd + ";";
                 result = connectionStr;
             }
             return result;
