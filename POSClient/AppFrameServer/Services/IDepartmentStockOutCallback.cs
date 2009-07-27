@@ -45,5 +45,8 @@ namespace AppFrameServer.Services
 
         [OperationContract(IsOneWay = true)]
         void NotifyStockOutFail(long sourceId, long destId, long stockId);
+
+        [OperationContract(IsOneWay = true)]
+        void NotifyInformMessage(long destDeptId, bool isError, string message);
     }
 }

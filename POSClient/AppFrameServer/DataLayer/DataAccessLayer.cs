@@ -12,12 +12,13 @@ using System.Net;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 
-namespace ImportPOSData
+namespace AppFrameServer.DataLayer
 {
     public class DataAccessLayer
     {
         Object DBType;
         DbConnection connDB;
+        private DbTransaction transaction;
         private static string connectionStr ="";
 
         // <summary>
@@ -25,15 +26,15 @@ namespace ImportPOSData
         // <para name="DataBaseName">Name of the Connection String in web.config file. Default will be connCommon</para>
         // <para name="DataBaseName">Name of the Connection String in web.config file. Default will be connCommon</para>
         // </summary>
-        public DataAccessLayer()
+        public DataAccessLayer(string strServer)
         {
-            connDB = new MySqlConnection(GetConnectionString());
+            connDB = new MySqlConnection(GetConnectionString(strServer));
         }
         /// <summary>
         /// Create ConnectionString using TSPL Web service.-Chenjx
         /// </summary>
         /// <returns></returns>
-        private String GetConnectionString()
+        private String GetConnectionString(string strServerInput)
         {
             string result;
 
@@ -48,7 +49,7 @@ namespace ImportPOSData
                 string strUserID = "dbadmin";
                 string strPswd = "1qw45DCM9rl";
                 string strDBName = "pos";
-                string strServer = "localhost";
+                string strServer = strServerInput;
                 //Use the Web.Config url to call web service.
                 connectionStr = "server=" + strServer + ";database=" + strDBName + ";User ID=" + strUserID + ";Password=" + strPswd + ";";
                 result = connectionStr;
@@ -76,7 +77,7 @@ namespace ImportPOSData
                 connDB.Close();
             }
         }
-
+        
         /// <summary> 
         /// Returns FirstRow and First column's value for the query (Just like Execute Scalar Function) 
         /// </summary> 
@@ -101,6 +102,41 @@ namespace ImportPOSData
                 connDB.Close();
             }
         }
-    
+
+        public DbTransaction OpenTransaction()
+        {
+            transaction = connDB.BeginTransaction();
+            return transaction;
+        }
+
+        public void Commit()
+        {
+            transaction.Commit();
+        }
+        public void Rollback()
+        {
+            transaction.Rollback();
+        }
+        public DbTransaction GetTransaction()
+        {
+            return transaction;
+        }
+        public void Open()
+        {
+            connDB.Open();
+        }
+
+        public void Close()
+        {
+            try
+            {
+                connDB.Close();
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+        }
     }
 }

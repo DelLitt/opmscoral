@@ -21,11 +21,26 @@ namespace AppFrameServer.Services
         [OperationContract(IsOneWay = true)]
         void MakeDepartmentStockOut(Department department, DepartmentStockOut stockOut,DepartmentPrice price);
 
+        /// <summary>
+        /// This method access database directly and update information about stock out
+        /// </summary>
+        /// <param name="department"></param>
+        /// <param name="stockOut"></param>
+        /// <param name="price"></param>
+        void MakeRawDepartmentStockOut(Department department, DepartmentStockOut stockOut, DepartmentPrice price);
+        
         [OperationContract(IsOneWay = true)]
         void MakeMultiDepartmentStockOut(Department department, DepartmentStockOut[] stockOutList, DepartmentPrice price);
 
         [OperationContract(IsOneWay = true)]
         void MakeDepartmentStockIn(Department department, DepartmentStockIn stockOut);
+
+        /// <summary>
+        /// This method access database directly and update information about stock in
+        /// </summary>
+        /// <param name="department"></param>
+        /// <param name="stockOut"></param>
+        void MakeRawDepartmentStockIn(Department department, DepartmentStockIn stockOut);
 
         [OperationContract(IsOneWay = true)]
         void ExitDistributingGroup(Department department);
@@ -33,8 +48,28 @@ namespace AppFrameServer.Services
         [OperationContract(IsOneWay = true)]
         void RequestDepartmentStockOut(long departmentId);
 
+        /// <summary>
+        /// This method access database directly and update information about stock out
+        /// </summary>
+        /// <param name="departmentId"></param>
+        [OperationContract(IsOneWay = true)]
+        void RequestRawDepartmentStockOut(long departmentId);
+
+        /// <summary>
+        /// This method access database directly and update information about stock in
+        /// </summary>
+        /// <param name="departmentId"></param>
+        /// 
+        [OperationContract(IsOneWay = true)]
+        void RequestRawDepartmentStockIn(long departmentId);
+
         [OperationContract(IsOneWay = true)]
         void RequestDepartmentStockIn(long departmentId);
+        
+        DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId,long subStockId);
+
+        [OperationContract(IsOneWay = true)]
+        void InformMessage(long destDeptId, bool isError, string message);
 
         [OperationContract(IsOneWay = true)]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
