@@ -48,6 +48,7 @@ namespace AppFrame.Model
         public virtual Int64 OldQuantity { get; set; }
         public virtual Int64 StockOutQuantity { get; set; }
         public virtual Int64 ReStockQuantity { get; set; }
+        public virtual Int64 WholeSalePrice { get; set; }
         public virtual Int64 StockInId
         {
             get
@@ -182,7 +183,7 @@ namespace AppFrame.Model
                 _product = value;
             }
         }
-
+        public virtual DepartmentPrice DepartmentPrice { get; set; }
         #endregion
         
         #region IComparable Methods
