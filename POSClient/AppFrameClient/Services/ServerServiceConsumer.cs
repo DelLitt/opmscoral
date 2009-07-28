@@ -414,7 +414,7 @@ namespace AppFrameClient.Services
                             {
                                 ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text =
                                     " Yêu cầu thông tin ... ";
-                                serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
+                                //serverService.RequestDepartmentStockOut(CurrentDepartment.Get().DepartmentId);
                                 ((MainForm) GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
                             }
                             Thread.Sleep(SleepTime);

@@ -62,8 +62,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
                 message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đang gửi thông tin xuống cửa hàng ...");
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
-                serverService.MakeDepartmentStockIn(destDept, e.DepartmentStockIn);
+                serverService.MakeRawDepartmentStockIn(destDept, e.DepartmentStockIn);
             }
+
             e.EventResult = "Made Stock-in back";
         }
 

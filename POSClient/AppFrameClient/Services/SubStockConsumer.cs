@@ -150,24 +150,24 @@ namespace AppFrameClient.Services
         public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
             GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
-            if(stockIn!=null)
-            {
-                if(stockIn.DepartmentStockInPK.DepartmentId!=CurrentDepartment.Get().DepartmentId)
+            /*if(stockIn!=null)
+            {*/
+                /*if(stockIn.DepartmentStockInPK.DepartmentId!=CurrentDepartment.Get().DepartmentId)
                 {
                     return;
                 }
                 ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
-                DepartmentStockInLogic.AddStockInBack(stockIn);
+                DepartmentStockInLogic.AddStockInBack(stockIn);*/
                
                 message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
-                serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);
+                /*serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);*/
                 ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THANH CONG." + stockIn.ToString());    
-            }
+            /*}
             else
             {
                 ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THAT BAI." + stockIn.ToString());    
                 message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
-            }
+            }*/
             
         }
 
@@ -270,6 +270,9 @@ namespace AppFrameClient.Services
 
         public void NotifyStockInFail(Department department, DepartmentStockIn stockIn, long id)
         {
+            GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
+                ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THAT BAI." + stockIn.ToString());    
+                message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
             
         }
 

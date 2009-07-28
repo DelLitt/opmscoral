@@ -678,8 +678,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 
                 try
                 {
-                    //EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
-                    EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);      
+                    if(eventArgs.EventResult!=null)
+                    {
+                        //EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
+                        EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);          
+                    }
+                    
                 }
                 catch (Exception)
                 {

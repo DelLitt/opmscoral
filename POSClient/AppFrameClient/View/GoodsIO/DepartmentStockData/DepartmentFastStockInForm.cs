@@ -433,14 +433,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 lblMessage.Text = "Lưu thành công !";
                 
                 deptSO = new DepartmentStockIn();
-                    deptSODetailList.Clear();
+                deptSODetailList.Clear();
 //                    txtDexcription.Text = "";
 //                    txtPriceIn.Text = "";
 //                    txtPriceOut.Text = "";
                     txtSumProduct.Text = "";
                     txtSumValue.Text = "";
                     //CreateNewStockInDetail();
-                
+                txtBarcode.Focus();    
             }
             else
             {
@@ -453,6 +453,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 lblMessage.ForeColor = Color.Red;
                 lblMessage.Text = "Có lỗi khi lưu !";
             }
+            
         }
 
         private void dgvDeptStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
