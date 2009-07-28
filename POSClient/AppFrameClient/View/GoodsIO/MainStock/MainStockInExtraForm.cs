@@ -895,7 +895,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                             stockInDetail.DepartmentPrice.Price = NumberUtility.ParseLong(txtPriceOut.Text);
                             stockInDetail.DepartmentPrice.WholeSalePrice =
                                     NumberUtility.ParseLong(txtWSPriceOut.Text);
-                            
+                            stockInDetail.WholeSalePrice = NumberUtility.ParseLong(txtWSPriceOut.Text);                            
                             deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
                         }
                     }

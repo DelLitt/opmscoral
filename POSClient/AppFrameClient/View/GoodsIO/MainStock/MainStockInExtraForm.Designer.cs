@@ -705,7 +705,7 @@
             // 
             // Column4
             // 
-            this.Column4.DataPropertyName = "DepartmentPrice.WholeSalePrice";
+            this.Column4.DataPropertyName = "WholeSalePrice";
             this.Column4.HeaderText = "Giá sỉ";
             this.Column4.Name = "Column4";
             // 
