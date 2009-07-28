@@ -264,6 +264,7 @@ namespace AppFrameServer.Services
 
             DataAccessLayer dalSubStock = new DataAccessLayer(Properties.Settings.Default.SubStockDB);
             DataAccessLayer dalSalePoint = new DataAccessLayer(Properties.Settings.Default.SalePointDB);
+            
             //DataAccessLayer dalSalePoint = new DataAccessLayer("achay");
 
             /*try
@@ -271,19 +272,36 @@ namespace AppFrameServer.Services
 
             try
             {
+                
                 DepartmentStockIn stockIn = new FastDepartmentStockInMapper().Convert(stockOut);
                 // get max stock in id
-                string deptStr = string.Format("{0:000}", department.DepartmentId);
+                string deptStr = "";
+                string extraZero = "";
+                string startNum = "";
+
+                if(department.DepartmentId > 9999)
+                {
+                    deptStr = department.DepartmentId.ToString();
+                    extraZero = "000";
+                    startNum = "001";
+                }
+                else
+                {
+                    deptStr = string.Format("{0:000}", department.DepartmentId);
+                    extraZero = "00000";
+                    startNum = "00001";
+                }
+                
                 string dateStr = DateTime.Now.ToString("yyMMdd");
-                var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + "00000'";
-                //criteria.AddGreaterCriteria("DepartmentStockInPK.StockInId", dateStr + deptStr + "00000");
-                //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
+                var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + extraZero + "'";
+                
                 ServerUtility.Log(logger, selectMaxIdSQL);
+                //var maxId = dalSalePoint.GetSingleValue(selectMaxIdSQL);
                 var maxId = dalSalePoint.GetSingleValue(selectMaxIdSQL);
                 string stockInId = "";
                 if(maxId == null || maxId.ToString() == string.Empty)
                 {
-                    stockInId = dateStr + deptStr + "00001"; 
+                    stockInId = dateStr + deptStr + startNum; 
                 }
                 else
                 {
@@ -298,7 +316,6 @@ namespace AppFrameServer.Services
                                        + " and stock_out_id = " + stockOut.DepartmentStockOutPK.StockOutId;
                 ServerUtility.Log(logger, selectHistory);
                 var existStockInId = dalSalePoint.GetSingleValue(selectHistory);
-
                 if (existStockInId == null || existStockInId.ToString() == string.Empty)
                 {
                     string insertHistory = " insert into department_stock_in_history(stock_out_id,source_department_id,stock_in_id,dest_department_id,description,create_id,create_date,update_id,update_date ) values( "
@@ -316,6 +333,8 @@ namespace AppFrameServer.Services
                 }
                 else
                 {
+                    InformMessage(stockOut.DepartmentStockOutPK.StockOutId, true,
+                    stockOut.DepartmentStockOutPK.StockOutId + " đã đến " + stockOut.OtherDepartmentId + " trước đó. Không thể truyền lại !");
                     return;
                 }
 
@@ -452,6 +471,16 @@ namespace AppFrameServer.Services
                 DepartmentStockOut stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
                 stockOut.DepartmentStockOutPK = new DepartmentStockOutPK();
                 stockOut.DepartmentStockOutPK.DepartmentId = department.DepartmentId;
+                DoStockOut(dalSalePoint, department, stockOut,false);
+                Department subStockDept = new Department
+                                              {
+                                                  DepartmentId = stockIn.DepartmentStockInPK.DepartmentId
+                                              };
+                DoStockIn(dalSubStock, subStockDept, stockIn, false);
+                #region unused code
+                /*DepartmentStockOut stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
+                stockOut.DepartmentStockOutPK = new DepartmentStockOutPK();
+                stockOut.DepartmentStockOutPK.DepartmentId = department.DepartmentId;
                 // get max stock in id
                 
                 var selectMaxIdSQL = " select max(stock_out_id) from department_stock_out";
@@ -555,8 +584,9 @@ namespace AppFrameServer.Services
                                   + " and department_id = " + department.DepartmentId);
                     }
 
-                }
-                InformDepartmentStockInSuccess(department,stockIn,stockOutId);
+                }*/
+#endregion
+                InformDepartmentStockInSuccess(department,stockIn,0);
             }
             catch (Exception exception)
             {
@@ -586,17 +616,31 @@ namespace AppFrameServer.Services
 
         private bool DoStockIn(DataAccessLayer dal, Department department, DepartmentStockIn stockIn, bool NeedUpdateMasterData)
         {
-            string deptStr = string.Format("{0:000}", department.DepartmentId);
+            string deptStr = "";
+            string extraZero = "";
+            string startNum = "";
+            if (department.DepartmentId > 9999)
+            {
+                deptStr = department.DepartmentId.ToString();
+                extraZero = "000";
+                startNum = "001";
+            }
+            else
+            {
+                deptStr = string.Format("{0:000}", department.DepartmentId);
+                extraZero = "00000";
+                startNum = "00001";
+            }
+            
             string dateStr = DateTime.Now.ToString("yyMMdd");
-            var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + "00000'";
-            //criteria.AddGreaterCriteria("DepartmentStockInPK.StockInId", dateStr + deptStr + "00000");
-            //var maxId = DepartmentStockInDAO.SelectSpecificType(criteria, Projections.Max("DepartmentStockInPK.StockInId"));
+            var selectMaxIdSQL = " select max(stock_in_id) from department_stock_in where stock_in_id > '" + dateStr + deptStr + extraZero + "'";
+            
             ServerUtility.Log(logger, selectMaxIdSQL);
             var maxId = dal.GetSingleValue(selectMaxIdSQL);
             string stockInId = "";
             if(maxId == null || maxId.ToString() == string.Empty)
             {
-                stockInId = dateStr + deptStr + "00001"; 
+                stockInId = dateStr + deptStr + startNum; 
             }
             else
             {
@@ -640,6 +684,7 @@ namespace AppFrameServer.Services
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
                     "'admin'," +
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+
                 ServerUtility.Log(logger, insertStockInDetail);
                 dal.ExecuteQuery(insertStockInDetail);
                 // insert department-stock
@@ -679,17 +724,47 @@ namespace AppFrameServer.Services
             }
             return true;
         }
-        private bool DoStockOut(DataAccessLayer dal, Department department,DepartmentStockOut stockOut)
+        private bool DoStockOut(DataAccessLayer dal, Department department,DepartmentStockOut stockOut,bool negativeStock)
         {
+
+            // check stock before insert
+            foreach (DepartmentStockOutDetail outDetail in stockOut.DepartmentStockOutDetails)
+            {
+                // stock
+                var id = dal.GetSingleValue("Select product_id from department_stock where product_id ='" + outDetail.Product.ProductId+"'");
+                if (id == null || id.ToString() == string.Empty)
+                {
+                    // ERROR
+                    throw new BusinessException("Khong co ma hang " + outDetail.Product.ProductId + "trong kho cua hang !");
+                }
+                else
+                {
+                    if (!negativeStock)
+                    {
+                        var varQty =
+                            dal.GetSingleValue("Select good_quantity from department_stock where product_id ='" +
+                                               outDetail.Product.ProductId + "'");
+                        long goodQty = 0;
+                        Int64.TryParse(varQty.ToString(), out goodQty);
+                        long remainGoodQty = goodQty - outDetail.Quantity;
+                        if (remainGoodQty < 0)
+                        {
+                            throw new BusinessException(outDetail.Product.ProductId +
+                                                        " không còn đủ số lượng trong kho.");
+                        }
+                    }
+                }
+
+            }
             // get max stock in id
 
             var selectMaxIdSQL = " select max(stock_out_id) from department_stock_out";
             var maxId = dal.GetSingleValue(selectMaxIdSQL);
-            var stockOutId = maxId == null ? 1 : Int64.Parse(maxId.ToString()) + 1;
+            var stockOutId = (maxId == null || maxId.ToString() == string.Empty ) ? 1 : Int64.Parse(maxId.ToString()) + 1;
 
             var selectMaxDetIdSQL = " select max(stock_out_detail_id) from department_stock_out_detail";
             var maxDetId = dal.GetSingleValue(selectMaxDetIdSQL);
-            var stockOutDetId = maxDetId == null ? 1 : Int64.Parse(maxDetId.ToString()) + 1;
+            var stockOutDetId = (maxDetId == null || maxDetId.ToString() == string.Empty) ? 1 : Int64.Parse(maxDetId.ToString()) + 1;
 
             string insertStockOut = " insert into department_stock_out(department_id," +
                                    "stock_out_id," +
@@ -710,7 +785,7 @@ namespace AppFrameServer.Services
                                    "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
                                    "' Xuat hang ve kho phu ' " + "," +
                                    7 + "," +
-                                   3 + "," +
+                                   0 + "," +
                                    stockOut.DepartmentStockOutPK.DepartmentId + "," +
                                    "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
                                    "'admin'," +
@@ -719,6 +794,7 @@ namespace AppFrameServer.Services
                                    "0," +
                                    "1)";
             // insert department-stock-in
+            ServerUtility.Log(logger,insertStockOut);
             dal.ExecuteQuery(insertStockOut);
             // insert department-stock-in-details
             foreach (DepartmentStockOutDetail outDetail in stockOut.DepartmentStockOutDetails)
@@ -741,8 +817,8 @@ namespace AppFrameServer.Services
                     "update_date) " +
                     " values(" + // values
                     stockOutDetId + "," +
-                    department.DepartmentId + ",'" +
-                    stockOutId + "','" +
+                    department.DepartmentId + "," +
+                    stockOutId + ",'" +
                     outDetail.Product.ProductId + "','" +
                     outDetail.Product.ProductMaster.ProductMasterId + "'," +
                     outDetail.Quantity + "," +
@@ -752,35 +828,20 @@ namespace AppFrameServer.Services
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'," +
                     "'admin'," +
                     "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                ServerUtility.Log(logger,insertStockOutDetail);
                 dal.ExecuteQuery(insertStockOutDetail);
                 stockOutDetId += 1;
                 // insert department-stock
                 //string insertStock = "insert into stock(stock_id,product_id,product_master_id,quantity,create_date,good_quantity,create_id,del_flg) values(18854,'001419317H01','0000000014193',1,'2009-07-27 00:00:00',1,'admin',0)";
                 // stock
-                var id = dal.GetSingleValue("Select product_id from department_stock where product_id =" + outDetail.Product.ProductId);
-                if (id == null || id.ToString() == string.Empty)
-                {
-                    // ERROR
-                    throw new BusinessException("Khong co ma hang " + outDetail.Product.ProductId + "trong kho cua hang !");
-                }
-                else
-                {
-                    var varQty = dal.GetSingleValue("Select good_quantity from department_stock where product_id =" + outDetail.Product.ProductId);
-                    long goodQty = 0;
-                    Int64.TryParse(varQty.ToString(), out goodQty);
-                    if (goodQty <= 0)
-                    {
-                        throw new BusinessException(
-                            "Mặt hàng này không có trong kho cửa hàng. Xin vui lòng kiểm tra dữ liệu");
-                    }
-                    dal.ExecuteQuery(" update department_stock "
+                dal.ExecuteQuery(" update department_stock "
                               + " set quantity = quantity - " + outDetail.Quantity + " , "
                               + " good_quantity = good_quantity - " + outDetail.Quantity + " "
                               + " where product_id = '" + outDetail.Product.ProductId + "' "
                               + " and department_id = " + department.DepartmentId);
-                }
 
             }
+
             return true;
         }
 
