@@ -620,27 +620,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void dgvDeptStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (e.ColumnIndex == 0 && e.RowIndex >= 0 && e.RowIndex < deptSIDetailList.Count)
-            {
-                if (deptSO != null
-                    && !string.IsNullOrEmpty(deptSO.StockInId)
-                    && deptSIDetailList[e.RowIndex].StockInDetailPK != null
-                    && !string.IsNullOrEmpty(deptSIDetailList[e.RowIndex].StockInDetailPK.StockInId))
-                {
-                    return;
-                }
-                var productMasterForm = GlobalUtility.GetFormObject<ProductMasterSearchOrCreateForm>(FormConstants.PRODUCT_MASTER_SEARCH_OR_CREATE_FORM);
-                productMasterForm.ShowDialog();
-                ProductMaster productMaster = productMasterForm.SelectedProductMaster;
-                if (productMaster != null)
-                {
-                    deptSIDetailList[e.RowIndex].Product.ProductMaster = productMaster;
-                    bdsStockIn.EndEdit();
-                    dgvDeptStockIn.Refresh();
-                    dgvDeptStockIn.Invalidate();
-                    //bdsStockIn.ResetBindings(false);
-                }
-            }*/
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -858,31 +838,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 return;
             }
             PopulateGridByProductMaster(lstColor.SelectedItems, lstSize.SelectedItems);
+            CalculateTotalStorePrice();
         }
 
         private void PopulateGridByProductMaster(IList colorList, IList sizeList)
         {
-//            var mainStockInEventArgs = new MainStockInEventArgs();
-//
-//            mainStockInEventArgs.SelectedProductMaster = master;
-//            EventUtility.fireEvent<MainStockInEventArgs>(LoadAllGoodsByNameEvent, this, mainStockInEventArgs);
-//            IList list = mainStockInEventArgs.ProductMasterList;
-//            if (dgvDeptStockIn.SelectedRows.Count <= 0)
-//            {
-//                dgvDeptStockIn.CurrentCell = dgvDeptStockIn[1, 0];
-//            }
-//            foreach (ProductMaster productMaster in list)
-//            {
-//                StockInDetail stockInDetail = deptSIDetailList.AddNew();
-//                stockInDetail.StockInDetailPK = new StockInDetailPK();
-//                if (stockInDetail.Product == null)
-//                {
-//                    stockInDetail.Product = new Product();
-//                }
-//                stockInDetail.Product.ProductMaster = productMaster;
-//                deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
-//            }
-            
                 foreach (ProductColor color in colorList)
                 {
                     foreach (ProductSize size in sizeList)
@@ -920,12 +880,31 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                                 stockInDetail.Product = new Product();
                             }
                             stockInDetail.Product.ProductMaster = productMaster;
+                            if (stockInDetail.DepartmentPrice == null)
+                            {
+                                stockInDetail.DepartmentPrice = new DepartmentPrice();
+                                DepartmentPricePK pricePk = new DepartmentPricePK
+                                                                {
+                                                                    ProductMasterId =
+                                                                        stockInDetail.Product.ProductMaster.
+                                                                        ProductMasterId,
+                                                                    DepartmentId = 0
+                                                                };
+                                stockInDetail.DepartmentPrice.DepartmentPricePK = pricePk;
+                            }
+                            stockInDetail.DepartmentPrice.Price = NumberUtility.ParseLong(txtPriceOut.Text);
+                            stockInDetail.DepartmentPrice.WholeSalePrice =
+                                    NumberUtility.ParseLong(txtWSPriceOut.Text);
+                            
                             deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
                         }
                     }
                 }
                 
             }
+            bdsStockIn.ResetBindings(false);
+            dgvDeptStockIn.Refresh();
+            dgvDeptStockIn.Invalidate();
         }
 
         #region IMainStockInView Members
@@ -939,9 +918,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void btnNewProductInput_Click(object sender, EventArgs e)
         {
-            ProductMasterCreateForm form =
-                GlobalUtility.GetOnlyChildFormObject<ProductMasterCreateForm>(GlobalCache.Instance().MainForm,
-                                                                              FormConstants.PRODUCT_MASTER_CREATE_FORM);
+            ProductMasterExtraForm form =
+                GlobalUtility.GetOnlyChildFormObject<ProductMasterExtraForm>(GlobalCache.Instance().MainForm,
+                                                                              FormConstants.PRODUCT_MASTER_EXTRA_FORM);
             form.CloseProductMasterEvent += new EventHandler<ProductMasterEventArgs>(form_CloseProductMasterEvent);
             form.Status = ViewStatus.OPENDIALOG;
             form.Show();
@@ -997,6 +976,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void cboProductMasters_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtPriceOut.Enabled = true;
+            txtWSPriceOut.Enabled = true;
+            btnPriceInput.Enabled = true;
+            txtPriceIn.Text = "0";
+            txtWSPriceOut.Text = "0";
+            txtPriceOut.Text = "0";
             ProductMaster proMaster = cboProductMasters.SelectedItem as ProductMaster;
             if (proMaster == null)
             {
@@ -1016,6 +1001,16 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             mainStockInEventArgs.SelectedStockInDetail.Product.ProductMaster.ProductName = productName;
             EventUtility.fireEvent(LoadGoodsByNameEvent, this, mainStockInEventArgs);
 
+            DepartmentPrice currentPrice = mainStockInEventArgs.DepartmentPrice;
+            if(currentPrice!=null)
+            {
+                txtPriceOut.Text = currentPrice.Price.ToString();
+                txtWSPriceOut.Text = currentPrice.WholeSalePrice.ToString();
+
+                txtPriceOut.Enabled = false;
+                txtWSPriceOut.Enabled = false;
+                btnPriceInput.Enabled = false;
+            }
             // clear the binding list
             colorBindingSource.Clear();
             sizeBindingSource.Clear();
@@ -1137,6 +1132,35 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             if(dgvDeptStockIn.CurrentCell!=null)
             {
                 Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
+            }
+        }
+
+        private void btnPriceInput_Click(object sender, EventArgs e)
+        {
+            long inputPrice = 0;
+            long price = 0;
+            long wsPrice = 0;
+
+            if (!CheckUtility.IsNullOrEmpty(txtPriceIn.Text))
+            {
+                Int64.TryParse(txtPriceIn.Text.Trim(), out inputPrice);
+            }
+
+            if(!CheckUtility.IsNullOrEmpty(txtPriceOut.Text))
+            {
+                Int64.TryParse(txtPriceOut.Text.Trim(), out price);
+            }
+
+            if (!CheckUtility.IsNullOrEmpty(txtWSPriceOut.Text))
+            {
+                Int64.TryParse(txtWSPriceOut.Text.Trim(), out wsPrice);
+            }
+
+            DataGridViewSelectedRowCollection selectedRows = dgvDeptStockIn.SelectedRows;
+            foreach (DataGridViewRow row in selectedRows)
+            {
+                deptSIDetailList[row.Index].Price = inputPrice;
+                deptSIDetailList[row.Index].SellPrice = price;
             }
         }
     }

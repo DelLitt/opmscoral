@@ -175,6 +175,14 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             ProductMaster prodMaster = list[0] as ProductMaster;
             detail.Product.ProductMaster = prodMaster;
             e.SelectedStockInDetail = detail;
+            ObjectCriteria priceCrit = new ObjectCriteria();
+            DepartmentPricePK pricePk = new DepartmentPricePK
+                                            {
+                                                ProductMasterId = prodMaster.ProductMasterId,
+                                                DepartmentId = 0
+                                            };
+            DepartmentPrice price = DepartmentPriceLogic.FindById(pricePk);
+            e.DepartmentPrice = price;
         }
 
         void _departmentStockInView_LoadGoodsByNameAndColorEvent(object sender, MainStockInEventArgs e)

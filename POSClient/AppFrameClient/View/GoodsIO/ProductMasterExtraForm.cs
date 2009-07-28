@@ -204,7 +204,7 @@ namespace AppFrameClient.View.GoodsIO
                     MessageBox.Show("Hãy chọn loại sản phẩm !");
                     return;
                 }
-                if (Status == ViewStatus.ADD)
+                if (Status == ViewStatus.ADD || Status == ViewStatus.OPENDIALOG )
                 {
                     if (productSizeList.Count == 0 || productColorList.Count == 0)
                     {

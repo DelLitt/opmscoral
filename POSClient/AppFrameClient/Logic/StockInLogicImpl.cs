@@ -177,17 +177,28 @@ namespace AppFrame.Logic
                     var price = DepartmentPriceDAO.FindById(pricePk);
                     if (price == null)
                     {
-                        price = new DepartmentPrice { DepartmentPricePK = pricePk, Price = stockInDetail.SellPrice, UpdateDate = DateTime.Now, CreateDate = DateTime.Now };
+                        price = new DepartmentPrice
+                                    {
+                                        DepartmentPricePK = pricePk, 
+                                        Price = stockInDetail.SellPrice,
+                                        UpdateDate = DateTime.Now, 
+                                        CreateDate = DateTime.Now
+                                    };
+                        if(stockInDetail.DepartmentPrice!=null)
+                        {
+                            price.WholeSalePrice = stockInDetail.DepartmentPrice.WholeSalePrice;
+                        }
                         price.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                         price.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                         DepartmentPriceDAO.Add(price);
                     }
                     else
                     {
+                        // don't need to update price
                         price.Price = stockInDetail.SellPrice;
                         price.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                         price.UpdateDate = DateTime.Now;
-                        DepartmentPriceDAO.Update(price);
+                        //DepartmentPriceDAO.Update(price);
                     }
                 }
             }
