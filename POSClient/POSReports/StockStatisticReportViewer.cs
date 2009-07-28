@@ -60,7 +60,8 @@ namespace POSReports
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             reqFromDate = ZeroTime(ToDate.Value);
             reqToDate = MaxTime(ToDate.Value);
-            
+            stockStatisticBindingSource.RaiseListChangedEvents = false;
+            stockStatisticBindingSource.SuspendBinding();
             Enabled = false;
             backgroundWorker.RunWorkerAsync();
             StartShowProcessing();
@@ -70,6 +71,8 @@ namespace POSReports
         private DateTime reqFromDate, reqToDate;
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            stockStatisticBindingSource.RaiseListChangedEvents = true;
+            stockStatisticBindingSource.ResumeBinding();
             Enabled = true;
             StopShowProcessing();
             reportViewer1.RefreshReport();
