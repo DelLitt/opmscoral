@@ -856,6 +856,9 @@ namespace AppFrameClient.View.GoodsSale
                     btnAdd_Click(this, null);
                     goodsSaleEventArgs.SelectedPurchaseOrderDetail = pODList[pODList.Count - 1] as PurchaseOrderDetail;
                     goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = txtBarcode.Text;
+                    
+                    // don ma
+                    goodsSaleEventArgs.NotAvailableInStock = true;
                     EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
                     // event has been modified

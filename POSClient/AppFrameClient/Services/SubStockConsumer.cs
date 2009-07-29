@@ -69,27 +69,6 @@ namespace AppFrameClient.Services
                     else
                     {
                         Thread.Sleep(100);
-                        /*try
-                        {
-                            // Wait until thread is stopped
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Yêu cầu thông tin ... ";
-                            serverService.RequestDepartmentStockIn(CurrentDepartment.Get().DepartmentId);
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Chờ lệnh ... ";
-                            Thread.Sleep(SleepTime);
-                        }
-                        catch (Exception)
-                        {
-                            if(serverService.State == CommunicationState.Faulted
-                               || serverService.State == CommunicationState.Closed)
-                            {
-                                connected = false;
-                                serverService = null;
-                            }
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Thất bại ... ";
-                            //ClientUtility.Log(logger, ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text);
-                            Thread.Sleep(1000 * 3);
-                            ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Xử lý lại ... ";
-                        }*/
                     }
                 }
                 
@@ -150,25 +129,8 @@ namespace AppFrameClient.Services
         public void NotifyStockInSuccess(Department department, DepartmentStockIn stockIn,long stockOutId)
         {
             GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
-            /*if(stockIn!=null)
-            {*/
-                /*if(stockIn.DepartmentStockInPK.DepartmentId!=CurrentDepartment.Get().DepartmentId)
-                {
-                    return;
-                }
-                ClientUtility.Log(logger, department.DepartmentId + " dang nhan thong tin nhap hang");
-                DepartmentStockInLogic.AddStockInBack(stockIn);*/
-               
-                message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
-                /*serverService.UpdateStockInBackFlag(department, stockIn, stockOutId);*/
-                ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THANH CONG." + stockIn.ToString());    
-            /*}
-            else
-            {
-                ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THAT BAI." + stockIn.ToString());    
-                message.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thất bại!");
-            }*/
-            
+            message.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, "Đã lấy hàng thành công!");
+            ClientUtility.Log(logger, department.DepartmentId + " Nhap lai hang THANH CONG." + stockIn.ToString());    
         }
 
         public void NotifyUpdateStockOutFlag(Department department, DepartmentStockIn stockIn,long stockOutId)
@@ -284,16 +246,33 @@ namespace AppFrameClient.Services
             message.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, " Đơn hàng " + stockId + " truyền thất bại!");
         }
 
-        public void NotifyInformMessage(long destDeptId, bool isError, string message)
+        public static readonly int SUBTODEPT = 1;
+        public static readonly int DEPTTOSUB = 2;
+
+        public void NotifyInformMessage(long destDeptId,int channel, bool isError, string message)
         {
            GlobalMessage globalChannel = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
            if(isError)
            {
-               globalChannel.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT,message);
+               if(channel == SUBTODEPT)
+               {
+                   globalChannel.PublishError(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, message);    
+               }
+               if (channel == DEPTTOSUB)
+               {
+                   globalChannel.PublishError(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, message);
+               }
            }
            else
            {
-               globalChannel.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, message);
+               if (channel == SUBTODEPT)
+               {
+                   globalChannel.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, message);
+               }
+               if (channel == DEPTTOSUB)
+               {
+                   globalChannel.PublishMessage(ChannelConstants.DEPT2SUBSTOCK_STOCKOUT, message);
+               }
            }
         }
 
@@ -305,7 +284,7 @@ namespace AppFrameClient.Services
             lock (this)
             {
                 m_running = false;
-                serverService.Close();
+                serverService = null;
                 ClientUtility.Log(logger, " Close service.");
             }
         }

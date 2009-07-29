@@ -87,11 +87,19 @@ namespace AppFrameClient.Presenter.GoodsSale
                 objectCriteria.AddGreaterCriteria("GoodQuantity", (long) 0);
             }
             IList result = DepartmentStockLogic.FindAll(objectCriteria) ;
-            if(!NotAvailableInStock && (result == null || result.Count == 0))
-            {
-                throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
-            }
             
+            if(!NotAvailableInStock)
+            {
+                if ((result == null || result.Count == 0))
+                {
+                    throw new BusinessException("Mặt hàng này không tồn tại hoặc đã hết !");
+                }
+            }
+
+            if ((result == null || result.Count == 0))
+            {
+                throw new BusinessException("Mặt hàng này không tồn tại !");
+            }
 
             Product product = null;
             bool NeedSwitchPrdId = false;
@@ -99,7 +107,7 @@ namespace AppFrameClient.Presenter.GoodsSale
             {
                 DepartmentStock stock = (DepartmentStock) result[0];
                 product = stock.Product;
-                if(stock.GoodQuantity == 0)
+                if(stock.GoodQuantity <= 0)
                 {
                     NeedSwitchPrdId = true;
                 }
@@ -124,12 +132,11 @@ namespace AppFrameClient.Presenter.GoodsSale
                     IList allStocks = DepartmentStockLogic.FindAll(prdCrit);
                     if(allStocks != null && allStocks.Count > 0)
                     {
-                        SortByProductId(allStocks);
+                        SortByGoodQuantity(allStocks);
                         
                     }
                 }
-            }
-*/
+            }*/
             // END ---- don ma
             /*else
             {
@@ -143,12 +150,34 @@ namespace AppFrameClient.Presenter.GoodsSale
             detail.Product = product;
             detail.ProductMaster = product.ProductMaster;
             DepartmentPrice price = DepartmentPriceLogic.FindById(new DepartmentPricePK { DepartmentId = 0,ProductMasterId = detail.ProductMaster.ProductMasterId} );
-            if (price == null)
+            if (price == null || price.Price == 0 )
             {
-                return;    
+                throw new BusinessException("Giá của mặt hàng " + product.ProductMaster.ProductName + " không có hoặc là 0. Xin kiểm tra lại.");
             }
             detail.Price = price.Price;
             e.SelectedPurchaseOrderDetail = detail;
+        }
+
+        private void SortByGoodQuantity(IList temps)
+        {
+            DepartmentStock stockTemp = null;
+            for (int i = 0; i < temps.Count - 1; i++)
+            {
+                DepartmentStock stockTemp1 = (DepartmentStock)temps[i];
+                long qty1 = stockTemp1.GoodQuantity;
+                for (int j = i + 1; j < temps.Count; j++)
+                {
+                    DepartmentStock stockTemp2 = (DepartmentStock)temps[j];
+                    long qty2 = stockTemp2.GoodQuantity;
+                    if (qty1 > qty2)
+                    {
+                        stockTemp = stockTemp1;
+                        stockTemp1 = stockTemp2;
+                        stockTemp2 = stockTemp;
+                    }
+                }
+
+            }
         }
 
         private void SortByProductId(IList temps)

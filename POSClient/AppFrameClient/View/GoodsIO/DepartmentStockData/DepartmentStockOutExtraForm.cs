@@ -455,7 +455,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             DepartmentStockOutDetail detail = deptSODetailList[selectedIndex];
             if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (detail.StockOutDetailId != 0)
+
+                if (detail.DepartmentStockOutDetailPK.StockOutDetailId != 0)
                 {
                     detail.DelFlg = 1;
                     for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)

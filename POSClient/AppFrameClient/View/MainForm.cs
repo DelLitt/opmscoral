@@ -1203,7 +1203,16 @@ namespace AppFrame.View
 
         private void f12ShortcutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            IList<ToolStripItem> listItem = GetItemVisible(toolStripClient);
+            try
+            {
+                listItem[11].PerformClick();
+            }
+            catch (Exception)
+            {
 
+
+            }
         }
         
     }

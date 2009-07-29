@@ -551,7 +551,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //int selectedIndex = 0;
             //mainStockInEventArgs.SelectedIndex = selectedIndex;
             //mainStockInEventArgs.SelectedStockInDetail = deptSODetailList[selectedIndex];
-            mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail { Product = new Product { ProductMaster = new ProductMaster { ProductName = "" } } };
+            mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail
+                                                                        {
+                                                                            Product = new Product { ProductMaster = new ProductMaster { ProductName = "" } }
+                                                                        };
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
             //EventUtility.fireEvent<DepartmentStockOutEventArgs>(FillProductToComboEvent, cboProductMasters, mainStockInEventArgs);

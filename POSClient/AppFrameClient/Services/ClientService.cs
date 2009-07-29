@@ -54,7 +54,7 @@ namespace AppFrameClient.Services
         DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId, long subStockId);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformMessage")]
-        void InformMessage(long destDeptId, bool isError, string message);
+        void InformMessage(long destDeptId,int channel, bool isError, string message);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/InformDepartmentStockOutSuccess")]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);
@@ -116,7 +116,7 @@ namespace AppFrameClient.Services
         void NotifyStockOutFail(long sourceId, long destId, long stockId);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://localhost:8001/ServerService/NotifyInformMessage")]
-        void NotifyInformMessage(long destDeptId, bool isError, string message);
+        void NotifyInformMessage(long destDeptId,int channel, bool isError, string message);
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
@@ -214,9 +214,9 @@ namespace AppFrameClient.Services
             return base.Channel.MakeAllShoesDepartmentStockInBack(salePointId, subStockId);
         }
 
-        public void InformMessage(long destDeptId, bool isError, string message)
+        public void InformMessage(long destDeptId,int channel, bool isError, string message)
         {
-            base.Channel.InformMessage(destDeptId, isError, message);
+            base.Channel.InformMessage(destDeptId,channel, isError, message);
         }
 
         public void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId)
