@@ -82,7 +82,7 @@ namespace AppFrameServer.Services
         DepartmentStockIn MakeAllShoesDepartmentStockInBack(long salePointId,long subStockId);
 
         [OperationContract(IsOneWay = true)]
-        void InformMessage(long destDeptId, bool isError, string message);
+        void InformMessage(long destDeptId,int channel, bool isError, string message);
 
         [OperationContract(IsOneWay = true)]
         void InformDepartmentStockOutSuccess(long sourceDeptId, long destDeptId, long deptStockId);

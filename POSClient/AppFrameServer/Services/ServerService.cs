@@ -18,6 +18,8 @@ namespace AppFrameServer.Services
         InstanceContextMode = InstanceContextMode.PerCall)]
     public class ServerService : IServerService
     {
+        public static readonly int SUBTODEPT = 1;
+        public static readonly int DEPTTOSUB = 2;
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static List<IDepartmentStockOutCallback> _callbackList = new List<IDepartmentStockOutCallback>();
         private static List<IDepartmentStockOutCallback> _callbackSubStockList = new List<IDepartmentStockOutCallback>();
@@ -120,14 +122,21 @@ namespace AppFrameServer.Services
             return null; 
         }
 
-        public void InformMessage(long destDeptId, bool isError, string message)
+        /// <summary>
+        /// Inform message back to caller
+        /// </summary>
+        /// <param name="destDeptId"></param>
+        /// <param name="channel">1 : Dept Stock Out , 2 : Dept Stock In</param>
+        /// <param name="isError"></param>
+        /// <param name="message"></param>
+        public void InformMessage(long destDeptId,int channel, bool isError, string message)
         {
             _callbackSubStockList.ForEach(
                   delegate(IDepartmentStockOutCallback callback)
                   {
                       try
                       {
-                          callback.NotifyInformMessage(destDeptId,isError,message);
+                          callback.NotifyInformMessage(destDeptId,channel,isError,message);
                       }
                       catch (Exception)
                       {
@@ -333,20 +342,20 @@ namespace AppFrameServer.Services
                 }
                 else
                 {
-                    InformMessage(stockOut.DepartmentStockOutPK.StockOutId, true,
+                    InformMessage(stockOut.DepartmentStockOutPK.StockOutId,SUBTODEPT, true,
                     stockOut.DepartmentStockOutPK.StockOutId + " đã đến " + stockOut.OtherDepartmentId + " trước đó. Không thể truyền lại !");
                     return;
                 }
 
                 DoStockIn(dalSalePoint, department, stockIn, true);
-                InformMessage(stockOut.DepartmentStockOutPK.StockOutId, false,
+                InformMessage(stockOut.DepartmentStockOutPK.StockOutId,SUBTODEPT, false,
                     stockOut.DepartmentStockOutPK.DepartmentId +  " đã truyền "+ stockOut.DepartmentStockOutPK.StockOutId +" xuống " + stockOut.OtherDepartmentId + " thành công !");
             }
             catch (Exception exception)
             {
                 ServerUtility.Log(logger,exception.Message);
                 ServerUtility.Log(logger, exception.StackTrace);
-                InformMessage(stockOut.DepartmentStockOutPK.StockOutId, true,
+                InformMessage(stockOut.DepartmentStockOutPK.StockOutId,SUBTODEPT, true,
                     stockOut.DepartmentStockOutPK.DepartmentId + " đã truyền " + stockOut.DepartmentStockOutPK.StockOutId + " xuống " + stockOut.OtherDepartmentId + " thất bại !");
             }
             #region unused code
@@ -477,6 +486,7 @@ namespace AppFrameServer.Services
                                                   DepartmentId = stockIn.DepartmentStockInPK.DepartmentId
                                               };
                 DoStockIn(dalSubStock, subStockDept, stockIn, false);
+
                 #region unused code
                 /*DepartmentStockOut stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
                 stockOut.DepartmentStockOutPK = new DepartmentStockOutPK();
@@ -586,13 +596,15 @@ namespace AppFrameServer.Services
 
                 }*/
 #endregion
-                InformDepartmentStockInSuccess(department,stockIn,0);
+                InformMessage(subStockDept.DepartmentId, DEPTTOSUB, false, 
+                    subStockDept.DepartmentId + " lấy hàng từ " + 
+                    department.DepartmentId + " thành công !");
             }
             catch (Exception exception)
             {
                 ServerUtility.Log(logger,exception.Message);
                 ServerUtility.Log(logger,exception.StackTrace);
-                InformDepartmentStockInFail(department,stockIn,0);
+                InformMessage(stockIn.DepartmentStockInPK.DepartmentId,DEPTTOSUB,true,exception.Message);
             }
         }
 
