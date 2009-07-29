@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,7 @@ namespace POSReports
         POSReports.posDataSet aSyncDS = new posDataSet();
         private DateTime reqFromDate, reqToDate;
         private int deptId = 0;
+        private Stopwatch watcher = null;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -63,8 +65,6 @@ namespace POSReports
             reqToDate = MaxTime(toDate.Value);
 
             Enabled = false;
-            backgroundWorker.RunWorkerAsync();
-            StartShowProcessing();
             
                 ReportParameter[] parameters = new ReportParameter[1];
 
@@ -92,13 +92,22 @@ namespace POSReports
                         deptStockStatisticBindingSource.Filter += extraFilterStr + " type_name = '" + productType.TypeName + "'";
                     }
                 }
-
+            watcher = new Stopwatch();
+            watcher.Start();
+            deptStockStatisticBindingSource.SuspendBinding();
+            deptStockStatisticBindingSource.RaiseListChangedEvents = false;
+                backgroundWorker.RunWorkerAsync();
+                StartShowProcessing();
         }
 
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            watcher.Stop();
+            this.ShowMessage("Queries executed in " + (watcher.ElapsedMilliseconds/1000).ToString() + " seconds ...");
             Enabled = true;
             StopShowProcessing();
+            deptStockStatisticBindingSource.RaiseListChangedEvents = true;
+            deptStockStatisticBindingSource.ResumeBinding();
             reportViewer1.RefreshReport(); 
         }
 
