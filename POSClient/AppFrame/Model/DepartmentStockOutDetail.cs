@@ -39,9 +39,12 @@ namespace AppFrame.Model
         #endregion
 
         #region Public Properties
+        
         [DataMember]
-        public virtual Int64 StockOutDetailId { get; set; }
-		//public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
+        public virtual DepartmentStockOutDetailPK DepartmentStockOutDetailPK { get; set; }
+        //public virtual Int64 StockOutDetailId { get; set; }
+		
+
         [DataMember]
         public virtual Int64 GoodQuantity { get; set; }
         [DataMember]

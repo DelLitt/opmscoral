@@ -7,17 +7,13 @@ namespace AppFrame.Model
     [Serializable]
     public class DepartmentStockOutDetailPK
     {
-        public virtual Int64 StockOutId
-        {
-            get;
-            set;
-        }
+        
         public virtual Int64 DepartmentId
         {
             get;
             set;
         }
-        public virtual string ProductId
+        public virtual long StockOutDetailId
         {
             get;
             set;

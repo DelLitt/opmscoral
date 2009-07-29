@@ -25,13 +25,27 @@
             length="10">
         </key-property>
     </composite-id>-->
-  <id
+  <composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
+    <key-property
+            name="StockOutDetailId"
+            column="STOCK_OUT_ID"
+            type="Int64"
+            length="10">
+    </key-property>
+    <key-property
+            name="DepartmentId"
+            column="DEPARTMENT_ID"
+            type="Int64"
+            length="10">
+    </key-property>
+  </composite-id>  
+  <!--<id
        name="StockOutDetailId"
        type="Int64"
        column="STOCK_OUT_DETAIL_ID"
     >
     <generator class="assigned" />
-  </id>
+  </id>-->
     <property
         name="Quantity"
         type="Int64"
