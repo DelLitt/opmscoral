@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,8 +52,8 @@ namespace POSReports
                 999);
         }
 
-        
-        
+
+        private Stopwatch watcher = null;
         private void button1_Click(object sender, EventArgs e)
         {           
             BackgroundWorker backgroundWorker = new BackgroundWorker();
@@ -63,6 +64,8 @@ namespace POSReports
             stockStatisticBindingSource.RaiseListChangedEvents = false;
             stockStatisticBindingSource.SuspendBinding();
             Enabled = false;
+            watcher = new Stopwatch();
+            watcher.Start();
             backgroundWorker.RunWorkerAsync();
             StartShowProcessing();
             
@@ -71,6 +74,8 @@ namespace POSReports
         private DateTime reqFromDate, reqToDate;
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            watcher.Stop();
+            ShowMessage("Queries run in " + watcher.ElapsedMilliseconds/ 1000 + " seconds ..");
             stockStatisticBindingSource.RaiseListChangedEvents = true;
             stockStatisticBindingSource.ResumeBinding();
             Enabled = true;
