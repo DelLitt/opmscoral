@@ -2743,17 +2743,7 @@ namespace POSReports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class StockStatisticDataTable : global::System.Data.TypedTableBase<StockStatisticRow> {
             
-            private global::System.Data.DataColumn columntype_name;
-            
-            private global::System.Data.DataColumn columnproduct_id;
-            
-            private global::System.Data.DataColumn columnproduct_name;
-            
             private global::System.Data.DataColumn columnerror_qty;
-            
-            private global::System.Data.DataColumn columncolor_name;
-            
-            private global::System.Data.DataColumn columnsize_name;
             
             private global::System.Data.DataColumn columnprestk_qty;
             
@@ -2772,6 +2762,14 @@ namespace POSReports {
             private global::System.Data.DataColumn columnrealstock;
             
             private global::System.Data.DataColumn columnmainrtnqty;
+            
+            private global::System.Data.DataColumn columnTYPE_NAME;
+            
+            private global::System.Data.DataColumn columnPRODUCT_ID;
+            
+            private global::System.Data.DataColumn columnCOLOR_NAME;
+            
+            private global::System.Data.DataColumn columnSIZE_NAME;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public StockStatisticDataTable() {
@@ -2804,44 +2802,9 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn type_nameColumn {
-                get {
-                    return this.columntype_name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn product_idColumn {
-                get {
-                    return this.columnproduct_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn product_nameColumn {
-                get {
-                    return this.columnproduct_name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn error_qtyColumn {
                 get {
                     return this.columnerror_qty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn color_nameColumn {
-                get {
-                    return this.columncolor_name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn size_nameColumn {
-                get {
-                    return this.columnsize_name;
                 }
             }
             
@@ -2909,6 +2872,34 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TYPE_NAMEColumn {
+                get {
+                    return this.columnTYPE_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PRODUCT_IDColumn {
+                get {
+                    return this.columnPRODUCT_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn COLOR_NAMEColumn {
+                get {
+                    return this.columnCOLOR_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SIZE_NAMEColumn {
+                get {
+                    return this.columnSIZE_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2937,15 +2928,10 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public StockStatisticRow AddStockStatisticRow(string type_name, string product_id, string product_name, decimal error_qty, string color_name, string size_name, decimal prestk_qty, decimal instock_qty, decimal dmg_qty, decimal stkout_qty, decimal tmpout_qty, decimal rtn_qty, decimal destroy_qty, decimal realstock, decimal mainrtnqty) {
+            public StockStatisticRow AddStockStatisticRow(decimal error_qty, decimal prestk_qty, decimal instock_qty, decimal dmg_qty, decimal stkout_qty, decimal tmpout_qty, decimal rtn_qty, decimal destroy_qty, decimal realstock, decimal mainrtnqty, string TYPE_NAME, string PRODUCT_ID, string COLOR_NAME, string SIZE_NAME) {
                 StockStatisticRow rowStockStatisticRow = ((StockStatisticRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        type_name,
-                        product_id,
-                        product_name,
                         error_qty,
-                        color_name,
-                        size_name,
                         prestk_qty,
                         instock_qty,
                         dmg_qty,
@@ -2954,7 +2940,11 @@ namespace POSReports {
                         rtn_qty,
                         destroy_qty,
                         realstock,
-                        mainrtnqty};
+                        mainrtnqty,
+                        TYPE_NAME,
+                        PRODUCT_ID,
+                        COLOR_NAME,
+                        SIZE_NAME};
                 rowStockStatisticRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStockStatisticRow);
                 return rowStockStatisticRow;
@@ -2974,12 +2964,7 @@ namespace POSReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
-                this.columntype_name = base.Columns["type_name"];
-                this.columnproduct_id = base.Columns["product_id"];
-                this.columnproduct_name = base.Columns["product_name"];
                 this.columnerror_qty = base.Columns["error_qty"];
-                this.columncolor_name = base.Columns["color_name"];
-                this.columnsize_name = base.Columns["size_name"];
                 this.columnprestk_qty = base.Columns["prestk_qty"];
                 this.columninstock_qty = base.Columns["instock_qty"];
                 this.columndmg_qty = base.Columns["dmg_qty"];
@@ -2989,22 +2974,16 @@ namespace POSReports {
                 this.columndestroy_qty = base.Columns["destroy_qty"];
                 this.columnrealstock = base.Columns["realstock"];
                 this.columnmainrtnqty = base.Columns["mainrtnqty"];
+                this.columnTYPE_NAME = base.Columns["TYPE_NAME"];
+                this.columnPRODUCT_ID = base.Columns["PRODUCT_ID"];
+                this.columnCOLOR_NAME = base.Columns["COLOR_NAME"];
+                this.columnSIZE_NAME = base.Columns["SIZE_NAME"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
-                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntype_name);
-                this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnproduct_id);
-                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnproduct_name);
                 this.columnerror_qty = new global::System.Data.DataColumn("error_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnerror_qty);
-                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncolor_name);
-                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsize_name);
                 this.columnprestk_qty = new global::System.Data.DataColumn("prestk_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprestk_qty);
                 this.columninstock_qty = new global::System.Data.DataColumn("instock_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -3023,12 +3002,19 @@ namespace POSReports {
                 base.Columns.Add(this.columnrealstock);
                 this.columnmainrtnqty = new global::System.Data.DataColumn("mainrtnqty", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmainrtnqty);
-                this.columntype_name.MaxLength = 500;
-                this.columnproduct_id.AllowDBNull = false;
-                this.columnproduct_id.MaxLength = 20;
-                this.columnproduct_name.MaxLength = 500;
-                this.columncolor_name.MaxLength = 500;
-                this.columnsize_name.MaxLength = 500;
+                this.columnTYPE_NAME = new global::System.Data.DataColumn("TYPE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTYPE_NAME);
+                this.columnPRODUCT_ID = new global::System.Data.DataColumn("PRODUCT_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRODUCT_ID);
+                this.columnCOLOR_NAME = new global::System.Data.DataColumn("COLOR_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOLOR_NAME);
+                this.columnSIZE_NAME = new global::System.Data.DataColumn("SIZE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSIZE_NAME);
+                this.columnTYPE_NAME.MaxLength = 500;
+                this.columnPRODUCT_ID.AllowDBNull = false;
+                this.columnPRODUCT_ID.MaxLength = 20;
+                this.columnCOLOR_NAME.MaxLength = 500;
+                this.columnSIZE_NAME.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11793,46 +11779,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string type_name {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockStatistic.type_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'StockStatistic\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockStatistic.type_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string product_id {
-                get {
-                    return ((string)(this[this.tableStockStatistic.product_idColumn]));
-                }
-                set {
-                    this[this.tableStockStatistic.product_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string product_name {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockStatistic.product_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'StockStatistic\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockStatistic.product_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public decimal error_qty {
                 get {
                     try {
@@ -11844,36 +11790,6 @@ namespace POSReports {
                 }
                 set {
                     this[this.tableStockStatistic.error_qtyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string color_name {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockStatistic.color_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'StockStatistic\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockStatistic.color_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string size_name {
-                get {
-                    try {
-                        return ((string)(this[this.tableStockStatistic.size_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'StockStatistic\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStockStatistic.size_nameColumn] = value;
                 }
             }
             
@@ -12013,23 +11929,58 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Istype_nameNull() {
-                return this.IsNull(this.tableStockStatistic.type_nameColumn);
+            public string TYPE_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockStatistic.TYPE_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TYPE_NAME\' in table \'StockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockStatistic.TYPE_NAMEColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Settype_nameNull() {
-                this[this.tableStockStatistic.type_nameColumn] = global::System.Convert.DBNull;
+            public string PRODUCT_ID {
+                get {
+                    return ((string)(this[this.tableStockStatistic.PRODUCT_IDColumn]));
+                }
+                set {
+                    this[this.tableStockStatistic.PRODUCT_IDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Isproduct_nameNull() {
-                return this.IsNull(this.tableStockStatistic.product_nameColumn);
+            public string COLOR_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockStatistic.COLOR_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'COLOR_NAME\' in table \'StockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockStatistic.COLOR_NAMEColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Setproduct_nameNull() {
-                this[this.tableStockStatistic.product_nameColumn] = global::System.Convert.DBNull;
+            public string SIZE_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockStatistic.SIZE_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SIZE_NAME\' in table \'StockStatistic\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockStatistic.SIZE_NAMEColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12040,26 +11991,6 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Seterror_qtyNull() {
                 this[this.tableStockStatistic.error_qtyColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Iscolor_nameNull() {
-                return this.IsNull(this.tableStockStatistic.color_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Setcolor_nameNull() {
-                this[this.tableStockStatistic.color_nameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Issize_nameNull() {
-                return this.IsNull(this.tableStockStatistic.size_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Setsize_nameNull() {
-                this[this.tableStockStatistic.size_nameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12150,6 +12081,36 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetmainrtnqtyNull() {
                 this[this.tableStockStatistic.mainrtnqtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTYPE_NAMENull() {
+                return this.IsNull(this.tableStockStatistic.TYPE_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTYPE_NAMENull() {
+                this[this.tableStockStatistic.TYPE_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCOLOR_NAMENull() {
+                return this.IsNull(this.tableStockStatistic.COLOR_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCOLOR_NAMENull() {
+                this[this.tableStockStatistic.COLOR_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSIZE_NAMENull() {
+                return this.IsNull(this.tableStockStatistic.SIZE_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSIZE_NAMENull() {
+                this[this.tableStockStatistic.SIZE_NAMEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -19397,12 +19358,7 @@ ORDER BY so.STOCK_OUT_DATE";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "StockStatistic";
-            tableMapping.ColumnMappings.Add("type_name", "type_name");
-            tableMapping.ColumnMappings.Add("product_id", "product_id");
-            tableMapping.ColumnMappings.Add("product_name", "product_name");
             tableMapping.ColumnMappings.Add("error_qty", "error_qty");
-            tableMapping.ColumnMappings.Add("color_name", "color_name");
-            tableMapping.ColumnMappings.Add("size_name", "size_name");
             tableMapping.ColumnMappings.Add("prestk_qty", "prestk_qty");
             tableMapping.ColumnMappings.Add("instock_qty", "instock_qty");
             tableMapping.ColumnMappings.Add("dmg_qty", "dmg_qty");
@@ -19412,6 +19368,10 @@ ORDER BY so.STOCK_OUT_DATE";
             tableMapping.ColumnMappings.Add("destroy_qty", "destroy_qty");
             tableMapping.ColumnMappings.Add("realstock", "realstock");
             tableMapping.ColumnMappings.Add("mainrtnqty", "mainrtnqty");
+            tableMapping.ColumnMappings.Add("TYPE_NAME", "TYPE_NAME");
+            tableMapping.ColumnMappings.Add("PRODUCT_ID", "PRODUCT_ID");
+            tableMapping.ColumnMappings.Add("COLOR_NAME", "COLOR_NAME");
+            tableMapping.ColumnMappings.Add("SIZE_NAME", "SIZE_NAME");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -19426,7 +19386,7 @@ ORDER BY so.STOCK_OUT_DATE";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "`pos`.`StockStatistic`";
+            this._commandCollection[0].CommandText = "`pos`.`MOA`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "FromDate";
