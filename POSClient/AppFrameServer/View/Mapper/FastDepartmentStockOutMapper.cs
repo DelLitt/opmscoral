@@ -32,6 +32,7 @@ namespace AppFrameServer.View.Mapper
             foreach (DepartmentStockInDetail stockInDetail in source.DepartmentStockInDetails)
             {
                 DepartmentStockOutDetail outDetail = new DepartmentStockOutDetail();
+                outDetail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK();
                 outDetail.CreateDate = DateTime.Now;
                 outDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                 outDetail.UpdateDate = DateTime.Now;
