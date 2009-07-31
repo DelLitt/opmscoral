@@ -28,7 +28,7 @@
   <composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
     <key-property
             name="StockOutDetailId"
-            column="STOCK_OUT_ID"
+            column="STOCK_OUT_DETAIL_ID"
             type="Int64"
             length="10">
     </key-property>
@@ -46,85 +46,91 @@
     >
     <generator class="assigned" />
   </id>-->
-    <property
-        name="Quantity"
-        type="Int64"
-        column="QUANTITY"
-        length="10"
+  <property
+            name="StockOutId"
+            column="STOCK_OUT_ID"
+            type="Int64"
+            length="10">
+  </property>
+  <property
+      name="Quantity"
+      type="Int64"
+      column="QUANTITY"
+      length="10"
     >
-    </property>
-    <property
-        name="Description"
-        type="string"
-        column="DESCRIPTION"
-        length="5000"
+  </property>
+  <property
+      name="Description"
+      type="string"
+      column="DESCRIPTION"
+      length="5000"
     >
-    </property>
-    <property
-        name="CreateDate"
-        type="DateTime"
-        column="CREATE_DATE"
-        length="19"
+  </property>
+  <property
+      name="CreateDate"
+      type="DateTime"
+      column="CREATE_DATE"
+      length="19"
     >
-    </property>
-    <property
-        name="CreateId"
-        type="string"
-        column="CREATE_ID"
-        length="50"
+  </property>
+  <property
+      name="CreateId"
+      type="string"
+      column="CREATE_ID"
+      length="50"
     >
-    </property>
-    <property
-        name="UpdateDate"
-        type="DateTime"
-        column="UPDATE_DATE"
-        length="19"
+  </property>
+  <property
+      name="UpdateDate"
+      type="DateTime"
+      column="UPDATE_DATE"
+      length="19"
     >
-    </property>
-    <property
-        name="UpdateId"
-        type="string"
-        column="UPDATE_ID"
-        length="50"
+  </property>
+  <property
+      name="UpdateId"
+      type="string"
+      column="UPDATE_ID"
+      length="50"
     >
-    </property>
-    <property
-        name="ExclusiveKey"
-        type="Int64"
-        column="EXCLUSIVE_KEY"
-        length="10"
+  </property>
+  <property
+      name="ExclusiveKey"
+      type="Int64"
+      column="EXCLUSIVE_KEY"
+      length="10"
     >
-    </property>
-    <property
-        name="DelFlg"
-        type="Int64"
-        column="DEL_FLG"
-        length="10"
+  </property>
+  <property
+      name="DelFlg"
+      type="Int64"
+      column="DEL_FLG"
+      length="10"
     >
-    </property>
+  </property>
 
-    <!-- Associations -->
-    <!-- derived association(s) for compound key -->
-    <!-- bi-directional many-to-one association to DepartmentStockOut -->
-    <many-to-one
+  <!-- Associations -->
+  <!-- derived association(s) for compound key -->
+  <!-- bi-directional many-to-one association to DepartmentStockOut -->
+  <!--<many-to-one
         name="DepartmentStockOut"
 	    class="DepartmentStockOut"
       lazy="false"        
 	>
     	<column name="STOCK_OUT_ID" />
     	<column name="DEPARTMENT_ID" />
-	</many-to-one>
-	
-    <!-- bi-directional many-to-one association to Product -->
-    <many-to-one
-        name="Product"
-	    class="Product"	 
-      lazy="false"   
+	</many-to-one>-->
+
+  <!-- bi-directional many-to-one association to Product -->
+  <many-to-one
+      name="Product"
+    class="Product"
+    lazy="false"
 	>
-    	<column name="PRODUCT_ID" />
-	</many-to-one>
-	
-    <!-- end of derived association(s) -->
+    <column name="PRODUCT_ID" />
+  </many-to-one>
+
+  <!-- end of derived association(s) -->
 
   <many-to-one
   name="ProductMaster"
@@ -133,7 +139,7 @@ lazy="false"
 	>
     <column name="PRODUCT_MASTER_ID" />
   </many-to-one>
-  
+
   <property
          name="GoodQuantity"
          type="Int64"
@@ -172,9 +178,10 @@ lazy="false"
   <many-to-one
    name="DefectStatus"
    class="StockDefectStatus"
-   lazy="false" 
+   lazy="false"
     >
     <column name="DEFECT_STATUS_ID" />
   </many-to-one>
+
 </class>
 </hibernate-mapping>
