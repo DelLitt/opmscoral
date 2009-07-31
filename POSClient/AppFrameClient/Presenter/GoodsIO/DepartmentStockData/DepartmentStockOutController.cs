@@ -216,6 +216,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             foreach (DepartmentStock stock in list)
             {
                 DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+                detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK
+                                                        {
+                                                            DepartmentId = CurrentDepartment.Get().DepartmentId
+                                                        };
                 detail.Product = stock.Product;
                 detail.GoodQuantity = stock.GoodQuantity;
                 detail.ErrorQuantity = stock.ErrorQuantity;
@@ -299,6 +303,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
             DepartmentStock stock = list[0] as DepartmentStock;
             e.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail();
+            e.SelectedDepartmentStockOutDetail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK
+                                                                                {
+                                                                                    DepartmentId = CurrentDepartment.Get().DepartmentId
+                                                                                };
             e.SelectedDepartmentStockOutDetail.Product = stock.Product;
             e.SelectedDepartmentStockOutDetail.Quantity = stock.Quantity;
             e.SelectedDepartmentStockOutDetail.GoodQuantity = stock.Quantity;
@@ -339,10 +347,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                             }
                             else
                             {
-                                if (detail.DepartmentPrice.Price == 0)
+                                if (ClientSetting.IsSubStock())
                                 {
-                                    e.EventResult = " Error !";
-                                    throw new BusinessException(" Giá lẻ của " + detail.Product.ProductMaster.ProductName + " là 0 ?!");
+                                    if (detail.DepartmentPrice.Price == 0)
+                                    {
+                                        e.EventResult = null;
+                                        throw new BusinessException(" Giá lẻ của " +
+                                                                    detail.Product.ProductMaster.ProductName +
+                                                                    " là 0 ?!");
+                                    }
                                 }
                                 detail.Description = detail.DepartmentPrice.Price.ToString();
                             }

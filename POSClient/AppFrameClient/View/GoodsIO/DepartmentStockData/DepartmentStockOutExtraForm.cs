@@ -870,6 +870,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var mainStockInEventArgs = new DepartmentStockOutEventArgs();
             mainStockInEventArgs.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail();
+            mainStockInEventArgs.SelectedDepartmentStockOutDetail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK
+                                                                                                   {
+                                                                                                       DepartmentId = CurrentDepartment.Get().DepartmentId
+                                                                                                   };
             mainStockInEventArgs.SelectedDepartmentStockOutDetail.Product = new Product { ProductMaster = new ProductMaster() };
             mainStockInEventArgs.SelectedDepartmentStockOutDetail.Product.ProductMaster.ProductName = productName;
             EventUtility.fireEvent(LoadGoodsByNameEvent, this, mainStockInEventArgs);

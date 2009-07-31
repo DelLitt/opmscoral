@@ -159,7 +159,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     DepartmentStock defect = deptStockDefectList[row.Index];
                     DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
-
+                    detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK();
                     detail.Product = defect.Product;
                     detail.ProductMaster = defect.ProductMaster;
                     detail.Quantity = defect.ErrorQuantity;
@@ -202,6 +202,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     DepartmentStock defect = deptStockDefectList[row.Index];
                     DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+                    detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK();
                     detail.Product = defect.Product;
                     detail.ProductMaster = defect.ProductMaster;
                     detail.ErrorQuantity = defect.ErrorQuantity;
@@ -243,6 +244,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     DepartmentStock defect = deptStockDefectList[row.Index];
                     DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
+                    detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK();
                     detail.Product = defect.Product;
                     detail.ProductMaster = defect.ProductMaster;
                     detail.LostQuantity = defect.LostQuantity;
