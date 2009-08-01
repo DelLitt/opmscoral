@@ -167,10 +167,11 @@ namespace AppFrame.Model
             {
                 return false;
             }
-            ProductColor color = (ProductColor)this;
-            ProductColor compareColor = (ProductColor)obj;
-            return color.ColorId == compareColor.ColorId;
-            
+            if (ColorName == null)
+            {
+                return base.Equals(obj);
+            }
+            return ColorName.Equals((obj as ProductColor).ColorName);
         }
 
 		// override object.GetHashCode

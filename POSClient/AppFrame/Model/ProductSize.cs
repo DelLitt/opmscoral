@@ -159,7 +159,12 @@ namespace AppFrame.Model
             {
                 return false;
             }
-            return base.Equals(obj);
+
+            if (SizeName == null)
+            {
+                return base.Equals(obj);
+            }
+            return SizeName.Equals((obj as ProductSize).SizeName);
             
         }
 

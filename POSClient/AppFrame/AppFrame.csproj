@@ -251,8 +251,17 @@
     <Compile Include="Controls\DataGridViewNotNullTextBoxColumn.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DisableListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\HotKey\SystemHotkey.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CoralListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CoralListBox.Designer.cs">
+      <DependentUpon>CoralListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Win32.cs" />
     <Compile Include="Controls\NumberTextBox.cs">
@@ -793,6 +802,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CoralMessageBox.resx">
       <DependentUpon>CoralMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CoralListBox.resx">
+      <DependentUpon>CoralListBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\StockHistory.hbm.xml" />
     <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
