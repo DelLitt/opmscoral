@@ -181,5 +181,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             Close();
         }
+
+        private void MainStockInSearchForm_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

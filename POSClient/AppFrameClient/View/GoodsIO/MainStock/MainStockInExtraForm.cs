@@ -744,61 +744,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 priceStr = "Giá" + eventArgs.DepartmentPrice.Price.ToString("#,##", CultureInfo.CreateSpecificCulture("de-DE"));
             }
-            /*var code39 = new Code39
-                          {
-                         FontFamilyName = "Free 3 of 9 Extended",
-                         //2.FontFamilyName = "MW6 Code39MT",
-                         //3.FontFamilyName = "MW6 Code39S",
-                         //4.FontFamilyName = "MW6 Code39LT",
-                         //5.FontFamilyName = "Code EAN13",
-                         FontFileName = "Common\\FRE3OF9X.TTF",
-                         //2.FontFileName = "Common\\MW6Code39MT.TTF",
-                         //3.FontFileName = "Common\\MW6Code39S.TTF",
-                         //4.FontFileName = "Common\\MW6Code39LT.TTF",
-                         //5.FontFileName = "Common\\ean13.ttf",
-                         ShowCodeString = true,
-                         FontSize = 25,
-                         Title = "Giá " + priceStr + " VND"
-                        };
-
-            var codeGen = code39.GenerateBarcode("*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId+ "*");*/
-            /*var setting = new Code39Settings();
-            setting.BarCodeHeight = 50;
-            setting.DrawText = true;
-            var code39Ex = new Code39Ex(deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId,
-                setting);*/
-
-
-            /*BarcodeX codeGen = new BarcodeX();
-            codeGen.Title = priceStr.ToUpper();
-            codeGen.Font = new Font("Arial", (float)12, FontStyle.Regular);
-            codeGen.Data = "*" + deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductId + "*";
-            codeGen.Width = (int)(1.25 * 150);
-            codeGen.Height = (int)(0.75 * 150);
-            codeGen.Symbology = bcType.Code39;
-            codeGen.ShowText = true;
-
-            for (int i = 0; i < numberToPrint; i++)
-            {
-                System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, (i / 3) * 100, (int)(1.25 * 100), (int)(0.75 * 100));
-                //(i % 3) * 124, (i / 3) * 87, 117, 79 
-                e.Graphics.DrawImage(codeGen.Image((int)((float)1.25 * e.Graphics.DpiX), (int)((float)0.75 * e.Graphics.DpiY)), rc);
-
-                //e.HasMorePages=false;
-                //e.Graphics.DrawImageUnscaled(codeGen.Image(codeGen.Width,codeGen.Height));
-            }*/
+            
         }
         private void LoadProductMasterToComboBox()
         {
             var mainStockInEventArgs = new MainStockInEventArgs();
-            /*if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
-            {
-                return;
-            }*/
-            // selectectIndex is the firstrow
-            //int selectedIndex = 0;
-            //mainStockInEventArgs.SelectedIndex = selectedIndex;
-            //mainStockInEventArgs.SelectedStockInDetail = deptSIDetailList[selectedIndex];
             mainStockInEventArgs.SelectedStockInDetail = new StockInDetail{Product = new Product{ProductMaster = new ProductMaster{ProductName = ""}}};
             mainStockInEventArgs.IsFillToComboBox = true;
             mainStockInEventArgs.ComboBoxDisplayMember = "ProductName";
