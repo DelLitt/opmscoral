@@ -542,6 +542,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             // lstProductColors
             // 
+            this.lstProductColors.DataSource = this.bdsColors;
             this.lstProductColors.DisabledRows = ((System.Collections.IList)(resources.GetObject("lstProductColors.DisabledRows")));
             this.lstProductColors.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstProductColors.FormattingEnabled = true;
@@ -552,6 +553,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             // lstProductSizes
             // 
+            this.lstProductSizes.DataSource = this.bdsSizes;
             this.lstProductSizes.DisabledRows = ((System.Collections.IList)(resources.GetObject("lstProductSizes.DisabledRows")));
             this.lstProductSizes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstProductSizes.FormattingEnabled = true;
