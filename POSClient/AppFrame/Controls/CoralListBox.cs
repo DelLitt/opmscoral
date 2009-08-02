@@ -250,7 +250,7 @@ namespace Rafael.Windows.Forms.ListBox
             return this.Height / this.ItemHeight;
         }
 
-        private IList EnabledItems
+        public IList EnabledItems
         {
             get
             {
@@ -356,6 +356,7 @@ namespace Rafael.Windows.Forms.ListBox
             }
         }
 
+        
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
             Color color = EnabledItemColor;
@@ -416,20 +417,7 @@ namespace Rafael.Windows.Forms.ListBox
                     }
                     else
                     {
-                        e.DrawBackground();
-                        //Create the list of disabled items
-                        object obj = this.Items[e.Index];
-                        // Draw the current item text based on the current Font and the custom brush settings.
-                        e.Graphics.DrawString(GetItemText(Items[e.Index]), e.Font, Brushes.Black, e.Bounds,
-                                              StringFormat.GenericDefault);
-                        //If the selected item is a disabled item dont select it
-                        if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                        {
-                            if (!ExistInDisabledList(_disabledList, obj))
-                            {
-                                e.DrawFocusRectangle();
-                            }
-                        } 
+                        // do nuthin ... 
                     }
                 
                 #region unused code
