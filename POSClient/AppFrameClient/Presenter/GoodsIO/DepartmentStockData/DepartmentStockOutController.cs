@@ -204,7 +204,11 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             
             //criteria.AddSearchInCriteria("Product.ProductMaster.ProductMasterId", productMasterIds);
             //criteria.AddSubCriteria("Product", new SubObjectCriteria("ProductMaster").AddSearchInCriteria("ProductMasterId", productMasterIds));
-            IList list = DepartmentStockLogic.FindAllInProductMasterId(productMasterIds);
+            SubObjectCriteria subObjectCriteria = new SubObjectCriteria("Product");
+            subObjectCriteria.AddSearchInCriteria("ProductMaster", e.SelectedProductMasterList);
+            criteria.AddSubCriteria("Product",subObjectCriteria);
+            //IList list = DepartmentStockLogic.FindAllInProductMasterId(productMasterIds);
+            IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)
             {
                 return;
