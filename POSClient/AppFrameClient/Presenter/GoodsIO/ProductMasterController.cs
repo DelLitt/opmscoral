@@ -87,10 +87,10 @@ namespace AppFrameClient.Presenter.GoodsIO
                 criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("ProductName", e.ProductMasterForInit.ProductName);
                 criteria.AddEqCriteria("ProductType", e.ProductMasterForInit.ProductType);
-                criteria.AddEqCriteria("Manufacturer", e.ProductMasterForInit.Manufacturer);
+                /*criteria.AddEqCriteria("Manufacturer", e.ProductMasterForInit.Manufacturer);
                 criteria.AddEqCriteria("Distributor", e.ProductMasterForInit.Distributor);
                 criteria.AddEqCriteria("Packager", e.ProductMasterForInit.Packager);
-                criteria.AddEqCriteria("Country", e.ProductMasterForInit.Country);
+                criteria.AddEqCriteria("Country", e.ProductMasterForInit.Country);*/
 
                 e.SameProductMasterList = ProductMasterLogic.FindAll(criteria);
             }

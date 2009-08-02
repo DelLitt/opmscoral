@@ -63,6 +63,12 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductSizeList.RemoveAt(0);
                 sizeBindingSource.DataSource = eventArgs.ProductSizeList;
+                IList disabledSizeList = new ArrayList();
+                foreach (ProductSize productSize in eventArgs.ProductSizeList)
+                {
+                    disabledSizeList.Add(productSize);
+                }
+                lstProductSizes.DisabledRows = disabledSizeList;
             }
             //productMasterControl.cbbProductSize.DisplayMember = "SizeName";
 
@@ -70,6 +76,12 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductColorList.RemoveAt(0);
                 colorBindingSource.DataSource = eventArgs.ProductColorList;
+                IList disabledColorList = new ArrayList();
+                foreach (ProductColor productColor in eventArgs.ProductColorList)
+                {
+                    disabledColorList.Add(productColor);
+                }
+                lstProductColors.DisabledRows = disabledColorList;
             }
             //productMasterControl.cbbProductColor.DisplayMember = "ColorName";
 
@@ -85,6 +97,168 @@ namespace AppFrameClient.View.GoodsIO
             packagerBindingSource.DataSource = eventArgs.PackagerList;
             cbbPackager.DisplayMember = "PackagerName";
 
+            if (ProductMaster != null)
+            {
+                OldColorList = new ArrayList();
+                OldSizeList = new ArrayList();
+                txtDescription.Text = ProductMaster.Description;
+                txtProductMasterId.Text = ProductMaster.ProductMasterId;
+                txtProductName.Text = ProductMaster.ProductName;
+                int i = 0;
+                if (ProductMaster.Country != null)
+                {
+                    foreach (Country country in eventArgs.CountryList)
+                    {
+                        if (country.CountryId == ProductMaster.Country.CountryId)
+                        {
+                            cbbCountry.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                cbbCountry.Enabled = false;
+
+                i = 0;
+                if (ProductMaster.Distributor != null)
+                {
+                    foreach (Distributor distributor in eventArgs.DistributorList)
+                    {
+                        if (distributor.DistributorId == ProductMaster.Distributor.DistributorId)
+                        {
+                            cbbDistributor.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                cbbDistributor.Enabled = false;
+
+                i = 0;
+                if (ProductMaster.ProductType != null)
+                {
+                    foreach (ProductType productType in eventArgs.ProductTypeList)
+                    {
+                        if (productType.TypeId == ProductMaster.ProductType.TypeId)
+                        {
+                            cbbProductType.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                cbbProductType.Enabled = false;
+
+                i = 0;
+                if (ProductMaster.Manufacturer != null)
+                {
+                    foreach (Manufacturer manufacturer in eventArgs.ManufacturerList)
+                    {
+                        if (manufacturer.ManufacturerId == ProductMaster.Manufacturer.ManufacturerId)
+                        {
+                            cbbManufacturer.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                cbbManufacturer.Enabled = false;
+
+                i = 0;
+                if (ProductMaster.Packager != null)
+                {
+                    foreach (Packager packager in eventArgs.PackagerList)
+                    {
+                        if (packager.PackagerId == ProductMaster.Packager.PackagerId)
+                        {
+                            cbbPackager.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                cbbPackager.Enabled = false;
+
+                i = 0;
+                if (ProductMaster.Packager != null)
+                {
+                    foreach (Packager packager in eventArgs.PackagerList)
+                    {
+                        if (packager.PackagerId == ProductMaster.Packager.PackagerId)
+                        {
+                            cbbPackager.SelectedIndex = i;
+                        }
+                        i++;
+                    }
+                }
+                if (eventArgs.SameProductMasterList != null && eventArgs.SameProductMasterList.Count > 0)
+                {
+                    IList existColorList = new ArrayList();
+                    IList existSizeList = new ArrayList();
+
+                    foreach (ProductMaster master in eventArgs.SameProductMasterList)
+                    {
+                        existColorList.Add(master.ProductColor);
+                        existSizeList.Add(master.ProductSize);
+                        
+                        #region unused code
+                        i = 0;
+                        foreach (ProductColor color in eventArgs.ProductColorList)
+                        {
+                            if (master.ProductColor != null && master.ProductColor.ColorId == color.ColorId)
+                            {
+                                productMasterControl.lbxProductColor.SetSelected(i, true);
+                                bool add = true;
+                                foreach (ProductColor oldColor in OldColorList)
+                                {
+                                    if (oldColor.ColorId == master.ProductColor.ColorId)
+                                    {
+                                        add = false;
+                                        break;
+                                    }
+                                }
+                                if (add)
+                                {
+                                    OldColorList.Add(master.ProductColor);
+                                }
+                                break;
+                            }
+                            i++;
+                        }
+
+                        i = 0;
+                        foreach (ProductSize size in eventArgs.ProductSizeList)
+                        {
+                            if (master.ProductSize != null && master.ProductSize.SizeId == size.SizeId)
+                            {
+                                productMasterControl.lbxProductSize.SetSelected(i, true);
+                                bool add = true;
+                                foreach (ProductSize oldSize in OldSizeList)
+                                {
+                                    if (oldSize.SizeId == master.ProductSize.SizeId)
+                                    {
+                                        add = false;
+                                        break;
+                                    }
+                                }
+                                if (add)
+                                {
+                                    OldSizeList.Add(master.ProductSize);
+                                }
+                                break;
+                            }
+                            i++;
+                        }
+                        #endregion
+                    }
+                    colorBindingSource.DataSource = existColorList;
+                    sizeBindingSource.DataSource = existSizeList;
+                }
+
+                btnCreateCountry.Enabled = false;
+                btnCreateDistributor.Enabled = false;
+                btnCreateManufacturer.Enabled = false;
+                btnCreatePackager.Enabled = false;
+                btnCreateType.Enabled = false;
+                btnSelect.Enabled = false;
+                txtImagePath.Text = ProductMaster.ImagePath;
+                ShowProductImage();
+            }
 
         }
 
@@ -243,57 +417,12 @@ namespace AppFrameClient.View.GoodsIO
                 else
                 {
                     // make sure that the product master can not be deleted
-                    /*int count = 0;
+                    int count = 0;
                     IList newColorList = new ArrayList();
                     IList newSizeList = new ArrayList();
-                    foreach (ProductColor colorNew in productMasterControl.lbxProductColor.SelectedItems)
-                    {
-                        bool found = false;
-                        foreach (ProductColor color in OldColorList)
-                        {
-                            if (color.ColorId == colorNew.ColorId)
-                            {
-                                count++;
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found)
-                        {
-                            newColorList.Add(colorNew);
-                        }
-                    }
 
-                    if (count != OldColorList.Count)
-                    {
-                        MessageBox.Show("Không thể bỏ đi màu sắc sản phẩm.Bấm nút Trở về như cũ để hiển thị lại");
-                        return;
-                    }
-
-                    count = 0;
-                    foreach (ProductSize sizeNew in productMasterControl.lbxProductSize.SelectedItems)
-                    {
-                        bool found = false;
-                        foreach (ProductSize size in OldSizeList)
-                        {
-                            if (size.SizeId == sizeNew.SizeId)
-                            {
-                                count++;
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found)
-                        {
-                            newSizeList.Add(sizeNew);
-                        }
-                    }
-
-                    if (count != OldSizeList.Count)
-                    {
-                        MessageBox.Show("Không thể bỏ đi kích cỡ sản phẩm.Bấm nút Trở về như cũ để hiển thị lại");
-                        return;
-                    }
+                    newColorList = lstProductColors.EnabledItems;
+                    newSizeList = lstProductSizes.EnabledItems;
 
                     if (newColorList.Count > 0)
                     {
@@ -318,7 +447,7 @@ namespace AppFrameClient.View.GoodsIO
                                 productMasters.Add(CreateProductMaster(size, color));
                             }
                         }
-                    }*/
+                    }
                 }
                 var eventArgs = new ProductMasterEventArgs {CreatedProductMasterList = productMasters};
                 EventUtility.fireEvent(SaveProductMasterEvent, sender, eventArgs);

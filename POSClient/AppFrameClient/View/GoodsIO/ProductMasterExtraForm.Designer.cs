@@ -32,6 +32,7 @@ namespace AppFrameClient.View.GoodsIO
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductMasterExtraForm));
             this.label8 = new System.Windows.Forms.Label();
             this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSelect = new System.Windows.Forms.Button();
@@ -72,9 +73,7 @@ namespace AppFrameClient.View.GoodsIO
             this.txtProductType = new System.Windows.Forms.TextBox();
             this.btnAddColor = new System.Windows.Forms.Button();
             this.btnRemoveColor = new System.Windows.Forms.Button();
-            this.lstProductColors = new System.Windows.Forms.ListBox();
             this.bdsColors = new System.Windows.Forms.BindingSource(this.components);
-            this.lstProductSizes = new System.Windows.Forms.ListBox();
             this.bdsSizes = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddSize = new System.Windows.Forms.Button();
             this.btnRemoveSize = new System.Windows.Forms.Button();
@@ -83,6 +82,8 @@ namespace AppFrameClient.View.GoodsIO
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtProductName = new AppFrame.Controls.CoralTextBox();
+            this.lstProductColors = new Rafael.Windows.Forms.ListBox.CoralListBox();
+            this.lstProductSizes = new Rafael.Windows.Forms.ListBox.CoralListBox();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeBindingSource)).BeginInit();
@@ -462,33 +463,9 @@ namespace AppFrameClient.View.GoodsIO
             this.btnRemoveColor.UseVisualStyleBackColor = true;
             this.btnRemoveColor.Click += new System.EventHandler(this.btnRemoveColor_Click);
             // 
-            // lstProductColors
-            // 
-            this.lstProductColors.DataSource = this.bdsColors;
-            this.lstProductColors.DisplayMember = "ColorName";
-            this.lstProductColors.FormattingEnabled = true;
-            this.lstProductColors.ItemHeight = 14;
-            this.lstProductColors.Location = new System.Drawing.Point(133, 177);
-            this.lstProductColors.Name = "lstProductColors";
-            this.lstProductColors.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstProductColors.Size = new System.Drawing.Size(185, 88);
-            this.lstProductColors.TabIndex = 125;
-            // 
             // bdsColors
             // 
             this.bdsColors.DataSource = typeof(AppFrame.Model.ProductColor);
-            // 
-            // lstProductSizes
-            // 
-            this.lstProductSizes.DataSource = this.bdsSizes;
-            this.lstProductSizes.DisplayMember = "SizeName";
-            this.lstProductSizes.FormattingEnabled = true;
-            this.lstProductSizes.ItemHeight = 14;
-            this.lstProductSizes.Location = new System.Drawing.Point(133, 277);
-            this.lstProductSizes.Name = "lstProductSizes";
-            this.lstProductSizes.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstProductSizes.Size = new System.Drawing.Size(185, 88);
-            this.lstProductSizes.TabIndex = 126;
             // 
             // bdsSizes
             // 
@@ -563,11 +540,33 @@ namespace AppFrameClient.View.GoodsIO
             this.txtProductName.Size = new System.Drawing.Size(423, 22);
             this.txtProductName.TabIndex = 133;
             // 
+            // lstProductColors
+            // 
+            this.lstProductColors.DisabledRows = ((System.Collections.IList)(resources.GetObject("lstProductColors.DisabledRows")));
+            this.lstProductColors.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lstProductColors.FormattingEnabled = true;
+            this.lstProductColors.Location = new System.Drawing.Point(133, 175);
+            this.lstProductColors.Name = "lstProductColors";
+            this.lstProductColors.Size = new System.Drawing.Size(185, 95);
+            this.lstProductColors.TabIndex = 134;
+            // 
+            // lstProductSizes
+            // 
+            this.lstProductSizes.DisabledRows = ((System.Collections.IList)(resources.GetObject("lstProductSizes.DisabledRows")));
+            this.lstProductSizes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lstProductSizes.FormattingEnabled = true;
+            this.lstProductSizes.Location = new System.Drawing.Point(133, 277);
+            this.lstProductSizes.Name = "lstProductSizes";
+            this.lstProductSizes.Size = new System.Drawing.Size(185, 95);
+            this.lstProductSizes.TabIndex = 135;
+            // 
             // ProductMasterExtraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 631);
+            this.Controls.Add(this.lstProductSizes);
+            this.Controls.Add(this.lstProductColors);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
@@ -575,8 +574,6 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.Add(this.picProduct);
             this.Controls.Add(this.btnRemoveSize);
             this.Controls.Add(this.btnAddSize);
-            this.Controls.Add(this.lstProductSizes);
-            this.Controls.Add(this.lstProductColors);
             this.Controls.Add(this.btnRemoveColor);
             this.Controls.Add(this.btnAddColor);
             this.Controls.Add(this.txtProductType);
@@ -647,8 +644,6 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.SetChildIndex(this.txtProductType, 0);
             this.Controls.SetChildIndex(this.btnAddColor, 0);
             this.Controls.SetChildIndex(this.btnRemoveColor, 0);
-            this.Controls.SetChildIndex(this.lstProductColors, 0);
-            this.Controls.SetChildIndex(this.lstProductSizes, 0);
             this.Controls.SetChildIndex(this.btnAddSize, 0);
             this.Controls.SetChildIndex(this.btnRemoveSize, 0);
             this.Controls.SetChildIndex(this.picProduct, 0);
@@ -656,6 +651,8 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
             this.Controls.SetChildIndex(this.txtProductName, 0);
+            this.Controls.SetChildIndex(this.lstProductColors, 0);
+            this.Controls.SetChildIndex(this.lstProductSizes, 0);
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeBindingSource)).EndInit();
@@ -713,8 +710,6 @@ namespace AppFrameClient.View.GoodsIO
         private System.Windows.Forms.TextBox txtProductType;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnRemoveColor;
-        public System.Windows.Forms.ListBox lstProductColors;
-        public System.Windows.Forms.ListBox lstProductSizes;
         private System.Windows.Forms.Button btnAddSize;
         private System.Windows.Forms.Button btnRemoveSize;
         private System.Windows.Forms.PictureBox picProduct;
@@ -724,6 +719,8 @@ namespace AppFrameClient.View.GoodsIO
         private System.Windows.Forms.BindingSource bdsColors;
         private System.Windows.Forms.BindingSource bdsSizes;
         private AppFrame.Controls.CoralTextBox txtProductName;
+        private Rafael.Windows.Forms.ListBox.CoralListBox lstProductColors;
+        private Rafael.Windows.Forms.ListBox.CoralListBox lstProductSizes;
 
         public event EventHandler<ProductMasterEventArgs> DeleteProductMasterEvent;
     }

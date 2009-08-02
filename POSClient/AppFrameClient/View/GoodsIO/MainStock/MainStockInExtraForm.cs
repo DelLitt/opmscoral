@@ -1037,11 +1037,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 return;
             }
-            ProductMasterCreateForm form =
-                GlobalUtility.GetFormObject<ProductMasterCreateForm>(FormConstants.PRODUCT_MASTER_CREATE_FORM);
+            ProductMasterExtraForm form =
+                GlobalUtility.GetFormObject<ProductMasterExtraForm>(FormConstants.PRODUCT_MASTER_EXTRA_FORM);
             form.ProductMaster = proMaster;
             form.CloseProductMasterEvent += new EventHandler<ProductMasterEventArgs>(form_CloseProductMasterEvent);
-            form.Status = ViewStatus.OPENDIALOG;
+            form.Status = ViewStatus.EDIT;
             form.ShowDialog();
             cboProductMasters.SelectedIndex = i;
             cboProductMasters.SelectedItem = proMaster;
