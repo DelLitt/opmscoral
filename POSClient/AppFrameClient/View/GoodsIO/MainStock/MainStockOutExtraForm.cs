@@ -352,6 +352,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                             if (detail.GoodQuantity < 0)
                             {
                                 MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương ");
+                                dgvDeptStockOut.CurrentCell = dgvDeptStockOut[3, Math.Max(0,line-1)];
                                 return;
                             }
                         }
@@ -360,6 +361,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                             if (detail.GoodQuantity < 0 || detail.GoodQuantity > stock.GoodQuantity)
                             {
                                 MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Tốt phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
+                                dgvDeptStockOut.CurrentCell = dgvDeptStockOut[3, Math.Max(0, line - 1)];
                                 return;
                             }   
                         }
