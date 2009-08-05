@@ -12,5 +12,7 @@ namespace AppFrame.Presenter
 
         event EventHandler<BaseEventArgs> PostLogin;
         event EventHandler<BaseEventArgs> PreLogout;
+        void EnterPeriod();
+        void LeavePeriod();
     }
 }
