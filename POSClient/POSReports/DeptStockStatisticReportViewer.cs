@@ -123,7 +123,7 @@ namespace POSReports
         private void DeptStockStatisticReportViewer_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.Add(new ProductType {TypeId = 0, TypeName = "Tất cả cửa hàng"});
+            comboBox1.Items.Add(new ProductType { TypeId = 0, TypeName = "Tất cả mặt hàng" });
             departmentTableAdapter.Fill(this.posDataSet.department);
             product_typeTableAdapter1.Fill(posDataSet.product_type);
             foreach(posDataSet.product_typeRow row in posDataSet.product_type)
@@ -145,6 +145,21 @@ namespace POSReports
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
