@@ -216,7 +216,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!dest_department_name.Value</Value>
+                          <Value>=IIF(Fields!dest_department_name.Value = "","KHO CHÍNH",Fields!dest_department_name.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
