@@ -16,14 +16,15 @@ namespace AppFrameClient.DataLayer
     {
 
 
-        public global::AppFrame.Model.LoginModel getInfo(string Username, string Password)
+        public LoginModel getInfo(string Username, string Password)
         {
             LoginModel model = null;
             ObjectCriteria criteria = new ObjectCriteria();
             criteria.AddEqCriteria("Suspended", 0);
             criteria.AddEqCriteria("Deleted", 0);
-            criteria.AddEqCriteria("Username", Username);
-            criteria.AddEqCriteria("Password", Password);
+            criteria.AddEqCriteria("Username", Username.Trim());
+            criteria.AddEqCriteria("Password", Password.Trim());
+            //LoginModel modelFound = FindById(Username);
             IList modelList = FindAll(criteria);
 
             if (modelList != null && modelList.Count > 0)

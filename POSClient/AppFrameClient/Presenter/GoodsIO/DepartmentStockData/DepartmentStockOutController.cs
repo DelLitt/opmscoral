@@ -247,12 +247,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             {
 
                 ProductMaster searchPM = e.SelectedDepartmentStockOutDetail.Product.ProductMaster;
-                /*var criteria = new ObjectCriteria(true);
+                var criteria = new ObjectCriteria(true);
                 criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-                criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");*/
-
-                IList list = null;
+                criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");
+                criteria.MaxResult = 50;
+                IList list = DepartmentStockLogic.FindByQueryForDeptStock(criteria);
+                /*IList list = null;
                 // find in product
                 ObjectCriteria prdCrit = new ObjectCriteria();
                 prdCrit.MaxResult = 300;
@@ -265,7 +266,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     ObjectCriteria deptStockCrit = new ObjectCriteria();
                     deptStockCrit.AddSearchInCriteria("Product", prdList);
                     list = DepartmentStockLogic.FindAll(deptStockCrit);
-                }
+                }*/
                 if(list ==null || list.Count == 0)
                 {
                     return;

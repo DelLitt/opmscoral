@@ -13,6 +13,7 @@ namespace AppFrameClient.Model
         private static Role supervisorRole;
         private static Role managerRole;
         private static Role accountantRole;
+        private static Role loggedManagerRole;
 
         public PosRole(string name) : base(name)
         {
@@ -34,11 +35,11 @@ namespace AppFrameClient.Model
         {
             get
             {
-                if (administratorRole == null)
+                if (supervisorRole == null)
                 {
-                    administratorRole = new Role("Supervisor");
+                    supervisorRole = new Role("Supervisor");
                 }
-                return administratorRole;
+                return supervisorRole;
             }
         }
 
@@ -46,14 +47,25 @@ namespace AppFrameClient.Model
         {
             get
             {
-                if (administratorRole == null)
+                if (managerRole == null)
                 {
-                    administratorRole = new Role("Manager");
+                    managerRole = new Role("Manager");
                 }
-                return administratorRole;
+                return managerRole;
             }
         }
 
+        public static Role LoggedManager
+        {
+            get
+            {
+                if (loggedManagerRole == null)
+                {
+                    loggedManagerRole = new Role("LoggedManager");
+                }
+                return loggedManagerRole;
+            }
+        }
 
     }
 }

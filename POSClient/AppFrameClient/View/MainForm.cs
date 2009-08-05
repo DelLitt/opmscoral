@@ -48,9 +48,11 @@ namespace AppFrame.View
         public IAuthService AuthService
         {
             get { return authService; }
-            set { authService = value; }
+            set { 
+                   authService = value;
+                }
         }
-
+        
         private void mnuFileExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -840,7 +842,7 @@ namespace AppFrame.View
 
         private void tsbEnterPeriod_Click(object sender, EventArgs e)
         {
-
+            AuthService.EnterPeriod();
         }
 
         private void tsbSale_Click(object sender, EventArgs e)
@@ -900,7 +902,7 @@ namespace AppFrame.View
 
         private void tsbLeavePeriod_Click(object sender, EventArgs e)
         {
-
+            AuthService.LeavePeriod();
         }
 
         private void tsbCost_Click(object sender, EventArgs e)
