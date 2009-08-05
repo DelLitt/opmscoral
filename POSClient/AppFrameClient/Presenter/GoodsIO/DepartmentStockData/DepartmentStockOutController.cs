@@ -13,6 +13,7 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
@@ -244,14 +245,27 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             string originalText = comboBox.Text;
             if (e.IsFillToComboBox)
             {
+
                 ProductMaster searchPM = e.SelectedDepartmentStockOutDetail.Product.ProductMaster;
-                var criteria = new ObjectCriteria(true);
+                /*var criteria = new ObjectCriteria(true);
                 criteria.AddEqCriteria("pm.DelFlg", CommonConstants.DEL_FLG_NO);
                 criteria.AddEqCriteria("stock.DelFlg", CommonConstants.DEL_FLG_NO);
-                criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");
-                criteria.MaxResult = 50;
-                IList list = DepartmentStockLogic.FindByQueryForDeptStock(criteria);
+                criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");*/
 
+                IList list = null;
+                // find in product
+                ObjectCriteria prdCrit = new ObjectCriteria();
+                prdCrit.MaxResult = 300;
+                prdCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                prdCrit.AddLikeCriteria("ProductMaster.ProductName", "%" + searchPM.ProductName + "%");
+                IList prdList = ProductLogic.FindAll(prdCrit);       
+                // find in stock
+                if (!CheckUtility.IsNullOrEmpty(prdList))
+                {
+                    ObjectCriteria deptStockCrit = new ObjectCriteria();
+                    deptStockCrit.AddSearchInCriteria("Product", prdList);
+                    list = DepartmentStockLogic.FindAll(deptStockCrit);
+                }
                 if(list ==null || list.Count == 0)
                 {
                     return;
@@ -420,6 +434,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get;
             set;
         }
+
+        public IProductLogic ProductLogic
+        {
+            get; set;
+        }
+
         private IList RemoveDuplicateName(IList prdlist)
         {
             IList list = new ArrayList();
