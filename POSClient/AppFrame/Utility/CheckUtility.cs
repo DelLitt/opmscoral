@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -37,6 +38,11 @@ namespace AppFrame.Utility
         {
             textBox.Text = textBox.Text.ToUpper();
             textBox.SelectionStart = textBox.Text.Length;
+        }
+
+        public static bool IsNullOrEmpty(IList prdList)
+        {
+            return (prdList == null || prdList.Count == 0);
         }
     }
 
