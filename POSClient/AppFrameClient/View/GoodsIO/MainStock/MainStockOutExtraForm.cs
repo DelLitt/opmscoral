@@ -753,7 +753,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     if (defectStatus.DefectStatusId == 5)
                     {
                         // if travenhasanxuat, so we check good && error quantity
-                        if (detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        if (detail.GoodQuantity == 0 /*&& detail.ErrorQuantity == 0*/) // = 0 , so we don't need to show it 
                         {
                             continue;
                         }
