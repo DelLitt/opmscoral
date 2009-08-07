@@ -672,6 +672,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+            if(rdoFastStockOut.Checked)
+            {
+                ShowMessage("Đang truyền thông tin .... ");
+            }
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
             if(rdoFastStockOut.Checked)
             {
@@ -715,8 +719,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             if (eventArgs.EventResult != null)
             {
-
-                lblInformation.Text= "Lưu thành công";
+                if(!rdoFastStockOut.Checked)
+                {
+                    lblInformation.Text = "Lưu thành công";    
+                }
+                
                 if (isNeedClearData)
                 {
                     lblInformation.ForeColor = Color.Blue;

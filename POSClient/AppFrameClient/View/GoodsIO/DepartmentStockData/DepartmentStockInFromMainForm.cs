@@ -691,12 +691,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng phải lớn hơn 0");
                 return null;
             }
+            line = 0;
             foreach (DepartmentStockInDetail detail in deptSIDetailList)
             {
                 count = 0;
                 foreach (DepartmentStockInDetail detail2 in deptSIDetailList)
                 {
-                    if (detail.DelFlg == CommonConstants.DEL_FLG_NO && detail.Product.ProductMaster.ProductMasterId.Equals(detail2.Product.ProductMaster.ProductMasterId))
+                    if (detail.DelFlg == CommonConstants.DEL_FLG_NO 
+                        && detail.Product.ProductId.Equals(detail2.Product.ProductId))
                     {
                         if (count == 0)
                         {
@@ -704,11 +706,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         }
                         else
                         {
-                            MessageBox.Show("Lỗi : Mã hàng " + detail.Product.ProductMaster.ProductMasterId + " nhập 2 lần");
+                            MessageBox.Show("Lỗi : Mã vạch " + detail.Product.ProductId + " nhập 2 lần");
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[3, line];
                             return null;
                         }
                     }
-
+                    line++;
                 }
             }
 
@@ -784,51 +787,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSaveAndExport_Click(object sender, EventArgs e)
         {
-            // Create new SaveFileDialog object
-            SaveFileDialog DialogSave = new SaveFileDialog();
-
-            // Default file extension
-            DialogSave.DefaultExt = "xac";
-
-            // Available file extensions
-            DialogSave.Filter = "POS file (*.xac)|*.xac";
-
-            // Adds a extension if the user does not
-            DialogSave.AddExtension = true;
-
-            // Restores the selected directory, next time
-            DialogSave.RestoreDirectory = true;
-
-            // Startup directory
-            DialogSave.InitialDirectory = @"C:/";
-            bool isNeedClearData = (deptSI == null || deptSI.DepartmentStockInPK == null || string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId));
-            // Show the dialog and process the result
-            if (DialogSave.ShowDialog() == DialogResult.OK)
-            {
-                DepartmentStockIn dept = SaveDeptStockIn(true);
-
-                if (dept != null)
-                {
-                    IList list = new ArrayList();
-                    foreach (DepartmentStockInDetail detail in dept.DepartmentStockInDetails)
-                    {
-                        list.Add(detail);
-                        AppFrame.Model.Product p = detail.Product;
-                    }
-                    dept.DepartmentStockInDetails = list;
-                    Stream stream = File.Open(DialogSave.FileName, FileMode.Create);
-                    BinaryFormatter bf = new BinaryFormatter();
-                    bf.Serialize(stream, dept);
-                    stream.Close();
-
-                    if (isNeedClearData)
-                    {
-                        deptSI = new DepartmentStockIn();
-                        deptSIDetailList.Clear();
-                        CreateNewStockInDetail();
-                    }
-                }
-            }
+            
         }
 
         private void LoadProductMasterToComboBox()
@@ -1169,6 +1128,22 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             dgvDeptStockIn.Refresh();
             dgvStockIn.Invalidate();
             MessageBox.Show("Sửa thành công !");
+        }
+
+        private void panelStockIns_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void chkRemoveZero_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkRemoveZero.Checked)
+            {
+                RemoveZeroLines();
+                CalculateTotalStorePrice();
+                MessageBox.Show("Hoàn tất bỏ những dòng bằng không");
+                chkRemoveZero.Checked = false;
+            }
         }
     }
 }

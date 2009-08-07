@@ -384,6 +384,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+            if(rdoFastStockIn.Checked)
+            {
+                ShowMessage("Đang yêu cầu trả hàng ....");    
+            }
+            
+
             if (deptSO == null)
             {
                 deptSO = new DepartmentStockIn();
@@ -428,10 +434,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             
             if (eventArgs.EventResult != null)
             {
-
-                lblMessage.ForeColor = Color.Blue;
-                lblMessage.Text = "Lưu thành công !";
-                
+                if (!rdoFastStockIn.Checked)
+                {
+                    lblMessage.ForeColor = Color.Blue;
+                    lblMessage.Text = "Lưu thành công !";
+                }
                 deptSO = new DepartmentStockIn();
                 deptSODetailList.Clear();
 //                    txtDexcription.Text = "";

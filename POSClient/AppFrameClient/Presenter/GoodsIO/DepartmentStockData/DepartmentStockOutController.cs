@@ -200,15 +200,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             {
                 productMasterIds.Add(master.ProductMasterId);
             }
+            ObjectCriteria prdCrit = new ObjectCriteria();
+            prdCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            prdCrit.AddSearchInCriteria("ProductMaster.ProductMasterId", productMasterIds);
+            IList prdList = ProductLogic.FindAll(prdCrit);
+
+            IList prdIdList = new ArrayList();
+            foreach (Product product in prdList)
+            {
+                prdIdList.Add(product.ProductId);
+            }
+
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddSearchInCriteria("DepartmentStockPK.ProductId", prdIdList);
             
-            //criteria.AddSearchInCriteria("Product.ProductMaster.ProductMasterId", productMasterIds);
-            //criteria.AddSubCriteria("Product", new SubObjectCriteria("ProductMaster").AddSearchInCriteria("ProductMasterId", productMasterIds));
-            SubObjectCriteria subObjectCriteria = new SubObjectCriteria("Product");
-            subObjectCriteria.AddSearchInCriteria("ProductMaster", e.SelectedProductMasterList);
-            criteria.AddSubCriteria("Product",subObjectCriteria);
-            //IList list = DepartmentStockLogic.FindAllInProductMasterId(productMasterIds);
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)
             {
@@ -220,6 +226,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.FoundDepartmentStockOutDetailList = new ArrayList();
             foreach (DepartmentStock stock in list)
             {
+                if(stock.Quantity == 0)
+                {
+                    continue;
+                }
                 DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
                 detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK
                                                         {
