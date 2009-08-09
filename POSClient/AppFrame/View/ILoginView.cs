@@ -12,6 +12,6 @@ namespace AppFrame.View
         ILoginController<T> LoginController { get;  set; } 
         event EventHandler<T> LoginEvent;
         event EventHandler<T> ConfirmLoginEvent;
-
+        event EventHandler<T> ConfirmEmployeeIdEvent;
     }
 }

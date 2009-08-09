@@ -26,6 +26,7 @@ namespace AppFrame.Presenter
             get { return loginModel; }
             set { loginModel = value; }
         }
+        public string EmployeeId { get; set; }
         public string OldPassword
         {
             get; set;
