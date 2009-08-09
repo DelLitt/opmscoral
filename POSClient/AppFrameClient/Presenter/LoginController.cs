@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Logic;
@@ -27,6 +28,33 @@ namespace AppFrame.Presenter
                 mView = value;
                 mView.LoginEvent +=new EventHandler<LoginEventArgs>(mView_LoginEvent);
                 mView.ConfirmLoginEvent += new EventHandler<LoginEventArgs>(mView_ConfirmLoginEvent);
+                mView.ConfirmEmployeeIdEvent += new EventHandler<LoginEventArgs>(mView_ConfirmEmployeeIdEvent);
+            }
+        }
+
+        void mView_ConfirmEmployeeIdEvent(object sender, LoginEventArgs e)
+        {
+            try
+            {
+                SubObjectCriteria subObjectCriteria = new SubObjectCriteria("EmployeeInfo");
+                // new EmployeeInfo().EmployeePK.EmployeeId
+                subObjectCriteria.AddEqCriteria("EmployeePK.EmployeeId", e.EmployeeId);
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddSubCriteria("EmployeeInfo", subObjectCriteria);
+                IList list = LoginLogic.FindAll(objectCriteria);
+
+                if (list != null && list.Count > 0)
+                {
+                    e.LoginModel = list[0] as LoginModel;
+                }
+                else
+                {
+                    e.HasErrors = true;
+                }
+            }
+            catch (Exception)
+            {
+                e.HasErrors = true;
             }
         }
 
@@ -75,7 +103,6 @@ namespace AppFrame.Presenter
 
         private void mView_LoginEvent(object sender, LoginEventArgs e)
         {
-            logger.Info("Enter " + this.GetType() + " method " + "mView_LoginEvent");
             //BaseUser baseUser = loginLogic.doAuthentication(e.LoginModel);
             AuthManager authManager = SecurityUtility.LoadAuthenticationModule();
             BaseUser baseUser = authManager.login(e.LoginModel.Username, e.LoginModel.Password);
@@ -84,16 +111,17 @@ namespace AppFrame.Presenter
             //MessageBox.Show(clientInfo.LoggedUser.IsGuest.ToString() + baseUser.Name);
             if (!baseUser.IsGuest)
             {
+                e.HasErrors = false;
                 ResultEventArgs.MessageCode = "loginOK";
                 ResultEventArgs.IsValid = true;
             }
             else
             {
+                e.HasErrors = true;
                 ResultEventArgs.ErrorCode = "loginFail";
                 ResultEventArgs.IsValid = false;
             }
             EventUtility.fireEvent(CompleteLoginLogicEvent, this, ResultEventArgs);
-            logger.Info("Leave " + this.GetType() + " method " + "mView_LoginEvent");
             ClientUtility.Log(logger, "Người dùng " + clientInfo.LoggedUser.Name + " đăng nhập vào hệ thống", "Đăng nhập");
         }
 

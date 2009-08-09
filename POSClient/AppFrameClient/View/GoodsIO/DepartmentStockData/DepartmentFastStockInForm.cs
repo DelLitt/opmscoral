@@ -377,13 +377,25 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 line++;
             }
             // confirm before save
-            LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
-            loginForm.StartPosition = FormStartPosition.CenterScreen;
-            DialogResult isConfirmed = loginForm.ShowDialog();
+            DialogResult isConfirmed = System.Windows.Forms.DialogResult.Cancel;
+            if (!ClientSetting.ConfirmByEmployeeId)
+            {
+                LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+                loginForm.StartPosition = FormStartPosition.CenterScreen;
+                isConfirmed = loginForm.ShowDialog();
+            }
+            else
+            {
+                EmployeeCheckingForm employeeCheckingForm = GlobalUtility.GetFormObject<EmployeeCheckingForm>(FormConstants.EMPLOYEE_CHECKING_VIEW);
+                employeeCheckingForm.StartPosition = FormStartPosition.CenterScreen;
+                isConfirmed = employeeCheckingForm.ShowDialog();
+            }
             if (isConfirmed != System.Windows.Forms.DialogResult.OK)
             {
                 return;
             }
+
+            // continue stock in
             if(rdoFastStockIn.Checked)
             {
                 ShowMessage("Đang yêu cầu trả hàng ....");    

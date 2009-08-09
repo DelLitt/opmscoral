@@ -71,6 +71,9 @@
             this.grpService = new System.Windows.Forms.GroupBox();
             this.cboBinding = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rdoLogin = new System.Windows.Forms.RadioButton();
+            this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -102,7 +105,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(314, 373);
+            this.btnDefault.Location = new System.Drawing.Point(313, 419);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -112,7 +115,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(395, 373);
+            this.btnClose.Location = new System.Drawing.Point(394, 419);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -122,7 +125,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(233, 373);
+            this.btnSave.Location = new System.Drawing.Point(232, 419);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -371,11 +374,14 @@
             // 
             // grpSubStock
             // 
+            this.grpSubStock.Controls.Add(this.rdoEmployeeId);
+            this.grpSubStock.Controls.Add(this.rdoLogin);
+            this.grpSubStock.Controls.Add(this.label9);
             this.grpSubStock.Controls.Add(this.cboDepartment);
             this.grpSubStock.Controls.Add(this.lblDepartment);
             this.grpSubStock.Location = new System.Drawing.Point(12, 247);
             this.grpSubStock.Name = "grpSubStock";
-            this.grpSubStock.Size = new System.Drawing.Size(457, 53);
+            this.grpSubStock.Size = new System.Drawing.Size(457, 88);
             this.grpSubStock.TabIndex = 29;
             this.grpSubStock.TabStop = false;
             this.grpSubStock.Text = "Kho phụ";
@@ -384,7 +390,7 @@
             // 
             this.grpService.Controls.Add(this.cboBinding);
             this.grpService.Controls.Add(this.label8);
-            this.grpService.Location = new System.Drawing.Point(13, 307);
+            this.grpService.Location = new System.Drawing.Point(13, 341);
             this.grpService.Name = "grpService";
             this.grpService.Size = new System.Drawing.Size(456, 59);
             this.grpService.TabIndex = 30;
@@ -412,11 +418,43 @@
             this.label8.TabIndex = 28;
             this.label8.Text = "Giao thức kết nối:";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(49, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Kiểm tra trước khi lưu:";
+            // 
+            // rdoLogin
+            // 
+            this.rdoLogin.AutoSize = true;
+            this.rdoLogin.Location = new System.Drawing.Point(166, 48);
+            this.rdoLogin.Name = "rdoLogin";
+            this.rdoLogin.Size = new System.Drawing.Size(130, 17);
+            this.rdoLogin.TabIndex = 30;
+            this.rdoLogin.Text = "Bằng tên và mật khẩu";
+            this.rdoLogin.UseVisualStyleBackColor = true;
+            // 
+            // rdoEmployeeId
+            // 
+            this.rdoEmployeeId.AutoSize = true;
+            this.rdoEmployeeId.Checked = true;
+            this.rdoEmployeeId.Location = new System.Drawing.Point(301, 48);
+            this.rdoEmployeeId.Name = "rdoEmployeeId";
+            this.rdoEmployeeId.Size = new System.Drawing.Size(144, 17);
+            this.rdoEmployeeId.TabIndex = 31;
+            this.rdoEmployeeId.TabStop = true;
+            this.rdoEmployeeId.Tag = "";
+            this.rdoEmployeeId.Text = "Bằng mã vạch nhân viên";
+            this.rdoEmployeeId.UseVisualStyleBackColor = true;
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 408);
+            this.ClientSize = new System.Drawing.Size(482, 454);
             this.Controls.Add(this.grpService);
             this.Controls.Add(this.grpSubStock);
             this.Controls.Add(this.grpPrinting);
@@ -487,5 +525,8 @@
         private System.Windows.Forms.GroupBox grpService;
         private System.Windows.Forms.ComboBox cboBinding;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton rdoEmployeeId;
+        private System.Windows.Forms.RadioButton rdoLogin;
     }
 }

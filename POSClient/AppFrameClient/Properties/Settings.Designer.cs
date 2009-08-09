@@ -200,5 +200,17 @@ namespace AppFrameClient.Properties {
                 this["SalePointDB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConfirmByEmployeeId {
+            get {
+                return ((bool)(this["ConfirmByEmployeeId"]));
+            }
+            set {
+                this["ConfirmByEmployeeId"] = value;
+            }
+        }
     }
 }

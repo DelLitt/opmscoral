@@ -563,6 +563,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            ShowMessage("Chờ lệnh .... ");
             DialogResult result = MessageBox.Show(lblCommandDescription.Text +".Chắc chắn muốn lưu ?",
                 "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -665,13 +666,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             eventArgs.DepartmentStockOut = deptSO;
 
             // confirm before save
-            LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
-            loginForm.StartPosition = FormStartPosition.CenterScreen;
-            DialogResult isConfirmed = loginForm.ShowDialog();
+            DialogResult isConfirmed = System.Windows.Forms.DialogResult.Cancel;
+            if (!ClientSetting.ConfirmByEmployeeId)
+            {
+                LoginForm loginForm = GlobalUtility.GetFormObject<LoginForm>(FormConstants.CONFIRM_LOGIN_VIEW);
+                loginForm.StartPosition = FormStartPosition.CenterScreen;
+                isConfirmed = loginForm.ShowDialog();
+            }
+            else
+            {
+                EmployeeCheckingForm employeeCheckingForm = GlobalUtility.GetFormObject<EmployeeCheckingForm>(FormConstants.EMPLOYEE_CHECKING_VIEW);
+                employeeCheckingForm.StartPosition = FormStartPosition.CenterScreen;
+                isConfirmed = employeeCheckingForm.ShowDialog(); 
+            }
             if(isConfirmed!= System.Windows.Forms.DialogResult.OK)
             {
+                MessageBox.Show("Không xác nhận được nguoi gửi ....", "Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
+            
+            // continue stock out
             if(rdoFastStockOut.Checked)
             {
                 ShowMessage("Đang truyền thông tin .... ");
@@ -729,14 +743,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     lblInformation.ForeColor = Color.Blue;
                     deptSO = new DepartmentStockOut();
                     deptSODetailList.Clear();
-//                    txtDexcription.Text = "";
-//                    txtPriceIn.Text = "";
-//                    txtPriceOut.Text = "";
                     txtSumProduct.Text = "";
                     txtSumValue.Text = "";
                     ClearSelectionOnListBox(lstColor);
                     ClearSelectionOnListBox(lstSize);
-                    //CreateNewStockInDetail();
+                                        
                 }
             }
             else
@@ -744,6 +755,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 //MessageBox.Show("Có lỗi khi lưu");
                 lblInformation.ForeColor = Color.Red;
                 lblInformation.Text = "Lưu thất bại ...";
+            }
+            if(LocalCache.Instance().PreviousUser !=null)
+            {
+                ClientInfo.getInstance().LoggedUser = LocalCache.Instance().PreviousUser;
+                LocalCache.Instance().PreviousUser = null;
             }
             txtBarcode.Focus();
         }

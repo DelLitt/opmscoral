@@ -97,5 +97,6 @@ namespace AppFrameClient.Common
         public static string PRODUCT_MASTER_EXTRA_FORM = "ProductMasterExtraView";
         public static string LOAD_DATABASE_IMAGE_FORM = "LoadDatabaseImageView";
         public static string SYNC_DATABASE_IMAGE_VIEW = "SyncDatabaseImageView";
+        public static string EMPLOYEE_CHECKING_VIEW = "EmployeeCheckingView";
     }
 }

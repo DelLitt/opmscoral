@@ -57,5 +57,8 @@
     <Setting Name="SalePointDB" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.0.0.8</Value>
     </Setting>
+    <Setting Name="ConfirmByEmployeeId" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

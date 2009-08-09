@@ -178,5 +178,17 @@ namespace AppFrameClient.Common
         {
             AFCSetting.Default.Reset();
         }
+
+        public static bool ConfirmByEmployeeId
+        {
+            get
+            {
+                return AFCSetting.Default.ConfirmByEmployeeId; 
+            }
+            set
+            {
+                AFCSetting.Default.ConfirmByEmployeeId = value;                
+            }
+        }
     }
 }

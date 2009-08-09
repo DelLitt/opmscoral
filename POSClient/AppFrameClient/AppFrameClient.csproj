@@ -215,6 +215,7 @@
     <Compile Include="Advice\MenuPermissionAdvice.cs" />
     <Compile Include="Advice\UpdateStatusDisplayAdvice.cs" />
     <Compile Include="Common\ChannelConstants.cs" />
+    <Compile Include="Common\LocalCache.cs" />
     <Compile Include="DataLayer\DepartmentStockInHistoryDAOImpl.cs" />
     <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
     <Compile Include="Services\ClientService.cs" />
@@ -350,6 +351,12 @@
     </Compile>
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeCheckingForm.Designer.cs">
+      <DependentUpon>EmployeeCheckingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EmployeeManagementForm.cs">
       <SubType>Form</SubType>
@@ -1328,6 +1335,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeCheckingForm.resx">
+      <DependentUpon>EmployeeCheckingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>

@@ -42,7 +42,14 @@ namespace AppFrameClient.View
             if (ClientSetting.IsSubStock())
             {
                 grpSubStock.Visible = true;
-                
+                if(ClientSetting.ConfirmByEmployeeId)
+                {
+                    rdoEmployeeId.Checked = true;
+                }
+                else
+                {
+                    rdoLogin.Checked = true;
+                }
             }
             else
             {
@@ -71,6 +78,15 @@ namespace AppFrameClient.View
             if (ClientSetting.IsSubStock())
             {
                 ClientSetting.MarketDept = cboDepartment.SelectedValue.ToString();
+
+                if (rdoEmployeeId.Checked)
+                {
+                    ClientSetting.ConfirmByEmployeeId = true;                    
+                }
+                else
+                {
+                    ClientSetting.ConfirmByEmployeeId = false;
+                }
             }
             else
             {
