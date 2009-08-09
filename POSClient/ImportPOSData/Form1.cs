@@ -553,13 +553,13 @@ namespace ImportPOSData
 			string month = "";
 			int i = DateTime.Now.Month % 12;
 			switch (i) {
-				case 9: month = "A";
+				case 10: month = "A";
 						break;
-				case 10: month = "B";
+				case 11: month = "B";
 						break;
-				case 11: month = "C";
+				case 0: month = "C";
 						break;
-				default: month = (i + 1) + "";
+				default: month = (i) + "";
 						break;
 			}
 			int iDay = DateTime.Now.Day;
