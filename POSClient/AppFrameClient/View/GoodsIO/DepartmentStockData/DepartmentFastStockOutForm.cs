@@ -563,7 +563,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ShowMessage("Chờ lệnh .... ");
+            ShowMessage("Đang lưu .... ");
             DialogResult result = MessageBox.Show(lblCommandDescription.Text +".Chắc chắn muốn lưu ?",
                 "Xác nhận",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
