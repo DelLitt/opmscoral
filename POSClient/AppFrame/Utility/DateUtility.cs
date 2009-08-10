@@ -29,6 +29,19 @@ namespace AppFrame.Utility
                 59,
                 999);
         }
+
+        public static DateTime DateOnly(DateTime value)
+        {
+            return new DateTime(
+                value.Year,
+                value.Month,
+                value.Day,
+                0,
+                0,
+                0,
+                0
+                );
+        }
     }
 
 }
