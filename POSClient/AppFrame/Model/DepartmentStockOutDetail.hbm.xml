@@ -112,14 +112,17 @@
   <!-- Associations -->
   <!-- derived association(s) for compound key -->
   <!-- bi-directional many-to-one association to DepartmentStockOut -->
-  <!--<many-to-one
+  <many-to-one
         name="DepartmentStockOut"
 	    class="DepartmentStockOut"
+        update="false"
+	    insert="false"
       lazy="false"        
 	>
+    
     	<column name="STOCK_OUT_ID" />
     	<column name="DEPARTMENT_ID" />
-	</many-to-one>-->
+	</many-to-one>
 
   <!-- bi-directional many-to-one association to Product -->
   <many-to-one
