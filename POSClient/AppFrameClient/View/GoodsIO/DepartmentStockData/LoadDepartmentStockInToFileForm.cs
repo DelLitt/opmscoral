@@ -172,6 +172,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     mstBf.Serialize(mstStream, masterDataEvent.SyncFromMainToDepartment);
                     mstStream.Flush();
                     mstStream.Close();
+
+                    CopyMasterImage(masterDataEvent.SyncFromMainToDepartment.ProductMasterList,
+                                    masterDataEvent.LastSyncTime, configExportPath);
                 }
                 // sync stock-out to dept
                 var deptEvent = new DepartmentStockInEventArgs();
@@ -216,6 +219,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             MessageBox.Show("Đồng bộ hoàn tất !");
             
         }
+
+        private void CopyMasterImage(IList productMasterList, DateTime lastSyncDate, string path)
+        {
+            if (!Directory.Exists(path + "\\ProductImages\\"))
+            {
+                Directory.CreateDirectory(path + "\\ProductImages\\");
+            }
+
+            // copy image
+            foreach (ProductMaster master in productMasterList)
+            {
+                string fileName = Application.StartupPath + "\\ProductImages\\" + master.ImagePath;
+                if (File.Exists(fileName)
+                    && File.GetLastAccessTime(fileName).CompareTo(lastSyncDate) >= 0)
+                {
+                    File.Copy(fileName, path + "\\ProductImages\\");
+                }                
+            }
+        }
+
         private void btnSyncToDept_Click(object sender, EventArgs e)
         {
             BackgroundWorker backgroundWorker = new BackgroundWorker();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
@@ -498,7 +499,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 int newWidth = picProduct.Width;
                 int maxHeight = picProduct.Height;
-                Image fullsizeImage = Image.FromFile(txtImagePath.Text);
+                Image fullsizeImage = Image.FromFile(Application.StartupPath + "\\ProductImages\\" + txtImagePath.Text);
                 // Prevent using images internal thumbnail
                 fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
                 fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);

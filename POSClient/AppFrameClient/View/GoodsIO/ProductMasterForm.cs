@@ -506,7 +506,7 @@ namespace AppFrameClient.View.GoodsIO
         {
             var fileOpen = new OpenFileDialog();
             fileOpen.InitialDirectory = ".\\";
-            fileOpen.Filter = "Image Files|*.jpg;*.gif;*.bmp;*.png;*.jpeg;*.png|All Files|*.*";
+            fileOpen.Filter = "Image Files|*.jpg";
             fileOpen.FilterIndex = 0;
             fileOpen.RestoreDirectory = true;
             if (fileOpen.ShowDialog() == DialogResult.OK)
@@ -522,7 +522,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 int newWidth = productMasterControl.picProduct.Width;
                 int maxHeight = productMasterControl.picProduct.Height;
-                Image fullsizeImage = Image.FromFile(productMasterControl.txtImagePath.Text);
+                Image fullsizeImage = Image.FromFile(Application.StartupPath + "\\ProductImages\\" + productMasterControl.txtImagePath.Text);
                 // Prevent using images internal thumbnail
                 fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
                 fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);

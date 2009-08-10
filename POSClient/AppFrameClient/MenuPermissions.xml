@@ -110,6 +110,8 @@
     <menuitem name="mnuLoadToDept" role="Administrator,Manager" />
     <menuitem name="mnuSystemConfiguration" role="NotImplement" />
     <menuitem name="mnuImportByFile" role="NotImplement" />
+    <menuitem name="employeeMoneyToolStripMenuItem" role="Administrator,Manager" />
+    
   </menu>
   <menu name="mnuHelp" role="*">
     <menuitem name="mnuHelpAbout" role="*">

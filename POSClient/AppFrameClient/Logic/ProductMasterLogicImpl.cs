@@ -64,6 +64,7 @@ namespace AppFrame.Logic
             {
                 data.Barcode = "000" + data.ProductMasterId;
             }*/
+            data.ImagePath = data.ProductMasterId + ".jpg";
             ProductMasterDAO.Add(data);
             
             return data;
@@ -106,6 +107,7 @@ namespace AppFrame.Logic
                 {
                     productMaster.ProductMasterId = string.Format("{0:0000000000000}", id++);
                     productMaster.Barcode = productMaster.ProductMasterId;
+                    productMaster.ImagePath = productMaster.ProductMasterId + ".jpg";
                     ProductMasterDAO.Add(productMaster);                    
                 }
             }

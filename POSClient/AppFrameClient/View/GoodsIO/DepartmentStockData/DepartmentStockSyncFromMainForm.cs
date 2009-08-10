@@ -134,6 +134,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             EventUtility.fireEvent(UpdateDepartmentStockInForExportEvent, this, eventArgs);
 
                         }
+                        CopyImage(exportPath);
                     }
                 }
             }
@@ -143,6 +144,30 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             MessageBox.Show("Đồng bộ hoàn tất !");
         }
+
+        private void CopyImage(string path)
+        {
+            if (!Directory.Exists(Application.StartupPath + "\\ProductImages\\"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\ProductImages\\");
+            }
+
+            // copy image
+            if (Directory.Exists(path + "\\ProductImages"))
+            {
+                string[] fileName = Directory.GetFiles(path + "\\ProductImages");
+
+                foreach (string s in fileName)
+                {
+                    if (s.EndsWith(".jpg") || s.EndsWith(".JPG"))
+                    {
+                        File.Copy(path + "\\ProductImages\\" + s, Application.StartupPath + "\\ProductImages\\" + s);
+                    }
+                    
+                }
+            }
+        }
+
 
         #region Implementation of IDepartmentStockInExtraView
 

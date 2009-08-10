@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 using AppFrame;
 using AppFrame.Common;
 using AppFrame.Logic;
@@ -123,15 +125,33 @@ namespace AppFrameClient.Presenter.GoodsIO
             {
                 if (e.ProductMaster != null && !string.IsNullOrEmpty(e.ProductMaster.ProductMasterId))
                 {
+                    string realPath = "";
+                    if (e.ProductMaster.ImagePath.Contains(":"))
+                    {
+                        realPath = e.ProductMaster.ImagePath;
+                        e.ProductMaster.ImagePath = e.ProductMaster.ProductMasterId + ".jpg";
+                    }
                     ProductMasterLogic.Update(e.ProductMaster);
+                    if (!string.IsNullOrEmpty(realPath))
+                    {
+                        CopyAndCreateImage(e.ProductMaster, realPath);
+                    }
                     ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
                 }
                 else
                 {
                     if (e.CreatedProductMasterList != null)
                     {
+                        string realPath = "";
+                        if (e.CreatedProductMasterList.Count > 0 && e.CreatedProductMasterList[0].ImagePath.Contains(":"))
+                        {
+                            realPath = e.CreatedProductMasterList[0].ImagePath;
+                        }
                         ProductMasterLogic.AddAll(e.CreatedProductMasterList);
-
+                        if (!string.IsNullOrEmpty(realPath))
+                        {
+                            CopyAndCreateImage(e.CreatedProductMasterList[0], realPath);
+                        }
                         StringBuilder sb = new StringBuilder("Tổng số lượng sản phẩm: ")
                             .Append(e.CreatedProductMasterList.Count).Append("\r\n");
                         
@@ -143,7 +163,17 @@ namespace AppFrameClient.Presenter.GoodsIO
                     }
                     else if (e.ProductMaster != null)
                     {
+                        string realPath = "";
+                        if (e.ProductMaster.ImagePath.Contains(":"))
+                        {
+                            realPath = e.ProductMaster.ImagePath;
+                        }
                         e.ProductMaster = ProductMasterLogic.Add(e.ProductMaster);
+                        if (!string.IsNullOrEmpty(realPath))
+                        {
+                            CopyAndCreateImage(e.ProductMaster, realPath);
+                        }
+
                         ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
                     }
                 }
@@ -153,6 +183,20 @@ namespace AppFrameClient.Presenter.GoodsIO
             {
 
                 throw;
+            }
+        }
+
+        private void CopyAndCreateImage(ProductMaster productMaster, string realImagePath)
+        {
+            if (!Directory.Exists(Application.StartupPath + "\\ProductImages\\"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\ProductImages\\");
+            }
+
+            // copy image
+            if (File.Exists(realImagePath))
+            {
+                File.Copy(realImagePath, Application.StartupPath + "\\ProductImages\\" + productMaster.ProductMasterId + ".jpg");
             }
         }
 

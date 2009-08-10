@@ -22,6 +22,7 @@ using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Inventory;
+using AppFrameClient.View.Management;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
 using ImportPOSData;
@@ -1215,6 +1216,14 @@ namespace AppFrame.View
 
 
             }
+        }
+
+        private void employeeMoneyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeMoneyForm form =
+                GlobalUtility.GetOnlyChildFormObject<EmployeeMoneyForm>(this, FormConstants.SYNC_DATABASE_IMAGE_VIEW);
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
         }
         
     }
