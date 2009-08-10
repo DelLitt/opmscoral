@@ -443,11 +443,12 @@ namespace AppFrameClient.View.Inventory
             for(int i=0;i < temps.Count-1; i++)
             {
                 DepartmentStockTemp stockTemp1 = (DepartmentStockTemp) temps[i];
-                long prdId1 = Int64.Parse(stockTemp1.Product.ProductId);
+                //long prdId1 = Int64.Parse(stockTemp1.Product.ProductId);
+                long prdId1 = ParseProductId(stockTemp1.Product.ProductId);
                 for (int j = i + 1; j < temps.Count;j++ )
                 {
                     DepartmentStockTemp stockTemp2 = (DepartmentStockTemp)temps[j];
-                    long prdId2 = Int64.Parse(stockTemp2.Product.ProductId);
+                    long prdId2 = ParseProductId(stockTemp2.Product.ProductId);
                     if(prdId1>prdId2)
                     {
                         stockTemp = stockTemp1;
@@ -457,6 +458,23 @@ namespace AppFrameClient.View.Inventory
                 }
 
             }
+        }
+
+        private long ParseProductId(string id)
+        {
+            long ret = 0;
+            try
+            {
+                ret = Int64.Parse(id);
+
+            }
+            catch (Exception)
+            {
+                DateTime dt =StringUtility.ConvertFourCharToDate(id.Substring(7, 3));
+                string retStr = dt.ToString("yyMMdd") + String.Format("000000",id.Substring(10, 2));
+                ret = Int64.Parse(retStr);
+            }
+            return ret;
         }
 
         private void dgvStock_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
