@@ -6,6 +6,7 @@ using AppFrame;
 using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
+using AppFrame.Utility;
 using AppFrameClient.View;
 
 namespace AppFrameClient.Logic
@@ -33,22 +34,29 @@ namespace AppFrameClient.Logic
 
         void mainView_ProcessEmployeeMoneyEvent(object sender, EmployeeManagementEventArgs e)
         {
-            if (e.InMoney > 0)
+            try
             {
-                EmployeeMoney employeeMoney = new EmployeeMoney();
-                employeeMoney.EmployeeMoneyPK = new EmployeeMoneyPK
+                if (e.InMoney > 0)
                 {
-                    DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
-                    EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
-                    WorkingDay = e.DepartmentManagement.DepartmentManagementPK.WorkingDay
-                };
-                employeeMoney.DateLogin = e.DepartmentManagement.StartTime;
-                employeeMoney.InMoney = e.InMoney;
-                employeeMoney.CreateDate = e.DepartmentManagement.CreateDate;
-                employeeMoney.CreateId = e.DepartmentManagement.CreateId;
-                employeeMoney.UpdateDate = e.DepartmentManagement.UpdateDate;
-                employeeMoney.UpdateId = e.DepartmentManagement.UpdateId;
-                EmployeeMoneyLogic.Add(employeeMoney);
+                    EmployeeMoney employeeMoney = new EmployeeMoney();
+                    employeeMoney.EmployeeMoneyPK = new EmployeeMoneyPK
+                    {
+                        DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
+                        EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
+                        WorkingDay = DateUtility.DateOnly(e.DepartmentManagement.DepartmentManagementPK.WorkingDay)
+                    };
+                    employeeMoney.DateLogin = e.DepartmentManagement.StartTime;
+                    employeeMoney.InMoney = e.InMoney;
+                    employeeMoney.CreateDate = e.DepartmentManagement.CreateDate;
+                    employeeMoney.CreateId = e.DepartmentManagement.CreateId;
+                    employeeMoney.UpdateDate = e.DepartmentManagement.UpdateDate;
+                    employeeMoney.UpdateId = e.DepartmentManagement.UpdateId;
+                    EmployeeMoneyLogic.Add(employeeMoney);
+                }
+            }
+            catch (Exception exception)
+            {
+                e.HasErrors = true;
             }
         }
 
@@ -64,7 +72,7 @@ namespace AppFrameClient.Logic
                 {
                     DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
                     EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
-                    WorkingDay = e.DepartmentManagement.DepartmentManagementPK.WorkingDay
+                    WorkingDay = DateUtility.DateOnly(e.DepartmentManagement.DepartmentManagementPK.WorkingDay)
                 };
                 EmployeeMoney employeeMoney = EmployeeMoneyLogic.FindById(employeeMoneyPk);
                 employeeMoney.DateLogout = curDM.EndTime;
@@ -78,19 +86,27 @@ namespace AppFrameClient.Logic
 
         void mainView_StartPeriodEvent(object sender, EmployeeManagementEventArgs e)
         {
-            DepartmentManagement dm = new DepartmentManagement();
-            dm.CreateId = e.UserInfo.Username;
-            dm.UpdateId = e.UserInfo.Username;
-            dm.CreateDate = DateTime.Now;
-            dm.UpdateDate = DateTime.Now;
-            dm.StartTime = DateTime.Now;
-            dm.DepartmentManagementPK = new DepartmentManagementPK
-                                            {
-                                                DepartmentId = CurrentDepartment.Get().DepartmentId,
-                                                EmployeeId = e.UserInfo.EmployeeInfo.EmployeePK.EmployeeId,
-                                                WorkingDay = DateTime.Now
-                                            };
-            DepartmentManagementLogic.Add(dm);
+            try
+            {
+                DepartmentManagement dm = new DepartmentManagement();
+                dm.CreateId = e.UserInfo.Username;
+                dm.UpdateId = e.UserInfo.Username;
+                dm.CreateDate = DateTime.Now;
+                dm.UpdateDate = DateTime.Now;
+                dm.StartTime = DateTime.Now;
+                dm.DepartmentManagementPK = new DepartmentManagementPK
+                                                {
+                                                    DepartmentId = CurrentDepartment.Get().DepartmentId,
+                                                    EmployeeId = e.UserInfo.EmployeeInfo.EmployeePK.EmployeeId,
+                                                    WorkingDay = DateTime.Now
+                                                };
+                DepartmentManagementLogic.Add(dm);
+                e.DepartmentManagement = dm;
+            }
+            catch (Exception)
+            {
+                e.HasErrors = true;
+            }
         }
 
         void mainView_ProcessPeriodEvent(object sender, EmployeeManagementEventArgs e)
