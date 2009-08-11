@@ -349,9 +349,9 @@
     <property name="RoleDao" ref="RoleDaoImpl" />
   </object>
 
-  <object id="AppFrame.IEmployeeMoneyLogic" type="AppFrame.Logic.EmployeeMoneyLogicImpl, AppFrameClient">
+  <object id="AppFrame.Service.IEmployeeMoneyLogic" type="AppFrameClient.Logic.EmployeeMoneyLogicImpl, AppFrameClient">
     <property name="EmployeeMoneyDAO" ref="AppFrame.DataLayer.IEmployeeMoneyDAO"/>
   </object>
 
-  <tx:attribute-driven/>
+  <tx:attribute-driven />
 </objects>

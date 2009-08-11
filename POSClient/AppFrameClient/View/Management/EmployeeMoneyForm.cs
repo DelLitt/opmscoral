@@ -82,20 +82,7 @@ namespace AppFrameClient.View.Management
             choosedResult = ChoosingResult.Next;
             Close();
         }
-
-        private IProcessPeriodMoneyLogic processPeriodMoneyLogic;
-        public IProcessPeriodMoneyLogic ProcessPeriodMoneyLogic
-        {
-            get
-            {
-                return processPeriodMoneyLogic;    
-            }
-            set
-            {
-                processPeriodMoneyLogic = value;
-                processPeriodMoneyLogic.ProcessPeriodMoneyView = this;
-            }
-        }
+        
         public event EventHandler<ProcessPeriodMoneyEventArgs> LoadProcessPeriodMoneyEvent;
     }
 }

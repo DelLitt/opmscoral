@@ -24,20 +24,59 @@ namespace AppFrameClient.Logic
             set
             {
                 mainView = value;
-                mainView.ProcessPeriodEvent += new EventHandler<MainLogicEventArgs>(mainView_ProcessPeriodEvent);
-                mainView.StartPeriodEvent += new EventHandler<MainLogicEventArgs>(mainView_StartPeriodEvent);
-                mainView.EndPeriodEvent += new EventHandler<MainLogicEventArgs>(mainView_EndPeriodEvent);
+                mainView.ProcessPeriodEvent += new EventHandler<EmployeeManagementEventArgs>(mainView_ProcessPeriodEvent);
+                mainView.StartPeriodEvent += new EventHandler<EmployeeManagementEventArgs>(mainView_StartPeriodEvent);
+                mainView.EndPeriodEvent += new EventHandler<EmployeeManagementEventArgs>(mainView_EndPeriodEvent);
+                mainView.ProcessEmployeeMoneyEvent += new EventHandler<EmployeeManagementEventArgs>(mainView_ProcessEmployeeMoneyEvent);
             }
         }
 
-        void mainView_EndPeriodEvent(object sender, MainLogicEventArgs e)
+        void mainView_ProcessEmployeeMoneyEvent(object sender, EmployeeManagementEventArgs e)
+        {
+            if (e.InMoney > 0)
+            {
+                EmployeeMoney employeeMoney = new EmployeeMoney();
+                employeeMoney.EmployeeMoneyPK = new EmployeeMoneyPK
+                {
+                    DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
+                    EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
+                    WorkingDay = e.DepartmentManagement.DepartmentManagementPK.WorkingDay
+                };
+                employeeMoney.DateLogin = e.DepartmentManagement.StartTime;
+                employeeMoney.InMoney = e.InMoney;
+                employeeMoney.CreateDate = e.DepartmentManagement.CreateDate;
+                employeeMoney.CreateId = e.DepartmentManagement.CreateId;
+                employeeMoney.UpdateDate = e.DepartmentManagement.UpdateDate;
+                employeeMoney.UpdateId = e.DepartmentManagement.UpdateId;
+                EmployeeMoneyLogic.Add(employeeMoney);
+            }
+        }
+
+        void mainView_EndPeriodEvent(object sender, EmployeeManagementEventArgs e)
         {
             DepartmentManagement curDM = e.DepartmentManagement;
             curDM.EndTime = DateTime.Now;
             DepartmentManagementLogic.Update(curDM);
+
+            if (e.OutMoney > 0)
+            {
+                EmployeeMoneyPK employeeMoneyPk = new EmployeeMoneyPK
+                {
+                    DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
+                    EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
+                    WorkingDay = e.DepartmentManagement.DepartmentManagementPK.WorkingDay
+                };
+                EmployeeMoney employeeMoney = EmployeeMoneyLogic.FindById(employeeMoneyPk);
+                employeeMoney.DateLogout = curDM.EndTime;
+                employeeMoney.UpdateDate = DateTime.Now;
+                employeeMoney.UpdateId = curDM.UpdateId;
+                employeeMoney.OutMoney = e.OutMoney;
+                EmployeeMoneyLogic.Update(employeeMoney);
+            }
+
         }
 
-        void mainView_StartPeriodEvent(object sender, MainLogicEventArgs e)
+        void mainView_StartPeriodEvent(object sender, EmployeeManagementEventArgs e)
         {
             DepartmentManagement dm = new DepartmentManagement();
             dm.CreateId = e.UserInfo.Username;
@@ -54,7 +93,7 @@ namespace AppFrameClient.Logic
             DepartmentManagementLogic.Add(dm);
         }
 
-        void mainView_ProcessPeriodEvent(object sender, MainLogicEventArgs e)
+        void mainView_ProcessPeriodEvent(object sender, EmployeeManagementEventArgs e)
         {
             string UserId = e.Username;
             LoginModel UserInfo = LoginLogic.FindById(UserId);
@@ -84,6 +123,11 @@ namespace AppFrameClient.Logic
         public AppFrame.Logic.IEmployeeLogic EmployeeLogic
         {
             get;set;
+        }
+
+        public IEmployeeMoneyLogic EmployeeMoneyLogic
+        {
+            get; set;
         }
 
         public AppFrame.Logic.IDepartmentTimelineLogic DepartmentTimelineLogic

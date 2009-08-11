@@ -10,8 +10,9 @@ namespace AppFrameClient.View
     {
         IMainLogic MainLogic { get;  set; }
 
-        event EventHandler<MainLogicEventArgs> ProcessPeriodEvent;
-        event EventHandler<MainLogicEventArgs> StartPeriodEvent;
-        event EventHandler<MainLogicEventArgs> EndPeriodEvent;
+        event EventHandler<EmployeeManagementEventArgs> ProcessPeriodEvent;
+        event EventHandler<EmployeeManagementEventArgs> StartPeriodEvent;
+        event EventHandler<EmployeeManagementEventArgs> EndPeriodEvent;
+        event EventHandler<EmployeeManagementEventArgs> ProcessEmployeeMoneyEvent;
     }
 }

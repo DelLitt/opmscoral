@@ -14,6 +14,7 @@ namespace AppFrameClient.Logic
         IEmployeeWorkingDayLogic EmployeeWorkingDayLogic { get; set; }
         IEmployeeDetailLogic EmployeeInfoLogic { get; set; }
         IEmployeeLogic EmployeeLogic { get; set; }
+        IEmployeeMoneyLogic EmployeeMoneyLogic { get; set; }
         IDepartmentTimelineLogic DepartmentTimelineLogic { get; set; }
         IDepartmentManagementLogic DepartmentManagementLogic { get; set; }
         ILoginLogic LoginLogic { get; set; }

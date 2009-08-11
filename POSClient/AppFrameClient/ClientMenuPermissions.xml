@@ -116,7 +116,9 @@
     <menuitem name="mnuImportDatabaseImage" role="NotImplement" />
     <menuitem name="mnuExportDatabaseImage" role="NotImplement" />
     <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
-    <menuitem name="mnuImportByFile" role="NotImplement" />    
+    <menuitem name="mnuImportByFile" role="NotImplement" />
+    <menuitem name="mnuEmployeeMoney" role="Administrator,Supervisor,Manager" />
+    
   </menu>
   <menu name="mnuHelp" role="*">
     <menuitem name="mnuHelpAbout" role="*">

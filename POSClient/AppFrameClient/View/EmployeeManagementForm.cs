@@ -57,7 +57,7 @@ namespace AppFrameClient.View
             if(loggedUser.IsInRole(PosRole.Manager))
             {
                 // process period for manager here 
-                MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                EmployeeManagementEventArgs eventArgs = new EmployeeManagementEventArgs();
                 eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
                 EventUtility.fireEvent(ProcessPeriodEvent,this,eventArgs);
                 LoginModel userInfo = eventArgs.UserInfo;
@@ -124,11 +124,13 @@ namespace AppFrameClient.View
             }
         }
 
-        public event EventHandler<MainLogicEventArgs> ProcessPeriodEvent;
+        public event EventHandler<EmployeeManagementEventArgs> ProcessPeriodEvent;
 
-        public event EventHandler<MainLogicEventArgs> StartPeriodEvent;
+        public event EventHandler<EmployeeManagementEventArgs> StartPeriodEvent;
 
-        public event EventHandler<MainLogicEventArgs> EndPeriodEvent;
+        public event EventHandler<EmployeeManagementEventArgs> EndPeriodEvent;
+        
+        public event EventHandler<EmployeeManagementEventArgs> ProcessEmployeeMoneyEvent;
 
         #endregion
 
@@ -143,7 +145,7 @@ namespace AppFrameClient.View
             if (loggedUser.IsInRole(PosRole.Manager))
             {
                 // process period for manager here 
-                MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                EmployeeManagementEventArgs eventArgs = new EmployeeManagementEventArgs();
                 eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
                 EventUtility.fireEvent(ProcessPeriodEvent, this, eventArgs);
                 LoginModel userInfo = eventArgs.UserInfo;
@@ -189,7 +191,7 @@ namespace AppFrameClient.View
                                                       MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 {
-                    MainLogicEventArgs eventArgs = new MainLogicEventArgs();
+                    EmployeeManagementEventArgs eventArgs = new EmployeeManagementEventArgs();
                     eventArgs.Username = ClientInfo.getInstance().LoggedUser.Name;
                     EventUtility.fireEvent(ProcessPeriodEvent, this, eventArgs);
                     LoginModel userInfo = eventArgs.UserInfo;

@@ -7,10 +7,13 @@ using AppFrame.Model;
 
 namespace AppFrameClient.Logic
 {
-    public class MainLogicEventArgs : BaseEventArgs
+    public class EmployeeManagementEventArgs : BaseEventArgs
     {
         public string Username { get; set; }
         public LoginModel UserInfo { get; set; }
         public DepartmentManagement DepartmentManagement { get; set; }
+
+        public long InMoney { get; set; }
+        public long OutMoney { get; set; }
     }
 }

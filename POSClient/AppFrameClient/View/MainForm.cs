@@ -1221,7 +1221,7 @@ namespace AppFrame.View
         private void employeeMoneyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EmployeeMoneyForm form =
-                GlobalUtility.GetOnlyChildFormObject<EmployeeMoneyForm>(this, FormConstants.SYNC_DATABASE_IMAGE_VIEW);
+                GlobalUtility.GetOnlyChildFormObject<EmployeeMoneyForm>(this, FormConstants.EMPLOYEE_MONEY_VIEW);
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }

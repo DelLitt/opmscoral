@@ -220,6 +220,8 @@
     <Compile Include="DataLayer\EmployeeMoneyDAOImpl.cs" />
     <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
     <Compile Include="Logic\EmployeeMoneyLogicImpl.cs" />
+    <Compile Include="Presenter\ClosedPeriodLogic.cs" />
+    <Compile Include="Presenter\ProcessPeriodMoneyController.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />
     <Compile Include="Common\AppFrameUser.cs" />
@@ -307,7 +309,7 @@
     <Compile Include="Logic\EmployeeWorkingsLogicImpl.cs" />
     <Compile Include="Logic\IEmployeeWorkingsLogic.cs" />
     <Compile Include="Logic\IMainLogic.cs" />
-    <Compile Include="Logic\MainLogicEventArgs.cs" />
+    <Compile Include="Logic\EmployeeManagementEventArgs.cs" />
     <Compile Include="Logic\MainLogicImpl.cs" />
     <Compile Include="Logic\PosLogLogicImpl.cs" />
     <Compile Include="MasterDB.Designer.cs">
@@ -1747,9 +1749,6 @@
       <Project>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</Project>
       <Name>POSReports</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
