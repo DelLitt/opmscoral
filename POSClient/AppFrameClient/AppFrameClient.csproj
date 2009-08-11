@@ -217,6 +217,7 @@
     <Compile Include="Common\ChannelConstants.cs" />
     <Compile Include="Common\LocalCache.cs" />
     <Compile Include="DataLayer\DepartmentStockInHistoryDAOImpl.cs" />
+    <Compile Include="DataLayer\EmployeeMoneyDAOImpl.cs" />
     <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />
