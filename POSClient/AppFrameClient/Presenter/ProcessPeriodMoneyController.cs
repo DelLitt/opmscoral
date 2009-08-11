@@ -22,28 +22,7 @@ namespace AppFrameClient.Presenter
             { 
                 processPeriodMoneyView = value;
                 processPeriodMoneyView.LoadProcessPeriodMoneyEvent += new EventHandler<ProcessPeriodMoneyEventArgs>(processPeriodMoneyView_LoadProcessPeriodMoneyEvent);
-                processPeriodMoneyView.ProcessEmployeeMoneyEvent += new EventHandler<ProcessPeriodMoneyEventArgs>(processPeriodMoneyView_ProcessEmployeeMoneyEvent);
-            }
-        }
-
-        void processPeriodMoneyView_ProcessEmployeeMoneyEvent(object sender, ProcessPeriodMoneyEventArgs e)
-        {
-            if (e.InMoney > 0)
-            {
-                EmployeeMoney employeeMoney = new EmployeeMoney();
-                employeeMoney.EmployeeMoneyPK = new EmployeeMoneyPK
-                {
-                    DepartmentId = e.DepartmentManagement.DepartmentManagementPK.DepartmentId,
-                    EmployeeId = e.DepartmentManagement.DepartmentManagementPK.EmployeeId,
-                    WorkingDay = e.DepartmentManagement.DepartmentManagementPK.WorkingDay
-                };
-                employeeMoney.DateLogin = e.DepartmentManagement.StartTime;
-                employeeMoney.InMoney = e.InMoney;
-                employeeMoney.CreateDate = e.DepartmentManagement.CreateDate;
-                employeeMoney.CreateId = e.DepartmentManagement.CreateId;
-                employeeMoney.UpdateDate = e.DepartmentManagement.UpdateDate;
-                employeeMoney.UpdateId = e.DepartmentManagement.UpdateId;
-                EmployeeMoneyLogic.Add(employeeMoney);
+                
             }
         }
 

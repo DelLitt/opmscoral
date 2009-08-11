@@ -310,7 +310,6 @@
     <Compile Include="Logic\EmployeeWorkingsLogicImpl.cs" />
     <Compile Include="Logic\IEmployeeWorkingsLogic.cs" />
     <Compile Include="Logic\IMainLogic.cs" />
-    <Compile Include="Logic\MainLogicEventArgs.cs" />
     <Compile Include="Logic\MainLogicImpl.cs" />
     <Compile Include="Logic\PosLogLogicImpl.cs" />
     <Compile Include="MasterDB.Designer.cs">

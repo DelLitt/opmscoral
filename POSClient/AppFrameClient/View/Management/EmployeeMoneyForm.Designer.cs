@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMoney = new AppFrame.Controls.NumberTextBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -106,10 +106,10 @@
             this.dgvMoney.AutoGenerateColumns = false;
             this.dgvMoney.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMoney.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                                                                                             this.EmployeeId,
-                                                                                             this.WorkingDay,
-                                                                                             this.InMoney,
-                                                                                             this.OutMoney});
+            this.EmployeeId,
+            this.WorkingDay,
+            this.InMoney,
+            this.OutMoney});
             this.dgvMoney.DataSource = this.bdsMoney;
             this.dgvMoney.Location = new System.Drawing.Point(15, 73);
             this.dgvMoney.MultiSelect = false;
@@ -138,10 +138,10 @@
             // InMoney
             // 
             this.InMoney.DataPropertyName = "InMoney";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.InMoney.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.InMoney.DefaultCellStyle = dataGridViewCellStyle1;
             this.InMoney.HeaderText = "Số tiền đầu ca";
             this.InMoney.Name = "InMoney";
             this.InMoney.ReadOnly = true;
@@ -150,10 +150,10 @@
             // OutMoney
             // 
             this.OutMoney.DataPropertyName = "OutMoney";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.OutMoney.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.OutMoney.DefaultCellStyle = dataGridViewCellStyle2;
             this.OutMoney.HeaderText = "Số tiền cuối ca";
             this.OutMoney.Name = "OutMoney";
             this.OutMoney.ReadOnly = true;
@@ -163,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 201);
+            this.ClientSize = new System.Drawing.Size(524, 222);
             this.Controls.Add(this.dgvMoney);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label1);
@@ -174,6 +174,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Số tiền trong két";
             this.Load += new System.EventHandler(this.EmployeeMoneyForm_Load);
+            this.Controls.SetChildIndex(this.txtMoney, 0);
+            this.Controls.SetChildIndex(this.btnNext, 0);
+            this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblStatus, 0);
+            this.Controls.SetChildIndex(this.dgvMoney, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMoney)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMoney)).EndInit();
             this.ResumeLayout(false);
