@@ -827,7 +827,7 @@
     <EmbeddedResource Include="Model\SubStock.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockInHistory.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
-    <Content Include="Model\EmployeeMoney.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeMoney.hbm.xml" />
     <EmbeddedResource Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
