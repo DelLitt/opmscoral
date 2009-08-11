@@ -217,11 +217,7 @@
     <Compile Include="Common\ChannelConstants.cs" />
     <Compile Include="Common\LocalCache.cs" />
     <Compile Include="DataLayer\DepartmentStockInHistoryDAOImpl.cs" />
-    <Compile Include="DataLayer\EmployeeMoneyDAOImpl.cs" />
     <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
-    <Compile Include="Logic\EmployeeMoneyLogicImpl.cs" />
-    <Compile Include="Presenter\ClosedPeriodLogic.cs" />
-    <Compile Include="Presenter\ProcessPeriodMoneyController.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />
     <Compile Include="Common\AppFrameUser.cs" />
@@ -309,7 +305,7 @@
     <Compile Include="Logic\EmployeeWorkingsLogicImpl.cs" />
     <Compile Include="Logic\IEmployeeWorkingsLogic.cs" />
     <Compile Include="Logic\IMainLogic.cs" />
-    <Compile Include="Logic\EmployeeManagementEventArgs.cs" />
+    <Compile Include="Logic\MainLogicEventArgs.cs" />
     <Compile Include="Logic\MainLogicImpl.cs" />
     <Compile Include="Logic\PosLogLogicImpl.cs" />
     <Compile Include="MasterDB.Designer.cs">
@@ -543,23 +539,11 @@
     <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\ClosedPeriodForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Management\ClosedPeriodForm.Designer.cs">
-      <DependentUpon>ClosedPeriodForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Management\DepartmentManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Management\DepartmentManagement.Designer.cs">
       <DependentUpon>DepartmentManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Management\EmployeeMoneyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Management\EmployeeMoneyForm.Designer.cs">
-      <DependentUpon>EmployeeMoneyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Management\EmployeeWorkingsForm.cs">
       <SubType>Form</SubType>
@@ -1447,14 +1431,8 @@
     <EmbeddedResource Include="View\Inventory\DepartmentStockAdhocCheckingForm.resx">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Management\ClosedPeriodForm.resx">
-      <DependentUpon>ClosedPeriodForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Management\DepartmentManagement.resx">
       <DependentUpon>DepartmentManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Management\EmployeeMoneyForm.resx">
-      <DependentUpon>EmployeeMoneyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Management\EmployeeWorkingsForm.resx">
       <DependentUpon>EmployeeWorkingsForm.cs</DependentUpon>
