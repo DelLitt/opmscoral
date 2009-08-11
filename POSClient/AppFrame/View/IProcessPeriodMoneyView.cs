@@ -8,8 +8,9 @@ namespace AppFrame.View
 {
     public interface IProcessPeriodMoneyView
     {
-        IProcessPeriodMoneyLogic ProcessPeriodMoneyLogic { get; set; }
+        IProcessPeriodMoneyControler ProcessPeriodMoneyControler { get; set; }
 
         event EventHandler<ProcessPeriodMoneyEventArgs> LoadProcessPeriodMoneyEvent;
+        event EventHandler<ProcessPeriodMoneyEventArgs> ProcessEmployeeMoneyEvent;
     }
 }

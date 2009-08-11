@@ -626,7 +626,7 @@
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
     <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\IPosLogController.cs" />
-    <Compile Include="Presenter\IProcessPeriodMoneyLogic.cs" />
+    <Compile Include="Presenter\IProcessPeriodMoneyControler.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
     <Compile Include="Presenter\IStockOutConfirmController.cs" />
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />

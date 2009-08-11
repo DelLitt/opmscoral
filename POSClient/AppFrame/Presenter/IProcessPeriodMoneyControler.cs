@@ -7,7 +7,7 @@ using AppFrame.View;
 
 namespace AppFrame.Presenter
 {
-    public interface IProcessPeriodMoneyLogic
+    public interface IProcessPeriodMoneyControler
     {
         // view
         IProcessPeriodMoneyView ProcessPeriodMoneyView { get; set; }
