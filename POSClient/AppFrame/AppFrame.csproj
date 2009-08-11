@@ -172,8 +172,10 @@
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockTempCollection.cs" />
     <Compile Include="Collection\DepartmentStockViewCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
+    <Compile Include="Collection\EmployeeMoneyCollection.cs" />
     <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
     <Compile Include="Collection\LoginModelCollection.cs" />
     <Compile Include="Collection\ProductCollection.cs" />
@@ -343,6 +345,7 @@
     <Compile Include="Exceptions\DataLayerException.cs" />
     <Compile Include="Exceptions\PresentationException.cs" />
     <Compile Include="Logic\IDepartmentStockInHistoryLogic.cs" />
+    <Compile Include="Logic\IEmployeeMoneyLogic.cs" />
     <Compile Include="Logic\ISubStockLogic.cs" />
     <Compile Include="Logic\IDepartmentStockTempLogic.cs" />
     <Compile Include="Logic\IDepartmentManagementLogic.cs" />
@@ -491,6 +494,8 @@
     <Compile Include="Model\EmployeeDayoff.cs" />
     <Compile Include="Model\EmployeeDayoffPK.cs" />
     <Compile Include="Model\EmployeeInfo.cs" />
+    <Compile Include="Model\EmployeeMoney.cs" />
+    <Compile Include="Model\EmployeeMoneyPK.cs" />
     <Compile Include="Model\EmployeePK.cs" />
     <Compile Include="Model\EmployeeReward.cs" />
     <Compile Include="Model\EmployeeRewardPK.cs" />
@@ -562,6 +567,7 @@
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Model\UniversalStockReportObject.cs" />
     <Compile Include="ObjectCriteria.cs" />
+    <Compile Include="Presenter\ClosedPeriodEventArgs.cs" />
     <Compile Include="Presenter\CustomerEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentCostEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentPriceUpdateEventArgs.cs" />
@@ -614,17 +620,20 @@
     <Compile Include="Presenter\GoodsSale\IGoodsSaleListController.cs" />
     <Compile Include="Presenter\GoodsSale\IGoodsSaleReturnController.cs" />
     <Compile Include="Presenter\IAuthService.cs" />
+    <Compile Include="Presenter\IClosedPeriodLogic.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockFixingEventArgs.cs" />
     <Compile Include="Presenter\Inventory\IDepartmentStockFixingController.cs" />
     <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
     <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
     <Compile Include="Presenter\IPosLogController.cs" />
+    <Compile Include="Presenter\IProcessPeriodMoneyLogic.cs" />
     <Compile Include="Presenter\ISecurityController.cs" />
     <Compile Include="Presenter\IStockOutConfirmController.cs" />
     <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
     <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
     <Compile Include="Presenter\PosLogEventArgs.cs" />
+    <Compile Include="Presenter\ProcessPeriodMoneyEventArgs.cs" />
     <Compile Include="Presenter\Report\IReportStockInController.cs" />
     <Compile Include="Presenter\Report\IReportStockOutController.cs" />
     <Compile Include="Presenter\Report\ReportStockInEventArgs.cs" />
@@ -735,6 +744,7 @@
     <Compile Include="View\GoodsSale\IGoodsSaleView.cs" />
     <Compile Include="View\GoodsSale\IMonthGoodsSaleListView.cs" />
     <Compile Include="View\IChangePasswordView.cs" />
+    <Compile Include="View\IClosedPeriodView.cs" />
     <Compile Include="View\ICustomerView.cs" />
     <Compile Include="View\IEditCustomerView.cs" />
     <Compile Include="View\ILoginView.cs" />
@@ -742,6 +752,7 @@
     <Compile Include="View\Inventory\IDepartmentStockFixingView.cs" />
     <Compile Include="View\Inventory\IDepartmentStockAdhocProcessingView.cs" />
     <Compile Include="View\IPosLogView.cs" />
+    <Compile Include="View\IProcessPeriodMoneyView.cs" />
     <Compile Include="View\ISecurityView.cs" />
     <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
     <Compile Include="View\Reports\IDepartmentStockInReportView.cs" />
@@ -816,6 +827,7 @@
     <EmbeddedResource Include="Model\SubStock.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentStockInHistory.hbm.xml" />
     <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
+    <Content Include="Model\EmployeeMoney.hbm.xml" />
     <EmbeddedResource Include="Model\PosLog.hbm.xml" />
     <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
     <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
