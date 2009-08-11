@@ -58,11 +58,11 @@ namespace AppFrameClient.View
 
         private void SecuritySettings_Load(object sender, EventArgs e)
         {
-            if(ClientSetting.IsClient())
+            /*if(ClientSetting.IsClient())
             {
                 btnCreateFromEmployee.Enabled = false;
                 btnCreateNew.Enabled = false;
-            }
+            }*/
             employeeList.Clear();
             lstEmployee.Items.Clear();
             SecurityEventArgs eventArgs = new SecurityEventArgs();
