@@ -172,7 +172,6 @@
     <Compile Include="Collection\DepartmentStockOutCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
     <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
-    <Compile Include="Collection\DepartmentStockTempCollection.cs" />
     <Compile Include="Collection\DepartmentStockViewCollection.cs" />
     <Compile Include="Collection\EmployeeInfoCollection.cs" />
     <Compile Include="Collection\EmployeeMoneyCollection.cs" />
@@ -270,6 +269,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataLayer\IDepartmentStockInHistoryDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeMoneyDAO.cs" />
     <Compile Include="DataLayer\ISubStockDAO.cs" />
     <Compile Include="DataLayer\IDepartmentStockTempDAO.cs" />
     <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
