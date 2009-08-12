@@ -11,6 +11,7 @@ namespace AppFrame.Presenter.GoodsIO
 {
     public class ProductMasterEventArgs : BaseEventArgs
     {
+        public IList UpdateProductMasterList { get; set;}
 
         public ProductMasterView ProductMasterView { get; set; }
             
