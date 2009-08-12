@@ -68,12 +68,6 @@ namespace AppFrameClient.Presenter.GoodsIO
         {
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            e.ProductTypeList = ProductTypeLogic.FindAll(criteria);
-            e.ProductTypeList.Insert(0, new ProductType());
-            e.ProductSizeList = ProductSizeLogic.FindAll(criteria);
-            e.ProductSizeList.Insert(0, new ProductSize());
-            e.ProductColorList = ProductColorLogic.FindAll(criteria);
-            e.ProductColorList.Insert(0, new ProductColor());
             e.CountryList = CountryLogic.FindAll(criteria);
             e.CountryList.Insert(0, new Country());
             e.ManufacturerList = ManufacturerLogic.FindAll(criteria);
@@ -82,6 +76,28 @@ namespace AppFrameClient.Presenter.GoodsIO
             e.PackagerList.Insert(0, new Packager());
             e.DistributorList = DistributorLogic.FindAll(criteria);
             e.DistributorList.Insert(0, new Distributor());
+
+            // product type
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddOrder("TypeName", true);
+            e.ProductTypeList = ProductTypeLogic.FindAll(criteria);
+            e.ProductTypeList.Insert(0, new ProductType());
+
+            // product size
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddOrder("SizeName", true);
+            e.ProductSizeList = ProductSizeLogic.FindAll(criteria);
+            e.ProductSizeList.Insert(0, new ProductSize());
+
+            // product color
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddOrder("ColorName", true);
+            e.ProductColorList = ProductColorLogic.FindAll(criteria);
+            e.ProductColorList.Insert(0, new ProductColor());
+            
 
             if (e.ProductMasterForInit != null)
             {
@@ -175,6 +191,14 @@ namespace AppFrameClient.Presenter.GoodsIO
                         }
 
                         ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
+                    }
+                }
+                // update existing product master
+                if(e.UpdateProductMasterList!= null && e.UpdateProductMasterList.Count > 0)
+                {
+                    foreach (ProductMaster productMaster in e.UpdateProductMasterList)
+                    {
+                        ProductMasterLogic.Update(productMaster);
                     }
                 }
                 e.EventResult = "Success";

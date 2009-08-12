@@ -111,13 +111,7 @@ namespace AppFrame.Logic
                     ProductMasterDAO.Add(productMaster);                    
                 }
             }
-            /*            if (data.ProductType != null)
-                        {
-                            data.Barcode = string.Format("{0:000}", data.ProductType.TypeId) + data.ProductMasterId;
-                        } else
-                        {
-                            data.Barcode = "000" + data.ProductMasterId;
-                        }*/
+            
         }
 
         /// <summary>

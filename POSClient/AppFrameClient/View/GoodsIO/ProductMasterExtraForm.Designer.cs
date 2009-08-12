@@ -112,7 +112,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(520, 501);
+            this.btnSelect.Location = new System.Drawing.Point(520, 521);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(38, 23);
             this.btnSelect.TabIndex = 121;
@@ -122,7 +122,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             // txtImagePath
             // 
-            this.txtImagePath.Location = new System.Drawing.Point(135, 501);
+            this.txtImagePath.Location = new System.Drawing.Point(135, 521);
             this.txtImagePath.Name = "txtImagePath";
             this.txtImagePath.Size = new System.Drawing.Size(379, 22);
             this.txtImagePath.TabIndex = 102;
@@ -134,7 +134,7 @@ namespace AppFrameClient.View.GoodsIO
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 504);
+            this.label1.Location = new System.Drawing.Point(25, 524);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 14);
             this.label1.TabIndex = 120;
@@ -177,7 +177,7 @@ namespace AppFrameClient.View.GoodsIO
             this.lbxProductSize.DisplayMember = "SizeName";
             this.lbxProductSize.FormattingEnabled = true;
             this.lbxProductSize.ItemHeight = 14;
-            this.lbxProductSize.Location = new System.Drawing.Point(373, 277);
+            this.lbxProductSize.Location = new System.Drawing.Point(133, 277);
             this.lbxProductSize.Name = "lbxProductSize";
             this.lbxProductSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbxProductSize.Size = new System.Drawing.Size(185, 88);
@@ -189,7 +189,7 @@ namespace AppFrameClient.View.GoodsIO
             this.lbxProductColor.DisplayMember = "ColorName";
             this.lbxProductColor.FormattingEnabled = true;
             this.lbxProductColor.ItemHeight = 14;
-            this.lbxProductColor.Location = new System.Drawing.Point(373, 176);
+            this.lbxProductColor.Location = new System.Drawing.Point(133, 175);
             this.lbxProductColor.Name = "lbxProductColor";
             this.lbxProductColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbxProductColor.Size = new System.Drawing.Size(185, 88);
@@ -198,7 +198,7 @@ namespace AppFrameClient.View.GoodsIO
             // btnCreateDistributor
             // 
             this.btnCreateDistributor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateDistributor.Location = new System.Drawing.Point(324, 470);
+            this.btnCreateDistributor.Location = new System.Drawing.Point(324, 477);
             this.btnCreateDistributor.Name = "btnCreateDistributor";
             this.btnCreateDistributor.Size = new System.Drawing.Size(40, 25);
             this.btnCreateDistributor.TabIndex = 118;
@@ -209,7 +209,7 @@ namespace AppFrameClient.View.GoodsIO
             // btnCreatePackager
             // 
             this.btnCreatePackager.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackager.Location = new System.Drawing.Point(324, 442);
+            this.btnCreatePackager.Location = new System.Drawing.Point(324, 449);
             this.btnCreatePackager.Name = "btnCreatePackager";
             this.btnCreatePackager.Size = new System.Drawing.Size(40, 25);
             this.btnCreatePackager.TabIndex = 117;
@@ -220,7 +220,7 @@ namespace AppFrameClient.View.GoodsIO
             // btnCreateManufacturer
             // 
             this.btnCreateManufacturer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateManufacturer.Location = new System.Drawing.Point(324, 413);
+            this.btnCreateManufacturer.Location = new System.Drawing.Point(324, 420);
             this.btnCreateManufacturer.Name = "btnCreateManufacturer";
             this.btnCreateManufacturer.Size = new System.Drawing.Size(40, 25);
             this.btnCreateManufacturer.TabIndex = 116;
@@ -231,7 +231,7 @@ namespace AppFrameClient.View.GoodsIO
             // btnCreateCountry
             // 
             this.btnCreateCountry.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateCountry.Location = new System.Drawing.Point(324, 384);
+            this.btnCreateCountry.Location = new System.Drawing.Point(324, 391);
             this.btnCreateCountry.Name = "btnCreateCountry";
             this.btnCreateCountry.Size = new System.Drawing.Size(40, 25);
             this.btnCreateCountry.TabIndex = 115;
@@ -278,7 +278,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbDistributor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbDistributor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbDistributor.FormattingEnabled = true;
-            this.cbbDistributor.Location = new System.Drawing.Point(135, 472);
+            this.cbbDistributor.Location = new System.Drawing.Point(135, 479);
             this.cbbDistributor.Name = "cbbDistributor";
             this.cbbDistributor.Size = new System.Drawing.Size(185, 22);
             this.cbbDistributor.TabIndex = 101;
@@ -291,7 +291,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(24, 475);
+            this.label7.Location = new System.Drawing.Point(24, 482);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 14);
             this.label7.TabIndex = 111;
@@ -303,7 +303,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbPackager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPackager.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbPackager.FormattingEnabled = true;
-            this.cbbPackager.Location = new System.Drawing.Point(135, 442);
+            this.cbbPackager.Location = new System.Drawing.Point(135, 449);
             this.cbbPackager.Name = "cbbPackager";
             this.cbbPackager.Size = new System.Drawing.Size(185, 22);
             this.cbbPackager.TabIndex = 100;
@@ -316,7 +316,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(24, 447);
+            this.label6.Location = new System.Drawing.Point(24, 454);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 14);
             this.label6.TabIndex = 110;
@@ -328,7 +328,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbManufacturer.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbManufacturer.FormattingEnabled = true;
-            this.cbbManufacturer.Location = new System.Drawing.Point(135, 413);
+            this.cbbManufacturer.Location = new System.Drawing.Point(135, 420);
             this.cbbManufacturer.Name = "cbbManufacturer";
             this.cbbManufacturer.Size = new System.Drawing.Size(185, 22);
             this.cbbManufacturer.TabIndex = 99;
@@ -337,7 +337,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(24, 418);
+            this.label5.Location = new System.Drawing.Point(24, 425);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 14);
             this.label5.TabIndex = 109;
@@ -349,7 +349,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCountry.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCountry.FormattingEnabled = true;
-            this.cbbCountry.Location = new System.Drawing.Point(135, 384);
+            this.cbbCountry.Location = new System.Drawing.Point(135, 391);
             this.cbbCountry.Name = "cbbCountry";
             this.cbbCountry.Size = new System.Drawing.Size(185, 22);
             this.cbbCountry.TabIndex = 98;
@@ -389,7 +389,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(24, 387);
+            this.label15.Location = new System.Drawing.Point(24, 394);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 14);
             this.label15.TabIndex = 107;
@@ -449,7 +449,7 @@ namespace AppFrameClient.View.GoodsIO
             this.btnAddColor.Name = "btnAddColor";
             this.btnAddColor.Size = new System.Drawing.Size(40, 23);
             this.btnAddColor.TabIndex = 123;
-            this.btnAddColor.Text = "<--";
+            this.btnAddColor.Text = "-->";
             this.btnAddColor.UseVisualStyleBackColor = true;
             this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
             // 
@@ -459,7 +459,7 @@ namespace AppFrameClient.View.GoodsIO
             this.btnRemoveColor.Name = "btnRemoveColor";
             this.btnRemoveColor.Size = new System.Drawing.Size(40, 23);
             this.btnRemoveColor.TabIndex = 124;
-            this.btnRemoveColor.Text = "-->";
+            this.btnRemoveColor.Text = "<--";
             this.btnRemoveColor.UseVisualStyleBackColor = true;
             this.btnRemoveColor.Click += new System.EventHandler(this.btnRemoveColor_Click);
             // 
@@ -477,7 +477,7 @@ namespace AppFrameClient.View.GoodsIO
             this.btnAddSize.Name = "btnAddSize";
             this.btnAddSize.Size = new System.Drawing.Size(40, 23);
             this.btnAddSize.TabIndex = 127;
-            this.btnAddSize.Text = "<--";
+            this.btnAddSize.Text = "-->";
             this.btnAddSize.UseVisualStyleBackColor = true;
             this.btnAddSize.Click += new System.EventHandler(this.btnAddSize_Click);
             // 
@@ -487,16 +487,16 @@ namespace AppFrameClient.View.GoodsIO
             this.btnRemoveSize.Name = "btnRemoveSize";
             this.btnRemoveSize.Size = new System.Drawing.Size(40, 23);
             this.btnRemoveSize.TabIndex = 128;
-            this.btnRemoveSize.Text = "-->";
+            this.btnRemoveSize.Text = "<--";
             this.btnRemoveSize.UseVisualStyleBackColor = true;
             this.btnRemoveSize.Click += new System.EventHandler(this.btnRemoveSize_Click);
             // 
             // picProduct
             // 
             this.picProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picProduct.Location = new System.Drawing.Point(373, 372);
+            this.picProduct.Location = new System.Drawing.Point(373, 384);
             this.picProduct.Name = "picProduct";
-            this.picProduct.Size = new System.Drawing.Size(185, 123);
+            this.picProduct.Size = new System.Drawing.Size(185, 130);
             this.picProduct.TabIndex = 129;
             this.picProduct.TabStop = false;
             // 
@@ -547,7 +547,7 @@ namespace AppFrameClient.View.GoodsIO
             this.lstProductColors.DisplayMember = "ColorName";
             this.lstProductColors.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstProductColors.FormattingEnabled = true;
-            this.lstProductColors.Location = new System.Drawing.Point(133, 175);
+            this.lstProductColors.Location = new System.Drawing.Point(373, 176);
             this.lstProductColors.Name = "lstProductColors";
             this.lstProductColors.Size = new System.Drawing.Size(185, 95);
             this.lstProductColors.TabIndex = 134;
@@ -559,7 +559,7 @@ namespace AppFrameClient.View.GoodsIO
             this.lstProductSizes.DisplayMember = "SizeName";
             this.lstProductSizes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstProductSizes.FormattingEnabled = true;
-            this.lstProductSizes.Location = new System.Drawing.Point(133, 277);
+            this.lstProductSizes.Location = new System.Drawing.Point(373, 277);
             this.lstProductSizes.Name = "lstProductSizes";
             this.lstProductSizes.Size = new System.Drawing.Size(185, 95);
             this.lstProductSizes.TabIndex = 135;
@@ -615,6 +615,7 @@ namespace AppFrameClient.View.GoodsIO
             this.Name = "ProductMasterExtraForm";
             this.Text = "Thông tin sản phẩm";
             this.Load += new System.EventHandler(this.ProductMasterExtraForm_Load);
+            this.LocationChanged += new System.EventHandler(this.ProductMasterExtraForm_LocationChanged);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.label2, 0);

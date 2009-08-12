@@ -41,6 +41,8 @@ namespace AppFrameClient.View.GoodsIO
         public ProductMaster ProductMaster { get; set; }
         public IList OldColorList { get; set; }
         public IList OldSizeList { get; set; }
+        public IList OldProductMasterList { get; set; }
+
 
         public ProductMasterExtraForm()
         {
@@ -183,6 +185,10 @@ namespace AppFrameClient.View.GoodsIO
                     IList disableSizeList = new ArrayList();
                     foreach (ProductMaster master in eventArgs.SameProductMasterList)
                     {
+                        if(!ExistInList(OldProductMasterList,master))
+                        {
+                            OldProductMasterList.Add(master);
+                        }
                         if (!ExistInList(OldColorList, master.ProductColor))
                         {
                             OldColorList.Add(master.ProductColor);
@@ -221,6 +227,18 @@ namespace AppFrameClient.View.GoodsIO
                 ShowProductImage();
             }
 
+        }
+
+        private bool ExistInList(IList OldProductMasterList, ProductMaster master)
+        {
+            foreach (ProductMaster productMaster in OldProductMasterList)
+            {
+                if(productMaster.ProductMasterId.Equals(master.ProductMasterId))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool ExistInList(IList colorList, ProductColor color)
@@ -398,7 +416,7 @@ namespace AppFrameClient.View.GoodsIO
                         productMasters.Add(CreateProductMaster(null, null));
                     }
                 }
-                else
+                else // update ProductMasters
                 {
                     // make sure that the product master can not be deleted
                     int count = 0;
@@ -430,7 +448,14 @@ namespace AppFrameClient.View.GoodsIO
                         }
                     }
                 }
+
                 var eventArgs = new ProductMasterEventArgs {CreatedProductMasterList = productMasters};
+                // get old product master
+                foreach (ProductMaster master in OldProductMasterList)
+                {
+                    master.ProductName = txtProductName.Text.Trim();
+                    master.Description = txtDescription.Text.Trim();
+                }
                 EventUtility.fireEvent(SaveProductMasterEvent, sender, eventArgs);
                 if (eventArgs.EventResult != null)
                 {
@@ -721,6 +746,11 @@ namespace AppFrameClient.View.GoodsIO
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ProductMasterExtraForm_LocationChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
