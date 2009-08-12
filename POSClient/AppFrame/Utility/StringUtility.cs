@@ -99,5 +99,20 @@ namespace AppFrame.Utility
             int dayCount = arrNum.IndexOf(substring.Substring(2, 1)) + 1;
             return new DateTime(yearCount,monthCount,dayCount);
         }
+        public static string ConvertStringToHexChar(string s)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (char c in s)
+            {
+                builder.Append(Convert.ToInt32(c).ToString("X"));
+            }
+            return builder.ToString();
+        }
+
+        public static string ConvertUniStringToHexChar(string s)
+        {
+            string test = ConvertUnicodeToUnmarkVI(s);
+            return ConvertStringToHexChar(test);
+        }
     }
 }

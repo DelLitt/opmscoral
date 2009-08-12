@@ -221,6 +221,10 @@ namespace Rafael.Windows.Forms.ListBox
         public override void Refresh()
         {
             base.Refresh();
+            if(Items.Count == 0 )
+            {
+                return;
+            }
             int selIndex = Math.Max(0, SelectedIndex);
             if(ExistInDisabledList(_disabledList, Items[selIndex]))
             {
@@ -370,9 +374,8 @@ namespace Rafael.Windows.Forms.ListBox
                             // Draw the background of the ListBox control for each item.
                             e.DrawBackground();
                             //Create the list of disabled items
-                            if (e.Index > 0)
-                            {
-                                object obj = this.Items[e.Index];
+                            
+                                object obj = this.Items[Math.Max(e.Index,0)];
 
                                 // Draw the current item text based on the current Font and the custom brush settings.
                                 if (ExistInDisabledList(_disabledList, obj))
@@ -417,7 +420,7 @@ namespace Rafael.Windows.Forms.ListBox
                                     }
                                     //this.Invalidate(true);
                                 }
-                            }
+                            
                         }
                     }
                     else
