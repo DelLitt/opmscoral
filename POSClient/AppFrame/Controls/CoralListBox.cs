@@ -370,49 +370,54 @@ namespace Rafael.Windows.Forms.ListBox
                             // Draw the background of the ListBox control for each item.
                             e.DrawBackground();
                             //Create the list of disabled items
-                            object obj = this.Items[e.Index];
+                            if (e.Index > 0)
+                            {
+                                object obj = this.Items[e.Index];
 
-                            // Draw the current item text based on the current Font and the custom brush settings.
-                            if(ExistInDisabledList(_disabledList,obj))
-                            {
-                                color = DisabledItemColor;
-                            }
-                            else
-                            {
-                                color = EnabledItemColor;
-                            }
-
-                            // Align text
-                            Rectangle shiftedBounds;
-                            TextFormatFlags alignment;
-                            if (base.RightToLeft == RightToLeft.No)
-                            {
-                                // To look the same as ListBox, the bounds have to be shifted
-                                shiftedBounds = new Rectangle(e.Bounds.X - 1, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-                                alignment = TextFormatFlags.Left;
-                            }
-                            else
-                            {
-                                // To look the same as ListBox, the bounds have to be shifted
-                                shiftedBounds = new Rectangle(e.Bounds.X + 2, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-                                alignment = TextFormatFlags.Right;
-                            }
-
-                            // Get string to display
-                            string displayString = GetItemText(Items[e.Index]);
-
-                            // Draw the string
-                            TextRenderer.DrawText(e.Graphics, displayString, e.Font, shiftedBounds, color, alignment);
-                            
-                            //If the selected item is a disabled item dont select it
-                            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                            {
-                                if(!ExistInDisabledList(_disabledList,obj))
+                                // Draw the current item text based on the current Font and the custom brush settings.
+                                if (ExistInDisabledList(_disabledList, obj))
                                 {
-                                    e.DrawFocusRectangle();    
+                                    color = DisabledItemColor;
                                 }
-                                //this.Invalidate(true);
-                            } 
+                                else
+                                {
+                                    color = EnabledItemColor;
+                                }
+
+                                // Align text
+                                Rectangle shiftedBounds;
+                                TextFormatFlags alignment;
+                                if (base.RightToLeft == RightToLeft.No)
+                                {
+                                    // To look the same as ListBox, the bounds have to be shifted
+                                    shiftedBounds = new Rectangle(e.Bounds.X - 1, e.Bounds.Y, e.Bounds.Width,
+                                                                  e.Bounds.Height);
+                                    alignment = TextFormatFlags.Left;
+                                }
+                                else
+                                {
+                                    // To look the same as ListBox, the bounds have to be shifted
+                                    shiftedBounds = new Rectangle(e.Bounds.X + 2, e.Bounds.Y, e.Bounds.Width,
+                                                                  e.Bounds.Height);
+                                    alignment = TextFormatFlags.Right;
+                                }
+
+                                // Get string to display
+                                string displayString = GetItemText(Items[e.Index]);
+
+                                // Draw the string
+                                TextRenderer.DrawText(e.Graphics, displayString, e.Font, shiftedBounds, color, alignment);
+
+                                //If the selected item is a disabled item dont select it
+                                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                                {
+                                    if (!ExistInDisabledList(_disabledList, obj))
+                                    {
+                                        e.DrawFocusRectangle();
+                                    }
+                                    //this.Invalidate(true);
+                                }
+                            }
                         }
                     }
                     else
