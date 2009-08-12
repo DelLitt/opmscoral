@@ -66,7 +66,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductSizeList.RemoveAt(0);
                 sizeBindingSource.DataSource = eventArgs.ProductSizeList;
-                
+
             }
             //productMasterControl.cbbProductSize.DisplayMember = "SizeName";
 
@@ -74,7 +74,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductColorList.RemoveAt(0);
                 colorBindingSource.DataSource = eventArgs.ProductColorList;
-                
+
             }
             //productMasterControl.cbbProductColor.DisplayMember = "ColorName";
 
@@ -92,6 +92,7 @@ namespace AppFrameClient.View.GoodsIO
 
             if (ProductMaster != null)
             {
+                OldProductMasterList = new ArrayList();
                 OldColorList = new ArrayList();
                 OldSizeList = new ArrayList();
                 txtDescription.Text = ProductMaster.Description;
@@ -180,12 +181,12 @@ namespace AppFrameClient.View.GoodsIO
                     }
                 }
                 if (eventArgs.SameProductMasterList != null && eventArgs.SameProductMasterList.Count > 0)
-                {   
+                {
                     IList disableColorList = new ArrayList();
                     IList disableSizeList = new ArrayList();
                     foreach (ProductMaster master in eventArgs.SameProductMasterList)
                     {
-                        if(!ExistInList(OldProductMasterList,master))
+                        if (!ExistInList(OldProductMasterList, master))
                         {
                             OldProductMasterList.Add(master);
                         }
@@ -222,7 +223,8 @@ namespace AppFrameClient.View.GoodsIO
                 btnCreateManufacturer.Enabled = false;
                 btnCreatePackager.Enabled = false;
                 btnCreateType.Enabled = false;
-                btnSelect.Enabled = false;
+                btnCreateType.Enabled = false;
+                btnSelect.Enabled = true;
                 txtImagePath.Text = ProductMaster.ImagePath;
                 ShowProductImage();
             }
@@ -233,7 +235,7 @@ namespace AppFrameClient.View.GoodsIO
         {
             foreach (ProductMaster productMaster in OldProductMasterList)
             {
-                if(productMaster.ProductMasterId.Equals(master.ProductMasterId))
+                if (productMaster.ProductMasterId.Equals(master.ProductMasterId))
                 {
                     return true;
                 }
@@ -245,7 +247,7 @@ namespace AppFrameClient.View.GoodsIO
         {
             foreach (ProductColor list in colorList)
             {
-                if(list.ColorName.Equals(color.ColorName))
+                if (list.ColorName.Equals(color.ColorName))
                 {
                     return true;
                 }
@@ -271,7 +273,7 @@ namespace AppFrameClient.View.GoodsIO
             foreach (ProductColor color in selectedColors)
             {
                 int index = -1;
-                if(NotInList(bdsColors,color, out index))
+                if (NotInList(bdsColors, color, out index))
                 {
                     bdsColors.Add(color);
                 }
@@ -280,16 +282,16 @@ namespace AppFrameClient.View.GoodsIO
             lstProductColors.Refresh();
         }
 
-        private bool NotInList(BindingSource source, ProductColor color,out int index)
+        private bool NotInList(BindingSource source, ProductColor color, out int index)
         {
             int count = 0;
             foreach (ProductColor productColor in source)
             {
-               if(productColor.ColorName.Equals(color.ColorName))
-               {
-                   index = count;
-                   return false;
-               }
+                if (productColor.ColorName.Equals(color.ColorName))
+                {
+                    index = count;
+                    return false;
+                }
                 count++;
             }
             index = -1;
@@ -298,12 +300,16 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnRemoveColor_Click(object sender, EventArgs e)
         {
+            if (lstProductColors.Items.Count == 0)
+            {
+                return;
+            }
             IList list = lstProductColors.SelectedIndices;
             int i = list.Count - 1;
-            while(i >=0)
+            while (i >= 0)
             {
-               bdsColors.RemoveAt((int)list[i]);
-                i--; 
+                bdsColors.RemoveAt((int)list[i]);
+                i--;
             }
             bdsColors.ResetBindings(false);
             lstProductColors.Refresh();
@@ -316,7 +322,7 @@ namespace AppFrameClient.View.GoodsIO
             foreach (ProductSize size in selectedSizes)
             {
                 int index = -1;
-                if (NotInList(bdsSizes, size,out index))
+                if (NotInList(bdsSizes, size, out index))
                 {
                     bdsSizes.Add(size);
                 }
@@ -325,7 +331,7 @@ namespace AppFrameClient.View.GoodsIO
             lstProductSizes.Refresh();
         }
 
-        private bool NotInList(BindingSource source, ProductSize size,out int index)
+        private bool NotInList(BindingSource source, ProductSize size, out int index)
         {
             int count = 0;
             foreach (ProductSize productColor in source)
@@ -337,11 +343,16 @@ namespace AppFrameClient.View.GoodsIO
                 }
             }
             index = -1;
-            return true; 
+            return true;
         }
 
         private void btnRemoveSize_Click(object sender, EventArgs e)
         {
+            if (lstProductSizes.Items.Count == 0)
+            {
+                return;
+            }
+
             IList list = lstProductSizes.SelectedIndices;
             int i = list.Count - 1;
             while (i >= 0)
@@ -361,115 +372,122 @@ namespace AppFrameClient.View.GoodsIO
             }
             catch (Exception)
             {
-                
+
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-                IList productSizeList = lstProductSizes.Items;
-                IList productColorList = lstProductColors.Items;
-                var productMasters = new List<ProductMaster>();
-                if (string.IsNullOrEmpty(txtProductName.Text))
+            IList productSizeList = lstProductSizes.Items;
+            IList productColorList = lstProductColors.Items;
+            var productMasters = new List<ProductMaster>();
+            if (string.IsNullOrEmpty(txtProductName.Text))
+            {
+                MessageBox.Show("Hãy nhập tên sản phẩm !");
+                return;
+            }
+            if (cbbProductType.SelectedIndex < 0)
+            {
+                MessageBox.Show("Hãy chọn loại sản phẩm !");
+                return;
+            }
+            if (Status == ViewStatus.ADD || Status == ViewStatus.OPENDIALOG)
+            {
+                if (productSizeList.Count == 0 || productColorList.Count == 0)
                 {
-                    MessageBox.Show("Hãy nhập tên sản phẩm !");
+                    MessageBox.Show("Hãy chọn màu sắc và kích cỡ sản phẩm");
                     return;
                 }
-                if (cbbProductType.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Hãy chọn loại sản phẩm !");
-                    return;
-                }
-                if (Status == ViewStatus.ADD || Status == ViewStatus.OPENDIALOG )
-                {
-                    if (productSizeList.Count == 0 || productColorList.Count == 0)
-                    {
-                        MessageBox.Show("Hãy chọn màu sắc và kích cỡ sản phẩm");
-                        return;
-                    }
 
-                    if (productSizeList.Count > 0)
+                if (productSizeList.Count > 0)
+                {
+                    foreach (ProductSize size in productSizeList)
                     {
-                        foreach (ProductSize size in productSizeList)
-                        {
-                            bool addFlag = false;
-                            foreach (ProductColor color in productColorList)
-                            {
-                                productMasters.Add(CreateProductMaster(size, color));
-                                addFlag = true;
-                            }
-                            if (!addFlag)
-                            {
-                                productMasters.Add(CreateProductMaster(size, null));
-                            }
-                        }
-                    }
-                    else if (productColorList.Count > 0)
-                    {
+                        bool addFlag = false;
                         foreach (ProductColor color in productColorList)
                         {
-                            productMasters.Add(CreateProductMaster(null, color));
+                            productMasters.Add(CreateProductMaster(size, color));
+                            addFlag = true;
+                        }
+                        if (!addFlag)
+                        {
+                            productMasters.Add(CreateProductMaster(size, null));
                         }
                     }
-                    else
-                    {
-                        productMasters.Add(CreateProductMaster(null, null));
-                    }
                 }
-                else // update ProductMasters
+                else if (productColorList.Count > 0)
                 {
-                    // make sure that the product master can not be deleted
-                    int count = 0;
-                    IList newColorList = new ArrayList();
-                    IList newSizeList = new ArrayList();
-
-                    newColorList = lstProductColors.EnabledItems;
-                    newSizeList = lstProductSizes.EnabledItems;
-
-                    if (newColorList.Count > 0)
+                    foreach (ProductColor color in productColorList)
                     {
-                        foreach (ProductColor color in newColorList)
-                        {
-                            foreach (ProductSize size in OldSizeList)
-                            {
-                                productMasters.Add(CreateProductMaster(size, color));
-                            }
-                        }
+                        productMasters.Add(CreateProductMaster(null, color));
                     }
+                }
+                else
+                {
+                    productMasters.Add(CreateProductMaster(null, null));
+                }
+            }
+            else // update ProductMasters
+            {
+                // make sure that the product master can not be deleted
+                int count = 0;
+                IList newColorList = new ArrayList();
+                IList newSizeList = new ArrayList();
 
-                    if (newSizeList.Count > 0)
+                newColorList = lstProductColors.EnabledItems;
+                newSizeList = lstProductSizes.EnabledItems;
+
+                if (newColorList.Count > 0)
+                {
+                    foreach (ProductColor color in newColorList)
                     {
-                        foreach (ProductSize size in newSizeList)
+                        foreach (ProductSize size in OldSizeList)
                         {
-                            foreach (ProductColor color in OldColorList)
-                            {
-                                productMasters.Add(CreateProductMaster(size, color));
-                            }
+                            productMasters.Add(CreateProductMaster(size, color));
                         }
                     }
                 }
 
-                var eventArgs = new ProductMasterEventArgs {CreatedProductMasterList = productMasters};
-                // get old product master
+                if (newSizeList.Count > 0)
+                {
+                    foreach (ProductSize size in newSizeList)
+                    {
+                        foreach (ProductColor color in OldColorList)
+                        {
+                            productMasters.Add(CreateProductMaster(size, color));
+                        }
+                    }
+                }
+            }
+
+            var eventArgs = new ProductMasterEventArgs { CreatedProductMasterList = productMasters };
+            // get old product master
+            if (OldProductMasterList != null)
+            {
                 foreach (ProductMaster master in OldProductMasterList)
                 {
                     master.ProductName = txtProductName.Text.Trim();
                     master.Description = txtDescription.Text.Trim();
+                    master.ImagePath = txtImagePath.Text;
                 }
-                EventUtility.fireEvent(SaveProductMasterEvent, sender, eventArgs);
-                if (eventArgs.EventResult != null)
+                eventArgs.UpdateProductMasterList = OldProductMasterList;
+            }
+
+
+            EventUtility.fireEvent(SaveProductMasterEvent, sender, eventArgs);
+            if (eventArgs.EventResult != null)
+            {
+                MessageBox.Show("Lưu thành công");
+                if (Status == ViewStatus.OPENDIALOG || Status == ViewStatus.EDIT)
                 {
-                    MessageBox.Show("Lưu thành công");
-                    if (Status == ViewStatus.OPENDIALOG || Status == ViewStatus.EDIT)
-                    {
-                        EventUtility.fireEvent(CloseProductMasterEvent, this, eventArgs);
-                    }
-                    else
-                    {
-                        ClearForm();
-                    }
+                    EventUtility.fireEvent(CloseProductMasterEvent, this, eventArgs);
                 }
-            
+                else
+                {
+                    ClearForm();
+                }
+            }
+
         }
 
         private void ClearForm()
@@ -491,7 +509,7 @@ namespace AppFrameClient.View.GoodsIO
             bdsSizes.Clear();
             bdsSizes.ResetBindings(false);
             lstProductSizes.Refresh();
-            
+
             txtImagePath.Text = "";
             picProduct.Image = null;
         }
@@ -517,7 +535,7 @@ namespace AppFrameClient.View.GoodsIO
         {
             string imagePath = "";
             DialogResult result = imagePathFileDialog.ShowDialog();
-            if(result == System.Windows.Forms.DialogResult.OK)
+            if (result == System.Windows.Forms.DialogResult.OK)
             {
                 imagePath = imagePathFileDialog.FileName;
             }
@@ -555,7 +573,7 @@ namespace AppFrameClient.View.GoodsIO
 
                 picProduct.Image = newImage;
                 picProduct.Refresh();
-                
+
             }
             catch (Exception ex)
             {
@@ -590,9 +608,8 @@ namespace AppFrameClient.View.GoodsIO
 
                 // Clear handle to original file so that we can overwrite it if necessary
                 fullsizeImage.Dispose();
-
-
                 picProduct.Image = newImage;
+                picProduct.Refresh();
             }
             catch (Exception ex)
             {

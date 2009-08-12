@@ -10,6 +10,7 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.SalePoints;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrameClient.Utility;
 
@@ -154,14 +155,41 @@ namespace AppFrameClient.Presenter.GoodsIO
                     }
                     ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
                 }
-                else
+                else  // add new ...
                 {
+                    // update existing product master
+                    string imagePath = null;
+                    if (e.UpdateProductMasterList != null && e.UpdateProductMasterList.Count > 0)
+                    {
+                        if (string.IsNullOrEmpty(imagePath))
+                        {
+                            ProductMaster first = (ProductMaster) e.UpdateProductMasterList[0];
+                            if (first.ImagePath.Contains(":"))
+                            {
+                                imagePath = first.ImagePath;
+                                CopyAndCreateImage(first, imagePath);
+                            }
+                            
+                        }
+                        
+                        foreach (ProductMaster productMaster in e.UpdateProductMasterList)
+                        {
+                            productMaster.ImagePath =
+                                StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) + ".jpg";
+                            ProductMasterLogic.Update(productMaster);
+                        }
+                    }
+
                     if (e.CreatedProductMasterList != null)
                     {
                         string realPath = "";
-                        if (e.CreatedProductMasterList.Count > 0 && e.CreatedProductMasterList[0].ImagePath.Contains(":"))
+                        if (string.IsNullOrEmpty(imagePath))
                         {
-                            realPath = e.CreatedProductMasterList[0].ImagePath;
+                            if (e.CreatedProductMasterList.Count > 0 &&
+                                e.CreatedProductMasterList[0].ImagePath.Contains(":"))
+                            {
+                                realPath = e.CreatedProductMasterList[0].ImagePath;
+                            }
                         }
                         ProductMasterLogic.AddAll(e.CreatedProductMasterList);
                         if (!string.IsNullOrEmpty(realPath))
@@ -193,14 +221,7 @@ namespace AppFrameClient.Presenter.GoodsIO
                         ClientUtility.Log(logger, e.ProductMaster.ToString(), CommonConstants.ACTION_SAVE_PRODUCT_MASTER);
                     }
                 }
-                // update existing product master
-                if(e.UpdateProductMasterList!= null && e.UpdateProductMasterList.Count > 0)
-                {
-                    foreach (ProductMaster productMaster in e.UpdateProductMasterList)
-                    {
-                        ProductMasterLogic.Update(productMaster);
-                    }
-                }
+                
                 e.EventResult = "Success";
             }
             catch (Exception ex)
@@ -220,7 +241,16 @@ namespace AppFrameClient.Presenter.GoodsIO
             // copy image
             if (File.Exists(realImagePath))
             {
-                File.Copy(realImagePath, Application.StartupPath + "\\ProductImages\\" + productMaster.ProductMasterId + ".jpg");
+                string existPath = Application.StartupPath + "\\ProductImages\\"
+                                   + StringUtility.ConvertUniStringToHexChar(productMaster.ProductName)
+                                   + ".jpg";
+                if(File.Exists(existPath))
+                {
+                   File.Delete(existPath); 
+                }
+                File.Copy(realImagePath, Application.StartupPath + "\\ProductImages\\"
+                    + StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) 
+                    + ".jpg");
             }
         }
 
