@@ -84,6 +84,7 @@ namespace AppFrameClient.View.GoodsIO
             this.txtProductName = new AppFrame.Controls.CoralTextBox();
             this.lstProductColors = new Rafael.Windows.Forms.ListBox.CoralListBox();
             this.lstProductSizes = new Rafael.Windows.Forms.ListBox.CoralListBox();
+            this.imagePathFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeBindingSource)).BeginInit();
@@ -564,6 +565,13 @@ namespace AppFrameClient.View.GoodsIO
             this.lstProductSizes.Size = new System.Drawing.Size(185, 95);
             this.lstProductSizes.TabIndex = 135;
             // 
+            // imagePathFileDialog
+            // 
+            this.imagePathFileDialog.DefaultExt = "jpg";
+            this.imagePathFileDialog.FileName = "openFileDialog1";
+            this.imagePathFileDialog.Filter = "JPG files |*.jpg|All files|*.*";
+            this.imagePathFileDialog.RestoreDirectory = true;
+            // 
             // ProductMasterExtraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -726,6 +734,7 @@ namespace AppFrameClient.View.GoodsIO
         private AppFrame.Controls.CoralTextBox txtProductName;
         private Rafael.Windows.Forms.ListBox.CoralListBox lstProductColors;
         private Rafael.Windows.Forms.ListBox.CoralListBox lstProductSizes;
+        private System.Windows.Forms.OpenFileDialog imagePathFileDialog;
 
         public event EventHandler<ProductMasterEventArgs> DeleteProductMasterEvent;
     }

@@ -515,7 +515,52 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            string imagePath = "";
+            DialogResult result = imagePathFileDialog.ShowDialog();
+            if(result == System.Windows.Forms.DialogResult.OK)
+            {
+                imagePath = imagePathFileDialog.FileName;
+            }
+            txtImagePath.Text = imagePath;
+            ShowPreviewImage();
+        }
 
+        private void ShowPreviewImage()
+        {
+            try
+            {
+                int newWidth = picProduct.Width;
+                int maxHeight = picProduct.Height;
+                Image fullsizeImage = Image.FromFile(txtImagePath.Text);
+                // Prevent using images internal thumbnail
+                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+
+                if (fullsizeImage.Width <= newWidth)
+                {
+                    newWidth = fullsizeImage.Width;
+                }
+                int newHeight = fullsizeImage.Height * newWidth / fullsizeImage.Width;
+                if (newHeight > maxHeight)
+                {
+                    // Resize with height instead
+                    //newWidth = fullsizeImage.Width * maxHeight / fullsizeImage.Height;
+                    newHeight = maxHeight;
+                }
+
+                System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
+
+                // Clear handle to original file so that we can overwrite it if necessary
+                fullsizeImage.Dispose();
+
+                picProduct.Image = newImage;
+                picProduct.Refresh();
+                
+            }
+            catch (Exception ex)
+            {
+                //throw ex; Ignore
+            }
         }
 
         private void ShowProductImage()
