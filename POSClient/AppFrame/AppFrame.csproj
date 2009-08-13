@@ -604,11 +604,13 @@
     <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IBaseStockOutController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IProcessErrorGoodsController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IStockOutDialogController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\ProcessErrorGoodsEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogEventArg.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchOrCreateEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\StockCreateEventArgs.cs" />
@@ -738,6 +740,7 @@
     <Compile Include="View\GoodsIO\MainStock\IBaseStockOutView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IMainStockOutView.cs" />
     <Compile Include="View\GoodsIO\MainStock\IProcessErrorGoodsView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IStockOutDialogView.cs" />
     <Compile Include="View\GoodsSale\IDayGoodsSaleListView.cs" />
     <Compile Include="View\GoodsSale\IGoodsSaleListView.cs" />
     <Compile Include="View\GoodsSale\IGoodsSaleReturnView.cs" />
