@@ -610,7 +610,7 @@
     <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\ProcessErrorGoodsEventArgs.cs" />
-    <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogEventArg.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchOrCreateEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\StockCreateEventArgs.cs" />

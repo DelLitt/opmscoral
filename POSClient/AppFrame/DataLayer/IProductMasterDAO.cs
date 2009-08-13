@@ -76,5 +76,7 @@ namespace AppFrame.DataLayer
         /// <param name="allDepartment"></param>
         /// <returns></returns>
         IList FindAllInDepartment(ProductMaster master, bool allDepartment);
+
+        IList FindDistinctNames();
     }
 }

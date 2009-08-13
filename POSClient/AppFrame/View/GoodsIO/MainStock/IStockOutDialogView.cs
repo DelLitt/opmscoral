@@ -10,12 +10,12 @@ namespace AppFrame.View.GoodsIO.MainStock
     {
         IStockOutDialogController StockOutDialogController { get; set; }
         
-        event EventHandler<StockOutDialogEventArg> InitDialogEvent;
-        event EventHandler<StockOutDialogEventArg> FindProductMasterNameEvent;
-        event EventHandler<StockOutDialogEventArg> FindProductMastersEvent;
-        event EventHandler<StockOutDialogEventArg> FindProductColorNameEvent;
-        event EventHandler<StockOutDialogEventArg> FindProductSizeNameEvent;
-        event EventHandler<StockOutDialogEventArg> DivideProductMastersEvent;
+        event EventHandler<StockOutDialogEventArgs> InitDialogEvent;
+        event EventHandler<StockOutDialogEventArgs> FindProductMasterNameEvent;
+        event EventHandler<StockOutDialogEventArgs> FindProductMastersEvent;
+        event EventHandler<StockOutDialogEventArgs> FindProductColorNameEvent;
+        event EventHandler<StockOutDialogEventArgs> FindProductSizeNameEvent;
+        event EventHandler<StockOutDialogEventArgs> DivideProductMastersEvent;
 
     }
 }

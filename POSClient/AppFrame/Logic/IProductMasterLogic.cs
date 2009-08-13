@@ -90,5 +90,7 @@ namespace AppFrame.Logic
         /// <param name="department"></param>
         /// <returns></returns>
         IList FindAllInDepartment(ProductMaster master, bool department);
+
+        IList FindDistinctNames();
     }
 }
