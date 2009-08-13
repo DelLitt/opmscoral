@@ -1214,6 +1214,12 @@
     <Compile Include="View\SecuritySettingsForm.Designer.cs">
       <DependentUpon>SecuritySettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\MainStock\StockOutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\MainStock\StockOutDialog.Designer.cs">
+      <DependentUpon>StockOutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WaitingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1633,6 +1639,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\SecuritySettingsForm.resx">
       <DependentUpon>SecuritySettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\MainStock\StockOutDialog.resx">
+      <DependentUpon>StockOutDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WaitingForm.resx">
       <DependentUpon>WaitingForm.cs</DependentUpon>
