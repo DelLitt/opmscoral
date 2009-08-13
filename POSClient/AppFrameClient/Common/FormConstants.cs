@@ -99,5 +99,6 @@ namespace AppFrameClient.Common
         public static string SYNC_DATABASE_IMAGE_VIEW = "SyncDatabaseImageView";
         public static string EMPLOYEE_CHECKING_VIEW = "EmployeeCheckingView";
         public static string EMPLOYEE_MONEY_VIEW = "ProcessPeriodMoneyView";
+        public static string STOCK_OUT_DIALOG = "StockOutDialog";
     }
 }

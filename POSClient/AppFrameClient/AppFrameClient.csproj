@@ -222,6 +222,7 @@
     <Compile Include="Logic\EmployeeManagementEventArgs.cs" />
     <Compile Include="Logic\EmployeeMoneyLogicImpl.cs" />
     <Compile Include="Presenter\ClosedPeriodLogic.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogController.cs" />
     <Compile Include="Presenter\ProcessPeriodMoneyController.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Common\AppFrameSetting.cs" />

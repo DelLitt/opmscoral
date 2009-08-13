@@ -1145,5 +1145,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 chkRemoveZero.Checked = false;
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetFormObject(FormConstants.STOCK_OUT_DIALOG);
+            form.ShowDialog();
+        }
     }
 }

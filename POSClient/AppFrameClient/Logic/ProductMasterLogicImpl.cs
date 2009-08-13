@@ -381,6 +381,11 @@ namespace AppFrame.Logic
             return ProductMasterDAO.FindAllInDepartment(master, allDepartment);
         }
 
+        public IList FindDistinctNames()
+        {
+            return ProductMasterDAO.FindDistinctNames(); 
+        }
+
         #endregion
     }
 }

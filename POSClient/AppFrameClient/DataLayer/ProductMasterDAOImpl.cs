@@ -539,6 +539,35 @@ namespace AppFrame.DataLayer
                                );
         }
 
+        public IList FindDistinctNames()
+        {
+            return (IList)HibernateTemplate.Execute(
+                               delegate(ISession session)
+                               {
+                                   try
+                                   {
+
+                                       string queryString =
+                                           "SELECT DISTINCT pm FROM ProductMaster pm WHERE pm.DelFlg = 0 ";
+                                       // GROUP BY ProductName
+                                       queryString += " GROUP BY pm.ProductName "; 
+
+                                       // ORDER BY ProductName
+                                       queryString +=
+                                           " ORDER BY pm.ProductName,pm.ProductColor.ColorId,pm.ProductSize.SizeId ";
+                                       IList productMasters = session.CreateQuery(queryString)
+                                           .SetMaxResults(100)
+                                           .List();
+                                       return productMasters;
+                                   }
+                                   catch (Exception e)
+                                   {
+                                       return null;
+                                   }
+                               }
+                               );
+        }
+
         #endregion
     }
 }
