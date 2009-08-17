@@ -369,6 +369,18 @@
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoodsIO\StockOutDetailConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\StockOutDetailConfirmForm.Designer.cs">
+      <DependentUpon>StockOutDetailConfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\StockInConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\StockInConfirmForm.Designer.cs">
+      <DependentUpon>StockInConfirmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\SyncDatabaseImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1365,6 +1377,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\StockOutDetailConfirmForm.resx">
+      <DependentUpon>StockOutDetailConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\StockInConfirmForm.resx">
+      <DependentUpon>StockInConfirmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\SyncDatabaseImageForm.resx">
       <DependentUpon>SyncDatabaseImageForm.cs</DependentUpon>

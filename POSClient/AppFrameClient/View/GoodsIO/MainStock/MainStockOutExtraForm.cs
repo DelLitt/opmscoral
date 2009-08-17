@@ -286,9 +286,45 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             _mainStockOutController = value;
             _mainStockOutController.MainStockOutView = this;
+            _mainStockOutController.CompletedFindByStockInEvent += new EventHandler<MainStockOutEventArgs>(_mainStockOutController_CompletedFindByStockInEvent);
         }
         }
+
+        void _mainStockOutController_CompletedFindByStockInEvent(object sender, MainStockOutEventArgs e)
+        {
+            IList list = e.SelectedStockOutDetails;
+            if (list != null && list.Count > 0)
+            {
+                foreach (StockOutDetail stockInDetail in list)
+                {
+                    if (!IsInList(stockOutDetailList, stockInDetail))
+                    {
+                        stockOutDetailList.Add(stockInDetail);
+                    }
+                }
+            }
+            this.Enabled = true;
+            bdsStockIn.ResetBindings(false);
+            dgvDeptStockOut.Refresh();
+            dgvStockIn.Invalidate();
+            panelStockIns.Visible = false;
+            CalculateTotalStorePrice();
+        }
+
+        private bool IsInList(StockOutDetailCollection collection, StockOutDetail detail)
+        {
+            foreach (StockOutDetail outDetail in collection)
+            {
+                if (detail.Product.ProductId.Equals(outDetail.Product.ProductId))
+                {
+                    return true;
+                } 
+            }
+            return false;
+        }
+
         public event EventHandler<MainStockOutEventArgs> FindBarcodeEvent;
+        public event EventHandler<MainStockOutEventArgs> FindByStockInIdEvent;
         public event EventHandler<MainStockOutEventArgs> SaveStockOutEvent;
         public event EventHandler<MainStockOutEventArgs> FillProductToComboEvent;
         public event EventHandler<MainStockOutEventArgs> LoadGoodsByNameEvent;
@@ -931,16 +967,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void button3_Click(object sender, EventArgs e)
         {
-            stockOut = new StockOut();
-            stockOutDetailList.Clear();
-//            txtDexcription.Text = "";
-//            txtPriceIn.Text = "";
-//            txtPriceOut.Text = "";
-            txtSumProduct.Text = "";
-            txtSumValue.Text = "";
-            ClearSelectionOnListBox(lstColor);
-            ClearSelectionOnListBox(lstSize);
-            cboProductMasters.Text = "";
+
         }
 
         private void ClearSelectionOnListBox(ListBox color)
@@ -1070,6 +1097,33 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void txtSumProduct_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelStockIns.Visible = true;
+            stock_inTableAdapter.Fill(masterDB.stock_in, DateTime.MinValue, DateTime.MinValue);
+        }
+
+        private void btnChoose_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection collection = dgvStockIn.SelectedRows;
+            if (collection.Count > 0)
+            {
+                IList stockInIds = new ArrayList();
+                foreach (DataGridViewRow selectedRowCollection in collection)
+                {
+                    string stockInId = selectedRowCollection.Cells[0].Value.ToString();
+                    stockInIds.Add(stockInId);
+                }
+
+                MainStockOutEventArgs ea = new MainStockOutEventArgs();
+                ea.SelectedStockInIds = stockInIds;
+
+                EventUtility.fireAsyncEvent(FindByStockInIdEvent, this, ea, new AsyncCallback(EndEvent));
+                this.Enabled = false;
+                //EventUtility.fireEvent(FindByStockInIdEvent,this,ea);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Utility;
@@ -49,7 +50,84 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                     mainStockOutView_LoadProductColorEvent);
                 mainStockOutView.LoadProductSizeEvent += new EventHandler<MainStockOutEventArgs>(
                     mainStockOutView_LoadProductSizeEvent);
+                mainStockOutView.FindByStockInIdEvent += new EventHandler<MainStockOutEventArgs>(mainStockOutView_FindByStockInIdEvent);
 
+            }
+        }
+
+        public event EventHandler<MainStockOutEventArgs> CompletedFindByStockInEvent;
+
+        void mainStockOutView_FindByStockInIdEvent(object sender, MainStockOutEventArgs e)
+        {
+            if (e.SelectedStockInIds.Count > 0)
+            {
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddSearchInCriteria("StockInDetailPK.StockInId", e.SelectedStockInIds);
+                IList list = StockInDetailLogic.FindAll(objectCriteria);
+                IList stockOutList = new ArrayList();
+                foreach (StockInDetail inDetail in list)
+                {
+                    StockOutDetail deptDetail = new StockOutDetail();
+                    deptDetail.CreateDate = DateTime.Now;
+                    deptDetail.UpdateDate = DateTime.Now;
+                    deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    //deptDetail. = new DepartmentStockInDetailPK();
+                    deptDetail.Product = inDetail.Product;
+                    deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                    deptDetail.Quantity = inDetail.Quantity;
+                    stockOutList.Add(deptDetail);
+                }
+                GetRemainStockNumber(stockOutList);
+
+                e.SelectedStockOutDetails = stockOutList;
+            }
+            EventUtility.fireEvent(CompletedFindByStockInEvent, this, e);
+        }
+
+        private void GetRemainStockNumber(IList departmentStockIns)
+        {
+            IList productMasterIds = new ArrayList();
+            foreach (DepartmentStockInDetail detail in departmentStockIns)
+            {
+                if (detail.Product != null && detail.Product.ProductMaster != null && detail.Product.ProductMaster.ProductMasterId != null)
+                    productMasterIds.Add(detail.Product.ProductMaster.ProductMasterId);
+            }
+            if (productMasterIds.Count == 0)
+            {
+                return;
+            }
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddSearchInCriteria("ProductMaster.ProductMasterId", productMasterIds);
+            IList stockList = StockLogic.FindAll(criteria);
+            criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", (long)0);
+            criteria.AddSearchInCriteria("DepartmentPricePK.ProductMasterId", productMasterIds);
+            IList priceList = DepartmentPriceLogic.FindAll(criteria);
+            foreach (DepartmentStockInDetail detail in departmentStockIns)
+            {
+                detail.StockQuantity = 0;
+                if (detail.Product != null
+                    && detail.Product.ProductMaster != null
+                    && detail.Product.ProductMaster.ProductMasterId != null)
+                {
+                    foreach (Stock stock in stockList)
+                    {
+                        if (detail.Product.ProductMaster.ProductMasterId.Equals(stock.ProductMaster.ProductMasterId))
+                        {
+                            detail.StockQuantity += stock.Quantity;
+                        }
+                    }
+                    foreach (DepartmentPrice price in priceList)
+                    {
+                        if (detail.Product.ProductMaster.ProductMasterId.Equals(price.DepartmentPricePK.ProductMasterId))
+                        {
+                            detail.Price = price.Price;
+                        }
+                    }
+                }
             }
         }
 
@@ -259,8 +337,15 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             get;
             set;
         }
+        public IStockInDetailLogic StockInDetailLogic
+        {
+            get; set;
+        }
 
-
+        public IDepartmentPriceLogic DepartmentPriceLogic
+        {
+            get; set;
+        }
         public IProductColorLogic ProductColorLogic
         {
             get;
