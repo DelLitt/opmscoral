@@ -10,6 +10,8 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
 {
     public class MainStockOutEventArgs : BaseEventArgs
     {
+        public IList SelectedStockOutDetails { get; set;}
+        public IList SelectedStockInIds { get; set;}
         public Form ParentForm { get; set; }
         public long DefectStatusId { get; set; }
         public string ProductId { get; set; }

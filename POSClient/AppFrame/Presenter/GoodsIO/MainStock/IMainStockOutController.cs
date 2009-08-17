@@ -12,5 +12,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
     public interface IMainStockOutController : IBaseController<MainStockOutEventArgs>
     {
         IMainStockOutView MainStockOutView { get; set; }
+
+        event EventHandler<MainStockOutEventArgs> CompletedFindByStockInEvent;
     }
 }

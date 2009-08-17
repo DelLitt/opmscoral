@@ -11,6 +11,7 @@ namespace AppFrame.View.GoodsIO.MainStock
     {
         IMainStockOutController MainStockOutController { set; }
         event EventHandler<MainStockOutEventArgs> FindBarcodeEvent;
+        event EventHandler<MainStockOutEventArgs> FindByStockInIdEvent;
         event EventHandler<MainStockOutEventArgs> SaveStockOutEvent;
         event EventHandler<MainStockOutEventArgs> FillProductToComboEvent;
         event EventHandler<MainStockOutEventArgs> LoadGoodsByNameEvent;
