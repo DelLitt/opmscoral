@@ -88,7 +88,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         private void GetRemainStockNumber(IList departmentStockIns)
         {
             IList productMasterIds = new ArrayList();
-            foreach (DepartmentStockInDetail detail in departmentStockIns)
+            foreach (StockOutDetail detail in departmentStockIns)
             {
                 if (detail.Product != null && detail.Product.ProductMaster != null && detail.Product.ProductMaster.ProductMasterId != null)
                     productMasterIds.Add(detail.Product.ProductMaster.ProductMasterId);
@@ -106,7 +106,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             criteria.AddEqCriteria("DepartmentPricePK.DepartmentId", (long)0);
             criteria.AddSearchInCriteria("DepartmentPricePK.ProductMasterId", productMasterIds);
             IList priceList = DepartmentPriceLogic.FindAll(criteria);
-            foreach (DepartmentStockInDetail detail in departmentStockIns)
+            foreach (StockOutDetail detail in departmentStockIns)
             {
                 detail.StockQuantity = 0;
                 if (detail.Product != null

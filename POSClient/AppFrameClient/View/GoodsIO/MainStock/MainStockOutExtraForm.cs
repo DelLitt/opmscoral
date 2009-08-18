@@ -1125,5 +1125,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 //EventUtility.fireEvent(FindByStockInIdEvent,this,ea);
             }
         }
+
+        private void btnSearchStockIn_Click(object sender, EventArgs e)
+        {
+            DateTime fromDate = DateUtility.ZeroTime(dtpFrom.Value);
+            DateTime toDate = DateUtility.MaxTime(dtpTo.Value);
+            this.stock_inTableAdapter.Fill(masterDB.stock_in, fromDate, toDate);
+            stockinBindingSource.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+        }
     }
 }
