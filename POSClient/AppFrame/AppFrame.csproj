@@ -595,6 +595,7 @@
     <Compile Include="Presenter\GoodsIO\IProductMasterSearchDepartmentController.cs" />
     <Compile Include="Presenter\GoodsIO\IProductMasterSearchOrCreateController.cs" />
     <Compile Include="Presenter\GoodsIO\IStockCreateController.cs" />
+    <Compile Include="Presenter\GoodsIO\IStockInConfirmController.cs" />
     <Compile Include="Presenter\GoodsIO\IStockSearchController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IInventoryCheckingController.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInController.cs" />
@@ -614,6 +615,7 @@
     <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\ProductMasterSearchOrCreateEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\StockCreateEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\StockInConfirmEventArgs.cs" />
     <Compile Include="Presenter\GoodsIO\StockSearchEventArgs.cs" />
     <Compile Include="Presenter\GoodsSale\GoodsSaleEventArgs.cs" />
     <Compile Include="Presenter\GoodsSale\GoodsSaleListEventArgs.cs" />
@@ -715,6 +717,7 @@
     <Compile Include="Utility\SecurityUtility.cs" />
     <Compile Include="Utility\StringUtility.cs" />
     <Compile Include="View\Dummy.cs" />
+    <Compile Include="View\GoodsIO\IStockInConfirmView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentCostCreateView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateView.cs" />
     <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingView.cs" />

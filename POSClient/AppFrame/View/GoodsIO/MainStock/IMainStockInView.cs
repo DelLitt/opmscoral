@@ -23,5 +23,7 @@ namespace AppFrame.View.GoodsIO.MainStock
         event EventHandler<MainStockInEventArgs> LoadAllGoodsByNameEvent;
         event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
         event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
+        event EventHandler<MainStockInEventArgs> LoadStockInEvent;
+        event EventHandler<MainStockInEventArgs> UpdateStockInEvent;
     }
 }

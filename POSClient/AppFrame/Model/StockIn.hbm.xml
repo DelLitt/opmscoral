@@ -83,6 +83,13 @@
     length="10"
     >
   </property>
+  <property
+    name="ConfirmFlg"
+    type="Int64"
+    column="CONFIRM_FLG"
+    length="10"
+    >
+  </property>
     <!-- Associations -->
   
     <!-- bi-directional one-to-many association to StockInDetail -->
