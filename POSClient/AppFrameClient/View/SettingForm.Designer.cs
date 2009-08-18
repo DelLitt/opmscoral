@@ -68,12 +68,17 @@
             this.grpSync = new System.Windows.Forms.GroupBox();
             this.grpPrinting = new System.Windows.Forms.GroupBox();
             this.grpSubStock = new System.Windows.Forms.GroupBox();
+            this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
+            this.rdoLogin = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
             this.grpService = new System.Windows.Forms.GroupBox();
             this.cboBinding = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.rdoLogin = new System.Windows.Forms.RadioButton();
-            this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkNegativeExport = new System.Windows.Forms.CheckBox();
+            this.chkImportConfirmation = new System.Windows.Forms.CheckBox();
+            this.chkExportConfirmation = new System.Windows.Forms.CheckBox();
+            this.chkNegativeSelling = new System.Windows.Forms.CheckBox();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -82,11 +87,12 @@
             this.grpPrinting.SuspendLayout();
             this.grpSubStock.SuspendLayout();
             this.grpService.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExportPath
             // 
-            btnExportPath.Location = new System.Drawing.Point(344, 16);
+            btnExportPath.Location = new System.Drawing.Point(301, 15);
             btnExportPath.Name = "btnExportPath";
             btnExportPath.Size = new System.Drawing.Size(31, 23);
             btnExportPath.TabIndex = 13;
@@ -97,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 22);
+            this.label1.Location = new System.Drawing.Point(9, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 0;
@@ -136,7 +142,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 48);
+            this.label2.Location = new System.Drawing.Point(4, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 8;
@@ -145,7 +151,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 74);
+            this.label3.Location = new System.Drawing.Point(53, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 9;
@@ -154,7 +160,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 97);
+            this.label4.Location = new System.Drawing.Point(9, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 10;
@@ -163,7 +169,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(70, 18);
+            this.label5.Location = new System.Drawing.Point(9, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 11;
@@ -171,7 +177,7 @@
             // 
             // btnImportPath
             // 
-            this.btnImportPath.Location = new System.Drawing.Point(344, 43);
+            this.btnImportPath.Location = new System.Drawing.Point(301, 42);
             this.btnImportPath.Name = "btnImportPath";
             this.btnImportPath.Size = new System.Drawing.Size(31, 23);
             this.btnImportPath.TabIndex = 14;
@@ -181,7 +187,7 @@
             // 
             // btnErrorPath
             // 
-            this.btnErrorPath.Location = new System.Drawing.Point(344, 69);
+            this.btnErrorPath.Location = new System.Drawing.Point(301, 68);
             this.btnErrorPath.Name = "btnErrorPath";
             this.btnErrorPath.Size = new System.Drawing.Size(31, 23);
             this.btnErrorPath.TabIndex = 15;
@@ -191,7 +197,7 @@
             // 
             // btnSuccessPath
             // 
-            this.btnSuccessPath.Location = new System.Drawing.Point(344, 95);
+            this.btnSuccessPath.Location = new System.Drawing.Point(301, 94);
             this.btnSuccessPath.Name = "btnSuccessPath";
             this.btnSuccessPath.Size = new System.Drawing.Size(31, 23);
             this.btnSuccessPath.TabIndex = 16;
@@ -201,7 +207,7 @@
             // 
             // btnMySQLDump
             // 
-            this.btnMySQLDump.Location = new System.Drawing.Point(345, 147);
+            this.btnMySQLDump.Location = new System.Drawing.Point(302, 146);
             this.btnMySQLDump.Name = "btnMySQLDump";
             this.btnMySQLDump.Size = new System.Drawing.Size(31, 23);
             this.btnMySQLDump.TabIndex = 18;
@@ -212,7 +218,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(43, 152);
+            this.label6.Location = new System.Drawing.Point(0, 151);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 13);
             this.label6.TabIndex = 19;
@@ -220,7 +226,7 @@
             // 
             // btnBackupDB
             // 
-            this.btnBackupDB.Location = new System.Drawing.Point(343, 118);
+            this.btnBackupDB.Location = new System.Drawing.Point(301, 119);
             this.btnBackupDB.Name = "btnBackupDB";
             this.btnBackupDB.Size = new System.Drawing.Size(31, 23);
             this.btnBackupDB.TabIndex = 22;
@@ -231,7 +237,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(72, 123);
+            this.label7.Location = new System.Drawing.Point(29, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 21;
@@ -239,7 +245,7 @@
             // 
             // txtMySQLDump
             // 
-            this.txtMySQLDump.Location = new System.Drawing.Point(166, 147);
+            this.txtMySQLDump.Location = new System.Drawing.Point(123, 146);
             this.txtMySQLDump.Name = "txtMySQLDump";
             this.txtMySQLDump.Size = new System.Drawing.Size(173, 20);
             this.txtMySQLDump.TabIndex = 23;
@@ -247,7 +253,7 @@
             // 
             // txtBackupDB
             // 
-            this.txtBackupDB.Location = new System.Drawing.Point(165, 120);
+            this.txtBackupDB.Location = new System.Drawing.Point(122, 119);
             this.txtBackupDB.Name = "txtBackupDB";
             this.txtBackupDB.Size = new System.Drawing.Size(172, 20);
             this.txtBackupDB.TabIndex = 24;
@@ -255,7 +261,7 @@
             // 
             // txtSyncSuccessPath
             // 
-            this.txtSyncSuccessPath.Location = new System.Drawing.Point(166, 97);
+            this.txtSyncSuccessPath.Location = new System.Drawing.Point(123, 96);
             this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
             this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncSuccessPath.TabIndex = 7;
@@ -263,7 +269,7 @@
             // 
             // txtSyncErrorPath
             // 
-            this.txtSyncErrorPath.Location = new System.Drawing.Point(166, 71);
+            this.txtSyncErrorPath.Location = new System.Drawing.Point(123, 70);
             this.txtSyncErrorPath.Name = "txtSyncErrorPath";
             this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncErrorPath.TabIndex = 6;
@@ -271,7 +277,7 @@
             // 
             // txtSyncImportPath
             // 
-            this.txtSyncImportPath.Location = new System.Drawing.Point(166, 45);
+            this.txtSyncImportPath.Location = new System.Drawing.Point(123, 44);
             this.txtSyncImportPath.Name = "txtSyncImportPath";
             this.txtSyncImportPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncImportPath.TabIndex = 5;
@@ -279,7 +285,7 @@
             // 
             // txtSyncExportPath
             // 
-            this.txtSyncExportPath.Location = new System.Drawing.Point(166, 19);
+            this.txtSyncExportPath.Location = new System.Drawing.Point(123, 18);
             this.txtSyncExportPath.Name = "txtSyncExportPath";
             this.txtSyncExportPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncExportPath.TabIndex = 1;
@@ -289,7 +295,7 @@
             // 
             this.cboPrinters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPrinters.FormattingEnabled = true;
-            this.cboPrinters.Location = new System.Drawing.Point(167, 15);
+            this.cboPrinters.Location = new System.Drawing.Point(123, 15);
             this.cboPrinters.Name = global::AppFrameClient.Properties.Settings.Default.PrinterName;
             this.cboPrinters.Size = new System.Drawing.Size(172, 21);
             this.cboPrinters.TabIndex = 12;
@@ -300,7 +306,7 @@
             this.cboDepartment.DisplayMember = "DEPARTMENT_NAME";
             this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(167, 19);
+            this.cboDepartment.Location = new System.Drawing.Point(123, 19);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(173, 21);
             this.cboDepartment.TabIndex = 25;
@@ -324,7 +330,7 @@
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(49, 22);
+            this.lblDepartment.Location = new System.Drawing.Point(2, 22);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(112, 13);
             this.lblDepartment.TabIndex = 26;
@@ -354,9 +360,9 @@
             this.grpSync.Controls.Add(this.btnSuccessPath);
             this.grpSync.Controls.Add(this.txtSyncSuccessPath);
             this.grpSync.Controls.Add(this.label4);
-            this.grpSync.Location = new System.Drawing.Point(13, 13);
+            this.grpSync.Location = new System.Drawing.Point(2, 13);
             this.grpSync.Name = "grpSync";
-            this.grpSync.Size = new System.Drawing.Size(457, 180);
+            this.grpSync.Size = new System.Drawing.Size(346, 180);
             this.grpSync.TabIndex = 27;
             this.grpSync.TabStop = false;
             this.grpSync.Text = "Đồng bộ";
@@ -365,9 +371,9 @@
             // 
             this.grpPrinting.Controls.Add(this.cboPrinters);
             this.grpPrinting.Controls.Add(this.label5);
-            this.grpPrinting.Location = new System.Drawing.Point(13, 199);
+            this.grpPrinting.Location = new System.Drawing.Point(2, 199);
             this.grpPrinting.Name = "grpPrinting";
-            this.grpPrinting.Size = new System.Drawing.Size(457, 42);
+            this.grpPrinting.Size = new System.Drawing.Size(587, 42);
             this.grpPrinting.TabIndex = 28;
             this.grpPrinting.TabStop = false;
             this.grpPrinting.Text = "In ấn";
@@ -379,20 +385,52 @@
             this.grpSubStock.Controls.Add(this.label9);
             this.grpSubStock.Controls.Add(this.cboDepartment);
             this.grpSubStock.Controls.Add(this.lblDepartment);
-            this.grpSubStock.Location = new System.Drawing.Point(12, 247);
+            this.grpSubStock.Location = new System.Drawing.Point(2, 247);
             this.grpSubStock.Name = "grpSubStock";
-            this.grpSubStock.Size = new System.Drawing.Size(457, 88);
+            this.grpSubStock.Size = new System.Drawing.Size(587, 88);
             this.grpSubStock.TabIndex = 29;
             this.grpSubStock.TabStop = false;
             this.grpSubStock.Text = "Kho phụ";
+            // 
+            // rdoEmployeeId
+            // 
+            this.rdoEmployeeId.AutoSize = true;
+            this.rdoEmployeeId.Checked = true;
+            this.rdoEmployeeId.Location = new System.Drawing.Point(258, 50);
+            this.rdoEmployeeId.Name = "rdoEmployeeId";
+            this.rdoEmployeeId.Size = new System.Drawing.Size(144, 17);
+            this.rdoEmployeeId.TabIndex = 31;
+            this.rdoEmployeeId.TabStop = true;
+            this.rdoEmployeeId.Tag = "";
+            this.rdoEmployeeId.Text = "Bằng mã vạch nhân viên";
+            this.rdoEmployeeId.UseVisualStyleBackColor = true;
+            // 
+            // rdoLogin
+            // 
+            this.rdoLogin.AutoSize = true;
+            this.rdoLogin.Location = new System.Drawing.Point(122, 50);
+            this.rdoLogin.Name = "rdoLogin";
+            this.rdoLogin.Size = new System.Drawing.Size(130, 17);
+            this.rdoLogin.TabIndex = 30;
+            this.rdoLogin.Text = "Bằng tên và mật khẩu";
+            this.rdoLogin.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Kiểm tra trước khi lưu:";
             // 
             // grpService
             // 
             this.grpService.Controls.Add(this.cboBinding);
             this.grpService.Controls.Add(this.label8);
-            this.grpService.Location = new System.Drawing.Point(13, 341);
+            this.grpService.Location = new System.Drawing.Point(2, 341);
             this.grpService.Name = "grpService";
-            this.grpService.Size = new System.Drawing.Size(456, 59);
+            this.grpService.Size = new System.Drawing.Size(587, 72);
             this.grpService.TabIndex = 30;
             this.grpService.TabStop = false;
             this.grpService.Text = "Dịch vụ";
@@ -404,7 +442,7 @@
             this.cboBinding.Items.AddRange(new object[] {
             "TcpBinding",
             "HttpBinding"});
-            this.cboBinding.Location = new System.Drawing.Point(167, 19);
+            this.cboBinding.Location = new System.Drawing.Point(122, 13);
             this.cboBinding.Name = "cboBinding";
             this.cboBinding.Size = new System.Drawing.Size(173, 21);
             this.cboBinding.TabIndex = 27;
@@ -412,49 +450,71 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(70, 22);
+            this.label8.Location = new System.Drawing.Point(9, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 13);
             this.label8.TabIndex = 28;
             this.label8.Text = "Giao thức kết nối:";
             // 
-            // label9
+            // groupBox1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(49, 50);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 13);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Kiểm tra trước khi lưu:";
+            this.groupBox1.Controls.Add(this.chkNegativeExport);
+            this.groupBox1.Controls.Add(this.chkImportConfirmation);
+            this.groupBox1.Controls.Add(this.chkExportConfirmation);
+            this.groupBox1.Controls.Add(this.chkNegativeSelling);
+            this.groupBox1.Location = new System.Drawing.Point(355, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(234, 180);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chức năng";
             // 
-            // rdoLogin
+            // chkNegativeExport
             // 
-            this.rdoLogin.AutoSize = true;
-            this.rdoLogin.Location = new System.Drawing.Point(166, 48);
-            this.rdoLogin.Name = "rdoLogin";
-            this.rdoLogin.Size = new System.Drawing.Size(130, 17);
-            this.rdoLogin.TabIndex = 30;
-            this.rdoLogin.Text = "Bằng tên và mật khẩu";
-            this.rdoLogin.UseVisualStyleBackColor = true;
+            this.chkNegativeExport.AutoSize = true;
+            this.chkNegativeExport.Location = new System.Drawing.Point(7, 42);
+            this.chkNegativeExport.Name = "chkNegativeExport";
+            this.chkNegativeExport.Size = new System.Drawing.Size(153, 17);
+            this.chkNegativeExport.TabIndex = 3;
+            this.chkNegativeExport.Text = "Cho phép xuất hàng số âm";
+            this.chkNegativeExport.UseVisualStyleBackColor = true;
             // 
-            // rdoEmployeeId
+            // chkImportConfirmation
             // 
-            this.rdoEmployeeId.AutoSize = true;
-            this.rdoEmployeeId.Checked = true;
-            this.rdoEmployeeId.Location = new System.Drawing.Point(301, 48);
-            this.rdoEmployeeId.Name = "rdoEmployeeId";
-            this.rdoEmployeeId.Size = new System.Drawing.Size(144, 17);
-            this.rdoEmployeeId.TabIndex = 31;
-            this.rdoEmployeeId.TabStop = true;
-            this.rdoEmployeeId.Tag = "";
-            this.rdoEmployeeId.Text = "Bằng mã vạch nhân viên";
-            this.rdoEmployeeId.UseVisualStyleBackColor = true;
+            this.chkImportConfirmation.AutoSize = true;
+            this.chkImportConfirmation.Location = new System.Drawing.Point(7, 66);
+            this.chkImportConfirmation.Name = "chkImportConfirmation";
+            this.chkImportConfirmation.Size = new System.Drawing.Size(139, 17);
+            this.chkImportConfirmation.TabIndex = 2;
+            this.chkImportConfirmation.Text = "Xác nhận khi xuất hàng";
+            this.chkImportConfirmation.UseVisualStyleBackColor = true;
+            // 
+            // chkExportConfirmation
+            // 
+            this.chkExportConfirmation.AutoSize = true;
+            this.chkExportConfirmation.Location = new System.Drawing.Point(6, 89);
+            this.chkExportConfirmation.Name = "chkExportConfirmation";
+            this.chkExportConfirmation.Size = new System.Drawing.Size(143, 17);
+            this.chkExportConfirmation.TabIndex = 1;
+            this.chkExportConfirmation.Text = "Xác nhận khi nhập hàng";
+            this.chkExportConfirmation.UseVisualStyleBackColor = true;
+            // 
+            // chkNegativeSelling
+            // 
+            this.chkNegativeSelling.AutoSize = true;
+            this.chkNegativeSelling.Location = new System.Drawing.Point(7, 20);
+            this.chkNegativeSelling.Name = "chkNegativeSelling";
+            this.chkNegativeSelling.Size = new System.Drawing.Size(151, 17);
+            this.chkNegativeSelling.TabIndex = 0;
+            this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
+            this.chkNegativeSelling.UseVisualStyleBackColor = true;
             // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 454);
+            this.ClientSize = new System.Drawing.Size(592, 447);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpService);
             this.Controls.Add(this.grpSubStock);
             this.Controls.Add(this.grpPrinting);
@@ -478,6 +538,8 @@
             this.grpSubStock.PerformLayout();
             this.grpService.ResumeLayout(false);
             this.grpService.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -528,5 +590,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton rdoEmployeeId;
         private System.Windows.Forms.RadioButton rdoLogin;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkImportConfirmation;
+        private System.Windows.Forms.CheckBox chkExportConfirmation;
+        private System.Windows.Forms.CheckBox chkNegativeSelling;
+        private System.Windows.Forms.CheckBox chkNegativeExport;
     }
 }

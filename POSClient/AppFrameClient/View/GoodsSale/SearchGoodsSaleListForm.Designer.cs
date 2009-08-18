@@ -100,7 +100,7 @@
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(543, 44);
+            this.panel4.Location = new System.Drawing.Point(389, 42);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(256, 24);
             this.panel4.TabIndex = 51;

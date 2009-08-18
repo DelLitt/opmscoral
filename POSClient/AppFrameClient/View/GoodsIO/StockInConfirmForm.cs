@@ -24,7 +24,7 @@ using BarcodeLib;
 
 namespace AppFrameClient.View.GoodsIO
 {
-    public partial class StockInConfirmForm : BaseForm,IStockOutConfirmView,IMainStockInView
+    public partial class StockInConfirmForm : BaseForm,IStockInConfirmView,IMainStockInView
     {
         private StockOutViewCollection deptStockOutList = null;
         private StockOutDetailViewCollection deptStockOutDetailList = null;
@@ -40,18 +40,18 @@ namespace AppFrameClient.View.GoodsIO
         {
 
             deptStockOutList.Clear();
-            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
+            StockInConfirmEventArgs eventArgs = new StockInConfirmEventArgs();
             eventArgs.ReportDateStockOutParam =
                 new ReportDateStockOutParam
                 {
                     FromDate = DateUtility.ZeroTime(dtpFrom.Value),
                     ToDate = DateUtility.MaxTime(dtpTo.Value)
                 };
-            EventUtility.fireEvent(LoadStockOutsEvent, this, eventArgs);
+            EventUtility.fireEvent(LoadStockInsEvent, this, eventArgs);
 
-            if (eventArgs.ResultStockOutList != null)
+            if (eventArgs.ResultStockInList != null)
             {
-                foreach (IList result in eventArgs.ResultStockOutList)
+                foreach (IList result in eventArgs.ResultStockInList)
                 {
                     StockOutView stockOutView = new StockOutView();
                     stockOutView.StockOut = (StockOut)result[0];
@@ -75,17 +75,17 @@ namespace AppFrameClient.View.GoodsIO
             }
 
             bdsDeptStockOut.EndEdit();
-            dgvStockOutDetail.Refresh();
-            dgvStockOutDetail.Invalidate();
+            dgvStockInDetail.Refresh();
+            dgvStockInDetail.Invalidate();
             CreateCountOnList();
         }
 
         
             private void CreateCountOnList()
             {
-            for (int i = 0; i < dgvStockOut.Rows.Count;i++ )
+            for (int i = 0; i < dgvStockIn.Rows.Count;i++ )
             {
-                dgvStockOut[0, dgvStockOut.Rows[i].Index].Value = i + 1;
+                dgvStockIn[0, dgvStockIn.Rows[i].Index].Value = i + 1;
             }
             }
         
@@ -104,12 +104,12 @@ namespace AppFrameClient.View.GoodsIO
 
         private void dgvStockOut_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvStockOut.CurrentCell == null)
+            if (dgvStockIn.CurrentCell == null)
             {
                 return;
             }
             deptStockOutDetailList.Clear();
-            StockOutView stockOut = deptStockOutList[dgvStockOut.CurrentCell.OwningRow.Index];
+            StockOutView stockOut = deptStockOutList[dgvStockIn.CurrentCell.OwningRow.Index];
             IList stockOutDetails = stockOut.StockOut.StockOutDetails;
             foreach (StockOutDetail stockOutDetail in stockOutDetails)
             {
@@ -129,8 +129,8 @@ namespace AppFrameClient.View.GoodsIO
 
             }
             bdsDeptStockOutDetail.EndEdit();
-            dgvStockOutDetail.Refresh();
-            dgvStockOutDetail.Invalidate();
+            dgvStockInDetail.Refresh();
+            dgvStockInDetail.Invalidate();
             CalculateGrandTotalCount();
         }
 
@@ -166,7 +166,7 @@ namespace AppFrameClient.View.GoodsIO
         private void btnSave_Click(object sender, EventArgs e)
         {
             
-            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
+            DataGridViewSelectedRowCollection selectedRows = dgvStockIn.SelectedRows;
             if (!(selectedRows.Count > 0))
             {
                 return;
@@ -191,7 +191,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
+            DataGridViewSelectedRowCollection selectedRows = dgvStockIn.SelectedRows;
             if(!(selectedRows.Count >0) )
             {
                 return;                
@@ -223,19 +223,23 @@ namespace AppFrameClient.View.GoodsIO
 
         #region Implementation of IStockOutConfirmView
 
-        private IStockOutConfirmController stockOutConfirmController;
-        public IStockOutConfirmController StockOutConfirmController
+        private IStockInConfirmController stockInConfirmController;
+        public IStockInConfirmController StockOutConfirmController
         {
             get
             {
-                return stockOutConfirmController;
+                return stockInConfirmController;
             }
             set
             {
-                stockOutConfirmController = value;
-                stockOutConfirmController.MainStockOutReportView = this;
+                stockInConfirmController = value;
+                stockInConfirmController.StockInConfirmView = this;
             }
         }
+
+        public event EventHandler<StockInConfirmEventArgs> ConfirmStockInEvent;
+        public event EventHandler<StockInConfirmEventArgs> DenyStockInEvent;
+        public event EventHandler<StockInConfirmEventArgs> LoadStockInsEvent;
         public event EventHandler<StockOutConfirmEventArgs> ConfirmStockOutEvent;
         public event EventHandler<StockOutConfirmEventArgs> DenyStockOutEvent;
         public event EventHandler<StockOutConfirmEventArgs> LoadStockOutsEvent;
@@ -250,6 +254,8 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<MainStockInEventArgs> LoadAllGoodsByNameEvent;
         public event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
         public event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
+        public event EventHandler<MainStockInEventArgs> LoadStockInEvent;
+        public event EventHandler<MainStockInEventArgs> UpdateStockInEvent;
         public event EventHandler<MainStockInEventArgs> GetPriceEvent;
 
         #endregion
@@ -268,12 +274,12 @@ namespace AppFrameClient.View.GoodsIO
         {
             if (deptStockOutDetailList != null && deptStockOutDetailList.Count > 0)
             {
-                if (dgvStockOutDetail.CurrentRow == null)
+                if (dgvStockInDetail.CurrentRow == null)
                 {
                     MessageBox.Show("Hãy chọn 1 hàng để in mã vạch");
                     return;
                 }
-                var selectedIndex = dgvStockOutDetail.CurrentRow.Index;
+                var selectedIndex = dgvStockInDetail.CurrentRow.Index;
                 if (selectedIndex < 0 || selectedIndex >= deptStockOutDetailList.Count)
                 {
                     return;
@@ -311,7 +317,7 @@ namespace AppFrameClient.View.GoodsIO
                 }
                 else // continous print
                 {
-                    DataGridViewSelectedRowCollection selectedRows = dgvStockOutDetail.SelectedRows;
+                    DataGridViewSelectedRowCollection selectedRows = dgvStockInDetail.SelectedRows;
                     if (selectedRows.Count > 3)
                     {
                         MessageBox.Show("Chỉ có thể in liên tiếp 3 mã vạch");
@@ -351,7 +357,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 var height = 87;
                 var numberToPrint = (int)numericUpDownBarcode.Value;
-                string code = deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.Product.ProductId;
+                string code = deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.Product.ProductId;
 
                 if (numberToPrint > 3)
                 {
@@ -360,11 +366,11 @@ namespace AppFrameClient.View.GoodsIO
                 }
                 var eventArgs = new MainStockInEventArgs
                 {
-                    ProductMasterIdForPrice = deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductMasterId
+                    ProductMasterIdForPrice = deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductMasterId
                 };
                 EventUtility.fireEvent(GetPriceEvent, this, eventArgs);
                 string titleString = "";
-                string name = deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductName;
+                string name = deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductName;
                 if (chkPricePrint.Checked && eventArgs.DepartmentPrice != null)
                 {
                     titleString = name + " - " + eventArgs.DepartmentPrice.Price.ToString() + ".00 ";
@@ -375,22 +381,22 @@ namespace AppFrameClient.View.GoodsIO
                 }
 
                 BarcodeLib.Barcode barcode = new Barcode();
-                string barCodeStr = deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.Product.ProductId;
+                string barCodeStr = deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.Product.ProductId;
                 string colorSize = "";
-                if (deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductColor.ColorId > 0)
+                if (deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductColor.ColorId > 0)
                 {
                     colorSize += "M:" +
-                                 deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductColor.
+                                 deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductColor.
                                      ColorName;
                 }
-                if (deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductSize.SizeId > 0)
+                if (deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductSize.SizeId > 0)
                 {
                     if (colorSize.Length > 0)
                     {
                         colorSize += " - ";
                     }
                     colorSize += "S:" +
-                                 deptStockOutDetailList[dgvStockOutDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductSize.
+                                 deptStockOutDetailList[dgvStockInDetail.CurrentRow.Index].StockOutDetail.ProductMaster.ProductSize.
                                      SizeName;
                 }
                 Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, barCodeStr, Color.Black, Color.White,
@@ -534,5 +540,11 @@ namespace AppFrameClient.View.GoodsIO
                 mainStockInController.MainStockInView = this;
             }
         }
+
+        #region Implementation of IStockInConfirmView
+
+        
+
+        #endregion
     }
 }

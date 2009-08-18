@@ -56,6 +56,10 @@ namespace AppFrameClient.View
                 grpSubStock.Visible = false;
             }
 
+            chkNegativeExport.Checked = ClientSetting.NegativeExport;
+            chkNegativeSelling.Checked = ClientSetting.NegativeSelling;
+            chkExportConfirmation.Checked = ClientSetting.ExportConfirmation;
+            chkImportConfirmation.Checked = ClientSetting.ImportConfirmation;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -92,6 +96,11 @@ namespace AppFrameClient.View
             {
                 
             }
+            ClientSetting.NegativeSelling = chkNegativeSelling.Checked;
+            ClientSetting.NegativeExport = chkNegativeExport.Checked;
+            ClientSetting.ImportConfirmation = chkImportConfirmation.Checked;
+            ClientSetting.ExportConfirmation = chkExportConfirmation.Checked;
+
             ClientSetting.Save();
             
             MessageBox.Show("Lưu cấu hình thành công!");

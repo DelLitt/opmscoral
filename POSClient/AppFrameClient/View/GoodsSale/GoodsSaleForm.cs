@@ -858,7 +858,7 @@ namespace AppFrameClient.View.GoodsSale
                     goodsSaleEventArgs.SelectedPurchaseOrderDetail.Product.ProductId = txtBarcode.Text;
                     
                     // don ma
-                    goodsSaleEventArgs.NotAvailableInStock = false;
+                    goodsSaleEventArgs.NotAvailableInStock = true;
                     EventUtility.fireEvent(LoadGoodsEvent, this, goodsSaleEventArgs);
 
                     // event has been modified

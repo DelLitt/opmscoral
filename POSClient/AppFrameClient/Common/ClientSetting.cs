@@ -174,21 +174,70 @@ namespace AppFrameClient.Common
             }
         }
 
+        public static bool ConfirmByEmployeeId
+        {
+            get
+            {
+                return AFCSetting.Default.ConfirmByEmployeeId;
+            }
+            set
+            {
+                AFCSetting.Default.ConfirmByEmployeeId = value;
+            }
+        }
+
+        public static bool NegativeSelling
+        {
+            get
+            {
+                return AFCSetting.Default.NegativeSelling;
+            }
+            set
+            {
+                AFCSetting.Default.NegativeSelling = value;
+            }
+        }
+
+        public static bool NegativeExport
+        {
+            get
+            {
+                return AFCSetting.Default.NegativeExport;
+            }
+            set
+            {
+                AFCSetting.Default.NegativeExport = value;
+            }
+        }
+
+        public static bool ExportConfirmation
+        {
+            get
+            {
+                return AFCSetting.Default.ExportConfirmation;
+            }
+            set
+            {
+                AFCSetting.Default.ExportConfirmation = value;
+            }
+        }
+
+        public static bool ImportConfirmation
+        {
+            get
+            {
+                return AFCSetting.Default.ImportConfirmation;
+            }
+            set
+            {
+                AFCSetting.Default.ImportConfirmation = value;
+            }
+        }
         public static void Reset()
         {
             AFCSetting.Default.Reset();
         }
 
-        public static bool ConfirmByEmployeeId
-        {
-            get
-            {
-                return AFCSetting.Default.ConfirmByEmployeeId; 
-            }
-            set
-            {
-                AFCSetting.Default.ConfirmByEmployeeId = value;                
-            }
-        }
+        
     }
 }
