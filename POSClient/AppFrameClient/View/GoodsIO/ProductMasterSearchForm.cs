@@ -503,7 +503,10 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<MainStockInEventArgs> LoadAllGoodsByNameEvent;
         public event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
         public event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
-#endregion
+        public event EventHandler<MainStockInEventArgs> LoadStockInEvent;
+        public event EventHandler<MainStockInEventArgs> UpdateStockInEvent;
+
+        #endregion
 
         private void dgvProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

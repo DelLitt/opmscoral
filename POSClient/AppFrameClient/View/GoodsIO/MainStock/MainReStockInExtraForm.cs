@@ -905,6 +905,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         public event EventHandler<MainStockInEventArgs> LoadAllGoodsByNameEvent;
         public event EventHandler<MainStockInEventArgs> FindByBarcodeEvent;
         public event EventHandler<MainStockInEventArgs> SaveReStockInEvent;
+        public event EventHandler<MainStockInEventArgs> LoadStockInEvent;
+        public event EventHandler<MainStockInEventArgs> UpdateStockInEvent;
 
         #endregion
 
@@ -1074,4 +1076,6 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             cboProductMasters.DroppedDown = false;
         }
     }
+
+    
 }
