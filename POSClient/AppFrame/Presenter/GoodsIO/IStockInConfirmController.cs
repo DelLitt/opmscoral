@@ -12,14 +12,14 @@ namespace AppFrame.Presenter
         IStockInConfirmView StockInConfirmView { get; set; }
         //IDepartmentStockOutReportView DepartmentStockOutReportView { get; set; }
         #region logic
-        IStockInLogic DepartmentStockInLogic { get; set; }
-        IStockInDetailLogic DepartmentStockInDetailLogic { get; set; }
+        IStockInLogic StockInLogic { get; set; }
+        IStockInDetailLogic StockInDetailLogic { get; set; }
         
         IDepartmentLogic DepartmentLogic { get; set; }
         IDepartmentPriceLogic DepartmentPriceLogic { get; set; }
 
-        IStockOutLogic DepartmentStockOutLogic { get; set; }
-        IStockOutDetailLogic DepartmentStockOutDetailLogic { get; set; }
+        IStockOutLogic StockOutLogic { get; set; }
+        IStockOutDetailLogic StockOutDetailLogic { get; set; }
         
         IStockLogic StockLogic { get; set; }
         #endregion

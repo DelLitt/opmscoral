@@ -10,6 +10,7 @@ namespace AppFrame.Presenter.GoodsIO.MainStock
 {
     public class MainStockInEventArgs : BaseEventArgs
     {
+        public string StockInId { get; set;}
         public Form ParentForm { get; set; }
 
         public ProductMaster SelectedProductMaster { get; set; }

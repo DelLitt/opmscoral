@@ -8,7 +8,7 @@ namespace AppFrame.View.GoodsIO
 {
     public interface IStockInConfirmView
     {
-        IStockInConfirmController StockOutConfirmController { get; set; }
+        IStockInConfirmController StockInConfirmController { get; set; }
 
         event EventHandler<StockInConfirmEventArgs> ConfirmStockInEvent;
         event EventHandler<StockInConfirmEventArgs> DenyStockInEvent;
