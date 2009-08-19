@@ -40,7 +40,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            confirm_stock_inTableAdapter.Fill(masterDB.confirm_stock_in, 0, DateUtility.ZeroTime(dtpFrom.Value), DateUtility.MaxTime(dtpTo.Value));
+            confirm_stock_inTableAdapter.Fill(masterDB.confirm_stock_in, 1, DateUtility.ZeroTime(dtpFrom.Value), DateUtility.MaxTime(dtpTo.Value));
             confirmstockinBindingSource.ResetBindings(false);
             dgvStockIn.Refresh();
             dgvStockIn.Invalidate();
@@ -189,19 +189,23 @@ namespace AppFrameClient.View.GoodsIO
                 return;
             }
 
-            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
+            StockInConfirmEventArgs eventArgs = new StockInConfirmEventArgs();
 
             IList list = new ArrayList();
             foreach (DataGridViewRow row in selectedRows)
             {
-                list.Add(deptStockOutList[row.Index].StockOut);
+                list.Add(dgvStockIn[0,row.Index].Value.ToString());
             }
 
-            eventArgs.ConfirmDepartmentStockOutList = list;
-            EventUtility.fireEvent(ConfirmStockOutEvent, this, eventArgs);
+            eventArgs.ConfirmStockInList = list;
+            EventUtility.fireEvent(ConfirmStockInEvent, this, eventArgs);
             if (!eventArgs.HasErrors)
             {
-
+                MessageBox.Show("Lưu thành công!");
+            }
+            else
+            {
+                MessageBox.Show("Lưu thất bại!");
             }
             ClearForm();
         }
@@ -221,8 +225,8 @@ namespace AppFrameClient.View.GoodsIO
             {
                 list.Add(deptStockOutList[row.Index].StockOut);          
             }
-            
-            eventArgs.DenyDepartmentStockOutList = list;
+
+            eventArgs.DenyStockInList = list;
             EventUtility.fireEvent(DenyStockOutEvent,this,eventArgs);
             if(!eventArgs.HasErrors)
             {

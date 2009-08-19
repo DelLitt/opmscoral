@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
             this.btnPreview = new System.Windows.Forms.Button();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
@@ -386,6 +387,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -644,6 +647,7 @@
             this.columnProductId.DataPropertyName = "Product.ProductMaster.ProductMasterId";
             this.columnProductId.HeaderText = "Mã sản phẩm";
             this.columnProductId.Name = "columnProductId";
+            this.columnProductId.ReadOnly = true;
             this.columnProductId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnProductId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.columnProductId.Visible = false;
@@ -662,6 +666,7 @@
             this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
             this.columnProductName.HeaderText = "Tên sản phẩm";
             this.columnProductName.Name = "columnProductName";
+            this.columnProductName.ReadOnly = true;
             this.columnProductName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnProductName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.columnProductName.Width = 170;
@@ -671,6 +676,7 @@
             this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
             this.columnColor.HeaderText = "Màu sắc";
             this.columnColor.Name = "columnColor";
+            this.columnColor.ReadOnly = true;
             this.columnColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -679,6 +685,7 @@
             this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
             this.columnSize.HeaderText = "Kích cỡ";
             this.columnSize.Name = "columnSize";
+            this.columnSize.ReadOnly = true;
             this.columnSize.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.columnSize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.columnSize.Width = 80;

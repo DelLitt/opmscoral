@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
 using AppFrame.Model;
+using Spring.Transaction;
+using Spring.Transaction.Interceptor;
 
 namespace AppFrame.DataLayer
 {
@@ -31,7 +34,16 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public StockIn FindById(object id)
         {
-            return (StockIn) HibernateTemplate.Get(typeof(StockIn), id);
+            StockIn stockIn =  (StockIn) HibernateTemplate.Get(typeof(StockIn), id);
+            try
+            {
+                HibernateTemplate.SessionFactory.Close();
+            }
+            catch (Exception)
+            {
+                
+            }
+            return stockIn;
         }
         
         /// <summary>
@@ -52,6 +64,19 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public void Update(StockIn data)
         {
+            try
+            {
+                ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+                if (session != null)
+                {
+                    session.Update(data);
+                    return;
+                }
+            }
+            catch (Exception)
+            {   
+            }
+
             HibernateTemplate.Update(data);
         }
         

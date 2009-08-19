@@ -594,6 +594,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             deptSI.Description = txtDexcription.Text;
             var eventArgs = new MainStockInEventArgs();
             eventArgs.StockIn = deptSI;
+            if (ClientSetting.ImportConfirmation)
+            {
+                eventArgs.StockIn.ConfirmFlg = 1;
+            }
             EventUtility.fireEvent(SaveStockInEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {

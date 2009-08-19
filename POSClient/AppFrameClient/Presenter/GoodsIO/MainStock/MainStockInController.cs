@@ -13,6 +13,7 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
+using AppFrameClient.Common;
 using AppFrameClient.Utility;
 
 namespace AppFrameClient.Presenter.GoodsIO.MainStock
@@ -62,6 +63,10 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             StockIn stockIn = StockInLogic.FindById(e.StockInId);
             if(stockIn!= null)
             {
+                foreach (StockInDetail inDetail in stockIn.StockInDetails)
+                {
+                    inDetail.OldQuantity = inDetail.Quantity;
+                }
                 e.StockIn = stockIn;
             }
         }
@@ -261,7 +266,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         void _departmentStockInView_SaveStockInEvent(object sender, MainStockInEventArgs e)
         {
-
+            
             if (string.IsNullOrEmpty(e.StockIn.StockInId))
             {
                 StockInLogic.Add(e.StockIn);

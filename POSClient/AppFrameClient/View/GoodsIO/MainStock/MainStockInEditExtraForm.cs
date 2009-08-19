@@ -47,6 +47,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             eventArgs.StockIn = StockIn;
             foreach (StockInDetail inDetail in StockIn.StockInDetails)
             {
+                inDetail.ProductMaster = inDetail.Product.ProductMaster;
                 deptSIDetailList.Add(inDetail);
             }
             bdsStockIn.ResetBindings(false);
@@ -604,16 +605,13 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 }
             }
 
-            if (deptSI == null)
-            {
-                deptSI = new StockIn();
-            }
+            
             bool isNeedClearData = string.IsNullOrEmpty(deptSI.StockInId);
             deptSI.StockInDate = dtpImportDate.Value;
             deptSI.StockInDetails = deptSIDetailList;
             deptSI.Description = txtDexcription.Text;
             var eventArgs = new MainStockInEventArgs();
-            eventArgs.StockIn = deptSI;
+            eventArgs.StockIn = StockIn;
             EventUtility.fireEvent(SaveStockInEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
@@ -649,29 +647,35 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 return;
             }
-            var selectedIndex = dgvDeptStockIn.CurrentRow.Index;
-            if (selectedIndex < 0 || selectedIndex >= deptSIDetailList.Count)
+            if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
             {
                 return;
             }
-            StockInDetail detail = deptSIDetailList[selectedIndex];
-            if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            DataGridViewSelectedRowCollection rowCollection = dgvDeptStockIn.SelectedRows;
+
+            foreach (DataGridViewRow row in rowCollection)
             {
-                if (detail.StockInDetailPK != null && !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].StockInDetailPK.StockInId))
-                {
-                    detail.DelFlg = 1;
-                    for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)
+                int selectedIndex = row.Index;
+
+                StockInDetail detail = deptSIDetailList[selectedIndex];
+                
+                    if (detail.StockInDetailPK != null &&
+                        !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].StockInDetailPK.StockInId))
                     {
-                        dgvDeptStockIn[j, selectedIndex].ReadOnly = true;
-                        dgvDeptStockIn[j, selectedIndex].Style.BackColor = Color.Gray;
+                        detail.DelFlg = 1;
+                        for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)
+                        {
+                            dgvDeptStockIn[j, selectedIndex].ReadOnly = true;
+                            dgvDeptStockIn[j, selectedIndex].Style.BackColor = Color.Gray;
+                        }
                     }
-                }
-                else
-                {
-                    deptSIDetailList.RemoveAt(selectedIndex);
-                }
+                    else
+                    {
+                        deptSIDetailList.RemoveAt(selectedIndex);
+                    }
             }
             CalculateTotalStorePrice();
+            LockRowsForEdit();
         }
 
         private void btnBarcode_Click(object sender, EventArgs e)
@@ -809,6 +813,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
             PopulateGridByProductMaster(lstColor.SelectedItems, lstSize.SelectedItems);
             CalculateTotalStorePrice();
+            LockRowsForEdit();
         }
 
         private void PopulateGridByProductMaster(IList colorList, IList sizeList)
@@ -1139,6 +1144,43 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void MainStockInEditExtraForm_Shown(object sender, EventArgs e)
         {
             LoadStockIn();
+            LockRowsForEdit();
+        }
+
+        private void LockRowsForEdit()
+        {
+            foreach (DataGridViewRow row in dgvDeptStockIn.Rows)
+            {
+                if(deptSIDetailList[row.Index].DelFlg == 1)
+                {
+                    row.ReadOnly = true;
+                    row.DefaultCellStyle.BackColor = Color.Gray;
+                }
+                else
+                {
+                    row.Cells[6].Style.BackColor = Color.LightYellow;
+                }
+            }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDeptStockIn.CurrentCell != null)
+            {
+                Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDeptStockIn.SelectedCells.Count > 0)
+            {
+                DataGridViewSelectedCellCollection collection = dgvDeptStockIn.SelectedCells;
+                foreach (DataGridViewCell cell in collection)
+                {
+                    cell.Value = Clipboard.GetText();
+                }
+            }
         }
     }
 }

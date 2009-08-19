@@ -180,7 +180,7 @@ namespace AppFrameClient.View.GoodsIO
                 list.Add(deptStockOutList[row.Index].StockOut);
             }
 
-            eventArgs.ConfirmDepartmentStockOutList = list;
+            eventArgs.ConfirmStockInList = list;
             EventUtility.fireEvent(ConfirmStockOutEvent, this, eventArgs);
             if (!eventArgs.HasErrors)
             {
@@ -204,8 +204,8 @@ namespace AppFrameClient.View.GoodsIO
             {
                 list.Add(deptStockOutList[row.Index].StockOut);          
             }
-            
-            eventArgs.DenyDepartmentStockOutList = list;
+
+            eventArgs.DenyStockInList = list;
             EventUtility.fireEvent(DenyStockOutEvent,this,eventArgs);
             if(!eventArgs.HasErrors)
             {
