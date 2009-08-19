@@ -53,6 +53,16 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 mainStockInView.LoadAllGoodsByNameEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_LoadAllGoodsByNameEvent);
                 mainStockInView.FindByBarcodeEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_FindByBarcodeEvent);
                 mainStockInView.SaveReStockInEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_SaveReStockInEvent);
+                mainStockInView.LoadStockInEvent += new EventHandler<MainStockInEventArgs>(mainStockInView_LoadStockInEvent);
+            }
+        }
+
+        void mainStockInView_LoadStockInEvent(object sender, MainStockInEventArgs e)
+        {
+            StockIn stockIn = StockInLogic.FindById(e.StockInId);
+            if(stockIn!= null)
+            {
+                e.StockIn = stockIn;
             }
         }
 

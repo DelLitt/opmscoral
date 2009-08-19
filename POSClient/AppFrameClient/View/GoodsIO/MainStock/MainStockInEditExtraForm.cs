@@ -37,7 +37,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         public MainStockInEditExtraForm()
         {
             InitializeComponent();
-            LoadStockIn();
+            
         }
 
         private void LoadStockIn()
@@ -1134,6 +1134,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 deptSIDetailList[row.Index].Price = inputPrice;
                 deptSIDetailList[row.Index].SellPrice = price;
             }
+        }
+
+        private void MainStockInEditExtraForm_Shown(object sender, EventArgs e)
+        {
+            LoadStockIn();
         }
     }
 }

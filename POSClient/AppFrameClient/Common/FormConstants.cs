@@ -100,5 +100,7 @@ namespace AppFrameClient.Common
         public static string EMPLOYEE_CHECKING_VIEW = "EmployeeCheckingView";
         public static string EMPLOYEE_MONEY_VIEW = "ProcessPeriodMoneyView";
         public static string STOCK_OUT_DIALOG = "StockOutDialog";
+        public static string STOCK_IN_CONFIRM_FORM = "StockInConfirmView";
+        public static string MAIN_STOCK_IN_EDIT_EXTRA_FORM = "MainStockInEditExtraView";
     }
 }

@@ -18,7 +18,9 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrame.View.Reports;
+using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
+using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.ViewModel;
 using BarcodeLib;
 
@@ -38,7 +40,11 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            confirm_stock_inTableAdapter.Fill(masterDB.confirm_stock_in, 0, DateUtility.ZeroTime(dtpFrom.Value), DateUtility.MaxTime(dtpTo.Value));
+            confirmstockinBindingSource.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+/*
             deptStockOutList.Clear();
             StockInConfirmEventArgs eventArgs = new StockInConfirmEventArgs();
             eventArgs.ReportDateStockOutParam =
@@ -77,7 +83,7 @@ namespace AppFrameClient.View.GoodsIO
             bdsDeptStockOut.EndEdit();
             dgvStockInDetail.Refresh();
             dgvStockInDetail.Invalidate();
-            CreateCountOnList();
+            CreateCountOnList();*/
         }
 
         
@@ -104,7 +110,17 @@ namespace AppFrameClient.View.GoodsIO
 
         private void dgvStockOut_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvStockIn.CurrentCell == null)
+            if(dgvStockIn.CurrentCell == null)
+            {
+                return;
+            }
+            string stockInId = dgvStockIn[0, dgvStockIn.CurrentCell.OwningRow.Index].Value.ToString();
+            confirm_stock_in_detailTableAdapter.Fill(masterDB.confirm_stock_in_detail,stockInId);
+            confirmstockindetailBindingSource.ResetBindings(false);
+            dgvStockInDetail.Refresh();
+            dgvStockInDetail.Invalidate();
+            #region old code
+            /*if (dgvStockIn.CurrentCell == null)
             {
                 return;
             }
@@ -131,7 +147,8 @@ namespace AppFrameClient.View.GoodsIO
             bdsDeptStockOutDetail.EndEdit();
             dgvStockInDetail.Refresh();
             dgvStockInDetail.Invalidate();
-            CalculateGrandTotalCount();
+            CalculateGrandTotalCount();*/
+            #endregion
         }
 
         private void CalculateGrandTotalCount()
@@ -224,7 +241,7 @@ namespace AppFrameClient.View.GoodsIO
         #region Implementation of IStockOutConfirmView
 
         private IStockInConfirmController stockInConfirmController;
-        public IStockInConfirmController StockOutConfirmController
+        public IStockInConfirmController StockInConfirmController
         {
             get
             {
@@ -272,7 +289,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (deptStockOutDetailList != null && deptStockOutDetailList.Count > 0)
+            /*if (deptStockOutDetailList != null && deptStockOutDetailList.Count > 0)
             {
                 if (dgvStockInDetail.CurrentRow == null)
                 {
@@ -347,13 +364,13 @@ namespace AppFrameClient.View.GoodsIO
                     }
                 }
 
-            }
+            }*/
         }
         private IList<Product> printList = null;
 
         private void barcodePrintDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            if (!chkContinuePrint.Checked)
+            /*if (!chkContinuePrint.Checked)
             {
                 var height = 87;
                 var numberToPrint = (int)numericUpDownBarcode.Value;
@@ -520,7 +537,7 @@ namespace AppFrameClient.View.GoodsIO
                                           (i % 3) * 140 + XCentered(colorSizeSize.Width, 140), (float)88);
 
                 }
-            }
+            }*/
         }
         private float XCentered(float localWidth, float globalWidth)
         {
@@ -539,6 +556,24 @@ namespace AppFrameClient.View.GoodsIO
                 mainStockInController = value;
                 mainStockInController.MainStockInView = this;
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvStockIn.CurrentCell == null)
+            {
+                return;
+            }
+            string stockInId = dgvStockIn[0, dgvStockIn.CurrentCell.OwningRow.Index].Value.ToString();
+            MainStockInEventArgs eventArgs = new MainStockInEventArgs();
+            eventArgs.StockInId = stockInId;
+            EventUtility.fireEvent(LoadStockInEvent,this,eventArgs);
+
+            MainStockInEditExtraForm editExtraForm =
+                GlobalUtility.GetOnlyChildFormObject<MainStockInEditExtraForm>(GlobalCache.Instance().MainForm,FormConstants.MAIN_STOCK_IN_EDIT_EXTRA_FORM);
+
+            editExtraForm.StockIn = eventArgs.StockIn;
+            editExtraForm.Show();
         }
 
         #region Implementation of IStockInConfirmView

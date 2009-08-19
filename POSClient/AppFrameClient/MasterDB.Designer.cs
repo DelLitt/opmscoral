@@ -13565,7 +13565,7 @@ GROUP BY stock_in.STOCK_IN_ID, stock_in.STOCK_IN_DATE";
             this._commandCollection[0].CommandText = @"SELECT     STOCK_IN_ID, STOCK_IN_DATE, CREATE_DATE, DESCRIPTION, CREATE_ID, UPDATE_DATE, UPDATE_ID, EXCLUSIVE_KEY, DEL_FLG, 
                       STOCK_IN_COST, STOCK_IN_TYPE, CONFIRM_FLG
 FROM         stock_in
-WHERE     (CONFIRM_FLG = @ConfirmFlg) AND (DEL_FLG = 0)";
+WHERE     (CONFIRM_FLG = @ConfirmFlg) AND (DEL_FLG = 0) AND (STOCK_IN_DATE >= @FromDate) AND (STOCK_IN_DATE <= @ToDate)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@ConfirmFlg";
@@ -13574,18 +13574,44 @@ WHERE     (CONFIRM_FLG = @ConfirmFlg) AND (DEL_FLG = 0)";
             param.IsNullable = true;
             param.SourceColumn = "CONFIRM_FLG";
             this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@FromDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "STOCK_IN_DATE";
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@ToDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "STOCK_IN_DATE";
+            this._commandCollection[0].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(MasterDB.confirm_stock_inDataTable dataTable, global::System.Nullable<int> ConfirmFlg) {
+        public virtual int Fill(MasterDB.confirm_stock_inDataTable dataTable, global::System.Nullable<int> ConfirmFlg, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ConfirmFlg.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ConfirmFlg.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -13597,13 +13623,25 @@ WHERE     (CONFIRM_FLG = @ConfirmFlg) AND (DEL_FLG = 0)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual MasterDB.confirm_stock_inDataTable GetData(global::System.Nullable<int> ConfirmFlg) {
+        public virtual MasterDB.confirm_stock_inDataTable GetData(global::System.Nullable<int> ConfirmFlg, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ConfirmFlg.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ConfirmFlg.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(FromDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             MasterDB.confirm_stock_inDataTable dataTable = new MasterDB.confirm_stock_inDataTable();
             this.Adapter.Fill(dataTable);

@@ -192,7 +192,11 @@ namespace AppFrame.View
 
         private void approveStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form stockCreate = GlobalUtility.GetOnlyChildFormObject<StockCreateForm>(this, FormConstants.STOCK_CREATE_FORM);
+            /*Form stockCreate = GlobalUtility.GetOnlyChildFormObject<StockCreateForm>(this, FormConstants.STOCK_CREATE_FORM);
+            stockCreate.Show();*/
+            Form stockCreate = GlobalUtility.GetOnlyChildFormObject<StockInConfirmForm>(this,
+                                                                                        FormConstants.
+                                                                                            STOCK_IN_CONFIRM_FORM);
             stockCreate.Show();
         }
 
@@ -1224,6 +1228,11 @@ namespace AppFrame.View
                 GlobalUtility.GetOnlyChildFormObject<EmployeeMoneyForm>(this, FormConstants.EMPLOYEE_MONEY_VIEW);
             form.WindowState = FormWindowState.Maximized;
             form.Show();
+        }
+
+        private void productToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         
     }

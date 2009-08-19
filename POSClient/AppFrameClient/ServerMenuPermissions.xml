@@ -13,7 +13,7 @@
   <menu name="mnuWareHouse" role="Administrator,Supervisor">
     <menuitem name="mnuImportGoods" role="Administrator,Supervisor" />
     <menuitem name="searchBlockToolStripMenuItem" role="Administrator,Supervisor" />
-    <menuitem name="approveStockToolStripMenuItem" role="NotImplement" />
+    <menuitem name="approveStockToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="searchStockToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
