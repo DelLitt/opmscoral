@@ -61,5 +61,7 @@ namespace AppFrame.Logic
         string FindMaxId();
         void AddFixedStockIn(StockIn stockIn);
         void AddForStockOutToProducer(StockIn stockIn);
+        void UpdateDetail(StockIn stockIn);
+        void UpdateMaster(StockIn stockIn);
     }
 }

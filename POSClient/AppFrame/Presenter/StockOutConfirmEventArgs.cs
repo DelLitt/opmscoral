@@ -20,7 +20,7 @@ namespace AppFrame.Presenter
         public IList DepartmentsList { get; set; }
         public Department SelectDepartment { get; set; }
 
-        public IList ConfirmDepartmentStockOutList { get; set; }
-        public IList DenyDepartmentStockOutList { get; set; }
+        public IList ConfirmStockInList { get; set; }
+        public IList DenyStockInList { get; set; }
     }
 }

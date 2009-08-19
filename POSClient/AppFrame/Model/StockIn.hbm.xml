@@ -95,10 +95,9 @@
     <!-- bi-directional one-to-many association to StockInDetail -->
     <bag
         name="StockInDetails"
-        lazy="false"
+        lazy="false"                
+		    cascade="none" 
         inverse="true"
-		cascade="none"
-        
     >
         <key>
             <column name="STOCK_IN_ID" />

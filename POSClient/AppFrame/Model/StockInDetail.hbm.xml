@@ -93,7 +93,7 @@
     <!-- Associations -->
     <!-- derived association(s) for compound key -->
     <!-- bi-directional many-to-one association to StockIn -->
-    <many-to-one
+    <!--<many-to-one
         name="StockIn"
 	    class="StockIn"
 	    update="false"
@@ -101,7 +101,7 @@
         lazy="false"
 	>
     	<column name="STOCK_IN_ID" />
-	</many-to-one>
+	</many-to-one>-->
 	
     <!-- bi-directional many-to-one association to Product -->
     <many-to-one
