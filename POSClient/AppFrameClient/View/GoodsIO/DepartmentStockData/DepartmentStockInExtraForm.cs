@@ -331,6 +331,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> UpdateDepartmentStockInForExportEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadMasterDataForExportEvent;
         public event EventHandler<DepartmentStockInEventArgs> SyncExportedMasterDataEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
 
         #endregion
 

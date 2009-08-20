@@ -27,7 +27,59 @@ namespace AppFrameClient.Presenter
             set
             {
                 stockInConfirmView = value;
-                stockInConfirmView.ConfirmStockInEvent += new EventHandler<StockInConfirmEventArgs>(stockInConfirmView_ConfirmStockInEvent);                
+                stockInConfirmView.ConfirmStockInEvent += new EventHandler<StockInConfirmEventArgs>(stockInConfirmView_ConfirmStockInEvent);
+                stockInConfirmView.LoadStockInEvent += new EventHandler<StockInConfirmEventArgs>(stockInConfirmView_LoadStockInEvent);
+                stockInConfirmView.DenyStockInEvent += new EventHandler<StockInConfirmEventArgs>(stockInConfirmView_DenyStockInEvent);
+            }
+        }
+
+        void stockInConfirmView_DenyStockInEvent(object sender, StockInConfirmEventArgs e)
+        {
+            try
+            {
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddSearchInCriteria("StockInId", e.ConfirmStockInList);
+                objectCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                IList stockInList = StockInLogic.FindAll(objectCriteria);
+
+                if (stockInList != null && stockInList.Count > 0)
+                {
+                    foreach (StockIn stockIn in stockInList)
+                    {
+                        if (stockIn.ConfirmFlg == 1)
+                        {
+                            stockIn.ConfirmFlg = 0;
+                            stockIn.DelFlg = 1;
+                            foreach (StockInDetail inDetail in stockIn.StockInDetails)
+                            {
+                                inDetail.DelFlg = 1;
+                            }
+                            StockInLogic.Update(stockIn);
+                        }
+                    }
+                }
+                else
+                {
+                    throw new BusinessException("Khong co gi de luu");
+                }
+            }
+            catch (Exception exception)
+            {
+                e.EventResult = " Error !";
+                e.HasErrors = true;
+            }
+        }
+
+        void stockInConfirmView_LoadStockInEvent(object sender, StockInConfirmEventArgs e)
+        {
+            StockIn stockIn = StockInLogic.FindById(e.StockInId);
+            if (stockIn != null)
+            {
+                foreach (StockInDetail inDetail in stockIn.StockInDetails)
+                {
+                    inDetail.OldQuantity = inDetail.Quantity;
+                }
+                e.StockIn = stockIn;
             }
         }
 
@@ -47,8 +99,7 @@ namespace AppFrameClient.Presenter
                         if (stockIn.ConfirmFlg == 1)
                         {
                             stockIn.ConfirmFlg = 0;
-                            StockInLogic.UpdateDetail(stockIn);
-                            StockInLogic.UpdateMaster(stockIn);
+                            StockInLogic.Update(stockIn);
                         }
                     }
                 }
@@ -67,8 +118,6 @@ namespace AppFrameClient.Presenter
         public IStockInDetailLogic StockInDetailLogic { get; set; }
         public IDepartmentLogic DepartmentLogic { get; set; }
         public IDepartmentPriceLogic DepartmentPriceLogic { get; set; }
-        public IStockOutLogic StockOutLogic { get; set; }
-        public IStockOutDetailLogic StockOutDetailLogic { get; set; }
         public IStockLogic StockLogic { get; set; }
 
         #endregion

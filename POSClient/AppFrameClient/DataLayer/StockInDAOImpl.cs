@@ -111,42 +111,49 @@ namespace AppFrame.DataLayer
         /// <returns></returns>
         public IList FindAll(ObjectCriteria criteria)
         {
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
-            try 
-            {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(StockIn));
-                if (criteria != null)
-                {
-                    IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                    if (map.Count > 0)
-                    {
-                        foreach (string key in map.Keys)
-                        {
-                            hibernateCriteria.CreateAlias(key, key);
-                        }
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-    
-                        foreach (string key in map.Keys)
-                        {
-                            SubObjectCriteria subCriteria = null;
-                            map.TryGetValue(key, out subCriteria);
-                            AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(), subCriteria.GetOrder());
-                        }
-                    } 
-                    else
-                    {
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-                    }
-                }
-                return hibernateCriteria.List();
-            }
-            finally 
-            {
-                if (session != null)
-                {
-                    session.Disconnect();
-                }
-            }
+            return (IList) HibernateTemplate.Execute(
+                               delegate(ISession session)
+                                   {
+                                       //ISession session = HibernateTemplate.SessionFactory.OpenSession();
+                                       try
+                                       {
+                                           ICriteria hibernateCriteria = session.CreateCriteria(typeof (StockIn));
+                                           if (criteria != null)
+                                           {
+                                               IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
+                                               if (map.Count > 0)
+                                               {
+                                                   foreach (string key in map.Keys)
+                                                   {
+                                                       hibernateCriteria.CreateAlias(key, key);
+                                                   }
+                                                   AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(),
+                                                                       criteria.GetOrder());
+
+                                                   foreach (string key in map.Keys)
+                                                   {
+                                                       SubObjectCriteria subCriteria = null;
+                                                       map.TryGetValue(key, out subCriteria);
+                                                       AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(),
+                                                                           subCriteria.GetOrder());
+                                                   }
+                                               }
+                                               else
+                                               {
+                                                   AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(),
+                                                                       criteria.GetOrder());
+                                               }
+                                           }
+                                           return hibernateCriteria.List();
+                                       }
+                                       finally
+                                       {
+                                           /*if (session != null)
+                                           {
+                                               session.Disconnect();
+                                           }*/
+                                       }
+                                   });
         }
         
         /// <summary>

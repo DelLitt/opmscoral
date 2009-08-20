@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -108,6 +108,7 @@
             this.stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter();
             this.btnFix = new System.Windows.Forms.Button();
             this.chkRemoveZero = new System.Windows.Forms.CheckBox();
+            this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -230,7 +231,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(9, 503);
+            this.button6.Location = new System.Drawing.Point(619, 536);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(124, 23);
             this.button6.TabIndex = 64;
@@ -331,8 +332,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -416,8 +417,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -704,7 +705,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(9, 237);
+            this.panelStockIns.Location = new System.Drawing.Point(6, 237);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(800, 325);
             this.panelStockIns.TabIndex = 122;
@@ -855,12 +856,23 @@
             this.chkRemoveZero.UseVisualStyleBackColor = true;
             this.chkRemoveZero.CheckedChanged += new System.EventHandler(this.chkRemoveZero_CheckedChanged);
             // 
+            // chkKeepInputInfo
+            // 
+            this.chkKeepInputInfo.AutoSize = true;
+            this.chkKeepInputInfo.Location = new System.Drawing.Point(9, 503);
+            this.chkKeepInputInfo.Name = "chkKeepInputInfo";
+            this.chkKeepInputInfo.Size = new System.Drawing.Size(153, 17);
+            this.chkKeepInputInfo.TabIndex = 126;
+            this.chkKeepInputInfo.Text = "Giữ lại thông tin nhập hàng";
+            this.chkKeepInputInfo.UseVisualStyleBackColor = true;
+            // 
             // DepartmentStockInFromMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
             this.Controls.Add(this.panelStockIns);
+            this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
@@ -938,6 +950,7 @@
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
+            this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
@@ -1037,5 +1050,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.CheckBox chkKeepInputInfo;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO
 {
-    partial class StockOutConfirmForm
+    partial class StockOutsListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -442,6 +442,7 @@
             this.btnCancel.TabIndex = 31;
             this.btnCancel.Text = "Bỏ qua";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
             // 
             // btnSave
             // 
@@ -451,6 +452,7 @@
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Xác nhận";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
@@ -471,6 +473,7 @@
             this.button1.TabIndex = 41;
             this.button1.Text = "Không xác nhận";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
@@ -532,7 +535,7 @@
             // 
             this.barcodePrintDialog.UseEXDialog = true;
             // 
-            // StockOutConfirmForm
+            // StockOutsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -562,7 +565,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
-            this.Name = "StockOutConfirmForm";
+            this.Name = "StockOutsListForm";
             this.Text = "Xác nhận xuất hàng";
             this.Load += new System.EventHandler(this.DepartmentStockOutConfirmForm_Load);
             this.Controls.SetChildIndex(this.label1, 0);

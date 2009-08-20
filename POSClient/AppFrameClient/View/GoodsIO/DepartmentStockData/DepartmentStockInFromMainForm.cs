@@ -536,6 +536,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> UpdateDepartmentStockInForExportEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadMasterDataForExportEvent;
         public event EventHandler<DepartmentStockInEventArgs> SyncExportedMasterDataEvent;
+        public event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
         public event EventHandler<DepartmentStockInEventArgs> SaveStockInEvent;
 
         #endregion
@@ -576,12 +577,36 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             if (isNeedClearData && result != null)
             {
-                deptSI = new DepartmentStockIn();
-                deptSIDetailList.Clear();
-                txtDexcription.Text = "";
-                txtSumProduct.Text = "";
-                txtSumValue.Text = "";
-                CreateNewStockInDetail();
+                if (!chkKeepInputInfo.Checked)
+                {
+                    deptSI = new DepartmentStockIn();
+                    deptSIDetailList.Clear();
+                    txtDexcription.Text = "";
+                    txtSumProduct.Text = "";
+                    txtSumValue.Text = "";
+                    CreateNewStockInDetail();
+                }
+                else
+                {
+                    deptSI = new DepartmentStockIn();
+                    RefrefshDeptSIDetailList();
+                    txtDexcription.Text = "";
+                    txtSumProduct.Text = "";
+                    txtSumValue.Text = "";
+                }
+            }
+        }
+
+        private void RefrefshDeptSIDetailList()
+        {
+            foreach (DepartmentStockInDetail inDetail in deptSIDetailList)
+            {
+                inDetail.DepartmentStockIn = null;
+                inDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK
+                                                     {
+                                                         DepartmentId = ((Department)cbbDept.SelectedItem).DepartmentId,
+                                                         ProductId = inDetail.Product.ProductId
+                                                     };
             }
         }
 
@@ -860,6 +885,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //            }
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockInDetailList = new ArrayList();
+            IList selectedProductMasterList = new ArrayList();
             foreach (ProductColor color in colorList)
             {
                 foreach (ProductSize size in sizeList)
@@ -888,7 +914,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             && productMaster.ProductSize != null
                             && productMaster.ProductSize.SizeId == size.SizeId)
                         {
-                            DepartmentStockInDetail stockInDetail = deptSIDetailList.AddNew();
+                            selectedProductMasterList.Add(productMaster);
+
+                            /*DepartmentStockInDetail stockInDetail = deptSIDetailList.AddNew();
                             stockInDetail.Quantity = NumberUtility.ParseLong(txtQuantity.Text);
                             //stockInDetail.SellPrice = NumberUtility.ParseLong(txtPriceOut.Text);
                             stockInDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
@@ -898,11 +926,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             }
                             stockInDetail.Product.ProductMaster = productMaster;
                             eventArgs.DepartmentStockInDetailList.Add(stockInDetail);
-                            deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
+                            deptSIDetailList.EndNew(deptSIDetailList.Count - 1);*/
                         }
                     }
                 }
             }
+            
+            eventArgs.ProductMasterList = selectedProductMasterList;
+            EventUtility.fireEvent(LoadStockInByProductMaster, this, eventArgs);
 
             if (eventArgs.DepartmentStockInDetailList.Count > 0)
             {
