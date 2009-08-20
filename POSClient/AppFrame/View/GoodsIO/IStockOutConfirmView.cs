@@ -13,5 +13,6 @@ namespace AppFrame.View.GoodsIO
         event EventHandler<StockOutConfirmEventArgs> ConfirmStockOutEvent;
         event EventHandler<StockOutConfirmEventArgs> DenyStockOutEvent;
         event EventHandler<StockOutConfirmEventArgs> LoadStockOutsEvent;
+        event EventHandler<StockOutConfirmEventArgs> LoadConfirmingStockOutsEvent;
     }
 }
