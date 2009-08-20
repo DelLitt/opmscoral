@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
@@ -299,7 +300,35 @@ namespace AppFrame.DataLayer
                 }
             }
         }
-        
+
+        public long FindConfirmingQuantity(Product product)
+        {
+            return (long)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList list = null;
+                                    try
+                                    {
+                                        string queryString =
+                                            " SELECT SUM(sodet.Quantity) FROM StockOutDetail sodet,StockOut so " +
+                                            " WHERE sodet.StockOut.StockoutId = so.StockoutId AND so.ConfirmFlg = 1 AND so.DelFlg = 0 " +
+                                            " AND sodet.DelFlg = 0 and sodet.Product.ProductId = :stockOutId GROUP BY sodet.Product.ProductId";
+                                        
+                                        IQuery iQuery = session.CreateQuery(queryString);
+                                        iQuery.SetParameter("stockOutId", product.ProductId);
+                                        list = iQuery.List();
+                                        return (long)list[0];
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Console.Out.WriteLine(e.Message);
+                                        return 0;
+                                    }
+                                    
+                                }
+                                );
+        }
+
         /// <summary>
         /// 
         /// </summary>

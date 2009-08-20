@@ -81,7 +81,6 @@ namespace AppFrameClient.View.GoodsIO
             #endregion
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
-            CreateCountOnList();
         }
 
         
@@ -108,7 +107,13 @@ namespace AppFrameClient.View.GoodsIO
 
         private void dgvStockOut_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvStockOut.CurrentCell == null)
+            if(dgvStockOut.CurrentCell == null)
+            {
+                return;
+            }
+            int stockOutId = Int32.Parse(dgvStockOut[0, dgvStockOut.CurrentRow.Index].Value.ToString());
+            confirm_stock_out_detailTableAdapter.Fill(masterDB.confirm_stock_out_detail, stockOutId);
+            /*if (dgvStockOut.CurrentCell == null)
             {
                 return;
             }
@@ -135,7 +140,7 @@ namespace AppFrameClient.View.GoodsIO
             bdsDeptStockOutDetail.EndEdit();
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
-            CalculateGrandTotalCount();
+            CalculateGrandTotalCount();*/
         }
 
         private void CalculateGrandTotalCount()
@@ -169,7 +174,19 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            DataGridViewSelectedRowCollection
+            selectedRowCollection = dgvStockOut.SelectedRows;
+
+            IList stockIds = new ArrayList();
+            foreach (DataGridViewRow viewRow in selectedRowCollection)
+            {
+                long stockOutId = Int64.Parse(dgvStockOut[0, viewRow.Index].Value.ToString());
+                stockIds.Add(stockOutId);
+            }
+            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
+            eventArgs.ConfirmStockOutIdsList = stockIds;
+            EventUtility.fireEvent(ConfirmStockOutEvent,this,eventArgs);
+            /*
             DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
             if (!(selectedRows.Count > 0))
             {
@@ -190,12 +207,25 @@ namespace AppFrameClient.View.GoodsIO
             {
 
             }
-            ClearForm();
+            ClearForm();*/
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
+            DataGridViewSelectedRowCollection
+            selectedRowCollection = dgvStockOut.SelectedRows;
+
+            IList stockIds = new ArrayList();
+            foreach (DataGridViewRow viewRow in selectedRowCollection)
+            {
+                long stockOutId = Int64.Parse(dgvStockOut[0, viewRow.Index].Value.ToString());
+                stockIds.Add(stockOutId);
+            }
+            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
+            eventArgs.DenyStockOutIdsList = stockIds;
+            EventUtility.fireEvent(DenyStockOutEvent, this, eventArgs);
+
+            /*DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
             if(!(selectedRows.Count >0) )
             {
                 return;                
@@ -215,7 +245,7 @@ namespace AppFrameClient.View.GoodsIO
             {
                 
             }
-            ClearForm();
+            ClearForm();*/
 
         }
 

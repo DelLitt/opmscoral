@@ -100,11 +100,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                             stockOutList.Add(deptDetail);
                         }
                         GetRemainStockNumber(stockOutList);
+                        MinusConfirmStockOut(stockOutList);
                         e.SelectedStockOutDetails = stockOutList;
                     }
                 }
 
-                void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)
+        private void MinusConfirmStockOut(IList stockOutList)
+        {
+            foreach (DepartmentStockInDetail outDetail in stockOutList)
+            {
+                long confirmingQty = StockOutDetailLogic.FindConfirmingQuantity(outDetail.Product);
+                outDetail.StockQuantity -= confirmingQty;
+            } 
+        }
+
+        void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)
                 {
                     try
                     {
@@ -206,7 +216,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     stockOutList.Add(deptDetail);
                 }
                 GetRemainStockNumber(stockOutList);
-
+                MinusConfirmStockOut(stockOutList);
                 e.SelectedStockOutDetails = stockOutList;
             }
             EventUtility.fireEvent(CompletedFindByStockInEvent,this,e);
@@ -638,6 +648,12 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
                 #region IDepartmentStockInExtraController Members
                 public IStockInDetailLogic StockInDetailLogic
+                {
+                    get;
+                    set;
+                }
+
+                public IStockOutDetailLogic StockOutDetailLogic
                 {
                     get;
                     set;

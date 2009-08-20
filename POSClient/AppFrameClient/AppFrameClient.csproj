@@ -221,6 +221,10 @@
     <Compile Include="Logic\DepartmentStockInHistoryLogicImpl.cs" />
     <Compile Include="Logic\EmployeeManagementEventArgs.cs" />
     <Compile Include="Logic\EmployeeMoneyLogicImpl.cs" />
+    <Compile Include="MasterDB.cs">
+      <DependentUpon>MasterDB.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Presenter\ClosedPeriodLogic.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogController.cs" />
     <Compile Include="Presenter\ProcessPeriodMoneyController.cs" />
@@ -369,6 +373,12 @@
     </Compile>
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.Designer.cs">
+      <DependentUpon>DepartmentStockInFromMainEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GoodsIO\StockOutsListForm.cs">
       <SubType>Form</SubType>
@@ -1390,6 +1400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.resx">
+      <DependentUpon>DepartmentStockInFromMainEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\StockOutsListForm.resx">
       <DependentUpon>StockOutsListForm.cs</DependentUpon>

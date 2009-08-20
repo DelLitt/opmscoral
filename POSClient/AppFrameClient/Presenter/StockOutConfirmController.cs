@@ -28,7 +28,19 @@ namespace AppFrameClient.Presenter
                 mainStockOutReportView = value;
                 mainStockOutReportView.LoadStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadStockOutsEvent);
                 mainStockOutReportView.LoadConfirmingStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadConfirmingStockOutsEvent);
+                mainStockOutReportView.ConfirmStockOutEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_ConfirmStockOutEvent);
+                mainStockOutReportView.DenyStockOutEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_DenyStockOutEvent);
             }
+        }
+
+        void mainStockOutReportView_DenyStockOutEvent(object sender, StockOutConfirmEventArgs e)
+        {
+            
+        }
+
+        void mainStockOutReportView_ConfirmStockOutEvent(object sender, StockOutConfirmEventArgs e)
+        {
+            
         }
 
         void mainStockOutReportView_LoadConfirmingStockOutsEvent(object sender, StockOutConfirmEventArgs e)

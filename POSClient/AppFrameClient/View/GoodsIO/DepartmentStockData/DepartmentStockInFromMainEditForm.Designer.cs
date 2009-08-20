@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    partial class DepartmentStockInFromMainForm
+    partial class DepartmentStockInFromMainEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -874,7 +874,7 @@
             this.chkKeepInputInfo.Text = "Giữ lại thông tin nhập hàng";
             this.chkKeepInputInfo.UseVisualStyleBackColor = true;
             // 
-            // DepartmentStockInFromMainForm
+            // DepartmentStockInFromMainEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -918,9 +918,10 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvDeptStockIn);
-            this.Name = "DepartmentStockInFromMainForm";
+            this.Name = "DepartmentStockInFromMainEditForm";
             this.Text = "Xuất hàng đến cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
+            this.Shown += new System.EventHandler(this.DepartmentStockInFromMainEditForm_Shown);
             this.Controls.SetChildIndex(this.dgvDeptStockIn, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);

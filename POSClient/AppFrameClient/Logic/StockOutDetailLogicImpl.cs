@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using NHibernate;
 using NHibernate.Criterion;
+using Spring.Data.NHibernate;
 using Spring.Transaction.Interceptor;
 using AppFrame.Model;
 using AppFrame.DataLayer;
@@ -8,6 +11,7 @@ namespace AppFrame.Logic
 {
     public class StockOutDetailLogicImpl : IStockOutDetailLogic
     {
+
         private IStockOutDetailDAO _stockOutDetailDAO;
 
         public IStockOutDetailDAO StockOutDetailDAO
@@ -104,6 +108,11 @@ namespace AppFrame.Logic
         {
             object maxId = StockOutDetailDAO.SelectSpecificType(null, Projections.Max("StockOutDetailId"));
             return maxId != null ? (long)maxId : 0;
+        }
+
+        public long FindConfirmingQuantity(Product product)
+        {
+            return StockOutDetailDAO.FindConfirmingQuantity(product);
         }
 
         #endregion
