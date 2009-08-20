@@ -749,6 +749,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSI.DepartmentId = dept.DepartmentId;
             deptSI.Description = txtDexcription.Text;
             deptSI.DepartmentStockInDetails = deptSIDetailList;
+            
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.IsForSync = isNeedSync;
             eventArgs.DepartmentStockIn = deptSI;
@@ -915,7 +916,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             && productMaster.ProductSize.SizeId == size.SizeId)
                         {
                             selectedProductMasterList.Add(productMaster);
-
+                            #region unused code
                             /*DepartmentStockInDetail stockInDetail = deptSIDetailList.AddNew();
                             stockInDetail.Quantity = NumberUtility.ParseLong(txtQuantity.Text);
                             //stockInDetail.SellPrice = NumberUtility.ParseLong(txtPriceOut.Text);
@@ -927,6 +928,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             stockInDetail.Product.ProductMaster = productMaster;
                             eventArgs.DepartmentStockInDetailList.Add(stockInDetail);
                             deptSIDetailList.EndNew(deptSIDetailList.Count - 1);*/
+                            #endregion
                         }
                     }
                 }

@@ -57,7 +57,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         departmentStockInExtraView.FindByStockInIdEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindByStockInIdEvent);
                         departmentStockInExtraView.LoadMasterDataForExportEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadMasterDataForExportEvent);
                         departmentStockInExtraView.SyncExportedMasterDataEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_SyncExportedMasterDataEvent);
+                        departmentStockInExtraView.LoadStockInByProductMaster += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadStockInByProductMaster);
                     }
+                }
+
+                void departmentStockInExtraView_LoadStockInByProductMaster(object sender, DepartmentStockInEventArgs e)
+                {
+                    
                 }
 
                 void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)

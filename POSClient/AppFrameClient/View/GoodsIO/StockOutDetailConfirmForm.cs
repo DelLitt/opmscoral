@@ -239,6 +239,7 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<StockOutConfirmEventArgs> ConfirmStockOutEvent;
         public event EventHandler<StockOutConfirmEventArgs> DenyStockOutEvent;
         public event EventHandler<StockOutConfirmEventArgs> LoadStockOutsEvent;
+        public event EventHandler<StockOutConfirmEventArgs> LoadConfirmingStockOutsEvent;
         public event EventHandler<MainStockInEventArgs> FillProductToComboEvent;
         public event EventHandler<MainStockInEventArgs> LoadGoodsByIdEvent;
         public event EventHandler<MainStockInEventArgs> LoadGoodsByNameEvent;

@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AppFrame;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter;
+using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 
 namespace AppFrameClient.Presenter
@@ -25,7 +27,21 @@ namespace AppFrameClient.Presenter
             {
                 mainStockOutReportView = value;
                 mainStockOutReportView.LoadStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadStockOutsEvent);
+                mainStockOutReportView.LoadConfirmingStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadConfirmingStockOutsEvent);
             }
+        }
+
+        void mainStockOutReportView_LoadConfirmingStockOutsEvent(object sender, StockOutConfirmEventArgs e)
+        {
+            DateTime startTime = DateUtility.ZeroTime(e.ReportDateStockOutParam.FromDate);
+            DateTime endTime = DateUtility.MaxTime(e.ReportDateStockOutParam.ToDate);
+            ObjectCriteria objectCriteria = new ObjectCriteria();
+            objectCriteria.AddEqCriteria("DelFlg", 0);
+            objectCriteria.AddEqCriteria("ConfirmFlg", 1);
+            objectCriteria.AddBetweenCriteria("StockOutDate", startTime, endTime);
+
+            IList stockOutList = StockOutLogic.FindAll(objectCriteria);
+            e.ResultStockOutList = stockOutList;
         }
 
         void mainStockOutReportView_GetPriceEvent(object sender, StockOutConfirmEventArgs e)
@@ -35,9 +51,8 @@ namespace AppFrameClient.Presenter
 
         void mainStockOutReportView_LoadStockOutsEvent(object sender, StockOutConfirmEventArgs e)
         {
-            DateTime startTime = e.ReportDateStockOutParam.FromDate;
-            DateTime endTime = e.ReportDateStockOutParam.ToDate;
-
+            DateTime startTime = DateUtility.ZeroTime(e.ReportDateStockOutParam.FromDate);
+            DateTime endTime = DateUtility.MaxTime(e.ReportDateStockOutParam.ToDate);
             IList list = StockOutLogic.FindStockOut(startTime, endTime);
             if (list != null)
             {
