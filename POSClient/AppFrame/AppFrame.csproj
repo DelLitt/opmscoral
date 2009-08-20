@@ -212,6 +212,7 @@
     <Compile Include="Common\GlobalMessageEventArgs.cs" />
     <Compile Include="Common\IBaseController.cs" />
     <Compile Include="Common\IDefaultController.cs" />
+    <Compile Include="Common\InnerClipboard.cs" />
     <Compile Include="Common\IView.cs" />
     <Compile Include="Common\LogicItemPermission.cs" />
     <Compile Include="Common\LogicResult.cs" />
