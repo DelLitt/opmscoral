@@ -11,6 +11,8 @@ namespace AppFrame.Presenter
 {
     public class StockInConfirmEventArgs : BaseEventArgs
     {
+        public string StockInId { get; set;}
+        public StockIn StockIn { get; set; }
         public string ProductMasterIdForPrice { get; set;}
         public ReportDateStockOutParam ReportDateStockOutParam { get; set; }
 

@@ -13,5 +13,6 @@ namespace AppFrame.View.GoodsIO
         event EventHandler<StockInConfirmEventArgs> ConfirmStockInEvent;
         event EventHandler<StockInConfirmEventArgs> DenyStockInEvent;
         event EventHandler<StockInConfirmEventArgs> LoadStockInsEvent;
+        event EventHandler<StockInConfirmEventArgs> LoadStockInEvent;
     }
 }

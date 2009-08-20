@@ -17,9 +17,6 @@ namespace AppFrame.Presenter
         
         IDepartmentLogic DepartmentLogic { get; set; }
         IDepartmentPriceLogic DepartmentPriceLogic { get; set; }
-
-        IStockOutLogic StockOutLogic { get; set; }
-        IStockOutDetailLogic StockOutDetailLogic { get; set; }
         
         IStockLogic StockLogic { get; set; }
         #endregion
