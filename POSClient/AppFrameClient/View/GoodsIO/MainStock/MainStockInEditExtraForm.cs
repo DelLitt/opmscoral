@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame;
 using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
@@ -612,6 +613,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             deptSI.Description = txtDexcription.Text;
             var eventArgs = new MainStockInEventArgs();
             eventArgs.StockIn = StockIn;
+            eventArgs.StockIn.StockInDetails = ObjectConverter.ConvertToNonGenericList(deptSIDetailList);
             EventUtility.fireEvent(SaveStockInEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
@@ -914,31 +916,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void dgvDeptStockIn_KeyUp(object sender, KeyEventArgs e)
         {
-            // if copy
-            if(e.Control && e.KeyCode == Keys.C)
-            {
-                if (dgvDeptStockIn.CurrentCell != null)
-                {
-                    if (dgvDeptStockIn.CurrentCell.Value!=null)
-                    {
-                        Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
-                    }
-                    else
-                    {
-                         Clipboard.SetText("");
-                    }
-                }
 
-            }
-            if(e.Control && e.KeyCode == Keys.V)
-            {
-                DataGridViewSelectedCellCollection cells = dgvDeptStockIn.SelectedCells;
-                foreach (DataGridViewCell cell in cells)
-                {
-                    cell.Value = Clipboard.GetText();
-                    CalculateTotalStorePrice();
-                }
-            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -1167,7 +1145,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             if (dgvDeptStockIn.CurrentCell != null)
             {
-                Clipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
+                InnerClipboard.SetText(dgvDeptStockIn.CurrentCell.Value.ToString());
             }
         }
 
@@ -1178,7 +1156,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 DataGridViewSelectedCellCollection collection = dgvDeptStockIn.SelectedCells;
                 foreach (DataGridViewCell cell in collection)
                 {
-                    cell.Value = Clipboard.GetText();
+                    cell.Value = InnerClipboard.GetText();
                 }
             }
         }

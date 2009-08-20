@@ -58,11 +58,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvStockOut = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirmstockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDB = new AppFrameClient.MasterDB();
             this.bdsDeptStockOut = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -83,28 +80,19 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
             this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
-            this.masterDB = new AppFrameClient.MasterDB();
-            this.confirmstockoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.confirm_stock_outTableAdapter = new AppFrameClient.MasterDBTableAdapters.confirm_stock_outTableAdapter();
-            this.sTOCKOUTIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTOCKOUTDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dEPARTMENTIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cREATEDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cREATEIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uPDATEDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uPDATEIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eXCLUSIVEKEYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dELFLGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTOCKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dEFECTSTATUSIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmstockoutBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.confirmstockoutBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -281,7 +269,7 @@
             // 
             this.dtpTo.CustomFormat = "dd/MM/yyyy";
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(496, 72);
+            this.dtpTo.Location = new System.Drawing.Point(412, 66);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(200, 20);
             this.dtpTo.TabIndex = 37;
@@ -290,7 +278,7 @@
             // 
             this.dtpFrom.CustomFormat = "dd/MM/yyyy";
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(248, 72);
+            this.dtpFrom.Location = new System.Drawing.Point(164, 66);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(200, 20);
             this.dtpFrom.TabIndex = 36;
@@ -332,19 +320,7 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5,
-            this.sTOCKOUTIDDataGridViewTextBoxColumn,
-            this.sTOCKOUTDATEDataGridViewTextBoxColumn,
-            this.dEPARTMENTIDDataGridViewTextBoxColumn,
-            this.cREATEDATEDataGridViewTextBoxColumn,
-            this.cREATEIDDataGridViewTextBoxColumn,
-            this.uPDATEDATEDataGridViewTextBoxColumn,
-            this.uPDATEIDDataGridViewTextBoxColumn,
-            this.eXCLUSIVEKEYDataGridViewTextBoxColumn,
-            this.dELFLGDataGridViewTextBoxColumn,
-            this.sTOCKIDDataGridViewTextBoxColumn,
-            this.dEFECTSTATUSIDDataGridViewTextBoxColumn,
-            this.totalQuantityDataGridViewTextBoxColumn});
+            this.Column5});
             this.dgvStockOut.DataSource = this.confirmstockoutBindingSource;
             this.dgvStockOut.Location = new System.Drawing.Point(38, 109);
             this.dgvStockOut.Name = "dgvStockOut";
@@ -353,40 +329,19 @@
             this.dgvStockOut.TabIndex = 29;
             this.dgvStockOut.SelectionChanged += new System.EventHandler(this.dgvStockOut_SelectionChanged);
             // 
-            // Column1
+            // confirmstockoutBindingSource
             // 
-            this.Column1.HeaderText = "Số";
-            this.Column1.Name = "Column1";
+            this.confirmstockoutBindingSource.DataMember = "confirm_stock_out";
+            this.confirmstockoutBindingSource.DataSource = this.masterDB;
             // 
-            // Column2
+            // masterDB
             // 
-            this.Column2.DataPropertyName = "DepartmentName";
-            this.Column2.HeaderText = "Nơi xuất";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "CreateDate";
-            this.Column3.HeaderText = "Ngày xuất";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "TotalQuantity";
-            this.Column4.HeaderText = "Số lượng";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "StockOut.DefectStatus.DefectStatusName";
-            this.Column5.HeaderText = "Lý do";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 200;
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(713, 49);
+            this.btnSearch.Location = new System.Drawing.Point(618, 48);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(99, 54);
             this.btnSearch.TabIndex = 28;
@@ -397,7 +352,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(464, 75);
+            this.label3.Location = new System.Drawing.Point(380, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 27;
@@ -406,7 +361,7 @@
             // rdoToday
             // 
             this.rdoToday.AutoSize = true;
-            this.rdoToday.Location = new System.Drawing.Point(343, 49);
+            this.rdoToday.Location = new System.Drawing.Point(259, 43);
             this.rdoToday.Name = "rdoToday";
             this.rdoToday.Size = new System.Drawing.Size(93, 17);
             this.rdoToday.TabIndex = 23;
@@ -418,7 +373,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(221, 75);
+            this.label2.Location = new System.Drawing.Point(137, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 13);
             this.label2.TabIndex = 26;
@@ -427,7 +382,7 @@
             // rdoAll
             // 
             this.rdoAll.AutoSize = true;
-            this.rdoAll.Location = new System.Drawing.Point(580, 49);
+            this.rdoAll.Location = new System.Drawing.Point(496, 43);
             this.rdoAll.Name = "rdoAll";
             this.rdoAll.Size = new System.Drawing.Size(55, 17);
             this.rdoAll.TabIndex = 25;
@@ -439,7 +394,7 @@
             // rdoThisWeek
             // 
             this.rdoThisWeek.AutoSize = true;
-            this.rdoThisWeek.Location = new System.Drawing.Point(452, 49);
+            this.rdoThisWeek.Location = new System.Drawing.Point(368, 43);
             this.rdoThisWeek.Name = "rdoThisWeek";
             this.rdoThisWeek.Size = new System.Drawing.Size(93, 17);
             this.rdoThisWeek.TabIndex = 24;
@@ -490,7 +445,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(296, 9);
+            this.label1.Location = new System.Drawing.Point(229, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 29);
             this.label1.TabIndex = 22;
@@ -565,91 +520,41 @@
             // 
             this.barcodePrintDialog.UseEXDialog = true;
             // 
-            // masterDB
-            // 
-            this.masterDB.DataSetName = "MasterDB";
-            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // confirmstockoutBindingSource
-            // 
-            this.confirmstockoutBindingSource.DataMember = "confirm_stock_out";
-            this.confirmstockoutBindingSource.DataSource = this.masterDB;
-            // 
             // confirm_stock_outTableAdapter
             // 
             this.confirm_stock_outTableAdapter.ClearBeforeFill = true;
             // 
-            // sTOCKOUTIDDataGridViewTextBoxColumn
+            // Column1
             // 
-            this.sTOCKOUTIDDataGridViewTextBoxColumn.DataPropertyName = "STOCKOUT_ID";
-            this.sTOCKOUTIDDataGridViewTextBoxColumn.HeaderText = "STOCKOUT_ID";
-            this.sTOCKOUTIDDataGridViewTextBoxColumn.Name = "sTOCKOUTIDDataGridViewTextBoxColumn";
+            this.Column1.DataPropertyName = "STOCKOUT_ID";
+            this.Column1.HeaderText = "Số";
+            this.Column1.Name = "Column1";
             // 
-            // sTOCKOUTDATEDataGridViewTextBoxColumn
+            // Column2
             // 
-            this.sTOCKOUTDATEDataGridViewTextBoxColumn.DataPropertyName = "STOCK_OUT_DATE";
-            this.sTOCKOUTDATEDataGridViewTextBoxColumn.HeaderText = "STOCK_OUT_DATE";
-            this.sTOCKOUTDATEDataGridViewTextBoxColumn.Name = "sTOCKOUTDATEDataGridViewTextBoxColumn";
+            this.Column2.DataPropertyName = "DEPARTMENT_NAME";
+            this.Column2.HeaderText = "Nơi xuất";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
             // 
-            // dEPARTMENTIDDataGridViewTextBoxColumn
+            // Column3
             // 
-            this.dEPARTMENTIDDataGridViewTextBoxColumn.DataPropertyName = "DEPARTMENT_ID";
-            this.dEPARTMENTIDDataGridViewTextBoxColumn.HeaderText = "DEPARTMENT_ID";
-            this.dEPARTMENTIDDataGridViewTextBoxColumn.Name = "dEPARTMENTIDDataGridViewTextBoxColumn";
+            this.Column3.DataPropertyName = "CreateDate";
+            this.Column3.HeaderText = "Ngày xuất";
+            this.Column3.Name = "Column3";
             // 
-            // cREATEDATEDataGridViewTextBoxColumn
+            // Column4
             // 
-            this.cREATEDATEDataGridViewTextBoxColumn.DataPropertyName = "CREATE_DATE";
-            this.cREATEDATEDataGridViewTextBoxColumn.HeaderText = "CREATE_DATE";
-            this.cREATEDATEDataGridViewTextBoxColumn.Name = "cREATEDATEDataGridViewTextBoxColumn";
+            this.Column4.DataPropertyName = "TotalQuantity";
+            this.Column4.HeaderText = "Số lượng";
+            this.Column4.Name = "Column4";
             // 
-            // cREATEIDDataGridViewTextBoxColumn
+            // Column5
             // 
-            this.cREATEIDDataGridViewTextBoxColumn.DataPropertyName = "CREATE_ID";
-            this.cREATEIDDataGridViewTextBoxColumn.HeaderText = "CREATE_ID";
-            this.cREATEIDDataGridViewTextBoxColumn.Name = "cREATEIDDataGridViewTextBoxColumn";
-            // 
-            // uPDATEDATEDataGridViewTextBoxColumn
-            // 
-            this.uPDATEDATEDataGridViewTextBoxColumn.DataPropertyName = "UPDATE_DATE";
-            this.uPDATEDATEDataGridViewTextBoxColumn.HeaderText = "UPDATE_DATE";
-            this.uPDATEDATEDataGridViewTextBoxColumn.Name = "uPDATEDATEDataGridViewTextBoxColumn";
-            // 
-            // uPDATEIDDataGridViewTextBoxColumn
-            // 
-            this.uPDATEIDDataGridViewTextBoxColumn.DataPropertyName = "UPDATE_ID";
-            this.uPDATEIDDataGridViewTextBoxColumn.HeaderText = "UPDATE_ID";
-            this.uPDATEIDDataGridViewTextBoxColumn.Name = "uPDATEIDDataGridViewTextBoxColumn";
-            // 
-            // eXCLUSIVEKEYDataGridViewTextBoxColumn
-            // 
-            this.eXCLUSIVEKEYDataGridViewTextBoxColumn.DataPropertyName = "EXCLUSIVE_KEY";
-            this.eXCLUSIVEKEYDataGridViewTextBoxColumn.HeaderText = "EXCLUSIVE_KEY";
-            this.eXCLUSIVEKEYDataGridViewTextBoxColumn.Name = "eXCLUSIVEKEYDataGridViewTextBoxColumn";
-            // 
-            // dELFLGDataGridViewTextBoxColumn
-            // 
-            this.dELFLGDataGridViewTextBoxColumn.DataPropertyName = "DEL_FLG";
-            this.dELFLGDataGridViewTextBoxColumn.HeaderText = "DEL_FLG";
-            this.dELFLGDataGridViewTextBoxColumn.Name = "dELFLGDataGridViewTextBoxColumn";
-            // 
-            // sTOCKIDDataGridViewTextBoxColumn
-            // 
-            this.sTOCKIDDataGridViewTextBoxColumn.DataPropertyName = "STOCK_ID";
-            this.sTOCKIDDataGridViewTextBoxColumn.HeaderText = "STOCK_ID";
-            this.sTOCKIDDataGridViewTextBoxColumn.Name = "sTOCKIDDataGridViewTextBoxColumn";
-            // 
-            // dEFECTSTATUSIDDataGridViewTextBoxColumn
-            // 
-            this.dEFECTSTATUSIDDataGridViewTextBoxColumn.DataPropertyName = "DEFECT_STATUS_ID";
-            this.dEFECTSTATUSIDDataGridViewTextBoxColumn.HeaderText = "DEFECT_STATUS_ID";
-            this.dEFECTSTATUSIDDataGridViewTextBoxColumn.Name = "dEFECTSTATUSIDDataGridViewTextBoxColumn";
-            // 
-            // totalQuantityDataGridViewTextBoxColumn
-            // 
-            this.totalQuantityDataGridViewTextBoxColumn.DataPropertyName = "TotalQuantity";
-            this.totalQuantityDataGridViewTextBoxColumn.HeaderText = "TotalQuantity";
-            this.totalQuantityDataGridViewTextBoxColumn.Name = "totalQuantityDataGridViewTextBoxColumn";
+            this.Column5.DataPropertyName = "DEFECT_STATUS_NAME";
+            this.Column5.HeaderText = "Lý do";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 200;
             // 
             // StockOutConfirmForm
             // 
@@ -712,10 +617,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOutDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOutDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmstockoutBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBarcode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.confirmstockoutBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -765,25 +670,13 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Drawing.Printing.PrintDocument barcodePrintDocument;
         private System.Windows.Forms.PrintDialog barcodePrintDialog;
+        private System.Windows.Forms.BindingSource confirmstockoutBindingSource;
+        private MasterDB masterDB;
+        private AppFrameClient.MasterDBTableAdapters.confirm_stock_outTableAdapter confirm_stock_outTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKOUTIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKOUTDATEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dEPARTMENTIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cREATEDATEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cREATEIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uPDATEDATEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uPDATEIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eXCLUSIVEKEYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dELFLGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTOCKIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dEFECTSTATUSIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalQuantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource confirmstockoutBindingSource;
-        private MasterDB masterDB;
-        private AppFrameClient.MasterDBTableAdapters.confirm_stock_outTableAdapter confirm_stock_outTableAdapter;
     }
 }

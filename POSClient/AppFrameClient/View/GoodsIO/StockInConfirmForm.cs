@@ -569,7 +569,13 @@ namespace AppFrameClient.View.GoodsIO
                 GlobalUtility.GetOnlyChildFormObject<MainStockInEditExtraForm>(GlobalCache.Instance().MainForm,FormConstants.MAIN_STOCK_IN_EDIT_EXTRA_FORM);
 
             editExtraForm.StockIn = eventArgs.StockIn;
-            editExtraForm.Show();
+            editExtraForm.Closed += new EventHandler(editExtraForm_Closed);
+            editExtraForm.ShowDialog();
+        }
+
+        void editExtraForm_Closed(object sender, EventArgs e)
+        {
+            dgvStockOut_SelectionChanged(null,null);
         }
 
         #region Implementation of IStockInConfirmView

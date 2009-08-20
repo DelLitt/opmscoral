@@ -937,10 +937,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             eventArgs.ProductMasterList = selectedProductMasterList;
             EventUtility.fireEvent(LoadStockInByProductMaster, this, eventArgs);
 
-            if (eventArgs.DepartmentStockInDetailList.Count > 0)
+            /*if (eventArgs.DepartmentStockInDetailList.Count > 0)
             {
                 EventUtility.fireEvent(LoadPriceAndStockEvent, this, eventArgs);
-            }
+            }*/
 
             // remove 0 quanity
             int count = 0;
@@ -950,15 +950,25 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 if (deptSIDetailList[i - count].StockQuantity == 0)
                 {
-                    isMessage = true;
+                    //isMessage = true;
                     deptSIDetailList.RemoveAt(i - count);
                     count++;
                 }
             }
-            if (isMessage)
+            if(eventArgs.SelectedStockOutDetails!=null && eventArgs.SelectedStockOutDetails.Count > 0 )
+            {
+                foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
+                {
+                    deptSIDetailList.Add(inDetail);
+                }
+                bdsStockIn.ResetBindings(false);
+                dgvStockIn.Refresh();
+                dgvStockIn.Invalidate();
+            }
+            /*if (isMessage)
             {
                 MessageBox.Show("Sản phẩm có tồn kho 0 sẽ không đựoc xuất");
-            }
+            }*/
         }
 
         private void cboProductMasters_SelectedIndexChanged(object sender, EventArgs e)

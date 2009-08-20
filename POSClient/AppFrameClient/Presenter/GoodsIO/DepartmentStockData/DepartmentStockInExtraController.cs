@@ -63,7 +63,45 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
                 void departmentStockInExtraView_LoadStockInByProductMaster(object sender, DepartmentStockInEventArgs e)
                 {
-                    
+                    ObjectCriteria prdMasterCrit = new ObjectCriteria();
+                    IList prdNames = new ArrayList();
+                    foreach (ProductMaster list in e.ProductMasterList)
+                    {
+                        prdNames.Add(list.ProductName);
+                    }
+                    prdMasterCrit.AddSearchInCriteria("ProductName", prdNames);
+                    prdMasterCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                    IList prdMasterList = ProductMasterLogic.FindAll(prdMasterCrit);
+
+                    if (prdMasterList != null && prdMasterList.Count > 0)
+                    {
+                        IList prdMstIds = new ArrayList();
+                        foreach (ProductMaster master in prdMasterList)
+                        {
+                            prdMstIds.Add(master.ProductMasterId);
+                        }
+                        IList stockOutList = new ArrayList();
+                        ObjectCriteria stkCriteria = new ObjectCriteria();
+                        stkCriteria.AddSearchInCriteria("ProductMaster.ProductMasterId", prdMstIds);
+                        stkCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                        //stkCriteria.AddGreaterCriteria("GoodQuantity", (long)0);
+                        IList stockList = StockLogic.FindAll(stkCriteria);
+                        foreach (Stock inDetail in stockList)
+                        {
+                            DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
+                            deptDetail.CreateDate = DateTime.Now;
+                            deptDetail.UpdateDate = DateTime.Now;
+                            deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                            deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                            deptDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
+                            deptDetail.Product = inDetail.Product;
+                            deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                            deptDetail.Quantity = inDetail.Quantity;
+                            stockOutList.Add(deptDetail);
+                        }
+                        GetRemainStockNumber(stockOutList);
+                        e.SelectedStockOutDetails = stockOutList;
+                    }
                 }
 
                 void departmentStockInExtraView_SyncExportedMasterDataEvent(object sender, DepartmentStockInEventArgs e)
@@ -472,14 +510,14 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 {
                     foreach (Stock stock in stockList)
                     {
-                        if (detail.Product.ProductMaster.ProductMasterId.Equals(stock.ProductMaster.ProductMasterId))
+                        if (stock.Product.ProductId.Equals(detail.Product.ProductId))
                         {
                             detail.StockQuantity += stock.Quantity;
                         }
                     }
                     foreach (DepartmentPrice price in priceList)
                     {
-                        if (detail.Product.ProductMaster.ProductMasterId.Equals(price.DepartmentPricePK.ProductMasterId))
+                        if (price.DepartmentPricePK.ProductMasterId.Equals(detail.Product.ProductMaster.ProductMasterId))
                         {
                             detail.Price = price.Price;
                         }

@@ -38,7 +38,10 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            confirm_stock_outTableAdapter.Fill(masterDB.confirm_stock_out, DateUtility.ZeroTime(dtpFrom.Value),
+                                               DateUtility.MaxTime(dtpTo.Value));
+            #region unused code
+            /*
             deptStockOutList.Clear();
             StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
             eventArgs.ReportDateStockOutParam =
@@ -74,7 +77,8 @@ namespace AppFrameClient.View.GoodsIO
                 MessageBox.Show(" Không có hoá đơn xuất kho nào cần xác nhận.");
             }
 
-            bdsDeptStockOut.EndEdit();
+            bdsDeptStockOut.EndEdit();*/
+            #endregion
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
             CreateCountOnList();
