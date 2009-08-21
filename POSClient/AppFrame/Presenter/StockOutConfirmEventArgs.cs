@@ -11,6 +11,8 @@ namespace AppFrame.Presenter
 {
     public class StockOutConfirmEventArgs : BaseEventArgs
     {
+        public StockOut EditStockOut { get; set; }
+        public long StockOutId { get; set;}
         public IList DenyStockOutIdsList { get; set; }
         public IList ConfirmStockOutIdsList { get; set; }
         public string ProductMasterIdForPrice { get; set;}
