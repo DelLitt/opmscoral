@@ -103,5 +103,6 @@ namespace AppFrameClient.Common
         public static string STOCK_IN_CONFIRM_FORM = "StockInConfirmView";
         public static string MAIN_STOCK_IN_EDIT_EXTRA_FORM = "MainStockInEditExtraView";
         public static string STOCK_OUTS_LIST_FORM = "StockOutsListView";
+        public static string DEPARTMENT_STOCK_IN_EXTRA_EDIT_FORM = "DepartmentStockInExtraEditView";
     }
 }

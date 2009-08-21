@@ -30,7 +30,14 @@ namespace AppFrameClient.Presenter
                 mainStockOutReportView.LoadConfirmingStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadConfirmingStockOutsEvent);
                 mainStockOutReportView.ConfirmStockOutEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_ConfirmStockOutEvent);
                 mainStockOutReportView.DenyStockOutEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_DenyStockOutEvent);
+                mainStockOutReportView.LoadConfirmingStockOutsEvent +=new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadConfirmingStockOutsEvent);
+                mainStockOutReportView.LoadEditStockOutsEvent += new EventHandler<StockOutConfirmEventArgs>(mainStockOutReportView_LoadEditStockOutsEvent);
             }
+        }
+
+        void mainStockOutReportView_LoadEditStockOutsEvent(object sender, StockOutConfirmEventArgs e)
+        {
+            e.EditStockOut = StockOutLogic.FindById(e.StockOutId);
         }
 
         void mainStockOutReportView_DenyStockOutEvent(object sender, StockOutConfirmEventArgs e)

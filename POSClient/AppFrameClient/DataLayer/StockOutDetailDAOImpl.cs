@@ -317,6 +317,8 @@ namespace AppFrame.DataLayer
                                         IQuery iQuery = session.CreateQuery(queryString);
                                         iQuery.SetParameter("stockOutId", product.ProductId);
                                         list = iQuery.List();
+                                        if (list == null || list.Count != 1)
+                                            return (long)0;
                                         return (long)list[0];
                                     }
                                     catch (Exception e)

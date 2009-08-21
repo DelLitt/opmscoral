@@ -713,7 +713,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(6, 237);
+            this.panelStockIns.Location = new System.Drawing.Point(9, 237);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(800, 325);
             this.panelStockIns.TabIndex = 122;
@@ -879,8 +879,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
-            this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.panelStockIns);
+            this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
@@ -959,8 +959,8 @@
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
-            this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
+            this.Controls.SetChildIndex(this.panelStockIns, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);

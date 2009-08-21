@@ -538,6 +538,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> LoadMasterDataForExportEvent;
         public event EventHandler<DepartmentStockInEventArgs> SyncExportedMasterDataEvent;
         public event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
+        public event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
+        public event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
         public event EventHandler<DepartmentStockInEventArgs> SaveStockInEvent;
 
         #endregion
@@ -755,7 +757,39 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             eventArgs.IsForSync = isNeedSync;
             eventArgs.DepartmentStockIn = deptSI;
             eventArgs.ExportGoodsToDepartment = true;
-            EventUtility.fireEvent(SaveDepartmentStockInEvent, this, eventArgs);
+            // update stock out
+            foreach (DepartmentStockInDetail detail in deptSIDetailList)
+            {
+                bool newRow = true;
+                foreach (StockOutDetail outDetail in StockOut.StockOutDetails)
+                {
+                    if(outDetail.Product.ProductId == detail.Product.ProductId)
+                    {
+                        newRow = false;
+                        outDetail.Quantity = detail.Quantity;
+                        outDetail.GoodQuantity = detail.Quantity;
+                        outDetail.DelFlg = detail.DelFlg;
+                        break;
+                    }
+                }
+                if(newRow)
+                {
+                    StockOutDetail outDetail = new StockOutDetail();
+                    outDetail.Product = detail.Product;
+                    outDetail.CreateDate = detail.CreateDate;
+                    outDetail.CreateId = detail.CreateId;
+                    outDetail.UpdateDate = detail.UpdateDate;
+                    outDetail.Price = detail.Price;
+                    outDetail.StockOutId = StockOut.StockoutId;
+                    outDetail.Quantity = detail.Quantity;
+                    outDetail.GoodQuantity = detail.Quantity;
+                    outDetail.ProductMaster = detail.Product.ProductMaster;
+                    outDetail.StockOut = StockOut;
+                    StockOut.StockOutDetails.Add(outDetail);
+                }
+            }
+            eventArgs.UpdateStockOut = StockOut;
+            EventUtility.fireEvent(UpdateStockOutEvent, this, eventArgs);
             if (eventArgs.EventResult != null)
             {
                 MessageBox.Show("Lưu thành công");
@@ -865,26 +899,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void PopulateGridByProductMaster(IList colorList, IList sizeList)
         {
-            //            var mainStockInEventArgs = new MainStockInEventArgs();
-            //
-            //            mainStockInEventArgs.SelectedProductMaster = master;
-            //            EventUtility.fireEvent<MainStockInEventArgs>(LoadAllGoodsByNameEvent, this, mainStockInEventArgs);
-            //            IList list = mainStockInEventArgs.ProductMasterList;
-            //            if (dgvDeptStockIn.SelectedRows.Count <= 0)
-            //            {
-            //                dgvDeptStockIn.CurrentCell = dgvDeptStockIn[1, 0];
-            //            }
-            //            foreach (ProductMaster productMaster in list)
-            //            {
-            //                StockInDetail stockInDetail = deptSIDetailList.AddNew();
-            //                stockInDetail.StockInDetailPK = new StockInDetailPK();
-            //                if (stockInDetail.Product == null)
-            //                {
-            //                    stockInDetail.Product = new Product();
-            //                }
-            //                stockInDetail.Product.ProductMaster = productMaster;
-            //                deptSIDetailList.EndNew(deptSIDetailList.Count - 1);
-            //            }
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockInDetailList = new ArrayList();
             IList selectedProductMasterList = new ArrayList();
@@ -1217,6 +1231,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptDetail.Quantity = outDetail.Quantity;
                 deptDetail.StockOutDetailId = outDetail.StockOutDetailId;
                 deptSIDetailList.Add(deptDetail);
+            }
+            DepartmentStockInEventArgs eventArgs = new DepartmentStockInEventArgs();
+            eventArgs.DepartmentStockInDetailList = ObjectConverter.ConvertToNonGenericList(deptSIDetailList);
+
+            EventUtility.fireEvent(FindRemainsQuantity,this,eventArgs);
+
+            deptSIDetailList.Clear();
+
+            foreach (DepartmentStockInDetail departmentStockInDetail in eventArgs.DepartmentStockInDetailList)
+            {
+                deptSIDetailList.Add(departmentStockInDetail);
             }
         }
     }

@@ -18,7 +18,9 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrame.View.Reports;
+using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.MainStock;
+using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.ViewModel;
 using BarcodeLib;
 
@@ -113,34 +115,7 @@ namespace AppFrameClient.View.GoodsIO
             }
             int stockOutId = Int32.Parse(dgvStockOut[0, dgvStockOut.CurrentRow.Index].Value.ToString());
             confirm_stock_out_detailTableAdapter.Fill(masterDB.confirm_stock_out_detail, stockOutId);
-            /*if (dgvStockOut.CurrentCell == null)
-            {
-                return;
-            }
-            deptStockOutDetailList.Clear();
-            StockOutView stockOut = deptStockOutList[dgvStockOut.CurrentCell.OwningRow.Index];
-            IList stockOutDetails = stockOut.StockOut.StockOutDetails;
-            foreach (StockOutDetail stockOutDetail in stockOutDetails)
-            {
-                if (!HasCreatedView(stockOutDetail))
-                {
-                    StockOutDetailView stockOutDetailView = new StockOutDetailView();
 
-                    stockOutDetailView.StockOutDetail = stockOutDetail;
-                    stockOutDetailView.TotalCount = stockOutDetail.Quantity;
-                    stockOutDetailView.GoodCount = stockOutDetail.GoodQuantity;
-                    stockOutDetailView.DamageCount = stockOutDetail.DamageQuantity;
-                    stockOutDetailView.ErrorCount = stockOutDetail.ErrorQuantity;
-                    stockOutDetailView.LostCount = stockOutDetail.LostQuantity;
-                    stockOutDetailView.UnconfirmCount = stockOutDetail.UnconfirmQuantity;
-                    deptStockOutDetailList.Add(stockOutDetailView);
-                }
-
-            }
-            bdsDeptStockOutDetail.EndEdit();
-            dgvStockOutDetail.Refresh();
-            dgvStockOutDetail.Invalidate();
-            CalculateGrandTotalCount();*/
         }
 
         private void CalculateGrandTotalCount()
@@ -274,6 +249,7 @@ namespace AppFrameClient.View.GoodsIO
         public event EventHandler<StockOutConfirmEventArgs> DenyStockOutEvent;
         public event EventHandler<StockOutConfirmEventArgs> LoadStockOutsEvent;
         public event EventHandler<StockOutConfirmEventArgs> LoadConfirmingStockOutsEvent;
+        public event EventHandler<StockOutConfirmEventArgs> LoadEditStockOutsEvent;
         public event EventHandler<MainStockInEventArgs> FillProductToComboEvent;
         public event EventHandler<MainStockInEventArgs> LoadGoodsByIdEvent;
         public event EventHandler<MainStockInEventArgs> LoadGoodsByNameEvent;
@@ -569,6 +545,28 @@ namespace AppFrameClient.View.GoodsIO
             {
                 mainStockInController = value;
                 mainStockInController.MainStockInView = this;
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+           if(dgvStockOut.CurrentCell == null)
+               return;
+            long stockOutId = Int64.Parse(dgvStockOut[0, dgvStockOut.CurrentCell.RowIndex].Value.ToString());
+
+            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
+            eventArgs.StockOutId = stockOutId;
+
+            EventUtility.fireEvent(LoadEditStockOutsEvent, this, eventArgs);
+
+            if(eventArgs.EditStockOut != null)
+            {
+                DepartmentStockInFromMainEditForm form =
+                    GlobalUtility.GetOnlyChildFormObject<DepartmentStockInFromMainEditForm>(GlobalCache.Instance().MainForm,
+                                                                                            FormConstants.
+                                                                                                DEPARTMENT_STOCK_IN_EXTRA_EDIT_FORM);
+                form.StockOut = eventArgs.EditStockOut;
+                form.Show();
             }
         }
     }

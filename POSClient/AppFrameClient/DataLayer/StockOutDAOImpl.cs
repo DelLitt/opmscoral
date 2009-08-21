@@ -406,7 +406,7 @@ namespace AppFrame.DataLayer
                                             "SELECT so, SUM(sodet.Quantity),so.DepartmentId FROM StockOut so,StockOutDetail sodet" +
                                             " WHERE so.StockoutId = sodet.StockOut.StockoutId  " +
                                             " AND so.DelFlg = 0 AND sodet.DelFlg = 0 " +
-                                            " AND so.CreateDate <= :toDate AND so.CreateDate >= :fromDate GROUP BY so.StockoutId";
+                                            " AND so.CreateDate <= :toDate AND so.CreateDate >= :fromDate GROUP BY so.StockoutId ";
                                         IQuery iQuery = session.CreateQuery(queryString);
                                         iQuery.SetParameter("toDate", toDate);
                                         iQuery.SetParameter("fromDate", date);

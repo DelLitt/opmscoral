@@ -58,11 +58,29 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         departmentStockInExtraView.LoadMasterDataForExportEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadMasterDataForExportEvent);
                         departmentStockInExtraView.SyncExportedMasterDataEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_SyncExportedMasterDataEvent);
                         departmentStockInExtraView.LoadStockInByProductMaster += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadStockInByProductMaster);
+                        departmentStockInExtraView.FindRemainsQuantity += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindRemainsQuantity);
+                        departmentStockInExtraView.UpdateStockOutEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_UpdateStockOutEvent);
                     }
+                }
+
+                void departmentStockInExtraView_UpdateStockOutEvent(object sender, DepartmentStockInEventArgs e)
+                {
+                    StockOutLogic.Update(e.UpdateStockOut);
+                    e.EventResult = "Success";
+                }
+
+                void departmentStockInExtraView_FindRemainsQuantity(object sender, DepartmentStockInEventArgs e)
+                {
+                    GetRemainStockNumber(e.DepartmentStockInDetailList);
+                    MinusConfirmStockOut(e.DepartmentStockInDetailList);
                 }
 
                 void departmentStockInExtraView_LoadStockInByProductMaster(object sender, DepartmentStockInEventArgs e)
                 {
+                    if(e.ProductMasterList == null || e.ProductMasterList.Count == 0 )
+                    {
+                        return;                        
+                    }
                     ObjectCriteria prdMasterCrit = new ObjectCriteria();
                     IList prdNames = new ArrayList();
                     foreach (ProductMaster list in e.ProductMasterList)

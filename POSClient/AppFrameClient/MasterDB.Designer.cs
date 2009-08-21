@@ -3953,13 +3953,13 @@ namespace AppFrameClient {
             
             private global::System.Data.DataColumn columnDEFECT_STATUS_ID;
             
-            private global::System.Data.DataColumn columnTotalQuantity;
-            
             private global::System.Data.DataColumn columnDEPARTMENT_NAME;
             
             private global::System.Data.DataColumn columnDEFECT_STATUS_NAME;
             
             private global::System.Data.DataColumn columnStockOutID;
+            
+            private global::System.Data.DataColumn columnTotalQuantity;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public confirm_stock_outDataTable() {
@@ -4062,13 +4062,6 @@ namespace AppFrameClient {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn TotalQuantityColumn {
-                get {
-                    return this.columnTotalQuantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn DEPARTMENT_NAMEColumn {
                 get {
                     return this.columnDEPARTMENT_NAME;
@@ -4086,6 +4079,13 @@ namespace AppFrameClient {
             public global::System.Data.DataColumn StockOutIDColumn {
                 get {
                     return this.columnStockOutID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TotalQuantityColumn {
+                get {
+                    return this.columnTotalQuantity;
                 }
             }
             
@@ -4118,7 +4118,7 @@ namespace AppFrameClient {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public confirm_stock_outRow Addconfirm_stock_outRow(System.DateTime STOCK_OUT_DATE, uint DEPARTMENT_ID, System.DateTime CREATE_DATE, string CREATE_ID, System.DateTime UPDATE_DATE, string UPDATE_ID, uint EXCLUSIVE_KEY, uint DEL_FLG, uint STOCK_ID, uint DEFECT_STATUS_ID, uint TotalQuantity, string DEPARTMENT_NAME, string DEFECT_STATUS_NAME, uint StockOutID) {
+            public confirm_stock_outRow Addconfirm_stock_outRow(System.DateTime STOCK_OUT_DATE, uint DEPARTMENT_ID, System.DateTime CREATE_DATE, string CREATE_ID, System.DateTime UPDATE_DATE, string UPDATE_ID, uint EXCLUSIVE_KEY, uint DEL_FLG, uint STOCK_ID, uint DEFECT_STATUS_ID, string DEPARTMENT_NAME, string DEFECT_STATUS_NAME, uint StockOutID, decimal TotalQuantity) {
                 confirm_stock_outRow rowconfirm_stock_outRow = ((confirm_stock_outRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         STOCK_OUT_DATE,
@@ -4131,10 +4131,10 @@ namespace AppFrameClient {
                         DEL_FLG,
                         STOCK_ID,
                         DEFECT_STATUS_ID,
-                        TotalQuantity,
                         DEPARTMENT_NAME,
                         DEFECT_STATUS_NAME,
-                        StockOutID};
+                        StockOutID,
+                        TotalQuantity};
                 rowconfirm_stock_outRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowconfirm_stock_outRow);
                 return rowconfirm_stock_outRow;
@@ -4170,10 +4170,10 @@ namespace AppFrameClient {
                 this.columnDEL_FLG = base.Columns["DEL_FLG"];
                 this.columnSTOCK_ID = base.Columns["STOCK_ID"];
                 this.columnDEFECT_STATUS_ID = base.Columns["DEFECT_STATUS_ID"];
-                this.columnTotalQuantity = base.Columns["TotalQuantity"];
                 this.columnDEPARTMENT_NAME = base.Columns["DEPARTMENT_NAME"];
                 this.columnDEFECT_STATUS_NAME = base.Columns["DEFECT_STATUS_NAME"];
                 this.columnStockOutID = base.Columns["StockOutID"];
+                this.columnTotalQuantity = base.Columns["TotalQuantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4198,14 +4198,14 @@ namespace AppFrameClient {
                 base.Columns.Add(this.columnSTOCK_ID);
                 this.columnDEFECT_STATUS_ID = new global::System.Data.DataColumn("DEFECT_STATUS_ID", typeof(uint), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDEFECT_STATUS_ID);
-                this.columnTotalQuantity = new global::System.Data.DataColumn("TotalQuantity", typeof(uint), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalQuantity);
                 this.columnDEPARTMENT_NAME = new global::System.Data.DataColumn("DEPARTMENT_NAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDEPARTMENT_NAME);
                 this.columnDEFECT_STATUS_NAME = new global::System.Data.DataColumn("DEFECT_STATUS_NAME", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDEFECT_STATUS_NAME);
                 this.columnStockOutID = new global::System.Data.DataColumn("StockOutID", typeof(uint), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStockOutID);
+                this.columnTotalQuantity = new global::System.Data.DataColumn("TotalQuantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnStockOutID}, true));
                 this.columnDEPARTMENT_ID.AllowDBNull = false;
@@ -7531,21 +7531,6 @@ namespace AppFrameClient {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public uint TotalQuantity {
-                get {
-                    try {
-                        return ((uint)(this[this.tableconfirm_stock_out.TotalQuantityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalQuantity\' in table \'confirm_stock_out\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableconfirm_stock_out.TotalQuantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string DEPARTMENT_NAME {
                 get {
                     try {
@@ -7577,6 +7562,21 @@ namespace AppFrameClient {
                 }
                 set {
                     this[this.tableconfirm_stock_out.StockOutIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal TotalQuantity {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableconfirm_stock_out.TotalQuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalQuantity\' in table \'confirm_stock_out\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableconfirm_stock_out.TotalQuantityColumn] = value;
                 }
             }
             
@@ -7671,16 +7671,6 @@ namespace AppFrameClient {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsTotalQuantityNull() {
-                return this.IsNull(this.tableconfirm_stock_out.TotalQuantityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetTotalQuantityNull() {
-                this[this.tableconfirm_stock_out.TotalQuantityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsDEPARTMENT_NAMENull() {
                 return this.IsNull(this.tableconfirm_stock_out.DEPARTMENT_NAMEColumn);
             }
@@ -7688,6 +7678,16 @@ namespace AppFrameClient {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetDEPARTMENT_NAMENull() {
                 this[this.tableconfirm_stock_out.DEPARTMENT_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTotalQuantityNull() {
+                return this.IsNull(this.tableconfirm_stock_out.TotalQuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTotalQuantityNull() {
+                this[this.tableconfirm_stock_out.TotalQuantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16328,10 +16328,10 @@ WHERE     (stock_in_detail.STOCK_IN_ID = @StockInId)";
             tableMapping.ColumnMappings.Add("DEL_FLG", "DEL_FLG");
             tableMapping.ColumnMappings.Add("STOCK_ID", "STOCK_ID");
             tableMapping.ColumnMappings.Add("DEFECT_STATUS_ID", "DEFECT_STATUS_ID");
-            tableMapping.ColumnMappings.Add("TotalQuantity", "TotalQuantity");
             tableMapping.ColumnMappings.Add("DEPARTMENT_NAME", "DEPARTMENT_NAME");
             tableMapping.ColumnMappings.Add("DEFECT_STATUS_NAME", "DEFECT_STATUS_NAME");
             tableMapping.ColumnMappings.Add("StockOutID", "StockOutID");
+            tableMapping.ColumnMappings.Add("TotalQuantity", "TotalQuantity");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -16348,7 +16348,7 @@ WHERE     (stock_in_detail.STOCK_IN_ID = @StockInId)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        stock_out.STOCKOUT_ID AS StockOutID, stock_out.STOCK_OUT_DATE, stock_out.DEPARTMENT_ID, stock_out.CREATE_DATE, stock_out.CREATE_ID, 
                          stock_out.UPDATE_DATE, stock_out.UPDATE_ID, stock_out.EXCLUSIVE_KEY, stock_out.DEL_FLG, stock_out.STOCK_ID, stock_out.DEFECT_STATUS_ID, 
-                         stock_out_detail.QUANTITY AS TotalQuantity, department.DEPARTMENT_NAME, stock_defect_status.DEFECT_STATUS_NAME
+                         SUM(stock_out_detail.QUANTITY) AS TotalQuantity, department.DEPARTMENT_NAME, stock_defect_status.DEFECT_STATUS_NAME
 FROM            stock_out INNER JOIN
                          stock_out_detail ON stock_out.STOCKOUT_ID = stock_out_detail.STOCKOUT_ID INNER JOIN
                          department ON stock_out.DEPARTMENT_ID = department.DEPARTMENT_ID INNER JOIN
