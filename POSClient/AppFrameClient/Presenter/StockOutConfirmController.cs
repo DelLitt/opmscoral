@@ -42,12 +42,29 @@ namespace AppFrameClient.Presenter
 
         void mainStockOutReportView_DenyStockOutEvent(object sender, StockOutConfirmEventArgs e)
         {
-            
+            IList stockOutIds = e.ConfirmStockOutIdsList;
+            foreach (var id in stockOutIds)
+            {
+                StockOut stockOut = StockOutLogic.FindById(id);
+                stockOut.ConfirmFlg = 0;
+                stockOut.DelFlg = 1;
+                foreach (StockOutDetail inDetail in stockOut.StockOutDetails)
+                {
+                    inDetail.DelFlg = 1;
+                }
+                StockOutLogic.Update(stockOut);
+            } 
         }
 
         void mainStockOutReportView_ConfirmStockOutEvent(object sender, StockOutConfirmEventArgs e)
         {
-            
+            IList stockOutIds = e.ConfirmStockOutIdsList;
+            foreach (var id in stockOutIds)
+            {
+                StockOut stockOut = StockOutLogic.FindById(id);
+                stockOut.ConfirmFlg = 0;
+                StockOutLogic.Update(stockOut);
+            }
         }
 
         void mainStockOutReportView_LoadConfirmingStockOutsEvent(object sender, StockOutConfirmEventArgs e)

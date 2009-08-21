@@ -652,7 +652,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             DepartmentStockInDetail detail = deptSIDetailList[selectedIndex];
             if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (detail.DepartmentStockInDetailPK != null && !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].DepartmentStockInDetailPK.StockInId))
+                if ((detail.DepartmentStockInDetailPK != null && !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].DepartmentStockInDetailPK.StockInId))
+                    || detail.StockOutDetailId !=0 )
                 {
                     detail.DelFlg = 1;
                     for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)

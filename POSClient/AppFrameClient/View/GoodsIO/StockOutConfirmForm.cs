@@ -161,28 +161,7 @@ namespace AppFrameClient.View.GoodsIO
             StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
             eventArgs.ConfirmStockOutIdsList = stockIds;
             EventUtility.fireEvent(ConfirmStockOutEvent,this,eventArgs);
-            /*
-            DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
-            if (!(selectedRows.Count > 0))
-            {
-                return;
-            }
-
-            StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
-
-            IList list = new ArrayList();
-            foreach (DataGridViewRow row in selectedRows)
-            {
-                list.Add(deptStockOutList[row.Index].StockOut);
-            }
-
-            eventArgs.ConfirmStockInList = list;
-            EventUtility.fireEvent(ConfirmStockOutEvent, this, eventArgs);
-            if (!eventArgs.HasErrors)
-            {
-
-            }
-            ClearForm();*/
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
