@@ -16353,7 +16353,7 @@ FROM            stock_out INNER JOIN
                          stock_out_detail ON stock_out.STOCKOUT_ID = stock_out_detail.STOCKOUT_ID INNER JOIN
                          department ON stock_out.DEPARTMENT_ID = department.DEPARTMENT_ID INNER JOIN
                          stock_defect_status ON stock_out.DEFECT_STATUS_ID = stock_defect_status.DEFECT_STATUS_ID
-WHERE        (stock_out.DEL_FLG = 0) AND (stock_out.STOCK_OUT_DATE >= @FromDate) AND (stock_out.STOCK_OUT_DATE <= @ToDate)
+WHERE        (stock_out.DEL_FLG = 0) AND (stock_out.STOCK_OUT_DATE >= @FromDate) AND (stock_out.STOCK_OUT_DATE <= @ToDate) AND (stock_out.CONFIRM_FLG = 1)
 GROUP BY stock_out.STOCKOUT_ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();

@@ -1244,6 +1244,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSIDetailList.Add(departmentStockInDetail);
             }
+
+            foreach (Department department in cbbDept.Items)
+            {
+                if(department.DepartmentId == StockOut.DepartmentId)
+                {
+                    cbbDept.SelectedItem = department;
+                    break;
+                }
+            }
         }
     }
 }

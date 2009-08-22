@@ -42,7 +42,7 @@ namespace AppFrameClient.Presenter
 
         void mainStockOutReportView_DenyStockOutEvent(object sender, StockOutConfirmEventArgs e)
         {
-            IList stockOutIds = e.ConfirmStockOutIdsList;
+            IList stockOutIds = e.DenyStockOutIdsList;
             foreach (var id in stockOutIds)
             {
                 StockOut stockOut = StockOutLogic.FindById(id);

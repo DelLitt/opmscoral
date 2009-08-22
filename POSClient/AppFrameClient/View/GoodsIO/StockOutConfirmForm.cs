@@ -40,8 +40,8 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            confirm_stock_outTableAdapter.Fill(masterDB.confirm_stock_out, DateUtility.ZeroTime(dtpFrom.Value),
-                                               DateUtility.MaxTime(dtpTo.Value));
+            SearchStockOut();
+            
             #region unused code
             /*
             deptStockOutList.Clear();
@@ -81,12 +81,19 @@ namespace AppFrameClient.View.GoodsIO
 
             bdsDeptStockOut.EndEdit();*/
             #endregion
+            
+        }
+
+        private void SearchStockOut()
+        {
+            confirm_stock_outTableAdapter.Fill(masterDB.confirm_stock_out, DateUtility.ZeroTime(dtpFrom.Value),
+                                               DateUtility.MaxTime(dtpTo.Value));
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
         }
 
-        
-            private void CreateCountOnList()
+
+        private void CreateCountOnList()
             {
             for (int i = 0; i < dgvStockOut.Rows.Count;i++ )
             {
@@ -161,7 +168,7 @@ namespace AppFrameClient.View.GoodsIO
             StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
             eventArgs.ConfirmStockOutIdsList = stockIds;
             EventUtility.fireEvent(ConfirmStockOutEvent,this,eventArgs);
-            
+            SearchStockOut();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -178,7 +185,7 @@ namespace AppFrameClient.View.GoodsIO
             StockOutConfirmEventArgs eventArgs = new StockOutConfirmEventArgs();
             eventArgs.DenyStockOutIdsList = stockIds;
             EventUtility.fireEvent(DenyStockOutEvent, this, eventArgs);
-
+            SearchStockOut();
             /*DataGridViewSelectedRowCollection selectedRows = dgvStockOut.SelectedRows;
             if(!(selectedRows.Count >0) )
             {
@@ -545,8 +552,14 @@ namespace AppFrameClient.View.GoodsIO
                                                                                             FormConstants.
                                                                                                 DEPARTMENT_STOCK_IN_EXTRA_EDIT_FORM);
                 form.StockOut = eventArgs.EditStockOut;
+                form.Closed += new EventHandler(form_Closed);
                 form.Show();
             }
+        }
+
+        void form_Closed(object sender, EventArgs e)
+        {
+            SearchStockOut();
         }
     }
 
