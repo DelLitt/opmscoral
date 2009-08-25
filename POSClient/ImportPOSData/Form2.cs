@@ -644,12 +644,13 @@ namespace ImportPOSData
                                 {
                                     id = Convert.ToInt64(id.ToString()) + 1;
                                 }
-                                dal.ExecuteQuery("insert into stock_out_detail(stock_out_detail_id, stockout_id, product_id, product_master_id, quantity, good_quantity, create_date) values ("
+                                dal.ExecuteQuery("insert into stock_out_detail(stock_out_detail_id, stockout_id, product_id, product_master_id, quantity, good_quantity, create_date,update_date,create_id,update_id,exclusive_key,defect_status_id,description) values ("
                                     + id
                                     + ", " + stockOutId
                                     + ", '" + list[1]
                                     + "', '" + obj.ProductMasterId
-                                    + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+                                    + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"+
+                                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','admin','admin',1,0,'Export goods')");
                             }
                         }
                     }
@@ -695,9 +696,10 @@ namespace ImportPOSData
             {
                 id = Convert.ToInt64(id.ToString()) + 1;
             }
-            dal.ExecuteQuery("insert into stock_out(stockout_id, department_id,create_date,stock_out_date) values ("
+            dal.ExecuteQuery("insert into stock_out(stockout_id, department_id,create_date,stock_out_date,update_date,create_id,update_id,exclusive_key,defect_status_id) values ("
                 + id
-                + ", " + deptId + ",'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')");
+                + ", " + deptId + ",'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"+
+                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','admin','admin',1,0)");
 
             return Convert.ToInt32(id.ToString());
         }
