@@ -82,6 +82,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuImportGoods = new System.Windows.Forms.ToolStripMenuItem();
             this.approveStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuApproveStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStockOutConfirm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuInventoryChecking = new System.Windows.Forms.ToolStripMenuItem();
@@ -193,7 +194,7 @@
             this.f10ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f11ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuApproveStockOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExportByFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -630,6 +631,13 @@
             this.approveStockToolStripMenuItem.Text = "Xác nhận nhập kho";
             this.approveStockToolStripMenuItem.Click += new System.EventHandler(this.approveStockToolStripMenuItem_Click);
             // 
+            // mnuApproveStockOut
+            // 
+            this.mnuApproveStockOut.Name = "mnuApproveStockOut";
+            this.mnuApproveStockOut.Size = new System.Drawing.Size(225, 22);
+            this.mnuApproveStockOut.Text = "Xác nhận xuất kho";
+            this.mnuApproveStockOut.Click += new System.EventHandler(this.mnuApproveStockOut_Click);
+            // 
             // mnuDepartmentStockOutConfirm
             // 
             this.mnuDepartmentStockOutConfirm.Name = "mnuDepartmentStockOutConfirm";
@@ -928,6 +936,7 @@
             this.toolStripMenuItem10,
             this.mnuSystemConfiguration,
             this.mnuImportByFile,
+            this.mnuExportByFile,
             this.toolStripMenuItem23,
             this.mnuExportDatabaseImage,
             this.mnuImportDatabaseImage,
@@ -1534,12 +1543,12 @@
             this.f12ShortcutToolStripMenuItem.Text = "F12Shortcut";
             this.f12ShortcutToolStripMenuItem.Click += new System.EventHandler(this.f12ShortcutToolStripMenuItem_Click);
             // 
-            // mnuApproveStockOut
+            // mnuExportByFile
             // 
-            this.mnuApproveStockOut.Name = "mnuApproveStockOut";
-            this.mnuApproveStockOut.Size = new System.Drawing.Size(225, 22);
-            this.mnuApproveStockOut.Text = "Xác nhận xuất kho";
-            this.mnuApproveStockOut.Click += new System.EventHandler(this.mnuApproveStockOut_Click);
+            this.mnuExportByFile.Name = "mnuExportByFile";
+            this.mnuExportByFile.Size = new System.Drawing.Size(215, 22);
+            this.mnuExportByFile.Text = "Xuất hàng bằng tập tin Excel";
+            this.mnuExportByFile.Click += new System.EventHandler(this.mnuExportByFile_Click);
             // 
             // MainForm
             // 
@@ -1739,6 +1748,7 @@
         private System.Windows.Forms.ToolStripMenuItem f12ShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuEmployeeMoney;
         private System.Windows.Forms.ToolStripMenuItem mnuApproveStockOut;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportByFile;
 
     }
 }

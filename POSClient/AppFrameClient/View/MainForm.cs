@@ -1242,6 +1242,11 @@ namespace AppFrame.View
                                                                                                      STOCK_OUT_CONFIRM_FORM);
             form.Show();
         }
+
+        private void mnuExportByFile_Click(object sender, EventArgs e)
+        {
+            new Form2().ShowDialog();
+        }
         
     }
 }
