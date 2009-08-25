@@ -3,6 +3,7 @@
 //----------------------------------------------------------------------------------------------------/
 //06Aug2008     Chenjx      Added GetConnectionString() to use Web Service from the Web.Config.
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Text;
@@ -101,6 +102,47 @@ namespace ImportPOSData
                 connDB.Close();
             }
         }
-    
+
+        /// <summary> 
+        /// Returns FirstRow and First column's value for the query (Just like Execute Scalar Function) 
+        /// </summary> 
+        public IList<IList<object>> GetListValue(string SqlString, int columCount)
+        {
+            DbDataReader reader = null;
+            try
+            {
+                object obj;
+                connDB.Open();
+                DbCommand cmdDB = connDB.CreateCommand();
+                cmdDB.CommandText = SqlString;
+                //obj = cmdDB.ExecuteReader();
+                reader = cmdDB.ExecuteReader();
+                
+                IList<IList<object>> result = new List<IList<object>>(); 
+                while (reader.Read())
+                {
+                    IList<object> list = new List<object>();
+                    for (int i = 0; i < columCount; i++)
+                    {
+                        list.Add(reader[i]);
+                    }
+                    result.Add(list);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                connDB.Close();
+            }
+        }
     }
 }

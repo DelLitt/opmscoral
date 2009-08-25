@@ -21,5 +21,8 @@ namespace ImportPOSData
         public long Quantity { get; set; }
         public string Position { get; set; }
         public string Description { get; set; }
+
+        public long deptId { get; set; }
+        public int Row { get; set; }
     }
 }
