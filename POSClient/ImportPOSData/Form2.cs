@@ -597,7 +597,7 @@ namespace ImportPOSData
                             {
                                 list[3] = 0;
                                 quantity -= goodQty;
-                                stockQty -= quantity;
+                                stockQty -= goodQty;
                                 if (stockQty < 0)
                                 {
                                     stockQty = 0;
@@ -607,8 +607,8 @@ namespace ImportPOSData
                             else
                             {
                                 list[3] = goodQty - quantity;
-                                quantity = 0;
                                 stockQty -= quantity;
+                                quantity = 0;
                                 if (stockQty < 0)
                                 {
                                     stockQty = 0;
@@ -625,8 +625,10 @@ namespace ImportPOSData
                         {
                             foreach (IList<object> list in listStock)
                             {
-                                dal.ExecuteQuery("update stock set quantity = " + list[2] + ", good_quantity = " + list[3]
-                                                 + " where  stock_id = '" + list[0] + "'");
+                                string strUpdateStock = "update stock set quantity = " + list[2].ToString() +
+                                                        ", good_quantity = " + list[3].ToString()
+                                                        + " where  stock_id = " + list[0].ToString() + "";
+                                dal.ExecuteQuery(strUpdateStock);
 
                                 int stockOutId = 0;
                                 stockOutIdMap.TryGetValue(obj.deptId, out stockOutId);

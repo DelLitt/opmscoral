@@ -97,10 +97,12 @@ namespace ImportPOSData
                 List<ErrorObject> errorList = new List<ErrorObject>();
                 List<ImportObject> importList = new List<ImportObject>();
 
+                List<string> sizesList = GetSizesList(ws, errorList);
+
                 for (int i = row; i < endRow; i++)
                 {
                     ErrorObject errorObject;
-                    ImportObject obj = GetImportObject(i, ws, out errorObject, "34", "H");
+                    ImportObject obj = GetImportObject(i, ws, out errorObject, sizesList[0], "H");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -111,8 +113,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "35", "I");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[1], "I");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -123,8 +125,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "36", "J");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[2], "J");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -135,8 +137,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "37", "K");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[3], "K");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -147,8 +149,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "38", "L");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[4], "L");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -159,8 +161,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "39", "M");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[5], "M");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -171,8 +173,8 @@ namespace ImportPOSData
 							importList.Add(obj);
 						}
                     }
-                    
-                    obj = GetImportObject(i, ws, out errorObject, "40", "N");
+
+                    obj = GetImportObject(i, ws, out errorObject, sizesList[6], "N");
                     if (errorObject != null)
                     {
                         errorList.Add(errorObject);
@@ -218,6 +220,103 @@ namespace ImportPOSData
                     }
                 }
             }
+        }
+        private List<string> GetSizesList(Worksheet ws, List<ErrorObject> errorList)
+        {
+            List<string> list = new List<string>();
+
+            // F
+            Range range = ws.get_Range("H" + 1, "H" + 1);
+            string name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name.Trim()))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // G
+            range = ws.get_Range("I" + 1, "I" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // H
+            range = ws.get_Range("J" + 1, "J" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // I
+            range = ws.get_Range("K" + 1, "K" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // J
+            range = ws.get_Range("L" + 1, "L" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // K
+            range = ws.get_Range("M" + 1, "M" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có Kích cỡ", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            // L
+            range = ws.get_Range("N" + 1, "N" + 1);
+            name = range.Value2 != null ? range.Value2.ToString() : "";
+            if (!string.IsNullOrEmpty(name))
+            {
+                list.Add(name.Trim());
+            }
+            else
+            {
+                ErrorObject errorObject = new ErrorObject { ErrorMessage = "Dòng 1 không có department id", RowNumber = 1 };
+                errorList.Add(errorObject);
+            }
+
+            return list;
         }
 
         private ImportObject GetImportObject(int row, Worksheet ws, out ErrorObject errorObject, string sizeName, string sizeColumn)
