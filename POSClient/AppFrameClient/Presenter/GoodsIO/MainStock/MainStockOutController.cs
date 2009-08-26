@@ -76,6 +76,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                     deptDetail.Product = inDetail.Product;
                     deptDetail.ProductMaster = inDetail.Product.ProductMaster;
                     deptDetail.Quantity = inDetail.Quantity;
+                    deptDetail.GoodQuantity = inDetail.Quantity;
                     stockOutList.Add(deptDetail);
                 }
                 GetRemainStockNumber(stockOutList);
@@ -115,7 +116,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
                 {
                     foreach (Stock stock in stockList)
                     {
-                        if (detail.Product.ProductMaster.ProductMasterId.Equals(stock.ProductMaster.ProductMasterId))
+                        if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                         {
                             detail.StockQuantity += stock.Quantity;
                         }

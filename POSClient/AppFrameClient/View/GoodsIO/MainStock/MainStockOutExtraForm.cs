@@ -299,6 +299,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     if (!IsInList(stockOutDetailList, stockInDetail))
                     {
+                        stockInDetail.DefectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
                         stockOutDetailList.Add(stockInDetail);
                     }
                 }
@@ -308,6 +309,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             dgvDeptStockOut.Refresh();
             dgvStockIn.Invalidate();
             panelStockIns.Visible = false;
+            cbbStockOutType.Enabled = false;
             CalculateTotalStorePrice();
         }
 
@@ -433,6 +435,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             if(stockOut.DefectStatus.DefectStatusId == 9)
             {
                 stockOut.NotUpdateMainStock = true;
+            }
+            else
+            {
+                stockOut.NotUpdateMainStock = false;
             }
 //            stockOut.Description = txtDexcription.Text;
             var eventArgs = new MainStockOutEventArgs();
@@ -1134,6 +1140,55 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             stockinBindingSource.ResetBindings(false);
             dgvStockIn.Refresh();
             dgvStockIn.Invalidate();
+        }
+
+        private void btnFix_Click(object sender, EventArgs e)
+        {
+            foreach (StockOutDetail inDetail in stockOutDetailList)
+            {
+                if (inDetail.StockQuantity < inDetail.Quantity)
+                {
+                    inDetail.Quantity = inDetail.StockQuantity;
+                    inDetail.GoodQuantity = inDetail.StockQuantity;
+                }
+            }
+            bdsStockIn.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            MessageBox.Show("Sửa thành công !");
+        }
+
+        private void panelStockIns_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                RemoveZeroLines();
+                CalculateTotalStorePrice();
+                MessageBox.Show("Hoàn tất bỏ những dòng bằng không");
+                checkBox1.Checked = false;
+            }
+        }
+
+        private void RemoveZeroLines()
+        {
+        
+            int index = stockOutDetailList.Count - 1;
+            while(index >= 0)
+            {
+                StockOutDetail detail = stockOutDetailList[index];
+                if(detail.StockQuantity == 0 || detail.Quantity == 0)
+                {
+                    stockOutDetailList.RemoveAt(index);
+                }
+                index -= 1;
+            }
+
+        
         }
     }
 }
