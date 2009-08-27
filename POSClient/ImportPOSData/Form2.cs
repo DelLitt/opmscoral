@@ -583,7 +583,7 @@ namespace ImportPOSData
 
                     string sqlSl =
                         "select stock_id, product_id, quantity, good_quantity from stock where product_master_id = '" +
-                        obj.ProductMasterId + "'";
+                        obj.ProductMasterId + "' order by create_date desc ";
                     IList<IList<object>> listStock =
                         dal.GetListValue(sqlSl, 4);
                     if (listStock != null && listStock.Count > 0)
