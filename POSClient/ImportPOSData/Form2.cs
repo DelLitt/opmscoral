@@ -591,8 +591,16 @@ namespace ImportPOSData
                         long quantity = obj.Quantity;
                         foreach (IList<object> list in listStock)
                         {
+                            if(quantity == 0 )
+                            {
+                                break;
+                            }
                             long goodQty = Int64.Parse(list[3].ToString());
                             long stockQty = Int64.Parse(list[2].ToString());
+                            if(goodQty == 0)
+                            {
+                                continue;
+                            }
                             if (quantity >= goodQty)
                             {
                                 list[3] = 0;
@@ -616,6 +624,10 @@ namespace ImportPOSData
                                 list[2] = stockQty;
                             }
                             updateList.Add(list);
+                            if (quantity == 0)
+                            {
+                                break;
+                            }
                         }
                         if (quantity > 0)
                         {
@@ -623,7 +635,7 @@ namespace ImportPOSData
                         }
                         else if (updateList.Count > 0)
                         {
-                            foreach (IList<object> list in listStock)
+                            foreach (IList<object> list in updateList)
                             {
                                 string strUpdateStock = "update stock set quantity = " + list[2].ToString() +
                                                         ", good_quantity = " + list[3].ToString()
@@ -647,12 +659,14 @@ namespace ImportPOSData
                                     id = Convert.ToInt64(id.ToString()) + 1;
                                 }
                                 dal.ExecuteQuery("insert into stock_out_detail(stock_out_detail_id, stockout_id, product_id, product_master_id, quantity, good_quantity, create_date,update_date,create_id,update_id,exclusive_key,defect_status_id,description) values ("
-                                    + id
-                                    + ", " + stockOutId
-                                    + ", '" + list[1]
-                                    + "', '" + obj.ProductMasterId
-                                    + "', " + obj.Quantity + ", " + obj.Quantity + ", '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"+
-                                    DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','admin','admin',1,0,'Export goods')");
+                                                 + id
+                                                 + ", " + stockOutId
+                                                 + ", '" + list[1]
+                                                 + "', '" + obj.ProductMasterId
+                                                 + "', " + obj.Quantity + ", " + obj.Quantity + ", '" +
+                                                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" +
+                                                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") +
+                                                 "','admin','admin',1,0,'Export goods')");
                             }
                         }
                     }
