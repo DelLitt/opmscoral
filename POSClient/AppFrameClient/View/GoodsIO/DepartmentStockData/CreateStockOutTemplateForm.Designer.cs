@@ -1,6 +1,6 @@
 ﻿namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
-    partial class DepartmentStockInFromMainForm
+    partial class CreateStockOutTemplateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,15 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.dtpImportDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -109,7 +106,6 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.chkRemoveZero = new System.Windows.Forms.CheckBox();
             this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
@@ -125,12 +121,13 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(425, 532);
+            this.btnDelete.Location = new System.Drawing.Point(587, 532);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtStockInId
@@ -143,16 +140,6 @@
             this.txtStockInId.Size = new System.Drawing.Size(122, 22);
             this.txtStockInId.TabIndex = 71;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(563, 536);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 70;
-            this.label9.Text = "sản phẩm";
-            this.label9.Visible = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -162,31 +149,6 @@
             this.label3.Size = new System.Drawing.Size(81, 14);
             this.label3.TabIndex = 72;
             this.label3.Text = "Mã xuất hàng";
-            // 
-            // numericUpDown
-            // 
-            this.numericUpDown.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown.Location = new System.Drawing.Point(506, 531);
-            this.numericUpDown.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown.Name = "numericUpDown";
-            this.numericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDown.Size = new System.Drawing.Size(51, 22);
-            this.numericUpDown.TabIndex = 69;
-            this.numericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown.Visible = false;
             // 
             // lblStatus
             // 
@@ -199,7 +161,7 @@
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(425, 531);
+            this.btnAddProduct.Location = new System.Drawing.Point(506, 532);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 67;
@@ -227,17 +189,6 @@
             this.label8.Size = new System.Drawing.Size(69, 14);
             this.label8.TabIndex = 65;
             this.label8.Text = "Ngày nhập:";
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(619, 536);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(124, 23);
-            this.button6.TabIndex = 64;
-            this.button6.Text = "Tạo mã vạch";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
             // 
             // label7
             // 
@@ -310,18 +261,19 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(344, 531);
+            this.btnSave.Location = new System.Drawing.Point(427, 532);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(734, 536);
+            this.button1.Location = new System.Drawing.Point(734, 531);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -557,11 +509,12 @@
             // btnSaveAndExport
             // 
             this.btnSaveAndExport.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndExport.Location = new System.Drawing.Point(227, 531);
+            this.btnSaveAndExport.Location = new System.Drawing.Point(227, 532);
             this.btnSaveAndExport.Name = "btnSaveAndExport";
-            this.btnSaveAndExport.Size = new System.Drawing.Size(111, 23);
+            this.btnSaveAndExport.Size = new System.Drawing.Size(188, 23);
             this.btnSaveAndExport.TabIndex = 9;
-            this.btnSaveAndExport.Text = "Lưu và xuất file";
+            this.btnSaveAndExport.Tag = "Xuất file Excel xuất hàng";
+            this.btnSaveAndExport.Text = "Xuất file Excel xuất hàng";
             this.btnSaveAndExport.UseVisualStyleBackColor = true;
             this.btnSaveAndExport.Visible = false;
             this.btnSaveAndExport.Click += new System.EventHandler(this.btnSaveAndExport_Click);
@@ -874,7 +827,7 @@
             this.chkKeepInputInfo.Text = "Giữ lại thông tin nhập hàng";
             this.chkKeepInputInfo.UseVisualStyleBackColor = true;
             // 
-            // DepartmentStockInFromMainForm
+            // CreateStockOutTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -901,10 +854,7 @@
             this.Controls.Add(this.txtStockInId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.numericUpDown);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label7);
@@ -918,7 +868,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvDeptStockIn);
-            this.Name = "DepartmentStockInFromMainForm";
+            this.Name = "CreateStockOutTemplateForm";
             this.Text = "Xuất hàng đến cửa hàng";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
             this.Controls.SetChildIndex(this.dgvDeptStockIn, 0);
@@ -934,10 +884,7 @@
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.button4, 0);
             this.Controls.SetChildIndex(this.btnAddProduct, 0);
-            this.Controls.SetChildIndex(this.button6, 0);
-            this.Controls.SetChildIndex(this.numericUpDown, 0);
             this.Controls.SetChildIndex(this.lblStatus, 0);
-            this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.txtStockInId, 0);
@@ -960,7 +907,6 @@
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
@@ -981,15 +927,12 @@
 
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtStockInId;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.HelpProvider helpProvider1;
-        private System.Windows.Forms.NumericUpDown numericUpDown;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.DateTimePicker dtpImportDate;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
