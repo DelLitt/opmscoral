@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -106,6 +106,9 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.chkRemoveZero = new System.Windows.Forms.CheckBox();
             this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
+            this.saveTemplateFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.saveTemplateFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblExportStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
@@ -284,8 +287,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -369,8 +372,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -516,7 +519,6 @@
             this.btnSaveAndExport.Tag = "Xuất file Excel xuất hàng";
             this.btnSaveAndExport.Text = "Xuất file Excel xuất hàng";
             this.btnSaveAndExport.UseVisualStyleBackColor = true;
-            this.btnSaveAndExport.Visible = false;
             this.btnSaveAndExport.Click += new System.EventHandler(this.btnSaveAndExport_Click);
             // 
             // label4
@@ -666,7 +668,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(9, 237);
+            this.panelStockIns.Location = new System.Drawing.Point(6, 237);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(800, 325);
             this.panelStockIns.TabIndex = 122;
@@ -827,11 +829,27 @@
             this.chkKeepInputInfo.Text = "Giữ lại thông tin nhập hàng";
             this.chkKeepInputInfo.UseVisualStyleBackColor = true;
             // 
+            // saveTemplateFileDialog
+            // 
+            this.saveTemplateFileDialog.DefaultExt = "xls";
+            this.saveTemplateFileDialog.Filter = "Excel files | *.xls";
+            // 
+            // lblExportStatus
+            // 
+            this.lblExportStatus.AutoSize = true;
+            this.lblExportStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportStatus.Location = new System.Drawing.Point(231, 565);
+            this.lblExportStatus.Name = "lblExportStatus";
+            this.lblExportStatus.Size = new System.Drawing.Size(38, 14);
+            this.lblExportStatus.TabIndex = 8;
+            this.lblExportStatus.Text = "label9";
+            // 
             // CreateStockOutTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
+            this.Controls.Add(this.lblExportStatus);
             this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
@@ -907,6 +925,7 @@
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
+            this.Controls.SetChildIndex(this.lblExportStatus, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
@@ -1002,5 +1021,8 @@
         private System.Windows.Forms.CheckBox chkKeepInputInfo;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveTemplateFileDialog;
+        private System.Windows.Forms.FolderBrowserDialog saveTemplateFolderDialog;
+        private System.Windows.Forms.Label lblExportStatus;
     }
 }

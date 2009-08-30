@@ -1247,6 +1247,15 @@ namespace AppFrame.View
         {
             new Form2().ShowDialog();
         }
+
+        private void mnuCreateExportTemplate_Click(object sender, EventArgs e)
+        {
+            CreateStockOutTemplateForm form = GlobalUtility.GetOnlyChildFormObject<CreateStockOutTemplateForm>(this,
+                                                                                                               FormConstants
+                                                                                                                   .
+                                                                                                                   CREATE_STOCK_OUT_TEMPLATE_FORM);
+            form.Show();
+        }
         
     }
 }

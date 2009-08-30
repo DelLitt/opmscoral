@@ -16,6 +16,7 @@
     <menuitem name="approveStockToolStripMenuItem" role="NotImplement" />
     <menuitem name="mnuApproveStockOut" role="NotImplement" />
     <menuitem name="searchStockToolStripMenuItem" role="Administrator,Supervisor" />
+    <menuitem name="mnuCreateExportTemplate" role="NotImplement" />
     <menuitem name="mnuWarehouseRemains" role="NotImplement" />
     <menuitem name="mnuTheKho" role="NotImplement" />
     <menuitem name="mnuDanhmucHanghoa" role="NotImplement" />

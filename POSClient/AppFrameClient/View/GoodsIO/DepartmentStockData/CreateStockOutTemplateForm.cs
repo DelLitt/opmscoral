@@ -794,15 +794,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSaveAndExport_Click(object sender, EventArgs e)
         {
-            int START_ROW = 2;
             string path = Path.GetDirectoryName(Application.ExecutablePath) + "\\Templates\\TemplateXuatHang.xls";
-            
+
             if (!File.Exists(path))
             {
                 MessageBox.Show("File dữ liệu không tồn tại");
                 return;
             }
-            
+            string fileName = null;
+
+            DialogResult result = saveTemplateFolderDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                fileName = saveTemplateFolderDialog.SelectedPath + "\\" + "XuatHang_" + DateTime.Now.ToString("yyyyMMddHHmmss")+ ".xls";
+                //File.Copy(path,fileName,true);
+            }
+
+            if(string.IsNullOrEmpty(fileName))
+            {
+                return;
+            }
+            lblExportStatus.Text = " Mo file " + fileName;
+            int START_ROW = 2;
             Workbook wb = null;
             var app = new ApplicationClass();
             try
@@ -833,7 +846,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 
                 WriteDepartmentList(ws);
                 WriteStockOutList(ws, deptSIDetailList);
-                MessageBox.Show("Số lượng kết nhập: " + deptSIDetailList.Count + "/" + (endRow - row));
+                
+                ws.SaveAs(fileName,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value,Missing.Value);
+                
             }
             catch (Exception ex)
             {
@@ -846,10 +861,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     try
                     {
-                        wb.Close(null, null, null);
+                        wb.Close(null,null,null);
+                        lblExportStatus.Text = " Ghi thanh cong vao file " + fileName;
                     }
-                    catch
+                    catch(Exception except)
                     {
+                        //lblExportStatus.Text = " Ghi that bai.";
                     }
                 }
             } 
@@ -865,7 +882,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             IList<DepartmentStockInDetail> writeList = GroupDuplicateProductMasterRow(list);
             int START_ROW = 2;
-            int END_ROW = START_ROW + collection.Count;
+            int END_ROW = START_ROW + writeList.Count;
             if(writeList== null || writeList.Count == 0 )
             {
                 return;
@@ -873,6 +890,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             
             for (int i = START_ROW; i < END_ROW; i++)
             {
+                lblExportStatus.Text = " Dang ghi dong thu " + (i - 1).ToString() + " / " + (END_ROW - 2).ToString();
                 Range range = ws.get_Range("A" + i, "A" + i);
                 range.set_Value(Missing.Value,writeList[i-2].Product.ProductMaster.ProductType.TypeName);
 
@@ -885,10 +903,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 range = ws.get_Range("D" + i, "D" + i);
                 range.set_Value(Missing.Value, writeList[i - 2].Product.ProductMaster.ProductSize.SizeName);
 
-                range = ws.get_Range("D" + i, "D" + i);
+                range = ws.get_Range("E" + i, "E" + i);
                 range.set_Value(Missing.Value, writeList[i - 2].StockQuantity);
 
+                
             }
+
+            Range rangeFormat = ws.get_Range("A" + START_ROW, "A" + START_ROW);
+            rangeFormat.Copy(Missing.Value);
+
+            Range destRange = ws.get_Range("A" + START_ROW, "M" + END_ROW);
+            destRange.PasteSpecial(XlPasteType.xlPasteFormats, XlPasteSpecialOperation.xlPasteSpecialOperationNone,
+                                   Missing.Value, Missing.Value);
+
         }
 
         private IList<DepartmentStockInDetail> GroupDuplicateProductMasterRow(IList list)
