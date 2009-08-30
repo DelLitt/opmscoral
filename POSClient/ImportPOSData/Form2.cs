@@ -418,7 +418,8 @@ namespace ImportPOSData
             }
             else
             {
-                obj.ProductName = obj.TypeName + " " + name.Trim();
+                //obj.ProductName = obj.TypeName + " " + name.Trim();
+                obj.ProductName = name.Trim();
             }
 
             // Color
