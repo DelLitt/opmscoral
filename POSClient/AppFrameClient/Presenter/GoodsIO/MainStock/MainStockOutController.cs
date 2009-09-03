@@ -229,6 +229,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
                 e.FoundStockOutDetailList.Add(detail);
             }
+            GetRemainStockNumber(e.FoundStockOutDetailList);
         }
 
         public void mainStockOutView_FillProductToComboEvent(object sender, MainStockOutEventArgs e)
