@@ -192,7 +192,7 @@ namespace AppFrameClient.View.SalePoints
                     BarcodeLib.Barcode barcode = new Barcode();
                     string employeeName = printArray[index].EmployeeName;
                     Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, code, Color.Black, Color.White,
-                                                   (int) (3.35*e.Graphics.DpiX), (int) (0.6*e.Graphics.DpiY));
+                                                   (int) (3.35*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
 
                     Bitmap bitmapBarcode = new Bitmap(imageBC);
                     bitmapBarcode.SetResolution(204, 204);
@@ -229,9 +229,9 @@ namespace AppFrameClient.View.SalePoints
                     
                     e.Graphics.DrawImage(bitmapBarcode,
                                          new Rectangle((i % 2) * 360 + (int)XCentered((float)(3.45 * 100), 360) + 50,
-                                                       (int)((j%3)*230 + 25) + 50 , (int)(3.35 * 100),(int)(0.6 * 100)));
+                                                       (int)((j%3)*230 + 25) + 190 , (int)(3.35 * 100),(int)(0.4 * 100)));
                     System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
-                    e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 60, ((j % 3) * 230 + 25 + 60) + 70 );
+                    /*e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 60, ((j % 3) * 230 + 25 + 60) + 70 );
 
                     e.Graphics.DrawString(code, _titleFont, new SolidBrush(Color.Black),
                                           (i % 2) * 360 +  XCentered(barCodeSize.Width,360) + 50 , 
@@ -239,8 +239,19 @@ namespace AppFrameClient.View.SalePoints
                     
                     e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black),
                         (i % 2) * 360 + + 70 + XCentered(empCodeSize.Width, 345) + 50 , 
-                        (float)((j % 3) * 230 + 25 + 70 + _titleFont.Height + 50));
-                    
+                        (float)((j % 3) * 230 + 25 + 70 + _titleFont.Height + 50));*/
+
+                    e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 70 + 160, ((j % 3) * 230) + 52);
+                    e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), (i % 2) * (int)(3.6 * 100) + 52, (j % 3) * (int)(2.3 * 100) + 52,
+                                                (int)(1.18 * 100), (int)(1.57 * 100));
+                    e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black),
+                        (i % 2) * 360 + +70 + XCentered(empCodeSize.Width, 345) + 50,
+                        (float)((j % 3) * 230 + 60 + _titleFont.Height + 70));
+
+                    /*System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
+                    e.Graphics.DrawImage(bitmapBarcode,
+                                         new Rectangle((i % 2) * 360 + 55,
+                                                       (int)((j % 3) * 230 + 25) + 190, (int)(3.45 * 100), (int)(0.4 * 100)));*/
 
                 }
             }
