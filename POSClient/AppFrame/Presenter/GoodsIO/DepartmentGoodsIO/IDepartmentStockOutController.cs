@@ -12,5 +12,8 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
     public interface IDepartmentStockOutController : IBaseController<DepartmentStockOutEventArgs>
     {
         IDepartmentStockOutView DepartmentStockOutView { get; set; }
+
+        event EventHandler<DepartmentStockOutEventArgs> CompletedFindByStockInEvent;
+        
     }
 }
