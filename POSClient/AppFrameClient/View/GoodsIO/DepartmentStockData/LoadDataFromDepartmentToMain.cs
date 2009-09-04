@@ -245,6 +245,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
         public event EventHandler<DepartmentStockOutEventArgs> DispatchDepartmentStockOut;
         public event EventHandler<DepartmentStockOutEventArgs> PrepareDepartmentStockOutForPrintEvent;
+        public event EventHandler<DepartmentStockOutEventArgs> FindByStockInIdEvent;
 
         private IDepartmentStockOutController _mainStockOutController;
         public IDepartmentStockOutController DepartmentStockOutController

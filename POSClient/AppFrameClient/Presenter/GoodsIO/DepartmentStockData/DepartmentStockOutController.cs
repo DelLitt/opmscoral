@@ -61,9 +61,78 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 mainStockInView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_LoadAllDepartments);
                 mainStockInView.DispatchDepartmentStockOut += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_DispatchDepartmentStockOut);
                 mainStockInView.PrepareDepartmentStockOutForPrintEvent += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_PrepareDepartmentStockOutForPrintEvent);
+                mainStockInView.FindByStockInIdEvent += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_FindByStockInIdEvent);
 
             }
         }
+
+        public event EventHandler<DepartmentStockOutEventArgs> CompletedFindByStockInEvent;
+
+        void mainStockInView_FindByStockInIdEvent(object sender, DepartmentStockOutEventArgs e)
+        {
+            if (e.SelectedStockInIds.Count > 0)
+            {
+                ObjectCriteria objectCriteria = new ObjectCriteria();
+                objectCriteria.AddSearchInCriteria("DepartmentStockInDetailPK.StockInId", e.SelectedStockInIds);
+                IList list = DepartmentStockInDetailLogic.FindAll(objectCriteria);
+                IList stockOutList = new ArrayList();
+                foreach (DepartmentStockInDetail inDetail in list)
+                {
+                    DepartmentStockOutDetail deptDetail = new DepartmentStockOutDetail();
+                    deptDetail.CreateDate = DateTime.Now;
+                    deptDetail.UpdateDate = DateTime.Now;
+                    deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                    deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                    //deptDetail. = new DepartmentStockInDetailPK();
+                    deptDetail.Product = inDetail.Product;
+                    deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                    deptDetail.Quantity = inDetail.Quantity;
+                    deptDetail.GoodQuantity = inDetail.Quantity;
+                    stockOutList.Add(deptDetail);
+                }
+                IList stockList = GetRemainStockNumber(stockOutList);
+                e.FoundDepartmentStockOutDetailList = stockOutList;
+                e.DepartmentStockList = stockList;
+            }
+            EventUtility.fireEvent(CompletedFindByStockInEvent, this, e);
+        }
+
+        private IList GetRemainStockNumber(IList departmentStockIns)
+        {
+            IList productLists = new ArrayList();
+            foreach (DepartmentStockOutDetail detail in departmentStockIns)
+            {
+                if (detail.Product != null)
+                    productLists.Add(detail.Product.ProductId);
+            }
+            if (productLists.Count == 0)
+            {
+                return new ArrayList();
+            }
+            var criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            criteria.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
+            criteria.AddSearchInCriteria("DepartmentStockPK.ProductId", productLists);
+            IList stockList = DepartmentStockLogic.FindAll(criteria);
+
+            if (stockList != null && stockList.Count > 0)
+            {
+                foreach (DepartmentStockOutDetail detail in departmentStockIns)
+                {
+                    foreach (DepartmentStock stock in stockList)
+                    {
+                        if (stock.DepartmentStockPK.ProductId.Equals(detail.Product.ProductId))
+                        {
+                            detail.Quantity = stock.Quantity;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return stockList;
+        }
+
 
         void mainStockInView_PrepareDepartmentStockOutForPrintEvent(object sender, DepartmentStockOutEventArgs e)
         {
@@ -226,10 +295,10 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.FoundDepartmentStockOutDetailList = new ArrayList();
             foreach (DepartmentStock stock in list)
             {
-                if(stock.Quantity == 0)
+                /*if(stock.Quantity == 0)
                 {
                     continue;
-                }
+                }*/
                 DepartmentStockOutDetail detail = new DepartmentStockOutDetail();
                 detail.DepartmentStockOutDetailPK = new DepartmentStockOutDetailPK
                                                         {
@@ -242,7 +311,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 detail.DamageQuantity = stock.DamageQuantity;
                 detail.UnconfirmQuantity = stock.UnconfirmQuantity;
                 detail.Quantity = stock.Quantity;
-
                 e.DepartmentStockList.Add(stock);
                 e.FoundDepartmentStockOutDetailList.Add(detail);
             }
@@ -263,20 +331,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 criteria.AddLikeCriteria("pm.ProductName", "%" + searchPM.ProductName + "%");
                 criteria.MaxResult = 50;
                 IList list = DepartmentStockLogic.FindByQueryForDeptStock(criteria);
-                /*IList list = null;
-                // find in product
-                ObjectCriteria prdCrit = new ObjectCriteria();
-                prdCrit.MaxResult = 300;
-                prdCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-                prdCrit.AddLikeCriteria("ProductMaster.ProductName", "%" + searchPM.ProductName + "%");
-                IList prdList = ProductLogic.FindAll(prdCrit);       
-                // find in stock
-                if (!CheckUtility.IsNullOrEmpty(prdList))
-                {
-                    ObjectCriteria deptStockCrit = new ObjectCriteria();
-                    deptStockCrit.AddSearchInCriteria("Product", prdList);
-                    list = DepartmentStockLogic.FindAll(deptStockCrit);
-                }*/
+                
                 if(list ==null || list.Count == 0)
                 {
                     return;
@@ -440,7 +495,14 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get;
             set;
         }
+
         public IDepartmentPriceLogic DepartmentPriceLogic
+        {
+            get;
+            set;
+        }
+
+        public IDepartmentStockInDetailLogic DepartmentStockInDetailLogic
         {
             get;
             set;

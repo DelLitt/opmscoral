@@ -551,6 +551,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockOutEventArgs> LoadAllDepartments;
         public event EventHandler<DepartmentStockOutEventArgs> DispatchDepartmentStockOut;
         public event EventHandler<DepartmentStockOutEventArgs> PrepareDepartmentStockOutForPrintEvent;
+        public event EventHandler<DepartmentStockOutEventArgs> FindByStockInIdEvent;
 
         #endregion
 
@@ -1660,4 +1661,5 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             UpdateStockOutDescription();  
         }
     }
+    
 }
