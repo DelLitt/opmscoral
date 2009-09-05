@@ -309,7 +309,7 @@
           </SeriesGrouping>
         </SeriesGroupings>
         <Top>0.625in</Top>
-        <Subtype>Plain</Subtype>
+        <Subtype>Smooth</Subtype>
         <ValueAxis>
           <Axis>
             <Title />
@@ -335,7 +335,7 @@
             <Scalar>true</Scalar>
           </Axis>
         </ValueAxis>
-        <Type>Column</Type>
+        <Type>Line</Type>
         <Width>8.5in</Width>
         <CategoryGroupings>
           <CategoryGrouping>

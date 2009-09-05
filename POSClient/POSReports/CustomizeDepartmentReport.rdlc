@@ -144,7 +144,7 @@
           </SeriesGrouping>
         </SeriesGroupings>
         <Top>0.625in</Top>
-        <Subtype>Plain</Subtype>
+        <Subtype>Stacked</Subtype>
         <ValueAxis>
           <Axis>
             <Title />
@@ -170,7 +170,7 @@
             <Scalar>true</Scalar>
           </Axis>
         </ValueAxis>
-        <Type>Bar</Type>
+        <Type>Column</Type>
         <Width>7.25in</Width>
         <CategoryGroupings>
           <CategoryGrouping>

@@ -798,7 +798,11 @@
           </TableRows>
           <Sorting>
             <SortBy>
-              <SortExpression>=Fields!quantity.Value</SortExpression>
+              <SortExpression>=IIf(Parameters!SerieType.Value &lt;= 1,Fields!deptname.Value,Fields!type_name.Value)</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Sum(Fields!quantity.Value)</SortExpression>
               <Direction>Descending</Direction>
             </SortBy>
           </Sorting>
@@ -1051,7 +1055,7 @@
           </SeriesGrouping>
         </SeriesGroupings>
         <Top>0.875in</Top>
-        <Subtype>Plain</Subtype>
+        <Subtype>Smooth</Subtype>
         <ValueAxis>
           <Axis>
             <Title />
@@ -1077,7 +1081,7 @@
             <Scalar>true</Scalar>
           </Axis>
         </ValueAxis>
-        <Type>Column</Type>
+        <Type>Line</Type>
         <Width>8.875in</Width>
         <CategoryGroupings>
           <CategoryGrouping>
