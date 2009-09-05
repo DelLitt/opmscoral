@@ -8266,6 +8266,14 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnworking_date;
             
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columndepartment_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PurchaseOrderPeriodDataTable() {
                 this.TableName = "PurchaseOrderPeriod";
@@ -8360,6 +8368,34 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8388,7 +8424,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PurchaseOrderPeriodRow AddPurchaseOrderPeriodRow(string poid, string product_name, decimal sellqty, decimal sellamount, decimal retqty, decimal retamount, string issue_date, uint period, string working_date) {
+            public PurchaseOrderPeriodRow AddPurchaseOrderPeriodRow(string poid, string product_name, decimal sellqty, decimal sellamount, decimal retqty, decimal retamount, string issue_date, uint period, string working_date, string color_name, string size_name, string type_name, string department_name) {
                 PurchaseOrderPeriodRow rowPurchaseOrderPeriodRow = ((PurchaseOrderPeriodRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         poid,
@@ -8399,7 +8435,11 @@ namespace POSReports {
                         retamount,
                         issue_date,
                         period,
-                        working_date};
+                        working_date,
+                        color_name,
+                        size_name,
+                        type_name,
+                        department_name};
                 rowPurchaseOrderPeriodRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchaseOrderPeriodRow);
                 return rowPurchaseOrderPeriodRow;
@@ -8428,6 +8468,10 @@ namespace POSReports {
                 this.columnissue_date = base.Columns["issue_date"];
                 this.columnperiod = base.Columns["period"];
                 this.columnworking_date = base.Columns["working_date"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
+                this.columntype_name = base.Columns["type_name"];
+                this.columndepartment_name = base.Columns["department_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8450,12 +8494,24 @@ namespace POSReports {
                 base.Columns.Add(this.columnperiod);
                 this.columnworking_date = new global::System.Data.DataColumn("working_date", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnworking_date);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
                 this.columnpoid.AllowDBNull = false;
                 this.columnpoid.MaxLength = 20;
                 this.columnproduct_name.MaxLength = 500;
                 this.columnissue_date.MaxLength = 10;
                 this.columnperiod.AllowDBNull = false;
                 this.columnworking_date.MaxLength = 10;
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
+                this.columntype_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8605,6 +8661,8 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columntype_name;
             
+            private global::System.Data.DataColumn columndepartment_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PurchaseOrderDetailReportDataTable() {
                 this.TableName = "PurchaseOrderDetailReport";
@@ -8720,6 +8778,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8748,7 +8813,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PurchaseOrderDetailReportRow AddPurchaseOrderDetailReportRow(string working_date, string poid, string product_name, string color_name, string size_name, string product_id, ulong sellqty, ulong sellamount, long retqty, decimal retamount, string issue_date, string type_name) {
+            public PurchaseOrderDetailReportRow AddPurchaseOrderDetailReportRow(string working_date, string poid, string product_name, string color_name, string size_name, string product_id, ulong sellqty, ulong sellamount, long retqty, long retamount, string issue_date, string type_name, string department_name) {
                 PurchaseOrderDetailReportRow rowPurchaseOrderDetailReportRow = ((PurchaseOrderDetailReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         working_date,
@@ -8762,7 +8827,8 @@ namespace POSReports {
                         retqty,
                         retamount,
                         issue_date,
-                        type_name};
+                        type_name,
+                        department_name};
                 rowPurchaseOrderDetailReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchaseOrderDetailReportRow);
                 return rowPurchaseOrderDetailReportRow;
@@ -8794,6 +8860,7 @@ namespace POSReports {
                 this.columnretamount = base.Columns["retamount"];
                 this.columnissue_date = base.Columns["issue_date"];
                 this.columntype_name = base.Columns["type_name"];
+                this.columndepartment_name = base.Columns["department_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8816,12 +8883,14 @@ namespace POSReports {
                 base.Columns.Add(this.columnsellamount);
                 this.columnretqty = new global::System.Data.DataColumn("retqty", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnretqty);
-                this.columnretamount = new global::System.Data.DataColumn("retamount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnretamount = new global::System.Data.DataColumn("retamount", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnretamount);
                 this.columnissue_date = new global::System.Data.DataColumn("issue_date", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnissue_date);
                 this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntype_name);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
                 this.columnworking_date.MaxLength = 10;
                 this.columnpoid.AllowDBNull = false;
                 this.columnpoid.MaxLength = 20;
@@ -8832,6 +8901,7 @@ namespace POSReports {
                 this.columnproduct_id.MaxLength = 20;
                 this.columnissue_date.MaxLength = 19;
                 this.columntype_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8973,6 +9043,14 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnissue_date;
             
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnsize_name;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columndepartment_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PurchaseOrderReportDataTable() {
                 this.TableName = "PurchaseOrderReport";
@@ -9060,6 +9138,34 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9088,7 +9194,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PurchaseOrderReportRow AddPurchaseOrderReportRow(string working_date, string poid, string product_name, decimal sellqty, decimal sellamount, decimal retqty, decimal retamount, string issue_date) {
+            public PurchaseOrderReportRow AddPurchaseOrderReportRow(string working_date, string poid, string product_name, decimal sellqty, decimal sellamount, decimal retqty, decimal retamount, string issue_date, string color_name, string size_name, string type_name, string department_name) {
                 PurchaseOrderReportRow rowPurchaseOrderReportRow = ((PurchaseOrderReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         working_date,
@@ -9098,7 +9204,11 @@ namespace POSReports {
                         sellamount,
                         retqty,
                         retamount,
-                        issue_date};
+                        issue_date,
+                        color_name,
+                        size_name,
+                        type_name,
+                        department_name};
                 rowPurchaseOrderReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchaseOrderReportRow);
                 return rowPurchaseOrderReportRow;
@@ -9126,6 +9236,10 @@ namespace POSReports {
                 this.columnretqty = base.Columns["retqty"];
                 this.columnretamount = base.Columns["retamount"];
                 this.columnissue_date = base.Columns["issue_date"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnsize_name = base.Columns["size_name"];
+                this.columntype_name = base.Columns["type_name"];
+                this.columndepartment_name = base.Columns["department_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9146,11 +9260,23 @@ namespace POSReports {
                 base.Columns.Add(this.columnretamount);
                 this.columnissue_date = new global::System.Data.DataColumn("issue_date", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnissue_date);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
                 this.columnworking_date.MaxLength = 10;
                 this.columnpoid.AllowDBNull = false;
                 this.columnpoid.MaxLength = 20;
                 this.columnproduct_name.MaxLength = 500;
                 this.columnissue_date.MaxLength = 19;
+                this.columncolor_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
+                this.columntype_name.MaxLength = 500;
+                this.columndepartment_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15955,6 +16081,66 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderPeriod.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'PurchaseOrderPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderPeriod.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderPeriod.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'PurchaseOrderPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderPeriod.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderPeriod.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'PurchaseOrderPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderPeriod.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderPeriod.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'PurchaseOrderPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderPeriod.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Isproduct_nameNull() {
                 return this.IsNull(this.tablePurchaseOrderPeriod.product_nameColumn);
             }
@@ -16022,6 +16208,46 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Setworking_dateNull() {
                 this[this.tablePurchaseOrderPeriod.working_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderPeriod.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tablePurchaseOrderPeriod.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderPeriod.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tablePurchaseOrderPeriod.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderPeriod.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tablePurchaseOrderPeriod.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderPeriod.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablePurchaseOrderPeriod.department_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16169,10 +16395,10 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public decimal retamount {
+            public long retamount {
                 get {
                     try {
-                        return ((decimal)(this[this.tablePurchaseOrderDetailReport.retamountColumn]));
+                        return ((long)(this[this.tablePurchaseOrderDetailReport.retamountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'retamount\' in table \'PurchaseOrderDetailReport\' is DBNull.", e);
@@ -16211,6 +16437,22 @@ namespace POSReports {
                 }
                 set {
                     this[this.tablePurchaseOrderDetailReport.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderDetailReport.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'PurchaseOrderDetailReport\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderDetailReport.department_nameColumn] = value;
                 }
             }
             
@@ -16312,6 +16554,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Settype_nameNull() {
                 this[this.tablePurchaseOrderDetailReport.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderDetailReport.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablePurchaseOrderDetailReport.department_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16445,6 +16697,66 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderReport.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'PurchaseOrderReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderReport.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderReport.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'PurchaseOrderReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderReport.size_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderReport.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'PurchaseOrderReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderReport.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePurchaseOrderReport.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'PurchaseOrderReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchaseOrderReport.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Isworking_dateNull() {
                 return this.IsNull(this.tablePurchaseOrderReport.working_dateColumn);
             }
@@ -16512,6 +16824,46 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Setissue_dateNull() {
                 this[this.tablePurchaseOrderReport.issue_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderReport.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tablePurchaseOrderReport.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderReport.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tablePurchaseOrderReport.size_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderReport.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tablePurchaseOrderReport.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tablePurchaseOrderReport.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tablePurchaseOrderReport.department_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -22746,6 +23098,10 @@ order by purchase_order.create_date";
             tableMapping.ColumnMappings.Add("issue_date", "issue_date");
             tableMapping.ColumnMappings.Add("period", "period");
             tableMapping.ColumnMappings.Add("working_date", "working_date");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22970,6 +23326,7 @@ order by purchase_order.create_date";
             tableMapping.ColumnMappings.Add("retqty", "retqty");
             tableMapping.ColumnMappings.Add("issue_date", "issue_date");
             tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -23191,6 +23548,10 @@ order by purchase_order.create_date";
             tableMapping.ColumnMappings.Add("retqty", "retqty");
             tableMapping.ColumnMappings.Add("retamount", "retamount");
             tableMapping.ColumnMappings.Add("issue_date", "issue_date");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

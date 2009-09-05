@@ -636,6 +636,10 @@ order by purchase_order.create_date</CommandText>
               <Mapping SourceColumn="issue_date" DataSetColumn="issue_date" />
               <Mapping SourceColumn="period" DataSetColumn="period" />
               <Mapping SourceColumn="working_date" DataSetColumn="working_date" />
+              <Mapping SourceColumn="color_name" DataSetColumn="color_name" />
+              <Mapping SourceColumn="size_name" DataSetColumn="size_name" />
+              <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+              <Mapping SourceColumn="department_name" DataSetColumn="department_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -666,12 +670,13 @@ order by purchase_order.create_date</CommandText>
               <Mapping SourceColumn="retqty" DataSetColumn="retqty" />
               <Mapping SourceColumn="issue_date" DataSetColumn="issue_date" />
               <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+              <Mapping SourceColumn="department_name" DataSetColumn="department_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PurchaseOrderReportTableAdapter" GeneratorDataComponentClassName="PurchaseOrderReportTableAdapter" Name="PurchaseOrderReport" UserDataComponentName="PurchaseOrderReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`PurchaseOrderReport`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`PurchaseOrderReport`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>`pos`.`PurchaseOrderReport`</CommandText>
@@ -693,6 +698,10 @@ order by purchase_order.create_date</CommandText>
               <Mapping SourceColumn="retqty" DataSetColumn="retqty" />
               <Mapping SourceColumn="retamount" DataSetColumn="retamount" />
               <Mapping SourceColumn="issue_date" DataSetColumn="issue_date" />
+              <Mapping SourceColumn="color_name" DataSetColumn="color_name" />
+              <Mapping SourceColumn="size_name" DataSetColumn="size_name" />
+              <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+              <Mapping SourceColumn="department_name" DataSetColumn="department_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -2045,6 +2054,34 @@ FROM     product_type</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="color_name" msprop:Generator_UserColumnName="color_name" msprop:Generator_ColumnPropNameInRow="color_name" msprop:Generator_ColumnVarNameInTable="columncolor_name" msprop:Generator_ColumnPropNameInTable="color_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="size_name" msprop:Generator_UserColumnName="size_name" msprop:Generator_ColumnPropNameInRow="size_name" msprop:Generator_ColumnVarNameInTable="columnsize_name" msprop:Generator_ColumnPropNameInTable="size_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="type_name" msprop:Generator_UserColumnName="type_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="department_name" msprop:Generator_UserColumnName="department_name" msprop:Generator_ColumnPropNameInRow="department_name" msprop:Generator_ColumnVarNameInTable="columndepartment_name" msprop:Generator_ColumnPropNameInTable="department_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2096,7 +2133,7 @@ FROM     product_type</CommandText>
               <xs:element name="sellqty" msprop:Generator_UserColumnName="sellqty" msprop:Generator_ColumnVarNameInTable="columnsellqty" msprop:Generator_ColumnPropNameInRow="sellqty" msprop:Generator_ColumnPropNameInTable="sellqtyColumn" type="xs:unsignedLong" minOccurs="0" />
               <xs:element name="sellamount" msprop:Generator_UserColumnName="sellamount" msprop:Generator_ColumnVarNameInTable="columnsellamount" msprop:Generator_ColumnPropNameInRow="sellamount" msprop:Generator_ColumnPropNameInTable="sellamountColumn" type="xs:unsignedLong" minOccurs="0" />
               <xs:element name="retqty" msprop:Generator_UserColumnName="retqty" msprop:Generator_ColumnVarNameInTable="columnretqty" msprop:Generator_ColumnPropNameInRow="retqty" msprop:Generator_ColumnPropNameInTable="retqtyColumn" type="xs:long" minOccurs="0" />
-              <xs:element name="retamount" msprop:Generator_UserColumnName="retamount" msprop:Generator_ColumnVarNameInTable="columnretamount" msprop:Generator_ColumnPropNameInRow="retamount" msprop:Generator_ColumnPropNameInTable="retamountColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retamount" msprop:Generator_UserColumnName="retamount" msprop:Generator_ColumnVarNameInTable="columnretamount" msprop:Generator_ColumnPropNameInRow="retamount" msprop:Generator_ColumnPropNameInTable="retamountColumn" type="xs:long" minOccurs="0" />
               <xs:element name="issue_date" msprop:Generator_UserColumnName="issue_date" msprop:Generator_ColumnVarNameInTable="columnissue_date" msprop:Generator_ColumnPropNameInRow="issue_date" msprop:Generator_ColumnPropNameInTable="issue_dateColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -2105,6 +2142,13 @@ FROM     product_type</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="type_name" msprop:Generator_UserColumnName="type_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="department_name" msprop:Generator_UserColumnName="department_name" msprop:Generator_ColumnVarNameInTable="columndepartment_name" msprop:Generator_ColumnPropNameInRow="department_name" msprop:Generator_ColumnPropNameInTable="department_nameColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
@@ -2146,6 +2190,34 @@ FROM     product_type</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="19" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="color_name" msprop:Generator_UserColumnName="color_name" msprop:Generator_ColumnPropNameInRow="color_name" msprop:Generator_ColumnVarNameInTable="columncolor_name" msprop:Generator_ColumnPropNameInTable="color_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="size_name" msprop:Generator_UserColumnName="size_name" msprop:Generator_ColumnPropNameInRow="size_name" msprop:Generator_ColumnVarNameInTable="columnsize_name" msprop:Generator_ColumnPropNameInTable="size_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="type_name" msprop:Generator_UserColumnName="type_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="department_name" msprop:Generator_UserColumnName="department_name" msprop:Generator_ColumnPropNameInRow="department_name" msprop:Generator_ColumnVarNameInTable="columndepartment_name" msprop:Generator_ColumnPropNameInTable="department_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

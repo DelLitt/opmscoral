@@ -234,6 +234,7 @@
     <EmbeddedResource Include="MainStockReturnReportViewer.resx">
       <DependentUpon>MainStockReturnReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NormalDetailPurchaseOrders.rdlc" />
     <EmbeddedResource Include="PurchaseDetailReport.rdlc" />
     <EmbeddedResource Include="PurchaseDetailsReportViewer.resx">
       <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>

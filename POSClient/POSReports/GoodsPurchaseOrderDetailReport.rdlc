@@ -13,9 +13,9 @@
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.5in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <BottomMargin>0.5in</BottomMargin>
   <rd:ReportID>6e311bca-4a2a-4c24-bb4e-62b03e2e9211</rd:ReportID>
   <DataSets>
     <DataSet Name="posDataSet_PurchaseOrderDetailReport">
@@ -196,6 +196,7 @@
         <Height>0.49in</Height>
       </List>
       <Table Name="table1">
+        <NoRows>KHÔNG CÓ BÁO CÁO CHO NGÀY NÀY</NoRows>
         <DataSetName>posDataSet_PurchaseOrderDetailReport</DataSetName>
         <Top>0.875in</Top>
         <TableGroups>
@@ -639,7 +640,7 @@
                         <Textbox Name="textbox91">
                           <rd:DefaultName>textbox91</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -660,7 +661,7 @@
                           </Visibility>
                           <Style>
                             <Color>White</Color>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <FontWeight>600</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -677,7 +678,7 @@
                         <Textbox Name="textbox93">
                           <rd:DefaultName>textbox93</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -693,7 +694,7 @@
                         <Textbox Name="textbox94">
                           <rd:DefaultName>textbox94</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -709,7 +710,7 @@
                         <Textbox Name="textbox95">
                           <rd:DefaultName>textbox95</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -725,7 +726,7 @@
                         <Textbox Name="textbox96">
                           <rd:DefaultName>textbox96</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -741,7 +742,7 @@
                         <Textbox Name="textbox97">
                           <rd:DefaultName>textbox97</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -758,7 +759,7 @@
                           <rd:DefaultName>textbox98</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <FontWeight>600</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -776,7 +777,7 @@
                           <rd:DefaultName>textbox99</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <FontWeight>600</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -794,7 +795,7 @@
                           <rd:DefaultName>textbox100</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <FontWeight>600</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -812,7 +813,7 @@
                           <rd:DefaultName>textbox101</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <FontWeight>600</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -829,7 +830,7 @@
                         <Textbox Name="textbox102">
                           <rd:DefaultName>textbox102</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>Olive</BackgroundColor>
+                            <BackgroundColor>CadetBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2579,6 +2580,26 @@
           </TableRows>
           <Sorting>
             <SortBy>
+              <SortExpression>=Fields!working_date.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!type_name.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!product_name.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!color_name.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
+              <SortExpression>=Fields!size_name.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+            <SortBy>
               <SortExpression>=Fields!issue_date.Value</SortExpression>
               <Direction>Ascending</Direction>
             </SortBy>
@@ -2979,5 +3000,5 @@
     <Height>3.375in</Height>
   </Body>
   <Language>en-US</Language>
-  <TopMargin>1in</TopMargin>
+  <TopMargin>0.5in</TopMargin>
 </Report>

@@ -44,10 +44,12 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.purchaseOrderDetailReportTableAdapter1 = new POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter();
             this.departmentTableAdapter1 = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
+            this.PurchaseOrderDetailReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PurchaseOrderReportBindingSource
@@ -171,12 +173,12 @@
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "posDataSet_PurchaseOrderDetailReport";
-            reportDataSource1.Value = this.PurchaseOrderReportBindingSource;
+            reportDataSource1.Value = this.PurchaseOrderDetailReportBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.GoodsPurchaseOrderDetailReport.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.NormalDetailPurchaseOrders.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(984, 568);
+            this.reportViewer1.Size = new System.Drawing.Size(984, 546);
             this.reportViewer1.TabIndex = 1;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
@@ -188,6 +190,11 @@
             // departmentTableAdapter1
             // 
             this.departmentTableAdapter1.ClearBeforeFill = true;
+            // 
+            // PurchaseOrderDetailReportBindingSource
+            // 
+            this.PurchaseOrderDetailReportBindingSource.DataMember = "PurchaseOrderDetailReport";
+            this.PurchaseOrderDetailReportBindingSource.DataSource = this.posDataSet;
             // 
             // PurchaseDetailsReportViewer
             // 
@@ -206,6 +213,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +235,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private POSReports.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter1;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailReportBindingSource;
     }
 }
