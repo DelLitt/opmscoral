@@ -527,18 +527,21 @@ namespace AppFrame.Logic
                 var detailPK = new StockInDetailPK { ProductId = stockInDetail.Product.ProductId, StockInId = stockInId };
                 stockInDetail.StockInDetailPK = detailPK;
                 StockInDetailDAO.Add(stockInDetail);
-                
-                ObjectCriteria stockCriteria = new ObjectCriteria();
-                stockCriteria.AddEqCriteria("Product.ProductId", stockInDetail.Product.ProductId);
-                IList stockList = StockDAO.FindAll(stockCriteria);
-                // increase good
-                if (stockList != null)
+
+                if (!stockIn.NotUpdateMainStock) // if need update main stock so update
                 {
-                    Stock stock = (Stock)stockList[0];
-                    stock.GoodQuantity += stockInDetail.Quantity;
-                    stock.Quantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity +
-                                     stock.UnconfirmQuantity + stock.LostQuantity;
-                    StockDAO.Update(stock);
+                    ObjectCriteria stockCriteria = new ObjectCriteria();
+                    stockCriteria.AddEqCriteria("Product.ProductId", stockInDetail.Product.ProductId);
+                    IList stockList = StockDAO.FindAll(stockCriteria);
+                    // increase good
+                    if (stockList != null)
+                    {
+                        Stock stock = (Stock) stockList[0];
+                        stock.GoodQuantity += stockInDetail.Quantity;
+                        stock.Quantity = stock.ErrorQuantity + stock.GoodQuantity + stock.DamageQuantity +
+                                         stock.UnconfirmQuantity + stock.LostQuantity;
+                        StockDAO.Update(stock);
+                    }
                 }
             }
 

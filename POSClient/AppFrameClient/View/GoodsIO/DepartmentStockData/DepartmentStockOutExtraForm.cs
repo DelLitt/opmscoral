@@ -162,18 +162,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'masterDB.Department' table. You can move, or remove it, as needed.
+            this.departmentTableAdapter.Fill(this.masterDB.Department);
             IList list = new ArrayList();
-            /*if (ClientSetting.IsSubStock())
+            if (ClientSetting.IsSubStock())
             {
                 list.Add(new StockDefectStatus {DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác"});
             }
             else
-            {*/
+            {
             list.Add(new StockDefectStatus { DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
             list.Add(new StockDefectStatus { DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
             list.Add(new StockDefectStatus { DefectStatusId = 9, DefectStatusName = "Xuất hàng mẫu" });
 
-            /*}*/
+            }
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
@@ -232,6 +234,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
 
 
+            departmentBindingSource.Filter = " DEPARTMENT_ID <> " + CurrentDepartment.Get().DepartmentId;
+            departmentTableAdapter.Fill(masterDB.Department);
+            departmentBindingSource.ResetBindings(false);
+            cboDepartment.Refresh();
+            cboDepartment.Invalidate();
         }
 
 
@@ -390,9 +397,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
             deptSO.StockOutDate = dtpImportDate.Value;
-            deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+            StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+            deptSO.DefectStatus = defectStatus;
             deptSO.DepartmentStockOutDetails = deptSODetailList;
             //            deptSO.Description = txtDexcription.Text;
+            if(defectStatus.DefectStatusId == 7)
+            {
+                deptSO.ConfirmFlg = 1;
+                deptSO.OtherDepartmentId =  Int64.Parse(cboDepartment.SelectedItem.ToString());
+            }
             var eventArgs = new DepartmentStockOutEventArgs();
             eventArgs.DepartmentStockOut = deptSO;
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
@@ -1100,6 +1113,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                 EventUtility.fireAsyncEvent(FindByStockInIdEvent, this, ea, new AsyncCallback(EndEvent));
                 this.Enabled = false;
+            }
+        }
+
+        private void cbbStockOutType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+            if(defectStatus.DefectStatusId!=7)
+            {
+                cboDepartment.Enabled = false;
+            }
+            else
+            {
+                cboDepartment.Enabled = true;
             }
         }
     }

@@ -119,8 +119,20 @@ namespace AppFrameClient.Presenter.Report
         void departmentStockOutReportView_DenyStockOutEvent(object sender, ReportStockOutEventArgs e)
         {
             IList list = e.DenyDepartmentStockOutList;
+            StockOutMapper mapper = new StockOutMapper();
+            StockOutDetailMapper detailMapper = new StockOutDetailMapper();
+            DeptRetProdStockInMapper drpsiMapper = new DeptRetProdStockInMapper();
+            DeptRetProdStockInDetailMapper drpsiDetMapper = new DeptRetProdStockInDetailMapper();
+
             foreach (DepartmentStockOut departmentStockOut in list)
             {
+                // ++ Add code for add an empty stock in : 20090906
+
+                StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
+                stockIn.StockInDate = DateTime.Now;
+                stockIn.StockInType = 3; // stock in for stock out to manufacturers
+                stockIn.StockInDetails = new ArrayList();
+                stockIn.NotUpdateMainStock = true;
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
                     ObjectCriteria criteria = new ObjectCriteria();
@@ -137,7 +149,10 @@ namespace AppFrameClient.Presenter.Report
                         currStock.LostQuantity += detail.LostQuantity;
                         currStock.DamageQuantity += detail.DamageQuantity;
                         currStock.DamageQuantity += detail.DamageQuantity;
-                        StockLogic.Update(currStock); 
+                        StockLogic.Update(currStock);
+
+                        StockInDetail detailStockIn = drpsiDetMapper.Convert(detail);
+                        stockIn.StockInDetails.Add(detailStockIn);
                         
                     }
                     else // error
@@ -148,8 +163,15 @@ namespace AppFrameClient.Presenter.Report
                     }
 
                 }
+
                 departmentStockOut.ConfirmFlg = 2;
                 DepartmentStockOutLogic.Update(departmentStockOut);
+
+                if(stockIn.StockInDetails.Count > 0 )
+                {
+                    StockInLogic.AddForStockOutToProducer(stockIn);
+                }
+                // -- Add code for add an empty stock in : 20090906
             }
             MessageBox.Show(" Lưu thành công !");
             e.HasErrors = false;
@@ -173,13 +195,29 @@ namespace AppFrameClient.Presenter.Report
                 stockIn.StockInDetails = new ArrayList();
                 stockOut.NotUpdateMainStock = true;
                 stockOut.StockOutDate = DateTime.Now;
-                
+                if(departmentStockOut.OtherDepartmentId > 0 )
+                {
+                    stockOut.DefectStatus = new StockDefectStatus
+                                                {
+                                                    DefectStatusId = 0,
+                                                    DefectStatusName = "Xuất hàng bình thường"
+                                                };
+                    
+                }
                 IList detlist = new ArrayList();
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
                 {
                     StockInDetail detailStockIn = drpsiDetMapper.Convert(detail);
                     stockIn.StockInDetails.Add(detailStockIn);
                     StockOutDetail detailStockOut = detailMapper.Convert(detail);
+                    if(departmentStockOut.OtherDepartmentId > 0 )
+                    {
+                    detailStockOut.DefectStatus = new StockDefectStatus
+                                                {
+                                                    DefectStatusId = 0,
+                                                    DefectStatusName = "Xuất hàng bình thường"
+                                                };
+                    }
                     detlist.Add(detailStockOut);                                           
                 }
                 stockOut.StockOutDetails = detlist;

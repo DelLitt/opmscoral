@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
             this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +107,8 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.department_stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.department_stock_inTableAdapter();
+            this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
@@ -116,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentstockinBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bdsStockIn
@@ -273,8 +276,8 @@
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
             this.dgvDeptStockIn.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -319,8 +322,8 @@
             // columnProductId
             // 
             this.columnProductId.DataPropertyName = "Product.ProductId";
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle51;
             this.columnProductId.HeaderText = "Mã vạch";
             this.columnProductId.Name = "columnProductId";
             this.columnProductId.ReadOnly = true;
@@ -338,8 +341,8 @@
             // columnProductName
             // 
             this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle52.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle52;
             this.columnProductName.HeaderText = "Tên sản phẩm";
             this.columnProductName.Name = "columnProductName";
             this.columnProductName.ReadOnly = true;
@@ -350,8 +353,8 @@
             // columnColor
             // 
             this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Silver;
-            this.columnColor.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.Silver;
+            this.columnColor.DefaultCellStyle = dataGridViewCellStyle53;
             this.columnColor.HeaderText = "Màu sắc";
             this.columnColor.Name = "columnColor";
             this.columnColor.ReadOnly = true;
@@ -362,8 +365,8 @@
             // columnSize
             // 
             this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Silver;
-            this.columnSize.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.Silver;
+            this.columnSize.DefaultCellStyle = dataGridViewCellStyle54;
             this.columnSize.HeaderText = "K.cỡ";
             this.columnSize.Name = "columnSize";
             this.columnSize.ReadOnly = true;
@@ -374,8 +377,8 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Silver;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle55.ForeColor = System.Drawing.Color.Silver;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle55;
             this.quantity.HeaderText = "Tồn";
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
@@ -413,8 +416,8 @@
             // Unconfirm
             // 
             this.Unconfirm.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Silver;
-            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.Silver;
+            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle56;
             this.Unconfirm.HeaderText = "KXD";
             this.Unconfirm.Name = "Unconfirm";
             this.Unconfirm.Width = 60;
@@ -589,6 +592,7 @@
             this.cbbStockOutType.Name = "cbbStockOutType";
             this.cbbStockOutType.Size = new System.Drawing.Size(204, 24);
             this.cbbStockOutType.TabIndex = 6;
+            this.cbbStockOutType.SelectedIndexChanged += new System.EventHandler(this.cbbStockOutType_SelectedIndexChanged);
             // 
             // btnReset
             // 
@@ -602,23 +606,27 @@
             // 
             // cboDepartment
             // 
+            this.cboDepartment.DataSource = this.departmentBindingSource;
+            this.cboDepartment.DisplayMember = "DEPARTMENT_NAME";
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartment.Enabled = false;
             this.cboDepartment.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(354, 169);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(313, 26);
             this.cboDepartment.TabIndex = 116;
-            this.cboDepartment.Visible = false;
+            this.cboDepartment.ValueMember = "DEPARTMENT_ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(295, 172);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 14);
             this.label2.TabIndex = 117;
             this.label2.Text = "Nơi đến:";
-            this.label2.Visible = false;
             // 
             // systemHotkey1
             // 
@@ -662,7 +670,7 @@
             this.panelStockIns.Controls.Add(this.dtpFrom);
             this.panelStockIns.Location = new System.Drawing.Point(7, 201);
             this.panelStockIns.Name = "panelStockIns";
-            this.panelStockIns.Size = new System.Drawing.Size(811, 355);
+            this.panelStockIns.Size = new System.Drawing.Size(811, 349);
             this.panelStockIns.TabIndex = 128;
             this.panelStockIns.Visible = false;
             // 
@@ -731,6 +739,7 @@
             // 
             this.departmentstockinBindingSource.DataMember = "department_stock_in";
             this.departmentstockinBindingSource.DataSource = this.masterDB;
+            this.departmentstockinBindingSource.Filter = "";
             // 
             // masterDB
             // 
@@ -786,6 +795,15 @@
             // department_stock_inTableAdapter
             // 
             this.department_stock_inTableAdapter.ClearBeforeFill = true;
+            // 
+            // departmentBindingSource
+            // 
+            this.departmentBindingSource.DataMember = "Department";
+            this.departmentBindingSource.DataSource = this.masterDB;
+            // 
+            // departmentTableAdapter
+            // 
+            this.departmentTableAdapter.ClearBeforeFill = true;
             // 
             // DepartmentStockOutExtraForm
             // 
@@ -864,6 +882,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentstockinBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -942,5 +961,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stockInIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockInDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource departmentBindingSource;
+        private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
     }
 }
