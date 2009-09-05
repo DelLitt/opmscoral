@@ -13,6 +13,7 @@ namespace AppFrame.View.GoodsIO.MainStock
         #region main controller and event
         IMainStockInSearchController MainStockInSearchController { set; }
         event EventHandler<MainStockInSearchEventArgs> SearchStockInEvent;
+        event EventHandler<MainStockInSearchEventArgs> SearchSingleStockInEvent;
         #endregion
     }
 }
