@@ -1,6 +1,6 @@
 ﻿namespace POSReports
 {
-    partial class PurchaseOrderReportViewer
+    partial class DailyMatrixPurchaseOrderReportViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -190,7 +190,7 @@
             reportDataSource1.Name = "posDataSet_PurchaseOrderReport";
             reportDataSource1.Value = this.PurchaseOrderReportBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.NormalPurchaseOrders.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DailyPurchaseOrders.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 68);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(984, 552);
@@ -201,14 +201,14 @@
             // 
             this.purchaseOrderReportTableAdapter1.ClearBeforeFill = true;
             // 
-            // PurchaseOrderReportViewer
+            // DailyMatrixPurchaseOrderReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 642);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "PurchaseOrderReportViewer";
+            this.Name = "DailyMatrixPurchaseOrderReportViewer";
             this.Text = "BÁO CÁO BÁN HÀNG";
             this.Load += new System.EventHandler(this.PurchaseOrrderReportViewer_Load);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);

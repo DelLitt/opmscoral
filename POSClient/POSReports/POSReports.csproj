@@ -110,6 +110,12 @@
     <Compile Include="AllStockReportViewer.Designer.cs">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DailyMatrixPurchaseOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DailyMatrixPurchaseOrderReportViewer.Designer.cs">
+      <DependentUpon>DailyMatrixPurchaseOrderReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MatrixPurchaseOrderReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,11 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DailyMatrixPurchaseOrderReportViewer.resx">
+      <DependentUpon>DailyMatrixPurchaseOrderReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyPurchaseOrders.rdlc" />
     <EmbeddedResource Include="MatrixPurchaseOrderReportViewer.resx">
       <DependentUpon>MatrixPurchaseOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
