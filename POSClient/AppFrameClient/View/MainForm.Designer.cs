@@ -96,6 +96,7 @@
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPhieuXuatKho = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTemporaryStockOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCreateExportTemplate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainReStockIn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSaleStatisticReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -195,7 +196,7 @@
             this.f10ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f11ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateExportTemplate = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAllPurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -726,6 +727,13 @@
             this.mnuTemporaryStockOut.Text = "Phân phối hàng trong kho";
             this.mnuTemporaryStockOut.Click += new System.EventHandler(this.mnuTemporaryStockOut_Click);
             // 
+            // mnuCreateExportTemplate
+            // 
+            this.mnuCreateExportTemplate.Name = "mnuCreateExportTemplate";
+            this.mnuCreateExportTemplate.Size = new System.Drawing.Size(237, 22);
+            this.mnuCreateExportTemplate.Text = "Tạo template xuất hàng";
+            this.mnuCreateExportTemplate.Click += new System.EventHandler(this.mnuCreateExportTemplate_Click);
+            // 
             // mnuMainReStockIn
             // 
             this.mnuMainReStockIn.Name = "mnuMainReStockIn";
@@ -740,6 +748,7 @@
             this.mnuGoodsSaleDepartmentReport,
             this.mnuGoodsSaleDepartmentDetail,
             this.mnuMainReturnPOReport,
+            this.mnuAllPurchaseOrders,
             this.mnuTotalReport,
             this.toolStripMenuItem17,
             this.mnuGoodsImportReport,
@@ -1552,12 +1561,12 @@
             this.f12ShortcutToolStripMenuItem.Text = "F12Shortcut";
             this.f12ShortcutToolStripMenuItem.Click += new System.EventHandler(this.f12ShortcutToolStripMenuItem_Click);
             // 
-            // mnuCreateExportTemplate
+            // mnuAllPurchaseOrders
             // 
-            this.mnuCreateExportTemplate.Name = "mnuCreateExportTemplate";
-            this.mnuCreateExportTemplate.Size = new System.Drawing.Size(237, 22);
-            this.mnuCreateExportTemplate.Text = "Tạo template xuất hàng";
-            this.mnuCreateExportTemplate.Click += new System.EventHandler(this.mnuCreateExportTemplate_Click);
+            this.mnuAllPurchaseOrders.Name = "mnuAllPurchaseOrders";
+            this.mnuAllPurchaseOrders.Size = new System.Drawing.Size(275, 22);
+            this.mnuAllPurchaseOrders.Text = "Báo cáo tình trạng bán hàng";
+            this.mnuAllPurchaseOrders.Click += new System.EventHandler(this.mnuAllPurchaseOrders_Click);
             // 
             // MainForm
             // 
@@ -1759,6 +1768,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuApproveStockOut;
         private System.Windows.Forms.ToolStripMenuItem mnuExportByFile;
         private System.Windows.Forms.ToolStripMenuItem mnuCreateExportTemplate;
+        private System.Windows.Forms.ToolStripMenuItem mnuAllPurchaseOrders;
 
     }
 }

@@ -1256,6 +1256,11 @@ namespace AppFrame.View
                                                                                                                    CREATE_STOCK_OUT_TEMPLATE_FORM);
             form.Show();
         }
+
+        private void mnuAllPurchaseOrders_Click(object sender, EventArgs e)
+        {
+            new MatrixPurchaseOrderReportViewer().Show();
+        }
         
     }
 }
