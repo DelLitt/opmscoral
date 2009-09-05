@@ -1259,7 +1259,7 @@ namespace AppFrame.View
 
         private void mnuAllPurchaseOrders_Click(object sender, EventArgs e)
         {
-            new MatrixPurchaseOrderReportViewer().Show();
+            new DailyMatrixPurchaseOrderReportViewer().Show();
         }
         
     }
