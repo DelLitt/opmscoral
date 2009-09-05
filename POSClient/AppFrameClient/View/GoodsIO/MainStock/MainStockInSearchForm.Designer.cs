@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chkImportDateTo = new System.Windows.Forms.CheckBox();
             this.chkImportDateFrom = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -38,10 +40,18 @@
             this.txtBlockInDetailId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
+            this.stockInIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockInDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockinBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDB = new AppFrameClient.MasterDB();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockinBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
             this.SuspendLayout();
             // 
             // chkImportDateTo
@@ -132,14 +142,58 @@
             // 
             this.dgvProduct.AllowUserToAddRows = false;
             this.dgvProduct.AllowUserToDeleteRows = false;
+            this.dgvProduct.AutoGenerateColumns = false;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.stockInIdDataGridViewTextBoxColumn,
+            this.stockInDateDataGridViewTextBoxColumn,
+            this.totalQuantityDataGridViewTextBoxColumn});
+            this.dgvProduct.DataSource = this.stockinBindingSource;
             this.dgvProduct.Location = new System.Drawing.Point(13, 132);
+            this.dgvProduct.MultiSelect = false;
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
             this.dgvProduct.Size = new System.Drawing.Size(800, 270);
             this.dgvProduct.TabIndex = 23;
             this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
             this.dgvProduct.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellContentDoubleClick);
+            // 
+            // stockInIdDataGridViewTextBoxColumn
+            // 
+            this.stockInIdDataGridViewTextBoxColumn.DataPropertyName = "StockInId";
+            this.stockInIdDataGridViewTextBoxColumn.HeaderText = "Mã lô hàng";
+            this.stockInIdDataGridViewTextBoxColumn.Name = "stockInIdDataGridViewTextBoxColumn";
+            this.stockInIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stockInIdDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // stockInDateDataGridViewTextBoxColumn
+            // 
+            this.stockInDateDataGridViewTextBoxColumn.DataPropertyName = "StockInDate";
+            this.stockInDateDataGridViewTextBoxColumn.HeaderText = "Ngày nhập";
+            this.stockInDateDataGridViewTextBoxColumn.Name = "stockInDateDataGridViewTextBoxColumn";
+            this.stockInDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.stockInDateDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // totalQuantityDataGridViewTextBoxColumn
+            // 
+            this.totalQuantityDataGridViewTextBoxColumn.DataPropertyName = "TotalQuantity";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.totalQuantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.totalQuantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
+            this.totalQuantityDataGridViewTextBoxColumn.Name = "totalQuantityDataGridViewTextBoxColumn";
+            this.totalQuantityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.totalQuantityDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // stockinBindingSource
+            // 
+            this.stockinBindingSource.DataMember = "stock_in";
+            this.stockinBindingSource.DataSource = this.masterDB;
+            // 
+            // masterDB
+            // 
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnClose
             // 
@@ -170,6 +224,10 @@
             this.label7.Size = new System.Drawing.Size(193, 19);
             this.label7.TabIndex = 43;
             this.label7.Text = "TÌM KIẾM NHẬP HÀNG";
+            // 
+            // stock_inTableAdapter
+            // 
+            this.stock_inTableAdapter.ClearBeforeFill = true;
             // 
             // MainStockInSearchForm
             // 
@@ -207,6 +265,8 @@
             this.Controls.SetChildIndex(this.btnSelect, 0);
             this.Controls.SetChildIndex(this.label7, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockinBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +287,11 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockInIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockInDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource stockinBindingSource;
+        private MasterDB masterDB;
+        private AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter stock_inTableAdapter;
     }
 }

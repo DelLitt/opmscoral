@@ -25,7 +25,13 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             {
                 _stockInSearchView = value;
                 _stockInSearchView.SearchStockInEvent += new System.EventHandler<MainStockInSearchEventArgs>(departmentStockInSearchView_SearchMainStockInEvent);
+                _stockInSearchView.SearchSingleStockInEvent += new EventHandler<MainStockInSearchEventArgs>(_stockInSearchView_SearchSingleStockInEvent);
             }
+        }
+
+        void _stockInSearchView_SearchSingleStockInEvent(object sender, MainStockInSearchEventArgs e)
+        {
+            e.StockIn = StockInLogic.FindById(e.StockInId);
         }
 
         public void departmentStockInSearchView_SearchMainStockInEvent(object sender, MainStockInSearchEventArgs e)

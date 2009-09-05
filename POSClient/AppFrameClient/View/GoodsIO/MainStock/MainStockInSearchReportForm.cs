@@ -54,6 +54,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         }
 
         public event EventHandler<MainStockInSearchEventArgs> SearchStockInEvent;
+        public event EventHandler<MainStockInSearchEventArgs> SearchSingleStockInEvent;
         public event EventHandler<DepartmentStockInSearchEventArgs> SearchDepartmentStockInEvent;
         #endregion
 

@@ -59,6 +59,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         }
 
         public event EventHandler<MainStockInSearchEventArgs> SearchStockInEvent;
+        public event EventHandler<MainStockInSearchEventArgs> SearchSingleStockInEvent;
         public event EventHandler<DepartmentStockInSearchEventArgs> SearchDepartmentStockInEvent;
         #endregion
 
@@ -83,7 +84,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var eventArgs = new MainStockInSearchEventArgs
+            /*var eventArgs = new MainStockInSearchEventArgs
                                 {
                                     StockInId = txtBlockInDetailId.Text,
                                     StockInDateFrom = chkImportDateFrom.Checked ? DateUtility.ZeroTime(dtpImportDateFrom.Value) : DateUtility.ZeroTime(DateTime.Now.Subtract(new TimeSpan(3,0,0))),
@@ -91,10 +92,25 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                                 };
             EventUtility.fireAsyncEvent(SearchStockInEvent, this, eventArgs,new AsyncCallback(EndEvent));
             Enabled = false;
-            CurrentEventArgs = eventArgs;
+            CurrentEventArgs = eventArgs;*/
             /*StockInList = eventArgs.StockInList;
             if(StockInList!= null)
                 PopulateDataGrid();*/
+            DateTime StockInDateFrom = chkImportDateFrom.Checked
+                                  ? DateUtility.ZeroTime(dtpImportDateFrom.Value)
+                                  : DateUtility.ZeroTime(DateTime.Now.Subtract(new TimeSpan(3, 0, 0)));
+            DateTime StockInDateTo = chkImportDateTo.Checked
+                                ? DateUtility.MaxTime(dtpImportDateTo.Value)
+                                : DateUtility.MaxTime(DateTime.Now);
+            stock_inTableAdapter.Fill(masterDB.stock_in, StockInDateFrom, StockInDateTo);
+            if(stockinBindingSource.Count == 0 )
+            {
+                MessageBox.Show("Không tìm thấy lô hàng nhập nào cả !");
+                return;
+            }
+            stockinBindingSource.ResetBindings(false);
+            dgvProduct.Refresh();
+            dgvProduct.Invalidate();
         }
 
         private void PopulateDataGrid()
@@ -149,26 +165,33 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             {
                 string stockInId = dgvProduct[STOCK_IN_ID_POS, rowIndex].Value.ToString();
                 StockIn selected = null;
-                foreach (StockIn stockIn in StockInList)
+                btnSelect.Enabled = false;
+                var eventArgs = new MainStockInSearchEventArgs
                 {
-                    if (stockInId.Equals(stockIn.StockInId))
-                    {
-                        selected = stockIn;
-                        break;
-                    }
-                }
+                    StockInId = stockInId
+                };
+                EventUtility.fireEvent(SearchSingleStockInEvent, this, eventArgs);
+                selected = eventArgs.StockIn;
+
                 if (selected != null)
                 {
                     var departmentStockIn = GlobalUtility.GetFormObject<MainStockInForm>(FormConstants.MAIN_STOCK_IN_FORM);
                     departmentStockIn.deptSI = selected;
                     departmentStockIn.ShowDialog();
-                    if (CurrentEventArgs != null)
-                    {
-                        EventUtility.fireEvent(SearchStockInEvent, this, CurrentEventArgs);
-                        StockInList = CurrentEventArgs.StockInList;
-                        PopulateDataGrid();
-                    }
+
+                    // refresh list
+                    DateTime StockInDateFrom = chkImportDateFrom.Checked
+                                  ? DateUtility.ZeroTime(dtpImportDateFrom.Value)
+                                  : DateUtility.ZeroTime(DateTime.Now.Subtract(new TimeSpan(3, 0, 0)));
+                    DateTime StockInDateTo = chkImportDateTo.Checked
+                                        ? DateUtility.MaxTime(dtpImportDateTo.Value)
+                                        : DateUtility.MaxTime(DateTime.Now);
+                    stock_inTableAdapter.Fill(masterDB.stock_in, StockInDateFrom, StockInDateTo);
+                    stockinBindingSource.ResetBindings(false);
+                    dgvProduct.Refresh();
+                    dgvProduct.Invalidate();
                 }
+                btnSelect.Enabled = true;
             }
         }
 
