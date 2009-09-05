@@ -1,6 +1,6 @@
 ﻿namespace POSReports
 {
-    partial class PurchaseOrderReportViewer
+    partial class MatrixPurchaseOrderReportViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -45,10 +45,12 @@
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.purchaseOrderReportTableAdapter1 = new POSReports.posDataSetTableAdapters.PurchaseOrderReportTableAdapter();
+            this.AllDepartmentPurchaseOrderReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AllDepartmentPurchaseOrderReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PurchaseOrderReportBindingSource
@@ -186,19 +188,24 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_PurchaseOrderReport";
-            reportDataSource1.Value = this.PurchaseOrderReportBindingSource;
+            reportDataSource1.Name = "posDataSet_AllDepartmentPurchaseOrderReport";
+            reportDataSource1.Value = this.AllDepartmentPurchaseOrderReportBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.NormalPurchaseOrders.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.MatrixPurchaseOrders.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 68);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(984, 574);
+            this.reportViewer1.Size = new System.Drawing.Size(984, 552);
             this.reportViewer1.TabIndex = 7;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
             // purchaseOrderReportTableAdapter1
             // 
             this.purchaseOrderReportTableAdapter1.ClearBeforeFill = true;
+            // 
+            // AllDepartmentPurchaseOrderReportBindingSource
+            // 
+            this.AllDepartmentPurchaseOrderReportBindingSource.DataMember = "AllDepartmentPurchaseOrderReport";
+            this.AllDepartmentPurchaseOrderReportBindingSource.DataSource = this.posDataSet;
             // 
             // PurchaseOrderReportViewer
             // 
@@ -217,6 +224,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AllDepartmentPurchaseOrderReportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,5 +247,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource PurchaseOrderReportBindingSource;
         private POSReports.posDataSetTableAdapters.PurchaseOrderReportTableAdapter purchaseOrderReportTableAdapter1;
+        private System.Windows.Forms.BindingSource AllDepartmentPurchaseOrderReportBindingSource;
     }
 }

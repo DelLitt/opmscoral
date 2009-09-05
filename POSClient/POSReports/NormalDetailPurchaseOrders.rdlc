@@ -120,6 +120,22 @@
         </Sorting>
         <DataSetName>posDataSet_PurchaseOrderDetailReport</DataSetName>
         <ReportItems>
+          <Textbox Name="textbox2">
+            <Top>0.25in</Top>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>12pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.24in</Height>
+            <Value>=CDate(Fields!working_date.Value).ToString("dd/MM/yyyy")</Value>
+          </Textbox>
           <Textbox Name="working_date">
             <rd:DefaultName>working_date</rd:DefaultName>
             <Style>
@@ -134,11 +150,11 @@
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.24in</Height>
-            <Value>=Fields!working_date.Value</Value>
+            <Value>=" Cửa hàng: " &amp; Fields!department_name.Value</Value>
           </Textbox>
           <Table Name="table1">
             <DataSetName>posDataSet_PurchaseOrderDetailReport</DataSetName>
-            <Top>0.5in</Top>
+            <Top>1in</Top>
             <TableGroups>
               <TableGroup>
                 <Grouping Name="table1_type_name">
@@ -2192,7 +2208,7 @@
         </Grouping>
       </List>
     </ReportItems>
-    <Height>2.5in</Height>
+    <Height>3in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>
