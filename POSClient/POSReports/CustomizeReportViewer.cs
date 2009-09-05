@@ -48,6 +48,8 @@ namespace POSReports
             ReportType = cboReportType.SelectedIndex + 1;
             SortOrder = cboSortOrder.SelectedIndex;
             limit = Int32.Parse(txtTotalRecord.Text);
+            backgroundWorker.RunWorkerAsync();
+            StartShowProcessing();
             //deptId = Int32.Parse(((Department)comboBox1.SelectedItem).DepartmentId.ToString());
             //isolatedBy = cboIsolatedBy.SelectedIndex;
 

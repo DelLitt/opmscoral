@@ -979,9 +979,10 @@
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Top>0.25in</Top>
-        <Width>3.625in</Width>
+        <Width>8.75in</Width>
         <Style>
-          <FontSize>14pt</FontSize>
+          <FontSize>18pt</FontSize>
+          <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -989,8 +990,8 @@
         </Style>
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>2.375in</Left>
-        <Height>0.25in</Height>
+        <Left>0.25in</Left>
+        <Height>0.5in</Height>
         <Value>= "BÁO CÁO"	&amp; Switch(Parameters!ReportType.Value = 1,  " DOANH SỐ BÁN HÀNG ",Parameters!ReportType.Value = 2, " TÌNH HÌNH NHẬP HÀNG ", Parameters!ReportType.Value = 3, " TÌNH HÌNH HÀNG TRẢ KHO ", Parameters!ReportType.Value = 4, " TÌNH HÌNH HÀNG KHÁCH TRẢ ", Parameters!ReportType.Value = 5, " LƯỢNG HÀNG TỒN KHO ")</Value>
       </Textbox>
       <Chart Name="chart1">
