@@ -103,6 +103,7 @@
             this.mnuGoodsSaleDepartmentReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSaleDepartmentDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainReturnPOReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAllPurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTotalReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuGoodsImportReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -196,7 +197,7 @@
             this.f10ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f11ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAllPurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -800,6 +801,13 @@
             this.mnuMainReturnPOReport.Size = new System.Drawing.Size(275, 22);
             this.mnuMainReturnPOReport.Text = "Báo cáo hàng đổi trả tại cửa hàng";
             this.mnuMainReturnPOReport.Click += new System.EventHandler(this.mnuMainReturnPOReport_Click);
+            // 
+            // mnuAllPurchaseOrders
+            // 
+            this.mnuAllPurchaseOrders.Name = "mnuAllPurchaseOrders";
+            this.mnuAllPurchaseOrders.Size = new System.Drawing.Size(275, 22);
+            this.mnuAllPurchaseOrders.Text = "Báo cáo tình trạng bán hàng";
+            this.mnuAllPurchaseOrders.Click += new System.EventHandler(this.mnuAllPurchaseOrders_Click);
             // 
             // mnuTotalReport
             // 
@@ -1561,12 +1569,10 @@
             this.f12ShortcutToolStripMenuItem.Text = "F12Shortcut";
             this.f12ShortcutToolStripMenuItem.Click += new System.EventHandler(this.f12ShortcutToolStripMenuItem_Click);
             // 
-            // mnuAllPurchaseOrders
+            // systemHotkey1
             // 
-            this.mnuAllPurchaseOrders.Name = "mnuAllPurchaseOrders";
-            this.mnuAllPurchaseOrders.Size = new System.Drawing.Size(275, 22);
-            this.mnuAllPurchaseOrders.Text = "Báo cáo tình trạng bán hàng";
-            this.mnuAllPurchaseOrders.Click += new System.EventHandler(this.mnuAllPurchaseOrders_Click);
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.ShiftF1;
+            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
             // MainForm
             // 
@@ -1769,6 +1775,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuExportByFile;
         private System.Windows.Forms.ToolStripMenuItem mnuCreateExportTemplate;
         private System.Windows.Forms.ToolStripMenuItem mnuAllPurchaseOrders;
+        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
 
     }
 }

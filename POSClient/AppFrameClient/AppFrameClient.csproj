@@ -82,6 +82,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip, Version=1.8.4.22, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Dino Chiesa\DotNetZip Runtime v1.8\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Partial, Version=1.8.4.22, Culture=neutral, PublicKeyToken=c551e179877da246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Dino Chiesa\DotNetZip Runtime v1.8\Ionic.Zip.Partial.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zlib, Version=1.8.4.22, Culture=neutral, PublicKeyToken=c551e179877da246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Dino Chiesa\DotNetZip Runtime v1.8\Ionic.Zlib.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\log4net.dll</HintPath>
@@ -338,6 +350,7 @@
     <Compile Include="Services\SubStockConsumer.cs" />
     <Compile Include="Services\ThreadedServiceHost.cs" />
     <Compile Include="Utility\ClientUtility.cs" />
+    <Compile Include="Utility\DatabaseUtils.cs" />
     <Compile Include="Utility\Mapper\DepartmentStockOutViewDetailMapper.cs" />
     <Compile Include="Utility\Mapper\DepartmentStockOutViewMapper.cs" />
     <Compile Include="Utility\Mapper\FastDepartmentStockOutMapper.cs" />

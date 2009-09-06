@@ -1261,6 +1261,11 @@ namespace AppFrame.View
         {
             new DailyMatrixPurchaseOrderReportViewer().Show();
         }
+
+        private void systemHotkey1_Pressed(object sender, EventArgs e)
+        {
+            DatabaseUtils.BackupDatabase(true,true);
+        }
         
     }
 }
