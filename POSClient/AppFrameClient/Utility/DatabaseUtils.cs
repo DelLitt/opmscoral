@@ -7,7 +7,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AppFrameClient.Common;
+using Ionic.Zip;
+using Ionic.Zlib;
 using MySql.Data.MySqlClient;
+
 
 namespace AppFrameClient.Utility
 {
@@ -30,19 +33,44 @@ namespace AppFrameClient.Utility
             string backupPath = list[0].ToString() + AppFrameClient.Properties.Settings.Default.StatBackupPath;
             backupPath = backupPath.Replace('\\', ('/'));
 
-            string timeTicks = DateTime.Now.ToString("yyyyHHmmss");
+            string timeTicks = DateTime.Now.ToString("yyyyMMddHHmmss");
             //backup purchase_order
             string sqlSelect = "\" SELECT * INTO OUTFILE '";
-            string backupFilename = string.Format("purchase_order_{0}.txt", timeTicks);
-            string backupSql = sqlSelect + backupPath + "/" + backupFilename + "' " +
-            "FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order; \"";
+            string backupFilename1 = string.Format("purchase_order_{0}.txt", timeTicks);
+            string backupSql = sqlSelect + backupPath + "/" + backupFilename1 + "' " +
+            " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order; \"";
             ExecuteMySQLCmdLine(backupSql, db, user, pass);
 
             //backup purchase_order_detail
-            sqlSelect = "\" SELECT * FROM purchase_order_detail INTO OUTFILE '";
-            backupFilename = string.Format("purchase_order_detail{0}.txt", timeTicks);
-            backupSql = sqlSelect + backupPath + "/" + backupFilename + "' \"";
+            sqlSelect = "\" SELECT *  INTO OUTFILE '";
+            string backupFilename2 = string.Format("purchase_order_detail{0}.txt", timeTicks);
+            backupSql = sqlSelect + backupPath + "/" + backupFilename2 + "'  " +
+            " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order_detail; \"";
             ExecuteMySQLCmdLine(backupSql, db, user, pass);
+            
+            try
+            {
+                backupFilename1 = backupPath + "/" + backupFilename1;
+                backupFilename2 = backupPath + "/" + backupFilename2;
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.Password = "admin123";
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    // add this map file into the "images" directory in the zip archive
+                    zip.AddFile(backupFilename1,"");
+                    // add the report into a different directory in the archive
+                    zip.AddFile(backupFilename2,"");
+                    
+                    string zipFileName = string.Format("purchase_order_{0}.zip", timeTicks);
+                    zip.Save(backupPath + "/" + zipFileName);
+                }
+                File.Delete(backupFilename1);
+                File.Delete(backupFilename2);
+            }
+            catch (System.Exception ex1)
+            {
+                Console.WriteLine(ex1.Message);
+            }
 
         }
 
