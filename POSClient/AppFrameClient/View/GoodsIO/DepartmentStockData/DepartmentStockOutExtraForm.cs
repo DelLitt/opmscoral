@@ -168,14 +168,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if (ClientSetting.IsSubStock())
             {
                 list.Add(new StockDefectStatus {DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác"});
+                cboDepartment.Visible = true;
+                label2.Visible = true;
             }
-            else
-            {
+            /*else
+            {*/
             list.Add(new StockDefectStatus { DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
             list.Add(new StockDefectStatus { DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
             list.Add(new StockDefectStatus { DefectStatusId = 9, DefectStatusName = "Xuất hàng mẫu" });
 
-            }
+            /*}*/
 
             cbbStockOutType.DataSource = list;
             cbbStockOutType.DisplayMember = "DefectStatusName";
@@ -263,6 +265,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 mainStockInController.DepartmentStockOutView = this;
             }
         }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -293,6 +296,78 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 _mainStockOutController = value;
                 _mainStockOutController.DepartmentStockOutView = this;
+                _mainStockOutController.CompletedFindByStockInEvent += new EventHandler<DepartmentStockOutEventArgs>(_mainStockOutController_CompletedFindByStockInEvent);
+            }
+        }
+
+        void _mainStockOutController_CompletedFindByStockInEvent(object sender, DepartmentStockOutEventArgs e)
+        {
+            this.Enabled = true;
+            panelStockIns.Visible = false;
+            if (e.FoundDepartmentStockOutDetailList != null && e.FoundDepartmentStockOutDetailList.Count > 0)
+            {
+                foreach (DepartmentStockOutDetail detail in e.FoundDepartmentStockOutDetailList)
+                {
+                    bool found = false;
+                    foreach (DepartmentStockOutDetail detail1 in deptSODetailList)
+                    {
+                        if (detail.Product.ProductId.Equals(detail1.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        //                        MessageBox.Show("Mã vạch đã được nhập");
+                        //                        return;
+                        continue;
+                    }
+
+                    // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
+                    // DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
+                    // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác" });
+                    StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+
+                    if (defectStatus.DefectStatusId == 4)
+                    {
+                        // if xuattam, so we check error quantity and good quantity ( for shoes )
+                        if (detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (defectStatus.DefectStatusId == 7)
+                    {
+                        // if xuatdicuahangkhac, so we check good quantity
+                        if (detail.GoodQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    detail.DefectStatus = defectStatus;
+                    deptSODetailList.Add(detail);
+                    deptSODetailList.EndNew(deptSODetailList.Count - 1);
+                    LockField(deptSODetailList.Count - 1, detail);
+                }
+                foreach (DepartmentStock def in e.DepartmentStockList)
+                {
+                    bool found = false;
+                    foreach (DepartmentStock detail in departmentStockList)
+                    {
+                        if (def.Product.ProductId.Equals(detail.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        departmentStockList.Add(def);
+                    }
+                }
+                CalculateTotalStorePrice();
             }
         }
         public event EventHandler<DepartmentStockOutEventArgs> FindBarcodeEvent;
@@ -1126,6 +1201,56 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 cboDepartment.Enabled = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelStockIns.Visible = true;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            panelStockIns.Visible = false;
+        }
+
+        private void btnFix_Click(object sender, EventArgs e)
+        {
+            foreach (DepartmentStockOutDetail inDetail in deptSODetailList)
+            {
+                if (inDetail.Quantity < inDetail.GoodQuantity)
+                {
+                    inDetail.GoodQuantity = inDetail.Quantity;
+                }
+            }
+            bdsStockIn.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            //MessageBox.Show("Sửa thành công !");
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                RemoveZeroLines();
+                CalculateTotalStorePrice();
+                //MessageBox.Show("Hoàn tất bỏ những dòng bằng không");
+                checkBox1.Checked = false;
+            }
+        }
+
+        private void RemoveZeroLines()
+        {
+            int index = deptSODetailList.Count - 1;
+            while (index >= 0)
+            {
+                DepartmentStockOutDetail detail = deptSODetailList[index];
+                if (detail.Quantity == 0)
+                {
+                    deptSODetailList.RemoveAt(index);
+                }
+                index -= 1;
             }
         }
     }

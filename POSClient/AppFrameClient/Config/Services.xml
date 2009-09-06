@@ -159,6 +159,8 @@
     <property name="DepartmentStockDAO" ref="AppFrame.DataLayer.IDepartmentStockDAO"/>
     <property name="DepartmentStockTempDAO" ref="AppFrame.DataLayer.IDepartmentStockTempDAO"/>
     <property name="StockDAO" ref="AppFrame.DataLayer.IStockDAO"/>
+    <property name="StockInDAO" ref="AppFrame.DataLayer.IStockInDAO"/>
+    <property name="StockInDetailDAO" ref="AppFrame.DataLayer.IStockInDetailDAO"/>
     <property name="DepartmentStockOutDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockOutDetailDAO"/>
     <property name="DepartmentStockInDetailDAO" ref="AppFrame.DataLayer.IDepartmentStockInDetailDAO"/>
     <property name="PurchaseOrderDAO" ref="AppFrame.DataLayer.IPurchaseOrderDAO"/>
