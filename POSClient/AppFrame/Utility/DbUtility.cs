@@ -39,5 +39,7 @@ namespace AppFrame.Utility
 
             return SessionFactoryUtils.GetSession(template.SessionFactory, true); ;
         }
+
+        
     }
 }
