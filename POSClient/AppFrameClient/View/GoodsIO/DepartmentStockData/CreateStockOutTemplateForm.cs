@@ -803,13 +803,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             string fileName = null;
 
-            DialogResult result = saveTemplateFolderDialog.ShowDialog();
+            /*DialogResult result = saveTemplateFolderDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 fileName = saveTemplateFolderDialog.SelectedPath + "\\" + "XuatHang_" + DateTime.Now.ToString("yyyyMMddHHmmss")+ ".xls";
                 //File.Copy(path,fileName,true);
-            }
+            }*/
 
+            fileName = AppFrameClient.Properties.Settings.Default.TemplatePath + "\\" + "XuatHang_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xls";
             if(string.IsNullOrEmpty(fileName))
             {
                 return;
@@ -957,7 +958,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
            IList departmentList = new ArrayList();
             foreach (Department department in cbbDept.Items)
             {
-                departmentList.Add(department);                
+                if (department.DepartmentId > 0)
+                {
+                    departmentList.Add(department);
+                }
             }
             if(departmentList.Count<7)
             {
@@ -1132,7 +1136,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 EventUtility.fireEvent(LoadPriceAndStockEvent, this, eventArgs);
             }*/
 
-            // remove 0 quanity
+            // remove 0 quantity
             int count = 0;
             int length = deptSIDetailList.Count;
             bool isMessage = false;

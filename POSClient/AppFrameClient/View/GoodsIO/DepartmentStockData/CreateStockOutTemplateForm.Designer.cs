@@ -670,7 +670,7 @@
             this.panelStockIns.Controls.Add(this.dtpFrom);
             this.panelStockIns.Location = new System.Drawing.Point(6, 237);
             this.panelStockIns.Name = "panelStockIns";
-            this.panelStockIns.Size = new System.Drawing.Size(800, 325);
+            this.panelStockIns.Size = new System.Drawing.Size(800, 342);
             this.panelStockIns.TabIndex = 122;
             this.panelStockIns.Visible = false;
             this.panelStockIns.Paint += new System.Windows.Forms.PaintEventHandler(this.panelStockIns_Paint);

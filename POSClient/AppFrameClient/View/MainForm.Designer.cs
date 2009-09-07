@@ -1571,7 +1571,7 @@
             // 
             // systemHotkey1
             // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.ShiftF1;
+            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftD;
             this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
             // MainForm

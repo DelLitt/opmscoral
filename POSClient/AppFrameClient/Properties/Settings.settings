@@ -75,5 +75,8 @@
     <Setting Name="StatBackupPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">\CRLPOS\StatBackup</Value>
     </Setting>
+    <Setting Name="TemplatePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\XUATHANGNAM</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

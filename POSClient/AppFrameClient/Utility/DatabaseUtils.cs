@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using AppFrame.Utility;
 using AppFrameClient.Common;
 using Ionic.Zip;
 using Ionic.Zlib;
@@ -66,12 +67,29 @@ namespace AppFrameClient.Utility
                 }
                 File.Delete(backupFilename1);
                 File.Delete(backupFilename2);
+                CleanDatabase(SaleStatistic, ImExStatistic);
             }
             catch (System.Exception ex1)
             {
                 Console.WriteLine(ex1.Message);
             }
 
+        }
+
+        private static void CleanDatabase(bool statistic, bool imExStatistic)
+        {
+            string db = "pos";
+            string user = "dbadmin";
+            string pass = "1qw45DCM9rl";
+
+            string deletePODet = "\" delete from purchase_order_detail where create_date < '" +
+                                 DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString("yyyy-MM-dd") +"'; \"";
+
+            ExecuteMySQLCmdLine(deletePODet,db,user,pass);
+
+            string deletePO = "\" delete from purchase_order where create_date < '" +
+                                 DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString("yyyy-MM-dd") + "';\""; 
+            ExecuteMySQLCmdLine(deletePO,db,user,pass);
         }
 
         private static void ExecuteMySQLCmdLine(string sqlString,string dbName,string username,string password)
@@ -81,7 +99,7 @@ namespace AppFrameClient.Utility
             {
                 // Need to use "--databases" to force CREATE DATABASE command in script
                 // --hex-blob to turn blob fields into hex strings
-                string mysqldumpstring = string.Format("--database {0} --execute={1} --user={2} --password={3}",
+                string mysqldumpstring = string.Format("--database={0} --execute={1} --user={2} --password={3}",
                                                       dbName, // dbname
                                                       sqlString, // backupfile
                                                       username,  // username
