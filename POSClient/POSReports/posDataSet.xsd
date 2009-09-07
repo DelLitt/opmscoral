@@ -319,6 +319,7 @@ ORDER BY so.STOCK_OUT_DATE</CommandText>
               <Mapping SourceColumn="size_name" DataSetColumn="size_name" />
               <Mapping SourceColumn="address" DataSetColumn="address" />
               <Mapping SourceColumn="stock_in_date" DataSetColumn="stock_in_date" />
+              <Mapping SourceColumn="quantity" DataSetColumn="quantity" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -884,7 +885,7 @@ FROM     product_type</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DepartmentStockOutTableAdapter" GeneratorDataComponentClassName="DepartmentStockOutTableAdapter" Name="DepartmentStockOut" UserDataComponentName="DepartmentStockOutTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`DepartmentStockOut`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`DepartmentStockOut`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>`pos`.`DepartmentStockOut`</CommandText>
@@ -911,6 +912,7 @@ FROM     product_type</CommandText>
               <Mapping SourceColumn="size_name" DataSetColumn="size_name" />
               <Mapping SourceColumn="quantity" DataSetColumn="quantity" />
               <Mapping SourceColumn="dest_department_name" DataSetColumn="dest_department_name" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1512,6 +1514,7 @@ FROM     product_type</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="quantity" msprop:Generator_UserColumnName="quantity" msprop:Generator_ColumnVarNameInTable="columnquantity" msprop:Generator_ColumnPropNameInRow="quantity" msprop:Generator_ColumnPropNameInTable="quantityColumn" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2484,10 +2487,11 @@ FROM     product_type</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="price" msprop:Generator_UserColumnName="price" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInTable="priceColumn" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AllDepartmentPurchaseOrderReport" msprop:Generator_UserTableName="AllDepartmentPurchaseOrderReport" msprop:Generator_RowDeletedName="AllDepartmentPurchaseOrderReportRowDeleted" msprop:Generator_TableClassName="AllDepartmentPurchaseOrderReportDataTable" msprop:Generator_RowChangedName="AllDepartmentPurchaseOrderReportRowChanged" msprop:Generator_RowClassName="AllDepartmentPurchaseOrderReportRow" msprop:Generator_RowChangingName="AllDepartmentPurchaseOrderReportRowChanging" msprop:Generator_RowEvArgName="AllDepartmentPurchaseOrderReportRowChangeEvent" msprop:Generator_RowEvHandlerName="AllDepartmentPurchaseOrderReportRowChangeEventHandler" msprop:Generator_TablePropName="AllDepartmentPurchaseOrderReport" msprop:Generator_TableVarName="tableAllDepartmentPurchaseOrderReport" msprop:Generator_RowDeletingName="AllDepartmentPurchaseOrderReportRowDeleting">
+        <xs:element name="AllDepartmentPurchaseOrderReport" msprop:Generator_UserTableName="AllDepartmentPurchaseOrderReport" msprop:Generator_RowDeletedName="AllDepartmentPurchaseOrderReportRowDeleted" msprop:Generator_RowChangedName="AllDepartmentPurchaseOrderReportRowChanged" msprop:Generator_RowClassName="AllDepartmentPurchaseOrderReportRow" msprop:Generator_RowChangingName="AllDepartmentPurchaseOrderReportRowChanging" msprop:Generator_RowEvArgName="AllDepartmentPurchaseOrderReportRowChangeEvent" msprop:Generator_RowEvHandlerName="AllDepartmentPurchaseOrderReportRowChangeEventHandler" msprop:Generator_TableClassName="AllDepartmentPurchaseOrderReportDataTable" msprop:Generator_TableVarName="tableAllDepartmentPurchaseOrderReport" msprop:Generator_RowDeletingName="AllDepartmentPurchaseOrderReportRowDeleting" msprop:Generator_TablePropName="AllDepartmentPurchaseOrderReport">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="working_date" msprop:Generator_UserColumnName="working_date" msprop:Generator_ColumnPropNameInRow="working_date" msprop:Generator_ColumnVarNameInTable="columnworking_date" msprop:Generator_ColumnPropNameInTable="working_dateColumn" minOccurs="0">

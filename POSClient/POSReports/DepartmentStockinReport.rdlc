@@ -5,7 +5,7 @@
       <rd:DataSourceID>c7fb7975-b6c4-4ada-a3ed-2f9f6d037fb2</rd:DataSourceID>
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos</ConnectString>
+        <ConnectString>password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos;connect timeout=60;default command timeout=300</ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -68,17 +68,15 @@
           <DataField>address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="quantity">
+          <DataField>quantity</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandText>SELECT type_name, dstkin.department_id, department_name, address, dstkin.stock_in_id, date_format(dstkin.stock_in_date, '%d/%m/%Y') as stock_in_date, dstkdin.product_id, product_name, color_name, size_name, sum(dstkdin.quantity), sum(dstkdin.price) as price  
-from department_stock_in dstkin inner join department_stock_in_detail dstkdin on dstkin.stock_in_id=dstkdin.stock_in_id
-inner join department dp on dp.department_id=dstkin.department_id
-inner join allproduct pr on pr.product_id=dstkdin.product_id
-where dstkin.stock_in_date&gt;=@FromDate and dstkin.stock_in_date&lt;=@ToDate and dstkin.department_id=@deptID
-group by type_name, dstkin.stock_in_date, product_name
-order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
-</CommandText>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>`pos`.`DepartmentStockIn`</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
@@ -338,7 +336,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>34</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!sum_dstkdin_quantity_.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -388,7 +386,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>32</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!sum_dstkdin_quantity_.Value*Fields!price.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value*Fields!price.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -568,7 +566,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>26</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!sum_dstkdin_quantity_.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -618,7 +616,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>24</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!sum_dstkdin_quantity_.Value*Fields!price.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value*Fields!price.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -642,7 +640,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
             </Sorting>
             <Visibility>
               <Hidden>true</Hidden>
-              <ToggleItem>type_name</ToggleItem>
+              <ToggleItem>stock_in_date</ToggleItem>
             </Visibility>
             <Header>
               <TableRows>
@@ -798,7 +796,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>18</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!sum_dstkdin_quantity_.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -848,7 +846,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>16</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!sum_dstkdin_quantity_.Value*Fields!price.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value*Fields!price.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -872,7 +870,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
             </Sorting>
             <Visibility>
               <Hidden>true</Hidden>
-              <ToggleItem>product_name</ToggleItem>
+              <ToggleItem>stock_in_date</ToggleItem>
             </Visibility>
             <Header>
               <TableRows>
@@ -1028,7 +1026,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>10</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!sum_dstkdin_quantity_.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1078,7 +1076,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                           </Style>
                           <ZIndex>8</ZIndex>
                           <CanGrow>true</CanGrow>
-                          <Value>=sum(Fields!sum_dstkdin_quantity_.Value*Fields!price.Value)</Value>
+                          <Value>=Sum(Fields!quantity.Value*Fields!price.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1219,8 +1217,8 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="sum_dstkdin_quantity_">
-                      <rd:DefaultName>sum_dstkdin_quantity_</rd:DefaultName>
+                    <Textbox Name="quantity">
+                      <rd:DefaultName>quantity</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -1230,6 +1228,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                         </BorderStyle>
                         <FontFamily>Times New Roman</FontFamily>
                         <FontSize>11pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1237,7 +1236,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!sum_dstkdin_quantity_.Value</Value>
+                      <Value>=Fields!quantity.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1284,7 +1283,7 @@ order by  type_name, product_name, color_name, size_name, dstkin.stock_in_date
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!sum_dstkdin_quantity_.Value*Fields!price.Value</Value>
+                      <Value>=Fields!quantity.Value*Fields!price.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
