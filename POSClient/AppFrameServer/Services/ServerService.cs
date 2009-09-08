@@ -288,7 +288,7 @@ namespace AppFrameServer.Services
                 string extraZero = "";
                 string startNum = "";
 
-                if(department.DepartmentId > 9999)
+                if(department.DepartmentId > 999)
                 {
                     deptStr = department.DepartmentId.ToString();
                     extraZero = "000";
@@ -450,7 +450,7 @@ namespace AppFrameServer.Services
             string deptStr = "";
             string extraZero = "";
             string startNum = "";
-            if (department.DepartmentId > 9999)
+            if (department.DepartmentId > 999)
             {
                 deptStr = department.DepartmentId.ToString();
                 extraZero = "000";
