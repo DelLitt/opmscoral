@@ -92,6 +92,15 @@ namespace POSReports
                         deptStockStatisticBindingSource.Filter += extraFilterStr + " type_name = '" + productType.TypeName + "'";
                     }
                 }
+            if(!chkZeroValue.Checked)
+            {
+                string extraFilterStr = "";
+                if (!string.IsNullOrEmpty(deptStockStatisticBindingSource.Filter))
+                {
+                    extraFilterStr += " AND ";
+                }
+                deptStockStatisticBindingSource.Filter += extraFilterStr + " ((prestk_qty > 0) OR ( instock_qty <> 0 OR bkpro <> 0 OR stkout_qty <> 0 OR tmpout_qty <> 0 OR rtn_qty <> 0 OR error_qty <> 0 OR dmg_qty <> 0 OR destroy_qty <> 0))";
+            }
             watcher = new Stopwatch();
             watcher.Start();
             deptStockStatisticBindingSource.SuspendBinding();

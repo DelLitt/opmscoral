@@ -440,7 +440,7 @@
               <TableGroup>
                 <Grouping Name="table1_product_name">
                   <GroupExpressions>
-                    <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    <GroupExpression>=Fields!poid.Value</GroupExpression>
                   </GroupExpressions>
                 </Grouping>
                 <Sorting>
@@ -500,7 +500,7 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                               <CanGrow>true</CanGrow>
-                              <Value>=Fields!product_name.Value</Value>
+                              <Value>=Fields!poid.Value</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -725,7 +725,7 @@
               <TableGroup>
                 <Grouping Name="table1_color_name">
                   <GroupExpressions>
-                    <GroupExpression>=Fields!color_name.Value</GroupExpression>
+                    <GroupExpression>=Fields!product_name.Value</GroupExpression>
                   </GroupExpressions>
                 </Grouping>
                 <Sorting>
@@ -809,7 +809,7 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                               <CanGrow>true</CanGrow>
-                              <Value>=Fields!color_name.Value</Value>
+                              <Value>=Fields!product_name.Value</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -1010,7 +1010,7 @@
               <TableGroup>
                 <Grouping Name="table1_size_name">
                   <GroupExpressions>
-                    <GroupExpression>=Fields!size_name.Value</GroupExpression>
+                    <GroupExpression>=Fields!color_name.Value</GroupExpression>
                   </GroupExpressions>
                 </Grouping>
                 <Sorting>
@@ -1118,7 +1118,7 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                               <CanGrow>true</CanGrow>
-                              <Value>=Fields!size_name.Value</Value>
+                              <Value>=Fields!color_name.Value</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>
@@ -1295,7 +1295,7 @@
               <TableGroup>
                 <Grouping Name="table1_poid">
                   <GroupExpressions>
-                    <GroupExpression>=Fields!poid.Value</GroupExpression>
+                    <GroupExpression>=Fields!size_name.Value</GroupExpression>
                   </GroupExpressions>
                 </Grouping>
                 <Sorting>
@@ -1427,7 +1427,7 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                               <CanGrow>true</CanGrow>
-                              <Value>=Fields!poid.Value</Value>
+                              <Value>=Fields!size_name.Value</Value>
                             </Textbox>
                           </ReportItems>
                         </TableCell>

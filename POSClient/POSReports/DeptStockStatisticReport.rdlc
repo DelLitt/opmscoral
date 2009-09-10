@@ -1626,6 +1626,12 @@ GROUP BY pr.type_name, pr.product_name, pr.color_name, pr.size_name</CommandText
               <Height>0.15334in</Height>
             </TableRow>
           </TableRows>
+          <Sorting>
+            <SortBy>
+              <SortExpression>=Fields!type_name.Value</SortExpression>
+              <Direction>Ascending</Direction>
+            </SortBy>
+          </Sorting>
           <Visibility>
             <Hidden>true</Hidden>
             <ToggleItem>color_name</ToggleItem>
