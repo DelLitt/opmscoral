@@ -666,7 +666,7 @@ namespace ImportPOSData
 			if (iDay <= 9) {
 				day = iDay + "";
 			} else {
-				day = Convert.ToChar(iDay - 9 + 65) + "";
+				day = Convert.ToChar(iDay - 10 + 65) + "";
 			}
 			
 			return (DateTime.Now.Year % 100 - 8) + month + day;
