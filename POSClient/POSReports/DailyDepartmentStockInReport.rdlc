@@ -91,14 +91,17 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>9in</Width>
+  <Width>9.125in</Width>
   <Body>
     <ReportItems>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Style>
+          <Color>Navy</Color>
           <FontFamily>Tahoma</FontFamily>
           <FontSize>18pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -107,7 +110,7 @@
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.33in</Height>
-        <Value>DailyDepartmentStockInReport</Value>
+        <Value>BÁO CÁO NHẬP HÀNG</Value>
       </Textbox>
       <List Name="List1">
         <Sorting>
@@ -118,8 +121,40 @@
         </Sorting>
         <DataSetName>posDataSet_departmentStockIn</DataSetName>
         <ReportItems>
+          <Textbox Name="textbox57">
+            <rd:DefaultName>textbox57</rd:DefaultName>
+            <RepeatWith>table1</RepeatWith>
+            <Top>0.5in</Top>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>= " Địa chỉ : " &amp; Fields!address.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox56">
+            <rd:DefaultName>textbox56</rd:DefaultName>
+            <RepeatWith>table1</RepeatWith>
+            <Top>0.25in</Top>
+            <Style>
+              <FontSize>12pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>= " Cửa hàng: " &amp; Fields!department_name.Value</Value>
+          </Textbox>
           <Textbox Name="stock_in_date">
             <rd:DefaultName>stock_in_date</rd:DefaultName>
+            <RepeatWith>table1</RepeatWith>
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>12pt</FontSize>
@@ -131,7 +166,7 @@
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
             <Height>0.24in</Height>
-            <Value>=Fields!stock_in_date.Value</Value>
+            <Value>=" Ngày " &amp; CDate(Fields!stock_in_date.Value).ToString("dd/MM/yyyy")</Value>
           </Textbox>
           <Table Name="table1">
             <DataSetName>posDataSet_departmentStockIn</DataSetName>
@@ -166,6 +201,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -189,6 +225,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -213,6 +250,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -237,6 +275,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -261,6 +300,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -285,6 +325,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -309,6 +350,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -332,6 +374,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -355,6 +398,7 @@
                                   <Default>Solid</Default>
                                 </BorderStyle>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -1795,7 +1839,7 @@
             </Header>
             <TableColumns>
               <TableColumn>
-                <Width>1in</Width>
+                <Width>1.5in</Width>
               </TableColumn>
               <TableColumn>
                 <Width>1in</Width>
@@ -1807,19 +1851,19 @@
                 <Width>1in</Width>
               </TableColumn>
               <TableColumn>
-                <Width>1in</Width>
+                <Width>0.75in</Width>
               </TableColumn>
               <TableColumn>
                 <Width>1in</Width>
               </TableColumn>
               <TableColumn>
-                <Width>1in</Width>
+                <Width>0.75in</Width>
               </TableColumn>
               <TableColumn>
                 <Width>1in</Width>
               </TableColumn>
               <TableColumn>
-                <Width>1in</Width>
+                <Width>1.125in</Width>
               </TableColumn>
             </TableColumns>
           </Table>
@@ -1828,6 +1872,7 @@
         <Style>
           <FontFamily>Tahoma</FontFamily>
           <FontSize>12pt</FontSize>
+          <FontWeight>700</FontWeight>
         </Style>
         <Grouping Name="list1_stock_in_date">
           <GroupExpressions>
