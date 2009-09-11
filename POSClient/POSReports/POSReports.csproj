@@ -204,6 +204,7 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DailyDepartmentStockInReport.rdlc" />
     <EmbeddedResource Include="DailyMatrixPurchaseOrderReportViewer.resx">
       <DependentUpon>DailyMatrixPurchaseOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>

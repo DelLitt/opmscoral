@@ -4447,6 +4447,8 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnquantity;
             
+            private global::System.Data.DataColumn _columnSUM_dstkdindet_quantity_;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public departmentStockInDataTable() {
                 this.TableName = "departmentStockIn";
@@ -4569,6 +4571,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn _SUM_dstkdindet_quantity_Column {
+                get {
+                    return this._columnSUM_dstkdindet_quantity_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4597,7 +4606,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public departmentStockInRow AdddepartmentStockInRow(string type_name, uint department_id, string department_name, string stock_in_id, string product_id, string product_name, decimal _sum_dstkdin_quantity_, decimal price, string color_name, string size_name, string address, string stock_in_date, decimal quantity) {
+            public departmentStockInRow AdddepartmentStockInRow(string type_name, uint department_id, string department_name, string stock_in_id, string product_id, string product_name, decimal _sum_dstkdin_quantity_, decimal price, string color_name, string size_name, string address, string stock_in_date, decimal quantity, decimal _SUM_dstkdindet_quantity_) {
                 departmentStockInRow rowdepartmentStockInRow = ((departmentStockInRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         type_name,
@@ -4612,7 +4621,8 @@ namespace POSReports {
                         size_name,
                         address,
                         stock_in_date,
-                        quantity};
+                        quantity,
+                        _SUM_dstkdindet_quantity_};
                 rowdepartmentStockInRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdepartmentStockInRow);
                 return rowdepartmentStockInRow;
@@ -4653,6 +4663,7 @@ namespace POSReports {
                 this.columnaddress = base.Columns["address"];
                 this.columnstock_in_date = base.Columns["stock_in_date"];
                 this.columnquantity = base.Columns["quantity"];
+                this._columnSUM_dstkdindet_quantity_ = base.Columns["SUM(dstkdindet_quantity)"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4685,6 +4696,10 @@ namespace POSReports {
                 base.Columns.Add(this.columnstock_in_date);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
+                this._columnSUM_dstkdindet_quantity_ = new global::System.Data.DataColumn("SUM(dstkdindet_quantity)", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._columnSUM_dstkdindet_quantity_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnSUM_dstkdindet_quantity_");
+                this._columnSUM_dstkdindet_quantity_.ExtendedProperties.Add("Generator_UserColumnName", "SUM(dstkdindet_quantity)");
+                base.Columns.Add(this._columnSUM_dstkdindet_quantity_);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columndepartment_id,
                                 this.columnstock_in_id,
@@ -4702,6 +4717,7 @@ namespace POSReports {
                 this.columnsize_name.MaxLength = 500;
                 this.columnaddress.MaxLength = 500;
                 this.columnstock_in_date.MaxLength = 10;
+                this._columnSUM_dstkdindet_quantity_.Caption = "SUM(dstkdindet.quantity)";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13954,6 +13970,22 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal _SUM_dstkdindet_quantity_ {
+                get {
+                    try {
+                        return ((decimal)(this[this.tabledepartmentStockIn._SUM_dstkdindet_quantity_Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SUM(dstkdindet_quantity)\' in table \'departmentStockIn\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledepartmentStockIn._SUM_dstkdindet_quantity_Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool Istype_nameNull() {
                 return this.IsNull(this.tabledepartmentStockIn.type_nameColumn);
             }
@@ -14051,6 +14083,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetquantityNull() {
                 this[this.tabledepartmentStockIn.quantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Is_SUM_dstkdindet_quantity_Null() {
+                return this.IsNull(this.tabledepartmentStockIn._SUM_dstkdindet_quantity_Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Set_SUM_dstkdindet_quantity_Null() {
+                this[this.tabledepartmentStockIn._SUM_dstkdindet_quantity_Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -21617,6 +21659,7 @@ ORDER BY so.STOCK_OUT_DATE";
             tableMapping.ColumnMappings.Add("address", "address");
             tableMapping.ColumnMappings.Add("stock_in_date", "stock_in_date");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
+            tableMapping.ColumnMappings.Add("SUM(dstkdindet.quantity)", "SUM(dstkdindet_quantity)");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
