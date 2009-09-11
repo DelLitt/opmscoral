@@ -61,8 +61,20 @@ namespace POSReports
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             reqFromDate = ZeroTime(ToDate.Value);
             reqToDate = MaxTime(ToDate.Value);
+            if (!chkZeroValue.Checked)
+            {
+                stockStatisticBindingSource.Filter = " (prestk_qty > 0) OR (instock_qty <> 0  OR mainrtnqty <> 0 OR stkout_qty <> 0 OR destroy_qty <> 0 OR tmpout_qty <> 0 OR rtn_qty <> 0  )";
+            }
+            else
+            {
+                stockStatisticBindingSource.Filter = "";
+            }
+
             stockStatisticBindingSource.RaiseListChangedEvents = false;
             stockStatisticBindingSource.SuspendBinding();
+
+            
+
             Enabled = false;
             watcher = new Stopwatch();
             watcher.Start();

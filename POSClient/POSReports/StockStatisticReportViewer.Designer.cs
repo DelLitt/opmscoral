@@ -40,6 +40,7 @@
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.stockStatisticTableAdapter1 = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
+            this.chkZeroValue = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.stockStatisticBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,13 +64,14 @@
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ToDate, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chkZeroValue, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -144,6 +146,16 @@
             // 
             this.stockStatisticTableAdapter1.ClearBeforeFill = true;
             // 
+            // chkZeroValue
+            // 
+            this.chkZeroValue.AutoSize = true;
+            this.chkZeroValue.Location = new System.Drawing.Point(456, 39);
+            this.chkZeroValue.Name = "chkZeroValue";
+            this.chkZeroValue.Size = new System.Drawing.Size(148, 17);
+            this.chkZeroValue.TabIndex = 6;
+            this.chkZeroValue.Text = "Xem sản phẩm có giá trị 0";
+            this.chkZeroValue.UseVisualStyleBackColor = true;
+            // 
             // StockStatisticReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,12 +166,15 @@
             this.Name = "StockStatisticReportViewer";
             this.Text = "BÁO CÁO TỒN KHO";
             this.Load += new System.EventHandler(this.StockStatisticReportViewer_Load);
+            this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.stockStatisticBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,5 +191,6 @@
         private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter StockStatisticTableAdapter;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter stockStatisticTableAdapter1;
+        private System.Windows.Forms.CheckBox chkZeroValue;
     }
 }

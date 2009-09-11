@@ -437,7 +437,7 @@ group by type_name, product_name, color_name, size_name</CommandText>
             </Grouping>
             <Sorting>
               <SortBy>
-                <SortExpression>=Fields!prestk_qty.Value</SortExpression>
+                <SortExpression>=Fields!product_name.Value</SortExpression>
                 <Direction>Ascending</Direction>
               </SortBy>
             </Sorting>
