@@ -407,12 +407,14 @@ namespace AppFrameServer.Services
             {
                 DepartmentStockOut stockOut = new FastDepartmentStockOutMapper().Convert(stockIn);
                 stockOut.DepartmentStockOutPK = new DepartmentStockOutPK();
-                stockOut.DepartmentStockOutPK.DepartmentId = department.DepartmentId;
-                DoStockOut(dalSalePoint, department, stockOut,false);
+                // cheat for stock in back to substock
+                stockOut.DepartmentStockOutPK.DepartmentId = stockIn.DepartmentStockInPK.DepartmentId;
                 Department subStockDept = new Department
-                                              {
-                                                  DepartmentId = stockIn.DepartmentStockInPK.DepartmentId
-                                              };
+                {
+                    DepartmentId = stockIn.DepartmentStockInPK.DepartmentId
+                };
+
+                DoStockOut(dalSalePoint, department, stockOut, false);
                 DoStockIn(dalSubStock, subStockDept, stockIn, false);
                 
                 InformMessage(subStockDept.DepartmentId, DEPTTOSUB, false, 
