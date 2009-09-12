@@ -1169,7 +1169,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value />
+                          <Value>=Fields!price.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1431,7 +1431,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value />
+                          <Value>=Fields!price.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1693,7 +1693,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value />
+                          <Value>=Fields!price.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
