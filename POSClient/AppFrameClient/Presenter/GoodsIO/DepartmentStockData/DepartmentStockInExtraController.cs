@@ -60,7 +60,47 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         departmentStockInExtraView.LoadStockInByProductMaster += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_LoadStockInByProductMaster);
                         departmentStockInExtraView.FindRemainsQuantity += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindRemainsQuantity);
                         departmentStockInExtraView.UpdateStockOutEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_UpdateStockOutEvent);
+                        departmentStockInExtraView.FindBarcodeInMainStockEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindBarcodeInMainStockEvent);
                     }
+                }
+
+                void departmentStockInExtraView_FindBarcodeInMainStockEvent(object sender, DepartmentStockInEventArgs e)
+                {
+                    if (string.IsNullOrEmpty(e.ProductId))
+                    {
+                        return;
+                    }
+
+
+                    var criteria = new ObjectCriteria();
+                    criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+                    criteria.AddEqCriteria("Product.ProductId", e.ProductId);
+
+                    IList stockList = StockLogic.FindAll(criteria);
+                    if (stockList.Count == 0)
+                    {
+                        return;
+                    }
+                    IList stockOutList = new ArrayList();
+                    foreach (Stock inDetail in stockList)
+                    {
+                        DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
+                        deptDetail.CreateDate = DateTime.Now;
+                        deptDetail.UpdateDate = DateTime.Now;
+                        deptDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                        deptDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                        deptDetail.DepartmentStockInDetailPK = new DepartmentStockInDetailPK();
+                        deptDetail.Product = inDetail.Product;
+                        deptDetail.ProductMaster = inDetail.Product.ProductMaster;
+                        deptDetail.Quantity = 1;
+                        stockOutList.Add(deptDetail);
+                    }
+                    GetRemainStockNumber(stockOutList);
+                    MinusConfirmStockOut(stockOutList);
+                    e.SelectedStockOutDetails = stockOutList;
+                    
+                    e.EventResult = "Success";
+
                 }
 
                 void departmentStockInExtraView_UpdateStockOutEvent(object sender, DepartmentStockInEventArgs e)

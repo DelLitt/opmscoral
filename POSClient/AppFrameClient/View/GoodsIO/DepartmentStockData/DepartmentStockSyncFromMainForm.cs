@@ -187,6 +187,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
         public event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
+        public event EventHandler<DepartmentStockInEventArgs> FindBarcodeInMainStockEvent;
 
         #endregion
 

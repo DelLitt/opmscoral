@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -109,6 +109,8 @@
             this.btnFix = new System.Windows.Forms.Button();
             this.chkRemoveZero = new System.Windows.Forms.CheckBox();
             this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -136,7 +138,7 @@
             // txtStockInId
             // 
             this.txtStockInId.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockInId.Location = new System.Drawing.Point(100, 45);
+            this.txtStockInId.Location = new System.Drawing.Point(100, 6);
             this.txtStockInId.Name = "txtStockInId";
             this.txtStockInId.ReadOnly = true;
             this.txtStockInId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -157,7 +159,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 48);
+            this.label3.Location = new System.Drawing.Point(6, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 14);
             this.label3.TabIndex = 72;
@@ -292,9 +294,9 @@
             // txtDexcription
             // 
             this.txtDexcription.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDexcription.Location = new System.Drawing.Point(100, 70);
+            this.txtDexcription.Location = new System.Drawing.Point(70, 70);
             this.txtDexcription.Name = "txtDexcription";
-            this.txtDexcription.Size = new System.Drawing.Size(709, 22);
+            this.txtDexcription.Size = new System.Drawing.Size(739, 22);
             this.txtDexcription.TabIndex = 3;
             // 
             // label2
@@ -417,8 +419,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -492,20 +494,20 @@
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(279, 92);
+            this.ctxMenuDept.Size = new System.Drawing.Size(307, 92);
             this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
@@ -513,7 +515,7 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
@@ -521,7 +523,7 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
@@ -653,10 +655,10 @@
             this.lstColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstColor.FormattingEnabled = true;
             this.lstColor.ItemHeight = 14;
-            this.lstColor.Location = new System.Drawing.Point(102, 128);
+            this.lstColor.Location = new System.Drawing.Point(70, 128);
             this.lstColor.Name = "lstColor";
             this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(272, 88);
+            this.lstColor.Size = new System.Drawing.Size(304, 88);
             this.lstColor.TabIndex = 6;
             // 
             // btnInput
@@ -684,9 +686,9 @@
             // 
             this.cboProductMasters.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProductMasters.FormattingEnabled = true;
-            this.cboProductMasters.Location = new System.Drawing.Point(100, 98);
+            this.cboProductMasters.Location = new System.Drawing.Point(70, 98);
             this.cboProductMasters.Name = "cboProductMasters";
-            this.cboProductMasters.Size = new System.Drawing.Size(274, 24);
+            this.cboProductMasters.Size = new System.Drawing.Size(304, 24);
             this.cboProductMasters.TabIndex = 4;
             this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
             this.cboProductMasters.DropDown += new System.EventHandler(this.cboProductMasters_DropDown);
@@ -874,11 +876,33 @@
             this.chkKeepInputInfo.Text = "Giữ lại thông tin nhập hàng";
             this.chkKeepInputInfo.UseVisualStyleBackColor = true;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(8, 49);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 14);
+            this.label16.TabIndex = 132;
+            this.label16.Text = "Mã vạch";
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Location = new System.Drawing.Point(70, 46);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(155, 20);
+            this.txtBarcode.TabIndex = 131;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
+            this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
+            this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
+            // 
             // DepartmentStockInFromMainEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
@@ -961,6 +985,8 @@
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
+            this.Controls.SetChildIndex(this.txtBarcode, 0);
+            this.Controls.SetChildIndex(this.label16, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
@@ -1060,5 +1086,7 @@
         private System.Windows.Forms.CheckBox chkKeepInputInfo;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtBarcode;
     }
 }

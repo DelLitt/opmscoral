@@ -540,6 +540,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
         public event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
+        public event EventHandler<DepartmentStockInEventArgs> FindBarcodeInMainStockEvent;
         public event EventHandler<DepartmentStockInEventArgs> SaveStockInEvent;
 
         #endregion
@@ -1253,6 +1254,80 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     break;
                 }
             }
+        }
+
+        private void txtBarcode_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.LightGreen;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.FromKnownColor(KnownColor.Window);
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 12)
+            {
+                var eventArgs = new DepartmentStockInEventArgs();
+                eventArgs.ProductId = txtBarcode.Text;
+                EventUtility.fireEvent(FindBarcodeInMainStockEvent, this, eventArgs);
+                if (eventArgs.EventResult == null)
+                {
+                    MessageBox.Show("Không tìm thấy mã vạch này");
+                    return;
+                }
+
+                // remove 0 quanity
+                int count = 0;
+                int length = deptSIDetailList.Count;
+                bool isMessage = false;
+                for (int i = 0; i < length; i++)
+                {
+                    if (deptSIDetailList[i - count].StockQuantity == 0)
+                    {
+                        //isMessage = true;
+                        deptSIDetailList.RemoveAt(i - count);
+                        count++;
+                    }
+                }
+                if (eventArgs.SelectedStockOutDetails != null && eventArgs.SelectedStockOutDetails.Count > 0)
+                {
+                    foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
+                    {
+                        bool found = false;
+                        DepartmentStockInDetail foundStockOutDetail = null;
+                        foreach (DepartmentStockInDetail detail in deptSIDetailList)
+                        {
+                            if (eventArgs.SelectedDepartmentStockInDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                            {
+                                found = true;
+                                foundStockOutDetail = detail;
+                                break;
+                            }
+                        }
+                        if (found)
+                        {
+                            //MessageBox.Show("Mã vạch đã được nhập");
+                            foundStockOutDetail.OldQuantity = foundStockOutDetail.Quantity;
+                            foundStockOutDetail.Quantity += 1;
+                        }
+                        else
+                        {
+                            deptSIDetailList.Add(inDetail);
+                        }
+                    }
+
+                }
+
+                bdsStockIn.ResetBindings(false);
+                dgvStockIn.Refresh();
+                dgvStockIn.Invalidate();
+                txtBarcode.Text = "";
+            }
+
+            CalculateTotalStorePrice();
         }
     }
 }

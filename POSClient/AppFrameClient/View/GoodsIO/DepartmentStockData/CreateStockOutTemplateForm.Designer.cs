@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -109,6 +109,8 @@
             this.saveTemplateFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.saveTemplateFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.lblExportStatus = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
@@ -136,22 +138,24 @@
             // txtStockInId
             // 
             this.txtStockInId.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStockInId.Location = new System.Drawing.Point(100, 45);
+            this.txtStockInId.Location = new System.Drawing.Point(102, 6);
             this.txtStockInId.Name = "txtStockInId";
             this.txtStockInId.ReadOnly = true;
             this.txtStockInId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtStockInId.Size = new System.Drawing.Size(122, 22);
             this.txtStockInId.TabIndex = 71;
+            this.txtStockInId.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 48);
+            this.label3.Location = new System.Drawing.Point(8, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 14);
             this.label3.TabIndex = 72;
             this.label3.Text = "Mã xuất hàng";
+            this.label3.Visible = false;
             // 
             // lblStatus
             // 
@@ -246,9 +250,9 @@
             // txtDexcription
             // 
             this.txtDexcription.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDexcription.Location = new System.Drawing.Point(100, 70);
+            this.txtDexcription.Location = new System.Drawing.Point(70, 70);
             this.txtDexcription.Name = "txtDexcription";
-            this.txtDexcription.Size = new System.Drawing.Size(709, 22);
+            this.txtDexcription.Size = new System.Drawing.Size(739, 22);
             this.txtDexcription.TabIndex = 3;
             // 
             // label2
@@ -287,8 +291,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -372,8 +376,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -608,10 +612,10 @@
             this.lstColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstColor.FormattingEnabled = true;
             this.lstColor.ItemHeight = 14;
-            this.lstColor.Location = new System.Drawing.Point(102, 128);
+            this.lstColor.Location = new System.Drawing.Point(70, 128);
             this.lstColor.Name = "lstColor";
             this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(272, 88);
+            this.lstColor.Size = new System.Drawing.Size(304, 88);
             this.lstColor.TabIndex = 6;
             // 
             // btnInput
@@ -639,9 +643,9 @@
             // 
             this.cboProductMasters.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProductMasters.FormattingEnabled = true;
-            this.cboProductMasters.Location = new System.Drawing.Point(100, 98);
+            this.cboProductMasters.Location = new System.Drawing.Point(70, 98);
             this.cboProductMasters.Name = "cboProductMasters";
-            this.cboProductMasters.Size = new System.Drawing.Size(274, 24);
+            this.cboProductMasters.Size = new System.Drawing.Size(304, 24);
             this.cboProductMasters.TabIndex = 4;
             this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
             this.cboProductMasters.DropDown += new System.EventHandler(this.cboProductMasters_DropDown);
@@ -844,11 +848,33 @@
             this.lblExportStatus.TabIndex = 8;
             this.lblExportStatus.Text = "label9";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(8, 49);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 14);
+            this.label16.TabIndex = 130;
+            this.label16.Text = "Mã vạch";
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Location = new System.Drawing.Point(70, 46);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(155, 20);
+            this.txtBarcode.TabIndex = 129;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
+            this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
+            this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
+            // 
             // CreateStockOutTemplateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.lblExportStatus);
             this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.chkKeepInputInfo);
@@ -926,6 +952,8 @@
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.lblExportStatus, 0);
+            this.Controls.SetChildIndex(this.txtBarcode, 0);
+            this.Controls.SetChildIndex(this.label16, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
@@ -1024,5 +1052,7 @@
         private System.Windows.Forms.SaveFileDialog saveTemplateFileDialog;
         private System.Windows.Forms.FolderBrowserDialog saveTemplateFolderDialog;
         private System.Windows.Forms.Label lblExportStatus;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtBarcode;
     }
 }
