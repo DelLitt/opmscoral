@@ -383,6 +383,13 @@
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErrorObject.cs" />
     <Compile Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1415,6 +1422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeManagementForm.resx">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.resx">
       <DependentUpon>CreateStockOutTemplateForm.cs</DependentUpon>
