@@ -1190,5 +1190,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         
         }
+
+        private void txtReadBarcode_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

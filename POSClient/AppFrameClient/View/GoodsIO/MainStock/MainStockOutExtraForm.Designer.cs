@@ -106,6 +106,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtReadBarcode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).BeginInit();
@@ -775,9 +776,20 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // txtReadBarcode
+            // 
+            this.txtReadBarcode.Location = new System.Drawing.Point(82, 46);
+            this.txtReadBarcode.Name = "txtReadBarcode";
+            this.txtReadBarcode.Size = new System.Drawing.Size(178, 23);
+            this.txtReadBarcode.TabIndex = 127;
+            this.txtReadBarcode.Text = "Đọc mã vạch từ file text";
+            this.txtReadBarcode.UseVisualStyleBackColor = true;
+            this.txtReadBarcode.Click += new System.EventHandler(this.txtReadBarcode_Click);
+            // 
             // MainStockOutExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(818, 562);
+            this.Controls.Add(this.txtReadBarcode);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
@@ -840,6 +852,7 @@
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
+            this.Controls.SetChildIndex(this.txtReadBarcode, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).EndInit();
@@ -926,5 +939,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button txtReadBarcode;
     }
 }
