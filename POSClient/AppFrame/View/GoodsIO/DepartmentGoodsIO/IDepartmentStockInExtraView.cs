@@ -25,5 +25,6 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
         event EventHandler<DepartmentStockInEventArgs> LoadStockInByProductMaster;
         event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
         event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
+        event EventHandler<DepartmentStockInEventArgs> FindBarcodeInMainStockEvent;        
     }
 }
