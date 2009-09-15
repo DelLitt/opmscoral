@@ -1269,8 +1269,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         if (found)
                         {
                             //MessageBox.Show("Mã vạch đã được nhập");
-                            foundStockOutDetail.GoodQuantity += 1;
-                            return;
+                            foundStockOutDetail.GoodQuantity += barCodeLine.Value;
+                            continue;
                         }
                         if (eventArgs.Stock != null)
                         {
@@ -1289,7 +1289,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                             }
                         }
                         // reset quantity to 1
-                        eventArgs.SelectedStockOutDetail.GoodQuantity = 1;
+                        eventArgs.SelectedStockOutDetail.GoodQuantity = barCodeLine.Value;
                         stockOutDetailList.Add(eventArgs.SelectedStockOutDetail);
                         stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
                         cbbStockOutType.Enabled = false;
