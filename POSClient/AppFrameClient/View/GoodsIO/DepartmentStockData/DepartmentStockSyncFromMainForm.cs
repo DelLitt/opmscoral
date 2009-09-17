@@ -232,7 +232,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
-            var masterPath = POSSyncDrive + ClientSetting.SyncImportPath;
+            var masterPath = POSSyncDrive + "\\POS";
             var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
@@ -278,7 +278,34 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
 
             // sync master data first
-            string[] masterNames = Directory.GetFiles(masterPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);
+            string[] masterNames = Directory.GetFiles(masterPath, "*.zip");
+            if (masterNames.Length > 0)
+            {
+                // get file name and sync master data
+                string masterFileName = "";
+                foreach (string masterName in masterNames)
+                {
+                    masterFileName = masterName;
+                    if (!string.IsNullOrEmpty(masterFileName))
+                    {
+                        if (masterFileName.IndexOf("MasterData") < 0)
+                        {
+                            continue;
+                        }
+                        try
+                        {
+                            DatabaseUtils.SyncMasterData(masterFileName);
+                        }
+                        catch (Exception ex )
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+
+            #region unused code
+            /*string[] masterNames = Directory.GetFiles(masterPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);
             if (masterNames.Length > 0)
             {
                 // get file name and sync master data
@@ -356,15 +383,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                                                 DepartmentName = "MasterData"
                                                             };
                                 // BEGIN TEMP FIXING
-                                /*ClientUtility.WriteLastSyncTime(updateTime, importPath, masterDept,
-                                                                ClientUtility.SyncType.SyncDown);*/
                                 // END FIXING
                                 result.Status = "Thành công";
                             }
                         }
                     }
                 }
-            }
+            }*/
+
+            #endregion
 
 
                 string[] fileNames = Directory.GetFiles(importPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);

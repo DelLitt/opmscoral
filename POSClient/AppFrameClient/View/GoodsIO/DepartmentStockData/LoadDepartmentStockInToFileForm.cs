@@ -141,7 +141,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             try
             {
 
-                // sync master data first
+                /*// sync master data first
                 Department mstDataDept = new Department
                 {
                     DepartmentId = 0,
@@ -179,7 +179,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                     CopyMasterImage(masterDataEvent.SyncFromMainToDepartment.ProductMasterList,
                                     masterDataEvent.LastSyncTime, configExportPath);
+                }*/
+
+                if(chkMasterData.Checked)
+                {
+                    if(!chkDepartments.Checked && !chkPrdMaster.Checked && !chkPrice.Checked)
+                    {
+                        MessageBox.Show("Bạn phải chọn ít nhất một thông tin chung để đồng bộ.");
+                        return;
+                    }
+                    DatabaseUtils.LoadMasterData(chkPrdMaster.Checked,chkDepartments.Checked,chkPrice.Checked);
                 }
+
                 // sync stock-out to dept
                 var deptEvent = new DepartmentStockInEventArgs();
                 EventUtility.fireEvent(FillDepartmentEvent, this, deptEvent);

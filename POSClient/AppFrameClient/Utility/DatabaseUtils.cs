@@ -129,6 +129,47 @@ namespace AppFrameClient.Utility
             } 
         }
 
+        private static void ExecuteMySQLDumpCmdLine(bool isDump,string sqlString)
+        {
+            string mySQLDumpPath;
+            if (isDump)
+            {
+                mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysqldump.exe";
+            }
+            else
+            {
+                mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe"; 
+            }
+            try
+            {
+                string mysqldumpstring = sqlString;
+
+                // Create info needed by process
+                ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
+                info.Arguments = mysqldumpstring;
+                info.UseShellExecute = false;
+                info.RedirectStandardError = true;
+                info.RedirectStandardOutput = true;
+                info.CreateNoWindow = true;
+
+                // Create process
+                Process p = new Process();
+                p.StartInfo = info;
+                // Set up asynchronous read event
+                p.Start();
+                
+                p.BeginOutputReadLine();
+                p.WaitForExit();
+
+                //TODO, check for errors
+
+            }
+            finally
+            {
+                // Flush and close file
+            }
+        }
+
         public static IList GetPOSSyncDrives()
         {
             IList posSyncDrives = new ArrayList();
@@ -150,6 +191,94 @@ namespace AppFrameClient.Utility
                 return false;
             }
             return true;
+        }
+
+        public static void LoadMasterData(bool productMasters,bool departments,bool prices)
+        {
+            IList list = GetPOSSyncDrives();
+            if (list == null || list.Count == 0)
+            {
+                return;
+            }
+            string dbBackupPath = list[0].ToString() + "POS";
+            dbBackupPath = dbBackupPath.Replace('\\', ('/'));
+            string backupFileName = "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".sql";
+
+            string product_type = "";
+            string product_size = "";
+            string product_color = "";
+            string product_master = "";
+            string product = "";
+
+            string department = "";
+            string employee = "";
+            string employee_info = "";
+
+            string department_price = "";
+
+            if(productMasters)
+            {
+                product_type = "product_type";
+                product_size = "product_size";
+                product_color = "product_color";
+                product_master = "product_master";
+                product = "product"; 
+            }
+
+            if(departments)
+            {
+                department = "department";
+                employee = "employee";
+                employee_info = "employee_info"; 
+            }
+
+            if(prices)
+            {
+                department_price = "department_price"; 
+            }
+            string backupFile = dbBackupPath + "/" + backupFileName;
+            string mysqldumpstring = string.Format("--database {0} --table {1} {2} {3} {4} {5} {6} {7} {8} {9} --replace --add-drop-table=false --no-create-info --no-create-db --result-file={10} --single-transaction --user={11} --password={12} --skip-add-locks --add-locks=false --quick ",
+                                                      "pos", // dbname
+                                                      product_type,
+                                                      product_size,
+                                                      product_color,
+                                                      product_master,
+                                                      product,
+                                                      department,
+                                                      employee_info,
+                                                      employee,
+                                                      department_price,
+                                                      backupFile, // backupfile
+                                                      "dbadmin",  // username
+                                                      "1qw45DCM9rl"); 
+
+           ExecuteMySQLDumpCmdLine(true,mysqldumpstring);
+           using (ZipFile masterZipFile = new ZipFile())
+           {
+               masterZipFile.Password = "helloworld";
+               masterZipFile.AddFile(backupFile,"");
+               masterZipFile.Save(dbBackupPath + "/" + "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
+           }
+           File.Delete(backupFile);
+            
+        }
+
+        public static void SyncMasterData(string masterFileName)
+        {
+            string pathExtract = masterFileName.Substring(0, masterFileName.LastIndexOf("\\"));
+            using (ZipFile masterZipFile = ZipFile.Read(masterFileName))
+            {
+                masterZipFile.Password = "helloworld";
+                masterZipFile.ExtractAll(pathExtract,ExtractExistingFileAction.OverwriteSilently);
+            }
+            string[] files = Directory.GetFiles(pathExtract);
+            foreach (string file in files)
+            {
+                string syncString = string.Format(" --database {0} --user={1} --password={2} < {3}", "pos", "dbadmin", "1qw45DCM9rl", file);   
+                ExecuteMySQLDumpCmdLine(false,syncString);
+                File.Delete(file);
+            }
+            File.Delete(masterFileName);
         }
     }
 }

@@ -59,9 +59,7 @@ namespace AppFrameClient.Utility
                 p.Start();
                 p.BeginOutputReadLine();
                 p.WaitForExit();
-
-                //TODO, check for errors
-
+                
             }
             finally
             {
