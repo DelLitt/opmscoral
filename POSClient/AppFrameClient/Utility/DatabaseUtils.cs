@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using AppFrame.Utility;
 using AppFrameClient.Common;
 using Ionic.Zip;
@@ -17,6 +18,7 @@ namespace AppFrameClient.Utility
 {
     public class DatabaseUtils
     {
+        private const string ZIP_PASSWORD = "8FcsjTNcxp";
         private static string posConnectionString = AppFrameClient.Properties.Settings.Default.posConnectionString;
         public static void BackupDatabase(bool SaleStatistic,bool ImExStatistic)
         {
@@ -140,27 +142,47 @@ namespace AppFrameClient.Utility
             {
                 mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe"; 
             }
+            ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
+            Process p = new Process();
+            p.ErrorDataReceived += new DataReceivedEventHandler(p_ErrorDataReceived);
+            p.OutputDataReceived += new DataReceivedEventHandler(p_OutputDataReceived);
             try
             {
                 string mysqldumpstring = sqlString;
 
+
                 // Create info needed by process
-                ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
                 info.Arguments = mysqldumpstring;
+
+                string[] args = null;
+                if(!isDump)
+                {
+                    args = mysqldumpstring.Split('<');
+                    info.Arguments = args[0];
+                    info.RedirectStandardInput = true;
+                }
+
                 info.UseShellExecute = false;
+                info.CreateNoWindow = true;
                 info.RedirectStandardError = true;
                 info.RedirectStandardOutput = true;
-                info.CreateNoWindow = true;
-
+                
+                
+                //info.CreateNoWindow = true;
                 // Create process
-                Process p = new Process();
+                
                 p.StartInfo = info;
                 // Set up asynchronous read event
                 p.Start();
                 
-                p.BeginOutputReadLine();
-                p.WaitForExit();
+                if(!isDump)
+                {
+                    p.StandardInput.WriteLine("\\."+args[1]);
+                    p.StandardInput.WriteLine("exit");
+                }
 
+                
+                p.WaitForExit();
                 //TODO, check for errors
 
             }
@@ -168,6 +190,22 @@ namespace AppFrameClient.Utility
             {
                 // Flush and close file
             }
+            if(p.ExitCode != 0)
+            {
+                MessageBox.Show("Xử lý thông tin chung thất bại.");
+            }
+            p.ErrorDataReceived -= new DataReceivedEventHandler(p_ErrorDataReceived);
+            p.OutputDataReceived -= new DataReceivedEventHandler(p_OutputDataReceived);
+        }
+
+        static void p_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.WriteLine(e.Data);
+        }
+
+        static void p_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            Console.WriteLine(e.Data);
         }
 
         public static IList GetPOSSyncDrives()
@@ -255,7 +293,7 @@ namespace AppFrameClient.Utility
            ExecuteMySQLDumpCmdLine(true,mysqldumpstring);
            using (ZipFile masterZipFile = new ZipFile())
            {
-               masterZipFile.Password = "helloworld";
+               masterZipFile.Password = ZIP_PASSWORD;
                masterZipFile.AddFile(backupFile,"");
                masterZipFile.Save(dbBackupPath + "/" + "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
            }
@@ -268,13 +306,14 @@ namespace AppFrameClient.Utility
             string pathExtract = masterFileName.Substring(0, masterFileName.LastIndexOf("\\"));
             using (ZipFile masterZipFile = ZipFile.Read(masterFileName))
             {
-                masterZipFile.Password = "helloworld";
+                masterZipFile.Password = ZIP_PASSWORD;
                 masterZipFile.ExtractAll(pathExtract,ExtractExistingFileAction.OverwriteSilently);
             }
             string[] files = Directory.GetFiles(pathExtract);
             foreach (string file in files)
             {
-                string syncString = string.Format(" --database {0} --user={1} --password={2} < {3}", "pos", "dbadmin", "1qw45DCM9rl", file);   
+                if(!file.EndsWith("sql")) continue;
+                string syncString = string.Format(" --database={0} --user={1} --password={2}  < {3} ", "pos", "dbadmin", "1qw45DCM9rl", file);   
                 ExecuteMySQLDumpCmdLine(false,syncString);
                 File.Delete(file);
             }

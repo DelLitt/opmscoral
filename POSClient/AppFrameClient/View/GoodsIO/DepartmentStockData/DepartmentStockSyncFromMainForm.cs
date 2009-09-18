@@ -288,17 +288,23 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     masterFileName = masterName;
                     if (!string.IsNullOrEmpty(masterFileName))
                     {
+                        SyncResult result = new SyncResult();
+                        result.FileName = masterFileName;
+
                         if (masterFileName.IndexOf("MasterData") < 0)
                         {
                             continue;
                         }
+                        resultList.Add(result);
                         try
                         {
                             DatabaseUtils.SyncMasterData(masterFileName);
+                            result.Status = "Thành công !";
                         }
                         catch (Exception ex )
                         {
                             MessageBox.Show(ex.Message);
+                            result.Status = "Thất bại!";
                         }
                     }
                 }
