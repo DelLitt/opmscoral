@@ -372,6 +372,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
             ObjectCriteria stockCrit = new ObjectCriteria();
             stockCrit.AddSearchInCriteria("DepartmentStockPK.ProductId", productIds);
+            stockCrit.AddEqCriteria("DepartmentStockPK.DepartmentId", CurrentDepartment.Get().DepartmentId);
             stockCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             stockCrit.AddOrder("DepartmentStockPK.ProductId",true);
             IList departmentStocks = DepartmentStockLogic.FindAll(stockCrit);
@@ -400,9 +401,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     stockView.LostQuantity += departmentStock.LostQuantity;
                     stockView.DamageQuantity += departmentStock.DamageQuantity;
                     stockView.ProductId = product.ProductId;
-
                     
-
                     stockView.ProductId = product.ProductId;
 
                 }

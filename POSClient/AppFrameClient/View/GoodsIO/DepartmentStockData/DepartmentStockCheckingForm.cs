@@ -69,7 +69,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         if(departmentStock.Product.ProductId.Equals(id))
                         {
-                            checkInList = true;                            
+                            checkInList = true;
+                            break;
                         }
                     }
                 }
