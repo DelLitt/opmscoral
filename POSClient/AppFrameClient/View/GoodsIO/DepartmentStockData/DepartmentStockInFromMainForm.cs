@@ -402,6 +402,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
         public event EventHandler<DepartmentStockInEventArgs> FindBarcodeInMainStockEvent;
+        public event EventHandler<DepartmentStockInEventArgs> RefreshStockQuantityEvent;
         public event EventHandler<DepartmentStockInEventArgs> SaveStockInEvent;
 
         #endregion
@@ -458,6 +459,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtDexcription.Text = "";
                     txtSumProduct.Text = "";
                     txtSumValue.Text = "";
+
+                    DepartmentStockInEventArgs refreshEventArgs = new DepartmentStockInEventArgs();
+                    refreshEventArgs.DepartmentStockInDetailList = deptSIDetailList;
+                    EventUtility.fireEvent(FindRemainsQuantity,this,refreshEventArgs);
+
+                    bdsStockIn.ResetBindings(false);
+                    dgvDeptStockIn.Refresh();
+                    dgvDeptStockIn.Invalidate();
+
                 }
             }
         }
@@ -613,8 +623,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             deptSI.StockInDate = dtpImportDate.Value;
             deptSI.DepartmentId = dept.DepartmentId;
             deptSI.Description = txtDexcription.Text;
+
+            RefrefshDeptSIDetailList();
             deptSI.DepartmentStockInDetails = deptSIDetailList;
-            
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.IsForSync = isNeedSync;
             eventArgs.DepartmentStockIn = deptSI;
@@ -799,7 +810,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
                 {
-                    deptSIDetailList.Add(inDetail);
+                    if(!IsInList(deptSIDetailList,inDetail)) deptSIDetailList.Add(inDetail);
                 }
                 bdsStockIn.ResetBindings(false);
                 dgvStockIn.Refresh();
@@ -1007,6 +1018,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     inDetail.Quantity = inDetail.StockQuantity;
                 }
             }
+
+            RemoveZeroLines();
+            CalculateTotalStorePrice();
+
             bdsStockIn.ResetBindings(false);
             dgvDeptStockIn.Refresh();
             dgvStockIn.Invalidate();

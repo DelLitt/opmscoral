@@ -61,7 +61,13 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         departmentStockInExtraView.FindRemainsQuantity += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindRemainsQuantity);
                         departmentStockInExtraView.UpdateStockOutEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_UpdateStockOutEvent);
                         departmentStockInExtraView.FindBarcodeInMainStockEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_FindBarcodeInMainStockEvent);
+                        departmentStockInExtraView.RefreshStockQuantityEvent += new EventHandler<DepartmentStockInEventArgs>(departmentStockInExtraView_RefreshStockQuantityEvent);
                     }
+                }
+
+                void departmentStockInExtraView_RefreshStockQuantityEvent(object sender, DepartmentStockInEventArgs e)
+                {
+                    
                 }
 
                 void departmentStockInExtraView_FindBarcodeInMainStockEvent(object sender, DepartmentStockInEventArgs e)

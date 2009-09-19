@@ -335,6 +335,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> UpdateStockOutEvent;
         public event EventHandler<DepartmentStockInEventArgs> FindRemainsQuantity;
         public event EventHandler<DepartmentStockInEventArgs> FindBarcodeInMainStockEvent;
+        public event EventHandler<DepartmentStockInEventArgs> RefreshStockQuantityEvent;
 
         #endregion
 
