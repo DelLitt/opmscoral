@@ -224,7 +224,19 @@ namespace AppFrameClient.Utility
 
         private static bool CheckBackupSyncDrive(string usbDrive)
         {
-            if (!Directory.Exists(usbDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath))
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncSuccessPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncImportPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncExportPath))
+            {
+                return false;
+            }
+            if (!Directory.Exists(usbDrive + ClientSetting.SyncErrorPath))
             {
                 return false;
             }
