@@ -20,6 +20,7 @@ using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
 using AppFrameClient.Utility;
+using Ionic.Zip;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -141,47 +142,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             resultList = new ArrayList();
             try
             {
-
-                /*// sync master data first
-                Department mstDataDept = new Department
-                {
-                    DepartmentId = 0,
-                    DepartmentName = "MasterData"
-                };
-                // BEGIN TEMP FIXING
-                //DateTime lastMasterDataSyncTime = ClientUtility.GetLastSyncTime(configExportPath, mstDataDept, ClientUtility.SyncType.SyncDown);
-                DateTime lastMasterDataSyncTime = DateTime.MinValue;
-                // END TEMP FIXING
-                var masterDataEvent = new DepartmentStockInEventArgs();
-                masterDataEvent.LastSyncTime = lastMasterDataSyncTime;
-                if(chkMasterData.Checked)
-                {
-                    masterDataEvent.SyncProductMasters = chkPrdMaster.Checked;
-                    masterDataEvent.SyncPrice = chkPrice.Checked;
-                    masterDataEvent.SyncDepartments = chkDepartments.Checked;
-                }
-                
-                EventUtility.fireEvent(LoadMasterDataForExportEvent, this, masterDataEvent);
-                if (masterDataEvent.HasMasterDataToSync)
-                {
-                    string masterDataFileName = configExportPath + "\\" + "MasterData_SyncDown_" +
-                                                DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") +
-                                                CommonConstants.SERVER_SYNC_FORMAT;
-
-                    SyncResult mstResult = new SyncResult();
-                    mstResult.FileName = masterDataFileName;
-                    mstResult.Status = "Thành công";
-                    resultList.Add(mstResult);
-                    Stream mstStream = File.Open(masterDataFileName, FileMode.Create);
-                    BinaryFormatter mstBf = new BinaryFormatter();
-                    mstBf.Serialize(mstStream, masterDataEvent.SyncFromMainToDepartment);
-                    mstStream.Flush();
-                    mstStream.Close();
-
-                    CopyMasterImage(masterDataEvent.SyncFromMainToDepartment.ProductMasterList,
-                                    masterDataEvent.LastSyncTime, configExportPath);
-                }*/
-
                 if(chkMasterData.Checked)
                 {
                     if(!chkDepartments.Checked && !chkPrdMaster.Checked && !chkPrice.Checked)
@@ -199,6 +159,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 IList departmentList = deptEvent.DepartmentList;
                 foreach (Department department in departmentList)
                 {
+                    CleanUSBDrive(POSSyncDrive);
+                    if(department.DepartmentId != syncDeptId) continue;
+
                     var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
                     DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, department, ClientUtility.SyncType.SyncDown);
                     deptEvent = new DepartmentStockInEventArgs();
@@ -225,7 +188,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         // write last sync time
                         //ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     }
-
                 }
             }
             catch (Exception)
@@ -234,6 +196,146 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             MessageBox.Show("Đồng bộ hoàn tất !");
             
+        }
+
+        private void CleanUSBDrive(string drive)
+        {
+            string successPath = drive + ClientSetting.SyncSuccessPath;
+            string errorPath = drive + ClientSetting.SyncErrorPath;
+            string backupDBPath = drive + ClientSetting.DBBackupPath;
+            string appPath = Application.ExecutablePath;
+            appPath = appPath.Substring(0, appPath.LastIndexOf("\\"));
+            
+            string localSuccessPath = appPath + ClientSetting.SyncSuccessPath;
+            if (!Directory.Exists(localSuccessPath)) Directory.CreateDirectory(localSuccessPath);
+            
+            string localErrorPath = appPath + ClientSetting.SyncErrorPath;
+            if (!Directory.Exists(localErrorPath)) Directory.CreateDirectory(localErrorPath);
+
+            string localBackupDBPath = appPath + ClientSetting.DBBackupPath;
+            if (!Directory.Exists(localBackupDBPath)) Directory.CreateDirectory(localBackupDBPath);
+
+            if(Directory.Exists(successPath))
+            {
+                string zipFileName = string.Format("success_zip_files_{0}.zip", DateTime.Now.ToString("yyyyMMddHHmmss"));
+
+                CompressAllFiles(successPath, zipFileName);
+                /*string[] successFiles = Directory.GetFiles(successPath);
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.Password = ClientSetting.ZIP_PASSWORD;
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    bool hasData = false;
+                    foreach (string successFile in successFiles)
+                    {
+                        if(successFile.EndsWith("zip")) continue;
+                        zip.AddFile(successFile, "");
+                        if (!hasData) hasData = true;
+                    }
+                    
+                    if (hasData) zip.Save(successPath + "\\" + zipFileName);
+                }
+                // delete all files which compressed.
+                foreach (string successFile in successFiles)
+                {
+                    if (successFile.EndsWith("zip")) continue;
+                    File.Delete(successFile);
+                }*/
+            
+                // move all zip files to local successPath
+                /*foreach (string file in Directory.GetFiles(successPath))
+                {
+                    File.Move(file,localSuccessPath + "\\" + file.Substring(file.LastIndexOf("\\")+1));
+                }
+                foreach (string directory in Directory.GetDirectories(successPath))
+                {
+                    Directory.Move(directory, localSuccessPath + "\\" + directory.Substring(directory.LastIndexOf("\\") + 1));
+                }*/
+                ClientUtility.MoveDirectory(successPath,localSuccessPath,false);
+
+            }
+            if (Directory.Exists(errorPath))
+            {
+                string zipFileName = string.Format("error_zip_files_{0}.zip", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                CompressAllFiles(errorPath,zipFileName);
+                /*
+                string[] errorFiles = Directory.GetFiles(errorPath);
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.Password = ClientSetting.ZIP_PASSWORD;
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    bool hasData = false;
+                    foreach (string errorFile in errorFiles)
+                    {
+                        if (errorFile.EndsWith("zip")) continue;
+                        zip.AddFile(errorFile, "");
+                        if (!hasData) hasData = true;
+                    }
+
+                    
+                    if(hasData) zip.Save(errorPath + "\\" + zipFileName);
+                }
+                // delete all files
+                foreach (string errorFile in errorFiles)
+                {
+                    if (errorFile.EndsWith("zip")) continue;
+                    File.Delete(errorFile);
+                }*/
+
+                // move all zip files to local errorPath
+                /*foreach (string file in Directory.GetFiles(errorPath))
+                {
+                    File.Move(file, localErrorPath + "\\" + file.Substring(file.LastIndexOf("\\") + 1));
+                }
+                foreach (string directory in Directory.GetDirectories(errorPath))
+                {
+                    Directory.Move(directory, localErrorPath + "\\" + directory.Substring(directory.LastIndexOf("\\") + 1));
+                }*/
+                ClientUtility.MoveDirectory(successPath, localSuccessPath,false);
+            }
+
+            if(Directory.Exists(backupDBPath))
+            {
+                string[] backupDBFiles = Directory.GetFiles(backupDBPath);
+
+                foreach (string backupDbFile in backupDBFiles)
+                {
+                    File.Move(backupDbFile,localBackupDBPath + "\\" + backupDbFile.Substring(backupDbFile.LastIndexOf("\\")+1));
+                }
+            }
+        }
+
+        private void CompressAllFiles(string path, string fileName)
+        {
+
+            string[] files = Directory.GetFiles(path);
+            using (ZipFile zip = new ZipFile())
+            {
+                zip.Password = ClientSetting.ZIP_PASSWORD;
+                zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                bool hasData = false;
+                foreach (string file in files)
+                {
+                    if (file.EndsWith("zip")) continue;
+                       
+                    zip.AddFile(file, "");
+                    if (!hasData) hasData = true;
+                }
+
+                if (hasData) zip.Save(path + "\\" + fileName);
+            }
+            // delete all files which compressed.
+            foreach (string successFile in files)
+            {
+                if (successFile.EndsWith("zip")) continue;
+                File.Delete(successFile);
+            }
+
+            string[] subDirs = Directory.GetDirectories(path);
+            foreach (string subDir in subDirs)
+            {
+                CompressAllFiles(subDir,fileName);
+            }
         }
 
         private void CopyMasterImage(IList productMasterList, DateTime lastSyncDate, string path)
@@ -255,8 +357,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
         }
 
+        private long syncDeptId = 0;
         private void btnSyncToDept_Click(object sender, EventArgs e)
         {
+
+            syncDeptId = Int64.Parse(cboDepartments.SelectedValue.ToString());
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
@@ -288,6 +393,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 grpMasterData.Enabled = false;
             }
+        }
+
+        private void LoadDepartmentStockInToFileForm_Load(object sender, EventArgs e)
+        {
+            
+            this.departmentTableAdapter.Fill(this.masterDB.Department);
+
         }
     }
 }

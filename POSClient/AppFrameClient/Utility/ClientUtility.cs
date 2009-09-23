@@ -39,7 +39,7 @@ namespace AppFrameClient.Utility
             {
                 // Need to use "--databases" to force CREATE DATABASE command in script
                 // --hex-blob to turn blob fields into hex strings
-                string mysqldumpstring = string.Format("--database {0} --result-file={1} --single-transaction --routines --triggers --user={2} --password={3} --add-drop-database=true", 
+                string mysqldumpstring = string.Format("--database {0} --result-file={1} --single-transaction --routines --triggers --user={2} --password={3} --add-drop-database=true --quick ", 
                                                       "pos", // dbname
                                                       dbBackupPath+"\\"+backupFileName, // backupfile
                                                       "dbadmin",  // username
@@ -262,5 +262,50 @@ namespace AppFrameClient.Utility
             formatter.Serialize(stream, syncTime);
             stream.Close();
         }
+
+        public static void CopyDirectory(string src,string dst)
+        {
+            String[] Files;
+
+            if(dst[dst.Length-1]!=Path.DirectorySeparatorChar) 
+                dst+=Path.DirectorySeparatorChar;
+            if(!Directory.Exists(dst)) Directory.CreateDirectory(dst);
+            Files=Directory.GetFileSystemEntries(src);
+            foreach(string Element in Files)
+            {
+                // Sub directories
+
+                if(Directory.Exists(Element)) 
+                    CopyDirectory(Element,dst+Path.GetFileName(Element));
+                // Files in directory
+
+                else 
+                    File.Copy(Element,dst+Path.GetFileName(Element),true);
+            }
+        }
+        
+        public static void MoveDirectory(string src,string dst,bool deleteEmptyDir)
+        {
+            String[] Files;
+
+            if(dst[dst.Length-1]!=Path.DirectorySeparatorChar) 
+                dst+=Path.DirectorySeparatorChar;
+            if(!Directory.Exists(dst)) Directory.CreateDirectory(dst);
+            Files=Directory.GetFileSystemEntries(src);
+            foreach(string Element in Files)
+            {
+                if (Directory.Exists(Element)) // Sub directories
+                {
+                    MoveDirectory(Element, dst + Path.GetFileName(Element),deleteEmptyDir);
+                    if(deleteEmptyDir) Directory.Delete(Element);
+                }
+                else    // Files in directory
+                {
+                    File.Copy(Element, dst + Path.GetFileName(Element), true);
+                    File.Delete(Element);
+                }
+            }
+        }
+        
     }
 }

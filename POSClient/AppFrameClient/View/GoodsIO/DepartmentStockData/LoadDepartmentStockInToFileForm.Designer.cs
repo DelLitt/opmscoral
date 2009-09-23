@@ -41,9 +41,16 @@
             this.chkPrice = new System.Windows.Forms.CheckBox();
             this.chkPrdMaster = new System.Windows.Forms.CheckBox();
             this.chkMasterData = new System.Windows.Forms.CheckBox();
+            this.cboDepartments = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.masterDB = new AppFrameClient.MasterDB();
+            this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.syncResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSyncResult)).BeginInit();
             this.grpMasterData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // syncResultBindingSource
@@ -164,11 +171,48 @@
             this.chkMasterData.UseVisualStyleBackColor = true;
             this.chkMasterData.CheckedChanged += new System.EventHandler(this.chkMasterData_CheckedChanged);
             // 
+            // cboDepartments
+            // 
+            this.cboDepartments.DataSource = this.departmentBindingSource;
+            this.cboDepartments.DisplayMember = "DEPARTMENT_NAME";
+            this.cboDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartments.FormattingEnabled = true;
+            this.cboDepartments.Location = new System.Drawing.Point(250, 136);
+            this.cboDepartments.Name = "cboDepartments";
+            this.cboDepartments.Size = new System.Drawing.Size(295, 21);
+            this.cboDepartments.TabIndex = 58;
+            this.cboDepartments.ValueMember = "DEPARTMENT_ID";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(250, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Cửa hàng cần đồng bộ";
+            // 
+            // masterDB
+            // 
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // departmentBindingSource
+            // 
+            this.departmentBindingSource.DataMember = "Department";
+            this.departmentBindingSource.DataSource = this.masterDB;
+            // 
+            // departmentTableAdapter
+            // 
+            this.departmentTableAdapter.ClearBeforeFill = true;
+            // 
             // LoadDepartmentStockInToFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 354);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboDepartments);
             this.Controls.Add(this.dgvSyncResult);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClose);
@@ -177,16 +221,21 @@
             this.Controls.Add(this.grpMasterData);
             this.Name = "LoadDepartmentStockInToFileForm";
             this.Text = "Xuất hàng ra cửa hàng";
+            this.Load += new System.EventHandler(this.LoadDepartmentStockInToFileForm_Load);
             this.Controls.SetChildIndex(this.grpMasterData, 0);
             this.Controls.SetChildIndex(this.chkMasterData, 0);
             this.Controls.SetChildIndex(this.btnSyncToMain, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.dgvSyncResult, 0);
+            this.Controls.SetChildIndex(this.cboDepartments, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.syncResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSyncResult)).EndInit();
             this.grpMasterData.ResumeLayout(false);
             this.grpMasterData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +255,10 @@
         private System.Windows.Forms.CheckBox chkPrice;
         private System.Windows.Forms.CheckBox chkPrdMaster;
         private System.Windows.Forms.CheckBox chkMasterData;
+        private System.Windows.Forms.ComboBox cboDepartments;
+        private System.Windows.Forms.Label label1;
+        private MasterDB masterDB;
+        private System.Windows.Forms.BindingSource departmentBindingSource;
+        private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
     }
 }

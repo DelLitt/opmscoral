@@ -19,6 +19,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Utility;
+using Ionic.Zip;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -36,16 +37,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             bool isConfirmPeriod = false;
             DialogResult dResult = MessageBox.Show(
-                "Bạn xác định kết sổ cho ngày hôm nay ? Nếu phải, bấm Yes, còn nếu không, bấm No. Không làm gì, bấm Cancel",
-                "Kết sổ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if(dResult == DialogResult.Cancel)
+                "Bạn muốn đồng bộ về kho ?",
+                "Đồng bộ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if(dResult == DialogResult.No)
             {
                 return;
             }
-            if(dResult== DialogResult.Yes)
-            {
-                isConfirmPeriod = true;
-            }
+            
 
             
             // sync
@@ -63,6 +61,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 // dump db
                 ClientUtility.DumpDatabase();
+                CleanUSBDrive(POSSyncDrive);
                 exportPath = ClientUtility.EnsureSyncPath(exportPath, CurrentDepartment.Get());
                 // get last sync time
                 DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, CurrentDepartment.Get(),ClientUtility.SyncType.SyncUp);
@@ -114,6 +113,37 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 //throw;
             }
 //            }
+        }
+
+        private void CleanUSBDrive(string drive)
+        {
+            string backupPath = drive + ClientSetting.DBBackupPath;
+            
+            if(Directory.Exists(backupPath))
+            {
+                using(ZipFile zip = new ZipFile())
+                {
+                    zip.Password = ClientSetting.ZIP_PASSWORD;
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    bool hasData = false;
+                    foreach (string backupFile in Directory.GetFiles(backupPath))
+                    {
+                        if (backupFile.EndsWith("zip")) continue;
+                        zip.AddFile(backupFile, "");
+                        if(!hasData) hasData = true;
+                    }
+
+                    string zipFileName = string.Format("backup_zip_files_{0}.zip", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                    if(hasData) zip.Save(backupPath + "\\" + zipFileName);
+
+                    //delete all files
+                    foreach (string backupFile in Directory.GetFiles(backupPath))
+                    {
+                        if (backupFile.EndsWith("zip")) continue;
+                        File.Delete(backupFile);
+                    }
+                }
+            }
         }
 
         private bool CheckPOSSyncDriveExist()
