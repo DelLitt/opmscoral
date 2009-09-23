@@ -480,6 +480,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 deptSO.ConfirmFlg = 1;
                 deptSO.OtherDepartmentId =  Int64.Parse(cboDepartment.SelectedItem.ToString());
+
+                foreach (DepartmentStockOutDetail outDetail in deptSO.DepartmentStockOutDetails)
+                {
+                    outDetail.Description = "0";
+                }
             }
             var eventArgs = new DepartmentStockOutEventArgs();
             eventArgs.DepartmentStockOut = deptSO;
@@ -698,7 +703,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 cbbStockOutType.Enabled = false;
+                
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
+
+                bdsStockIn.ResetBindings(false);
+                dgvStockIn.Refresh();
+                dgvStockIn.Invalidate();
             }
         }
 
@@ -1223,6 +1233,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     inDetail.GoodQuantity = inDetail.Quantity;
                 }
             }
+            RemoveZeroLines();
             bdsStockIn.ResetBindings(false);
             dgvStockIn.Refresh();
             dgvStockIn.Invalidate();

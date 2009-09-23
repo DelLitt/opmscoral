@@ -461,6 +461,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                 }
             }
+            RemoveDuplicateRows();
             this.Enabled = true;
             bdsStockIn.ResetBindings(false);
             dgvDeptStockIn.Refresh();
@@ -699,7 +700,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Lỗi ở dòng " + errMsg.ToString() + " : Số lượng phải lớn hơn 0");
                 return null;
             }
-            line = 0;
+            /*line = 0;
             foreach (DepartmentStockInDetail detail in deptSIDetailList)
             {
                 count = 0;
@@ -721,7 +722,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                     line++;
                 }
-            }
+            }*/
+
+            RemoveDuplicateRows();
 
             if (deptSI == null)
             {
@@ -752,6 +755,28 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 return null;
+            }
+        }
+
+        private void RemoveDuplicateRows()
+        {
+            int count = 0;
+            while (count < deptSIDetailList.Count - 1)
+            {
+                DepartmentStockInDetail detail = deptSIDetailList[count];
+                int maxCount = deptSIDetailList.Count - 1;
+                while (maxCount > count)
+                {
+                    DepartmentStockInDetail detail2 = deptSIDetailList[maxCount];
+                    // if we had duplicate id
+                    if (detail.Product.ProductId.Equals(detail2.Product.ProductId))
+                    {
+                        detail.Quantity += detail2.Quantity;
+                        deptSIDetailList.RemoveAt(maxCount);
+                    }
+                    maxCount--;
+                }
+                count++;
             }
         }
 
@@ -1157,10 +1182,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     deptSIDetailList.Add(inDetail);
                 }
-                bdsStockIn.ResetBindings(false);
-                dgvStockIn.Refresh();
-                dgvStockIn.Invalidate();
+                
             }
+            
+            RemoveDuplicateRows();
+            bdsStockIn.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
             /*if (isMessage)
             {
                 MessageBox.Show("Sản phẩm có tồn kho 0 sẽ không đựoc xuất");
@@ -1363,6 +1391,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     inDetail.Quantity = inDetail.StockQuantity;
                 }
             }
+            RemoveZeroLines();
             bdsStockIn.ResetBindings(false);
             dgvDeptStockIn.Refresh();
             dgvStockIn.Invalidate();
@@ -1435,7 +1464,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         DepartmentStockInDetail foundStockOutDetail = null;
                         foreach (DepartmentStockInDetail detail in deptSIDetailList)
                         {
-                            if (eventArgs.SelectedDepartmentStockInDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                            if (inDetail.Product.ProductId.Equals(detail.Product.ProductId))
                             {
                                 found = true;
                                 foundStockOutDetail = detail;
@@ -1456,6 +1485,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
                 }
 
+                RemoveDuplicateRows();
                 bdsStockIn.ResetBindings(false);
                 dgvStockIn.Refresh();
                 dgvStockIn.Invalidate();

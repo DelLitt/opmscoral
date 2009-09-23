@@ -1153,6 +1153,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     inDetail.GoodQuantity = inDetail.StockQuantity;
                 }
             }
+            RemoveZeroLines();
             bdsStockIn.ResetBindings(false);
             dgvStockIn.Refresh();
             dgvStockIn.Invalidate();
