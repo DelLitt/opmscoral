@@ -518,27 +518,35 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+             
             var selectedIndex = dgvDeptStockIn.CurrentRow.Index;
             if (selectedIndex < 0 || selectedIndex >= deptSIDetailList.Count)
             {
                 return;
             }
-            DepartmentStockInDetail detail = deptSIDetailList[selectedIndex];
+            
             if (MessageBox.Show("Bạn có muốn xóa không?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (detail.DepartmentStockInDetailPK != null && !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].DepartmentStockInDetailPK.StockInId))
+                DataGridViewSelectedRowCollection selectedRows = dgvDeptStockIn.SelectedRows;
+                foreach (DataGridViewRow row in selectedRows)
                 {
-                    detail.DelFlg = 1;
-                    for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)
+                    selectedIndex = row.Index;
+                    DepartmentStockInDetail detail = deptSIDetailList[selectedIndex];
+                    if (detail.DepartmentStockInDetailPK != null && !string.IsNullOrEmpty(deptSIDetailList[selectedIndex].DepartmentStockInDetailPK.StockInId))
                     {
-                        dgvDeptStockIn[j, selectedIndex].ReadOnly = true;
-                        dgvDeptStockIn[j, selectedIndex].Style.BackColor = Color.Gray;
+                        detail.DelFlg = 1;
+                        for (int j = 0; j < dgvDeptStockIn.Columns.Count; j++)
+                        {
+                            dgvDeptStockIn[j, selectedIndex].ReadOnly = true;
+                            dgvDeptStockIn[j, selectedIndex].Style.BackColor = Color.Gray;
+                        }
                     }
+                    else
+                    {
+                        deptSIDetailList.RemoveAt(selectedIndex);
+                    }    
                 }
-                else
-                {
-                    deptSIDetailList.RemoveAt(selectedIndex);
-                }
+                
             }
             CalculateTotalStorePrice();
         }
@@ -1104,18 +1112,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
 
                 // remove 0 quanity
-                int count = 0;
-                int length = deptSIDetailList.Count;
-                bool isMessage = false;
-                for (int i = 0; i < length; i++)
-                {
-                    if (deptSIDetailList[i - count].StockQuantity == 0)
-                    {
-                        //isMessage = true;
-                        deptSIDetailList.RemoveAt(i - count);
-                        count++;
-                    }
-                }
+                
+
+
                 if (eventArgs.SelectedStockOutDetails != null && eventArgs.SelectedStockOutDetails.Count > 0)
                 {
                     foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
@@ -1152,6 +1151,21 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             CalculateTotalStorePrice();
+        }
+        private void RemoveZeroStockQuantities()
+        {
+            int count = 0;
+            int length = deptSIDetailList.Count;
+            bool isMessage = false;
+            for (int i = 0; i < length; i++)
+            {
+                if (deptSIDetailList[i - count].StockQuantity == 0)
+                {
+                    //isMessage = true;
+                    deptSIDetailList.RemoveAt(i - count);
+                    count++;
+                }
+            }
         }
     }
 }

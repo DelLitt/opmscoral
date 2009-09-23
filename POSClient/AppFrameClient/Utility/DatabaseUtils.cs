@@ -28,7 +28,7 @@ namespace AppFrameClient.Utility
             string user = "dbadmin";
             string pass = "1qw45DCM9rl";
 
-            IList list = GetPOSSyncDrives();
+            IList list = GetCLRPOSSyncDrives();
             if(list == null || list.Count == 0 )
             {
                 return;
@@ -76,6 +76,29 @@ namespace AppFrameClient.Utility
                 Console.WriteLine(ex1.Message);
             }
 
+        }
+
+        private static IList GetCLRPOSSyncDrives()
+        {
+            IList posSyncDrives = new ArrayList();
+            IList usbList = ClientUtility.GetUSBDrives();
+            foreach (string usbDrive in usbList)
+            {
+                if (CheckCLRBackupSyncDrive(usbDrive))
+                {
+                    posSyncDrives.Add(usbDrive);
+                }
+            }
+            return posSyncDrives;
+        }
+
+        private static bool CheckCLRBackupSyncDrive(string usbDrive)
+        {
+            if (!Directory.Exists(usbDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath))
+            {
+                return false;
+            }
+            return true;
         }
 
         private static void CleanDatabase(bool statistic, bool imExStatistic)
