@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -338,6 +339,36 @@ namespace AppFrameClient.Utility
 
         public static void SyncMasterData(string masterFileName)
         {
+            DbConnection conn;
+            DbCommand command;
+            string strUserID = "dbadmin";
+            string strPswd = "1qw45DCM9rl";
+            string strDBName = "pos";
+            string strServer = "localhost";
+            //Use the Web.Config url to call web service.
+            string connectionStr = "Server=" + strServer + ";Database=" + strDBName + ";User ID=" + strUserID + ";Password=" + strPswd + ";";
+            object activeDepartmentId = null;
+            conn = new MySqlConnection(connectionStr);
+
+            try
+            {
+                conn.Open();
+                command = conn.CreateCommand();
+                command.CommandText = " SELECT department_id FROM department WHERE active = 1";
+                activeDepartmentId = command.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                
+                
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            // get active department
+
             string pathExtract = masterFileName.Substring(0, masterFileName.LastIndexOf("\\"));
             using (ZipFile masterZipFile = ZipFile.Read(masterFileName))
             {
@@ -353,6 +384,42 @@ namespace AppFrameClient.Utility
                 File.Delete(file);
             }
             File.Delete(masterFileName);
+
+            // clean database
+            string delProduct =
+                "\" DELETE from product WHERE product_id NOT IN (SELECT product_id FROM department_stock); \"";
+            string delProductMaster = "\" DELETE from product_master WHERE product_master_id NOT IN (SELECT product_master_id FROM product); \"";
+            string delDepartmentPrice = "\" DELETE from department_price WHERE product_master_id NOT IN (SELECT product_master_id FROM product_master); \"";
+
+            ExecuteMySQLCmdLine(delProduct, "pos", "dbadmin", "1qw45DCM9rl");
+            ExecuteMySQLCmdLine(delProductMaster, "pos", "dbadmin", "1qw45DCM9rl");
+            ExecuteMySQLCmdLine(delDepartmentPrice, "pos", "dbadmin", "1qw45DCM9rl");
+
+            // update active department
+            if (activeDepartmentId == null || activeDepartmentId.ToString() == string.Empty)
+            {
+                
+            }
+            else
+            {
+                try
+                {
+                    conn.Open();
+                    command = conn.CreateCommand();
+                    command.CommandText = " UPDATE department SET active = 1 WHERE department_id = " + activeDepartmentId.ToString();
+                    activeDepartmentId = command.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+
+
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+                    
         }
     }
 }

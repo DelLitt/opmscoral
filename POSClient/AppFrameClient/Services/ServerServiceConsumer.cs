@@ -395,13 +395,12 @@ namespace AppFrameClient.Services
                             serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                             serverService.JoinDistributingGroup(CurrentDepartment.Get());
                             ((MainForm)GlobalCache.Instance().MainForm).ServiceStatus.Text = " Kết nối với dịch vụ.";
-                            
                             Thread.Sleep(100);
                             
                         }
                         catch (Exception ex)
                         {
-                            ClientUtility.Log(logger,ex.Message);
+                            //ClientUtility.Log(logger,ex.Message);
                         }
                         
                     }
