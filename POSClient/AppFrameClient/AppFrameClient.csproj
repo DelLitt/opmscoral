@@ -82,6 +82,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\AppFrameWeb\Bin\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="InfoBox, Version=0.8.0.0, Culture=neutral, PublicKeyToken=6f5edd306b0cc770, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\InfoBox.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip, Version=1.8.4.22, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Dino Chiesa\DotNetZip Runtime v1.8\Ionic.Zip.dll</HintPath>

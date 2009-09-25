@@ -21,6 +21,25 @@ namespace AppFrameClient.Utility
 {
     public class ClientUtility
     {
+        public delegate void EmptyDelegate();
+        public static void TryActionHelper(EmptyDelegate method, int retryCount)
+        {
+            bool retry = false;
+
+            do
+            {
+                try
+                {
+                    method.Invoke();
+                    retry = false;
+                }
+                catch (Exception ex)
+                {
+                    retry = (--retryCount) > 0 ? true : false;
+                }
+            } while (retry);
+        }
+
         public static void DumpDatabase()
         {
             string mySQLDumpPath = ClientSetting.MySQLDumpPath+"\\mysqldump.exe";

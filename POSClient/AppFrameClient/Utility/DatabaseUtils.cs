@@ -19,9 +19,22 @@ namespace AppFrameClient.Utility
 {
     public class DatabaseUtils
     {
-        private const string ZIP_PASSWORD = "8FcsjTNcxp";
-        private static string posConnectionString = AppFrameClient.Properties.Settings.Default.posConnectionString;
-
+        public const string ZIP_PASSWORD = "8FcsjTNcxp";
+        private static readonly string _posConnectionString = AppFrameClient.Properties.Settings.Default.posConnectionString;
+        
+        public static readonly string[] TABLE_NAMES = new string[]
+                                                    {
+                                                        "purchase_order_detail",
+                                                        "purchase_order",
+                                                        "department_stock_out_detail",
+                                                        "department_stock_out",
+                                                        "department_stock_in_detail",
+                                                        "department_stock_in",
+                                                        "stock_out_detail",
+                                                        "stock_out",
+                                                        "stock_in_detail",
+                                                        "stock_in"
+                                                    };
         /// <summary>
         /// Backup database to CRL directories
         /// </summary>
@@ -121,7 +134,40 @@ namespace AppFrameClient.Utility
 
         private static void RestoreTable(string path, string db, string user, string pass, string[] sqlFiles)
         {
-            
+            foreach (string sqlFile in sqlFiles)
+            {
+                string file = sqlFile.Replace("\\", "/");
+                string tableName = GetTableNameFromFileName(file);
+                if(string.IsNullOrEmpty(tableName)) continue;
+                //backup purchase_order
+                string sqlLoad = "\" LOAD DATA LOCAL INFILE '" + file + "' ";
+                //string backupFileName = string.Format(backupPath + "/" + table + "_{0}.txt", timeTicks);
+                string restoreSql = sqlLoad + " IGNORE INTO TABLE " + tableName + " " +
+                                   " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n' ; \"";
+                ExecuteMySqlCmdLine(restoreSql, db, user, pass);
+                //savedFiles.Add(backupFileName);
+            }
+            foreach (string sqlFile in sqlFiles)
+            {
+                File.Delete(sqlFile);
+            }
+        }
+
+        private static string GetTableNameFromFileName(string sqlFile)
+        {
+            foreach (string tableName in TABLE_NAMES)
+            {
+                if (sqlFile.IndexOf(tableName) > 0)
+                {
+                    // check the next is number
+                    string test = sqlFile.Substring(sqlFile.LastIndexOf("/")+tableName.Length + 2);
+                    test = test.Substring(0, test.LastIndexOf("."));
+                    long correctFile = 0;
+                    ClientUtility.TryActionHelper(delegate() { correctFile = Int64.Parse(test); }, 1);
+                    if(correctFile > 0) return tableName;
+                }
+            }
+            return null;
         }
 
 
@@ -151,14 +197,14 @@ namespace AppFrameClient.Utility
                     string backupFilename1 = string.Format("purchase_order_{0}.txt", timeTicks);
                     string backupSql = sqlSelect + backupPath + "/" + backupFilename1 + "' " +
                                        " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order; \"";
-                    ExecuteMySQLCmdLine(backupSql, db, user, pass);
+                    ExecuteMySqlCmdLine(backupSql, db, user, pass);
 
                     //backup purchase_order_detail
                     sqlSelect = "\" SELECT *  INTO OUTFILE '";
                     string backupFilename2 = string.Format("purchase_order_detail{0}.txt", timeTicks);
                     backupSql = sqlSelect + backupPath + "/" + backupFilename2 + "'  " +
                                 " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order_detail; \"";
-                    ExecuteMySQLCmdLine(backupSql, db, user, pass);
+                    ExecuteMySqlCmdLine(backupSql, db, user, pass);
 
 
                     backupFilename1 = backupPath + "/" + backupFilename1;
@@ -205,7 +251,7 @@ namespace AppFrameClient.Utility
                 string backupFileName = string.Format(backupPath + "/" + table + "_{0}.txt", timeTicks);
                 string backupSql = sqlSelect + backupFileName + "' " +
                                    " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM "+table +" ; \"";
-                ExecuteMySQLCmdLine(backupSql, db, user, pass);
+                ExecuteMySqlCmdLine(backupSql, db, user, pass);
                 savedFiles.Add(backupFileName);
             }       
         }
@@ -254,12 +300,12 @@ namespace AppFrameClient.Utility
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
 
-                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+                ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from purchase_order where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
-                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
             }
 
             if(imExStatistic)
@@ -268,49 +314,49 @@ namespace AppFrameClient.Utility
                 string deleteDetail = "\" delete from department_stock_out_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
-                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+                ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from department_stock_out where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
-                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
                 
                 // department_stock_in
                 deleteDetail = "\" delete from department_stock_in_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
-                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+                ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from department_stock_in where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
-                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
                 
                 // stock_out
                 deleteDetail = "\" delete from stock_out_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
-                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+                ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from stock_out where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
-                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
 
                 // stock_in
                 deleteDetail = "\" delete from stock_in_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
-                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+                ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from stock_in where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
-                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
             }
         }
 
-        private static void ExecuteMySQLCmdLine(string sqlString, string dbName, string username, string password)
+        private static void ExecuteMySqlCmdLine(string sqlString, string dbName, string username, string password)
         {
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
             try
@@ -326,6 +372,7 @@ namespace AppFrameClient.Utility
                 // Create info needed by process
                 ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
                 info.Arguments = mysqldumpstring;
+                info.CreateNoWindow = true;
                 info.UseShellExecute = false;
                 info.RedirectStandardError = true;
                 info.RedirectStandardOutput = true;
@@ -333,21 +380,25 @@ namespace AppFrameClient.Utility
                 // Create process
                 Process p = new Process();
                 p.StartInfo = info;
+                p.OutputDataReceived +=new DataReceivedEventHandler((sender, e) => POutputDataReceived(sender, e));
+                p.ErrorDataReceived +=new DataReceivedEventHandler((sender, e) => PErrorDataReceived(sender, e));
                 // Set up asynchronous read event
                 p.Start();
                 p.BeginOutputReadLine();
                 p.WaitForExit();
-
+                p.OutputDataReceived -= new DataReceivedEventHandler((sender, e) => POutputDataReceived(sender, e));
+                p.ErrorDataReceived -= new DataReceivedEventHandler((sender, e) => PErrorDataReceived(sender, e));
                 //TODO, check for errors
 
             }
             finally
             {
                 // Flush and close file
+                
             }
         }
 
-        private static void ExecuteMySQLDumpCmdLine(bool isDump, string sqlString)
+        private static void ExecuteMySqlDumpCmdLine(bool isDump, string sqlString)
         {
             string mySQLDumpPath;
             if (isDump)
@@ -360,8 +411,8 @@ namespace AppFrameClient.Utility
             }
             ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
             Process p = new Process();
-            p.ErrorDataReceived += new DataReceivedEventHandler(p_ErrorDataReceived);
-            p.OutputDataReceived += new DataReceivedEventHandler(p_OutputDataReceived);
+            p.ErrorDataReceived += new DataReceivedEventHandler(PErrorDataReceived);
+            p.OutputDataReceived += new DataReceivedEventHandler(POutputDataReceived);
             try
             {
                 string mysqldumpstring = sqlString;
@@ -410,16 +461,16 @@ namespace AppFrameClient.Utility
             {
                 MessageBox.Show("Xử lý thông tin chung thất bại.");
             }
-            p.ErrorDataReceived -= new DataReceivedEventHandler(p_ErrorDataReceived);
-            p.OutputDataReceived -= new DataReceivedEventHandler(p_OutputDataReceived);
+            p.ErrorDataReceived -= new DataReceivedEventHandler(PErrorDataReceived);
+            p.OutputDataReceived -= new DataReceivedEventHandler(POutputDataReceived);
         }
 
-        static void p_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        static void POutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e.Data);
         }
 
-        static void p_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        static void PErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             Console.WriteLine(e.Data);
         }
@@ -518,7 +569,7 @@ namespace AppFrameClient.Utility
                                                       "dbadmin",  // username
                                                       "1qw45DCM9rl");
 
-            ExecuteMySQLDumpCmdLine(true, mysqldumpstring);
+            ExecuteMySqlDumpCmdLine(true, mysqldumpstring);
             using (ZipFile masterZipFile = new ZipFile())
             {
                 masterZipFile.Password = ZIP_PASSWORD;
@@ -572,7 +623,7 @@ namespace AppFrameClient.Utility
             {
                 if (!file.EndsWith("sql")) continue;
                 string syncString = string.Format(" --database={0} --user={1} --password={2}  < {3} ", "pos", "dbadmin", "1qw45DCM9rl", file);
-                ExecuteMySQLDumpCmdLine(false, syncString);
+                ExecuteMySqlDumpCmdLine(false, syncString);
                 File.Delete(file);
             }
             File.Delete(masterFileName);
@@ -583,9 +634,9 @@ namespace AppFrameClient.Utility
             string delProductMaster = "\" DELETE from product_master WHERE product_master_id NOT IN (SELECT product_master_id FROM product); \"";
             string delDepartmentPrice = "\" DELETE from department_price WHERE product_master_id NOT IN (SELECT product_master_id FROM product_master); \"";
 
-            ExecuteMySQLCmdLine(delProduct, "pos", "dbadmin", "1qw45DCM9rl");
-            ExecuteMySQLCmdLine(delProductMaster, "pos", "dbadmin", "1qw45DCM9rl");
-            ExecuteMySQLCmdLine(delDepartmentPrice, "pos", "dbadmin", "1qw45DCM9rl");
+            ExecuteMySqlCmdLine(delProduct, "pos", "dbadmin", "1qw45DCM9rl");
+            ExecuteMySqlCmdLine(delProductMaster, "pos", "dbadmin", "1qw45DCM9rl");
+            ExecuteMySqlCmdLine(delDepartmentPrice, "pos", "dbadmin", "1qw45DCM9rl");
 
             // update active department
             if (activeDepartmentId == null || activeDepartmentId.ToString() == string.Empty)

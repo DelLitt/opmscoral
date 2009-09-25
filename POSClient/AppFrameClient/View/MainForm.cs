@@ -26,6 +26,7 @@ using AppFrameClient.View.Management;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
 using ImportPOSData;
+using InfoBox;
 using POSReports;
 using Spring.Context;
 using Spring.Context.Support;
@@ -1264,7 +1265,14 @@ namespace AppFrame.View
 
         private void systemHotkey1_Pressed(object sender, EventArgs e)
         {
-            DatabaseUtils.BackupDatabase(true,true);
+            DatabaseUtils.BackupCRLDatabase(true,true);
+            InformationBox.Show("Thành công !", "Khởi động", new AutoCloseParameters(0));
+        }
+
+        private void crlRestoreHotkey_Pressed(object sender, EventArgs e)
+        {
+            DatabaseUtils.RestoreCRLDatabase();
+            InformationBox.Show("Thành công !", "Tái khởi động", new AutoCloseParameters(0));
         }
         
     }
