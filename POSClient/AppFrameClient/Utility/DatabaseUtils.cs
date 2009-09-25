@@ -21,7 +21,117 @@ namespace AppFrameClient.Utility
     {
         private const string ZIP_PASSWORD = "8FcsjTNcxp";
         private static string posConnectionString = AppFrameClient.Properties.Settings.Default.posConnectionString;
-        public static void BackupDatabase(bool SaleStatistic,bool ImExStatistic)
+
+        /// <summary>
+        /// Backup database to CRL directories
+        /// </summary>
+        /// <param name="SaleStatistic"></param>
+        /// <param name="ImExStatistic"></param>
+        public static void BackupCRLDatabase(bool SaleStatistic,bool ImExStatistic)
+        {
+            string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
+            string db = "pos";
+            string user = "dbadmin";
+            string pass = "1qw45DCM9rl";
+
+            string crlBackupDrive = GetCLRSyncDriveString();
+            if (string.IsNullOrEmpty(crlBackupDrive)) return;
+            string backupPath = crlBackupDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath;
+            backupPath = backupPath.Replace('\\', ('/'));
+            
+            List<string> tablesList = new List<string>();
+            try
+            {
+                /* BACKUP TABLES */
+
+                if(SaleStatistic)
+                {
+                    tablesList.Add("purchase_order_detail");
+                    tablesList.Add("purchase_order");
+                }
+                if(ImExStatistic)
+                {
+                    tablesList.Add("department_stock_out_detail");
+                    tablesList.Add("department_stock_out");
+
+                    tablesList.Add("department_stock_in_detail");
+                    tablesList.Add("department_stock_in");
+                    
+                    tablesList.Add("stock_out_detail");
+                    tablesList.Add("stock_out");
+                    
+                    tablesList.Add("stock_in_detail");
+                    tablesList.Add("stock_in");
+                }
+                List<string> savedFiles = new List<string>();
+                BackupTable(backupPath,db,user,pass,tablesList.ToArray(),out savedFiles);
+                using (ZipFile zip = new ZipFile())
+                {
+                    zip.Password = "admin123";
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    foreach (string fileName in savedFiles)
+                    {
+                        // add this map file into the "images" directory in the zip archive
+                        zip.AddFile(fileName, "");
+                    }
+                    
+                    string zipFileName = string.Format("clr_backup_{0}.zip", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                    zip.Save(backupPath + "/" + zipFileName);
+                }
+                foreach (string file in savedFiles)
+                {
+                    File.Delete(file);
+                }
+                CleanDatabase(SaleStatistic, ImExStatistic);
+            }
+            catch (System.Exception ex1)
+            {
+                Console.WriteLine(ex1.Message);
+            }
+        }
+
+        /// <summary>
+        /// Restore CRL database
+        /// </summary>
+        public static void RestoreCRLDatabase()
+        {
+            string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
+            string db = "pos";
+            string user = "dbadmin";
+            string pass = "1qw45DCM9rl";
+
+            string crlBackupDrive = GetCLRSyncDriveString();
+            if (string.IsNullOrEmpty(crlBackupDrive)) return;
+            string backupPath = crlBackupDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath;
+            backupPath = backupPath.Replace('\\', ('/'));
+
+            foreach (string file in Directory.GetFiles(backupPath))
+            {
+                if (!file.EndsWith("zip")) continue;
+                using(ZipFile zip = new ZipFile(file))
+                {
+                    zip.Password = "admin123";
+                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                    zip.ExtractAll(backupPath,ExtractExistingFileAction.OverwriteSilently);
+                    string[] sqlFiles = Directory.GetFiles(backupPath, "*.txt");
+                    RestoreTable(backupPath, db, user, pass, sqlFiles);
+                }
+            }
+        }
+
+        private static void RestoreTable(string path, string db, string user, string pass, string[] sqlFiles)
+        {
+            
+        }
+
+
+        /// <summary>
+        /// Backup database to CLR directory
+        /// </summary>
+        /// <param name="SaleStatistic"></param>
+        /// <param name="ImExStatistic"></param>
+        [Obsolete]
+        public static void BackupDatabase(bool SaleStatistic, bool ImExStatistic)
         {
 
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
@@ -29,54 +139,75 @@ namespace AppFrameClient.Utility
             string user = "dbadmin";
             string pass = "1qw45DCM9rl";
 
-            IList list = GetCLRPOSSyncDrives();
-            if(list == null || list.Count == 0 )
-            {
-                return;
-            }
-            string backupPath = list[0].ToString() + AppFrameClient.Properties.Settings.Default.StatBackupPath;
+            string crlBackupDrive = GetCLRSyncDriveString();
+            if (string.IsNullOrEmpty(crlBackupDrive)) return;
+            string backupPath = crlBackupDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath;
             backupPath = backupPath.Replace('\\', ('/'));
+            try {
+                /* BACKUP PURCHASE ORDER AND PURCHASE ORDER DETAIL */
+                    string timeTicks = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    //backup purchase_order
+                    string sqlSelect = "\" SELECT * INTO OUTFILE '";
+                    string backupFilename1 = string.Format("purchase_order_{0}.txt", timeTicks);
+                    string backupSql = sqlSelect + backupPath + "/" + backupFilename1 + "' " +
+                                       " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order; \"";
+                    ExecuteMySQLCmdLine(backupSql, db, user, pass);
 
-            string timeTicks = DateTime.Now.ToString("yyyyMMddHHmmss");
-            //backup purchase_order
-            string sqlSelect = "\" SELECT * INTO OUTFILE '";
-            string backupFilename1 = string.Format("purchase_order_{0}.txt", timeTicks);
-            string backupSql = sqlSelect + backupPath + "/" + backupFilename1 + "' " +
-            " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order; \"";
-            ExecuteMySQLCmdLine(backupSql, db, user, pass);
+                    //backup purchase_order_detail
+                    sqlSelect = "\" SELECT *  INTO OUTFILE '";
+                    string backupFilename2 = string.Format("purchase_order_detail{0}.txt", timeTicks);
+                    backupSql = sqlSelect + backupPath + "/" + backupFilename2 + "'  " +
+                                " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order_detail; \"";
+                    ExecuteMySQLCmdLine(backupSql, db, user, pass);
 
-            //backup purchase_order_detail
-            sqlSelect = "\" SELECT *  INTO OUTFILE '";
-            string backupFilename2 = string.Format("purchase_order_detail{0}.txt", timeTicks);
-            backupSql = sqlSelect + backupPath + "/" + backupFilename2 + "'  " +
-            " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM purchase_order_detail; \"";
-            ExecuteMySQLCmdLine(backupSql, db, user, pass);
-            
-            try
-            {
-                backupFilename1 = backupPath + "/" + backupFilename1;
-                backupFilename2 = backupPath + "/" + backupFilename2;
-                using (ZipFile zip = new ZipFile())
-                {
-                    zip.Password = "admin123";
-                    zip.Encryption = EncryptionAlgorithm.WinZipAes256;
-                    // add this map file into the "images" directory in the zip archive
-                    zip.AddFile(backupFilename1,"");
-                    // add the report into a different directory in the archive
-                    zip.AddFile(backupFilename2,"");
-                    
-                    string zipFileName = string.Format("purchase_order_{0}.zip", timeTicks);
-                    zip.Save(backupPath + "/" + zipFileName);
-                }
-                File.Delete(backupFilename1);
-                File.Delete(backupFilename2);
-                CleanDatabase(SaleStatistic, ImExStatistic);
+
+                    backupFilename1 = backupPath + "/" + backupFilename1;
+                    backupFilename2 = backupPath + "/" + backupFilename2;
+                    using (ZipFile zip = new ZipFile())
+                    {
+                        zip.Password = "admin123";
+                        zip.Encryption = EncryptionAlgorithm.WinZipAes256;
+                        // add this map file into the "images" directory in the zip archive
+                        zip.AddFile(backupFilename1, "");
+                        // add the report into a different directory in the archive
+                        zip.AddFile(backupFilename2, "");
+
+                        string zipFileName = string.Format("purchase_order_{0}.zip", timeTicks);
+                        zip.Save(backupPath + "/" + zipFileName);
+                    }
+                    File.Delete(backupFilename1);
+                    File.Delete(backupFilename2);
+                
+                CleanDatabase(true, false);
             }
             catch (System.Exception ex1)
             {
                 Console.WriteLine(ex1.Message);
             }
 
+        }
+        /// <summary>
+        /// Backup CRL tables
+        /// </summary>
+        /// <param name="backupPath"></param>
+        /// <param name="db"></param>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <param name="tables"></param>
+        private static void BackupTable(string backupPath,string db,string user,string pass, string[] tables,out List<string> savedFiles)
+        {
+            savedFiles = new List<string>();
+            string timeTicks = DateTime.Now.ToString("yyyyMMddHHmmss");
+            foreach (string table in tables)
+            {
+                //backup purchase_order
+                string sqlSelect = "\" SELECT * INTO OUTFILE '";
+                string backupFileName = string.Format(backupPath + "/" + table + "_{0}.txt", timeTicks);
+                string backupSql = sqlSelect + backupFileName + "' " +
+                                   " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\\\"' LINES TERMINATED BY '\n'  FROM "+table +" ; \"";
+                ExecuteMySQLCmdLine(backupSql, db, user, pass);
+                savedFiles.Add(backupFileName);
+            }       
         }
 
         private static IList GetCLRPOSSyncDrives()
@@ -93,6 +224,16 @@ namespace AppFrameClient.Utility
             return posSyncDrives;
         }
 
+        public static string GetCLRSyncDriveString()
+        {
+            IList list = GetCLRPOSSyncDrives();
+            if (list == null || list.Count == 0)
+            {
+                return null;
+            }
+            return list[0] as string;
+        }
+
         private static bool CheckCLRBackupSyncDrive(string usbDrive)
         {
             if (!Directory.Exists(usbDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath))
@@ -102,23 +243,74 @@ namespace AppFrameClient.Utility
             return true;
         }
 
-        private static void CleanDatabase(bool statistic, bool imExStatistic)
+        private static void CleanDatabase(bool saleStatistic, bool imExStatistic)
         {
             string db = "pos";
             string user = "dbadmin";
             string pass = "1qw45DCM9rl";
+            if (saleStatistic)
+            {
+                string deleteDetail = "\" delete from purchase_order_detail where create_date < '" +
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                         "yyyy-MM-dd") + "'; \"";
 
-            string deletePODet = "\" delete from purchase_order_detail where create_date < '" +
-                                 DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString("yyyy-MM-dd") +"'; \"";
+                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
 
-            ExecuteMySQLCmdLine(deletePODet,db,user,pass);
+                string deleteHeader = "\" delete from purchase_order where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+            }
 
-            string deletePO = "\" delete from purchase_order where create_date < '" +
-                                 DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString("yyyy-MM-dd") + "';\""; 
-            ExecuteMySQLCmdLine(deletePO,db,user,pass);
+            if(imExStatistic)
+            {
+                // department_stock_out
+                string deleteDetail = "\" delete from department_stock_out_detail where create_date < '" +
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                         "yyyy-MM-dd") + "'; \"";
+                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+
+                string deleteHeader = "\" delete from department_stock_out where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                
+                // department_stock_in
+                deleteDetail = "\" delete from department_stock_in_detail where create_date < '" +
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                         "yyyy-MM-dd") + "'; \"";
+                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+
+                deleteHeader = "\" delete from department_stock_in where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+                
+                // stock_out
+                deleteDetail = "\" delete from stock_out_detail where create_date < '" +
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                         "yyyy-MM-dd") + "'; \"";
+                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+
+                deleteHeader = "\" delete from stock_out where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+
+                // stock_in
+                deleteDetail = "\" delete from stock_in_detail where create_date < '" +
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                         "yyyy-MM-dd") + "'; \"";
+                ExecuteMySQLCmdLine(deleteDetail, db, user, pass);
+
+                deleteHeader = "\" delete from stock_in where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySQLCmdLine(deleteHeader, db, user, pass);
+            }
         }
 
-        private static void ExecuteMySQLCmdLine(string sqlString,string dbName,string username,string password)
+        private static void ExecuteMySQLCmdLine(string sqlString, string dbName, string username, string password)
         {
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
             try
@@ -152,10 +344,10 @@ namespace AppFrameClient.Utility
             finally
             {
                 // Flush and close file
-            } 
+            }
         }
 
-        private static void ExecuteMySQLDumpCmdLine(bool isDump,string sqlString)
+        private static void ExecuteMySQLDumpCmdLine(bool isDump, string sqlString)
         {
             string mySQLDumpPath;
             if (isDump)
@@ -164,7 +356,7 @@ namespace AppFrameClient.Utility
             }
             else
             {
-                mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe"; 
+                mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
             }
             ProcessStartInfo info = new ProcessStartInfo(mySQLDumpPath);
             Process p = new Process();
@@ -179,7 +371,7 @@ namespace AppFrameClient.Utility
                 info.Arguments = mysqldumpstring;
 
                 string[] args = null;
-                if(!isDump)
+                if (!isDump)
                 {
                     args = mysqldumpstring.Split('<');
                     info.Arguments = args[0];
@@ -190,22 +382,22 @@ namespace AppFrameClient.Utility
                 info.CreateNoWindow = true;
                 info.RedirectStandardError = true;
                 info.RedirectStandardOutput = true;
-                
-                
+
+
                 //info.CreateNoWindow = true;
                 // Create process
-                
+
                 p.StartInfo = info;
                 // Set up asynchronous read event
                 p.Start();
-                
-                if(!isDump)
+
+                if (!isDump)
                 {
-                    p.StandardInput.WriteLine("\\."+args[1]);
+                    p.StandardInput.WriteLine("\\." + args[1]);
                     p.StandardInput.WriteLine("exit");
                 }
 
-                
+
                 p.WaitForExit();
                 //TODO, check for errors
 
@@ -214,7 +406,7 @@ namespace AppFrameClient.Utility
             {
                 // Flush and close file
             }
-            if(p.ExitCode != 0)
+            if (p.ExitCode != 0)
             {
                 MessageBox.Show("Xử lý thông tin chung thất bại.");
             }
@@ -267,7 +459,7 @@ namespace AppFrameClient.Utility
             return true;
         }
 
-        public static void LoadMasterData(bool productMasters,bool departments,bool prices)
+        public static void LoadMasterData(bool productMasters, bool departments, bool prices)
         {
             IList list = GetPOSSyncDrives();
             if (list == null || list.Count == 0)
@@ -290,25 +482,25 @@ namespace AppFrameClient.Utility
 
             string department_price = "";
 
-            if(productMasters)
+            if (productMasters)
             {
                 product_type = "product_type";
                 product_size = "product_size";
                 product_color = "product_color";
                 product_master = "product_master";
-                product = "product"; 
+                product = "product";
             }
 
-            if(departments)
+            if (departments)
             {
                 department = "department";
                 employee = "employee";
-                employee_info = "employee_info"; 
+                employee_info = "employee_info";
             }
 
-            if(prices)
+            if (prices)
             {
-                department_price = "department_price"; 
+                department_price = "department_price";
             }
             string backupFile = dbBackupPath + "/" + backupFileName;
             string mysqldumpstring = string.Format("--database {0} --table {1} {2} {3} {4} {5} {6} {7} {8} {9} --replace --add-drop-table=false --no-create-info --no-create-db --result-file={10} --single-transaction --user={11} --password={12} --skip-add-locks --add-locks=false --quick ",
@@ -324,17 +516,17 @@ namespace AppFrameClient.Utility
                                                       department_price,
                                                       backupFile, // backupfile
                                                       "dbadmin",  // username
-                                                      "1qw45DCM9rl"); 
+                                                      "1qw45DCM9rl");
 
-           ExecuteMySQLDumpCmdLine(true,mysqldumpstring);
-           using (ZipFile masterZipFile = new ZipFile())
-           {
-               masterZipFile.Password = ZIP_PASSWORD;
-               masterZipFile.AddFile(backupFile,"");
-               masterZipFile.Save(dbBackupPath + "/" + "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
-           }
-           File.Delete(backupFile);
-            
+            ExecuteMySQLDumpCmdLine(true, mysqldumpstring);
+            using (ZipFile masterZipFile = new ZipFile())
+            {
+                masterZipFile.Password = ZIP_PASSWORD;
+                masterZipFile.AddFile(backupFile, "");
+                masterZipFile.Save(dbBackupPath + "/" + "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
+            }
+            File.Delete(backupFile);
+
         }
 
         public static void SyncMasterData(string masterFileName)
@@ -359,8 +551,8 @@ namespace AppFrameClient.Utility
             }
             catch (Exception)
             {
-                
-                
+
+
             }
             finally
             {
@@ -373,14 +565,14 @@ namespace AppFrameClient.Utility
             using (ZipFile masterZipFile = ZipFile.Read(masterFileName))
             {
                 masterZipFile.Password = ZIP_PASSWORD;
-                masterZipFile.ExtractAll(pathExtract,ExtractExistingFileAction.OverwriteSilently);
+                masterZipFile.ExtractAll(pathExtract, ExtractExistingFileAction.OverwriteSilently);
             }
             string[] files = Directory.GetFiles(pathExtract);
             foreach (string file in files)
             {
-                if(!file.EndsWith("sql")) continue;
-                string syncString = string.Format(" --database={0} --user={1} --password={2}  < {3} ", "pos", "dbadmin", "1qw45DCM9rl", file);   
-                ExecuteMySQLDumpCmdLine(false,syncString);
+                if (!file.EndsWith("sql")) continue;
+                string syncString = string.Format(" --database={0} --user={1} --password={2}  < {3} ", "pos", "dbadmin", "1qw45DCM9rl", file);
+                ExecuteMySQLDumpCmdLine(false, syncString);
                 File.Delete(file);
             }
             File.Delete(masterFileName);
@@ -398,7 +590,7 @@ namespace AppFrameClient.Utility
             // update active department
             if (activeDepartmentId == null || activeDepartmentId.ToString() == string.Empty)
             {
-                
+
             }
             else
             {
@@ -419,7 +611,7 @@ namespace AppFrameClient.Utility
                     conn.Close();
                 }
             }
-                    
+
         }
     }
 }
