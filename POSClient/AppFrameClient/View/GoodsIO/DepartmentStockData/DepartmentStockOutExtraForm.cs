@@ -1264,6 +1264,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 index -= 1;
             }
         }
+
+        private void mnuInputBarcode_Click(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
     }
 
     

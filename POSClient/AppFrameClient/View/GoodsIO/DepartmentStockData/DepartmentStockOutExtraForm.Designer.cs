@@ -37,9 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
-            this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -90,8 +87,6 @@
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDB = new AppFrameClient.MasterDB();
             this.label2 = new System.Windows.Forms.Label();
-            this.systemHotkey1 = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.deleteStock = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.btnFix = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panelStockIns = new System.Windows.Forms.Panel();
@@ -110,8 +105,10 @@
             this.department_stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.department_stock_inTableAdapter();
             this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ctxShorcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuInputBarcodeShortcut = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStock = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
-            this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
@@ -120,33 +117,12 @@
             this.panelStockIns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentstockinBindingSource)).BeginInit();
+            this.ctxShorcuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // bdsStockIn
             // 
             this.bdsStockIn.DataSource = typeof(AppFrame.Collection.DepartmentStockOutDetailCollection);
-            // 
-            // mnuCreateNewItem
-            // 
-            this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
-            this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
-            // 
-            // mnuCreateDupItem
-            // 
-            this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
-            this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
-            // 
-            // ctxMenuDept
-            // 
-            this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCreateDupItem,
-            this.mnuCreateNewItem});
-            this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
             // 
             // btnDelete
             // 
@@ -299,7 +275,6 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 213);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
@@ -639,16 +614,6 @@
             this.label2.Text = "Nơi đến:";
             this.label2.Visible = false;
             // 
-            // systemHotkey1
-            // 
-            this.systemHotkey1.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-            this.systemHotkey1.Pressed += new System.EventHandler(this.systemHotkey1_Pressed);
-            // 
-            // deleteStock
-            // 
-            this.deleteStock.Shortcut = System.Windows.Forms.Shortcut.Del;
-            this.deleteStock.Pressed += new System.EventHandler(this.deleteStock_Pressed);
-            // 
             // btnFix
             // 
             this.btnFix.Location = new System.Drawing.Point(673, 156);
@@ -681,7 +646,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(7, 201);
+            this.panelStockIns.Location = new System.Drawing.Point(7, 213);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(811, 355);
             this.panelStockIns.TabIndex = 128;
@@ -820,14 +785,41 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // ctxShorcuts
+            // 
+            this.ctxShorcuts.AllowDrop = true;
+            this.ctxShorcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuInputBarcodeShortcut,
+            this.deleteStock});
+            this.ctxShorcuts.Name = "ctxShorcuts";
+            this.ctxShorcuts.Size = new System.Drawing.Size(193, 48);
+            this.ctxShorcuts.Click += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // mnuInputBarcodeShortcut
+            // 
+            this.mnuInputBarcodeShortcut.Name = "mnuInputBarcodeShortcut";
+            this.mnuInputBarcodeShortcut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.mnuInputBarcodeShortcut.Size = new System.Drawing.Size(192, 22);
+            this.mnuInputBarcodeShortcut.Text = "Nhập mã vạch";
+            this.mnuInputBarcodeShortcut.Click += new System.EventHandler(this.systemHotkey1_Pressed);
+            // 
+            // deleteStock
+            // 
+            this.deleteStock.Name = "deleteStock";
+            this.deleteStock.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteStock.Size = new System.Drawing.Size(192, 22);
+            this.deleteStock.Text = "deleteStock";
+            this.deleteStock.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // DepartmentStockOutExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(818, 562);
-            this.Controls.Add(this.panelStockIns);
+            this.ContextMenuStrip = this.ctxShorcuts;
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cboDepartment);
+            this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label4);
@@ -884,13 +876,12 @@
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.cboDepartment, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
-            this.Controls.SetChildIndex(this.panelStockIns, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
-            this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
@@ -900,6 +891,7 @@
             this.panelStockIns.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentstockinBindingSource)).EndInit();
+            this.ctxShorcuts.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -908,9 +900,6 @@
         #endregion
 
         public System.Windows.Forms.BindingSource bdsStockIn;
-        public System.Windows.Forms.ToolStripMenuItem mnuCreateNewItem;
-        public System.Windows.Forms.ToolStripMenuItem mnuCreateDupItem;
-        public System.Windows.Forms.ContextMenuStrip ctxMenuDept;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.TextBox txtBarcode;
         public System.Windows.Forms.Label label3;
@@ -941,8 +930,6 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.ComboBox cboDepartment;
         private System.Windows.Forms.Label label2;
-        private AppFrame.Controls.HotKey.SystemHotkey systemHotkey1;
-        private AppFrame.Controls.HotKey.SystemHotkey deleteStock;
         private System.Windows.Forms.DataGridViewButtonColumn SearchCreate;
         private AppFrame.Controls.DataGridViewEditComboBoxColumn columnProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -981,5 +968,8 @@
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ContextMenuStrip ctxShorcuts;
+        private System.Windows.Forms.ToolStripMenuItem mnuInputBarcodeShortcut;
+        private System.Windows.Forms.ToolStripMenuItem deleteStock;
     }
 }

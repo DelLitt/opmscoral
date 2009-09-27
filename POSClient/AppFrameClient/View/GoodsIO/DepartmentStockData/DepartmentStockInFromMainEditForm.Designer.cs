@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
@@ -68,8 +68,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
@@ -111,6 +109,9 @@
             this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.inputBarcodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -334,8 +335,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -353,7 +354,6 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(9, 237);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
@@ -489,33 +489,20 @@
             // ctxMenuDept
             // 
             this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCreateDupItem,
-            this.mnuCreateNewItem,
             this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem});
+            this.pasteToolStripMenuItem,
+            this.inputBarcodeToolStripMenuItem,
+            this.saveShortcutToolStripMenuItem,
+            this.deleteStockToolStripMenuItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 92);
+            this.ctxMenuDept.Size = new System.Drawing.Size(187, 136);
             this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
-            // 
-            // mnuCreateDupItem
-            // 
-            this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
-            this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
-            // 
-            // mnuCreateNewItem
-            // 
-            this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
-            this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
@@ -523,7 +510,7 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(306, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
@@ -715,7 +702,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(12, 234);
+            this.panelStockIns.Location = new System.Drawing.Point(9, 237);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(800, 325);
             this.panelStockIns.TabIndex = 122;
@@ -896,16 +883,41 @@
             this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
             this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
             // 
+            // inputBarcodeToolStripMenuItem
+            // 
+            this.inputBarcodeToolStripMenuItem.Name = "inputBarcodeToolStripMenuItem";
+            this.inputBarcodeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.inputBarcodeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.inputBarcodeToolStripMenuItem.Text = "InputBarcode";
+            this.inputBarcodeToolStripMenuItem.Click += new System.EventHandler(this.inputBarcodeToolStripMenuItem_Click);
+            // 
+            // saveShortcutToolStripMenuItem
+            // 
+            this.saveShortcutToolStripMenuItem.Name = "saveShortcutToolStripMenuItem";
+            this.saveShortcutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveShortcutToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.saveShortcutToolStripMenuItem.Text = "SaveShortcut";
+            this.saveShortcutToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // deleteStockToolStripMenuItem
+            // 
+            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
+            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.deleteStockToolStripMenuItem.Text = "deleteStock";
+            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // DepartmentStockInFromMainEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
+            this.ContextMenuStrip = this.ctxMenuDept;
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtBarcode);
-            this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
+            this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lstSize);
@@ -982,9 +994,9 @@
             this.Controls.SetChildIndex(this.lstSize, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
+            this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
-            this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.txtBarcode, 0);
             this.Controls.SetChildIndex(this.label16, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
@@ -1028,8 +1040,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvDeptStockIn;
         private System.Windows.Forms.ContextMenuStrip ctxMenuDept;
-        private System.Windows.Forms.ToolStripMenuItem mnuCreateDupItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuCreateNewItem;
         private System.Windows.Forms.BindingSource bdsStockIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
@@ -1088,5 +1098,8 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtBarcode;
+        private System.Windows.Forms.ToolStripMenuItem inputBarcodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveShortcutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteStockToolStripMenuItem;
     }
 }

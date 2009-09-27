@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
-            this.mnuCreateNewItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateDupItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,10 +86,9 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.ctxShorcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.systemHotkey1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemHotkey2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
-            this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
@@ -103,28 +99,6 @@
             // bdsStockIn
             // 
             this.bdsStockIn.DataSource = typeof(AppFrame.Collection.DepartmentStockOutDetailCollection);
-            // 
-            // mnuCreateNewItem
-            // 
-            this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
-            this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
-            // 
-            // mnuCreateDupItem
-            // 
-            this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(306, 22);
-            this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
-            this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
-            // 
-            // ctxMenuDept
-            // 
-            this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuCreateDupItem,
-            this.mnuCreateNewItem});
-            this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(307, 48);
             // 
             // btnDelete
             // 
@@ -263,7 +237,6 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvDeptStockIn.ContextMenuStrip = this.ctxMenuDept;
             this.dgvDeptStockIn.DataSource = this.bdsStockIn;
             this.dgvDeptStockIn.Location = new System.Drawing.Point(11, 134);
             this.dgvDeptStockIn.Name = "dgvDeptStockIn";
@@ -287,8 +260,8 @@
             // ProducType
             // 
             this.ProducType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ProducType.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ProducType.DefaultCellStyle = dataGridViewCellStyle8;
             this.ProducType.HeaderText = "Chủng loại";
             this.ProducType.Name = "ProducType";
             this.ProducType.ReadOnly = true;
@@ -296,8 +269,8 @@
             // columnProductId
             // 
             this.columnProductId.DataPropertyName = "Product.ProductId";
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle9;
             this.columnProductId.HeaderText = "Mã vạch";
             this.columnProductId.Name = "columnProductId";
             this.columnProductId.ReadOnly = true;
@@ -307,8 +280,8 @@
             // columnProductName
             // 
             this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle10;
             this.columnProductName.HeaderText = "Tên sản phẩm";
             this.columnProductName.Name = "columnProductName";
             this.columnProductName.ReadOnly = true;
@@ -319,9 +292,9 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle11;
             this.quantity.HeaderText = "Số lượng";
             this.quantity.Name = "quantity";
             this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -330,8 +303,8 @@
             // columnColor
             // 
             this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
-            this.columnColor.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Silver;
+            this.columnColor.DefaultCellStyle = dataGridViewCellStyle12;
             this.columnColor.HeaderText = "Màu sắc";
             this.columnColor.Name = "columnColor";
             this.columnColor.ReadOnly = true;
@@ -341,8 +314,8 @@
             // columnSize
             // 
             this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
-            this.columnSize.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Silver;
+            this.columnSize.DefaultCellStyle = dataGridViewCellStyle13;
             this.columnSize.HeaderText = "Kích cỡ";
             this.columnSize.Name = "columnSize";
             this.columnSize.ReadOnly = true;
@@ -384,8 +357,8 @@
             // Unconfirm
             // 
             this.Unconfirm.DataPropertyName = "UnconfirmQuantity";
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
-            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Silver;
+            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle14;
             this.Unconfirm.HeaderText = "Không xác định";
             this.Unconfirm.Name = "Unconfirm";
             this.Unconfirm.Visible = false;
@@ -587,8 +560,8 @@
             // 
             this.ctxShorcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.systemHotkey1ToolStripMenuItem,
-            this.deleteStockToolStripMenuItem,
-            this.systemHotkey2ToolStripMenuItem});
+            this.systemHotkey2ToolStripMenuItem,
+            this.deleteStockToolStripMenuItem});
             this.ctxShorcuts.Name = "ctxShorcuts";
             this.ctxShorcuts.Size = new System.Drawing.Size(197, 70);
             // 
@@ -600,14 +573,6 @@
             this.systemHotkey1ToolStripMenuItem.Text = "systemHotkey1";
             this.systemHotkey1ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
-            // deleteStockToolStripMenuItem
-            // 
-            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
-            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.deleteStockToolStripMenuItem.Text = "deleteStock";
-            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.deleteStock_Pressed);
-            // 
             // systemHotkey2ToolStripMenuItem
             // 
             this.systemHotkey2ToolStripMenuItem.Name = "systemHotkey2ToolStripMenuItem";
@@ -615,6 +580,14 @@
             this.systemHotkey2ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.systemHotkey2ToolStripMenuItem.Text = "systemHotkey2";
             this.systemHotkey2ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
+            // 
+            // deleteStockToolStripMenuItem
+            // 
+            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
+            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.deleteStockToolStripMenuItem.Text = "deleteStock";
+            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.deleteStock_Pressed);
             // 
             // DepartmentFastStockInForm
             // 
@@ -671,7 +644,6 @@
             this.Controls.SetChildIndex(this.lblMessage, 0);
             this.Controls.SetChildIndex(this.lblDescription, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
-            this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
@@ -686,9 +658,6 @@
         #endregion
 
         public System.Windows.Forms.BindingSource bdsStockIn;
-        public System.Windows.Forms.ToolStripMenuItem mnuCreateNewItem;
-        public System.Windows.Forms.ToolStripMenuItem mnuCreateDupItem;
-        public System.Windows.Forms.ContextMenuStrip ctxMenuDept;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.TextBox txtBarcode;
         public System.Windows.Forms.Label label3;
@@ -738,7 +707,7 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.ContextMenuStrip ctxShorcuts;
         private System.Windows.Forms.ToolStripMenuItem systemHotkey1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteStockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem systemHotkey2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteStockToolStripMenuItem;
     }
 }

@@ -1073,7 +1073,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
         private void ctrlV_Pressed(object sender, EventArgs e)
         {
-            if(dgvDeptStockIn.SelectedCells.Count > 0)
+            if (dgvDeptStockIn.Focused && dgvDeptStockIn.SelectedCells.Count > 0)
             {
                 DataGridViewSelectedCellCollection collection = dgvDeptStockIn.SelectedCells;
                 foreach (DataGridViewCell cell in collection)
