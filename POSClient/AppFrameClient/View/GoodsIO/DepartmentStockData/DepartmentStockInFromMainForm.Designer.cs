@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -67,10 +67,13 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
             this.ctxMenuDept = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
+            this.inputBarcodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbbDept = new System.Windows.Forms.ComboBox();
             this.bdsDept = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -109,13 +112,10 @@
             this.chkKeepInputInfo = new System.Windows.Forms.CheckBox();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inputBarcodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
-            this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
+            this.ctxMenuDept.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDept)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).BeginInit();
@@ -337,8 +337,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -421,8 +421,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -488,6 +488,10 @@
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
             // 
+            // bdsStockIn
+            // 
+            this.bdsStockIn.DataSource = typeof(AppFrame.Collection.DepartmentStockInDetailCollection);
+            // 
             // ctxMenuDept
             // 
             this.ctxMenuDept.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -497,14 +501,14 @@
             this.saveShortcutToolStripMenuItem,
             this.deleteStockToolStripMenuItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(187, 136);
+            this.ctxMenuDept.Size = new System.Drawing.Size(187, 114);
             this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
@@ -512,13 +516,33 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
-            // bdsStockIn
+            // inputBarcodeToolStripMenuItem
             // 
-            this.bdsStockIn.DataSource = typeof(AppFrame.Collection.DepartmentStockInDetailCollection);
+            this.inputBarcodeToolStripMenuItem.Name = "inputBarcodeToolStripMenuItem";
+            this.inputBarcodeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.inputBarcodeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.inputBarcodeToolStripMenuItem.Text = "InputBarcode";
+            this.inputBarcodeToolStripMenuItem.Click += new System.EventHandler(this.inputBarcodeToolStripMenuItem_Click);
+            // 
+            // saveShortcutToolStripMenuItem
+            // 
+            this.saveShortcutToolStripMenuItem.Name = "saveShortcutToolStripMenuItem";
+            this.saveShortcutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveShortcutToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.saveShortcutToolStripMenuItem.Text = "SaveShortcut";
+            this.saveShortcutToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // deleteStockToolStripMenuItem
+            // 
+            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
+            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.deleteStockToolStripMenuItem.Text = "deleteStock";
+            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cbbDept
             // 
@@ -885,41 +909,17 @@
             this.label16.TabIndex = 128;
             this.label16.Text = "Mã vạch";
             // 
-            // deleteStockToolStripMenuItem
-            // 
-            this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
-            this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.deleteStockToolStripMenuItem.Text = "deleteStock";
-            this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // saveShortcutToolStripMenuItem
-            // 
-            this.saveShortcutToolStripMenuItem.Name = "saveShortcutToolStripMenuItem";
-            this.saveShortcutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveShortcutToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.saveShortcutToolStripMenuItem.Text = "SaveShortcut";
-            this.saveShortcutToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // inputBarcodeToolStripMenuItem
-            // 
-            this.inputBarcodeToolStripMenuItem.Name = "inputBarcodeToolStripMenuItem";
-            this.inputBarcodeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.inputBarcodeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.inputBarcodeToolStripMenuItem.Text = "InputBarcode";
-            this.inputBarcodeToolStripMenuItem.Click += new System.EventHandler(this.inputBarcodeToolStripMenuItem_Click);
-            // 
             // DepartmentStockInFromMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
             this.ContextMenuStrip = this.ctxMenuDept;
+            this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.chkKeepInputInfo);
             this.Controls.Add(this.chkRemoveZero);
-            this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lstSize);
@@ -995,15 +995,15 @@
             this.Controls.SetChildIndex(this.lstSize, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
-            this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.chkRemoveZero, 0);
             this.Controls.SetChildIndex(this.chkKeepInputInfo, 0);
             this.Controls.SetChildIndex(this.txtBarcode, 0);
             this.Controls.SetChildIndex(this.label16, 0);
+            this.Controls.SetChildIndex(this.panelStockIns, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
-            this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
+            this.ctxMenuDept.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsDept)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeBindingSource)).EndInit();
