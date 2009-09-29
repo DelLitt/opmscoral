@@ -133,9 +133,14 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     {
                         prdNames.Add(list.ProductName);
                     }
-                    prdMasterCrit.AddSearchInCriteria("ProductName", prdNames);
+                    IList prdMasterList = new ArrayList();
+                    foreach (ProductMaster master in e.ProductMasterList)
+                    {
+                        prdMasterList.Add(master);
+                    }
+                    /*prdMasterCrit.AddSearchInCriteria("ProductName", prdNames);
                     prdMasterCrit.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-                    IList prdMasterList = ProductMasterLogic.FindAll(prdMasterCrit);
+                    prdMasterList = ProductMasterLogic.FindAll(prdMasterCrit);*/
 
                     if (prdMasterList != null && prdMasterList.Count > 0)
                     {
