@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -15,6 +16,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Presenter.GoodsIO.DepartmentStockData;
+using InfoBox;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -1171,6 +1173,181 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void inputBarcodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtBarcode.Focus();
+        }
+
+        private ErrorForm _errorForm = null;
+        private void btnReadBarcode_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.CheckFileExists = true;
+            fileDialog.CheckPathExists = true;
+            fileDialog.Filter = "Text Files|*.txt";
+            DialogResult result = fileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                Dictionary<string, int> list = new Dictionary<string, int>();
+                string path = fileDialog.FileName;
+                if(path.IndexOf("_XuatHangNam_")<= 0 )
+                {
+                    InformationBox.Show("File sai định dạng !", new AutoCloseParameters(1));
+                    return;
+                }
+
+                string origPath = path.Replace("\\", "/");
+                string origFileName = origPath.Substring(origPath.LastIndexOf("/")+1);
+                string deptIDStr = origFileName.Substring(0, origFileName.IndexOf("_"));
+                long exportDeptId = 0;
+
+                Utility.ClientUtility.TryActionHelper(delegate { exportDeptId = Int64.Parse(deptIDStr);},1);
+
+                IList deptList = (IList)bdsDept.DataSource;
+                for (int i = 0; i < deptList.Count; i++)
+                {
+                    Department dept = (Department)deptList[i];
+                    if(dept.DepartmentId==exportDeptId )
+                    {
+                        cbbDept.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                StreamReader fileReader = new StreamReader(File.OpenRead(path));
+
+                while (!fileReader.EndOfStream)
+                {
+                    string line = fileReader.ReadLine();
+                    string[] parseLines = line.Split(',');
+
+                    try
+                    {
+                        if (parseLines.Length == 2)
+                        {
+                            list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                        }
+                        else
+                        {
+                            list.Add(parseLines[0].Trim(), 1);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        if (_errorForm == null)
+                        {
+                            _errorForm = new ErrorForm();
+                            _errorForm.Caption = "Lỗi";
+                            _errorForm.ErrorString = "Các mã vạch bị lỗi khi nhập mã vạch từ file text";
+                        }
+                        _errorForm.ErrorDetails.Add(line);
+                        continue;
+                    }
+                }
+                foreach (KeyValuePair<string, int> barCodeLine in list)
+                {
+                    if (!string.IsNullOrEmpty(barCodeLine.Key) && barCodeLine.Key.Length == 12)
+                    {
+                        var eventArgs = new DepartmentStockInEventArgs();
+                        eventArgs.ProductId = barCodeLine.Key;
+                        //eventArgs.DefectStatusId = ((StockDefectStatus)cbbStockOutType.SelectedItem).DefectStatusId;
+                        EventUtility.fireEvent(FindBarcodeInMainStockEvent, this, eventArgs);
+                        if (eventArgs.EventResult == null)
+                        {
+                            if (_errorForm == null)
+                            {
+                                _errorForm = new ErrorForm();
+                                //_errorForm.Caption = "Lỗi";
+                                _errorForm.ErrorString = "Các mã vạch bị lỗi khi nhập mã vạch từ file text";
+                            }
+                            _errorForm.ErrorDetails.Add(barCodeLine.Key + "," + barCodeLine.Value);
+                            continue;
+                        }
+
+                        if (eventArgs.SelectedStockOutDetails != null && eventArgs.SelectedStockOutDetails.Count > 0)
+                        {
+                            foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
+                            {
+                                bool found = false;
+                                DepartmentStockInDetail foundStockOutDetail = null;
+                                foreach (DepartmentStockInDetail detail in deptSIDetailList)
+                                {
+                                    if (inDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                                    {
+                                        found = true;
+                                        foundStockOutDetail = detail;
+                                        break;
+                                    }
+                                }
+                                if (found)
+                                {
+                                    //MessageBox.Show("Mã vạch đã được nhập");
+                                    foundStockOutDetail.OldQuantity = foundStockOutDetail.Quantity;
+                                    foundStockOutDetail.Quantity += 1;
+                                }
+                                else
+                                {
+                                    deptSIDetailList.Add(inDetail);
+                                }
+                            }
+
+                        }
+                        RemoveDuplicateRows();
+                        bdsStockIn.ResetBindings(false);
+                        dgvStockIn.Refresh();
+                        dgvStockIn.Invalidate();
+                        #region Unused code
+
+                        /*bool found = false;
+                        StockOutDetail foundStockOutDetail = null;
+                        foreach (StockOutDetail detail in stockOutDetailList)
+                        {
+                            if (eventArgs.SelectedStockOutDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                            {
+                                found = true;
+                                foundStockOutDetail = detail;
+                                break;
+                            }
+                        }
+                        if (found)
+                        {
+                            //MessageBox.Show("Mã vạch đã được nhập");
+                            foundStockOutDetail.GoodQuantity += barCodeLine.Value;
+                            continue;
+                        }
+                        if (eventArgs.Stock != null)
+                        {
+                            found = false;
+                            foreach (Stock detail in stockList)
+                            {
+                                if (eventArgs.Stock.Product.ProductId.Equals(detail.Product.ProductId))
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found)
+                            {
+                                stockList.Add(eventArgs.Stock);
+                            }
+                        }
+                        // reset quantity to 1
+                        eventArgs.SelectedStockOutDetail.GoodQuantity = barCodeLine.Value;
+                        stockOutDetailList.Add(eventArgs.SelectedStockOutDetail);
+                        stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
+                        cbbStockOutType.Enabled = false;
+                        LockField(stockOutDetailList.Count - 1, eventArgs.SelectedStockOutDetail);*/
+
+                        #endregion
+                    }
+
+                }
+                CalculateTotalStorePrice();
+                if (_errorForm != null)
+                {
+                    _errorForm.ShowDialog();
+                    _errorForm = null;
+                }
+            }
         }
     }
 }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bdsStockIn = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
@@ -102,7 +102,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.stock_inTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.txtReadBarcode = new System.Windows.Forms.Button();
+            this.btnReadBarcode = new System.Windows.Forms.Button();
             this.ctxShortcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputBarcodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,7 +139,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(82, 75);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBarcode.Size = new System.Drawing.Size(204, 22);
+            this.txtBarcode.Size = new System.Drawing.Size(204, 23);
             this.txtBarcode.TabIndex = 1;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
@@ -151,7 +151,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 14);
+            this.label3.Size = new System.Drawing.Size(55, 16);
             this.label3.TabIndex = 94;
             this.label3.Text = "Mã vạch";
             // 
@@ -160,7 +160,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(8, 559);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 14);
+            this.lblStatus.Size = new System.Drawing.Size(0, 16);
             this.lblStatus.TabIndex = 90;
             // 
             // label7
@@ -169,7 +169,7 @@
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(367, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(189, 19);
+            this.label7.Size = new System.Drawing.Size(199, 21);
             this.label7.TabIndex = 85;
             this.label7.Text = "XUẤT KHO HÀNG HOÁ";
             // 
@@ -180,7 +180,7 @@
             this.dtpImportDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpImportDate.Location = new System.Drawing.Point(371, 41);
             this.dtpImportDate.Name = "dtpImportDate";
-            this.dtpImportDate.Size = new System.Drawing.Size(105, 22);
+            this.dtpImportDate.Size = new System.Drawing.Size(105, 23);
             this.dtpImportDate.TabIndex = 2;
             // 
             // label8
@@ -189,7 +189,7 @@
             this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(291, 45);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 14);
+            this.label8.Size = new System.Drawing.Size(73, 16);
             this.label8.TabIndex = 87;
             this.label8.Text = "Ngày nhập:";
             // 
@@ -209,7 +209,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(562, 502);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 14);
+            this.label6.Size = new System.Drawing.Size(74, 16);
             this.label6.TabIndex = 83;
             this.label6.Text = "Tổng giá trị";
             this.label6.Visible = false;
@@ -221,7 +221,7 @@
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumValue.Size = new System.Drawing.Size(173, 22);
+            this.txtSumValue.Size = new System.Drawing.Size(173, 23);
             this.txtSumValue.TabIndex = 82;
             this.txtSumValue.Visible = false;
             // 
@@ -250,8 +250,8 @@
             // dgvDeptStockOut
             // 
             this.dgvDeptStockOut.AllowUserToAddRows = false;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockOut.AutoGenerateColumns = false;
             this.dgvDeptStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -295,8 +295,8 @@
             // ProducType
             // 
             this.ProducType.DataPropertyName = "Product.ProductMaster.ProductType.TypeName";
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ProducType.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ProducType.DefaultCellStyle = dataGridViewCellStyle2;
             this.ProducType.HeaderText = "Chủng loại";
             this.ProducType.Name = "ProducType";
             this.ProducType.ReadOnly = true;
@@ -306,8 +306,8 @@
             // columnProductId
             // 
             this.columnProductId.DataPropertyName = "Product.ProductId";
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductId.DefaultCellStyle = dataGridViewCellStyle3;
             this.columnProductId.HeaderText = "Mã vạch";
             this.columnProductId.Name = "columnProductId";
             this.columnProductId.ReadOnly = true;
@@ -317,8 +317,8 @@
             // columnProductName
             // 
             this.columnProductName.DataPropertyName = "Product.ProductMaster.ProductName";
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Silver;
-            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Silver;
+            this.columnProductName.DefaultCellStyle = dataGridViewCellStyle4;
             this.columnProductName.HeaderText = "Tên sản phẩm";
             this.columnProductName.Name = "columnProductName";
             this.columnProductName.ReadOnly = true;
@@ -329,8 +329,8 @@
             // columnColor
             // 
             this.columnColor.DataPropertyName = "Product.ProductMaster.ProductColor.ColorName";
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Silver;
-            this.columnColor.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Silver;
+            this.columnColor.DefaultCellStyle = dataGridViewCellStyle5;
             this.columnColor.HeaderText = "Màu sắc";
             this.columnColor.Name = "columnColor";
             this.columnColor.ReadOnly = true;
@@ -340,8 +340,8 @@
             // columnSize
             // 
             this.columnSize.DataPropertyName = "Product.ProductMaster.ProductSize.SizeName";
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Silver;
-            this.columnSize.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Silver;
+            this.columnSize.DefaultCellStyle = dataGridViewCellStyle6;
             this.columnSize.HeaderText = "K.cỡ";
             this.columnSize.Name = "columnSize";
             this.columnSize.ReadOnly = true;
@@ -352,8 +352,8 @@
             // quantity
             // 
             this.quantity.DataPropertyName = "StockQuantity";
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Silver;
-            this.quantity.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Silver;
+            this.quantity.DefaultCellStyle = dataGridViewCellStyle7;
             this.quantity.HeaderText = "Tồn";
             this.quantity.Name = "quantity";
             this.quantity.ReadOnly = true;
@@ -390,8 +390,8 @@
             // 
             // Unconfirm
             // 
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Silver;
-            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Silver;
+            this.Unconfirm.DefaultCellStyle = dataGridViewCellStyle8;
             this.Unconfirm.HeaderText = "KXD";
             this.Unconfirm.Name = "Unconfirm";
             this.Unconfirm.Width = 60;
@@ -447,7 +447,7 @@
             this.cboProductMasters.FormattingEnabled = true;
             this.cboProductMasters.Location = new System.Drawing.Point(82, 104);
             this.cboProductMasters.Name = "cboProductMasters";
-            this.cboProductMasters.Size = new System.Drawing.Size(204, 24);
+            this.cboProductMasters.Size = new System.Drawing.Size(204, 25);
             this.cboProductMasters.TabIndex = 3;
             this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
             this.cboProductMasters.DropDown += new System.EventHandler(this.cboProductMasters_DropDown);
@@ -458,7 +458,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 14);
+            this.label1.Size = new System.Drawing.Size(61, 16);
             this.label1.TabIndex = 99;
             this.label1.Text = "Mặt hàng";
             // 
@@ -479,11 +479,11 @@
             this.lstColor.DisplayMember = "ColorName";
             this.lstColor.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstColor.FormattingEnabled = true;
-            this.lstColor.ItemHeight = 14;
+            this.lstColor.ItemHeight = 16;
             this.lstColor.Location = new System.Drawing.Point(354, 75);
             this.lstColor.Name = "lstColor";
             this.lstColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstColor.Size = new System.Drawing.Size(155, 102);
+            this.lstColor.Size = new System.Drawing.Size(155, 100);
             this.lstColor.TabIndex = 4;
             // 
             // colorBindingSource
@@ -496,11 +496,11 @@
             this.lstSize.DisplayMember = "SizeName";
             this.lstSize.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstSize.FormattingEnabled = true;
-            this.lstSize.ItemHeight = 14;
+            this.lstSize.ItemHeight = 16;
             this.lstSize.Location = new System.Drawing.Point(567, 75);
             this.lstSize.Name = "lstSize";
             this.lstSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSize.Size = new System.Drawing.Size(120, 102);
+            this.lstSize.Size = new System.Drawing.Size(120, 100);
             this.lstSize.TabIndex = 5;
             // 
             // sizeBindingSource
@@ -513,7 +513,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(298, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 14);
+            this.label4.Size = new System.Drawing.Size(55, 16);
             this.label4.TabIndex = 105;
             this.label4.Text = "Màu sắc";
             // 
@@ -523,7 +523,7 @@
             this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(515, 75);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 14);
+            this.label10.Size = new System.Drawing.Size(48, 16);
             this.label10.TabIndex = 106;
             this.label10.Text = "Kích cỡ";
             // 
@@ -533,7 +533,7 @@
             this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(285, 502);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 14);
+            this.label13.Size = new System.Drawing.Size(97, 16);
             this.label13.TabIndex = 112;
             this.label13.Text = "Tổng sản phẩm";
             // 
@@ -544,7 +544,7 @@
             this.txtSumProduct.Name = "txtSumProduct";
             this.txtSumProduct.ReadOnly = true;
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(173, 22);
+            this.txtSumProduct.Size = new System.Drawing.Size(173, 23);
             this.txtSumProduct.TabIndex = 111;
             this.txtSumProduct.TextChanged += new System.EventHandler(this.txtSumProduct_TextChanged);
             // 
@@ -554,7 +554,7 @@
             this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(11, 157);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 14);
+            this.label11.Size = new System.Drawing.Size(66, 16);
             this.label11.TabIndex = 114;
             this.label11.Text = "Lý do xuất";
             // 
@@ -565,7 +565,7 @@
             this.cbbStockOutType.FormattingEnabled = true;
             this.cbbStockOutType.Location = new System.Drawing.Point(82, 153);
             this.cbbStockOutType.Name = "cbbStockOutType";
-            this.cbbStockOutType.Size = new System.Drawing.Size(204, 24);
+            this.cbbStockOutType.Size = new System.Drawing.Size(204, 25);
             this.cbbStockOutType.TabIndex = 6;
             // 
             // btnReset
@@ -671,7 +671,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(209, 9);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(23, 14);
+            this.label15.Size = new System.Drawing.Size(24, 16);
             this.label15.TabIndex = 4;
             this.label15.Text = "Từ";
             // 
@@ -680,7 +680,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(339, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 14);
+            this.label12.Size = new System.Drawing.Size(29, 16);
             this.label12.TabIndex = 3;
             this.label12.Text = "đến";
             // 
@@ -700,7 +700,7 @@
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(375, 5);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(116, 22);
+            this.dtpTo.Size = new System.Drawing.Size(116, 23);
             this.dtpTo.TabIndex = 1;
             // 
             // dtpFrom
@@ -709,7 +709,7 @@
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(235, 5);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(98, 22);
+            this.dtpFrom.Size = new System.Drawing.Size(98, 23);
             this.dtpFrom.TabIndex = 0;
             // 
             // btnFix
@@ -742,21 +742,21 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(354, 188);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(154, 18);
+            this.checkBox1.Size = new System.Drawing.Size(156, 20);
             this.checkBox1.TabIndex = 126;
             this.checkBox1.Text = "Bỏ những dòng bằng 0";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // txtReadBarcode
+            // btnReadBarcode
             // 
-            this.txtReadBarcode.Location = new System.Drawing.Point(82, 46);
-            this.txtReadBarcode.Name = "txtReadBarcode";
-            this.txtReadBarcode.Size = new System.Drawing.Size(178, 23);
-            this.txtReadBarcode.TabIndex = 127;
-            this.txtReadBarcode.Text = "Đọc mã vạch từ file text";
-            this.txtReadBarcode.UseVisualStyleBackColor = true;
-            this.txtReadBarcode.Click += new System.EventHandler(this.txtReadBarcode_Click);
+            this.btnReadBarcode.Location = new System.Drawing.Point(82, 46);
+            this.btnReadBarcode.Name = "btnReadBarcode";
+            this.btnReadBarcode.Size = new System.Drawing.Size(178, 23);
+            this.btnReadBarcode.TabIndex = 127;
+            this.btnReadBarcode.Text = "Đọc mã vạch từ file text";
+            this.btnReadBarcode.UseVisualStyleBackColor = true;
+            this.btnReadBarcode.Click += new System.EventHandler(this.txtReadBarcode_Click);
             // 
             // ctxShortcuts
             // 
@@ -765,13 +765,13 @@
             this.inputBarcodeToolStripMenuItem,
             this.deleteStockToolStripMenuItem});
             this.ctxShortcuts.Name = "ctxShortcuts";
-            this.ctxShortcuts.Size = new System.Drawing.Size(187, 92);
+            this.ctxShortcuts.Size = new System.Drawing.Size(210, 76);
             // 
             // saveShortcutToolStripMenuItem
             // 
             this.saveShortcutToolStripMenuItem.Name = "saveShortcutToolStripMenuItem";
             this.saveShortcutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveShortcutToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.saveShortcutToolStripMenuItem.Size = new System.Drawing.Size(209, 24);
             this.saveShortcutToolStripMenuItem.Text = "SaveShortcut";
             this.saveShortcutToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -779,7 +779,7 @@
             // 
             this.inputBarcodeToolStripMenuItem.Name = "inputBarcodeToolStripMenuItem";
             this.inputBarcodeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.inputBarcodeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.inputBarcodeToolStripMenuItem.Size = new System.Drawing.Size(209, 24);
             this.inputBarcodeToolStripMenuItem.Text = "InputBarcode";
             this.inputBarcodeToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
@@ -787,7 +787,7 @@
             // 
             this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
             this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(209, 24);
             this.deleteStockToolStripMenuItem.Text = "deleteStock";
             this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -795,7 +795,7 @@
             // 
             this.ClientSize = new System.Drawing.Size(818, 562);
             this.ContextMenuStrip = this.ctxShortcuts;
-            this.Controls.Add(this.txtReadBarcode);
+            this.Controls.Add(this.btnReadBarcode);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
@@ -858,7 +858,7 @@
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
-            this.Controls.SetChildIndex(this.txtReadBarcode, 0);
+            this.Controls.SetChildIndex(this.btnReadBarcode, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
@@ -941,7 +941,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button txtReadBarcode;
+        private System.Windows.Forms.Button btnReadBarcode;
         private System.Windows.Forms.ContextMenuStrip ctxShortcuts;
         private System.Windows.Forms.ToolStripMenuItem saveShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inputBarcodeToolStripMenuItem;

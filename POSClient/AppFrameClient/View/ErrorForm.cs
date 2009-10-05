@@ -51,26 +51,24 @@ namespace AppFrameClient.View
         {
             get
             {
-                _errorDetails.Clear();
-                foreach (string s in lstErrorDetails.Items)
-                {
-                  _errorDetails.Add(s);      
-                }
-                return _errorDetails;
+                return _errorDetails; 
             }
             set
             {
-                lstErrorDetails.Items.Clear();
-                foreach (string s in value)
-                {
-                    lstErrorDetails.Items.Add(s); 
-                }
+                _errorDetails = value;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ErrorForm_Load(object sender, EventArgs e)
+        {
+            BindingSource bds = new BindingSource();
+            bds.DataSource = _errorDetails;
+            lstErrorDetails.DataSource = bds;
         }
     }
 }

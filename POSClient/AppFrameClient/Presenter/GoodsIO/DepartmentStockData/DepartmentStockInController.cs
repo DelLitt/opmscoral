@@ -60,7 +60,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             if (destDept != null)
             {
                 GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
-                message.PublishMessage(ChannelConstants.SUBSTOCK2DEPT_STOCKOUT, "Đang gửi thông tin xuống cửa hàng ...");
+                message.PublishMessage(ChannelConstants.DEPT2MAIN_SYNC, "Đang gửi thông tin xuống cửa hàng ...");
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                 serverService.MakeRawDepartmentStockIn(destDept, e.DepartmentStockIn);
             }

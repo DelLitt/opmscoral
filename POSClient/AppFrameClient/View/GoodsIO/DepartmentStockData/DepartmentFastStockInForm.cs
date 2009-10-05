@@ -411,8 +411,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                                  DepartmentId = CurrentDepartment.Get().DepartmentId
                                              };
             deptSO.StockInDate = DateTime.Now;
-            
-            deptSO.DepartmentStockInDetails = deptSODetailList;
+
+            deptSO.DepartmentStockInDetails = ObjectConverter.ConvertToNonGenericList(deptSODetailList);
 //            deptSO.Description = txtDexcription.Text;
             var eventArgs = new DepartmentStockInEventArgs();
             eventArgs.DepartmentStockIn = deptSO;
@@ -422,7 +422,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 try
                 {
-                    //EventUtility.fireAsyncEvent(DispatchDepartmentStockIn, this, eventArgs,new AsyncCallback(EndEvent));
                     EventUtility.fireEvent(DispatchDepartmentStockIn, this, eventArgs);
                 }
                 catch (Exception)

@@ -68,7 +68,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtErrorString);
             this.Name = "ErrorForm";
-            this.Text = "ErrorForm";
+            this.Text = "Lỗi";
+            this.Load += new System.EventHandler(this.ErrorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

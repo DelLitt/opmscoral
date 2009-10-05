@@ -263,6 +263,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+            Dispose();
         }
 
 
