@@ -297,13 +297,13 @@ namespace AppFrameClient.Utility
             if (saleStatistic)
             {
                 string deleteDetail = "\" delete from purchase_order_detail where create_date < '" +
-                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
 
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from purchase_order where create_date < '" +
-                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
             }
@@ -312,45 +312,45 @@ namespace AppFrameClient.Utility
             {
                 // department_stock_out
                 string deleteDetail = "\" delete from department_stock_out_detail where create_date < '" +
-                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from department_stock_out where create_date < '" +
-                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
                 
                 // department_stock_in
                 deleteDetail = "\" delete from department_stock_in_detail where create_date < '" +
-                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from department_stock_in where create_date < '" +
-                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
                 
                 // stock_out
                 deleteDetail = "\" delete from stock_out_detail where create_date < '" +
-                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from stock_out where create_date < '" +
-                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
 
                 // stock_in
                 deleteDetail = "\" delete from stock_in_detail where create_date < '" +
-                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                     DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                          "yyyy-MM-dd") + "'; \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from stock_in where create_date < '" +
-                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0))).ToString(
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
             }

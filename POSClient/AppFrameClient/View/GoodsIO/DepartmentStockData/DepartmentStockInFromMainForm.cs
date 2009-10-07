@@ -1282,10 +1282,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                 {
                                     //MessageBox.Show("Mã vạch đã được nhập");
                                     foundStockOutDetail.OldQuantity = foundStockOutDetail.Quantity;
-                                    foundStockOutDetail.Quantity += 1;
+                                    foundStockOutDetail.Quantity += barCodeLine.Value;
                                 }
                                 else
                                 {
+                                    inDetail.Quantity = barCodeLine.Value;
                                     deptSIDetailList.Add(inDetail);
                                 }
                             }

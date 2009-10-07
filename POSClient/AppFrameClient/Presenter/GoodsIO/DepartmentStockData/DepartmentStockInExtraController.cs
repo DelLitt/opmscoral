@@ -155,6 +155,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         stkCriteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
                         //stkCriteria.AddGreaterCriteria("GoodQuantity", (long)0);
                         IList stockList = StockLogic.FindAll(stkCriteria);
+                        
                         foreach (Stock inDetail in stockList)
                         {
                             DepartmentStockInDetail deptDetail = new DepartmentStockInDetail();
@@ -174,6 +175,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     }
                 }
 
+        
         private void MinusConfirmStockOut(IList stockOutList)
         {
             foreach (DepartmentStockInDetail outDetail in stockOutList)
