@@ -311,9 +311,9 @@ namespace AppFrameClient.Utility
             if(imExStatistic)
             {
                 // department_stock_out
-                string deleteDetail = "\" delete from department_stock_out_detail where create_date < '" +
+                string deleteDetail = "\" delete from department_stock_out_detail where stock_out_id in ( select stock_out_id from department_stock_out where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
-                                         "yyyy-MM-dd") + "'; \"";
+                                         "yyyy-MM-dd") + "'); \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from department_stock_out where create_date < '" +

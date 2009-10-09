@@ -65,7 +65,10 @@ namespace AppFrame.Logic
             {
                 data.Barcode = "000" + data.ProductMasterId;
             }*/
-            data.ImagePath = data.ProductMasterId + ".jpg";
+            if (!string.IsNullOrEmpty(data.ImagePath))
+            {
+                data.ImagePath = data.ProductMasterId + ".jpg";
+            }
             ProductMasterDAO.Add(data);
             
             return data;
@@ -108,7 +111,11 @@ namespace AppFrame.Logic
                 {
                     productMaster.ProductMasterId = string.Format("{0:0000000000000}", id++);
                     productMaster.Barcode = productMaster.ProductMasterId;
-                    productMaster.ImagePath = StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) + ".jpg";
+                    if (!string.IsNullOrEmpty(productMaster.ImagePath))
+                    {
+                        productMaster.ImagePath = StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) +
+                                                  ".jpg";
+                    }
                     ProductMasterDAO.Add(productMaster);                    
                 }
             }

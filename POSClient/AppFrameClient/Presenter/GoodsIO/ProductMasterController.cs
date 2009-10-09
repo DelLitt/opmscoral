@@ -164,7 +164,7 @@ namespace AppFrameClient.Presenter.GoodsIO
                         if (string.IsNullOrEmpty(imagePath))
                         {
                             ProductMaster first = (ProductMaster) e.UpdateProductMasterList[0];
-                            if (first.ImagePath.Contains(":"))
+                            if (!string.IsNullOrEmpty(first.ImagePath) && first.ImagePath.Contains(":"))
                             {
                                 imagePath = first.ImagePath;
                                 CopyAndCreateImage(first, imagePath);
@@ -174,8 +174,11 @@ namespace AppFrameClient.Presenter.GoodsIO
                         
                         foreach (ProductMaster productMaster in e.UpdateProductMasterList)
                         {
-                            productMaster.ImagePath =
-                                StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) + ".jpg";
+                            if (!string.IsNullOrEmpty(productMaster.ImagePath))
+                            {
+                                productMaster.ImagePath =
+                                    StringUtility.ConvertUniStringToHexChar(productMaster.ProductName) + ".jpg";
+                            }
                             ProductMasterLogic.Update(productMaster);
                         }
                     }
@@ -208,7 +211,7 @@ namespace AppFrameClient.Presenter.GoodsIO
                     else if (e.ProductMaster != null)
                     {
                         string realPath = "";
-                        if (e.ProductMaster.ImagePath.Contains(":"))
+                        if (!string.IsNullOrEmpty(e.ProductMaster.ImagePath) && e.ProductMaster.ImagePath.Contains(":"))
                         {
                             realPath = e.ProductMaster.ImagePath;
                         }

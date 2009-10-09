@@ -115,9 +115,9 @@
     <menuitem name="mnuSyncToMainForm" role="NotImplement" />
     <menuitem name="mnuLoadToMain" role="Administrator,Supervisor" />
     <menuitem name="mnuLoadToDept" role="Administrator,Manager" />
-    <menuitem name="mnuImportDatabaseImage" role="Administrator,Supervisor" />
-    <menuitem name="mnuExportDatabaseImage" role="Administrator,Supervisor" />
-    <menuitem name="mnuSystemConfiguration" role="Administrator,Supervisor" />
+    <menuitem name="mnuImportDatabaseImage" role="Administrator" />
+    <menuitem name="mnuExportDatabaseImage" role="Administrator" />
+    <menuitem name="mnuSystemConfiguration" role="Administrator" />
     <menuitem name="mnuImportByFile" role="Administrator,Supervisor" />
     <menuitem name="mnuExportByFile" role="Administrator,Supervisor" />
     <menuitem name="mnuEmployeeMoney" role="NotImplement" />
