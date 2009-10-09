@@ -221,6 +221,7 @@ namespace ImportPOSData
                 }
             }
         }
+        
         private List<string> GetSizesList(Worksheet ws, List<ErrorObject> errorList)
         {
             List<string> list = new List<string>();
