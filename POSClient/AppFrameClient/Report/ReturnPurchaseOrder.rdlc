@@ -12,7 +12,7 @@
   <InteractiveHeight>11in</InteractiveHeight>
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8in</InteractiveWidth>
-  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <rd:SnapToGrid>false</rd:SnapToGrid>
   <rd:ReportID>ddb24abf-87ce-4b56-b94c-67438064b699</rd:ReportID>
   <PageWidth>8in</PageWidth>
   <DataSets>
@@ -430,75 +430,11 @@
   <Width>2.75in</Width>
   <Body>
     <ReportItems>
-      <List Name="list2">
-        <ZIndex>6</ZIndex>
-        <DataSetName>AppFrame_Model_Receipt</DataSetName>
-        <ReportItems>
-          <Textbox Name="textbox34">
-            <Width>1.5in</Width>
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
-              <FontWeight>700</FontWeight>
-              <TextAlign>Right</TextAlign>
-              <PaddingRight>2pt</PaddingRight>
-            </Style>
-            <ZIndex>3</ZIndex>
-            <CanGrow>true</CanGrow>
-            <Height>0.25in</Height>
-            <Value>Khách trả:</Value>
-          </Textbox>
-          <Textbox Name="textbox44">
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
-              <FontWeight>700</FontWeight>
-              <TextAlign>Right</TextAlign>
-              <PaddingRight>2pt</PaddingRight>
-            </Style>
-            <ZIndex>2</ZIndex>
-            <CanGrow>true</CanGrow>
-            <Left>1.5in</Left>
-            <Height>0.25in</Height>
-            <Value>=Fields!CustomerPayment.Value</Value>
-          </Textbox>
-          <Textbox Name="textbox45">
-            <Top>0.25in</Top>
-            <Width>1.5in</Width>
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
-              <FontWeight>700</FontWeight>
-              <TextAlign>Right</TextAlign>
-              <PaddingRight>2pt</PaddingRight>
-            </Style>
-            <ZIndex>1</ZIndex>
-            <CanGrow>true</CanGrow>
-            <Value>Thối lại:</Value>
-          </Textbox>
-          <Textbox Name="textbox46">
-            <Top>0.25in</Top>
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
-              <FontWeight>700</FontWeight>
-              <TextAlign>Right</TextAlign>
-              <PaddingRight>2pt</PaddingRight>
-            </Style>
-            <CanGrow>true</CanGrow>
-            <Left>1.5in</Left>
-            <Value>=Fields!Charge.Value</Value>
-          </Textbox>
-        </ReportItems>
-        <Top>4.125in</Top>
-        <Width>2.375in</Width>
-        <Height>0.5in</Height>
-      </List>
       <Table Name="table2">
-        <ZIndex>5</ZIndex>
+        <ZIndex>9</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrderDetail</DataSetName>
-        <Top>1.625in</Top>
-        <Width>2.375in</Width>
+        <Top>1.19792in</Top>
+        <Width>2.37943in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -509,7 +445,7 @@
                       <rd:DefaultName>textbox10</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <PaddingLeft>1pt</PaddingLeft>
                         <PaddingRight>1pt</PaddingRight>
                         <PaddingTop>1pt</PaddingTop>
@@ -527,7 +463,7 @@
                       <rd:DefaultName>ProductMaster</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
@@ -541,7 +477,7 @@
                       <rd:DefaultName>Quantity</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Right</TextAlign>
                       </Style>
                       <ZIndex>1</ZIndex>
@@ -556,7 +492,7 @@
                       <rd:DefaultName>Price</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
                       </Style>
@@ -565,8 +501,23 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox50">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingRight>1pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Price.Value*Fields!Quantity.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
               </TableCells>
-              <Height>0.25in</Height>
+              <Height>0.1875in</Height>
             </TableRow>
           </TableRows>
         </Details>
@@ -583,7 +534,7 @@
                       <rd:DefaultName>textbox4</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
@@ -604,10 +555,10 @@
                       <rd:DefaultName>textbox7</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -615,7 +566,7 @@
                       </Style>
                       <ZIndex>12</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>TÊN HÀNG TRẢ</Value>
+                      <Value>HÀNG TRẢ</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -625,10 +576,10 @@
                       <rd:DefaultName>textbox8</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Right</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -646,10 +597,10 @@
                       <rd:DefaultName>textbox35</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Right</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -661,26 +612,49 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox30">
+                      <rd:DefaultName>textbox30</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>600</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>T.TIỀN</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
               </TableCells>
-              <Height>0.33333in</Height>
+              <Height>0.19792in</Height>
             </TableRow>
           </TableRows>
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.30408in</Width>
+            <Width>0.27826in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.13522in</Width>
+            <Width>0.83333in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.36809in</Width>
+            <Width>0.35117in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.56761in</Width>
+            <Width>0.47917in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.4375in</Width>
           </TableColumn>
         </TableColumns>
-        <Height>1.08333in</Height>
+        <Height>0.63542in</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -704,19 +678,33 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox32">
                       <rd:DefaultName>textbox32</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                       </Style>
                       <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>Tổng tiền hoàn lại:</Value>
+                      <Value>Tổng cộng</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox47">
+                      <rd:DefaultName>textbox47</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Sum(Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -726,71 +714,30 @@
                       <rd:DefaultName>Price_2</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.25in</Height>
-            </TableRow>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox25">
-                      <rd:DefaultName>textbox25</rd:DefaultName>
-                      <Style>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>7pt</FontSize>
-                        <PaddingLeft>1pt</PaddingLeft>
-                        <PaddingRight>1pt</PaddingRight>
-                        <PaddingTop>1pt</PaddingTop>
-                        <PaddingBottom>1pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>9</ZIndex>
-                      <CanGrow>true</CanGrow>
                       <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox27">
-                      <rd:DefaultName>textbox27</rd:DefaultName>
+                    <Textbox Name="textbox42">
+                      <rd:DefaultName>textbox42</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                      </Style>
-                      <ZIndex>8</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Tổng số hàng hoàn lại:</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="Quantity_1">
-                      <rd:DefaultName>Quantity_1</rd:DefaultName>
-                      <Style>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
                       </Style>
-                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")</Value>
+                      <Value>=Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -802,10 +749,10 @@
       </Table>
       <Table Name="table1">
         <NoRows>="Không mua hàng mới"</NoRows>
-        <ZIndex>4</ZIndex>
+        <ZIndex>8</ZIndex>
         <DataSetName>AppFrame_Collection_PurchaseOrderDetailCollection</DataSetName>
-        <Top>2.75in</Top>
-        <Width>2.375in</Width>
+        <Top>1.88542in</Top>
+        <Width>2.37981in</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -815,7 +762,7 @@
                     <Textbox Name="textbox5">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Center</TextAlign>
                       </Style>
                       <ZIndex>3</ZIndex>
@@ -829,7 +776,7 @@
                     <Textbox Name="textbox6">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Left</TextAlign>
                       </Style>
                       <ZIndex>2</ZIndex>
@@ -843,7 +790,7 @@
                     <Textbox Name="textbox9">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Right</TextAlign>
                       </Style>
                       <ZIndex>1</ZIndex>
@@ -857,7 +804,7 @@
                     <Textbox Name="textbox11">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
                       </Style>
@@ -866,8 +813,24 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox33">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingRight>1pt</PaddingRight>
+                      </Style>
+                      <ZIndex>4</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Price.Value*Fields!Quantity.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
               </TableCells>
-              <Height>0.25in</Height>
+              <Height>0.19792in</Height>
             </TableRow>
           </TableRows>
         </Details>
@@ -883,7 +846,7 @@
                     <Textbox Name="textbox12">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
                         <TextAlign>Center</TextAlign>
@@ -900,15 +863,15 @@
                     <Textbox Name="textbox13">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                       <ZIndex>15</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>TÊN HÀNG MỚI</Value>
+                      <Value>HÀNG MUA</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -917,10 +880,10 @@
                     <Textbox Name="textbox18">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Right</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                       <ZIndex>14</ZIndex>
@@ -934,10 +897,10 @@
                     <Textbox Name="textbox20">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>600</FontWeight>
                         <TextDecoration>Underline</TextDecoration>
-                        <TextAlign>Right</TextAlign>
+                        <TextAlign>Center</TextAlign>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                       <ZIndex>13</ZIndex>
@@ -946,8 +909,25 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox25">
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>600</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                        <TextAlign>Center</TextAlign>
+                        <VerticalAlign>Middle</VerticalAlign>
+                      </Style>
+                      <ZIndex>13</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>T.TIỀN</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
               </TableCells>
-              <Height>0.28571in</Height>
+              <Height>0.19792in</Height>
             </TableRow>
           </TableRows>
         </Header>
@@ -956,16 +936,19 @@
             <Width>0.30979in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.15652in</Width>
+            <Width>0.82292in</Width>
           </TableColumn>
           <TableColumn>
             <Width>0.33043in</Width>
           </TableColumn>
           <TableColumn>
-            <Width>0.57826in</Width>
+            <Width>0.46875in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.44792in</Width>
           </TableColumn>
         </TableColumns>
-        <Height>1.28571in</Height>
+        <Height>0.90625in</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -990,7 +973,7 @@
                     <Textbox Name="textbox23">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                       </Style>
@@ -1005,7 +988,7 @@
                     <Textbox Name="textbox24">
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
@@ -1018,11 +1001,26 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
+                    <Textbox Name="textbox27">
+                      <rd:DefaultName>textbox27</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
                     <Textbox Name="Price_1">
                       <rd:DefaultName>Price_1</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
@@ -1034,7 +1032,102 @@
                   </ReportItems>
                 </TableCell>
               </TableCells>
-              <Height>0.25in</Height>
+              <Height>0.20833in</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox43">
+                      <rd:DefaultName>textbox43</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontStyle>Italic</FontStyle>
+                        <FontWeight>700</FontWeight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox51">
+                      <rd:DefaultName>textbox51</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox52">
+                      <rd:DefaultName>textbox52</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox53">
+                      <rd:DefaultName>textbox53</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingRight>1pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox54">
+                      <rd:DefaultName>textbox54</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingRight>1pt</PaddingRight>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.08333in</Height>
             </TableRow>
             <TableRow>
               <TableCells>
@@ -1059,7 +1152,7 @@
                       <rd:DefaultName>textbox37</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                       </Style>
@@ -1070,102 +1163,45 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
+                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox39">
                       <rd:DefaultName>textbox39</rd:DefaultName>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
                         <PaddingRight>1pt</PaddingRight>
                       </Style>
                       <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>= IIf(Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection") - Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")&gt;0,Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection") - Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail"),0)</Value>
+                      <Value>= Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection") - Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
               </TableCells>
-              <Height>0.25in</Height>
-            </TableRow>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox38">
-                      <rd:DefaultName>textbox38</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <FontStyle>Italic</FontStyle>
-                        <FontWeight>700</FontWeight>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="textbox41">
-                      <Style>
-                        <BorderStyle>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                      </Style>
-                      <ZIndex>11</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>Tổng tiền trả lại khách hàng:</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox40">
-                      <Style>
-                        <BorderStyle>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingRight>1pt</PaddingRight>
-                      </Style>
-                      <ZIndex>10</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value>= IIf(Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection") - Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail")&lt;0,Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Model_PurchaseOrderDetail") - Sum(Fields!Price.Value*Fields!Quantity.Value, "AppFrame_Collection_PurchaseOrderDetailCollection"),0)</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.25in</Height>
+              <Height>0.21875in</Height>
             </TableRow>
           </TableRows>
         </Footer>
       </Table>
       <List Name="list3">
-        <ZIndex>3</ZIndex>
+        <ZIndex>7</ZIndex>
         <DataSetName>AppFrame_Model_PurchaseOrder</DataSetName>
         <ReportItems>
           <Textbox Name="textbox2">
-            <Top>0.75in</Top>
+            <Top>0.61458in</Top>
             <Width>0.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <TextAlign>Right</TextAlign>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <ZIndex>7</ZIndex>
             <CanGrow>true</CanGrow>
+            <Height>0.15625in</Height>
             <Value>SHĐ:</Value>
           </Textbox>
           <Textbox Name="textbox21">
@@ -1174,7 +1210,7 @@
             <Style>
               <FontStyle>Italic</FontStyle>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>7pt</FontSize>
               <TextAlign>Right</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -1182,7 +1218,7 @@
             <ZIndex>6</ZIndex>
             <CanGrow>true</CanGrow>
             <Left>1.125in</Left>
-            <Height>0.25in</Height>
+            <Height>0.15625in</Height>
             <Value>="Ngày :" + Day(Today()).ToString()  + " / " + Month(Today()).ToString() + " / " + Year(Today()).ToString()</Value>
           </Textbox>
           <Textbox Name="textbox17">
@@ -1190,14 +1226,14 @@
             <Width>0.625in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>5</ZIndex>
             <CanGrow>true</CanGrow>
             <Left>0.5in</Left>
-            <Height>0.25in</Height>
+            <Height>0.15625in</Height>
             <Value>=IIf(Hour(Fields!CreateDate.Value)&gt;=16,"Chiều","Sáng")</Value>
           </Textbox>
           <Textbox Name="textbox16">
@@ -1205,47 +1241,46 @@
             <Width>0.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <TextAlign>Right</TextAlign>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <ZIndex>4</ZIndex>
             <CanGrow>true</CanGrow>
-            <Height>0.25in</Height>
+            <Height>0.15625in</Height>
             <Value>Ca trực:</Value>
           </Textbox>
           <Textbox Name="textbox15">
-            <Top>0.5in</Top>
+            <Top>0.41667in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>3</ZIndex>
             <CanGrow>true</CanGrow>
             <Left>0.5in</Left>
-            <Height>0.25in</Height>
+            <Height>0.17708in</Height>
             <Value>=Fields!CreateId.Value</Value>
           </Textbox>
           <Textbox Name="textbox1">
-            <Top>0.5in</Top>
+            <Top>0.41667in</Top>
             <Width>0.5in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <TextAlign>Right</TextAlign>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
             <ZIndex>2</ZIndex>
             <CanGrow>true</CanGrow>
-            <Height>0.25in</Height>
+            <Height>0.17708in</Height>
             <Value>NV:</Value>
           </Textbox>
           <Textbox Name="textbox3">
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>12pt</FontSize>
               <FontWeight>700</FontWeight>
               <TextAlign>Center</TextAlign>
               <VerticalAlign>Middle</VerticalAlign>
@@ -1260,92 +1295,145 @@
             <Value>HOÁ ĐƠN BÁN HÀNG</Value>
           </Textbox>
           <Textbox Name="textbox14">
-            <Top>0.75in</Top>
+            <Top>0.61458in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8pt</FontSize>
+              <FontSize>7pt</FontSize>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <CanGrow>true</CanGrow>
             <Left>0.5in</Left>
+            <Height>0.15625in</Height>
             <Value>=Fields!PurchaseOrderPK.Value.PurchaseOrderId</Value>
           </Textbox>
         </ReportItems>
-        <Top>0.5in</Top>
+        <Top>0.375in</Top>
         <Width>2.375in</Width>
-        <Height>1in</Height>
+        <Height>0.79167in</Height>
       </List>
       <Textbox Name="textbox26">
-        <Top>4.625in</Top>
+        <Top>3.1875in</Top>
         <Width>2.375in</Width>
         <Style>
           <FontFamily>Tahoma</FontFamily>
-          <FontSize>8pt</FontSize>
+          <FontSize>7pt</FontSize>
           <TextAlign>Center</TextAlign>
         </Style>
-        <ZIndex>2</ZIndex>
+        <ZIndex>6</ZIndex>
         <CanGrow>true</CanGrow>
-        <Height>0.5in</Height>
+        <Height>0.36458in</Height>
         <Value>QUÝ KHÁCH VUI LÒNG GIỮ LẠI HÓA ĐƠN ĐỂ ĐỔI HÀNG BỊ LỖI TRONG VÒNG 3 NGÀY
 XIN CÁM ƠN QUÝ KHÁCH!</Value>
       </Textbox>
       <Textbox Name="textbox19">
-        <Top>5.125in</Top>
+        <Top>3.625in</Top>
         <Width>2.375in</Width>
         <Style>
           <FontFamily>Tahoma</FontFamily>
-          <FontSize>8pt</FontSize>
+          <FontSize>7pt</FontSize>
           <TextAlign>Center</TextAlign>
         </Style>
-        <ZIndex>1</ZIndex>
+        <ZIndex>5</ZIndex>
         <CanGrow>true</CanGrow>
-        <Height>0.25in</Height>
+        <Height>0.10417in</Height>
         <Value>************</Value>
       </Textbox>
       <List Name="list1">
+        <ZIndex>4</ZIndex>
         <DataSetName>AppFrame_Model_Department</DataSetName>
         <ReportItems>
-          <Textbox Name="textbox30">
-            <Width>0.75in</Width>
-            <Style>
-              <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
-            </Style>
-            <ZIndex>2</ZIndex>
-            <CanGrow>true</CanGrow>
-            <Height>0.25in</Height>
-            <Value>Cửa hàng:</Value>
-          </Textbox>
           <Textbox Name="textbox29">
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>7pt</FontSize>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <ZIndex>1</ZIndex>
             <CanGrow>true</CanGrow>
-            <Left>0.75in</Left>
-            <Height>0.25in</Height>
-            <Value>=Fields!DepartmentName.Value</Value>
+            <Height>0.15625in</Height>
+            <Value>="Cửa hàng:" &amp; Fields!DepartmentName.Value</Value>
           </Textbox>
           <Textbox Name="textbox28">
-            <Top>0.25in</Top>
+            <Top>0.17708in</Top>
             <Style>
               <FontFamily>Tahoma</FontFamily>
-              <FontSize>8.5pt</FontSize>
+              <FontSize>7pt</FontSize>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
             </Style>
             <CanGrow>true</CanGrow>
-            <Left>0.75in</Left>
+            <Height>0.125in</Height>
             <Value>=Fields!Address.Value</Value>
           </Textbox>
         </ReportItems>
         <Width>2.375in</Width>
-        <Height>0.5in</Height>
+        <Height>0.32292in</Height>
       </List>
+      <Textbox Name="textbox34">
+        <Top>2.8125in</Top>
+        <Width>1.45833in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Right</TextAlign>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.17708in</Height>
+        <Value>Tiền khách đưa:</Value>
+      </Textbox>
+      <Textbox Name="textbox44">
+        <Top>2.8125in</Top>
+        <Width>0.91667in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Right</TextAlign>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>1.45833in</Left>
+        <Height>0.17708in</Height>
+        <Value>=Fields!CustomerPayment.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox46">
+        <Top>3.01042in</Top>
+        <Width>0.91667in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Right</TextAlign>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>1.45833in</Left>
+        <Height>0.14583in</Height>
+        <Value>=Fields!Charge.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox45">
+        <Top>3.01042in</Top>
+        <Width>1.45833in</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Right</TextAlign>
+          <PaddingRight>2pt</PaddingRight>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.14583in</Height>
+        <Value>Tiền thối lại:</Value>
+      </Textbox>
     </ReportItems>
-    <Height>5.5in</Height>
+    <Height>3.76042in</Height>
   </Body>
   <Language>en-US</Language>
 </Report>

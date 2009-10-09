@@ -513,16 +513,7 @@ namespace AppFrameClient.View.GoodsSale
                 }
                 maxIndex -= 1;
             }
-
-            /*printForm = new GoodsSalePrintForm();
-            printForm.FillForm(GoodsSaleController.PurchaseOrder);
-            printForm.Show();
-            printForm.Shown += new EventHandler(printForm_Shown);*/
-
             
-            /*reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("Department",CurrentDepartment.Get()));
-            reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrder",GoodsSaleController.PurchaseOrder));
-            reportPurchaseOrder.LocalReport.DataSources.Add(new ReportDataSource("PurchaseOrderDetail", pODList));*/
             PurchaseOrderBill = new LocalReport();
             bool isReturnOrder = false;
             if(returnDetails.Count > 0 )
@@ -575,33 +566,7 @@ namespace AppFrameClient.View.GoodsSale
                 ReportDataSource POReturnDetRDS = new ReportDataSource("AppFrame_Model_PurchaseOrderDetail");
                 POReturnDetRDS.Value = PurchaseOrderDetailBindingSource;
                 PurchaseOrderBill.DataSources.Add(POReturnDetRDS);
-                
             
-
-            /*this.PurchaseOrderDetailBindingSource.DataSource =
-                ObjectConverter.ConvertGenericList<PurchaseOrderDetail>(args.ReturnPurchaseOrderDetails);
-
-            this.PurchaseOrderDetailCollectionBindingSource.DataSource = pODNewList;
-
-
-
-            this.DepartmentBindingSource.DataSource = CurrentDepartment.Get();
-
-            this.PurchaseOrderBindingSource.DataSource = goodsSaleController.PurchaseOrder;
-            this.PurchaseOrderDetailCollectionBindingSource.DataSource = CreateNonDuplicate(pODList);
-            this.ReceiptBindingSource.DataSource = receipt;*/
-
-            /*string deviceInfo = "<DeviceInfo>" +
-            "  <OutputFormat>EMF</OutputFormat>" +
-            "  <PageWidth>3.145in</PageWidth>" +
-            "  <PageHeight>5.3in</PageHeight>" +
-            "  <MarginTop>0.0in</MarginTop>" +
-            "  <MarginLeft>0.0in</MarginLeft>" +
-            "  <MarginRight>0.0in</MarginRight>" +
-            "  <MarginBottom>0.0in</MarginBottom>" +
-            "</DeviceInfo>";
-            Warning[] warnings;*/
-
             this.reportPurchaseOrder.LocalReport.Refresh();
             PrintDirectlyToPrinter();
             ClearGoodsSaleForm();
