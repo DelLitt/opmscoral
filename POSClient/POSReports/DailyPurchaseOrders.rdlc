@@ -15,9 +15,9 @@
   <rd:DrawGrid>true</rd:DrawGrid>
   <InteractiveWidth>8.5in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
+  <RightMargin>0.5in</RightMargin>
+  <LeftMargin>0.5in</LeftMargin>
+  <BottomMargin>0.5in</BottomMargin>
   <rd:ReportID>653b9b79-7ba7-48d2-b477-7c7651f061f4</rd:ReportID>
   <DataSets>
     <DataSet Name="posDataSet_PurchaseOrderReport">
@@ -133,7 +133,7 @@
           <Matrix Name="matrix1">
             <MatrixColumns>
               <MatrixColumn>
-                <Width>1in</Width>
+                <Width>0.5in</Width>
               </MatrixColumn>
             </MatrixColumns>
             <DataSetName>posDataSet_PurchaseOrderReport</DataSetName>
@@ -156,7 +156,7 @@
                     <Textbox Name="type_name">
                       <rd:DefaultName>type_name</rd:DefaultName>
                       <Style>
-                        <BackgroundColor>#8fb3f3</BackgroundColor>
+                        <BackgroundColor>White</BackgroundColor>
                         <BorderColor>
                           <Default>LightGrey</Default>
                         </BorderColor>
@@ -190,14 +190,13 @@
                     </SortBy>
                   </Sorting>
                   <Visibility>
-                    <Hidden>true</Hidden>
                     <ToggleItem>type_name</ToggleItem>
                   </Visibility>
                   <ReportItems>
                     <Textbox Name="product_name">
                       <rd:DefaultName>product_name</rd:DefaultName>
                       <Style>
-                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <BackgroundColor>White</BackgroundColor>
                         <BorderColor>
                           <Default>LightGrey</Default>
                         </BorderColor>
@@ -217,7 +216,7 @@
                 </DynamicRows>
               </RowGrouping>
               <RowGrouping>
-                <Width>1in</Width>
+                <Width>0.875in</Width>
                 <DynamicRows>
                   <Grouping Name="matrix1_color_name">
                     <GroupExpressions>
@@ -231,14 +230,13 @@
                     </SortBy>
                   </Sorting>
                   <Visibility>
-                    <Hidden>true</Hidden>
-                    <ToggleItem>product_name</ToggleItem>
+                    <ToggleItem>type_name</ToggleItem>
                   </Visibility>
                   <ReportItems>
                     <Textbox Name="color_name">
                       <rd:DefaultName>color_name</rd:DefaultName>
                       <Style>
-                        <BackgroundColor>#e6eefc</BackgroundColor>
+                        <BackgroundColor>White</BackgroundColor>
                         <BorderColor>
                           <Default>LightGrey</Default>
                         </BorderColor>
@@ -261,7 +259,7 @@
             <Top>0.5in</Top>
             <ColumnGroupings>
               <ColumnGrouping>
-                <Height>0.21in</Height>
+                <Height>0.125in</Height>
                 <DynamicColumns>
                   <Grouping Name="matrix1_department_name">
                     <GroupExpressions>
@@ -278,7 +276,7 @@
                     <Textbox Name="department_name">
                       <rd:DefaultName>department_name</rd:DefaultName>
                       <Style>
-                        <BackgroundColor>#8fb3f3</BackgroundColor>
+                        <BackgroundColor>#e0e0e0</BackgroundColor>
                         <BorderColor>
                           <Default>LightGrey</Default>
                         </BorderColor>
@@ -292,7 +290,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!department_name.Value</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </DynamicColumns>
@@ -312,14 +310,13 @@
                     </SortBy>
                   </Sorting>
                   <Visibility>
-                    <Hidden>true</Hidden>
                     <ToggleItem>department_name</ToggleItem>
                   </Visibility>
                   <ReportItems>
                     <Textbox Name="size_name">
                       <rd:DefaultName>size_name</rd:DefaultName>
                       <Style>
-                        <BackgroundColor>#c7d9f9</BackgroundColor>
+                        <BackgroundColor>White</BackgroundColor>
                         <BorderColor>
                           <Default>LightGrey</Default>
                         </BorderColor>
@@ -327,6 +324,7 @@
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>Tahoma</FontFamily>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -339,7 +337,7 @@
                 </DynamicColumns>
               </ColumnGrouping>
             </ColumnGroupings>
-            <Width>4in</Width>
+            <Width>3.375in</Width>
             <Corner>
               <ReportItems>
                 <Textbox Name="textbox3">
@@ -359,7 +357,7 @@
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                   <CanGrow>true</CanGrow>
-                  <Value>
+                  <Value>=Fields!department_name.Value
                   </Value>
                 </Textbox>
               </ReportItems>
@@ -381,6 +379,7 @@
                           </BorderStyle>
                           <FontFamily>Tahoma</FontFamily>
                           <FontSize>9pt</FontSize>
+                          <TextAlign>Center</TextAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -394,6 +393,7 @@
                 </MatrixCells>
               </MatrixRow>
             </MatrixRows>
+            <Height>0.545in</Height>
           </Matrix>
         </ReportItems>
         <Top>0.33in</Top>
@@ -412,5 +412,5 @@
     <Height>1.46in</Height>
   </Body>
   <Language>en-US</Language>
-  <TopMargin>1in</TopMargin>
+  <TopMargin>0.5in</TopMargin>
 </Report>
