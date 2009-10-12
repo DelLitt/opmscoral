@@ -980,7 +980,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
         <CanGrow>true</CanGrow>
         <Left>1.48958in</Left>
         <Height>0.15625in</Height>
-        <Value>=Fields!CustomerPayment.Value</Value>
+        <Value>=Sum(Fields!CustomerPayment.Value, "AppFrame_Model_Receipt")</Value>
       </Textbox>
       <Textbox Name="textbox30">
         <Top>1.9375in</Top>
@@ -1010,7 +1010,7 @@ XIN CÁM ƠN QUÝ KHÁCH!
         <CanGrow>true</CanGrow>
         <Left>1.5in</Left>
         <Height>0.16667in</Height>
-        <Value>=Fields!Charge.Value</Value>
+        <Value>=Sum(Fields!Charge.Value, "AppFrame_Model_Receipt")</Value>
       </Textbox>
     </ReportItems>
     <Height>2.86459in</Height>

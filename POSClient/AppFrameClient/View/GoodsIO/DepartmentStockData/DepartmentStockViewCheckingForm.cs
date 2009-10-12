@@ -22,6 +22,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
     public partial class DepartmentStockViewCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
     {
         private DepartmentStockViewCollection stockList = null;
+        private List<ScanType> scanTypesList = new List<ScanType>();
+
         public DepartmentStockViewCheckingForm()
         {
             InitializeComponent();
@@ -79,7 +81,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
             if(!CheckUtility.IsNullOrEmpty(pictureBox1.ImageLocation))
             {
-                pictureBox1.Load();
+                if (File.Exists(pictureBox1.ImageLocation))
+                {
+                    pictureBox1.Load();
+                }
             }
 
             int stockDefIndex = -1;
@@ -111,11 +116,38 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
                     dgvStocks.CurrentCell = dgvStocks[5, stockList.Count - 1];
             }
+            
+            // update scanned type and product
+            ScanType scannedType = GetFromScanList(scanTypesList, stock);
+            if(scannedType!=null)
+            {
+                IList unscanList = scannedType.UnscanProducts;
+                int scanIndex = GetIndexFromList(unscanList, stock.ProductMaster.ProductName);
+                if(scanIndex>=0)
+                {
+                    scannedType.ScannedProducts.Add(unscanList[scanIndex]);
+                    unscanList.RemoveAt(scanIndex);
+                }
+            }
+            else
+            {
+                // create new scantype and add to scanTypeList
+            }
             bdsStockDefect.EndEdit();
             dgvStocks.Refresh();
             dgvStocks.Invalidate();
             txtBarcode.Text = "";
             txtBarcode.Focus();
+        }
+
+        private int GetIndexFromList(IList list, string name)
+        {
+            return -1;
+        }
+
+        private ScanType GetFromScanList(List<ScanType> types, DepartmentStockView stock)
+        {
+            return null;
         }
 
         private bool HasInStockDefectList(DepartmentStockView stock, DepartmentStockViewCollection list, out int stockDefIndex)
