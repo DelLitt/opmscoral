@@ -66,6 +66,9 @@
             this.txtSum = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnTempLoad = new System.Windows.Forms.Button();
+            this.cboTypeList = new System.Windows.Forms.ComboBox();
+            this.lstProductList = new System.Windows.Forms.TreeView();
+            this.scanTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,18 +79,17 @@
             this.columnDamage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboTypeList = new System.Windows.Forms.ComboBox();
-            this.lstProductList = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scanTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(429, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(418, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(116, 66);
             this.pictureBox1.TabIndex = 27;
@@ -108,7 +110,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(141, 66);
+            this.txtDescription.Size = new System.Drawing.Size(111, 66);
             this.txtDescription.TabIndex = 24;
             // 
             // txtProductName
@@ -150,7 +152,7 @@
             // btnConfirm
             // 
             this.btnConfirm.Enabled = false;
-            this.btnConfirm.Location = new System.Drawing.Point(551, 14);
+            this.btnConfirm.Location = new System.Drawing.Point(545, 14);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(173, 60);
             this.btnConfirm.TabIndex = 18;
@@ -172,7 +174,7 @@
             this.groupBox1.Controls.Add(this.txtProductType);
             this.groupBox1.Location = new System.Drawing.Point(12, 97);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(761, 85);
+            this.groupBox1.Size = new System.Drawing.Size(724, 85);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
@@ -286,7 +288,7 @@
             this.dgvStocks.DataSource = this.bdsStockDefect;
             this.dgvStocks.Location = new System.Drawing.Point(12, 188);
             this.dgvStocks.Name = "dgvStocks";
-            this.dgvStocks.Size = new System.Drawing.Size(780, 313);
+            this.dgvStocks.Size = new System.Drawing.Size(724, 313);
             this.dgvStocks.TabIndex = 24;
             this.dgvStocks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStock_CellDoubleClick);
             this.dgvStocks.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStocks_RowPostPaint);
@@ -390,6 +392,29 @@
             this.btnTempLoad.UseVisualStyleBackColor = true;
             this.btnTempLoad.Click += new System.EventHandler(this.btnTempLoad_Click);
             // 
+            // cboTypeList
+            // 
+            this.cboTypeList.DataSource = this.scanTypeBindingSource;
+            this.cboTypeList.DisplayMember = "TypeName";
+            this.cboTypeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTypeList.FormattingEnabled = true;
+            this.cboTypeList.Location = new System.Drawing.Point(742, 104);
+            this.cboTypeList.Name = "cboTypeList";
+            this.cboTypeList.Size = new System.Drawing.Size(165, 21);
+            this.cboTypeList.TabIndex = 40;
+            this.cboTypeList.SelectedIndexChanged += new System.EventHandler(this.cboTypeList_SelectedIndexChanged);
+            // 
+            // lstProductList
+            // 
+            this.lstProductList.Location = new System.Drawing.Point(742, 131);
+            this.lstProductList.Name = "lstProductList";
+            this.lstProductList.Size = new System.Drawing.Size(165, 370);
+            this.lstProductList.TabIndex = 41;
+            // 
+            // scanTypeBindingSource
+            // 
+            this.scanTypeBindingSource.DataSource = typeof(AppFrame.View.GoodsIO.DepartmentGoodsIO.ScanType);
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "ProductMaster.ProductMasterId";
@@ -486,23 +511,8 @@
             this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column7.HeaderText = "KXD";
             this.Column7.Name = "Column7";
+            this.Column7.Visible = false;
             this.Column7.Width = 60;
-            // 
-            // cboTypeList
-            // 
-            this.cboTypeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTypeList.FormattingEnabled = true;
-            this.cboTypeList.Location = new System.Drawing.Point(779, 104);
-            this.cboTypeList.Name = "cboTypeList";
-            this.cboTypeList.Size = new System.Drawing.Size(128, 21);
-            this.cboTypeList.TabIndex = 40;
-            // 
-            // lstProductList
-            // 
-            this.lstProductList.Location = new System.Drawing.Point(798, 131);
-            this.lstProductList.Name = "lstProductList";
-            this.lstProductList.Size = new System.Drawing.Size(110, 370);
-            this.lstProductList.TabIndex = 41;
             // 
             // DepartmentStockViewCheckingForm
             // 
@@ -551,6 +561,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scanTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,6 +599,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuSum;
         private System.Windows.Forms.Button btnTempLoad;
+        private System.Windows.Forms.ComboBox cboTypeList;
+        private System.Windows.Forms.TreeView lstProductList;
+        private System.Windows.Forms.BindingSource scanTypeBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -598,7 +612,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.ComboBox cboTypeList;
-        private System.Windows.Forms.TreeView lstProductList;
     }
 }

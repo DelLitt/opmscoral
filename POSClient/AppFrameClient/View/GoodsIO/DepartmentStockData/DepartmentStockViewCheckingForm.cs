@@ -122,7 +122,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if(scannedType!=null)
             {
                 IList unscanList = scannedType.UnscanProducts;
-                int scanIndex = GetIndexFromList(unscanList, stock.ProductMaster.ProductName);
+                string productName = stock.ProductMaster.ProductName + "_" + stock.ProductMaster.ProductColor.ColorName +
+                                     "_" + stock.ProductMaster.ProductSize.SizeName;
+                int scanIndex = GetIndexFromList(unscanList, productName);
                 if(scanIndex>=0)
                 {
                     scannedType.ScannedProducts.Add(unscanList[scanIndex]);
@@ -142,6 +144,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 scanTypesList.Add(eventArgs.ScannedType);
                 
             }
+            cboTypeList.Refresh();
+            cboTypeList.Invalidate();
+            cboTypeList_SelectedIndexChanged(null,null);
             bdsStockDefect.EndEdit();
             dgvStocks.Refresh();
             dgvStocks.Invalidate();
@@ -196,6 +201,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             
             stockList = new DepartmentStockViewCollection(bdsStockDefect);
             bdsStockDefect.DataSource = stockList;
+            scanTypeBindingSource.DataSource = scanTypesList;
             bdsStockDefect.EndEdit();
             bdsStockDefect.ResetBindings(true);
             dgvStocks.Refresh();
@@ -571,6 +577,29 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTypeList.SelectedIndex < 0) return;
+            ScanType scanType = (ScanType) cboTypeList.SelectedItem;
+            IList scannedProducts = scanType.ScannedProducts;
+            IList unscannedProducts = scanType.UnscanProducts;
+            lstProductList.Nodes.Clear();
+
+            int count = 0;
+            foreach (string scannedProduct in scannedProducts)
+            {
+                lstProductList.Nodes.Add(scannedProduct, scannedProduct);
+                lstProductList.Nodes[count++].ForeColor = Color.Blue;
+            }
+            foreach (string unscannedProduct in unscannedProducts)
+            {
+                lstProductList.Nodes.Add(unscannedProduct, unscannedProduct);
+                lstProductList.Nodes[count++].ForeColor = Color.Red;
+            }
+            lstProductList.Refresh();
+            lstProductList.Invalidate();
         }
     }
 }
