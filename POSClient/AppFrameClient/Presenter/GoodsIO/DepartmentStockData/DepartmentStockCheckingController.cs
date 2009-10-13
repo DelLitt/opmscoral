@@ -35,7 +35,33 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 departmentStockCheckingView.SaveInventoryCheckingEvent += new EventHandler<DepartmentStockCheckingEventArgs>(inventoryCheckingView_SaveInventoryCheckingEvent);
                 departmentStockCheckingView.SaveTempInventoryCheckingEvent += new EventHandler<DepartmentStockCheckingEventArgs>(departmentStockCheckingView_SaveTempInventoryCheckingEvent);
                 departmentStockCheckingView.LoadTempInventoryCheckingEvent += new EventHandler<DepartmentStockCheckingEventArgs>(departmentStockCheckingView_LoadTempInventoryCheckingEvent);
+                departmentStockCheckingView.FillProductMasterToComboEvent += new EventHandler<DepartmentStockCheckingEventArgs>(departmentStockCheckingView_FillProductMasterToComboEvent);
             }
+        }
+
+        void departmentStockCheckingView_FillProductMasterToComboEvent(object sender, DepartmentStockCheckingEventArgs e)
+        {
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("ProductType.TypeName", e.ScannedType.TypeName);
+            IList prdMasterList = ProductMasterLogic.FindAll(criteria);
+            foreach (ProductMaster master in prdMasterList)
+            {
+                string productName = master.ProductName + "_" + master.ProductColor.ColorName + "_" +
+                                     master.ProductSize.SizeName;
+                if(!HasInList(e.ScannedType.UnscanProducts,productName))
+                {
+                    e.ScannedType.UnscanProducts.Add(productName);
+                }
+            }
+        }
+
+        private bool HasInList(IList products, string name)
+        {
+            foreach (string product in products)
+            {
+                if (product.Equals(name)) return true;
+            }
+            return false; 
         }
 
         void departmentStockCheckingView_LoadTempInventoryCheckingEvent(object sender, DepartmentStockCheckingEventArgs e)

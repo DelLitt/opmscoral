@@ -33,7 +33,8 @@ namespace AppFrameClient.Utility
                                                         "stock_out_detail",
                                                         "stock_out",
                                                         "stock_in_detail",
-                                                        "stock_in"
+                                                        "stock_in",
+                                                        "return_po"
                                                     };
         /// <summary>
         /// Backup database to CRL directories
@@ -61,6 +62,7 @@ namespace AppFrameClient.Utility
                 {
                     tablesList.Add("purchase_order_detail");
                     tablesList.Add("purchase_order");
+                    tablesList.Add("return_po");
                 }
                 if(ImExStatistic)
                 {
@@ -306,6 +308,12 @@ namespace AppFrameClient.Utility
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
+
+                string deleteString = "\" delete from return_po where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
+                                      "yyyy-MM-dd") + "';\"";
+                ExecuteMySqlCmdLine(deleteString, db, user, pass);
+
             }
 
             if(imExStatistic)

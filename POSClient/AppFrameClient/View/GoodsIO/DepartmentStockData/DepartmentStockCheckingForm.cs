@@ -49,6 +49,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         public event EventHandler<DepartmentStockCheckingEventArgs> SaveTempInventoryCheckingEvent;
         public event EventHandler<DepartmentStockCheckingEventArgs> LoadTempInventoryCheckingEvent;
+        public event EventHandler<DepartmentStockCheckingEventArgs> LoadProductNamesInTypeEvent;
 
         #endregion
 

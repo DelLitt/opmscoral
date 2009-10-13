@@ -15,7 +15,6 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
-using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -38,6 +37,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs> SaveInventoryCheckingEvent;
         public event EventHandler<DepartmentStockCheckingEventArgs> SaveTempInventoryCheckingEvent;
         public event EventHandler<DepartmentStockCheckingEventArgs> LoadTempInventoryCheckingEvent;
+        public event EventHandler<DepartmentStockCheckingEventArgs> LoadProductNamesInTypeEvent;
 
         private AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController departmentStockCheckingController;        
         public AppFrame.Presenter.GoodsIO.MainStock.IDepartmentStockCheckingController DepartmentStockCheckingController
@@ -132,6 +132,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             else
             {
                 // create new scantype and add to scanTypeList
+                ScanType scanType = new ScanType();
+                scanType.ScannedProducts = new ArrayList();
+                scanType.UnscanProducts = new ArrayList();
+                scanType.TypeName = stock.ProductMaster.ProductType.TypeName;
+                DepartmentStockCheckingEventArgs eventArgs = new DepartmentStockCheckingEventArgs();
+                eventArgs.ScannedType = scanType;
+                EventUtility.fireEvent(LoadProductNamesInTypeEvent,this,eventArgs);
+                scanTypesList.Add(eventArgs.ScannedType);
+                
             }
             bdsStockDefect.EndEdit();
             dgvStocks.Refresh();
@@ -142,11 +151,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private int GetIndexFromList(IList list, string name)
         {
+            for(int i=0;i<list.Count;i++)
+            {
+                string prdName = (string) list[i];
+                if(prdName.Equals(name))
+                {
+                    return i;
+                }
+            }
             return -1;
         }
 
         private ScanType GetFromScanList(List<ScanType> types, DepartmentStockView stock)
         {
+            string checkTypeName = stock.ProductMaster.ProductType.TypeName;
+            foreach (ScanType scanType in types)
+            {
+                if(scanType.TypeName.Equals(checkTypeName))
+                {
+                    return scanType;
+                }
+            }
             return null;
         }
 
@@ -168,6 +193,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void DepartmentStockCheckingForm_Load(object sender, EventArgs e)
         {
+            
             stockList = new DepartmentStockViewCollection(bdsStockDefect);
             bdsStockDefect.DataSource = stockList;
             bdsStockDefect.EndEdit();

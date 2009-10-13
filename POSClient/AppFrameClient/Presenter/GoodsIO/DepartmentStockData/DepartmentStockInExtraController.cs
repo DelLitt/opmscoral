@@ -308,6 +308,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             var stockTempCri = new ObjectCriteria();
             stockTempCri.AddEqCriteria("Fixed", CommonConstants.DEL_FLG_YES);
             stockTempCri.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
+            stockTempCri.AddEqCriteria("DepartmentStockTempPK.DepartmentId", e.Department.DepartmentId);
 
             IList processedStockTemps = DepartmentStockTempLogic.FindAll(stockTempCri);
             e.SyncFromMainToDepartment.DepartmentStockTemps = processedStockTemps;
