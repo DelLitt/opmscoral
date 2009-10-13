@@ -21,5 +21,6 @@ namespace AppFrame.View.GoodsIO.DepartmentGoodsIO
 
         event EventHandler<DepartmentStockCheckingEventArgs> SaveTempInventoryCheckingEvent;
         event EventHandler<DepartmentStockCheckingEventArgs> LoadTempInventoryCheckingEvent;
+        event EventHandler<DepartmentStockCheckingEventArgs> LoadProductNamesInTypeEvent;
     }
 }
