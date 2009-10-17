@@ -358,6 +358,7 @@
     <Compile Include="ViewModel\DepartmentStockTempView.cs" />
     <Compile Include="ViewModel\DepartmentStockTempViewCollection.cs" />
     <Compile Include="ViewModel\PurchaseOrderView.cs" />
+    <Compile Include="ViewModel\ScanTypeCollection.cs" />
     <Compile Include="View\AppFrameConsumerForm.cs">
       <SubType>Form</SubType>
     </Compile>

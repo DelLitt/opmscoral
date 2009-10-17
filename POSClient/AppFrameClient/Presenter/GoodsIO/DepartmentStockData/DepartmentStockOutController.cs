@@ -264,6 +264,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 
         public void _departmentStockOutView_LoadStockStatusEvent(object sender, DepartmentStockOutEventArgs e)
         {
+            if (e.SelectedProductMasterList == null || e.SelectedProductMasterList.Count == 0) return;
+
             IList productMasterIds = new ArrayList();
             foreach (ProductMaster master in e.SelectedProductMasterList)
             {
@@ -274,15 +276,15 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             prdCrit.AddSearchInCriteria("ProductMaster.ProductMasterId", productMasterIds);
             IList prdList = ProductLogic.FindAll(prdCrit);
 
-            IList prdIdList = new ArrayList();
+            IList stkPrdIdsList = new ArrayList();
             foreach (Product product in prdList)
             {
-                prdIdList.Add(product.ProductId);
+                stkPrdIdsList.Add(product.ProductId);
             }
 
             var criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
-            criteria.AddSearchInCriteria("DepartmentStockPK.ProductId", prdIdList);
+            criteria.AddSearchInCriteria("DepartmentStockPK.ProductId", stkPrdIdsList);
             
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)

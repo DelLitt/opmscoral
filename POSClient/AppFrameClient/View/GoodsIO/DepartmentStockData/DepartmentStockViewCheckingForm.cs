@@ -15,13 +15,14 @@ using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
+using AppFrameClient.ViewModel;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
     public partial class DepartmentStockViewCheckingForm : AppFrame.Common.BaseForm, IDepartmentStockCheckingView
     {
         private DepartmentStockViewCollection stockList = null;
-        private List<ScanType> scanTypesList = new List<ScanType>();
+        private ScanTypeCollection scanTypesList = null;
 
         public DepartmentStockViewCheckingForm()
         {
@@ -118,14 +119,55 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             
             // update scanned type and product
+            //UpdateScanType(stock);
             ScanType scannedType = GetFromScanList(scanTypesList, stock);
-            if(scannedType!=null)
+            if(scannedType == null)
+            {
+                // create new scantype and add to scanTypeList
+                ScanType scanType = new ScanType();
+                scanType.ScannedProducts = new ArrayList();
+                scanType.UnscanProducts = new ArrayList();
+                scanType.TypeName = stock.ProductMaster.ProductType.TypeName;
+                DepartmentStockCheckingEventArgs eventArgs = new DepartmentStockCheckingEventArgs();
+                eventArgs.ScannedType = scanType;
+                EventUtility.fireEvent(LoadProductNamesInTypeEvent, this, eventArgs);
+                scanTypesList.Add(eventArgs.ScannedType);
+                scannedType = eventArgs.ScannedType;
+            }
+
+            
+                IList unscanList = scannedType.UnscanProducts;
+                string productName = stock.ProductMaster.ProductName + "_" + stock.ProductMaster.ProductColor.ColorName +
+                                     "_" + stock.ProductMaster.ProductSize.SizeName;
+                int scanIndex = GetIndexFromList(unscanList, productName);
+                if (scanIndex >= 0)
+                {
+                    scannedType.ScannedProducts.Add(unscanList[scanIndex]);
+                    unscanList.RemoveAt(scanIndex);
+                }
+            
+            cboTypeList.Refresh();
+            cboTypeList.Invalidate();
+            cboTypeList_SelectedIndexChanged(null, null);
+
+
+            bdsStockDefect.EndEdit();
+            dgvStocks.Refresh();
+            dgvStocks.Invalidate();
+            txtBarcode.Text = "";
+            txtBarcode.Focus();
+        }
+
+        private void UpdateScanType(DepartmentStockView stock)
+        {
+            ScanType scannedType = GetFromScanList(scanTypesList, stock);
+            if (scannedType != null)
             {
                 IList unscanList = scannedType.UnscanProducts;
                 string productName = stock.ProductMaster.ProductName + "_" + stock.ProductMaster.ProductColor.ColorName +
                                      "_" + stock.ProductMaster.ProductSize.SizeName;
                 int scanIndex = GetIndexFromList(unscanList, productName);
-                if(scanIndex>=0)
+                if (scanIndex >= 0)
                 {
                     scannedType.ScannedProducts.Add(unscanList[scanIndex]);
                     unscanList.RemoveAt(scanIndex);
@@ -140,18 +182,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 scanType.TypeName = stock.ProductMaster.ProductType.TypeName;
                 DepartmentStockCheckingEventArgs eventArgs = new DepartmentStockCheckingEventArgs();
                 eventArgs.ScannedType = scanType;
-                EventUtility.fireEvent(LoadProductNamesInTypeEvent,this,eventArgs);
+                EventUtility.fireEvent(LoadProductNamesInTypeEvent, this, eventArgs);
                 scanTypesList.Add(eventArgs.ScannedType);
-                
+
             }
             cboTypeList.Refresh();
             cboTypeList.Invalidate();
-            cboTypeList_SelectedIndexChanged(null,null);
-            bdsStockDefect.EndEdit();
-            dgvStocks.Refresh();
-            dgvStocks.Invalidate();
-            txtBarcode.Text = "";
-            txtBarcode.Focus();
+            cboTypeList_SelectedIndexChanged(null, null);
         }
 
         private int GetIndexFromList(IList list, string name)
@@ -167,7 +204,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             return -1;
         }
 
-        private ScanType GetFromScanList(List<ScanType> types, DepartmentStockView stock)
+        private ScanType GetFromScanList(ScanTypeCollection types, DepartmentStockView stock)
         {
             string checkTypeName = stock.ProductMaster.ProductType.TypeName;
             foreach (ScanType scanType in types)
@@ -199,9 +236,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void DepartmentStockCheckingForm_Load(object sender, EventArgs e)
         {
             
+            
+            scanTypesList = new ScanTypeCollection(scanTypeBindingSource);
+            scanTypeBindingSource.DataSource = scanTypesList;
+            scanTypeBindingSource.ResetBindings(true);
+            cboTypeList.Refresh();
+            cboTypeList.Invalidate();
+
             stockList = new DepartmentStockViewCollection(bdsStockDefect);
             bdsStockDefect.DataSource = stockList;
-            scanTypeBindingSource.DataSource = scanTypesList;
             bdsStockDefect.EndEdit();
             bdsStockDefect.ResetBindings(true);
             dgvStocks.Refresh();
@@ -537,9 +580,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 IList stockTempList = (IList) bf.Deserialize(stream);
                 stream.Close();
                 stockList.Clear();
+                scanTypesList.Clear();
                 foreach (DepartmentStockView stockView in stockTempList)
                 {
                     stockList.Add(stockView);
+                    UpdateScanType(stockView);
                 }
                 bdsStockDefect.EndEdit();
                 dgvStocks.Refresh();
@@ -579,25 +624,31 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         }
 
+        private ScanType previousScanType = null;
         private void cboTypeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTypeList.SelectedIndex < 0) return;
-            ScanType scanType = (ScanType) cboTypeList.SelectedItem;
-            IList scannedProducts = scanType.ScannedProducts;
-            IList unscannedProducts = scanType.UnscanProducts;
-            lstProductList.Nodes.Clear();
-
-            int count = 0;
-            foreach (string scannedProduct in scannedProducts)
+            ScanType scanType = (ScanType)cboTypeList.SelectedItem;
+            if (previousScanType == null) previousScanType = scanType;
+            if (!scanType.TypeName.Equals(previousScanType.TypeName))
             {
-                lstProductList.Nodes.Add(scannedProduct, scannedProduct);
-                lstProductList.Nodes[count++].ForeColor = Color.Blue;
+                lstProductList.Nodes.Clear();
             }
-            foreach (string unscannedProduct in unscannedProducts)
-            {
-                lstProductList.Nodes.Add(unscannedProduct, unscannedProduct);
-                lstProductList.Nodes[count++].ForeColor = Color.Red;
-            }
+                IList scannedProducts = scanType.ScannedProducts;
+                IList unscannedProducts = scanType.UnscanProducts;
+                
+                int count = 0;
+                foreach (string scannedProduct in scannedProducts)
+                {
+                   lstProductList.Nodes.RemoveByKey(scannedProduct); 
+                }
+                foreach (string unscannedProduct in unscannedProducts)
+                {
+                    if(!lstProductList.Nodes.ContainsKey(unscannedProduct)) 
+                        lstProductList.Nodes.Add(unscannedProduct, unscannedProduct);
+                    lstProductList.Nodes[unscannedProduct].ForeColor = Color.Red;
+                }
+            
             lstProductList.Refresh();
             lstProductList.Invalidate();
         }
