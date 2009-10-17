@@ -63,7 +63,9 @@ namespace POSReports
             reqToDate = MaxTime(ToDate.Value);
             if (!chkZeroValue.Checked)
             {
-                stockStatisticBindingSource.Filter = " (prestk_qty > 0) OR (instock_qty <> 0  OR mainrtnqty <> 0 OR stkout_qty <> 0 OR destroy_qty <> 0 OR tmpout_qty <> 0 OR rtn_qty <> 0  )";
+                stockStatisticBindingSource.Filter = " (prestk_qty <> 0) " + 
+                    "OR (instock_qty <> 0)  OR (mainrtnqty <> 0) OR (stkout_qty <> 0) " + 
+                    "OR (destroy_qty <> 0) OR (tmpout_qty <> 0) OR (rtn_qty <> 0 )";
             }
             else
             {
@@ -82,6 +84,7 @@ namespace POSReports
             StartShowProcessing();
             
         }
+
         POSReports.posDataSet aSyncDS = new posDataSet();
         private DateTime reqFromDate, reqToDate;
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -90,6 +93,7 @@ namespace POSReports
             ShowMessage("Queries run in " + watcher.ElapsedMilliseconds/ 1000 + " seconds ..");
             stockStatisticBindingSource.RaiseListChangedEvents = true;
             stockStatisticBindingSource.ResumeBinding();
+            
             Enabled = true;
             StopShowProcessing();
             reportViewer1.RefreshReport();

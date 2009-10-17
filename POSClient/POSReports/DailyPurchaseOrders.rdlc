@@ -11,14 +11,15 @@
       </ConnectionProperties>
     </DataSource>
   </DataSources>
-  <InteractiveHeight>11in</InteractiveHeight>
+  <InteractiveHeight>11.7in</InteractiveHeight>
   <rd:DrawGrid>true</rd:DrawGrid>
-  <InteractiveWidth>8.5in</InteractiveWidth>
+  <InteractiveWidth>8.26in</InteractiveWidth>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>0.5in</RightMargin>
+  <RightMargin>0.3in</RightMargin>
   <LeftMargin>0.5in</LeftMargin>
-  <BottomMargin>0.5in</BottomMargin>
+  <BottomMargin>0.3in</BottomMargin>
   <rd:ReportID>653b9b79-7ba7-48d2-b477-7c7651f061f4</rd:ReportID>
+  <PageWidth>8.26in</PageWidth>
   <DataSets>
     <DataSet Name="posDataSet_PurchaseOrderReport">
       <Fields>
@@ -412,5 +413,6 @@
     <Height>1.46in</Height>
   </Body>
   <Language>en-US</Language>
-  <TopMargin>0.5in</TopMargin>
+  <TopMargin>0.3in</TopMargin>
+  <PageHeight>11.7in</PageHeight>
 </Report>
