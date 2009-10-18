@@ -1153,9 +1153,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 // reset quantity to 1
                 eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = 1;
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
-                deptSODetailList.EndNew(deptSODetailList.Count - 1);
+                bdsStockIn.ResetBindings(false);
+                dgvDeptStockIn.Refresh();
+                dgvDeptStockIn.Invalidate();
                 cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
+                txtBarcode.Focus();
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
                 CalculateTotalStorePrice();
             }

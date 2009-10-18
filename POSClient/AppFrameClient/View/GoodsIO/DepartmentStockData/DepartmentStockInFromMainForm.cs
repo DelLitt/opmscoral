@@ -454,7 +454,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtDexcription.Text = "";
                     txtSumProduct.Text = "";
                     txtSumValue.Text = "";
-                    CreateNewStockInDetail();
+                    //CreateNewStockInDetail();
                 }
                 else
                 {
