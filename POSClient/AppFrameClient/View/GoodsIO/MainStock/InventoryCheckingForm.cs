@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Collection;
@@ -12,6 +15,7 @@ using AppFrame.Presenter.GoodsIO.MainStock;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.MainStock;
 using AppFrameClient.Common;
+using AppFrameClient.Utility;
 using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using AppFrameClient.ViewModel;
 
@@ -46,7 +50,21 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             LoadGoodsByProductId(txtBarcode.Text.Trim());
+            CalculateTotal();
             txtBarcode.Focus();
+        }
+
+        private void CalculateTotal()
+        {
+            long totalSum = 0;
+            long totalGoodSum = 0;
+            foreach (Stock stock in stockList)
+            {
+                totalSum += stock.Quantity;
+                totalGoodSum += stock.GoodQuantity;
+            }
+            txtSum.Text = totalSum.ToString();
+            txtRealitySum.Text = totalGoodSum.ToString();
         }
 
         #region IInventoryCheckingView Members
@@ -153,15 +171,22 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
                 if (!string.IsNullOrEmpty(pictureBox1.ImageLocation))
                 {
-                    pictureBox1.Load();
+                    if(File.Exists(pictureBox1.ImageLocation)) pictureBox1.Load();
                 }
 
-            int stockDefIndex = -1;
-                if (dgvStock.CurrentCell != null)
+                int stockDefIndex = -1;
+                Stock foundStock = GetFromStockList(stock, stockList);
+                
+                if(foundStock != null)
                 {
-                    stockDefIndex = dgvStock.CurrentCell.RowIndex;
+                    foundStock.GoodQuantity += 1;
                 }
-                if (HasInStockList(stock, stockList, out stockDefIndex))
+                else
+                {
+                    stock.GoodQuantity = 1;
+                   stockList.Add(stock); 
+                }
+                /*if (HasInStockList(stock, stockList, out stockDefIndex))
                 {
                     if (stockDefIndex > -1 && stockDefIndex < stockList.Count)
                     {
@@ -192,22 +217,51 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
                     
                     dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
-                }
+                }*/
             
                     /* ----------------- DEPARTMENT STOCK CHECKING --------------*/
                 
                 bdsStockDefect.EndEdit();
+                bdsStockDefect.ResetBindings(false);
                 dgvStock.Refresh();
                 dgvStock.Invalidate();
+                int stockIndex = GetIndexFromList(stock, stockList);
+                dgvStock.CurrentCell = dgvStock[5, stockIndex];
                 txtBarcode.Text = "";
+                txtBarcode.Focus();
+        }
+
+        private int GetIndexFromList(Stock stock, StockCollection collection)
+        {
+
+            for(int i=0;i<collection.Count;i++)
+            {
+                if(collection[i].Product.ProductId.Equals(stock.Product.ProductId))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private Stock GetFromStockList(Stock stock, StockCollection collection)
+        {
+            foreach (Stock stockChecked in collection)
+            {
+                if (stockChecked.Product.ProductId.Equals(stock.Product.ProductId))
+                {
+                    return stockChecked;
+                }
+            }
+            return null;
         }
 
         private bool HasInStockList(Stock stock, StockCollection list, out int stockDefIndex)
         {
-            int count = 0;
+            int count = -1;
             foreach (Stock stockDefect in list)
             {
-                if(stockDefect.StockId == stock.StockId)
+                if(stockDefect.Product.ProductId.Equals(stock.Product.ProductId))
                 {
                     stockDefIndex = count;
                     return true;
@@ -229,14 +283,18 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 InventoryCheckingEventArgs checkingEventArgs = new InventoryCheckingEventArgs();
                 checkingEventArgs.SaveStockList = ObjectConverter.ConvertToNonGenericList(stockList);
                 if (!CheckDataIntegrity())
-                    return;
+                {
+                    DialogResult result = MessageBox.Show("Số lượng không khớp, bạn vẫn muốn lưu ?", "Cảnh báo",
+                                                          MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No) return;
+                }
+                
                 EventUtility.fireEvent(SaveInventoryCheckingEvent, this, checkingEventArgs);
                 if (!checkingEventArgs.HasErrors)
                 {
                     MessageBox.Show("Lưu kết quả thành công");
                     ClearForm();
                 }
-            
         }
 
         
@@ -314,6 +372,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             stock.OldUnconfirmQuantity = stock.UnconfirmQuantity;
 
             bdsStockDefect.EndEdit();
+            CalculateTotal();
+            bdsStockDefect.ResetBindings(false);
             dgvStock.Refresh();
             dgvStock.Invalidate();
         }
@@ -340,5 +400,104 @@ namespace AppFrameClient.View.GoodsIO.MainStock
         {
             txtBarcode.Focus();
         }
+
+        private void btnTempSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string saveTempPath = Environment.CurrentDirectory + "\\CheckingTemp";
+                if (!Directory.Exists(saveTempPath))
+                {
+                    Directory.CreateDirectory(saveTempPath);
+                }
+                string saveTempFile = saveTempPath + "\\" + "mainStockChecking" + DateTime.Now.ToString("yyyyMMdd") + ".tmpchk";
+                Stream stream = File.Open(saveTempFile, FileMode.Create);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(stream, ObjectConverter.ConvertToNonGenericList(stockList));
+                stream.Close();
+                MessageBox.Show("Lưu tạm thành công !", "Thành công");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lưu tạm thất bại !", "Thất bại");
+            }
+        }
+
+        private void btnLoadTemp_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn muốn đọc từ file tạm ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                            MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                string saveTempPath = Environment.CurrentDirectory + "\\CheckingTemp";
+                if (!Directory.Exists(saveTempPath))
+                {
+                    Directory.CreateDirectory(saveTempPath);
+                }
+                string saveTempFile = saveTempPath + "\\" + "mainStockChecking" + DateTime.Now.ToString("yyyyMMdd") + ".tmpchk";
+                Stream stream = File.Open(saveTempFile, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+
+                IList stockTempList = (IList)bf.Deserialize(stream);
+                stream.Close();
+                stockList.Clear();
+                //scanTypesList.Clear();
+                foreach (Stock stockView in stockTempList)
+                {
+                    stockList.Add(stockView);
+                    //UpdateScanType(stockView);
+                }
+                
+                bdsStockDefect.ResetBindings(false);
+                dgvStock.Refresh();
+                dgvStock.Invalidate();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Có lỗi khi đọc file tạm.");
+            }
+        }
+
+        private void countRealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedCellCollection selectedCells = dgvStock.SelectedCells;
+            try
+            {
+                long sumQty = 0;
+                foreach (DataGridViewCell cell in selectedCells)
+                {
+                    long qty = 0;
+                    //long qty = Int64.Parse(cell.Value.ToString());
+                    ClientUtility.TryActionHelper(delegate { qty = Int64.Parse(cell.Value.ToString()); },1);
+                    sumQty += qty;
+                }
+                lblStatus.Text = "Số lượng : " + sumQty.ToString();
+            }
+            catch (Exception)
+            {
+                lblStatus.Text = "N/A";
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRowCollection = dgvStock.SelectedRows;
+
+            ArrayList removeIndices = new ArrayList();
+            foreach (DataGridViewRow row in selectedRowCollection)
+            {
+                removeIndices.Add(row.Index);
+            }
+            
+            for(int i = removeIndices.Count-1;i >=0;i--)
+            {
+                 stockList.RemoveAt(i);                   
+            }
+        }
+
     }
 }

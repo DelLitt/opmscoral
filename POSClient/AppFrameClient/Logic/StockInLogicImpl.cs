@@ -532,6 +532,7 @@ namespace AppFrame.Logic
                 {
                     ObjectCriteria stockCriteria = new ObjectCriteria();
                     stockCriteria.AddEqCriteria("Product.ProductId", stockInDetail.Product.ProductId);
+                    stockCriteria.AddEqCriteria("DelFlg", (long)0);
                     IList stockList = StockDAO.FindAll(stockCriteria);
                     // increase good
                     if (stockList != null)

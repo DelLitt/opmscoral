@@ -36,8 +36,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
         {
            if(e.SaveStockList!=null && e.SaveStockList.Count > 0)
            {
-               
-               foreach (Stock stock in e.SaveStockList)
+               /*foreach (Stock stock in e.SaveStockList)
                {
                    stock.CreateDate = DateTime.Now;
                    stock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
@@ -50,7 +49,42 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
                    e.HasErrors = false;
                    
+               }*/
+               // ++ AMEND FOR SHOES STOCK CHECKING 19/10/2009
+               StockIn stockIn = new StockIn();
+               stockIn.NotUpdateMainStock = false;
+               stockIn.CreateDate = DateTime.Now;
+               stockIn.UpdateDate = DateTime.Now;
+               stockIn.StockInDate = DateTime.Now;
+               stockIn.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+               stockIn.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+               stockIn.DelFlg = 0;
+               stockIn.Description = " NHẬP TỪ SỐ LƯỢNG KIỂM KÊ";
+
+               IList stockInDetailList = new ArrayList();
+               foreach (Stock stock in e.SaveStockList)
+               {
+                   StockInDetail inDetail = new StockInDetail();
+                   inDetail.CreateDate = DateTime.Now;
+                   inDetail.CreateId = ClientInfo.getInstance().LoggedUser.Name;
+                   inDetail.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
+                   inDetail.UpdateDate = DateTime.Now;
+                   inDetail.DelFlg = 0;
+                   inDetail.Product = stock.Product;
+                   inDetail.Quantity = stock.GoodQuantity;
+                   inDetail.DelFlg = 0;
+                   inDetail.StockIn = stockIn;
+                   // calculate business
+                   inDetail.StockInDetailPK = new StockInDetailPK
+                                                  { 
+                                                      ProductId = stock.Product.ProductId
+                                                  };
+                   stockInDetailList.Add(inDetail);
                }
+               stockIn.StockInDetails = stockInDetailList;
+               StockInLogic.AddForStockOutToProducer(stockIn);
+               e.HasErrors = false;
+               // ++ AMEND FOR SHOES STOCK CHECKING 19/10/2009
            }
         }
 
