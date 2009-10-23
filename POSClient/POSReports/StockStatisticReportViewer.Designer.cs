@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.stockStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -37,13 +37,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ToDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.chkZeroValue = new System.Windows.Forms.CheckBox();
+            this.cboProductTypes = new System.Windows.Forms.ComboBox();
+            this.producttypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.stockStatisticTableAdapter1 = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
-            this.chkZeroValue = new System.Windows.Forms.CheckBox();
+            this.product_typeTableAdapter = new POSReports.posDataSetTableAdapters.product_typeTableAdapter();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtProducts = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.stockStatisticBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.producttypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +78,9 @@
             this.tableLayoutPanel1.Controls.Add(this.ToDate, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.button1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.chkZeroValue, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cboProductTypes, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtProducts, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,7 +97,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 25);
+            this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "XEM BÁO CÁO";
             // 
@@ -98,7 +107,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(5, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 19);
+            this.label2.Size = new System.Drawing.Size(77, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Đến ngày:";
             // 
@@ -109,7 +118,7 @@
             this.ToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.ToDate.Location = new System.Drawing.Point(107, 39);
             this.ToDate.Name = "ToDate";
-            this.ToDate.Size = new System.Drawing.Size(194, 26);
+            this.ToDate.Size = new System.Drawing.Size(194, 27);
             this.ToDate.TabIndex = 2;
             // 
             // button1
@@ -118,10 +127,37 @@
             this.button1.Location = new System.Drawing.Point(309, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 30);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Xem báo cáo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // chkZeroValue
+            // 
+            this.chkZeroValue.AutoSize = true;
+            this.chkZeroValue.Location = new System.Drawing.Point(456, 39);
+            this.chkZeroValue.Name = "chkZeroValue";
+            this.chkZeroValue.Size = new System.Drawing.Size(100, 19);
+            this.chkZeroValue.TabIndex = 6;
+            this.chkZeroValue.Text = "Sp có giá trị 0";
+            this.chkZeroValue.UseVisualStyleBackColor = true;
+            // 
+            // cboProductTypes
+            // 
+            this.cboProductTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboProductTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboProductTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProductTypes.FormattingEnabled = true;
+            this.cboProductTypes.Location = new System.Drawing.Point(613, 5);
+            this.cboProductTypes.Name = "cboProductTypes";
+            this.cboProductTypes.Size = new System.Drawing.Size(156, 28);
+            this.cboProductTypes.TabIndex = 5;
+            this.cboProductTypes.ValueMember = "TYPE_NAME";
+            // 
+            // producttypeBindingSource
+            // 
+            this.producttypeBindingSource.DataMember = "product_type";
+            this.producttypeBindingSource.DataSource = this.posDataSet;
             // 
             // departmentBindingSource
             // 
@@ -131,13 +167,13 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_stockStatistic";
-            reportDataSource1.Value = this.stockStatisticBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource7.Name = "posDataSet_stockStatistic";
+            reportDataSource7.Value = this.stockStatisticBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockStatisticReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(996, 568);
+            this.reportViewer1.Size = new System.Drawing.Size(996, 545);
             this.reportViewer1.TabIndex = 5;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
@@ -146,15 +182,27 @@
             // 
             this.stockStatisticTableAdapter1.ClearBeforeFill = true;
             // 
-            // chkZeroValue
+            // product_typeTableAdapter
             // 
-            this.chkZeroValue.AutoSize = true;
-            this.chkZeroValue.Location = new System.Drawing.Point(456, 39);
-            this.chkZeroValue.Name = "chkZeroValue";
-            this.chkZeroValue.Size = new System.Drawing.Size(148, 17);
-            this.chkZeroValue.TabIndex = 6;
-            this.chkZeroValue.Text = "Xem sản phẩm có giá trị 0";
-            this.chkZeroValue.UseVisualStyleBackColor = true;
+            this.product_typeTableAdapter.ClearBeforeFill = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(309, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 18);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Tên sản phẩm";
+            // 
+            // txtProducts
+            // 
+            this.txtProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProducts.Location = new System.Drawing.Point(456, 5);
+            this.txtProducts.Name = "txtProducts";
+            this.txtProducts.Size = new System.Drawing.Size(149, 25);
+            this.txtProducts.TabIndex = 4;
             // 
             // StockStatisticReportViewer
             // 
@@ -172,6 +220,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.producttypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,5 +241,10 @@
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private POSReports.posDataSetTableAdapters.StockStatisticTableAdapter stockStatisticTableAdapter1;
         private System.Windows.Forms.CheckBox chkZeroValue;
+        private System.Windows.Forms.ComboBox cboProductTypes;
+        private System.Windows.Forms.BindingSource producttypeBindingSource;
+        private POSReports.posDataSetTableAdapters.product_typeTableAdapter product_typeTableAdapter;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtProducts;
     }
 }

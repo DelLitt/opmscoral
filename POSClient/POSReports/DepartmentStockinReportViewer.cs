@@ -67,9 +67,12 @@ namespace POSReports
             deptId = Int32.Parse(comboBox1.SelectedValue.ToString());
             // just take 3 days before
             reqFromDate = ZeroTime(fromDate.Value);
-            if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
+            if (!comboBox1.Enabled)
             {
-                reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+                if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
+                {
+                    reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+                }
             }
             reqToDate = MaxTime(toDate.Value);
 

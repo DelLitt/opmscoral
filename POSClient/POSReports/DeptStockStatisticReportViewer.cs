@@ -132,13 +132,16 @@ namespace POSReports
         private void DeptStockStatisticReportViewer_Load(object sender, EventArgs e)
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.Add(new ProductType { TypeId = 0, TypeName = "Tất cả mặt hàng" });
+            
             departmentTableAdapter.Fill(this.posDataSet.department);
             product_typeTableAdapter1.Fill(posDataSet.product_type);
+            
+            comboBox1.Items.Add(new ProductType { TypeId = 0, TypeName = "Tất cả mặt hàng" });
             foreach(posDataSet.product_typeRow row in posDataSet.product_type)
             {
                 comboBox1.Items.Add(new ProductType {TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME});
             }
+            
             comboBox1.DisplayMember = "TypeName";
             
             // TODO: This line of code loads data into the 'posDataSet.deptStockStatistic' table. You can move, or remove it, as needed.

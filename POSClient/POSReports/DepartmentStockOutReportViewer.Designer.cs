@@ -103,7 +103,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(5, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 19);
+            this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Từ ngày:";
             // 
@@ -114,7 +114,7 @@
             this.fromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fromDate.Location = new System.Drawing.Point(107, 39);
             this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(194, 26);
+            this.fromDate.Size = new System.Drawing.Size(194, 27);
             this.fromDate.TabIndex = 2;
             // 
             // label3
@@ -123,7 +123,7 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(309, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 19);
+            this.label3.Size = new System.Drawing.Size(77, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Đến ngày:";
             // 
@@ -134,7 +134,7 @@
             this.toDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.toDate.Location = new System.Drawing.Point(411, 39);
             this.toDate.Name = "toDate";
-            this.toDate.Size = new System.Drawing.Size(194, 26);
+            this.toDate.Size = new System.Drawing.Size(194, 27);
             this.toDate.TabIndex = 4;
             // 
             // button1
@@ -155,7 +155,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 25);
+            this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "XEM BÁO CÁO";
             // 
@@ -165,7 +165,7 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(309, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.Size = new System.Drawing.Size(71, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Cửa hàng";
             // 
@@ -173,6 +173,7 @@
             // 
             this.comboBox1.DataSource = this.departmentBindingSource;
             this.comboBox1.DisplayMember = "DEPARTMENT_NAME";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(411, 5);
@@ -195,7 +196,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.DepartmentStockOutReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(905, 510);
+            this.reportViewer1.Size = new System.Drawing.Size(905, 509);
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Model;
 using Microsoft.Reporting.WinForms;
 using POSReports.posDataSetTableAdapters;
 
@@ -22,8 +23,17 @@ namespace POSReports
 
         private void StockStatisticReportViewer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'posDataSet.product_type' table. You can move, or remove it, as needed.
+            this.product_typeTableAdapter.Fill(this.posDataSet.product_type);
             // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
-            
+            cboProductTypes.Items.Add(new ProductType { TypeId = 0, TypeName = "Tất cả mặt hàng" });
+            foreach (posDataSet.product_typeRow row in posDataSet.product_type)
+            {
+                cboProductTypes.Items.Add(new ProductType { TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME });
+            }
+
+            cboProductTypes.DisplayMember = "TypeName";
+            cboProductTypes.ValueMember = "TypeName";    
             // TODO: This line of code loads data into the 'posDataSet.stockStatistic' table. You can move, or remove it, as needed.
          //   this.StockStatisticTableAdapter.Fill(this.posDataSet.stockStatistic);
 
@@ -61,22 +71,46 @@ namespace POSReports
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             reqFromDate = ZeroTime(ToDate.Value);
             reqToDate = MaxTime(ToDate.Value);
-            if (!chkZeroValue.Checked)
+            if(!string.IsNullOrEmpty(txtProducts.Text))
             {
-                stockStatisticBindingSource.Filter = " (prestk_qty <> 0) " + 
-                    "OR (instock_qty <> 0)  OR (mainrtnqty <> 0) OR (stkout_qty <> 0) " + 
-                    "OR (destroy_qty <> 0) OR (tmpout_qty <> 0) OR (rtn_qty <> 0 )";
+                stockStatisticBindingSource.Filter = "product_name like '%" + txtProducts.Text + "%'";
             }
             else
             {
                 stockStatisticBindingSource.Filter = "";
             }
 
-            stockStatisticBindingSource.RaiseListChangedEvents = false;
+            if(cboProductTypes.SelectedIndex > 0)
+            {
+                string extraFilterStr = "";
+                if (!string.IsNullOrEmpty(stockStatisticBindingSource.Filter))
+                {
+                    extraFilterStr += " AND ";
+                }
+
+                stockStatisticBindingSource.Filter += extraFilterStr + " type_name = '" + ((ProductType)cboProductTypes.SelectedItem).TypeName + "'";
+            }
+
+            if (!chkZeroValue.Checked)
+            {
+                string extraFilterStr = "";
+                if (!string.IsNullOrEmpty(stockStatisticBindingSource.Filter))
+                {
+                    extraFilterStr += " AND ";
+                }
+
+                stockStatisticBindingSource.Filter += extraFilterStr + " ((prestk_qty >0) " + 
+                    "OR (instock_qty <> 0)  OR (mainrtnqty <> 0) OR (stkout_qty <> 0) " + 
+                    "OR (destroy_qty <> 0) OR (tmpout_qty <> 0) OR (rtn_qty <> 0 )) ";
+            }
+            else
+            {
+                //stockStatisticBindingSource.Filter = "";
+            }
+
             stockStatisticBindingSource.SuspendBinding();
-
+            stockStatisticBindingSource.RaiseListChangedEvents = false;
             
-
             Enabled = false;
             watcher = new Stopwatch();
             watcher.Start();
@@ -91,11 +125,13 @@ namespace POSReports
         {
             watcher.Stop();
             ShowMessage("Queries run in " + watcher.ElapsedMilliseconds/ 1000 + " seconds ..");
-            stockStatisticBindingSource.RaiseListChangedEvents = true;
-            stockStatisticBindingSource.ResumeBinding();
             
             Enabled = true;
             StopShowProcessing();
+            posDataSet.StockStatistic.DefaultView.RowFilter = stockStatisticBindingSource.Filter;
+            stockStatisticBindingSource.RaiseListChangedEvents = true;
+            stockStatisticBindingSource.ResumeBinding();
+            stockStatisticBindingSource.DataSource = posDataSet.StockStatistic.DefaultView;
             reportViewer1.RefreshReport();
         }
 
@@ -104,6 +140,7 @@ namespace POSReports
             aSyncDS.EnforceConstraints = false;
             aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             POSReports.posDataSetTableAdapters.StockStatisticTableAdapter adapter = new StockStatisticTableAdapter();
+            
             adapter.ClearBeforeFill = true;
             //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
             adapter.Fill(posDataSet.StockStatistic, reqFromDate, reqToDate);
