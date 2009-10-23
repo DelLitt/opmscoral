@@ -77,11 +77,13 @@
             this.cboTypeList = new System.Windows.Forms.ComboBox();
             this.lstProductsList = new System.Windows.Forms.TreeView();
             this.btnLoadTemp = new System.Windows.Forms.Button();
-            this.txtSum = new System.Windows.Forms.TextBox();
-            this.txtRealitySum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.txtRealitySum = new System.Windows.Forms.Label();
+            this.txtSum = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
@@ -483,26 +485,6 @@
             this.btnLoadTemp.UseVisualStyleBackColor = true;
             this.btnLoadTemp.Click += new System.EventHandler(this.btnLoadTemp_Click);
             // 
-            // txtSum
-            // 
-            this.txtSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSum.ForeColor = System.Drawing.Color.Green;
-            this.txtSum.Location = new System.Drawing.Point(432, 478);
-            this.txtSum.Name = "txtSum";
-            this.txtSum.ReadOnly = true;
-            this.txtSum.Size = new System.Drawing.Size(64, 24);
-            this.txtSum.TabIndex = 28;
-            // 
-            // txtRealitySum
-            // 
-            this.txtRealitySum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRealitySum.ForeColor = System.Drawing.Color.Red;
-            this.txtRealitySum.Location = new System.Drawing.Point(502, 478);
-            this.txtRealitySum.Name = "txtRealitySum";
-            this.txtRealitySum.ReadOnly = true;
-            this.txtRealitySum.Size = new System.Drawing.Size(61, 24);
-            this.txtRealitySum.TabIndex = 29;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -531,16 +513,58 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // txtRealitySum
+            // 
+            this.txtRealitySum.AutoSize = true;
+            this.txtRealitySum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRealitySum.ForeColor = System.Drawing.Color.Red;
+            this.txtRealitySum.Location = new System.Drawing.Point(507, 481);
+            this.txtRealitySum.Name = "txtRealitySum";
+            this.txtRealitySum.Size = new System.Drawing.Size(19, 20);
+            this.txtRealitySum.TabIndex = 41;
+            this.txtRealitySum.Text = "0";
+            // 
+            // txtSum
+            // 
+            this.txtSum.AutoSize = true;
+            this.txtSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSum.ForeColor = System.Drawing.Color.Blue;
+            this.txtSum.Location = new System.Drawing.Point(447, 481);
+            this.txtSum.Name = "txtSum";
+            this.txtSum.Size = new System.Drawing.Size(19, 20);
+            this.txtSum.TabIndex = 42;
+            this.txtSum.Text = "0";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(445, 478);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(54, 27);
+            this.textBox1.TabIndex = 43;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(505, 478);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(54, 27);
+            this.textBox2.TabIndex = 44;
+            // 
             // InventoryCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(944, 562);
+            this.Controls.Add(this.txtSum);
+            this.Controls.Add(this.txtRealitySum);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtRealitySum);
             this.Controls.Add(this.lstProductsList);
             this.Controls.Add(this.btnLoadTemp);
-            this.Controls.Add(this.txtSum);
             this.Controls.Add(this.cboTypeList);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button5);
@@ -554,8 +578,12 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox2);
             this.Name = "InventoryCheckingForm";
             this.Load += new System.EventHandler(this.InventoryCheckingForm_Load);
+            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.dgvStock, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
@@ -569,13 +597,13 @@
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.cboTypeList, 0);
-            this.Controls.SetChildIndex(this.txtSum, 0);
             this.Controls.SetChildIndex(this.btnLoadTemp, 0);
             this.Controls.SetChildIndex(this.lstProductsList, 0);
-            this.Controls.SetChildIndex(this.txtRealitySum, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.lblStatus, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.txtRealitySum, 0);
+            this.Controls.SetChildIndex(this.txtSum, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).EndInit();
@@ -629,12 +657,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDamage;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLost;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.TextBox txtSum;
-        private System.Windows.Forms.TextBox txtRealitySum;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ToolStripMenuItem countRealToolStripMenuItem;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label txtRealitySum;
+        private System.Windows.Forms.Label txtSum;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

@@ -195,7 +195,7 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
 
         public void mainStockOutView_LoadGoodsByNameColorSizeEvent(object sender, MainStockOutEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void mainStockOutView_LoadStockStatusEvent(object sender, MainStockOutEventArgs e)
@@ -315,6 +315,8 @@ namespace AppFrameClient.Presenter.GoodsIO.MainStock
             e.SelectedStockOutDetail.DamageQuantity = stock.DamageQuantity;
             e.SelectedStockOutDetail.UnconfirmQuantity = stock.UnconfirmQuantity;
             e.SelectedStockOutDetail.Quantity = stock.Quantity;
+            e.SelectedStockOutDetail.StockQuantity = stock.GoodQuantity;
+            e.SelectedStockOutDetail.GoodQuantity = 1;
             e.EventResult = "Success";
 
             e.Stock = stock;

@@ -113,6 +113,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             //cboProductMasters.DisplayMember = "ProductMaster.TypeAndName";
             //LoadGoodsToCombo();
 
+            txtSum.ForeColor = Color.Green;
+            txtRealitySum.ForeColor = Color.Red;
         }
 
         private void LoadGoodsToCombo()
@@ -455,6 +457,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 bdsStockDefect.ResetBindings(false);
                 dgvStock.Refresh();
                 dgvStock.Invalidate();
+                CalculateTotal();
             }
             catch (Exception exception)
             {
@@ -493,10 +496,13 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 removeIndices.Add(row.Index);
             }
             
+            removeIndices.Sort();
+            
             for(int i = removeIndices.Count-1;i >=0;i--)
             {
-                 stockList.RemoveAt(i);                   
+                 stockList.RemoveAt((int)removeIndices[i]);                   
             }
+            CalculateTotal();
         }
 
     }

@@ -39,8 +39,8 @@
     <menuitem name="mnuDeptStockStatisticReport" role="NotImplement" />
     <menuitem name="mnuReturnPOReport" role="NotImplement" />
     <menuitem name="mnuReturnMainStockReport" role="NotImplement" />
-    <menuitem name="mnuDepartmentStockIn" role="NotImplement" />
-    <menuitem name="mnuDepartmentStockOut" role="NotImplement" />
+    <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentStockOut" role="Administrator,Supervisor" />
     <menuitem name="mnuProcessDeptAtStock" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptStockFixing" role="Administrator,Supervisor" />
     <menuitem name="mnuDepartmentCost" role="NotImplement" />

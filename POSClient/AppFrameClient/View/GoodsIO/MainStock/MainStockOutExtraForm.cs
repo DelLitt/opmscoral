@@ -1057,7 +1057,13 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 {
                     //MessageBox.Show("Mã vạch đã được nhập");
                     foundStockOutDetail.GoodQuantity += 1;
-                    return;
+                }
+                else
+                {
+                    // reset quantity to 1
+                    eventArgs.SelectedStockOutDetail.GoodQuantity = 1;
+                    stockOutDetailList.Add(eventArgs.SelectedStockOutDetail);
+                    stockOutDetailList.EndNew(stockOutDetailList.Count - 1);    
                 }
                 if (eventArgs.Stock != null)
                 {
@@ -1075,10 +1081,9 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         stockList.Add(eventArgs.Stock);
                     }
                 }
-                // reset quantity to 1
-                eventArgs.SelectedStockOutDetail.GoodQuantity = 1;
-                stockOutDetailList.Add(eventArgs.SelectedStockOutDetail);
-                stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
+                bdsStockIn.ResetBindings(false);    
+                dgvDeptStockOut.Refresh();
+                dgvDeptStockOut.Invalidate();
                 cbbStockOutType.Enabled = false;
                 txtBarcode.Text = "";
                 LockField(stockOutDetailList.Count - 1, eventArgs.SelectedStockOutDetail);
