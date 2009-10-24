@@ -338,12 +338,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             IList list = e.SelectedStockOutDetails;
             if (list != null && list.Count > 0)
             {
-                foreach (DepartmentStockInDetail stockInDetail in list)
+                foreach (DepartmentStockInDetail needStockInDetail in list)
                 {
-                    if (!IsInList(deptSIDetailList, stockInDetail))
+                    bool found = false;
+                    foreach (DepartmentStockInDetail stockIn in deptSIDetailList)
+                    {
+                        if(stockIn.Product.ProductId.Equals(needStockInDetail.Product.ProductId))
+                        {
+                            found = true;
+                            stockIn.Quantity += needStockInDetail.Quantity;
+                            
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        deptSIDetailList.Add(needStockInDetail);
+                    }
+                    /*if (!IsInList(deptSIDetailList, stockInDetail))
                     {
                         deptSIDetailList.Add(stockInDetail);
-                    }
+                    }*/
                 }
             }
 
@@ -444,9 +459,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             bool isNeedClearData = (deptSI == null || deptSI.DepartmentStockInPK == null || string.IsNullOrEmpty(deptSI.DepartmentStockInPK.StockInId));
             DepartmentStockIn result = SaveDeptStockIn(true);
+            cbbDept.SelectedIndex = 0;
 
             if (isNeedClearData && result != null)
             {
+                
                 if (!chkKeepInputInfo.Checked)
                 {
                     deptSI = new DepartmentStockIn();

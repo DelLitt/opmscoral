@@ -297,12 +297,28 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             IList list = e.SelectedStockOutDetails;
             if (list != null && list.Count > 0)
             {
-                foreach (StockOutDetail stockInDetail in list)
+                foreach (StockOutDetail needStockOutDetail in list)
                 {
-                    if (!IsInList(stockOutDetailList, stockInDetail))
+                    /*if (!IsInList(stockOutDetailList, stockInDetail))
                     {
                         stockInDetail.DefectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
                         stockOutDetailList.Add(stockInDetail);
+                    }*/
+                    bool found = false;
+                    foreach (StockOutDetail detail in stockOutDetailList)
+                    {
+                        if(detail.Product.ProductId.Equals(needStockOutDetail.Product.ProductId))
+                        {
+                            found = true;
+                            detail.Quantity += needStockOutDetail.Quantity;
+                            detail.GoodQuantity += needStockOutDetail.GoodQuantity;
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        needStockOutDetail.DefectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
+                        stockOutDetailList.Add(needStockOutDetail);
                     }
                 }
             }
@@ -449,6 +465,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             if (eventArgs.EventResult != null)
             {
                 MessageBox.Show("Lưu thành công");
+                
                 if (isNeedClearData)
                 {
                     stockOut = new StockOut();

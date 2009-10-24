@@ -309,11 +309,14 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (DepartmentStockOutDetail detail in e.FoundDepartmentStockOutDetailList)
                 {
                     bool found = false;
+                    DepartmentStockOutDetail foundDetail = null;
                     foreach (DepartmentStockOutDetail detail1 in deptSODetailList)
                     {
                         if (detail.Product.ProductId.Equals(detail1.Product.ProductId))
                         {
                             found = true;
+                            detail1.Quantity += detail.Quantity;
+                            detail1.GoodQuantity += detail.GoodQuantity;
                             break;
                         }
                     }
