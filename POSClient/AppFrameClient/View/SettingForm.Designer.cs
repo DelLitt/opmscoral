@@ -105,7 +105,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(119, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đường dẫn xuất file: ";
             // 
@@ -144,7 +144,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.Size = new System.Drawing.Size(121, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Đường dẫn nhập file:";
             // 
@@ -153,7 +153,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(53, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 9;
             this.label3.Text = "Lưu file lỗi:";
             // 
@@ -162,7 +162,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 13);
+            this.label4.Size = new System.Drawing.Size(114, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Lưu file thành công:";
             // 
@@ -171,7 +171,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.Size = new System.Drawing.Size(94, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Máy in hoá đơn:";
             // 
@@ -220,7 +220,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(0, 151);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 13);
+            this.label6.Size = new System.Drawing.Size(126, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Đường dẫn mysql\\bin:";
             // 
@@ -239,7 +239,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(29, 122);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 13);
+            this.label7.Size = new System.Drawing.Size(91, 15);
             this.label7.TabIndex = 21;
             this.label7.Text = "Backup dữ liệu:";
             // 
@@ -332,7 +332,7 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Location = new System.Drawing.Point(2, 22);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(112, 13);
+            this.lblDepartment.Size = new System.Drawing.Size(125, 15);
             this.lblDepartment.TabIndex = 26;
             this.lblDepartment.Text = "Nơi xuất của kho phụ:";
             // 
@@ -398,7 +398,7 @@
             this.rdoEmployeeId.Checked = true;
             this.rdoEmployeeId.Location = new System.Drawing.Point(258, 50);
             this.rdoEmployeeId.Name = "rdoEmployeeId";
-            this.rdoEmployeeId.Size = new System.Drawing.Size(144, 17);
+            this.rdoEmployeeId.Size = new System.Drawing.Size(159, 19);
             this.rdoEmployeeId.TabIndex = 31;
             this.rdoEmployeeId.TabStop = true;
             this.rdoEmployeeId.Tag = "";
@@ -410,7 +410,7 @@
             this.rdoLogin.AutoSize = true;
             this.rdoLogin.Location = new System.Drawing.Point(122, 50);
             this.rdoLogin.Name = "rdoLogin";
-            this.rdoLogin.Size = new System.Drawing.Size(130, 17);
+            this.rdoLogin.Size = new System.Drawing.Size(143, 19);
             this.rdoLogin.TabIndex = 30;
             this.rdoLogin.Text = "Bằng tên và mật khẩu";
             this.rdoLogin.UseVisualStyleBackColor = true;
@@ -420,7 +420,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.Size = new System.Drawing.Size(125, 15);
             this.label9.TabIndex = 29;
             this.label9.Text = "Kiểm tra trước khi lưu:";
             // 
@@ -452,7 +452,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(9, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 13);
+            this.label8.Size = new System.Drawing.Size(101, 15);
             this.label8.TabIndex = 28;
             this.label8.Text = "Giao thức kết nối:";
             // 
@@ -474,7 +474,7 @@
             this.chkNegativeExport.AutoSize = true;
             this.chkNegativeExport.Location = new System.Drawing.Point(7, 42);
             this.chkNegativeExport.Name = "chkNegativeExport";
-            this.chkNegativeExport.Size = new System.Drawing.Size(153, 17);
+            this.chkNegativeExport.Size = new System.Drawing.Size(173, 19);
             this.chkNegativeExport.TabIndex = 3;
             this.chkNegativeExport.Text = "Cho phép xuất hàng số âm";
             this.chkNegativeExport.UseVisualStyleBackColor = true;
@@ -484,9 +484,9 @@
             this.chkImportConfirmation.AutoSize = true;
             this.chkImportConfirmation.Location = new System.Drawing.Point(7, 66);
             this.chkImportConfirmation.Name = "chkImportConfirmation";
-            this.chkImportConfirmation.Size = new System.Drawing.Size(139, 17);
+            this.chkImportConfirmation.Size = new System.Drawing.Size(159, 19);
             this.chkImportConfirmation.TabIndex = 2;
-            this.chkImportConfirmation.Text = "Xác nhận khi xuất hàng";
+            this.chkImportConfirmation.Text = "Xác nhận khi nhập hàng";
             this.chkImportConfirmation.UseVisualStyleBackColor = true;
             // 
             // chkExportConfirmation
@@ -494,9 +494,9 @@
             this.chkExportConfirmation.AutoSize = true;
             this.chkExportConfirmation.Location = new System.Drawing.Point(6, 89);
             this.chkExportConfirmation.Name = "chkExportConfirmation";
-            this.chkExportConfirmation.Size = new System.Drawing.Size(143, 17);
+            this.chkExportConfirmation.Size = new System.Drawing.Size(154, 19);
             this.chkExportConfirmation.TabIndex = 1;
-            this.chkExportConfirmation.Text = "Xác nhận khi nhập hàng";
+            this.chkExportConfirmation.Text = "Xác nhận khi xuất hàng";
             this.chkExportConfirmation.UseVisualStyleBackColor = true;
             // 
             // chkNegativeSelling
@@ -504,7 +504,7 @@
             this.chkNegativeSelling.AutoSize = true;
             this.chkNegativeSelling.Location = new System.Drawing.Point(7, 20);
             this.chkNegativeSelling.Name = "chkNegativeSelling";
-            this.chkNegativeSelling.Size = new System.Drawing.Size(151, 17);
+            this.chkNegativeSelling.Size = new System.Drawing.Size(171, 19);
             this.chkNegativeSelling.TabIndex = 0;
             this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
             this.chkNegativeSelling.UseVisualStyleBackColor = true;

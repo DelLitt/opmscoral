@@ -277,6 +277,7 @@
             this.dgvDeptStockOut.Name = "dgvDeptStockOut";
             this.dgvDeptStockOut.Size = new System.Drawing.Size(800, 280);
             this.dgvDeptStockOut.TabIndex = 8;
+            this.dgvDeptStockOut.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDeptStockOut_RowPostPaint);
             this.dgvDeptStockOut.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellEndEdit);
             this.dgvDeptStockOut.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeptStockIn_CellClick);
             this.dgvDeptStockOut.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvDeptStockIn_KeyUp);
@@ -589,7 +590,7 @@
             this.panelStockIns.Controls.Add(this.btnSearchStockIn);
             this.panelStockIns.Controls.Add(this.dtpTo);
             this.panelStockIns.Controls.Add(this.dtpFrom);
-            this.panelStockIns.Location = new System.Drawing.Point(7, 206);
+            this.panelStockIns.Location = new System.Drawing.Point(11, 214);
             this.panelStockIns.Name = "panelStockIns";
             this.panelStockIns.Size = new System.Drawing.Size(811, 344);
             this.panelStockIns.TabIndex = 123;

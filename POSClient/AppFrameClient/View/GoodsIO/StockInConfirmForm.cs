@@ -566,7 +566,7 @@ namespace AppFrameClient.View.GoodsIO
             EventUtility.fireEvent(LoadStockInEvent,this,eventArgs);
 
             MainStockInEditExtraForm editExtraForm =
-                GlobalUtility.GetOnlyChildFormObject<MainStockInEditExtraForm>(GlobalCache.Instance().MainForm,FormConstants.MAIN_STOCK_IN_EDIT_EXTRA_FORM);
+                GlobalUtility.GetFormObject<MainStockInEditExtraForm>(FormConstants.MAIN_STOCK_IN_EDIT_EXTRA_FORM);
 
             editExtraForm.StockIn = eventArgs.StockIn;
             editExtraForm.Closed += new EventHandler(editExtraForm_Closed);
