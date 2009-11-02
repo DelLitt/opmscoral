@@ -1314,6 +1314,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //call the base object's OnRowPostPaint method
             //dgvBill.OnRowPostPaint(e);
         }
+
+        private void btnMassExport_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 
     

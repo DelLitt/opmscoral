@@ -40,59 +40,6 @@ namespace AppFrameClient.View.Inventory
 
         private void LoadGoods()
         {
-            /*DepartmentStockCheckingEventArgs checkingEventArgs = new DepartmentStockCheckingEventArgs();
-            checkingEventArgs.InputBarcode = id;
-            EventUtility.fireEvent(LoadGoodsByProductIdEvent, this, checkingEventArgs);
-            DepartmentStockView stock = checkingEventArgs.ScannedStockView;
-            if (stock == null)
-            {
-                if(!checkingEventArgs.UnconfirmTempBarcode)
-                    MessageBox.Show("Không tìm thấy mã vạch trong kho", "Lỗi");
-                return;
-            }
-
-            txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
-            txtProductName.Text = stock.ProductMaster.ProductName;
-            txtStockQuantity.Text = stock.Quantity.ToString("##,##0");
-            txtDescription.Text = stock.ProductMaster.Description;
-            pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
-            if(!CheckUtility.IsNullOrEmpty(pictureBox1.ImageLocation))
-            {
-                pictureBox1.Load();
-            }
-
-            int stockDefIndex = -1;
-            if (dgvStock.CurrentCell != null)
-            {
-                stockDefIndex = dgvStock.CurrentCell.RowIndex;
-            }
-            if (HasInStockDefectList(stock, stockList, out stockDefIndex))
-            {
-                if (stockDefIndex > -1 && stockDefIndex < stockList.Count)
-                {
-                    stockList[stockDefIndex].GoodQuantity += 1;
-                    dgvStock.CurrentCell = dgvStock[5, stockDefIndex];
-                }
-
-            }
-            else // create new stock defect row
-            {
-                stockList.AddNew();
-                DepartmentStockView defect = checkingEventArgs.ScannedStockView;
-                stockList[stockList.Count - 1] = defect;
-                    
-                stockList[stockList.Count - 1].GoodQuantity = 1;
-                stockList[stockList.Count - 1].OldErrorQuantity = stockList[stockList.Count - 1].ErrorQuantity = 0;
-                stockList[stockList.Count - 1].OldDamageQuantity = stockList[stockList.Count - 1].DamageQuantity = 0;
-                stockList[stockList.Count - 1].OldLostQuantity = stockList[stockList.Count - 1].LostQuantity = 0;
-                stockList[stockList.Count - 1].OldUnconfirmQuantity = stockList[stockList.Count - 1].UnconfirmQuantity = 0;
-
-                txtStockQuantity.Text = stockList[stockList.Count - 1].Quantity.ToString("##,##0");
-                dgvStock.CurrentCell = dgvStock[5, stockList.Count - 1];
-            }
-            bdsStockDefect.EndEdit();
-            dgvStock.Refresh();
-            dgvStock.Invalidate();*/
             
         }
 

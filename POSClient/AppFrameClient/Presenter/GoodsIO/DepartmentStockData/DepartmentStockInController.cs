@@ -26,6 +26,7 @@ using NHibernate.Criterion;
 namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
 {
     public class 
+        
         DepartmentStockInController : IDepartmentStockInController,ServerServiceCallback
     {
         #region View use in IDepartmentStockInController

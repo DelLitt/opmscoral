@@ -108,6 +108,7 @@
             this.ctxShorcuts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuInputBarcodeShortcut = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMassExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -812,10 +813,21 @@
             this.deleteStock.Text = "deleteStock";
             this.deleteStock.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnMassExport
+            // 
+            this.btnMassExport.Location = new System.Drawing.Point(288, 105);
+            this.btnMassExport.Name = "btnMassExport";
+            this.btnMassExport.Size = new System.Drawing.Size(58, 33);
+            this.btnMassExport.TabIndex = 130;
+            this.btnMassExport.Text = "...";
+            this.btnMassExport.UseVisualStyleBackColor = true;
+            this.btnMassExport.Click += new System.EventHandler(this.btnMassExport_Click);
+            // 
             // DepartmentStockOutExtraForm
             // 
             this.ClientSize = new System.Drawing.Size(818, 562);
             this.ContextMenuStrip = this.ctxShorcuts;
+            this.Controls.Add(this.btnMassExport);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.button2);
@@ -882,6 +894,7 @@
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.btnFix, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
+            this.Controls.SetChildIndex(this.btnMassExport, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
@@ -972,5 +985,6 @@
         private System.Windows.Forms.ContextMenuStrip ctxShorcuts;
         private System.Windows.Forms.ToolStripMenuItem mnuInputBarcodeShortcut;
         private System.Windows.Forms.ToolStripMenuItem deleteStock;
+        private System.Windows.Forms.Button btnMassExport;
     }
 }

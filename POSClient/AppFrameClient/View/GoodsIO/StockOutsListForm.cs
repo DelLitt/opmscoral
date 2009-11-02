@@ -77,7 +77,7 @@ namespace AppFrameClient.View.GoodsIO
             bdsDeptStockOut.EndEdit();
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
-            CreateCountOnList();
+            //CreateCountOnList();
         }
 
         
