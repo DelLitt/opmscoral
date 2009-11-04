@@ -1317,7 +1317,78 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnMassExport_Click(object sender, EventArgs e)
         {
-            
+            ProductMasterChoosingForm pmChoosingForm = new ProductMasterChoosingForm();
+            pmChoosingForm.ShowDialog();
+
+            if (pmChoosingForm.SelectedProductMasterList == null) return;
+            var eventArgs = new DepartmentStockOutEventArgs();
+            eventArgs.SelectedProductMasterList = pmChoosingForm.SelectedProductMasterList;
+            EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
+            if (eventArgs.FoundDepartmentStockOutDetailList != null && eventArgs.FoundDepartmentStockOutDetailList.Count > 0)
+            {
+                foreach (DepartmentStockOutDetail detail in eventArgs.FoundDepartmentStockOutDetailList)
+                {
+                    bool found = false;
+                    foreach (DepartmentStockOutDetail detail1 in deptSODetailList)
+                    {
+                        if (detail.Product.ProductId.Equals(detail1.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        //                        MessageBox.Show("Mã vạch đã được nhập");
+                        //                        return;
+                        continue;
+                    }
+
+                    // DefectStatusId = 4, DefectStatusName = "Xuất tạm để sửa hàng" });
+                    // DefectStatusId = 6, DefectStatusName = "Xuất trả về kho chính" });
+                    // DefectStatusId = 7, DefectStatusName = "Xuất đi cửa hàng khác" });
+                    StockDefectStatus defectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
+
+                    if (defectStatus.DefectStatusId == 4)
+                    {
+                        // if xuattam, so we check error quantity and good quantity ( for shoes )
+                        if (detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (defectStatus.DefectStatusId == 7)
+                    {
+                        // if xuatdicuahangkhac, so we check good quantity
+                        if (detail.GoodQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    detail.DefectStatus = defectStatus;
+                    deptSODetailList.Add(detail);
+                    deptSODetailList.EndNew(deptSODetailList.Count - 1);
+                    LockField(deptSODetailList.Count - 1, detail);
+                }
+                foreach (DepartmentStock def in eventArgs.DepartmentStockList)
+                {
+                    bool found = false;
+                    foreach (DepartmentStock detail in departmentStockList)
+                    {
+                        if (def.Product.ProductId.Equals(detail.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        departmentStockList.Add(def);
+                    }
+                }
+                CalculateTotalStorePrice();
+            }
         }
     }
 

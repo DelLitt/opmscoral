@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Windows.Forms;
 using AppFrame.Collection;
 using AppFrame.Common;
 using AppFrame.Model;
+
 
 namespace AppFrameClient.View
 {
@@ -93,6 +95,45 @@ namespace AppFrameClient.View
             bdsProductMaster.ResetBindings(false);
             dgvSelectedProductMaster.Refresh();
             dgvSelectedProductMaster.Invalidate();              
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            IList pmList = new ArrayList();
+            MasterDBTableAdapters.product_master_idsTableAdapter adp = new MasterDBTableAdapters.product_master_idsTableAdapter();
+
+            foreach (DataGridViewRow row in dgvSelectedProductMaster.Rows)
+            {
+                
+                string productName = row.Cells[0].Value.ToString();
+                adp.Fill(masterDB.product_master_ids, productName);
+                foreach (MasterDB.product_master_idsRow masterRow in masterDB.product_master_ids)
+                {
+                    ProductMaster pm = new ProductMaster
+                                           {
+                                               ProductMasterId = masterRow.product_master_id.ToString()
+                                           };
+                    pmList.Add(pm);
+                }
+            }
+            SelectedProductMasterList = pmList;
+            Close();
+        }
+
+        public IList SelectedProductMasterList { get; set; }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            SelectedProductMasterList = null;
+            Close();
+        }
+
+        private void cboProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int typeId = Int32.Parse(cboProductType.SelectedValue.ToString());
+            this.product_master_nameTableAdapter.Fill(masterDB1.product_master_name, typeId);
+            dgvProductMasters.Refresh();
+            dgvProductMasters.Invalidate();
         }
     }
 }

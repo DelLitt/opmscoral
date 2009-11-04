@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboProductType = new System.Windows.Forms.ComboBox();
             this.producttypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDB = new AppFrameClient.MasterDB();
@@ -71,6 +71,7 @@
             this.cboProductType.Size = new System.Drawing.Size(226, 21);
             this.cboProductType.TabIndex = 1;
             this.cboProductType.ValueMember = "TYPE_ID";
+            this.cboProductType.SelectedIndexChanged += new System.EventHandler(this.cboProductType_SelectedIndexChanged);
             // 
             // producttypeBindingSource
             // 
@@ -86,8 +87,8 @@
             // 
             this.dgvProductMasters.AllowUserToAddRows = false;
             this.dgvProductMasters.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvProductMasters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvProductMasters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductMasters.AutoGenerateColumns = false;
             this.dgvProductMasters.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvProductMasters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -157,6 +158,7 @@
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "Chọn";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -166,6 +168,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Bỏ qua";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 

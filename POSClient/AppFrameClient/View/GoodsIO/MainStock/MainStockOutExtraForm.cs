@@ -1367,5 +1367,86 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             //call the base object's OnRowPostPaint method
             //dgvBill.OnRowPostPaint(e);
         }
+
+        private void btnPMChoosing_Click(object sender, EventArgs e)
+        {
+            ProductMasterChoosingForm pmChoosingForm = new ProductMasterChoosingForm();
+            pmChoosingForm.ShowDialog();
+
+            if (pmChoosingForm.SelectedProductMasterList == null) return;
+            var eventArgs = new MainStockOutEventArgs();
+            eventArgs.DefectStatusId = ((StockDefectStatus)cbbStockOutType.SelectedItem).DefectStatusId;
+            eventArgs.SelectedProductMasterList = pmChoosingForm.SelectedProductMasterList;
+            EventUtility.fireEvent(LoadStockStatusEvent, this, eventArgs);
+            if (eventArgs.FoundStockOutDetailList != null && eventArgs.FoundStockOutDetailList.Count > 0)
+            {
+                foreach (StockOutDetail detail in eventArgs.FoundStockOutDetailList)
+                {
+                    bool found = false;
+                    foreach (StockOutDetail detail1 in stockOutDetailList)
+                    {
+                        if (detail.Product.ProductId.Equals(detail1.Product.ProductId))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        continue;
+                    }
+                    StockDefectStatus defectStatus = (StockDefectStatus) cbbStockOutType.SelectedItem;
+                    if (defectStatus.DefectStatusId == 4)
+                    {
+                        // if xuattam, so we check error quantity & good quantity ( for shoes )
+                        if (detail.GoodQuantity == 0 && detail.ErrorQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (defectStatus.DefectStatusId == 5)
+                    {
+                        // if travenhasanxuat, so we check good && error quantity
+                        if (detail.GoodQuantity == 0 /*&& detail.ErrorQuantity == 0*/)
+                            // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (defectStatus.DefectStatusId == 7)
+                    {
+                        // if xuatdicuahangkhac, so we check good quantity
+                        if (detail.GoodQuantity == 0) // = 0 , so we don't need to show it 
+                        {
+                            continue;
+                        }
+                    }
+                    detail.DefectStatus = defectStatus;
+                    stockOutDetailList.Add(detail);
+                    stockOutDetailList.EndNew(stockOutDetailList.Count - 1);
+                    LockField(stockOutDetailList.Count - 1, detail);
+                }
+                foreach (Stock def in eventArgs.StockList)
+                {
+                    bool found = false;
+                    foreach (Stock detail in stockList)
+                    {
+                        if (def.Product.ProductId.Equals(detail.Product.ProductId))
+                        {
+
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        stockList.Add(def);
+                    }
+                }
+            }
+            CalculateTotalStorePrice();
+        }
     }
 }

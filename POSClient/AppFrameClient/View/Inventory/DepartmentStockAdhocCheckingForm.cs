@@ -391,11 +391,15 @@ namespace AppFrameClient.View.Inventory
             {
                 DepartmentStockTemp stockTemp1 = (DepartmentStockTemp) temps[i];
                 //long prdId1 = Int64.Parse(stockTemp1.Product.ProductId);
-                long prdId1 = ParseProductId(stockTemp1.Product.ProductId);
+
+                long prdId1 = 0;
+                prdId1 = ParseProductId(stockTemp1.Product.ProductId);
+
                 for (int j = i + 1; j < temps.Count;j++ )
                 {
                     DepartmentStockTemp stockTemp2 = (DepartmentStockTemp)temps[j];
-                    long prdId2 = ParseProductId(stockTemp2.Product.ProductId);
+                    long prdId2 = 0;
+                    prdId2 = ParseProductId(stockTemp2.Product.ProductId);
                     if(prdId1>prdId2)
                     {
                         stockTemp = stockTemp1;
@@ -417,9 +421,17 @@ namespace AppFrameClient.View.Inventory
             }
             catch (Exception)
             {
-                DateTime dt =StringUtility.ConvertFourCharToDate(id.Substring(7, 3));
-                string retStr = dt.ToString("yyMMdd") + String.Format("000000",id.Substring(10, 2));
-                ret = Int64.Parse(retStr);
+                try
+                {
+                    DateTime dt = StringUtility.ConvertFourCharToDate(id.Substring(7, 3));
+                    string retStr = dt.ToString("yyMMdd") + String.Format("000000", id.Substring(10, 2));
+                    ret = Int64.Parse(retStr);     
+                }
+                catch (Exception)
+                {
+                    
+                }
+                
             }
             return ret;
         }
