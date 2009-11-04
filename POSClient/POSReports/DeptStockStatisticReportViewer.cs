@@ -56,11 +56,14 @@ namespace POSReports
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             deptId = Int32.Parse(departmentId.SelectedValue.ToString());
-            // just take 3 days before
+            // just take 3 days before if in department
             reqFromDate = ZeroTime(toDate.Value);
-            if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
+            if (CurrentDepartment.Get().DepartmentId != 0)
             {
-                reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+                if (ZeroTime(DateTime.Now).Subtract(reqFromDate).Days > 3)
+                {
+                    reqFromDate = ZeroTime(DateTime.Now).Subtract(new TimeSpan(3, 0, 0, 0, 0));
+                }
             }
             reqToDate = MaxTime(toDate.Value);
 
