@@ -111,7 +111,8 @@ namespace AppFrameClient.View
                 {
                     ProductMaster pm = new ProductMaster
                                            {
-                                               ProductMasterId = masterRow.product_master_id.ToString()
+                                               ProductMasterId = masterRow.product_master_id.ToString(),
+                                               ProductName = productName
                                            };
                     pmList.Add(pm);
                 }
@@ -130,6 +131,7 @@ namespace AppFrameClient.View
 
         private void cboProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (null == cboProductType.SelectedValue) return;
             int typeId = Int32.Parse(cboProductType.SelectedValue.ToString());
             this.product_master_nameTableAdapter.Fill(masterDB1.product_master_name, typeId);
             dgvProductMasters.Refresh();

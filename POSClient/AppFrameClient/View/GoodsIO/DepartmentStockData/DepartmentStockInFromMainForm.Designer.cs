@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStockInId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -113,6 +113,7 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnReadBarcode = new System.Windows.Forms.Button();
+            this.btnMassChoosing = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
@@ -338,8 +339,8 @@
             // dgvDeptStockIn
             // 
             this.dgvDeptStockIn.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvDeptStockIn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeptStockIn.AutoGenerateColumns = false;
             this.dgvDeptStockIn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SearchCreate,
@@ -423,8 +424,8 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.quantityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -703,7 +704,7 @@
             this.cboProductMasters.FormattingEnabled = true;
             this.cboProductMasters.Location = new System.Drawing.Point(70, 98);
             this.cboProductMasters.Name = "cboProductMasters";
-            this.cboProductMasters.Size = new System.Drawing.Size(304, 25);
+            this.cboProductMasters.Size = new System.Drawing.Size(248, 25);
             this.cboProductMasters.TabIndex = 4;
             this.cboProductMasters.SelectedIndexChanged += new System.EventHandler(this.cboProductMasters_SelectedIndexChanged);
             this.cboProductMasters.DropDown += new System.EventHandler(this.cboProductMasters_DropDown);
@@ -921,12 +922,23 @@
             this.btnReadBarcode.UseVisualStyleBackColor = true;
             this.btnReadBarcode.Click += new System.EventHandler(this.btnReadBarcode_Click);
             // 
+            // btnMassChoosing
+            // 
+            this.btnMassChoosing.Location = new System.Drawing.Point(324, 99);
+            this.btnMassChoosing.Name = "btnMassChoosing";
+            this.btnMassChoosing.Size = new System.Drawing.Size(50, 23);
+            this.btnMassChoosing.TabIndex = 130;
+            this.btnMassChoosing.Text = "...";
+            this.btnMassChoosing.UseVisualStyleBackColor = true;
+            this.btnMassChoosing.Click += new System.EventHandler(this.btnMassChoosing_Click);
+            // 
             // DepartmentStockInFromMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 587);
             this.ContextMenuStrip = this.ctxMenuDept;
+            this.Controls.Add(this.btnMassChoosing);
             this.Controls.Add(this.btnReadBarcode);
             this.Controls.Add(this.panelStockIns);
             this.Controls.Add(this.label16);
@@ -1014,6 +1026,7 @@
             this.Controls.SetChildIndex(this.label16, 0);
             this.Controls.SetChildIndex(this.panelStockIns, 0);
             this.Controls.SetChildIndex(this.btnReadBarcode, 0);
+            this.Controls.SetChildIndex(this.btnMassChoosing, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
@@ -1117,5 +1130,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inputBarcodeToolStripMenuItem;
         private System.Windows.Forms.Button btnReadBarcode;
+        private System.Windows.Forms.Button btnMassChoosing;
     }
 }

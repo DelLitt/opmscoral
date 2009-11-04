@@ -810,8 +810,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void PopulateGridByProductMaster(IList colorList, IList sizeList)
         {
-            var eventArgs = new DepartmentStockInEventArgs();
-            eventArgs.DepartmentStockInDetailList = new ArrayList();
+            
             IList selectedProductMasterList = new ArrayList();
             foreach (ProductColor color in colorList)
             {
@@ -859,7 +858,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     }
                 }
             }
-            
+
+            var eventArgs = new DepartmentStockInEventArgs();
+            eventArgs.DepartmentStockInDetailList = new ArrayList();
             eventArgs.ProductMasterList = selectedProductMasterList;
             EventUtility.fireEvent(LoadStockInByProductMaster, this, eventArgs);
             
@@ -1420,6 +1421,53 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             //call the base object's OnRowPostPaint method
             //dgvBill.OnRowPostPaint(e);
+        }
+
+        private void btnMassChoosing_Click(object sender, EventArgs e)
+        {
+            ProductMasterChoosingForm pmChoosingForm = new ProductMasterChoosingForm();
+            pmChoosingForm.ShowDialog();
+
+            if (pmChoosingForm.SelectedProductMasterList == null) return;
+
+
+            var eventArgs = new DepartmentStockInEventArgs();
+            eventArgs.DepartmentStockInDetailList = new ArrayList();
+            eventArgs.ProductMasterList = pmChoosingForm.SelectedProductMasterList;
+            EventUtility.fireEvent(LoadStockInByProductMaster, this, eventArgs);
+
+            // remove 0 quanity
+            int count = 0;
+            int length = deptSIDetailList.Count;
+            bool isMessage = false;
+            for (int i = 0; i < length; i++)
+            {
+                if (deptSIDetailList[i - count].StockQuantity == 0)
+                {
+                    //isMessage = true;
+                    deptSIDetailList.RemoveAt(i - count);
+                    count++;
+                }
+            }
+            if (eventArgs.SelectedStockOutDetails != null && eventArgs.SelectedStockOutDetails.Count > 0)
+            {
+                foreach (DepartmentStockInDetail inDetail in eventArgs.SelectedStockOutDetails)
+                {
+                    if (!IsInList(deptSIDetailList, inDetail)) deptSIDetailList.Add(inDetail);
+                }
+
+            }
+
+            RemoveDuplicateRows();
+            bdsStockIn.ResetBindings(false);
+            dgvStockIn.Refresh();
+            dgvStockIn.Invalidate();
+            /*if (isMessage)
+            {
+                MessageBox.Show("Sản phẩm có tồn kho 0 sẽ không đựoc xuất");
+            }*/
+            CalculateTotalStorePrice();
+            pmChoosingForm.Dispose();
         }
     }
 }
