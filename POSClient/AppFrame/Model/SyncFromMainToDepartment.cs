@@ -9,6 +9,7 @@ namespace AppFrame.Model
     [Serializable]
     public class SyncFromMainToDepartment
     {
+        public IList UserInfoList { get; set;}
         public IList ProductMasterList { get; set;}
         public IList DepartmentPriceMasterList { get; set; }
         public IList StockOutList { get; set; }

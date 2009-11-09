@@ -10,5 +10,9 @@ namespace AppFrame.DataLayer
     public interface IRoleDao
     {
         IList getRoles(string Username);
+        IList FindAll();
+        RoleModel Add(RoleModel model);
+        void Update(RoleModel model);
+        void Delete(RoleModel model);
     }
 }

@@ -42,5 +42,6 @@ namespace AppFrame.Logic
 
         void ProcessUser(LoginModel model);
         void ChangePassword(string username, string password, string newPassword);
+        
     }
 }
