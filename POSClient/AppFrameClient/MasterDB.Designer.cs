@@ -53,6 +53,10 @@ namespace AppFrameClient {
         
         private product_master_idsDataTable tableproduct_master_ids;
         
+        private categoryDataTable tablecategory;
+        
+        private typebycatDataTable tabletypebycat;
+        
         private global::System.Data.DataRelation relationproduct_master_ibfk_2;
         
         private global::System.Data.DataRelation relationproduct_master_ibfk_3;
@@ -64,6 +68,8 @@ namespace AppFrameClient {
         private global::System.Data.DataRelation relationfk_product_2;
         
         private global::System.Data.DataRelation relationfk_product_21;
+        
+        private global::System.Data.DataRelation relationproduct_master_ibfk_1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -132,6 +138,12 @@ namespace AppFrameClient {
                 }
                 if ((ds.Tables["product_master_ids"] != null)) {
                     base.Tables.Add(new product_master_idsDataTable(ds.Tables["product_master_ids"]));
+                }
+                if ((ds.Tables["category"] != null)) {
+                    base.Tables.Add(new categoryDataTable(ds.Tables["category"]));
+                }
+                if ((ds.Tables["typebycat"] != null)) {
+                    base.Tables.Add(new typebycatDataTable(ds.Tables["typebycat"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -278,6 +290,24 @@ namespace AppFrameClient {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public categoryDataTable category {
+            get {
+                return this.tablecategory;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public typebycatDataTable typebycat {
+            get {
+                return this.tabletypebycat;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -377,6 +407,12 @@ namespace AppFrameClient {
                 }
                 if ((ds.Tables["product_master_ids"] != null)) {
                     base.Tables.Add(new product_master_idsDataTable(ds.Tables["product_master_ids"]));
+                }
+                if ((ds.Tables["category"] != null)) {
+                    base.Tables.Add(new categoryDataTable(ds.Tables["category"]));
+                }
+                if ((ds.Tables["typebycat"] != null)) {
+                    base.Tables.Add(new typebycatDataTable(ds.Tables["typebycat"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -492,12 +528,25 @@ namespace AppFrameClient {
                     this.tableproduct_master_ids.InitVars();
                 }
             }
+            this.tablecategory = ((categoryDataTable)(base.Tables["category"]));
+            if ((initTable == true)) {
+                if ((this.tablecategory != null)) {
+                    this.tablecategory.InitVars();
+                }
+            }
+            this.tabletypebycat = ((typebycatDataTable)(base.Tables["typebycat"]));
+            if ((initTable == true)) {
+                if ((this.tabletypebycat != null)) {
+                    this.tabletypebycat.InitVars();
+                }
+            }
             this.relationproduct_master_ibfk_2 = this.Relations["product_master_ibfk_2"];
             this.relationproduct_master_ibfk_3 = this.Relations["product_master_ibfk_3"];
             this.relationproduct_master_ibfk_4 = this.Relations["product_master_ibfk_4"];
             this.relationproduct_ibfk_1 = this.Relations["product_ibfk_1"];
             this.relationfk_product_2 = this.Relations["fk_product_2"];
             this.relationfk_product_21 = this.Relations["fk_product_21"];
+            this.relationproduct_master_ibfk_1 = this.Relations["product_master_ibfk_1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -535,6 +584,10 @@ namespace AppFrameClient {
             base.Tables.Add(this.tableproduct_master_name);
             this.tableproduct_master_ids = new product_master_idsDataTable();
             base.Tables.Add(this.tableproduct_master_ids);
+            this.tablecategory = new categoryDataTable();
+            base.Tables.Add(this.tablecategory);
+            this.tabletypebycat = new typebycatDataTable();
+            base.Tables.Add(this.tabletypebycat);
             this.relationproduct_master_ibfk_2 = new global::System.Data.DataRelation("product_master_ibfk_2", new global::System.Data.DataColumn[] {
                         this.tableproduct_type.TYPE_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableproduct_master.TYPE_IDColumn}, false);
@@ -559,6 +612,10 @@ namespace AppFrameClient {
                         this.tableproduct_master_ids.product_master_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableproduct.PRODUCT_MASTER_IDColumn}, false);
             this.Relations.Add(this.relationfk_product_21);
+            this.relationproduct_master_ibfk_1 = new global::System.Data.DataRelation("product_master_ibfk_1", new global::System.Data.DataColumn[] {
+                        this.tablecategory.CATEGORY_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableproduct_master.CATEGORY_IDColumn}, false);
+            this.Relations.Add(this.relationproduct_master_ibfk_1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -628,6 +685,16 @@ namespace AppFrameClient {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeproduct_master_ids() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializecategory() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializetypebycat() {
             return false;
         }
         
@@ -711,6 +778,10 @@ namespace AppFrameClient {
         public delegate void product_master_nameRowChangeEventHandler(object sender, product_master_nameRowChangeEvent e);
         
         public delegate void product_master_idsRowChangeEventHandler(object sender, product_master_idsRowChangeEvent e);
+        
+        public delegate void categoryRowChangeEventHandler(object sender, categoryRowChangeEvent e);
+        
+        public delegate void typebycatRowChangeEventHandler(object sender, typebycatRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1954,7 +2025,7 @@ namespace AppFrameClient {
                         string PRODUCT_NAME, 
                         string DESCRIPTION, 
                         string IMAGE_PATH, 
-                        uint CATEGORY_ID, 
+                        categoryRow parentcategoryRowByproduct_master_ibfk_1, 
                         uint COUNTRY_ID, 
                         product_typeRow parentproduct_typeRowByproduct_master_ibfk_2, 
                         product_sizeRow parentproduct_sizeRowByproduct_master_ibfk_3, 
@@ -1977,7 +2048,7 @@ namespace AppFrameClient {
                         PRODUCT_NAME,
                         DESCRIPTION,
                         IMAGE_PATH,
-                        CATEGORY_ID,
+                        null,
                         COUNTRY_ID,
                         null,
                         null,
@@ -1994,6 +2065,9 @@ namespace AppFrameClient {
                         EXCLUSIVE_KEY,
                         DEL_FLG,
                         BARCODE};
+                if ((parentcategoryRowByproduct_master_ibfk_1 != null)) {
+                    columnValuesArray[4] = parentcategoryRowByproduct_master_ibfk_1[0];
+                }
                 if ((parentproduct_typeRowByproduct_master_ibfk_2 != null)) {
                     columnValuesArray[6] = parentproduct_typeRowByproduct_master_ibfk_2[0];
                 }
@@ -5679,6 +5753,570 @@ namespace AppFrameClient {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class categoryDataTable : global::System.Data.TypedTableBase<categoryRow> {
+            
+            private global::System.Data.DataColumn columnCATEGORY_ID;
+            
+            private global::System.Data.DataColumn columnPARENT_CATEGORY_ID;
+            
+            private global::System.Data.DataColumn columnCATEGORY_NAME;
+            
+            private global::System.Data.DataColumn columnCREATE_DATE;
+            
+            private global::System.Data.DataColumn columnCREATE_ID;
+            
+            private global::System.Data.DataColumn columnUPDATE_DATE;
+            
+            private global::System.Data.DataColumn columnUPDATE_ID;
+            
+            private global::System.Data.DataColumn columnEXCLUSIVE_KEY;
+            
+            private global::System.Data.DataColumn columnDEL_FLG;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryDataTable() {
+                this.TableName = "category";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal categoryDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected categoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CATEGORY_IDColumn {
+                get {
+                    return this.columnCATEGORY_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PARENT_CATEGORY_IDColumn {
+                get {
+                    return this.columnPARENT_CATEGORY_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CATEGORY_NAMEColumn {
+                get {
+                    return this.columnCATEGORY_NAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CREATE_DATEColumn {
+                get {
+                    return this.columnCREATE_DATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CREATE_IDColumn {
+                get {
+                    return this.columnCREATE_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn UPDATE_DATEColumn {
+                get {
+                    return this.columnUPDATE_DATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn UPDATE_IDColumn {
+                get {
+                    return this.columnUPDATE_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EXCLUSIVE_KEYColumn {
+                get {
+                    return this.columnEXCLUSIVE_KEY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DEL_FLGColumn {
+                get {
+                    return this.columnDEL_FLG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow this[int index] {
+                get {
+                    return ((categoryRow)(this.Rows[index]));
+                }
+            }
+            
+            public event categoryRowChangeEventHandler categoryRowChanging;
+            
+            public event categoryRowChangeEventHandler categoryRowChanged;
+            
+            public event categoryRowChangeEventHandler categoryRowDeleting;
+            
+            public event categoryRowChangeEventHandler categoryRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddcategoryRow(categoryRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow AddcategoryRow(uint CATEGORY_ID, uint PARENT_CATEGORY_ID, string CATEGORY_NAME, System.DateTime CREATE_DATE, string CREATE_ID, System.DateTime UPDATE_DATE, string UPDATE_ID, uint EXCLUSIVE_KEY, uint DEL_FLG) {
+                categoryRow rowcategoryRow = ((categoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CATEGORY_ID,
+                        PARENT_CATEGORY_ID,
+                        CATEGORY_NAME,
+                        CREATE_DATE,
+                        CREATE_ID,
+                        UPDATE_DATE,
+                        UPDATE_ID,
+                        EXCLUSIVE_KEY,
+                        DEL_FLG};
+                rowcategoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowcategoryRow);
+                return rowcategoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow FindByCATEGORY_ID(uint CATEGORY_ID) {
+                return ((categoryRow)(this.Rows.Find(new object[] {
+                            CATEGORY_ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                categoryDataTable cln = ((categoryDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new categoryDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnCATEGORY_ID = base.Columns["CATEGORY_ID"];
+                this.columnPARENT_CATEGORY_ID = base.Columns["PARENT_CATEGORY_ID"];
+                this.columnCATEGORY_NAME = base.Columns["CATEGORY_NAME"];
+                this.columnCREATE_DATE = base.Columns["CREATE_DATE"];
+                this.columnCREATE_ID = base.Columns["CREATE_ID"];
+                this.columnUPDATE_DATE = base.Columns["UPDATE_DATE"];
+                this.columnUPDATE_ID = base.Columns["UPDATE_ID"];
+                this.columnEXCLUSIVE_KEY = base.Columns["EXCLUSIVE_KEY"];
+                this.columnDEL_FLG = base.Columns["DEL_FLG"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnCATEGORY_ID = new global::System.Data.DataColumn("CATEGORY_ID", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCATEGORY_ID);
+                this.columnPARENT_CATEGORY_ID = new global::System.Data.DataColumn("PARENT_CATEGORY_ID", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPARENT_CATEGORY_ID);
+                this.columnCATEGORY_NAME = new global::System.Data.DataColumn("CATEGORY_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCATEGORY_NAME);
+                this.columnCREATE_DATE = new global::System.Data.DataColumn("CREATE_DATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCREATE_DATE);
+                this.columnCREATE_ID = new global::System.Data.DataColumn("CREATE_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCREATE_ID);
+                this.columnUPDATE_DATE = new global::System.Data.DataColumn("UPDATE_DATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUPDATE_DATE);
+                this.columnUPDATE_ID = new global::System.Data.DataColumn("UPDATE_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUPDATE_ID);
+                this.columnEXCLUSIVE_KEY = new global::System.Data.DataColumn("EXCLUSIVE_KEY", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXCLUSIVE_KEY);
+                this.columnDEL_FLG = new global::System.Data.DataColumn("DEL_FLG", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDEL_FLG);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCATEGORY_ID}, true));
+                this.columnCATEGORY_ID.AllowDBNull = false;
+                this.columnCATEGORY_ID.Unique = true;
+                this.columnCATEGORY_NAME.MaxLength = 500;
+                this.columnCREATE_ID.MaxLength = 50;
+                this.columnUPDATE_ID.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow NewcategoryRow() {
+                return ((categoryRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new categoryRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(categoryRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.categoryRowChanged != null)) {
+                    this.categoryRowChanged(this, new categoryRowChangeEvent(((categoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.categoryRowChanging != null)) {
+                    this.categoryRowChanging(this, new categoryRowChangeEvent(((categoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.categoryRowDeleted != null)) {
+                    this.categoryRowDeleted(this, new categoryRowChangeEvent(((categoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.categoryRowDeleting != null)) {
+                    this.categoryRowDeleting(this, new categoryRowChangeEvent(((categoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovecategoryRow(categoryRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MasterDB ds = new MasterDB();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "categoryDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class typebycatDataTable : global::System.Data.TypedTableBase<typebycatRow> {
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatDataTable() {
+                this.TableName = "typebycat";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal typebycatDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected typebycatDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatRow this[int index] {
+                get {
+                    return ((typebycatRow)(this.Rows[index]));
+                }
+            }
+            
+            public event typebycatRowChangeEventHandler typebycatRowChanging;
+            
+            public event typebycatRowChangeEventHandler typebycatRowChanged;
+            
+            public event typebycatRowChangeEventHandler typebycatRowDeleting;
+            
+            public event typebycatRowChangeEventHandler typebycatRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddtypebycatRow(typebycatRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatRow AddtypebycatRow(string type_name) {
+                typebycatRow rowtypebycatRow = ((typebycatRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        type_name};
+                rowtypebycatRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowtypebycatRow);
+                return rowtypebycatRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                typebycatDataTable cln = ((typebycatDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new typebycatDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columntype_name = base.Columns["type_name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columntype_name.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatRow NewtypebycatRow() {
+                return ((typebycatRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new typebycatRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(typebycatRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.typebycatRowChanged != null)) {
+                    this.typebycatRowChanged(this, new typebycatRowChangeEvent(((typebycatRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.typebycatRowChanging != null)) {
+                    this.typebycatRowChanging(this, new typebycatRowChangeEvent(((typebycatRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.typebycatRowDeleted != null)) {
+                    this.typebycatRowDeleted(this, new typebycatRowChangeEvent(((typebycatRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.typebycatRowDeleting != null)) {
+                    this.typebycatRowDeleting(this, new typebycatRowChangeEvent(((typebycatRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovetypebycatRow(typebycatRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MasterDB ds = new MasterDB();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "typebycatDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -6659,6 +7297,16 @@ namespace AppFrameClient {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["product_master_ibfk_4"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow categoryRow {
+                get {
+                    return ((categoryRow)(this.GetParentRow(this.Table.ParentRelations["product_master_ibfk_1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["product_master_ibfk_1"]);
                 }
             }
             
@@ -9180,6 +9828,281 @@ namespace AppFrameClient {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class categoryRow : global::System.Data.DataRow {
+            
+            private categoryDataTable tablecategory;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal categoryRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablecategory = ((categoryDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint CATEGORY_ID {
+                get {
+                    return ((uint)(this[this.tablecategory.CATEGORY_IDColumn]));
+                }
+                set {
+                    this[this.tablecategory.CATEGORY_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint PARENT_CATEGORY_ID {
+                get {
+                    try {
+                        return ((uint)(this[this.tablecategory.PARENT_CATEGORY_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PARENT_CATEGORY_ID\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.PARENT_CATEGORY_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CATEGORY_NAME {
+                get {
+                    try {
+                        return ((string)(this[this.tablecategory.CATEGORY_NAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CATEGORY_NAME\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.CATEGORY_NAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime CREATE_DATE {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecategory.CREATE_DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CREATE_DATE\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.CREATE_DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CREATE_ID {
+                get {
+                    try {
+                        return ((string)(this[this.tablecategory.CREATE_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CREATE_ID\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.CREATE_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime UPDATE_DATE {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablecategory.UPDATE_DATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UPDATE_DATE\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.UPDATE_DATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string UPDATE_ID {
+                get {
+                    try {
+                        return ((string)(this[this.tablecategory.UPDATE_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UPDATE_ID\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.UPDATE_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint EXCLUSIVE_KEY {
+                get {
+                    try {
+                        return ((uint)(this[this.tablecategory.EXCLUSIVE_KEYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXCLUSIVE_KEY\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.EXCLUSIVE_KEYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint DEL_FLG {
+                get {
+                    try {
+                        return ((uint)(this[this.tablecategory.DEL_FLGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DEL_FLG\' in table \'category\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecategory.DEL_FLGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPARENT_CATEGORY_IDNull() {
+                return this.IsNull(this.tablecategory.PARENT_CATEGORY_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPARENT_CATEGORY_IDNull() {
+                this[this.tablecategory.PARENT_CATEGORY_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCATEGORY_NAMENull() {
+                return this.IsNull(this.tablecategory.CATEGORY_NAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCATEGORY_NAMENull() {
+                this[this.tablecategory.CATEGORY_NAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCREATE_DATENull() {
+                return this.IsNull(this.tablecategory.CREATE_DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCREATE_DATENull() {
+                this[this.tablecategory.CREATE_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCREATE_IDNull() {
+                return this.IsNull(this.tablecategory.CREATE_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCREATE_IDNull() {
+                this[this.tablecategory.CREATE_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsUPDATE_DATENull() {
+                return this.IsNull(this.tablecategory.UPDATE_DATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetUPDATE_DATENull() {
+                this[this.tablecategory.UPDATE_DATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsUPDATE_IDNull() {
+                return this.IsNull(this.tablecategory.UPDATE_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetUPDATE_IDNull() {
+                this[this.tablecategory.UPDATE_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEXCLUSIVE_KEYNull() {
+                return this.IsNull(this.tablecategory.EXCLUSIVE_KEYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEXCLUSIVE_KEYNull() {
+                this[this.tablecategory.EXCLUSIVE_KEYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDEL_FLGNull() {
+                return this.IsNull(this.tablecategory.DEL_FLGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDEL_FLGNull() {
+                this[this.tablecategory.DEL_FLGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public product_masterRow[] Getproduct_masterRows() {
+                if ((this.Table.ChildRelations["product_master_ibfk_1"] == null)) {
+                    return new product_masterRow[0];
+                }
+                else {
+                    return ((product_masterRow[])(base.GetChildRows(this.Table.ChildRelations["product_master_ibfk_1"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class typebycatRow : global::System.Data.DataRow {
+            
+            private typebycatDataTable tabletypebycat;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal typebycatRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabletypebycat = ((typebycatDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabletypebycat.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'typebycat\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletypebycat.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tabletypebycat.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tabletypebycat.type_nameColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -9600,6 +10523,68 @@ namespace AppFrameClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public product_master_idsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class categoryRowChangeEvent : global::System.EventArgs {
+            
+            private categoryRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRowChangeEvent(categoryRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public categoryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class typebycatRowChangeEvent : global::System.EventArgs {
+            
+            private typebycatRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatRowChangeEvent(typebycatRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public typebycatRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -18408,6 +19393,1129 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class categoryTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public categoryTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "category";
+            tableMapping.ColumnMappings.Add("CATEGORY_ID", "CATEGORY_ID");
+            tableMapping.ColumnMappings.Add("PARENT_CATEGORY_ID", "PARENT_CATEGORY_ID");
+            tableMapping.ColumnMappings.Add("CATEGORY_NAME", "CATEGORY_NAME");
+            tableMapping.ColumnMappings.Add("CREATE_DATE", "CREATE_DATE");
+            tableMapping.ColumnMappings.Add("CREATE_ID", "CREATE_ID");
+            tableMapping.ColumnMappings.Add("UPDATE_DATE", "UPDATE_DATE");
+            tableMapping.ColumnMappings.Add("UPDATE_ID", "UPDATE_ID");
+            tableMapping.ColumnMappings.Add("EXCLUSIVE_KEY", "EXCLUSIVE_KEY");
+            tableMapping.ColumnMappings.Add("DEL_FLG", "DEL_FLG");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `pos`.`category` WHERE ((`CATEGORY_ID` = @Original_CATEGORY_ID) AND ((@IsNull_PARENT_CATEGORY_ID = 1 AND `PARENT_CATEGORY_ID` IS NULL) OR (`PARENT_CATEGORY_ID` = @Original_PARENT_CATEGORY_ID)) AND ((@IsNull_CATEGORY_NAME = 1 AND `CATEGORY_NAME` IS NULL) OR (`CATEGORY_NAME` = @Original_CATEGORY_NAME)) AND ((@IsNull_CREATE_DATE = 1 AND `CREATE_DATE` IS NULL) OR (`CREATE_DATE` = @Original_CREATE_DATE)) AND ((@IsNull_CREATE_ID = 1 AND `CREATE_ID` IS NULL) OR (`CREATE_ID` = @Original_CREATE_ID)) AND ((@IsNull_UPDATE_DATE = 1 AND `UPDATE_DATE` IS NULL) OR (`UPDATE_DATE` = @Original_UPDATE_DATE)) AND ((@IsNull_UPDATE_ID = 1 AND `UPDATE_ID` IS NULL) OR (`UPDATE_ID` = @Original_UPDATE_ID)) AND ((@IsNull_EXCLUSIVE_KEY = 1 AND `EXCLUSIVE_KEY` IS NULL) OR (`EXCLUSIVE_KEY` = @Original_EXCLUSIVE_KEY)) AND ((@IsNull_DEL_FLG = 1 AND `DEL_FLG` IS NULL) OR (`DEL_FLG` = @Original_DEL_FLG)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CREATE_DATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CREATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CREATE_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CREATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_UPDATE_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_UPDATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_DEL_FLG";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_DEL_FLG";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `pos`.`category` (`CATEGORY_ID`, `PARENT_CATEGORY_ID`, `CATEGORY_NAME`, `CREATE_DATE`, `CREATE_ID`, `UPDATE_DATE`, `UPDATE_ID`, `EXCLUSIVE_KEY`, `DEL_FLG`) VALUES (@CATEGORY_ID, @PARENT_CATEGORY_ID, @CATEGORY_NAME, @CREATE_DATE, @CREATE_ID, @UPDATE_DATE, @UPDATE_ID, @EXCLUSIVE_KEY, @DEL_FLG)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CREATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CREATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@UPDATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@DEL_FLG";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `pos`.`category` SET `CATEGORY_ID` = @CATEGORY_ID, `PARENT_CATEGORY_ID` = @PARENT_CATEGORY_ID, `CATEGORY_NAME` = @CATEGORY_NAME, `CREATE_DATE` = @CREATE_DATE, `CREATE_ID` = @CREATE_ID, `UPDATE_DATE` = @UPDATE_DATE, `UPDATE_ID` = @UPDATE_ID, `EXCLUSIVE_KEY` = @EXCLUSIVE_KEY, `DEL_FLG` = @DEL_FLG WHERE ((`CATEGORY_ID` = @Original_CATEGORY_ID) AND ((@IsNull_PARENT_CATEGORY_ID = 1 AND `PARENT_CATEGORY_ID` IS NULL) OR (`PARENT_CATEGORY_ID` = @Original_PARENT_CATEGORY_ID)) AND ((@IsNull_CATEGORY_NAME = 1 AND `CATEGORY_NAME` IS NULL) OR (`CATEGORY_NAME` = @Original_CATEGORY_NAME)) AND ((@IsNull_CREATE_DATE = 1 AND `CREATE_DATE` IS NULL) OR (`CREATE_DATE` = @Original_CREATE_DATE)) AND ((@IsNull_CREATE_ID = 1 AND `CREATE_ID` IS NULL) OR (`CREATE_ID` = @Original_CREATE_ID)) AND ((@IsNull_UPDATE_DATE = 1 AND `UPDATE_DATE` IS NULL) OR (`UPDATE_DATE` = @Original_UPDATE_DATE)) AND ((@IsNull_UPDATE_ID = 1 AND `UPDATE_ID` IS NULL) OR (`UPDATE_ID` = @Original_UPDATE_ID)) AND ((@IsNull_EXCLUSIVE_KEY = 1 AND `EXCLUSIVE_KEY` IS NULL) OR (`EXCLUSIVE_KEY` = @Original_EXCLUSIVE_KEY)) AND ((@IsNull_DEL_FLG = 1 AND `DEL_FLG` IS NULL) OR (`DEL_FLG` = @Original_DEL_FLG)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CREATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@CREATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@UPDATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@DEL_FLG";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_PARENT_CATEGORY_ID";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "PARENT_CATEGORY_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CATEGORY_NAME";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_NAME";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CREATE_DATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CREATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_CREATE_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_CREATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "CREATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_UPDATE_DATE";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Datetime;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_DATE";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_UPDATE_ID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_UPDATE_ID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "UPDATE_ID";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_EXCLUSIVE_KEY";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "EXCLUSIVE_KEY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@IsNull_DEL_FLG";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Original_DEL_FLG";
+            param.DbType = global::System.Data.DbType.UInt32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEL_FLG";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::AppFrameClient.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT   category.*\r\nFROM      category";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(MasterDB.categoryDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual MasterDB.categoryDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            MasterDB.categoryDataTable dataTable = new MasterDB.categoryDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(MasterDB.categoryDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(MasterDB dataSet) {
+            return this.Adapter.Update(dataSet, "category");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(uint Original_CATEGORY_ID, global::System.Nullable<uint> Original_PARENT_CATEGORY_ID, string Original_CATEGORY_NAME, global::System.Nullable<global::System.DateTime> Original_CREATE_DATE, string Original_CREATE_ID, global::System.Nullable<global::System.DateTime> Original_UPDATE_DATE, string Original_UPDATE_ID, global::System.Nullable<uint> Original_EXCLUSIVE_KEY, global::System.Nullable<uint> Original_DEL_FLG) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((uint)(Original_CATEGORY_ID));
+            if ((Original_PARENT_CATEGORY_ID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((uint)(Original_PARENT_CATEGORY_ID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Original_CATEGORY_NAME == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_CATEGORY_NAME));
+            }
+            if ((Original_CREATE_DATE.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_CREATE_DATE.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_CREATE_ID == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_CREATE_ID));
+            }
+            if ((Original_UPDATE_DATE.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_UPDATE_DATE.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_UPDATE_ID == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_UPDATE_ID));
+            }
+            if ((Original_EXCLUSIVE_KEY.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((uint)(Original_EXCLUSIVE_KEY.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DEL_FLG.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((uint)(Original_DEL_FLG.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(uint CATEGORY_ID, global::System.Nullable<uint> PARENT_CATEGORY_ID, string CATEGORY_NAME, global::System.Nullable<global::System.DateTime> CREATE_DATE, string CREATE_ID, global::System.Nullable<global::System.DateTime> UPDATE_DATE, string UPDATE_ID, global::System.Nullable<uint> EXCLUSIVE_KEY, global::System.Nullable<uint> DEL_FLG) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((uint)(CATEGORY_ID));
+            if ((PARENT_CATEGORY_ID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((uint)(PARENT_CATEGORY_ID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((CATEGORY_NAME == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(CATEGORY_NAME));
+            }
+            if ((CREATE_DATE.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(CREATE_DATE.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((CREATE_ID == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(CREATE_ID));
+            }
+            if ((UPDATE_DATE.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(UPDATE_DATE.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((UPDATE_ID == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(UPDATE_ID));
+            }
+            if ((EXCLUSIVE_KEY.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((uint)(EXCLUSIVE_KEY.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((DEL_FLG.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((uint)(DEL_FLG.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    uint CATEGORY_ID, 
+                    global::System.Nullable<uint> PARENT_CATEGORY_ID, 
+                    string CATEGORY_NAME, 
+                    global::System.Nullable<global::System.DateTime> CREATE_DATE, 
+                    string CREATE_ID, 
+                    global::System.Nullable<global::System.DateTime> UPDATE_DATE, 
+                    string UPDATE_ID, 
+                    global::System.Nullable<uint> EXCLUSIVE_KEY, 
+                    global::System.Nullable<uint> DEL_FLG, 
+                    uint Original_CATEGORY_ID, 
+                    global::System.Nullable<uint> Original_PARENT_CATEGORY_ID, 
+                    string Original_CATEGORY_NAME, 
+                    global::System.Nullable<global::System.DateTime> Original_CREATE_DATE, 
+                    string Original_CREATE_ID, 
+                    global::System.Nullable<global::System.DateTime> Original_UPDATE_DATE, 
+                    string Original_UPDATE_ID, 
+                    global::System.Nullable<uint> Original_EXCLUSIVE_KEY, 
+                    global::System.Nullable<uint> Original_DEL_FLG) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((uint)(CATEGORY_ID));
+            if ((PARENT_CATEGORY_ID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((uint)(PARENT_CATEGORY_ID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((CATEGORY_NAME == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(CATEGORY_NAME));
+            }
+            if ((CREATE_DATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(CREATE_DATE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((CREATE_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(CREATE_ID));
+            }
+            if ((UPDATE_DATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(UPDATE_DATE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((UPDATE_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(UPDATE_ID));
+            }
+            if ((EXCLUSIVE_KEY.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((uint)(EXCLUSIVE_KEY.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((DEL_FLG.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((uint)(DEL_FLG.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((uint)(Original_CATEGORY_ID));
+            if ((Original_PARENT_CATEGORY_ID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((uint)(Original_PARENT_CATEGORY_ID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_CATEGORY_NAME == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_CATEGORY_NAME));
+            }
+            if ((Original_CREATE_DATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_CREATE_DATE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((Original_CREATE_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_CREATE_ID));
+            }
+            if ((Original_UPDATE_DATE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_UPDATE_DATE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((Original_UPDATE_ID == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_UPDATE_ID));
+            }
+            if ((Original_EXCLUSIVE_KEY.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((uint)(Original_EXCLUSIVE_KEY.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((Original_DEL_FLG.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((uint)(Original_DEL_FLG.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    global::System.Nullable<uint> PARENT_CATEGORY_ID, 
+                    string CATEGORY_NAME, 
+                    global::System.Nullable<global::System.DateTime> CREATE_DATE, 
+                    string CREATE_ID, 
+                    global::System.Nullable<global::System.DateTime> UPDATE_DATE, 
+                    string UPDATE_ID, 
+                    global::System.Nullable<uint> EXCLUSIVE_KEY, 
+                    global::System.Nullable<uint> DEL_FLG, 
+                    uint Original_CATEGORY_ID, 
+                    global::System.Nullable<uint> Original_PARENT_CATEGORY_ID, 
+                    string Original_CATEGORY_NAME, 
+                    global::System.Nullable<global::System.DateTime> Original_CREATE_DATE, 
+                    string Original_CREATE_ID, 
+                    global::System.Nullable<global::System.DateTime> Original_UPDATE_DATE, 
+                    string Original_UPDATE_ID, 
+                    global::System.Nullable<uint> Original_EXCLUSIVE_KEY, 
+                    global::System.Nullable<uint> Original_DEL_FLG) {
+            return this.Update(Original_CATEGORY_ID, PARENT_CATEGORY_ID, CATEGORY_NAME, CREATE_DATE, CREATE_ID, UPDATE_DATE, UPDATE_ID, EXCLUSIVE_KEY, DEL_FLG, Original_CATEGORY_ID, Original_PARENT_CATEGORY_ID, Original_CATEGORY_NAME, Original_CREATE_DATE, Original_CREATE_ID, Original_UPDATE_DATE, Original_UPDATE_ID, Original_EXCLUSIVE_KEY, Original_DEL_FLG);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class typebycatTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public typebycatTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "typebycat";
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::AppFrameClient.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = " select distinct b.type_name from product_master a,product_type b  \r\n where a.typ" +
+                "e_id=b.type_id and a.category_id = @catID ";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@catID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "CATEGORY_ID";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(MasterDB.typebycatDataTable dataTable, global::System.Nullable<int> catID) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((catID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(catID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual MasterDB.typebycatDataTable GetData(global::System.Nullable<int> catID) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((catID.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(catID.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            MasterDB.typebycatDataTable dataTable = new MasterDB.typebycatDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -18433,6 +20541,8 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
         private confirm_stock_inTableAdapter _confirm_stock_inTableAdapter;
         
         private product_master_idsTableAdapter _product_master_idsTableAdapter;
+        
+        private categoryTableAdapter _categoryTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -18540,6 +20650,19 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
+            "", "System.Drawing.Design.UITypeEditor")]
+        public categoryTableAdapter categoryTableAdapter {
+            get {
+                return this._categoryTableAdapter;
+            }
+            set {
+                this._categoryTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -18584,6 +20707,10 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                             && (this._product_master_idsTableAdapter.Connection != null))) {
                     return this._product_master_idsTableAdapter.Connection;
                 }
+                if (((this._categoryTableAdapter != null) 
+                            && (this._categoryTableAdapter.Connection != null))) {
+                    return this._categoryTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -18617,6 +20744,9 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                 if ((this._product_master_idsTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._categoryTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -18636,12 +20766,12 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._product_colorTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.category.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._product_colorTableAdapter.Update(updatedRows));
+                    result = (result + this._categoryTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18651,6 +20781,15 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._product_sizeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._product_colorTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._product_colorTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18707,11 +20846,11 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._product_colorTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.category.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._product_colorTableAdapter.Update(addedRows));
+                    result = (result + this._categoryTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18720,6 +20859,14 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._product_sizeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._product_colorTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._product_colorTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18796,6 +20943,14 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._product_colorTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._product_colorTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._product_sizeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.product_size.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18804,11 +20959,11 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._product_colorTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.product_color.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._categoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._product_colorTableAdapter.Update(deletedRows));
+                    result = (result + this._categoryTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -18889,6 +21044,11 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
             }
             if (((this._product_master_idsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._product_master_idsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._categoryTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._categoryTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -18987,6 +21147,15 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._product_master_idsTableAdapter.Adapter);
                     }
                 }
+                if ((this._categoryTableAdapter != null)) {
+                    revertConnections.Add(this._categoryTableAdapter, this._categoryTableAdapter.Connection);
+                    this._categoryTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(workConnection));
+                    this._categoryTableAdapter.Transaction = ((global::MySql.Data.MySqlClient.MySqlTransaction)(workTransaction));
+                    if (this._categoryTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._categoryTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._categoryTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -19072,6 +21241,10 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                 if ((this._product_master_idsTableAdapter != null)) {
                     this._product_master_idsTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._product_master_idsTableAdapter]));
                     this._product_master_idsTableAdapter.Transaction = null;
+                }
+                if ((this._categoryTableAdapter != null)) {
+                    this._categoryTableAdapter.Connection = ((global::MySql.Data.MySqlClient.MySqlConnection)(revertConnections[this._categoryTableAdapter]));
+                    this._categoryTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

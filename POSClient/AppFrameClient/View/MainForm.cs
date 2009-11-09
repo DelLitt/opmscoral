@@ -23,6 +23,7 @@ using AppFrameClient.View.GoodsIO.MainStock;
 using AppFrameClient.View.GoodsSale;
 using AppFrameClient.View.Inventory;
 using AppFrameClient.View.Management;
+using AppFrameClient.View.Masters;
 using AppFrameClient.View.Reports;
 using AppFrameClient.View.SalePoints;
 using ImportPOSData;
@@ -1273,6 +1274,11 @@ namespace AppFrame.View
         {
             DatabaseUtils.RestoreCRLDatabase();
             InformationBox.Show("Thành công !", "Tái khởi động", new AutoCloseParameters(0));
+        }
+
+        private void mnuCategoryEdit_Click(object sender, EventArgs e)
+        {
+            new CategoryForm().ShowDialog();
         }
         
     }

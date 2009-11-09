@@ -221,6 +221,7 @@ namespace AppFrameClient.View
                         return;
                     }
                 }
+                // if user is different than exit
                 if (selectedModel.RoleType.Equals("Supervisor"))
                 {
                     // if role is not equal then exit

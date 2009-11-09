@@ -348,6 +348,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     }
                 }
             }
+
+            IList userInfoList = LoginLogic.FindAll(null);
+            e.SyncFromMainToDepartment.UserInfoList = userInfoList;
             
         }
 
@@ -746,6 +749,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 {
                     get;set;
                 }
+                public ILoginLogic LoginLogic { get; set; }
 
         public IProductLogic ProductLogic
         {

@@ -22,5 +22,25 @@ namespace AppFrameClient.DataLayer
             return listRoleModel;
         }
 
+        public IList FindAll()
+        {
+            return HibernateTemplate.LoadAll(typeof (RoleModel));
+        }
+
+        public RoleModel Add(RoleModel data)
+        {
+            HibernateTemplate.Save(data);
+            return data;
+        }
+
+        public void Update(RoleModel data)
+        {
+            HibernateTemplate.Update(data);
+        }
+
+        public void Delete(RoleModel data)
+        {
+            HibernateTemplate.Delete(data);
+        }
     }
 }

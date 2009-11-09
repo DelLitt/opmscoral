@@ -199,6 +199,12 @@
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCategoryEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuColorEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSizeEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCategoryAssigning = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -358,7 +364,13 @@
             this.productToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.productMasterToolStripMenuItem,
             this.searchProductMasterToolStripMenuItem,
-            this.updatePriceToolStripMenuItem});
+            this.updatePriceToolStripMenuItem,
+            this.toolStripMenuItem24,
+            this.mnuCategoryEdit,
+            this.mnuColorEdit,
+            this.mnuSizeEdit,
+            this.toolStripMenuItem25,
+            this.mnuCategoryAssigning});
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
             this.productToolStripMenuItem.Size = new System.Drawing.Size(119, 23);
             this.productToolStripMenuItem.Text = "Danh mục hàng";
@@ -367,21 +379,21 @@
             // productMasterToolStripMenuItem
             // 
             this.productMasterToolStripMenuItem.Name = "productMasterToolStripMenuItem";
-            this.productMasterToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.productMasterToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
             this.productMasterToolStripMenuItem.Text = "Danh mục sản phẩm";
             this.productMasterToolStripMenuItem.Click += new System.EventHandler(this.productMasterToolStripMenuItem_Click);
             // 
             // searchProductMasterToolStripMenuItem
             // 
             this.searchProductMasterToolStripMenuItem.Name = "searchProductMasterToolStripMenuItem";
-            this.searchProductMasterToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.searchProductMasterToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
             this.searchProductMasterToolStripMenuItem.Text = "Tìm kiếm sản phẩm";
             this.searchProductMasterToolStripMenuItem.Click += new System.EventHandler(this.testProductMasterToolStripMenuItem_Click);
             // 
             // updatePriceToolStripMenuItem
             // 
             this.updatePriceToolStripMenuItem.Name = "updatePriceToolStripMenuItem";
-            this.updatePriceToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.updatePriceToolStripMenuItem.Size = new System.Drawing.Size(225, 24);
             this.updatePriceToolStripMenuItem.Text = "Cập nhật giá bán ra";
             this.updatePriceToolStripMenuItem.Click += new System.EventHandler(this.updatePriceToolStripMenuItem_Click);
             // 
@@ -1580,6 +1592,41 @@
             this.crlRestoreHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftL;
             this.crlRestoreHotkey.Pressed += new System.EventHandler(this.crlRestoreHotkey_Pressed);
             // 
+            // toolStripMenuItem24
+            // 
+            this.toolStripMenuItem24.Name = "toolStripMenuItem24";
+            this.toolStripMenuItem24.Size = new System.Drawing.Size(222, 6);
+            // 
+            // mnuCategoryEdit
+            // 
+            this.mnuCategoryEdit.Name = "mnuCategoryEdit";
+            this.mnuCategoryEdit.Size = new System.Drawing.Size(225, 24);
+            this.mnuCategoryEdit.Text = "Quản lý phân loại hàng";
+            this.mnuCategoryEdit.Click += new System.EventHandler(this.mnuCategoryEdit_Click);
+            // 
+            // mnuColorEdit
+            // 
+            this.mnuColorEdit.Name = "mnuColorEdit";
+            this.mnuColorEdit.Size = new System.Drawing.Size(225, 24);
+            this.mnuColorEdit.Text = "Quản lý màu sắc hàng";
+            // 
+            // mnuSizeEdit
+            // 
+            this.mnuSizeEdit.Name = "mnuSizeEdit";
+            this.mnuSizeEdit.Size = new System.Drawing.Size(225, 24);
+            this.mnuSizeEdit.Text = "Quản lý kích cỡ hàng";
+            // 
+            // toolStripMenuItem25
+            // 
+            this.toolStripMenuItem25.Name = "toolStripMenuItem25";
+            this.toolStripMenuItem25.Size = new System.Drawing.Size(222, 6);
+            // 
+            // mnuCategoryAssigning
+            // 
+            this.mnuCategoryAssigning.Name = "mnuCategoryAssigning";
+            this.mnuCategoryAssigning.Size = new System.Drawing.Size(225, 24);
+            this.mnuCategoryAssigning.Text = "Thiết lập phân loại hàng";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1783,6 +1830,12 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAllPurchaseOrders;
         private AppFrame.Controls.HotKey.SystemHotkey crlBackupHotkey;
         private AppFrame.Controls.HotKey.SystemHotkey crlRestoreHotkey;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
+        private System.Windows.Forms.ToolStripMenuItem mnuCategoryEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuColorEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuSizeEdit;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem25;
+        private System.Windows.Forms.ToolStripMenuItem mnuCategoryAssigning;
 
     }
 }

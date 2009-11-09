@@ -61,6 +61,10 @@
     <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator,Supervisor" />
     <menuitem name="updatePriceToolStripMenuItem" role="Administrator,Supervisor" />
+    <menuitem name="mnuCategoryEdit" role="Administrator,Supervisor" />
+    <menuitem name="mnuColorEdit" role="NotImplement" />
+    <menuitem name="mnuCategoryAssigning" role="Administrator,Supervisor" />
+    <menuitem name="mnuSizeEdit" role="NotImplement" />
   </menu>
   <menu name="departmentStockToolStripMenuItem" role="NotImplement">
     <menuitem name="wareHouseStockIn" role="Administrator" />
