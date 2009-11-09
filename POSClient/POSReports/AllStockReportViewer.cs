@@ -87,10 +87,10 @@ namespace POSReports
         {
             aSyncDS.EnforceConstraints = false;
             aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            POSReports.posDataSetTableAdapters.StockStatisticTableAdapter adapter = new StockStatisticTableAdapter();
+            POSReports.posDataSetTableAdapters.AllStockTableAdapter adapter = new AllStockTableAdapter();
             adapter.ClearBeforeFill = true;
             //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
-            adapter.Fill(posDataSet.StockStatistic, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.allStock, reqFromDate, reqToDate);
         }
     }
 }
