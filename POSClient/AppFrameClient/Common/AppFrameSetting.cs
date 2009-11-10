@@ -72,5 +72,17 @@ namespace AppFrameClient.Common
                 this["PrinterName"] = value;
             }
         }
+
+        public bool TempNegativeSelling
+        {
+            get
+            {
+                return (bool) this["TempNegativeSelling"];
+            }
+            set
+            {
+                this["TempNegativeSelling"] = value; 
+            }
+        }
     }
 }

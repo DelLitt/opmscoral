@@ -284,5 +284,17 @@ namespace AppFrameClient.Properties {
                 this["TemplatePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TempNegativeSelling {
+            get {
+                return ((bool)(this["TempNegativeSelling"]));
+            }
+            set {
+                this["TempNegativeSelling"] = value;
+            }
+        }
     }
 }

@@ -465,6 +465,8 @@ namespace AppFrameClient.View.GoodsSale
             {
                 GoodsSaleController.PurchaseOrder.Customer = new Customer{CustomerName = txtCustomer.Text};
             }
+            
+
             Receipt receipt = new Receipt();
             receipt.PurchaseOrder = GoodsSaleController.PurchaseOrder;
             receipt.ReceiptPK = new ReceiptPK{ DepartmentId = CurrentDepartment.Get().DepartmentId};

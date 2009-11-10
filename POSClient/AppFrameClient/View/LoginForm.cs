@@ -81,6 +81,7 @@ namespace AppFrameClient.View
             model.Username = txtUsername.Text.Trim();
             model.Password = txtPassword.Text.Trim();
             LoginEventArgs loginEventArgs = new LoginEventArgs();
+            loginEventArgs.ConfirmType = "Manager,Supervisor,Administrator";
             loginEventArgs.LoginModel = model;
             if (LoginEvent != null)
             {

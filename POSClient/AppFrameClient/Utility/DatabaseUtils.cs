@@ -430,12 +430,12 @@ namespace AppFrameClient.Utility
                 info.Arguments = mysqldumpstring;
 
                 string[] args = null;
-                if (!isDump)
+                /*if (!isDump)
                 {
                     args = mysqldumpstring.Split('<');
                     info.Arguments = args[0];
                     info.RedirectStandardInput = true;
-                }
+                }*/
 
                 info.UseShellExecute = false;
                 info.CreateNoWindow = true;
@@ -450,11 +450,11 @@ namespace AppFrameClient.Utility
                 // Set up asynchronous read event
                 p.Start();
 
-                if (!isDump)
+                /*if (!isDump)
                 {
-                    p.StandardInput.WriteLine("\\." + args[1]);
+                    p.StandardInput.WriteLine("source \"" + args[1]+"\"");
                     p.StandardInput.WriteLine("exit");
-                }
+                }*/
 
 
                 p.WaitForExit();
@@ -630,7 +630,7 @@ namespace AppFrameClient.Utility
             foreach (string file in files)
             {
                 if (!file.EndsWith("sql")) continue;
-                string syncString = string.Format(" --database={0} --user={1} --password={2}  < {3} ", "pos", "dbadmin", "1qw45DCM9rl", file);
+                string syncString = string.Format(" --database={0} --user={1} --password={2}  -e \"source {3} \"", "pos", "dbadmin", "1qw45DCM9rl", file);
                 ExecuteMySqlDumpCmdLine(false, syncString);
                 File.Delete(file);
             }
@@ -658,7 +658,8 @@ namespace AppFrameClient.Utility
                     conn.Open();
                     command = conn.CreateCommand();
                     command.CommandText = " UPDATE department SET active = 1 WHERE department_id = " + activeDepartmentId.ToString();
-                    activeDepartmentId = command.ExecuteScalar();
+                    command.ExecuteNonQuery();
+                    //activeDepartmentId = command.ExecuteNonQuery();
                 }
                 catch (Exception)
                 {

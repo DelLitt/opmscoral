@@ -63,8 +63,20 @@ namespace AppFrame.Presenter
             bool loginResult = loginLogic.validate(e.LoginModel);
             if(loginResult)
             {
-                ClientUtility.Log(logger, "Người dùng " + e.LoginModel.Username + " đã " + e.ConfirmAction, "Xác nhận hành động");
-                
+                LoginModel model = loginLogic.FindById(e.LoginModel.Username);
+                bool matchConfirmType = false;
+                foreach (RoleModel role in model.Roles)
+                {
+                    if(e.ConfirmType.IndexOf(role.Name)>= 0)
+                    {
+                        matchConfirmType = true;
+                        break;
+                    }
+                }
+                if(matchConfirmType)
+                    ClientUtility.Log(logger, "Người dùng " + e.LoginModel.Username + " đã " + e.ConfirmAction, "Xác nhận hành động");
+                else
+                    e.HasErrors = true;
             }
             else
             {

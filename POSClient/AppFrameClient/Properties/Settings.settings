@@ -78,5 +78,8 @@
     <Setting Name="TemplatePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\XUATHANGNAM</Value>
     </Setting>
+    <Setting Name="TempNegativeSelling" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
