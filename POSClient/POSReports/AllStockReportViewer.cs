@@ -59,7 +59,7 @@ namespace POSReports
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
-            reqFromDate = ZeroTime(ToDate.Value);
+            reqFromDate = ZeroTime(FromDate.Value);
             reqToDate = MaxTime(ToDate.Value);
 
             Enabled = false;
