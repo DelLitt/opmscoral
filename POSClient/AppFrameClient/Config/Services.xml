@@ -228,6 +228,8 @@
     <property name="PackagerDAO" ref="AppFrame.DataLayer.IPackagerDAO"/>
     <property name="EmployeeDAO" ref="AppFrame.DataLayer.IEmployeeDAO"/>
     <property name="EmployeeDetailDAO" ref="AppFrame.DataLayer.IEmployeeDetailDAO"/>
+    <property name="RoleDAO" ref="RoleDaoImpl"/>
+    <property name="LoginDAO" ref="LoginDaoImpl"/>
   </object>
 
   <object id="AppFrame.Service.IProductSizeLogic" type="AppFrame.Logic.ProductSizeLogicImpl, AppFrameClient">

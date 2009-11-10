@@ -1280,6 +1280,11 @@ namespace AppFrame.View
         {
             new CategoryForm().ShowDialog();
         }
+
+        private void mnuDeptStockDefExport_Click(object sender, EventArgs e)
+        {
+            new ExportDeptStockDefinitionForm().ShowDialog();
+        }
         
     }
 }

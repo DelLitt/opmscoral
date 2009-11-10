@@ -125,6 +125,8 @@
     <menuitem name="mnuImportByFile" role="Administrator,Supervisor" />
     <menuitem name="mnuExportByFile" role="Administrator,Supervisor" />
     <menuitem name="mnuEmployeeMoney" role="NotImplement" />
+    <menuitem name="mnuDeptStockDefExport" role="Administrator,Supervisor" />
+    
   </menu>
   <menu name="mnuHelp" role="*">
     <menuitem name="mnuHelpAbout" role="*">

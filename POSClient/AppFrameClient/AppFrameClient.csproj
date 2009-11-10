@@ -396,6 +396,12 @@
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ErrorObject.cs" />
+    <Compile Include="View\ExportDeptStockDefinitionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ExportDeptStockDefinitionForm.Designer.cs">
+      <DependentUpon>ExportDeptStockDefinitionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1449,6 +1455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ExportDeptStockDefinitionForm.resx">
+      <DependentUpon>ExportDeptStockDefinitionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.resx">
       <DependentUpon>CreateStockOutTemplateForm.cs</DependentUpon>

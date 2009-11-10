@@ -57,6 +57,8 @@ namespace AppFrameClient {
         
         private typebycatDataTable tabletypebycat;
         
+        private deptstock_def_fileDataTable tabledeptstock_def_file;
+        
         private global::System.Data.DataRelation relationproduct_master_ibfk_2;
         
         private global::System.Data.DataRelation relationproduct_master_ibfk_3;
@@ -70,6 +72,8 @@ namespace AppFrameClient {
         private global::System.Data.DataRelation relationfk_product_21;
         
         private global::System.Data.DataRelation relationproduct_master_ibfk_1;
+        
+        private global::System.Data.DataRelation relationdepartment_stock_ibfk_1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -144,6 +148,9 @@ namespace AppFrameClient {
                 }
                 if ((ds.Tables["typebycat"] != null)) {
                     base.Tables.Add(new typebycatDataTable(ds.Tables["typebycat"]));
+                }
+                if ((ds.Tables["deptstock_def_file"] != null)) {
+                    base.Tables.Add(new deptstock_def_fileDataTable(ds.Tables["deptstock_def_file"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -308,6 +315,15 @@ namespace AppFrameClient {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public deptstock_def_fileDataTable deptstock_def_file {
+            get {
+                return this.tabledeptstock_def_file;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -413,6 +429,9 @@ namespace AppFrameClient {
                 }
                 if ((ds.Tables["typebycat"] != null)) {
                     base.Tables.Add(new typebycatDataTable(ds.Tables["typebycat"]));
+                }
+                if ((ds.Tables["deptstock_def_file"] != null)) {
+                    base.Tables.Add(new deptstock_def_fileDataTable(ds.Tables["deptstock_def_file"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -540,6 +559,12 @@ namespace AppFrameClient {
                     this.tabletypebycat.InitVars();
                 }
             }
+            this.tabledeptstock_def_file = ((deptstock_def_fileDataTable)(base.Tables["deptstock_def_file"]));
+            if ((initTable == true)) {
+                if ((this.tabledeptstock_def_file != null)) {
+                    this.tabledeptstock_def_file.InitVars();
+                }
+            }
             this.relationproduct_master_ibfk_2 = this.Relations["product_master_ibfk_2"];
             this.relationproduct_master_ibfk_3 = this.Relations["product_master_ibfk_3"];
             this.relationproduct_master_ibfk_4 = this.Relations["product_master_ibfk_4"];
@@ -547,6 +572,7 @@ namespace AppFrameClient {
             this.relationfk_product_2 = this.Relations["fk_product_2"];
             this.relationfk_product_21 = this.Relations["fk_product_21"];
             this.relationproduct_master_ibfk_1 = this.Relations["product_master_ibfk_1"];
+            this.relationdepartment_stock_ibfk_1 = this.Relations["department_stock_ibfk_1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -588,6 +614,8 @@ namespace AppFrameClient {
             base.Tables.Add(this.tablecategory);
             this.tabletypebycat = new typebycatDataTable();
             base.Tables.Add(this.tabletypebycat);
+            this.tabledeptstock_def_file = new deptstock_def_fileDataTable();
+            base.Tables.Add(this.tabledeptstock_def_file);
             this.relationproduct_master_ibfk_2 = new global::System.Data.DataRelation("product_master_ibfk_2", new global::System.Data.DataColumn[] {
                         this.tableproduct_type.TYPE_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableproduct_master.TYPE_IDColumn}, false);
@@ -616,6 +644,10 @@ namespace AppFrameClient {
                         this.tablecategory.CATEGORY_IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableproduct_master.CATEGORY_IDColumn}, false);
             this.Relations.Add(this.relationproduct_master_ibfk_1);
+            this.relationdepartment_stock_ibfk_1 = new global::System.Data.DataRelation("department_stock_ibfk_1", new global::System.Data.DataColumn[] {
+                        this.tableproduct.PRODUCT_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tabledeptstock_def_file.product_idColumn}, false);
+            this.Relations.Add(this.relationdepartment_stock_ibfk_1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -695,6 +727,11 @@ namespace AppFrameClient {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializetypebycat() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializedeptstock_def_file() {
             return false;
         }
         
@@ -782,6 +819,8 @@ namespace AppFrameClient {
         public delegate void categoryRowChangeEventHandler(object sender, categoryRowChangeEvent e);
         
         public delegate void typebycatRowChangeEventHandler(object sender, typebycatRowChangeEvent e);
+        
+        public delegate void deptstock_def_fileRowChangeEventHandler(object sender, deptstock_def_fileRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -6317,6 +6356,300 @@ namespace AppFrameClient {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class deptstock_def_fileDataTable : global::System.Data.TypedTableBase<deptstock_def_fileRow> {
+            
+            private global::System.Data.DataColumn columnproduct_master_id;
+            
+            private global::System.Data.DataColumn columnproduct_name;
+            
+            private global::System.Data.DataColumn columnproduct_id;
+            
+            private global::System.Data.DataColumn columntype_id;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileDataTable() {
+                this.TableName = "deptstock_def_file";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal deptstock_def_fileDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected deptstock_def_fileDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_master_idColumn {
+                get {
+                    return this.columnproduct_master_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_nameColumn {
+                get {
+                    return this.columnproduct_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_idColumn {
+                get {
+                    return this.columnproduct_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_idColumn {
+                get {
+                    return this.columntype_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow this[int index] {
+                get {
+                    return ((deptstock_def_fileRow)(this.Rows[index]));
+                }
+            }
+            
+            public event deptstock_def_fileRowChangeEventHandler deptstock_def_fileRowChanging;
+            
+            public event deptstock_def_fileRowChangeEventHandler deptstock_def_fileRowChanged;
+            
+            public event deptstock_def_fileRowChangeEventHandler deptstock_def_fileRowDeleting;
+            
+            public event deptstock_def_fileRowChangeEventHandler deptstock_def_fileRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Adddeptstock_def_fileRow(deptstock_def_fileRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow Adddeptstock_def_fileRow(string product_master_id, string product_name, productRow parentproductRowBydepartment_stock_ibfk_1, uint type_id, string type_name) {
+                deptstock_def_fileRow rowdeptstock_def_fileRow = ((deptstock_def_fileRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        product_master_id,
+                        product_name,
+                        null,
+                        type_id,
+                        type_name};
+                if ((parentproductRowBydepartment_stock_ibfk_1 != null)) {
+                    columnValuesArray[2] = parentproductRowBydepartment_stock_ibfk_1[0];
+                }
+                rowdeptstock_def_fileRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdeptstock_def_fileRow);
+                return rowdeptstock_def_fileRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow FindByproduct_master_idproduct_id(string product_master_id, string product_id) {
+                return ((deptstock_def_fileRow)(this.Rows.Find(new object[] {
+                            product_master_id,
+                            product_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                deptstock_def_fileDataTable cln = ((deptstock_def_fileDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new deptstock_def_fileDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnproduct_master_id = base.Columns["product_master_id"];
+                this.columnproduct_name = base.Columns["product_name"];
+                this.columnproduct_id = base.Columns["product_id"];
+                this.columntype_id = base.Columns["type_id"];
+                this.columntype_name = base.Columns["type_name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnproduct_master_id = new global::System.Data.DataColumn("product_master_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_master_id);
+                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_name);
+                this.columnproduct_id = new global::System.Data.DataColumn("product_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_id);
+                this.columntype_id = new global::System.Data.DataColumn("type_id", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_id);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnproduct_master_id,
+                                this.columnproduct_id}, true));
+                this.columnproduct_master_id.AllowDBNull = false;
+                this.columnproduct_master_id.MaxLength = 13;
+                this.columnproduct_name.MaxLength = 500;
+                this.columnproduct_id.AllowDBNull = false;
+                this.columnproduct_id.MaxLength = 20;
+                this.columntype_name.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow Newdeptstock_def_fileRow() {
+                return ((deptstock_def_fileRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new deptstock_def_fileRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(deptstock_def_fileRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.deptstock_def_fileRowChanged != null)) {
+                    this.deptstock_def_fileRowChanged(this, new deptstock_def_fileRowChangeEvent(((deptstock_def_fileRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.deptstock_def_fileRowChanging != null)) {
+                    this.deptstock_def_fileRowChanging(this, new deptstock_def_fileRowChangeEvent(((deptstock_def_fileRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.deptstock_def_fileRowDeleted != null)) {
+                    this.deptstock_def_fileRowDeleted(this, new deptstock_def_fileRowChangeEvent(((deptstock_def_fileRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.deptstock_def_fileRowDeleting != null)) {
+                    this.deptstock_def_fileRowDeleting(this, new deptstock_def_fileRowChangeEvent(((deptstock_def_fileRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Removedeptstock_def_fileRow(deptstock_def_fileRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MasterDB ds = new MasterDB();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "deptstock_def_fileDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -7848,6 +8181,16 @@ namespace AppFrameClient {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPRICENull() {
                 this[this.tableproduct.PRICEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow[] Getdeptstock_def_fileRows() {
+                if ((this.Table.ChildRelations["department_stock_ibfk_1"] == null)) {
+                    return new deptstock_def_fileRow[0];
+                }
+                else {
+                    return ((deptstock_def_fileRow[])(base.GetChildRows(this.Table.ChildRelations["department_stock_ibfk_1"])));
+                }
             }
         }
         
@@ -10103,6 +10446,126 @@ namespace AppFrameClient {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class deptstock_def_fileRow : global::System.Data.DataRow {
+            
+            private deptstock_def_fileDataTable tabledeptstock_def_file;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal deptstock_def_fileRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabledeptstock_def_file = ((deptstock_def_fileDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_master_id {
+                get {
+                    return ((string)(this[this.tabledeptstock_def_file.product_master_idColumn]));
+                }
+                set {
+                    this[this.tabledeptstock_def_file.product_master_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabledeptstock_def_file.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'deptstock_def_file\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptstock_def_file.product_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_id {
+                get {
+                    return ((string)(this[this.tabledeptstock_def_file.product_idColumn]));
+                }
+                set {
+                    this[this.tabledeptstock_def_file.product_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint type_id {
+                get {
+                    try {
+                        return ((uint)(this[this.tabledeptstock_def_file.type_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_id\' in table \'deptstock_def_file\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptstock_def_file.type_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tabledeptstock_def_file.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'deptstock_def_file\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledeptstock_def_file.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public productRow productRow {
+                get {
+                    return ((productRow)(this.GetParentRow(this.Table.ParentRelations["department_stock_ibfk_1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["department_stock_ibfk_1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tabledeptstock_def_file.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tabledeptstock_def_file.product_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_idNull() {
+                return this.IsNull(this.tabledeptstock_def_file.type_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_idNull() {
+                this[this.tabledeptstock_def_file.type_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tabledeptstock_def_file.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tabledeptstock_def_file.type_nameColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -10585,6 +11048,37 @@ namespace AppFrameClient {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public typebycatRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class deptstock_def_fileRowChangeEvent : global::System.EventArgs {
+            
+            private deptstock_def_fileRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRowChangeEvent(deptstock_def_fileRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public deptstock_def_fileRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -20510,6 +21004,176 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             MasterDB.typebycatDataTable dataTable = new MasterDB.typebycatDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class deptstock_def_fileTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public deptstock_def_fileTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "deptstock_def_file";
+            tableMapping.ColumnMappings.Add("product_master_id", "product_master_id");
+            tableMapping.ColumnMappings.Add("product_name", "product_name");
+            tableMapping.ColumnMappings.Add("product_id", "product_id");
+            tableMapping.ColumnMappings.Add("type_id", "type_id");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::AppFrameClient.Properties.Settings.Default.posConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT b.type_id,d.type_name,b.product_master_id,b.product_name,a.product_id FROM department_stock a, product c, product_master b,product_type d WHERE a.product_id=c.product_id and c.product_master_id=b.product_master_id and a.department_id = @deptID and b.type_id=d.type_id ";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@deptID";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "DEPARTMENT_ID";
+            this._commandCollection[0].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(MasterDB.deptstock_def_fileDataTable dataTable, int deptID) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual MasterDB.deptstock_def_fileDataTable GetData(int deptID) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(deptID));
+            MasterDB.deptstock_def_fileDataTable dataTable = new MasterDB.deptstock_def_fileDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
