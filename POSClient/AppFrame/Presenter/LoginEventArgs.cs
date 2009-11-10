@@ -36,7 +36,7 @@ namespace AppFrame.Presenter
             get; set;
         }
         private bool isValid;
-
+        public string ConfirmType { get; set;}
     }
     
 }
