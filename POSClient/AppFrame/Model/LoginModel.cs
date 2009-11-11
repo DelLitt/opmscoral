@@ -43,5 +43,8 @@ namespace AppFrame.Model
         }
         public Int32 Suspended { get; set; }
         public Int32 Deleted { get; set; }
+
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

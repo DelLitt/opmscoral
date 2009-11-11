@@ -22,6 +22,22 @@
       
       >      
     </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    
     <bag name="Roles" table="userrole" lazy="false">
       <key column="userid" />
       <many-to-many class="AppFrame.Model.RoleModel, AppFrame" column="roleid" />
