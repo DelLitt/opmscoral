@@ -18,6 +18,7 @@ namespace AppFrameClient.View
         private ILoginController<LoginEventArgs> loginController;
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
         public bool IsConfirmed { get; set; }
+        public bool ConfirmNegativeSelling { get; set;  }
         public LoginForm()
         {
             InitializeComponent();
@@ -80,6 +81,15 @@ namespace AppFrameClient.View
             LoginModel model = new LoginModel();
             model.Username = txtUsername.Text.Trim();
             model.Password = txtPassword.Text.Trim();
+            if(ConfirmNegativeSelling)
+            {
+                if(!"pos".Equals(model.Username))
+                {
+                    IsConfirmed = false;
+                    ReturnResult();
+                    return;
+                }
+            }
             LoginEventArgs loginEventArgs = new LoginEventArgs();
             loginEventArgs.ConfirmType = "Manager,Supervisor,Administrator";
             loginEventArgs.LoginModel = model;

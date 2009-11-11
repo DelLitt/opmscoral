@@ -42,15 +42,15 @@
             this.chkPrdMaster = new System.Windows.Forms.CheckBox();
             this.chkMasterData = new System.Windows.Forms.CheckBox();
             this.cboDepartments = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.masterDB = new AppFrameClient.MasterDB();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDB = new AppFrameClient.MasterDB();
+            this.label1 = new System.Windows.Forms.Label();
             this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.syncResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSyncResult)).BeginInit();
             this.grpMasterData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
             this.SuspendLayout();
             // 
             // syncResultBindingSource
@@ -73,7 +73,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 155);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(49, 15);
             this.label2.TabIndex = 54;
             this.label2.Text = "Kết quả";
             // 
@@ -135,7 +135,7 @@
             this.chkDepartments.AutoSize = true;
             this.chkDepartments.Location = new System.Drawing.Point(158, 24);
             this.chkDepartments.Name = "chkDepartments";
-            this.chkDepartments.Size = new System.Drawing.Size(137, 17);
+            this.chkDepartments.Size = new System.Drawing.Size(150, 19);
             this.chkDepartments.TabIndex = 3;
             this.chkDepartments.Text = "Cửa hàng và nhân viên";
             this.chkDepartments.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             this.chkPrice.AutoSize = true;
             this.chkPrice.Location = new System.Drawing.Point(6, 48);
             this.chkPrice.Name = "chkPrice";
-            this.chkPrice.Size = new System.Drawing.Size(89, 17);
+            this.chkPrice.Size = new System.Drawing.Size(100, 19);
             this.chkPrice.TabIndex = 2;
             this.chkPrice.Text = "Giá mặt hàng";
             this.chkPrice.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             this.chkPrdMaster.AutoSize = true;
             this.chkPrdMaster.Location = new System.Drawing.Point(7, 24);
             this.chkPrdMaster.Name = "chkPrdMaster";
-            this.chkPrdMaster.Size = new System.Drawing.Size(118, 17);
+            this.chkPrdMaster.Size = new System.Drawing.Size(130, 19);
             this.chkPrdMaster.TabIndex = 1;
             this.chkPrdMaster.Text = "Mặt hàng, mã vạch";
             this.chkPrdMaster.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.chkMasterData.AutoSize = true;
             this.chkMasterData.Location = new System.Drawing.Point(257, 12);
             this.chkMasterData.Name = "chkMasterData";
-            this.chkMasterData.Size = new System.Drawing.Size(144, 17);
+            this.chkMasterData.Size = new System.Drawing.Size(160, 19);
             this.chkMasterData.TabIndex = 0;
             this.chkMasterData.Text = "Đồng bộ thông tin chung";
             this.chkMasterData.UseVisualStyleBackColor = true;
@@ -183,24 +183,24 @@
             this.cboDepartments.TabIndex = 58;
             this.cboDepartments.ValueMember = "DEPARTMENT_ID";
             // 
-            // label1
+            // departmentBindingSource
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
-            this.label1.TabIndex = 59;
-            this.label1.Text = "Cửa hàng cần đồng bộ";
+            this.departmentBindingSource.DataMember = "Department";
+            this.departmentBindingSource.DataSource = this.masterDB;
             // 
             // masterDB
             // 
             this.masterDB.DataSetName = "MasterDB";
             this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // departmentBindingSource
+            // label1
             // 
-            this.departmentBindingSource.DataMember = "Department";
-            this.departmentBindingSource.DataSource = this.masterDB;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(250, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 15);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Cửa hàng cần đồng bộ";
             // 
             // departmentTableAdapter
             // 
@@ -234,8 +234,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSyncResult)).EndInit();
             this.grpMasterData.ResumeLayout(false);
             this.grpMasterData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

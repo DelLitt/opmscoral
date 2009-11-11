@@ -42,13 +42,11 @@ namespace AppFrameClient.View
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            FileStream fileStream = new FileStream(@"D:\test.txt",FileMode.Create);
+            FileStream fileStream = new FileStream(@"D:\KIEMHANG\dinhnghia.txt",FileMode.Create);
             StreamWriter writer = new StreamWriter(fileStream);
             foreach (DataRow row in this.masterDB.deptstock_def_file.Rows)
             {
-                string rowText = row[masterDB.deptstock_def_file.product_master_idColumn] + " ,\"" +
-                                 row[masterDB.deptstock_def_file.product_nameColumn] + "\" ," +
-                                 row[masterDB.deptstock_def_file.product_idColumn] +" ,0";
+                string rowText = row[masterDB.deptstock_def_file.product_idColumn] +" ,0";
                 writer.WriteLine(rowText);
             }
             writer.Flush();

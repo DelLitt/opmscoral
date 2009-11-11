@@ -136,16 +136,21 @@ namespace AppFrameClient.Logic
             if(dbUserModel!=null)
             {
                 dbUserModel.Username = model.Username;
-                dbUserModel.Password = model.Password;
+                if(!dbUserModel.Password.Equals(model.Password))
+                {
+                    dbUserModel.Password = model.Password;
+                    dbUserModel.UpdateDate = DateTime.Now;
+                }
                 dbUserModel.Roles = model.Roles;
                 dbUserModel.EmployeeInfo = model.EmployeeInfo;
                 dbUserModel.Suspended = model.Suspended;
                 dbUserModel.Deleted = model.Deleted;
-                
                 LoginDao.Update(dbUserModel);
             }
             else
             {
+                model.CreateDate = DateTime.Now;
+                model.UpdateDate = DateTime.Now;
                 LoginDao.Add(model);
             }
         }

@@ -169,9 +169,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptEvent.Department = department;
                     EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
 
-                    if (deptEvent.SyncFromMainToDepartment != null
-                        && deptEvent.SyncFromMainToDepartment.StockOutList != null
-                        && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0)
+                    if (deptEvent.SyncFromMainToDepartment != null)
+                        //&& deptEvent.SyncFromMainToDepartment.StockOutList != null
+                        //&& deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0)
                     {
                         //var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
                         string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" +

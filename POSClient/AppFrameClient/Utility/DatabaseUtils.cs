@@ -538,6 +538,9 @@ namespace AppFrameClient.Utility
             string department = "";
             string employee = "";
             string employee_info = "";
+            string role = "";
+            string userinfo = "";
+            string userrole = "";
 
             string department_price = "";
 
@@ -555,6 +558,9 @@ namespace AppFrameClient.Utility
                 department = "department";
                 employee = "employee";
                 employee_info = "employee_info";
+                userinfo = "userinfo";
+                role = "role";
+                userrole = "userrole";
             }
 
             if (prices)
@@ -562,7 +568,7 @@ namespace AppFrameClient.Utility
                 department_price = "department_price";
             }
             string backupFile = dbBackupPath + "/" + backupFileName;
-            string mysqldumpstring = string.Format("--database {0} --table {1} {2} {3} {4} {5} {6} {7} {8} {9} --replace --add-drop-table=false --no-create-info --no-create-db --result-file={10} --single-transaction --user={11} --password={12} --skip-add-locks --add-locks=false --quick ",
+            string mysqldumpstring = string.Format("--database {0} --table {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} --replace --add-drop-table=false --no-create-info --no-create-db --result-file={13} --single-transaction --user={14} --password={15} --skip-add-locks --add-locks=false --quick ",
                                                       "pos", // dbname
                                                       product_type,
                                                       product_size,
@@ -572,6 +578,9 @@ namespace AppFrameClient.Utility
                                                       department,
                                                       employee_info,
                                                       employee,
+                                                      role,
+                                                      userinfo,
+                                                      userrole,
                                                       department_price,
                                                       backupFile, // backupfile
                                                       "dbadmin",  // username

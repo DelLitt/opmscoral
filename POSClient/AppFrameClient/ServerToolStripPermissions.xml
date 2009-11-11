@@ -13,12 +13,12 @@
   <toolstripitem name="tsbDeptStockOut" role="NotImplement" />
   <toolstripitem name="tsbDeptStockIn" role="NotImplement" />
   <toolstripitem name="tsbReStockIn" role="NotImplement" />
-  <toolstripitem name="tsbSync" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbSyncDown" role="Administrator,Supervisor" />
+  <toolstripitem name="tsbSync" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbSyncDown" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptSyncUp" role="NotImplement" />
   <toolstripitem name="tsbDeptSyncDown" role="NotImplement" />
-  <toolstripitem name="tsbStockOut" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbStockIn" role="Administrator,Supervisor" />
-  <toolstripitem name="tsbStockCheck" role="Administrator,Supervisor" />
+  <toolstripitem name="tsbStockOut" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbStockIn" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbStockCheck" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockCheck" role="NotImplement" />
 </toolstrip>

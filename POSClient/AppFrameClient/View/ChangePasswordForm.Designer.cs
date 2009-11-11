@@ -42,6 +42,7 @@
             // 
             this.txtOldPassword.Location = new System.Drawing.Point(122, 35);
             this.txtOldPassword.Name = "txtOldPassword";
+            this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(186, 20);
             this.txtOldPassword.TabIndex = 0;
             // 
@@ -49,6 +50,7 @@
             // 
             this.txtNewPassword.Location = new System.Drawing.Point(122, 73);
             this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(186, 20);
             this.txtNewPassword.TabIndex = 1;
             // 
@@ -56,6 +58,7 @@
             // 
             this.txtConfirmNewPass.Location = new System.Drawing.Point(122, 112);
             this.txtConfirmNewPass.Name = "txtConfirmNewPass";
+            this.txtConfirmNewPass.PasswordChar = '*';
             this.txtConfirmNewPass.Size = new System.Drawing.Size(186, 20);
             this.txtConfirmNewPass.TabIndex = 2;
             // 
@@ -84,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(46, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Mật khẩu cũ:";
             // 
@@ -93,7 +96,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(42, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(85, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Mật khẩu mới:";
             // 
@@ -102,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 115);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "Xác nhận mật khẩu:";
             // 
@@ -118,6 +121,14 @@
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.txtOldPassword);
             this.Name = "ChangePasswordForm";
+            this.Controls.SetChildIndex(this.txtOldPassword, 0);
+            this.Controls.SetChildIndex(this.txtNewPassword, 0);
+            this.Controls.SetChildIndex(this.txtConfirmNewPass, 0);
+            this.Controls.SetChildIndex(this.btnChangePass, 0);
+            this.Controls.SetChildIndex(this.btnQuit, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

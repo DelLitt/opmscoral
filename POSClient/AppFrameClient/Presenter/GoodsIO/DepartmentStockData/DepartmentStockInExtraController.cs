@@ -324,6 +324,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             //criteria.AddEqCriteria("EmployeePK.DepartmentId", e.Department.DepartmentId);
             e.SyncFromMainToDepartment.Department.Employees = EmployeeLogic.FindAll(criteria);
+            IList userInfoList = LoginLogic.FindAll(null);
+            e.SyncFromMainToDepartment.UserInfoList = userInfoList;
+
             //foreach (DepartmentStockIn departmentStockIn in e.DepartmentStockInList)
             if (e.SyncFromMainToDepartment.StockOutList == null || e.SyncFromMainToDepartment.StockOutList.Count == 0)
             {
@@ -349,9 +352,6 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 }
             }
 
-            IList userInfoList = LoginLogic.FindAll(null);
-            e.SyncFromMainToDepartment.UserInfoList = userInfoList;
-            
         }
 
         void _departmentStockInView_LoadPriceAndStockEvent(object sender, DepartmentStockInEventArgs e)

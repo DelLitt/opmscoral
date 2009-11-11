@@ -221,18 +221,27 @@ namespace AppFrameClient.View
                         return;
                     }
                 }
-                // if user is different than exit
-                if (selectedModel.RoleType.Equals("Supervisor"))
+                else
                 {
-                    // if role is not equal then exit
-                    IList list = ClientInfo.getInstance().LoggedUser.Roles;
-                    Role currentRole = list[0] as Role;
-                    if (!ClientInfo.getInstance().LoggedUser.Name.Equals(selectedModel.Username))
+                    
+                    // if user is different than exit
+                    if (selectedModel.RoleType.Equals("Supervisor"))
                     {
-                        MessageBox.Show("Không đủ quyền để thay đổi thông tin tài khoản này");
-                        return;
-                    }
+                        // if not administrator
+                        if (!ClientInfo.getInstance().LoggedUser.IsInRole(new Role { Name = "Administrator" }))
+                        {
+                            // if role is not equal then exit
+                            IList list = ClientInfo.getInstance().LoggedUser.Roles;
+                            Role currentRole = list[0] as Role;
+                            if (!ClientInfo.getInstance().LoggedUser.Name.Equals(selectedModel.Username))
+                            {
+                                MessageBox.Show("Không đủ quyền để thay đổi thông tin tài khoản này");
+                                return;
+                            }
+                        }
+                    }    
                 }
+
                 LockControlInEditMode();
                 grpUserInfo.Enabled = true;
                 CreateSaveModel(false);
