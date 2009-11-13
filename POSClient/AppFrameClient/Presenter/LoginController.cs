@@ -38,7 +38,7 @@ namespace AppFrame.Presenter
             {
                 SubObjectCriteria subObjectCriteria = new SubObjectCriteria("EmployeeInfo");
                 // new EmployeeInfo().EmployeePK.EmployeeId
-                subObjectCriteria.AddEqCriteria("EmployeePK.EmployeeId", e.EmployeeId);
+                subObjectCriteria.AddEqCriteria("Barcode", e.Barcode);
                 ObjectCriteria objectCriteria = new ObjectCriteria();
                 objectCriteria.AddSubCriteria("EmployeeInfo", subObjectCriteria);
                 IList list = LoginLogic.FindAll(objectCriteria);

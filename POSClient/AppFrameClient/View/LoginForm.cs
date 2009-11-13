@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Model;
@@ -7,6 +8,7 @@ using AppFrame.Presenter;
 using AppFrame.Utility;
 using AppFrame.View;
 using AppFrameClient.Common;
+using RawInput;
 using Spring.Context;
 using Spring.Context.Support;
 
@@ -19,9 +21,47 @@ namespace AppFrameClient.View
         private BackgroundWorker backgroundWorker = new BackgroundWorker();
         public bool IsConfirmed { get; set; }
         public bool ConfirmNegativeSelling { get; set;  }
+
+        InputDevice id;
+        int NumberOfKeyboards;
+
         public LoginForm()
         {
             InitializeComponent();
+
+
+            // Create a new InputDevice object, get the number of
+            // keyboards, and register the method which will handle the 
+            // InputDevice KeyPressed event
+            id = new InputDevice(Handle);
+            NumberOfKeyboards = id.EnumerateDevices();
+            id.KeyPressed += new InputDevice.DeviceEventHandler(m_KeyPressed);
+        }
+
+        // The WndProc is overridden to allow InputDevice to intercept
+        // messages to the window and thus catch WM_INPUT messages
+        protected override void WndProc(ref Message message)
+        {
+            if (id != null)
+            {
+                id.ProcessMessage(message);
+            }
+            base.WndProc(ref message);
+        }
+
+        private void m_KeyPressed(object sender, InputDevice.KeyControlEventArgs e)
+        {
+            if(e.Keyboard.Name!= null)
+            {
+                if(e.Keyboard.Name.IndexOf(LocalCache.HID_KEYBOARD_DEVICE) > 0 )
+                {
+                    LocalCache.Instance().InputFromBarcodeReader = true;
+                }
+                else
+                {
+                    LocalCache.Instance().InputFromBarcodeReader = false;
+                }
+            }
         }
 
         #region ILoginView Members
@@ -81,22 +121,21 @@ namespace AppFrameClient.View
             LoginModel model = new LoginModel();
             model.Username = txtUsername.Text.Trim();
             model.Password = txtPassword.Text.Trim();
-            if(ConfirmNegativeSelling)
+            if(ConfirmNegativeSelling && ClientSetting.IsClient())
             {
-                if(!"pos".Equals(model.Username))
+                if(!LocalCache.ADHOC_USERNAME.Equals(model.Username))
                 {
                     IsConfirmed = false;
                     ReturnResult();
                     return;
                 }
             }
+
             LoginEventArgs loginEventArgs = new LoginEventArgs();
             loginEventArgs.ConfirmType = "Manager,Supervisor,Administrator";
             loginEventArgs.LoginModel = model;
             if (LoginEvent != null)
             {
-                //LoginEvent.BeginInvoke(this, model);
-                //EventUtility.fireAsyncEvent<LoginEventArgs>(LoginEvent, this, loginEventArgs, new AsyncCallback(EndEvent));
                 EventUtility.fireEvent(ConfirmLoginEvent,this,loginEventArgs);
                 if(!loginEventArgs.HasErrors)
                 {
@@ -180,6 +219,83 @@ namespace AppFrameClient.View
             if(e.KeyCode == Keys.Enter)
             {
                 button1_Click(sender,e);
+            }
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.LightGreen;
+        }
+
+        private void txtBarcode_Leave(object sender, EventArgs e)
+        {
+            txtBarcode.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtUsername_Enter(object sender, EventArgs e)
+        {
+            txtUsername.BackColor = Color.LightGreen;
+        }
+
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
+            txtUsername.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.LightGreen;
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.FromKnownColor(KnownColor.Control);
+        }
+
+        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtUsername.Focus();
+            }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == LocalCache.USER_BARCODE_LENGTH)
+            {
+                Form form = GlobalCache.Instance().MainForm;
+                if (form is AppFrame.View.MainForm)
+                {
+                    ((AppFrame.View.MainForm)form).showProgressBar();
+                }
+                // create model and raise event
+                LoginModel model = new LoginModel();
+                model.Username = txtUsername.Text;
+                model.Password = txtPassword.Text;
+                LoginEventArgs loginEventArgs = new LoginEventArgs();
+                loginEventArgs.LoginModel = model;
+                loginEventArgs.Barcode = txtBarcode.Text;
+
+                EventUtility.fireEvent(ConfirmEmployeeIdEvent, this, loginEventArgs);
+
+                if (!loginEventArgs.HasErrors)
+                {
+                    LocalCache.Instance().PreviousUser = ClientInfo.getInstance().LoggedUser;
+                    EventUtility.fireEvent(LoginEvent, this, loginEventArgs);
+                    if (!loginEventArgs.HasErrors)
+                    {
+                        IsConfirmed = true;
+                    }
+
+                }
+                ReturnResult();
+
             }
         }
         

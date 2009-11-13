@@ -80,5 +80,29 @@ namespace AppFrameClient.View
             }
             return true;
         }
+
+        private void txtOldPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNewPassword.Focus();
+            }
+        }
+
+        private void txtNewPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtConfirmNewPass.Focus();
+            }
+        }
+
+        private void txtConfirmNewPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnChangePass_Click(null, null);
+            }
+        }
     }
 }

@@ -190,7 +190,7 @@ namespace AppFrameClient.View.SalePoints
                     string code = printArray[index].EmployeePK.EmployeeId;
                     
                     BarcodeLib.Barcode barcode = new Barcode();
-                    string employeeName = printArray[index].EmployeeName;
+                    string employeeName = printArray[index].Barcode;
                     Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE128, code, Color.Black, Color.White,
                                                    (int) (2.35*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
 

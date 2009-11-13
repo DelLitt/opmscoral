@@ -35,6 +35,8 @@ namespace AppFrameClient.View
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +54,9 @@ namespace AppFrameClient.View
             resources.ApplyResources(this.txtUsername, "txtUsername");
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
+            this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
             // 
             // txtPassword
             // 
@@ -60,7 +64,9 @@ namespace AppFrameClient.View
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             // 
             // btnLogin
             // 
@@ -74,19 +80,44 @@ namespace AppFrameClient.View
             resources.ApplyResources(this.lblStatus, "lblStatus");
             this.lblStatus.Name = "lblStatus";
             // 
+            // txtBarcode
+            // 
+            resources.ApplyResources(this.txtBarcode, "txtBarcode");
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
+            this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
+            this.txtBarcode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyUp);
+            this.txtBarcode.Enter += new System.EventHandler(this.textBox1_Enter);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
             // AuthForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtBarcode);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtUsername);
             this.Name = "AuthForm";
+            this.Load += new System.EventHandler(this.AuthForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AuthForm_FormClosing);
+            this.Controls.SetChildIndex(this.txtUsername, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.btnLogin, 0);
+            this.Controls.SetChildIndex(this.txtPassword, 0);
+            this.Controls.SetChildIndex(this.txtBarcode, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblStatus, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,5 +131,7 @@ namespace AppFrameClient.View
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.TextBox txtBarcode;
+        private System.Windows.Forms.Label label3;
     }
 }
