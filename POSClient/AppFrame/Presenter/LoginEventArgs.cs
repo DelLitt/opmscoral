@@ -36,6 +36,7 @@ namespace AppFrame.Presenter
             get; set;
         }
         private bool isValid;
+        public string Barcode { get; set; }
         public string ConfirmType { get; set;}
     }
     
