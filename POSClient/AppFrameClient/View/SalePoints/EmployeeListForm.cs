@@ -187,12 +187,12 @@ namespace AppFrameClient.View.SalePoints
                     {
                         break;
                     }
-                    string code = printArray[index].EmployeePK.EmployeeId;
+                    string code = printArray[index].Barcode;
                     
                     BarcodeLib.Barcode barcode = new Barcode();
-                    string employeeName = printArray[index].Barcode;
+                    string employeeName = printArray[index].EmployeeName;
                     Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE128, code, Color.Black, Color.White,
-                                                   (int) (2.35*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
+                                                   (int) (2.1*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
 
                     Bitmap bitmapBarcode = new Bitmap(imageBC);
                     bitmapBarcode.SetResolution(204, 204);
@@ -210,17 +210,18 @@ namespace AppFrameClient.View.SalePoints
                     
                     if (employeeName.Length < 17)
                     {
-                        _empFont = new Font("Arial", 8);
+                        _empFont = new Font("Arial Black", 10);
                     }
                     else
                     {
-                        _empFont = new Font("Arial", scaledTitleSize);
+                        _empFont = new Font("Arial Black", scaledTitleSize);
                     }
 
-                    Font _titleFont = new Font("Arial", 7);
-                    
+                    Font _titleFont = new Font("Arial", 8);
+                    string titleName = "QUẢN LÝ";
                     var barCodeSize = e.Graphics.MeasureString(code, _titleFont);
                     var empCodeSize = e.Graphics.MeasureString(employeeName, _empFont);
+                    var titleSize = e.Graphics.MeasureString(titleName, _titleFont);
                     Bitmap logoAChay = new Bitmap(AppFrameClient.Properties.Resources.AChayLogo);
 
                     
@@ -229,19 +230,19 @@ namespace AppFrameClient.View.SalePoints
 
                     
                     e.Graphics.DrawImage(bitmapBarcode,
-                                         new Rectangle((i % 2) * 360 + (int)XCentered((float)(2.35 * 100), 360) + 50,
-                                                       (int)((j%3)*230 + 25) + 190 , (int)(2.35 * 100),(int)(0.4 * 100)));
+                                         new Rectangle((i % 2) * 360 + (int)XCentered((float)(2.35 * 100), 360) + 120,
+                                                       (int)((j%3)*230 + 25) + 190 , (int)(2.1 * 100),(int)(0.4 * 100)));
                     System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
                     
                     e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 70 + 160, ((j % 3) * 230) + 52);
                     e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), (i % 2) * (int)(3.6 * 100) + 52, (j % 3) * (int)(2.3 * 100) + 52,
-                                                (int)(1.18 * 100), (int)(1.57 * 100));
+                                                (int)(1.18 * 100), (int)(1.97 * 100));
                     e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black),
-                        (i % 2) * 360 + +70 + XCentered(empCodeSize.Width, 345) + 50,
+                        (i % 2) * 360 + 170 + XCentered(empCodeSize.Width, 228) ,
                         (float)((j % 3) * 230 + 60 + _titleFont.Height + 70));
 
-                    e.Graphics.DrawString("QUẢN LÝ", _empFont, new SolidBrush(Color.Black),
-                        (i % 2) * 360 + +70 + XCentered(empCodeSize.Width, 138) + 207,
+                    e.Graphics.DrawString(titleName, _titleFont, new SolidBrush(Color.Black),
+                        (i % 2) * 360 + 170 + XCentered(titleSize.Width, 228),
                         (float)((j % 3) * 230 + 60 + _titleFont.Height + 90));
 
 
