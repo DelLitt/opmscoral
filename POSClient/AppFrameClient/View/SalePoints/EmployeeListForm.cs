@@ -192,7 +192,7 @@ namespace AppFrameClient.View.SalePoints
                     BarcodeLib.Barcode barcode = new Barcode();
                     string employeeName = printArray[index].EmployeeName;
                     Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE128, code, Color.Black, Color.White,
-                                                   (int) (2.1*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
+                                                   (int) (1.1*e.Graphics.DpiX), (int) (0.4*e.Graphics.DpiY));
 
                     Bitmap bitmapBarcode = new Bitmap(imageBC);
                     bitmapBarcode.SetResolution(204, 204);
@@ -230,8 +230,8 @@ namespace AppFrameClient.View.SalePoints
 
                     
                     e.Graphics.DrawImage(bitmapBarcode,
-                                         new Rectangle((i % 2) * 360 + (int)XCentered((float)(2.35 * 100), 360) + 120,
-                                                       (int)((j%3)*230 + 25) + 190 , (int)(2.1 * 100),(int)(0.4 * 100)));
+                                         new Rectangle((i % 2) * 360 + (int)XCentered((float)(1.1 * 100), 228) + 170,
+                                                       (int)((j%3)*230 + 25) + 190 , (int)(1.1 * 100),(int)(0.4 * 100)));
                     System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
                     
                     e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 70 + 160, ((j % 3) * 230) + 52);

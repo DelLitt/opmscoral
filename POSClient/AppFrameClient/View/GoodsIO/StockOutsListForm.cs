@@ -57,6 +57,7 @@ namespace AppFrameClient.View.GoodsIO
                     stockOutView.StockOut = (StockOut)result[0];
                     stockOutView.TotalQuantity = (long)result[1];
                     stockOutView.Department = (Department)result[3];
+                    
                     if (stockOutView.Department != null)
                     {
                         stockOutView.DepartmentName = stockOutView.Department.DepartmentName;

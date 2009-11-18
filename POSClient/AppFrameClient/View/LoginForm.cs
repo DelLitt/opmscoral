@@ -8,7 +8,6 @@ using AppFrame.Presenter;
 using AppFrame.Utility;
 using AppFrame.View;
 using AppFrameClient.Common;
-using RawInput;
 using Spring.Context;
 using Spring.Context.Support;
 
@@ -53,7 +52,7 @@ namespace AppFrameClient.View
         {
             if(e.Keyboard.Name!= null)
             {
-                if(e.Keyboard.Name.IndexOf(LocalCache.HID_KEYBOARD_DEVICE) > 0 )
+                if(e.Keyboard.Name.IndexOf(LocalCache.HID_KEYBOARD_DEVICE) >= 0 )
                 {
                     LocalCache.Instance().InputFromBarcodeReader = true;
                 }
@@ -269,6 +268,14 @@ namespace AppFrameClient.View
         {
             if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == LocalCache.USER_BARCODE_LENGTH)
             {
+                if (!LocalCache.Instance().InputFromBarcodeReader)
+                {
+                    txtBarcode.Text = "";
+                    //lblStatus.Text = "Không xác định!";
+                    this.Text = " Has error when login !";
+                    return;
+                }
+
                 Form form = GlobalCache.Instance().MainForm;
                 if (form is AppFrame.View.MainForm)
                 {
@@ -280,19 +287,23 @@ namespace AppFrameClient.View
                 model.Password = txtPassword.Text;
                 LoginEventArgs loginEventArgs = new LoginEventArgs();
                 loginEventArgs.LoginModel = model;
-                loginEventArgs.Barcode = txtBarcode.Text;
+                loginEventArgs.Barcode = txtBarcode.Text.Trim().ToUpper();
 
                 EventUtility.fireEvent(ConfirmEmployeeIdEvent, this, loginEventArgs);
 
                 if (!loginEventArgs.HasErrors)
                 {
                     LocalCache.Instance().PreviousUser = ClientInfo.getInstance().LoggedUser;
-                    EventUtility.fireEvent(LoginEvent, this, loginEventArgs);
+                    loginEventArgs.ConfirmType = "Manager,Supervisor,Administrator";
+                    EventUtility.fireEvent(ConfirmLoginEvent, this, loginEventArgs);
                     if (!loginEventArgs.HasErrors)
                     {
                         IsConfirmed = true;
                     }
-
+                    else
+                    {
+                        IsConfirmed = false;
+                    }
                 }
                 ReturnResult();
 

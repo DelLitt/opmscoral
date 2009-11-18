@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace RawInput
+namespace AppFrameClient.Common
 {
     /// <summary>
     /// Handles raw input from keyboard devices.
@@ -31,7 +31,7 @@ namespace RawInput
         
         private const int WM_KEYDOWN	    = 0x0100;
         private const int WM_SYSKEYDOWN     = 0x0104;
-		private const int WM_INPUT		    = 0x00FF;
+        private const int WM_INPUT		    = 0x00FF;
         private const int VK_OEM_CLEAR      = 0xFE;
         private const int VK_LAST_KEY       = VK_OEM_CLEAR; // this is a made up value used as a sentinel
        
@@ -351,8 +351,8 @@ namespace RawInput
                     uint pcbSize = 0;
 
                     RAWINPUTDEVICELIST rid = (RAWINPUTDEVICELIST)Marshal.PtrToStructure(
-                                               new IntPtr((pRawInputDeviceList.ToInt32() + (dwSize * i))),
-                                               typeof(RAWINPUTDEVICELIST));
+                                                                     new IntPtr((pRawInputDeviceList.ToInt32() + (dwSize * i))),
+                                                                     typeof(RAWINPUTDEVICELIST));
 
                     GetRawInputDeviceInfo(rid.hDevice, RIDI_DEVICENAME, IntPtr.Zero, ref pcbSize);
 
@@ -441,10 +441,10 @@ namespace RawInput
                 // with information about the input
                 if (buffer != IntPtr.Zero &&
                     GetRawInputData(message.LParam,
-                                     RID_INPUT,
-                                     buffer,
-                                     ref dwSize,
-                                     (uint)Marshal.SizeOf(typeof(RAWINPUTHEADER))) == dwSize)
+                                    RID_INPUT,
+                                    buffer,
+                                    ref dwSize,
+                                    (uint)Marshal.SizeOf(typeof(RAWINPUTHEADER))) == dwSize)
                 {
                     // Store the message information in "raw", then check
                     // that the input comes from a keyboard device before
@@ -459,51 +459,51 @@ namespace RawInput
                         /*if (raw.keyboard.Message == WM_KEYDOWN || raw.keyboard.Message == WM_SYSKEYDOWN)
                         {*/
 
-                            ushort key = raw.keyboard.VKey;
+                        ushort key = raw.keyboard.VKey;
 
-                            // On most keyboards, "extended" keys such as the arrow or 
-                            // page keys return two codes - the key's own code, and an
-                            // "extended key" flag, which translates to 255. This flag
-                            // isn't useful to us, so it can be disregarded.
-                            if (key > VK_LAST_KEY)
-                            {
-                                return;
-                            }
+                        // On most keyboards, "extended" keys such as the arrow or 
+                        // page keys return two codes - the key's own code, and an
+                        // "extended key" flag, which translates to 255. This flag
+                        // isn't useful to us, so it can be disregarded.
+                        if (key > VK_LAST_KEY)
+                        {
+                            return;
+                        }
 
-                            // Retrieve information about the device and the
-                            // key that was pressed.
-                            DeviceInfo dInfo = null;
+                        // Retrieve information about the device and the
+                        // key that was pressed.
+                        DeviceInfo dInfo = null;
 
-                            if (deviceList.Contains(raw.header.hDevice))
-                            {
-                                Keys myKey; 
+                        if (deviceList.Contains(raw.header.hDevice))
+                        {
+                            Keys myKey; 
 
-                                dInfo = (DeviceInfo)deviceList[raw.header.hDevice];
+                            dInfo = (DeviceInfo)deviceList[raw.header.hDevice];
 
-                                myKey = (Keys)Enum.Parse(typeof(Keys), Enum.GetName(typeof(Keys), key));
-                                dInfo.vKey = myKey.ToString();
-                                dInfo.key = key;
-                            }
-                            else
-                            {
-                                string errMessage = String.Format("Handle :{0} was not in hashtable. The device may support more than one handle or usage page, and is probably not a standard keyboard.", raw.header.hDevice);
-                                throw new ApplicationException(errMessage);
-                            }
+                            myKey = (Keys)Enum.Parse(typeof(Keys), Enum.GetName(typeof(Keys), key));
+                            dInfo.vKey = myKey.ToString();
+                            dInfo.key = key;
+                        }
+                        else
+                        {
+                            string errMessage = String.Format("Handle :{0} was not in hashtable. The device may support more than one handle or usage page, and is probably not a standard keyboard.", raw.header.hDevice);
+                            throw new ApplicationException(errMessage);
+                        }
 
-                            // If the key that was pressed is valid and there
-                            // was no problem retrieving information on the device,
-                            // raise the KeyPressed event.
-                            if (KeyPressed != null && dInfo != null)
-                            {
-                                KeyPressed(this, new KeyControlEventArgs(dInfo, GetDevice(message.LParam.ToInt32())));
-                            }
-                            else
-                            {
-                                string errMessage = String.Format("Received Unknown Key: {0}. Possibly an unknown device", key);
-                                throw new ApplicationException(errMessage);
-                            }
+                        // If the key that was pressed is valid and there
+                        // was no problem retrieving information on the device,
+                        // raise the KeyPressed event.
+                        if (KeyPressed != null && dInfo != null)
+                        {
+                            KeyPressed(this, new KeyControlEventArgs(dInfo, GetDevice(message.LParam.ToInt32())));
+                        }
+                        else
+                        {
+                            string errMessage = String.Format("Received Unknown Key: {0}. Possibly an unknown device", key);
+                            throw new ApplicationException(errMessage);
                         }
                     }
+                }
                 /*}*/
             }
             finally
@@ -552,15 +552,15 @@ namespace RawInput
         /// </summary>
         /// <param name="message">The Windows message.</param>
         public void ProcessMessage( Message message )
-		{
-			switch( message.Msg )
-			{
-				case WM_INPUT:
-		        {
-		            ProcessInputCommand( message );
-		        }
-				break;
-			}
+        {
+            switch( message.Msg )
+            {
+                case WM_INPUT:
+                    {
+                        ProcessInputCommand( message );
+                    }
+                    break;
+            }
         }
 
         #endregion ProcessMessage( Message message )

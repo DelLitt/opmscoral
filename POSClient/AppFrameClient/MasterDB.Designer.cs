@@ -19502,7 +19502,8 @@ GROUP BY department_stock_in.STOCK_IN_ID, department_stock_in.STOCK_IN_DATE";
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select distinct product_name from product_master where type_id= @TypeId";
+            this._commandCollection[0].CommandText = "select distinct product_name from product_master where type_id= @TypeId ORDER BY " +
+                "product_name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@TypeId";

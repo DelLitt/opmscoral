@@ -317,7 +317,8 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddEqCriteria("DepartmentId", e.Department.DepartmentId);
             criteria.AddGreaterOrEqualsCriteria("CreateDate", lastSyncTime);
-            
+            criteria.AddEqCriteria("ConfirmFlg", CommonConstants.DEL_FLG_NO);
+
             e.SyncFromMainToDepartment.StockOutList = StockOutLogic.FindAll(criteria);
             e.SyncFromMainToDepartment.Department = e.Department;
             criteria = new ObjectCriteria();

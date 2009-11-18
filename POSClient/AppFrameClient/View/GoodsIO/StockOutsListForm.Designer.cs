@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvStockOutDetail = new System.Windows.Forms.DataGridView();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,11 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvStockOut = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bdsDeptStockOut = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -83,6 +79,11 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.barcodePrintDocument = new System.Drawing.Printing.PrintDocument();
             this.barcodePrintDialog = new System.Windows.Forms.PrintDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDeptStockOutDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).BeginInit();
@@ -95,7 +96,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(550, 498);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.Size = new System.Drawing.Size(68, 15);
             this.label6.TabIndex = 40;
             this.label6.Text = "Tổng cộng:";
             // 
@@ -262,6 +263,8 @@
             // 
             // dtpTo
             // 
+            this.dtpTo.CustomFormat = "dd/MM/yyyy";
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(496, 72);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(200, 20);
@@ -269,6 +272,8 @@
             // 
             // dtpFrom
             // 
+            this.dtpFrom.CustomFormat = "dd/MM/yyyy";
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(248, 72);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(200, 20);
@@ -286,7 +291,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 253);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.Size = new System.Drawing.Size(44, 15);
             this.label5.TabIndex = 35;
             this.label5.Text = "Chi tiết";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -296,7 +301,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(43, 15);
             this.label4.TabIndex = 34;
             this.label4.Text = "Liệt kê";
             // 
@@ -304,6 +309,8 @@
             // 
             this.dgvStockOut.AllowUserToAddRows = false;
             this.dgvStockOut.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvStockOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvStockOut.AutoGenerateColumns = false;
             this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -315,41 +322,11 @@
             this.dgvStockOut.DataSource = this.bdsDeptStockOut;
             this.dgvStockOut.Location = new System.Drawing.Point(38, 109);
             this.dgvStockOut.Name = "dgvStockOut";
+            this.dgvStockOut.ReadOnly = true;
             this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockOut.Size = new System.Drawing.Size(744, 141);
             this.dgvStockOut.TabIndex = 29;
             this.dgvStockOut.SelectionChanged += new System.EventHandler(this.dgvStockOut_SelectionChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Số";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "DepartmentName";
-            this.Column2.HeaderText = "Nơi xuất";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "CreateDate";
-            this.Column3.HeaderText = "Ngày xuất";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "TotalQuantity";
-            this.Column4.HeaderText = "Số lượng";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "StockOut.DefectStatus.DefectStatusName";
-            this.Column5.HeaderText = "Lý do";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 200;
             // 
             // btnSearch
             // 
@@ -366,7 +343,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(464, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(28, 15);
             this.label3.TabIndex = 27;
             this.label3.Text = "đến";
             // 
@@ -375,7 +352,7 @@
             this.rdoToday.AutoSize = true;
             this.rdoToday.Location = new System.Drawing.Point(343, 49);
             this.rdoToday.Name = "rdoToday";
-            this.rdoToday.Size = new System.Drawing.Size(93, 17);
+            this.rdoToday.Size = new System.Drawing.Size(103, 19);
             this.rdoToday.TabIndex = 23;
             this.rdoToday.TabStop = true;
             this.rdoToday.Text = "Ngày hôm nay";
@@ -387,7 +364,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(221, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 13);
+            this.label2.Size = new System.Drawing.Size(21, 15);
             this.label2.TabIndex = 26;
             this.label2.Text = "Từ";
             // 
@@ -396,7 +373,7 @@
             this.rdoAll.AutoSize = true;
             this.rdoAll.Location = new System.Drawing.Point(580, 49);
             this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new System.Drawing.Size(55, 17);
+            this.rdoAll.Size = new System.Drawing.Size(57, 19);
             this.rdoAll.TabIndex = 25;
             this.rdoAll.TabStop = true;
             this.rdoAll.Text = "Bất kỳ";
@@ -408,7 +385,7 @@
             this.rdoThisWeek.AutoSize = true;
             this.rdoThisWeek.Location = new System.Drawing.Point(452, 49);
             this.rdoThisWeek.Name = "rdoThisWeek";
-            this.rdoThisWeek.Size = new System.Drawing.Size(93, 17);
+            this.rdoThisWeek.Size = new System.Drawing.Size(103, 19);
             this.rdoThisWeek.TabIndex = 24;
             this.rdoThisWeek.TabStop = true;
             this.rdoThisWeek.Text = "Tuần hôm nay";
@@ -461,7 +438,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(296, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 29);
+            this.label1.Size = new System.Drawing.Size(390, 30);
             this.label1.TabIndex = 22;
             this.label1.Text = "DANH SÁCH PHIẾU XUẤT KHO";
             // 
@@ -481,7 +458,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 500);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.Size = new System.Drawing.Size(56, 15);
             this.label7.TabIndex = 46;
             this.label7.Text = "Số lượng";
             // 
@@ -502,7 +479,7 @@
             this.chkPricePrint.AutoSize = true;
             this.chkPricePrint.Location = new System.Drawing.Point(325, 501);
             this.chkPricePrint.Name = "chkPricePrint";
-            this.chkPricePrint.Size = new System.Drawing.Size(52, 17);
+            this.chkPricePrint.Size = new System.Drawing.Size(56, 19);
             this.chkPricePrint.TabIndex = 44;
             this.chkPricePrint.Text = "In giá";
             this.chkPricePrint.UseVisualStyleBackColor = true;
@@ -512,7 +489,7 @@
             this.chkContinuePrint.AutoSize = true;
             this.chkContinuePrint.Location = new System.Drawing.Point(234, 501);
             this.chkContinuePrint.Name = "chkContinuePrint";
-            this.chkContinuePrint.Size = new System.Drawing.Size(74, 17);
+            this.chkContinuePrint.Size = new System.Drawing.Size(82, 19);
             this.chkContinuePrint.TabIndex = 43;
             this.chkContinuePrint.Text = "In liên tiếp";
             this.chkContinuePrint.UseVisualStyleBackColor = true;
@@ -534,6 +511,43 @@
             // barcodePrintDialog
             // 
             this.barcodePrintDialog.UseEXDialog = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "StockOut.StockoutId";
+            this.Column1.HeaderText = "Số";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "DepartmentName";
+            this.Column2.HeaderText = "Nơi xuất";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "CreateDate";
+            this.Column3.HeaderText = "Ngày xuất";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "TotalQuantity";
+            this.Column4.HeaderText = "Số lượng";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "StockOut.DefectStatus.DefectStatusName";
+            this.Column5.HeaderText = "Lý do";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
             // 
             // StockOutsListForm
             // 

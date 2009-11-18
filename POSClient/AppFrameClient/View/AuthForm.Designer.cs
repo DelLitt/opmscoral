@@ -37,6 +37,7 @@ namespace AppFrameClient.View
             this.lblStatus = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -94,11 +95,17 @@ namespace AppFrameClient.View
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // AuthForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label1);
@@ -118,6 +125,7 @@ namespace AppFrameClient.View
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.lblStatus, 0);
             this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +141,6 @@ namespace AppFrameClient.View
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
