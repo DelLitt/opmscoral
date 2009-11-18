@@ -56,7 +56,8 @@ namespace AppFrame.Controls.HotKey
         #endregion
 
         protected void MessageEvent(object sender,ref Message m,ref bool Handled)
-        {	//Handle WM_Hotkey event
+        {
+            //Handle WM_Hotkey event
             if ((m.Msg==(int)Msgs.WM_HOTKEY)&&(m.WParam==(IntPtr)this.GetType().GetHashCode()))
             {
                 Handled=true;
