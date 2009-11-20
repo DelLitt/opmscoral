@@ -305,6 +305,10 @@ namespace AppFrameClient.View
                         IsConfirmed = false;
                     }
                 }
+                if (form is AppFrame.View.MainForm)
+                {
+                    ((AppFrame.View.MainForm)form).stopProgressBar();
+                }
                 ReturnResult();
 
             }
