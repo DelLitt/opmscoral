@@ -1113,6 +1113,31 @@ FROM      category</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="stock_def_fileTableAdapter" GeneratorDataComponentClassName="stock_def_fileTableAdapter" Name="stock_def_file" UserDataComponentName="stock_def_fileTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText> SELECT c.type_id,d.type_name,b.product_master_id,c.product_name,a.product_id 
+ FROM 
+ stock a 
+ INNER JOIN product b ON a.product_id=b.product_id 
+ INNER JOIN product_master c ON a.product_master_id=c.product_master_id 
+ INNER JOIN product_type d ON c.type_id=d.type_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="type_id" DataSetColumn="type_id" />
+              <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+              <Mapping SourceColumn="product_master_id" DataSetColumn="product_master_id" />
+              <Mapping SourceColumn="product_name" DataSetColumn="product_name" />
+              <Mapping SourceColumn="product_id" DataSetColumn="product_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1735,6 +1760,41 @@ FROM      category</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="stock_def_file" msprop:Generator_UserTableName="stock_def_file" msprop:Generator_RowDeletedName="stock_def_fileRowDeleted" msprop:Generator_RowChangedName="stock_def_fileRowChanged" msprop:Generator_RowClassName="stock_def_fileRow" msprop:Generator_RowChangingName="stock_def_fileRowChanging" msprop:Generator_RowEvArgName="stock_def_fileRowChangeEvent" msprop:Generator_RowEvHandlerName="stock_def_fileRowChangeEventHandler" msprop:Generator_TableClassName="stock_def_fileDataTable" msprop:Generator_TableVarName="tablestock_def_file" msprop:Generator_RowDeletingName="stock_def_fileRowDeleting" msprop:Generator_TablePropName="stock_def_file">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="type_id" msprop:Generator_UserColumnName="type_id" msprop:Generator_ColumnVarNameInTable="columntype_id" msprop:Generator_ColumnPropNameInRow="type_id" msprop:Generator_ColumnPropNameInTable="type_idColumn" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="type_name" msprop:Generator_UserColumnName="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product_master_id" msprop:Generator_UserColumnName="product_master_id" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnproduct_master_id" msprop:Generator_ColumnPropNameInTable="product_master_idColumn" msprop:Generator_ColumnPropNameInRow="product_master_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product_name" msprop:Generator_UserColumnName="product_name" msprop:Generator_ColumnVarNameInTable="columnproduct_name" msprop:Generator_ColumnPropNameInRow="product_name" msprop:Generator_ColumnPropNameInTable="product_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="product_id" msprop:Generator_UserColumnName="product_id" msprop:nullValue="_empty" msprop:Generator_ColumnVarNameInTable="columnproduct_id" msprop:Generator_ColumnPropNameInTable="product_idColumn" msprop:Generator_ColumnPropNameInRow="product_id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1799,6 +1859,14 @@ FROM      category</CommandText>
       <xs:field xpath="mstns:product_master_id" />
       <xs:field xpath="mstns:product_id" />
     </xs:unique>
+    <xs:unique name="stock_def_file_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:stock_def_file" />
+      <xs:field xpath="mstns:product_master_id" />
+    </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:stock_def_file" />
+      <xs:field xpath="mstns:product_id" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -1810,6 +1878,7 @@ FROM      category</CommandText>
       <msdata:Relationship name="fk_product_21" msdata:parent="product_master_ids" msdata:child="product" msdata:parentkey="product_master_id" msdata:childkey="PRODUCT_MASTER_ID" msprop:Generator_UserRelationName="fk_product_21" msprop:Generator_RelationVarName="relationfk_product_21" msprop:Generator_UserChildTable="product" msprop:Generator_UserParentTable="product_master_ids" msprop:Generator_ParentPropName="product_master_idsRow" msprop:Generator_ChildPropName="GetproductRows" />
       <msdata:Relationship name="product_master_ibfk_1" msdata:parent="category" msdata:child="product_master" msdata:parentkey="CATEGORY_ID" msdata:childkey="CATEGORY_ID" msprop:Generator_UserRelationName="product_master_ibfk_1" msprop:Generator_RelationVarName="relationproduct_master_ibfk_1" msprop:Generator_UserChildTable="product_master" msprop:Generator_UserParentTable="category" msprop:Generator_ParentPropName="categoryRow" msprop:Generator_ChildPropName="Getproduct_masterRows" />
       <msdata:Relationship name="department_stock_ibfk_1" msdata:parent="product" msdata:child="deptstock_def_file" msdata:parentkey="PRODUCT_ID" msdata:childkey="product_id" msprop:Generator_UserRelationName="department_stock_ibfk_1" msprop:Generator_RelationVarName="relationdepartment_stock_ibfk_1" msprop:Generator_UserChildTable="deptstock_def_file" msprop:Generator_UserParentTable="product" msprop:Generator_ParentPropName="productRow" msprop:Generator_ChildPropName="Getdeptstock_def_fileRows" />
+      <msdata:Relationship name="stock_ibfk_1" msdata:parent="product" msdata:child="stock_def_file" msdata:parentkey="PRODUCT_ID" msdata:childkey="product_id" msprop:Generator_UserRelationName="stock_ibfk_1" msprop:Generator_RelationVarName="relationstock_ibfk_1" msprop:Generator_UserChildTable="stock_def_file" msprop:Generator_UserParentTable="product" msprop:Generator_ParentPropName="productRow" msprop:Generator_ChildPropName="Getstock_def_fileRows" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

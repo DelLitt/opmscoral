@@ -2,6 +2,9 @@
     
     
     public partial class MasterDB {
+        partial class stock_def_fileDataTable
+        {
+        }
     }
 }
 

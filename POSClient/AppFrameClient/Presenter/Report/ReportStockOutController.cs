@@ -202,6 +202,7 @@ namespace AppFrameClient.Presenter.Report
                                                     DefectStatusId = 0,
                                                     DefectStatusName = "Xuất hàng bình thường"
                                                 };
+                    stockOut.DepartmentId = departmentStockOut.OtherDepartmentId;
                     
                 }
                 IList detlist = new ArrayList();
@@ -212,11 +213,12 @@ namespace AppFrameClient.Presenter.Report
                     StockOutDetail detailStockOut = detailMapper.Convert(detail);
                     if(departmentStockOut.OtherDepartmentId > 0 )
                     {
-                    detailStockOut.DefectStatus = new StockDefectStatus
+                        detailStockOut.DefectStatus = new StockDefectStatus
                                                 {
                                                     DefectStatusId = 0,
                                                     DefectStatusName = "Xuất hàng bình thường"
                                                 };
+                        
                     }
                     detlist.Add(detailStockOut);                                           
                 }
