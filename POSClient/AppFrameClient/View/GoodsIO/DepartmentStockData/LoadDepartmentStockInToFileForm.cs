@@ -169,13 +169,20 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     deptEvent.Department = department;
                     EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
 
+                    int countSyncFile = 1;
                     if (deptEvent.SyncFromMainToDepartment != null)
                         //&& deptEvent.SyncFromMainToDepartment.StockOutList != null
                         //&& deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0)
                     {
+
+                        // ++ AMEND : SEPARATE STOCKOUTS AND COMMON INFO
+                        
                         //var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
-                        string fileName = exportPath + "\\" + department.DepartmentId + "_SyncDown_" +
-                                                              DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + CommonConstants.SERVER_SYNC_FORMAT;
+                        #region oldsynccode
+                        /*string fileName = exportPath + "\\" + department.DepartmentId                                           
+                                          + "_SyncDown_"  
+                                          + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") 
+                                          + CommonConstants.SERVER_SYNC_FORMAT;
                         SyncResult result = new SyncResult();
                         result.FileName = fileName;
                         result.Status = "Thành công";
@@ -184,7 +191,67 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         BinaryFormatter bf = new BinaryFormatter();
                         bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
                         stream.Flush();
-                        stream.Close();
+                        stream.Close();*/
+                        
+                        #endregion
+
+                        SyncFromMainToDepartment common = new SyncFromMainToDepartment();
+                        
+                            common.Department = deptEvent.SyncFromMainToDepartment.Department;
+                            common.DepartmentList = deptEvent.SyncFromMainToDepartment.DepartmentList;
+                            common.EmployeeList = deptEvent.SyncFromMainToDepartment.EmployeeList;
+                            common.DepartmentPriceMasterList =
+                                deptEvent.SyncFromMainToDepartment.DepartmentPriceMasterList;
+                            common.DepartmentStockTemps = deptEvent.SyncFromMainToDepartment.DepartmentStockTemps;
+                            common.ProductMasterList = deptEvent.SyncFromMainToDepartment.ProductMasterList;
+                            common.UserInfoList = deptEvent.SyncFromMainToDepartment.UserInfoList;
+
+                            string fileName = exportPath + "\\" + department.DepartmentId
+                                              + "_" + countSyncFile.ToString()
+                                              + "_SyncDown_"
+                                              + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")
+                                              + CommonConstants.SERVER_SYNC_FORMAT;
+                            SyncResult result = new SyncResult();
+                            result.FileName = fileName;
+                            result.Status = "Thành công";
+                            resultList.Add(result);
+                            Stream stream = File.Open(fileName, FileMode.Create);
+                            BinaryFormatter bf = new BinaryFormatter();
+                            bf.Serialize(stream, deptEvent.SyncFromMainToDepartment);
+                            stream.Flush();
+                            stream.Close();
+                        
+                        // write each stock out to a sync file for avoiding duplicate update
+                        if(deptEvent.SyncFromMainToDepartment.StockOutList!=null 
+                           && deptEvent.SyncFromMainToDepartment.StockOutList.Count > 0 )
+                        {
+                            foreach (StockOut stockOut in deptEvent.SyncFromMainToDepartment.StockOutList)
+                            {
+                                countSyncFile += 1;
+                                SyncFromMainToDepartment soSync = new SyncFromMainToDepartment();
+                                soSync.Department = deptEvent.SyncFromMainToDepartment.Department;
+                                soSync.StockOutList = new ArrayList();
+                                soSync.StockOutList.Add(stockOut);
+
+                                string soFileName = exportPath + "\\" + department.DepartmentId
+                                              + "_" + countSyncFile.ToString()
+                                              + "_SyncDown_"
+                                              + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")
+                                              + CommonConstants.SERVER_SYNC_FORMAT;
+                                SyncResult soResult = new SyncResult();
+                                soResult.FileName = soFileName;
+                                soResult.Status = "Thành công";
+                                resultList.Add(soResult);
+                                Stream soStream = File.Open(soFileName, FileMode.Create);
+                                BinaryFormatter soBf = new BinaryFormatter();
+                                soBf.Serialize(soStream, soSync);
+                                soStream.Flush();
+                                soStream.Close();
+                            }
+                        }
+
+
+                        // -- AMEND : SEPARATE STOCKOUTS AND COMMON INFO
                         // write last sync time
                         //ClientUtility.WriteLastSyncTime(exportPath,department,ClientUtility.SyncType.SyncDown);
                     }
