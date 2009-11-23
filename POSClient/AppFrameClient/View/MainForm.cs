@@ -1285,6 +1285,12 @@ namespace AppFrame.View
         {
             new ExportDeptStockDefinitionForm().ShowDialog();
         }
+
+        private void mnuCheckStockEvaluation_Click(object sender, EventArgs e)
+        {
+            DeptStockEvaluationComparingForm form = new DeptStockEvaluationComparingForm();
+            form.ShowDialog();
+        }
         
     }
 }

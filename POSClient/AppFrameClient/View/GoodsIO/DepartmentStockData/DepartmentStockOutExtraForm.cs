@@ -1419,11 +1419,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         if (parseLines.Length == 2)
                         {
-                            list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += Int32.Parse(parseLines[1].Trim());
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            }
+
                         }
                         else
                         {
-                            list.Add(parseLines[0].Trim(), 1);
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += 1;
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), 1);
+                            }
+
                         }
                     }
                     catch (Exception)

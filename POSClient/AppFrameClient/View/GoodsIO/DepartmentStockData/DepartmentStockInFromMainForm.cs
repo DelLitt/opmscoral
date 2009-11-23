@@ -1222,29 +1222,39 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
 
                 Dictionary<string, int> list = new Dictionary<string, int>();
+
                 string path = fileDialog.FileName;
-                if(path.IndexOf("_XuatHangNam_")<= 0 )
+                
+                // try to get department name from filename
+                try
                 {
-                    InformationBox.Show("File sai định dạng !", new AutoCloseParameters(1));
-                    return;
-                }
-
-                string origPath = path.Replace("\\", "/");
-                string origFileName = origPath.Substring(origPath.LastIndexOf("/")+1);
-                string deptIDStr = origFileName.Substring(0, origFileName.IndexOf("_"));
-                long exportDeptId = 0;
-
-                Utility.ClientUtility.TryActionHelper(delegate { exportDeptId = Int64.Parse(deptIDStr);},1);
-
-                IList deptList = (IList)bdsDept.DataSource;
-                for (int i = 0; i < deptList.Count; i++)
-                {
-                    Department dept = (Department)deptList[i];
-                    if(dept.DepartmentId==exportDeptId )
+                    
+                    /*if (path.IndexOf("_XuatHangNam_") <= 0)
                     {
-                        cbbDept.SelectedIndex = i;
-                        break;
+                        InformationBox.Show("File sai định dạng !", new AutoCloseParameters(1));
+                        return;
+                    }*/
+                    string origPath = path.Replace("\\", "/");    
+                    string origFileName = origPath.Substring(origPath.LastIndexOf("/") + 1);
+                    string deptIdStr = origFileName.Substring(0, origFileName.IndexOf("_"));
+                    long exportDeptId = 0;
+
+                    Utility.ClientUtility.TryActionHelper(delegate { exportDeptId = Int64.Parse(deptIdStr); }, 1);
+
+                    IList deptList = (IList)bdsDept.DataSource;
+                    for (int i = 0; i < deptList.Count; i++)
+                    {
+                        Department dept = (Department)deptList[i];
+                        if (dept.DepartmentId == exportDeptId)
+                        {
+                            cbbDept.SelectedIndex = i;
+                            break;
+                        }
                     }
+                }
+                finally
+                {
+                   // do nothing     
                 }
 
                 StreamReader fileReader = new StreamReader(File.OpenRead(path));
@@ -1258,11 +1268,27 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         if (parseLines.Length == 2)
                         {
-                            list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += Int32.Parse(parseLines[1].Trim());
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            }
+
                         }
                         else
                         {
-                            list.Add(parseLines[0].Trim(), 1);
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += 1;
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), 1);
+                            }
+
                         }
                     }
                     catch (Exception)

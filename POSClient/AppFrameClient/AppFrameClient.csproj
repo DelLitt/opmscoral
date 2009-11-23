@@ -375,6 +375,12 @@
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\DeptStockEvaluationComparingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeptStockEvaluationComparingForm.Designer.cs">
+      <DependentUpon>DeptStockEvaluationComparingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EmployeeCheckingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1444,6 +1450,9 @@
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DeptStockEvaluationComparingForm.resx">
+      <DependentUpon>DeptStockEvaluationComparingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeCheckingForm.resx">
       <DependentUpon>EmployeeCheckingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1838,6 +1847,7 @@
     <Content Include="Resources\white folder documents.png" />
     <None Include="Properties\DataSources\AppFrame.Model.ProductColor.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.ProductSize.datasource" />
+    <None Include="Properties\DataSources\AppFrame.Model.ProductType.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockOut.datasource" />
     <None Include="Properties\DataSources\AppFrame.View.GoodsIO.DepartmentGoodsIO.ScanType.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutDetailView.datasource" />

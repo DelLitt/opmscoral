@@ -150,6 +150,7 @@
             this.mnuExportDatabaseImage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImportDatabaseImage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmployeeMoney = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDeptStockDefExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalePoint = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDefineSalePoint = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentSubStock = new System.Windows.Forms.ToolStripMenuItem();
@@ -205,7 +206,8 @@
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.mnuDeptStockDefExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCheckStockEvaluation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -531,7 +533,9 @@
             this.mnuReturnPOReport,
             this.mnuReturnMainStockReport,
             this.mnuDepartmentStockIn,
-            this.mnuDepartmentStockOut});
+            this.mnuDepartmentStockOut,
+            this.toolStripMenuItem26,
+            this.mnuCheckStockEvaluation});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(105, 23);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -1135,6 +1139,13 @@
             this.mnuEmployeeMoney.Text = "Nhập tiền";
             this.mnuEmployeeMoney.Click += new System.EventHandler(this.employeeMoneyToolStripMenuItem_Click);
             // 
+            // mnuDeptStockDefExport
+            // 
+            this.mnuDeptStockDefExport.Name = "mnuDeptStockDefExport";
+            this.mnuDeptStockDefExport.Size = new System.Drawing.Size(308, 24);
+            this.mnuDeptStockDefExport.Text = "Xuất định nghĩa mặt hàng để kiểm kê";
+            this.mnuDeptStockDefExport.Click += new System.EventHandler(this.mnuDeptStockDefExport_Click);
+            // 
             // mnuSalePoint
             // 
             this.mnuSalePoint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1629,12 +1640,17 @@
             this.crlRestoreHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftL;
             this.crlRestoreHotkey.Pressed += new System.EventHandler(this.crlRestoreHotkey_Pressed);
             // 
-            // mnuDeptStockDefExport
+            // toolStripMenuItem26
             // 
-            this.mnuDeptStockDefExport.Name = "mnuDeptStockDefExport";
-            this.mnuDeptStockDefExport.Size = new System.Drawing.Size(308, 24);
-            this.mnuDeptStockDefExport.Text = "Xuất định nghĩa mặt hàng để kiểm kê";
-            this.mnuDeptStockDefExport.Click += new System.EventHandler(this.mnuDeptStockDefExport_Click);
+            this.toolStripMenuItem26.Name = "toolStripMenuItem26";
+            this.toolStripMenuItem26.Size = new System.Drawing.Size(312, 6);
+            // 
+            // mnuCheckStockEvaluation
+            // 
+            this.mnuCheckStockEvaluation.Name = "mnuCheckStockEvaluation";
+            this.mnuCheckStockEvaluation.Size = new System.Drawing.Size(315, 24);
+            this.mnuCheckStockEvaluation.Text = "Kiểm tra số lượng kiểm kê";
+            this.mnuCheckStockEvaluation.Click += new System.EventHandler(this.mnuCheckStockEvaluation_Click);
             // 
             // MainForm
             // 
@@ -1846,6 +1862,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem25;
         private System.Windows.Forms.ToolStripMenuItem mnuCategoryAssigning;
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStockDefExport;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem26;
+        private System.Windows.Forms.ToolStripMenuItem mnuCheckStockEvaluation;
 
     }
 }
