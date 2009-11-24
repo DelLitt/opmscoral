@@ -223,6 +223,7 @@ namespace AppFrameClient.Presenter.Report
                     detlist.Add(detailStockOut);                                           
                 }
                 stockOut.StockOutDetails = detlist;
+                stockIn.NotUpdateMainStock = true;
                 StockInLogic.AddForStockOutToProducer(stockIn);
                 StockOutLogic.Add(stockOut);
                 departmentStockOut.ConfirmFlg = 2;

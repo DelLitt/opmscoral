@@ -20,6 +20,8 @@ namespace AppFrameClient.View
 
         private void DeptStockEvaluationComparingForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'masterDB3.mainstkqty' table. You can move, or remove it, as needed.
+            this.mainstkqtyTableAdapter.Fill(this.masterDB3.mainstkqty);
             // TODO: This line of code loads data into the 'masterDB2.product_type' table. You can move, or remove it, as needed.
             this.product_typeTableAdapter.Fill(this.masterDB2.product_type);
             // TODO: This line of code loads data into the 'masterDB.Department' table. You can move, or remove it, as needed.
@@ -61,6 +63,7 @@ namespace AppFrameClient.View
 
 
             this.masterDB1.EnforceConstraints = false;
+            this.masterDB3.EnforceConstraints = false;
         }
 
         private void cboDepartments_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +78,15 @@ namespace AppFrameClient.View
                 dgvDeptStock.Refresh();
                 dgvDeptStock.Invalidate();
             }
+            else
+            {
+                dgvDeptStock.Visible = false;
+                dgvStock.Visible = true;
+                this.mainstkqtyTableAdapter.Fill(masterDB3.mainstkqty);
+                mainstkqtyBindingSource.ResetBindings(false);
+                dgvStock.Refresh();
+                dgvStock.Invalidate();
+            }
         }
 
         private void cboTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,24 +96,48 @@ namespace AppFrameClient.View
 
         private void FilterDataset()
         {
+            int deptId = Int32.Parse(cboDepartments.SelectedValue.ToString());
             int typeId = Int32.Parse(cboTypes.SelectedValue.ToString());
-            if (typeId != 0)
+            if (deptId > 0)
             {
-                stockqtyBindingSource.Filter = "type_id = " + typeId;
-            }
-            if (chkDifferent.Checked)
-            {
-                string strAnd = "";
-                if (!string.IsNullOrEmpty(stockqtyBindingSource.Filter))
+                if (typeId != 0)
                 {
-                    strAnd= " AND ";
+                    stockqtyBindingSource.Filter = "type_id = " + typeId;
                 }
-                stockqtyBindingSource.Filter += strAnd + " quantity <> realquantity ";    
-            }
+                if (chkDifferent.Checked)
+                {
+                    string strAnd = "";
+                    if (!string.IsNullOrEmpty(stockqtyBindingSource.Filter))
+                    {
+                        strAnd = " AND ";
+                    }
+                    stockqtyBindingSource.Filter += strAnd + " quantity <> realquantity ";
+                }
 
-            stockqtyBindingSource.ResetBindings(false);
-            dgvDeptStock.Refresh();
-            dgvDeptStock.Invalidate();
+                stockqtyBindingSource.ResetBindings(false);
+                dgvDeptStock.Refresh();
+                dgvDeptStock.Invalidate();
+            }
+            else
+            {
+                if (typeId != 0)
+                {
+                    mainstkqtyBindingSource.Filter = "type_id = " + typeId;
+                }
+                if (chkDifferent.Checked)
+                {
+                    string strAnd = "";
+                    if (!string.IsNullOrEmpty(mainstkqtyBindingSource.Filter))
+                    {
+                        strAnd = " AND ";
+                    }
+                    mainstkqtyBindingSource.Filter += strAnd + " quantity <> realquantity ";
+                }
+
+                mainstkqtyBindingSource.ResetBindings(false);
+                dgvStock.Refresh();
+                dgvStock.Invalidate();
+            }
         }
 
         private ErrorForm _errorForm = null;
@@ -164,20 +200,43 @@ namespace AppFrameClient.View
                         continue;
                     }
                 }
-                foreach (KeyValuePair<string, int> barCodeLine in list)
+
+                int deptId = Int32.Parse(cboDepartments.SelectedValue.ToString());
+                int typeId = Int32.Parse(cboTypes.SelectedValue.ToString());
+                if (deptId > 0)
                 {
-                    foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
+                    foreach (KeyValuePair<string, int> barCodeLine in list)
                     {
-                        if(barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                        foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
                         {
-                            stockqtyRow.realquantity = barCodeLine.Value;
-                            break;
+                            if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                            {
+                                stockqtyRow.realquantity = barCodeLine.Value;
+                                break;
+                            }
                         }
                     }
+                    stockqtyBindingSource.ResetBindings(false);
+                    dgvDeptStock.Refresh();
+                    dgvDeptStock.Invalidate();
                 }
-                stockqtyBindingSource.ResetBindings(false);
-                dgvDeptStock.Refresh();
-                dgvDeptStock.Invalidate();
+                else
+                {
+                    foreach (KeyValuePair<string, int> barCodeLine in list)
+                    {
+                        foreach (MasterDB.mainstkqtyRow stockqtyRow in masterDB3.mainstkqty)
+                        {
+                            if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                            {
+                                stockqtyRow.realquantity = barCodeLine.Value;
+                                break;
+                            }
+                        }
+                    }
+                    stockqtyBindingSource.ResetBindings(false);
+                    dgvDeptStock.Refresh();
+                    dgvDeptStock.Invalidate();
+                }
             }
         }
 
@@ -185,5 +244,10 @@ namespace AppFrameClient.View
         {
             FilterDataset();
         }
+    }
+    class TypeViewObject
+    {
+        int TypeId { get; set; }
+        string TypeName { get; set; }
     }
 }

@@ -1850,6 +1850,7 @@
     <None Include="Properties\DataSources\AppFrame.Model.ProductType.datasource" />
     <None Include="Properties\DataSources\AppFrame.Model.StockOut.datasource" />
     <None Include="Properties\DataSources\AppFrame.View.GoodsIO.DepartmentGoodsIO.ScanType.datasource" />
+    <None Include="Properties\DataSources\AppFrameClient.View.TypeViewObject.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutDetailView.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutView.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockOutDetailView.datasource" />
