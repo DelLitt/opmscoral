@@ -84,6 +84,7 @@
             this.txtSum = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).BeginInit();
@@ -555,9 +556,20 @@
             this.textBox2.Size = new System.Drawing.Size(54, 27);
             this.textBox2.TabIndex = 44;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(96, 49);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(259, 23);
+            this.button4.TabIndex = 45;
+            this.button4.Text = "Nhập mã vạch từ file text";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // InventoryCheckingForm
             // 
             this.ClientSize = new System.Drawing.Size(944, 562);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.txtSum);
             this.Controls.Add(this.txtRealitySum);
             this.Controls.Add(this.btnDelete);
@@ -604,6 +616,7 @@
             this.Controls.SetChildIndex(this.btnDelete, 0);
             this.Controls.SetChildIndex(this.txtRealitySum, 0);
             this.Controls.SetChildIndex(this.txtSum, 0);
+            this.Controls.SetChildIndex(this.button4, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockDefect)).EndInit();
@@ -666,5 +679,6 @@
         private System.Windows.Forms.Label txtSum;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button4;
     }
 }

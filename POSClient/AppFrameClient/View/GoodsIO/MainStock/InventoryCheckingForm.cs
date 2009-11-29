@@ -505,5 +505,133 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             CalculateTotal();
         }
 
+        private ErrorForm _errorForm = null;    
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.CheckFileExists = true;
+            fileDialog.CheckPathExists = true;
+            fileDialog.Filter = "Text Files|*.txt";
+            DialogResult result = fileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                Dictionary<string, int> list = new Dictionary<string, int>();
+                string path = fileDialog.FileName;
+                StreamReader fileReader = new StreamReader(File.OpenRead(path));
+
+                while (!fileReader.EndOfStream)
+                {
+                    string line = fileReader.ReadLine();
+                    string[] parseLines = line.Split(',');
+
+                    try
+                    {
+                        if (parseLines.Length == 2)
+                        {
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += Int32.Parse(parseLines[1].Trim());
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            }
+
+                        }
+                        else
+                        {
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += 1;
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), 1);
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        if (_errorForm == null)
+                        {
+                            _errorForm = new ErrorForm();
+                            _errorForm.Caption = "Lỗi";
+                            _errorForm.ErrorString = "Các mã vạch bị lỗi khi nhập mã vạch từ file text";
+                        }
+                        _errorForm.ErrorDetails.Add(line);
+                        continue;
+                    }
+                }
+
+                foreach (KeyValuePair<string, int> barCodeLine in list)
+                {
+                    if (!string.IsNullOrEmpty(barCodeLine.Key) && barCodeLine.Key.Length == 12)
+                    {
+                        InventoryCheckingEventArgs checkingEventArgs = new InventoryCheckingEventArgs();
+                        /*if (!DepartmentChecking) 
+                        {*/
+                        /* ----------------- STOCK CHECKING --------------*/
+                        checkingEventArgs.InputBarcode = barCodeLine.Key;
+                        EventUtility.fireEvent(LoadGoodsByProductIdEvent, this, checkingEventArgs);
+                        Stock stock = checkingEventArgs.ScannedStock;
+                        if (stock == null)
+                        {
+                            MessageBox.Show("Không tìm thấy mã vạch trong kho", "Lỗi");
+                            return;
+                        }
+
+                        if (stock.ProductMaster.ProductType != null)
+                            txtProductType.Text = stock.ProductMaster.ProductType.TypeName;
+
+                        txtProductName.Text = stock.ProductMaster.ProductName;
+
+                        txtDescription.Text = stock.ProductMaster.Description;
+                        pictureBox1.ImageLocation = stock.ProductMaster.ImagePath;
+                        if (!string.IsNullOrEmpty(pictureBox1.ImageLocation))
+                        {
+                            if (File.Exists(pictureBox1.ImageLocation)) pictureBox1.Load();
+                        }
+
+                        int stockDefIndex = -1;
+                        Stock foundStock = GetFromStockList(stock, stockList);
+
+                        if (foundStock != null)
+                        {
+                            foundStock.GoodQuantity += barCodeLine.Value;
+                        }
+                        else
+                        {
+                            stock.GoodQuantity = barCodeLine.Value;
+                            stockList.Add(stock);
+                        }
+                        
+                        /* ----------------- DEPARTMENT STOCK CHECKING --------------*/
+
+                        bdsStockDefect.EndEdit();
+                        bdsStockDefect.ResetBindings(false);
+                        dgvStock.Refresh();
+                        dgvStock.Invalidate();
+                        int stockIndex = GetIndexFromList(stock, stockList);
+                        dgvStock.CurrentCell = dgvStock[5, stockIndex];
+                        
+                    }
+
+                }
+
+                txtBarcode.Text = "";
+                txtBarcode.Focus();
+                CalculateTotal();
+
+                if (_errorForm != null)
+                {
+                    _errorForm.ShowDialog();
+                    _errorForm = null;
+                }
+            }
+        }
+
     }
 }

@@ -1234,7 +1234,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         InformationBox.Show("File sai định dạng !", new AutoCloseParameters(1));
                         return;
                     }*/
-                    string origPath = path.Replace("\\", "/");    
+                    /*string origPath = path.Replace("\\", "/");    
                     string origFileName = origPath.Substring(origPath.LastIndexOf("/") + 1);
                     string deptIdStr = origFileName.Substring(0, origFileName.IndexOf("_"));
                     long exportDeptId = 0;
@@ -1250,7 +1250,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                             cbbDept.SelectedIndex = i;
                             break;
                         }
-                    }
+                    }*/
+                }
+                catch(Exception ex)
+                {
                 }
                 finally
                 {

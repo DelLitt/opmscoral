@@ -83,6 +83,8 @@
             this.mnuReturnMainStockReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockIn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentStockOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuCheckStockEvaluation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -206,8 +208,7 @@
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuCheckStockEvaluation = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStockEvaluationReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -535,7 +536,8 @@
             this.mnuDepartmentStockIn,
             this.mnuDepartmentStockOut,
             this.toolStripMenuItem26,
-            this.mnuCheckStockEvaluation});
+            this.mnuCheckStockEvaluation,
+            this.mnuStockEvaluationReport});
             this.mnuDeptStock.Name = "mnuDeptStock";
             this.mnuDeptStock.Size = new System.Drawing.Size(105, 23);
             this.mnuDeptStock.Text = "Kho cửa hàng";
@@ -633,6 +635,18 @@
             this.mnuDepartmentStockOut.Size = new System.Drawing.Size(315, 24);
             this.mnuDepartmentStockOut.Text = "Báo cáo xuất hàng";
             this.mnuDepartmentStockOut.Click += new System.EventHandler(this.mnuDepartmentStockOut_Click);
+            // 
+            // toolStripMenuItem26
+            // 
+            this.toolStripMenuItem26.Name = "toolStripMenuItem26";
+            this.toolStripMenuItem26.Size = new System.Drawing.Size(312, 6);
+            // 
+            // mnuCheckStockEvaluation
+            // 
+            this.mnuCheckStockEvaluation.Name = "mnuCheckStockEvaluation";
+            this.mnuCheckStockEvaluation.Size = new System.Drawing.Size(315, 24);
+            this.mnuCheckStockEvaluation.Text = "Kiểm tra số lượng kiểm kê";
+            this.mnuCheckStockEvaluation.Click += new System.EventHandler(this.mnuCheckStockEvaluation_Click);
             // 
             // mnuWareHouse
             // 
@@ -1640,17 +1654,12 @@
             this.crlRestoreHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftL;
             this.crlRestoreHotkey.Pressed += new System.EventHandler(this.crlRestoreHotkey_Pressed);
             // 
-            // toolStripMenuItem26
+            // mnuStockEvaluationReport
             // 
-            this.toolStripMenuItem26.Name = "toolStripMenuItem26";
-            this.toolStripMenuItem26.Size = new System.Drawing.Size(312, 6);
-            // 
-            // mnuCheckStockEvaluation
-            // 
-            this.mnuCheckStockEvaluation.Name = "mnuCheckStockEvaluation";
-            this.mnuCheckStockEvaluation.Size = new System.Drawing.Size(315, 24);
-            this.mnuCheckStockEvaluation.Text = "Kiểm tra số lượng kiểm kê";
-            this.mnuCheckStockEvaluation.Click += new System.EventHandler(this.mnuCheckStockEvaluation_Click);
+            this.mnuStockEvaluationReport.Name = "mnuStockEvaluationReport";
+            this.mnuStockEvaluationReport.Size = new System.Drawing.Size(315, 24);
+            this.mnuStockEvaluationReport.Text = "Báo cáo kiểm kê hàng";
+            this.mnuStockEvaluationReport.Click += new System.EventHandler(this.mnuStockEvaluationReport_Click);
             // 
             // MainForm
             // 
@@ -1864,6 +1873,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDeptStockDefExport;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem26;
         private System.Windows.Forms.ToolStripMenuItem mnuCheckStockEvaluation;
+        private System.Windows.Forms.ToolStripMenuItem mnuStockEvaluationReport;
 
     }
 }
