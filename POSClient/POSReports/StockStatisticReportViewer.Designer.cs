@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.stockStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,13 +39,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.chkZeroValue = new System.Windows.Forms.CheckBox();
             this.cboProductTypes = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtProducts = new System.Windows.Forms.TextBox();
             this.producttypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.stockStatisticTableAdapter1 = new POSReports.posDataSetTableAdapters.StockStatisticTableAdapter();
             this.product_typeTableAdapter = new POSReports.posDataSetTableAdapters.product_typeTableAdapter();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtProducts = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.stockStatisticBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -146,6 +146,7 @@
             // 
             this.cboProductTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboProductTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboProductTypes.DisplayMember = "TYPE_NAME";
             this.cboProductTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProductTypes.FormattingEnabled = true;
             this.cboProductTypes.Location = new System.Drawing.Point(613, 5);
@@ -153,38 +154,6 @@
             this.cboProductTypes.Size = new System.Drawing.Size(156, 28);
             this.cboProductTypes.TabIndex = 5;
             this.cboProductTypes.ValueMember = "TYPE_NAME";
-            // 
-            // producttypeBindingSource
-            // 
-            this.producttypeBindingSource.DataMember = "product_type";
-            this.producttypeBindingSource.DataSource = this.posDataSet;
-            // 
-            // departmentBindingSource
-            // 
-            this.departmentBindingSource.DataMember = "department";
-            this.departmentBindingSource.DataSource = this.posDataSet;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource7.Name = "posDataSet_stockStatistic";
-            reportDataSource7.Value = this.stockStatisticBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource7);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockStatisticReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 74);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(996, 545);
-            this.reportViewer1.TabIndex = 5;
-            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
-            // 
-            // stockStatisticTableAdapter1
-            // 
-            this.stockStatisticTableAdapter1.ClearBeforeFill = true;
-            // 
-            // product_typeTableAdapter
-            // 
-            this.product_typeTableAdapter.ClearBeforeFill = true;
             // 
             // label3
             // 
@@ -203,6 +172,38 @@
             this.txtProducts.Name = "txtProducts";
             this.txtProducts.Size = new System.Drawing.Size(149, 25);
             this.txtProducts.TabIndex = 4;
+            // 
+            // producttypeBindingSource
+            // 
+            this.producttypeBindingSource.DataMember = "product_type";
+            this.producttypeBindingSource.DataSource = this.posDataSet;
+            // 
+            // departmentBindingSource
+            // 
+            this.departmentBindingSource.DataMember = "department";
+            this.departmentBindingSource.DataSource = this.posDataSet;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "posDataSet_stockStatistic";
+            reportDataSource1.Value = this.stockStatisticBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockStatisticReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 74);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(996, 545);
+            this.reportViewer1.TabIndex = 5;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            // 
+            // stockStatisticTableAdapter1
+            // 
+            this.stockStatisticTableAdapter1.ClearBeforeFill = true;
+            // 
+            // product_typeTableAdapter
+            // 
+            this.product_typeTableAdapter.ClearBeforeFill = true;
             // 
             // StockStatisticReportViewer
             // 
