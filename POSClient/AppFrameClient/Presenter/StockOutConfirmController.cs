@@ -48,6 +48,7 @@ namespace AppFrameClient.Presenter
                 StockOut stockOut = StockOutLogic.FindById(id);
                 stockOut.ConfirmFlg = 0;
                 stockOut.DelFlg = 1;
+                stockOut.NotUpdateMainStock = true;
                 foreach (StockOutDetail inDetail in stockOut.StockOutDetails)
                 {
                     inDetail.DelFlg = 1;

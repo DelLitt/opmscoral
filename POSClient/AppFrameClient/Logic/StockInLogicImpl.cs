@@ -256,6 +256,14 @@ namespace AppFrame.Logic
             IDictionary<string, string> maxPrdIdList = new Dictionary<string, string>();
             foreach (StockInDetail stockInDetail in data.StockInDetails)
             {
+                // if delete then delete it
+                if (stockInDetail.DelFlg == 1)
+                {
+                    StockInDetailDAO.Delete(stockInDetail);
+                    delFlg++;
+                    continue;
+                }
+
                 // add product
                 Product product = stockInDetail.Product;
                 if (string.IsNullOrEmpty(product.ProductId))
@@ -424,7 +432,15 @@ namespace AppFrame.Logic
             {
                 data.DelFlg = 1;
             }
-            StockInDAO.Update(data);
+
+            if (data.DelFlg != 1)
+            {
+                StockInDAO.Update(data);
+            }
+            else
+            {
+                StockInDAO.Delete(data);
+            }
         }
         
         /// <summary>

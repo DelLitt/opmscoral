@@ -49,10 +49,6 @@ namespace AppFrameClient.Presenter
             }
             DateTime fromDate = e.LogDateFrom;
             DateTime toDate = e.LogDateTo;
-            if(fromDate < DateTime.Now.Subtract(new TimeSpan(3,0,0)))
-            {
-                fromDate = DateTime.Now.Subtract(new TimeSpan(3, 0, 0));
-            }
             criteria.AddGreaterOrEqualsCriteria("Date", fromDate);
             criteria.AddLesserOrEqualsCriteria("Date", toDate);
             criteria.AddOrder("Date", false);

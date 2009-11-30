@@ -50,6 +50,7 @@ namespace AppFrameClient.Presenter
                         {
                             stockIn.ConfirmFlg = 0;
                             stockIn.DelFlg = 1;
+                            stockIn.NotUpdateMainStock = true;
                             foreach (StockInDetail inDetail in stockIn.StockInDetails)
                             {
                                 inDetail.DelFlg = 1;
