@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="posConnectionString">
-      <rd:DataSourceID>7a9bfd4f-f95f-4ea0-9e98-676c2130e13f</rd:DataSourceID>
+      <rd:DataSourceID>246c52d4-2779-4dbb-8879-b672505872b6</rd:DataSourceID>
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos;connect timeout=60;default command timeout=300</ConnectString>
@@ -18,7 +18,37 @@
   <BottomMargin>1in</BottomMargin>
   <rd:ReportID>2cde3ca0-29d4-4389-820b-5d7763cfbfb5</rd:ReportID>
   <DataSets>
-    <DataSet Name="posDataSet_ExtraCustomizeDepartmentReport">
+    <DataSet Name="ECDRDataSet">
+      <Fields>
+        <Field Name="IsolateBy">
+          <DataField>IsolateBy</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="department_id">
+          <DataField>department_id</DataField>
+          <rd:TypeName>System.UInt32</rd:TypeName>
+        </Field>
+        <Field Name="department_name">
+          <DataField>department_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="type_name">
+          <DataField>type_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="color_name">
+          <DataField>color_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="product_name">
+          <DataField>product_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="quantity">
+          <DataField>quantity</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
@@ -38,8 +68,12 @@
   <Body>
     <ReportItems>
       <List Name="list1">
-        <ZIndex>8</ZIndex>
+        <ZIndex>9</ZIndex>
         <Left>0.25in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart1">
             <Legend>
@@ -74,6 +108,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -89,6 +124,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart1_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -117,7 +164,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart1_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -128,6 +202,7 @@
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -135,16 +210,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value>=</Value>
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>1</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>0.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list1_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list2">
-        <ZIndex>7</ZIndex>
+        <ZIndex>8</ZIndex>
         <Left>3.5in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart2">
             <Legend>
@@ -179,6 +272,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -194,6 +288,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart2_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -222,7 +328,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart2_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -232,6 +365,7 @@
           <Textbox Name="textbox2">
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -239,16 +373,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>2</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>0.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list2_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list3">
-        <ZIndex>6</ZIndex>
+        <ZIndex>7</ZIndex>
         <Left>6.75in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart3">
             <Legend>
@@ -283,6 +435,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -298,6 +451,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart3_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -326,7 +491,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart3_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -336,6 +528,7 @@
           <Textbox Name="textbox3">
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -343,16 +536,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>3</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>0.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list3_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list4">
-        <ZIndex>5</ZIndex>
+        <ZIndex>6</ZIndex>
         <Left>0.25in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart4">
             <Legend>
@@ -387,6 +598,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -402,6 +614,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart4_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -430,7 +654,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart4_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -440,6 +691,7 @@
           <Textbox Name="textbox4">
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -447,16 +699,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>4</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>2.75in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list4_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list5">
-        <ZIndex>4</ZIndex>
+        <ZIndex>5</ZIndex>
         <Left>3.5in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart5">
             <Legend>
@@ -491,6 +761,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -506,6 +777,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart5_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -534,7 +817,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart5_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -544,6 +854,7 @@
           <Textbox Name="textbox5">
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -551,16 +862,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>5</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>2.75in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list5_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list6">
-        <ZIndex>3</ZIndex>
+        <ZIndex>4</ZIndex>
         <Left>6.75in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart6">
             <Legend>
@@ -595,6 +924,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -610,6 +940,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart6_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -638,7 +980,34 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart6_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
@@ -648,6 +1017,7 @@
           <Textbox Name="textbox6">
             <Top>0.125in</Top>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -655,16 +1025,34 @@
             </Style>
             <CanGrow>true</CanGrow>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>6</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>2.75in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list6_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list7">
-        <ZIndex>2</ZIndex>
+        <ZIndex>3</ZIndex>
         <Left>0.25in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart7">
             <Legend>
@@ -699,6 +1087,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -714,6 +1103,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart7_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -742,37 +1143,79 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
-            <Width>2.875in</Width>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart7_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
             <Title />
             <Height>1.75in</Height>
-            <Left>0.125in</Left>
           </Chart>
           <Textbox Name="textbox7">
             <Top>0.125in</Top>
-            <Width>2.375in</Width>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
             <CanGrow>true</CanGrow>
-            <Left>0.125in</Left>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>7</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>5.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list7_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list8">
-        <ZIndex>1</ZIndex>
+        <ZIndex>2</ZIndex>
         <Left>3.5in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart8">
             <Legend>
@@ -807,6 +1250,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -822,6 +1266,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart8_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -850,36 +1306,79 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
-            <Width>2.875in</Width>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart8_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
             <Title />
             <Height>1.75in</Height>
-            <Left>0.125in</Left>
           </Chart>
           <Textbox Name="textbox8">
             <Top>0.125in</Top>
-            <Width>2.375in</Width>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
             <CanGrow>true</CanGrow>
-            <Left>0.125in</Left>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>8</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>5.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list8_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
       </List>
       <List Name="list9">
+        <ZIndex>1</ZIndex>
         <Left>6.75in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) = 1</Hidden>
+        </Visibility>
         <ReportItems>
           <Chart Name="chart9">
             <Legend>
@@ -914,6 +1413,7 @@
               </Axis>
             </CategoryAxis>
             <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
@@ -929,6 +1429,18 @@
               <WallThickness>50</WallThickness>
             </ThreeDProperties>
             <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart9_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
             <Top>0.5in</Top>
             <Subtype>Plain</Subtype>
             <ValueAxis>
@@ -957,33 +1469,226 @@
               </Axis>
             </ValueAxis>
             <Type>Column</Type>
-            <Width>2.875in</Width>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart9_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
             <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
             </Style>
             <Title />
             <Height>1.75in</Height>
-            <Left>0.125in</Left>
           </Chart>
           <Textbox Name="textbox9">
             <Top>0.125in</Top>
-            <Width>2.375in</Width>
             <Style>
+              <TextAlign>Center</TextAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
             <CanGrow>true</CanGrow>
-            <Left>0.125in</Left>
             <Height>0.25in</Height>
-            <Value />
+            <Value>=Fields!department_name.Value</Value>
           </Textbox>
         </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CStr(Fields!department_id.Value)</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>9</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
         <Top>5.25in</Top>
         <Width>3.125in</Width>
+        <Grouping Name="list9_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
         <Height>2.375in</Height>
+      </List>
+      <List Name="list10">
+        <Left>1.5in</Left>
+        <DataSetName>ECDRDataSet</DataSetName>
+        <Visibility>
+          <Hidden>= CInt(First(Fields!IsolateBy.Value, "ECDRDataSet")) &lt;&gt; 1</Hidden>
+        </Visibility>
+        <ReportItems>
+          <Chart Name="chart10">
+            <Legend>
+              <Visible>true</Visible>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+              <Position>RightCenter</Position>
+            </Legend>
+            <CategoryAxis>
+              <Axis>
+                <Title />
+                <MajorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MajorGridLines>
+                <MinorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MinorGridLines>
+                <MajorTickMarks>Outside</MajorTickMarks>
+                <Min>0</Min>
+                <Visible>true</Visible>
+              </Axis>
+            </CategoryAxis>
+            <ZIndex>1</ZIndex>
+            <DataSetName>ECDRDataSet</DataSetName>
+            <PlotArea>
+              <Style>
+                <BackgroundColor>LightGrey</BackgroundColor>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </PlotArea>
+            <ThreeDProperties>
+              <Rotation>30</Rotation>
+              <Inclination>30</Inclination>
+              <Shading>Simple</Shading>
+              <WallThickness>50</WallThickness>
+            </ThreeDProperties>
+            <PointWidth>0</PointWidth>
+            <SeriesGroupings>
+              <SeriesGrouping>
+                <DynamicSeries>
+                  <Grouping Name="chart10_SeriesGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!type_name.Value</Label>
+                </DynamicSeries>
+              </SeriesGrouping>
+            </SeriesGroupings>
+            <Top>0.75in</Top>
+            <Subtype>Plain</Subtype>
+            <ValueAxis>
+              <Axis>
+                <Title />
+                <MajorGridLines>
+                  <ShowGridLines>true</ShowGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MajorGridLines>
+                <MinorGridLines>
+                  <Style>
+                    <BorderStyle>
+                      <Default>Solid</Default>
+                    </BorderStyle>
+                  </Style>
+                </MinorGridLines>
+                <MajorTickMarks>Outside</MajorTickMarks>
+                <Min>0</Min>
+                <Margin>true</Margin>
+                <Visible>true</Visible>
+                <Scalar>true</Scalar>
+              </Axis>
+            </ValueAxis>
+            <Type>Column</Type>
+            <CategoryGroupings>
+              <CategoryGrouping>
+                <DynamicCategories>
+                  <Grouping Name="chart10_CategoryGroup1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Grouping>
+                  <Label>=Fields!product_name.Value</Label>
+                </DynamicCategories>
+              </CategoryGrouping>
+            </CategoryGroupings>
+            <Palette>Default</Palette>
+            <ChartData>
+              <ChartSeries>
+                <DataPoints>
+                  <DataPoint>
+                    <DataValues>
+                      <DataValue>
+                        <Value>=Sum(Fields!quantity.Value)</Value>
+                      </DataValue>
+                    </DataValues>
+                    <DataLabel />
+                    <Marker />
+                  </DataPoint>
+                </DataPoints>
+              </ChartSeries>
+            </ChartData>
+            <Style>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+            <Title />
+            <Height>5.125in</Height>
+          </Chart>
+          <Textbox Name="textbox10">
+            <rd:DefaultName>textbox10</rd:DefaultName>
+            <Top>0.125in</Top>
+            <Style>
+              <FontSize>14pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Height>0.375in</Height>
+            <Value>=IIF(Fields!department_id.Value = 0,"TẤT CẢ CỬA HÀNG",Fields!department_name.Value)</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>0.125in</Top>
+        <Width>7.375in</Width>
+        <Grouping Name="list10_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!department_id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
+        <Height>6.5in</Height>
       </List>
     </ReportItems>
     <Height>7.875in</Height>

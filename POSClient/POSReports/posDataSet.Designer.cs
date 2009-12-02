@@ -11962,6 +11962,20 @@ namespace POSReports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ExtraCustomizeDepartmentReportDataTable : global::System.Data.TypedTableBase<ExtraCustomizeDepartmentReportRow> {
             
+            private global::System.Data.DataColumn columnIsolateBy;
+            
+            private global::System.Data.DataColumn columndepartment_id;
+            
+            private global::System.Data.DataColumn columndepartment_name;
+            
+            private global::System.Data.DataColumn columntype_name;
+            
+            private global::System.Data.DataColumn columncolor_name;
+            
+            private global::System.Data.DataColumn columnproduct_name;
+            
+            private global::System.Data.DataColumn columnquantity;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ExtraCustomizeDepartmentReportDataTable() {
                 this.TableName = "ExtraCustomizeDepartmentReport";
@@ -11993,6 +12007,55 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IsolateByColumn {
+                get {
+                    return this.columnIsolateBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_idColumn {
+                get {
+                    return this.columndepartment_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn department_nameColumn {
+                get {
+                    return this.columndepartment_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn type_nameColumn {
+                get {
+                    return this.columntype_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn color_nameColumn {
+                get {
+                    return this.columncolor_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn product_nameColumn {
+                get {
+                    return this.columnproduct_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn quantityColumn {
+                get {
+                    return this.columnquantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -12021,12 +12084,25 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ExtraCustomizeDepartmentReportRow AddExtraCustomizeDepartmentReportRow() {
+            public ExtraCustomizeDepartmentReportRow AddExtraCustomizeDepartmentReportRow(long IsolateBy, uint department_id, string department_name, string type_name, string color_name, string product_name, decimal quantity) {
                 ExtraCustomizeDepartmentReportRow rowExtraCustomizeDepartmentReportRow = ((ExtraCustomizeDepartmentReportRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        IsolateBy,
+                        department_id,
+                        department_name,
+                        type_name,
+                        color_name,
+                        product_name,
+                        quantity};
                 rowExtraCustomizeDepartmentReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExtraCustomizeDepartmentReportRow);
                 return rowExtraCustomizeDepartmentReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ExtraCustomizeDepartmentReportRow FindBydepartment_id(uint department_id) {
+                return ((ExtraCustomizeDepartmentReportRow)(this.Rows.Find(new object[] {
+                            department_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12043,10 +12119,40 @@ namespace POSReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
+                this.columnIsolateBy = base.Columns["IsolateBy"];
+                this.columndepartment_id = base.Columns["department_id"];
+                this.columndepartment_name = base.Columns["department_name"];
+                this.columntype_name = base.Columns["type_name"];
+                this.columncolor_name = base.Columns["color_name"];
+                this.columnproduct_name = base.Columns["product_name"];
+                this.columnquantity = base.Columns["quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
+                this.columnIsolateBy = new global::System.Data.DataColumn("IsolateBy", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsolateBy);
+                this.columndepartment_id = new global::System.Data.DataColumn("department_id", typeof(uint), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_id);
+                this.columndepartment_name = new global::System.Data.DataColumn("department_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndepartment_name);
+                this.columntype_name = new global::System.Data.DataColumn("type_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_name);
+                this.columncolor_name = new global::System.Data.DataColumn("color_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolor_name);
+                this.columnproduct_name = new global::System.Data.DataColumn("product_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproduct_name);
+                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnquantity);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columndepartment_id}, true));
+                this.columnIsolateBy.AllowDBNull = false;
+                this.columndepartment_id.AllowDBNull = false;
+                this.columndepartment_id.Unique = true;
+                this.columndepartment_name.MaxLength = 500;
+                this.columntype_name.MaxLength = 500;
+                this.columncolor_name.MaxLength = 500;
+                this.columnproduct_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19678,6 +19784,156 @@ namespace POSReports {
             internal ExtraCustomizeDepartmentReportRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableExtraCustomizeDepartmentReport = ((ExtraCustomizeDepartmentReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public long IsolateBy {
+                get {
+                    return ((long)(this[this.tableExtraCustomizeDepartmentReport.IsolateByColumn]));
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.IsolateByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public uint department_id {
+                get {
+                    return ((uint)(this[this.tableExtraCustomizeDepartmentReport.department_idColumn]));
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.department_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string department_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.department_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'department_name\' in table \'ExtraCustomizeDepartmentReport\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.department_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string type_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.type_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'type_name\' in table \'ExtraCustomizeDepartmentReport\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.type_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string color_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.color_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'color_name\' in table \'ExtraCustomizeDepartmentReport\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.color_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string product_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'ExtraCustomizeDepartmentReport\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal quantity {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableExtraCustomizeDepartmentReport.quantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'ExtraCustomizeDepartmentReport\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.quantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdepartment_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.department_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdepartment_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.department_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istype_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.type_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settype_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.type_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Iscolor_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.color_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setcolor_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsquantityNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.quantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetquantityNull() {
+                this[this.tableExtraCustomizeDepartmentReport.quantityColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -27990,6 +28246,17 @@ order by purchase_order.create_date";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitAdapter() {
             this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ExtraCustomizeDepartmentReport";
+            tableMapping.ColumnMappings.Add("IsolateBy", "IsolateBy");
+            tableMapping.ColumnMappings.Add("department_id", "department_id");
+            tableMapping.ColumnMappings.Add("department_name", "department_name");
+            tableMapping.ColumnMappings.Add("type_name", "type_name");
+            tableMapping.ColumnMappings.Add("color_name", "color_name");
+            tableMapping.ColumnMappings.Add("product_name", "product_name");
+            tableMapping.ColumnMappings.Add("quantity", "quantity");
+            this._adapter.TableMappings.Add(tableMapping);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28014,6 +28281,13 @@ order by purchase_order.create_date";
             this._commandCollection[0].Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "SortType";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.Size = 2147483647;
+            param.IsNullable = true;
+            this._commandCollection[0].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "IsolateBy";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.Size = 2147483647;
@@ -28052,7 +28326,7 @@ order by purchase_order.create_date";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(posDataSet.ExtraCustomizeDepartmentReportDataTable dataTable, global::System.Nullable<int> ReportType, global::System.Nullable<int> SortType, global::System.Nullable<int> DeptId, global::System.Nullable<int> LimitRecs, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual int Fill(posDataSet.ExtraCustomizeDepartmentReportDataTable dataTable, global::System.Nullable<int> ReportType, global::System.Nullable<int> SortType, global::System.Nullable<int> IsolateBy, global::System.Nullable<int> DeptId, global::System.Nullable<int> LimitRecs, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ReportType.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ReportType.Value));
@@ -28066,29 +28340,35 @@ order by purchase_order.create_date";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((DeptId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(DeptId.Value));
+            if ((IsolateBy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(IsolateBy.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((LimitRecs.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(LimitRecs.Value));
+            if ((DeptId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(DeptId.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((System.DateTime)(FromDate.Value));
+            if ((LimitRecs.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(LimitRecs.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[5].Value = ((System.DateTime)(ToDate.Value));
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((System.DateTime)(FromDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -28100,7 +28380,7 @@ order by purchase_order.create_date";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual posDataSet.ExtraCustomizeDepartmentReportDataTable GetData(global::System.Nullable<int> ReportType, global::System.Nullable<int> SortType, global::System.Nullable<int> DeptId, global::System.Nullable<int> LimitRecs, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual posDataSet.ExtraCustomizeDepartmentReportDataTable GetData(global::System.Nullable<int> ReportType, global::System.Nullable<int> SortType, global::System.Nullable<int> IsolateBy, global::System.Nullable<int> DeptId, global::System.Nullable<int> LimitRecs, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((ReportType.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ReportType.Value));
@@ -28114,29 +28394,35 @@ order by purchase_order.create_date";
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((DeptId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(DeptId.Value));
+            if ((IsolateBy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(IsolateBy.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((LimitRecs.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(LimitRecs.Value));
+            if ((DeptId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(DeptId.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((System.DateTime)(FromDate.Value));
+            if ((LimitRecs.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(LimitRecs.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[5].Value = ((System.DateTime)(ToDate.Value));
+            if ((FromDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((System.DateTime)(FromDate.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((ToDate.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((System.DateTime)(ToDate.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             posDataSet.ExtraCustomizeDepartmentReportDataTable dataTable = new posDataSet.ExtraCustomizeDepartmentReportDataTable();
             this.Adapter.Fill(dataTable);
