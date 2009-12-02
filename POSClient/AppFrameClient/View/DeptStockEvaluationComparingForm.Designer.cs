@@ -174,6 +174,7 @@
             this.dgvDeptStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeptStock.Size = new System.Drawing.Size(765, 306);
             this.dgvDeptStock.TabIndex = 4;
+            this.dgvDeptStock.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDeptStock_DataError);
             // 
             // tYPEIDDataGridViewTextBoxColumn
             // 
@@ -501,8 +502,8 @@
             this.Controls.Add(this.cboTypes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboDepartments);
-            this.Controls.Add(this.dgvStock);
             this.Controls.Add(this.dgvDeptStock);
+            this.Controls.Add(this.dgvStock);
             this.Name = "DeptStockEvaluationComparingForm";
             this.Text = "DeptStockEvaluationComparingForm";
             this.Load += new System.EventHandler(this.DeptStockEvaluationComparingForm_Load);

@@ -794,7 +794,7 @@ namespace AppFrame.View
 
         private void mnuMixDeptReport_Click(object sender, EventArgs e)
         {
-            new CustomizeDepartmentReportViewer().Show();
+            new ExtraCustomizeDepartmentReportViewer().Show();
         }
 
         private void mnuFileChangePassword_Click(object sender, EventArgs e)

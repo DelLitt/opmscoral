@@ -536,6 +536,11 @@ namespace AppFrameClient.View
         {
 
         }
+
+        private void dgvDeptStock_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
     class TypeViewObject
     {
