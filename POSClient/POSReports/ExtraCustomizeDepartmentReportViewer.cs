@@ -106,7 +106,7 @@ namespace POSReports
 
         private void cboReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboReportType.SelectedIndex > 0 && cboReportType.SelectedIndex < 4)
+            /*if(cboReportType.SelectedIndex > 0 && cboReportType.SelectedIndex < 4)
             {
                 cboIsolatedBy.SelectedIndex = 0;
                 cboIsolatedBy.Enabled = false;
@@ -115,7 +115,7 @@ namespace POSReports
             {
                 cboIsolatedBy.Enabled = true;
                 cboIsolatedBy.SelectedIndex = 0;
-            }
+            }*/
         }
 
         private void cboSortOrder_SelectedIndexChanged(object sender, EventArgs e)

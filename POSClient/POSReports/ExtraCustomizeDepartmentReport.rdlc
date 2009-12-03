@@ -104,6 +104,7 @@
                 </MinorGridLines>
                 <MajorTickMarks>Outside</MajorTickMarks>
                 <Min>0</Min>
+                <LogScale>true</LogScale>
                 <Visible>true</Visible>
               </Axis>
             </CategoryAxis>
@@ -112,6 +113,7 @@
             <PlotArea>
               <Style>
                 <BackgroundColor>LightGrey</BackgroundColor>
+                <BackgroundGradientType>TopBottom</BackgroundGradientType>
                 <BorderStyle>
                   <Default>Solid</Default>
                 </BorderStyle>
@@ -158,6 +160,7 @@
                 </MinorGridLines>
                 <MajorTickMarks>Outside</MajorTickMarks>
                 <Min>0</Min>
+                <Interlaced>true</Interlaced>
                 <Margin>true</Margin>
                 <Visible>true</Visible>
                 <Scalar>true</Scalar>
@@ -186,14 +189,20 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
             </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>DiagonalRight</BackgroundGradientType>
             </Style>
             <Title />
             <Height>1.75in</Height>
@@ -350,8 +359,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -513,8 +527,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -676,8 +695,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -839,8 +863,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -1002,8 +1031,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -1165,8 +1199,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -1328,8 +1367,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -1491,8 +1535,13 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
@@ -1653,8 +1702,14 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-                    <DataLabel />
-                    <Marker />
+                    <DataLabel>
+                      <Style />
+                      <Value>=Fields!quantity.Value</Value>
+                      <Visible>true</Visible>
+                    </DataLabel>
+                    <Marker>
+                      <Size>6pt</Size>
+                    </Marker>
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>

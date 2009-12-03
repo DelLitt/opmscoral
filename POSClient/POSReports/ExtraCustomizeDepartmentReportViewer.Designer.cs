@@ -89,9 +89,9 @@
             reportDataSource1.Value = this.ExtraCustomizeDepartmentReportBindingSource;
             this.customizeReport.LocalReport.DataSources.Add(reportDataSource1);
             this.customizeReport.LocalReport.ReportEmbeddedResource = "POSReports.ExtraCustomizeDepartmentReport.rdlc";
-            this.customizeReport.Location = new System.Drawing.Point(0, 118);
+            this.customizeReport.Location = new System.Drawing.Point(0, 114);
             this.customizeReport.Name = "customizeReport";
-            this.customizeReport.Size = new System.Drawing.Size(929, 417);
+            this.customizeReport.Size = new System.Drawing.Size(929, 422);
             this.customizeReport.TabIndex = 0;
             this.customizeReport.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.customizeReport.Load += new System.EventHandler(this.customizeReport_Load);
@@ -110,7 +110,7 @@
             "Số hàng bán rồi bị trả lại"});
             this.cboReportType.Location = new System.Drawing.Point(106, 3);
             this.cboReportType.Name = "cboReportType";
-            this.cboReportType.Size = new System.Drawing.Size(144, 24);
+            this.cboReportType.Size = new System.Drawing.Size(143, 22);
             this.cboReportType.TabIndex = 1;
             this.cboReportType.SelectedIndexChanged += new System.EventHandler(this.cboReportType_SelectedIndexChanged);
             // 
@@ -119,9 +119,9 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 0);
+            this.label1.Location = new System.Drawing.Point(47, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 28);
+            this.label1.Size = new System.Drawing.Size(53, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Báo cáo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -133,7 +133,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(514, 29);
+            this.label2.Size = new System.Drawing.Size(455, 25);
             this.label2.TabIndex = 3;
             this.label2.Text = "BÁO CÁO HỖN HỢP  - TÌNH HÌNH CỬA HÀNG";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -146,7 +146,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(106, 31);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(144, 23);
+            this.dtpFromDate.Size = new System.Drawing.Size(143, 22);
             this.dtpFromDate.TabIndex = 4;
             // 
             // dtpToDate
@@ -155,15 +155,15 @@
             this.dtpToDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtpToDate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(338, 31);
+            this.dtpToDate.Location = new System.Drawing.Point(337, 31);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(136, 23);
+            this.dtpToDate.Size = new System.Drawing.Size(136, 22);
             this.dtpToDate.TabIndex = 5;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(767, 3);
+            this.button1.Location = new System.Drawing.Point(766, 3);
             this.button1.Name = "button1";
             this.tableLayoutPanel1.SetRowSpan(this.button1, 2);
             this.button1.Size = new System.Drawing.Size(147, 50);
@@ -177,9 +177,9 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(480, 56);
+            this.label3.Location = new System.Drawing.Point(479, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 33);
+            this.label3.Size = new System.Drawing.Size(54, 33);
             this.label3.TabIndex = 9;
             this.label3.Text = "Giới hạn";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,9 +189,9 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Right;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(40, 28);
+            this.label4.Location = new System.Drawing.Point(45, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 28);
+            this.label4.Size = new System.Drawing.Size(55, 28);
             this.label4.TabIndex = 10;
             this.label4.Text = "Từ ngày";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,9 +201,9 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(266, 28);
+            this.label5.Location = new System.Drawing.Point(271, 28);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 28);
+            this.label5.Size = new System.Drawing.Size(60, 28);
             this.label5.TabIndex = 11;
             this.label5.Text = "đến ngày";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -219,9 +219,9 @@
             this.cboSortOrder.Items.AddRange(new object[] {
             "Nhiều nhất",
             "Ít nhất"});
-            this.cboSortOrder.Location = new System.Drawing.Point(256, 3);
+            this.cboSortOrder.Location = new System.Drawing.Point(255, 3);
             this.cboSortOrder.Name = "cboSortOrder";
-            this.cboSortOrder.Size = new System.Drawing.Size(218, 24);
+            this.cboSortOrder.Size = new System.Drawing.Size(218, 22);
             this.cboSortOrder.TabIndex = 12;
             this.cboSortOrder.SelectedIndexChanged += new System.EventHandler(this.cboSortOrder_SelectedIndexChanged);
             // 
@@ -235,7 +235,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
             this.tableLayoutPanel1.Controls.Add(this.label7, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.cboReportType, 1, 0);
@@ -251,7 +251,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.cboDepartments, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -265,9 +265,9 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Right;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(511, 0);
+            this.label7.Location = new System.Drawing.Point(512, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 28);
+            this.label7.Size = new System.Drawing.Size(28, 28);
             this.label7.TabIndex = 17;
             this.label7.Text = "của";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -283,9 +283,9 @@
             "Tất cả cửa hàng",
             "Mỗi cửa hàng",
             "Cửa hàng có tên:"});
-            this.cboIsolatedBy.Location = new System.Drawing.Point(547, 3);
+            this.cboIsolatedBy.Location = new System.Drawing.Point(546, 3);
             this.cboIsolatedBy.Name = "cboIsolatedBy";
-            this.cboIsolatedBy.Size = new System.Drawing.Size(214, 24);
+            this.cboIsolatedBy.Size = new System.Drawing.Size(214, 22);
             this.cboIsolatedBy.TabIndex = 16;
             this.cboIsolatedBy.SelectedIndexChanged += new System.EventHandler(this.cboIsolatedBy_SelectedIndexChanged);
             // 
@@ -294,9 +294,9 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Left;
             this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(594, 56);
+            this.label8.Location = new System.Drawing.Point(593, 56);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 33);
+            this.label8.Size = new System.Drawing.Size(64, 33);
             this.label8.TabIndex = 18;
             this.label8.Text = "sản phẩm";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,9 +306,9 @@
             this.txtTotalRecord.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtTotalRecord.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalRecord.Format = null;
-            this.txtTotalRecord.Location = new System.Drawing.Point(547, 59);
+            this.txtTotalRecord.Location = new System.Drawing.Point(546, 59);
             this.txtTotalRecord.Name = "txtTotalRecord";
-            this.txtTotalRecord.Size = new System.Drawing.Size(41, 23);
+            this.txtTotalRecord.Size = new System.Drawing.Size(41, 22);
             this.txtTotalRecord.TabIndex = 13;
             this.txtTotalRecord.Text = "5";
             // 
@@ -320,7 +320,7 @@
             this.cboDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartments.Enabled = false;
             this.cboDepartments.FormattingEnabled = true;
-            this.cboDepartments.Location = new System.Drawing.Point(547, 31);
+            this.cboDepartments.Location = new System.Drawing.Point(546, 31);
             this.cboDepartments.Name = "cboDepartments";
             this.cboDepartments.Size = new System.Drawing.Size(214, 21);
             this.cboDepartments.TabIndex = 19;
