@@ -11976,6 +11976,8 @@ namespace POSReports {
             
             private global::System.Data.DataColumn columnquantity;
             
+            private global::System.Data.DataColumn columnsize_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ExtraCustomizeDepartmentReportDataTable() {
                 this.TableName = "ExtraCustomizeDepartmentReport";
@@ -12056,6 +12058,13 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn size_nameColumn {
+                get {
+                    return this.columnsize_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -12084,7 +12093,7 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ExtraCustomizeDepartmentReportRow AddExtraCustomizeDepartmentReportRow(long IsolateBy, uint department_id, string department_name, string type_name, string color_name, string product_name, decimal quantity) {
+            public ExtraCustomizeDepartmentReportRow AddExtraCustomizeDepartmentReportRow(long IsolateBy, uint department_id, string department_name, string type_name, string color_name, string product_name, decimal quantity, string size_name) {
                 ExtraCustomizeDepartmentReportRow rowExtraCustomizeDepartmentReportRow = ((ExtraCustomizeDepartmentReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IsolateBy,
@@ -12093,16 +12102,11 @@ namespace POSReports {
                         type_name,
                         color_name,
                         product_name,
-                        quantity};
+                        quantity,
+                        size_name};
                 rowExtraCustomizeDepartmentReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExtraCustomizeDepartmentReportRow);
                 return rowExtraCustomizeDepartmentReportRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ExtraCustomizeDepartmentReportRow FindBydepartment_id(uint department_id) {
-                return ((ExtraCustomizeDepartmentReportRow)(this.Rows.Find(new object[] {
-                            department_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12126,6 +12130,7 @@ namespace POSReports {
                 this.columncolor_name = base.Columns["color_name"];
                 this.columnproduct_name = base.Columns["product_name"];
                 this.columnquantity = base.Columns["quantity"];
+                this.columnsize_name = base.Columns["size_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12144,15 +12149,16 @@ namespace POSReports {
                 base.Columns.Add(this.columnproduct_name);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columndepartment_id}, true));
+                this.columnsize_name = new global::System.Data.DataColumn("size_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize_name);
                 this.columnIsolateBy.AllowDBNull = false;
                 this.columndepartment_id.AllowDBNull = false;
-                this.columndepartment_id.Unique = true;
                 this.columndepartment_name.MaxLength = 500;
                 this.columntype_name.MaxLength = 500;
                 this.columncolor_name.MaxLength = 500;
+                this.columnproduct_name.AllowDBNull = false;
                 this.columnproduct_name.MaxLength = 500;
+                this.columnsize_name.MaxLength = 500;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19857,13 +19863,7 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string product_name {
                 get {
-                    try {
-                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.product_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'ExtraCustomizeDepartmentReport\' is " +
-                                "DBNull.", e);
-                    }
+                    return ((string)(this[this.tableExtraCustomizeDepartmentReport.product_nameColumn]));
                 }
                 set {
                     this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = value;
@@ -19883,6 +19883,22 @@ namespace POSReports {
                 }
                 set {
                     this[this.tableExtraCustomizeDepartmentReport.quantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string size_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.size_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'size_name\' in table \'ExtraCustomizeDepartmentReport\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExtraCustomizeDepartmentReport.size_nameColumn] = value;
                 }
             }
             
@@ -19917,16 +19933,6 @@ namespace POSReports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool Isproduct_nameNull() {
-                return this.IsNull(this.tableExtraCustomizeDepartmentReport.product_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void Setproduct_nameNull() {
-                this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsquantityNull() {
                 return this.IsNull(this.tableExtraCustomizeDepartmentReport.quantityColumn);
             }
@@ -19934,6 +19940,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetquantityNull() {
                 this[this.tableExtraCustomizeDepartmentReport.quantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Issize_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.size_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setsize_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.size_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -28256,6 +28272,7 @@ order by purchase_order.create_date";
             tableMapping.ColumnMappings.Add("color_name", "color_name");
             tableMapping.ColumnMappings.Add("product_name", "product_name");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
+            tableMapping.ColumnMappings.Add("size_name", "size_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

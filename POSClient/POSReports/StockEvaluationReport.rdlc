@@ -1939,53 +1939,21 @@
                       </ReportItems>
                     </TableCell>
                     <TableCell>
+                      <ColSpan>3</ColSpan>
                       <ReportItems>
                         <Textbox Name="textbox61">
                           <rd:DefaultName>textbox61</rd:DefaultName>
                           <Style>
                             <Color>White</Color>
                             <BackgroundColor>DarkOliveGreen</BackgroundColor>
+                            <FontWeight>700</FontWeight>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value />
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox62">
-                          <rd:DefaultName>textbox62</rd:DefaultName>
-                          <Style>
-                            <Color>White</Color>
-                            <BackgroundColor>DarkOliveGreen</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value />
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox63">
-                          <rd:DefaultName>textbox63</rd:DefaultName>
-                          <Style>
-                            <Color>White</Color>
-                            <BackgroundColor>DarkOliveGreen</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value />
+                          <Value>TỔNG CỘNG:</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>

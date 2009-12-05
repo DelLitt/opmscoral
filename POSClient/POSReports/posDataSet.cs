@@ -2,6 +2,10 @@
     
     
     public partial class posDataSet {
+        partial class ExtraCustomizeDepartmentReportDataTable
+        {
+        }
+    
         partial class CustomizeReportDataTable
         {
         }

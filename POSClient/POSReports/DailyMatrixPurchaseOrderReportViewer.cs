@@ -48,8 +48,10 @@ namespace POSReports
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
-            reqFromDate = ZeroTime(dtpFrom.Value);
-            reqToDate = MaxTime(dtpTo.Value);
+            //reqFromDate = ZeroTime(dtpFrom.Value);
+            //reqToDate = MaxTime(dtpTo.Value);
+            reqFromDate = dtpFrom.Value;
+            reqToDate = dtpTo.Value;
             deptId = Int32.Parse(departmentId.SelectedValue.ToString());
             Enabled = false;
             backgroundWorker.RunWorkerAsync();

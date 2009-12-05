@@ -980,7 +980,7 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ExtraCustomizeDepartmentReportTableAdapter" GeneratorDataComponentClassName="ExtraCustomizeDepartmentReportTableAdapter" Name="ExtraCustomizeDepartmentReport" UserDataComponentName="ExtraCustomizeDepartmentReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`ExtraCustomizeDepartmentReport`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="posConnectionString (Settings)" DbObjectName="`pos`.`ExtraCustomizeDepartmentReport`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>`pos`.`ExtraCustomizeDepartmentReport`</CommandText>
@@ -1005,6 +1005,7 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
               <Mapping SourceColumn="color_name" DataSetColumn="color_name" />
               <Mapping SourceColumn="product_name" DataSetColumn="product_name" />
               <Mapping SourceColumn="quantity" DataSetColumn="quantity" />
+              <Mapping SourceColumn="size_name" DataSetColumn="size_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -2681,7 +2682,7 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ExtraCustomizeDepartmentReport" msprop:Generator_UserTableName="ExtraCustomizeDepartmentReport" msprop:Generator_RowDeletedName="ExtraCustomizeDepartmentReportRowDeleted" msprop:Generator_TableClassName="ExtraCustomizeDepartmentReportDataTable" msprop:Generator_RowChangedName="ExtraCustomizeDepartmentReportRowChanged" msprop:Generator_RowClassName="ExtraCustomizeDepartmentReportRow" msprop:Generator_RowChangingName="ExtraCustomizeDepartmentReportRowChanging" msprop:Generator_RowEvArgName="ExtraCustomizeDepartmentReportRowChangeEvent" msprop:Generator_RowEvHandlerName="ExtraCustomizeDepartmentReportRowChangeEventHandler" msprop:Generator_TablePropName="ExtraCustomizeDepartmentReport" msprop:Generator_TableVarName="tableExtraCustomizeDepartmentReport" msprop:Generator_RowDeletingName="ExtraCustomizeDepartmentReportRowDeleting">
+        <xs:element name="ExtraCustomizeDepartmentReport" msprop:Generator_UserTableName="ExtraCustomizeDepartmentReport" msprop:Generator_RowDeletedName="ExtraCustomizeDepartmentReportRowDeleted" msprop:Generator_RowChangedName="ExtraCustomizeDepartmentReportRowChanged" msprop:Generator_RowClassName="ExtraCustomizeDepartmentReportRow" msprop:Generator_RowChangingName="ExtraCustomizeDepartmentReportRowChanging" msprop:Generator_RowEvArgName="ExtraCustomizeDepartmentReportRowChangeEvent" msprop:Generator_RowEvHandlerName="ExtraCustomizeDepartmentReportRowChangeEventHandler" msprop:Generator_TableClassName="ExtraCustomizeDepartmentReportDataTable" msprop:Generator_TableVarName="tableExtraCustomizeDepartmentReport" msprop:Generator_RowDeletingName="ExtraCustomizeDepartmentReportRowDeleting" msprop:Generator_TablePropName="ExtraCustomizeDepartmentReport">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IsolateBy" msprop:Generator_UserColumnName="IsolateBy" msprop:Generator_ColumnPropNameInRow="IsolateBy" msprop:Generator_ColumnVarNameInTable="columnIsolateBy" msprop:Generator_ColumnPropNameInTable="IsolateByColumn" type="xs:long" />
@@ -2707,7 +2708,7 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="product_name" msprop:Generator_UserColumnName="product_name" msprop:Generator_ColumnPropNameInRow="product_name" msprop:Generator_ColumnVarNameInTable="columnproduct_name" msprop:Generator_ColumnPropNameInTable="product_nameColumn" minOccurs="0">
+              <xs:element name="product_name" msprop:Generator_UserColumnName="product_name" msprop:nullValue="_throw" msprop:Generator_ColumnVarNameInTable="columnproduct_name" msprop:Generator_ColumnPropNameInTable="product_nameColumn" msprop:Generator_ColumnPropNameInRow="product_name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
@@ -2715,6 +2716,13 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="quantity" msprop:Generator_UserColumnName="quantity" msprop:Generator_ColumnPropNameInRow="quantity" msprop:Generator_ColumnVarNameInTable="columnquantity" msprop:Generator_ColumnPropNameInTable="quantityColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="size_name" msprop:Generator_UserColumnName="size_name" msprop:Generator_ColumnVarNameInTable="columnsize_name" msprop:Generator_ColumnPropNameInRow="size_name" msprop:Generator_ColumnPropNameInTable="size_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2777,10 +2785,6 @@ FROM     product_type ORDER BY TYPE_NAME</CommandText>
       <xs:field xpath="mstns:PRODUCT_ID" />
       <xs:field xpath="mstns:CREATE_DATE" />
       <xs:field xpath="mstns:DEPARTMENT_ID" />
-    </xs:unique>
-    <xs:unique name="ExtraCustomizeDepartmentReport_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:ExtraCustomizeDepartmentReport" />
-      <xs:field xpath="mstns:department_id" />
     </xs:unique>
   </xs:element>
 </xs:schema>
