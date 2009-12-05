@@ -79,6 +79,8 @@
             this.chkImportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkExportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkNegativeSelling = new System.Windows.Forms.CheckBox();
+            this.cboBarcodeType = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -369,6 +371,8 @@
             // 
             // grpPrinting
             // 
+            this.grpPrinting.Controls.Add(this.label10);
+            this.grpPrinting.Controls.Add(this.cboBarcodeType);
             this.grpPrinting.Controls.Add(this.cboPrinters);
             this.grpPrinting.Controls.Add(this.label5);
             this.grpPrinting.Location = new System.Drawing.Point(2, 199);
@@ -509,6 +513,24 @@
             this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
             this.chkNegativeSelling.UseVisualStyleBackColor = true;
             // 
+            // cboBarcodeType
+            // 
+            this.cboBarcodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBarcodeType.FormattingEnabled = true;
+            this.cboBarcodeType.Location = new System.Drawing.Point(431, 12);
+            this.cboBarcodeType.Name = "cboBarcodeType";
+            this.cboBarcodeType.Size = new System.Drawing.Size(150, 21);
+            this.cboBarcodeType.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(342, 15);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 15);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Loại mã vạch:";
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,5 +617,7 @@
         private System.Windows.Forms.CheckBox chkExportConfirmation;
         private System.Windows.Forms.CheckBox chkNegativeSelling;
         private System.Windows.Forms.CheckBox chkNegativeExport;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboBarcodeType;
     }
 }

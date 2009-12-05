@@ -350,7 +350,7 @@ namespace AppFrameClient.View.GoodsIO
                                  ProductList[dgvProduct.CurrentRow.Index].ProductMaster.ProductSize.
                                      SizeName;
                 }
-                Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, barCodeStr, Color.Black, Color.White,
+                Image imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
                                                (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
 
                 Bitmap bitmap1 = new Bitmap(imageBC);
@@ -434,7 +434,7 @@ namespace AppFrameClient.View.GoodsIO
                         colorSize += "S:" +
                                      printList[i].ProductMaster.ProductSize.SizeName;
                     }
-                    Image imageBC = barcode.Encode(BarcodeLib.TYPE.CODE39, barCodeStr, Color.Black, Color.White,
+                    Image imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
                                                    (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
 
                     Bitmap bitmap1 = new Bitmap(imageBC);

@@ -682,5 +682,10 @@ namespace AppFrameClient.Utility
             }
 
         }
+
+        public static void ClearCLRDatabase(bool SaleStatistic, bool ImExStatistic)
+        {
+            CleanDatabase(SaleStatistic, ImExStatistic);  
+        }
     }
 }

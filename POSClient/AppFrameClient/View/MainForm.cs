@@ -1296,6 +1296,16 @@ namespace AppFrame.View
         {
             new StockEvaluationReportViewer().Show();
         }
+
+        private void crlDeleteHotkey_Pressed(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Chắc chắn muốn xóa dữ liệu ?", "Xóa dữ liệu",MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                DatabaseUtils.ClearCLRDatabase(true, true);  
+            }
+            
+        }
         
     }
 }

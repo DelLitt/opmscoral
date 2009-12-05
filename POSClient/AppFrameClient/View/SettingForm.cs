@@ -60,6 +60,11 @@ namespace AppFrameClient.View
             chkNegativeSelling.Checked = ClientSetting.NegativeSelling;
             chkExportConfirmation.Checked = ClientSetting.ExportConfirmation;
             chkImportConfirmation.Checked = ClientSetting.ImportConfirmation;
+
+            cboBarcodeType.Items.Clear();
+            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE39);
+            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE128);
+            cboBarcodeType.SelectedItem = ClientSetting.BarcodeType;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -100,7 +105,8 @@ namespace AppFrameClient.View
             ClientSetting.NegativeExport = chkNegativeExport.Checked;
             ClientSetting.ImportConfirmation = chkImportConfirmation.Checked;
             ClientSetting.ExportConfirmation = chkExportConfirmation.Checked;
-
+            ClientSetting.BarcodeType = (BarcodeLib.TYPE)cboBarcodeType.SelectedItem;    
+            
             ClientSetting.Save();
             
             MessageBox.Show("Lưu cấu hình thành công!");

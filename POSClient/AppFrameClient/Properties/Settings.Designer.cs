@@ -296,5 +296,17 @@ namespace AppFrameClient.Properties {
                 this["TempNegativeSelling"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CODE39")]
+        public global::BarcodeLib.TYPE BarcodeType {
+            get {
+                return ((global::BarcodeLib.TYPE)(this["BarcodeType"]));
+            }
+            set {
+                this["BarcodeType"] = value;
+            }
+        }
     }
 }

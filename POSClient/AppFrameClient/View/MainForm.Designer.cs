@@ -85,6 +85,7 @@
             this.mnuDepartmentStockOut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCheckStockEvaluation = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStockEvaluationReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWareHouse = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -208,7 +209,7 @@
             this.f12ShortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.mnuStockEvaluationReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.crlDeleteHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -647,6 +648,13 @@
             this.mnuCheckStockEvaluation.Size = new System.Drawing.Size(315, 24);
             this.mnuCheckStockEvaluation.Text = "Kiểm tra số lượng kiểm kê";
             this.mnuCheckStockEvaluation.Click += new System.EventHandler(this.mnuCheckStockEvaluation_Click);
+            // 
+            // mnuStockEvaluationReport
+            // 
+            this.mnuStockEvaluationReport.Name = "mnuStockEvaluationReport";
+            this.mnuStockEvaluationReport.Size = new System.Drawing.Size(315, 24);
+            this.mnuStockEvaluationReport.Text = "Báo cáo kiểm kê hàng";
+            this.mnuStockEvaluationReport.Click += new System.EventHandler(this.mnuStockEvaluationReport_Click);
             // 
             // mnuWareHouse
             // 
@@ -1654,12 +1662,10 @@
             this.crlRestoreHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftL;
             this.crlRestoreHotkey.Pressed += new System.EventHandler(this.crlRestoreHotkey_Pressed);
             // 
-            // mnuStockEvaluationReport
+            // crlDeleteHotkey
             // 
-            this.mnuStockEvaluationReport.Name = "mnuStockEvaluationReport";
-            this.mnuStockEvaluationReport.Size = new System.Drawing.Size(315, 24);
-            this.mnuStockEvaluationReport.Text = "Báo cáo kiểm kê hàng";
-            this.mnuStockEvaluationReport.Click += new System.EventHandler(this.mnuStockEvaluationReport_Click);
+            this.crlDeleteHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
+            this.crlDeleteHotkey.Pressed += new System.EventHandler(this.crlDeleteHotkey_Pressed);
             // 
             // MainForm
             // 
@@ -1874,6 +1880,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem26;
         private System.Windows.Forms.ToolStripMenuItem mnuCheckStockEvaluation;
         private System.Windows.Forms.ToolStripMenuItem mnuStockEvaluationReport;
+        private AppFrame.Controls.HotKey.SystemHotkey crlDeleteHotkey;
 
     }
 }

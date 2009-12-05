@@ -491,7 +491,7 @@
             this.txtDepartment.Location = new System.Drawing.Point(685, 15);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.ReadOnly = true;
-            this.txtDepartment.Size = new System.Drawing.Size(130, 15);
+            this.txtDepartment.Size = new System.Drawing.Size(130, 16);
             this.txtDepartment.TabIndex = 22;
             this.txtDepartment.TabStop = false;
             this.txtDepartment.Text = "A Chảy";
@@ -502,7 +502,7 @@
             this.txtEmployee.Location = new System.Drawing.Point(110, 82);
             this.txtEmployee.Name = "txtEmployee";
             this.txtEmployee.ReadOnly = true;
-            this.txtEmployee.Size = new System.Drawing.Size(174, 30);
+            this.txtEmployee.Size = new System.Drawing.Size(174, 31);
             this.txtEmployee.TabIndex = 1;
             this.txtEmployee.TabStop = false;
             // 
@@ -513,7 +513,7 @@
             this.txtBillNumber.Location = new System.Drawing.Point(110, 49);
             this.txtBillNumber.Name = "txtBillNumber";
             this.txtBillNumber.ReadOnly = true;
-            this.txtBillNumber.Size = new System.Drawing.Size(174, 30);
+            this.txtBillNumber.Size = new System.Drawing.Size(174, 31);
             this.txtBillNumber.TabIndex = 22;
             this.txtBillNumber.TabStop = false;
             // 
@@ -522,7 +522,7 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Location = new System.Drawing.Point(616, 15);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(63, 14);
+            this.lblDepartment.Size = new System.Drawing.Size(68, 16);
             this.lblDepartment.TabIndex = 23;
             this.lblDepartment.Text = "Cửa hàng:";
             // 
@@ -532,7 +532,7 @@
             this.lblEmployee.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmployee.Location = new System.Drawing.Point(26, 89);
             this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(78, 18);
+            this.lblEmployee.Size = new System.Drawing.Size(86, 19);
             this.lblEmployee.TabIndex = 5;
             this.lblEmployee.Text = "Nhân viên:";
             // 
@@ -542,7 +542,7 @@
             this.lblBillNumber.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBillNumber.Location = new System.Drawing.Point(16, 56);
             this.lblBillNumber.Name = "lblBillNumber";
-            this.lblBillNumber.Size = new System.Drawing.Size(88, 18);
+            this.lblBillNumber.Size = new System.Drawing.Size(96, 19);
             this.lblBillNumber.TabIndex = 6;
             this.lblBillNumber.Text = "Số hóa đơn:";
             // 
@@ -560,7 +560,7 @@
             this.lblWorkingTime.AutoSize = true;
             this.lblWorkingTime.Location = new System.Drawing.Point(430, 8);
             this.lblWorkingTime.Name = "lblWorkingTime";
-            this.lblWorkingTime.Size = new System.Drawing.Size(44, 13);
+            this.lblWorkingTime.Size = new System.Drawing.Size(48, 15);
             this.lblWorkingTime.TabIndex = 8;
             this.lblWorkingTime.Text = "Ca trực:";
             // 
@@ -569,7 +569,7 @@
             this.lblBillDate.AutoSize = true;
             this.lblBillDate.Location = new System.Drawing.Point(628, 9);
             this.lblBillDate.Name = "lblBillDate";
-            this.lblBillDate.Size = new System.Drawing.Size(86, 13);
+            this.lblBillDate.Size = new System.Drawing.Size(96, 15);
             this.lblBillDate.TabIndex = 10;
             this.lblBillDate.Text = "Ngày phát hành:";
             // 
@@ -579,7 +579,7 @@
             this.lblTotalAmount.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.Location = new System.Drawing.Point(335, 19);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(95, 18);
+            this.lblTotalAmount.Size = new System.Drawing.Size(104, 19);
             this.lblTotalAmount.TabIndex = 16;
             this.lblTotalAmount.Text = "Tổng số tiền:";
             this.lblTotalAmount.Click += new System.EventHandler(this.lblTotalAmount_Click);
@@ -590,7 +590,7 @@
             this.lblPayment.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPayment.Location = new System.Drawing.Point(354, 87);
             this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(76, 18);
+            this.lblPayment.Size = new System.Drawing.Size(81, 19);
             this.lblPayment.TabIndex = 17;
             this.lblPayment.Text = "Khách trả:";
             this.lblPayment.Click += new System.EventHandler(this.lblPayment_Click);
@@ -601,7 +601,7 @@
             this.lblCharge.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCharge.Location = new System.Drawing.Point(372, 120);
             this.lblCharge.Name = "lblCharge";
-            this.lblCharge.Size = new System.Drawing.Size(58, 18);
+            this.lblCharge.Size = new System.Drawing.Size(68, 19);
             this.lblCharge.TabIndex = 18;
             this.lblCharge.Text = "Thối lại:";
             this.lblCharge.Click += new System.EventHandler(this.lblCharge_Click);
@@ -662,7 +662,7 @@
             this.txtCustomer.Location = new System.Drawing.Point(110, 115);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.ReadOnly = true;
-            this.txtCustomer.Size = new System.Drawing.Size(174, 30);
+            this.txtCustomer.Size = new System.Drawing.Size(174, 31);
             this.txtCustomer.TabIndex = 24;
             this.txtCustomer.TabStop = false;
             // 
@@ -672,7 +672,7 @@
             this.lblCustomer.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomer.Location = new System.Drawing.Point(23, 122);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(82, 18);
+            this.lblCustomer.Size = new System.Drawing.Size(88, 19);
             this.lblCustomer.TabIndex = 25;
             this.lblCustomer.Text = "Tên khách:";
             // 
@@ -754,7 +754,7 @@
             this.checkBox1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(183, 155);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(161, 22);
+            this.checkBox1.Size = new System.Drawing.Size(175, 23);
             this.checkBox1.TabIndex = 51;
             this.checkBox1.Text = "Có hoá đơn tài chính";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -765,7 +765,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 156);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 18);
+            this.label2.Size = new System.Drawing.Size(90, 19);
             this.label2.TabIndex = 50;
             this.label2.Text = "Chiết khấu:";
             // 
@@ -775,7 +775,7 @@
             this.textBox1.Location = new System.Drawing.Point(110, 149);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(65, 30);
+            this.textBox1.Size = new System.Drawing.Size(65, 31);
             this.textBox1.TabIndex = 49;
             this.textBox1.TabStop = false;
             // 
@@ -785,7 +785,7 @@
             this.txtQuantity.Location = new System.Drawing.Point(685, 122);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.ReadOnly = true;
-            this.txtQuantity.Size = new System.Drawing.Size(33, 22);
+            this.txtQuantity.Size = new System.Drawing.Size(33, 23);
             this.txtQuantity.TabIndex = 22;
             this.txtQuantity.TabStop = false;
             this.txtQuantity.Text = "1";
@@ -797,7 +797,7 @@
             this.lblTax.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(383, 55);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(47, 18);
+            this.lblTax.Size = new System.Drawing.Size(51, 19);
             this.lblTax.TabIndex = 41;
             this.lblTax.Text = "Thuế:";
             this.lblTax.Click += new System.EventHandler(this.lblTax_Click);
@@ -807,7 +807,7 @@
             this.txtGoodsName.Location = new System.Drawing.Point(685, 149);
             this.txtGoodsName.Name = "txtGoodsName";
             this.txtGoodsName.ReadOnly = true;
-            this.txtGoodsName.Size = new System.Drawing.Size(33, 22);
+            this.txtGoodsName.Size = new System.Drawing.Size(33, 23);
             this.txtGoodsName.TabIndex = 43;
             this.txtGoodsName.TabStop = false;
             this.txtGoodsName.Visible = false;
@@ -819,7 +819,7 @@
             this.txtTax.Location = new System.Drawing.Point(436, 46);
             this.txtTax.Name = "txtTax";
             this.txtTax.ReadOnly = true;
-            this.txtTax.Size = new System.Drawing.Size(150, 32);
+            this.txtTax.Size = new System.Drawing.Size(150, 33);
             this.txtTax.TabIndex = 40;
             this.txtTax.TabStop = false;
             this.txtTax.Text = "5%";
@@ -831,7 +831,7 @@
             this.txtCharge.Location = new System.Drawing.Point(436, 112);
             this.txtCharge.Name = "txtCharge";
             this.txtCharge.ReadOnly = true;
-            this.txtCharge.Size = new System.Drawing.Size(150, 32);
+            this.txtCharge.Size = new System.Drawing.Size(150, 33);
             this.txtCharge.TabIndex = 39;
             this.txtCharge.TabStop = false;
             this.txtCharge.TextChanged += new System.EventHandler(this.txtCharge_TextChanged);
@@ -854,7 +854,7 @@
             this.txtPayment.Location = new System.Drawing.Point(436, 79);
             this.txtPayment.MaxLength = 10;
             this.txtPayment.Name = "txtPayment";
-            this.txtPayment.Size = new System.Drawing.Size(150, 32);
+            this.txtPayment.Size = new System.Drawing.Size(150, 33);
             this.txtPayment.TabIndex = 5;
             this.txtPayment.Text = "0";
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
@@ -867,7 +867,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(36, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 18);
+            this.label1.Size = new System.Drawing.Size(72, 19);
             this.label1.TabIndex = 46;
             this.label1.Text = "Mã vạch:";
             // 
@@ -878,7 +878,7 @@
             this.txtTotalAmount.Location = new System.Drawing.Point(436, 13);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
-            this.txtTotalAmount.Size = new System.Drawing.Size(150, 32);
+            this.txtTotalAmount.Size = new System.Drawing.Size(150, 33);
             this.txtTotalAmount.TabIndex = 37;
             this.txtTotalAmount.TabStop = false;
             this.txtTotalAmount.Text = "0";
@@ -888,7 +888,7 @@
             this.txtBarcode.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.Location = new System.Drawing.Point(110, 13);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(174, 30);
+            this.txtBarcode.Size = new System.Drawing.Size(174, 31);
             this.txtBarcode.TabIndex = 1;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
@@ -953,7 +953,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(631, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 18);
+            this.label8.Size = new System.Drawing.Size(63, 19);
             this.label8.TabIndex = 65;
             this.label8.Text = "Ghi chú";
             // 
@@ -962,7 +962,7 @@
             this.txtNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNote.Location = new System.Drawing.Point(627, 32);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(98, 26);
+            this.txtNote.Size = new System.Drawing.Size(98, 27);
             this.txtNote.TabIndex = 15;
             this.txtNote.Leave += new System.EventHandler(this.txtNote_Leave);
             this.txtNote.Enter += new System.EventHandler(this.txtNote_Enter);
@@ -972,7 +972,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(469, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 18);
+            this.label7.Size = new System.Drawing.Size(69, 19);
             this.label7.TabIndex = 63;
             this.label7.Text = "Hoá đơn";
             // 
@@ -981,7 +981,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(405, 13);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 18);
+            this.label6.Size = new System.Drawing.Size(32, 19);
             this.label6.TabIndex = 62;
             this.label6.Text = "Giá";
             // 
@@ -990,7 +990,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(318, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 18);
+            this.label5.Size = new System.Drawing.Size(73, 19);
             this.label5.TabIndex = 61;
             this.label5.Text = "Số lượng";
             // 
@@ -999,7 +999,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(172, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 18);
+            this.label4.Size = new System.Drawing.Size(76, 19);
             this.label4.TabIndex = 60;
             this.label4.Text = "Tên hàng";
             // 
@@ -1008,7 +1008,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(69, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 18);
+            this.label3.Size = new System.Drawing.Size(66, 19);
             this.label3.TabIndex = 59;
             this.label3.Text = "Mã vạch";
             // 
@@ -1032,7 +1032,7 @@
             this.txtRefPurchaseOrder.Location = new System.Drawing.Point(472, 31);
             this.txtRefPurchaseOrder.MaxLength = 15;
             this.txtRefPurchaseOrder.Name = "txtRefPurchaseOrder";
-            this.txtRefPurchaseOrder.Size = new System.Drawing.Size(121, 26);
+            this.txtRefPurchaseOrder.Size = new System.Drawing.Size(121, 27);
             this.txtRefPurchaseOrder.TabIndex = 13;
             this.txtRefPurchaseOrder.Leave += new System.EventHandler(this.txtRefPurchaseOrder_Leave);
             this.txtRefPurchaseOrder.Enter += new System.EventHandler(this.txtRefPurchaseOrder_Enter);
@@ -1044,7 +1044,7 @@
             this.txtRetPrice.Location = new System.Drawing.Point(388, 32);
             this.txtRetPrice.Name = "txtRetPrice";
             this.txtRetPrice.ReadOnly = true;
-            this.txtRetPrice.Size = new System.Drawing.Size(78, 26);
+            this.txtRetPrice.Size = new System.Drawing.Size(78, 27);
             this.txtRetPrice.TabIndex = 12;
             this.txtRetPrice.TextChanged += new System.EventHandler(this.txtRetPrice_TextChanged);
             this.txtRetPrice.Leave += new System.EventHandler(this.txtRetPrice_Leave);
@@ -1057,7 +1057,7 @@
             this.txtRetQuantity.Location = new System.Drawing.Point(317, 32);
             this.txtRetQuantity.Name = "txtRetQuantity";
             this.txtRetQuantity.ReadOnly = true;
-            this.txtRetQuantity.Size = new System.Drawing.Size(65, 26);
+            this.txtRetQuantity.Size = new System.Drawing.Size(65, 27);
             this.txtRetQuantity.TabIndex = 55;
             this.txtRetQuantity.TabStop = false;
             this.txtRetQuantity.Text = "1";
@@ -1070,7 +1070,7 @@
             this.txtRetProductName.Location = new System.Drawing.Point(183, 31);
             this.txtRetProductName.Name = "txtRetProductName";
             this.txtRetProductName.ReadOnly = true;
-            this.txtRetProductName.Size = new System.Drawing.Size(128, 26);
+            this.txtRetProductName.Size = new System.Drawing.Size(128, 27);
             this.txtRetProductName.TabIndex = 54;
             this.txtRetProductName.TabStop = false;
             // 
@@ -1093,7 +1093,7 @@
             this.txtRetBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRetBarCode.Location = new System.Drawing.Point(77, 31);
             this.txtRetBarCode.Name = "txtRetBarCode";
-            this.txtRetBarCode.Size = new System.Drawing.Size(100, 26);
+            this.txtRetBarCode.Size = new System.Drawing.Size(100, 27);
             this.txtRetBarCode.TabIndex = 11;
             this.txtRetBarCode.TextChanged += new System.EventHandler(this.txtRetBarCode_TextChanged);
             this.txtRetBarCode.Leave += new System.EventHandler(this.txtRetBarCode_Leave);
@@ -1169,7 +1169,7 @@
             // 
             // SaveOrderShortcut
             // 
-            this.SaveOrderShortcut.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
+            this.SaveOrderShortcut.Shortcut = System.Windows.Forms.Shortcut.F12;
             this.SaveOrderShortcut.Pressed += new System.EventHandler(this.SaveOrderShortcut_Pressed);
             // 
             // QuickSaveOrderShortcut
@@ -1222,12 +1222,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.test1ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(100, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 28);
             // 
             // test1ToolStripMenuItem
             // 
             this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
-            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.test1ToolStripMenuItem.Text = "test1";
             // 
             // GoodsSaleForm

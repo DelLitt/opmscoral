@@ -235,6 +235,19 @@ namespace AppFrameClient.Common
                 AFCSetting.Default.ImportConfirmation = value;
             }
         }
+
+        public static BarcodeLib.TYPE BarcodeType
+        {
+            get
+            {
+                return AFCSetting.Default.BarcodeType;
+            }
+            set
+            {
+                AFCSetting.Default.BarcodeType = value;
+            }
+        }
+
         public static void Reset()
         {
             AFCSetting.Default.Reset();

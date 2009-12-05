@@ -81,5 +81,8 @@
     <Setting Name="TempNegativeSelling" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="BarcodeType" Type="BarcodeLib.TYPE" Scope="User">
+      <Value Profile="(Default)">CODE39</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

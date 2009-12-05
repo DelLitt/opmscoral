@@ -73,6 +73,7 @@ namespace AppFrameClient.Common
             }
         }
 
+        [ApplicationScopedSettingAttribute]
         public bool TempNegativeSelling
         {
             get
@@ -84,5 +85,19 @@ namespace AppFrameClient.Common
                 this["TempNegativeSelling"] = value; 
             }
         }
+
+        [ApplicationScopedSettingAttribute]
+        public BarcodeLib.TYPE BarcodeType
+        {
+            get
+            {
+                return (BarcodeLib.TYPE)this["BarcodeType"];
+            }
+            set
+            {
+                this["BarcodeType"] = value;
+            }
+        }
+
     }
 }
