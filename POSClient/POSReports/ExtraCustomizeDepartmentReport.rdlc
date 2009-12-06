@@ -207,11 +207,7 @@
             </ChartData>
             <Style>
               <BackgroundColor>White</BackgroundColor>
-<<<<<<< .mine
               <FontSize>9pt</FontSize>
-=======
-              <BackgroundGradientType>DiagonalRight</BackgroundGradientType>
->>>>>>> .r880
             </Style>
             <Title />
           </Chart>
@@ -1877,7 +1873,6 @@
                         <Value>=Sum(Fields!quantity.Value)</Value>
                       </DataValue>
                     </DataValues>
-<<<<<<< .mine
                     <DataLabel>
                       <Value>=Fields!quantity.Value</Value>
                       <Visible>true</Visible>
@@ -1885,16 +1880,6 @@
                     <Marker>
                       <Size>6pt</Size>
                     </Marker>
-=======
-                    <DataLabel>
-                      <Style />
-                      <Value>=Fields!quantity.Value</Value>
-                      <Visible>true</Visible>
-                    </DataLabel>
-                    <Marker>
-                      <Size>6pt</Size>
-                    </Marker>
->>>>>>> .r880
                   </DataPoint>
                 </DataPoints>
               </ChartSeries>
