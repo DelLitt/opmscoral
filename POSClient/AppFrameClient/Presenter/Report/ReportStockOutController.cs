@@ -130,7 +130,7 @@ namespace AppFrameClient.Presenter.Report
 
                 StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
                 stockIn.StockInDate = DateTime.Now;
-                stockIn.StockInType = 3; // stock in for stock out to manufacturers
+                stockIn.StockInType = 0; // stock in for stock out to manufacturers
                 stockIn.StockInDetails = new ArrayList();
                 stockIn.NotUpdateMainStock = true;
                 foreach (DepartmentStockOutDetail detail in departmentStockOut.DepartmentStockOutDetails)
@@ -188,13 +188,16 @@ namespace AppFrameClient.Presenter.Report
             foreach (DepartmentStockOut departmentStockOut in list)
             {
                 
-                StockOut stockOut = mapper.Convert(departmentStockOut);
                 StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
                 stockIn.StockInDate = DateTime.Now;
-                stockIn.StockInType = 3; // stock in for stock out to manufacturers
+                stockIn.StockInType = 0; // stock in for stock out to manufacturers
                 stockIn.StockInDetails = new ArrayList();
+                stockIn.NotUpdateMainStock = true;
+
+                StockOut stockOut = mapper.Convert(departmentStockOut);
                 stockOut.NotUpdateMainStock = true;
                 stockOut.StockOutDate = DateTime.Now;
+
                 if(departmentStockOut.OtherDepartmentId > 0 )
                 {
                     stockOut.DefectStatus = new StockDefectStatus
@@ -223,10 +226,9 @@ namespace AppFrameClient.Presenter.Report
                     detlist.Add(detailStockOut);                                           
                 }
                 stockOut.StockOutDetails = detlist;
-                stockIn.NotUpdateMainStock = true;
                 StockInLogic.AddForStockOutToProducer(stockIn);
                 StockOutLogic.Add(stockOut);
-                departmentStockOut.ConfirmFlg = 2;
+                departmentStockOut.ConfirmFlg = 0;
                 departmentStockOut.StockOutDate = DateTime.Now;
                 DepartmentStockOutLogic.Update(departmentStockOut);
             }
