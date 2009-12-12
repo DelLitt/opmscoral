@@ -33,7 +33,7 @@ namespace POSReports
             cboSortOrder.SelectedIndex = 0;
             
             cboIsolatedBy.SelectedIndex = 0;
-            
+            cboReportBy.SelectedIndex = 0;
             /*ReportParameter[] parameters = new ReportParameter[2];     
             parameters[0] = new ReportParameter("SerieType",cboIsolatedBy.SelectedIndex.ToString());
             parameters[1] = new ReportParameter("ReportType", (cboReportType.SelectedIndex+1).ToString());
@@ -49,6 +49,7 @@ namespace POSReports
         int limit = 10;
         int deptId = 0;
         int isolatedBy = 0;
+        private int ReportBy = 0;
         private void button1_Click(object sender, EventArgs e)
         {
             BackgroundWorker backgroundWorker = new BackgroundWorker();
@@ -70,7 +71,7 @@ namespace POSReports
             {
                 deptId = 0;
             }
-            
+            ReportBy = cboReportBy.SelectedIndex;
             Enabled = false;
             backgroundWorker.RunWorkerAsync();
             StartShowProcessing();
@@ -81,17 +82,55 @@ namespace POSReports
         {
             Enabled = true;
             StopShowProcessing();
-            customizeReport.RefreshReport();
+
+            switch (ReportBy)
+            {
+                case 1:
+                    customizeSizeReport.Visible = true;
+                    customizeSizeReport.BringToFront();
+                    customizeSizeReport.RefreshReport();
+                    break;  
+                case 2:
+                    customizeColorReport.Visible = true;
+                    customizeColorReport.BringToFront();
+                    customizeColorReport.RefreshReport();
+                    break;
+                default:
+                    customizeReport.Visible = true;
+                    customizeReport.BringToFront();
+                    customizeReport.RefreshReport();
+                    break;
+            }
+            
         }
 
         void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             aSyncDS.EnforceConstraints = false;
             aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentReportTableAdapter adapter = new ExtraCustomizeDepartmentReportTableAdapter();
-            adapter.ClearBeforeFill = true;
-            adapter.Fill(posDataSet.ExtraCustomizeDepartmentReport, ReportType, SortOrder, isolatedBy, deptId, limit,
-                         reqFromDate, reqToDate);
+            switch (ReportBy)
+            {
+                case 1:
+                    POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentSizeReportTableAdapter sizeReportTableAdapter = new ExtraCustomizeDepartmentSizeReportTableAdapter();
+                    sizeReportTableAdapter.ClearBeforeFill = true;
+                    sizeReportTableAdapter.Fill(posDataSet.ExtraCustomizeDepartmentSizeReport, ReportType, SortOrder, isolatedBy, deptId, limit,
+                                 reqFromDate, reqToDate);
+                    break;
+                case 2:
+                    POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentColorReportTableAdapter colorReportTableAdapter = new ExtraCustomizeDepartmentColorReportTableAdapter();
+                    colorReportTableAdapter.ClearBeforeFill = true;
+                    colorReportTableAdapter.Fill(posDataSet.ExtraCustomizeDepartmentColorReport, ReportType, SortOrder, isolatedBy, deptId, limit,
+                                 reqFromDate, reqToDate);
+
+                    break;
+                default:
+                    POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentReportTableAdapter adapter = new ExtraCustomizeDepartmentReportTableAdapter();
+                    adapter.ClearBeforeFill = true;
+                    adapter.Fill(posDataSet.ExtraCustomizeDepartmentReport, ReportType, SortOrder, isolatedBy, deptId, limit,
+                                 reqFromDate, reqToDate);
+                    break;
+            }
+            
         }
 
         private void label5_Click(object sender, EventArgs e)
