@@ -73,7 +73,42 @@ namespace POSReports
             reqToDate = MaxTime(ToDate.Value);
             if(!string.IsNullOrEmpty(txtProducts.Text))
             {
-                stockStatisticBindingSource.Filter = "product_name like '%" + txtProducts.Text + "%'";
+                string productNamesFilter = txtProducts.Text.Trim();
+                string[] pmFilters = productNamesFilter.Split(',');
+                if (pmFilters.Length <= 1)
+                {
+                    stockStatisticBindingSource.Filter = "product_name like '%" + productNamesFilter + "%'";
+                }
+                else
+                {
+                    string startFilterStr = "";
+                    int count = 0;
+                    string endFilterStr = "";
+                    string filter = "";
+
+                    foreach (string pmFilter in pmFilters)
+                    {
+                        count += 1;
+                        if(string.IsNullOrEmpty(filter))
+                        {
+                            startFilterStr = "( ";
+                        }
+                        else
+                        {
+                            startFilterStr = " ";
+                        }
+
+                        if (count == pmFilters.Length) endFilterStr = " ) ";
+                        else
+                        {
+                            endFilterStr = " OR ";
+                        }
+
+                         filter += startFilterStr + " ( product_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+                        
+                    }
+                    stockStatisticBindingSource.Filter = filter;
+                }
             }
             else
             {

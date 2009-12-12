@@ -73,8 +73,44 @@ namespace POSReports
 
                 if (!string.IsNullOrEmpty(txtFilter.Text))
                 {
-                    parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());
-                    this.deptStockStatisticBindingSource.Filter = "product_name like '%" + txtFilter.Text + "%'";
+                    /*parameters[0] = new ReportParameter("StrFilter", txtFilter.Text.Trim());
+                    this.deptStockStatisticBindingSource.Filter = "product_name like '%" + txtFilter.Text + "%'";*/
+                    
+                    string productNamesFilter = txtFilter.Text.Trim();
+                    string[] pmFilters = productNamesFilter.Split(',');
+                    if (pmFilters.Length <= 1)
+                    {
+                        deptStockStatisticBindingSource.Filter = "product_name like '%" + productNamesFilter + "%'";
+                    }
+                    else
+                    {
+                        string startFilterStr = "";
+                        int count = 0;
+                        string endFilterStr = "";
+                        string filter = "";
+                        foreach (string pmFilter in pmFilters)
+                        {
+                            count += 1;
+                            if (string.IsNullOrEmpty(filter))
+                            {
+                                startFilterStr = "( ";
+                            }
+                            else
+                            {
+                                startFilterStr = " ";
+                            }
+
+                            if (count == pmFilters.Length) endFilterStr = " ) ";
+                            else
+                            {
+                                endFilterStr = " OR ";
+                            }
+
+                            filter += startFilterStr + " ( product_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+                        }
+                        deptStockStatisticBindingSource.Filter = filter;
+                    }
+
                 }
                 else
                 {
