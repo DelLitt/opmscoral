@@ -1264,6 +1264,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void SaveOrderShortcut_Pressed(object sender, EventArgs e)
         {
+            txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
             btnPrint_Click(null, e);
         }
 
