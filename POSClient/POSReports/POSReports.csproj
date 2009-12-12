@@ -216,6 +216,8 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExtraCustomizeDepartmentColorReport.rdlc" />
+    <EmbeddedResource Include="ExtraCustomizeDepartmentSizeReport.rdlc" />
     <EmbeddedResource Include="ExtraCustomizeDepartmentReportViewer.resx">
       <DependentUpon>ExtraCustomizeDepartmentReportViewer.cs</DependentUpon>
     </EmbeddedResource>

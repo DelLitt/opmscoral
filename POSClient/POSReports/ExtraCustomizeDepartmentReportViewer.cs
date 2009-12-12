@@ -134,5 +134,10 @@ namespace POSReports
                 cboDepartments.Enabled = false;
             }
         }
+
+        private void customizeColorReport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
