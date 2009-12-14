@@ -2,7 +2,7 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="posConnectionString">
-      <rd:DataSourceID>246c52d4-2779-4dbb-8879-b672505872b6</rd:DataSourceID>
+      <rd:DataSourceID>9c231b5c-9054-4098-8add-ad6b9059394a</rd:DataSourceID>
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos;connect timeout=60;default command timeout=300</ConnectString>
@@ -40,6 +40,10 @@
           <DataField>color_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="size_name">
+          <DataField>size_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="product_name">
           <DataField>product_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -52,13 +56,13 @@
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>`pos`.`ExtraCustomizeDepartmentReport`</CommandText>
+        <CommandText>`pos`.`ExtraFilterCustomizeDepartmentReport`</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>posDataSet</rd:DataSetName>
-        <rd:TableName>ExtraCustomizeDepartmentReport</rd:TableName>
-        <rd:TableAdapterName>ExtraCustomizeDepartmentReportTableAdapter</rd:TableAdapterName>
+        <rd:TableName>ExtraFilterCustomizeDepartmentReport</rd:TableName>
+        <rd:TableAdapterName>ExtraFilterCustomizeDepartmentReportTableAdapter</rd:TableAdapterName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
       </rd:DataSetInfo>
@@ -139,7 +143,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -310,7 +314,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -478,7 +482,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1158,7 +1162,7 @@
                           <GroupExpression>=Fields!type_name.Value</GroupExpression>
                         </GroupExpressions>
                       </Grouping>
-                      <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                      <Label>=Fields!type_name.Value</Label>
                     </DynamicSeries>
                   </SeriesGrouping>
                 </SeriesGroupings>
@@ -1483,7 +1487,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1651,7 +1655,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1819,7 +1823,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1987,7 +1991,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -2155,7 +2159,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!type_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>

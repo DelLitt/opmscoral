@@ -143,7 +143,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -314,7 +314,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -482,7 +482,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -651,7 +651,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -819,7 +819,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -987,7 +987,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1162,7 +1162,7 @@
                           <GroupExpression>=Fields!type_name.Value</GroupExpression>
                         </GroupExpressions>
                       </Grouping>
-                      <Label>=Fields!type_name.Value</Label>
+                      <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                     </DynamicSeries>
                   </SeriesGrouping>
                 </SeriesGroupings>
@@ -1487,7 +1487,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1655,7 +1655,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1823,7 +1823,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1991,7 +1991,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -2159,7 +2159,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -2326,7 +2326,7 @@
                       <GroupExpression>=Fields!type_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>

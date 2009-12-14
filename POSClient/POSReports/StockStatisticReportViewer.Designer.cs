@@ -38,9 +38,9 @@
             this.ToDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.chkZeroValue = new System.Windows.Forms.CheckBox();
-            this.cboProductTypes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtProducts = new System.Windows.Forms.TextBox();
+            this.cboProductTypes = new System.Windows.Forms.ComboBox();
             this.producttypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -97,7 +97,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 25);
+            this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "XEM BÁO CÁO";
             // 
@@ -107,7 +107,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(5, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 19);
+            this.label2.Size = new System.Drawing.Size(77, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Đến ngày:";
             // 
@@ -118,7 +118,7 @@
             this.ToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.ToDate.Location = new System.Drawing.Point(107, 39);
             this.ToDate.Name = "ToDate";
-            this.ToDate.Size = new System.Drawing.Size(194, 26);
+            this.ToDate.Size = new System.Drawing.Size(194, 27);
             this.ToDate.TabIndex = 2;
             // 
             // button1
@@ -137,10 +137,30 @@
             this.chkZeroValue.AutoSize = true;
             this.chkZeroValue.Location = new System.Drawing.Point(456, 39);
             this.chkZeroValue.Name = "chkZeroValue";
-            this.chkZeroValue.Size = new System.Drawing.Size(91, 17);
+            this.chkZeroValue.Size = new System.Drawing.Size(100, 19);
             this.chkZeroValue.TabIndex = 6;
             this.chkZeroValue.Text = "Sp có giá trị 0";
             this.chkZeroValue.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(351, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 32);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Lọc theo loại:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtProducts
+            // 
+            this.txtProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProducts.Location = new System.Drawing.Point(613, 5);
+            this.txtProducts.Name = "txtProducts";
+            this.txtProducts.Size = new System.Drawing.Size(371, 25);
+            this.txtProducts.TabIndex = 4;
             // 
             // cboProductTypes
             // 
@@ -151,29 +171,9 @@
             this.cboProductTypes.FormattingEnabled = true;
             this.cboProductTypes.Location = new System.Drawing.Point(456, 5);
             this.cboProductTypes.Name = "cboProductTypes";
-            this.cboProductTypes.Size = new System.Drawing.Size(149, 26);
+            this.cboProductTypes.Size = new System.Drawing.Size(149, 28);
             this.cboProductTypes.TabIndex = 5;
             this.cboProductTypes.ValueMember = "TYPE_NAME";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(355, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 32);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Lọc theo loại:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtProducts
-            // 
-            this.txtProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProducts.Location = new System.Drawing.Point(613, 5);
-            this.txtProducts.Name = "txtProducts";
-            this.txtProducts.Size = new System.Drawing.Size(371, 24);
-            this.txtProducts.TabIndex = 4;
             // 
             // producttypeBindingSource
             // 
@@ -194,7 +194,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.StockStatisticReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 74);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(996, 546);
+            this.reportViewer1.Size = new System.Drawing.Size(996, 545);
             this.reportViewer1.TabIndex = 5;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
