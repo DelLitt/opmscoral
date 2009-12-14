@@ -311,100 +311,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
 
-            #region unused code
-            /*string[] masterNames = Directory.GetFiles(masterPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);
-            if (masterNames.Length > 0)
-            {
-                // get file name and sync master data
-                string masterFileName = "";
-                foreach (string masterName in masterNames)
-                {
-                    masterFileName = masterName;
-                    if (!string.IsNullOrEmpty(masterFileName))
-                    {
-                        if(masterFileName.IndexOf("MasterData")< 0)
-                        {
-                            continue;
-                        }
-                        SyncResult result = new SyncResult();
-                        result.FileName = masterFileName;
-                        resultList.Add(result);
-                        Stream stream = null;
-                        bool fail = true;
-                        try
-                        {
-                            // need to put a part of master data syncing.
-
-                            stream = File.Open(masterFileName, FileMode.Open);
-                            BinaryFormatter bf = new BinaryFormatter();
-                            SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment) bf.Deserialize(stream);
-                            if (syncFMTD == null)
-                            {
-                                fail = true;
-                            }
-                            else
-                            {
-                                var eventArgs = new DepartmentStockInEventArgs();
-                                //eventArgs.DepartmentStockIn = deptStockIn;
-                                eventArgs.SyncFromMainToDepartment = syncFMTD;
-                                EventUtility.fireEvent(SyncExportedMasterDataEvent, this, eventArgs);
-                                if (eventArgs.EventResult != null)
-                                {
-                                    fail = false;
-                                }
-                                else
-                                {
-                                    fail = true;
-                                }
-                            }
-                        }
-                        finally
-                        {
-                            if (stream != null)
-                            {
-                                stream.Close();
-                            }
-                            if (fail)
-                            {
-                                //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
-                                //ClientUtility.MoveFileToSpecificDir(errorPath, masterFileName);
-                                // errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
-                                result.Status = "Thất bại";
-                            }
-                            else
-                            {
-                                // if success  then delete and write last sync time
-                                //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
-                                File.Delete(masterFileName);
-                                //ClientUtility.MoveFileToSpecificDir(successPath, fileName);
-                                string origFileName = masterFileName.Substring(masterFileName.LastIndexOf("\\") + 1,
-                                                                               masterFileName.Length -
-                                                                               (masterFileName.LastIndexOf("\\") + 1));
-                                string[] separateFileNames = origFileName.Split('.');
-                                string updateTimeStr =
-                                    separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
-                                DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
-                                Department masterDept = new Department
-                                                            {
-                                                                DepartmentId = 0,
-                                                                DepartmentName = "MasterData"
-                                                            };
-                                // BEGIN TEMP FIXING
-                                // END FIXING
-                                result.Status = "Thành công";
-                            }
-                        }
-                    }
-                }
-            }*/
-
-            #endregion
-
-
                 string[] fileNames = Directory.GetFiles(importPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);
-                /*string[] extraFileNames =
-                    Directory.GetFiles(importPath + "\\" + CurrentDepartment.Get().DepartmentId.ToString(),
-                                       "*" + CommonConstants.SERVER_SYNC_FORMAT);*/
+                
                 IList fileNameList = new ArrayList();
                 if (fileNames.Length == 0)
                 {
@@ -419,11 +327,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     fileNameList.Add(fileName);
                 }
-                /*foreach (string extraFileName in extraFileNames)
-                {
-                    fileNameList.Add(extraFileName);
-                }*/
-                //resultList = new ArrayList();
+                
                 StringBuilder errorStr = new StringBuilder();
                 foreach (string fileName in fileNameList)
                 {

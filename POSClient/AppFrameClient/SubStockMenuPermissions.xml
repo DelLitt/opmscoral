@@ -110,6 +110,7 @@
     <menuitem name="mnuAllStock" role="Administrator,Supervisor" />
     <menuitem name="mnuAllPurchaseOrders" role="NotImplement" />
     <menuitem name="mnuStockEvaluationReport" role="NotImplement" />
+    <menuitem name="mnuProductMasterStatistic" role="NotImplement" />
     
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">

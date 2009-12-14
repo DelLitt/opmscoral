@@ -142,8 +142,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             try
             {
 
+                DatabaseUtils.LoadMasterData(chkPrdMaster.Checked, chkDepartments.Checked, chkPrice.Checked);
+                SyncResult mstResult = new SyncResult();
+                mstResult.FileName = "HINH ANH DU LIEU";
+                mstResult.Status = "Thành công";
+                resultList.Add(mstResult);
                 // sync master data first
-                Department mstDataDept = new Department
+                /*Department mstDataDept = new Department
                 {
                     DepartmentId = 0,
                     DepartmentName = "DataImage"
@@ -174,7 +179,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     mstResult.FileName = masterDataFileName;
                     mstResult.Status = "Thành công";
                     resultList.Add(mstResult);
-                }
+                }*/
 
             }
             catch (Exception)

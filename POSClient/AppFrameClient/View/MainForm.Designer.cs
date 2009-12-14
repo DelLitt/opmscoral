@@ -210,6 +210,7 @@
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlDeleteHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.mnuProductMasterStatistic = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -834,6 +835,7 @@
             this.mnuGoodsExportReport,
             this.mnuAllStockReturnReport,
             this.toolStripMenuItem16,
+            this.mnuProductMasterStatistic,
             this.mnuMixReport,
             this.mnuMixDeptReport,
             this.toolStripMenuItem13,
@@ -950,8 +952,8 @@
             // mnuMixDeptReport
             // 
             this.mnuMixDeptReport.Name = "mnuMixDeptReport";
-            this.mnuMixDeptReport.Size = new System.Drawing.Size(311, 24);
-            this.mnuMixDeptReport.Text = "Báo cáo hỗn hợp - tình hình cửa hàng";
+            this.mnuMixDeptReport.Size = new System.Drawing.Size(316, 24);
+            this.mnuMixDeptReport.Text = "Báo cáo tổng hợp - tình hình cửa hàng";
             this.mnuMixDeptReport.Click += new System.EventHandler(this.mnuMixDeptReport_Click);
             // 
             // toolStripMenuItem13
@@ -1667,6 +1669,13 @@
             this.crlDeleteHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
             this.crlDeleteHotkey.Pressed += new System.EventHandler(this.crlDeleteHotkey_Pressed);
             // 
+            // mnuProductMasterStatistic
+            // 
+            this.mnuProductMasterStatistic.Name = "mnuProductMasterStatistic";
+            this.mnuProductMasterStatistic.Size = new System.Drawing.Size(316, 24);
+            this.mnuProductMasterStatistic.Text = "Báo cáo theo dõi tình hình mặt hàng";
+            this.mnuProductMasterStatistic.Click += new System.EventHandler(this.mnuProductMasterStatistic_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1881,6 +1890,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCheckStockEvaluation;
         private System.Windows.Forms.ToolStripMenuItem mnuStockEvaluationReport;
         private AppFrame.Controls.HotKey.SystemHotkey crlDeleteHotkey;
+        private System.Windows.Forms.ToolStripMenuItem mnuProductMasterStatistic;
 
     }
 }

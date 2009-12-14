@@ -190,7 +190,7 @@ namespace AppFrameClient.Presenter.Report
                 
                 StockIn stockIn = drpsiMapper.Convert(departmentStockOut);
                 stockIn.StockInDate = DateTime.Now;
-                stockIn.StockInType = 0; // stock in for stock out to manufacturers
+                stockIn.StockInType = 3; // stock in for stock out to manufacturers
                 stockIn.StockInDetails = new ArrayList();
                 stockIn.NotUpdateMainStock = true;
 

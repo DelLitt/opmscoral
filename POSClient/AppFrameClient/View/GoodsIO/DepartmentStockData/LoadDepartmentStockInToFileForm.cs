@@ -427,7 +427,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private long syncDeptId = 0;
         private void btnSyncToDept_Click(object sender, EventArgs e)
         {
-
             syncDeptId = Int64.Parse(cboDepartments.SelectedValue.ToString());
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);

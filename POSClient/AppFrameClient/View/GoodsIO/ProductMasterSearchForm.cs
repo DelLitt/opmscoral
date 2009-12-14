@@ -350,8 +350,18 @@ namespace AppFrameClient.View.GoodsIO
                                  ProductList[dgvProduct.CurrentRow.Index].ProductMaster.ProductSize.
                                      SizeName;
                 }
-                Image imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                               (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+
+                Image imageBC = null;
+                if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
+                {
+                    imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
+                                                    (int)(1.25 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                }
+                else
+                {
+                    imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
+                                                   (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                }
 
                 Bitmap bitmap1 = new Bitmap(imageBC);
                 bitmap1.SetResolution(204, 204);
@@ -376,11 +386,22 @@ namespace AppFrameClient.View.GoodsIO
 
                     //(i % 3) * 124, (i / 3) * 87, 117, 79 
                     e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(priceTotalSize.Width, 140), (float)25);
-                    e.Graphics.DrawImage(bitmap1,
-                                         new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
-                                                       (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
-                                                       (int)(0.3 * 100)));
+                                          (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
+
+                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE39)
+                    {
+                        e.Graphics.DrawImage(bitmap1,
+                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.25 * 100), 140),
+                                                           (int)(25 + priceTotalSize.Height), (int)(1.25 * 100),
+                                                           (int)(0.3 * 100)));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawImage(bitmap1,
+                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
+                                                           (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
+                                                           (int)(0.3 * 100)));
+                    }
                     e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black),
                                           (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)72);
                     e.Graphics.DrawString(colorSize, _titleFont, new SolidBrush(Color.Black),
@@ -434,8 +455,17 @@ namespace AppFrameClient.View.GoodsIO
                         colorSize += "S:" +
                                      printList[i].ProductMaster.ProductSize.SizeName;
                     }
-                    Image imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                                   (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                    Image imageBC = null;
+                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
+                    {
+                        imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
+                                                        (int)(1.25 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                    }
+                    else
+                    {
+                        imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
+                                                       (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                    }
 
                     Bitmap bitmap1 = new Bitmap(imageBC);
                     bitmap1.SetResolution(204, 204);
@@ -460,11 +490,22 @@ namespace AppFrameClient.View.GoodsIO
 
 
                     e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(priceTotalSize.Width, 140), (float)25);
-                    e.Graphics.DrawImage(bitmap1,
-                                         new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
-                                                       (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
-                                                       (int)(0.3 * 100)));
+                                          (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
+
+                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE39)
+                    {
+                        e.Graphics.DrawImage(bitmap1,
+                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.25 * 100), 140),
+                                                           (int)(25 + priceTotalSize.Height), (int)(1.25 * 100),
+                                                           (int)(0.3 * 100)));
+                    }
+                    else
+                    {
+                        e.Graphics.DrawImage(bitmap1,
+                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
+                                                           (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
+                                                           (int)(0.3 * 100)));
+                    }
                     e.Graphics.DrawString(barCodeStr, _barCodeFont, new SolidBrush(Color.Black),
                                           (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)72);
                     e.Graphics.DrawString(colorSize, _titleFont, new SolidBrush(Color.Black),

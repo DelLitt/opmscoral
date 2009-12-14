@@ -781,7 +781,7 @@ namespace AppFrame.View
 
         private void mnuMixReport_Click(object sender, EventArgs e)
         {
-            new CustomizeReportViewer().Show();
+            new ExtraFilterCustomizeDepartmentReportViewer().Show();
         }
 
         private void mnuDeptStockFixing_Click(object sender, EventArgs e)
@@ -1305,6 +1305,11 @@ namespace AppFrame.View
                 DatabaseUtils.ClearCLRDatabase(true, true);  
             }
             
+        }
+
+        private void mnuProductMasterStatistic_Click(object sender, EventArgs e)
+        {
+            new ProductMasterStatisticReportViewer().Show();
         }
         
     }
