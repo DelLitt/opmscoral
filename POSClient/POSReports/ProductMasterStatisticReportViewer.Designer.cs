@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.ProductMasterStatisticBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.customizeReport = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -72,9 +72,9 @@
             // customizeReport
             // 
             this.customizeReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_ProductMasterStatistic";
-            reportDataSource1.Value = this.ProductMasterStatisticBindingSource;
-            this.customizeReport.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "posDataSet_ProductMasterStatistic";
+            reportDataSource2.Value = this.ProductMasterStatisticBindingSource;
+            this.customizeReport.LocalReport.DataSources.Add(reportDataSource2);
             this.customizeReport.LocalReport.ReportEmbeddedResource = "POSReports.ProductMasterStatistic.rdlc";
             this.customizeReport.Location = new System.Drawing.Point(0, 129);
             this.customizeReport.Name = "customizeReport";

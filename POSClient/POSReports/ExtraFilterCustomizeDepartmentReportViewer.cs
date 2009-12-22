@@ -26,7 +26,22 @@ namespace POSReports
             this.product_typeTableAdapter.Fill(this.posDataSet.product_type);
             // TODO: This line of code loads data into the 'posDataSet.CustomizeReport' table. You can move, or remove it, as needed.
             //this.CustomizeReportTableAdapter.Fill(this.posDataSet.CustomizeReport);
-            
+            // TODO: This line of code loads data into the 'posDataSet.product_type' table. You can move, or remove it, as needed.
+            this.product_typeTableAdapter.Fill(this.posDataSet.product_type);
+            this.posDataSet.product_type.Addproduct_typeRow
+            (0, "-- Tat ca các loai --", DateTime.Now, "admin",
+                                                            DateTime.Now, "admin", 0, 0);
+            cboTypes.Items.Add(new ProductType { TypeId = 0, TypeName = " --Tất cả mặt hàng--" });
+            foreach (posDataSet.product_typeRow row in posDataSet.product_type)
+            {
+                cboTypes.Items.Add(new ProductType { TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME });
+            }
+
+            cboTypes.DisplayMember = "TypeName";
+            cboTypes.ValueMember = "TypeId";
+
+            cboTypes.Refresh();
+
             
             this.departmentTableAdapter1.Fill(posDataSet.department);
             
@@ -54,6 +69,7 @@ namespace POSReports
         private string FilterString = "";
         private void button1_Click(object sender, EventArgs e)
         {
+            FillTxtResult();
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
@@ -75,11 +91,22 @@ namespace POSReports
             }
             
             FilterString = "";
+            // filter cho chung loai san pham
+
+            if(cboTypes.SelectedIndex > 0)
+            {
+                string typeFilter = "";
+                string typeName = ((ProductType) cboTypes.SelectedItem).TypeName;
+                typeFilter = " type_name like '%" + typeName + "%' ";
+                FilterString += typeFilter;
+            }
             // filter cho ten san pham
             if (!string.IsNullOrEmpty(txtPrdFilter.Text))
             {
+                if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
+
                 string productTotalFilter = "";
-                string productNamesFilter = txtPrdFilter.Text.Trim();
+                string productNamesFilter = txtPrdFilter.Text.Trim().ToUpper();
                 string[] pmFilters = productNamesFilter.Split(',');
                 if (pmFilters.Length <= 1)
                 {
@@ -121,7 +148,7 @@ namespace POSReports
             {
                 if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
                 string sizeTotalFilter = "";
-                string productSizesFilter = txtSizeFilter.Text.Trim();
+                string productSizesFilter = txtSizeFilter.Text.Trim().ToUpper();
                 string[] pmFilters = productSizesFilter.Split(',');
                 if (pmFilters.Length <= 1)
                 {
@@ -163,7 +190,7 @@ namespace POSReports
             {
                 if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
                 string colorTotalFilter = "";
-                string productColorsFilter = txtColorFilter.Text.Trim();
+                string productColorsFilter = txtColorFilter.Text.Trim().ToUpper();
                 string[] pmFilters = productColorsFilter.Split(',');
                 if (pmFilters.Length <= 1)
                 {
@@ -294,7 +321,8 @@ namespace POSReports
             string result = "";
             if(    string.IsNullOrEmpty(txtSizeFilter.Text)  
                 && string.IsNullOrEmpty(txtColorFilter.Text) 
-                && string.IsNullOrEmpty(txtPrdFilter.Text))
+                && string.IsNullOrEmpty(txtPrdFilter.Text)
+                && cboTypes.SelectedIndex ==0)
             {
                 result = "Tất cả sản phẩm";
             }
@@ -302,13 +330,17 @@ namespace POSReports
             {
                 result = " Những sản phẩm có ";
             }
+            if(cboTypes.SelectedIndex > 0)
+            {
+                result += " CHỦNG LOẠI là ( " + ((ProductType)cboTypes.SelectedItem).TypeName + ") ";
+            }
             if(!string.IsNullOrEmpty(txtPrdFilter.Text))
             {
                 result += " TÊN tương tự như ( " + txtPrdFilter.Text.Trim() + ") ";
             }
             if (!string.IsNullOrEmpty(txtSizeFilter.Text))
             {
-                result += " K.CỠ tương tự như ( " + txtSizeFilter.Text.Trim() + ") ";
+                result += " có K.CỠ : ( " + txtSizeFilter.Text.Trim() + ") ";
             }
             if (!string.IsNullOrEmpty(txtColorFilter.Text))
             {

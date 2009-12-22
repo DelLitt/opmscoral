@@ -2,10 +2,12 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <DataSources>
     <DataSource Name="posConnectionString">
-      <rd:DataSourceID>51f6534c-a2c7-4c4f-a171-184b9ff7baa5</rd:DataSourceID>
+      <rd:DataSourceID>a0e5f5cf-df41-4325-9ef5-953f11de7e68</rd:DataSourceID>
       <ConnectionProperties>
-        <DataProvider>SQL</DataProvider>
-        <ConnectString>password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos;connect timeout=60;default command timeout=300</ConnectString>
+        <DataProvider>
+        </DataProvider>
+        <ConnectString>
+        </ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -16,16 +18,12 @@
   <RightMargin>1in</RightMargin>
   <LeftMargin>1in</LeftMargin>
   <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>5f887161-f267-4def-bb03-e7002723c09e</rd:ReportID>
+  <rd:ReportID>10beaaa8-9a39-48cc-8067-e53a389a823f</rd:ReportID>
   <DataSets>
-    <DataSet Name="posDataSet_ProductMasterStatistic">
+    <DataSet Name="posDataSet_StockRemainsStatistic">
       <Fields>
         <Field Name="type_name">
           <DataField>type_name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="product_id">
-          <DataField>product_id</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="product_name">
@@ -40,800 +38,42 @@
           <DataField>size_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="main_avail_qty">
-          <DataField>main_avail_qty</DataField>
+        <Field Name="dstkqty">
+          <DataField>dstkqty</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="main_stock_in_date">
-          <DataField>main_stock_in_date</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="main_stock_in_qty">
-          <DataField>main_stock_in_qty</DataField>
+        <Field Name="stkqty">
+          <DataField>stkqty</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="main_stock_out_date">
-          <DataField>main_stock_out_date</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="stock_out_department_name">
-          <DataField>stock_out_department_name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="stock_out_department_qty">
-          <DataField>stock_out_department_qty</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="dept_ret_main_name">
-          <DataField>dept_ret_main_name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="dept_ret_main_qty">
-          <DataField>dept_ret_main_qty</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="rtn_producer_qty">
-          <DataField>rtn_producer_qty</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="dept_ret_main_name1">
-          <DataField>dept_ret_main_name1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="dept_sale_qty">
-          <DataField>dept_sale_qty</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="department_id">
+          <DataField>department_id</DataField>
+          <rd:TypeName>System.UInt64</rd:TypeName>
         </Field>
         <Field Name="department_name">
           <DataField>department_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="department_name1">
-          <DataField>department_name1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="department_name2">
-          <DataField>department_name2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>posConnectionString</DataSourceName>
-        <CommandType>StoredProcedure</CommandType>
-        <CommandText>`pos`.`ProductMasterStatistic`</CommandText>
+        <CommandText>`pos`.`StockRemainsStatistic`</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>posDataSet</rd:DataSetName>
-        <rd:TableName>ProductMasterStatistic</rd:TableName>
-        <rd:TableAdapterName>ProductMasterStatisticTableAdapter</rd:TableAdapterName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableName>StockRemainsStatistic</rd:TableName>
+        <rd:TableAdapterName>
+        </rd:TableAdapterName>
+        <rd:TableAdapterFillMethod>
+        </rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>10in</Width>
+  <Width>7in</Width>
   <Body>
     <ReportItems>
-      <Matrix Name="matrix3">
-        <MatrixColumns>
-          <MatrixColumn>
-            <Width>1.125in</Width>
-          </MatrixColumn>
-        </MatrixColumns>
-        <ZIndex>4</ZIndex>
-        <DataSetName>posDataSet_ProductMasterStatistic</DataSetName>
-        <RowGroupings>
-          <RowGrouping>
-            <Width>1.54608in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix3_RowGroup1">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox22">
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.25in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix3_RowGroup2">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!color_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox23">
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!color_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.625in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix3_RowGroup3">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!size_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox24">
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!size_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.5in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix3_RowGroup4">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_id.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox33">
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_id.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-        </RowGroupings>
-        <Filters>
-          <Filter>
-            <FilterExpression>=Fields!stock_out_department_qty.Value</FilterExpression>
-            <Operator>GreaterThan</Operator>
-            <FilterValues>
-              <FilterValue>=CDec(0)</FilterValue>
-            </FilterValues>
-          </Filter>
-        </Filters>
-        <Top>2.375in</Top>
-        <ColumnGroupings>
-          <ColumnGrouping>
-            <Height>0.25in</Height>
-            <DynamicColumns>
-              <Grouping Name="matrix3_ColumnGroup1">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!main_stock_in_date.Value</GroupExpression>
-                </GroupExpressions>
-                <Parent>=Fields!product_id.Value</Parent>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox42">
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!department_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicColumns>
-          </ColumnGrouping>
-          <ColumnGrouping>
-            <Height>0.25in</Height>
-            <DynamicColumns>
-              <Grouping Name="matrix3_main_stock_out_date">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!main_stock_out_date.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="main_stock_out_date">
-                  <rd:DefaultName>main_stock_out_date</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=CDate(Fields!main_stock_out_date.Value).ToString("dd/MM/yyyy")</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicColumns>
-          </ColumnGrouping>
-        </ColumnGroupings>
-        <Width>6.04608in</Width>
-        <Corner>
-          <ReportItems>
-            <Textbox Name="textbox55">
-              <Style>
-                <BorderStyle>
-                  <Default>Solid</Default>
-                </BorderStyle>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-              <CanGrow>true</CanGrow>
-              <Value>TÌNH HÌNH XUẤT HÀNG</Value>
-            </Textbox>
-          </ReportItems>
-        </Corner>
-        <Style>
-          <BorderStyle>
-            <Default>Solid</Default>
-          </BorderStyle>
-          <BorderWidth>
-            <Default>2pt</Default>
-          </BorderWidth>
-        </Style>
-        <MatrixRows>
-          <MatrixRow>
-            <Height>0.2598in</Height>
-            <MatrixCells>
-              <MatrixCell>
-                <ReportItems>
-                  <Textbox Name="textbox68">
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Right</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                  </Textbox>
-                </ReportItems>
-              </MatrixCell>
-            </MatrixCells>
-          </MatrixRow>
-        </MatrixRows>
-        <Height>0.7598in</Height>
-        <Left>0.125in</Left>
-      </Matrix>
-      <Matrix Name="matrix2">
-        <MatrixColumns>
-          <MatrixColumn>
-            <Width>0.875in</Width>
-          </MatrixColumn>
-          <MatrixColumn>
-            <Width>1.125in</Width>
-          </MatrixColumn>
-        </MatrixColumns>
-        <ZIndex>3</ZIndex>
-        <DataSetName>posDataSet_ProductMasterStatistic</DataSetName>
-        <RowGroupings>
-          <RowGrouping>
-            <Width>1.5in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix2_product_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="product_name_2">
-                  <rd:DefaultName>product_name_2</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.27367in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix2_color_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!color_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="color_name_2">
-                  <rd:DefaultName>color_name_2</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!color_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.625in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix2_size_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!size_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="size_name_2">
-                  <rd:DefaultName>size_name_2</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!size_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.5in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix2_product_id">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_id.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="product_id_1">
-                  <rd:DefaultName>product_id_1</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_id.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-        </RowGroupings>
-        <Filters>
-          <Filter>
-            <FilterExpression>=Fields!dept_sale_qty.Value</FilterExpression>
-            <Operator>GreaterThan</Operator>
-            <FilterValues>
-              <FilterValue>=CDec(0)</FilterValue>
-            </FilterValues>
-          </Filter>
-        </Filters>
-        <Top>3.25in</Top>
-        <ColumnGroupings>
-          <ColumnGrouping>
-            <Height>0.25in</Height>
-            <DynamicColumns>
-              <Grouping Name="matrix2_department_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!department_name.Value</GroupExpression>
-                </GroupExpressions>
-                <Filters>
-                  <Filter>
-                    <FilterExpression>=Fields!department_name.Value</FilterExpression>
-                    <Operator>NotEqual</Operator>
-                    <FilterValues>
-                      <FilterValue />
-                    </FilterValues>
-                  </Filter>
-                </Filters>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="department_name">
-                  <rd:DefaultName>department_name</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <TextAlign>Center</TextAlign>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <Value>=Fields!department_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicColumns>
-          </ColumnGrouping>
-          <ColumnGrouping>
-            <Height>0.25in</Height>
-            <StaticColumns>
-              <StaticColumn>
-                <ReportItems>
-                  <Textbox Name="textbox56">
-                    <rd:DefaultName>textbox56</rd:DefaultName>
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Center</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>BAN</Value>
-                  </Textbox>
-                </ReportItems>
-              </StaticColumn>
-              <StaticColumn>
-                <ReportItems>
-                  <Textbox Name="textbox57">
-                    <rd:DefaultName>textbox57</rd:DefaultName>
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Center</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>TRA KHO CHINH</Value>
-                  </Textbox>
-                </ReportItems>
-              </StaticColumn>
-            </StaticColumns>
-          </ColumnGrouping>
-        </ColumnGroupings>
-        <Width>6.89867in</Width>
-        <Corner>
-          <ReportItems>
-            <Textbox Name="textbox54">
-              <rd:DefaultName>textbox54</rd:DefaultName>
-              <Style>
-                <BorderStyle>
-                  <Default>Solid</Default>
-                </BorderStyle>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-              <CanGrow>true</CanGrow>
-              <Value>TÌNH HÌNH BÁN HÀNG VÀ TRẢ HÀNG VỀ KHO CHÍNH</Value>
-            </Textbox>
-          </ReportItems>
-        </Corner>
-        <Style>
-          <BorderStyle>
-            <Default>WindowInset</Default>
-          </BorderStyle>
-          <BorderWidth>
-            <Default>2pt</Default>
-          </BorderWidth>
-        </Style>
-        <MatrixRows>
-          <MatrixRow>
-            <Height>0.2598in</Height>
-            <MatrixCells>
-              <MatrixCell>
-                <ReportItems>
-                  <Textbox Name="dept_sale_qty_1">
-                    <rd:DefaultName>dept_sale_qty_1</rd:DefaultName>
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Right</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>=Sum(Fields!dept_sale_qty.Value)</Value>
-                  </Textbox>
-                </ReportItems>
-              </MatrixCell>
-              <MatrixCell>
-                <ReportItems>
-                  <Textbox Name="dept_ret_main_qty_1">
-                    <rd:DefaultName>dept_ret_main_qty_1</rd:DefaultName>
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Right</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>=Sum(Fields!dept_ret_main_qty.Value)</Value>
-                  </Textbox>
-                </ReportItems>
-              </MatrixCell>
-            </MatrixCells>
-          </MatrixRow>
-        </MatrixRows>
-        <Height>0.7598in</Height>
-        <Left>0.125in</Left>
-      </Matrix>
-      <Matrix Name="matrix1">
-        <MatrixColumns>
-          <MatrixColumn>
-            <Width>1.125in</Width>
-          </MatrixColumn>
-        </MatrixColumns>
-        <ZIndex>2</ZIndex>
-        <DataSetName>posDataSet_ProductMasterStatistic</DataSetName>
-        <RowGroupings>
-          <RowGrouping>
-            <Width>1.54608in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_product_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="product_name_1">
-                  <rd:DefaultName>product_name_1</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.25in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_color_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!color_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="color_name_1">
-                  <rd:DefaultName>color_name_1</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!color_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>0.625in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_size_name">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!size_name.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="size_name_1">
-                  <rd:DefaultName>size_name_1</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!size_name.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-          <RowGrouping>
-            <Width>1.5in</Width>
-            <DynamicRows>
-              <Grouping Name="matrix1_RowGroup2">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!product_id.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="textbox53">
-                  <rd:DefaultName>textbox53</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=Fields!product_id.Value</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicRows>
-          </RowGrouping>
-        </RowGroupings>
-        <Filters>
-          <Filter>
-            <FilterExpression>=Fields!main_stock_in_qty.Value</FilterExpression>
-            <Operator>GreaterThan</Operator>
-            <FilterValues>
-              <FilterValue>=CDec(0)</FilterValue>
-            </FilterValues>
-          </Filter>
-        </Filters>
-        <Top>1.75in</Top>
-        <ColumnGroupings>
-          <ColumnGrouping>
-            <Height>0.25in</Height>
-            <DynamicColumns>
-              <Grouping Name="matrix1_main_stock_in_date">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!main_stock_in_date.Value</GroupExpression>
-                </GroupExpressions>
-                <Parent>=Fields!product_id.Value</Parent>
-              </Grouping>
-              <ReportItems>
-                <Textbox Name="main_stock_in_date">
-                  <rd:DefaultName>main_stock_in_date</rd:DefaultName>
-                  <Style>
-                    <BorderStyle>
-                      <Default>Solid</Default>
-                    </BorderStyle>
-                    <PaddingLeft>2pt</PaddingLeft>
-                    <PaddingRight>2pt</PaddingRight>
-                    <PaddingTop>2pt</PaddingTop>
-                    <PaddingBottom>2pt</PaddingBottom>
-                  </Style>
-                  <CanGrow>true</CanGrow>
-                  <Value>=CDate(Fields!main_stock_in_date.Value).ToString("dd/MM/yyyy")</Value>
-                </Textbox>
-              </ReportItems>
-            </DynamicColumns>
-          </ColumnGrouping>
-        </ColumnGroupings>
-        <Width>6.04608in</Width>
-        <Corner>
-          <ReportItems>
-            <Textbox Name="textbox52">
-              <rd:DefaultName>textbox52</rd:DefaultName>
-              <Style>
-                <BorderStyle>
-                  <Default>Solid</Default>
-                </BorderStyle>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-              <CanGrow>true</CanGrow>
-              <Value>TÌNH HÌNH NHẬP HÀNG</Value>
-            </Textbox>
-          </ReportItems>
-        </Corner>
-        <Style>
-          <BorderStyle>
-            <Default>Solid</Default>
-          </BorderStyle>
-          <BorderWidth>
-            <Default>2pt</Default>
-          </BorderWidth>
-        </Style>
-        <MatrixRows>
-          <MatrixRow>
-            <Height>0.25in</Height>
-            <MatrixCells>
-              <MatrixCell>
-                <ReportItems>
-                  <Textbox Name="main_stock_in_qty_1">
-                    <rd:DefaultName>main_stock_in_qty_1</rd:DefaultName>
-                    <Style>
-                      <BorderStyle>
-                        <Default>Solid</Default>
-                      </BorderStyle>
-                      <TextAlign>Right</TextAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                    <CanGrow>true</CanGrow>
-                    <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                  </Textbox>
-                </ReportItems>
-              </MatrixCell>
-            </MatrixCells>
-          </MatrixRow>
-        </MatrixRows>
-        <Height>0.5in</Height>
-        <Left>0.125in</Left>
-      </Matrix>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Style>
@@ -847,21 +87,21 @@
         <ZIndex>1</ZIndex>
         <CanGrow>true</CanGrow>
         <Height>0.33in</Height>
-        <Value>TÌNH TRẠNG HANG HÓA</Value>
+        <Value>Hàng tồn số lượng thấp ở cửa hàng </Value>
       </Textbox>
       <Table Name="table1">
-        <DataSetName>posDataSet_ProductMasterStatistic</DataSetName>
+        <DataSetName>posDataSet_StockRemainsStatistic</DataSetName>
         <Top>0.33in</Top>
         <TableGroups>
           <TableGroup>
-            <Grouping Name="table1_product_name">
+            <Grouping Name="table1_department_name">
               <GroupExpressions>
-                <GroupExpression>=Fields!product_name.Value</GroupExpression>
+                <GroupExpression>=Fields!department_name.Value</GroupExpression>
               </GroupExpressions>
             </Grouping>
             <Sorting>
               <SortBy>
-                <SortExpression>=Fields!product_name.Value</SortExpression>
+                <SortExpression>=Fields!department_name.Value</SortExpression>
                 <Direction>Ascending</Direction>
               </SortBy>
             </Sorting>
@@ -871,8 +111,8 @@
                   <TableCells>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="product_name">
-                          <rd:DefaultName>product_name</rd:DefaultName>
+                        <Textbox Name="department_name">
+                          <rd:DefaultName>department_name</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#8fb3f3</BackgroundColor>
                             <BorderColor>
@@ -888,7 +128,55 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>=Fields!product_name.Value</Value>
+                          <Value>=Fields!department_name.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox14">
+                          <rd:DefaultName>textbox14</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#8fb3f3</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox15">
+                          <rd:DefaultName>textbox15</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#8fb3f3</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -959,6 +247,78 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!dstkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox19">
+                          <rd:DefaultName>textbox19</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#8fb3f3</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!stkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.21in</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table1_type_name">
+              <GroupExpressions>
+                <GroupExpression>=Fields!type_name.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!type_name.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Visibility>
+              <Hidden>true</Hidden>
+              <ToggleItem>department_name</ToggleItem>
+            </Visibility>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox20">
+                          <rd:DefaultName>textbox20</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
                           <Value>
                           </Value>
                         </Textbox>
@@ -966,9 +326,10 @@
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox28">
+                        <Textbox Name="type_name">
+                          <rd:DefaultName>type_name</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>#8fb3f3</BackgroundColor>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
                             <BorderColor>
                               <Default>LightGrey</Default>
                             </BorderColor>
@@ -982,101 +343,158 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox29">
-                          <Style>
-                            <BackgroundColor>#8fb3f3</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!stock_out_department_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox30">
-                          <Style>
-                            <BackgroundColor>#8fb3f3</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_ret_main_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox31">
-                          <Style>
-                            <BackgroundColor>#8fb3f3</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_sale_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox32">
-                          <Style>
-                            <BackgroundColor>#8fb3f3</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!rtn_producer_qty.Value)</Value>
+                          <Value>=Fields!type_name.Value</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
                     <TableCell>
                       <ReportItems>
                         <Textbox Name="textbox21">
+                          <rd:DefaultName>textbox21</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox22">
+                          <rd:DefaultName>textbox22</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox23">
+                          <rd:DefaultName>textbox23</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox24">
+                          <rd:DefaultName>textbox24</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!dstkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox25">
+                          <rd:DefaultName>textbox25</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!stkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.21in</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table1_product_name">
+              <GroupExpressions>
+                <GroupExpression>=Fields!product_name.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Sorting>
+              <SortBy>
+                <SortExpression>=Fields!product_name.Value</SortExpression>
+                <Direction>Ascending</Direction>
+              </SortBy>
+            </Sorting>
+            <Visibility>
+              <Hidden>true</Hidden>
+              <ToggleItem>type_name</ToggleItem>
+            </Visibility>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox26">
+                          <rd:DefaultName>textbox26</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
@@ -1092,7 +510,149 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_avail_qty.Value)</Value>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox27">
+                          <rd:DefaultName>textbox27</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="product_name">
+                          <rd:DefaultName>product_name</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!product_name.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox29">
+                          <rd:DefaultName>textbox29</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox30">
+                          <rd:DefaultName>textbox30</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!dstkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox31">
+                          <rd:DefaultName>textbox31</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!stkqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1124,10 +684,58 @@
                   <TableCells>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox25">
-                          <rd:DefaultName>textbox25</rd:DefaultName>
+                        <Textbox Name="textbox32">
+                          <rd:DefaultName>textbox32</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox33">
+                          <rd:DefaultName>textbox33</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox34">
+                          <rd:DefaultName>textbox34</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
                               <Default>LightGrey</Default>
                             </BorderColor>
@@ -1151,7 +759,7 @@
                         <Textbox Name="color_name">
                           <rd:DefaultName>color_name</rd:DefaultName>
                           <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
                               <Default>LightGrey</Default>
                             </BorderColor>
@@ -1171,165 +779,8 @@
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox26">
-                          <rd:DefaultName>textbox26</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox27">
-                          <rd:DefaultName>textbox27</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox37">
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox38">
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!stock_out_department_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox39">
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_ret_main_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox40">
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_sale_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox41">
-                          <Style>
-                            <BackgroundColor>#c7d9f9</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!rtn_producer_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox20">
+                        <Textbox Name="textbox35">
+                          <rd:DefaultName>textbox35</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
@@ -1345,7 +796,54 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_avail_qty.Value)</Value>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox36">
+                          <rd:DefaultName>textbox36</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!dstkqty.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox37">
+                          <rd:DefaultName>textbox37</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!stkqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1377,8 +875,8 @@
                   <TableCells>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox34">
-                          <rd:DefaultName>textbox34</rd:DefaultName>
+                        <Textbox Name="textbox38">
+                          <rd:DefaultName>textbox38</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
@@ -1401,8 +899,56 @@
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox35">
-                          <rd:DefaultName>textbox35</rd:DefaultName>
+                        <Textbox Name="textbox39">
+                          <rd:DefaultName>textbox39</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox40">
+                          <rd:DefaultName>textbox40</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>#e6eefc</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>
+                          </Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox41">
+                          <rd:DefaultName>textbox41</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
@@ -1448,8 +994,8 @@
                     </TableCell>
                     <TableCell>
                       <ReportItems>
-                        <Textbox Name="textbox36">
-                          <rd:DefaultName>textbox36</rd:DefaultName>
+                        <Textbox Name="textbox42">
+                          <rd:DefaultName>textbox42</rd:DefaultName>
                           <Style>
                             <BackgroundColor>#e6eefc</BackgroundColor>
                             <BorderColor>
@@ -1465,169 +1011,10 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
+                          <Value>=Sum(Fields!dstkqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox63">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox64">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!stock_out_department_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox65">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_ret_main_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox66">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_sale_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox67">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!rtn_producer_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox19">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_avail_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                  </TableCells>
-                  <Height>0.21in</Height>
-                </TableRow>
-              </TableRows>
-            </Header>
-          </TableGroup>
-          <TableGroup>
-            <Grouping Name="table1_product_id">
-              <GroupExpressions>
-                <GroupExpression>=Fields!product_id.Value</GroupExpression>
-              </GroupExpressions>
-            </Grouping>
-            <Sorting>
-              <SortBy>
-                <SortExpression>=Fields!product_id.Value</SortExpression>
-                <Direction>Ascending</Direction>
-              </SortBy>
-            </Sorting>
-            <Visibility>
-              <Hidden>true</Hidden>
-              <ToggleItem>size_name</ToggleItem>
-            </Visibility>
-            <Header>
-              <TableRows>
-                <TableRow>
-                  <TableCells>
                     <TableCell>
                       <ReportItems>
                         <Textbox Name="textbox43">
@@ -1647,212 +1034,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                           <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox44">
-                          <rd:DefaultName>textbox44</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox45">
-                          <rd:DefaultName>textbox45</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>
-                          </Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="product_id">
-                          <rd:DefaultName>product_id</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Fields!product_id.Value</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox10">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_stock_in_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox11">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!stock_out_department_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox12">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_ret_main_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox13">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!dept_sale_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox14">
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!rtn_producer_qty.Value)</Value>
-                        </Textbox>
-                      </ReportItems>
-                    </TableCell>
-                    <TableCell>
-                      <ReportItems>
-                        <Textbox Name="textbox51">
-                          <rd:DefaultName>textbox51</rd:DefaultName>
-                          <Style>
-                            <BackgroundColor>#e6eefc</BackgroundColor>
-                            <BorderColor>
-                              <Default>LightGrey</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                              <Default>Solid</Default>
-                            </BorderStyle>
-                            <FontFamily>Tahoma</FontFamily>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                          <CanGrow>true</CanGrow>
-                          <Value>=Sum(Fields!main_avail_qty.Value)</Value>
+                          <Value>=Sum(Fields!stkqty.Value)</Value>
                         </Textbox>
                       </ReportItems>
                     </TableCell>
@@ -1965,7 +1147,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox46">
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -1981,13 +1164,15 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!main_stock_in_qty.Value</Value>
+                      <Value>
+                      </Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox47">
+                    <Textbox Name="dstkqty">
+                      <rd:DefaultName>dstkqty</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -2003,13 +1188,14 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!stock_out_department_qty.Value</Value>
+                      <Value>=Fields!dstkqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox48">
+                    <Textbox Name="stkqty">
+                      <rd:DefaultName>stkqty</rd:DefaultName>
                       <Style>
                         <BorderColor>
                           <Default>LightGrey</Default>
@@ -2025,74 +1211,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!dept_ret_main_qty.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox49">
-                      <Style>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!dept_sale_qty.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox50">
-                      <Style>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!rtn_producer_qty.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="rtn_producer_qty">
-                      <rd:DefaultName>rtn_producer_qty</rd:DefaultName>
-                      <Style>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!main_avail_qty.Value</Value>
+                      <Value>=Fields!stkqty.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2102,7 +1221,7 @@
           </TableRows>
           <Visibility>
             <Hidden>true</Hidden>
-            <ToggleItem>product_id</ToggleItem>
+            <ToggleItem>size_name</ToggleItem>
           </Visibility>
         </Details>
         <Header>
@@ -2131,7 +1250,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>Tên hàng</Value>
+                      <Value>TÊN KHO</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2157,7 +1276,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>Màu sắc</Value>
+                      <Value>C.LOẠI</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2183,7 +1302,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>K.cỡ</Value>
+                      <Value>TÊN SP</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2209,13 +1328,40 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>Mã vạch</Value>
+                      <Value>MÀU</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox58">
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BorderColor>
+                          <Default>LightGrey</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>K.CỠ</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
                       <Style>
                         <Color>White</Color>
                         <BackgroundColor>CornflowerBlue</BackgroundColor>
@@ -2235,13 +1381,14 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>Nhập</Value>
+                      <Value>SL </Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox59">
+                    <Textbox Name="textbox13">
+                      <rd:DefaultName>textbox13</rd:DefaultName>
                       <Style>
                         <Color>White</Color>
                         <BackgroundColor>CornflowerBlue</BackgroundColor>
@@ -2261,112 +1408,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>Xuất</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox60">
-                      <Style>
-                        <Color>White</Color>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Trả k.chính</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox61">
-                      <Style>
-                        <Color>White</Color>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Bán</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox62">
-                      <Style>
-                        <Color>White</Color>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Trả NSX</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox15">
-                      <rd:DefaultName>textbox15</rd:DefaultName>
-                      <Style>
-                        <Color>White</Color>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
-                        <BorderColor>
-                          <Default>LightGrey</Default>
-                        </BorderColor>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>700</FontWeight>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Tồn kho</Value>
+                      <Value>SL KHO</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2398,20 +1440,10 @@
           <TableColumn>
             <Width>1in</Width>
           </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>1in</Width>
-          </TableColumn>
         </TableColumns>
-        <Height>1.27in</Height>
       </Table>
     </ReportItems>
-    <Height>4.7598in</Height>
+    <Height>1.81in</Height>
   </Body>
   <Language>en-US</Language>
   <TopMargin>1in</TopMargin>

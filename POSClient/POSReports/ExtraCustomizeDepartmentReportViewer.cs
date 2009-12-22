@@ -22,6 +22,21 @@ namespace POSReports
 
         private void CustomizeReportViewer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'posDataSet.product_type' table. You can move, or remove it, as needed.
+            this.product_typeTableAdapter.Fill(this.posDataSet.product_type);
+            this.posDataSet.product_type.Addproduct_typeRow
+            (0, "-- Tat ca các loai --", DateTime.Now, "admin",
+                                                            DateTime.Now, "admin", 0, 0);
+            cboTypes.Items.Add(new ProductType { TypeId = 0, TypeName = " --Tất cả mặt hàng--" });
+            foreach (posDataSet.product_typeRow row in posDataSet.product_type)
+            {
+                cboTypes.Items.Add(new ProductType { TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME });
+            }
+
+            cboTypes.DisplayMember = "TypeName";
+            cboTypes.ValueMember = "TypeId";
+
+            cboTypes.Refresh();
             // TODO: This line of code loads data into the 'posDataSet.CustomizeReport' table. You can move, or remove it, as needed.
             //this.CustomizeReportTableAdapter.Fill(this.posDataSet.CustomizeReport);
             
@@ -34,12 +49,18 @@ namespace POSReports
             
             cboIsolatedBy.SelectedIndex = 0;
             cboReportBy.SelectedIndex = 0;
-            /*ReportParameter[] parameters = new ReportParameter[2];     
-            parameters[0] = new ReportParameter("SerieType",cboIsolatedBy.SelectedIndex.ToString());
-            parameters[1] = new ReportParameter("ReportType", (cboReportType.SelectedIndex+1).ToString());
-            this.customizeReport.LocalReport.SetParameters(parameters);
+            // create extra binding source for filter
+            // because the beyond binding source just can be filtered if it has another binding source stay on it
+            BindingSource customizeBindingSource = new BindingSource(this.ExtraCustomizeDepartmentReportBindingSource, "");
+            this.customizeReport.LocalReport.DataSources[0].Value = customizeBindingSource;
 
-            this.customizeReport.RefreshReport();*/
+            BindingSource customizeSizeBindingSource = new BindingSource(this.ExtraCustomizeDepartmentSizeReportBindingSource, "");
+            this.customizeSizeReport.LocalReport.DataSources[0].Value = customizeSizeBindingSource;
+
+            BindingSource customizeColorBindingSource = new BindingSource(this.ExtraCustomizeDepartmentColorReportBindingSource, "");
+            this.customizeColorReport.LocalReport.DataSources[0].Value = customizeColorBindingSource;
+            
+            TxtFillResult();
         }
 
         POSReports.posDataSet aSyncDS = new posDataSet();
@@ -50,6 +71,7 @@ namespace POSReports
         int deptId = 0;
         int isolatedBy = 0;
         private int ReportBy = 0;
+        private string typeName = "%%";
         private void button1_Click(object sender, EventArgs e)
         {
             BackgroundWorker backgroundWorker = new BackgroundWorker();
@@ -71,7 +93,13 @@ namespace POSReports
             {
                 deptId = 0;
             }
+            //int typeId = Int32.Parse(cboTypes.SelectedValue.ToString());
+            
             ReportBy = cboReportBy.SelectedIndex;
+
+            typeName = cboTypes.SelectedIndex > 0 ? ((ProductType)cboTypes.SelectedItem).TypeName :"%%";
+            
+
             Enabled = false;
             backgroundWorker.RunWorkerAsync();
             StartShowProcessing();
@@ -114,20 +142,20 @@ namespace POSReports
                     POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentSizeReportTableAdapter sizeReportTableAdapter = new ExtraCustomizeDepartmentSizeReportTableAdapter();
                     sizeReportTableAdapter.ClearBeforeFill = true;
                     sizeReportTableAdapter.Fill(posDataSet.ExtraCustomizeDepartmentSizeReport, ReportType, SortOrder, isolatedBy, deptId, limit,
-                                 reqFromDate, reqToDate);
+                                 reqFromDate, reqToDate,typeName);
                     break;
                 case 2:
                     POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentColorReportTableAdapter colorReportTableAdapter = new ExtraCustomizeDepartmentColorReportTableAdapter();
                     colorReportTableAdapter.ClearBeforeFill = true;
                     colorReportTableAdapter.Fill(posDataSet.ExtraCustomizeDepartmentColorReport, ReportType, SortOrder, isolatedBy, deptId, limit,
-                                 reqFromDate, reqToDate);
+                                 reqFromDate, reqToDate, typeName);
 
                     break;
                 default:
                     POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentReportTableAdapter adapter = new ExtraCustomizeDepartmentReportTableAdapter();
                     adapter.ClearBeforeFill = true;
                     adapter.Fill(posDataSet.ExtraCustomizeDepartmentReport, ReportType, SortOrder, isolatedBy, deptId, limit,
-                                 reqFromDate, reqToDate);
+                                 reqFromDate, reqToDate, typeName);
                     break;
             }
             
@@ -145,21 +173,12 @@ namespace POSReports
 
         private void cboReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*if(cboReportType.SelectedIndex > 0 && cboReportType.SelectedIndex < 4)
-            {
-                cboIsolatedBy.SelectedIndex = 0;
-                cboIsolatedBy.Enabled = false;
-            }
-            else
-            {
-                cboIsolatedBy.Enabled = true;
-                cboIsolatedBy.SelectedIndex = 0;
-            }*/
+            TxtFillResult();
         }
 
         private void cboSortOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TxtFillResult();
         }
 
         private void cboIsolatedBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,11 +191,75 @@ namespace POSReports
             {
                 cboDepartments.Enabled = false;
             }
+            TxtFillResult();
         }
+        private void TxtFillResult()
+        {
+            string filter = " Tìm ";
+            int prdCount = 0;
+            try
+            {
+                prdCount = Int32.Parse(txtTotalRecord.Text);
+            }
+            catch (Exception)
+            {
+                
+            }
+            filter += prdCount.ToString() + " " + cboReportBy.Text;
+            if(cboTypes.SelectedIndex >0)
+            {
+                filter += " thuộc CHỦNG LOẠI (" + ((ProductType) cboTypes.SelectedItem).TypeName + ") ";
+            }
+            else
+            {
+                filter += " thuộc MỌI CHỦNG LOẠI ";
+            }
+            filter += " có " + cboReportType.Text.ToString();
+            filter += " " + cboSortOrder.Text.ToString();
+            filter += " của " + cboIsolatedBy.Text.ToString();
+            if(cboIsolatedBy.SelectedIndex > 1)
+            {
+                filter += " " + cboDepartments.Text;
+            }
+            filter += " từ " + dtpFromDate.Value.ToString("dd/MM/yyyy");
+            filter += " đến " + dtpToDate.Value.ToString("dd/MM/yyyy");
 
+            txtResult.Text = filter;
+            
+        }
         private void customizeColorReport_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboDepartments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
+        }
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
+        }
+
+        private void dtpToDate_ValueChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
+        }
+
+        private void cboTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
+        }
+
+        private void cboReportBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
+        }
+
+        private void txtTotalRecord_TextChanged(object sender, EventArgs e)
+        {
+            TxtFillResult();
         }
     }
 }

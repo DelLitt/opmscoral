@@ -49,7 +49,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cboSortOrder = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cboIsolatedBy = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,6 +57,8 @@
             this.departmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.cboReportBy = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.cboTypes = new System.Windows.Forms.ComboBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
             this.CustomizeDepartmentReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter1 = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,6 +69,8 @@
             this.customizeSizeReport = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ExtraCustomizeDepartmentColorReportTableAdapter = new POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentColorReportTableAdapter();
             this.ExtraCustomizeDepartmentSizeReportTableAdapter = new POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentSizeReportTableAdapter();
+            this.producttypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.product_typeTableAdapter = new POSReports.posDataSetTableAdapters.product_typeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ExtraCustomizeDepartmentReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtraCustomizeDepartmentColorReportBindingSource)).BeginInit();
@@ -77,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomizeDepartmentReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.producttypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ExtraCustomizeDepartmentReportBindingSource
@@ -112,9 +116,9 @@
             reportDataSource1.Value = this.ExtraCustomizeDepartmentReportBindingSource;
             this.customizeReport.LocalReport.DataSources.Add(reportDataSource1);
             this.customizeReport.LocalReport.ReportEmbeddedResource = "POSReports.ExtraCustomizeDepartmentReport.rdlc";
-            this.customizeReport.Location = new System.Drawing.Point(0, 118);
+            this.customizeReport.Location = new System.Drawing.Point(0, 138);
             this.customizeReport.Name = "customizeReport";
-            this.customizeReport.Size = new System.Drawing.Size(929, 417);
+            this.customizeReport.Size = new System.Drawing.Size(929, 397);
             this.customizeReport.TabIndex = 0;
             this.customizeReport.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.customizeReport.Load += new System.EventHandler(this.customizeReport_Load);
@@ -132,9 +136,9 @@
             "Số hàng xuất",
             "Số hàng bán rồi bị trả lại",
             "Số hàng tồn kho"});
-            this.cboReportType.Location = new System.Drawing.Point(104, 3);
+            this.cboReportType.Location = new System.Drawing.Point(102, 3);
             this.cboReportType.Name = "cboReportType";
-            this.cboReportType.Size = new System.Drawing.Size(141, 24);
+            this.cboReportType.Size = new System.Drawing.Size(139, 24);
             this.cboReportType.TabIndex = 1;
             this.cboReportType.SelectedIndexChanged += new System.EventHandler(this.cboReportType_SelectedIndexChanged);
             // 
@@ -143,7 +147,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 0);
+            this.label1.Location = new System.Drawing.Point(39, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 28);
             this.label1.TabIndex = 2;
@@ -168,10 +172,11 @@
             this.dtpFromDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtpFromDate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(104, 31);
+            this.dtpFromDate.Location = new System.Drawing.Point(102, 31);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(141, 23);
+            this.dtpFromDate.Size = new System.Drawing.Size(139, 23);
             this.dtpFromDate.TabIndex = 4;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // dtpToDate
             // 
@@ -179,15 +184,16 @@
             this.dtpToDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.dtpToDate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(333, 31);
+            this.dtpToDate.Location = new System.Drawing.Point(329, 31);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(136, 23);
             this.dtpToDate.TabIndex = 5;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(762, 3);
+            this.button1.Location = new System.Drawing.Point(758, 3);
             this.button1.Name = "button1";
             this.tableLayoutPanel1.SetRowSpan(this.button1, 2);
             this.button1.Size = new System.Drawing.Size(147, 50);
@@ -201,9 +207,9 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(475, 56);
+            this.label3.Location = new System.Drawing.Point(471, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 33);
+            this.label3.Size = new System.Drawing.Size(56, 26);
             this.label3.TabIndex = 9;
             this.label3.Text = "Giới hạn";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,7 +219,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Right;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(38, 28);
+            this.label4.Location = new System.Drawing.Point(36, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 28);
             this.label4.TabIndex = 10;
@@ -225,7 +231,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(261, 28);
+            this.label5.Location = new System.Drawing.Point(257, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 28);
             this.label5.TabIndex = 11;
@@ -243,7 +249,7 @@
             this.cboSortOrder.Items.AddRange(new object[] {
             "Nhiều nhất",
             "Ít nhất"});
-            this.cboSortOrder.Location = new System.Drawing.Point(251, 3);
+            this.cboSortOrder.Location = new System.Drawing.Point(247, 3);
             this.cboSortOrder.Name = "cboSortOrder";
             this.cboSortOrder.Size = new System.Drawing.Size(218, 24);
             this.cboSortOrder.TabIndex = 12;
@@ -252,15 +258,14 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.83333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.16667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.48583F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.51417F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
-            this.tableLayoutPanel1.Controls.Add(this.label6, 4, 1);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel1.Controls.Add(this.label7, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.cboReportType, 1, 0);
@@ -276,35 +281,26 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.cboDepartments, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.cboReportBy, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.cboTypes, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtResult, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(929, 89);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(929, 109);
             this.tableLayoutPanel1.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(476, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 28);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Từ ngày";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Right;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(506, 0);
+            this.label7.Location = new System.Drawing.Point(502, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 28);
             this.label7.TabIndex = 17;
@@ -322,7 +318,7 @@
             "Tất cả cửa hàng",
             "Mỗi cửa hàng",
             "Cửa hàng có tên:"});
-            this.cboIsolatedBy.Location = new System.Drawing.Point(542, 3);
+            this.cboIsolatedBy.Location = new System.Drawing.Point(538, 3);
             this.cboIsolatedBy.Name = "cboIsolatedBy";
             this.cboIsolatedBy.Size = new System.Drawing.Size(214, 24);
             this.cboIsolatedBy.TabIndex = 16;
@@ -333,9 +329,9 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Left;
             this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(589, 56);
+            this.label8.Location = new System.Drawing.Point(585, 56);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 33);
+            this.label8.Size = new System.Drawing.Size(68, 26);
             this.label8.TabIndex = 18;
             this.label8.Text = "sản phẩm";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -345,11 +341,12 @@
             this.txtTotalRecord.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtTotalRecord.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalRecord.Format = null;
-            this.txtTotalRecord.Location = new System.Drawing.Point(542, 59);
+            this.txtTotalRecord.Location = new System.Drawing.Point(538, 59);
             this.txtTotalRecord.Name = "txtTotalRecord";
             this.txtTotalRecord.Size = new System.Drawing.Size(41, 23);
             this.txtTotalRecord.TabIndex = 13;
             this.txtTotalRecord.Text = "5";
+            this.txtTotalRecord.TextChanged += new System.EventHandler(this.txtTotalRecord_TextChanged);
             // 
             // cboDepartments
             // 
@@ -359,11 +356,12 @@
             this.cboDepartments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartments.Enabled = false;
             this.cboDepartments.FormattingEnabled = true;
-            this.cboDepartments.Location = new System.Drawing.Point(542, 31);
+            this.cboDepartments.Location = new System.Drawing.Point(538, 31);
             this.cboDepartments.Name = "cboDepartments";
             this.cboDepartments.Size = new System.Drawing.Size(214, 21);
             this.cboDepartments.TabIndex = 19;
             this.cboDepartments.ValueMember = "DEPARTMENT_ID";
+            this.cboDepartments.SelectedIndexChanged += new System.EventHandler(this.cboDepartments_SelectedIndexChanged);
             // 
             // departmentBindingSource1
             // 
@@ -376,25 +374,52 @@
             this.cboReportBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboReportBy.FormattingEnabled = true;
             this.cboReportBy.Items.AddRange(new object[] {
-            "Tên mặt hàng",
-            "Loại kích cỡ",
-            "Loại màu sắc"});
-            this.cboReportBy.Location = new System.Drawing.Point(251, 59);
+            "Mặt hàng",
+            "Kích cỡ",
+            "Màu sắc"});
+            this.cboReportBy.Location = new System.Drawing.Point(247, 59);
             this.cboReportBy.Name = "cboReportBy";
             this.cboReportBy.Size = new System.Drawing.Size(218, 21);
             this.cboReportBy.TabIndex = 20;
+            this.cboReportBy.SelectedIndexChanged += new System.EventHandler(this.cboReportBy_SelectedIndexChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Right;
             this.label9.Font = new System.Drawing.Font("Tahoma", 9.882353F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(124, 56);
+            this.label9.Location = new System.Drawing.Point(3, 56);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 33);
+            this.label9.Size = new System.Drawing.Size(57, 26);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Tạo báo cáo theo:";
+            this.label9.Text = "Báo cáo theo:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cboTypes
+            // 
+            this.cboTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTypes.DisplayMember = "TYPE_ID";
+            this.cboTypes.Font = new System.Drawing.Font("Tahoma", 9.176471F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTypes.FormattingEnabled = true;
+            this.cboTypes.Location = new System.Drawing.Point(102, 59);
+            this.cboTypes.Name = "cboTypes";
+            this.cboTypes.Size = new System.Drawing.Size(139, 24);
+            this.cboTypes.TabIndex = 23;
+            this.cboTypes.ValueMember = "TYPE_ID";
+            this.cboTypes.SelectedIndexChanged += new System.EventHandler(this.cboTypes_SelectedIndexChanged);
+            // 
+            // txtResult
+            // 
+            this.txtResult.BackColor = System.Drawing.Color.SaddleBrown;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtResult, 8);
+            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResult.Font = new System.Drawing.Font("Tahoma", 9.882353F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResult.ForeColor = System.Drawing.SystemColors.Info;
+            this.txtResult.Location = new System.Drawing.Point(3, 85);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(923, 24);
+            this.txtResult.TabIndex = 24;
+            this.txtResult.Text = "ABV";
             // 
             // CustomizeDepartmentReportBindingSource
             // 
@@ -429,9 +454,9 @@
             reportDataSource2.Value = this.ExtraCustomizeDepartmentColorReportBindingSource;
             this.customizeColorReport.LocalReport.DataSources.Add(reportDataSource2);
             this.customizeColorReport.LocalReport.ReportEmbeddedResource = "POSReports.ExtraCustomizeDepartmentColorReport.rdlc";
-            this.customizeColorReport.Location = new System.Drawing.Point(0, 118);
+            this.customizeColorReport.Location = new System.Drawing.Point(0, 138);
             this.customizeColorReport.Name = "customizeColorReport";
-            this.customizeColorReport.Size = new System.Drawing.Size(929, 417);
+            this.customizeColorReport.Size = new System.Drawing.Size(929, 397);
             this.customizeColorReport.TabIndex = 15;
             this.customizeColorReport.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -442,9 +467,9 @@
             reportDataSource3.Value = this.ExtraCustomizeDepartmentSizeReportBindingSource;
             this.customizeSizeReport.LocalReport.DataSources.Add(reportDataSource3);
             this.customizeSizeReport.LocalReport.ReportEmbeddedResource = "POSReports.ExtraCustomizeDepartmentSizeReport.rdlc";
-            this.customizeSizeReport.Location = new System.Drawing.Point(0, 118);
+            this.customizeSizeReport.Location = new System.Drawing.Point(0, 138);
             this.customizeSizeReport.Name = "customizeSizeReport";
-            this.customizeSizeReport.Size = new System.Drawing.Size(929, 417);
+            this.customizeSizeReport.Size = new System.Drawing.Size(929, 397);
             this.customizeSizeReport.TabIndex = 16;
             this.customizeSizeReport.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -455,6 +480,15 @@
             // ExtraCustomizeDepartmentSizeReportTableAdapter
             // 
             this.ExtraCustomizeDepartmentSizeReportTableAdapter.ClearBeforeFill = true;
+            // 
+            // producttypeBindingSource
+            // 
+            this.producttypeBindingSource.DataMember = "product_type";
+            this.producttypeBindingSource.DataSource = this.posDataSet;
+            // 
+            // product_typeTableAdapter
+            // 
+            this.product_typeTableAdapter.ClearBeforeFill = true;
             // 
             // ExtraCustomizeDepartmentReportViewer
             // 
@@ -484,6 +518,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomizeDepartmentReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.producttypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,7 +554,6 @@
         private System.Windows.Forms.ComboBox cboDepartments;
         private System.Windows.Forms.BindingSource departmentBindingSource1;
         private System.Windows.Forms.ComboBox cboReportBy;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private Microsoft.Reporting.WinForms.ReportViewer customizeColorReport;
         private System.Windows.Forms.BindingSource ExtraCustomizeDepartmentColorReportBindingSource;
@@ -527,6 +561,10 @@
         private POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentColorReportTableAdapter ExtraCustomizeDepartmentColorReportTableAdapter;
         private System.Windows.Forms.BindingSource ExtraCustomizeDepartmentSizeReportBindingSource;
         private POSReports.posDataSetTableAdapters.ExtraCustomizeDepartmentSizeReportTableAdapter ExtraCustomizeDepartmentSizeReportTableAdapter;
+        private System.Windows.Forms.ComboBox cboTypes;
+        private System.Windows.Forms.BindingSource producttypeBindingSource;
+        private POSReports.posDataSetTableAdapters.product_typeTableAdapter product_typeTableAdapter;
+        private System.Windows.Forms.TextBox txtResult;
 
     }
 }

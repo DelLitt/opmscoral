@@ -140,10 +140,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart1_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -311,10 +311,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart2_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -479,10 +479,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart3_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -648,10 +648,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart4_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -816,10 +816,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart5_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -984,10 +984,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart6_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1159,10 +1159,10 @@
                     <DynamicSeries>
                       <Grouping Name="chart11_SeriesGroup1">
                         <GroupExpressions>
-                          <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                          <GroupExpression>=Fields!department_name.Value</GroupExpression>
                         </GroupExpressions>
                       </Grouping>
-                      <Label>=Fields!type_name.Value</Label>
+                      <Label>=Fields!department_name.Value</Label>
                     </DynamicSeries>
                   </SeriesGrouping>
                 </SeriesGroupings>
@@ -1484,10 +1484,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart8_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1652,10 +1652,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart9_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1820,10 +1820,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart12_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -1988,10 +1988,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart13_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -2156,10 +2156,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart14_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
@@ -2323,10 +2323,10 @@
                 <DynamicSeries>
                   <Grouping Name="chart10_SeriesGroup1">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!type_name.Value</GroupExpression>
+                      <GroupExpression>=Fields!department_name.Value</GroupExpression>
                     </GroupExpressions>
                   </Grouping>
-                  <Label>=Fields!type_name.Value &amp; ":" &amp; Sum(Fields!quantity.Value)</Label>
+                  <Label>=Fields!department_name.Value</Label>
                 </DynamicSeries>
               </SeriesGrouping>
             </SeriesGroupings>
