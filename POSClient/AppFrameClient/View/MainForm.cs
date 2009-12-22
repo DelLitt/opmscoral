@@ -1311,6 +1311,11 @@ namespace AppFrame.View
         {
             new ProductMasterStatisticReportViewer().Show();
         }
+
+        private void mnuStockRemainsReport_Click(object sender, EventArgs e)
+        {
+            new StockRemainsReportViewer().Show();
+        }
         
     }
 }

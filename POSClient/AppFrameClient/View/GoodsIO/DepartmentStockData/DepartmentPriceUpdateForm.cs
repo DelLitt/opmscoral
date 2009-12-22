@@ -12,6 +12,7 @@ using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
+using AppFrameClient.Common;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 {
@@ -93,6 +94,16 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             productMasterSearchControl.cbbDistributor.DataSource = eventArgs.DistributorList;
             productMasterSearchControl.cbbDistributor.DisplayMember = "DistributorName";
+            if(ClientSetting.IsSubStock())
+            {
+                btnPutPrice.Visible = false;
+                btnSave.Visible = false;
+                label1.Visible = false;
+                label2.Visible = false;
+                txtPrice.Visible = false;
+                txtWholeSalePrice.Visible = false;
+
+            }
             
         }
 

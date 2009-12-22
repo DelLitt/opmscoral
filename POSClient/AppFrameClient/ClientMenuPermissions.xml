@@ -111,6 +111,7 @@
     <menuitem name="mnuAllPurchaseOrders" role="Administrator,Supervisor" />
     <menuitem name="mnuStockEvaluationReport" role="NotImplement" />
     <menuitem name="mnuProductMasterStatistic" role="NotImplement" />
+    <menuitem name="mnuStockRemainsReport" role="NotImplement" />
     
 
   </menu>

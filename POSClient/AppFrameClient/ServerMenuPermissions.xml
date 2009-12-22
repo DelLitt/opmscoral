@@ -110,18 +110,19 @@
     <menuitem name="mnuAllPurchaseOrders" role="Administrator,Supervisor" />
     <menuitem name="mnuStockEvaluationReport" role="Administrator,Supervisor" />
     <menuitem name="mnuProductMasterStatistic" role="Administrator,Supervisor" />
+    <menuitem name="mnuStockRemainsReport" role="Administrator,Supervisor" />
 
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuSaleOffCreate" role="NotImplement" />
-    <menuitem name="mnuDiaryTracking" role="Administrator" />
+    <menuitem name="mnuDiaryTracking" role="Administrator,Supervisor" />
     <menuitem name="mnuBackupData" role="NotImplement" />
     <menuitem name="mnuDeleteData" role="NotImplement" />
     <menuitem name="mnuRecoverData" role="NotImplement" />
     <menuitem name="mnuSynchronizeData" role="NotImplement" />
     <menuitem name="mnuSyncToMainForm" role="NotImplement" />
-    <menuitem name="mnuLoadToMain" role="Administrator,Supervisor" />
-    <menuitem name="mnuLoadToDept" role="Administrator,Manager" />
+    <menuitem name="mnuLoadToMain" role="Administrator,Supervisor,Manager" />
+    <menuitem name="mnuLoadToDept" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuImportDatabaseImage" role="Administrator" />
     <menuitem name="mnuExportDatabaseImage" role="Administrator" />
     <menuitem name="mnuSystemConfiguration" role="Administrator" />

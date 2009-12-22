@@ -797,8 +797,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 Image imageBC = null;
                 if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
                 {
-                    imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                                    (int)(1.25 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                    imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr 
+                                                    //  ,Color.Black, Color.White,
+                                                    //(int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY)
+                                                    );
                 }
                 else
                 {
@@ -837,12 +839,13 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
                                           (i%3)*135 + XCentered(priceTotalSize.Width, 140), (float) 25);
 
-                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE39)
+                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
                     {
-                        e.Graphics.DrawImage(bitmap1,
-                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.25 * 100), 140),
-                                                           (int)(25 + priceTotalSize.Height), (int)(1.25 * 100),
-                                                           (int)(0.3 * 100)));
+                        e.Graphics.DrawImage(imageBC ,// (i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + priceTotalSize.Height)
+                                             new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.3 * 100), 140),
+                                                           (int)(25 + priceTotalSize.Height), (int)(1.3 * 100),(int)(0.3 * 100))
+                                                           );
+                        
                     }
                     else
                     {
@@ -909,13 +912,17 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 Image imageBC = null;
                 if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
                 {
-                   imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                                   (int) (1.25*e.Graphics.DpiX), (int) (0.3*e.Graphics.DpiY));
+                   imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr
+                                                   //, Color.Black, Color.White,
+                                                   //(int) (1.35*e.Graphics.DpiX), (int) (0.3*e.Graphics.DpiY)
+                                                   );
+                    
                 }
                 else
                 {
                     imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
                                                    (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
+                    
                 }
 
                     Bitmap bitmap1 = new Bitmap(imageBC);
@@ -945,13 +952,15 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 
                     e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
                                           (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
-                    
-                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE39)
+
+                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
                     {
-                        e.Graphics.DrawImage(bitmap1,
-                                             new Rectangle((i%3)*140 + (int) XCentered((float) (1.25*100), 140),
-                                                           (int) (25 + priceTotalSize.Height), (int) (1.25*100),
-                                                           (int) (0.3*100)));
+                        e.Graphics.DrawImage(imageBC,// (i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + priceTotalSize.Height)
+                                             new Rectangle((i%3)*135 + (int) XCentered((float) (1.3*100), 140),
+                                                           (int) (25 + priceTotalSize.Height), (int) (1.3*100),
+                                                           (int) (0.3*100))
+                                             );
+                        
                     }
                     else
                     {

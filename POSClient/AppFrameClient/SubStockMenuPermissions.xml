@@ -58,10 +58,10 @@
     <menuitem name="mnuChamCong" role="NotImplement" />
     <menuitem name="mnuUserAccount" role="NotImplement" />
   </menu>
-  <menu name="productToolStripMenuItem" role="NotImplement">
-    <menuitem name="productMasterToolStripMenuItem" role="Administrator,Supervisor" />
-    <menuitem name="searchProductMasterToolStripMenuItem" role="Administrator,Supervisor" />
-    <menuitem name="updatePriceToolStripMenuItem" role="Administrator,Supervisor" />
+  <menu name="productToolStripMenuItem" role="Administrator,Supervisor,Manager">
+    <menuitem name="productMasterToolStripMenuItem" role="NotImplement" />
+    <menuitem name="searchProductMasterToolStripMenuItem" role="NotImplement" />
+    <menuitem name="updatePriceToolStripMenuItem" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuCategoryEdit" role="NotImplement" />
     <menuitem name="mnuColorEdit" role="NotImplement" />
     <menuitem name="mnuCategoryAssigning" role="NotImplement" />
@@ -111,6 +111,7 @@
     <menuitem name="mnuAllPurchaseOrders" role="NotImplement" />
     <menuitem name="mnuStockEvaluationReport" role="NotImplement" />
     <menuitem name="mnuProductMasterStatistic" role="NotImplement" />
+    <menuitem name="mnuStockRemainsReport" role="NotImplement" />
     
   </menu>
   <menu name="mnuTool" role="Administrator,Supervisor,Manager">

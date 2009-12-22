@@ -200,7 +200,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
-            var masterPath = POSSyncDrive + ClientSetting.SyncExportPath;
+            var masterPath = POSSyncDrive + "\\POS"; ///+ClientSetting.SyncExportPath;
             var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
