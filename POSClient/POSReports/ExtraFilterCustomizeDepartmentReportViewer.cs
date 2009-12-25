@@ -97,7 +97,7 @@ namespace POSReports
             {
                 string typeFilter = "";
                 string typeName = ((ProductType) cboTypes.SelectedItem).TypeName;
-                typeFilter = " type_name like '%" + typeName + "%' ";
+                typeFilter = " type_name = '" + typeName + "' ";
                 FilterString += typeFilter;
             }
             // filter cho ten san pham
@@ -152,7 +152,7 @@ namespace POSReports
                 string[] pmFilters = productSizesFilter.Split(',');
                 if (pmFilters.Length <= 1)
                 {
-                    sizeTotalFilter = "size_name like '%" + productSizesFilter + "%'";
+                    sizeTotalFilter = "size_name = '" + productSizesFilter + "'";
                 }
                 else
                 {
@@ -178,7 +178,7 @@ namespace POSReports
                             endFilterStr = " OR ";
                         }
 
-                        sizeTotalFilter += startFilterStr + " ( size_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+                        sizeTotalFilter += startFilterStr + " ( size_name = '" + pmFilter.Trim() + "') " + endFilterStr;
 
                     }
                 }
@@ -194,7 +194,7 @@ namespace POSReports
                 string[] pmFilters = productColorsFilter.Split(',');
                 if (pmFilters.Length <= 1)
                 {
-                    colorTotalFilter = "color_name like '%" + productColorsFilter + "%'";
+                    colorTotalFilter = "color_name = '" + productColorsFilter + "'";
                 }
                 else
                 {
@@ -220,7 +220,7 @@ namespace POSReports
                             endFilterStr = " OR ";
                         }
 
-                        colorTotalFilter += startFilterStr + " ( color_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+                        colorTotalFilter += startFilterStr + " ( color_name = '" + pmFilter.Trim() + "') " + endFilterStr;
 
                     }
                 }

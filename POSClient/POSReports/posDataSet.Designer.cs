@@ -12316,7 +12316,6 @@ namespace POSReports {
                 this.columndepartment_name.MaxLength = 500;
                 this.columntype_name.MaxLength = 500;
                 this.columncolor_name.MaxLength = 500;
-                this.columnproduct_name.AllowDBNull = false;
                 this.columnproduct_name.MaxLength = 500;
                 this.columnsize_name.MaxLength = 500;
             }
@@ -21705,7 +21704,13 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string product_name {
                 get {
-                    return ((string)(this[this.tableExtraCustomizeDepartmentReport.product_nameColumn]));
+                    try {
+                        return ((string)(this[this.tableExtraCustomizeDepartmentReport.product_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'product_name\' in table \'ExtraCustomizeDepartmentReport\' is " +
+                                "DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = value;
@@ -21772,6 +21777,16 @@ namespace POSReports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void Setcolor_nameNull() {
                 this[this.tableExtraCustomizeDepartmentReport.color_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isproduct_nameNull() {
+                return this.IsNull(this.tableExtraCustomizeDepartmentReport.product_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setproduct_nameNull() {
+                this[this.tableExtraCustomizeDepartmentReport.product_nameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -31472,6 +31487,7 @@ order by purchase_order.create_date";
             param.ParameterName = "TypeName";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 400;
             param.IsNullable = true;
             this._commandCollection[0].Parameters.Add(param);
         }
@@ -31524,7 +31540,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
@@ -31584,7 +31600,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
@@ -31787,6 +31803,7 @@ order by purchase_order.create_date";
             param.ParameterName = "TypeName";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 400;
             param.IsNullable = true;
             this._commandCollection[0].Parameters.Add(param);
         }
@@ -31839,7 +31856,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
@@ -31899,7 +31916,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
@@ -32102,6 +32119,7 @@ order by purchase_order.create_date";
             param.ParameterName = "TypeName";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 400;
             param.IsNullable = true;
             this._commandCollection[0].Parameters.Add(param);
         }
@@ -32154,7 +32172,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
@@ -32214,7 +32232,7 @@ order by purchase_order.create_date";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((TypeName == null)) {
-                throw new global::System.ArgumentNullException("TypeName");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(TypeName));
