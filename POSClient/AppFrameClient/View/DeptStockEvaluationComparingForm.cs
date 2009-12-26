@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using AppFrame.Model;
 using AppFrame.Utility;
+using AppFrameClient.MasterDBTableAdapters;
 using AppFrameClient.Utility;
 using InfoBox;
 
@@ -263,7 +264,7 @@ namespace AppFrameClient.View
         private ErrorForm _errorForm = null;
         private void btnImportResult_Click(object sender, EventArgs e)
         {
-
+            
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
             fileDialog.CheckFileExists = true;
@@ -326,15 +327,33 @@ namespace AppFrameClient.View
                 
                 if (deptId > 0)
                 {
+                    LackingProductTableAdapter lackingProductAdapter = new LackingProductTableAdapter();
+                    lackingProductAdapter.ClearBeforeFill = true;
+
                     foreach (KeyValuePair<string, int> barCodeLine in list)
                     {
+                        bool notFound = true;
                         foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
                         {
                             if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
                             {
                                 stockqtyRow.realquantity = barCodeLine.Value;
                                 AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                notFound = false;
                                 break;
+                            }
+                        }
+                        if(notFound)
+                        {
+                            lackingProductAdapter.Fill(masterDB1.LackingProduct, barCodeLine.Key);
+                            if(masterDB1.LackingProduct.Rows.Count == 1)
+                            {
+                                MasterDB.LackingProductRow lkrow = masterDB1.LackingProduct[0];
+                                masterDB1.stockqty.AddstockqtyRow(lkrow.type_id, lkrow.type_name,
+                                                                  lkrow.product_master_id, lkrow.product_id,
+                                                                  "NOTFOUND_" + lkrow.product_name, lkrow.color_name,
+                                                                  lkrow.size_name, lkrow.product_id, 0, 0,
+                                                                  barCodeLine.Value);
                             }
                         }
                     }
@@ -366,6 +385,7 @@ namespace AppFrameClient.View
                 CreateTypeList(ReviewTypeList);
                 FilterDataset();
                 CalculateTotal();
+                cboDepartments.Enabled = false;
             }
         }
 
@@ -529,6 +549,7 @@ namespace AppFrameClient.View
         private void button1_Click(object sender, EventArgs e)
         {
             InitTypeList();
+            cboDepartments.Enabled = true;
             cboDepartments_SelectedIndexChanged(null, null);
         }
 
