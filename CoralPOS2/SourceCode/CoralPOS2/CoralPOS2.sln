@@ -72,6 +72,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 		libraries\System.ComponentModel.Composition.xml = libraries\System.ComponentModel.Composition.xml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame", "AppFrame\AppFrame.csproj", "{B57B71C6-9CD9-4A81-937C-5091F7C78225}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -94,6 +96,10 @@ Global
 		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57B71C6-9CD9-4A81-937C-5091F7C78225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57B71C6-9CD9-4A81-937C-5091F7C78225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57B71C6-9CD9-4A81-937C-5091F7C78225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57B71C6-9CD9-4A81-937C-5091F7C78225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
