@@ -76,6 +76,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame\AppFr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameControls", "AppFrameControls\AppFrameControls.csproj", "{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.BusinessLogic", "POSClient.BusinessLogic\POSClient.BusinessLogic.csproj", "{456168C0-3001-4D6C-9519-B048921BDDAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.DataLayer", "POSClient.DataLayer\POSClient.DataLayer.csproj", "{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.DataLayer", "POSServer.DataLayer\POSServer.DataLayer.csproj", "{28ADF592-ED6B-4E5F-A80D-B737B67DB364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.BusinessLogic", "POSServer.BusinessLogic\POSServer.BusinessLogic.csproj", "{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -106,6 +114,22 @@ Global
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456168C0-3001-4D6C-9519-B048921BDDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456168C0-3001-4D6C-9519-B048921BDDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456168C0-3001-4D6C-9519-B048921BDDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456168C0-3001-4D6C-9519-B048921BDDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28ADF592-ED6B-4E5F-A80D-B737B67DB364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28ADF592-ED6B-4E5F-A80D-B737B67DB364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28ADF592-ED6B-4E5F-A80D-B737B67DB364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28ADF592-ED6B-4E5F-A80D-B737B67DB364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AppFrame
+namespace POSServer.BusinessLogic
 {
     public class Class1
     {
