@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer", "CoralPOS2\POSServer.csproj", "{71316BD2-CC94-4CDF-B449-4F93C46234E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame2\AppFrame2.csproj", "{4B95612E-46FD-44DC-B02D-94B36BA6F5B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient", "POSClient\POSClient.csproj", "{1260D01A-426E-4BFA-AB25-610715DEB402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSService", "POSService\POSService.csproj", "{AFD25592-40CF-4B1D-AB25-C1A18C590124}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71316BD2-CC94-4CDF-B449-4F93C46234E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71316BD2-CC94-4CDF-B449-4F93C46234E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71316BD2-CC94-4CDF-B449-4F93C46234E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71316BD2-CC94-4CDF-B449-4F93C46234E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B95612E-46FD-44DC-B02D-94B36BA6F5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B95612E-46FD-44DC-B02D-94B36BA6F5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B95612E-46FD-44DC-B02D-94B36BA6F5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B95612E-46FD-44DC-B02D-94B36BA6F5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1260D01A-426E-4BFA-AB25-610715DEB402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1260D01A-426E-4BFA-AB25-610715DEB402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1260D01A-426E-4BFA-AB25-610715DEB402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1260D01A-426E-4BFA-AB25-610715DEB402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD25592-40CF-4B1D-AB25-C1A18C590124}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
