@@ -72,7 +72,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 		libraries\System.ComponentModel.Composition.xml = libraries\System.ComponentModel.Composition.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame", "AppFrame\AppFrame.csproj", "{B57B71C6-9CD9-4A81-937C-5091F7C78225}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame\AppFrame2.csproj", "{B57B71C6-9CD9-4A81-937C-5091F7C78225}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameControls", "AppFrameControls\AppFrameControls.csproj", "{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}"
 EndProject
