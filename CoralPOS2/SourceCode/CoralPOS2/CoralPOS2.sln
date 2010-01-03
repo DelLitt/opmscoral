@@ -76,8 +76,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame\AppFr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameControls", "AppFrameControls\AppFrameControls.csproj", "{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSModels", "POSModels\POSModels.csproj", "{FB76777A-9230-40BA-AE0F-52A63EAD8EF4}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -108,10 +106,6 @@ Global
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB76777A-9230-40BA-AE0F-52A63EAD8EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB76777A-9230-40BA-AE0F-52A63EAD8EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB76777A-9230-40BA-AE0F-52A63EAD8EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB76777A-9230-40BA-AE0F-52A63EAD8EF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
