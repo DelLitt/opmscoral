@@ -91,69 +91,6 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="libraries\Autofac.dll" />
-    <Resource Include="libraries\Autofac.XML" />
-    <Content Include="libraries\Caliburn.Autofac.dll" />
-    <Resource Include="libraries\Caliburn.Autofac.xml" />
-    <Content Include="libraries\Caliburn.Castle.dll" />
-    <Resource Include="libraries\Caliburn.Castle.xml" />
-    <Content Include="libraries\Caliburn.Core.dll" />
-    <Resource Include="libraries\Caliburn.Core.xml" />
-    <Content Include="libraries\Caliburn.MEF.dll" />
-    <Resource Include="libraries\Caliburn.MEF.xml" />
-    <Content Include="libraries\Caliburn.ModelFramework.dll" />
-    <Resource Include="libraries\Caliburn.ModelFramework.xml" />
-    <Content Include="libraries\Caliburn.Ninject.dll" />
-    <Resource Include="libraries\Caliburn.Ninject.xml" />
-    <Content Include="libraries\Caliburn.PresentationFramework.dll" />
-    <Resource Include="libraries\Caliburn.PresentationFramework.xml" />
-    <Content Include="libraries\Caliburn.Prism.dll" />
-    <Resource Include="libraries\Caliburn.Prism.xml" />
-    <Content Include="libraries\Caliburn.Spring.dll" />
-    <Resource Include="libraries\Caliburn.Spring.xml" />
-    <Content Include="libraries\Caliburn.StructureMap.dll" />
-    <Resource Include="libraries\Caliburn.StructureMap.xml" />
-    <Content Include="libraries\Caliburn.Testability.dll" />
-    <Resource Include="libraries\Caliburn.Testability.xml" />
-    <Content Include="libraries\Caliburn.Unity.dll" />
-    <Resource Include="libraries\Caliburn.Unity.xml" />
-    <Content Include="libraries\Castle.Core.dll" />
-    <Resource Include="libraries\Castle.Core.xml" />
-    <Content Include="libraries\Castle.DynamicProxy2.dll" />
-    <Resource Include="libraries\Castle.DynamicProxy2.xml" />
-    <Content Include="libraries\Castle.MicroKernel.dll" />
-    <Resource Include="libraries\Castle.MicroKernel.xml" />
-    <Content Include="libraries\Castle.Windsor.dll" />
-    <Resource Include="libraries\Castle.Windsor.xml" />
-    <Content Include="libraries\Common.Logging.dll" />
-    <Content Include="libraries\Microsoft.Practices.Composite.dll" />
-    <Content Include="libraries\Microsoft.Practices.Composite.Presentation.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Composite.Presentation.xml" />
-    <Content Include="libraries\Microsoft.Practices.Composite.UnityExtensions.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Composite.UnityExtensions.XML" />
-    <Resource Include="libraries\Microsoft.Practices.Composite.xml" />
-    <Content Include="libraries\Microsoft.Practices.ObjectBuilder2.dll" />
-    <Resource Include="libraries\Microsoft.Practices.ObjectBuilder2.xml" />
-    <Content Include="libraries\Microsoft.Practices.ServiceLocation.dll" />
-    <Resource Include="libraries\Microsoft.Practices.ServiceLocation.XML" />
-    <Content Include="libraries\Microsoft.Practices.Unity.Configuration.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Unity.Configuration.xml" />
-    <Content Include="libraries\Microsoft.Practices.Unity.dll" />
-    <Content Include="libraries\Microsoft.Practices.Unity.Interception.Configuration.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Unity.Interception.Configuration.xml" />
-    <Content Include="libraries\Microsoft.Practices.Unity.Interception.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Unity.Interception.xml" />
-    <Content Include="libraries\Microsoft.Practices.Unity.StaticFactory.dll" />
-    <Resource Include="libraries\Microsoft.Practices.Unity.StaticFactory.xml" />
-    <Resource Include="libraries\Microsoft.Practices.Unity.xml" />
-    <Content Include="libraries\Ninject.dll" />
-    <Content Include="libraries\Spring.Core.dll" />
-    <Resource Include="libraries\Spring.Core.xml" />
-    <Content Include="libraries\StructureMap.dll" />
-    <Content Include="libraries\System.ComponentModel.Composition.dll" />
-    <Resource Include="libraries\System.ComponentModel.Composition.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
