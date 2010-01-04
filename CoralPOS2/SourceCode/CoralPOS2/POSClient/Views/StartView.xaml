@@ -1,0 +1,6 @@
+﻿<NavigationWindow x:Class="POSClient.Views.StartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="StartView" Height="1024" Width="748">
+    
+</NavigationWindow>

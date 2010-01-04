@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSClient
+namespace POSClient.Views
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for StartView.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class StartView : NavigationWindow
     {
-        public Window1()
+        public StartView()
         {
             InitializeComponent();
         }
