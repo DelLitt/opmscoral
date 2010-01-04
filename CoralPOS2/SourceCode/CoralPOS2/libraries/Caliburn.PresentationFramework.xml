@@ -202,6 +202,12 @@
             </summary>
             <value>The filters.</value>
         </member>
+        <member name="P:Caliburn.PresentationFramework.Actions.ActionBase.Method">
+            <summary>
+            Gets the method.
+            </summary>
+            <value>The method.</value>
+        </member>
         <member name="T:Caliburn.PresentationFramework.Actions.ActionFactory">
             <summary>
             An implementation of <see cref="T:Caliburn.PresentationFramework.Actions.IActionFactory"/>.
@@ -1013,6 +1019,11 @@
             Selects the assemblies which Caliburn will be able to inspect for components, views, etc.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication.BeforeFrameworkInitialize">
+            <summary>
+            Called before Caliburn initialization phase. 
+            </summary>
         </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication.ConfigurePresentationFramework(Caliburn.PresentationFramework.PresentationFrameworkModule)">
             <summary>
@@ -2081,6 +2092,12 @@
             <param name="presenter">The presenter.</param>
             <param name="completed">Called when the shutdown action is finished.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.MultiPresenterManager.ChangeCurrentPresenterCore(Caliburn.PresentationFramework.ApplicationModel.IPresenter)">
+            <summary>
+            Changes the current presenter.
+            </summary>
+            <param name="newCurrent">The new current presenter.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.MultiPresenterManager.Caliburn#PresentationFramework#ApplicationModel#ISupportCustomShutdown#CreateShutdownModel">
             <summary>
             Creates the shutdown model.
@@ -2172,6 +2189,12 @@
             Shuts down the current presenter.
             </summary>
             <param name="completed">Called when the shutdown action is finished.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterManager.ChangeCurrentPresenterCore(Caliburn.PresentationFramework.ApplicationModel.IPresenter)">
+            <summary>
+            Changes the current presenter.
+            </summary>
+            <param name="newCurrent">The new current presenter.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.PresenterManager.Caliburn#PresentationFramework#ApplicationModel#ISupportCustomShutdown#CreateShutdownModel">
             <summary>
@@ -3030,11 +3053,12 @@
             Metadata which can be used to trigger availability changes in triggers based on <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.#ctor(Caliburn.PresentationFramework.IRoutedMessageHandler,System.ComponentModel.INotifyPropertyChanged)">
+        <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.#ctor(Caliburn.PresentationFramework.IRoutedMessageHandler,Caliburn.Core.Invocation.IMethodFactory,System.ComponentModel.INotifyPropertyChanged)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Filters.DependencyObserver"/> class.
             </summary>
             <param name="messageHandler">The message handler.</param>
+            <param name="methodFactory">The method factory.</param>
             <param name="notifier">The notifier.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Filters.DependencyObserver.MakeAwareOf(Caliburn.PresentationFramework.IMessageTrigger,System.Collections.Generic.IEnumerable{System.String})">
@@ -3266,6 +3290,14 @@
             </summary>
             <param name="method">The method.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PreviewAttribute.Initialize(System.Type,Caliburn.Core.Metadata.IMetadataContainer,Microsoft.Practices.ServiceLocation.IServiceLocator)">
+            <summary>
+            Initializes the filter.
+            </summary>
+            <param name="targetType">Type of the target.</param>
+            <param name="metadataContainer">The metadata container.</param>
+            <param name="serviceLocator">The serviceLocator.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.Filters.PreviewAttribute.Execute(Caliburn.PresentationFramework.IRoutedMessage,Caliburn.PresentationFramework.IInteractionNode,System.Object[])">
             <summary>
             Executes the filter.
@@ -3294,6 +3326,25 @@
             </summary>
             <value><c>true</c> if affects triggers; otherwise, <c>false</c>.</value>
             <remarks>True by default.</remarks>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Filters.PropertyPathMonitor">
+            <summary>
+            A class used to monitor changes in a property path.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PropertyPathMonitor.#ctor(Caliburn.Core.Invocation.IMethodFactory,System.ComponentModel.INotifyPropertyChanged,System.String,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Filters.PropertyPathMonitor"/> class.
+            </summary>
+            <param name="methodFactory">The method factory.</param>
+            <param name="notifier">The notifier.</param>
+            <param name="propertyPath">The property path.</param>
+            <param name="onPathChanged">The on path changed.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Filters.PropertyPathMonitor.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
         </member>
         <member name="T:Caliburn.PresentationFramework.Filters.RescueAttribute">
             <summary>
@@ -3628,6 +3679,28 @@
             Gets or sets the message delimiter.
             </summary>
             <value>The message delimiter.</value>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGesture">
+            <summary>
+            This is an import of System.Windows.Input.KeyGesture, with the validation behaviour disabled.
+            </summary>
+            <remarks>
+            The default KeyGesture supplied with WPF is hard-coded to validate the key combination, and does
+            so based on an arbitary rule to disallow any alpha-numeric keys without modifiers. This decision
+            makes it very difficult to create a mouseless application with WPF and Caliburn.
+            </remarks>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGestureConverter">
+            <summary>
+            This is an import of System.Windows.Input.KeyGestureConverter, unmodified except for references
+            to KeyGesture replaced with UnrestrictedKeyGesture.
+            </summary>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Triggers.Support.UnrestrictedKeyGestureValueSerializer">
+            <summary>
+            This is an import of System.Windows.Input.KeyGestureValueSerializer, unmodified except for references
+            to KeyGesture replaced with UnrestrictedKeyGesture.
+            </summary>
         </member>
         <member name="T:Caliburn.PresentationFramework.Triggers.AttachedEventMessageTrigger">
             <summary>
