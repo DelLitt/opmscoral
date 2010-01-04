@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Login" value-ref="POSClient.Step1"/>
+    	</dictionary>
+	</property>
+  </object>
+	
+  <object id="POSClient.Step1" type="POSClient.Step1, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Next" value="Form1.xaml"/>
+    	</dictionary>
+	</property>
+  </object>
+
+  <object id="POSClient.Form1" type="POSClient.Form1, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Logout" value="LoginForm.xaml"/>
+    	</dictionary>
+	</property>
+  </object>
+  
+</objects>
