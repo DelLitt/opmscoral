@@ -1,6 +1,8 @@
 ﻿<NavigationWindow x:Class="POSClient.Views.StartView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="StartView" Height="1024" Width="748">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:cal="http://www.caliburnproject.org"                  
+    Title="StartView" Height="1024" Width="748" ShowsNavigationUI="False" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="SingleBorderWindow" 
+     Source="{Binding CurrentPresenter.View}">
     
 </NavigationWindow>
