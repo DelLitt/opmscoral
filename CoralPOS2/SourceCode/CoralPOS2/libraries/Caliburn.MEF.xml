@@ -9,11 +9,11 @@
             A <see cref="T:System.ComponentModel.Composition.Primitives.ComposablePart"/> used to configure MEF with Caliburn's required services.
             </summary>
         </member>
-        <member name="M:Caliburn.MEF.ComponentPart.#ctor(Caliburn.Core.ComponentInfo)">
+        <member name="M:Caliburn.MEF.ComponentPart.#ctor(Caliburn.Core.IoC.ComponentRegistrationBase)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.MEF.ComponentPart"/> class.
             </summary>
-            <param name="info">The info.</param>
+            <param name="registration">The registration.</param>
         </member>
         <member name="M:Caliburn.MEF.ComponentPart.GetExportedValue(System.ComponentModel.Composition.Primitives.ExportDefinition)">
             <summary>
@@ -153,7 +153,7 @@
         </member>
         <member name="T:Caliburn.MEF.MEFAdapter">
             <summary>
-            An adapter allowing a <see cref="T:System.ComponentModel.Composition.Hosting.CompositionContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing a <see cref="T:System.ComponentModel.Composition.Hosting.CompositionContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.MEF.MEFAdapter.#ctor(System.ComponentModel.Composition.Hosting.CompositionContainer)">
@@ -179,11 +179,11 @@
             <param name="serviceType">Type of service requested.</param>
             <returns>Sequence of service instance objects.</returns>
         </member>
-        <member name="M:Caliburn.MEF.MEFAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
+        <member name="M:Caliburn.MEF.MEFAdapter.Register(System.Collections.Generic.IEnumerable{Caliburn.Core.IoC.IComponentRegistration})">
             <summary>
-            Configures the container with the provided components.
+            Configures the container using the provided component registrations.
             </summary>
-            <param name="components">The components.</param>
+            <param name="registrations">The component registrations.</param>
         </member>
     </members>
 </doc>

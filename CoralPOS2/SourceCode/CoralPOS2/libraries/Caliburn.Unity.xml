@@ -6,7 +6,7 @@
     <members>
         <member name="T:Caliburn.Unity.UnityAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Microsoft.Practices.Unity.IUnityContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Unity.UnityAdapter.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
@@ -35,12 +35,6 @@
             <returns>
             Sequence of service instance objects.
             </returns>
-        </member>
-        <member name="M:Caliburn.Unity.UnityAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
-            <summary>
-            Configures the container with the provided components.
-            </summary>
-            <param name="components">The components.</param>
         </member>
     </members>
 </doc>

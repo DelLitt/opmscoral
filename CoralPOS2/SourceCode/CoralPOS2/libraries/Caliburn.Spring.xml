@@ -19,7 +19,7 @@
         </member>
         <member name="T:Caliburn.Spring.SpringAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Spring.Context.Support.GenericApplicationContext"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Spring.Context.Support.GenericApplicationContext"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Spring.SpringAdapter.#ctor(Spring.Context.Support.GenericApplicationContext)">
@@ -53,12 +53,6 @@
             <returns>
             Sequence of service instance objects matching the <paramref name="serviceType"/>.
             </returns>
-        </member>
-        <member name="M:Caliburn.Spring.SpringAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
-            <summary>
-            Configures the container with the provided components.
-            </summary>
-            <param name="components">The components.</param>
         </member>
         <member name="P:Caliburn.Spring.SpringAdapter.Context">
             <summary>

@@ -6,7 +6,7 @@
     <members>
         <member name="T:Caliburn.Ninject.NinjectAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Ninject.IKernel"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IConfigurator"/>.
+            An adapter allowing an <see cref="T:Ninject.IKernel"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Ninject.NinjectAdapter.#ctor(Ninject.IKernel)">
@@ -31,12 +31,6 @@
             </summary>
             <param name="serviceType">Type of service requested.</param>
             <returns>Sequence of service instance objects.</returns>
-        </member>
-        <member name="M:Caliburn.Ninject.NinjectAdapter.ConfigureWith(System.Collections.Generic.IEnumerable{Caliburn.Core.ComponentInfo})">
-            <summary>
-            Configures the container with the provided components.
-            </summary>
-            <param name="components">The components.</param>
         </member>
         <member name="P:Caliburn.Ninject.NinjectAdapter.Kernel">
             <summary>

@@ -154,7 +154,7 @@
             <typeparam name="K"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.ModelFramework.CollectionNode`1.GetMatchingMetadata``1">
+        <member name="M:Caliburn.ModelFramework.CollectionNode`1.FindMetadata``1">
             <summary>
             Gets the matching metadata.
             </summary>
