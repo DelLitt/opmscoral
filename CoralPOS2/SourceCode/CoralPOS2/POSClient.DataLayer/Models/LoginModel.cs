@@ -5,7 +5,7 @@ using System.Text;
 
 namespace POSClient.DataLayer.Models
 {
-    public class LoginInfo
+    public class LoginModel
     {
         public string Username { get; set; }
         public string Password { get; set; }

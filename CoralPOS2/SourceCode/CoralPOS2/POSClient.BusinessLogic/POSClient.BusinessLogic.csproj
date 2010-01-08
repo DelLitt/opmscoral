@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\ILoginLogic.cs" />
-    <Compile Include="Logic\LoginLogic.cs" />
+    <Compile Include="Logic\Security\ILoginLogic.cs" />
+    <Compile Include="Logic\Security\LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

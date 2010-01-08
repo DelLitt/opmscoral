@@ -8,7 +8,7 @@ namespace POSClient.BusinessLogic.Logic
 {
     public class LoginLogic
     {
-        public bool Login(LoginInfo loginInfo)
+        public bool Login(LoginModel loginInfo)
         {
             string username = loginInfo.Username.ToLower();
             string password = loginInfo.Password.ToLower();

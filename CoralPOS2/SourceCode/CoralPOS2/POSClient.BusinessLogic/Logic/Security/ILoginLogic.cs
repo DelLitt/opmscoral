@@ -8,6 +8,6 @@ namespace POSClient.BusinessLogic.Logic
 {
     public interface ILoginLogic
     {
-        bool Login(LoginInfo loginInfo);
+        bool Login(LoginModel loginInfo);
     }
 }
