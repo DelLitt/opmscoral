@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.Screens;
 
 namespace POSClient.ViewModels
 {
-    public interface IStartViewModel
+    [PerRequest(typeof(IMainView))]
+    public class MainView : Screen, IMainView
     {
-        void Open<T>() where T : IScreen;
     }
 }

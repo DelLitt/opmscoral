@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSClient.View
+namespace POSClient.Views.Security
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginView : UserControl
     {
-        public LoginPage()
+        public LoginView()
         {
             InitializeComponent();
         }

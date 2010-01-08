@@ -23,7 +23,7 @@ namespace POSClient
 
         private void InitSpring()
         {
-            //IApplicationContext ctx = ContextRegistry.GetContext("App1.config");
+            //IApplicationContext ctx = ContextRegistry.GetContext("App.config");
         }
 
         protected override object CreateRootModel()

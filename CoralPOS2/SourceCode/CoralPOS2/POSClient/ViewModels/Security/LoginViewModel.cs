@@ -2,42 +2,76 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using Caliburn.Core;
+using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Screens;
+using POSClient.BusinessLogic.Logic;
+using POSClient.DataLayer.Models;
 
 namespace POSClient.ViewModels.Security
 {
     [PerRequest(typeof(ILoginViewModel))]
-    public class LoginViewModel : Presenter,ILoginViewModel  
+    public class LoginViewModel : Screen,ILoginViewModel  
     {
-        private string username;
+
+        private IStartViewModel _startViewModel;
+        public LoginViewModel(IStartViewModel startViewModel)
+        {
+            _startViewModel = startViewModel; 
+        }
+        private string _username;
         public string Username
         {
             get
             {
-                return username;
+                return _username;
             }
             set
             {
-                username = value;
-                NotifyOfPropertyChange("Username");
+                _username = value;
+                NotifyOfPropertyChange(() => Username);
             }
         }
 
-        private string password;
+        private string _password;
         public string Password
         {
             get
             {
-                return password;
+                return _password;
             }
             set
             {
-                Password = value;
-                NotifyOfPropertyChange("Password");
+                _password = value;
+                NotifyOfPropertyChange(() => Password);
             }
         }
 
+        public string Path
+        {
+            get; set;
+        }
+
+        public void LoginAction()
+        {
+            LoginModel model = new LoginModel();
+            model.Username = Username;
+            model.Password = Password;
+            LoginLogic loginLogic = new LoginLogic();
+            bool result = loginLogic.Login(model);
+
+            if(result)
+            {
+                _startViewModel.Open<IMainView>();
+            }
+            else
+            {
+                MessageBox.Show("Login failed babe !"); 
+            }
+
+        }
     }
 }

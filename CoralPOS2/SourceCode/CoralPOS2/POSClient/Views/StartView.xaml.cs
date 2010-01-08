@@ -17,7 +17,7 @@ namespace POSClient.Views
     /// <summary>
     /// Interaction logic for StartView.xaml
     /// </summary>
-    public partial class StartView : NavigationWindow
+    public partial class StartView : Window
     {
         public StartView()
         {
