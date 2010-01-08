@@ -91,7 +91,9 @@ namespace AppFrameClient.View
 
         private void cboDepartments_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboDepartments.SelectedValue == null) return;
             int deptId = Int32.Parse(cboDepartments.SelectedValue.ToString());
+                         
             if(deptId > 0)
             {
                 dgvDeptStock.Visible = true;
@@ -119,6 +121,7 @@ namespace AppFrameClient.View
 
         private void CalculateTotal()
         {
+            if (null == cboDepartments.SelectedValue) return;
             int deptId = Int32.Parse(cboDepartments.SelectedValue.ToString());
             int typeId = 0;
             ClientUtility.TryActionHelper(delegate()
@@ -327,42 +330,67 @@ namespace AppFrameClient.View
                 
                 if (deptId > 0)
                 {
-                    LackingProductTableAdapter lackingProductAdapter = new LackingProductTableAdapter();
-                    lackingProductAdapter.ClearBeforeFill = true;
+                    
+                    IDictionary<string, int> lackingIdList = new Dictionary<string, int>();
+
 
                     foreach (KeyValuePair<string, int> barCodeLine in list)
                     {
-                        bool notFound = true;
+                        bool found = false;
                         foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
                         {
                             if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
                             {
                                 stockqtyRow.realquantity = barCodeLine.Value;
                                 AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
-                                notFound = false;
+
+                                found = true;
                                 break;
                             }
                         }
-                        if(notFound)
+
+                        if (!found)
                         {
-                            lackingProductAdapter.Fill(masterDB1.LackingProduct, barCodeLine.Key);
-                            if(masterDB1.LackingProduct.Rows.Count == 1)
-                            {
-                                MasterDB.LackingProductRow lkrow = masterDB1.LackingProduct[0];
-                                masterDB1.stockqty.AddstockqtyRow(lkrow.type_id, lkrow.type_name,
-                                                                  lkrow.product_master_id, lkrow.product_id,
-                                                                  "NOTFOUND_" + lkrow.product_name, lkrow.color_name,
-                                                                  lkrow.size_name, lkrow.product_id, 0, 0,
-                                                                  barCodeLine.Value);
-                            }
+                            lackingIdList.Add(barCodeLine);
                         }
+
                     }
+                    if(lackingIdList.Count > 0)
+                    {
+                        foreach (KeyValuePair<string, int> barCodeLine in lackingIdList)
+                        {
+                            foreach (MasterDB.mainstkqtyRow stockqtyRow in masterDB3.mainstkqty)
+                            {
+                                if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                                {
+                                    AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                    masterDB1.stockqty.AddstockqtyRow(
+                                        stockqtyRow.TYPE_ID,
+                                        stockqtyRow.TYPE_NAME,
+                                        stockqtyRow.PRODUCT_MASTER_ID,
+                                        barCodeLine.Key,
+                                        " NOT_IN_STOCK - " + stockqtyRow.PRODUCT_NAME,
+                                        stockqtyRow.COLOR_NAME,
+                                        stockqtyRow.SIZE_NAME,
+                                        barCodeLine.Key,
+                                        0,
+                                        0,
+                                        barCodeLine.Value
+                                        );
+                                    break;
+                                }
+                            }
+
+                        } 
+                    }
+                    
                     stockqtyBindingSource.ResetBindings(false);
                     dgvDeptStock.Refresh();
                     dgvDeptStock.Invalidate();
                 }
                 else
                 {
+                    
                     foreach (KeyValuePair<string, int> barCodeLine in list)
                     {
                         foreach (MasterDB.mainstkqtyRow stockqtyRow in masterDB3.mainstkqty)
@@ -371,10 +399,13 @@ namespace AppFrameClient.View
                             {
                                 stockqtyRow.realquantity = barCodeLine.Value;
                                 AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                
                                 break;
                             }
                         }
+                        
                     }
+
                     stockqtyBindingSource.ResetBindings(false);
                     dgvDeptStock.Refresh();
                     dgvDeptStock.Invalidate();
@@ -561,6 +592,11 @@ namespace AppFrameClient.View
         private void dgvDeptStock_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
     class TypeViewObject

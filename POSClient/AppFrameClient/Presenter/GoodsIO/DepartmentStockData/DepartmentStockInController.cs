@@ -239,6 +239,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                         if (price.DepartmentPricePK.ProductMasterId.Equals(detail.Product.ProductMaster.ProductMasterId))
                         {
                             detail.Price = price.Price;
+                            detail.OnStorePrice = price.WholeSalePrice;
                         }
                     }
                 }

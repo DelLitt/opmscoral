@@ -92,7 +92,7 @@ namespace AppFrameClient.Utility
             MySqlCommand cmd = new MySqlCommand("CleanPurchaseOrder", cn);
             
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("dayBefore", 1);
+            cmd.Parameters.AddWithValue("dayBefore", 0);
             cn.Open();
             cmd.ExecuteNonQuery();
             cn.Close();

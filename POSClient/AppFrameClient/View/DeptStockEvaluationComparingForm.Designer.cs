@@ -82,6 +82,7 @@
             this.stockevaluationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDB4 = new AppFrameClient.MasterDB();
             this.stock_evaluationTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_evaluationTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTypeBds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStock)).BeginInit();
@@ -251,7 +252,7 @@
             // 
             this.btnImportResult.Location = new System.Drawing.Point(625, 7);
             this.btnImportResult.Name = "btnImportResult";
-            this.btnImportResult.Size = new System.Drawing.Size(152, 57);
+            this.btnImportResult.Size = new System.Drawing.Size(152, 58);
             this.btnImportResult.TabIndex = 6;
             this.btnImportResult.Text = "Nhập kết quả";
             this.btnImportResult.UseVisualStyleBackColor = true;
@@ -443,7 +444,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(263, 439);
+            this.btnSave.Location = new System.Drawing.Point(269, 482);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 23);
             this.btnSave.TabIndex = 12;
@@ -454,7 +455,7 @@
             // btnExport
             // 
             this.btnExport.Enabled = false;
-            this.btnExport.Location = new System.Drawing.Point(397, 439);
+            this.btnExport.Location = new System.Drawing.Point(403, 482);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 13;
@@ -485,11 +486,22 @@
             // 
             this.stock_evaluationTableAdapter.ClearBeforeFill = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(702, 482);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Thoat";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // DeptStockEvaluationComparingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 492);
+            this.ClientSize = new System.Drawing.Size(785, 517);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
@@ -580,5 +592,6 @@
         private MasterDB masterDB4;
         private System.Windows.Forms.BindingSource stockevaluationBindingSource;
         private AppFrameClient.MasterDBTableAdapters.stock_evaluationTableAdapter stock_evaluationTableAdapter;
+        private System.Windows.Forms.Button button2;
     }
 }
