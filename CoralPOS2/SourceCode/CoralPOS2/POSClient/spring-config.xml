@@ -25,5 +25,9 @@
     	</dictionary>
 	</property>
   </object>
-  
+  <object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary" >
+    <dictionary>
+      <entry key="Login" value-ref="POSClient.Step1"/>
+    </dictionary>
+  </object>
 </objects>

@@ -28,7 +28,7 @@ namespace POSClient
 
         protected override object CreateRootModel()
         {
-            return Container.GetInstance<IStartViewModel>();   
+            return Container.GetInstance<IShellViewModel>();   
         }
     }
 }

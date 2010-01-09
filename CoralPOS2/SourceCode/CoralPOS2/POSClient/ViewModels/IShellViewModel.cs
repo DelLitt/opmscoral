@@ -6,7 +6,7 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSClient.ViewModels
 {
-    public interface IStartViewModel
+    public interface IShellViewModel
     {
         void Open<T>() where T : IScreen;
     }

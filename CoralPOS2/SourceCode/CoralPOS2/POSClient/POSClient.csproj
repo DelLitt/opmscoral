@@ -275,7 +275,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\StartView.xaml">
+    <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -289,8 +289,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ILoginAction.cs" />
+    <Compile Include="Actions\LoginAction.cs" />
+    <Compile Include="Actions\LoginActionResult.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
-    <Compile Include="ViewModels\IStartViewModel.cs" />
+    <Compile Include="ViewModels\IShellViewModel.cs" />
     <Compile Include="Presenters\Security\LoginPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -307,7 +310,7 @@
     </Compile>
     <Compile Include="ViewModels\MainView.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
-    <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -315,8 +318,8 @@
     <Compile Include="Views\Security\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StartView.xaml.cs">
-      <DependentUpon>StartView.xaml</DependentUpon>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplatePage.xaml.cs">
       <DependentUpon>TemplatePage.xaml</DependentUpon>
@@ -325,6 +328,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

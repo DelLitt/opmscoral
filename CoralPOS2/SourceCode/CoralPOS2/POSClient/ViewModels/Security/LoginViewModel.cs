@@ -17,8 +17,8 @@ namespace POSClient.ViewModels.Security
     public class LoginViewModel : Screen,ILoginViewModel  
     {
 
-        private IStartViewModel _startViewModel;
-        public LoginViewModel(IStartViewModel startViewModel)
+        private IShellViewModel _startViewModel;
+        public LoginViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }

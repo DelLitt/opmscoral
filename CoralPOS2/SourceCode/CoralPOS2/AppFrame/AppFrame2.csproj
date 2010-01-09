@@ -188,12 +188,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IFlow.cs" />
+    <Compile Include="Base\IPosAction.cs" />
+    <Compile Include="Base\IPosActionResult.cs" />
     <Compile Include="Common\GlobalCache.cs" />
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WPF\NavigationWindowManager.cs" />
+    <Compile Include="WPF\NavigationViewLocator.cs" />
     <Compile Include="WPF\NavigationWindowStrategy.cs" />
+    <Compile Include="WPF\Screens\IPageScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

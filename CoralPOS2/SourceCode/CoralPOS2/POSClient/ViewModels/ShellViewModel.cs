@@ -12,15 +12,15 @@ using POSClient.ViewModels.Security;
 
 namespace POSClient.ViewModels
 {
-    [Singleton(typeof(IStartViewModel))]
-    public class StartViewModel : Navigator<IScreen>,IStartViewModel
+    [Singleton(typeof(IShellViewModel))]
+    public class ShellViewModel : Navigator<IScreen>,IShellViewModel
     {
         
         private readonly IServiceLocator _serviceLocator;
         private IScreen _dialogModel;
 
         public string CurrentPath { get;set; }
-        public StartViewModel(IServiceLocator serviceLocator)
+        public ShellViewModel(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
         }
