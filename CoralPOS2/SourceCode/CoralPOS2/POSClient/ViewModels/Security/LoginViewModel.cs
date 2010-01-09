@@ -8,7 +8,7 @@ using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-using POSClient.BusinessLogic.Logic;
+using POSClient.BusinessLogic.Logic.Security;
 using POSClient.DataLayer.Models;
 
 namespace POSClient.ViewModels.Security

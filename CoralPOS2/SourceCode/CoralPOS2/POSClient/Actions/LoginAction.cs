@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using POSClient.BusinessLogic.Logic;
+using POSClient.BusinessLogic.Logic.Security;
 using POSClient.DataLayer.Models;
 
 namespace POSClient.Actions
