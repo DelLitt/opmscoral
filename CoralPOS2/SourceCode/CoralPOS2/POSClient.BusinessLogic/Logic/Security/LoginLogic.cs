@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using POSClient.DataLayer.Models;
 
-namespace POSClient.BusinessLogic.Logic
+namespace POSClient.BusinessLogic.Logic.Security
 {
     public class LoginLogic
     {
