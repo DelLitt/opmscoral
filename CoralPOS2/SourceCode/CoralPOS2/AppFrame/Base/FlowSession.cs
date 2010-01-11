@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AppFrame.Base
 {
-    public class FlowSession
+    public class FlowSession : DefaultSession
     {
         private IFlow _flow;
         IFlow Flow 
