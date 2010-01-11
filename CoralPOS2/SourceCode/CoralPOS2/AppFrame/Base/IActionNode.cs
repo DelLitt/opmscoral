@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Caliburn.PresentationFramework.Actions;
 
 namespace AppFrame.Base
 {
-    public interface INode
+    public interface IActionNode : IAction,INode
     {
-        
+        void DoExecute();
     }
 }

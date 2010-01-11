@@ -20,6 +20,7 @@ namespace POSClient.ViewModels
         private IScreen _dialogModel;
 
         public string CurrentPath { get;set; }
+
         public ShellViewModel(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace AppFrame.Base
+{
+    public class DefaultSession : ISession
+    {
+        private IDictionary<string,object> _dictionary = new Dictionary<string, object>();
+        public void Put(string key, object value)
+        {
+            _dictionary.Add(key,value);
+        }
+
+        public object Get(string key)
+        {
+            return _dictionary[key];
+        }
+
+        public void Remove(string key)
+        {
+            _dictionary.Remove(key);
+        }
+
+        public bool IsSet(string key)
+        {
+            return _dictionary.ContainsKey(key);  
+        }
+    }
+}

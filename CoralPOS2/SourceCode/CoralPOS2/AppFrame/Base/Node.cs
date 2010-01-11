@@ -35,7 +35,7 @@ namespace AppFrame.Base
             {
                 if (typeof(INode) == nextNode.GetType())
                 {
-                    ((INode) nextNode).Execute();
+                    //((INode) nextNode).Execute();
                 }
                 else 
                 {
@@ -56,7 +56,7 @@ namespace AppFrame.Base
             {
                 if (typeof(INode) == nextNode.GetType())
                 {
-                    ((INode) nextNode).Execute(param);
+                    //((INode) nextNode).Execute(param);
                 }
                 else 
                 {
