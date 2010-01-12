@@ -15,7 +15,8 @@ namespace AppFrame.Base
         private readonly IServiceLocator _serviceLocator;
         private IScreen _dialogModel;
         
-        private IDictionary<string,IFlow> freezeFlows = new Dictionary<string,IFlow>();
+        private IDictionary<string,IFlow> _freezeFlows = new Dictionary<string,IFlow>();
+        private IFlow _currentFlow;
         public ShellNavigator(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
@@ -35,9 +36,47 @@ namespace AppFrame.Base
             this.Open(screen);
         }
 
-        public void StartFlow(string flowName)
+        public virtual bool EnterFlow(string flowName)
         {
-            
+           if(_freezeFlows.ContainsKey(flowName))
+           {
+               return ResumeFlow(flowName);
+           }
+           else
+           {
+               return StartFlow(flowName);
+           }
+        }
+        public virtual bool StartFlow(string flowName)
+        {
+            try
+            {
+                IFlow flow = (IFlow)_serviceLocator.GetInstance<IFlow>(flowName);
+                flow.Start();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public virtual bool ResumeFlow(string flowName)
+        {
+
+            try
+            {
+                IFlow flow = _freezeFlows[flowName];
+                flow.Resume();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public U CreateNode(string typeName)
+        {
+            return (U)_serviceLocator.GetInstance(Type.GetType(typeName));
         }
     }
 }

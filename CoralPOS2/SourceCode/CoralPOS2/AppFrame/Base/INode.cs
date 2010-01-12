@@ -7,6 +7,8 @@ namespace AppFrame.Base
 {
     public interface INode
     {
-        
+        string Name { get; set; }
+        IFlow Flow { get; set; }
+        void GoToNextNode();
     }
 }

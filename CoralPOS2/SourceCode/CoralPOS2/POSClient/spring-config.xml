@@ -2,7 +2,7 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx">
 
-  <object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
+  <!--<object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
 	<property name="ActionMap">
   	    <dictionary>
     	  <entry key="Login" value-ref="POSClient.Step1"/>
@@ -25,9 +25,17 @@
     	</dictionary>
 	</property>
   </object>
-  <object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary" >
+  
+  <object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary"  >
     <dictionary>
       <entry key="Login" value-ref="POSClient.Step1"/>
     </dictionary>
+  </object>-->
+  <object id="LoginFlow" type="AppFrame2.Base.DefaultFlow, AppFrame2">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="ShowLoginForm" value="POSClient.ViewModels.Security.ILoginViewModel"/>
+      </dictionary>
+    </property>
   </object>
 </objects>

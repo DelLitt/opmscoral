@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using AppFrame.Base;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
@@ -14,7 +15,7 @@ using POSClient.DataLayer.Models;
 namespace POSClient.ViewModels.Security
 {
     [PerRequest(typeof(ILoginViewModel))]
-    public class LoginViewModel : Screen,ILoginViewModel  
+    public class LoginViewModel : PosViewModel,ILoginViewModel  
     {
 
         private IShellViewModel _startViewModel;
@@ -73,5 +74,6 @@ namespace POSClient.ViewModels.Security
             }
 
         }
+        
     }
 }

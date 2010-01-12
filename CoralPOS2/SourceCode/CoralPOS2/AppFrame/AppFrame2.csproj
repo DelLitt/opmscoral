@@ -193,11 +193,14 @@
     <Compile Include="Base\FlowSession.cs" />
     <Compile Include="Base\IActionNode.cs" />
     <Compile Include="Base\IFlow.cs" />
+    <Compile Include="Base\IFlowSession.cs" />
     <Compile Include="Base\IPosAction.cs" />
     <Compile Include="Base\IPosActionResult.cs" />
     <Compile Include="Base\IRootNode.cs" />
     <Compile Include="Base\IScreenNode.cs" />
     <Compile Include="Base\ISession.cs" />
+    <Compile Include="Base\PosAction.cs" />
+    <Compile Include="Base\PosViewModel.cs" />
     <Compile Include="Base\ShellNavigator.cs" />
     <Compile Include="Common\GlobalCache.cs" />
     <Compile Include="Base\INode.cs" />

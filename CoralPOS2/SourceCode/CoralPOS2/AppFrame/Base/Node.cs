@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 
 namespace AppFrame.Base
 {
+    [Obsolete]
     public class Node : INode
     {
         public HybridDictionary ActionMap { get; set; }
@@ -78,6 +79,11 @@ namespace AppFrame.Base
         public virtual void Execute(object param)
         {
             
+        }
+
+        public string Name
+        {
+            get; set;
         }
     }
 }

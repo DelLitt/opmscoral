@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Caliburn.PresentationFramework.Actions;
@@ -9,10 +11,11 @@ namespace AppFrame.Base
 {
     public class DefaultFlow : IFlow
     {
-        private ShellNavigator<IScreen,INode> _rootNavigator;
+        private readonly ShellNavigator<IScreen,INode> _rootNavigator;
         private readonly Stack<INode> _next = new Stack<INode>();
         private readonly Stack<INode> _previous = new Stack<INode>();
-
+        private IFlowSession _flowSession;
+        private readonly IList<string> _nodeList = new List<string>();
         private INode _current;
         private bool _isNavigating;
 
@@ -21,6 +24,11 @@ namespace AppFrame.Base
         public DefaultFlow(ShellNavigator<IScreen,INode> rootNavigator)
         {
             _rootNavigator = rootNavigator;
+
+            foreach (string key in FlowSteps.Keys)
+            {
+                _nodeList.Add(key);
+            }
         }
 
         
@@ -33,14 +41,15 @@ namespace AppFrame.Base
             set
             {
                 _current = value;
+                _current.Flow = this;
             }
         }
 
-        public INode StartNode
+        public string StartNodeName
         {
             get
             {
-                return FlowSteps[0];
+                return (string)FlowSteps[_nodeList[0]];
             }
         }
 
@@ -48,7 +57,7 @@ namespace AppFrame.Base
         {
             get
             {
-                int currentPos = FlowSteps.IndexOf(CurrentNode);
+                int currentPos = IndexOfNode(FlowSteps,_current);
                 return (currentPos == (FlowSteps.Count - 1));
             }
             
@@ -108,8 +117,8 @@ namespace AppFrame.Base
             }
             else if(_current is IActionNode)
             {
-                var _action = _current as IActionNode;
-                _action.DoExecute();
+                var action = _current as IActionNode;
+                action.DoExecute();
             }
         }
 
@@ -147,22 +156,55 @@ namespace AppFrame.Base
             }
             else
             {
-                
-                int currentPos = FlowSteps.IndexOf(CurrentNode);
+                int currentPos = 0;
                 if (_current != null)
+                {
+                    currentPos = IndexOfNode(FlowSteps, _current);
                     _previous.Push(_current);
 
-                INode nextNode = FlowSteps[currentPos + 1];
-                _current = nextNode;
-                ProcessingNode();
-                
+                }
+                int nextPos = currentPos + 1;
+                if(nextPos >= FlowSteps.Count)
+                {
+                    End();
+                }
+                else
+                {
+                    INode nextNode = EnsureNode((string)FlowSteps[_nodeList[nextPos]],nextPos);
+                    _current = nextNode;
+                    ProcessingNode();    
+                }
             }
             _isNavigating = false;
         }
 
+        private INode EnsureNode(string nodeTypeName,int position)
+        {
+            INode node = _rootNavigator.CreateNode(nodeTypeName);
+            node.Name = _nodeList[position];
+            return node;
+        }
+
+        private int IndexOfNode(IDictionary dictionary, INode current)
+        {
+            int result = -1;
+            int i = 0;
+            foreach (string key in dictionary.Keys)
+            {
+                if (key.Equals(current.Name))
+                {
+                    result = i;
+                    break;
+                }
+                i += 1;
+            }
+            return result;
+        }
+
         public virtual void Start()
         {
-            _current = StartNode;
+            INode startNode = EnsureNode((string)FlowSteps[StartNodeName], 0);
+            _current = startNode;
             ProcessingNode();
         }
 
@@ -175,7 +217,13 @@ namespace AppFrame.Base
         {
             
         }
-
+        public int CurrentPosition
+        {
+            get
+            {
+                return IndexOfNode(FlowSteps, CurrentNode);
+            }
+        }
         public bool IsNavigating
         {
             get
@@ -183,14 +231,29 @@ namespace AppFrame.Base
                 return _isNavigating;
             }
         }
-        public IList<INode> FlowSteps
+        public IDictionary FlowSteps
         {
             get; set;
         }
 
-        public ISession Session
+        public IFlowSession Session
         {
-            get; set;
+            get
+            {
+                return _flowSession;
+            }
+            set
+            {
+                _flowSession = value;
+                _flowSession.Flow = this;
+            }
+        }
+        public int Count
+        {
+            get
+            {
+                return FlowSteps.Count;
+            }
         }
     }
 }

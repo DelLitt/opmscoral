@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Caliburn.PresentationFramework.Screens;
@@ -9,7 +11,7 @@ namespace AppFrame.Base
     public interface IFlow
     {
         INode CurrentNode { get; set; }
-        INode StartNode { get; }
+        string StartNodeName { get; }
         bool IsEndFlow { get; }
 
         bool CanGoBack { get; }
@@ -20,8 +22,8 @@ namespace AppFrame.Base
         void Start();
         void Resume();
         void End();
-        IList<INode> FlowSteps { get; set; }
+        IDictionary FlowSteps { get; set; }
 
-        ISession Session { get; set; }
+        IFlowSession Session { get; set; }
     }
 }
