@@ -10,6 +10,11 @@ namespace AppFrame.Base
 {
     public interface IFlow
     {
+        ShellNavigator<IScreen,INode> Navigator 
+        {
+            get;
+            set;
+        }
         INode CurrentNode { get; set; }
         string StartNodeName { get; }
         bool IsEndFlow { get; }

@@ -191,6 +191,7 @@
     <Compile Include="Base\DefaultFlow.cs" />
     <Compile Include="Base\DefaultSession.cs" />
     <Compile Include="Base\FlowSession.cs" />
+    <Compile Include="Base\GlobalSession.cs" />
     <Compile Include="Base\IActionNode.cs" />
     <Compile Include="Base\IFlow.cs" />
     <Compile Include="Base\IFlowSession.cs" />

@@ -11,7 +11,7 @@ namespace AppFrame.Base
 {
     public class DefaultFlow : IFlow
     {
-        private readonly ShellNavigator<IScreen,INode> _rootNavigator;
+        private ShellNavigator<IScreen,INode> _rootNavigator;
         private readonly Stack<INode> _next = new Stack<INode>();
         private readonly Stack<INode> _previous = new Stack<INode>();
         private IFlowSession _flowSession;
@@ -19,19 +19,40 @@ namespace AppFrame.Base
         private INode _current;
         private bool _isNavigating;
 
+        public DefaultFlow()
+        {
+             
+        }
 
-
-        public DefaultFlow(ShellNavigator<IScreen,INode> rootNavigator)
+        public DefaultFlow(ShellNavigator<IScreen,INode> rootNavigator) 
         {
             _rootNavigator = rootNavigator;
-
             foreach (string key in FlowSteps.Keys)
             {
                 _nodeList.Add(key);
             }
         }
 
-        
+        public virtual void InitFlow()
+        {
+            foreach (string key in FlowSteps.Keys)
+            {
+                _nodeList.Add(key);
+            }
+        }
+
+        public ShellNavigator<IScreen, INode> Navigator
+        {
+            get
+            {
+                return _rootNavigator; 
+            }
+            set
+            {
+                _rootNavigator = value;
+            }
+        }
+
         public INode CurrentNode
         {
             get
@@ -99,9 +120,9 @@ namespace AppFrame.Base
             _isNavigating = true;
 
             if (_current != null)
-                _previous.Push(_current);
+                _previous.Push(CurrentNode);
 
-            _current = _next.Pop();
+            CurrentNode = _next.Pop();
 
             ProcessingNode();
             _isNavigating = false;
@@ -135,9 +156,9 @@ namespace AppFrame.Base
             _isNavigating = true;
 
             if (_current != null)
-                _next.Push(_current);
+                _next.Push(CurrentNode);
 
-            _current = _previous.Pop();
+            CurrentNode = _previous.Pop();
             ProcessingNode();
 
         }
@@ -160,7 +181,7 @@ namespace AppFrame.Base
                 if (_current != null)
                 {
                     currentPos = IndexOfNode(FlowSteps, _current);
-                    _previous.Push(_current);
+                    _previous.Push(CurrentNode);
 
                 }
                 int nextPos = currentPos + 1;
@@ -171,7 +192,7 @@ namespace AppFrame.Base
                 else
                 {
                     INode nextNode = EnsureNode((string)FlowSteps[_nodeList[nextPos]],nextPos);
-                    _current = nextNode;
+                    CurrentNode = nextNode;
                     ProcessingNode();    
                 }
             }
@@ -203,8 +224,8 @@ namespace AppFrame.Base
 
         public virtual void Start()
         {
-            INode startNode = EnsureNode((string)FlowSteps[StartNodeName], 0);
-            _current = startNode;
+            INode startNode = EnsureNode((string)StartNodeName, 0);
+            CurrentNode = startNode;
             ProcessingNode();
         }
 
@@ -215,7 +236,7 @@ namespace AppFrame.Base
 
         public virtual void End()
         {
-            
+            _rootNavigator.LeaveFlow(); 
         }
         public int CurrentPosition
         {

@@ -10,7 +10,14 @@ namespace AppFrame.Base
         private IDictionary<string,object> _dictionary = new Dictionary<string, object>();
         public void Put(string key, object value)
         {
-            _dictionary.Add(key,value);
+            if (IsSet(key))
+            {
+                _dictionary[key] = value;
+            }
+            else
+            {
+                _dictionary.Add(key, value);
+            }
         }
 
         public object Get(string key)

@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
+using Spring.Context;
+using Spring.Context.Support;
 
 namespace AppFrame.Base
 {
@@ -12,7 +16,7 @@ namespace AppFrame.Base
                                                        where T:class,IScreen 
                                                        where U:class,INode
     {
-        private readonly IServiceLocator _serviceLocator;
+        private IServiceLocator _serviceLocator;
         private IScreen _dialogModel;
         
         private IDictionary<string,IFlow> _freezeFlows = new Dictionary<string,IFlow>();
@@ -32,8 +36,9 @@ namespace AppFrame.Base
         }
         public void Open<V>() where V: IScreen 
         {
-            var screen = _serviceLocator.GetInstance<U>();
-            this.Open(screen);
+            var screen = _serviceLocator.GetInstance<V>();
+            T scr = screen as T;
+            this.OpenScreen(scr);
         }
 
         public virtual bool EnterFlow(string flowName)
@@ -52,6 +57,8 @@ namespace AppFrame.Base
             try
             {
                 IFlow flow = (IFlow)_serviceLocator.GetInstance<IFlow>(flowName);
+                /*IApplicationContext ctx = ContextRegistry.GetContext();
+                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);*/
                 flow.Start();
                 return true;
             }
@@ -74,9 +81,16 @@ namespace AppFrame.Base
                 return false;
             }
         }
-        public U CreateNode(string typeName)
+        public virtual U CreateNode(string typeName)
         {
-            return (U)_serviceLocator.GetInstance(Type.GetType(typeName));
+            var type = System.Reflection.Assembly.GetEntryAssembly().GetType(typeName);
+            var instance = _serviceLocator.GetInstance(type);
+            return (U) instance;
+        }
+
+        public virtual void LeaveFlow()
+        {
+            
         }
     }
 }

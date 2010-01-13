@@ -31,11 +31,15 @@
       <entry key="Login" value-ref="POSClient.Step1"/>
     </dictionary>
   </object>-->
-  <object id="LoginFlow" type="AppFrame2.Base.DefaultFlow, AppFrame2">
+  <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
+  
+  <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
         <entry key="ShowLoginForm" value="POSClient.ViewModels.Security.ILoginViewModel"/>
+        <entry key="SetValue" value="POSClient.Actions.Security.IRegisterUserAction"/>
       </dictionary>
     </property>
-  </object>
+    <property name="Session" ref="FlowSession" />
+  </object>    
 </objects>

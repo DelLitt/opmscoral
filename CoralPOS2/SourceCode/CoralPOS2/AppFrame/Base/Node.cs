@@ -85,5 +85,15 @@ namespace AppFrame.Base
         {
             get; set;
         }
+
+        public IFlow Flow
+        {
+            get; set;
+        }
+
+        public void GoToNextNode()
+        {
+            
+        }
     }
 }

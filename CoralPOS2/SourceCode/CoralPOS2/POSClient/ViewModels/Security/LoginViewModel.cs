@@ -10,6 +10,7 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using POSClient.BusinessLogic.Logic.Security;
+using POSClient.Common;
 using POSClient.DataLayer.Models;
 
 namespace POSClient.ViewModels.Security
@@ -66,7 +67,10 @@ namespace POSClient.ViewModels.Security
 
             if(result)
             {
-                _startViewModel.Open<IMainView>();
+                GlobalSession.Instance.Put(CommonConstants.IS_LOGGED,true);
+                Flow.Session.Put(CommonConstants.LOGGED_USER, model);
+                //_startViewModel.Open<IMainView>();
+                GoToNextNode();
             }
             else
             {
