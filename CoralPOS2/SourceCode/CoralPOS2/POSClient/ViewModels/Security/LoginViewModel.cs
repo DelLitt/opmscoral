@@ -25,6 +25,7 @@ namespace POSClient.ViewModels.Security
             _startViewModel = startViewModel; 
         }
         private string _username;
+        
         public string Username
         {
             get

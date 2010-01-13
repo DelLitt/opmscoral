@@ -9,4 +9,9 @@ namespace AppFrame.Base
     public interface IScreenNode : IScreen,INode
     {
     }
+
+    public interface  IScreenNode<T> : IScreen<T>, INode
+    {
+        
+    }
 }

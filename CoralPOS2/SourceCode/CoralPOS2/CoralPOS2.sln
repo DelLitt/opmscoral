@@ -134,6 +134,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.DataLayer", "POSS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.BusinessLogic", "POSServer.BusinessLogic\POSServer.BusinessLogic.csproj", "{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caliburn.WPF.ApplicationFramework", "Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj", "{0567B942-B5ED-430F-8E45-FE639039B75B}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -180,6 +182,10 @@ Global
 		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0567B942-B5ED-430F-8E45-FE639039B75B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0567B942-B5ED-430F-8E45-FE639039B75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0567B942-B5ED-430F-8E45-FE639039B75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0567B942-B5ED-430F-8E45-FE639039B75B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

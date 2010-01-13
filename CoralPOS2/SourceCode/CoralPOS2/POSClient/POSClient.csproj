@@ -329,6 +329,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\MainView.cs" />
+    <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
+    <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
@@ -366,6 +368,10 @@
     <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj">
+      <Project>{0567B942-B5ED-430F-8E45-FE639039B75B}</Project>
+      <Name>Caliburn.WPF.ApplicationFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\POSClient.BusinessLogic\POSClient.BusinessLogic.csproj">
       <Project>{456168C0-3001-4D6C-9519-B048921BDDAC}</Project>
