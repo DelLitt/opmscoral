@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
@@ -56,9 +57,10 @@ namespace POSClient.ViewModels
         {
             try
             {
-                //IFlow flow = (IFlow)_serviceLocator.GetInstance<IFlow>(flowName);
-                IApplicationContext ctx = ContextRegistry.GetContext();
-                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);
+                
+                /*IApplicationContext ctx = ContextRegistry.GetContext();
+                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);*/
+                DefaultFlow flow = ObjectUtility.GetObject<DefaultFlow>(flowName);
                 flow.InitFlow();
                 flow.Navigator = this;
                 flow.Start();

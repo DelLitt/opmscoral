@@ -45,6 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 		libraries\Castle.Windsor.dll = libraries\Castle.Windsor.dll
 		libraries\Castle.Windsor.xml = libraries\Castle.Windsor.xml
 		libraries\Common.Logging.dll = libraries\Common.Logging.dll
+		libraries\Common.Logging.Log4Net.dll = libraries\Common.Logging.Log4Net.dll
 		libraries\Iesi.Collections.dll = libraries\Iesi.Collections.dll
 		libraries\Iesi.Collections.license.txt = libraries\Iesi.Collections.license.txt
 		libraries\log4net.dll = libraries\log4net.dll
