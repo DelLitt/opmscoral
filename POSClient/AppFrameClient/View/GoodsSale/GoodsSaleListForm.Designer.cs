@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.chkMorningSort = new System.Windows.Forms.CheckBox();
             this.chkEveningSort = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -70,9 +70,25 @@
             this.txtRetQty = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSellQty = new System.Windows.Forms.TextBox();
+            this.DepartmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProductReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReceiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsBill = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailReportCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PurchaseOrderDetailCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -101,7 +117,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(499, 46);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 14);
+            this.label7.Size = new System.Drawing.Size(0, 16);
             this.label7.TabIndex = 33;
             // 
             // groupBox2
@@ -135,7 +151,7 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(552, 16);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(135, 22);
+            this.dtpToDate.Size = new System.Drawing.Size(135, 23);
             this.dtpToDate.TabIndex = 45;
             // 
             // dtpFromDate
@@ -144,7 +160,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(374, 16);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(141, 22);
+            this.dtpFromDate.Size = new System.Drawing.Size(141, 23);
             this.dtpFromDate.TabIndex = 44;
             // 
             // lblWorkingTime
@@ -152,7 +168,7 @@
             this.lblWorkingTime.AutoSize = true;
             this.lblWorkingTime.Location = new System.Drawing.Point(386, 47);
             this.lblWorkingTime.Name = "lblWorkingTime";
-            this.lblWorkingTime.Size = new System.Drawing.Size(47, 14);
+            this.lblWorkingTime.Size = new System.Drawing.Size(50, 16);
             this.lblWorkingTime.TabIndex = 43;
             this.lblWorkingTime.Text = "Ca trực";
             this.lblWorkingTime.Visible = false;
@@ -172,7 +188,7 @@
             this.cboEmployee.FormattingEnabled = true;
             this.cboEmployee.Location = new System.Drawing.Point(98, 67);
             this.cboEmployee.Name = "cboEmployee";
-            this.cboEmployee.Size = new System.Drawing.Size(270, 22);
+            this.cboEmployee.Size = new System.Drawing.Size(270, 24);
             this.cboEmployee.TabIndex = 41;
             // 
             // label8
@@ -180,7 +196,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(4, 70);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 14);
+            this.label8.Size = new System.Drawing.Size(64, 16);
             this.label8.TabIndex = 40;
             this.label8.Text = "Nhân viên";
             // 
@@ -189,7 +205,7 @@
             this.chkEvening.AutoSize = true;
             this.chkEvening.Location = new System.Drawing.Point(518, 46);
             this.chkEvening.Name = "chkEvening";
-            this.chkEvening.Size = new System.Drawing.Size(56, 18);
+            this.chkEvening.Size = new System.Drawing.Size(59, 20);
             this.chkEvening.TabIndex = 38;
             this.chkEvening.Text = "Chiều";
             this.chkEvening.UseVisualStyleBackColor = true;
@@ -200,7 +216,7 @@
             this.chkMorning.AutoSize = true;
             this.chkMorning.Location = new System.Drawing.Point(439, 46);
             this.chkMorning.Name = "chkMorning";
-            this.chkMorning.Size = new System.Drawing.Size(53, 18);
+            this.chkMorning.Size = new System.Drawing.Size(56, 20);
             this.chkMorning.TabIndex = 37;
             this.chkMorning.Text = "Sáng";
             this.chkMorning.UseVisualStyleBackColor = true;
@@ -211,7 +227,7 @@
             this.lblToDate.AutoSize = true;
             this.lblToDate.Location = new System.Drawing.Point(518, 19);
             this.lblToDate.Name = "lblToDate";
-            this.lblToDate.Size = new System.Drawing.Size(28, 14);
+            this.lblToDate.Size = new System.Drawing.Size(29, 16);
             this.lblToDate.TabIndex = 36;
             this.lblToDate.Text = "đến";
             // 
@@ -220,7 +236,7 @@
             this.lblBillNumber.AutoSize = true;
             this.lblBillNumber.Location = new System.Drawing.Point(4, 19);
             this.lblBillNumber.Name = "lblBillNumber";
-            this.lblBillNumber.Size = new System.Drawing.Size(74, 14);
+            this.lblBillNumber.Size = new System.Drawing.Size(78, 16);
             this.lblBillNumber.TabIndex = 6;
             this.lblBillNumber.Text = "Số hóa đơn:";
             // 
@@ -229,7 +245,7 @@
             this.lblFromDate.AutoSize = true;
             this.lblFromDate.Location = new System.Drawing.Point(311, 19);
             this.lblFromDate.Name = "lblFromDate";
-            this.lblFromDate.Size = new System.Drawing.Size(57, 14);
+            this.lblFromDate.Size = new System.Drawing.Size(60, 16);
             this.lblFromDate.TabIndex = 10;
             this.lblFromDate.Text = "Từ ngày:";
             this.lblFromDate.Click += new System.EventHandler(this.label5_Click);
@@ -238,7 +254,7 @@
             // 
             this.txtCustomer.Location = new System.Drawing.Point(98, 42);
             this.txtCustomer.Name = "txtCustomer";
-            this.txtCustomer.Size = new System.Drawing.Size(270, 22);
+            this.txtCustomer.Size = new System.Drawing.Size(270, 23);
             this.txtCustomer.TabIndex = 24;
             // 
             // lblCustomer
@@ -246,7 +262,7 @@
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Location = new System.Drawing.Point(3, 45);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(69, 14);
+            this.lblCustomer.Size = new System.Drawing.Size(72, 16);
             this.lblCustomer.TabIndex = 25;
             this.lblCustomer.Text = "Tên khách:";
             // 
@@ -254,7 +270,7 @@
             // 
             this.txtBillNumber.Location = new System.Drawing.Point(98, 16);
             this.txtBillNumber.Name = "txtBillNumber";
-            this.txtBillNumber.Size = new System.Drawing.Size(194, 22);
+            this.txtBillNumber.Size = new System.Drawing.Size(194, 23);
             this.txtBillNumber.TabIndex = 2;
             // 
             // dgvSaleList
@@ -262,14 +278,14 @@
             this.dgvSaleList.AllowUserToAddRows = false;
             this.dgvSaleList.AllowUserToDeleteRows = false;
             this.dgvSaleList.AutoGenerateColumns = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaleList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaleList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSaleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSaleList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.purchaseOrderIdDataGridViewTextBoxColumn,
@@ -280,15 +296,15 @@
             this.returnAmountDataGridViewTextBoxColumn,
             this.ReturnDescription});
             this.dgvSaleList.DataSource = this.bdsPurchaseOrders;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.Format = "##,##0";
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSaleList.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Format = "##,##0";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSaleList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSaleList.Location = new System.Drawing.Point(17, 124);
             this.dgvSaleList.Name = "dgvSaleList";
             this.dgvSaleList.ReadOnly = true;
@@ -348,8 +364,8 @@
             // ReturnDescription
             // 
             this.ReturnDescription.DataPropertyName = "IssueDate";
-            dataGridViewCellStyle8.Format = "dd/MM/yyyy HH:mm:ss";
-            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
+            this.ReturnDescription.DefaultCellStyle = dataGridViewCellStyle2;
             this.ReturnDescription.HeaderText = "Ngày phát hành";
             this.ReturnDescription.Name = "ReturnDescription";
             this.ReturnDescription.ReadOnly = true;
@@ -365,7 +381,7 @@
             this.chkMorningSort.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkMorningSort.Location = new System.Drawing.Point(11, 460);
             this.chkMorningSort.Name = "chkMorningSort";
-            this.chkMorningSort.Size = new System.Drawing.Size(53, 18);
+            this.chkMorningSort.Size = new System.Drawing.Size(56, 20);
             this.chkMorningSort.TabIndex = 41;
             this.chkMorningSort.Text = "Sáng";
             this.chkMorningSort.UseVisualStyleBackColor = true;
@@ -377,7 +393,7 @@
             this.chkEveningSort.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEveningSort.Location = new System.Drawing.Point(109, 460);
             this.chkEveningSort.Name = "chkEveningSort";
-            this.chkEveningSort.Size = new System.Drawing.Size(56, 18);
+            this.chkEveningSort.Size = new System.Drawing.Size(59, 20);
             this.chkEveningSort.TabIndex = 42;
             this.chkEveningSort.Text = "Chiều";
             this.chkEveningSort.UseVisualStyleBackColor = true;
@@ -395,16 +411,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnPrint
             // 
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(500, 484);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 44;
-            this.button2.Text = "In ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(500, 484);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 44;
+            this.btnPrint.Text = "In ";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lblTotalAmount
             // 
@@ -412,7 +428,7 @@
             this.lblTotalAmount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.Location = new System.Drawing.Point(572, 460);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(63, 14);
+            this.lblTotalAmount.Size = new System.Drawing.Size(64, 16);
             this.lblTotalAmount.TabIndex = 46;
             this.lblTotalAmount.Text = "Tổng thu:";
             // 
@@ -422,7 +438,7 @@
             this.txtTotalAmount.Location = new System.Drawing.Point(641, 457);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
-            this.txtTotalAmount.Size = new System.Drawing.Size(176, 22);
+            this.txtTotalAmount.Size = new System.Drawing.Size(176, 23);
             this.txtTotalAmount.TabIndex = 47;
             // 
             // saveFileDialog1
@@ -436,7 +452,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(372, 460);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 14);
+            this.label3.Size = new System.Drawing.Size(88, 16);
             this.label3.TabIndex = 66;
             this.label3.Text = "Số lượng trả :";
             // 
@@ -454,7 +470,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(172, 460);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 14);
+            this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 64;
             this.label4.Text = "Số lượng bán :";
             // 
@@ -465,6 +481,38 @@
             this.txtSellQty.ReadOnly = true;
             this.txtSellQty.Size = new System.Drawing.Size(100, 20);
             this.txtSellQty.TabIndex = 63;
+            // 
+            // DepartmentBindingSource
+            // 
+            this.DepartmentBindingSource.DataSource = typeof(AppFrame.Model.Department);
+            // 
+            // PurchaseOrderDetailBindingSource
+            // 
+            this.PurchaseOrderDetailBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrderDetail);
+            // 
+            // ProductReportCollectionBindingSource
+            // 
+            this.ProductReportCollectionBindingSource.DataSource = typeof(AppFrame.Collection.ProductReportCollection);
+            // 
+            // ReceiptBindingSource
+            // 
+            this.ReceiptBindingSource.DataSource = typeof(AppFrame.Model.Receipt);
+            // 
+            // bdsBill
+            // 
+            this.bdsBill.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailCollection);
+            // 
+            // PurchaseOrderBindingSource
+            // 
+            this.PurchaseOrderBindingSource.DataSource = typeof(AppFrame.Model.PurchaseOrder);
+            // 
+            // PurchaseOrderDetailReportCollectionBindingSource
+            // 
+            this.PurchaseOrderDetailReportCollectionBindingSource.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailReportCollection);
+            // 
+            // PurchaseOrderDetailCollectionBindingSource
+            // 
+            this.PurchaseOrderDetailCollectionBindingSource.DataSource = typeof(AppFrame.Collection.PurchaseOrderDetailCollection);
             // 
             // GoodsSaleListForm
             // 
@@ -477,7 +525,7 @@
             this.Controls.Add(this.txtSellQty);
             this.Controls.Add(this.txtTotalAmount);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chkEveningSort);
             this.Controls.Add(this.chkMorningSort);
@@ -487,10 +535,32 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "GoodsSaleListForm";
             this.Text = "Báo cáo doanh thu";
+            this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.btnClose, 0);
+            this.Controls.SetChildIndex(this.btnHelp, 0);
+            this.Controls.SetChildIndex(this.dgvSaleList, 0);
+            this.Controls.SetChildIndex(this.chkMorningSort, 0);
+            this.Controls.SetChildIndex(this.chkEveningSort, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnPrint, 0);
+            this.Controls.SetChildIndex(this.lblTotalAmount, 0);
+            this.Controls.SetChildIndex(this.txtTotalAmount, 0);
+            this.Controls.SetChildIndex(this.txtSellQty, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.txtRetQty, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsPurchaseOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductReportCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReceiptBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsBill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportCollectionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailCollectionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,7 +590,7 @@
         public System.Windows.Forms.DateTimePicker dtpToDate;
         public System.Windows.Forms.DateTimePicker dtpFromDate;
         public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button btnPrint;
         public System.Windows.Forms.BindingSource bdsPurchaseOrders;
         public System.Windows.Forms.Label lblTotalAmount;
         public System.Windows.Forms.TextBox txtTotalAmount;
@@ -536,6 +606,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn returnDescriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReturnDescription;
+        private System.Windows.Forms.BindingSource DepartmentBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailBindingSource;
+        private System.Windows.Forms.BindingSource ProductReportCollectionBindingSource;
+        private System.Windows.Forms.BindingSource ReceiptBindingSource;
+        private System.Windows.Forms.BindingSource bdsBill;
+        private System.Windows.Forms.BindingSource PurchaseOrderBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailReportCollectionBindingSource;
+        private System.Windows.Forms.BindingSource PurchaseOrderDetailCollectionBindingSource;
 
 
 

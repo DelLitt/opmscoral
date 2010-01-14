@@ -517,7 +517,100 @@ namespace AppFrameClient.Utility
             }
             return true;
         }
+        
+        public static void LoadMasterData(bool productMasters, bool departments, bool prices,bool stockStats)
+        {
+            IList list = GetPOSSyncDrives();
+            if (list == null || list.Count == 0)
+            {
+                return;
+            }
+            string dbBackupPath = list[0].ToString() + "POS";
+            dbBackupPath = dbBackupPath.Replace('\\', ('/'));
+            string backupFileName = "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".sql";
 
+            string product_type = "";
+            string product_size = "";
+            string product_color = "";
+            string product_master = "";
+            string product = "";
+
+            string department = "";
+            string employee = "";
+            string employee_info = "";
+            string role = "";
+            string userinfo = "";
+            string userrole = "";
+
+            string stock = "";
+            string department_stock = "";
+            string stock_history = "";
+            string department_stock_history = "";
+
+            string department_price = "";
+
+            if (productMasters)
+            {
+                product_type = "product_type";
+                product_size = "product_size";
+                product_color = "product_color";
+                product_master = "product_master";
+                product = "product";
+            }
+
+            if (departments)
+            {
+                department = "department";
+                employee = "employee";
+                employee_info = "employee_info";
+                userinfo = "userinfo";
+                role = "role";
+                userrole = "userrole";
+            }
+
+            if (prices)
+            {
+                department_price = "department_price";
+            }
+            if(stockStats)
+            {
+                stock = "stock";
+                stock_history = "stock_history";
+                department_stock = "department_stock";
+                department_stock_history = "department_stock_history";
+            }
+            string backupFile = dbBackupPath + "/" + backupFileName;
+            string mysqldumpstring = string.Format("--database {0} --table {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16} --replace --add-drop-table=false --no-create-info --no-create-db --result-file={17} --single-transaction --user={18} --password={19} --skip-add-locks --add-locks=false --quick --triggers=false ",
+                                                      "pos", // dbname
+                                                      product_type,
+                                                      product_size,
+                                                      product_color,
+                                                      product_master,
+                                                      product,
+                                                      department,
+                                                      employee_info,
+                                                      employee,
+                                                      role,
+                                                      userinfo,
+                                                      userrole,
+                                                      department_price,
+                                                      stock,
+                                                      department_stock,
+                                                      stock_history,
+                                                      department_stock_history,
+                                                      backupFile, // backupfile
+                                                      "dbadmin",  // username
+                                                      "1qw45DCM9rl");
+
+            ExecuteMySqlDumpCmdLine(true, mysqldumpstring);
+            using (ZipFile masterZipFile = new ZipFile())
+            {
+                masterZipFile.Password = ZIP_PASSWORD;
+                masterZipFile.AddFile(backupFile, "");
+                masterZipFile.Save(dbBackupPath + "/" + "MasterData_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".zip");
+            }
+            File.Delete(backupFile);
+        }
         public static void LoadMasterData(bool productMasters, bool departments, bool prices)
         {
             IList list = GetPOSSyncDrives();

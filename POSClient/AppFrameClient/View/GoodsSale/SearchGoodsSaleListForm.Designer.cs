@@ -138,7 +138,7 @@
             this.Controls.SetChildIndex(this.chkMorningSort, 0);
             this.Controls.SetChildIndex(this.chkEveningSort, 0);
             this.Controls.SetChildIndex(this.button1, 0);
-            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.lblTotalAmount, 0);
             this.Controls.SetChildIndex(this.txtTotalAmount, 0);
             this.Controls.SetChildIndex(this.panel1, 0);

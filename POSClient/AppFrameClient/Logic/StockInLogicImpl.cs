@@ -177,6 +177,7 @@ namespace AppFrame.Logic
                         stock.CreateId = ClientInfo.getInstance().LoggedUser.Name;
                         StockDAO.Add(stock);
                     }
+                    
                     var pricePk = new DepartmentPricePK { DepartmentId = 0, ProductMasterId = product.ProductMaster.ProductMasterId };
 
                     var price = DepartmentPriceDAO.FindById(pricePk);
@@ -186,6 +187,7 @@ namespace AppFrame.Logic
                                     {
                                         DepartmentPricePK = pricePk, 
                                         Price = stockInDetail.SellPrice,
+                                        WholeSalePrice = stockInDetail.WholeSalePrice,
                                         UpdateDate = DateTime.Now, 
                                         CreateDate = DateTime.Now
                                     };
@@ -200,7 +202,8 @@ namespace AppFrame.Logic
                     else
                     {
                         // don't need to update price
-                        price.Price = stockInDetail.SellPrice;
+                        //price.Price = stockInDetail.SellPrice;
+
                         price.UpdateId = ClientInfo.getInstance().LoggedUser.Name;
                         price.UpdateDate = DateTime.Now;
                         //DepartmentPriceDAO.Update(price);
