@@ -8,17 +8,17 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="http://namtn-pc/AppFrameServer/AppFrameServer.application" />
+    <deploymentProvider codebase="http://nam-pc/AppFrameServer/AppFrameServer.application" />
   </deployment>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AppFrameServer.exe.manifest" size="13487">
+    <dependentAssembly dependencyType="install" codebase="AppFrameServer.exe.manifest" size="13774">
       <assemblyIdentity name="AppFrameServer.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>X3gASRclL2nZLXGx+RR5MWx8FeA=</dsig:DigestValue>
+        <dsig:DigestValue>PeB4FfENTqdkH1v57fef1/4Vae8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -914,7 +914,9 @@ namespace AppFrame.View
 
         private void tsbCost_Click(object sender, EventArgs e)
         {
-
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentCostCreateForm>(this,
+                 FormConstants.DEPARTMENT_COST_FORM);
+            form.Show();
         }
 
         private void tsbFastStockOut_Click(object sender, EventArgs e)
@@ -1315,6 +1317,20 @@ namespace AppFrame.View
         private void mnuStockRemainsReport_Click(object sender, EventArgs e)
         {
             new StockRemainsReportViewer().Show();
+        }
+
+        private void mnuDepartmentCostSummary_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentCostSummaryForm>(this,
+                 FormConstants.DEPARTMENT_COST_SUMMARY_FORM);
+            form.Show();
+        }
+
+        private void tsbCostSummary_Click(object sender, EventArgs e)
+        {
+            Form form = GlobalUtility.GetOnlyChildFormObject<DepartmentCostSummaryForm>(this,
+                 FormConstants.DEPARTMENT_COST_SUMMARY_FORM);
+            form.Show();
         }
         
     }

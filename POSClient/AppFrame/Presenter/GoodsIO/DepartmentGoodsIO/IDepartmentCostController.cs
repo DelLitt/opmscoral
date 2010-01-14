@@ -13,8 +13,10 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
         IDepartmentCostCreateView DepartmentCostCreateView { get; set; }
         IDepartmentCostEditView DepartmentCostEditView { get; set; }
         IDepartmentCostListView DepartmentCostListView { get; set; }
+        IDepartmentCostSummaryView DepartmentCostSummaryView { get; set; } 
 
         // logic
         IDepartmentCostLogic DepartmentCostLogic { get; set; }
+        IEmployeeMoneyLogic EmployeeMoneyLogic { get; set; }
     }
 }

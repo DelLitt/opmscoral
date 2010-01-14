@@ -48,7 +48,12 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="MySql.Data" version="5.2.5.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
   <dependency>
@@ -69,26 +74,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrame.dll" size="599040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrame.dll" size="645632">
       <assemblyIdentity name="AppFrame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Uhve3xw3T0uHTq3ze6ASS6o/ZRg=</dsig:DigestValue>
+        <dsig:DigestValue>5l6dk2dB0mMkEBn6msLgdrDLkLk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrameServer.exe" size="680960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrameServer.exe" size="706048">
       <assemblyIdentity name="AppFrameServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>cINWkKs0NjNl0Sal6EQiWKbNgQo=</dsig:DigestValue>
+        <dsig:DigestValue>jwDx9RZH8DRQLwIVFPsiy6l5QvM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -236,13 +241,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AppFrameServer.exe.config" size="3206">
+  <file name="AppFrameServer.exe.config" size="4443">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>rkMwShW7mJMa3lvo1lwF+jl7iBw=</dsig:DigestValue>
+      <dsig:DigestValue>bIjCsoR/g4dv26d0Zr3NV8lxAyk=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -44,6 +44,7 @@
     <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
     <menuitem name="mnuDeptStockFixing" role="NotImplement" />
     <menuitem name="mnuDepartmentCost" role="NotImplement" />
+    <menuitem name="mnuDepartmentCostSummary" role="NotImplement" />
     <menuitem name="mnuSubStockOut" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuCheckStockEvaluation" role="NotImplement" />    
 

@@ -8,6 +8,7 @@
   <toolstripitem name="tsbLeavePeriod" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbSale" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbCost" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbCostSummary" role="Administrator,Supervisor" />
   <toolstripitem name="tsbWorkload" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockOut" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockIn" role="NotImplement" />

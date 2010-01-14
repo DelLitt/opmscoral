@@ -80,7 +80,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
         }
 
-        public IDepartmentCostListView departmentCostListView;        
+        private IDepartmentCostListView departmentCostListView;        
         public IDepartmentCostListView DepartmentCostListView
         {
             get
@@ -92,6 +92,24 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                 departmentCostListView = value;
                 departmentCostListView.SearchDepartmentCostEvent += new EventHandler<DepartmentCostEventArgs>(departmentCostListView_SearchDepartmentCostEvent);
             }
+        }
+
+        private IDepartmentCostSummaryView departmentCostSummaryView;
+        public IDepartmentCostSummaryView DepartmentCostSummaryView
+        {
+            get
+            {
+                return departmentCostSummaryView; 
+            }
+            set
+            {
+                departmentCostSummaryView.CommitDepartmentCostEvent += new EventHandler<DepartmentCostEventArgs>(departmentCostSummaryView_CommitDepartmentCostEvent);
+            }
+        }
+
+        void departmentCostSummaryView_CommitDepartmentCostEvent(object sender, DepartmentCostEventArgs e)
+        {
+            
         }
 
         void departmentCostListView_SearchDepartmentCostEvent(object sender, DepartmentCostEventArgs e)
@@ -107,5 +125,9 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
            }
         }
         public IDepartmentCostLogic DepartmentCostLogic { get; set; }
+        public IEmployeeMoneyLogic EmployeeMoneyLogic
+        {
+            get; set;
+        }
     }
 }

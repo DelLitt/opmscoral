@@ -8,6 +8,7 @@
   <toolstripitem name="tsbLeavePeriod" role="NotImplement" />
   <toolstripitem name="tsbSale" role="NotImplement" />
   <toolstripitem name="tsbCost" role="NotImplement" />
+  <toolstripitem name="tsbCostSummary" role="NotImplement" />
   <toolstripitem name="tsbWorkload" role="NotImplement" />
   <toolstripitem name="tsbFastStockOut" role="NotImplement" />
   <toolstripitem name="tsbDeptStockOut" role="NotImplement" />
