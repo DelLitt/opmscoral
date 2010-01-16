@@ -84,5 +84,8 @@
     <Setting Name="BarcodeType" Type="BarcodeLib.TYPE" Scope="User">
       <Value Profile="(Default)">CODE39</Value>
     </Setting>
+    <Setting Name="MaxPOId" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

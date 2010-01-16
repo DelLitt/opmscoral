@@ -166,6 +166,7 @@
             this.mnuEmployeeManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDepartmentCost = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDepartmentCostSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuChamCong = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUserAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripSeparator();
@@ -183,6 +184,7 @@
             this.tsbLeavePeriod = new System.Windows.Forms.ToolStripButton();
             this.tsbSale = new System.Windows.Forms.ToolStripButton();
             this.tsbCost = new System.Windows.Forms.ToolStripButton();
+            this.tsbCostSummary = new System.Windows.Forms.ToolStripButton();
             this.tsbFastStockOut = new System.Windows.Forms.ToolStripButton();
             this.tsbWorkload = new System.Windows.Forms.ToolStripButton();
             this.tsbDeptStockOut = new System.Windows.Forms.ToolStripButton();
@@ -212,8 +214,6 @@
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlDeleteHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
-            this.mnuDepartmentCostSummary = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbCostSummary = new System.Windows.Forms.ToolStripButton();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -859,7 +859,7 @@
             // 
             this.mnuGoodsSaleStatisticReport.Name = "mnuGoodsSaleStatisticReport";
             this.mnuGoodsSaleStatisticReport.Size = new System.Drawing.Size(316, 24);
-            this.mnuGoodsSaleStatisticReport.Text = "Báo cáo doanh số theo kết sổ";
+            this.mnuGoodsSaleStatisticReport.Text = "Báo cáo doanh số chi tiết theo ngày";
             this.mnuGoodsSaleStatisticReport.Click += new System.EventHandler(this.mnuGoodsSaleStatisticReport_Click);
             // 
             // mnuGoodsSaleDepartmentReport
@@ -873,7 +873,7 @@
             // 
             this.mnuGoodsSaleDepartmentDetail.Name = "mnuGoodsSaleDepartmentDetail";
             this.mnuGoodsSaleDepartmentDetail.Size = new System.Drawing.Size(316, 24);
-            this.mnuGoodsSaleDepartmentDetail.Text = "Báo cáo doanh số chi tiết theo ngày";
+            this.mnuGoodsSaleDepartmentDetail.Text = "Báo cáo doanh số theo chủng loại";
             this.mnuGoodsSaleDepartmentDetail.Click += new System.EventHandler(this.mnuGoodsSaleDepartmentDetail_Click);
             // 
             // mnuMainReturnPOReport
@@ -1267,6 +1267,13 @@
             this.mnuDepartmentCost.Text = "Quản lý chi phí cửa hàng";
             this.mnuDepartmentCost.Click += new System.EventHandler(this.mnuDepartmentCost_Click);
             // 
+            // mnuDepartmentCostSummary
+            // 
+            this.mnuDepartmentCostSummary.Name = "mnuDepartmentCostSummary";
+            this.mnuDepartmentCostSummary.Size = new System.Drawing.Size(275, 24);
+            this.mnuDepartmentCostSummary.Text = "Chốt sổ chi phí cửa hàng";
+            this.mnuDepartmentCostSummary.Click += new System.EventHandler(this.mnuDepartmentCostSummary_Click);
+            // 
             // mnuChamCong
             // 
             this.mnuChamCong.Name = "mnuChamCong";
@@ -1425,6 +1432,16 @@
             this.tsbCost.Text = "Chi phí";
             this.tsbCost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCost.Click += new System.EventHandler(this.tsbCost_Click);
+            // 
+            // tsbCostSummary
+            // 
+            this.tsbCostSummary.Image = global::AppFrameClient.Properties.Resources.classic_folder_documents;
+            this.tsbCostSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCostSummary.Name = "tsbCostSummary";
+            this.tsbCostSummary.Size = new System.Drawing.Size(81, 55);
+            this.tsbCostSummary.Text = "Chốt sổ";
+            this.tsbCostSummary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbCostSummary.Click += new System.EventHandler(this.tsbCostSummary_Click);
             // 
             // tsbFastStockOut
             // 
@@ -1688,23 +1705,6 @@
             // 
             this.crlDeleteHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
             this.crlDeleteHotkey.Pressed += new System.EventHandler(this.crlDeleteHotkey_Pressed);
-            // 
-            // mnuDepartmentCostSummary
-            // 
-            this.mnuDepartmentCostSummary.Name = "mnuDepartmentCostSummary";
-            this.mnuDepartmentCostSummary.Size = new System.Drawing.Size(275, 24);
-            this.mnuDepartmentCostSummary.Text = "Chốt sổ chi phí cửa hàng";
-            this.mnuDepartmentCostSummary.Click += new System.EventHandler(this.mnuDepartmentCostSummary_Click);
-            // 
-            // tsbCostSummary
-            // 
-            this.tsbCostSummary.Image = global::AppFrameClient.Properties.Resources.classic_folder_documents;
-            this.tsbCostSummary.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCostSummary.Name = "tsbCostSummary";
-            this.tsbCostSummary.Size = new System.Drawing.Size(81, 55);
-            this.tsbCostSummary.Text = "Chốt sổ";
-            this.tsbCostSummary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbCostSummary.Click += new System.EventHandler(this.tsbCostSummary_Click);
             // 
             // MainForm
             // 

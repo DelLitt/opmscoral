@@ -12,7 +12,7 @@
   <toolstripitem name="tsbWorkload" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockOut" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockIn" role="NotImplement" />
-  <!--<toolstripitem name="tsbReStockIn" role="Manager,Administrator,Supervisor" />-->
+  <toolstripitem name="tsbReStockIn" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbSync" role="NotImplement" />
   <toolstripitem name="tsbSyncDown" role="NotImplement" />
   <toolstripitem name="tsbDeptSyncUp" role="Manager,Administrator,Supervisor" />

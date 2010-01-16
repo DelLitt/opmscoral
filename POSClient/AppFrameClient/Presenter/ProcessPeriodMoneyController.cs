@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame;
+using AppFrame.Common;
 using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter;

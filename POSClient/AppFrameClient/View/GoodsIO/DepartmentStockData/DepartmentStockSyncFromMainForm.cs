@@ -277,40 +277,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 return;
             }
 
-
-            // sync master data first
-            string[] masterNames = Directory.GetFiles(masterPath, "*.zip");
-            if (masterNames.Length > 0)
-            {
-                // get file name and sync master data
-                string masterFileName = "";
-                foreach (string masterName in masterNames)
-                {
-                    masterFileName = masterName;
-                    if (!string.IsNullOrEmpty(masterFileName))
-                    {
-                        SyncResult result = new SyncResult();
-                        result.FileName = masterFileName;
-
-                        if (masterFileName.IndexOf("MasterData") < 0)
-                        {
-                            continue;
-                        }
-                        resultList.Add(result);
-                        try
-                        {
-                            DatabaseUtils.SyncMasterData(masterFileName);
-                            result.Status = "Thành công !";
-                        }
-                        catch (Exception ex )
-                        {
-                            MessageBox.Show(ex.Message);
-                            result.Status = "Thất bại!";
-                        }
-                    }
-                }
-            }
-
                 string[] fileNames = Directory.GetFiles(importPath, "*" + CommonConstants.SERVER_SYNC_FORMAT);
                 
                 IList fileNameList = new ArrayList();
@@ -318,87 +284,123 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     if (resultList.Count == 0)
                     {
-                        MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");    
+                        MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");
                     }
-                    MessageBox.Show("Đồng bộ hoàn tất !");
-                    return;
+                    //MessageBox.Show("Đồng bộ hoàn tất !");
                 }
-                foreach (string fileName in fileNames)
+                else
                 {
-                    fileNameList.Add(fileName);
-                }
-                
-                StringBuilder errorStr = new StringBuilder();
-                foreach (string fileName in fileNameList)
-                {
-                    SyncResult result = new SyncResult();
-                    result.FileName = fileName;
-                    resultList.Add(result);
-                    DepartmentStockIn deptStockIn = null;
-                    Stream stream = null;
-                    bool fail = true;
-                    try
+                    foreach (string fileName in fileNames)
                     {
-                        // need to put a part of master data syncing.
+                        fileNameList.Add(fileName);
+                    }
 
-                        stream = File.Open(fileName, FileMode.Open);
-                        BinaryFormatter bf = new BinaryFormatter();
-                        SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment) bf.Deserialize(stream);
-                        Department dept;
-                        if (syncFMTD == null || syncFMTD.Department == null)
+                    StringBuilder errorStr = new StringBuilder();
+                    foreach (string fileName in fileNameList)
+                    {
+                        SyncResult result = new SyncResult();
+                        result.FileName = fileName;
+                        resultList.Add(result);
+                        DepartmentStockIn deptStockIn = null;
+                        Stream stream = null;
+                        bool fail = true;
+                        try
                         {
-                            fail = true;
-                        }
-                        else
-                        {
-                            if (CurrentDepartment.CurrentActiveDepartment(out dept)
-                                && syncFMTD.Department.DepartmentId == CurrentDepartment.Get().DepartmentId)
+                            // need to put a part of master data syncing.
+
+                            stream = File.Open(fileName, FileMode.Open);
+                            BinaryFormatter bf = new BinaryFormatter();
+                            SyncFromMainToDepartment syncFMTD = (SyncFromMainToDepartment) bf.Deserialize(stream);
+                            Department dept;
+                            if (syncFMTD == null || syncFMTD.Department == null)
                             {
-                                var eventArgs = new DepartmentStockInEventArgs();
-                                //eventArgs.DepartmentStockIn = deptStockIn;
-                                eventArgs.SyncFromMainToDepartment = syncFMTD;
-                                EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
-                                if (eventArgs.EventResult != null)
+                                fail = true;
+                            }
+                            else
+                            {
+                                if (CurrentDepartment.CurrentActiveDepartment(out dept)
+                                    && syncFMTD.Department.DepartmentId == CurrentDepartment.Get().DepartmentId)
                                 {
-                                    fail = false;
-                                }
-                                else
-                                {
-                                    fail = true;
+                                    var eventArgs = new DepartmentStockInEventArgs();
+                                    //eventArgs.DepartmentStockIn = deptStockIn;
+                                    eventArgs.SyncFromMainToDepartment = syncFMTD;
+                                    EventUtility.fireEvent(SyncDepartmentStockInEvent, this, eventArgs);
+                                    if (eventArgs.EventResult != null)
+                                    {
+                                        fail = false;
+                                    }
+                                    else
+                                    {
+                                        fail = true;
+                                    }
                                 }
                             }
                         }
-                    }
-                    finally
-                    {
-                        if (stream != null)
+                        finally
                         {
-                            stream.Close();
-                        }
-                        if (fail)
-                        {
-                            //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
-                            ClientUtility.MoveFileToSpecificDir(errorPath, fileName);
-                            // errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
-                            result.Status = "Thất bại";
-                        }
-                        else
-                        {
-                            //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
-                            ClientUtility.MoveFileToSpecificDir(successPath, fileName);
-                            string origFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1,
-                                                                     fileName.Length - (fileName.LastIndexOf("\\") + 1));
-                            string[] separateFileNames = origFileName.Split('.');
-                            string updateTimeStr =
-                                separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
-                            DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
-                            ClientUtility.WriteLastSyncTime(updateTime, importPath, CurrentDepartment.Get(),
-                                                            ClientUtility.SyncType.SyncDown);
-                            result.Status = "Thành công";
+                            if (stream != null)
+                            {
+                                stream.Close();
+                            }
+                            if (fail)
+                            {
+                                //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                                ClientUtility.MoveFileToSpecificDir(errorPath, fileName);
+                                // errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
+                                result.Status = "Thất bại";
+                            }
+                            else
+                            {
+                                //File.Move(fileName, successPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
+                                ClientUtility.MoveFileToSpecificDir(successPath, fileName);
+                                string origFileName = fileName.Substring(fileName.LastIndexOf("\\") + 1,
+                                                                         fileName.Length -
+                                                                         (fileName.LastIndexOf("\\") + 1));
+                                string[] separateFileNames = origFileName.Split('.');
+                                string updateTimeStr =
+                                    separateFileNames[0].Substring(separateFileNames[0].IndexOf("_SyncDown_") + 10);
+                                DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
+                                ClientUtility.WriteLastSyncTime(updateTime, importPath, CurrentDepartment.Get(),
+                                                                ClientUtility.SyncType.SyncDown);
+                                result.Status = "Thành công";
+                            }
                         }
                     }
                 }
-            
+
+                // sync master data last
+                string[] masterNames = Directory.GetFiles(masterPath, "*.zip");
+                if (masterNames.Length > 0)
+                {
+                    // get file name and sync master data
+                    string masterFileName = "";
+                    foreach (string masterName in masterNames)
+                    {
+                        masterFileName = masterName;
+                        if (!string.IsNullOrEmpty(masterFileName))
+                        {
+                            SyncResult result = new SyncResult();
+                            result.FileName = masterFileName;
+
+                            if (masterFileName.IndexOf("MasterData") < 0)
+                            {
+                                continue;
+                            }
+                            resultList.Add(result);
+                            try
+                            {
+                                DatabaseUtils.SyncMasterData(masterFileName);
+                                result.Status = "Thành công !";
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                result.Status = "Thất bại!";
+                            }
+                        }
+                    }
+                }
+
             MessageBox.Show("Đồng bộ hoàn tất !");
             
             

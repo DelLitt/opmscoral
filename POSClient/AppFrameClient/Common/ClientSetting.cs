@@ -8,7 +8,21 @@ namespace AppFrameClient.Common
 {
     public class ClientSetting
     {
+        
         public const string ZIP_PASSWORD = "gfd83fds32l1asdtg";
+
+
+        public static long  MaxPOId 
+        {
+            get
+            {
+                return AFCSetting.Default.MaxPOId;
+            }
+            set
+            {
+                AFCSetting.Default.MaxPOId = value;
+            }
+        }
 
         public static string SubStockDB
         {

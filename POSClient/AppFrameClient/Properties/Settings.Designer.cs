@@ -308,5 +308,17 @@ namespace AppFrameClient.Properties {
                 this["BarcodeType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public long MaxPOId {
+            get {
+                return ((long)(this["MaxPOId"]));
+            }
+            set {
+                this["MaxPOId"] = value;
+            }
+        }
     }
 }
