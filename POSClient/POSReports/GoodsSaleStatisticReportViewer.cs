@@ -94,10 +94,10 @@ namespace POSReports
         {
             aSyncDS.EnforceConstraints = false;
             aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            POSReports.posDataSetTableAdapters.PurchaseOrderPeriodTableAdapter adapter = new PurchaseOrderPeriodTableAdapter();
+            POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter adapter = new PurchaseOrderDetailReportTableAdapter();
             adapter.ClearBeforeFill = true;
             //adapter.Fill(aSyncDS.StockStatistic, reqFromDate, reqToDate);
-            adapter.Fill(posDataSet.PurchaseOrderPeriod, deptId, reqFromDate, reqToDate);
+            adapter.Fill(posDataSet.PurchaseOrderDetailReport, deptId, reqFromDate, reqToDate);
         }
     }
 }

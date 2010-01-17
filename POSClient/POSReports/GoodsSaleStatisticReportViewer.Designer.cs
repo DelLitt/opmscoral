@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.purchaseOrderPeriodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,18 +46,13 @@
             this.PurchaseOrderPeriodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
             this.purchaseOrderPeriodTableAdapter = new POSReports.posDataSetTableAdapters.PurchaseOrderPeriodTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderPeriodBindingSource1)).BeginInit();
+            this.purchaseOrderDetailReportTableAdapter = new POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderPeriodBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // purchaseOrderPeriodBindingSource1
-            // 
-            this.purchaseOrderPeriodBindingSource1.DataMember = "PurchaseOrderPeriod";
-            this.purchaseOrderPeriodBindingSource1.DataSource = this.posDataSet;
             // 
             // posDataSet
             // 
@@ -98,7 +92,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
+            this.label1.Size = new System.Drawing.Size(67, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Từ ngày:";
             // 
@@ -110,7 +104,7 @@
             this.dtpFrom.Location = new System.Drawing.Point(103, 37);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dtpFrom.Size = new System.Drawing.Size(194, 26);
+            this.dtpFrom.Size = new System.Drawing.Size(194, 27);
             this.dtpFrom.TabIndex = 1;
             // 
             // label2
@@ -119,7 +113,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(303, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 19);
+            this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "đến ngày:";
             // 
@@ -130,7 +124,7 @@
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(403, 37);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(194, 26);
+            this.dtpTo.Size = new System.Drawing.Size(194, 27);
             this.dtpTo.TabIndex = 2;
             // 
             // button1
@@ -151,7 +145,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(202, 31);
+            this.label3.Size = new System.Drawing.Size(217, 33);
             this.label3.TabIndex = 5;
             this.label3.Text = "XEM BÁO CÁO";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -162,7 +156,7 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(303, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 19);
+            this.label4.Size = new System.Drawing.Size(71, 19);
             this.label4.TabIndex = 6;
             this.label4.Text = "Cửa hàng";
             // 
@@ -191,8 +185,8 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_PurchaseOrderPeriod";
-            reportDataSource1.Value = this.purchaseOrderPeriodBindingSource1;
+            reportDataSource1.Name = "posDataSet_PurchaseOrderDetailReport";
+            reportDataSource1.Value = this.PurchaseOrderPeriodBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.GoodsSaleStatistic.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 68);
@@ -204,7 +198,7 @@
             // 
             // PurchaseOrderPeriodBindingSource
             // 
-            this.PurchaseOrderPeriodBindingSource.DataMember = "PurchaseOrderPeriod";
+            this.PurchaseOrderPeriodBindingSource.DataMember = "PurchaseOrderDetailReport";
             this.PurchaseOrderPeriodBindingSource.DataSource = this.posDataSet;
             // 
             // departmentTableAdapter
@@ -214,6 +208,10 @@
             // purchaseOrderPeriodTableAdapter
             // 
             this.purchaseOrderPeriodTableAdapter.ClearBeforeFill = true;
+            // 
+            // purchaseOrderDetailReportTableAdapter
+            // 
+            this.purchaseOrderDetailReportTableAdapter.ClearBeforeFill = true;
             // 
             // GoodsSaleStatisticReportViewer
             // 
@@ -225,7 +223,8 @@
             this.Name = "GoodsSaleStatisticReportViewer";
             this.Text = "GoodsSaleStatisticReportViewer";
             this.Load += new System.EventHandler(this.GoodsSaleStatisticReportViewer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderPeriodBindingSource1)).EndInit();
+            this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
+            this.Controls.SetChildIndex(this.reportViewer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -233,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.posDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderPeriodBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -253,8 +253,8 @@
         private System.Windows.Forms.BindingSource posDataSetBindingSource;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private POSReports.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter;
-        private System.Windows.Forms.BindingSource purchaseOrderPeriodBindingSource1;
         private POSReports.posDataSetTableAdapters.PurchaseOrderPeriodTableAdapter purchaseOrderPeriodTableAdapter;
+        private POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter purchaseOrderDetailReportTableAdapter;
 
     }
 }
