@@ -91,6 +91,7 @@
             // 
             // btnCommit
             // 
+            this.btnCommit.Enabled = false;
             this.btnCommit.Font = new System.Drawing.Font("Tahoma", 11.29412F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCommit.Location = new System.Drawing.Point(653, 10);
             this.btnCommit.Name = "btnCommit";

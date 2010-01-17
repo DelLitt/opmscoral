@@ -107,6 +107,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }
             set
             {
+                departmentCostSummaryView = value;
                 departmentCostSummaryView.CommitDepartmentCostEvent += new EventHandler<DepartmentCostEventArgs>(departmentCostSummaryView_CommitDepartmentCostEvent);
             }
         }

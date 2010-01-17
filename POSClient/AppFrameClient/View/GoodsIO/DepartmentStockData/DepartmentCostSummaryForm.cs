@@ -93,6 +93,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             set
             {
+                departmentCostController = value;
                 departmentCostController.DepartmentCostSummaryView = this;
             }
         }

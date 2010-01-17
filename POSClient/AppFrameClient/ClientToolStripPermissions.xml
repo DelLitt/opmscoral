@@ -4,15 +4,15 @@
   <toolstripitem name="tsbLogin" role="%" />
   <toolstripitem name="tsbQuit" role="%" />
   <toolstripitem name="tsbLogout" role="@" />
-  <toolstripitem name="tsbEnterPeriod" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbLeavePeriod" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbEnterPeriod" role="NotImplement" />
+  <toolstripitem name="tsbLeavePeriod" role="NotImplement" />
   <toolstripitem name="tsbSale" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbCost" role="Manager,Administrator,Supervisor" />
   <toolstripitem name="tsbCostSummary" role="Administrator,Supervisor" />
   <toolstripitem name="tsbWorkload" role="Manager,Administrator,Supervisor" />
-  <toolstripitem name="tsbDeptStockOut" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbDeptStockOut" role="Administrator,Supervisor" />
   <toolstripitem name="tsbDeptStockIn" role="NotImplement" />
-  <toolstripitem name="tsbReStockIn" role="Manager,Administrator,Supervisor" />
+  <toolstripitem name="tsbReStockIn" role="Administrator,Supervisor" />
   <toolstripitem name="tsbSync" role="NotImplement" />
   <toolstripitem name="tsbSyncDown" role="NotImplement" />
   <toolstripitem name="tsbDeptSyncUp" role="Manager,Administrator,Supervisor" />

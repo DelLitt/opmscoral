@@ -33,14 +33,14 @@
   </menu>
   <menu name="mnuDeptStock" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuDeptStockChecking" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDepartmentReturnGoods" role="Administrator,Supervisor" />
     <menuitem name="mnuProcessDepartmentStockDefect" role="Administrator,Manager,Supervisor" />
-    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Manager,Supervisor" />
+    <menuitem name="mnuDepartmentReStockIn" role="Administrator,Supervisor" />
     <menuitem name="mnuDeptStockStatisticReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnPOReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuReturnMainStockReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDepartmentStockIn" role="Administrator,Supervisor,Manager" />
-    <menuitem name="mnuDepartmentStockOut" role="Administrator,Supervisor,Manager" />
+    <menuitem name="mnuDepartmentStockOut" role="Administrator,Supervisor" />
     <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
     <menuitem name="mnuDeptStockFixing" role="NotImplement" />
     <menuitem name="mnuDepartmentCost" role="Administrator,Supervisor,Manager" />

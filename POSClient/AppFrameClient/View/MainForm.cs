@@ -1268,11 +1268,24 @@ namespace AppFrame.View
 
         private void systemHotkey1_Pressed(object sender, EventArgs e)
         {
-            DatabaseUtils.BackupCRLDatabase(true,true);
+            Thread thread = new Thread(new ThreadStart(CreateThreadBackup));
+            thread.Start();
+        }
+
+        private void CreateThreadBackup()
+        {
+            DatabaseUtils.BackupCRLDatabase(true, true);
             InformationBox.Show("Thành công !", "Khởi động", new AutoCloseParameters(0));
         }
 
+
         private void crlRestoreHotkey_Pressed(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ThreadStart(CreateThreadRestore));
+            thread.Start();
+        }
+
+        private void CreateThreadRestore()
         {
             DatabaseUtils.RestoreCRLDatabase();
             InformationBox.Show("Thành công !", "Tái khởi động", new AutoCloseParameters(0));
