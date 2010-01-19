@@ -288,6 +288,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\NavigationShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NavLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Security\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -313,6 +321,8 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
+    <Compile Include="ViewModels\INavigationShellViewModel.cs" />
+    <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
     <Compile Include="Presenters\Security\LoginPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -329,6 +339,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\MainView.cs" />
+    <Compile Include="ViewModels\NavigationShellViewModel.cs" />
+    <Compile Include="ViewModels\NavLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
@@ -336,6 +348,12 @@
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NavigationShellView.xaml.cs">
+      <DependentUpon>NavigationShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NavLoginView.xaml.cs">
+      <DependentUpon>NavLoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Security\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>

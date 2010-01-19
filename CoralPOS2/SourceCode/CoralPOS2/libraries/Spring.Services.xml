@@ -1345,6 +1345,12 @@
             The base addresses for the hosted service.
             </value>
         </member>
+        <member name="P:Spring.ServiceModel.Activation.ServiceHostFactoryObject.UseServiceProxyTypeCache">
+            <summary>
+            Controls, whether the underlying <see cref="T:Spring.ServiceModel.SpringServiceHost"/> should cache
+            the generated proxy types. Defaults to <c>true</c>.
+            </summary>
+        </member>
         <member name="P:Spring.ServiceModel.Activation.ServiceHostFactoryObject.ObjectFactory">
             <summary>
             Callback that supplies the owning factory to an object instance.
@@ -1388,28 +1394,33 @@
             Target instance calls should be delegated to.
             </summary>
         </member>
-        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.#ctor(System.String,Spring.Objects.Factory.IObjectFactory)">
+        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.#ctor(System.String,System.Type,System.Boolean)">
             <summary>
             Creates a new instance of the 
             <see cref="T:Spring.ServiceModel.Support.ServiceProxyTypeBuilder"/> class.
             </summary>
             <param name="targetName">The name of the service within Spring's IoC container.</param>
-            <param name="objectFactory">The <see cref="T:Spring.Objects.Factory.IObjectFactory"/> to use.</param>
+            <param name="targetType">The type of the service.</param>
+            <param name="useServiceProxyTypeCache">Whether to cache the generated service proxy type.</param>
         </member>
-        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.#ctor(System.String,System.String,Spring.Objects.Factory.IObjectFactory)">
+        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.#ctor(System.String,System.Type,System.String,System.Boolean)">
             <summary>
             Creates a new instance of the 
             <see cref="T:Spring.ServiceModel.Support.ServiceProxyTypeBuilder"/> class.
             </summary>
             <param name="targetName">The name of the service within Spring's IoC container.</param>
+            <param name="targetType">The type of the service.</param>
             <param name="serviceTypeName">The name of the generated WCF service <see cref="T:System.Type"/>.</param>
-            <param name="objectFactory">The <see cref="T:Spring.Objects.Factory.IObjectFactory"/> to use.</param>
+            <param name="useServiceProxyTypeCache">Whether to cache the generated service proxy type.</param>
         </member>
-        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.BuildProxyType">
+        <member name="M:Spring.ServiceModel.Support.ServiceProxyTypeBuilder.BuildProxyType(Spring.Objects.Factory.IObjectFactory)">
             <summary>
-            Creates a proxy that delegates calls to an instance of the target object. 
-            This overriden implementation also sets the field __objectFactory.
+            Creates a proxy that delegates calls to an instance of the target object 
+            and caches the <see cref="T:System.Type"/> instance.
             </summary>
+            <param name="objectFactory">
+            The <see cref="T:Spring.Objects.Factory.IObjectFactory"/> to use to get the target object.
+            </param>
             <exception cref="T:System.ArgumentException">
             If the <see cref="P:Spring.Proxy.IProxyTypeBuilder.TargetType"/>
             does not implement any interfaces.
@@ -1526,6 +1537,12 @@
             Value is a list of attributes that should be applied 
             to each member that matches expression.
             </remarks>
+        </member>
+        <member name="P:Spring.ServiceModel.ServiceExporter.UseServiceProxyTypeCache">
+            <summary>
+            Controls, whether the underlying <see cref="T:Spring.ServiceModel.ServiceExporter"/> should cache
+            the generated proxy types. Defaults to <c>true</c>.
+            </summary>
         </member>
         <member name="P:Spring.ServiceModel.ServiceExporter.Name">
             <summary>
@@ -1663,6 +1680,15 @@
             </summary>
             <param name="serviceName">The name of the service within Spring's IoC container.</param>
             <param name="objectFactory">The <see cref="T:Spring.Objects.Factory.IObjectFactory"/> to use.</param>
+            <param name="baseAddresses">The base addresses for the hosted service.</param>
+        </member>
+        <member name="M:Spring.ServiceModel.SpringServiceHost.#ctor(System.String,Spring.Objects.Factory.IObjectFactory,System.Boolean,System.Uri[])">
+            <summary>
+            Creates a new instance of the <see cref="T:Spring.ServiceModel.SpringServiceHost"/> class.
+            </summary>
+            <param name="serviceName">The name of the service within Spring's IoC container.</param>
+            <param name="objectFactory">The <see cref="T:Spring.Objects.Factory.IObjectFactory"/> to use.</param>
+            <param name="useServiceProxyTypeCache">Whether to cache the generated service proxy type.</param>
             <param name="baseAddresses">The base addresses for the hosted service.</param>
         </member>
         <member name="T:Spring.Web.Services.WebServiceProxyFactory">

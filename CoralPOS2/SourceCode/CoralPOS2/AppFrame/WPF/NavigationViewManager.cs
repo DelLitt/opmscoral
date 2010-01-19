@@ -10,9 +10,9 @@ using Caliburn.PresentationFramework.ViewModels;
 
 namespace AppFrame.WPF
 {
-    public class NavigationViewLocator : DefaultWindowManager
+    public class NavigationViewManager : DefaultWindowManager
     {
-        public NavigationViewLocator(IViewLocator viewLocator, IViewModelBinder viewModelBinder) : base(viewLocator, viewModelBinder)
+        public NavigationViewManager(IViewLocator viewLocator, IViewModelBinder viewModelBinder) : base(viewLocator, viewModelBinder)
         {
         }
 

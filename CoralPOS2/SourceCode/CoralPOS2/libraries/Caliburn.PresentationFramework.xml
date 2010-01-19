@@ -630,15 +630,16 @@
             <param name="messageText">The message text.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Parsers.MessageParserBase`1.#ctor(Caliburn.PresentationFramework.IMessageBinder)">
+        <member name="M:Caliburn.PresentationFramework.Parsers.MessageParserBase`1.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Parsers.MessageParserBase`1"/> class.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Parsers.MessageParserBase`1.#ctor(Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger)">
+        <member name="M:Caliburn.PresentationFramework.Parsers.MessageParserBase`1.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Parsers.MessageParserBase`1"/> class.
             </summary>
+            <param name="conventionManager">The convention manager.</param>
             <param name="messageBinder">The message binder.</param>
             <param name="defaultTrigger">The default trigger.</param>
         </member>
@@ -666,16 +667,18 @@
             <param name="message">The message.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.ActionMessageParser.#ctor(Caliburn.PresentationFramework.IMessageBinder)">
+        <member name="M:Caliburn.PresentationFramework.Actions.ActionMessageParser.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Actions.ActionMessageParser"/> class.
             </summary>
-            <param name="messageBinder"></param>
+            <param name="conventionManager">The convention manager.</param>
+            <param name="messageBinder">The message binder.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.ActionMessageParser.#ctor(Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger)">
+        <member name="M:Caliburn.PresentationFramework.Actions.ActionMessageParser.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Actions.ActionMessageParser"/> class.
             </summary>
+            <param name="conventionManager">The convention manager.</param>
             <param name="messageBinder">The message binder.</param>
             <param name="defaultTrigger">The default trigger.</param>
         </member>
@@ -1529,101 +1532,147 @@
             </summary>
             <value>The master.</value>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Commands.AllCommand">
+        <member name="T:Caliburn.PresentationFramework.Behaviors.DependencyMode">
             <summary>
-            An <see cref="T:Caliburn.PresentationFramework.Commands.ICompositeCommand"/> whose children must all be available in order to execute.
+            Inidicates how dependency tracking should occur.
             </summary>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Commands.ICompositeCommand">
+        <member name="F:Caliburn.PresentationFramework.Behaviors.DependencyMode.AlwaysRecord">
             <summary>
-            A command that executes multiple child commands.
+            Will record dependencies on every get.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.ICompositeCommand.AddOrUpdateChild(Caliburn.PresentationFramework.Commands.CommandMessage,System.Boolean)">
+        <member name="F:Caliburn.PresentationFramework.Behaviors.DependencyMode.RecordOnce">
             <summary>
-            Adds or updates the child command.
-            </summary>
-            <param name="child">The child.</param>
-            <param name="availability">if set to <c>true</c> the child can execute.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.ICompositeCommand.RemoveChild(Caliburn.PresentationFramework.Commands.CommandMessage)">
-            <summary>
-            Removes the child.
-            </summary>
-            <param name="child">The child.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AllCommand.Execute">
-            <summary>
-            Executes this instance.
+            Will record dependencies on the first get.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AllCommand.CanExecute">
+        <member name="F:Caliburn.PresentationFramework.Behaviors.DependencyMode.DoNotRecord">
             <summary>
-            Determines whether this instance can execute.
-            </summary>
-            <returns>
-            	<c>true</c> if this instance can execute; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AllCommand.AddOrUpdateChild(Caliburn.PresentationFramework.Commands.CommandMessage,System.Boolean)">
-            <summary>
-            Adds or updates the child command.
-            </summary>
-            <param name="child">The child.</param>
-            <param name="availability">if set to <c>true</c> the child can execute.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AllCommand.RemoveChild(Caliburn.PresentationFramework.Commands.CommandMessage)">
-            <summary>
-            Removes the child.
-            </summary>
-            <param name="child">The child.</param>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.Commands.AllCommand.IsAvailable">
-            <summary>
-            Gets a value indicating whether this instance is available.
-            </summary>
-            <value>
-            	<c>true</c> if this instance is available; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.Commands.AnyCommand">
-            <summary>
-            An <see cref="T:Caliburn.PresentationFramework.Commands.ICompositeCommand"/> that can execute when any of its children are available.
+            Will not record dependencies.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AnyCommand.Execute">
+        <member name="T:Caliburn.PresentationFramework.Behaviors.DoNotNotifyAttribute">
             <summary>
-            Executes this instance.
+            Used to indicate that a particular property should not raise change notification.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AnyCommand.CanExecute">
+        <member name="T:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute">
             <summary>
-            Determines whether this instance can execute.
+            Applies a behavior which implements <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
             </summary>
-            <returns>
-            	<c>true</c> if this instance can execute; otherwise, <c>false</c>.
-            </returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AnyCommand.AddOrUpdateChild(Caliburn.PresentationFramework.Commands.CommandMessage,System.Boolean)">
+        <member name="F:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute.DefaultDependencyMode">
             <summary>
-            Adds or updates the child command.
+            Gets or sets the default dependency mode.
             </summary>
-            <param name="child">The child.</param>
-            <param name="availability">if set to <c>true</c> the child can execute.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.AnyCommand.RemoveChild(Caliburn.PresentationFramework.Commands.CommandMessage)">
+        <member name="M:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute.#ctor">
             <summary>
-            Removes the child.
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute"/> class.
             </summary>
-            <param name="child">The child.</param>
         </member>
-        <member name="P:Caliburn.PresentationFramework.Commands.AnyCommand.IsAvailable">
+        <member name="M:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute.GetInterfaces(System.Type)">
             <summary>
-            Gets a value indicating whether this instance is available.
+            Gets the interfaces which represent this behavior.
             </summary>
-            <value>
-            	<c>true</c> if this instance is available; otherwise, <c>false</c>.
-            </value>
+            <param name="implementation">The implementation.</param>
+            <returns>The representative interfaces.</returns>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.NotifyPropertyChangedAttribute.DependencyMode">
+            <summary>
+            Gets or sets the dependency mode.
+            </summary>
+            <value>The dependency mode.</value>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Behaviors.ScreenAttribute">
+            <summary>
+            Applies a behavior which implements <see cref="T:Caliburn.PresentationFramework.Screens.IScreen"/>.
+            </summary>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultDisplayName">
+            <summary>
+            Gets or sets the default display name property name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultInitialize">
+            <summary>
+            Gets or sets the default initialize method name.
+            </summary>
+            <value>The initialize.</value>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultCanShutdown">
+            <summary>
+            Gets or sets the default can shutdown method name.
+            </summary>
+            <value>The can shutdown.</value>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultShutdown">
+            <summary>
+            Gets or sets the default shutdown method name.
+            </summary>
+            <value>The can shutdown.</value>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultActivate">
+            <summary>
+            Gets or sets the default activate method name.
+            </summary>
+            <value>The activate.</value>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DefaultDeactivate">
+            <summary>
+            Gets or sets the default deactivate method name.
+            </summary>
+            <value>The deactivate.</value>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Behaviors.ScreenAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.GetInterfaces(System.Type)">
+            <summary>
+            Gets the interfaces which represent this behavior.
+            </summary>
+            <param name="implementation">The implementation.</param>
+            <returns>The representative interfaces.</returns>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.DisplayName">
+            <summary>
+            Gets or sets the display name property name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.Initialize">
+            <summary>
+            Gets or sets the initialize method name.
+            </summary>
+            <value>The initialize.</value>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.CanShutdown">
+            <summary>
+            Gets or sets the can shutdown method name.
+            </summary>
+            <value>The can shutdown.</value>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.Shutdown">
+            <summary>
+            Gets or sets the shutdown method name.
+            </summary>
+            <value>The shutdown.</value>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.Activate">
+            <summary>
+            Gets or sets the activate method name.
+            </summary>
+            <value>The activate.</value>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Behaviors.ScreenAttribute.Deactivate">
+            <summary>
+            Gets or sets the deactivate method name.
+            </summary>
+            <value>The deactivate.</value>
         </member>
         <member name="T:Caliburn.PresentationFramework.Commands.Command">
             <summary>
@@ -1875,17 +1924,19 @@
             An implementation of <see cref="T:Caliburn.PresentationFramework.Parsers.IMessageParser"/> for commands.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.CommandMessageParser.#ctor(Caliburn.PresentationFramework.IMessageBinder,Caliburn.PresentationFramework.Commands.CommandSource)">
+        <member name="M:Caliburn.PresentationFramework.Commands.CommandMessageParser.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder,Caliburn.PresentationFramework.Commands.CommandSource)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Commands.CommandMessageParser"/> class.
             </summary>
+            <param name="conventionManager">The convention mangager.</param>
             <param name="messageBinder">The message binder.</param>
             <param name="commandSource">The location that the parser will use to get the command.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Commands.CommandMessageParser.#ctor(Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger,Caliburn.PresentationFramework.Commands.CommandSource)">
+        <member name="M:Caliburn.PresentationFramework.Commands.CommandMessageParser.#ctor(Caliburn.PresentationFramework.Conventions.IConventionManager,Caliburn.PresentationFramework.IMessageBinder,System.Windows.Data.UpdateSourceTrigger,Caliburn.PresentationFramework.Commands.CommandSource)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Commands.CommandMessageParser"/> class.
             </summary>
+            <param name="conventionManager">The convention manager.</param>
             <param name="messageBinder">The binder.</param>
             <param name="defaultTrigger">The default trigger.</param>
             <param name="commandSource">The location that the parser will use to get the command.</param>
@@ -1925,6 +1976,24 @@
             <summary>
             Databinds to a command using a property path.
             </summary>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Commands.ICompositeCommand">
+            <summary>
+            A command that executes multiple child commands.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Commands.ICompositeCommand.AddOrUpdateChild(Caliburn.PresentationFramework.Commands.CommandMessage,System.Boolean)">
+            <summary>
+            Adds or updates the child command.
+            </summary>
+            <param name="child">The child.</param>
+            <param name="availability">if set to <c>true</c> the child can execute.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Commands.ICompositeCommand.RemoveChild(Caliburn.PresentationFramework.Commands.CommandMessage)">
+            <summary>
+            Removes the child.
+            </summary>
+            <param name="child">The child.</param>
         </member>
         <member name="T:Caliburn.PresentationFramework.Configuration.ExtensionMethods">
             <summary>
@@ -2056,11 +2125,12 @@
             </summary>
             <param name="view">The view.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ApplicableAction.#ctor(System.String,System.String)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.ApplicableAction.#ctor(System.String,System.String,System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Conventions.ApplicableAction"/> class.
             </summary>
             <param name="elementName">Name of the element.</param>
+            <param name="actionTargetPath">The path to the action target.</param>
             <param name="message">The message.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Conventions.ApplicableAction.ApplyTo(System.Windows.DependencyObject)">
@@ -2113,42 +2183,75 @@
         </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.DefaultActionConvention">
             <summary>
-            The default implementation of <see cref="T:Caliburn.PresentationFramework.Conventions.IActionConvention"/>.
+            The default implementation of <see cref="T:Caliburn.PresentationFramework.Conventions.IViewConvention`1"/> for actions.
             </summary>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Conventions.IActionConvention">
+        <member name="T:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1">
             <summary>
-            Implemented by action conventions.
+            A base class for binding conventions.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IActionConvention.Matches(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,Caliburn.PresentationFramework.Actions.IAction)">
+        <member name="T:Caliburn.PresentationFramework.Conventions.IViewConvention`1">
             <summary>
-            MIndicates whether this convention is a match and should be applied.
+            A convention that applies to a view.
             </summary>
-            <param name="viewModelDescription">The view model description.</param>
-            <param name="element">The element.</param>
-            <param name="action">The action.</param>
-            <returns></returns>
+            <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IActionConvention.CreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,Caliburn.PresentationFramework.Actions.IAction)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.IViewConvention`1.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,`0)">
             <summary>
-            Creates the application of the convention.
+            Tries the create an application of the convention.
             </summary>
             <param name="description">The description.</param>
             <param name="element">The element.</param>
-            <param name="action">The action.</param>
-            <returns></returns>
+            <param name="target">The target.</param>
+            <returns>The application or null if not applicable.</returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultActionConvention.Matches(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,Caliburn.PresentationFramework.Actions.IAction)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,`0)">
             <summary>
-            MIndicates whether this convention is a match and should be applied.
+            Tries to creates the application of the convention.
             </summary>
-            <param name="viewModelDescription">The view model description.</param>
+            <param name="description">The description.</param>
             <param name="element">The element.</param>
-            <param name="action">The action.</param>
+            <param name="target">The target.</param>
+            <returns>
+            The convention application, or null if not applicable
+            </returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1.DeterminePropertyPath(System.String)">
+            <summary>
+            Determines the property path.
+            </summary>
+            <param name="fullName">The full name.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultActionConvention.CreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,Caliburn.PresentationFramework.Actions.IAction)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1.GetBoundProperty(System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Gets the boud property.
+            </summary>
+            <param name="info">The info.</param>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1.TryGetByPattern(System.Reflection.PropertyInfo,System.String,System.String@,System.Reflection.PropertyInfo@,System.Func{System.String,System.String},System.Func{System.Reflection.PropertyInfo,System.String,System.Boolean})">
+            <summary>
+            Tries to generate a new property and property path based on a predicate.
+            </summary>
+            <param name="originalProperty">The original property.</param>
+            <param name="originalPropertyPath">The original property path.</param>
+            <param name="newPropertyPath">The new property path.</param>
+            <param name="newProperty">The new property.</param>
+            <param name="deriveBaseName">A function that derives the base property name.</param>
+            <param name="predicate">A predicate that matches properties.</param>
+            <returns>True if a match was found, false otherwise.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase`1.CreateActionMessage(Caliburn.PresentationFramework.Actions.IAction)">
+            <summary>
+            Creates the action message.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The message.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultActionConvention.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,Caliburn.PresentationFramework.Actions.IAction)">
             <summary>
             Creates the application of the convention.
             </summary>
@@ -2159,42 +2262,10 @@
         </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.DefaultBindingConvention">
             <summary>
-            The default implementation of <see cref="T:Caliburn.PresentationFramework.Conventions.IBindingConvention"/>.
+            The default implementation of <see cref="T:Caliburn.PresentationFramework.Conventions.IViewConvention`1"/> for bindings.
             </summary>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Conventions.IBindingConvention">
-            <summary>
-            Implemented by data binding conventions.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IBindingConvention.Matches(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
-            <summary>
-            Indicates whether this convention is a match and should be applied.
-            </summary>
-            <param name="viewModelDescription">The view model description.</param>
-            <param name="element">The element.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IBindingConvention.CreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
-            <summary>
-            Creates the application of the convention.
-            </summary>
-            <param name="description">The description.</param>
-            <param name="element">The element.</param>
-            <param name="property">The property.</param>
-            <returns>The convention application.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultBindingConvention.Matches(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
-            <summary>
-            Indicates whether this convention is a match and should be applied.
-            </summary>
-            <param name="viewModelDescription">The view model description.</param>
-            <param name="element">The element.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultBindingConvention.CreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultBindingConvention.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
             <summary>
             Creates the application of the convention.
             </summary>
@@ -2219,17 +2290,11 @@
             </summary>
             <param name="convention">The convention.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IConventionManager.AddBindingConvention(Caliburn.PresentationFramework.Conventions.IBindingConvention)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.IConventionManager.AddViewConventions(Caliburn.PresentationFramework.Conventions.IViewConventionCategory)">
             <summary>
-            Adds the binding convention.
+            Adds the view convention category.
             </summary>
-            <param name="convention">The convention.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.IConventionManager.AddActionConvention(Caliburn.PresentationFramework.Conventions.IActionConvention)">
-            <summary>
-            Adds the action convention.
-            </summary>
-            <param name="convention">The convention.</param>
+            <param name="conventionCategory">The convention category.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Conventions.IConventionManager.GetElementConvention(System.Type)">
             <summary>
@@ -2266,17 +2331,11 @@
             </summary>
             <param name="convention">The convention.</param>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.AddBindingConvention(Caliburn.PresentationFramework.Conventions.IBindingConvention)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.AddViewConventions(Caliburn.PresentationFramework.Conventions.IViewConventionCategory)">
             <summary>
-            Adds the binding convention.
+            Adds the view conventions.
             </summary>
-            <param name="convention">The convention.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.AddActionConvention(Caliburn.PresentationFramework.Conventions.IActionConvention)">
-            <summary>
-            Adds the action convention.
-            </summary>
-            <param name="convention">The convention.</param>
+            <param name="conventionCategory">The convention set.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.GetElementConvention(System.Type)">
             <summary>
@@ -2306,18 +2365,6 @@
             </summary>
             <param name="baseName">Name of the base method.</param>
             <returns>The conventional name of the can execute poroperty.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.GetDefaultBindingConventions">
-            <summary>
-            Gets the default binding conventions.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.GetDefaultActionConventions">
-            <summary>
-            Gets the default action conventions.
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:Caliburn.PresentationFramework.Conventions.DefaultConventionManager.GetDefaultElementConventions">
             <summary>
@@ -2497,6 +2544,45 @@
             </summary>
             <value>The convention.</value>
         </member>
+        <member name="T:Caliburn.PresentationFramework.Conventions.DefaultViewConventionCategory`1">
+            <summary>
+            The default implemenation of <see cref="T:Caliburn.PresentationFramework.Conventions.IViewConventionCategory"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.Conventions.IViewConventionCategory">
+            <summary>
+            A set of conventions applicable to a view.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.IViewConventionCategory.GetApplications(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription)">
+            <summary>
+            Gets the applications.
+            </summary>
+            <param name="viewModelDescription">The view model description.</param>
+            <param name="elementDescription">The element description.</param>
+            <returns>The applications.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultViewConventionCategory`1.#ctor(System.Func{Caliburn.PresentationFramework.ViewModels.IViewModelDescription,System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.Conventions.DefaultViewConventionCategory`1"/> class.
+            </summary>
+            <param name="getTargets">The get targets.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultViewConventionCategory`1.GetApplications(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription)">
+            <summary>
+            Gets the applications.
+            </summary>
+            <param name="viewModelDescription">The view model description.</param>
+            <param name="elementDescription">The element description.</param>
+            <returns>The applications.</returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Conventions.DefaultViewConventionCategory`1.AddConvention(Caliburn.PresentationFramework.Conventions.IViewConvention{`0})">
+            <summary>
+            Adds the convention to this category.
+            </summary>
+            <param name="convention">The convention.</param>
+        </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.ExtensionMethods">
             <summary>
             Hosts extension methods related to conventions.
@@ -2518,20 +2604,11 @@
         </member>
         <member name="T:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention">
             <summary>
-            An implemenation of <see cref="T:Caliburn.PresentationFramework.Conventions.IBindingConvention"/> that bindings SelectedItem and Header for Selectors and HeaderedItemsControls respectively.
+            An implemenation of <see cref="T:Caliburn.PresentationFramework.Conventions.IViewConvention`1"/> that bindings SelectedItem and Header for Selectors and HeaderedItemsControls respectively.
             ItemsTemplates may be conventionally added as well.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention.Matches(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
-            <summary>
-            Indicates whether this convention is a match and should be applied.
-            </summary>
-            <param name="viewModelDescription">The view model description.</param>
-            <param name="element">The element.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention.CreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
             <summary>
             Creates the application of the convention.
             </summary>
@@ -2540,21 +2617,21 @@
             <param name="property">The property.</param>
             <returns>The convention application.</returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention.GetSelectionProperty(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,System.Reflection.PropertyInfo)">
+        <member name="T:Caliburn.PresentationFramework.Conventions.SubActionConvention">
             <summary>
-            Gets the selection property.
+            An implementation of <see cref="T:Caliburn.PresentationFramework.Conventions.IViewConvention`1"/> that matches sub-actions.
             </summary>
-            <param name="description">The description.</param>
-            <param name="property">The property.</param>
-            <returns>The property which should be bound, if found.</returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ItemsControlBindingConvention.GetHeaderProperty(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,System.Reflection.PropertyInfo)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.SubActionConvention.TryCreateApplication(Caliburn.PresentationFramework.ViewModels.IViewModelDescription,Caliburn.PresentationFramework.Conventions.IElementDescription,System.Reflection.PropertyInfo)">
             <summary>
-            Gets the header property.
+            Tries to creates the application of the convention.
             </summary>
             <param name="description">The description.</param>
-            <param name="property">The property.</param>
-            <returns>The property which should be bound, if found.</returns>
+            <param name="element">The element.</param>
+            <param name="target">The target.</param>
+            <returns>
+            The convention application, or null if not applicable
+            </returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.Filters.AutoCheckAvailabilityAttribute">
             <summary>
@@ -2637,6 +2714,12 @@
             </summary>
             <value>The order.</value>
             <remarks>Higher numbers are evaluated first.</remarks>
+        </member>
+        <member name="P:Caliburn.PresentationFramework.Filters.DependenciesAttribute.Dependencies">
+            <summary>
+            Gets the dependencies.
+            </summary>
+            <value>The dependencies.</value>
         </member>
         <member name="T:Caliburn.PresentationFramework.Filters.DependencyObserver">
             <summary>
@@ -4175,22 +4258,29 @@
             <summary>
             Opens the specified screen.
             </summary>
-            <param name="collection">The collection.</param>
+            <param name="collection">The screen collection.</param>
             <param name="subject">The subject.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Screens.ScreenExtensions.OpenScreen``1(Caliburn.PresentationFramework.Screens.IScreenCollection{``0},``0)">
             <summary>
             Opens the specified screen.
             </summary>
-            <param name="collection">The host.</param>
+            <param name="collection">The screen collection.</param>
             <param name="screen">The screen.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Screens.ScreenExtensions.ShutdownScreen``1(Caliburn.PresentationFramework.Screens.IScreenCollection{``0},``0)">
             <summary>
             Shuts down the specified screen.
             </summary>
-            <param name="collection">The manager.</param>
-            <param name="screen">The presenter.</param>
+            <param name="collection">The screen collection owning the screen to shutdown.</param>
+            <param name="screen">The screen.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Screens.ScreenExtensions.ShutdownScreen(Caliburn.PresentationFramework.Screens.IScreenCollection,Caliburn.PresentationFramework.Screens.IScreen)">
+            <summary>
+            Shuts down the specified screen.
+            </summary>
+            <param name="collection">The screen collection owning the screen to shutdown.</param>
+            <param name="screen">The screen.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.Screens.ScreenExtensions.ShutdownActiveScreen(Caliburn.PresentationFramework.Screens.IScreenConductor)">
             <summary>
@@ -5226,25 +5316,6 @@
             <param name="viewLocator">The view locator.</param>
             <param name="viewModelBinder">The view model binder.</param>
         </member>
-        <member name="F:Caliburn.PresentationFramework.ViewModels.View.ModelProperty">
-            <summary>
-            A dependency property for attaching a model to the UI.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.View.GetModel(System.Windows.DependencyObject)">
-            <summary>
-            Gets the model.
-            </summary>
-            <param name="d">The d.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.View.SetModel(System.Windows.DependencyObject,System.Object)">
-            <summary>
-            Sets the model.
-            </summary>
-            <param name="d">The d.</param>
-            <param name="value">The value.</param>
-        </member>
         <member name="F:Caliburn.PresentationFramework.ViewModels.View.ContextProperty">
             <summary>
             A dependency property for assigning a context to a particular portion of the UI.
@@ -5260,6 +5331,25 @@
         <member name="M:Caliburn.PresentationFramework.ViewModels.View.SetContext(System.Windows.DependencyObject,System.Object)">
             <summary>
             Sets the context.
+            </summary>
+            <param name="d">The d.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="F:Caliburn.PresentationFramework.ViewModels.View.ModelProperty">
+            <summary>
+            A dependency property for attaching a model to the UI.
+            </summary>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ViewModels.View.GetModel(System.Windows.DependencyObject)">
+            <summary>
+            Gets the model.
+            </summary>
+            <param name="d">The d.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ViewModels.View.SetModel(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Sets the model.
             </summary>
             <param name="d">The d.</param>
             <param name="value">The value.</param>
@@ -5882,6 +5972,16 @@
             <param name="conventionManager">The convention manager.</param>
             <param name="element">The element.</param>
             <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ExtensionMethods.Bind(Caliburn.PresentationFramework.Parameter,System.Windows.DependencyObject,System.String,System.String)">
+            <summary>
+            Binds the specified parameter to an element's property without using databinding.
+            Rather, event name conventions are used to wire to property changes and push updates to the parameter value.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="element">The element.</param>
+            <param name="elementName">Name of the element.</param>
+            <param name="path">The path.</param>
         </member>
         <member name="T:Caliburn.PresentationFramework.IInteractionNode">
             <summary>

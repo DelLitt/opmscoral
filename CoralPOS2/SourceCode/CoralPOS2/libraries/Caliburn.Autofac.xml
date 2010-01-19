@@ -38,6 +38,15 @@
             </summary>
             <param name="registrations">The component registrations.</param>
         </member>
+        <member name="M:Caliburn.Autofac.AutofacAdapter.WithProxyFactory``1">
+            <summary>
+            Installs a proxy factory.
+            </summary>
+            <typeparam name="T">The type of the proxy factory.</typeparam>
+            <returns>
+            A container with an installed proxy factory.
+            </returns>
+        </member>
         <member name="P:Caliburn.Autofac.AutofacAdapter.Container">
             <summary>
             Gets the container.

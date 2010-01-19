@@ -302,14 +302,6 @@
             <param name="destination">The destination.</param>
             <returns>A message producer.</returns>
         </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateProducer(Apache.NMS.IDestination,System.TimeSpan)">
-            <summary>
-            Creates the producer given the destinaton and requst timeout, potentially returning a cached instance.
-            </summary>
-            <param name="destination">The destination.</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>The message producer</returns>
-        </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.Close">
             <summary>
             If have not yet reached session cache size, cache the session, otherwise
@@ -323,14 +315,6 @@
             <param name="destination">The destination.</param>
             <returns>A message consumer</returns>
         </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.TimeSpan)">
-            <summary>
-            Creates the consumer for the given destinaton and request timeout, potentially returning a cached instance. 
-            </summary>
-            <param name="destination">The destination.</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>A message consumer</returns>
-        </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.String)">
             <summary>
             Creates the consumer, potentially returning a cached instance. 
@@ -338,15 +322,6 @@
             <param name="destination">The destination.</param>
             <param name="selector">The selector.</param>
             <returns>A message consumer</returns>
-        </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.String,System.TimeSpan)">
-            <summary>
-            Creates the consumer, potentially returning a cached instance.
-            </summary>
-            <param name="destination">The destination.</param>
-            <param name="selector">The selector.</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>A message consumer.</returns>
         </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.String,System.Boolean)">
             <summary>
@@ -356,16 +331,6 @@
             <param name="selector">The selector.</param>
             <param name="noLocal">if set to <c>true</c> [no local].</param>
             <returns>A message consumer.</returns>
-        </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.String,System.Boolean,System.TimeSpan)">
-            <summary>
-            Creates the consumer, potentially returning a cached instance.
-            </summary>
-            <param name="destination">The destination.</param>
-            <param name="selector">The selector.</param>
-            <param name="noLocal">if set to <c>true</c> [no local].</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>A message consumer</returns>
         </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateDurableConsumer(Apache.NMS.ITopic,System.String,System.String,System.Boolean)">
             <summary>
@@ -377,29 +342,11 @@
             <param name="noLocal">if set to <c>true</c> [no local].</param>
             <returns>A message consumer</returns>
         </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateDurableConsumer(Apache.NMS.ITopic,System.String,System.String,System.Boolean,System.TimeSpan)">
-            <summary>
-            Creates the durable consumer, potentially returning a cached instance.
-            </summary>
-            <param name="destination">The destination.</param>
-            <param name="name">The name.</param>
-            <param name="selector">The selector.</param>
-            <param name="noLocal">if set to <c>true</c> [no local].</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>A message consumer</returns>
-        </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.DeleteDurableConsumer(System.String)">
             <summary>
             Deletes the durable consumer.
             </summary>
-            <param name="name">The name.</param>
-        </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachedSession.DeleteDurableConsumer(System.String,System.TimeSpan)">
-            <summary>
-            Deletes the durable consumer.
-            </summary>
-            <param name="name">The name.</param>
-            <param name="requestTimeout">The request timeout.</param>
+            <param name="durableSubscriptionName">The name of the durable subscription.</param>
         </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.CreateConsumer(Apache.NMS.IDestination,System.String,System.Boolean,System.String)">
             <summary>
@@ -408,7 +355,7 @@
             <param name="destination">The destination.</param>
             <param name="selector">The selector.</param>
             <param name="noLocal">if set to <c>true</c> [no local].</param>
-            <param name="subscription">The subscription.</param>
+            <param name="durableSubscriptionName">The durable subscription name.</param>
             <returns></returns>
         </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachedSession.GetQueue(System.String)">
@@ -691,18 +638,6 @@
             <returns>the Session to use, or <code>null</code> to indicate
             creation of a raw standard Session</returns>  
         </member>
-        <member name="M:Spring.Messaging.Nms.Connections.SingleConnectionFactory.GetSession(Apache.NMS.IConnection,Apache.NMS.AcknowledgementMode,System.TimeSpan)">
-            <summary>
-            Template method for obtaining a (potentially cached) Session.
-            </summary>
-            <param name="con">The connection to operate on.</param>
-            <param name="mode">The session ack mode.</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>
-            the Session to use, or <code>null</code> to indicate
-            creation of a raw standard Session
-            </returns>
-        </member>
         <member name="M:Spring.Messaging.Nms.Connections.SingleConnectionFactory.DoCreateConnection">
             <summary>
             reate a JMS Connection via this template's ConnectionFactory.
@@ -826,18 +761,6 @@
             <param name="con">The connection to operate on.</param>
             <param name="mode">The session ack mode.</param>
             <returns>The Session to use
-            </returns>
-        </member>
-        <member name="M:Spring.Messaging.Nms.Connections.CachingConnectionFactory.GetSession(Apache.NMS.IConnection,Apache.NMS.AcknowledgementMode,System.TimeSpan)">
-            <summary>
-            Template method for obtaining a (potentially cached) Session.
-            </summary>
-            <param name="con">The connection to operate on.</param>
-            <param name="mode">The session ack mode.</param>
-            <param name="requestTimeout">The request timeout.</param>
-            <returns>
-            the Session to use, or <code>null</code> to indicate
-            creation of a raw standard Session
             </returns>
         </member>
         <member name="M:Spring.Messaging.Nms.Connections.CachingConnectionFactory.GetCachedSessionWrapper(Apache.NMS.ISession,Spring.Collections.LinkedList)">
@@ -2119,10 +2042,15 @@
             <value><c>true</c> if Publish/Subscribe domain; otherwise, <c>false</c>
             for the Point-to-Point domain.</value>
         </member>
-        <member name="F:Spring.Messaging.Nms.Core.NmsTemplate.DEFAULT_RECEIVE_TIMEOUT">
+        <member name="F:Spring.Messaging.Nms.Core.NmsTemplate.RECEIVE_TIMEOUT_NO_WAIT">
             <summary>
             Timeout value indicating that a receive operation should
             check if a message is immediately available without blocking.	 
+            </summary>
+        </member>
+        <member name="F:Spring.Messaging.Nms.Core.NmsTemplate.RECEIVE_TIMEOUT_INDEFINITE_WAIT">
+            <summary>
+            Timeout value indicating a blocking receive without timeout.
             </summary>
         </member>
         <member name="M:Spring.Messaging.Nms.Core.NmsTemplate.#ctor">
@@ -2734,7 +2662,7 @@
         </member>
         <member name="P:Spring.Messaging.Nms.Core.NmsTemplate.ReceiveTimeout">
             <summary>
-            Gets or sets the receive timeout to use for recieve calls.
+            Gets or sets the receive timeout to use for recieve calls (in milliseconds)
             </summary>
             <remarks>The default is -1, which means no timeout.</remarks>
             <value>The receive timeout.</value>
@@ -2785,6 +2713,96 @@
             <summary>
             ResourceFactory implementation that delegates to this template's callback methods.
             </summary>
+        </member>
+        <member name="T:Spring.Messaging.Nms.Core.NmsTrace">
+            <summary>
+            Implemention of NMS ITrace interface that will log NMS messages to Common.Logging.
+            </summary>
+            <remarks>Registering of this class is done by default in NmsTemplate and SimpleMessageListenerContainer if the value
+            of Apache.NMS.Tracer.Trace is null, indicating it was not set.
+            </remarks>
+            <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Messaging.Nms.Core.NmsTrace"/> class. The log name used is typeof(NmsTrace).
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.#ctor(Common.Logging.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Messaging.Nms.Core.NmsTrace"/> class.
+            </summary>
+            <param name="log">The log instance to use for logging.</param>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.Debug(System.String)">
+            <summary>
+            Logs message at Debug Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.Info(System.String)">
+            <summary>
+            Logs message at Info Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.Warn(System.String)">
+            <summary>
+            Logs message at Warn Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.Error(System.String)">
+            <summary>
+            Logs message at Error Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Core.NmsTrace.Fatal(System.String)">
+            <summary>
+            Logs message at Fatal Level.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="P:Spring.Messaging.Nms.Core.NmsTrace.IsDebugEnabled">
+            <summary>
+            Gets a value indicating whether the debug log level is enabled.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is debug enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Nms.Core.NmsTrace.IsInfoEnabled">
+            <summary>
+            Gets a value indicating whether the info log level is enabled.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is info enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Nms.Core.NmsTrace.IsWarnEnabled">
+            <summary>
+            Gets a value indicating whether the warn log level is enabled.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is warn enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Nms.Core.NmsTrace.IsErrorEnabled">
+            <summary>
+            Gets a value indicating whether the error log level is enabled.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is error enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Nms.Core.NmsTrace.IsFatalEnabled">
+            <summary>
+            Gets a value indicating whether the fatal log level is enabled.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is fatal enabled; otherwise, <c>false</c>.
+            </value>
         </member>
         <member name="T:Spring.Messaging.Nms.Core.ProducerDelegate">
             <summary> Perform operations on the given Session and MessageProducer.
@@ -3500,6 +3518,12 @@
             </remarks>
             <param name="ex">The exceptin to handle</param>
         </member>
+        <member name="M:Spring.Messaging.Nms.Listener.AbstractMessageListenerContainer.InvokeErrorHandler(System.Exception)">
+            <summary>
+            Invokes the error handler.
+            </summary>
+            <param name="exception">The exception.</param>
+        </member>
         <member name="M:Spring.Messaging.Nms.Listener.AbstractMessageListenerContainer.InvokeExceptionListener(System.Exception)">
             <summary>
             Invokes the registered exception listener, if any.
@@ -3587,6 +3611,14 @@
             </summary>
             <value>The exception listener.</value>
         </member>
+        <member name="P:Spring.Messaging.Nms.Listener.AbstractMessageListenerContainer.ErrorHandler">
+            <summary>
+            Sets an ErrorHandler to be invoked in case of any uncaught exceptions thrown
+            while processing a Message. By default there will be no ErrorHandler
+            so that error-level logging is the only result.
+            </summary>
+            <value>The error handler.</value>
+        </member>
         <member name="P:Spring.Messaging.Nms.Listener.AbstractMessageListenerContainer.ExposeListenerSession">
             <summary>
             Gets or sets a value indicating whether to expose listener session to a registered
@@ -3657,6 +3689,11 @@
             Exception thrown when the maximum connection recovery time has been exceeded.
             </summary>
             <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Nms.Listener.RecoveryTimeExceededException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Messaging.Nms.Listener.RecoveryTimeExceededException"/> class.
+            </summary>
         </member>
         <member name="M:Spring.Messaging.Nms.Listener.RecoveryTimeExceededException.#ctor(System.String)">
             <summary>

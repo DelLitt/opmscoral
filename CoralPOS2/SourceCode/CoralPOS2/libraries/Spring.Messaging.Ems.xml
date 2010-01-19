@@ -4,6 +4,337 @@
         <name>Spring.Messaging.Ems</name>
     </assembly>
     <members>
+        <member name="T:Spring.Messaging.Ems.Common.EmsConnection">
+            <summary>
+            A Connection object is a client's active connection to TIBCO EMS Server. 
+            </summary>
+        </member>
+        <member name="T:Spring.Messaging.Ems.Common.IConnection">
+            <summary>
+            An interface containing all methods and properties on the TIBCO.EMS.Connection class.
+            Refer to the TIBCO EMS API documentation for more information.
+            </summary>
+            <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.Close">
+            <summary>
+            Closes the connection and reclaims resources. 
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.CreateSession(System.Boolean,System.Int32)">
+            <summary>
+            Creates the session.
+            </summary>
+            <param name="transacted">if set to <c>true</c> the session has transaction semantcis.</param>
+            <param name="acknowledgeMode">Indicates whether and how the consumer is to acknowledge received messages.
+            This version of CreateSession accepts an integer value associated with the acknowledge mode described by a Session member and should only be used for backward compatibility.
+            This parameter is ignored if the session is transacted.</param>
+            <returns>A newly created session.</returns>         
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.CreateSession(System.Boolean,TIBCO.EMS.SessionMode)">
+            <summary>
+            Creates the session.
+            </summary>
+            <param name="transacted">if set to <c>true</c> [transacted].</param>
+            <param name="acknowledgeMode">The acknowledge mode.
+            When true, the new session has transaction semantics.
+            Indicates whether and how the consumer is to acknowledge received messages. 
+            Legal values are listed under SessionMode. 
+            This parameter is ignored if the session is transacted. 
+            </param>
+            <returns>A newly created session.</returns>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.Start">
+            <summary>
+            Starts (or restarts) a connection's delivery of incoming messages. 
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.Stop">
+            <summary>
+            Temporarily stops a connection's delivery of incoming messages. 
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnection.ToString">
+            <summary>
+            A String representation of the connection object 
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.NativeConnection">
+            <summary>
+            Gets the native TIBCO EMS connection.
+            </summary>
+            <value>The native connection.</value>
+        </member>
+        <member name="E:Spring.Messaging.Ems.Common.IConnection.EMSExceptionHandler">
+            <summary>
+            Occurs when the client library detects a problem with the connection.
+            </summary>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.ActiveURL">
+            <summary>
+            Gets the URL of the server this connection is currently connected to
+            </summary>
+            <value>The active URL.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.ClientID">
+            <summary>
+            Gets or sets the client ID.
+            </summary>
+            <value>The client ID.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.ConnID">
+            <summary>
+            Gets the connection ID.
+            </summary>
+            <value>The connection ID.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.ExceptionListener">
+            <summary>
+            Gets or sets the exception listener.
+            </summary>
+            <value>The exception listener.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.IsClosed">
+            <summary>
+            Gets a value indicating whether the connection is closed.
+            </summary>
+            <value><c>true</c> if the connection is closed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.IsSecure">
+            <summary>        
+            Gets a value indicating whether the connection communicates with a secure protocol
+            </summary>
+            <value><c>true</c> if the connection communicates with a secure protocol; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnection.MetaData">
+            <summary>
+            Gets the metadata for this connection
+            </summary>
+            <value>The metadata for this connection.</value>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.#ctor(TIBCO.EMS.Connection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Messaging.Ems.Common.EmsConnection"/> class.
+            </summary>
+            <param name="connection">The underlying TIBCO EMS connection.</param>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.Close">
+            <summary>
+            Closes the connection and reclaims resources.
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.CreateSession(System.Boolean,System.Int32)">
+            <summary>
+            Creates the session.
+            </summary>
+            <param name="transacted">if set to <c>true</c> the session has transaction semantcis.</param>
+            <param name="acknowledgeMode">Indicates whether and how the consumer is to acknowledge received messages.
+            This version of CreateSession accepts an integer value associated with the acknowledge mode described by a Session member and should only be used for backward compatibility.
+            This parameter is ignored if the session is transacted.</param>
+            <returns>A newly created session.</returns>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.CreateSession(System.Boolean,TIBCO.EMS.SessionMode)">
+            <summary>
+            Creates the session.
+            </summary>
+            <param name="transacted">if set to <c>true</c> [transacted].</param>
+            <param name="acknowledgeMode">The acknowledge mode.
+            When true, the new session has transaction semantics.
+            Indicates whether and how the consumer is to acknowledge received messages.
+            Legal values are listed under SessionMode.
+            This parameter is ignored if the session is transacted.</param>
+            <returns>A newly created session.</returns>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.Start">
+            <summary>
+            Starts (or restarts) a connection's delivery of incoming messages.
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.EmsConnection.Stop">
+            <summary>
+            Temporarily stops a connection's delivery of incoming messages.
+            </summary>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.NativeConnection">
+            <summary>
+            Gets the native TIBCO EMS connection.
+            </summary>
+            <value>The native connection.</value>
+        </member>
+        <member name="E:Spring.Messaging.Ems.Common.EmsConnection.EMSExceptionHandler">
+            <summary>
+            Occurs when the client library detects a problem with the connection.
+            </summary>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.ActiveURL">
+            <summary>
+            Gets the URL of the server this connection is currently connected to
+            </summary>
+            <value>The active URL.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.ClientID">
+            <summary>
+            Gets or sets the client ID.
+            </summary>
+            <value>The client ID.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.ConnID">
+            <summary>
+            Gets the connection ID.
+            </summary>
+            <value>The connection ID.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.ExceptionListener">
+            <summary>
+            Gets or sets the exception listener.
+            </summary>
+            <value>The exception listener.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.IsClosed">
+            <summary>
+            Gets a value indicating whether the connection is closed.
+            </summary>
+            <value>
+            	<c>true</c> if the connection is closed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.IsSecure">
+            <summary>
+            Gets a value indicating whether the connection communicates with a secure protocol
+            </summary>
+            <value>
+            	<c>true</c> if the connection communicates with a secure protocol; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.EmsConnection.MetaData">
+            <summary>
+            Gets the metadata for this connection
+            </summary>
+            <value>The metadata for this connection.</value>
+        </member>
+        <member name="T:Spring.Messaging.Ems.Common.IConnectionFactory">
+            <summary>
+            An interface containing all methods and properties on the TIBCO.EMS.ConnectionFactory class.    
+            Refer to the TIBCO EMS API documentation for more information.
+            </summary>
+            <remarks>
+            All the 'GetXXX()' methods in the TIBCO.EMS.ConnectionFactory were translated to .NET properties
+            </remarks>
+            <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnectionFactory.CreateConnection">
+            <summary>
+            Creates the connection.
+            </summary>
+            <returns>The newly created connection</returns>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Common.IConnectionFactory.CreateConnection(System.String,System.String)">
+            <summary>
+            Creates the connection with the given username and password
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="password">The password.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.NativeConnectionFactory">
+            <summary>
+            Gets the native TIBCO EMS connection factory.
+            </summary>
+            <value>The native connection factory.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.CertificateStore">
+            <summary>
+            Gets the certificate store info object associated with this connection factory. 
+            </summary>
+            <value>The certificate store.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.SSLProxyHost">
+            <summary>
+            Gets or sets the SSL proxy host.
+            </summary>
+            <value>The SSL proxy host.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.SSLProxyPort">
+            <summary>
+            Gets or sets the SSL proxy port.
+            </summary>
+            <value>The SSL proxy port.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.SSLProxyPassword">
+            <summary>
+            Gets the SSL proxy password.
+            </summary>
+            <value>The SSL proxy password.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.SSLProxyUser">
+            <summary>
+            Gets the SSL proxy user.
+            </summary>
+            <value>The SSL proxy user.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.CertificateStoreType">
+            <summary>
+            Sets the type of the certificate store.
+            </summary>
+            <value>The type of the certificate store.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.ClientID">
+            <summary>
+            Sets the client ID.
+            </summary>
+            <value>The client ID.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.ClientTracer">
+            <summary>
+            Sets the client tracer to a given output stream
+            </summary>
+            <value>The client tracer.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.ConnAttemptCount">
+            <summary>
+            Sets the number of connection attempts
+            </summary>
+            <value>The number of connection attempts.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.ConnAttemptDelay">
+            <summary>
+            Sets delay between connection attempts 
+            </summary>
+            <value>The delay between connection attempts.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.ConnAttemptTimeout">
+            <summary>
+            Sets the connection attempt timeout.
+            </summary>
+            <value>The connection attempt timeout.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.HostNameVerifier">
+            <summary>
+            Sets the custom host name verifier. Set to null to remove custom host name verifier. 
+            </summary>
+            <value>The host name verifier.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.MetricAsInt">
+            <summary>
+            Sets the load balance metric as an integer.
+            </summary>
+            <value>The load balance metric as int.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.MulticastDaemon">
+            <summary>
+            Sets the port on which the client will connect to the multicast daemon.
+            </summary>
+            <value>The multicast daemon port.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Common.IConnectionFactory.MulticastEnabled">
+            <summary>
+            Sets whether MessageConsumers subscribed to a multicast-enabled topic will receive messages over multicast.
+            </summary>
+            <value><c>true</c> to enable multicast; <c>false</c> to disable.</value>
+        </member>
         <member name="P:Spring.Messaging.Ems.Common.IMessageProducer.TimeToLive">
             <summary>
             Gets or sets the the default length of time in milliseconds from its dispatch time
@@ -292,19 +623,6 @@
             <param name="destination">The destination.</param>
             <param name="subscription">The name of the durable subscription.</param>
             <returns>A message consumer</returns>
-        </member>
-        <member name="M:Spring.Messaging.Ems.Connections.CachedSession.DeleteDurableConsumer(System.String)">
-            <summary>
-            Deletes the durable consumer.
-            </summary>
-            <param name="name">The name.</param>
-        </member>
-        <member name="M:Spring.Messaging.Ems.Connections.CachedSession.DeleteDurableConsumer(System.String,System.TimeSpan)">
-            <summary>
-            Deletes the durable consumer.
-            </summary>
-            <param name="name">The name.</param>
-            <param name="requestTimeout">The request timeout.</param>
         </member>
         <member name="M:Spring.Messaging.Ems.Connections.CachedSession.CreateConsumer(TIBCO.EMS.Destination,System.String,System.Boolean,System.String)">
             <summary>
@@ -2932,6 +3250,194 @@
             <throws>EMSException if there is any problem </throws>
             <author>Mark Pollack</author>
         </member>
+        <member name="T:Spring.Messaging.Ems.Jndi.JndiAccessor">
+            <summary>
+            Convenient superclass to access JndiProperties, JndiContextType or alternatively set the ILookupContext directly.
+            </summary>
+            <author>Juergen Hoeller</author>
+            <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Jndi.JndiAccessor.AfterPropertiesSet">
+            <summary>
+            Create the JndiLookupContext if it has not been explicitly set.
+            </summary>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiAccessor.JndiLookupContext">
+            <summary>
+            Gets or sets the lookup context.
+            </summary>
+            <value>The lookup context.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiAccessor.JndiProperties">
+            <summary>
+            Gets or sets the JNDI environment properties.
+            </summary>
+            <value>The jndi properties.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiAccessor.JndiContextType">
+            <summary>
+            Gets or sets the type of the jndi context.  The default is JndiContextType.JMS
+            </summary>
+            <value>The type of the jndi context.</value>
+        </member>
+        <member name="T:Spring.Messaging.Ems.Jndi.JndiContextType">
+            <summary>
+            The various JNDI Context types.
+            </summary>
+        </member>
+        <member name="F:Spring.Messaging.Ems.Jndi.JndiContextType.JMS">
+            <summary>
+            Create a tibjmsnaming context to lookup administered object inside the tibjmsnaming server. 
+            </summary>
+        </member>
+        <member name="F:Spring.Messaging.Ems.Jndi.JndiContextType.LDAP">
+            <summary>
+            Create a ldap context to lookup administered object in an ldap server. 
+            </summary>
+        </member>
+        <member name="T:Spring.Messaging.Ems.Jndi.JndiObjectLocator">
+            <summary>
+            Convenient superclass for JNDI-based service locators, 
+            providing configurable lookup of a specific JNDI resource.
+            </summary>
+            <remarks>
+            <para>
+            Exposes a JndiName property.
+            </para>
+            <para>Subclasses may invoke the <code>Lookup</code> method whenever it is appropriate.
+            Some classes might do this on initialization, while others might do it
+            on demand. The latter strategy is more flexible in that it allows for
+            initialization of the locator before the JNDI object is available.
+            </para>
+            </remarks>
+            <author>Juergen Hoeller</author>
+            <author>Mark Pollack (.NET)</author>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Jndi.JndiObjectLocator.AfterPropertiesSet">
+            <summary>
+            Ensure that the JndiName property is set and create the TIBCO EMS ILookupContext instance.
+            </summary>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Jndi.JndiObjectLocator.Lookup">
+            <summary>
+            Lookups this instance using the JndiName and ExpectedType properties
+            </summary>
+            <returns>The object retrieved from Jndi</returns>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiObjectLocator.JndiName">
+            <summary>
+            Gets or sets the Jndi name to lookup.
+            </summary>
+            <value>The name of the jndi.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiObjectLocator.ExpectedType">
+            <summary>
+            Gets or sets the type that the located JNDI object is supposed 
+            to be assignable to, if any.
+            </summary>
+            <value>The expected type.</value>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Jndi.JndiLookupFactoryObject.GetObject">
+            <summary>
+            Return the Jndi object
+            </summary>
+            <returns>The Jndi  object</returns>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiLookupFactoryObject.DefaultObject">
+            <summary>
+            Sets the default object to fall back to if the JNDI lookup fails.
+            Default is none.
+            </summary>
+            <remarks>
+            <para>This can be an arbitrary bean reference or literal value.
+            It is typically used for literal values in scenarios where the JNDI environment
+            might define specific config settings but those are not required to be present.
+            </para>
+            </remarks>
+            <value>The default object to use when lookup fails.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiLookupFactoryObject.ObjectType">
+            <summary>
+            Return type of object retrieved from Jndi or the expected type if the Jndi retrieval
+            did not succeed.
+            </summary>
+            <value>Return value of retrieved object</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.JndiLookupFactoryObject.IsSingleton">
+            <summary>
+            Returns true
+            </summary>
+        </member>
+        <member name="T:Spring.Messaging.Ems.Jndi.LookupContextFactoryObject">
+            <summary>
+            A Spring FactoryObject that returns TIBCO.EMS.ILookupContext.  Use the returned
+            ILookupContext to do you lookups at runtime.
+            </summary>
+            <remarks>
+            <para>
+            Important properties to set are JndiProperties and JndiContexType.  JndiContextType is set to
+            LookupContextFactory.TIBJMS_NAMING_CONT by default.
+            </para>
+            <para>To lookup objects at startup time and cache their values, as well as provide a 
+            default value if lookup fail, <see cref="T:Spring.Messaging.Ems.Jndi.JndiLookupFactoryObject"/>
+            </para>
+            </remarks>
+            <author>Mark Pollack</author>
+        </member>
+        <member name="M:Spring.Messaging.Ems.Jndi.LookupContextFactoryObject.GetObject">
+            <summary>
+            Returns the TIBCO.EMS.ILookupContext
+            </summary>
+            <returns>TIBCO.EMS.ILookupContext</returns>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.LookupContextFactoryObject.ObjectType">
+            <summary>
+            Return typeof(TIBCO.EMS.ILookupContext)
+            </summary>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Jndi.LookupContextFactoryObject.IsSingleton">
+            <summary>
+            Returns true
+            </summary>
+        </member>
+        <member name="T:Spring.Objects.Factory.TypeMismatchNamingException">
+            <summary>
+            Exception thrown if a type mismatch is encountered for an object
+            located in a JNDI environment. 
+            </summary>
+            <author>Juergen Hoeller</author>
+            <author>Mark Pollack (.NET)</author>
+        </member>
+        <member name="M:Spring.Objects.Factory.TypeMismatchNamingException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the 
+            <see cref="T:Spring.Objects.Factory.ObjectCreationException"/> class.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+        </member>
+        <member name="M:Spring.Objects.Factory.TypeMismatchNamingException.#ctor(System.String,System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Objects.Factory.TypeMismatchNamingException"/> class 
+            building an explanation text from the given arguments.
+            </summary>
+            <param name="jndiName">The Jndi name.</param>
+            <param name="requiredType">Type required type of the lookup.</param>
+            <param name="actualType">The actual type that the lookup returned.</param>
+        </member>
+        <member name="P:Spring.Objects.Factory.TypeMismatchNamingException.ActualType">
+            <summary>
+            Gets the actual type that the lookup returned, if available.
+            </summary>
+            <value>The actual type that the lookup.</value>
+        </member>
+        <member name="P:Spring.Objects.Factory.TypeMismatchNamingException.RequiredType">
+            <summary>
+            Gets the required type for the lookup, if available.
+            </summary>
+            <value>The equired type for the lookup</value>
+        </member>
         <member name="T:Spring.Messaging.Ems.Listener.Adapter.ListenerExecutionFailedException">
             <summary>
             Exception to be thrown when the execution of a listener method failed.
@@ -3706,6 +4212,14 @@
             by the registered message listener or the invocation infrastructure.
             </summary>
             <value>The exception listener.</value>
+        </member>
+        <member name="P:Spring.Messaging.Ems.Listener.AbstractMessageListenerContainer.ErrorHandler">
+            <summary>
+            Sets an ErrorHandler to be invoked in case of any uncaught exceptions thrown
+            while processing a Message. By default there will be no ErrorHandler
+            so that error-level logging is the only result.
+            </summary>
+            <value>The error handler.</value>
         </member>
         <member name="P:Spring.Messaging.Ems.Listener.AbstractMessageListenerContainer.ExposeListenerSession">
             <summary>

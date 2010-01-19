@@ -203,7 +203,7 @@
         <member name="T:Spring.Context.Support.WebApplicationContext">
              <summary>
              Web application context, taking the context definition files
-             from the file system or from URLs. 
+             from the file system or from URLs.
             
              Treats resource paths as web resources, when using
              IApplicationContext.GetResource. Resource paths are considered relative

@@ -38,19 +38,22 @@
              The object name of the internally managed auto-proxy creator.
             </summary>
         </member>
+        <member name="F:Spring.Aop.Config.AopNamespaceUtils.InfrastructureAutoProxyCreatorType">
+            <summary>
+            The type of the APC that handles advisors with object role <see cref="F:Spring.Objects.Factory.Config.ObjectRole.ROLE_INFRASTRUCTURE"/>.
+            </summary>
+        </member>
         <member name="M:Spring.Aop.Config.AopNamespaceUtils.RegisterAutoProxyCreatorIfNecessary(Spring.Objects.Factory.Xml.ParserContext,System.Xml.XmlElement)">
             <summary>
-            Registers the auto proxy creator if necessary.
+            Registers the internal auto proxy creator if necessary.
             </summary>
             <param name="parserContext">The parser context.</param>
             <param name="sourceElement">The source element.</param>
         </member>
-        <member name="M:Spring.Aop.Config.AopNamespaceUtils.RegisterApcAsRequired(System.Type,Spring.Objects.Factory.Xml.ParserContext)">
+        <member name="M:Spring.Aop.Config.AopNamespaceUtils.RegisterAutoProxyCreatorIfNecessary(Spring.Objects.Factory.Support.IObjectDefinitionRegistry)">
             <summary>
-            Registries the or escalate apc as required.
+            Registers the internal auto proxy creator if necessary.
             </summary>
-            <param name="type">The type.</param>
-            <param name="parserContext">The parser context.</param>
         </member>
         <member name="M:Spring.Aop.Config.AopNamespaceUtils.ForceAutoProxyCreatorToUseDecoratorProxy(Spring.Objects.Factory.Support.IObjectDefinitionRegistry)">
             <summary>
@@ -971,10 +974,10 @@
             any particular aspects, such as pooling aspects.
             </summary>
             <remarks>
-            <p>Subclasses must implement the abstract findCandidateAdvisors() method
+            <p>Subclasses must implement the abstract FindCandidateAdvisors() method
             to return a list of Advisors applying to any object. Subclasses can also
-            override the inherited shouldSkip() method to exclude certain objects
-            from autoproxying, but they must be careful to invoke the shouldSkip()
+            override the inherited ShouldSkip() method to exclude certain objects
+            from autoproxying, but they must be careful to invoke the ShouldSkip()
             method of this class, which tries to avoid circular reference problems
             and infinite loops.</p>
             <p>Advisors or advices requiring ordering should implement the Ordered interface.
@@ -1518,11 +1521,15 @@
         </member>
         <member name="M:Spring.Aop.Framework.AutoProxy.AbstractAdvisorAutoProxyCreator.ExtendAdvisors(System.Collections.IList,System.Type,System.String)">
             <summary>
-            Extension hook that subclasses can override to register additional advisors,
+            Extension hook that subclasses can override to add additional advisors for the given object,
             given the sorted advisors obtained to date.<br/>
             The default implementation does nothing.<br/>
             Typically used to add advisors that expose contextual information required by some of the later advisors.
             </summary>
+            <remarks>
+            The advisor list passed into this method is already reduced to advisors applying to this particular object.
+            If you want to register additional common advisor candidates, override <see cref="M:Spring.Aop.Framework.AutoProxy.AbstractAdvisorAutoProxyCreator.FindCandidateAdvisors(System.Type,System.String)"/>.
+            </remarks>
             <param name="advisors">Advisors that have already been identified as applying to a given object</param>
             <param name="objectType">the type of the object to be advised</param>
             <param name="objectName">the name of the object to be advised</param>
@@ -1999,6 +2006,18 @@
             <param name="mappedName">the name in the configured list of names</param>
             <returns>if the names match</returns>
         </member>
+        <member name="M:Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator.IsObjectNameMatch(System.Type,System.String,System.Collections.IList)">
+            <summary>
+            Convenience method that may be used by derived classes. Iterates over the list of <paramref name="objectNamePatterns"/> to match <paramref name="objectName"/> against.
+            </summary>
+            <param name="objType">the object's type. Must not be <c>null</c>.</param>
+            <param name="objectName">the name of the object Must not be <c>null</c>.</param>
+            <param name="objectNamePatterns">the list of patterns, that <paramref name="objectName"/> shall be matched against. Must not be <c>null</c>.</param>        
+            <returns>
+            If <paramref name="objectNamePatterns"/> is <c>null</c>, will always return <c>true</c>, otherwise
+            if <paramref name="objectName"/> matches any of the patterns specified in <paramref name="objectNamePatterns"/>. 
+            </returns>
+        </member>
         <member name="P:Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator.ObjectNames">
             <summary>
             Set the names of the objects in IList fashioned way that should automatically 
@@ -2045,6 +2064,65 @@
             <summary>
              The list of patterns to match <see cref="P:System.Type.FullName"/> against. For pattern syntax, see <see cref="T:Spring.Aop.Support.TypeNameTypeFilter"/>
             </summary>
+        </member>
+        <member name="T:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyFactory">
+            <summary>
+            A reusable base implementation of <see cref="T:Spring.Aop.Framework.IAopProxyFactory"/>, providing
+            some useful default implementations
+            </summary>
+            <author>Erich Eichinger</author>
+        </member>
+        <member name="T:Spring.Aop.Framework.IAopProxyFactory">
+            <summary> 
+            Factory interface for the creation of AOP proxies based on
+            <see cref="T:Spring.Aop.Framework.AdvisedSupport"/> configuration
+            objects.
+            </summary>
+            <author>Rod Johnson</author>
+            <author>Aleksandar Seovic (.NET)</author>
+        </member>
+        <member name="M:Spring.Aop.Framework.IAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)">
+            <summary>
+            Creates an <see cref="T:Spring.Aop.Framework.IAopProxy"/> for the
+            supplied <paramref name="advisedSupport"/> configuration.
+            </summary>
+            <param name="advisedSupport">The AOP configuration.</param>
+            <returns>An <see cref="T:Spring.Aop.Framework.IAopProxy"/>.</returns>
+            <exception cref="T:Spring.Aop.Framework.AopConfigException">
+            If the supplied <paramref name="advisedSupport"/> configuration is
+            invalid.
+            </exception>
+        </member>
+        <member name="M:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)">
+            <summary>
+            Creates an <see cref="T:Spring.Aop.Framework.IAopProxy"/> for the
+            supplied <paramref name="advisedSupport"/> configuration.
+            </summary>
+            <param name="advisedSupport">The AOP configuration.</param>
+            <returns>An <see cref="T:Spring.Aop.Framework.IAopProxy"/>.</returns>
+            <exception cref="T:Spring.Aop.Framework.AopConfigException">
+            If the supplied <paramref name="advisedSupport"/> configuration is
+            invalid.
+            </exception>
+            <seealso cref="M:Spring.Aop.Framework.IAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)"/>
+        </member>
+        <member name="M:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyFactory.DoCreateAopProxyInstance(Spring.Aop.Framework.AdvisedSupport)">
+            <summary>
+            Actually creates the proxy instance based on the supplied <see cref="T:Spring.Aop.Framework.AdvisedSupport"/>.
+            </summary>
+            <returns>the proxy instance described by <paramref name="advisedSupport"/>. Must not be <c>null</c></returns>
+        </member>
+        <member name="M:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyFactory.EliminateDuplicateAdvisors(Spring.Aop.Framework.AdvisedSupport)">
+            <summary>
+            If possible, checks for advisor duplicates on the supplied <paramref name="advisedSupport"/> and 
+            eliminates them.
+            </summary>
+        </member>
+        <member name="M:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyFactory.IsAopProxyType(Spring.Aop.ITargetSource)">
+            <summary>
+            Checks, if the given <paramref name="targetSource"/> holds a proxy generated by this factory.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Spring.Aop.Framework.DynamicProxy.AbstractAopProxyMethodBuilder">
             <summary>
@@ -3113,44 +3191,17 @@
             <author>Erich Eichinger (.NET)</author>
             <seealso cref="T:Spring.Aop.Framework.IAopProxyFactory"/>
         </member>
-        <member name="T:Spring.Aop.Framework.IAopProxyFactory">
-            <summary> 
-            Factory interface for the creation of AOP proxies based on
-            <see cref="T:Spring.Aop.Framework.AdvisedSupport"/> configuration
-            objects.
-            </summary>
-            <author>Rod Johnson</author>
-            <author>Aleksandar Seovic (.NET)</author>
-        </member>
-        <member name="M:Spring.Aop.Framework.IAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)">
-            <summary>
-            Creates an <see cref="T:Spring.Aop.Framework.IAopProxy"/> for the
-            supplied <paramref name="advisedSupport"/> configuration.
-            </summary>
-            <param name="advisedSupport">The AOP configuration.</param>
-            <returns>An <see cref="T:Spring.Aop.Framework.IAopProxy"/>.</returns>
-            <exception cref="T:Spring.Aop.Framework.AopConfigException">
-            If the supplied <paramref name="advisedSupport"/> configuration is
-            invalid.
-            </exception>
-        </member>
         <member name="M:Spring.Aop.Framework.DynamicProxy.DefaultAopProxyFactory.#cctor">
             <summary>
             Force transient assemblies to be resolvable by <see cref="M:System.Reflection.Assembly.Load(System.String)"/>.
             </summary>
         </member>
-        <member name="M:Spring.Aop.Framework.DynamicProxy.DefaultAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)">
+        <member name="M:Spring.Aop.Framework.DynamicProxy.DefaultAopProxyFactory.DoCreateAopProxyInstance(Spring.Aop.Framework.AdvisedSupport)">
             <summary>
-            Creates an <see cref="T:Spring.Aop.Framework.IAopProxy"/> for the
-            supplied <paramref name="advisedSupport"/> configuration.
+            Creates an actual proxy instance based on the supplied <paramref name="advisedSupport"/>
             </summary>
-            <param name="advisedSupport">The AOP configuration.</param>
-            <returns>An <see cref="T:Spring.Aop.Framework.IAopProxy"/>.</returns>
-            <exception cref="T:Spring.Aop.Framework.AopConfigException">
-            If the supplied <paramref name="advisedSupport"/> configuration is
-            invalid.
-            </exception>
-            <seealso cref="M:Spring.Aop.Framework.IAopProxyFactory.CreateAopProxy(Spring.Aop.Framework.AdvisedSupport)"/>
+            <param name="advisedSupport"></param>
+            <returns></returns>
         </member>
         <member name="M:Spring.Aop.Framework.DynamicProxy.DefaultAopProxyFactory.BuildProxyType(Spring.Proxy.IProxyTypeBuilder)">
             <summary>
@@ -7084,7 +7135,22 @@
             <see cref="T:Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor"/> class
             for the supplied <paramref name="advice"/>.
             </summary>
-            <param name="advice"></param>
+            <param name="advice">the advice to apply if the pointcut matches</param>
+        </member>
+        <member name="M:Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor.#ctor(System.Type,System.Boolean,AopAlliance.Aop.IAdvice)">
+            <summary>
+            Creates a new instance of the
+            <see cref="T:Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor"/> class
+            for the supplied <paramref name="advice"/>.
+            </summary>
+            <param name="attribute">
+            The <see cref="T:System.Attribute"/> to match.
+            </param>
+            <param name="inherit">
+            Flag that controls whether or not the inheritance tree of the
+            method to be included in the search for the <see cref="T:System.Attribute"/>?
+            </param>
+            <param name="advice">the advice to apply if the pointcut matches</param>
         </member>
         <member name="P:Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor.IsPerInstance">
             <summary>
@@ -9999,6 +10065,16 @@
             </summary>
             <author>Aleksandar Seovic</author>
         </member>
+        <member name="F:Spring.Aspects.Cache.BaseCacheAdvice.logger">
+            <summary>
+            Shared logger instance
+            </summary>
+        </member>
+        <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.#ctor">
+            <summary>
+            Create a new default instance.
+            </summary>
+        </member>
         <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.GetCache(System.String)">
             <summary>
             Returns an <see cref="T:Spring.Caching.ICache"/> instance based on the cache name.
@@ -10008,6 +10084,15 @@
             Cache instance for the specified <paramref name="name"/> if one
             is registered in the application context, or <c>null</c> if it isn't.
             </returns>
+            <exception cref="T:Spring.Objects.Factory.NoSuchObjectDefinitionException">
+            If there's no cache instance registered for the specified <paramref name="name"/>.
+            </exception>
+            <exception cref="T:Spring.Objects.ObjectsException">
+            If the cache instance could not be created.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            If the cache instance registered does not implement the <see cref="T:Spring.Caching.ICache"/> interface.
+            </exception>
         </member>
         <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.PrepareVariables(System.Reflection.MethodInfo,System.Object[])">
             <summary>
@@ -10047,12 +10132,26 @@
             If the SpEL expression could not be successfuly resolved to a boolean.
             </exception>
         </member>
-        <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.GetCustomAttribute(System.Reflection.MethodInfo,System.Type)">
+        <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.GetCustomAttribute(System.Reflection.ICustomAttributeProvider,System.Type)">
             <summary>
             Retrieves custom attribute for the specified attribute type.
             </summary>
-            <param name="method">
-            Method to get attribute from.
+            <param name="attributeProvider">
+            Method/Parameter to get attribute from.
+            </param>
+            <param name="attributeType">
+            Attribute type.
+            </param>
+            <returns>
+            Attribute instance if one is found, <c>null</c> otherwise.
+            </returns>
+        </member>
+        <member name="M:Spring.Aspects.Cache.BaseCacheAdvice.GetCustomAttributes(System.Reflection.ICustomAttributeProvider,System.Type)">
+            <summary>
+            Retrieves custom attribute for the specified attribute type.
+            </summary>
+            <param name="attributeProvider">
+            Method/Parameter to get attribute from.
             </param>
             <param name="attributeType">
             Attribute type.
@@ -10270,7 +10369,7 @@
             throws an exception.
             </exception>
         </member>
-        <member name="M:Spring.Aspects.Cache.CacheResultAdvice.GetReturnValue(AopAlliance.Intercept.IMethodInvocation,Spring.Caching.CacheResultAttribute,System.Boolean@)">
+        <member name="M:Spring.Aspects.Cache.CacheResultAdvice.GetReturnValue(AopAlliance.Intercept.IMethodInvocation,Spring.Caching.CacheResultAttribute,System.Collections.IDictionary,System.Boolean@)">
             <summary>
             Obtains return value either from cache or by invoking target method
             and caches it if necessary.
@@ -10283,6 +10382,9 @@
             in which case no caching of the result as a whole will be performed 
             (if the result is collection, individual items could still be cached separately).
             </param>
+            <param name="vars">
+            Variables for expression evaluation.
+            </param>
             <param name="cacheHit">
             Returns <c>true</c> if the return value was found in cache, <c>false</c> otherwise.
             </param>
@@ -10290,7 +10392,7 @@
             Return value for the specified <paramref name="invocation"/>.
             </returns>
         </member>
-        <member name="M:Spring.Aspects.Cache.CacheResultAdvice.CacheResultItems(System.Collections.IEnumerable,Spring.Caching.CacheResultItemsAttribute[])">
+        <member name="M:Spring.Aspects.Cache.CacheResultAdvice.CacheResultItems(System.Collections.IEnumerable,Spring.Caching.CacheResultItemsAttribute[],System.Collections.IDictionary)">
             <summary>
             Caches each item from the collection returned by target method.
             </summary>
@@ -10299,6 +10401,9 @@
             </param>
             <param name="itemInfoArray">
             Attributes specifying where and how to cache each item from the collection.
+            </param>
+            <param name="vars">
+            Variables for expression evaluation.
             </param>
         </member>
         <member name="T:Spring.Aspects.Cache.CacheResultAdvisor">
@@ -11560,6 +11665,16 @@
              </remarks>
              <author>Mark Pollack</author>
         </member>
+        <member name="M:Spring.Aspects.RetryAdvice.#ctor">
+            <summary>
+            Creates a new RetryAdvice instance, using <see cref="M:System.Threading.Thread.Sleep(System.TimeSpan)"/> for delaying retries
+            </summary>
+        </member>
+        <member name="M:Spring.Aspects.RetryAdvice.#ctor(Spring.Aspects.RetryAdvice.SleepHandler)">
+            <summary>
+            Creates a new RetryAdvice instance, using any arbitrary callback for delaying retries
+            </summary>
+        </member>
         <member name="M:Spring.Aspects.RetryAdvice.Invoke(AopAlliance.Intercept.IMethodInvocation)">
             <summary>
             Implement this method to perform extra treatments before and after
@@ -11648,6 +11763,11 @@
             Gets or sets the Regex string used to parse advice expressions starting with 'on exception (constraint)' and exception handling actions.
             </summary>
             <value>The regex string to parse advice expressions starting with 'on exception (constraint)' and exception handling actions.</value>
+        </member>
+        <member name="T:Spring.Aspects.RetryAdvice.SleepHandler">
+            <summary>
+            The type of the callback that is called for delaying retries.
+            </summary>
         </member>
         <member name="T:Spring.Aspects.RetryExceptionHandler">
              <summary>

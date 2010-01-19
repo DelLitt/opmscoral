@@ -1,0 +1,5 @@
+﻿<NavigationWindow x:Class="POSClient.Views.NavigationShellView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="NavigationShellView" Height="640" Width="480" WindowStartupLocation="CenterScreen">    
+</NavigationWindow>

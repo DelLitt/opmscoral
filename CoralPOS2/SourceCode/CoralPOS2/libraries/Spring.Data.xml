@@ -2477,6 +2477,12 @@
             </note>
             </remarks>
         </member>
+        <member name="M:Spring.Data.Common.DbProviderFactoryObject.CreateProviderInstance">
+            <summary>
+            Create the actual provider instance as specified by this factory's configuration properties.
+            </summary>
+            <returns>the fully configured provider</returns>
+        </member>
         <member name="M:Spring.Data.Common.DbProviderFactoryObject.AfterPropertiesSet">
             <summary>
             Validates that the provider name is specified.
@@ -2671,7 +2677,7 @@
             Initializes a new instance of the <see cref="T:Spring.Data.Common.ErrorCodes"/> class.
             </summary>
         </member>
-        <member name="T:Spring.Data.MultiDelegatingDbProvider">
+        <member name="T:Spring.Data.Common.MultiDelegatingDbProvider">
             <summary>
             A wrapper implementation for IDbProvider such that multiple DbProvider instances can be
             selected at runtime, say based on web request criteria.
@@ -2684,51 +2690,51 @@
             </remarks>
             <author>Mark Pollack</author>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.#ctor">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Spring.Data.MultiDelegatingDbProvider"/> class.
+            Initializes a new instance of the <see cref="T:Spring.Data.Common.MultiDelegatingDbProvider"/> class.
             </summary>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.#ctor(System.Collections.IDictionary)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.#ctor(System.Collections.IDictionary)">
             <summary>
-            Initializes a new instance of the <see cref="T:Spring.Data.MultiDelegatingDbProvider"/> class.
+            Initializes a new instance of the <see cref="T:Spring.Data.Common.MultiDelegatingDbProvider"/> class.
             </summary>
             <param name="targetDbProviders">The target db providers.</param>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.AfterPropertiesSet">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.AfterPropertiesSet">
             <summary>
             Ensures that the there are values in the TargetDbProviders dictionary and that the
             key is of the type string and value is of the type IDbProvider.
             </summary>
             <exception cref="T:System.ArgumentException">If the above conditions are not met.</exception>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateCommand">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateCommand">
             <summary>
             Returns a new command object for executing SQL statments/Stored Procedures
             against the database.
             </summary>
             <returns>An new <see cref="T:System.Data.IDbCommand"/></returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateConnection">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateConnection">
             <summary>
             Returns a new connection object to communicate with the database.
             </summary>
             <returns>A new <see cref="T:System.Data.IDbConnection"/></returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateParameter">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateParameter">
             <summary>
             Returns a new parameter object for binding values to parameter
             placeholders in SQL statements or Stored Procedure variables.
             </summary>
             <returns>A new <see cref="T:System.Data.IDbDataParameter"/></returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateDataAdapter">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateDataAdapter">
             <summary>
             Returns a new adapter objects for use with offline DataSets.
             </summary>
             <returns>A new <see cref="T:System.Data.IDbDataAdapter"/></returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateCommandBuilder">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateCommandBuilder">
             <summary>
             Returns a new instance of the providers CommandBuilder class.
             </summary>
@@ -2737,7 +2743,7 @@
             for command builders, hence the return signature is object to
             be portable (but more loosely typed) across .NET 1.1/2.0</remarks>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateParameterName(System.String)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateParameterName(System.String)">
             <summary>
             Creates the name of the parameter in the format appropriate to use inside IDbCommand.CommandText.
             </summary>
@@ -2747,7 +2753,7 @@
             </returns>
             <remarks>In most cases this adds the parameter prefix to the name passed into this method.</remarks>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.CreateParameterNameForCollection(System.String)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.CreateParameterNameForCollection(System.String)">
             <summary>
             Creates the name ofthe parameter in the format appropriate for an IDataParameter, i.e. to be
             part of a IDataParameterCollection.
@@ -2757,14 +2763,14 @@
             The parameter name formatted for an IDataParameter
             </returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.ExtractError(System.Exception)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.ExtractError(System.Exception)">
             <summary>
             Extracts the provider specific error code as a string.
             </summary>
             <param name="e">The data access exception.</param>
             <returns>The provider specific error code</returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.IsDataAccessException(System.Exception)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.IsDataAccessException(System.Exception)">
             <summary>
             Determines whether the provided exception is in fact related
             to database access.  This can be provider dependent in .NET 1.1 since
@@ -2777,7 +2783,7 @@
             exception; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.IsDataAccessExceptionBCL11(System.Exception)">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.IsDataAccessExceptionBCL11(System.Exception)">
             <summary>
             Determines whether is data access exception in .NET 1.1 for the specified exception.
             </summary>
@@ -2786,37 +2792,37 @@
             	<c>true</c> if is data access exception in .NET 1.1 for the specified exception; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:Spring.Data.MultiDelegatingDbProvider.GetTargetProvider">
+        <member name="M:Spring.Data.Common.MultiDelegatingDbProvider.GetTargetProvider">
             <summary>
             Gets the target provider based on the thread local name "dbProviderName"
             </summary>
             <returns>The corresonding IDbProvider.</returns>
         </member>
-        <member name="P:Spring.Data.MultiDelegatingDbProvider.DefaultDbProvider">
+        <member name="P:Spring.Data.Common.MultiDelegatingDbProvider.DefaultDbProvider">
             <summary>
             Sets the default IDbProvider. This will be returned if no DbProvider is found in thread local storage.
             </summary>
             <value>The default db provider.</value>
         </member>
-        <member name="P:Spring.Data.MultiDelegatingDbProvider.TargetDbProviders">
+        <member name="P:Spring.Data.Common.MultiDelegatingDbProvider.TargetDbProviders">
             <summary>
             Sets the target db providers.
             </summary>
             <value>The target db providers.</value>
         </member>
-        <member name="P:Spring.Data.MultiDelegatingDbProvider.DbMetadata">
+        <member name="P:Spring.Data.Common.MultiDelegatingDbProvider.DbMetadata">
             <summary>
             Return metadata information about the database provider
             </summary>
             <value></value>
         </member>
-        <member name="P:Spring.Data.MultiDelegatingDbProvider.ConnectionString">
+        <member name="P:Spring.Data.Common.MultiDelegatingDbProvider.ConnectionString">
             <summary>
             Connection string used to create connections.
             </summary>
             <value></value>
         </member>
-        <member name="P:Spring.Data.MultiDelegatingDbProvider.CurrentDbProviderName">
+        <member name="P:Spring.Data.Common.MultiDelegatingDbProvider.CurrentDbProviderName">
             <summary>
             Convenience method to sets the name of the DbProvider that will be used for the
             the current thread's procesing.
@@ -2899,6 +2905,26 @@
             Prepare the command setting the transaction timeout.
             </summary>
             <param name="command"></param>
+        </member>
+        <member name="M:Spring.Data.Core.AdoAccessor.DisposeCommand(System.Data.IDbCommand)">
+            <summary>
+            Dispose the command, if any
+            </summary>
+        </member>
+        <member name="M:Spring.Data.Core.AdoAccessor.DisposeDataAdapterCommands(System.Data.IDbDataAdapter)">
+            <summary>
+            Dispose the command, if any
+            </summary>
+        </member>
+        <member name="M:Spring.Data.Core.AdoAccessor.GetCommandText(System.Object)">
+            <summary>
+            Extract the command text from the given <see cref="T:Spring.Data.ICommandTextProvider"/>, if any.
+            </summary>
+        </member>
+        <member name="M:Spring.Data.Core.AdoAccessor.GetConnectionTxPair(Spring.Data.Common.IDbProvider)">
+            <summary>
+            Obtain a connection/transaction pair
+            </summary>
         </member>
         <member name="M:Spring.Data.Core.AdoAccessor.AfterPropertiesSet">
             <summary>
@@ -7862,11 +7888,6 @@
             <author>Juergen Hoeller</author>
             <author>Mark Pollack (.NET)</author>
         </member>
-        <member name="F:Spring.Transaction.Config.AttributeDrivenObjectDefinitionParser.TRANSACTION_INTERCEPTOR">
-            <summary>
-            Object property name for injection the TransactionInterceptor
-            </summary>
-        </member>
         <member name="F:Spring.Transaction.Config.AttributeDrivenObjectDefinitionParser.PROXY_TARGET_TYPE">
             <summary>
             The '<code>proxy-target-type</code>' attribute
@@ -8105,6 +8126,26 @@
             <returns>
             The <see cref="T:Spring.Transaction.Interceptor.ITransactionAttribute"/> configured transaction attribute, or null
             if none was found.
+            </returns>
+        </member>
+        <member name="M:Spring.Transaction.Interceptor.AbstractTransactionAttributeSourcePointcut.Matches(System.Reflection.MethodInfo,System.Type)">
+            <summary>
+            Does the supplied <paramref name="method"/> satisfy this matcher?
+            </summary>
+            <remarks>
+            <p>
+            Must be implemented by a derived class in order to specify matching
+            rules.
+            </p>
+            </remarks>
+            <param name="method">The candidate method.</param>
+            <param name="targetType">
+            The target <see cref="T:System.Type"/> (may be <see langword="null"/>,
+            in which case the candidate <see cref="T:System.Type"/> must be taken
+            to be the <paramref name="method"/>'s declaring class).
+            </param>
+            <returns>
+            <see langword="true"/> if this this method matches statically.
             </returns>
         </member>
         <member name="T:Spring.Transaction.Interceptor.AttributesTransactionAttributeSource">
@@ -8824,6 +8865,21 @@
             <see cref="T:Spring.Transaction.Interceptor.NameMatchTransactionAttributeSource"/> class.
             </summary>
         </member>
+        <member name="M:Spring.Transaction.Interceptor.NameMatchTransactionAttributeSource.GetEnumerator">
+            <summary>
+            Enumerate the string/<see cref="T:Spring.Transaction.Interceptor.ITransactionAttribute"/> mapping entries.
+            </summary>
+        </member>
+        <member name="M:Spring.Transaction.Interceptor.NameMatchTransactionAttributeSource.Add(System.String,Spring.Transaction.Interceptor.ITransactionAttribute)">
+            <summary>
+            Add a mapping.
+            </summary>
+        </member>
+        <member name="M:Spring.Transaction.Interceptor.NameMatchTransactionAttributeSource.Add(System.String,System.String)">
+            <summary>
+            Add a mapping.
+            </summary>
+        </member>
         <member name="M:Spring.Transaction.Interceptor.NameMatchTransactionAttributeSource.IsMatch(System.String,System.String)">
             <summary>
             Does the supplied <paramref name="methodName"/> match the supplied <paramref name="mappedName"/>?
@@ -9044,6 +9100,11 @@
             <param name="exceptionType">
             The <see cref="T:System.Exception"/> class that will trigger a rollback.
             </param>
+        </member>
+        <member name="P:Spring.Transaction.Interceptor.ObjectFactoryTransactionAttributeSourceAdvisor.Pointcut">
+            <summary>
+            The <see cref="T:Spring.Aop.IPointcut"/> that drives this advisor.
+            </summary>
         </member>
         <member name="T:Spring.Transaction.Interceptor.RuleBasedTransactionAttribute">
             <summary>
@@ -9566,9 +9627,9 @@
         </member>
         <member name="T:Spring.Transaction.Interceptor.TransactionAttributeSourceAdvisor">
             <summary>
-            Advisor driven by a <see cref="T:Spring.Transaction.Interceptor.ITransactionAttributeSource"/>, used to exclude
-            a <see cref="T:Spring.Transaction.Interceptor.TransactionInterceptor"/> from methods that
-            are non-transactional.
+            Advisor driven by a <see cref="T:Spring.Transaction.Interceptor.ITransactionAttributeSource"/>, used to include
+            a <see cref="T:Spring.Transaction.Interceptor.TransactionInterceptor"/> for methods that
+            are transactional.
             </summary>
             <remarks>
             <p>

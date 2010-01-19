@@ -9,9 +9,9 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace AppFrame.WPF
 {
-    public class NavigationWindowStrategy : DefaultViewLocator
+    public class NavigationWindowLocator : DefaultViewLocator
     {
-        public NavigationWindowStrategy(IAssemblySource assemblySource, IServiceLocator serviceLocator) : base(assemblySource, serviceLocator)
+        public NavigationWindowLocator(IAssemblySource assemblySource, IServiceLocator serviceLocator) : base(assemblySource, serviceLocator)
         {
         }
 

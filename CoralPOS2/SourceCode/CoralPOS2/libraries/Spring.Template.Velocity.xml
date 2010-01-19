@@ -265,6 +265,11 @@
             </summary>
             <author>Erez Mazor</author>
         </member>
+        <member name="F:Spring.Template.Velocity.CommonsLoggingLogSystem.log">
+            <summary>
+            Shared logger instance.
+            </summary>
+        </member>
         <member name="M:Spring.Template.Velocity.CommonsLoggingLogSystem.Init(NVelocity.Runtime.IRuntimeServices)">
             <summary>
             Initializes the specified runtime services.  No-op in current implementatin
@@ -328,6 +333,11 @@
             A comma delimited list of paths used by the spring IResourceLoader implementation
             </summary>
         </member>
+        <member name="F:Spring.Template.Velocity.SpringResourceLoader.log">
+            <summary>
+            Shared logger instance.
+            </summary>
+        </member>
         <member name="M:Spring.Template.Velocity.SpringResourceLoader.Init(Commons.Collections.ExtendedProperties)">
             <summary>
             Initialize the template loader with a resources class.
@@ -359,6 +369,51 @@
             </summary>
             <param name="resource">The resource.</param>
             <returns></returns>
+        </member>
+        <member name="T:Spring.Template.Velocity.VelocityConstants">
+            <summary>
+            Common Velocity constants.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.File">
+            <summary>
+            File.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Type">
+            <summary>
+            Type.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Assembly">
+            <summary>
+            Assembly.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Class">
+            <summary>
+            Class.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Name">
+            <summary>
+            Name.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Description">
+            <summary>
+            Description.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Path">
+            <summary>
+            Path.
+            </summary>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityConstants.Separator">
+            <summary>
+            Separator.
+            </summary>
         </member>
         <member name="T:Spring.Template.Velocity.VelocityEngineFactory">
              <summary>
@@ -392,6 +447,11 @@
              <see cref="T:Spring.Template.Velocity.VelocityEngineFactoryObject"/>
              <see cref="T:Spring.Template.Velocity.CommonsLoggingLogSystem"/>
              <author>Erez Mazor</author>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityEngineFactory.log">
+            <summary>
+            Shared logger instance.
+            </summary>
         </member>
         <member name="M:Spring.Template.Velocity.VelocityEngineFactory.CreateVelocityEngine">
             <summary>
@@ -436,6 +496,7 @@
             <br/>Called by <code>CreateVelocityEngine()</code>.
             </summary>
             <param name="velocityEngine">velocityEngine the VelocityEngine to configure</param>
+            <param name="extendedProperties"></param>
             <param name="paths">paths the path list to load Velocity resources from</param>
             <see cref="T:NVelocity.Runtime.Resource.Loader.FileResourceLoader"/>
             <see cref="T:Spring.Template.Velocity.SpringResourceLoader"/>
@@ -454,6 +515,7 @@
             of the tranditional "ClassFullName, AssemblyName" to work.
             </summary>
             <param name="velocityEngine">velocityEngine the VelocityEngine to configure</param>
+            <param name="extendedProperties"></param>
             <param name="resourceLoaderPathString">resourceLoaderPath the path to load Velocity resources from</param>
             <see cref="T:Spring.Template.Velocity.SpringResourceLoader"/>
             <see cref="M:Spring.Template.Velocity.VelocityEngineFactory.InitVelocityResourceLoader(NVelocity.App.VelocityEngine,Commons.Collections.ExtendedProperties,System.Collections.IList)"/>
@@ -603,6 +665,11 @@
             Generalized Utility class for merging velocity templates into a text writer or return the result as a string
             </summary>
             <author>Erez Mazor</author>
+        </member>
+        <member name="F:Spring.Template.Velocity.VelocityEngineUtils.log">
+            <summary>
+            Shared logger instance.
+            </summary>
         </member>
         <member name="M:Spring.Template.Velocity.VelocityEngineUtils.MergeTemplate(NVelocity.App.VelocityEngine,System.String,System.String,System.Collections.Hashtable,System.IO.TextWriter)">
             <summary>

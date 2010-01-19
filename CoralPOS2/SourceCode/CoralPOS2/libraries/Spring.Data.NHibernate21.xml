@@ -890,6 +890,18 @@
             The root exception from the underlying data access API - ADO.NET
             </param>        
         </member>
+        <member name="M:Spring.Data.NHibernate.HibernateAdoException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new instance of the HibernateSystemException class with the specified message
+            and root cause.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+            <param name="rootCause">
+            The root exception that is being wrapped.
+            </param>
+        </member>
         <member name="M:Spring.Data.NHibernate.HibernateAdoException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
             Creates a new instance of the
@@ -930,11 +942,32 @@
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateQueryException"/> class.
             </summary>
         </member>
+        <member name="M:Spring.Data.NHibernate.HibernateQueryException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the
+            <see cref="T:Spring.Data.NHibernate.HibernateQueryException"/> class.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+        </member>
         <member name="M:Spring.Data.NHibernate.HibernateQueryException.#ctor(NHibernate.QueryException)">
             <summary>
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateQueryException"/> class.
             </summary>
             <param name="ex">The ex.</param>
+        </member>
+        <member name="M:Spring.Data.NHibernate.HibernateQueryException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new instance of the HibernateQueryException class with the specified message
+            and root cause.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+            <param name="rootCause">
+            The root exception that is being wrapped.
+            </param>
         </member>
         <member name="M:Spring.Data.NHibernate.HibernateQueryException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
@@ -968,6 +1001,24 @@
             <summary>
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateSystemException"/> class.
             </summary>
+        </member>
+        <member name="M:Spring.Data.NHibernate.HibernateSystemException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateSystemException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Spring.Data.NHibernate.HibernateSystemException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new instance of the HibernateSystemException class with the specified message
+            and root cause.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+            <param name="rootCause">
+            The root exception that is being wrapped.
+            </param>
         </member>
         <member name="M:Spring.Data.NHibernate.HibernateSystemException.#ctor(NHibernate.HibernateException)">
             <summary>
@@ -5621,6 +5672,12 @@
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException"/> class.
             </summary>
         </member>
+        <member name="M:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
         <member name="M:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException.#ctor(NHibernate.UnresolvableObjectException)">
             <summary>
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException"/> class.
@@ -5644,6 +5701,18 @@
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException"/> class.
             </summary>
             <param name="ex">The ex.</param>
+        </member>
+        <member name="M:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new instance of the HibernateObjectRetrievalFailureException class with the specified message
+            and root cause.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+            <param name="rootCause">
+            The root exception that is being wrapped.
+            </param>
         </member>
         <member name="M:Spring.Data.NHibernate.HibernateObjectRetrievalFailureException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
@@ -5675,6 +5744,15 @@
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException"/> class.
             </summary>
         </member>
+        <member name="M:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the
+            <see cref="T:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException"/> class.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+        </member>
         <member name="M:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException.#ctor(NHibernate.StaleObjectStateException)">
             <summary>
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException"/> class.
@@ -5686,6 +5764,18 @@
             Initializes a new instance of the <see cref="T:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException"/> class.
             </summary>
             <param name="ex">The StaleStateException.</param>
+        </member>
+        <member name="M:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new instance of the HibernateOptimisticLockingFailureException class with the specified message
+            and root cause.
+            </summary>
+            <param name="message">
+            A message about the exception.
+            </param>
+            <param name="rootCause">
+            The root exception that is being wrapped.
+            </param>
         </member>
         <member name="M:Spring.Data.NHibernate.HibernateOptimisticLockingFailureException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
@@ -5914,7 +6004,7 @@
             the corresponding DataAccessException instance
             </returns>
         </member>
-        <member name="P:Spring.Data.NHibernate.LocalSessionFactoryObject.Spring#Context#IApplicationContextAware#ApplicationContext">
+        <member name="P:Spring.Data.NHibernate.LocalSessionFactoryObject.ApplicationContext">
             <summary>
             Setting the Application Context determines were resources are loaded from
             </summary>
@@ -6097,6 +6187,13 @@
             </p>
             </summary>
             <value>The ADO exception translator.</value>
+        </member>
+        <member name="P:Spring.Data.NHibernate.LocalSessionFactoryObject.BytecodeProvider">
+            <summary>
+            Sets custom byte code provider implementation to be used. This corresponds to setting
+            the <see cref="P:NHibernate.Cfg.Environment.BytecodeProvider"/> property before NHibernate session factory
+            configuration.
+            </summary>
         </member>
         <member name="P:Spring.Data.NHibernate.LocalSessionFactoryObject.ObjectType">
             <summary>
