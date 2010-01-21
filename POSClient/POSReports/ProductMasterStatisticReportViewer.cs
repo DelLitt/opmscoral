@@ -44,127 +44,128 @@ namespace POSReports
             // filter cho ten san pham
             if (!string.IsNullOrEmpty(txtPrdFilter.Text))
             {
-                string productTotalFilter = "";
-                string productNamesFilter = txtPrdFilter.Text.Trim();
-                string[] pmFilters = productNamesFilter.Split(',');
-                if (pmFilters.Length <= 1)
-                {
-                    productTotalFilter = "product_name like '%" + productNamesFilter + "%'";
-                }
-                else
-                {
-                    string startFilterStr = "";
-                    int count = 0;
-                    string endFilterStr = "";
+                FilterString = txtPrdFilter.Text.Trim().ToUpper();
+                //string productTotalFilter = "";
+                //string productNamesFilter = txtPrdFilter.Text.Trim();
+                //string[] pmFilters = productNamesFilter.Split(',');
+                //if (pmFilters.Length <= 1)
+                //{
+                //    productTotalFilter = "product_name = '%" + productNamesFilter + "%'";
+                //}
+                //else
+                //{
+                //    string startFilterStr = "";
+                //    int count = 0;
+                //    string endFilterStr = "";
 
-                    foreach (string pmFilter in pmFilters)
-                    {
-                        count += 1;
-                        if (string.IsNullOrEmpty(productTotalFilter))
-                        {
-                            startFilterStr = "( ";
-                        }
-                        else
-                        {
-                            startFilterStr = " ";
-                        }
+                //    foreach (string pmFilter in pmFilters)
+                //    {
+                //        count += 1;
+                //        if (string.IsNullOrEmpty(productTotalFilter))
+                //        {
+                //            startFilterStr = "( ";
+                //        }
+                //        else
+                //        {
+                //            startFilterStr = " ";
+                //        }
 
-                        if (count == pmFilters.Length) endFilterStr = " ) ";
-                        else
-                        {
-                            endFilterStr = " OR ";
-                        }
+                //        if (count == pmFilters.Length) endFilterStr = " ) ";
+                //        else
+                //        {
+                //            endFilterStr = " OR ";
+                //        }
 
-                        productTotalFilter += startFilterStr + " ( product_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+                //        productTotalFilter += startFilterStr + " ( product_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
 
-                    }
-                }
-                FilterString += productTotalFilter;
+                //    }
+                //}
+                //FilterString += productTotalFilter;
             }
 
             // filter cho kich co san pham
-            if (!string.IsNullOrEmpty(txtSizeFilter.Text))
-            {
-                if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
-                string sizeTotalFilter = "";
-                string productSizesFilter = txtSizeFilter.Text.Trim();
-                string[] pmFilters = productSizesFilter.Split(',');
-                if (pmFilters.Length <= 1)
-                {
-                    sizeTotalFilter = "size_name like '%" + productSizesFilter + "%'";
-                }
-                else
-                {
-                    string startFilterStr = "";
-                    int count = 0;
-                    string endFilterStr = "";
+            //if (!string.IsNullOrEmpty(txtSizeFilter.Text))
+            //{
+            //    if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
+            //    string sizeTotalFilter = "";
+            //    string productSizesFilter = txtSizeFilter.Text.Trim();
+            //    string[] pmFilters = productSizesFilter.Split(',');
+            //    if (pmFilters.Length <= 1)
+            //    {
+            //        sizeTotalFilter = "size_name like '%" + productSizesFilter + "%'";
+            //    }
+            //    else
+            //    {
+            //        string startFilterStr = "";
+            //        int count = 0;
+            //        string endFilterStr = "";
 
-                    foreach (string pmFilter in pmFilters)
-                    {
-                        count += 1;
-                        if (string.IsNullOrEmpty(sizeTotalFilter))
-                        {
-                            startFilterStr = "( ";
-                        }
-                        else
-                        {
-                            startFilterStr = " ";
-                        }
+            //        foreach (string pmFilter in pmFilters)
+            //        {
+            //            count += 1;
+            //            if (string.IsNullOrEmpty(sizeTotalFilter))
+            //            {
+            //                startFilterStr = "( ";
+            //            }
+            //            else
+            //            {
+            //                startFilterStr = " ";
+            //            }
 
-                        if (count == pmFilters.Length) endFilterStr = " ) ";
-                        else
-                        {
-                            endFilterStr = " OR ";
-                        }
+            //            if (count == pmFilters.Length) endFilterStr = " ) ";
+            //            else
+            //            {
+            //                endFilterStr = " OR ";
+            //            }
 
-                        sizeTotalFilter += startFilterStr + " ( size_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+            //            sizeTotalFilter += startFilterStr + " ( size_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
 
-                    }
-                }
-                FilterString += sizeTotalFilter;
-            }
+            //        }
+            //    }
+            //    FilterString += sizeTotalFilter;
+            //}
 
-            // filter cho mau sac san pham
-            if (!string.IsNullOrEmpty(txtColorFilter.Text))
-            {
-                if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
-                string colorTotalFilter = "";
-                string productColorsFilter = txtColorFilter.Text.Trim();
-                string[] pmFilters = productColorsFilter.Split(',');
-                if (pmFilters.Length <= 1)
-                {
-                    colorTotalFilter = "color_name like '%" + productColorsFilter + "%'";
-                }
-                else
-                {
-                    string startFilterStr = "";
-                    int count = 0;
-                    string endFilterStr = "";
+            //// filter cho mau sac san pham
+            //if (!string.IsNullOrEmpty(txtColorFilter.Text))
+            //{
+            //    if (!string.IsNullOrEmpty(FilterString)) FilterString += " AND ";
+            //    string colorTotalFilter = "";
+            //    string productColorsFilter = txtColorFilter.Text.Trim();
+            //    string[] pmFilters = productColorsFilter.Split(',');
+            //    if (pmFilters.Length <= 1)
+            //    {
+            //        colorTotalFilter = "color_name like '%" + productColorsFilter + "%'";
+            //    }
+            //    else
+            //    {
+            //        string startFilterStr = "";
+            //        int count = 0;
+            //        string endFilterStr = "";
 
-                    foreach (string pmFilter in pmFilters)
-                    {
-                        count += 1;
-                        if (string.IsNullOrEmpty(colorTotalFilter))
-                        {
-                            startFilterStr = "( ";
-                        }
-                        else
-                        {
-                            startFilterStr = " ";
-                        }
+            //        foreach (string pmFilter in pmFilters)
+            //        {
+            //            count += 1;
+            //            if (string.IsNullOrEmpty(colorTotalFilter))
+            //            {
+            //                startFilterStr = "( ";
+            //            }
+            //            else
+            //            {
+            //                startFilterStr = " ";
+            //            }
 
-                        if (count == pmFilters.Length) endFilterStr = " ) ";
-                        else
-                        {
-                            endFilterStr = " OR ";
-                        }
+            //            if (count == pmFilters.Length) endFilterStr = " ) ";
+            //            else
+            //            {
+            //                endFilterStr = " OR ";
+            //            }
 
-                        colorTotalFilter += startFilterStr + " ( color_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+            //            colorTotalFilter += startFilterStr + " ( color_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
 
-                    }
-                }
-                FilterString += colorTotalFilter;
-            }
+            //        }
+            //    }
+            //    FilterString += colorTotalFilter;
+            //}
 
 
             Enabled = false;
@@ -188,9 +189,9 @@ namespace POSReports
             aSyncDS.EnforceConstraints = false;
             aSyncDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 
-            POSReports.posDataSetTableAdapters.ProductMasterStatisticTableAdapter adapter = new ProductMasterStatisticTableAdapter();
+            POSReports.posDataSetTableAdapters.ProductMasterStatisticExTableAdapter adapter = new ProductMasterStatisticExTableAdapter();
             adapter.ClearBeforeFill = true;
-            adapter.Fill(posDataSet.ProductMasterStatistic,  FilterString);
+            adapter.Fill(posDataSet.ProductMasterStatisticEx,  FilterString);
                     
         }
 

@@ -232,6 +232,7 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductMasterStatisticEx.rdlc" />
     <EmbeddedResource Include="StockRemainsReportViewer.resx">
       <DependentUpon>StockRemainsReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
