@@ -8,7 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrameClient.Common;
 using Ionic.Zip;
 using Ionic.Zlib;
@@ -43,6 +45,7 @@ namespace AppFrameClient.Utility
         /// <param name="ImExStatistic"></param>
         public static void BackupCRLDatabase(bool SaleStatistic,bool ImExStatistic)
         {
+            
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
             string db = "pos";
             string user = "dbadmin";
@@ -103,6 +106,7 @@ namespace AppFrameClient.Utility
             {
                 Console.WriteLine(ex1.Message);
             }
+            
         }
 
         /// <summary>
@@ -110,6 +114,7 @@ namespace AppFrameClient.Utility
         /// </summary>
         public static void RestoreCRLDatabase()
         {
+            
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
             string db = "pos";
             string user = "dbadmin";
@@ -132,6 +137,7 @@ namespace AppFrameClient.Utility
                     RestoreTable(backupPath, db, user, pass, sqlFiles);
                 }
             }
+            
         }
 
         private static void RestoreTable(string path, string db, string user, string pass, string[] sqlFiles)

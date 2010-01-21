@@ -82,14 +82,30 @@ namespace AppFrame.View
             
 
         }
+
+        protected delegate void UpdateStatusDelegate();
         
         public void showProgressBar()
         {
+            if (this.InvokeRequired)
+            {
+                UpdateStatusDelegate dlg = new
+                    UpdateStatusDelegate(this.showProgressBar);
+                this.Invoke(dlg, new object[] { });
+                return;
+            }
             toolStripStatusLabel.Text = " Processing ";
             timerProgress.Start();    
         }
         public void stopProgressBar()
         {
+            if (this.InvokeRequired)
+            {
+                UpdateStatusDelegate dlg = new
+                    UpdateStatusDelegate(this.stopProgressBar);
+                this.Invoke(dlg, new object[] { });
+                return;
+            }
             toolStripStatusLabel.Text = " Ready ";  
             timerProgress.Stop();
             toolStripProgressBar.Value = 0;
@@ -1274,21 +1290,26 @@ namespace AppFrame.View
 
         private void CreateThreadBackup()
         {
+            this.showProgressBar();
             DatabaseUtils.BackupCRLDatabase(true, true);
             InformationBox.Show("Thành công !", "Khởi động", new AutoCloseParameters(0));
+            this.stopProgressBar();
         }
 
 
         private void crlRestoreHotkey_Pressed(object sender, EventArgs e)
         {
+            
             Thread thread = new Thread(new ThreadStart(CreateThreadRestore));
             thread.Start();
         }
 
         private void CreateThreadRestore()
         {
+            this.showProgressBar();
             DatabaseUtils.RestoreCRLDatabase();
             InformationBox.Show("Thành công !", "Tái khởi động", new AutoCloseParameters(0));
+            this.stopProgressBar();
         }
 
         private void mnuCategoryEdit_Click(object sender, EventArgs e)

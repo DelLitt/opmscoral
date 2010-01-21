@@ -51,6 +51,7 @@
             this.stockdeffileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDB1 = new AppFrameClient.MasterDB();
             this.stock_def_fileTableAdapter = new AppFrameClient.MasterDBTableAdapters.stock_def_fileTableAdapter();
+            this.chkDoNam = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
@@ -99,7 +100,7 @@
             this.productnameDataGridViewTextBoxColumn,
             this.productidDataGridViewTextBoxColumn});
             this.dgvDeptStock.DataSource = this.deptstockdeffileBindingSource;
-            this.dgvDeptStock.Location = new System.Drawing.Point(13, 119);
+            this.dgvDeptStock.Location = new System.Drawing.Point(16, 152);
             this.dgvDeptStock.Name = "dgvDeptStock";
             this.dgvDeptStock.RowHeadersVisible = false;
             this.dgvDeptStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -138,7 +139,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(333, 41);
+            this.btnExport.Location = new System.Drawing.Point(336, 74);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(133, 72);
             this.btnExport.TabIndex = 2;
@@ -166,7 +167,7 @@
             // lblLabel2
             // 
             this.lblLabel2.AutoSize = true;
-            this.lblLabel2.Location = new System.Drawing.Point(16, 69);
+            this.lblLabel2.Location = new System.Drawing.Point(13, 74);
             this.lblLabel2.Name = "lblLabel2";
             this.lblLabel2.Size = new System.Drawing.Size(66, 15);
             this.lblLabel2.TabIndex = 5;
@@ -187,7 +188,7 @@
             this.productnameDataGridViewTextBoxColumn1,
             this.productidDataGridViewTextBoxColumn1});
             this.dgvMainStock.DataSource = this.stockdeffileBindingSource;
-            this.dgvMainStock.Location = new System.Drawing.Point(13, 119);
+            this.dgvMainStock.Location = new System.Drawing.Point(14, 152);
             this.dgvMainStock.Name = "dgvMainStock";
             this.dgvMainStock.ReadOnly = true;
             this.dgvMainStock.RowHeadersVisible = false;
@@ -233,11 +234,23 @@
             // 
             this.stock_def_fileTableAdapter.ClearBeforeFill = true;
             // 
+            // chkDoNam
+            // 
+            this.chkDoNam.AutoSize = true;
+            this.chkDoNam.Location = new System.Drawing.Point(14, 126);
+            this.chkDoNam.Name = "chkDoNam";
+            this.chkDoNam.Size = new System.Drawing.Size(107, 19);
+            this.chkDoNam.TabIndex = 7;
+            this.chkDoNam.Text = "Chỉ lấy đồ nam";
+            this.chkDoNam.UseVisualStyleBackColor = true;
+            this.chkDoNam.CheckedChanged += new System.EventHandler(this.chkDoNam_CheckedChanged);
+            // 
             // ExportDeptStockDefinitionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 437);
+            this.ClientSize = new System.Drawing.Size(477, 470);
+            this.Controls.Add(this.chkDoNam);
             this.Controls.Add(this.lblLabel2);
             this.Controls.Add(this.cboTypes);
             this.Controls.Add(this.label1);
@@ -285,5 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productidDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource departmentBindingSource1;
+        private System.Windows.Forms.CheckBox chkDoNam;
     }
 }

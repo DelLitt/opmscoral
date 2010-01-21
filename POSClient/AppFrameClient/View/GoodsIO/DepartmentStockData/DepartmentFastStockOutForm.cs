@@ -602,28 +602,33 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
                     {
                         // TEMP FIXING FOR EXPORT NEGATIVE STOCK
-                        if (detail.GoodQuantity <= 0 /*|| detail.GoodQuantity > stock.GoodQuantity*/)
+                        if (!ClientSetting.NegativeExport)
                         {
-                            MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " + stock.GoodQuantity);
-                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
-                            return;
+                            if (detail.GoodQuantity <= 0 || detail.GoodQuantity > stock.GoodQuantity)
+                            {
+                                MessageBox.Show("Lỗi ở dòng " + line +
+                                                " : Số lượng Xuất phải là số dương nhỏ hơn hoặc bằng " +
+                                                stock.GoodQuantity);
+                                dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, line-1];
+                                return;
+                            }
                         }
                         if (detail.LostQuantity < 0 || detail.LostQuantity > stock.LostQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Mất phải là số dương nhỏ hơn hoặc bằng " + stock.LostQuantity);
-                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, line-1];
                             return;
                         }
                         if (detail.DamageQuantity < 0 || detail.DamageQuantity > stock.DamageQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Lỗi phải là số dương nhỏ hơn hoặc bằng " + stock.DamageQuantity);
-                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, line-1];
                             return;
                         }
                         if (detail.ErrorQuantity < 0 || detail.ErrorQuantity > stock.ErrorQuantity)
                         {
                             MessageBox.Show("Lỗi ở dòng " + line + " : Số lượng Hư phải là số dương nhỏ hơn hoặc bằng " + stock.ErrorQuantity);
-                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[0, line];
+                            dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, line-1];
                             return;
                         }
                     }
@@ -1475,6 +1480,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                 }
                 bool found = false;
+                int i = 0;
                 DepartmentStockOutDetail foundStockOutDetail = null;
                 foreach (DepartmentStockOutDetail detail in deptSODetailList)
                 {
@@ -1484,16 +1490,18 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         foundStockOutDetail = detail;
                         break;
                     }
+                    i += 1;
                 }
                 if (found)
                 {
                     foundStockOutDetail.GoodQuantity += 1;
                     bdsStockIn.ResetBindings(false);
-                    txtBarcode.Text = "";
-                    txtBarcode.Focus();
                     dgvDeptStockIn.Refresh();
                     dgvDeptStockIn.Invalidate();
+                    dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, i];
                     CalculateTotalStorePrice();
+                    txtBarcode.Text = "";
+                    txtBarcode.Focus();
                     return;
                 }
                 if (eventArgs.DepartmentStock != null)
@@ -1527,9 +1535,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
                 deptSODetailList.EndNew(deptSODetailList.Count - 1);
                 cbbStockOutType.Enabled = false;
-                txtBarcode.Text = "";
                 LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
                 CalculateTotalStorePrice();
+                dgvDeptStockIn.CurrentCell = dgvDeptStockIn[7, deptSODetailList.Count - 1];
+                txtBarcode.Text = "";
                 txtBarcode.Focus();
                 if(rdoFastStockOut.Checked)
                 {
@@ -1659,6 +1668,44 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void rdoRetail_CheckedChanged(object sender, EventArgs e)
         {
             UpdateStockOutDescription();  
+        }
+
+        private void dgvDeptStockIn_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            DataGridView dgView = (DataGridView)sender;
+            //this method overrides the DataGridView's RowPostPaint event 
+            //in order to automatically draw numbers on the row header cells
+            //and to automatically adjust the width of the column containing
+            //the row header cells so that it can accommodate the new row
+            //numbers,
+
+            //store a string representation of the row number in 'strRowNumber'
+            string strRowNumber = (e.RowIndex + 1).ToString();
+
+            //prepend leading zeros to the string if necessary to improve
+            //appearance. For example, if there are ten rows in the grid,
+            //row seven will be numbered as "07" instead of "7". Similarly, if 
+            //there are 100 rows in the grid, row seven will be numbered as "007".
+            while (strRowNumber.Length < dgView.RowCount.ToString().Length) strRowNumber = "0" + strRowNumber;
+
+            //determine the display size of the row number string using
+            //the DataGridView's current font.
+            SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
+
+            //adjust the width of the column that contains the row header cells 
+            //if necessary
+            if (dgView.RowHeadersWidth < (int)(size.Width + 20)) dgView.RowHeadersWidth = (int)(size.Width + 20);
+
+            //this brush will be used to draw the row number string on the
+            //row header cell using the system's current ControlText color
+            Brush b = SystemBrushes.ControlText;
+
+            //draw the row number string on the current row header cell using
+            //the brush defined above and the DataGridView's default font
+            e.Graphics.DrawString(strRowNumber, this.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+
+            //call the base object's OnRowPostPaint method
+            //dgvBill.OnRowPostPaint(e);
         }
     }
     

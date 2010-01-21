@@ -45,7 +45,7 @@ namespace AppFrameClient.View
             }
             departmentBindingSource1.ResetBindings(false);
             this.masterDB1.EnforceConstraints = false;
-            
+            cboDepartment_SelectedIndexChanged(null, null);
             
         }
 
@@ -58,12 +58,31 @@ namespace AppFrameClient.View
 
             if(departmentId > 0 )
             {
+                this.deptstockdeffileBindingSource.Sort = "product_name";
+                if (chkDoNam.Checked)
+                {
+                    this.deptstockdeffileBindingSource.Filter = " type_name like '%NAM' ";
+                }
+                else
+                {
+                    this.deptstockdeffileBindingSource.Filter = "";
+                }
                 this.deptstock_def_fileTableAdapter.Fill(this.masterDB.deptstock_def_file, departmentId);
                 dgvDeptStock.Visible = true;
                 dgvMainStock.Visible = false;
+                
             }
             else
             {
+                this.stockdeffileBindingSource.Sort = "product_name";
+                if (chkDoNam.Checked)
+                {
+                    this.stockdeffileBindingSource.Filter = " type_name like '%NAM' ";
+                }
+                else
+                {
+                    this.stockdeffileBindingSource.Filter = "";
+                }
                 this.stock_def_fileTableAdapter.Fill(this.masterDB1.stock_def_file);
                 dgvDeptStock.Visible = false;
                 dgvMainStock.Visible = true;
@@ -95,6 +114,11 @@ namespace AppFrameClient.View
             writer.Flush();
             writer.Close();
             InformationBox.Show("Xuất định nghĩa hoàn tất", new AutoCloseParameters(2));
+        }
+
+        private void chkDoNam_CheckedChanged(object sender, EventArgs e)
+        {
+            cboDepartment_SelectedIndexChanged(null,null);
         }
     }
 }

@@ -385,6 +385,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)
             {
+                throw new BusinessException("Mã vạch này không có trong kho ?!?! Đề nghị kiểm tra lại.");
                 return;
             }
             DepartmentStock stock = list[0] as DepartmentStock;
@@ -400,7 +401,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             e.SelectedDepartmentStockOutDetail.LostQuantity = stock.LostQuantity;
             e.SelectedDepartmentStockOutDetail.DamageQuantity = stock.DamageQuantity;
             e.SelectedDepartmentStockOutDetail.UnconfirmQuantity = stock.UnconfirmQuantity;
-
+            e.DepartmentStock = stock;
 
             e.EventResult = "Success";
         }
