@@ -11,6 +11,7 @@ namespace AppFrame.Presenter.GoodsIO.DepartmentGoodsIO
     public class DepartmentCostEventArgs : BaseEventArgs
     {
         public IList CostList;
+        public long OutMoney { get; set;}
         public DepartmentCost UpdateCost { get; set;}
         public DepartmentCost CreateCost { get; set;}
 
