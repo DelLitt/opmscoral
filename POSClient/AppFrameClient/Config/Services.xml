@@ -169,6 +169,8 @@
     <property name="DepartmentStockHistoryDAO" ref="AppFrame.DataLayer.IDepartmentStockHistoryDAO"/>
     <property name="DepartmentStockInDAO" ref="AppFrame.DataLayer.IDepartmentStockInDAO"/>
     <property name="DepartmentTimelineDAO" ref="AppFrame.DataLayer.IDepartmentTimelineDAO"/>
+    <property name="DepartmentCostDAO" ref="AppFrame.DataLayer.IDepartmentCostDAO"/>
+    <property name="EmployeeMoneyDAO" ref="AppFrame.DataLayer.IEmployeeMoneyDAO"/>
   </object>
 
   <object id="AppFrame.Service.IDepartmentPromotionLogic" type="AppFrame.Logic.DepartmentPromotionLogicImpl, AppFrameClient">

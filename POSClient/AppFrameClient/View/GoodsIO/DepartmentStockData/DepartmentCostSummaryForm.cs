@@ -37,6 +37,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cboDepartment.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
                 cboDepartment.Enabled = false;
             }
+            else
+            {
+                cboDepartment.Enabled = true;
+            }
             //this.rptDepartmentCost.RefreshReport();
         }
 
@@ -76,12 +80,12 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             DepartmentCostReportTableAdapter adapter = new DepartmentCostReportTableAdapter();
             adapter.ClearBeforeFill = true;
             adapter.Fill(masterDB.DepartmentCostReport, deptId, reqFromDate, reqToDate);
-            sumAdapter.ClearBeforeFill = true;
-            sumAdapter.Fill(masterDB.DepartmentSumCostReport, deptId, reqFromDate, reqToDate);
-            foreach (MasterDB.DepartmentSumCostReportRow row in masterDB.DepartmentSumCostReport)
-            {
-                outMoney = (long)row.total;
-            }
+            //sumAdapter.ClearBeforeFill = true;
+            //sumAdapter.Fill(masterDB.DepartmentSumCostReport, deptId, reqFromDate, reqToDate);
+            //foreach (MasterDB.DepartmentSumCostReportRow row in masterDB.DepartmentSumCostReport)
+            //{
+            //    outMoney = (long)row.total;
+            //}
         }
 
         private IDepartmentCostController departmentCostController; 

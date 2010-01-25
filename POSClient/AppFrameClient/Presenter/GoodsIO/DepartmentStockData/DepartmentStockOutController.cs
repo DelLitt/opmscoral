@@ -516,6 +516,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             get; set;
         }
 
+        
         private IList RemoveDuplicateName(IList prdlist)
         {
             IList list = new ArrayList();

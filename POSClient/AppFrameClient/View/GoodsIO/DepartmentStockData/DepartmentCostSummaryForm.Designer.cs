@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.departmentCostReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDB = new AppFrameClient.MasterDB();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.departmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.masterDB = new AppFrameClient.MasterDB();
             this.btnCommit = new System.Windows.Forms.Button();
             this.rptDepartmentCost = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dtoFrom = new System.Windows.Forms.DateTimePicker();
@@ -41,9 +43,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnRunReport = new System.Windows.Forms.Button();
             this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
+            this.departmentCostReportTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentCostReportTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentCostReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // departmentCostReportBindingSource
+            // 
+            this.departmentCostReportBindingSource.DataMember = "DepartmentCostReport";
+            this.departmentCostReportBindingSource.DataSource = this.masterDB;
+            // 
+            // masterDB
+            // 
+            this.masterDB.DataSetName = "MasterDB";
+            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -69,7 +83,6 @@
             // 
             this.cboDepartment.DataSource = this.departmentBindingSource;
             this.cboDepartment.DisplayMember = "DEPARTMENT_NAME";
-            this.cboDepartment.Enabled = false;
             this.cboDepartment.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(85, 12);
@@ -84,11 +97,6 @@
             this.departmentBindingSource.DataMember = "Department";
             this.departmentBindingSource.DataSource = this.masterDB;
             // 
-            // masterDB
-            // 
-            this.masterDB.DataSetName = "MasterDB";
-            this.masterDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // btnCommit
             // 
             this.btnCommit.Enabled = false;
@@ -99,14 +107,18 @@
             this.btnCommit.TabIndex = 39;
             this.btnCommit.Text = "Chốt sổ";
             this.btnCommit.UseVisualStyleBackColor = true;
+            this.btnCommit.Visible = false;
             this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
             // 
             // rptDepartmentCost
             // 
+            reportDataSource2.Name = "MasterDB_DepartmentCostReport";
+            reportDataSource2.Value = this.departmentCostReportBindingSource;
+            this.rptDepartmentCost.LocalReport.DataSources.Add(reportDataSource2);
             this.rptDepartmentCost.LocalReport.ReportEmbeddedResource = "AppFrameClient.DepartmentCostReport.rdlc";
             this.rptDepartmentCost.Location = new System.Drawing.Point(5, 84);
             this.rptDepartmentCost.Name = "rptDepartmentCost";
-            this.rptDepartmentCost.Size = new System.Drawing.Size(810, 570);
+            this.rptDepartmentCost.Size = new System.Drawing.Size(900, 570);
             this.rptDepartmentCost.TabIndex = 40;
             // 
             // dtoFrom
@@ -153,11 +165,15 @@
             // 
             this.departmentTableAdapter.ClearBeforeFill = true;
             // 
+            // departmentCostReportTableAdapter
+            // 
+            this.departmentCostReportTableAdapter.ClearBeforeFill = true;
+            // 
             // DepartmentCostSummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 666);
+            this.ClientSize = new System.Drawing.Size(910, 666);
             this.Controls.Add(this.btnRunReport);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtoTo);
@@ -179,8 +195,9 @@
             this.Controls.SetChildIndex(this.dtoTo, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.btnRunReport, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentCostReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +217,7 @@
         private MasterDB masterDB;
         private System.Windows.Forms.BindingSource departmentBindingSource;
         private AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter departmentTableAdapter;
+        private System.Windows.Forms.BindingSource departmentCostReportBindingSource;
+        private AppFrameClient.MasterDBTableAdapters.DepartmentCostReportTableAdapter departmentCostReportTableAdapter;
     }
 }

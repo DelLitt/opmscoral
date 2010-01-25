@@ -15,9 +15,11 @@ using AppFrame.Exceptions;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO.DepartmentGoodsIO;
 using AppFrame.Utility;
+using AppFrame.View;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Utility;
+using InfoBox;
 using ArrayList=System.Collections.ArrayList;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -47,7 +49,33 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnSyncToMain_Click(object sender, EventArgs e)
         {
-            if(!CheckPOSSyncDriveExist())
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+            this.Enabled = false;
+            backgroundWorker.RunWorkerAsync();
+            
+        }
+
+        IList resultList = new ArrayList();
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Enabled = true;
+            ((MainForm)GlobalCache.Instance().MainForm).stopProgressBar();
+            InfoBox.InformationBox.Show("Đồng bộ hoàn tất !", new AutoCloseParameters(1));
+
+            if (resultList != null)
+            {
+                syncResultBindingSource.DataSource = resultList;
+            }
+            
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            resultList = new ArrayList();
+            if (!CheckPOSSyncDriveExist())
                 return;
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
             DialogResult dResult = MessageBox.Show(
@@ -57,7 +85,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
-
+            ((MainForm)GlobalCache.Instance().MainForm).showProgressBar();
             var configurationAppSettings = new AppSettingsReader();
             //var importPath = (string)configurationAppSettings.GetValue("SyncImportPath", typeof(String));
             var importPath = POSSyncDrive + ClientSetting.SyncImportPath;
@@ -67,19 +95,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             var successPath = POSSyncDrive + ClientSetting.SyncSuccessPath;
             var errorPath = POSSyncDrive + ClientSetting.SyncErrorPath;
             // get import path of this department
-            
+
             if (string.IsNullOrEmpty(importPath) || !Directory.Exists(importPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + importPath + "!Hãy kiễm tra file cấu hình phần SyncImportPath");
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(successPath) || !Directory.Exists(successPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + successPath + "!Hãy kiễm tra file cấu hình phần SyncImportSuccessPath");
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(errorPath) || !Directory.Exists(errorPath))
             {
                 MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + errorPath + "!Hãy kiễm tra file cấu hình phần SyncImportErrorPath");
@@ -87,7 +115,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
 
             //string[] fileNames = Directory.GetFiles(importPath, "*"+CommonConstants.CLIENT_SYNC_FORMAT);
-            string[] syncDirs  = Directory.GetDirectories(importPath);
+            string[] syncDirs = Directory.GetDirectories(importPath);
             IList fileNames = new ArrayList();
             foreach (string syncDir in syncDirs)
             {
@@ -102,7 +130,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 MessageBox.Show("Không thể tìm thấy file nào để đồng bộ");
                 return;
             }
-            IList resultList = new ArrayList();
+
             StringBuilder errorStr = new StringBuilder();
             foreach (string fileName in fileNames)
             {
@@ -146,8 +174,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     if (fail)
                     {
                         //File.Move(fileName, errorPath + "\\" + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")));
-                        ClientUtility.MoveFileToSpecificDir(errorPath,fileName);
-//                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
+                        ClientUtility.MoveFileToSpecificDir(errorPath, fileName);
+                        //                        errorStr.Append("   > " + fileName.Substring(fileName.LastIndexOf("\\"), fileName.Length - fileName.LastIndexOf("\\")) + "\r\n");
                         result.Status = "Thất bại";
                     }
                     else
@@ -161,14 +189,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         DateTime updateTime = DateTime.ParseExact(updateTimeStr, "yyyy_MM_dd_HH_mm_ss", null);
                         string syncPath = fileName.Substring(0, fileName.LastIndexOf("\\"));
                         long deptId = Int32.Parse(origFileName.Substring(0, origFileName.IndexOf("_")));
-                        Department department = new Department{ DepartmentId = deptId};
-                        ClientUtility.WriteLastSyncTime(updateTime, syncPath,department , ClientUtility.SyncType.SyncUp);
+                        Department department = new Department { DepartmentId = deptId };
+                        ClientUtility.WriteLastSyncTime(updateTime, syncPath, department, ClientUtility.SyncType.SyncUp);
                         result.Status = "Thành công";
                     }
                 }
             }
-            MessageBox.Show("Đồng bộ hoàn tất !");
-            syncResultBindingSource.DataSource = resultList;
+            
         }
 
         #region Implementation of IDepartmentStockOutView

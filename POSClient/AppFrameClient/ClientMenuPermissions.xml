@@ -44,12 +44,12 @@
     <menuitem name="mnuProcessDeptAtStock" role="NotImplement" />
     <menuitem name="mnuDeptStockFixing" role="NotImplement" />
     <menuitem name="mnuDepartmentCost" role="Administrator,Supervisor,Manager" />
-    <menuitem name="mnuDepartmentCostSummary" role="Administrator,Supervisor" />
+    <menuitem name="mnuDepartmentCostSummary" role="Manager,Administrator,Supervisor" />
     <menuitem name="mnuSubStockOut" role="NotImplement" />
     <menuitem name="mnuCheckStockEvaluation" role="NotImplement" />
     
   </menu>
-  <menu name="mnuSalePoint" role="Administrator,Supervisor">
+  <menu name="mnuSalePoint" role="Administrator,Supervisor,Manager">
     <menuitem name="mnuDefineSalePoint" role="NotImplement" />
     <menuitem name="mnuDepartmentSubStock" role="Administrator,Supervisor" />
     <menuitem name="mnuListSalePoints" role="Administrator,Supervisor" />

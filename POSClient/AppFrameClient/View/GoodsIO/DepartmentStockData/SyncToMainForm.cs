@@ -19,6 +19,7 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.Utility;
+using InfoBox;
 using Ionic.Zip;
 
 namespace AppFrameClient.View.GoodsIO.DepartmentStockData
@@ -32,6 +33,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if(GlobalCache.Instance().IsCostSummary)
+            {
+                InfoBox.InformationBox.Show("Hãy đợi công việc hoàn tất rồi đồng bộ lại!", new AutoCloseParameters(2));
+            }
             if(!CheckPOSSyncDriveExist())
                 return;
             string POSSyncDrive = ClientUtility.GetPOSSyncDrives()[0].ToString();
@@ -60,7 +65,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             try
             {
                 // dump db
-                ClientUtility.DumpDatabase();
+                if(!ClientSetting.IsSubStock()) ClientUtility.DumpDatabase();
                 CleanUSBDrive(POSSyncDrive);
                 exportPath = ClientUtility.EnsureSyncPath(exportPath, CurrentDepartment.Get());
                 // get last sync time

@@ -36,14 +36,16 @@ namespace AppFrameClient.Utility
                                                         "stock_out",
                                                         "stock_in_detail",
                                                         "stock_in",
-                                                        "return_po"
+                                                        "return_po",
+                                                        "employee_money",
+                                                        "department_cost"
                                                     };
         /// <summary>
         /// Backup database to CRL directories
         /// </summary>
         /// <param name="SaleStatistic"></param>
         /// <param name="ImExStatistic"></param>
-        public static void BackupCRLDatabase(bool SaleStatistic,bool ImExStatistic)
+        public static bool BackupCRLDatabase(bool SaleStatistic,bool ImExStatistic)
         {
             
             string mySQLDumpPath = ClientSetting.MySQLDumpPath + "\\mysql.exe";
@@ -52,7 +54,7 @@ namespace AppFrameClient.Utility
             string pass = "1qw45DCM9rl";
 
             string crlBackupDrive = GetCLRSyncDriveString();
-            if (string.IsNullOrEmpty(crlBackupDrive)) return;
+            if (string.IsNullOrEmpty(crlBackupDrive)) return false;
             string backupPath = crlBackupDrive + AppFrameClient.Properties.Settings.Default.StatBackupPath;
             backupPath = backupPath.Replace('\\', ('/'));
             
@@ -80,6 +82,10 @@ namespace AppFrameClient.Utility
                     
                     tablesList.Add("stock_in_detail");
                     tablesList.Add("stock_in");
+                    
+                    tablesList.Add("employee_money");
+                    tablesList.Add("department_cost");
+
                 }
                 List<string> savedFiles = new List<string>();
                 BackupTable(backupPath,db,user,pass,tablesList.ToArray(),out savedFiles);
@@ -101,10 +107,11 @@ namespace AppFrameClient.Utility
                     File.Delete(file);
                 }
                 CleanDatabase(SaleStatistic, ImExStatistic);
+                return true;
             }
             catch (System.Exception ex1)
             {
-                Console.WriteLine(ex1.Message);
+                return false;
             }
             
         }
@@ -367,6 +374,21 @@ namespace AppFrameClient.Utility
                                   DateUtility.DateOnly(DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0))).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
+
+                deleteHeader = "\" delete from department_cost where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now)
+                                             .Add(new TimeSpan(0, 3, 0, 0))   
+                                             .Subtract(new TimeSpan(1, 0, 0, 0))
+                                             .ToString("yyyy-MM-dd HH:mm:ss") + "';\"";
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
+
+                deleteHeader = "\" delete from employee_money where create_date < '" +
+                                  DateUtility.DateOnly(DateTime.Now)
+                                                 .Add(new TimeSpan(0, 3, 0, 0))
+                                                 .Subtract(new TimeSpan(1, 0, 0, 0))
+                                                     .ToString("yyyy-MM-dd HH:mm:ss") + "';\"";
+                ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
+
             }
         }
 
