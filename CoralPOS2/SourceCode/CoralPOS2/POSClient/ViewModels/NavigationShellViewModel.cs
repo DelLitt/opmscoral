@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Caliburn.Core.IoC;
+using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
 
@@ -26,6 +27,7 @@ namespace POSClient.ViewModels
         {
             T scr = _serviceLocator.GetInstance<T>();
             this.OpenScreen(scr);
+            
         }
     }
 }
