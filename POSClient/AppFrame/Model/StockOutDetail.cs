@@ -26,6 +26,7 @@ namespace AppFrame.Model
         protected Int64 _delFlg;
         protected Product _product;
         protected StockOut _stockOut;
+        public virtual long WholeSalePrice { get; set; }
 
         #endregion
 

@@ -31,6 +31,7 @@ namespace AppFrame.Utility.Mapper
             {
                 DepartmentStockInDetail detail =new DepartmentStockInDetail();
                 detail.Price = stockOutDetail.Price;
+                detail.OnStorePrice = stockOutDetail.WholeSalePrice;
                 detail.Product = stockOutDetail.Product;
                 detail.ProductId = detail.Product.ProductId;
                 detail.ProductMaster = stockOutDetail.ProductMaster;
