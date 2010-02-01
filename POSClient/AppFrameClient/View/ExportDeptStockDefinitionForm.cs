@@ -61,7 +61,7 @@ namespace AppFrameClient.View
                 this.deptstockdeffileBindingSource.Sort = "product_name";
                 if (chkDoNam.Checked)
                 {
-                    this.deptstockdeffileBindingSource.Filter = " type_name like '%NAM' ";
+                    this.deptstockdeffileBindingSource.Filter = " type_name like '%NAM' OR type_name like '%GILE%'";
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace AppFrameClient.View
                 this.stockdeffileBindingSource.Sort = "product_name";
                 if (chkDoNam.Checked)
                 {
-                    this.stockdeffileBindingSource.Filter = " type_name like '%NAM' ";
+                    this.stockdeffileBindingSource.Filter = " type_name like '%NAM'  OR type_name like '%GILE%";
                 }
                 else
                 {
@@ -93,23 +93,41 @@ namespace AppFrameClient.View
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            FileStream fileStream = new FileStream(@"D:\KIEMHANG\dinhnghia.txt",FileMode.Create);
+            string path = @"D:\KIEMHANG";
+            if(!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            string filePath = path + @"\" + "dinhnghia.txt";
+            FileStream fileStream = new FileStream(filePath,FileMode.Create);
             StreamWriter writer = new StreamWriter(fileStream);
             if (dgvDeptStock.Visible)
             {
-                foreach (DataRow row in this.masterDB.deptstock_def_file.Rows)
+                foreach(DataGridViewRow row  in dgvDeptStock.Rows)
                 {
-                    string rowText = row[masterDB.deptstock_def_file.product_idColumn] + ",0";
-                    writer.WriteLine(rowText);
+                        string rowText = row.Cells[2].Value.ToString() + ",0";
+                        writer.WriteLine(rowText);
                 }
+
+                //foreach (DataRow row in this.masterDB.deptstock_def_file.Rows)
+                //{
+                //    string rowText = row[masterDB.deptstock_def_file.product_idColumn] + ",0";
+                //    writer.WriteLine(rowText);
+                //}
             }
             else
             {
-                foreach (DataRow row in this.masterDB1.stock_def_file.Rows)
+                foreach (DataGridViewRow row in dgvMainStock.Rows)
                 {
-                    string rowText = row[masterDB1.stock_def_file.product_idColumn] + ",0";
+                    string rowText = row.Cells[2].Value.ToString() + ",0";
                     writer.WriteLine(rowText);
                 }
+
+                //foreach (DataRow row in this.masterDB1.stock_def_file.Rows)
+                //{
+                //    string rowText = row[masterDB1.stock_def_file.product_idColumn] + ",0";
+                //    writer.WriteLine(rowText);
+                //}
             }
             writer.Flush();
             writer.Close();

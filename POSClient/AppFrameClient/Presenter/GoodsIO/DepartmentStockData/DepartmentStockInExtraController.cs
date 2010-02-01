@@ -348,7 +348,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     if (price != null)
                     {
                         detail.Price = price.Price;
-                        
+                        detail.WholeSalePrice = price.WholeSalePrice;
                     }
                 }
             }
