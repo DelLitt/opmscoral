@@ -11,7 +11,7 @@ namespace NMG.Core.Generator
     public abstract class MappingGenerator : AbstractGenerator
     {
         private readonly ApplicationPreferences applicationPreferences;
-
+        private readonly Dictionary<string, TableReference> _tableReferences;
         public bool IsAssigned { get; set; }
 
         protected MappingGenerator(ApplicationPreferences applicationPreferences, ColumnDetails columnDetails)
@@ -19,6 +19,7 @@ namespace NMG.Core.Generator
         {
             this.applicationPreferences = applicationPreferences;
             IsAssigned = applicationPreferences.PrimaryKeyType == PrimaryKeyType.Assigned;
+            this._tableReferences = applicationPreferences.TableReferences;
         }
 
         protected abstract void AddIdGenerator(XmlDocument xmldoc, XmlElement idElement);
@@ -130,80 +131,74 @@ namespace NMG.Core.Generator
 
             AddAllProperties(xmldoc, classElement);
 
-            ArrayList detailTableList = applicationPreferences.DetailTable;
-            if(detailTableList!= null && detailTableList.Count > 0)
+            var tableReferences = applicationPreferences.TableReferences;
+            if(tableReferences!= null && tableReferences.Count > 0)
             {
-                AddDetailProperties(xmldoc, classElement, primaryKeyColumns, applicationPreferences);    
-            }
-            if (!string.IsNullOrEmpty(applicationPreferences.MasterTable))
-            {
-                AddMasterProperty(xmldoc, classElement, primaryKeyColumns, applicationPreferences);
+                foreach (KeyValuePair<string, TableReference> pair in tableReferences)
+                {
+                    TableReference reference = pair.Value;
+                    switch(reference.ReferenceType)
+                    {
+                        case ReferenceType.OneToMany:
+                            AddOneToManyProperty(xmldoc, classElement, reference);    
+                            break;
+                        case ReferenceType.ManyToOne:
+                            AddManyToOneProperty(xmldoc, classElement, reference);
+                            break;
+                    }
+                }
+                
+                
             }
 
             return xmldoc;
         }
 
-        private void AddMasterProperty(XmlDocument xmldoc, XmlElement classElement, List<ColumnDetail> primaryKeyColumns, ApplicationPreferences preferences)
+        private void AddManyToOneProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
         {
-            List<ColumnDetail> masterPrimaryKeys = new List<ColumnDetail>();
-            var globalPreferences = GlobalCache.Instance.TablePreferences;
-            foreach (ApplicationPreferences preference in globalPreferences)
-            {
-                if(preference.TableName.Equals(preferences.MasterTable))
-                {
-                    List<ColumnDetail> tableColumns =
-                        GlobalCache.Instance.MetaDataReader.GetTableDetails(preference.TableName);
-                    masterPrimaryKeys = tableColumns.FindAll(column => column.IsPrimaryKey);
-                    break;
-                }
-            }
-            if(masterPrimaryKeys.Count == 0) return;
-
-            string masterTableName = GlobalCache.Instance.ReplaceShortWords(preferences.MasterTable);
-                masterTableName = masterTableName.GetFormattedText();
+            string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable);
+            refTableName = refTableName.GetFormattedText();
             var xmlNode = xmldoc.CreateElement("many-to-one");
             xmlNode.SetAttribute("lazy", "true");
             xmlNode.SetAttribute("update", "false");
             xmlNode.SetAttribute("insert", "false");
-            xmlNode.SetAttribute("class", masterTableName);
+            xmlNode.SetAttribute("class", refTableName);
 
-            foreach (ColumnDetail columnDetail in masterPrimaryKeys)
+            foreach (KeyValuePair<ColumnDetail, ColumnDetail> refColumn in reference.TableColumns)
             {
                 var xmlColumn = xmldoc.CreateElement("column");
-                xmlColumn.SetAttribute("name", columnDetail.ColumnName);
+                xmlColumn.SetAttribute("name", refColumn.Key.ColumnName);
                 xmlNode.AppendChild(xmlColumn);
             }
 
             classElement.AppendChild(xmlNode);
         }
 
-        private void AddDetailProperties(XmlDocument xmldoc, XmlElement classElement, List<ColumnDetail> primaryKeyColumns, ApplicationPreferences preferences)
+        private void AddOneToManyProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
         {
-            if (columnDetails.Count == 0) return;
-            foreach (string detailTable in preferences.DetailTable)
-            {
-                string detailTableName = GlobalCache.Instance.ReplaceShortWords(detailTable);
-                detailTableName = detailTableName.GetFormattedText();
+            
+                string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable);
+                refTableName = refTableName.GetFormattedText();
                 var xmlNode = xmldoc.CreateElement("bag");
                 xmlNode.SetAttribute("lazy", "true");
                 xmlNode.SetAttribute("inverse", "true");
-                xmlNode.SetAttribute("name", detailTableName + "s");
+                xmlNode.SetAttribute("name", refTableName + "s");
 
                 var xmlKeyNode = xmldoc.CreateElement("key");
-                foreach (ColumnDetail columnDetail in primaryKeyColumns)
+                foreach (KeyValuePair<ColumnDetail,ColumnDetail> refColumn in reference.TableColumns)
                 {
                     var xmlColumn = xmldoc.CreateElement("column");
-                    xmlColumn.SetAttribute("name", columnDetail.ColumnName);
+                    xmlColumn.SetAttribute("name", refColumn.Key.ColumnName);
                     xmlKeyNode.AppendChild(xmlColumn);
                 }
                 xmlNode.AppendChild(xmlKeyNode);
 
                 var xmlRefType = xmldoc.CreateElement("one-to-many");
-                xmlRefType.SetAttribute("class", detailTableName);
+                xmlRefType.SetAttribute("class", refTableName);
                 xmlNode.AppendChild(xmlRefType);
 
                 classElement.AppendChild(xmlNode);
-            }
+            
         }
 
         private void AddAllProperties(XmlDocument xmldoc, XmlNode classElement)
@@ -211,6 +206,8 @@ namespace NMG.Core.Generator
             foreach (var columnDetail in columnDetails)
             {
                 if (columnDetail.IsPrimaryKey)
+                    continue;
+                if (IsReferenceColumn(columnDetail)) 
                     continue;
                 var xmlNode = xmldoc.CreateElement("property");
                 string propertyName = columnDetail.ColumnName.GetPreferenceFormattedText(applicationPreferences);
@@ -233,6 +230,24 @@ namespace NMG.Core.Generator
                 }
                 classElement.AppendChild(xmlNode);
             }
+        }
+
+        private bool IsReferenceColumn(ColumnDetail detail)
+        {
+            if(_tableReferences == null || _tableReferences.Count == 0 )
+            {
+                return false;
+            }
+            foreach (KeyValuePair<string, TableReference> pair in _tableReferences)
+            {
+                TableReference reference = pair.Value;
+                foreach (KeyValuePair<ColumnDetail, ColumnDetail> column in reference.TableColumns)
+                {
+                    if(column.Key.ColumnName.Equals(detail.ColumnName)) 
+                        return true;                    
+                }
+            }
+            return false;
         }
     }
 }

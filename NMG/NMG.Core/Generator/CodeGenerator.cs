@@ -15,6 +15,7 @@ namespace NMG.Core.Generator
     public class CodeGenerator : AbstractGenerator
     {
         private readonly ApplicationPreferences applicationPreferences;
+        private readonly Dictionary<string, TableReference> tableReferences;
         private readonly Language language;
         
         public CodeGenerator(ApplicationPreferences applicationPreferences, ColumnDetails columnDetails)
@@ -24,7 +25,7 @@ namespace NMG.Core.Generator
         {
             this.applicationPreferences = applicationPreferences;
             language = applicationPreferences.Language;
-            
+            this.tableReferences = applicationPreferences.TableReferences;
         }
 
         public override void Generate()
@@ -152,18 +153,29 @@ namespace NMG.Core.Generator
             }
 
             // create detail member if exist
-            if(applicationPreferences.DetailTable != null && applicationPreferences.DetailTable.Count > 0)
+            if(tableReferences != null && tableReferences.Count > 0)
             {
-                foreach (string detailTable in applicationPreferences.DetailTable)
+                foreach (KeyValuePair<string, TableReference> pair in tableReferences)
                 {
-                    string detailClass = GlobalCache.Instance.ReplaceShortWords(detailTable);
-                    detailClass = detailClass.GetFormattedText();
-                    var codeMemberProperty = codeGenerationHelper.CreateAutoProperty("List<" + detailClass + ">", detailClass + "s");
-                    newType.Members.Add(codeMemberProperty);
+                    TableReference reference = pair.Value;
+                    string refTable = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable);
+                    switch(reference.ReferenceType)
+                    {
+                        case ReferenceType.OneToMany:
+                            refTable = refTable.GetFormattedText();
+                            var detailListMemberProperty = codeGenerationHelper.CreateAutoProperty("List<" + refTable + ">", refTable + "s");
+                            newType.Members.Add(detailListMemberProperty);
+                            break;
+                        case ReferenceType.ManyToOne:
+                            refTable = refTable.GetFormattedText();
+                            var masterMemberProperty = codeGenerationHelper.CreateAutoProperty(refTable, refTable);
+                            newType.Members.Add(masterMemberProperty);
+                            break;
+                    }
                 }
             }
 
-            // create master-class member if exist
+            /*// create master-class member if exist
             if (!string.IsNullOrEmpty(applicationPreferences.MasterTable))
             {
 
@@ -171,7 +183,7 @@ namespace NMG.Core.Generator
                 masterClassName = masterClassName.GetFormattedText();
                 var codeMemberProperty = codeGenerationHelper.CreateAutoProperty(masterClassName,masterClassName);
                 newType.Members.Add(codeMemberProperty);
-            }
+            }*/
 
             var constructor = new CodeConstructor {Attributes = MemberAttributes.Public};
             newType.Members.Add(constructor);
