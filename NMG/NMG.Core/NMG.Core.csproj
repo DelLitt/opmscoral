@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A15F2280-C07B-4BBA-B822-6D06C464A582}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NMG.Core</RootNamespace>
+    <AssemblyName>NMG.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=2.111.7.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\ColumnDetail.cs" />
+    <Compile Include="Domain\DotNetTypes.cs" />
+    <Compile Include="Domain\Language.cs" />
+    <Compile Include="FieldNamingConvention.cs" />
+    <Compile Include="Fluent\DBColumnMapper.cs" />
+    <Compile Include="Fluent\Constants.cs" />
+    <Compile Include="Generator\CodeGenerationHelper.cs" />
+    <Compile Include="Generator\MappingGenerator.cs" />
+    <Compile Include="Generator\CodeGenerator.cs" />
+    <Compile Include="DataTypeMapper.cs" />
+    <Compile Include="GlobalCache.cs" />
+    <Compile Include="MetadataFactory.cs" />
+    <Compile Include="ApplicationPreferences.cs" />
+    <Compile Include="Reader\IMetadataReader.cs" />
+    <Compile Include="Reader\OracleMetadataReader.cs" />
+    <Compile Include="Reader\SqlServerMetadataReader.cs" />
+    <Compile Include="TableReference.cs" />
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Generator\IGenerator.cs" />
+    <Compile Include="Generator\AbstractGenerator.cs" />
+    <Compile Include="Generator\OracleMappingGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\ServerType.cs" />
+    <Compile Include="Generator\SqlMappingGenerator.cs" />
+    <Compile Include="Util\StringConstants.cs" />
+    <Compile Include="Domain\ColumnDetails.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ExtraMethodsTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ReplaceWords.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
