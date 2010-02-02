@@ -163,7 +163,7 @@ namespace NMG.Core.Generator
                     {
                         case ReferenceType.OneToMany:
                             refTable = refTable.GetFormattedText();
-                            var detailListMemberProperty = codeGenerationHelper.CreateAutoProperty("List<" + refTable + ">", refTable + "s");
+                            var detailListMemberProperty = codeGenerationHelper.CreateAutoProperty("IList<" + refTable + ">", refTable + "s");
                             newType.Members.Add(detailListMemberProperty);
                             break;
                         case ReferenceType.ManyToOne:
@@ -174,16 +174,6 @@ namespace NMG.Core.Generator
                     }
                 }
             }
-
-            /*// create master-class member if exist
-            if (!string.IsNullOrEmpty(applicationPreferences.MasterTable))
-            {
-
-                string masterClassName = GlobalCache.Instance.ReplaceShortWords(applicationPreferences.MasterTable);
-                masterClassName = masterClassName.GetFormattedText();
-                var codeMemberProperty = codeGenerationHelper.CreateAutoProperty(masterClassName,masterClassName);
-                newType.Members.Add(codeMemberProperty);
-            }*/
 
             var constructor = new CodeConstructor {Attributes = MemberAttributes.Public};
             newType.Members.Add(constructor);

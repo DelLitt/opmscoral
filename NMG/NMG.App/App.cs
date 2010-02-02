@@ -230,6 +230,13 @@ namespace NHibernateMappingGenerator
                 Cursor.Current = Cursors.WaitCursor;
                 try
                 {
+                    if(clearCheck.Checked)
+                    {
+                        ClearOutputDirectory();
+                        errorLabel.Text = " Delete all file completed ...";
+                    }
+                    errorLabel.Text = " Generating ...";
+
                     var serverType = (ServerType) serverTypeComboBox.SelectedItem;
 
                     //foreach (object item in tablesComboBox.Items)
@@ -244,7 +251,7 @@ namespace NHibernateMappingGenerator
                         Generate(tableName, columnDetails);*/
                         var columnDetails = metadataReader.GetTableDetails(item.TableName);
                         var applicationController = new ApplicationController(item, columnDetails);
-                        applicationController.Generate();
+                        applicationController.Generate(genMappingCheck.Checked,genClassCheck.Checked);
                     }
                     errorLabel.Text = "Generated all files successfully.";
                 }
@@ -256,6 +263,15 @@ namespace NHibernateMappingGenerator
             catch (Exception ex)
             {
                 errorLabel.Text = ex.Message;
+            }
+        }
+
+        private void ClearOutputDirectory()
+        {
+            string[] files = Directory.GetFiles(folderTextBox.Text.Trim());
+            foreach (string file in files)
+            {
+                File.Delete(file);
             }
         }
 
@@ -363,7 +379,7 @@ namespace NHibernateMappingGenerator
             if(string.IsNullOrEmpty(selectedItem)) return;
 
             CurrentTablePreference.TableReferences.Remove(selectedItem);
-            PopularTableRefList();
+            PopularTableReferencesList();
         }
 
         private void serverTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -516,6 +532,7 @@ namespace NHibernateMappingGenerator
             var tableReferences = CurrentTablePreference.TableReferences;
             if (tableReferences == null) return;
             var selectedItem = (string)tableRefList.SelectedItem;
+            if(selectedItem == null) return;
             var tableReference = tableReferences[selectedItem];
             if (tableReference == null) return;
 
@@ -542,9 +559,17 @@ namespace NHibernateMappingGenerator
                 tableReference.ReferenceType = (ReferenceType)refTypeCombo.SelectedItem;
                 
                 AddColumnDetail(tableReference, refColumnGrid);
-                tableReferences.Add(tableReference.Name,tableReference);
-                tableReferences.Remove(selectedItem);
-                PopularTableRefList();
+                if(!tableReferences.ContainsKey(tableReference.Name))
+                {
+                    tableReferences.Add(tableReference.Name, tableReference);
+                    tableReferences.Remove(selectedItem);
+                }
+                else
+                {
+                    tableReferences[tableReference.Name] = tableReference; 
+                }
+                
+                PopularTableReferencesList();
                 if (tableReference.ReferenceType == ReferenceType.OneToMany)
                 {
                     // update to other table if reference is one to many
@@ -579,7 +604,7 @@ namespace NHibernateMappingGenerator
             }
         }
 
-        private void PopularTableRefList()
+        private void PopularTableReferencesList()
         {
             tableRefList.Items.Clear();
             var tableRefs = CurrentTablePreference.TableReferences;
@@ -598,7 +623,7 @@ namespace NHibernateMappingGenerator
             foreach (DataGridViewRow row in refColumnGrid1.Rows)
             {
                 var colName1 = row.Cells[0].Value;
-                var colName2 = row.Cells[0].Value;
+                var colName2 = row.Cells[1].Value;
                 if (colName1 == null || colName2 == null) continue;
                 ColumnDetail _column = GetColumn(columnDetailBindingSource, colName1.ToString());
                 ColumnDetail _refColumn = GetColumn(refColumnDetailBindingSource, colName2.ToString());

@@ -168,6 +168,43 @@ namespace NMG.Core.Generator
             {
                 var xmlColumn = xmldoc.CreateElement("column");
                 xmlColumn.SetAttribute("name", refColumn.Key.ColumnName);
+
+                // if foreign column differ with primary key
+                if(!refColumn.Key.Equals(refColumn.Value.ColumnName))
+                {
+                    string primaryColName = refColumn.Value.ColumnName;
+                    ApplicationPreferences primaryKeys =
+                        GlobalCache.Instance.TablePreferences.
+                            Find(pref => pref.TableName.Equals(reference.ReferenceTable));
+                    if (primaryKeys == null) throw new Exception("Reference table " + reference.ReferenceTable + "does not exist for " + tableName + " !");
+                    var metadataReader = GlobalCache.Instance.MetaDataReader;
+                    ColumnDetails primaryDetails = metadataReader.GetTableDetails(primaryKeys.TableName);
+                    List<ColumnDetail> priKeys = primaryDetails.FindAll(col => col.IsPrimaryKey);
+                    
+                    if(priKeys.Find( col =>col.ColumnName.Equals(primaryColName)) != null)
+                    {
+                        if(priKeys.Count == 1)
+                        {
+                            string realPriPrefColName = primaryColName.GetFormattedText();
+                            xmlColumn.SetAttribute("property-ref", realPriPrefColName);
+                        }
+                        else if(priKeys.Count > 1)
+                        {
+                            string priCompositePK = GlobalCache.Instance.ReplaceShortWords(primaryKeys.TableName);
+                            priCompositePK = priCompositePK.GetFormattedText() + "PK";
+                            xmlNode.SetAttribute("property-ref", priCompositePK);
+                            xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
+                        }
+                    }
+                    else
+                    {
+                        if (primaryDetails.Find(col => col.ColumnName.Equals(primaryColName)) != null)
+                        {
+                            xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
+                        }
+                    }
+                    
+                }
                 xmlNode.AppendChild(xmlColumn);
             }
 

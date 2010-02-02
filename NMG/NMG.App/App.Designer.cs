@@ -104,6 +104,9 @@ namespace NHibernateMappingGenerator
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.clearCheck = new System.Windows.Forms.CheckBox();
+            this.genClassCheck = new System.Windows.Forms.CheckBox();
+            this.genMappingCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -216,7 +219,7 @@ namespace NHibernateMappingGenerator
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.errorLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.errorLabel.Location = new System.Drawing.Point(13, 147);
+            this.errorLabel.Location = new System.Drawing.Point(13, 178);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(0, 20);
             this.errorLabel.TabIndex = 6;
@@ -231,6 +234,7 @@ namespace NHibernateMappingGenerator
             // 
             // generateButton
             // 
+            this.generateButton.Enabled = false;
             this.generateButton.Location = new System.Drawing.Point(14, 105);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(106, 23);
@@ -366,6 +370,9 @@ namespace NHibernateMappingGenerator
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.genMappingCheck);
+            this.groupBox5.Controls.Add(this.genClassCheck);
+            this.groupBox5.Controls.Add(this.clearCheck);
             this.groupBox5.Controls.Add(this.editButton);
             this.groupBox5.Controls.Add(this.tableReferenceGroup);
             this.groupBox5.Controls.Add(this.tableRefList);
@@ -529,10 +536,11 @@ namespace NHibernateMappingGenerator
             // detailTablesList
             // 
             this.detailTablesList.FormattingEnabled = true;
-            this.detailTablesList.Location = new System.Drawing.Point(478, 135);
+            this.detailTablesList.Location = new System.Drawing.Point(516, 181);
             this.detailTablesList.Name = "detailTablesList";
-            this.detailTablesList.Size = new System.Drawing.Size(38, 30);
+            this.detailTablesList.Size = new System.Drawing.Size(13, 17);
             this.detailTablesList.TabIndex = 22;
+            this.detailTablesList.Visible = false;
             // 
             // addReferenceButton
             // 
@@ -842,6 +850,42 @@ namespace NHibernateMappingGenerator
             this.radioButton4.Text = ".hbm.xml file";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
+            // clearCheck
+            // 
+            this.clearCheck.AutoSize = true;
+            this.clearCheck.Checked = true;
+            this.clearCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.clearCheck.Location = new System.Drawing.Point(165, 109);
+            this.clearCheck.Name = "clearCheck";
+            this.clearCheck.Size = new System.Drawing.Size(131, 17);
+            this.clearCheck.TabIndex = 34;
+            this.clearCheck.Text = "Clear Before Generate";
+            this.clearCheck.UseVisualStyleBackColor = true;
+            // 
+            // genClassCheck
+            // 
+            this.genClassCheck.AutoSize = true;
+            this.genClassCheck.Checked = true;
+            this.genClassCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.genClassCheck.Location = new System.Drawing.Point(165, 134);
+            this.genClassCheck.Name = "genClassCheck";
+            this.genClassCheck.Size = new System.Drawing.Size(98, 17);
+            this.genClassCheck.TabIndex = 35;
+            this.genClassCheck.Text = "Generate Class";
+            this.genClassCheck.UseVisualStyleBackColor = true;
+            // 
+            // genMappingCheck
+            // 
+            this.genMappingCheck.AutoSize = true;
+            this.genMappingCheck.Checked = true;
+            this.genMappingCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.genMappingCheck.Location = new System.Drawing.Point(165, 157);
+            this.genMappingCheck.Name = "genMappingCheck";
+            this.genMappingCheck.Size = new System.Drawing.Size(114, 17);
+            this.genMappingCheck.TabIndex = 36;
+            this.genMappingCheck.Text = "Generate Mapping";
+            this.genMappingCheck.UseVisualStyleBackColor = true;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -951,6 +995,9 @@ namespace NHibernateMappingGenerator
         private BindingSource refColumnDetailBindingSource;
         private GroupBox tableReferenceGroup;
         private Button editButton;
+        private CheckBox clearCheck;
+        private CheckBox genMappingCheck;
+        private CheckBox genClassCheck;
     }
 }
 

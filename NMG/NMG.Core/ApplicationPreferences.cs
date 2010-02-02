@@ -35,6 +35,8 @@ namespace NMG.Core
             FieldGenerationConvention = FieldGenerationConvention.Field;
             Prefix = string.Empty;
         }
+
+        
     }
     public enum PrimaryKeyType
     {

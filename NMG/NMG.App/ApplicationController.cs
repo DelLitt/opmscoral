@@ -29,6 +29,18 @@ namespace NHibernateMappingGenerator
             codeGenerator.Generate();
         }
 
+        public void Generate(bool genMapping,bool genCode)
+        {
+            if(genMapping)
+            {
+                mappingGenerator.Generate();
+            }
+            if(genCode)
+            {
+                codeGenerator.Generate();
+            }
+        }
+
         private string AddSlashToFolderPath(string folderPath)
         {
             if (!folderPath.EndsWith("\\"))
