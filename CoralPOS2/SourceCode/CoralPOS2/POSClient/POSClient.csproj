@@ -301,6 +301,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DeparmentStockMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -363,6 +371,12 @@
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
+    <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
+      <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
