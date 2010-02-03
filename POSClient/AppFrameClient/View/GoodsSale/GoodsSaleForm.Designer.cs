@@ -822,7 +822,7 @@
             this.txtTax.Size = new System.Drawing.Size(150, 33);
             this.txtTax.TabIndex = 40;
             this.txtTax.TabStop = false;
-            this.txtTax.Text = "5%";
+            this.txtTax.Text = "10%";
             // 
             // txtCharge
             // 

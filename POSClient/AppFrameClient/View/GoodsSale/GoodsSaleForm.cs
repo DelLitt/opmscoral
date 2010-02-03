@@ -81,7 +81,7 @@ namespace AppFrameClient.View.GoodsSale
             txtPayment.Text = "";
             txtTotalAmount.Text = "";
             txtCharge.Text = "";
-            txtTax.Text = "5%";
+            txtTax.Text = "10%";
             PurchaseOrderBill = null;
             ReturnPurchaseOrder = null;
             GoodsSaleController.PurchaseOrder = null;
@@ -871,7 +871,7 @@ namespace AppFrameClient.View.GoodsSale
             txtBarcode.Text = "";
             txtGoodsName.Text = "";
             txtQuantity.Text = "1";
-            txtTax.Text = "5%";
+            txtTax.Text = "10%";
         }
 
         private void label3_Click(object sender, EventArgs e)

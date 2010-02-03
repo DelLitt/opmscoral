@@ -61,7 +61,7 @@ namespace AppFrameClient.View
                 this.deptstockdeffileBindingSource.Sort = "product_name";
                 if (chkDoNam.Checked)
                 {
-                    this.deptstockdeffileBindingSource.Filter = " type_name like '%NAM' OR type_name like '%GILE%'";
+                    this.deptstockdeffileBindingSource.Filter = " type_name like '%NAM' OR type_name like '%GILE%' ";
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace AppFrameClient.View
                 this.stockdeffileBindingSource.Sort = "product_name";
                 if (chkDoNam.Checked)
                 {
-                    this.stockdeffileBindingSource.Filter = " type_name like '%NAM'  OR type_name like '%GILE%";
+                    this.stockdeffileBindingSource.Filter = " type_name like '%NAM'  OR type_name like '%GILE%'";
                 }
                 else
                 {

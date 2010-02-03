@@ -59,7 +59,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     reqFromDate = DateUtility.ZeroTime(DateTime.Now).Subtract(new TimeSpan(1, 0, 0, 0, 0));
                 }
             }
-            reqToDate = DateUtility.MaxTime(dtoTo.Value);
+            reqToDate = DateUtility.MaxTime(dtoTo.Value).AddHours(3);
 
             Enabled = false;
             backgroundWorker.RunWorkerAsync();
