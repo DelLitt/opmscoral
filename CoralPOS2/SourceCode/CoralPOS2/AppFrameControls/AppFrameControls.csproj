@@ -274,6 +274,7 @@
       <DependentUpon>PosButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TransitionPresenter.cs" />
+    <Compile Include="Controls\WrapButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
