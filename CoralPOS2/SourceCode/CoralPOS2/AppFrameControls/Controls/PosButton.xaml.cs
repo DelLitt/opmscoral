@@ -23,5 +23,20 @@ namespace AppFrameControls.Controls
         {
             InitializeComponent();
         }
+
+        public string Text { get; set; }
+
+        public static readonly DependencyProperty TextProperty =
+        DependencyProperty.Register("Text",typeof(string), typeof(PosButton),
+        new FrameworkPropertyMetadata("Button 1",
+        new PropertyChangedCallback(OnTextChanged)));
+
+        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            // When the color changes, set the icon color
+            PosButton control = (PosButton)d;
+            TextBlock tb = (TextBlock)control.Content;
+            tb.Text = control.Text;
+        }
     }
 }
