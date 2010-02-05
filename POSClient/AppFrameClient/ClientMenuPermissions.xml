@@ -87,7 +87,8 @@
     <menuitem name="mnuMonthGoodsSaleList" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptGoodsPurchaseOrderPeriodReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptPurchaseOrderReport" role="Administrator,Manager,Supervisor" />
-
+    <menuitem name="mnuPurchaseOrderStats" role="Administrator,Manager,Supervisor" />
+    
   </menu>
   <menu name="mnuReport" role="NotImplement">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />
@@ -133,6 +134,7 @@
     <menuitem name="mnuExportByFile" role="NotImplement" />
     <menuitem name="mnuEmployeeMoney" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuDeptStockDefExport" role="NotImplement" />
+    <menuitem name="mnuCreateSyncUSB" role="NotImplement" />
     
   </menu>
   <menu name="mnuHelp" role="*">

@@ -377,6 +377,12 @@
     <Compile Include="View\ClientServerSettingForm.Designer.cs">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CreateSyncUSBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CreateSyncUSBForm.Designer.cs">
+      <DependentUpon>CreateSyncUSBForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DeptStockEvaluationComparingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1464,6 +1470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClientServerSettingForm.resx">
       <DependentUpon>ClientServerSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateSyncUSBForm.resx">
+      <DependentUpon>CreateSyncUSBForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DeptStockEvaluationComparingForm.resx">
       <DependentUpon>DeptStockEvaluationComparingForm.cs</DependentUpon>

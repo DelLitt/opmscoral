@@ -156,6 +156,7 @@
             this.mnuImportDatabaseImage = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmployeeMoney = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptStockDefExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCreateSyncUSB = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSalePoint = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDefineSalePoint = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDepartmentSubStock = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,6 +215,7 @@
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlDeleteHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.mnuPurchaseOrderStats = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -453,7 +455,8 @@
             this.mnuGoodsSaleList,
             this.toolStripMenuItem21,
             this.mnuDeptGoodsPurchaseOrderPeriodReport,
-            this.mnuDeptPurchaseOrderReport});
+            this.mnuDeptPurchaseOrderReport,
+            this.mnuPurchaseOrderStats});
             this.mnuSale.Name = "mnuSale";
             this.mnuSale.Size = new System.Drawing.Size(79, 23);
             this.mnuSale.Text = "Bán hàng";
@@ -1055,7 +1058,8 @@
             this.mnuExportDatabaseImage,
             this.mnuImportDatabaseImage,
             this.mnuEmployeeMoney,
-            this.mnuDeptStockDefExport});
+            this.mnuDeptStockDefExport,
+            this.mnuCreateSyncUSB});
             this.mnuTool.Name = "mnuTool";
             this.mnuTool.Size = new System.Drawing.Size(67, 23);
             this.mnuTool.Text = "Tiện ích";
@@ -1187,6 +1191,13 @@
             this.mnuDeptStockDefExport.Size = new System.Drawing.Size(308, 24);
             this.mnuDeptStockDefExport.Text = "Xuất định nghĩa mặt hàng để kiểm kê";
             this.mnuDeptStockDefExport.Click += new System.EventHandler(this.mnuDeptStockDefExport_Click);
+            // 
+            // mnuCreateSyncUSB
+            // 
+            this.mnuCreateSyncUSB.Name = "mnuCreateSyncUSB";
+            this.mnuCreateSyncUSB.Size = new System.Drawing.Size(308, 24);
+            this.mnuCreateSyncUSB.Text = "Tạo USB đồng bộ";
+            this.mnuCreateSyncUSB.Click += new System.EventHandler(this.mnuCreateSyncUSB_Click);
             // 
             // mnuSalePoint
             // 
@@ -1706,6 +1717,13 @@
             this.crlDeleteHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
             this.crlDeleteHotkey.Pressed += new System.EventHandler(this.crlDeleteHotkey_Pressed);
             // 
+            // mnuPurchaseOrderStats
+            // 
+            this.mnuPurchaseOrderStats.Name = "mnuPurchaseOrderStats";
+            this.mnuPurchaseOrderStats.Size = new System.Drawing.Size(311, 24);
+            this.mnuPurchaseOrderStats.Text = "Báo cáo tình trạng bán hàng";
+            this.mnuPurchaseOrderStats.Click += new System.EventHandler(this.mnuPurchaseOrderStats_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1924,6 +1942,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuStockRemainsReport;
         private System.Windows.Forms.ToolStripMenuItem mnuDepartmentCostSummary;
         private System.Windows.Forms.ToolStripButton tsbCostSummary;
+        private System.Windows.Forms.ToolStripMenuItem mnuCreateSyncUSB;
+        private System.Windows.Forms.ToolStripMenuItem mnuPurchaseOrderStats;
 
     }
 }

@@ -1366,6 +1366,16 @@ namespace AppFrame.View
                  FormConstants.DEPARTMENT_COST_SUMMARY_FORM);
             form.Show();
         }
+
+        private void mnuCreateSyncUSB_Click(object sender, EventArgs e)
+        {
+            new CreateSyncUSBForm().Show();
+        }
+
+        private void mnuPurchaseOrderStats_Click(object sender, EventArgs e)
+        {
+            new DailyMatrixPurchaseOrderReportViewer().Show();
+        }
         
     }
 }
