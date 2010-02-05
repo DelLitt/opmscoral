@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSClient.Views
+namespace POSClient.Views.Management
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class DepartmentStockMenuView : UserControl
+    public partial class TemplatePOSVIew : UserControl
     {
-        public DepartmentStockMenuView()
+        public TemplatePOSVIew()
         {
             InitializeComponent();
         }

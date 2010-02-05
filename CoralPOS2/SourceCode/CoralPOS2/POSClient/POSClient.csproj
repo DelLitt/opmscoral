@@ -305,6 +305,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Management\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Report\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sale\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -332,6 +348,10 @@
     <Page Include="Views\TemplatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tool\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -374,6 +394,18 @@
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Management\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sale\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
@@ -394,6 +426,9 @@
     </Compile>
     <Compile Include="Views\TemplatePage.xaml.cs">
       <DependentUpon>TemplatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tool\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
