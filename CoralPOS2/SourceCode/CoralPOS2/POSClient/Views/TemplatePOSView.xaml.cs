@@ -17,9 +17,9 @@ namespace POSClient.Views
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class TemplatePOSView : UserControl
     {
-        public MainView()
+        public TemplatePOSView()
         {
             InitializeComponent();
         }
