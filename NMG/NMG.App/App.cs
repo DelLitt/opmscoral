@@ -423,7 +423,10 @@ namespace NHibernateMappingGenerator
 
         private void saveSettingButton_Click(object sender, EventArgs e)
         {
-            var streamWriter = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj", FileMode.Create);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+            //var streamWriter = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj", FileMode.Create);
+            var streamWriter = File.Open(saveFileDialog.FileName, FileMode.Create);
             BinaryFormatter xmlSerializer;
             using (streamWriter)
             {
@@ -481,7 +484,10 @@ namespace NHibernateMappingGenerator
         private void loadSettingButton_Click(object sender, EventArgs e)
         {
             var xmlSerializer = new BinaryFormatter();
-            var fi = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj",FileMode.Open);
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            //var fi = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj",FileMode.Open);
+            var fi = File.Open(fileDialog.FileName, FileMode.Open);
             if (fi.CanRead)
             {
                 using (fi)
