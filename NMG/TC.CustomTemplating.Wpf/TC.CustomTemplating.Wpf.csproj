@@ -5,13 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A15F2280-C07B-4BBA-B822-6D06C464A582}</ProjectGuid>
+    <ProjectGuid>{46D06A15-9F4D-4939-A38A-C1F8E90A90D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NMG.Core</RootNamespace>
-    <AssemblyName>NMG.Core</AssemblyName>
+    <RootNamespace>TC.CustomTemplating.Wpf</RootNamespace>
+    <AssemblyName>TC.CustomTemplating.Wpf</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,65 +33,46 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=2.111.7.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.OracleClient" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HibernateDaoClassTemplate.cs" />
-    <Compile Include="DaoClassPreferences.cs" />
-    <Compile Include="DaoGenerateArgument.cs" />
-    <Compile Include="Domain\ColumnDetail.cs" />
-    <Compile Include="Domain\DotNetTypes.cs" />
-    <Compile Include="Domain\Language.cs" />
-    <Compile Include="FieldNamingConvention.cs" />
-    <Compile Include="Fluent\DBColumnMapper.cs" />
-    <Compile Include="Fluent\Constants.cs" />
-    <Compile Include="Generator\CodeGenerationHelper.cs" />
-    <Compile Include="Generator\DaoLayerCodeGenerator.cs" />
-    <Compile Include="Generator\MappingGenerator.cs" />
-    <Compile Include="Generator\CodeGenerator.cs" />
-    <Compile Include="DataTypeMapper.cs" />
-    <Compile Include="GlobalCache.cs" />
-    <Compile Include="HibernateDaoInterfaceTemplate.cs" />
-    <Compile Include="IGenerateArgument.cs" />
-    <Compile Include="MetadataFactory.cs" />
-    <Compile Include="ApplicationPreferences.cs" />
-    <Compile Include="Reader\IMetadataReader.cs" />
-    <Compile Include="Reader\OracleMetadataReader.cs" />
-    <Compile Include="Reader\SqlServerMetadataReader.cs" />
-    <Compile Include="TableReference.cs" />
-    <Compile Include="Util\Extensions.cs" />
-    <Compile Include="Generator\IGenerator.cs" />
-    <Compile Include="Generator\AbstractGenerator.cs" />
-    <Compile Include="Generator\OracleMappingGenerator.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassName.cs" />
+    <Compile Include="ClassNameFinder.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\ServerType.cs" />
-    <Compile Include="Generator\SqlMappingGenerator.cs" />
-    <Compile Include="Util\StringConstants.cs" />
-    <Compile Include="Domain\ColumnDetails.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Templates\HibernateDaoInterfaceTemplate.tt" />
-    <None Include="ExtraMethodsTemplate.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <EmbeddedResource Include="Templates\HibernateDaoClassTemplate.tt" />
-    <None Include="ReplaceWords.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <CodeAnalysisDictionary Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TC.CustomTemplating\TC.CustomTemplating.csproj">

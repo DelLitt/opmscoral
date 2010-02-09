@@ -23,7 +23,7 @@ namespace TC.CustomTemplating.Example
 
             //Allows us to show the compiled class
             transformer.ClassDefinitionGenerated += Host_ClassDefinitionGenerated;
-
+            
             //start the tranformation
             var output = transformer.Transform(template, "Class", class1);
 

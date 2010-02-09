@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using NMG.Core;
 using NMG.Core.Domain;
+using NMG.Core.Generator;
 using NMG.Core.Util;
 
 namespace NHibernateMappingGenerator
@@ -245,6 +246,7 @@ namespace NHibernateMappingGenerator
                     GlobalCache.Instance.TablePreferences = _tablePreferences;
                     foreach (ApplicationPreferences item in _tablePreferences)
                     {
+                        item.FolderPath = folderTextBox.Text;
                         /*string tableName = item.ToString();
                         
                         var columnDetails = metadataReader.GetTableDetails(tableName);
@@ -665,6 +667,62 @@ namespace NHibernateMappingGenerator
             ColumnDetail columnDetail =  GetColumn(refColumnDetailBindingSource, value);
             if(columnDetail!=null)
                 refColumnGrid.Rows[currentCell.RowIndex].Cells[1].Value = columnDetail.ColumnName;
+        }
+
+        private void DaoLayerGen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderTextBox_TextChanged(object sender, EventArgs e)
+        {
+            txtDaoLookup.Text = folderTextBox.Text;
+        }
+
+        private void btnGenDao_Click(object sender, EventArgs e)
+        {
+            errorLabel.Text = string.Empty;
+            if (string.IsNullOrEmpty(txtDaoLayerDir.Text) )
+            {
+                errorCodeGen.Text = "Please select a directory for DAO GEN";
+                return;
+            }
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                
+                    if (clearCheck.Checked)
+                    {
+                        ClearOutputDirectory(txtDaoLayerDir.Text.Trim());
+                        errorCodeGen.Text = " Delete all file completed ...";
+                    }
+                    errorCodeGen.Text = " Generating ...";
+
+                    DaoClassPreferences daoClassPreferences = new DaoClassPreferences(txtDaoLookup.Text,txtDaoLayerDir.Text,txtDaoNamespace.Text,nameSpaceTextBox.Text);
+
+                    DaoLayerCodeGenerator daoLayerCodeGenerator = new DaoLayerCodeGenerator(daoClassPreferences);
+                    daoLayerCodeGenerator.Generate();
+                    errorCodeGen.Text = "Generated all files successfully.";
+                
+                
+            }
+            catch (Exception ex)
+            {
+                errorCodeGen.Text = ex.Message;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void ClearOutputDirectory(string p)
+        {
+            string[] files = Directory.GetFiles(p.Trim());
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            } 
         }
     }
 }

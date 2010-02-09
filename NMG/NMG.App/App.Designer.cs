@@ -61,6 +61,9 @@ namespace NHibernateMappingGenerator
             this.basicSettingsTabPage = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.genMappingCheck = new System.Windows.Forms.CheckBox();
+            this.genClassCheck = new System.Windows.Forms.CheckBox();
+            this.clearCheck = new System.Windows.Forms.CheckBox();
             this.editButton = new System.Windows.Forms.Button();
             this.tableReferenceGroup = new System.Windows.Forms.GroupBox();
             this.lblDesc = new System.Windows.Forms.Label();
@@ -104,9 +107,19 @@ namespace NHibernateMappingGenerator
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.clearCheck = new System.Windows.Forms.CheckBox();
-            this.genClassCheck = new System.Windows.Forms.CheckBox();
-            this.genMappingCheck = new System.Windows.Forms.CheckBox();
+            this.DaoLayerGen = new System.Windows.Forms.TabPage();
+            this.txtDaoLayerDir = new System.Windows.Forms.TextBox();
+            this.btnGenDao = new System.Windows.Forms.Button();
+            this.btnDaoLayerSelect = new System.Windows.Forms.Button();
+            this.txtDaoAssembly = new System.Windows.Forms.TextBox();
+            this.txtDaoNamespace = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDaoLookup = new System.Windows.Forms.TextBox();
+            this.btnDaoDirSelect = new System.Windows.Forms.Button();
+            this.errorCodeGen = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -122,6 +135,7 @@ namespace NHibernateMappingGenerator
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.DaoLayerGen.SuspendLayout();
             this.SuspendLayout();
             // 
             // connStrTextBox
@@ -231,6 +245,7 @@ namespace NHibernateMappingGenerator
             this.folderTextBox.Size = new System.Drawing.Size(431, 20);
             this.folderTextBox.TabIndex = 7;
             this.folderTextBox.Text = "D:\\Temp\\";
+            this.folderTextBox.TextChanged += new System.EventHandler(this.folderTextBox_TextChanged);
             // 
             // generateButton
             // 
@@ -338,6 +353,7 @@ namespace NHibernateMappingGenerator
             // 
             this.mainTabControl.Controls.Add(this.basicSettingsTabPage);
             this.mainTabControl.Controls.Add(this.advanceSettingsTabPage);
+            this.mainTabControl.Controls.Add(this.DaoLayerGen);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Name = "mainTabControl";
@@ -395,6 +411,42 @@ namespace NHibernateMappingGenerator
             this.groupBox5.Size = new System.Drawing.Size(1044, 205);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
+            // 
+            // genMappingCheck
+            // 
+            this.genMappingCheck.AutoSize = true;
+            this.genMappingCheck.Checked = true;
+            this.genMappingCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.genMappingCheck.Location = new System.Drawing.Point(165, 157);
+            this.genMappingCheck.Name = "genMappingCheck";
+            this.genMappingCheck.Size = new System.Drawing.Size(114, 17);
+            this.genMappingCheck.TabIndex = 36;
+            this.genMappingCheck.Text = "Generate Mapping";
+            this.genMappingCheck.UseVisualStyleBackColor = true;
+            // 
+            // genClassCheck
+            // 
+            this.genClassCheck.AutoSize = true;
+            this.genClassCheck.Checked = true;
+            this.genClassCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.genClassCheck.Location = new System.Drawing.Point(165, 134);
+            this.genClassCheck.Name = "genClassCheck";
+            this.genClassCheck.Size = new System.Drawing.Size(98, 17);
+            this.genClassCheck.TabIndex = 35;
+            this.genClassCheck.Text = "Generate Class";
+            this.genClassCheck.UseVisualStyleBackColor = true;
+            // 
+            // clearCheck
+            // 
+            this.clearCheck.AutoSize = true;
+            this.clearCheck.Checked = true;
+            this.clearCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.clearCheck.Location = new System.Drawing.Point(165, 109);
+            this.clearCheck.Name = "clearCheck";
+            this.clearCheck.Size = new System.Drawing.Size(131, 17);
+            this.clearCheck.TabIndex = 34;
+            this.clearCheck.Text = "Clear Before Generate";
+            this.clearCheck.UseVisualStyleBackColor = true;
             // 
             // editButton
             // 
@@ -850,41 +902,135 @@ namespace NHibernateMappingGenerator
             this.radioButton4.Text = ".hbm.xml file";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // clearCheck
+            // DaoLayerGen
             // 
-            this.clearCheck.AutoSize = true;
-            this.clearCheck.Checked = true;
-            this.clearCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.clearCheck.Location = new System.Drawing.Point(165, 109);
-            this.clearCheck.Name = "clearCheck";
-            this.clearCheck.Size = new System.Drawing.Size(131, 17);
-            this.clearCheck.TabIndex = 34;
-            this.clearCheck.Text = "Clear Before Generate";
-            this.clearCheck.UseVisualStyleBackColor = true;
+            this.DaoLayerGen.Controls.Add(this.errorCodeGen);
+            this.DaoLayerGen.Controls.Add(this.label11);
+            this.DaoLayerGen.Controls.Add(this.txtDaoLookup);
+            this.DaoLayerGen.Controls.Add(this.btnDaoDirSelect);
+            this.DaoLayerGen.Controls.Add(this.label10);
+            this.DaoLayerGen.Controls.Add(this.label9);
+            this.DaoLayerGen.Controls.Add(this.label8);
+            this.DaoLayerGen.Controls.Add(this.txtDaoLayerDir);
+            this.DaoLayerGen.Controls.Add(this.btnGenDao);
+            this.DaoLayerGen.Controls.Add(this.btnDaoLayerSelect);
+            this.DaoLayerGen.Controls.Add(this.txtDaoAssembly);
+            this.DaoLayerGen.Controls.Add(this.txtDaoNamespace);
+            this.DaoLayerGen.Location = new System.Drawing.Point(4, 22);
+            this.DaoLayerGen.Name = "DaoLayerGen";
+            this.DaoLayerGen.Padding = new System.Windows.Forms.Padding(3);
+            this.DaoLayerGen.Size = new System.Drawing.Size(1050, 658);
+            this.DaoLayerGen.TabIndex = 3;
+            this.DaoLayerGen.Text = "DaoLayer Generate";
+            this.DaoLayerGen.UseVisualStyleBackColor = true;
+            this.DaoLayerGen.Click += new System.EventHandler(this.DaoLayerGen_Click);
             // 
-            // genClassCheck
+            // txtDaoLayerDir
             // 
-            this.genClassCheck.AutoSize = true;
-            this.genClassCheck.Checked = true;
-            this.genClassCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.genClassCheck.Location = new System.Drawing.Point(165, 134);
-            this.genClassCheck.Name = "genClassCheck";
-            this.genClassCheck.Size = new System.Drawing.Size(98, 17);
-            this.genClassCheck.TabIndex = 35;
-            this.genClassCheck.Text = "Generate Class";
-            this.genClassCheck.UseVisualStyleBackColor = true;
+            this.txtDaoLayerDir.Location = new System.Drawing.Point(6, 199);
+            this.txtDaoLayerDir.Name = "txtDaoLayerDir";
+            this.txtDaoLayerDir.Size = new System.Drawing.Size(431, 20);
+            this.txtDaoLayerDir.TabIndex = 19;
+            this.txtDaoLayerDir.Text = "D:\\Temp\\";
             // 
-            // genMappingCheck
+            // btnGenDao
             // 
-            this.genMappingCheck.AutoSize = true;
-            this.genMappingCheck.Checked = true;
-            this.genMappingCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.genMappingCheck.Location = new System.Drawing.Point(165, 157);
-            this.genMappingCheck.Name = "genMappingCheck";
-            this.genMappingCheck.Size = new System.Drawing.Size(114, 17);
-            this.genMappingCheck.TabIndex = 36;
-            this.genMappingCheck.Text = "Generate Mapping";
-            this.genMappingCheck.UseVisualStyleBackColor = true;
+            this.btnGenDao.Location = new System.Drawing.Point(331, 274);
+            this.btnGenDao.Name = "btnGenDao";
+            this.btnGenDao.Size = new System.Drawing.Size(106, 23);
+            this.btnGenDao.TabIndex = 24;
+            this.btnGenDao.Text = "Generate Dao Layer";
+            this.btnGenDao.UseVisualStyleBackColor = true;
+            this.btnGenDao.Click += new System.EventHandler(this.btnGenDao_Click);
+            // 
+            // btnDaoLayerSelect
+            // 
+            this.btnDaoLayerSelect.Location = new System.Drawing.Point(443, 199);
+            this.btnDaoLayerSelect.Name = "btnDaoLayerSelect";
+            this.btnDaoLayerSelect.Size = new System.Drawing.Size(54, 23);
+            this.btnDaoLayerSelect.TabIndex = 21;
+            this.btnDaoLayerSelect.Text = "&Select";
+            this.btnDaoLayerSelect.UseVisualStyleBackColor = true;
+            // 
+            // txtDaoAssembly
+            // 
+            this.txtDaoAssembly.Location = new System.Drawing.Point(97, 248);
+            this.txtDaoAssembly.Name = "txtDaoAssembly";
+            this.txtDaoAssembly.Size = new System.Drawing.Size(340, 20);
+            this.txtDaoAssembly.TabIndex = 23;
+            this.txtDaoAssembly.Text = "Sample.CustomerService.Domain";
+            // 
+            // txtDaoNamespace
+            // 
+            this.txtDaoNamespace.Location = new System.Drawing.Point(97, 222);
+            this.txtDaoNamespace.Name = "txtDaoNamespace";
+            this.txtDaoNamespace.Size = new System.Drawing.Size(340, 20);
+            this.txtDaoNamespace.TabIndex = 22;
+            this.txtDaoNamespace.Text = "Sample.CustomerService.Domain";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 180);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 13);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Path for Dao Generate";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 225);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Namespace";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 248);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Assembly";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 134);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Path for Dao Object Lookup";
+            // 
+            // txtDaoLookup
+            // 
+            this.txtDaoLookup.Location = new System.Drawing.Point(6, 159);
+            this.txtDaoLookup.Name = "txtDaoLookup";
+            this.txtDaoLookup.Size = new System.Drawing.Size(431, 20);
+            this.txtDaoLookup.TabIndex = 28;
+            this.txtDaoLookup.Text = "D:\\Temp\\";
+            // 
+            // btnDaoDirSelect
+            // 
+            this.btnDaoDirSelect.Location = new System.Drawing.Point(443, 157);
+            this.btnDaoDirSelect.Name = "btnDaoDirSelect";
+            this.btnDaoDirSelect.Size = new System.Drawing.Size(54, 23);
+            this.btnDaoDirSelect.TabIndex = 29;
+            this.btnDaoDirSelect.Text = "&Select";
+            this.btnDaoDirSelect.UseVisualStyleBackColor = true;
+            // 
+            // errorCodeGen
+            // 
+            this.errorCodeGen.AutoSize = true;
+            this.errorCodeGen.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorCodeGen.ForeColor = System.Drawing.Color.OrangeRed;
+            this.errorCodeGen.Location = new System.Drawing.Point(11, 620);
+            this.errorCodeGen.Name = "errorCodeGen";
+            this.errorCodeGen.Size = new System.Drawing.Size(109, 23);
+            this.errorCodeGen.TabIndex = 31;
+            this.errorCodeGen.Text = "Waiting ...";
             // 
             // App
             // 
@@ -918,6 +1064,8 @@ namespace NHibernateMappingGenerator
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.DaoLayerGen.ResumeLayout(false);
+            this.DaoLayerGen.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -998,6 +1146,19 @@ namespace NHibernateMappingGenerator
         private CheckBox clearCheck;
         private CheckBox genMappingCheck;
         private CheckBox genClassCheck;
+        private TabPage DaoLayerGen;
+        private Label label11;
+        private TextBox txtDaoLookup;
+        private Button btnDaoDirSelect;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private TextBox txtDaoLayerDir;
+        private Button btnGenDao;
+        private Button btnDaoLayerSelect;
+        private TextBox txtDaoAssembly;
+        private TextBox txtDaoNamespace;
+        private Label errorCodeGen;
     }
 }
 
