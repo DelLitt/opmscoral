@@ -19,6 +19,8 @@ namespace NHibernateMappingGenerator
         private List<ApplicationPreferences> _tablePreferences = new List<ApplicationPreferences>();
         private ApplicationPreferences CurrentTablePreference { get; set;}
         private ApplicationSettings _applicationSettings;
+        private string _currentProjectPath;
+        private bool _isDirty = false;
         public App()
         {
             InitializeComponent();
@@ -29,29 +31,76 @@ namespace NHibernateMappingGenerator
             tablesComboBox.Enabled = false;
             sequencesComboBox.Enabled = false;
             Closing += App_Closing;
-            ApplicationSettings applicationSettings = null;
 
-            try 
-	        {	        
-		        applicationSettings = ApplicationSettings.Load();
-	            _applicationSettings = applicationSettings;
-	        }
-	        catch (Exception)
-	        {
+            #region Unused code
+            //ApplicationSettings applicationSettings = null;
 
-	        }
-            if (applicationSettings != null)
-            {
-                connStrTextBox.Text = applicationSettings.ConnectionString;
-                serverTypeComboBox.SelectedItem = applicationSettings.ServerType;
-                nameSpaceTextBox.Text = applicationSettings.NameSpace;
-                assemblyNameTextBox.Text = applicationSettings.AssemblyName;
-            }
+            //try 
+            //{	        
+            //    applicationSettings = ApplicationSettings.Load();
+            //    _applicationSettings = applicationSettings;
+            //}
+            //catch (Exception)
+            //{
+
+            //}
+            //if (applicationSettings != null)
+            //{
+            //    connStrTextBox.Text = applicationSettings.ConnectionString;
+            //    serverTypeComboBox.SelectedItem = applicationSettings.ServerType;
+            //    nameSpaceTextBox.Text = applicationSettings.NameSpace;
+            //    assemblyNameTextBox.Text = applicationSettings.AssemblyName;
+            //} 
+            #endregion
+
             sameAsDBRadioButton.Checked = true;
             prefixLabel.Visible = prefixTextBox.Visible = false;
             cSharpRadioButton.Checked = true;
             hbmMappingOption.Checked = true;
-            
+         
+            // add event check dirty state for text box
+            AddDirtyHandler(this.Controls);
+            this.mainTabControl.Enabled = false;
+        }
+
+        private void AddDirtyHandler(Control.ControlCollection collection)
+        {
+            foreach (Control control in collection)
+            {
+                if (control.GetType().Equals(typeof(TextBox)))
+                {
+                    TextBox textBox = (TextBox)control;
+                    textBox.TextChanged += new EventHandler(DirtyChecking);
+                }
+
+                if (control.GetType().Equals(typeof(RadioButton)))
+                {
+                    RadioButton radioButton = (RadioButton)control;
+                    radioButton.CheckedChanged += new EventHandler(DirtyChecking);
+                }
+                if(control.Controls.Count > 0)
+                {
+                    AddDirtyHandler(control.Controls);
+                }
+            }
+        }
+
+        private void DirtyChecking(object sender, EventArgs e)
+        {
+            _isDirty = true;
+            UpdateFormTextStatus();
+        }
+
+        private void UpdateFormTextStatus()
+        {
+            if(_isDirty)
+            {
+                if(!this.Text.EndsWith("*")) this.Text += "*";
+            }
+            else
+            {
+                this.Text = this.Text.Replace("*", "");
+            }
         }
 
         private void DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -61,10 +110,13 @@ namespace NHibernateMappingGenerator
 
         private void App_Closing(object sender, CancelEventArgs e)
         {
-            var applicationSettings = new ApplicationSettings(connStrTextBox.Text, (ServerType) serverTypeComboBox.SelectedItem, nameSpaceTextBox.Text,
+            #region Unused code
+            /*var applicationSettings = new ApplicationSettings(connStrTextBox.Text, (ServerType) serverTypeComboBox.SelectedItem, nameSpaceTextBox.Text,
                                                               assemblyNameTextBox.Text);
             applicationSettings.Save();
-            MessageBox.Show("Completed !");
+            MessageBox.Show("Completed !");*/
+
+            #endregion
         }
 
         private void ServerTypeSelected(object sender, EventArgs e)
@@ -126,7 +178,31 @@ namespace NHibernateMappingGenerator
                 CreateApplicationSetttingForTables();
                 var applicationPreferences = _tablePreferences[tablesComboBox.SelectedIndex];
                 CurrentTablePreference = applicationPreferences;
-                
+
+                // load relationships
+                if (!string.IsNullOrEmpty(_currentProjectPath))
+                {
+                    string dirPath = _currentProjectPath;
+                    if (!string.IsNullOrEmpty(_applicationSettings.TablePreferencesFile))
+                    {
+                        var xmlSerializer = new BinaryFormatter();
+
+                        if (!dirPath.EndsWith(@"\")) dirPath = dirPath + @"\";
+                        
+                        var fi = File.Open(dirPath + _applicationSettings.TablePreferencesFile, FileMode.Open);
+                        if (fi.CanRead)
+                        {
+                            using (fi)
+                            {
+                                TablePreferenceSettings settings =
+                                    (TablePreferenceSettings) xmlSerializer.Deserialize(fi);
+                                if (settings != null) _tablePreferences = settings.TablePreferences;
+                            }
+                        }
+                        
+                    }
+                }
+
             }
             catch(Exception ex)
             {
@@ -727,27 +803,37 @@ namespace NHibernateMappingGenerator
 
         private void saveProjectAsMenu_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog saveProjectDialog = new FolderBrowserDialog();
+            saveProjectDialog.ShowDialog();
+
+            SaveCurrentProject(saveProjectDialog.SelectedPath);
+            _isDirty = false;
+            UpdateFormTextStatus();
+            this.mainTabControl.Enabled = true;
+        }
+
+        private void SaveCurrentProject(string path)
+        {
             if (_applicationSettings == null)
             {
                 MessageBox.Show("Please create new project !");
                 return;
             }
 
-            if(string.IsNullOrEmpty(projectNameTextBox.Text))
+            if (string.IsNullOrEmpty(projectNameTextBox.Text))
             {
                 MessageBox.Show("Please input project name !");
                 return;
             }
 
-            FolderBrowserDialog saveProjectDialog = new FolderBrowserDialog();
-            saveProjectDialog.ShowDialog();
             LoadViewToApplicationSettings();
-            _applicationSettings.Save(saveProjectDialog.SelectedPath);
-            
-            if(_tablePreferences!= null && _tablePreferences.Count > 0)
+            _applicationSettings.Save(path);
+
+            if (_tablePreferences != null && _tablePreferences.Count > 0)
             {
-                _applicationSettings.SaveTablePreferencesSetting(saveProjectDialog.SelectedPath, _tablePreferences);
+                _applicationSettings.SaveTablePreferencesSetting(path, _tablePreferences);
             }
+            MessageBox.Show("Save project completed !");
         }
 
         private void LoadViewToApplicationSettings()
@@ -783,25 +869,22 @@ namespace NHibernateMappingGenerator
             
 
             LoadApplicationSettings();
+            _currentProjectPath = GetSafeProjectPath(saveProjectDialog.FileName);
 
-            if (!string.IsNullOrEmpty(_applicationSettings.TablePreferencesFile))
-            {
-                var xmlSerializer = new BinaryFormatter();
-                string dirPath = projectFile.Substring(0, projectFile.LastIndexOf("\\"));
-                if (!dirPath.EndsWith("\\")) dirPath = dirPath + @"\";
+            // just opened project so it's not dirty
+            _isDirty = false;
+            UpdateFormTextStatus();
+            this.mainTabControl.Enabled = true;
+        }
 
-                //var fi = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj",FileMode.Open);
-                var fi = File.Open(dirPath + _applicationSettings.TablePreferencesFile, FileMode.Open);
-                if (fi.CanRead)
-                {
-                    using (fi)
-                    {
-                        TablePreferenceSettings settings = (TablePreferenceSettings)xmlSerializer.Deserialize(fi);
-                        if (settings != null) _tablePreferences = settings.TablePreferences;
-                    }
-                }
-                MessageBox.Show("OK!");   
-            }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName">fileName include path</param>
+        /// <returns></returns>
+        private string GetSafeProjectPath(string fileName)
+        {
+            return fileName.Substring(0, fileName.LastIndexOf(@"\"));
         }
 
         private void LoadApplicationSettings()
@@ -831,7 +914,54 @@ namespace NHibernateMappingGenerator
                 txtDaoAssembly.Text = _applicationSettings.DataLayerAssembly;
                 txtDaoNamespace.Text = _applicationSettings.DataLayerNameSpace;
                 projectNameTextBox.Text = _applicationSettings.ProjectName;
+                this.Text = projectNameTextBox.Text;
             }
+        }
+
+        private void saveProjectMenu_Click(object sender, EventArgs e)
+        {
+            if(_applicationSettings == null)
+            {
+                MessageBox.Show("Nothing to save. Please create a project !");
+                return;
+            }
+            if(string.IsNullOrEmpty(_currentProjectPath))
+            {
+                saveProjectAsMenu_Click(sender,e);
+                
+            }
+            else
+            {
+                string realPath = _currentProjectPath.Substring(0,
+                                                            _currentProjectPath.IndexOf(_applicationSettings.ProjectName));
+                SaveCurrentProject(realPath);    
+            }
+            _isDirty = false;
+            UpdateFormTextStatus();
+            this.mainTabControl.Enabled = true;
+        }
+
+        private void newProjectMenu_Click(object sender, EventArgs e)
+        {
+            
+            var applicationSettings = new ApplicationSettings(connStrTextBox.Text, (ServerType)serverTypeComboBox.SelectedItem, nameSpaceTextBox.Text,
+                                                              assemblyNameTextBox.Text);
+            _applicationSettings = applicationSettings;
+            projectNameTextBox.Text = " New NMG Project";
+            _applicationSettings.ProjectName = projectNameTextBox.Text;
+            _isDirty = true;
+            this.mainTabControl.Enabled = true;
+        }
+
+        private void exitMenu_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void closeMenu_Click(object sender, EventArgs e)
+        {
+            saveProjectMenu_Click(sender,e);
+            this.mainTabControl.Enabled = false;
         }
     }
 }

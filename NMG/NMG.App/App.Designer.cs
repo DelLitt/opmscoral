@@ -69,9 +69,7 @@ namespace NHibernateMappingGenerator
             this.lblDesc = new System.Windows.Forms.Label();
             this.refColumnGrid = new System.Windows.Forms.DataGridView();
             this.refColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.refTableColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.refName = new System.Windows.Forms.TextBox();
             this.refTypeCombo = new System.Windows.Forms.ComboBox();
@@ -128,6 +126,10 @@ namespace NHibernateMappingGenerator
             this.saveProjectAsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeMenu = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -135,8 +137,6 @@ namespace NHibernateMappingGenerator
             this.groupBox5.SuspendLayout();
             this.tableReferenceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.businessLayerTabPage.SuspendLayout();
             this.advanceSettingsTabPage.SuspendLayout();
@@ -145,6 +145,8 @@ namespace NHibernateMappingGenerator
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // connStrTextBox
@@ -160,7 +162,7 @@ namespace NHibernateMappingGenerator
             this.dbConnStrLabel.AutoSize = true;
             this.dbConnStrLabel.Location = new System.Drawing.Point(8, 25);
             this.dbConnStrLabel.Name = "dbConnStrLabel";
-            this.dbConnStrLabel.Size = new System.Drawing.Size(124, 15);
+            this.dbConnStrLabel.Size = new System.Drawing.Size(109, 13);
             this.dbConnStrLabel.TabIndex = 1;
             this.dbConnStrLabel.Text = "DB Connection String";
             // 
@@ -209,7 +211,7 @@ namespace NHibernateMappingGenerator
             this.dbTableDetailsGridView.Location = new System.Drawing.Point(3, 16);
             this.dbTableDetailsGridView.Name = "dbTableDetailsGridView";
             this.dbTableDetailsGridView.RowHeadersVisible = false;
-            this.dbTableDetailsGridView.Size = new System.Drawing.Size(1038, 298);
+            this.dbTableDetailsGridView.Size = new System.Drawing.Size(1038, 301);
             this.dbTableDetailsGridView.TabIndex = 5;
             // 
             // columnName
@@ -282,7 +284,7 @@ namespace NHibernateMappingGenerator
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(421, 15);
+            this.label1.Size = new System.Drawing.Size(363, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Select the folder in which the mapping and domain files would be generated";
             // 
@@ -291,7 +293,7 @@ namespace NHibernateMappingGenerator
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "NameSpace :";
             // 
@@ -308,7 +310,7 @@ namespace NHibernateMappingGenerator
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 15);
+            this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "AssemblyName :";
             // 
@@ -335,7 +337,7 @@ namespace NHibernateMappingGenerator
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(11, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 15);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Select a table";
             // 
@@ -344,7 +346,7 @@ namespace NHibernateMappingGenerator
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(513, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(234, 15);
+            this.label5.Size = new System.Drawing.Size(207, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Select the sequence for the selected table";
             // 
@@ -364,10 +366,10 @@ namespace NHibernateMappingGenerator
             this.mainTabControl.Controls.Add(this.businessLayerTabPage);
             this.mainTabControl.Controls.Add(this.advanceSettingsTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTabControl.Location = new System.Drawing.Point(0, 27);
+            this.mainTabControl.Location = new System.Drawing.Point(0, 24);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1058, 657);
+            this.mainTabControl.Size = new System.Drawing.Size(1058, 660);
             this.mainTabControl.TabIndex = 19;
             // 
             // basicSettingsTabPage
@@ -378,7 +380,7 @@ namespace NHibernateMappingGenerator
             this.basicSettingsTabPage.Location = new System.Drawing.Point(4, 22);
             this.basicSettingsTabPage.Name = "basicSettingsTabPage";
             this.basicSettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.basicSettingsTabPage.Size = new System.Drawing.Size(1050, 631);
+            this.basicSettingsTabPage.Size = new System.Drawing.Size(1050, 634);
             this.basicSettingsTabPage.TabIndex = 1;
             this.basicSettingsTabPage.Text = "Model Mapping";
             this.basicSettingsTabPage.UseVisualStyleBackColor = true;
@@ -389,7 +391,7 @@ namespace NHibernateMappingGenerator
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 106);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1044, 317);
+            this.groupBox6.Size = new System.Drawing.Size(1044, 320);
             this.groupBox6.TabIndex = 21;
             this.groupBox6.TabStop = false;
             // 
@@ -415,7 +417,7 @@ namespace NHibernateMappingGenerator
             this.groupBox5.Controls.Add(this.nameSpaceTextBox);
             this.groupBox5.Controls.Add(this.errorLabel);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox5.Location = new System.Drawing.Point(3, 423);
+            this.groupBox5.Location = new System.Drawing.Point(3, 426);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1044, 205);
             this.groupBox5.TabIndex = 20;
@@ -428,7 +430,7 @@ namespace NHibernateMappingGenerator
             this.genMappingCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.genMappingCheck.Location = new System.Drawing.Point(165, 157);
             this.genMappingCheck.Name = "genMappingCheck";
-            this.genMappingCheck.Size = new System.Drawing.Size(129, 19);
+            this.genMappingCheck.Size = new System.Drawing.Size(114, 17);
             this.genMappingCheck.TabIndex = 36;
             this.genMappingCheck.Text = "Generate Mapping";
             this.genMappingCheck.UseVisualStyleBackColor = true;
@@ -440,7 +442,7 @@ namespace NHibernateMappingGenerator
             this.genClassCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.genClassCheck.Location = new System.Drawing.Point(165, 134);
             this.genClassCheck.Name = "genClassCheck";
-            this.genClassCheck.Size = new System.Drawing.Size(110, 19);
+            this.genClassCheck.Size = new System.Drawing.Size(98, 17);
             this.genClassCheck.TabIndex = 35;
             this.genClassCheck.Text = "Generate Class";
             this.genClassCheck.UseVisualStyleBackColor = true;
@@ -452,7 +454,7 @@ namespace NHibernateMappingGenerator
             this.clearCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.clearCheck.Location = new System.Drawing.Point(165, 109);
             this.clearCheck.Name = "clearCheck";
-            this.clearCheck.Size = new System.Drawing.Size(148, 19);
+            this.clearCheck.Size = new System.Drawing.Size(131, 17);
             this.clearCheck.TabIndex = 34;
             this.clearCheck.Text = "Clear Before Generate";
             this.clearCheck.UseVisualStyleBackColor = true;
@@ -489,7 +491,7 @@ namespace NHibernateMappingGenerator
             this.lblDesc.AutoSize = true;
             this.lblDesc.Location = new System.Drawing.Point(16, 69);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(35, 15);
+            this.lblDesc.Size = new System.Drawing.Size(32, 13);
             this.lblDesc.TabIndex = 30;
             this.lblDesc.Text = "Desc";
             // 
@@ -514,10 +516,6 @@ namespace NHibernateMappingGenerator
             this.refColumn.Name = "refColumn";
             this.refColumn.Width = 135;
             // 
-            // columnDetailBindingSource
-            // 
-            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
-            // 
             // refTableColumn
             // 
             this.refTableColumn.DataSource = this.refColumnDetailBindingSource;
@@ -526,16 +524,12 @@ namespace NHibernateMappingGenerator
             this.refTableColumn.Name = "refTableColumn";
             this.refTableColumn.Width = 137;
             // 
-            // refColumnDetailBindingSource
-            // 
-            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(16, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 15);
+            this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 27;
             this.label7.Text = "Name";
             // 
@@ -570,7 +564,7 @@ namespace NHibernateMappingGenerator
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(-3, 45);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 15);
+            this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 20;
             this.label6.Text = "Ref.Table";
             // 
@@ -661,7 +655,7 @@ namespace NHibernateMappingGenerator
             this.assignedRadio.AutoSize = true;
             this.assignedRadio.Location = new System.Drawing.Point(806, 51);
             this.assignedRadio.Name = "assignedRadio";
-            this.assignedRadio.Size = new System.Drawing.Size(75, 19);
+            this.assignedRadio.Size = new System.Drawing.Size(68, 17);
             this.assignedRadio.TabIndex = 19;
             this.assignedRadio.TabStop = true;
             this.assignedRadio.Text = "Assigned";
@@ -672,7 +666,7 @@ namespace NHibernateMappingGenerator
             this.sequenceRadio.AutoSize = true;
             this.sequenceRadio.Location = new System.Drawing.Point(726, 51);
             this.sequenceRadio.Name = "sequenceRadio";
-            this.sequenceRadio.Size = new System.Drawing.Size(81, 19);
+            this.sequenceRadio.Size = new System.Drawing.Size(74, 17);
             this.sequenceRadio.TabIndex = 18;
             this.sequenceRadio.TabStop = true;
             this.sequenceRadio.Text = "Sequence";
@@ -695,7 +689,7 @@ namespace NHibernateMappingGenerator
             this.businessLayerTabPage.Location = new System.Drawing.Point(4, 22);
             this.businessLayerTabPage.Name = "businessLayerTabPage";
             this.businessLayerTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.businessLayerTabPage.Size = new System.Drawing.Size(1050, 631);
+            this.businessLayerTabPage.Size = new System.Drawing.Size(1050, 634);
             this.businessLayerTabPage.TabIndex = 3;
             this.businessLayerTabPage.Text = "Business Layer";
             this.businessLayerTabPage.UseVisualStyleBackColor = true;
@@ -708,7 +702,7 @@ namespace NHibernateMappingGenerator
             this.errorCodeGen.ForeColor = System.Drawing.Color.OrangeRed;
             this.errorCodeGen.Location = new System.Drawing.Point(11, 620);
             this.errorCodeGen.Name = "errorCodeGen";
-            this.errorCodeGen.Size = new System.Drawing.Size(121, 25);
+            this.errorCodeGen.Size = new System.Drawing.Size(109, 23);
             this.errorCodeGen.TabIndex = 31;
             this.errorCodeGen.Text = "Waiting ...";
             // 
@@ -717,7 +711,7 @@ namespace NHibernateMappingGenerator
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(8, 134);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 15);
+            this.label11.Size = new System.Drawing.Size(140, 13);
             this.label11.TabIndex = 30;
             this.label11.Text = "Path for Dao Object Lookup";
             // 
@@ -743,7 +737,7 @@ namespace NHibernateMappingGenerator
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 248);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 15);
+            this.label10.Size = new System.Drawing.Size(51, 13);
             this.label10.TabIndex = 27;
             this.label10.Text = "Assembly";
             // 
@@ -752,7 +746,7 @@ namespace NHibernateMappingGenerator
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 225);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(74, 15);
+            this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 26;
             this.label9.Text = "Namespace";
             // 
@@ -761,7 +755,7 @@ namespace NHibernateMappingGenerator
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 180);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 15);
+            this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 25;
             this.label8.Text = "Path for Dao Generate";
             // 
@@ -817,7 +811,7 @@ namespace NHibernateMappingGenerator
             this.advanceSettingsTabPage.Location = new System.Drawing.Point(4, 22);
             this.advanceSettingsTabPage.Name = "advanceSettingsTabPage";
             this.advanceSettingsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.advanceSettingsTabPage.Size = new System.Drawing.Size(1050, 631);
+            this.advanceSettingsTabPage.Size = new System.Drawing.Size(1050, 634);
             this.advanceSettingsTabPage.TabIndex = 2;
             this.advanceSettingsTabPage.Text = "Preferences";
             this.advanceSettingsTabPage.UseVisualStyleBackColor = true;
@@ -840,7 +834,7 @@ namespace NHibernateMappingGenerator
             this.autoPropertyRadioBtn.Checked = true;
             this.autoPropertyRadioBtn.Location = new System.Drawing.Point(6, 65);
             this.autoPropertyRadioBtn.Name = "autoPropertyRadioBtn";
-            this.autoPropertyRadioBtn.Size = new System.Drawing.Size(97, 19);
+            this.autoPropertyRadioBtn.Size = new System.Drawing.Size(89, 17);
             this.autoPropertyRadioBtn.TabIndex = 6;
             this.autoPropertyRadioBtn.TabStop = true;
             this.autoPropertyRadioBtn.Text = "Auto Property";
@@ -851,7 +845,7 @@ namespace NHibernateMappingGenerator
             this.propertyRadioBtn.AutoSize = true;
             this.propertyRadioBtn.Location = new System.Drawing.Point(6, 42);
             this.propertyRadioBtn.Name = "propertyRadioBtn";
-            this.propertyRadioBtn.Size = new System.Drawing.Size(70, 19);
+            this.propertyRadioBtn.Size = new System.Drawing.Size(64, 17);
             this.propertyRadioBtn.TabIndex = 5;
             this.propertyRadioBtn.Text = "Property";
             this.propertyRadioBtn.UseVisualStyleBackColor = true;
@@ -861,7 +855,7 @@ namespace NHibernateMappingGenerator
             this.fieldRadioBtn.AutoSize = true;
             this.fieldRadioBtn.Location = new System.Drawing.Point(6, 19);
             this.fieldRadioBtn.Name = "fieldRadioBtn";
-            this.fieldRadioBtn.Size = new System.Drawing.Size(52, 19);
+            this.fieldRadioBtn.Size = new System.Drawing.Size(47, 17);
             this.fieldRadioBtn.TabIndex = 4;
             this.fieldRadioBtn.Text = "Field";
             this.fieldRadioBtn.UseVisualStyleBackColor = true;
@@ -883,7 +877,7 @@ namespace NHibernateMappingGenerator
             this.fluentMappingOption.Enabled = false;
             this.fluentMappingOption.Location = new System.Drawing.Point(6, 42);
             this.fluentMappingOption.Name = "fluentMappingOption";
-            this.fluentMappingOption.Size = new System.Drawing.Size(111, 19);
+            this.fluentMappingOption.Size = new System.Drawing.Size(98, 17);
             this.fluentMappingOption.TabIndex = 5;
             this.fluentMappingOption.Text = "Fluent Mapping";
             this.fluentMappingOption.UseVisualStyleBackColor = true;
@@ -894,7 +888,7 @@ namespace NHibernateMappingGenerator
             this.hbmMappingOption.Checked = true;
             this.hbmMappingOption.Location = new System.Drawing.Point(6, 19);
             this.hbmMappingOption.Name = "hbmMappingOption";
-            this.hbmMappingOption.Size = new System.Drawing.Size(95, 19);
+            this.hbmMappingOption.Size = new System.Drawing.Size(82, 17);
             this.hbmMappingOption.TabIndex = 4;
             this.hbmMappingOption.TabStop = true;
             this.hbmMappingOption.Text = ".hbm.xml file";
@@ -914,9 +908,10 @@ namespace NHibernateMappingGenerator
             // vbRadioButton
             // 
             this.vbRadioButton.AutoSize = true;
+            this.vbRadioButton.Enabled = false;
             this.vbRadioButton.Location = new System.Drawing.Point(6, 42);
             this.vbRadioButton.Name = "vbRadioButton";
-            this.vbRadioButton.Size = new System.Drawing.Size(40, 19);
+            this.vbRadioButton.Size = new System.Drawing.Size(39, 17);
             this.vbRadioButton.TabIndex = 5;
             this.vbRadioButton.Text = "VB";
             this.vbRadioButton.UseVisualStyleBackColor = true;
@@ -927,7 +922,7 @@ namespace NHibernateMappingGenerator
             this.cSharpRadioButton.Checked = true;
             this.cSharpRadioButton.Location = new System.Drawing.Point(6, 19);
             this.cSharpRadioButton.Name = "cSharpRadioButton";
-            this.cSharpRadioButton.Size = new System.Drawing.Size(40, 19);
+            this.cSharpRadioButton.Size = new System.Drawing.Size(39, 17);
             this.cSharpRadioButton.TabIndex = 4;
             this.cSharpRadioButton.TabStop = true;
             this.cSharpRadioButton.Text = "C#";
@@ -960,7 +955,7 @@ namespace NHibernateMappingGenerator
             this.prefixRadioButton.AutoSize = true;
             this.prefixRadioButton.Location = new System.Drawing.Point(6, 65);
             this.prefixRadioButton.Name = "prefixRadioButton";
-            this.prefixRadioButton.Size = new System.Drawing.Size(70, 19);
+            this.prefixRadioButton.Size = new System.Drawing.Size(63, 17);
             this.prefixRadioButton.TabIndex = 2;
             this.prefixRadioButton.Text = "Prefixed";
             this.prefixRadioButton.UseVisualStyleBackColor = true;
@@ -971,7 +966,7 @@ namespace NHibernateMappingGenerator
             this.prefixLabel.AutoSize = true;
             this.prefixLabel.Location = new System.Drawing.Point(6, 96);
             this.prefixLabel.Name = "prefixLabel";
-            this.prefixLabel.Size = new System.Drawing.Size(47, 15);
+            this.prefixLabel.Size = new System.Drawing.Size(42, 13);
             this.prefixLabel.TabIndex = 2;
             this.prefixLabel.Text = "Prefix : ";
             // 
@@ -981,7 +976,7 @@ namespace NHibernateMappingGenerator
             this.camelCasedRadioButton.Checked = true;
             this.camelCasedRadioButton.Location = new System.Drawing.Point(6, 42);
             this.camelCasedRadioButton.Name = "camelCasedRadioButton";
-            this.camelCasedRadioButton.Size = new System.Drawing.Size(94, 19);
+            this.camelCasedRadioButton.Size = new System.Drawing.Size(83, 17);
             this.camelCasedRadioButton.TabIndex = 1;
             this.camelCasedRadioButton.TabStop = true;
             this.camelCasedRadioButton.Text = "Camelcased";
@@ -992,7 +987,7 @@ namespace NHibernateMappingGenerator
             this.sameAsDBRadioButton.AutoSize = true;
             this.sameAsDBRadioButton.Location = new System.Drawing.Point(6, 19);
             this.sameAsDBRadioButton.Name = "sameAsDBRadioButton";
-            this.sameAsDBRadioButton.Size = new System.Drawing.Size(207, 19);
+            this.sameAsDBRadioButton.Size = new System.Drawing.Size(179, 17);
             this.sameAsDBRadioButton.TabIndex = 0;
             this.sameAsDBRadioButton.Text = "Same as database column name";
             this.sameAsDBRadioButton.UseVisualStyleBackColor = true;
@@ -1047,7 +1042,7 @@ namespace NHibernateMappingGenerator
             this.fileMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1058, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1058, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1057,34 +1052,38 @@ namespace NHibernateMappingGenerator
             this.newProjectMenu,
             this.loadProjectMenu,
             this.saveProjectMenu,
-            this.saveProjectAsMenu});
+            this.saveProjectAsMenu,
+            this.closeMenu,
+            this.exitMenu});
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(41, 23);
+            this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "File";
             // 
             // newProjectMenu
             // 
             this.newProjectMenu.Name = "newProjectMenu";
-            this.newProjectMenu.Size = new System.Drawing.Size(184, 24);
+            this.newProjectMenu.Size = new System.Drawing.Size(166, 22);
             this.newProjectMenu.Text = "New Project";
+            this.newProjectMenu.Click += new System.EventHandler(this.newProjectMenu_Click);
             // 
             // loadProjectMenu
             // 
             this.loadProjectMenu.Name = "loadProjectMenu";
-            this.loadProjectMenu.Size = new System.Drawing.Size(184, 24);
+            this.loadProjectMenu.Size = new System.Drawing.Size(166, 22);
             this.loadProjectMenu.Text = "Load Project";
             this.loadProjectMenu.Click += new System.EventHandler(this.loadProjectMenu_Click);
             // 
             // saveProjectMenu
             // 
             this.saveProjectMenu.Name = "saveProjectMenu";
-            this.saveProjectMenu.Size = new System.Drawing.Size(184, 24);
+            this.saveProjectMenu.Size = new System.Drawing.Size(166, 22);
             this.saveProjectMenu.Text = "Save Project";
+            this.saveProjectMenu.Click += new System.EventHandler(this.saveProjectMenu_Click);
             // 
             // saveProjectAsMenu
             // 
             this.saveProjectAsMenu.Name = "saveProjectAsMenu";
-            this.saveProjectAsMenu.Size = new System.Drawing.Size(184, 24);
+            this.saveProjectAsMenu.Size = new System.Drawing.Size(166, 22);
             this.saveProjectAsMenu.Text = "Save Project As ...";
             this.saveProjectAsMenu.Click += new System.EventHandler(this.saveProjectAsMenu_Click);
             // 
@@ -1100,9 +1099,31 @@ namespace NHibernateMappingGenerator
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(268, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 15);
+            this.label12.Size = new System.Drawing.Size(71, 13);
             this.label12.TabIndex = 22;
             this.label12.Text = "Project Name";
+            // 
+            // columnDetailBindingSource
+            // 
+            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            // 
+            // refColumnDetailBindingSource
+            // 
+            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            // 
+            // exitMenu
+            // 
+            this.exitMenu.Name = "exitMenu";
+            this.exitMenu.Size = new System.Drawing.Size(166, 22);
+            this.exitMenu.Text = "Exit";
+            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            // 
+            // closeMenu
+            // 
+            this.closeMenu.Name = "closeMenu";
+            this.closeMenu.Size = new System.Drawing.Size(166, 22);
+            this.closeMenu.Text = "Close";
+            this.closeMenu.Click += new System.EventHandler(this.closeMenu_Click);
             // 
             // App
             // 
@@ -1127,8 +1148,6 @@ namespace NHibernateMappingGenerator
             this.tableReferenceGroup.ResumeLayout(false);
             this.tableReferenceGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.businessLayerTabPage.ResumeLayout(false);
@@ -1144,6 +1163,8 @@ namespace NHibernateMappingGenerator
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1246,6 +1267,8 @@ namespace NHibernateMappingGenerator
         private ToolStripMenuItem saveProjectAsMenu;
         private TextBox projectNameTextBox;
         private Label label12;
+        private ToolStripMenuItem exitMenu;
+        private ToolStripMenuItem closeMenu;
     }
 }
 
