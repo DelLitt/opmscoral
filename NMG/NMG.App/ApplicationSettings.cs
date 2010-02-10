@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using NMG.Core;
@@ -12,11 +13,23 @@ namespace NHibernateMappingGenerator
     [Serializable]
     public class ApplicationSettings
     {
+        public string TablePreferencesFile { get; set;}
         public string ConnectionString { get; set; }
         public ServerType ServerType { get; set; }
         public string NameSpace { get; set; }
         public string AssemblyName { get; set; }
-        
+
+        public string ProjectName { get; set; }
+        public string ModelPath { get; set; }
+        public string DataLayerPath { get; set; }
+        public string ModelLookupPath { get; set; }
+        public string DataLayerNameSpace { get; set; }
+        public string DataLayerAssembly { get; set; }
+
+        public Language Language { get; set; }
+        public bool IsFluent { get; set; }
+        public FieldGenerationConvention FieldGenerationConvention { get; set; }
+        public FieldNamingConvention FieldNamingConvention {get;set;}
 
         public ApplicationSettings()
         {
@@ -41,6 +54,18 @@ namespace NHibernateMappingGenerator
             }
         }
 
+        public void Save(string path)
+        {
+            string projectPath = EnsureProjectPath(path);
+
+            var streamWriter = new StreamWriter(projectPath + @"\" + ProjectName + ".nmprj", false);
+            XmlSerializer xmlSerializer;
+            using (streamWriter)
+            {
+                xmlSerializer = new XmlSerializer(typeof(ApplicationSettings));
+                xmlSerializer.Serialize(streamWriter, this);
+            }
+        }
         public static ApplicationSettings Load()
         {
             ApplicationSettings appSettings = null;
@@ -54,6 +79,66 @@ namespace NHibernateMappingGenerator
                 }
             }
             return appSettings;
+        }
+
+        public static ApplicationSettings Load(string filePath)
+        {
+            ApplicationSettings appSettings = null;
+            try
+            {
+                var xmlSerializer = new XmlSerializer(typeof(ApplicationSettings));
+                var fi = new FileInfo(filePath); //#+ @"\nmg.nmprj");
+                if (fi.Exists)
+                {
+                    using (FileStream fileStream = fi.OpenRead())
+                    {
+                        appSettings = (ApplicationSettings)xmlSerializer.Deserialize(fileStream);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return appSettings;
+        }
+
+        public void SaveTablePreferencesSetting(string path, List<ApplicationPreferences> preferences)
+        {
+
+            string projectPath = EnsureProjectPath(path);
+
+            //var streamWriter = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj", FileMode.Create);
+            var streamWriter = File.Open(projectPath +@"\" + TablePreferencesFile, FileMode.Create);
+            BinaryFormatter binaryFormatter;
+            using (streamWriter)
+            {
+                binaryFormatter = new BinaryFormatter();
+                TablePreferenceSettings tablePreferenceSettings = new TablePreferenceSettings
+                {
+                    TablePreferences = preferences
+                };
+                binaryFormatter.Serialize(streamWriter, tablePreferenceSettings);
+            }
+            
+        }
+
+        private string EnsureProjectPath(string path)
+        {
+            string projectPath = path;
+            if (!Directory.Exists(projectPath))
+            {
+                Directory.CreateDirectory(projectPath);
+            }
+            if (!string.IsNullOrEmpty(ProjectName))
+            {
+                projectPath = path + "\\" + ProjectName;
+                if (!Directory.Exists(projectPath))
+                {
+                    Directory.CreateDirectory(projectPath);
+                }
+            }
+            return projectPath;
         }
     }
 }

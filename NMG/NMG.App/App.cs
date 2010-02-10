@@ -18,7 +18,7 @@ namespace NHibernateMappingGenerator
         
         private List<ApplicationPreferences> _tablePreferences = new List<ApplicationPreferences>();
         private ApplicationPreferences CurrentTablePreference { get; set;}
-
+        private ApplicationSettings _applicationSettings;
         public App()
         {
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace NHibernateMappingGenerator
             try 
 	        {	        
 		        applicationSettings = ApplicationSettings.Load();
+	            _applicationSettings = applicationSettings;
 	        }
 	        catch (Exception)
 	        {
@@ -699,7 +700,6 @@ namespace NHibernateMappingGenerator
                     errorCodeGen.Text = " Generating ...";
 
                     DaoClassPreferences daoClassPreferences = new DaoClassPreferences(txtDaoLookup.Text,txtDaoLayerDir.Text,txtDaoNamespace.Text,nameSpaceTextBox.Text);
-
                     DaoLayerCodeGenerator daoLayerCodeGenerator = new DaoLayerCodeGenerator(daoClassPreferences);
                     daoLayerCodeGenerator.Generate();
                     errorCodeGen.Text = "Generated all files successfully.";
@@ -723,6 +723,115 @@ namespace NHibernateMappingGenerator
             {
                 File.Delete(file);
             } 
+        }
+
+        private void saveProjectAsMenu_Click(object sender, EventArgs e)
+        {
+            if (_applicationSettings == null)
+            {
+                MessageBox.Show("Please create new project !");
+                return;
+            }
+
+            if(string.IsNullOrEmpty(projectNameTextBox.Text))
+            {
+                MessageBox.Show("Please input project name !");
+                return;
+            }
+
+            FolderBrowserDialog saveProjectDialog = new FolderBrowserDialog();
+            saveProjectDialog.ShowDialog();
+            LoadViewToApplicationSettings();
+            _applicationSettings.Save(saveProjectDialog.SelectedPath);
+            
+            if(_tablePreferences!= null && _tablePreferences.Count > 0)
+            {
+                _applicationSettings.SaveTablePreferencesSetting(saveProjectDialog.SelectedPath, _tablePreferences);
+            }
+        }
+
+        private void LoadViewToApplicationSettings()
+        {
+            _applicationSettings.ModelPath = folderTextBox.Text.Trim();
+            _applicationSettings.NameSpace = nameSpaceTextBox.Text.Trim();
+            _applicationSettings.AssemblyName = assemblyNameTextBox.Text.Trim();
+            _applicationSettings.FieldGenerationConvention = GetFieldGenerationConvention();
+            _applicationSettings.FieldNamingConvention = GetFieldNamingConvention();
+            _applicationSettings.Language = cSharpRadioButton.Checked ? Language.CSharp : Language.VB;
+            _applicationSettings.IsFluent = IsFluent;
+            _applicationSettings.ModelLookupPath = txtDaoLookup.Text.Trim();
+            _applicationSettings.DataLayerPath = txtDaoLayerDir.Text.Trim();
+            _applicationSettings.DataLayerAssembly = txtDaoAssembly.Text.Trim();
+            _applicationSettings.DataLayerNameSpace = txtDaoNamespace.Text.Trim();
+            _applicationSettings.ProjectName = projectNameTextBox.Text.Trim();
+            _applicationSettings.TablePreferencesFile = _applicationSettings.ProjectName + ".nmprefobj";
+        }
+
+        private void loadProjectMenu_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog saveProjectDialog = new OpenFileDialog();
+            saveProjectDialog.ShowDialog();
+
+            string projectFile = saveProjectDialog.FileName;
+            _applicationSettings = ApplicationSettings.Load(projectFile);
+            
+            if(_applicationSettings == null)
+            {
+                MessageBox.Show("Cannot open project !");
+                return;
+            }
+            
+
+            LoadApplicationSettings();
+
+            if (!string.IsNullOrEmpty(_applicationSettings.TablePreferencesFile))
+            {
+                var xmlSerializer = new BinaryFormatter();
+                string dirPath = projectFile.Substring(0, projectFile.LastIndexOf("\\"));
+                if (!dirPath.EndsWith("\\")) dirPath = dirPath + @"\";
+
+                //var fi = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj",FileMode.Open);
+                var fi = File.Open(dirPath + _applicationSettings.TablePreferencesFile, FileMode.Open);
+                if (fi.CanRead)
+                {
+                    using (fi)
+                    {
+                        TablePreferenceSettings settings = (TablePreferenceSettings)xmlSerializer.Deserialize(fi);
+                        if (settings != null) _tablePreferences = settings.TablePreferences;
+                    }
+                }
+                MessageBox.Show("OK!");   
+            }
+        }
+
+        private void LoadApplicationSettings()
+        {
+            if (_applicationSettings != null)
+            {
+                connStrTextBox.Text = _applicationSettings.ConnectionString;
+                serverTypeComboBox.SelectedItem = _applicationSettings.ServerType;
+                nameSpaceTextBox.Text = _applicationSettings.NameSpace;
+                assemblyNameTextBox.Text = _applicationSettings.AssemblyName;
+
+                folderTextBox.Text = _applicationSettings.ModelPath;
+                nameSpaceTextBox.Text = _applicationSettings.NameSpace;
+                assemblyNameTextBox.Text = _applicationSettings.AssemblyName;
+                _applicationSettings.FieldGenerationConvention = GetFieldGenerationConvention();
+                _applicationSettings.FieldNamingConvention = GetFieldNamingConvention();
+                _applicationSettings.Language = cSharpRadioButton.Checked ? Language.CSharp : Language.VB;
+                if (_applicationSettings.IsFluent)
+                    fluentMappingOption.Checked = true;
+                else
+                {
+                    hbmMappingOption.Checked = true;
+                }
+
+                txtDaoLookup.Text = _applicationSettings.ModelLookupPath;
+                txtDaoLayerDir.Text =  _applicationSettings.DataLayerPath;
+                txtDaoAssembly.Text = _applicationSettings.DataLayerAssembly;
+                txtDaoNamespace.Text = _applicationSettings.DataLayerNameSpace;
+                projectNameTextBox.Text = _applicationSettings.ProjectName;
+            }
         }
     }
 }
