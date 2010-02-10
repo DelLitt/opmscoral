@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TablePreferencesFile>POSGen.nmprefobj</TablePreferencesFile>
+  <ConnectionString>Data Source=XE;User Id=pos2; Password=admin;</ConnectionString>
+  <ServerType>Oracle</ServerType>
+  <NameSpace>POS.Model</NameSpace>
+  <AssemblyName>POS.Model</AssemblyName>
+  <ProjectName>POSGen</ProjectName>
+  <ModelPath>D:\Temp\Model</ModelPath>
+  <DataLayerPath>D:\Temp\Dao</DataLayerPath>
+  <ModelLookupPath>D:\Temp\Model</ModelLookupPath>
+  <DataLayerNameSpace>POSServer.DataLayer</DataLayerNameSpace>
+  <DataLayerAssembly>POSServer.DataLayer</DataLayerAssembly>
+  <Language>CSharp</Language>
+  <IsFluent>false</IsFluent>
+  <FieldGenerationConvention>AutoProperty</FieldGenerationConvention>
+  <FieldNamingConvention>SameAsDatabase</FieldNamingConvention>
+</ApplicationSettings>
