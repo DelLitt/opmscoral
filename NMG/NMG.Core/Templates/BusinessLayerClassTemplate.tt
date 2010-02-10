@@ -1,0 +1,110 @@
+﻿<#@ template hostspecific="true" language="C#v3.5" #>
+<#@ property name="ClassName" type="System.String" 
+			 processor="PropertyProcessor" #>
+<#@ property name="NamespaceName" type="System.String" 
+             processor="PropertyProcessor" #>
+<#@ property name="ModelNamespaceName" type="System.String" 
+             processor="PropertyProcessor" #>
+<#@ property name="DaoNamespaceName" type="System.String" 
+             processor="PropertyProcessor" #>			 
+
+
+using System.Collections;
+using Spring.Transaction.Interceptor;
+using  <#= ModelNamespaceName #>;
+using  <#= DaoNamespaceName #>;
+
+namespace <#= NamespaceName #>
+{
+    public class <#= ClassName #>LogicImpl : I<#= ClassName #>Logic
+    {
+        private I<#= ClassName #>Dao _innerDao;
+
+        public I<#= ClassName #>Dao <#= ClassName #>Dao
+        {
+            get 
+            { 
+                return _innerDao; 
+            }
+            set 
+            { 
+                _innerDao = value; 
+            }
+        }
+        
+        /// <summary>
+        /// Find <#= ClassName #> object by id. Return null if nothing is found
+        /// </summary>
+        /// <param name="id">Id of <#= ClassName #></param>
+        /// <returns></returns>
+        public <#= ClassName #> FindById(object id)
+        {
+            return _innerDao.FindById(id);
+        }
+        
+        /// <summary>
+        /// Add <#= ClassName #> to database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [Transaction(ReadOnly=false)]
+        public <#= ClassName #> Add(<#= ClassName #> data)
+        {
+            _innerDao.Add(data);
+            return data;
+        }
+        
+        /// <summary>
+        /// Update <#= ClassName #> to database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [Transaction(ReadOnly=false)]
+        public void Update(<#= ClassName #> data)
+        {
+            _innerDao.Update(data);
+        }
+        
+        /// <summary>
+        /// Delete <#= ClassName #> from database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [Transaction(ReadOnly=false)]
+        public void Delete(<#= ClassName #> data)
+        {
+            _innerDao.Delete(data);
+        }
+        
+        /// <summary>
+        /// Delete <#= ClassName #> from database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Transaction(ReadOnly=false)]
+        public void DeleteById(object id)
+        {
+            _innerDao.DeleteById(id);
+        }
+        
+        /// <summary>
+        /// Find all <#= ClassName #> from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        public IList FindAll(ObjectCriteria criteria)
+        {
+            return _innerDao.FindAll(criteria);
+        }
+        
+        /// <summary>
+        /// Find all <#= ClassName #> from database. Has pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        public QueryResult FindPaging(ObjectCriteria criteria)
+        {
+            return _innerDao.FindPaging(criteria);
+        }
+    }
+}

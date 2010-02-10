@@ -838,7 +838,7 @@ namespace NHibernateMappingGenerator
 
         private void LoadViewToApplicationSettings()
         {
-            _applicationSettings.ModelPath = folderTextBox.Text.Trim();
+            _applicationSettings.ModelPathForDao = folderTextBox.Text.Trim();
             _applicationSettings.NameSpace = nameSpaceTextBox.Text.Trim();
             _applicationSettings.AssemblyName = assemblyNameTextBox.Text.Trim();
             _applicationSettings.FieldGenerationConvention = GetFieldGenerationConvention();
@@ -851,6 +851,11 @@ namespace NHibernateMappingGenerator
             _applicationSettings.DataLayerNameSpace = txtDaoNamespace.Text.Trim();
             _applicationSettings.ProjectName = projectNameTextBox.Text.Trim();
             _applicationSettings.TablePreferencesFile = _applicationSettings.ProjectName + ".nmprefobj";
+            _applicationSettings.ModelPathForBusiness = txtBusinessLookup.Text.Trim();
+            _applicationSettings.BusinessGeneratePath = txtBusinessLayerDir.Text.Trim();
+            _applicationSettings.BusinessNamespaceName = txtBusinessNamespace.Text.Trim();
+            _applicationSettings.BusinessAssembly = txtBusinessAssembly.Text.Trim();
+            _applicationSettings.DaoNamespaceForBusiness = txtDaoNamespaceUsing.Text.Trim();
         }
 
         private void loadProjectMenu_Click(object sender, EventArgs e)
@@ -896,7 +901,7 @@ namespace NHibernateMappingGenerator
                 nameSpaceTextBox.Text = _applicationSettings.NameSpace;
                 assemblyNameTextBox.Text = _applicationSettings.AssemblyName;
 
-                folderTextBox.Text = _applicationSettings.ModelPath;
+                folderTextBox.Text = _applicationSettings.ModelPathForDao;
                 nameSpaceTextBox.Text = _applicationSettings.NameSpace;
                 assemblyNameTextBox.Text = _applicationSettings.AssemblyName;
                 _applicationSettings.FieldGenerationConvention = GetFieldGenerationConvention();
@@ -914,6 +919,13 @@ namespace NHibernateMappingGenerator
                 txtDaoAssembly.Text = _applicationSettings.DataLayerAssembly;
                 txtDaoNamespace.Text = _applicationSettings.DataLayerNameSpace;
                 projectNameTextBox.Text = _applicationSettings.ProjectName;
+
+                txtBusinessLookup.Text = _applicationSettings.ModelPathForBusiness;
+                txtBusinessLayerDir.Text = _applicationSettings.BusinessGeneratePath;
+                txtBusinessNamespace.Text = _applicationSettings.BusinessNamespaceName;
+                txtBusinessAssembly.Text =_applicationSettings.BusinessAssembly;
+                txtDaoNamespaceUsing.Text = _applicationSettings.DaoNamespaceForBusiness;
+
                 this.Text = projectNameTextBox.Text;
             }
         }
@@ -986,6 +998,47 @@ namespace NHibernateMappingGenerator
         {
             folderBrowserDialog.ShowDialog();
             txtBusinessLayerDir.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void txtDaoNamespace_TextChanged(object sender, EventArgs e)
+        {
+            txtDaoNamespaceUsing.Text = txtDaoNamespace.Text;
+        }
+
+        private void btnGenBusiness_Click(object sender, EventArgs e)
+        {
+            errorLabel.Text = string.Empty;
+            if (string.IsNullOrEmpty(txtBusinessLayerDir.Text))
+            {
+                errorCodeGen.Text = "Please select a directory for BUSINESS GEN";
+                return;
+            }
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (chkDeleteBusinessLayerDir.Checked)
+                {
+                    ClearOutputDirectory(txtBusinessLayerDir.Text.Trim());
+                    errorCodeGen.Text = " Delete all file completed ...";
+                }
+                errorCodeGen.Text = " Generating ...";
+
+                BusinessClassPreferences businessClassPreferences = new BusinessClassPreferences(txtBusinessLookup.Text, txtBusinessLayerDir.Text, txtBusinessNamespace.Text, nameSpaceTextBox.Text,txtDaoNamespaceUsing.Text);
+                BusinessLayerCodeGenerator businessLayerCodeGenerator = new BusinessLayerCodeGenerator(businessClassPreferences);
+                businessLayerCodeGenerator.Generate();
+                errorCodeGen.Text = "Generated all files successfully.";
+
+
+            }
+            catch (Exception ex)
+            {
+                errorCodeGen.Text = ex.Message;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }

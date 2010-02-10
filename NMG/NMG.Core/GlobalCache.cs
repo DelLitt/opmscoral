@@ -61,10 +61,15 @@ namespace NMG.Core
         }
         public string ReplaceShortWords(string source)
         {
-            foreach (var word in ReplaceWords.Keys)
-            {
-                source = source.Replace(word, ReplaceWords[word]);
-            }
+            /*string[] sourceParts = source.Split('_');
+            foreach (var part in sourceParts)
+            {*/
+                foreach (var word in ReplaceWords.Keys)
+                {
+                    /*if(part.Equals(word))*/
+                       source = source.Replace(word, ReplaceWords[word]);
+                }
+            /*}*/
             return source;
         }
         

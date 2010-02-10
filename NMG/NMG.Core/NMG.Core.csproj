@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayerInterfaceTemplate.cs" />
+    <Compile Include="BusinessGenerateArgument.cs" />
+    <Compile Include="BusinessLayerClassTemplate.cs" />
+    <Compile Include="BusinessClassPreferences.cs" />
+    <Compile Include="Generator\BusinessLayerCodeGenerator.cs" />
     <Compile Include="HibernateDaoClassTemplate.cs" />
     <Compile Include="DaoClassPreferences.cs" />
     <Compile Include="DaoGenerateArgument.cs" />
@@ -91,6 +96,8 @@
     <None Include="ReplaceWords.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Templates\BusinessLayerInterfaceTemplate.tt" />
+    <EmbeddedResource Include="Templates\BusinessLayerClassTemplate.tt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TC.CustomTemplating\TC.CustomTemplating.csproj">

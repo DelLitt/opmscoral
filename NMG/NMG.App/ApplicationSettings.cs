@@ -20,11 +20,18 @@ namespace NHibernateMappingGenerator
         public string AssemblyName { get; set; }
 
         public string ProjectName { get; set; }
-        public string ModelPath { get; set; }
+        public string ModelPathForDao { get; set; }
         public string DataLayerPath { get; set; }
         public string ModelLookupPath { get; set; }
         public string DataLayerNameSpace { get; set; }
         public string DataLayerAssembly { get; set; }
+
+        public string ModelPathForBusiness { get; set; }
+        public string BusinessGeneratePath { get; set; }
+        public string BusinessNamespaceName { get; set; }
+        public string BusinessAssembly { get; set; }
+        public string ModelNamespaceForBusiness { get; set; }
+        public string DaoNamespaceForBusiness { get; set; }
 
         public Language Language { get; set; }
         public bool IsFluent { get; set; }
