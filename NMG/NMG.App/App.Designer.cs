@@ -69,7 +69,9 @@ namespace NHibernateMappingGenerator
             this.lblDesc = new System.Windows.Forms.Label();
             this.refColumnGrid = new System.Windows.Forms.DataGridView();
             this.refColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.refTableColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.refName = new System.Windows.Forms.TextBox();
             this.refTypeCombo = new System.Windows.Forms.ComboBox();
@@ -124,12 +126,25 @@ namespace NHibernateMappingGenerator
             this.loadProjectMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectAsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.columnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.refColumnDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chkDeleteDataLayerDir = new System.Windows.Forms.CheckBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.chkDeleteBusinessLayerDir = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtBusinessNamespace = new System.Windows.Forms.TextBox();
+            this.txtBusinessAssembly = new System.Windows.Forms.TextBox();
+            this.txtBusinessLookup = new System.Windows.Forms.TextBox();
+            this.btnBusinessLayerSelect = new System.Windows.Forms.Button();
+            this.btnBusinessDirSelect = new System.Windows.Forms.Button();
+            this.btnGenBusiness = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBusinessLayerDir = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -137,6 +152,8 @@ namespace NHibernateMappingGenerator
             this.groupBox5.SuspendLayout();
             this.tableReferenceGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.businessLayerTabPage.SuspendLayout();
             this.advanceSettingsTabPage.SuspendLayout();
@@ -145,8 +162,8 @@ namespace NHibernateMappingGenerator
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // connStrTextBox
@@ -516,6 +533,10 @@ namespace NHibernateMappingGenerator
             this.refColumn.Name = "refColumn";
             this.refColumn.Width = 135;
             // 
+            // columnDetailBindingSource
+            // 
+            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            // 
             // refTableColumn
             // 
             this.refTableColumn.DataSource = this.refColumnDetailBindingSource;
@@ -523,6 +544,10 @@ namespace NHibernateMappingGenerator
             this.refTableColumn.HeaderText = "Reference Column";
             this.refTableColumn.Name = "refTableColumn";
             this.refTableColumn.Width = 137;
+            // 
+            // refColumnDetailBindingSource
+            // 
+            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
             // 
             // label7
             // 
@@ -674,18 +699,9 @@ namespace NHibernateMappingGenerator
             // 
             // businessLayerTabPage
             // 
+            this.businessLayerTabPage.Controls.Add(this.groupBox9);
+            this.businessLayerTabPage.Controls.Add(this.groupBox8);
             this.businessLayerTabPage.Controls.Add(this.errorCodeGen);
-            this.businessLayerTabPage.Controls.Add(this.label11);
-            this.businessLayerTabPage.Controls.Add(this.txtDaoLookup);
-            this.businessLayerTabPage.Controls.Add(this.btnDaoDirSelect);
-            this.businessLayerTabPage.Controls.Add(this.label10);
-            this.businessLayerTabPage.Controls.Add(this.label9);
-            this.businessLayerTabPage.Controls.Add(this.label8);
-            this.businessLayerTabPage.Controls.Add(this.txtDaoLayerDir);
-            this.businessLayerTabPage.Controls.Add(this.btnGenDao);
-            this.businessLayerTabPage.Controls.Add(this.btnDaoLayerSelect);
-            this.businessLayerTabPage.Controls.Add(this.txtDaoAssembly);
-            this.businessLayerTabPage.Controls.Add(this.txtDaoNamespace);
             this.businessLayerTabPage.Location = new System.Drawing.Point(4, 22);
             this.businessLayerTabPage.Name = "businessLayerTabPage";
             this.businessLayerTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -709,15 +725,15 @@ namespace NHibernateMappingGenerator
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 134);
+            this.label11.Location = new System.Drawing.Point(4, 36);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 13);
+            this.label11.Size = new System.Drawing.Size(149, 13);
             this.label11.TabIndex = 30;
-            this.label11.Text = "Path for Dao Object Lookup";
+            this.label11.Text = "Path for Model Object Lookup";
             // 
             // txtDaoLookup
             // 
-            this.txtDaoLookup.Location = new System.Drawing.Point(6, 159);
+            this.txtDaoLookup.Location = new System.Drawing.Point(4, 52);
             this.txtDaoLookup.Name = "txtDaoLookup";
             this.txtDaoLookup.Size = new System.Drawing.Size(431, 20);
             this.txtDaoLookup.TabIndex = 28;
@@ -725,17 +741,18 @@ namespace NHibernateMappingGenerator
             // 
             // btnDaoDirSelect
             // 
-            this.btnDaoDirSelect.Location = new System.Drawing.Point(443, 157);
+            this.btnDaoDirSelect.Location = new System.Drawing.Point(441, 50);
             this.btnDaoDirSelect.Name = "btnDaoDirSelect";
             this.btnDaoDirSelect.Size = new System.Drawing.Size(54, 23);
             this.btnDaoDirSelect.TabIndex = 29;
             this.btnDaoDirSelect.Text = "&Select";
             this.btnDaoDirSelect.UseVisualStyleBackColor = true;
+            this.btnDaoDirSelect.Click += new System.EventHandler(this.btnDaoDirSelect_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 248);
+            this.label10.Location = new System.Drawing.Point(4, 141);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 13);
             this.label10.TabIndex = 27;
@@ -744,7 +761,7 @@ namespace NHibernateMappingGenerator
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 225);
+            this.label9.Location = new System.Drawing.Point(4, 118);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 13);
             this.label9.TabIndex = 26;
@@ -753,7 +770,7 @@ namespace NHibernateMappingGenerator
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 180);
+            this.label8.Location = new System.Drawing.Point(4, 73);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 13);
             this.label8.TabIndex = 25;
@@ -761,7 +778,7 @@ namespace NHibernateMappingGenerator
             // 
             // txtDaoLayerDir
             // 
-            this.txtDaoLayerDir.Location = new System.Drawing.Point(6, 199);
+            this.txtDaoLayerDir.Location = new System.Drawing.Point(4, 92);
             this.txtDaoLayerDir.Name = "txtDaoLayerDir";
             this.txtDaoLayerDir.Size = new System.Drawing.Size(431, 20);
             this.txtDaoLayerDir.TabIndex = 19;
@@ -769,7 +786,7 @@ namespace NHibernateMappingGenerator
             // 
             // btnGenDao
             // 
-            this.btnGenDao.Location = new System.Drawing.Point(331, 274);
+            this.btnGenDao.Location = new System.Drawing.Point(329, 167);
             this.btnGenDao.Name = "btnGenDao";
             this.btnGenDao.Size = new System.Drawing.Size(106, 23);
             this.btnGenDao.TabIndex = 24;
@@ -779,16 +796,17 @@ namespace NHibernateMappingGenerator
             // 
             // btnDaoLayerSelect
             // 
-            this.btnDaoLayerSelect.Location = new System.Drawing.Point(443, 199);
+            this.btnDaoLayerSelect.Location = new System.Drawing.Point(441, 92);
             this.btnDaoLayerSelect.Name = "btnDaoLayerSelect";
             this.btnDaoLayerSelect.Size = new System.Drawing.Size(54, 23);
             this.btnDaoLayerSelect.TabIndex = 21;
             this.btnDaoLayerSelect.Text = "&Select";
             this.btnDaoLayerSelect.UseVisualStyleBackColor = true;
+            this.btnDaoLayerSelect.Click += new System.EventHandler(this.btnDaoLayerSelect_Click);
             // 
             // txtDaoAssembly
             // 
-            this.txtDaoAssembly.Location = new System.Drawing.Point(97, 248);
+            this.txtDaoAssembly.Location = new System.Drawing.Point(95, 141);
             this.txtDaoAssembly.Name = "txtDaoAssembly";
             this.txtDaoAssembly.Size = new System.Drawing.Size(340, 20);
             this.txtDaoAssembly.TabIndex = 23;
@@ -796,7 +814,7 @@ namespace NHibernateMappingGenerator
             // 
             // txtDaoNamespace
             // 
-            this.txtDaoNamespace.Location = new System.Drawing.Point(97, 222);
+            this.txtDaoNamespace.Location = new System.Drawing.Point(95, 115);
             this.txtDaoNamespace.Name = "txtDaoNamespace";
             this.txtDaoNamespace.Size = new System.Drawing.Size(340, 20);
             this.txtDaoNamespace.TabIndex = 22;
@@ -1087,6 +1105,20 @@ namespace NHibernateMappingGenerator
             this.saveProjectAsMenu.Text = "Save Project As ...";
             this.saveProjectAsMenu.Click += new System.EventHandler(this.saveProjectAsMenu_Click);
             // 
+            // closeMenu
+            // 
+            this.closeMenu.Name = "closeMenu";
+            this.closeMenu.Size = new System.Drawing.Size(166, 22);
+            this.closeMenu.Text = "Close";
+            this.closeMenu.Click += new System.EventHandler(this.closeMenu_Click);
+            // 
+            // exitMenu
+            // 
+            this.exitMenu.Name = "exitMenu";
+            this.exitMenu.Size = new System.Drawing.Size(166, 22);
+            this.exitMenu.Text = "Exit";
+            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            // 
             // projectNameTextBox
             // 
             this.projectNameTextBox.Location = new System.Drawing.Point(356, 1);
@@ -1103,27 +1135,168 @@ namespace NHibernateMappingGenerator
             this.label12.TabIndex = 22;
             this.label12.Text = "Project Name";
             // 
-            // columnDetailBindingSource
+            // groupBox8
             // 
-            this.columnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            this.groupBox8.Controls.Add(this.chkDeleteDataLayerDir);
+            this.groupBox8.Controls.Add(this.label11);
+            this.groupBox8.Controls.Add(this.txtDaoNamespace);
+            this.groupBox8.Controls.Add(this.txtDaoAssembly);
+            this.groupBox8.Controls.Add(this.txtDaoLookup);
+            this.groupBox8.Controls.Add(this.btnDaoLayerSelect);
+            this.groupBox8.Controls.Add(this.btnDaoDirSelect);
+            this.groupBox8.Controls.Add(this.btnGenDao);
+            this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Controls.Add(this.txtDaoLayerDir);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Location = new System.Drawing.Point(8, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(505, 213);
+            this.groupBox8.TabIndex = 32;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Data Layer Configuration";
             // 
-            // refColumnDetailBindingSource
+            // chkDeleteDataLayerDir
             // 
-            this.refColumnDetailBindingSource.DataSource = typeof(NMG.Core.Domain.ColumnDetail);
+            this.chkDeleteDataLayerDir.AutoSize = true;
+            this.chkDeleteDataLayerDir.Checked = true;
+            this.chkDeleteDataLayerDir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDeleteDataLayerDir.Location = new System.Drawing.Point(95, 171);
+            this.chkDeleteDataLayerDir.Name = "chkDeleteDataLayerDir";
+            this.chkDeleteDataLayerDir.Size = new System.Drawing.Size(131, 17);
+            this.chkDeleteDataLayerDir.TabIndex = 35;
+            this.chkDeleteDataLayerDir.Text = "Clear Before Generate";
+            this.chkDeleteDataLayerDir.UseVisualStyleBackColor = true;
             // 
-            // exitMenu
+            // groupBox9
             // 
-            this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(166, 22);
-            this.exitMenu.Text = "Exit";
-            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            this.groupBox9.Controls.Add(this.chkDeleteBusinessLayerDir);
+            this.groupBox9.Controls.Add(this.label13);
+            this.groupBox9.Controls.Add(this.txtBusinessNamespace);
+            this.groupBox9.Controls.Add(this.txtBusinessAssembly);
+            this.groupBox9.Controls.Add(this.txtBusinessLookup);
+            this.groupBox9.Controls.Add(this.btnBusinessLayerSelect);
+            this.groupBox9.Controls.Add(this.btnBusinessDirSelect);
+            this.groupBox9.Controls.Add(this.btnGenBusiness);
+            this.groupBox9.Controls.Add(this.label14);
+            this.groupBox9.Controls.Add(this.txtBusinessLayerDir);
+            this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Location = new System.Drawing.Point(8, 225);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(505, 213);
+            this.groupBox9.TabIndex = 36;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Business Layer Configuration";
             // 
-            // closeMenu
+            // chkDeleteBusinessLayerDir
             // 
-            this.closeMenu.Name = "closeMenu";
-            this.closeMenu.Size = new System.Drawing.Size(166, 22);
-            this.closeMenu.Text = "Close";
-            this.closeMenu.Click += new System.EventHandler(this.closeMenu_Click);
+            this.chkDeleteBusinessLayerDir.AutoSize = true;
+            this.chkDeleteBusinessLayerDir.Checked = true;
+            this.chkDeleteBusinessLayerDir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDeleteBusinessLayerDir.Location = new System.Drawing.Point(95, 171);
+            this.chkDeleteBusinessLayerDir.Name = "chkDeleteBusinessLayerDir";
+            this.chkDeleteBusinessLayerDir.Size = new System.Drawing.Size(131, 17);
+            this.chkDeleteBusinessLayerDir.TabIndex = 35;
+            this.chkDeleteBusinessLayerDir.Text = "Clear Before Generate";
+            this.chkDeleteBusinessLayerDir.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(4, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 13);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Path for Model Object Lookup";
+            // 
+            // txtBusinessNamespace
+            // 
+            this.txtBusinessNamespace.Location = new System.Drawing.Point(95, 115);
+            this.txtBusinessNamespace.Name = "txtBusinessNamespace";
+            this.txtBusinessNamespace.Size = new System.Drawing.Size(340, 20);
+            this.txtBusinessNamespace.TabIndex = 22;
+            this.txtBusinessNamespace.Text = "Sample.CustomerService.Domain";
+            // 
+            // txtBusinessAssembly
+            // 
+            this.txtBusinessAssembly.Location = new System.Drawing.Point(95, 141);
+            this.txtBusinessAssembly.Name = "txtBusinessAssembly";
+            this.txtBusinessAssembly.Size = new System.Drawing.Size(340, 20);
+            this.txtBusinessAssembly.TabIndex = 23;
+            this.txtBusinessAssembly.Text = "Sample.CustomerService.Domain";
+            // 
+            // txtBusinessLookup
+            // 
+            this.txtBusinessLookup.Location = new System.Drawing.Point(4, 52);
+            this.txtBusinessLookup.Name = "txtBusinessLookup";
+            this.txtBusinessLookup.Size = new System.Drawing.Size(431, 20);
+            this.txtBusinessLookup.TabIndex = 28;
+            this.txtBusinessLookup.Text = "D:\\Temp\\";
+            // 
+            // btnBusinessLayerSelect
+            // 
+            this.btnBusinessLayerSelect.Location = new System.Drawing.Point(441, 92);
+            this.btnBusinessLayerSelect.Name = "btnBusinessLayerSelect";
+            this.btnBusinessLayerSelect.Size = new System.Drawing.Size(54, 23);
+            this.btnBusinessLayerSelect.TabIndex = 21;
+            this.btnBusinessLayerSelect.Text = "&Select";
+            this.btnBusinessLayerSelect.UseVisualStyleBackColor = true;
+            this.btnBusinessLayerSelect.Click += new System.EventHandler(this.btnBusinessLayerSelect_Click);
+            // 
+            // btnBusinessDirSelect
+            // 
+            this.btnBusinessDirSelect.Location = new System.Drawing.Point(441, 50);
+            this.btnBusinessDirSelect.Name = "btnBusinessDirSelect";
+            this.btnBusinessDirSelect.Size = new System.Drawing.Size(54, 23);
+            this.btnBusinessDirSelect.TabIndex = 29;
+            this.btnBusinessDirSelect.Text = "&Select";
+            this.btnBusinessDirSelect.UseVisualStyleBackColor = true;
+            this.btnBusinessDirSelect.Click += new System.EventHandler(this.btnBusinessDirSelect_Click);
+            // 
+            // btnGenBusiness
+            // 
+            this.btnGenBusiness.Location = new System.Drawing.Point(298, 167);
+            this.btnGenBusiness.Name = "btnGenBusiness";
+            this.btnGenBusiness.Size = new System.Drawing.Size(137, 23);
+            this.btnGenBusiness.TabIndex = 24;
+            this.btnGenBusiness.Text = "Generate Business Layer";
+            this.btnGenBusiness.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 141);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(51, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Assembly";
+            // 
+            // txtBusinessLayerDir
+            // 
+            this.txtBusinessLayerDir.Location = new System.Drawing.Point(4, 92);
+            this.txtBusinessLayerDir.Name = "txtBusinessLayerDir";
+            this.txtBusinessLayerDir.Size = new System.Drawing.Size(431, 20);
+            this.txtBusinessLayerDir.TabIndex = 19;
+            this.txtBusinessLayerDir.Text = "D:\\Temp\\";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 118);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(64, 13);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Namespace";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(4, 73);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(136, 13);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Path for Business Generate";
             // 
             // App
             // 
@@ -1148,6 +1321,8 @@ namespace NHibernateMappingGenerator
             this.tableReferenceGroup.ResumeLayout(false);
             this.tableReferenceGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refColumnGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.businessLayerTabPage.ResumeLayout(false);
@@ -1163,8 +1338,10 @@ namespace NHibernateMappingGenerator
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.columnDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refColumnDetailBindingSource)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1269,6 +1446,21 @@ namespace NHibernateMappingGenerator
         private Label label12;
         private ToolStripMenuItem exitMenu;
         private ToolStripMenuItem closeMenu;
+        private GroupBox groupBox8;
+        private CheckBox chkDeleteDataLayerDir;
+        private GroupBox groupBox9;
+        private CheckBox chkDeleteBusinessLayerDir;
+        private Label label13;
+        private TextBox txtBusinessNamespace;
+        private TextBox txtBusinessAssembly;
+        private TextBox txtBusinessLookup;
+        private Button btnBusinessLayerSelect;
+        private Button btnBusinessDirSelect;
+        private Button btnGenBusiness;
+        private Label label14;
+        private TextBox txtBusinessLayerDir;
+        private Label label15;
+        private Label label16;
     }
 }
 

@@ -768,7 +768,7 @@ namespace NHibernateMappingGenerator
             {
                 Cursor.Current = Cursors.WaitCursor;
                 
-                    if (clearCheck.Checked)
+                    if (chkDeleteDataLayerDir.Checked)
                     {
                         ClearOutputDirectory(txtDaoLayerDir.Text.Trim());
                         errorCodeGen.Text = " Delete all file completed ...";
@@ -962,6 +962,30 @@ namespace NHibernateMappingGenerator
         {
             saveProjectMenu_Click(sender,e);
             this.mainTabControl.Enabled = false;
+        }
+
+        private void btnDaoDirSelect_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtDaoLookup.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnDaoLayerSelect_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtDaoLayerDir.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnBusinessDirSelect_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtBusinessLookup.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnBusinessLayerSelect_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtBusinessLayerDir.Text = folderBrowserDialog.SelectedPath;
         }
     }
 }
