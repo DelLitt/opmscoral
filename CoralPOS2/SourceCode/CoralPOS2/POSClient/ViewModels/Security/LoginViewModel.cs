@@ -10,10 +10,11 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS2.Models;
-using POSClient.BusinessLogic.Logic.Security;
-using POSClient.Common;
+using POSServer.BusinessLogic.Logic.Security;
+using POSServer.Common;
 
-namespace POSClient.ViewModels.Security
+
+namespace POSServer.ViewModels.Security
 {
     [PerRequest(typeof(ILoginViewModel))]
     public class LoginViewModel : PosViewModel,ILoginViewModel  

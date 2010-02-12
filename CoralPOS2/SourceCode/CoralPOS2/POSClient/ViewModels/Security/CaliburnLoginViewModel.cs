@@ -9,15 +9,12 @@ using AppFrame.Base.Generic;
 using Caliburn.Core.IoC;
 using Caliburn.ModelFramework;
 using Caliburn.PresentationFramework.Screens;
-using Caliburn.WPF.ApplicationFramework;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS2.Models;
 using NHibernate.Mapping;
-using POSClient.BusinessLogic.Logic.Security;
-using POSClient.Common;
 
-namespace POSClient.ViewModels.Security
+namespace POSServer.ViewModels.Security
 {
     [PerRequest(typeof(ICaliburnLoginViewModel))]
     public class CaliburnLoginViewModel : GenericPosViewModel<CaliburnLoginModel>, ICaliburnLoginViewModel

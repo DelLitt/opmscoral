@@ -7,9 +7,8 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSClient.ViewModels.Security
+namespace POSServer.ViewModels.Security
 {
-    
     public interface ILoginViewModel : IScreenNode
     {
         string Path { get; set; }

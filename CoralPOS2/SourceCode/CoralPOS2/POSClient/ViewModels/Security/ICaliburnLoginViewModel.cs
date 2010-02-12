@@ -6,7 +6,7 @@ using AppFrame.Base;
 using CoralPOS2.Models;
 
 
-namespace POSClient.ViewModels.Security
+namespace POSServer.ViewModels.Security
 {
     public interface ICaliburnLoginViewModel : IScreenNode<CaliburnLoginModel>
     {
