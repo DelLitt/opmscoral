@@ -331,6 +331,12 @@
     <Compile Include="Views\NavLoginView.xaml.cs">
       <DependentUpon>NavLoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductMaster\ProductMasterView.xaml.cs">
+      <DependentUpon>ProductMasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\TemplatePOSView.xaml.cs">
+      <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
@@ -390,6 +396,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\NavLoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

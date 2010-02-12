@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="POSServer.Views.ProductMaster.ProductMasterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="1024" Height="748">
+    <Grid>
+        <GroupBox Header="" HorizontalAlignment="Left" Margin="-6,0,0,0" Name="FrmGroupFunction" Width="174.338">
+            <Grid>
+                <Button Height="87.169" Margin="32.867,5.716,37.154,0" Name="Save" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" ClipToBounds="True">LƯU</Button>
+                <Button FontSize="14" Height="87.169" Margin="32.867,0,37.154,530.696" Name="Recreate" VerticalAlignment="Bottom" FontWeight="Bold">TẠO LẠI</Button>
+                <Button FontSize="14" Height="86.277" Margin="32.867,0,37.154,8.574" Name="Back" VerticalAlignment="Bottom" FontWeight="Bold">TRỞ VỀ</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="" Name="GrpContent" HorizontalAlignment="Right" Width="848.826">
+            <Grid>
+                <TextBox Height="38.583" HorizontalAlignment="Left" Margin="148.75,25,0,0" Name="ProductMasterId" VerticalAlignment="Top" Width="202.918" FontSize="14" />
+                <TextBox FontSize="14" Height="38.583" Margin="148.75,68.592,6,0" Name="ProductName" VerticalAlignment="Top" />
+                <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Left" Margin="148.75,113.75,0,0" Name="ProductType" VerticalAlignment="Top" Width="202.918" />
+                <TextBox FontSize="14" Height="38" HorizontalAlignment="Left" Margin="148.75,157.5,0,0" Name="Category" VerticalAlignment="Top" Width="202.918" />
+                <GroupBox Header="CHI TIẾT TÙY CHỌN" Margin="6,201.489,6,121.25" Name="groupBox1" FontSize="14">
+                    <Grid>
+                        <ListBox Height="170" HorizontalAlignment="Left" Margin="136.75,13.75,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" />
+                        <ListBox HorizontalAlignment="Left" Margin="136.75,0,0,17.5" Name="ProductSizes" Width="202.918" Height="169.181" VerticalAlignment="Bottom" />
+                        <ListBox Height="170" Margin="402.128,12.861,181.372,0" Name="listBox3" VerticalAlignment="Top">
+                            <ListBoxItem>XANH</ListBoxItem>
+                            <ListBoxItem>TRANG</ListBoxItem>
+                            <ListBoxItem>DO</ListBoxItem>
+                            <ListBoxItem>VANG</ListBoxItem>
+                        </ListBox>
+                        <ListBox Height="170" Margin="402.128,0,181.372,17.148" Name="listBox4" VerticalAlignment="Bottom">
+                            <ListBoxItem>M</ListBoxItem>
+                            <ListBoxItem>L</ListBoxItem>
+                            <ListBoxItem>XL</ListBoxItem>
+                        </ListBox>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" Margin="346.173,13.75,0,0" Name="button4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45">&lt;&lt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="346.84,50.025,0,0" Name="button5" VerticalAlignment="Top" Width="45">&lt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="346.173,86.043,0,0" Name="button7" VerticalAlignment="Top" Width="45">&gt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="346.84,122.061,0,0" Name="button8" VerticalAlignment="Top" Width="45">&gt;&gt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="346,0,0,156.681" Name="button9" VerticalAlignment="Bottom" Width="45">&lt;&lt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="347,0,0,120.406" Name="button10" VerticalAlignment="Bottom" Width="45">&lt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="346,0,0,84.388" Name="button11" VerticalAlignment="Bottom" Width="45">&gt;</Button>
+                        <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="347,0,0,48.37" Name="button12" VerticalAlignment="Bottom" Width="45">&gt;&gt;</Button>
+                    </Grid>
+                </GroupBox>
+                <Button FontSize="14" FontWeight="Bold" Height="38" Margin="210.063,0,201.25,8.574" Name="button2" VerticalAlignment="Bottom">CHI TIẾT PHỤ</Button>
+                <Label Height="28" HorizontalAlignment="Left" Margin="12.5,34.876,0,0" Name="label1" VerticalAlignment="Top" Width="114.32" FontSize="14" HorizontalContentAlignment="Right">MÃ SẢN PHẨM</Label>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12.5,78.75,0,0" Name="label2" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">TÊN SẢN PHẨM</Label>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12.5,123.75,0,0" Name="label3" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">CHỦNG LOẠI</Label>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12.5,167.5,0,0" Name="label4" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">NHÓM</Label>
+                <ComboBox Height="38.583" Margin="414.128,112.891,193.372,0" Name="comboBox1" VerticalAlignment="Top" />
+                <ComboBox Height="38.583" Margin="414.128,157.19,193.372,0" Name="comboBox2" VerticalAlignment="Top" />
+                <Canvas Height="111.25" HorizontalAlignment="Right" Margin="0,0,42.5,3.75" Name="canvas1" VerticalAlignment="Bottom" Width="131.25" />
+                <TextBox FontSize="14" Height="38" Margin="148.75,0,292.5,76.25" Name="textBox5" VerticalAlignment="Bottom" />
+                <Button FontSize="14" FontWeight="Bold" Height="38.773" Margin="0,0,193.372,76.25" Name="button3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="92.317">NHẬP</Button>
+                <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="28.58,0,0,76.25" Name="label5" VerticalAlignment="Bottom" Width="114.32">CHI TIẾT PHỤ</Label>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>
