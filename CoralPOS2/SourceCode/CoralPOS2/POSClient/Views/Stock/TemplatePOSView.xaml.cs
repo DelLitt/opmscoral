@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSClient.Views.Stock
+namespace POSServer.Views.Stock
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
