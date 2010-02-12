@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
+      <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
+      <Name>CoralPOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\POSClient.DataLayer\POSClient.DataLayer.csproj">
       <Project>{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}</Project>
       <Name>POSClient.DataLayer</Name>

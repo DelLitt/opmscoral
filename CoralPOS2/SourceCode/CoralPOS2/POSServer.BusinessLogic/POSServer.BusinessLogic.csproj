@@ -46,7 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Logic\Security\ILoginLogic.cs" />
+    <Compile Include="Logic\Security\LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
+      <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
+      <Name>CoralPOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

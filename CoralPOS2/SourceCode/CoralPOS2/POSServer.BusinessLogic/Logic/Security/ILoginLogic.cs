@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using CoralPOS2.Models;
 
-namespace POSClient.BusinessLogic.Logic.Security
+namespace POSServer.BusinessLogic.Logic.Security
 {
     public interface ILoginLogic
     {

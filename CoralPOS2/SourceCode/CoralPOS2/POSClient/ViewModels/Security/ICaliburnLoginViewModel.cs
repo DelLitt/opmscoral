@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using POSClient.DataLayer.Models;
+using CoralPOS2.Models;
+
 
 namespace POSClient.ViewModels.Security
 {

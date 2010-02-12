@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!--<object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Login" value-ref="POSClient.Step1"/>
+    	</dictionary>
+	</property>
+  </object>
+	
+  <object id="POSClient.Step1" type="POSClient.Step1, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Next" value="Form1.xaml"/>
+    	</dictionary>
+	</property>
+  </object>
+
+  <object id="POSClient.Form1" type="POSClient.Form1, POSClient">
+	<property name="ActionMap">
+  	    <dictionary>
+    	  <entry key="Logout" value="LoginForm.xaml"/>
+    	</dictionary>
+	</property>
+  </object>
+  
+  <object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary"  >
+    <dictionary>
+      <entry key="Login" value-ref="POSClient.Step1"/>
+    </dictionary>
+  </object>-->
+  <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
+  
+  <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="ShowLoginForm" value="POSClient.ViewModels.Security.ILoginViewModel"/>
+        <entry key="SetValue" value="POSClient.Actions.Security.IRegisterUserAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>    
+</objects>

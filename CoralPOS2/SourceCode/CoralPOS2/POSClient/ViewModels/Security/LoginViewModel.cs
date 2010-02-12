@@ -9,9 +9,9 @@ using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS2.Models;
 using POSClient.BusinessLogic.Logic.Security;
 using POSClient.Common;
-using POSClient.DataLayer.Models;
 
 namespace POSClient.ViewModels.Security
 {

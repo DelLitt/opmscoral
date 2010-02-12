@@ -1,0 +1,13 @@
+﻿<Page x:Class="POSServer.Views.TemplatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="TemplatePage" Width="1024" Height="748">
+    <Grid>
+        <GroupBox Header="" HorizontalAlignment="Left" Margin="-6,0,0,0" Name="GrpFunction" Width="200">
+            <Grid />
+        </GroupBox>
+        <GroupBox Header="" Margin="195.039,0,0,0" Name="GrpContent">
+            <Grid />
+        </GroupBox>
+    </Grid>
+</Page>

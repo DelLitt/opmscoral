@@ -12,10 +12,10 @@ using Caliburn.PresentationFramework.Screens;
 using Caliburn.WPF.ApplicationFramework;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS2.Models;
 using NHibernate.Mapping;
 using POSClient.BusinessLogic.Logic.Security;
 using POSClient.Common;
-using POSClient.DataLayer.Models;
 
 namespace POSClient.ViewModels.Security
 {
