@@ -12,21 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSServer.Views.ProductMaster
+namespace POSServer.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for TemplatePage.xaml
+    /// Interaction logic for ProductPropertiesView.xaml
     /// </summary>
-    public partial class ProductMasterView : UserControl
+    public partial class ProductPropertiesView : UserControl
     {
-        public ProductMasterView()
+        public ProductPropertiesView()
         {
             InitializeComponent();
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

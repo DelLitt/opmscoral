@@ -3,11 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:cal="http://www.caliburnproject.org" 
     xmlns:Controls="clr-namespace:AppFrameControls.Controls;assembly=AppFrameControls"                      
-    Title="StartView" Height="1024" Width="748" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="SingleBorderWindow" 
+    Title="StartView" Height="748" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="SingleBorderWindow" 
      >
-    <Controls:TransitionPresenter x:Name="ActiveScreen">
-        <Controls:TransitionPresenter.Transition>
-            <Controls:CrossFade />
-        </Controls:TransitionPresenter.Transition>
-    </Controls:TransitionPresenter>
+    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"></ColumnDefinition>
+            <ColumnDefinition Width="837*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Controls:TransitionPresenter x:Name="ActiveScreen" Grid.Column="2">
+            <Controls:TransitionPresenter.Transition>
+                <Controls:CrossFade />
+            </Controls:TransitionPresenter.Transition>
+        </Controls:TransitionPresenter>        
+    </Grid>
+
+
 </Window>
