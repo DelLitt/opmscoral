@@ -88,6 +88,8 @@ namespace NHibernateMappingGenerator
             this.sequenceRadio = new System.Windows.Forms.RadioButton();
             this.businessLayerTabPage = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.txtDaoNamespaceUsing = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.chkDeleteBusinessLayerDir = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtBusinessNamespace = new System.Windows.Forms.TextBox();
@@ -145,8 +147,19 @@ namespace NHibernateMappingGenerator
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.projectNameTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtDaoNamespaceUsing = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.chkDeleteViewModelDir = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtViewModelNamespace = new System.Windows.Forms.TextBox();
+            this.txtViewModelAssembly = new System.Windows.Forms.TextBox();
+            this.txtViewLookup = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnGenViewModel = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtViewModelDir = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dbTableDetailsGridView)).BeginInit();
             this.mainTabControl.SuspendLayout();
             this.basicSettingsTabPage.SuspendLayout();
@@ -166,6 +179,7 @@ namespace NHibernateMappingGenerator
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // connStrTextBox
@@ -701,6 +715,7 @@ namespace NHibernateMappingGenerator
             // 
             // businessLayerTabPage
             // 
+            this.businessLayerTabPage.Controls.Add(this.groupBox10);
             this.businessLayerTabPage.Controls.Add(this.groupBox9);
             this.businessLayerTabPage.Controls.Add(this.groupBox8);
             this.businessLayerTabPage.Controls.Add(this.errorCodeGen);
@@ -735,6 +750,23 @@ namespace NHibernateMappingGenerator
             this.groupBox9.TabIndex = 36;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Business Layer Configuration";
+            // 
+            // txtDaoNamespaceUsing
+            // 
+            this.txtDaoNamespaceUsing.Location = new System.Drawing.Point(95, 118);
+            this.txtDaoNamespaceUsing.Name = "txtDaoNamespaceUsing";
+            this.txtDaoNamespaceUsing.Size = new System.Drawing.Size(340, 20);
+            this.txtDaoNamespaceUsing.TabIndex = 36;
+            this.txtDaoNamespaceUsing.Text = "Sample.CustomerService.DataLayer";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(4, 121);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(87, 13);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "Dao Namespace";
             // 
             // chkDeleteBusinessLayerDir
             // 
@@ -1304,22 +1336,135 @@ namespace NHibernateMappingGenerator
             this.label12.TabIndex = 22;
             this.label12.Text = "Project Name";
             // 
-            // txtDaoNamespaceUsing
+            // groupBox10
             // 
-            this.txtDaoNamespaceUsing.Location = new System.Drawing.Point(95, 118);
-            this.txtDaoNamespaceUsing.Name = "txtDaoNamespaceUsing";
-            this.txtDaoNamespaceUsing.Size = new System.Drawing.Size(340, 20);
-            this.txtDaoNamespaceUsing.TabIndex = 36;
-            this.txtDaoNamespaceUsing.Text = "Sample.CustomerService.DataLayer";
+            this.groupBox10.Controls.Add(this.chkDeleteViewModelDir);
+            this.groupBox10.Controls.Add(this.label19);
+            this.groupBox10.Controls.Add(this.txtViewModelNamespace);
+            this.groupBox10.Controls.Add(this.txtViewModelAssembly);
+            this.groupBox10.Controls.Add(this.txtViewLookup);
+            this.groupBox10.Controls.Add(this.button1);
+            this.groupBox10.Controls.Add(this.button2);
+            this.groupBox10.Controls.Add(this.btnGenViewModel);
+            this.groupBox10.Controls.Add(this.label20);
+            this.groupBox10.Controls.Add(this.txtViewModelDir);
+            this.groupBox10.Controls.Add(this.label21);
+            this.groupBox10.Controls.Add(this.label22);
+            this.groupBox10.Location = new System.Drawing.Point(528, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(505, 213);
+            this.groupBox10.TabIndex = 38;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "ViewModel Layer Configuration ( for MVVM - Caliburn only )";
             // 
-            // label17
+            // chkDeleteViewModelDir
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 121);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(87, 13);
-            this.label17.TabIndex = 37;
-            this.label17.Text = "Dao Namespace";
+            this.chkDeleteViewModelDir.AutoSize = true;
+            this.chkDeleteViewModelDir.Checked = true;
+            this.chkDeleteViewModelDir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDeleteViewModelDir.Location = new System.Drawing.Point(95, 174);
+            this.chkDeleteViewModelDir.Name = "chkDeleteViewModelDir";
+            this.chkDeleteViewModelDir.Size = new System.Drawing.Size(131, 17);
+            this.chkDeleteViewModelDir.TabIndex = 35;
+            this.chkDeleteViewModelDir.Text = "Clear Before Generate";
+            this.chkDeleteViewModelDir.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(4, 36);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(141, 13);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Path for View XAML Lookup";
+            // 
+            // txtViewModelNamespace
+            // 
+            this.txtViewModelNamespace.Location = new System.Drawing.Point(95, 118);
+            this.txtViewModelNamespace.Name = "txtViewModelNamespace";
+            this.txtViewModelNamespace.Size = new System.Drawing.Size(340, 20);
+            this.txtViewModelNamespace.TabIndex = 22;
+            this.txtViewModelNamespace.Text = "Sample.CustomerService.ViewModels";
+            this.txtViewModelNamespace.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // txtViewModelAssembly
+            // 
+            this.txtViewModelAssembly.Location = new System.Drawing.Point(95, 144);
+            this.txtViewModelAssembly.Name = "txtViewModelAssembly";
+            this.txtViewModelAssembly.Size = new System.Drawing.Size(340, 20);
+            this.txtViewModelAssembly.TabIndex = 23;
+            this.txtViewModelAssembly.Text = "Sample.CustomerService.ViewModels";
+            this.txtViewModelAssembly.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // txtViewLookup
+            // 
+            this.txtViewLookup.Location = new System.Drawing.Point(4, 52);
+            this.txtViewLookup.Name = "txtViewLookup";
+            this.txtViewLookup.Size = new System.Drawing.Size(431, 20);
+            this.txtViewLookup.TabIndex = 28;
+            this.txtViewLookup.Text = "D:\\Temp\\";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(441, 92);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "&Select";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(441, 50);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(54, 23);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "&Select";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // btnGenViewModel
+            // 
+            this.btnGenViewModel.Location = new System.Drawing.Point(298, 170);
+            this.btnGenViewModel.Name = "btnGenViewModel";
+            this.btnGenViewModel.Size = new System.Drawing.Size(137, 23);
+            this.btnGenViewModel.TabIndex = 24;
+            this.btnGenViewModel.Text = "Generate View Layer";
+            this.btnGenViewModel.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(4, 144);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 13);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Assembly";
+            // 
+            // txtViewModelDir
+            // 
+            this.txtViewModelDir.Location = new System.Drawing.Point(4, 92);
+            this.txtViewModelDir.Name = "txtViewModelDir";
+            this.txtViewModelDir.Size = new System.Drawing.Size(431, 20);
+            this.txtViewModelDir.TabIndex = 19;
+            this.txtViewModelDir.Text = "D:\\Temp\\";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(4, 121);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(64, 13);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "Namespace";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(4, 73);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(146, 13);
+            this.label22.TabIndex = 25;
+            this.label22.Text = "Path for ViewModel Generate";
             // 
             // App
             // 
@@ -1365,6 +1510,8 @@ namespace NHibernateMappingGenerator
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1486,6 +1633,19 @@ namespace NHibernateMappingGenerator
         private Label label16;
         private TextBox txtDaoNamespaceUsing;
         private Label label17;
+        private GroupBox groupBox10;
+        private CheckBox chkDeleteViewModelDir;
+        private Label label19;
+        private TextBox txtViewModelNamespace;
+        private TextBox txtViewModelAssembly;
+        private TextBox txtViewLookup;
+        private Button button1;
+        private Button button2;
+        private Button btnGenViewModel;
+        private Label label20;
+        private TextBox txtViewModelDir;
+        private Label label21;
+        private Label label22;
     }
 }
 
