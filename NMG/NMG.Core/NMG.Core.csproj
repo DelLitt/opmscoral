@@ -54,6 +54,7 @@
     <Compile Include="BusinessLayerClassTemplate.cs" />
     <Compile Include="BusinessClassPreferences.cs" />
     <Compile Include="Generator\BusinessLayerCodeGenerator.cs" />
+    <Compile Include="Generator\ViewModelGenerator.cs" />
     <Compile Include="HibernateDaoClassTemplate.cs" />
     <Compile Include="DaoClassPreferences.cs" />
     <Compile Include="DaoGenerateArgument.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Generator\SqlMappingGenerator.cs" />
     <Compile Include="Util\StringConstants.cs" />
     <Compile Include="Domain\ColumnDetails.cs" />
+    <Compile Include="ViewModelPreferences.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Templates\HibernateDaoInterfaceTemplate.tt" />
@@ -95,6 +97,10 @@
     <EmbeddedResource Include="Templates\HibernateDaoClassTemplate.tt" />
     <None Include="ReplaceWords.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\ViewModelClassTemplate.tt">
+    </None>
+    <None Include="Templates\ViewModelInterfaceTemplate.tt">
     </None>
     <EmbeddedResource Include="Templates\BusinessLayerInterfaceTemplate.tt" />
     <EmbeddedResource Include="Templates\BusinessLayerClassTemplate.tt" />
