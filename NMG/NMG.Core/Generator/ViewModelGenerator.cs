@@ -82,11 +82,24 @@ namespace NMG.Core.Generator
                                                          className,
                                                          namespaceName,
                                                          ConvertToArrayList(fieldNames),
-                                                         ConvertToArrayList(methodNames)
+                                                         ConvertToArrayList(methodNames),null,null
                                                      );
             string source = ViewModelInterfaceTemplate.Transform(argument);
             string saveViewModelPath = ViewModelPreferences.ViewModelGeneratePath + @"\" + namespaceName.Replace(".", @"\");
             WriteToFile(interfaceName, source, saveViewModelPath);
+
+            ViewModelGenerateArgument classArgument = new ViewModelGenerateArgument
+                                                     (
+                                                         className,
+                                                         namespaceName,
+                                                         ConvertToArrayList(fieldNames),
+                                                         ConvertToArrayList(methodNames), 
+                                                         ConvertToArrayList(detailList),
+                                                         ConvertToArrayList(listNames)
+                                                     );
+            source = ViewModelClassTemplate.Transform(classArgument);
+            WriteToFile(className,source,saveViewModelPath);
+
         }
 
         private ArrayList ConvertToArrayList(IEnumerable<string> enumerable)

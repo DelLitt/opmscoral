@@ -6,14 +6,14 @@ using TC.CustomTemplating;
 
 namespace NMG.Core
 {
-    public static class ViewModelInterfaceTemplate
+    public static class ViewModelClassTemplate
     {
         public static string Transform(IGenerateArgument preferences)
         {
             ViewModelGenerateArgument viewModelGenerateArgument = (ViewModelGenerateArgument)preferences;
             
             //Get template from the embedded resources
-            string template = TemplateResources.Get("NMG.Core.Templates.ViewModelInterfaceTemplate.tt", typeof(ViewModelInterfaceTemplate));
+            string template = TemplateResources.Get("NMG.Core.Templates.ViewModelClassTemplate.tt", typeof(ViewModelClassTemplate));
             var arguments = new TemplateArgumentCollection
                 {    
                     //Argument             Name     &  Value
@@ -21,6 +21,8 @@ namespace NMG.Core
                     new TemplateArgument("NamespaceName",viewModelGenerateArgument.NamespaceName),
                     new TemplateArgument("FieldNames",viewModelGenerateArgument.FieldNames),
                     new TemplateArgument("MethodNames",viewModelGenerateArgument.MethodNames),
+                    new TemplateArgument("DetailList",viewModelGenerateArgument.DetailList),
+                    new TemplateArgument("ListNames",viewModelGenerateArgument.ListName)
                 };
             //Allows us to show the generated class
             var transformer = new TextTransformer();

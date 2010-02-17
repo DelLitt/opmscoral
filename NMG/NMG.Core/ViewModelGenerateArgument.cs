@@ -12,13 +12,17 @@ namespace NMG.Core
         public string NamespaceName { get; set; }
         public ArrayList FieldNames { get; set; }
         public ArrayList MethodNames { get; set; }
+        public ArrayList DetailList { get; set; }
+        public ArrayList ListName { get; set; }
 
-        public ViewModelGenerateArgument(string className, string namespaceName, ArrayList fieldNames, ArrayList methodNames)
+        public ViewModelGenerateArgument(string className, string namespaceName, ArrayList fieldNames, ArrayList methodNames,ArrayList detailList,ArrayList listNames)
         {
             ClassName = className;
             NamespaceName = namespaceName;
             FieldNames = fieldNames;
             MethodNames = methodNames;
+            DetailList = detailList;
+            ListName = listNames;
         }
     }
     

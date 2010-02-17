@@ -62,6 +62,7 @@
     <Compile Include="BusinessGenerateArgument.cs" />
     <Compile Include="BusinessLayerClassTemplate.cs" />
     <Compile Include="BusinessClassPreferences.cs" />
+    <Compile Include="ViewModelClassTemplate.cs" />
     <Compile Include="ViewModelGenerateArgument.cs" />
     <Compile Include="ViewModelInterfaceTemplate.cs" />
     <Compile Include="Generator\BusinessLayerCodeGenerator.cs" />
