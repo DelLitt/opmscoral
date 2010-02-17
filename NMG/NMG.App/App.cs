@@ -794,11 +794,15 @@ namespace NHibernateMappingGenerator
 
         private void ClearOutputDirectory(string p)
         {
-            string[] files = Directory.GetFiles(p.Trim());
+            if (!Directory.Exists(p)) return;
+            Directory.Delete(p,true);
+            Directory.CreateDirectory(p);
+            /*string[] files = Directory.GetFiles(p.Trim());
             foreach (string file in files)
             {
                 File.Delete(file);
-            } 
+            }*/ 
+            
         }
 
         private void saveProjectAsMenu_Click(object sender, EventArgs e)
@@ -846,16 +850,24 @@ namespace NHibernateMappingGenerator
             _applicationSettings.Language = cSharpRadioButton.Checked ? Language.CSharp : Language.VB;
             _applicationSettings.IsFluent = IsFluent;
             _applicationSettings.ModelLookupPath = txtDaoLookup.Text.Trim();
+            
             _applicationSettings.DataLayerPath = txtDaoLayerDir.Text.Trim();
             _applicationSettings.DataLayerAssembly = txtDaoAssembly.Text.Trim();
             _applicationSettings.DataLayerNameSpace = txtDaoNamespace.Text.Trim();
             _applicationSettings.ProjectName = projectNameTextBox.Text.Trim();
+            
             _applicationSettings.TablePreferencesFile = _applicationSettings.ProjectName + ".nmprefobj";
+
             _applicationSettings.ModelPathForBusiness = txtBusinessLookup.Text.Trim();
             _applicationSettings.BusinessGeneratePath = txtBusinessLayerDir.Text.Trim();
             _applicationSettings.BusinessNamespaceName = txtBusinessNamespace.Text.Trim();
             _applicationSettings.BusinessAssembly = txtBusinessAssembly.Text.Trim();
             _applicationSettings.DaoNamespaceForBusiness = txtDaoNamespaceUsing.Text.Trim();
+
+            _applicationSettings.ViewLookupDir = txtViewLookup.Text.Trim();
+            _applicationSettings.ViewModelGeneratePath = txtViewModelDir.Text.Trim();
+            _applicationSettings.ViewModelNamespaceName = txtViewModelNamespace.Text.Trim();
+            _applicationSettings.ViewModelAssemblyName = txtViewModelAssembly.Text.Trim();
         }
 
         private void loadProjectMenu_Click(object sender, EventArgs e)
@@ -926,6 +938,10 @@ namespace NHibernateMappingGenerator
                 txtBusinessAssembly.Text =_applicationSettings.BusinessAssembly;
                 txtDaoNamespaceUsing.Text = _applicationSettings.DaoNamespaceForBusiness;
 
+                txtViewLookup.Text = _applicationSettings.ViewLookupDir;
+                txtViewModelDir.Text = _applicationSettings.ViewModelGeneratePath;
+                txtViewModelNamespace.Text = _applicationSettings.ViewModelNamespaceName;
+                txtViewModelAssembly.Text = _applicationSettings.ViewModelAssemblyName;
                 this.Text = projectNameTextBox.Text;
             }
         }
@@ -1049,6 +1065,55 @@ namespace NHibernateMappingGenerator
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtViewLookup.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog.ShowDialog();
+            txtViewModelDir.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void btnGenViewModel_Click(object sender, EventArgs e)
+        {
+            errorLabel.Text = string.Empty;
+            if (string.IsNullOrEmpty(txtBusinessLayerDir.Text))
+            {
+                errorCodeGen.Text = "Please select a directory for VIEWMODEL GEN";
+                return;
+            }
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (chkDeleteViewModelDir.Checked)
+                {
+                    ClearOutputDirectory(txtViewModelDir.Text.Trim());
+                    errorCodeGen.Text = " Delete all file completed ...";
+                }
+                errorCodeGen.Text = " Generating ...";
+
+                ViewModelPreferences viewModelPreferences = new ViewModelPreferences(txtViewLookup.Text, txtViewModelDir.Text, txtViewModelNamespace.Text, txtViewModelAssembly.Text);
+
+                ViewModelGenerator viewModelGenerator = new ViewModelGenerator(viewModelPreferences);
+                viewModelGenerator.Generate();
+                errorCodeGen.Text = "Generated all files successfully.";
+
+
+            }
+            catch (Exception ex)
+            {
+                errorCodeGen.Text = ex.Message;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }

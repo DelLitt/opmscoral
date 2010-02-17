@@ -33,6 +33,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Oracle.DataAccess, Version=2.111.7.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -47,12 +53,17 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayerInterfaceTemplate.cs" />
     <Compile Include="BusinessGenerateArgument.cs" />
     <Compile Include="BusinessLayerClassTemplate.cs" />
     <Compile Include="BusinessClassPreferences.cs" />
+    <Compile Include="ViewModelGenerateArgument.cs" />
+    <Compile Include="ViewModelInterfaceTemplate.cs" />
     <Compile Include="Generator\BusinessLayerCodeGenerator.cs" />
     <Compile Include="Generator\ViewModelGenerator.cs" />
     <Compile Include="HibernateDaoClassTemplate.cs" />
@@ -98,10 +109,8 @@
     <None Include="ReplaceWords.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\ViewModelClassTemplate.tt">
-    </None>
-    <None Include="Templates\ViewModelInterfaceTemplate.tt">
-    </None>
+    <EmbeddedResource Include="Templates\ViewModelClassTemplate.tt" />
+    <EmbeddedResource Include="Templates\ViewModelInterfaceTemplate.tt" />
     <EmbeddedResource Include="Templates\BusinessLayerInterfaceTemplate.tt" />
     <EmbeddedResource Include="Templates\BusinessLayerClassTemplate.tt" />
   </ItemGroup>

@@ -33,6 +33,11 @@ namespace NHibernateMappingGenerator
         public string ModelNamespaceForBusiness { get; set; }
         public string DaoNamespaceForBusiness { get; set; }
 
+        public string ViewLookupDir { get; set; }
+        public string ViewModelGeneratePath { get; set; }
+        public string ViewModelNamespaceName { get; set; }
+        public string ViewModelAssemblyName { get; set; }
+
         public Language Language { get; set; }
         public bool IsFluent { get; set; }
         public FieldGenerationConvention FieldGenerationConvention { get; set; }
