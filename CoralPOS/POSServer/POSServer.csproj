@@ -365,6 +365,12 @@
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stock\StockOut\StockOutSearchView.xaml.cs">
+      <DependentUpon>StockOutSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIn\StockInSearchView.xaml.cs">
+      <DependentUpon>StockInSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stock\StockIn\StockInConfirmView.xaml.cs">
       <DependentUpon>StockInConfirmView.xaml</DependentUpon>
     </Compile>
@@ -456,6 +462,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\StockOutSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\StockInSearchView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
