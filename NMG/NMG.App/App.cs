@@ -176,7 +176,9 @@ namespace NHibernateMappingGenerator
                 sequencesComboBox.Items.Clear();
                 PopulateTablesAndSequences();
                 CreateApplicationSetttingForTables();
-                var applicationPreferences = _tablePreferences[tablesComboBox.SelectedIndex];
+                int selectedIndex = tablesComboBox.SelectedIndex;
+                if (selectedIndex < 0) selectedIndex = 0;
+                var applicationPreferences = _tablePreferences[selectedIndex];
                 CurrentTablePreference = applicationPreferences;
 
                 // load relationships
