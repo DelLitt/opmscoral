@@ -63,6 +63,8 @@
     <Compile Include="BusinessGenerateArgument.cs" />
     <Compile Include="BusinessLayerClassTemplate.cs" />
     <Compile Include="BusinessClassPreferences.cs" />
+    <Compile Include="DataLayerXmlGenerateArgument.cs" />
+    <Compile Include="DataLayerXmlTemplate.cs" />
     <Compile Include="ViewModelClassTemplate.cs" />
     <Compile Include="ViewModelGenerateArgument.cs" />
     <Compile Include="ViewModelInterfaceTemplate.cs" />
@@ -111,6 +113,7 @@
     <None Include="ReplaceWords.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Templates\DataLayerXmlTemplate.tt" />
     <EmbeddedResource Include="Templates\ViewModelClassTemplate.tt" />
     <EmbeddedResource Include="Templates\ViewModelInterfaceTemplate.tt" />
     <EmbeddedResource Include="Templates\BusinessLayerInterfaceTemplate.tt" />

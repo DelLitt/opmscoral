@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace NMG.Core.Generator
         }
         public void Generate()
         {
+            ArrayList daoNameList = new ArrayList();
             string[] objectFiles = Directory.GetFiles(DaoClassPreferences.DaoObjectLookupPath);
             foreach (string objectFile in objectFiles)
             {
@@ -28,7 +30,16 @@ namespace NMG.Core.Generator
                 WriteToFile(InterfaceName(objectName),source);
                 source = HibernateDaoClassTemplate.Transform(daoGenerateArgument);
                 WriteToFile(objectName,source);
-                
+                daoNameList.Add(DaoClassPreferences.DaoNamespaceName + "." + objectName);
+            }
+            DataLayerXmlGenerateArgument argument = new DataLayerXmlGenerateArgument(DaoClassPreferences.ModelNamespaceName,DaoClassPreferences.DaoNamespaceName,daoNameList);
+            string dataXmlsource = DataLayerXmlTemplate.Transform(argument);
+            string fileName = DaoClassPreferences.DaoGeneratePath + @"\DataLayer" + @".xml";
+            using (var writer = new StreamWriter(fileName))
+            {
+                writer.Write(dataXmlsource);
+                writer.Flush();
+                writer.Close();
             }
         }
 
