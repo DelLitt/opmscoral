@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.CustomerDetail, CoralPOS.Models" table="CRL_CUST_DET" lazy="true" >
+    <id name="CustomerId" type="Int64" column="CUSTOMER_ID">
+      <generator class="assigned" />
+    </id>
+    <property name="Address" column="ADDRESS" />
+    <property name="Birthday" column="BIRTHDAY" />
+    <property name="BuyCount" column="BUY_COUNT" />
+    <property name="Cmnd" column="CMND" />
+    <property name="CountryId" column="COUNTRY_ID" />
+    <property name="CreateDate" column="CREATE_DATE" />
+    <property name="CreateId" column="CREATE_ID" />
+    <property name="DelFlg" column="DEL_FLG" />
+    <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="MoneySpent" column="MONEY_SPENT" />
+    <property name="PassportNumber" column="PASSPORT_NUMBER" />
+    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateId" column="UPDATE_ID" />
+  </class>
+</hibernate-mapping>

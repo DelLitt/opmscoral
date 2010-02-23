@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.UserInfo, CoralPOS.Models" table="CRL_USR_INFO" lazy="true" >
+    <id name="Username" type="String" column="USERNAME">
+      <generator class="assigned" />
+    </id>
+    <property name="Deleted" column="DELETED" />
+    <property name="DepartmentId" column="DEPARTMENT_ID" />
+    <property name="EmployeeId" column="EMPLOYEE_ID" />
+    <property name="Password" column="PASSWORD" />
+    <property name="Suspended" column="SUSPENDED" />
+  </class>
+</hibernate-mapping>

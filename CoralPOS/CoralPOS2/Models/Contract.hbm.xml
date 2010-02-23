@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.Contract, CoralPOS.Models" table="CRL_CONTRACT" lazy="true" >
+    <composite-id name="ContractPK" class="ContractPK">
+      <key-property name="ContractId" type="Int64" column="CONTRACT_ID" />
+      <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
+    </composite-id>
+    <property name="ContractName" column="CONTRACT_NAME" />
+    <property name="ContractType" column="CONTRACT_TYPE" />
+    <property name="CreateDate" column="CREATE_DATE" />
+    <property name="CreateId" column="CREATE_ID" />
+    <property name="DelFlg" column="DEL_FLG" />
+    <property name="EmployeeId" column="EMPLOYEE_ID" />
+    <property name="EndDate" column="END_DATE" />
+    <property name="ExFld1" column="EX_FLD1" />
+    <property name="ExFld2" column="EX_FLD2" />
+    <property name="ExFld3" column="EX_FLD3" />
+    <property name="ExFld4" column="EX_FLD4" />
+    <property name="ExFld5" column="EX_FLD5" />
+    <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="StartDate" column="START_DATE" />
+    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateId" column="UPDATE_ID" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.DepartmentStockHistory, CoralPOS.Models" table="CRL_DEPT_STK_HIS" lazy="true" >
+    <composite-id name="DepartmentStockHistoryPK" class="DepartmentStockHistoryPK">
+      <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
+      <key-property name="DepartmentStockHistoryId" type="Int64" column="DEPARTMENT_STOCK_HISTORY_ID" />
+    </composite-id>
+    <property name="CreateDate" column="CREATE_DATE" />
+    <property name="CreateId" column="CREATE_ID" />
+    <property name="DamageCount" column="DAMAGE_COUNT" />
+    <property name="DelFlg" column="DEL_FLG" />
+    <property name="Description" column="DESCRIPTION" />
+    <property name="ErrorCount" column="ERROR_COUNT" />
+    <property name="ExFld1" column="EX_FLD1" />
+    <property name="ExFld2" column="EX_FLD2" />
+    <property name="ExFld3" column="EX_FLD3" />
+    <property name="ExFld4" column="EX_FLD4" />
+    <property name="ExFld5" column="EX_FLD5" />
+    <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="GoodCount" column="GOOD_COUNT" />
+    <property name="LostCount" column="LOST_COUNT" />
+    <property name="ProductId" column="PRODUCT_ID" />
+    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <property name="Quantity" column="QUANTITY" />
+    <property name="UnconfirmCount" column="UNCONFIRM_COUNT" />
+    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateId" column="UPDATE_ID" />
+  </class>
+</hibernate-mapping>

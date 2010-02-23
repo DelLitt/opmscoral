@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.StockDefinitionStatus, CoralPOS.Models" table="CRL_STK_DEF_STAT" lazy="true" >
+    <id name="DefectStatusId" type="Int64" column="DEFECT_STATUS_ID">
+      <generator class="assigned" />
+    </id>
+    <property name="DefectStatusName" column="DEFECT_STATUS_NAME" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.Promotion, CoralPOS.Models" table="CRL_PROMO" lazy="true" >
+    <id name="PromotionId" type="Int64" column="PROMOTION_ID">
+      <generator class="assigned" />
+    </id>
+    <property name="CreateDate" column="CREATE_DATE" />
+    <property name="CreateId" column="CREATE_ID" />
+    <property name="DelFlg" column="DEL_FLG" />
+    <property name="DiscountPercent" column="DISCOUNT_PERCENT" />
+    <property name="DiscountPrice" column="DISCOUNT_PRICE" />
+    <property name="ExFld1" column="EX_FLD1" />
+    <property name="ExFld2" column="EX_FLD2" />
+    <property name="ExFld3" column="EX_FLD3" />
+    <property name="ExFld4" column="EX_FLD4" />
+    <property name="ExFld5" column="EX_FLD5" />
+    <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="GiftProductId" column="GIFT_PRODUCT_ID" />
+    <property name="PromotionName" column="PROMOTION_NAME" />
+    <property name="PromotionType" column="PROMOTION_TYPE" />
+    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateId" column="UPDATE_ID" />
+  </class>
+</hibernate-mapping>

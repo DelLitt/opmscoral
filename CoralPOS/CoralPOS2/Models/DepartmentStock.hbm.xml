@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CoralPOS.Models.DepartmentStock, CoralPOS.Models" table="CRL_DEPT_STK" lazy="true" >
+    <composite-id name="DepartmentStockPK" class="DepartmentStockPK">
+      <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
+      <key-property name="ProductId" type="String" column="PRODUCT_ID" />
+    </composite-id>
+    <property name="CreateDate" column="CREATE_DATE" />
+    <property name="CreateId" column="CREATE_ID" />
+    <property name="DamageQuantity" column="DAMAGE_QUANTITY" />
+    <property name="DelFlg" column="DEL_FLG" />
+    <property name="ErrorQuantity" column="ERROR_QUANTITY" />
+    <property name="ExFld1" column="EX_FLD1" />
+    <property name="ExFld2" column="EX_FLD2" />
+    <property name="ExFld3" column="EX_FLD3" />
+    <property name="ExFld4" column="EX_FLD4" />
+    <property name="ExFld5" column="EX_FLD5" />
+    <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="GoodQuantity" column="GOOD_QUANTITY" />
+    <property name="LostQuantity" column="LOST_QUANTITY" />
+    <property name="OnStorePrice" column="ON_STORE_PRICE" />
+    <property name="Position" column="POSITION" />
+    <property name="Quantity" column="QUANTITY" />
+    <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
+    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateId" column="UPDATE_ID" />
+    <many-to-one lazy="true" update="false" insert="false" class="Product">
+      <column name="PRODUCT_ID" property-ref="ProductId" />
+    </many-to-one>
+    <many-to-one lazy="true" update="false" insert="false" class="ProductMaster">
+      <column name="PRODUCT_MASTER_ID" property-ref="ProductMasterId" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>
