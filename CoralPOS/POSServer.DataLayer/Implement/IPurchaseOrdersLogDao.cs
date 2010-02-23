@@ -1,0 +1,66 @@
+
+using System;
+
+namespace POSServer.DataLayer.Implement
+{
+	
+    public interface IPurchaseOrdersLogDao
+    {
+        /// <summary>
+        /// Find PurchaseOrdersLog object by id. Return null if nothing is found
+        /// </summary>
+        /// <param name="id">Id of PurchaseOrdersLog</param>
+        /// <returns></returns>
+        PurchaseOrdersLog FindById(object id);
+        
+        /// <summary>
+        /// Add PurchaseOrdersLog to database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        PurchaseOrdersLog Add(PurchaseOrdersLog data);
+        
+        /// <summary>
+        /// Update PurchaseOrdersLog to database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        int Update(PurchaseOrdersLog data);
+        
+        /// <summary>
+        /// Delete PurchaseOrdersLog from database.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        int Delete(PurchaseOrdersLog data);
+        
+        /// <summary>
+        /// Delete PurchaseOrdersLog from database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int DeleteById(object id);
+        
+        /// <summary>
+        /// Find all PurchaseOrdersLog from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        IList<PurchaseOrdersLog> FindAll(ObjectCriteria criteria);
+        
+        /// <summary>
+        /// Find all PurchaseOrdersLog from database. Has pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        QueryResult FindPaging(ObjectCriteria criteria);
+        
+        /// <summary>
+        /// Find min, max, count... PurchaseOrdersLog from database.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+    }
+}
