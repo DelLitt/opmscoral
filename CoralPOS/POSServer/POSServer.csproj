@@ -365,6 +365,15 @@
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stock\StockIn\StockInWaitingConfirmView.xaml.cs">
+      <DependentUpon>StockInWaitingConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\Inventory\StockInventoryView.xaml.cs">
+      <DependentUpon>StockInventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\StockOutWaitingConfirmView.xaml.cs">
+      <DependentUpon>StockOutWaitingConfirmView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stock\StockOut\StockOutSearchView.xaml.cs">
       <DependentUpon>StockOutSearchView.xaml</DependentUpon>
     </Compile>
@@ -462,6 +471,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\StockInWaitingConfirmView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\Inventory\StockInventoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\StockOutWaitingConfirmView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
