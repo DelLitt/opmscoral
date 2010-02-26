@@ -2,11 +2,12 @@
 
 
 using System.Collections;
+using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
 
-namespace POSServer.DataLayer.Implement
+namespace POSServer.BusinessLogic.Implement
 {
     public class MainStockHistoryLogicImpl : IMainStockHistoryLogic
     {
@@ -84,7 +85,7 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList FindAll(ObjectCriteria criteria)
+        public IList<MainStockHistory> FindAll(ObjectCriteria criteria)
         {
             return _innerDao.FindAll(criteria);
         }

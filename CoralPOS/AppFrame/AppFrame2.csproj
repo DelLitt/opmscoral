@@ -145,6 +145,14 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.DomainModel, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Ninject.dll</HintPath>
@@ -208,7 +216,28 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CheckUtility.cs" />
+    <Compile Include="Utils\DateUtility.cs" />
+    <Compile Include="Utils\DbUtility.cs" />
+    <Compile Include="Utils\EventUtility.cs" />
+    <Compile Include="Utils\GlobalUtility.cs" />
+    <Compile Include="Utils\Mapper\BaseMapper.cs" />
+    <Compile Include="Utils\Mapper\BaseTransform.cs" />
+    <Compile Include="Utils\Mapper\BaseUserMapper.cs" />
+    <Compile Include="Utils\Mapper\FormTransform.cs" />
+    <Compile Include="Utils\Mapper\MapperRepository.cs" />
+    <Compile Include="Utils\Mapper\ModelMapper.cs" />
+    <Compile Include="Utils\Mapper\ObjectTransform.cs" />
+    <Compile Include="Utils\Mapper\RoleMapper.cs" />
+    <Compile Include="Utils\Mapper\StringMapper.cs" />
+    <Compile Include="Utils\MenuUtility.cs" />
+    <Compile Include="Utils\NumberUtility.cs" />
+    <Compile Include="Utils\ObjectConverter.cs" />
     <Compile Include="Utils\ObjectUtility.cs" />
+    <Compile Include="Utils\RandomGenerator.cs" />
+    <Compile Include="Utils\ResourceUtility.cs" />
+    <Compile Include="Utils\SecurityUtility.cs" />
+    <Compile Include="Utils\StringUtility.cs" />
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
     <Compile Include="WPF\Screens\IPageScreen.cs" />

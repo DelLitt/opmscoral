@@ -1,5 +1,11 @@
-
+			 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using NHibernate;
+using NHibernate.Criterion;
+using Spring.Data.NHibernate;
+using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {

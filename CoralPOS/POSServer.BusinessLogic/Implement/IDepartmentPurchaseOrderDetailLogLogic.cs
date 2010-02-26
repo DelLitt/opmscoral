@@ -3,9 +3,11 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using CoralPOS.Models;
+using POSServer.DataLayer.Implement;
 
-namespace POSServer.DataLayer.Implement
+namespace POSServer.BusinessLogic.Implement
 {
     public interface IDepartmentPurchaseOrderDetailLogLogic
     {
@@ -49,7 +51,7 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList FindAll(ObjectCriteria criteria);
+        IList<DepartmentPurchaseOrderDetailLog> FindAll(ObjectCriteria criteria);
         
         /// <summary>
         /// Find all  DepartmentPurchaseOrderDetailLog from database. Has pagination.

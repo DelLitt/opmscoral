@@ -89,7 +89,7 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList FindAll(ObjectCriteria criteria)
+        public IList<ReturnBlockIn> FindAll(ObjectCriteria criteria)
         {
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try 
@@ -118,7 +118,7 @@ namespace POSServer.DataLayer.Implement
                         AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
                     }
                 }
-                return hibernateCriteria.List();
+                return hibernateCriteria.List<ReturnBlockIn>();
             }
             finally 
             {
