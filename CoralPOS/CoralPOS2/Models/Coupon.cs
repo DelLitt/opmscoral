@@ -22,11 +22,6 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual long CouponType {
-            get;
-            set;
-        }
-        
         public virtual System.DateTime CreateDate {
             get;
             set;

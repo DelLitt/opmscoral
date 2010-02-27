@@ -12,7 +12,7 @@ namespace POSServer.BusinessLogic.Logic.Security
         {
             string username = loginInfo.Username.ToLower();
             string password = loginInfo.Password.ToLower();
-            if(username.Equals("linhmap") && password.Equals("hunlai"))
+            if (username.Equals("admin") && password.Equals("admin"))
             {
                 return true;
             }

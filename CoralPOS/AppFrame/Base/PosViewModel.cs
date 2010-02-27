@@ -22,5 +22,10 @@ namespace AppFrame.Base
         {
             Flow.Next();
         }
+
+        public IScreen ActiveMenu
+        {
+            get; set;
+        }
     }
 }

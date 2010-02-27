@@ -56,9 +56,6 @@ namespace POSServer.ViewModels
         {
             try
             {
-                
-                /*IApplicationContext ctx = ContextRegistry.GetContext();
-                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);*/
                 DefaultFlow flow = ObjectUtility.GetObject<DefaultFlow>(flowName);
                 flow.InitFlow();
                 flow.Navigator = this;

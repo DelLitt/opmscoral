@@ -33,13 +33,13 @@ namespace AppFrame.Utility
             }
             return session;
         }
-        public static ISession CurrentSession()
+        /*public static ISession CurrentSession()
         {
             HibernateTemplate template = GlobalUtility.GetObject("HibernateTemplate") as HibernateTemplate;
 
             return SessionFactoryUtils.GetSession(template.SessionFactory, true); ;
         }
-
+*/
         
     }
 }

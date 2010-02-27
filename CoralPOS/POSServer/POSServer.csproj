@@ -299,6 +299,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ILoginAction.cs" />
+    <Compile Include="Actions\LoginAction.cs" />
+    <Compile Include="Actions\LoginActionResult.cs" />
+    <Compile Include="Actions\Security\IRegisterUserAction.cs" />
+    <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Presenters\Security\LoginPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -314,18 +319,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
+    <Compile Include="ViewModels\Management\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Menu\IMainMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationShellViewModel.cs" />
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterSummaryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Sale\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\Stock\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IStockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IStockOutViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
@@ -338,8 +356,8 @@
     <Compile Include="Views\Management\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Menu\MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="Views\Menu\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationShellView.xaml.cs">
       <DependentUpon>NavigationShellView.xaml</DependentUpon>
@@ -422,7 +440,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="spring-config.xml" />
+    <EmbeddedResource Include="spring-config.xml" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
@@ -445,7 +463,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Menu\MainMenu.xaml">
+    <Page Include="Views\Menu\MainMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -555,9 +573,6 @@
       <Project>{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}</Project>
       <Name>POSServer.BusinessLogic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

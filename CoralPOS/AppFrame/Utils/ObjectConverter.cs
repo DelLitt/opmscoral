@@ -5,10 +5,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Globalization;
-using System.Text;
-using AppFrame.Utility.Mapper;
 using System.Reflection;
-using System.Reflection.Emit;
+
 using NHibernate.Type;
 
 namespace AppFrame.Utils
@@ -16,12 +14,12 @@ namespace AppFrame.Utils
     public sealed class ObjectConverter
     {
 
-        public static TDestinationClass Convert<TDestinationClass, TSourceClass>(TSourceClass source)
+        /*public static TDestinationClass Convert<TDestinationClass, TSourceClass>(TSourceClass source)
         {
             MapperRepository repository = MapperRepository.Instance();
             BaseMapper<TDestinationClass, TSourceClass> mapper = repository.Get(source.GetType().FullName) as BaseMapper<TDestinationClass, TSourceClass>;
             return mapper.Convert(source);
-        }
+        }*/
         /// <summary>
         /// 
         /// </summary>

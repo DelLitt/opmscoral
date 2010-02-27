@@ -167,6 +167,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Spring.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=2.5.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\StructureMap.dll</HintPath>
@@ -216,31 +220,19 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\CheckUtility.cs" />
     <Compile Include="Utils\DateUtility.cs" />
     <Compile Include="Utils\DbUtility.cs" />
-    <Compile Include="Utils\EventUtility.cs" />
-    <Compile Include="Utils\GlobalUtility.cs" />
-    <Compile Include="Utils\Mapper\BaseMapper.cs" />
-    <Compile Include="Utils\Mapper\BaseTransform.cs" />
-    <Compile Include="Utils\Mapper\BaseUserMapper.cs" />
-    <Compile Include="Utils\Mapper\FormTransform.cs" />
-    <Compile Include="Utils\Mapper\MapperRepository.cs" />
-    <Compile Include="Utils\Mapper\ModelMapper.cs" />
-    <Compile Include="Utils\Mapper\ObjectTransform.cs" />
-    <Compile Include="Utils\Mapper\RoleMapper.cs" />
-    <Compile Include="Utils\Mapper\StringMapper.cs" />
-    <Compile Include="Utils\MenuUtility.cs" />
     <Compile Include="Utils\NumberUtility.cs" />
     <Compile Include="Utils\ObjectConverter.cs" />
     <Compile Include="Utils\ObjectUtility.cs" />
     <Compile Include="Utils\RandomGenerator.cs" />
-    <Compile Include="Utils\ResourceUtility.cs" />
-    <Compile Include="Utils\SecurityUtility.cs" />
     <Compile Include="Utils\StringUtility.cs" />
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
     <Compile Include="WPF\Screens\IPageScreen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

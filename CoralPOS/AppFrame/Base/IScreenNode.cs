@@ -8,10 +8,11 @@ namespace AppFrame.Base
 {
     public interface IScreenNode : IScreen,INode
     {
+        IScreen ActiveMenu { get; set; }
     }
 
     public interface  IScreenNode<T> : IScreen<T>, INode
     {
-        
+        IScreen ActiveMenu { get; set; }
     }
 }

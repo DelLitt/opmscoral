@@ -5,17 +5,17 @@
     xmlns:Controls="clr-namespace:AppFrameControls.Controls;assembly=AppFrameControls"                      
     Title="Coral POS2" Height="748" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="SingleBorderWindow" 
      >
-    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowGridLines="False">
+    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Controls:TransitionPresenter x:Name="ActiveMenu" Grid.Column="1">
+        <Controls:TransitionPresenter x:Name="ActiveMenu" Grid.Column="0">
             <Controls:TransitionPresenter.Transition>
                 <Controls:CrossFade />
             </Controls:TransitionPresenter.Transition>
         </Controls:TransitionPresenter>
-        <Controls:TransitionPresenter x:Name="ActiveScreen" Grid.Column="2">
+        <Controls:TransitionPresenter x:Name="ActiveScreen" Grid.Column="1">
             <Controls:TransitionPresenter.Transition>
                 <Controls:CrossFade />
             </Controls:TransitionPresenter.Transition>

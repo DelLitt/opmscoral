@@ -13,7 +13,7 @@ using Spring.Context.Support;
 namespace AppFrame.Base
 {
     public class ShellNavigator<T,U> : Navigator<T>,IRootNode<U> 
-                                                       where T:class,IScreen 
+                                                       where T:class,IScreen
                                                        where U:class,INode
     {
         private IServiceLocator _serviceLocator;
@@ -24,6 +24,32 @@ namespace AppFrame.Base
         public ShellNavigator(IServiceLocator serviceLocator)
         {
             _serviceLocator = serviceLocator;
+        }
+
+        public IServiceLocator ServiceLocator
+        {
+            get
+            {
+                return _serviceLocator;
+            }
+            set
+            {
+                _serviceLocator = value;
+            }
+        }
+        
+        private IScreen _activeMenu;
+        public IScreen ActiveMenu
+        {
+            get
+            {
+                return _activeMenu;
+            }
+            set
+            {
+                _activeMenu = value;
+                NotifyOfPropertyChange(() => ActiveMenu);
+            }
         }
 
         public void Open(U node) 
@@ -92,5 +118,12 @@ namespace AppFrame.Base
         {
             
         }
+
+        /*protected override void ChangeActiveScreenCore(T newActiveScreen)
+        {
+            base.ChangeActiveScreenCore(newActiveScreen);
+            ActiveMenu = newActiveScreen.ActiveMenu;
+            NotifyOfPropertyChange(()=> ActiveMenu);
+        }*/
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace POSServer.Views.Menu
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for MainMenuViewModel.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class MainMenuView : UserControl
     {
-        public MainMenu()
+        public MainMenuView()
         {
             InitializeComponent();
         }

@@ -15,7 +15,11 @@ namespace AppFrame.Base.Generic
         {
             Flow.Next();
         }
-        
-        
+
+
+        public IScreen ActiveMenu
+        {
+            get; set;
+        }
     }
 }

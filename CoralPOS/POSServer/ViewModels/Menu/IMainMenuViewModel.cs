@@ -5,10 +5,9 @@ using System.Text;
 using AppFrame.Base;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSServer.ViewModels
+namespace POSServer.ViewModels.Menu
 {
-    public interface IMainView : IScreen
+    public interface IMainMenuViewModel : IScreen
     {
-        IScreen ActiveMenu { get; set; }
     }
 }
