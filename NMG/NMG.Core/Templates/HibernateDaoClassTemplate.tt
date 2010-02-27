@@ -95,7 +95,7 @@ namespace <#= NamespaceName #>
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList FindAll(ObjectCriteria criteria)
+        public IList<<#= ClassName #>> FindAll(ObjectCriteria criteria)
         {
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try 
@@ -124,7 +124,7 @@ namespace <#= NamespaceName #>
                         AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
                     }
                 }
-                return hibernateCriteria.List();
+                return hibernateCriteria.List<<#= ClassName #>>();
             }
             finally 
             {

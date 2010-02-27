@@ -30,9 +30,10 @@ namespace NMG.Core.Generator
                 WriteToFile(InterfaceName(objectName),source);
                 source = HibernateDaoClassTemplate.Transform(daoGenerateArgument);
                 WriteToFile(objectName,source);
-                daoNameList.Add(DaoClassPreferences.DaoNamespaceName + "." + objectName);
+                daoNameList.Add(DaoClassPreferences.DaoNamespaceName + "." + objectName + "Dao");
             }
-            DataLayerXmlGenerateArgument argument = new DataLayerXmlGenerateArgument(DaoClassPreferences.ModelNamespaceName,DaoClassPreferences.DaoNamespaceName,daoNameList);
+
+            DataLayerXmlGenerateArgument argument = new DataLayerXmlGenerateArgument(DaoClassPreferences.ModelAssembly,DaoClassPreferences.DaoAssembly,daoNameList);
             string dataXmlsource = DataLayerXmlTemplate.Transform(argument);
             string fileName = DaoClassPreferences.DaoGeneratePath + @"\DataLayer" + @".xml";
             using (var writer = new StreamWriter(fileName))

@@ -27,7 +27,7 @@ namespace NMG.Core.Generator
 
         public override void Generate()
         {
-            string realTableName = GlobalCache.Instance.ReplaceShortWords(tableName);
+            string realTableName = GlobalCache.Instance.ReplaceShortWords(tableName.ToUpper());
             string fileName = filePath + realTableName.GetFormattedText() + ".hbm.xml";
             using (var stringWriter = new StringWriter())
             {
@@ -51,7 +51,7 @@ namespace NMG.Core.Generator
 
         public XmlDocument CreateMappingDocument()
         {
-            string realTableName = GlobalCache.Instance.ReplaceShortWords(tableName);
+            string realTableName = GlobalCache.Instance.ReplaceShortWords(tableName.ToUpper());
 
             var xmldoc = new XmlDocument();
             var xmlDeclaration = xmldoc.CreateXmlDeclaration("1.0", string.Empty, string.Empty);
@@ -116,7 +116,7 @@ namespace NMG.Core.Generator
                         {
                             if (applicationPreferences.FieldGenerationConvention == FieldGenerationConvention.AutoProperty)
                             {
-                                pkName = GlobalCache.Instance.ReplaceShortWords(tableName);
+                                pkName = GlobalCache.Instance.ReplaceShortWords(tableName.ToUpper());
                                 pkName = pkName.GetFormattedText() + "PK";
                             }
 
@@ -156,7 +156,7 @@ namespace NMG.Core.Generator
 
         private void AddManyToOneProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
         {
-            string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable);
+            string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());
             refTableName = refTableName.GetFormattedText();
             var xmlNode = xmldoc.CreateElement("many-to-one");
             xmlNode.SetAttribute("lazy", "true");
@@ -190,7 +190,7 @@ namespace NMG.Core.Generator
                         }
                         else if(priKeys.Count > 1)
                         {
-                            string priCompositePK = GlobalCache.Instance.ReplaceShortWords(primaryKeys.TableName);
+                            string priCompositePK = GlobalCache.Instance.ReplaceShortWords(primaryKeys.TableName.ToUpper());
                             priCompositePK = priCompositePK.GetFormattedText() + "PK";
                             xmlNode.SetAttribute("property-ref", priCompositePK);
                             xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
@@ -214,7 +214,7 @@ namespace NMG.Core.Generator
         private void AddOneToManyProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
         {
             
-                string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable);
+                string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());
                 refTableName = refTableName.GetFormattedText();
                 var xmlNode = xmldoc.CreateElement("bag");
                 xmlNode.SetAttribute("lazy", "true");

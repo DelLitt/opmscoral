@@ -121,8 +121,26 @@ namespace NHibernateMappingGenerator
 
         private void ServerTypeSelected(object sender, EventArgs e)
         {
-            bool isOracleSelected = ((ServerType) serverTypeComboBox.SelectedItem == ServerType.Oracle);
-            connStrTextBox.Text = isOracleSelected ? StringConstants.ORACLE_CONN_STR_TEMPLATE : StringConstants.SQL_CONN_STR_TEMPLATE;
+            ServerType serverType = (ServerType) serverTypeComboBox.SelectedItem;
+            switch(serverType)
+            {
+                case ServerType.Oracle:
+                    connStrTextBox.Text = StringConstants.ORACLE_CONN_STR_TEMPLATE;
+                    break;
+                case ServerType.SqlServer:
+                    connStrTextBox.Text = StringConstants.SQL_CONN_STR_TEMPLATE;
+                    break;
+                case ServerType.SqlCe:
+                    connStrTextBox.Text = StringConstants.SQLCE_CONN_STR_TEMPLATE;
+                    break;
+                default:
+                    connStrTextBox.Text = StringConstants.ORACLE_CONN_STR_TEMPLATE;
+                    break;
+            }    
+            
+            /*bool isOracleSelected = ((ServerType) serverTypeComboBox.SelectedItem == ServerType.Oracle);
+            connStrTextBox.Text = isOracleSelected ? StringConstants.ORACLE_CONN_STR_TEMPLATE : StringConstants.SQL_CONN_STR_TEMPLATE;*/
+
         }
 
         private void BindData()
@@ -190,18 +208,20 @@ namespace NHibernateMappingGenerator
                         var xmlSerializer = new BinaryFormatter();
 
                         if (!dirPath.EndsWith(@"\")) dirPath = dirPath + @"\";
-                        
-                        var fi = File.Open(dirPath + _applicationSettings.TablePreferencesFile, FileMode.Open);
-                        if (fi.CanRead)
+                        if (File.Exists(dirPath + _applicationSettings.TablePreferencesFile))
                         {
-                            using (fi)
+                            var fi = File.Open(dirPath + _applicationSettings.TablePreferencesFile, FileMode.Open);
+                            if (fi.CanRead)
                             {
-                                TablePreferenceSettings settings =
-                                    (TablePreferenceSettings) xmlSerializer.Deserialize(fi);
-                                if (settings != null) _tablePreferences = settings.TablePreferences;
+                                using (fi)
+                                {
+                                    TablePreferenceSettings settings =
+                                        (TablePreferenceSettings) xmlSerializer.Deserialize(fi);
+                                    if (settings != null) _tablePreferences = settings.TablePreferences;
+                                }
                             }
                         }
-                        
+
                     }
                 }
 
@@ -326,6 +346,8 @@ namespace NHibernateMappingGenerator
                     foreach (ApplicationPreferences item in _tablePreferences)
                     {
                         item.FolderPath = folderTextBox.Text;
+                        item.AssemblyName = assemblyNameTextBox.Text;
+                        item.NameSpace = nameSpaceTextBox.Text;
                         /*string tableName = item.ToString();
                         
                         var columnDetails = metadataReader.GetTableDetails(tableName);
@@ -777,7 +799,7 @@ namespace NHibernateMappingGenerator
                     }
                     errorCodeGen.Text = " Generating ...";
 
-                    DaoClassPreferences daoClassPreferences = new DaoClassPreferences(txtDaoLookup.Text,txtDaoLayerDir.Text,txtDaoNamespace.Text,nameSpaceTextBox.Text);
+                    DaoClassPreferences daoClassPreferences = new DaoClassPreferences(txtDaoLookup.Text,txtDaoLayerDir.Text,txtDaoNamespace.Text,nameSpaceTextBox.Text,txtDaoAssembly.Text,assemblyNameTextBox.Text);
                     DaoLayerCodeGenerator daoLayerCodeGenerator = new DaoLayerCodeGenerator(daoClassPreferences);
                     daoLayerCodeGenerator.Generate();
                     errorCodeGen.Text = "Generated all files successfully.";
@@ -820,6 +842,7 @@ namespace NHibernateMappingGenerator
 
         private void SaveCurrentProject(string path)
         {
+            if(string.IsNullOrEmpty(path)) return;
             if (_applicationSettings == null)
             {
                 MessageBox.Show("Please create new project !");
@@ -844,6 +867,8 @@ namespace NHibernateMappingGenerator
 
         private void LoadViewToApplicationSettings()
         {
+            _applicationSettings.ServerType = (ServerType) serverTypeComboBox.SelectedItem;
+            _applicationSettings.ConnectionString = connStrTextBox.Text;
             _applicationSettings.ModelPathForDao = folderTextBox.Text.Trim();
             _applicationSettings.NameSpace = nameSpaceTextBox.Text.Trim();
             _applicationSettings.AssemblyName = assemblyNameTextBox.Text.Trim();
@@ -910,8 +935,8 @@ namespace NHibernateMappingGenerator
         {
             if (_applicationSettings != null)
             {
-                connStrTextBox.Text = _applicationSettings.ConnectionString;
                 serverTypeComboBox.SelectedItem = _applicationSettings.ServerType;
+                connStrTextBox.Text = _applicationSettings.ConnectionString;
                 nameSpaceTextBox.Text = _applicationSettings.NameSpace;
                 assemblyNameTextBox.Text = _applicationSettings.AssemblyName;
 

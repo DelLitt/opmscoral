@@ -23,7 +23,7 @@ namespace NMG.Core.Generator
                 if(objectName.EndsWith("PK")) continue;
                 BusinessGenerateArgument daoGenerateArgument =
                     new BusinessGenerateArgument(objectName, 
-                                                 BusinessClassPreferences.DaoNamespaceName, 
+                                                 BusinessClassPreferences.BusinessNamespaceName, 
                                                  BusinessClassPreferences.ModelNamespaceName,
                                                  BusinessClassPreferences.DaoNamespaceName);
                 // generate interface code

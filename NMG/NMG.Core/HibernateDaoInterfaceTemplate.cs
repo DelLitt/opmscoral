@@ -18,7 +18,8 @@ namespace NMG.Core
                 {    
                     //Argument             Name     &  Value
                     new TemplateArgument("ClassName", daoGenerateArgument.ClassName),
-                    new TemplateArgument("NamespaceName",daoGenerateArgument.NamespaceName)
+                    new TemplateArgument("NamespaceName",daoGenerateArgument.NamespaceName),
+                    new TemplateArgument("ModelNamespaceName",daoGenerateArgument.ModelNamespaceName),
                 };
             //Allows us to show the generated class
             var transformer = new TextTransformer();

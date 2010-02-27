@@ -11,7 +11,9 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using <#= ModelNamespaceName #>;
+using <#= DaoNamespaceName #>;
 
 namespace <#= NamespaceName #>
 {
@@ -57,7 +59,7 @@ namespace <#= NamespaceName #>
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList FindAll(ObjectCriteria criteria);
+        IList<<#= ClassName #>> FindAll(ObjectCriteria criteria);
         
         /// <summary>
         /// Find all  <#= ClassName #> from database. Has pagination.
