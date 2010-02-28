@@ -17,7 +17,7 @@ namespace AppFrame.Base.Generic
         }
 
 
-        public IScreen ActiveMenu
+        public IScreen AttachedMenu
         {
             get; set;
         }

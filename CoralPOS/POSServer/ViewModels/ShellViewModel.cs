@@ -63,12 +63,9 @@ namespace POSServer.ViewModels
         
         }
 
-        protected override void ChangeActiveScreenCore(IScreen newActiveScreen)
+        /*protected override void ChangeActiveScreenCore(IScreen newActiveScreen)
         {
-            base.ChangeActiveScreenCore(newActiveScreen);
-
-            IPosScreen posScreen = (IPosScreen) newActiveScreen;
-            ActiveMenu = posScreen.AttachedMenu;
-        }
+            
+        }*/
     }
 }

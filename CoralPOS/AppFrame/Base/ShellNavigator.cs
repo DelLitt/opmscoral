@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using AppFrame.CustomAttributes;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
@@ -165,11 +166,20 @@ namespace AppFrame.Base
             
         }
 
-        /*protected override void ChangeActiveScreenCore(T newActiveScreen)
+        protected override void ChangeActiveScreenCore(T newActiveScreen)
         {
             base.ChangeActiveScreenCore(newActiveScreen);
-            AttachedMenu = newActiveScreen.AttachedMenu;
-            NotifyOfPropertyChange(()=> AttachedMenu);
-        }*/
+
+            //IPosScreen posScreen = (IPosScreen)newActiveScreen;
+            //AttachedMenu = posScreen.AttachedMenu;
+            Type type = newActiveScreen.GetType();
+            object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAttribute), false);
+            if(attachMenuAttributes!= null && attachMenuAttributes.Count() > 0)
+            {
+                AttachMenuAttribute attribute = (AttachMenuAttribute) attachMenuAttributes[0];
+                IScreen menuScreen=(IScreen)_serviceLocator.GetInstance(attribute.AttachMenu);
+                ActiveMenu = menuScreen;
+            }
+        }
     }
 }

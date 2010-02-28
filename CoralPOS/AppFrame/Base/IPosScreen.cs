@@ -8,11 +8,11 @@ namespace AppFrame.Base
 {
     public interface IPosScreen : IScreen
     {
-        IScreen AttachedMenu { get; set; }
+        //IScreen AttachedMenu { get; set; }
     }
 
     public interface IPosScreen<T> : IScreen<T>, INode
     {
-        IScreen ActiveMenu { get; set; }
+        //IScreen AttachedMenu { get; set; }
     }
 }
