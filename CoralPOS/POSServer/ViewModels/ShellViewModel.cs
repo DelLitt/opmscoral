@@ -25,15 +25,9 @@ namespace POSServer.ViewModels
 
         public string CurrentPath { get;set; }
 
-        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator)
-        {
-            
-        }
+        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) {}
 
-        public override void Activate()
-        {
-           
-        }
+        public override void Activate() {}
 
         public override void Initialize() 
         {
@@ -56,7 +50,7 @@ namespace POSServer.ViewModels
         {
             try
             {
-                DefaultFlow flow = ObjectUtility.GetObject<DefaultFlow>(flowName);
+                IFlow flow = ObjectUtility.GetObject<IFlow>(flowName);
                 flow.InitFlow();
                 flow.Navigator = this;
                 flow.Start();
@@ -69,10 +63,12 @@ namespace POSServer.ViewModels
         
         }
 
-        /*public override INode CreateNode(string typeName)
+        protected override void ChangeActiveScreenCore(IScreen newActiveScreen)
         {
-            var type = Type.GetType(typeName);
-            return null;
-        }*/
+            base.ChangeActiveScreenCore(newActiveScreen);
+
+            IPosScreen posScreen = (IPosScreen) newActiveScreen;
+            ActiveMenu = posScreen.AttachedMenu;
+        }
     }
 }

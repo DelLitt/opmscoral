@@ -210,6 +210,7 @@
     <Compile Include="Base\IFlowSession.cs" />
     <Compile Include="Base\IPosAction.cs" />
     <Compile Include="Base\IPosActionResult.cs" />
+    <Compile Include="Base\IPosScreen.cs" />
     <Compile Include="Base\IRootNode.cs" />
     <Compile Include="Base\IScreenNode.cs" />
     <Compile Include="Base\ISession.cs" />

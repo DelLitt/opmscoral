@@ -15,6 +15,8 @@ namespace AppFrame.Base
             get;
             set;
         }
+
+        void InitFlow();
         INode CurrentNode { get; set; }
         string StartNodeName { get; }
         bool IsEndFlow { get; }

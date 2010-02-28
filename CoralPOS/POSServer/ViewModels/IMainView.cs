@@ -7,8 +7,8 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels
 {
-    public interface IMainView : IScreen
+    public interface IMainView : IPosScreen
     {
-        IScreen ActiveMenu { get; set; }
+        
     }
 }

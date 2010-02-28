@@ -23,7 +23,7 @@ namespace AppFrame.Base
             Flow.Next();
         }
 
-        public IScreen ActiveMenu
+        public IScreen AttachedMenu
         {
             get; set;
         }

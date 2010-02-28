@@ -6,13 +6,13 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace AppFrame.Base
 {
-    public interface IScreenNode : IPosScreen,INode
+    public interface IPosScreen : IScreen
     {
-        
+        IScreen AttachedMenu { get; set; }
     }
 
-    public interface  IScreenNode<T> : IPosScreen<T>, INode
+    public interface IPosScreen<T> : IScreen<T>, INode
     {
-        
+        IScreen ActiveMenu { get; set; }
     }
 }
