@@ -74,6 +74,11 @@ namespace AppFrame.Base
             }
         }
 
+        public string Name
+        {
+            get; set;
+        }
+
         public bool IsEndFlow
         {
             get

@@ -46,7 +46,8 @@ namespace POSServer.ViewModels
         {
             Open<IMainView>();
         }
-        public override bool StartFlow(string flowName)
+        #region Unused code
+        /*public override bool StartFlow(string flowName)
         {
             try
             {
@@ -61,11 +62,8 @@ namespace POSServer.ViewModels
                 return false;
             }
         
-        }
-
-        /*protected override void ChangeActiveScreenCore(IScreen newActiveScreen)
-        {
-            
         }*/
+
+        #endregion
     }
 }

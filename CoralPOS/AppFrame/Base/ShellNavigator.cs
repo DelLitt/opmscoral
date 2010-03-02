@@ -64,7 +64,10 @@ namespace AppFrame.Base
                 NotifyOfPropertyChange(() => ActiveMenu);
             }
         }
-
+        public IFlow ActiveFlow
+        {
+            get; set;
+        }
         /// <summary>
         /// Open a screen node
         /// </summary>
@@ -97,6 +100,14 @@ namespace AppFrame.Base
         /// <returns></returns>
         public virtual bool EnterFlow(string flowName)
         {
+           if(ActiveFlow.Name.Equals(flowName)) return true;
+
+           // put active flow back to freeze flows if not end flow
+           if (ActiveFlow != null)
+           {
+               _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+           }
+ 
            if(_freezeFlows.ContainsKey(flowName))
            {
                return ResumeFlow(flowName);
@@ -116,7 +127,9 @@ namespace AppFrame.Base
         {
             try
             {
-                IFlow flow = (IFlow)_serviceLocator.GetInstance<IFlow>(flowName);
+                IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
+                flow.Name = flowName;
+                flow.InitFlow();
                 flow.Start();
                 return true;
             }
@@ -136,7 +149,13 @@ namespace AppFrame.Base
 
             try
             {
+                // get flow in freezeflows and remove it from freeze flows.
                 IFlow flow = _freezeFlows[flowName];
+                _freezeFlows.Remove(flow.Name);
+                
+                //set active flow equal to your flow
+                ActiveFlow = flow;
+                // resume it
                 flow.Resume();
                 return true;
             }
@@ -170,8 +189,6 @@ namespace AppFrame.Base
         {
             base.ChangeActiveScreenCore(newActiveScreen);
 
-            //IPosScreen posScreen = (IPosScreen)newActiveScreen;
-            //AttachedMenu = posScreen.AttachedMenu;
             Type type = newActiveScreen.GetType();
             object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAttribute), false);
             if(attachMenuAttributes!= null && attachMenuAttributes.Count() > 0)
