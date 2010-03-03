@@ -365,11 +365,23 @@
     <Compile Include="Views\NavLoginView.xaml.cs">
       <DependentUpon>NavLoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductMaster\ExProductSizeView.xaml.cs">
+      <DependentUpon>ExProductSizeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\ExProductColorView.xaml.cs">
+      <DependentUpon>ExProductColorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\ProductCategoryView.xaml.cs">
+      <DependentUpon>ProductCategoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductMaster\ProductMasterSummaryView.xaml.cs">
       <DependentUpon>ProductMasterSummaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductMaster\ProductMasterView.xaml.cs">
       <DependentUpon>ProductMasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\ProductTypeView.xaml.cs">
+      <DependentUpon>ProductTypeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductMaster\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
@@ -475,6 +487,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ProductMaster\ExProductSizeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ExProductColorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductCategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ProductMaster\ProductMasterSummaryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -482,6 +506,10 @@
     <Page Include="Views\ProductMaster\ProductMasterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductMaster\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
