@@ -295,6 +295,7 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -309,11 +310,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Menu\MainMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Report\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Sale\TemplatePOSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\Inventory\DepartmentStockInventoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\DepartmentStockInConfirmView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\DepartmentStockInSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\DepartmentStockInView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockIn\DepartmentStockInWaitingConfirmView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\DepartmentStockOutSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\DepartmentStockOutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\DepartmentStockOutWaitingConfirmView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -397,11 +438,41 @@
     <Compile Include="Views\Management\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Menu\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\Inventory\DepartmentStockInventoryView.xaml.cs">
+      <DependentUpon>DepartmentStockInventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIn\DepartmentStockInConfirmView.xaml.cs">
+      <DependentUpon>DepartmentStockInConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIn\DepartmentStockInSearchView.xaml.cs">
+      <DependentUpon>DepartmentStockInSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIn\DepartmentStockInView.xaml.cs">
+      <DependentUpon>DepartmentStockInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockIn\DepartmentStockInWaitingConfirmView.xaml.cs">
+      <DependentUpon>DepartmentStockInWaitingConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml.cs">
+      <DependentUpon>DepartmentStockOutConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\DepartmentStockOutSearchView.xaml.cs">
+      <DependentUpon>DepartmentStockOutSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\DepartmentStockOutView.xaml.cs">
+      <DependentUpon>DepartmentStockOutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\DepartmentStockOutWaitingConfirmView.xaml.cs">
+      <DependentUpon>DepartmentStockOutWaitingConfirmView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Stock\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
