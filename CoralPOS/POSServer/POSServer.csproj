@@ -353,6 +353,12 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Management\EmployeesView.xaml.cs">
+      <DependentUpon>EmployeesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Management\DepartmentsView.xaml.cs">
+      <DependentUpon>DepartmentsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Management\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
@@ -468,6 +474,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Management\EmployeesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Management\DepartmentsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
