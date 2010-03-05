@@ -100,11 +100,12 @@ namespace AppFrame.Base
         /// <returns></returns>
         public virtual bool EnterFlow(string flowName)
         {
-           if(ActiveFlow.Name.Equals(flowName)) return true;
 
            // put active flow back to freeze flows if not end flow
            if (ActiveFlow != null)
            {
+               if (ActiveFlow.Name.Equals(flowName)) return true;
+
                _freezeFlows[ActiveFlow.Name] = ActiveFlow;
            }
  
@@ -130,10 +131,11 @@ namespace AppFrame.Base
                 IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
                 flow.Name = flowName;
                 flow.InitFlow();
+                ActiveFlow = flow;
                 flow.Start();
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 return false;
             }

@@ -7,8 +7,8 @@
   <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="ShowLoginForm" value="POSServer.ViewModels.Security.ILoginViewModel"/>
-        <entry key="SetValue" value="POSServer.Actions.Security.IRegisterUserAction"/>
+        <entry key="Step1ShowLoginForm" value="POSServer.ViewModels.Security.ILoginViewModel"/>
+        <entry key="Step2SetValue" value="POSServer.Actions.Security.IRegisterUserAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

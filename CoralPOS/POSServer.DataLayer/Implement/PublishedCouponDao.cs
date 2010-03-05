@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class PublishedCouponDaoImpl : IPublishedCouponDao
+    public class PublishedCouponDao : IPublishedCouponDao
     {
         private HibernateTemplate _hibernateTemplate;
 

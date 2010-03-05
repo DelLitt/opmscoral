@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class BlockInCostDaoImpl : IBlockInCostDao
+    public class BlockInCostDao : IBlockInCostDao
     {
         private HibernateTemplate _hibernateTemplate;
 

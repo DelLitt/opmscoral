@@ -10,15 +10,14 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class DepartmentDaoImpl : IDepartmentDao
+    public class DepartmentDao : IDepartmentDao
     {
         private HibernateTemplate _hibernateTemplate;
 
         public HibernateTemplate HibernateTemplate
         {
             get
-            {
-                
+            { 
                 return _hibernateTemplate; 
             }
             set 

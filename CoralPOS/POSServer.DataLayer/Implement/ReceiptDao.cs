@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class ReceiptDaoImpl : IReceiptDao
+    public class ReceiptDao : IReceiptDao
     {
         private HibernateTemplate _hibernateTemplate;
 

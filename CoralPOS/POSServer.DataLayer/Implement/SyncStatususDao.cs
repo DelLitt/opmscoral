@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class SyncStatususDaoImpl : ISyncStatususDao
+    public class SyncStatususDao : ISyncStatususDao
     {
         private HibernateTemplate _hibernateTemplate;
 

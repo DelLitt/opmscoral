@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class StockOutDaoImpl : IStockOutDao
+    public class StockOutDao : IStockOutDao
     {
         private HibernateTemplate _hibernateTemplate;
 

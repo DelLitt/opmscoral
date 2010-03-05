@@ -46,14 +46,16 @@ namespace POSServer.ViewModels
         {
             Open<IMainView>();
         }
-        #region Unused code
-        /*public override bool StartFlow(string flowName)
+        
+        public override bool StartFlow(string flowName)
         {
             try
             {
                 IFlow flow = ObjectUtility.GetObject<IFlow>(flowName);
+                flow.Name = flowName;
                 flow.InitFlow();
                 flow.Navigator = this;
+                ActiveFlow = flow;
                 flow.Start();
                 return true;
             }
@@ -62,8 +64,6 @@ namespace POSServer.ViewModels
                 return false;
             }
         
-        }*/
-
-        #endregion
+        }
     }
 }

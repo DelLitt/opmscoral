@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class EmployeeWorkingDaysDaoImpl : IEmployeeWorkingDaysDao
+    public class EmployeeWorkingDaysDao : IEmployeeWorkingDaysDao
     {
         private HibernateTemplate _hibernateTemplate;
 

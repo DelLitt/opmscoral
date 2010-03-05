@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class GiftDaoImpl : IGiftDao
+    public class GiftDao : IGiftDao
     {
         private HibernateTemplate _hibernateTemplate;
 

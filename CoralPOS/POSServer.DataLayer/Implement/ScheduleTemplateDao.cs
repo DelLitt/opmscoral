@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class ScheduleTemplateDaoImpl : IScheduleTemplateDao
+    public class ScheduleTemplateDao : IScheduleTemplateDao
     {
         private HibernateTemplate _hibernateTemplate;
 

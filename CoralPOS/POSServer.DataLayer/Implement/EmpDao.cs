@@ -10,7 +10,7 @@ using CoralPOS.Models;
 
 namespace POSServer.DataLayer.Implement
 {
-    public class EmpDaoImpl : IEmpDao
+    public class EmpDao : IEmpDao
     {
         private HibernateTemplate _hibernateTemplate;
 
