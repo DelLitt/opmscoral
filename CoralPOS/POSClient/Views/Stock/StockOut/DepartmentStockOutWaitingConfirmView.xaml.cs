@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSServer.Views.Stock.StockIn
+namespace POSClient.Views.Stock.StockOut
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class StockOutWaitingConfirmView : UserControl
+    public partial class DepartmentStockOutWaitingConfirmView : UserControl
     {
-        public StockOutWaitingConfirmView()
+        public DepartmentStockOutWaitingConfirmView()
         {
             InitializeComponent();
         }

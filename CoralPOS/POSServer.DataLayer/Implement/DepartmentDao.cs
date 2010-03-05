@@ -17,7 +17,8 @@ namespace POSServer.DataLayer.Implement
         public HibernateTemplate HibernateTemplate
         {
             get
-            { 
+            {
+                
                 return _hibernateTemplate; 
             }
             set 

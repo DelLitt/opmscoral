@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSServer.Views.Stock.StockOut
+namespace POSClient.Views.Stock.StockOut
 {
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class StockOutView : UserControl
+    public partial class DepartmentStockOutView : UserControl
     {
-        public StockOutView()
+        public DepartmentStockOutView()
         {
             InitializeComponent();
         }
