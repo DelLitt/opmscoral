@@ -47,7 +47,7 @@ namespace POSServer.ViewModels
             Open<IMainView>();
         }
         
-        public override bool StartFlow(string flowName)
+        /*public override bool StartFlow(string flowName)
         {
             try
             {
@@ -64,6 +64,6 @@ namespace POSServer.ViewModels
                 return false;
             }
         
-        }
+        }*/
     }
 }

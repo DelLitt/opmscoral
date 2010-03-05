@@ -130,6 +130,7 @@ namespace AppFrame.Base
             {
                 IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
                 flow.Name = flowName;
+                flow.Navigator = this as ShellNavigator<IScreen, INode>;
                 flow.InitFlow();
                 ActiveFlow = flow;
                 flow.Start();
