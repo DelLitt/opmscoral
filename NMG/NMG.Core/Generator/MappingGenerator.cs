@@ -58,12 +58,14 @@ namespace NMG.Core.Generator
             xmldoc.AppendChild(xmlDeclaration);
             var root = xmldoc.CreateElement("hibernate-mapping", "urn:nhibernate-mapping-2.2");
             root.SetAttribute("assembly", assemblyName);
+            root.SetAttribute("namespace", nameSpace);
             xmldoc.AppendChild(root);
 
             var classElement = xmldoc.CreateElement("class");
-            classElement.SetAttribute("name", nameSpace + "." + realTableName.GetFormattedText() + ", " + assemblyName);
+            //classElement.SetAttribute("name", nameSpace + "." + realTableName.GetFormattedText() + ", " + assemblyName);
+            classElement.SetAttribute("name", realTableName.GetFormattedText());
             classElement.SetAttribute("table", tableName);
-            classElement.SetAttribute("lazy", "true");
+            //classElement.SetAttribute("lazy", "true");
             root.AppendChild(classElement);
             
                 var primaryKeyColumns = columnDetails.FindAll(detail => detail.IsPrimaryKey);
@@ -159,10 +161,11 @@ namespace NMG.Core.Generator
             string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());
             refTableName = refTableName.GetFormattedText();
             var xmlNode = xmldoc.CreateElement("many-to-one");
-            xmlNode.SetAttribute("lazy", "true");
+            //xmlNode.SetAttribute("lazy", "true");
             xmlNode.SetAttribute("update", "false");
             xmlNode.SetAttribute("insert", "false");
             xmlNode.SetAttribute("class", refTableName);
+            xmlNode.SetAttribute("name", refTableName);
 
             foreach (KeyValuePair<ColumnDetail, ColumnDetail> refColumn in reference.TableColumns)
             {
@@ -186,21 +189,21 @@ namespace NMG.Core.Generator
                         if(priKeys.Count == 1)
                         {
                             string realPriPrefColName = primaryColName.GetFormattedText();
-                            xmlColumn.SetAttribute("property-ref", realPriPrefColName);
+                            //xmlColumn.SetAttribute("property-ref", realPriPrefColName);
                         }
                         else if(priKeys.Count > 1)
                         {
                             string priCompositePK = GlobalCache.Instance.ReplaceShortWords(primaryKeys.TableName.ToUpper());
                             priCompositePK = priCompositePK.GetFormattedText() + "PK";
                             xmlNode.SetAttribute("property-ref", priCompositePK);
-                            xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
+                            //xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
                         }
                     }
                     else
                     {
                         if (primaryDetails.Find(col => col.ColumnName.Equals(primaryColName)) != null)
                         {
-                            xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
+                            //xmlColumn.SetAttribute("property-ref", primaryColName.GetFormattedText());
                         }
                     }
                     
@@ -217,7 +220,7 @@ namespace NMG.Core.Generator
                 string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());
                 refTableName = refTableName.GetFormattedText();
                 var xmlNode = xmldoc.CreateElement("bag");
-                xmlNode.SetAttribute("lazy", "true");
+                //xmlNode.SetAttribute("lazy", "true");
                 xmlNode.SetAttribute("inverse", "true");
                 xmlNode.SetAttribute("name", refTableName + "s");
 
