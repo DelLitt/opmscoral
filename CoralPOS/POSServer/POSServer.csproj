@@ -391,9 +391,6 @@
     <Compile Include="Views\ProductMenuFormView.xaml.cs">
       <DependentUpon>ProductMenuFormView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StockMenuView.xaml.cs">
-      <DependentUpon>StockMenuView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
@@ -524,10 +521,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ProductMenuFormView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\StockMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
