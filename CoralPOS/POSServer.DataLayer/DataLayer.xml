@@ -20,15 +20,13 @@
     </property>
     <property name="HibernateProperties">
       <dictionary>
-
         <entry key="connection.provider"
                value="NHibernate.Connection.DriverConnectionProvider"/>
         <entry key="dialect"
                value="NHibernate.Dialect.Oracle10gDialect"/>
         <entry key="connection.driver_class"
                value="NHibernate.Driver.OracleClientDriver"/>        
-        <!--<entry key="show_sql"
-               value="true"/>-->
+        <entry key="show_sql" value="true"/>
       </dictionary>
     </property>
 

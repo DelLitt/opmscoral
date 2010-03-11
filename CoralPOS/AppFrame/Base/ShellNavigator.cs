@@ -102,7 +102,7 @@ namespace AppFrame.Base
         {
 
            // put active flow back to freeze flows if not end flow
-           if (ActiveFlow != null)
+          if (ActiveFlow != null)
            {
                if (ActiveFlow.Name.Equals(flowName)) return true;
 
@@ -185,7 +185,7 @@ namespace AppFrame.Base
         /// </summary>
         public virtual void LeaveFlow()
         {
-            
+            ActiveFlow = null;
         }
 
         protected override void ChangeActiveScreenCore(T newActiveScreen)

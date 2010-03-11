@@ -155,7 +155,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void ProductImageSelect()

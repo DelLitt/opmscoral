@@ -119,7 +119,8 @@ namespace POSServer.DataLayer.Implement
                         AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
                     }
                 }
-                return hibernateCriteria.List<ProductType>();
+                IList<ProductType> list = hibernateCriteria.List<ProductType>();
+                return list;
             }
             catch(Exception ex)
             {

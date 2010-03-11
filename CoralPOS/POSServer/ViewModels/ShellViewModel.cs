@@ -44,6 +44,7 @@ namespace POSServer.ViewModels
 
         public override void LeaveFlow()
         {
+            ActiveFlow = null;
             Open<IMainView>();
         }
         
