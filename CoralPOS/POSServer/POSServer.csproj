@@ -345,6 +345,15 @@
     <Compile Include="ViewModels\Stock\StockIn\IStockInViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="Views\ProductMaster\ProductMasterSearchView.xaml.cs">
+      <DependentUpon>ProductMasterSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMenuFormView.xaml.cs">
+      <DependentUpon>ProductMenuFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StockMenuView.xaml.cs">
+      <DependentUpon>StockMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
@@ -463,6 +472,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductMasterSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMenuFormView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StockMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
