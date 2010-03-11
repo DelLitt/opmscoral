@@ -12,14 +12,16 @@ namespace NMG.Core
         public string BusinessNamespaceName { get; set; }
         public string ModelNamespaceName { get; set; }
         public string DaoNamespaceName { get; set; }
+        public string BusinessAssemblyName { get; set; }
 
-        public BusinessClassPreferences(string modelObjectLookup, string businessGenPath, string businessNamespace, string modelNamespace,string daoNamespace)
+        public BusinessClassPreferences(string modelObjectLookup, string businessGenPath, string businessNamespace, string modelNamespace,string daoNamespace,string businessAssembly)
         {
             ModelObjectLookupPath = modelObjectLookup;
             BusinessGeneratePath = businessGenPath;
             BusinessNamespaceName = businessNamespace;
             ModelNamespaceName = modelNamespace;
             DaoNamespaceName = daoNamespace;
+            BusinessAssemblyName = businessAssembly;
         }
     }
 }

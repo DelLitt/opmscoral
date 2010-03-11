@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace NMG.Core.Generator
         }
         public void Generate()
         {
-            string[] objectFiles = Directory.GetFiles(BusinessClassPreferences.ModelObjectLookupPath);
+            ArrayList businessNameList = new ArrayList();
+            string[] objectFiles = Directory.GetFiles(BusinessClassPreferences.ModelObjectLookupPath,"*.cs");
             foreach (string objectFile in objectFiles)
             {
                 string objectName = GetObjectName(objectFile);
@@ -31,7 +33,19 @@ namespace NMG.Core.Generator
                 WriteToFile(InterfaceName(objectName),source);
                 source = BusinessLayerClassTemplate.Transform(daoGenerateArgument);
                 WriteToFile(objectName,source);
-                
+                businessNameList.Add(BusinessClassPreferences.BusinessNamespaceName + "." + objectName);
+            }
+            BusinessLayerXmlGenerateArgument bizXmlArg =
+                new BusinessLayerXmlGenerateArgument(BusinessClassPreferences.BusinessNamespaceName,
+                                                     BusinessClassPreferences.DaoNamespaceName,
+                                                     BusinessClassPreferences.BusinessAssemblyName, businessNameList);
+            string dataXmlsource = BusinessLayerXmlTemplate.Transform(bizXmlArg);
+            string fileName = BusinessClassPreferences.BusinessGeneratePath + @"\BusinessLayer" + @".xml";
+            using (var writer = new StreamWriter(fileName))
+            {
+                writer.Write(dataXmlsource);
+                writer.Flush();
+                writer.Close();
             }
         }
 

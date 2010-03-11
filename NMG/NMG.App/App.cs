@@ -1067,7 +1067,7 @@ namespace NHibernateMappingGenerator
                 }
                 errorCodeGen.Text = " Generating ...";
 
-                BusinessClassPreferences businessClassPreferences = new BusinessClassPreferences(txtBusinessLookup.Text, txtBusinessLayerDir.Text, txtBusinessNamespace.Text, nameSpaceTextBox.Text,txtDaoNamespaceUsing.Text);
+                BusinessClassPreferences businessClassPreferences = new BusinessClassPreferences(txtBusinessLookup.Text, txtBusinessLayerDir.Text, txtBusinessNamespace.Text, nameSpaceTextBox.Text,txtDaoNamespaceUsing.Text,txtBusinessAssembly.Text);
                 BusinessLayerCodeGenerator businessLayerCodeGenerator = new BusinessLayerCodeGenerator(businessClassPreferences);
                 businessLayerCodeGenerator.Generate();
                 errorCodeGen.Text = "Generated all files successfully.";

@@ -64,6 +64,8 @@
     <Compile Include="BusinessGenerateArgument.cs" />
     <Compile Include="BusinessLayerClassTemplate.cs" />
     <Compile Include="BusinessClassPreferences.cs" />
+    <Compile Include="BusinessLayerXmlTemplate.cs" />
+    <Compile Include="BusinessLayerXmlGenerateArgument.cs" />
     <Compile Include="DataLayerXmlGenerateArgument.cs" />
     <Compile Include="DataLayerXmlTemplate.cs" />
     <Compile Include="Reader\SqlCeMetadataReader.cs" />
@@ -115,6 +117,7 @@
     <None Include="ReplaceWords.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Templates\BusinessLayerXmlTemplate.tt" />
     <EmbeddedResource Include="Templates\DataLayerXmlTemplate.tt" />
     <EmbeddedResource Include="Templates\ViewModelClassTemplate.tt" />
     <EmbeddedResource Include="Templates\ViewModelInterfaceTemplate.tt" />

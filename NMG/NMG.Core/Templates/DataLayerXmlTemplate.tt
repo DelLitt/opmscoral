@@ -57,7 +57,7 @@
   <#
 		foreach(string daoName in DaoNamesList)
 		{
-			string interfaceDaoName = daoName.Insert(daoName.LastIndexOf(".")+1,"I");
+			string interfaceDaoName = "I" + daoName.Substring(daoName.LastIndexOf(".")+1);
   #>	
   <object id="<#= interfaceDaoName #>" type="<#= daoName #>, <#= DaoAssemblyName #>">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>

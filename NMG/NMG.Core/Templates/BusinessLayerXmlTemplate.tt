@@ -1,0 +1,29 @@
+﻿<#@ template hostspecific="true" language="C#v3.5" #>
+<#@ property name="BusinessAssemblyName" type="System.String" 
+             processor="PropertyProcessor" #>
+<#@ property name="DaoNamespaceName" type="System.String" 
+             processor="PropertyProcessor" #>			 
+<#@ property name="BusinessNamespaceName" type="System.String" 
+             processor="PropertyProcessor" #>			 
+<#@ property name="BusinessNamesList" type="System.Collections.ArrayList" 
+             processor="PropertyProcessor" #>
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Data Access Objects -->
+  <#
+		foreach(string businessName in BusinessNamesList)
+		{
+			string interfaceBizName = "I" + businessName.Substring(businessName.LastIndexOf(".")+1);
+			string propDaoName = businessName.Substring(businessName.LastIndexOf(".")+1);
+  #>	  
+  <object id="<#= interfaceBizName #>Logic" type="<#= businessName #>Logic, <#= BusinessAssemblyName #>">
+    <property name="<#= propDaoName #>Dao" ref="I<#= propDaoName #>Dao"/>
+  </object>
+  <#
+		}			
+  #>  
+  
+  <tx:attribute-driven />
+</objects>

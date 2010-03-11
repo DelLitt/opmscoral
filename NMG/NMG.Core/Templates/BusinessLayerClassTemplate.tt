@@ -17,10 +17,9 @@ using  <#= DaoNamespaceName #>;
 
 namespace <#= NamespaceName #>
 {
-    public class <#= ClassName #>LogicImpl : I<#= ClassName #>Logic
+    public class <#= ClassName #>Logic : I<#= ClassName #>Logic
     {
         private I<#= ClassName #>Dao _innerDao;
-
         public I<#= ClassName #>Dao <#= ClassName #>Dao
         {
             get 
@@ -40,7 +39,7 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public <#= ClassName #> FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return <#= ClassName #>Dao.FindById(id);
         }
         
         /// <summary>
@@ -51,7 +50,7 @@ namespace <#= NamespaceName #>
         [Transaction(ReadOnly=false)]
         public <#= ClassName #> Add(<#= ClassName #> data)
         {
-            _innerDao.Add(data);
+            <#= ClassName #>Dao.Add(data);
             return data;
         }
         
@@ -63,7 +62,7 @@ namespace <#= NamespaceName #>
         [Transaction(ReadOnly=false)]
         public void Update(<#= ClassName #> data)
         {
-            _innerDao.Update(data);
+            <#= ClassName #>Dao.Update(data);
         }
         
         /// <summary>
@@ -74,7 +73,7 @@ namespace <#= NamespaceName #>
         [Transaction(ReadOnly=false)]
         public void Delete(<#= ClassName #> data)
         {
-            _innerDao.Delete(data);
+            <#= ClassName #>Dao.Delete(data);
         }
         
         /// <summary>
@@ -85,7 +84,7 @@ namespace <#= NamespaceName #>
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            <#= ClassName #>Dao.DeleteById(id);
         }
         
         /// <summary>
@@ -95,7 +94,7 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public IList<<#= ClassName #>> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return <#= ClassName #>Dao.FindAll(criteria);
         }
         
         /// <summary>
@@ -105,7 +104,7 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return <#= ClassName #>Dao.FindPaging(criteria);
         }
     }
 }
