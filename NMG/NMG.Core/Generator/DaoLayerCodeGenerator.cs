@@ -18,7 +18,7 @@ namespace NMG.Core.Generator
         public void Generate()
         {
             ArrayList daoNameList = new ArrayList();
-            string[] objectFiles = Directory.GetFiles(DaoClassPreferences.DaoObjectLookupPath);
+            string[] objectFiles = Directory.GetFiles(DaoClassPreferences.DaoObjectLookupPath,"*.cs");
             foreach (string objectFile in objectFiles)
             {
                 string objectName = GetObjectName(objectFile);

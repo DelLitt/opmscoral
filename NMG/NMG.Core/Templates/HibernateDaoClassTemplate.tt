@@ -16,7 +16,7 @@ using <#= ModelNamespaceName #>;
 
 namespace <#= NamespaceName #>
 {
-    public class <#= ClassName #>DaoImpl : I<#= ClassName #>Dao
+    public class <#= ClassName #>Dao : I<#= ClassName #>Dao
     {
         private HibernateTemplate _hibernateTemplate;
 
