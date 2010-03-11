@@ -28,7 +28,7 @@ namespace <#= NamespaceName #>
 			foreach(string fieldName in FieldNames)
 			{				            
 		#>                
-        public string <#= fieldName #>
+        string <#= fieldName #>
         {
             get;
             set;            
@@ -44,7 +44,7 @@ namespace <#= NamespaceName #>
 			{			
             
 		#>        
-        public void <#= methodName #>();
+        void <#= methodName #>();
         
 		<# 
 			}
