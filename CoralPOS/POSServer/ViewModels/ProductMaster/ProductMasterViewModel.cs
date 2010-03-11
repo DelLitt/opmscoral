@@ -14,6 +14,7 @@ using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 
 
@@ -44,9 +45,9 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => ProductName);
             }
         }
-		        
-        private string _productType;
-        public string ProductType
+
+        private ProductType _productType;
+        public ProductType ProductType
         {
             get
             {
@@ -59,8 +60,8 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 		        
-        private string _category;
-        public string Category
+        private Category _category;
+        public Category Category
         {
             get
             {
@@ -129,6 +130,34 @@ namespace POSServer.ViewModels.ProductMaster
             {
                 _categoryList = value;
                 NotifyOfPropertyChange(() => CategoryList);
+            }
+        }
+
+        private IList _productColorsList;
+        public IList ProductColorsList
+        {
+            get
+            {
+                return _productColorsList;
+            }
+            set
+            {
+                _productColorsList = value;
+                NotifyOfPropertyChange(() => ProductColorsList);
+            }
+        }
+
+        private IList _productSizesList;
+        public IList ProductSizesList
+        {
+            get
+            {
+                return _productSizesList;
+            }
+            set
+            {
+                _productSizesList = value;
+                NotifyOfPropertyChange(() => ProductSizesList);
             }
         }
 				#endregion
@@ -232,6 +261,8 @@ namespace POSServer.ViewModels.ProductMaster
         {
             CategoryList = Flow.Session.Get(FlowConstants.CATEGORY_LIST) as IList;
             ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
+            ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
+            ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
         }
 
         #endregion

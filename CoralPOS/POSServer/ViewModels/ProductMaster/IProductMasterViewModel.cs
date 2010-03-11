@@ -9,6 +9,7 @@ using AppFrame.Base;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 
 namespace POSServer.ViewModels.ProductMaster
 {
@@ -22,18 +23,19 @@ namespace POSServer.ViewModels.ProductMaster
             set;            
         }
 		                
-        string ProductType
+        ProductType ProductType
         {
             get;
             set;            
         }
-		                
-        string Category
+
+        Category Category
         {
             get;
             set;            
         }
-		                
+		
+                
         string textBox5
         {
             get;
