@@ -16,14 +16,14 @@ using Caliburn.PresentationFramework.Screens;
 
 
 
-namespace POSServer.ViewModels.Menu
+namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IMainMenuViewModel))]
-    public class MainMenuViewModel : PosViewModel,IMainMenuViewModel  
+    [PerRequest(typeof(ITemplatePOSViewModel))]
+    public class TemplatePOSViewModel : PosViewModel,ITemplatePOSViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public MainMenuViewModel(IShellViewModel startViewModel)
+        public TemplatePOSViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -44,32 +44,32 @@ namespace POSServer.ViewModels.Menu
             
         }
 		        
-        public void ProductMaster()
+        public void button1()
         {
             
         }
 		        
-        public void Stock()
+        public void button2()
         {
             
         }
 		        
-        public void Report()
+        public void button3()
         {
             
         }
 		        
-        public void Management()
+        public void button4()
         {
             
         }
 		        
-        public void Utility()
+        public void button5()
         {
             
         }
 		        
-        public void Synchronize()
+        public void button6()
         {
             
         }

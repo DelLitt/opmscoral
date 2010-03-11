@@ -11,12 +11,12 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Management
 {
-    public interface IITemplatePOSViewModel : IScreenNode
+    public interface ITemplatePOSViewModel : IScreenNode
     {
         #region Fields
-				#endregion
+			#endregion
 		
 		#region Methods
-				#endregion
+			#endregion
     }
 }

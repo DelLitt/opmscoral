@@ -9,34 +9,31 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSServer.ViewModels.Menu
+namespace POSServer.ViewModels.Stock.StockOut
 {
-    public interface IMainMenuViewModel : IScreenNode
+    public interface IStockOutWaitingConfirmViewModel : IScreenNode
     {
         #region Fields
 			#endregion
 		
 		#region Methods
 		        
-        public void Task();
+        public void Help();
         
 		        
-        public void ProductMaster();
+        public void Unconfirm();
         
 		        
-        public void Stock();
+        public void Stop();
         
 		        
-        public void Report();
+        public void Confirm();
         
 		        
-        public void Management();
+        public void Edit();
         
 		        
-        public void Utility();
-        
-		        
-        public void Synchronize();
+        public void Search();
         
 			#endregion
     }

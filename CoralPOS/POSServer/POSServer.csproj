@@ -321,19 +321,40 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
+    <Compile Include="ViewModels\Management\DepartmentsViewModel.cs" />
+    <Compile Include="ViewModels\Management\EmployeesViewModel.cs" />
+    <Compile Include="ViewModels\Management\IDepartmentsViewModel.cs" />
+    <Compile Include="ViewModels\Management\IEmployeesViewModel.cs" />
     <Compile Include="ViewModels\Management\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Management\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Menu\IMainMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\IProductMasterMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\ProductMasterMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationShellViewModel.cs" />
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ExProductColorViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ExProductSizeViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IExProductColorViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IExProductSizeViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterSearchViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductTypeViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterSearchViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterSummaryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductTypeViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Sale\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
@@ -341,10 +362,29 @@
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\IStockInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\StockInventoryViewModel.cs" />
     <Compile Include="ViewModels\Stock\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IStockInConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IStockInSearchViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockIn\IStockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IStockInWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\StockInConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\StockInSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\StockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\StockInWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IStockOutConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IStockOutSearchViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IStockOutWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\StockOutConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\StockOutSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="Views\Menu\ProductMasterMenuView.xaml.cs">
+      <DependentUpon>ProductMasterMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductMaster\ProductMasterSearchView.xaml.cs">
       <DependentUpon>ProductMasterSearchView.xaml</DependentUpon>
     </Compile>
@@ -472,6 +512,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\ProductMasterMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

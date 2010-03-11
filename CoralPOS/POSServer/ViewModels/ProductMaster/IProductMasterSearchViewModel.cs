@@ -9,25 +9,19 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSServer.ViewModels.Stock.StockOut
+namespace POSServer.ViewModels.ProductMaster
 {
-    public interface IStockOutViewModel : IScreenNode
+    public interface IProductMasterSearchViewModel : IScreenNode
     {
         #region Fields
 		                
-        public string CreateDate
+        public string ProductName
         {
             get;
             set;            
         }
 		                
-        public string ProductMaster
-        {
-            get;
-            set;            
-        }
-		                
-        public string Description
+        public string ProductMasterId
         {
             get;
             set;            
@@ -39,22 +33,19 @@ namespace POSServer.ViewModels.Stock.StockOut
         public void Help();
         
 		        
-        public void Recreate();
+        public void Save();
         
 		        
-        public void Save();
+        public void Edit();
         
 		        
         public void Stop();
         
 		        
-        public void CreateByBlock();
+        public void Cancel();
         
 		        
-        public void CreateByFile();
-        
-		        
-        public void FixQuantityByAvailable();
+        public void ProductMasterSearch();
         
 			#endregion
     }

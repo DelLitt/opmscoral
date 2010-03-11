@@ -11,35 +11,11 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-    public interface IStockInViewModel : IScreenNode
+    public interface IStockInConfirmViewModel : IScreenNode
     {
         #region Fields
 		                
-        public string WholeSalePrice
-        {
-            get;
-            set;            
-        }
-		                
-        public string Price
-        {
-            get;
-            set;            
-        }
-		                
-        public string InputPrice
-        {
-            get;
-            set;            
-        }
-		                
         public string textBox4
-        {
-            get;
-            set;            
-        }
-		                
-        public string ProductMaster
         {
             get;
             set;            
@@ -57,19 +33,13 @@ namespace POSServer.ViewModels.Stock.StockIn
         public void Help();
         
 		        
-        public void Recreate();
+        public void Back();
         
 		        
-        public void Save();
+        public void SaveConfirm();
         
 		        
         public void Stop();
-        
-		        
-        public void CreateNewProductMaster();
-        
-		        
-        public void EditProductMaster();
         
 			#endregion
     }

@@ -9,43 +9,25 @@ using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSServer.ViewModels.Stock.StockIn
+namespace POSServer.ViewModels.ProductMaster
 {
-    public interface IStockInViewModel : IScreenNode
+    public interface IExProductColorViewModel : IScreenNode
     {
         #region Fields
 		                
-        public string WholeSalePrice
-        {
-            get;
-            set;            
-        }
-		                
-        public string Price
-        {
-            get;
-            set;            
-        }
-		                
-        public string InputPrice
-        {
-            get;
-            set;            
-        }
-		                
-        public string textBox4
-        {
-            get;
-            set;            
-        }
-		                
-        public string ProductMaster
-        {
-            get;
-            set;            
-        }
-		                
         public string Description
+        {
+            get;
+            set;            
+        }
+		                
+        public string ColorName
+        {
+            get;
+            set;            
+        }
+		                
+        public string ColorId
         {
             get;
             set;            
@@ -57,19 +39,16 @@ namespace POSServer.ViewModels.Stock.StockIn
         public void Help();
         
 		        
-        public void Recreate();
+        public void Delete();
         
 		        
-        public void Save();
+        public void Edit();
         
 		        
         public void Stop();
         
 		        
-        public void CreateNewProductMaster();
-        
-		        
-        public void EditProductMaster();
+        public void Create();
         
 			#endregion
     }

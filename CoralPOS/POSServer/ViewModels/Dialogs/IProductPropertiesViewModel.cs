@@ -11,12 +11,18 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    public interface IIProductPropertiesViewModel : IScreenNode
+    public interface IProductPropertiesViewModel : IScreenNode
     {
         #region Fields
-				#endregion
+			#endregion
 		
 		#region Methods
-				#endregion
+		        
+        public void button1();
+        
+		        
+        public void button2();
+        
+			#endregion
     }
 }

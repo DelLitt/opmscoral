@@ -11,32 +11,26 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Menu
 {
-    public interface IMainMenuViewModel : IScreenNode
+    public interface IProductMasterMenuViewModel : IScreenNode
     {
         #region Fields
 			#endregion
 		
 		#region Methods
 		        
-        public void Task();
+        public void ProductMasterNew();
         
 		        
-        public void ProductMaster();
+        public void ProductMasterSearch();
         
 		        
-        public void Stock();
+        public void BackToParent();
         
 		        
-        public void Report();
+        public void Back();
         
 		        
-        public void Management();
-        
-		        
-        public void Utility();
-        
-		        
-        public void Synchronize();
+        public void ProductMasterDetail();
         
 			#endregion
     }

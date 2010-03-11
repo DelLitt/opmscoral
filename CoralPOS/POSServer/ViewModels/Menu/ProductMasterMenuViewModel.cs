@@ -18,12 +18,12 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Menu
 {
-    [PerRequest(typeof(IMainMenuViewModel))]
-    public class MainMenuViewModel : PosViewModel,IMainMenuViewModel  
+    [PerRequest(typeof(IProductMasterMenuViewModel))]
+    public class ProductMasterMenuViewModel : PosViewModel,IProductMasterMenuViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public MainMenuViewModel(IShellViewModel startViewModel)
+        public ProductMasterMenuViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -39,37 +39,27 @@ namespace POSServer.ViewModels.Menu
 		
 		#region Methods
 		        
-        public void Task()
+        public void ProductMasterNew()
         {
             
         }
 		        
-        public void ProductMaster()
+        public void ProductMasterSearch()
         {
             
         }
 		        
-        public void Stock()
+        public void BackToParent()
         {
             
         }
 		        
-        public void Report()
+        public void Back()
         {
             
         }
 		        
-        public void Management()
-        {
-            
-        }
-		        
-        public void Utility()
-        {
-            
-        }
-		        
-        public void Synchronize()
+        public void ProductMasterDetail()
         {
             
         }

@@ -11,12 +11,33 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    public interface IITemplatePOSViewModel : IScreenNode
+    public interface ITemplatePOSViewModel : IScreenNode
     {
         #region Fields
-				#endregion
+			#endregion
 		
 		#region Methods
-				#endregion
+		        
+        public void Task();
+        
+		        
+        public void button1();
+        
+		        
+        public void button2();
+        
+		        
+        public void button3();
+        
+		        
+        public void button4();
+        
+		        
+        public void button5();
+        
+		        
+        public void button6();
+        
+			#endregion
     }
 }

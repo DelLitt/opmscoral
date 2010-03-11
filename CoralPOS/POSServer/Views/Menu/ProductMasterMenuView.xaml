@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="POSServer.Views.Menu.ProductMasterMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="740" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,12,40,0" Name="ProductMasterNew" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TẠO MỚI SẢN PHẨM</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,113.459,40,0" Name="ProductMasterSearch" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TÌM KIẾM SẢN PHẨM</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,120.138" Name="BackToParent" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MENU TRƯỚC</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,17.25" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,217,40,0" Name="ProductMasterDetail" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">QUẢN LÝ CHI TIẾT SẢN PHẨM</TextBlock></Button>
+    </Grid>
+</UserControl>

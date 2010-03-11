@@ -11,23 +11,17 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    public interface IStockOutViewModel : IScreenNode
+    public interface IStockOutSearchViewModel : IScreenNode
     {
         #region Fields
 		                
-        public string CreateDate
-        {
-            get;
-            set;            
-        }
-		                
-        public string ProductMaster
-        {
-            get;
-            set;            
-        }
-		                
         public string Description
+        {
+            get;
+            set;            
+        }
+		                
+        public string textBox2
         {
             get;
             set;            
@@ -39,22 +33,13 @@ namespace POSServer.ViewModels.Stock.StockOut
         public void Help();
         
 		        
-        public void Recreate();
-        
-		        
-        public void Save();
+        public void ViewDetail();
         
 		        
         public void Stop();
         
 		        
-        public void CreateByBlock();
-        
-		        
-        public void CreateByFile();
-        
-		        
-        public void FixQuantityByAvailable();
+        public void Search();
         
 			#endregion
     }
