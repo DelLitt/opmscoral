@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentPurchaseOrderDetail, CoralPOS.Models" table="CRL_DEPT_PO_DET" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentPurchaseOrderDetail" table="CRL_DEPT_PO_DET" >
     <composite-id name="DepartmentPurchaseOrderDetailPK" class="DepartmentPurchaseOrderDetailPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="PurchaseOrderDetailId" type="Int64" column="PURCHASE_ORDER_DETAIL_ID" />
@@ -24,12 +24,12 @@
     <property name="TaxId" column="TAX_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one lazy="true" update="false" insert="false" class="DepartmentPurchaseOrder" property-ref="DepartmentPurchaseOrderPK">
-      <column name="DEPARTMENT_ID" property-ref="DepartmentId" />
-      <column name="PURCHASE_ORDER_ID" property-ref="PurchaseOrderId" />
+    <many-to-one update="false" insert="false" class="DepartmentPurchaseOrder" name="DepartmentPurchaseOrder" property-ref="DepartmentPurchaseOrderPK">
+      <column name="DEPARTMENT_ID" />
+      <column name="PURCHASE_ORDER_ID" />
     </many-to-one>
-    <many-to-one lazy="true" update="false" insert="false" class="Product">
-      <column name="PRODUCT_ID" property-ref="ProductId" />
+    <many-to-one update="false" insert="false" class="Product" name="Product">
+      <column name="PRODUCT_ID" />
     </many-to-one>
   </class>
 </hibernate-mapping>

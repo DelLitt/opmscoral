@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Role, CoralPOS.Models" table="CRL_ROLE" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Role" table="CRL_ROLE" >
     <id name="Id" type="Int64" column="ID">
       <generator class="assigned" />
     </id>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentPurchaseOrderDetailLog, CoralPOS.Models" table="CRL_DEPT_PO_DET_LOG" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentPurchaseOrderDetailLog" table="CRL_DEPT_PO_DET_LOG" >
     <composite-id name="DepartmentPurchaseOrderDetailLogPK" class="DepartmentPurchaseOrderDetailLogPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="PurchaseOrderDetailLogId" type="Int64" column="PURCHASE_ORDER_DETAIL_LOG_ID" />

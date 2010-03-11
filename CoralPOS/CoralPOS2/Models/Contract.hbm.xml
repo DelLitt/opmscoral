@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Contract, CoralPOS.Models" table="CRL_CONTRACT" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Contract" table="CRL_CONTRACT" >
     <composite-id name="ContractPK" class="ContractPK">
       <key-property name="ContractId" type="Int64" column="CONTRACT_ID" />
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />

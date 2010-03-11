@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.CashIoTransaction, CoralPOS.Models" table="CRL_CASH_IO_TRANS" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CashIoTransaction" table="CRL_CASH_IO_TRANS" >
     <id name="CashInOutTransactionId" type="String" column="CASH_IN_OUT_TRANSACTION_ID">
       <generator class="assigned" />
     </id>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.PurchaseOrdersLog, CoralPOS.Models" table="CRL_POS_LOG" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="PurchaseOrdersLog" table="CRL_POS_LOG" >
     <id name="Id" type="Int64" column="ID">
       <generator class="assigned" />
     </id>

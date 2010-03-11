@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.BlockIn, CoralPOS.Models" table="CRL_BLK_IN" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="BlockIn" table="CRL_BLK_IN" >
     <id name="BlockId" type="Int64" column="BLOCK_ID">
       <generator class="assigned" />
     </id>
@@ -17,7 +17,7 @@
     <property name="ImportDate" column="IMPORT_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <bag lazy="true" inverse="true" name="BlockInDetails">
+    <bag inverse="true" name="BlockInDetails">
       <key>
         <column name="BLOCK_ID" />
       </key>

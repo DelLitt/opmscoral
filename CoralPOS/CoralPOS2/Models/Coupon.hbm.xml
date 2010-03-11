@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Coupon, CoralPOS.Models" table="CRL_COUPON" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Coupon" table="CRL_COUPON" >
     <id name="CouponId" type="Int64" column="COUPON_ID">
       <generator class="assigned" />
     </id>
@@ -18,8 +18,8 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one lazy="true" update="false" insert="false" class="CouponType">
-      <column name="COUPON_TYPE" property-ref="CouponTypeId" />
+    <many-to-one update="false" insert="false" class="CouponType" name="CouponType">
+      <column name="COUPON_TYPE" />
     </many-to-one>
   </class>
 </hibernate-mapping>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.EmployeeDayoff, CoralPOS.Models" table="CRL_EMP_DAYOFF" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EmployeeDayoff" table="CRL_EMP_DAYOFF" >
     <composite-id name="EmployeeDayoffPK" class="EmployeeDayoffPK">
       <key-property name="DayoffTime" type="DateTime" column="DAYOFF_TIME" />
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />

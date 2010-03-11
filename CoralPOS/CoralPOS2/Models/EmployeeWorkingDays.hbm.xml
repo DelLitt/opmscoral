@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.EmployeeWorkingDays, CoralPOS.Models" table="CRL_EMP_WRKG_DAYS" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EmployeeWorkingDays" table="CRL_EMP_WRKG_DAYS" >
     <composite-id name="EmployeeWorkingDaysPK" class="EmployeeWorkingDaysPK">
       <key-property name="EmployeeId" type="String" column="EMPLOYEE_ID" />
       <key-property name="WorkingDay" type="DateTime" column="WORKING_DAY" />

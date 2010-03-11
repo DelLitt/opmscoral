@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentStockTemployeeValidSave, CoralPOS.Models" table="CRL_DEPT_STK_TEMP_VALID_SAVE" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentStockTemployeeValidSave" table="CRL_DEPT_STK_TEMP_VALID_SAVE" >
     <composite-id name="DepartmentStockTemployeeValidSavePK" class="DepartmentStockTemployeeValidSavePK">
       <key-property name="CreateDate" type="DateTime" column="CREATE_DATE" />
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />

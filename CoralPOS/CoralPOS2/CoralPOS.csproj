@@ -8,7 +8,7 @@
     <ProjectGuid>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoralPOS2</RootNamespace>
+    <RootNamespace>CoralPOS</RootNamespace>
     <AssemblyName>CoralPOS</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -433,95 +433,94 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Models\BlockIn.hbm.xml" />
-    <Resource Include="Models\BlockInCost.hbm.xml" />
-    <Resource Include="Models\BlockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\BlockIn.hbm.xml" />
+    <EmbeddedResource Include="Models\BlockInCost.hbm.xml" />
+    <EmbeddedResource Include="Models\BlockInDetail.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Models\CashIoTransaction.hbm.xml" />
-    <Resource Include="Models\Category.hbm.xml" />
-    <Resource Include="Models\Contract.hbm.xml" />
-    <Resource Include="Models\Country.hbm.xml" />
-    <Resource Include="Models\Coupon.hbm.xml" />
-    <Resource Include="Models\CouponType.hbm.xml" />
-    <Resource Include="Models\Customer.hbm.xml" />
-    <Resource Include="Models\CustomerDetail.hbm.xml" />
-    <Resource Include="Models\Department.hbm.xml" />
-    <Resource Include="Models\DepartmentCost.hbm.xml" />
-    <Resource Include="Models\DepartmentManager.hbm.xml" />
-    <Resource Include="Models\DepartmentPromotion.hbm.xml" />
-    <Resource Include="Models\DepartmentPurchaseOrder.hbm.xml" />
-    <Resource Include="Models\DepartmentPurchaseOrderDetail.hbm.xml" />
-    <Resource Include="Models\DepartmentPurchaseOrderDetailLog.hbm.xml" />
-    <Resource Include="Models\DepartmentPurchaseOrderLog.hbm.xml" />
-    <Resource Include="Models\DepartmentPurchaseOrderPromotion.hbm.xml" />
-    <Resource Include="Models\DepartmentReturn.hbm.xml" />
-    <Resource Include="Models\DepartmentReturnCost.hbm.xml" />
-    <Resource Include="Models\DepartmentReturnDetail.hbm.xml" />
-    <Resource Include="Models\DepartmentReturnPurchaseOrder.hbm.xml" />
-    <Resource Include="Models\DepartmentStock.hbm.xml" />
-    <Resource Include="Models\DepartmentStockHistory.hbm.xml" />
-    <Resource Include="Models\DepartmentStockIn.hbm.xml" />
-    <Resource Include="Models\DepartmentStockInCost.hbm.xml" />
-    <Resource Include="Models\DepartmentStockInDetail.hbm.xml" />
-    <Resource Include="Models\DepartmentStockInHistory.hbm.xml" />
-    <Resource Include="Models\DepartmentStockOut.hbm.xml" />
-    <Resource Include="Models\DepartmentStockOutCost.hbm.xml" />
-    <Resource Include="Models\DepartmentStockOutDetail.hbm.xml" />
-    <Resource Include="Models\DepartmentStockTemployeeValid.hbm.xml" />
-    <Resource Include="Models\DepartmentStockTemployeeValidSave.hbm.xml" />
-    <Resource Include="Models\DepartmentTimeline.hbm.xml" />
-    <Resource Include="Models\Distributor.hbm.xml" />
-    <Resource Include="Models\Emp.hbm.xml" />
-    <Resource Include="Models\EmployeeDayoff.hbm.xml" />
-    <Resource Include="Models\EmployeeInfo.hbm.xml" />
-    <Resource Include="Models\EmployeeMoney.hbm.xml" />
-    <Resource Include="Models\EmployeeReward.hbm.xml" />
-    <Resource Include="Models\EmployeeWorkingDays.hbm.xml" />
-    <Resource Include="Models\ExProductColor.hbm.xml" />
-    <Resource Include="Models\ExProductSize.hbm.xml" />
-    <Resource Include="Models\Gift.hbm.xml" />
+    <EmbeddedResource Include="Models\CashIoTransaction.hbm.xml" />
+    <EmbeddedResource Include="Models\Category.hbm.xml" />
+    <EmbeddedResource Include="Models\Contract.hbm.xml" />
+    <EmbeddedResource Include="Models\Country.hbm.xml" />
+    <EmbeddedResource Include="Models\Coupon.hbm.xml" />
+    <EmbeddedResource Include="Models\CouponType.hbm.xml" />
+    <EmbeddedResource Include="Models\Customer.hbm.xml" />
+    <EmbeddedResource Include="Models\CustomerDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\Department.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentCost.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentManager.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPromotion.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPurchaseOrder.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPurchaseOrderDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPurchaseOrderDetailLog.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPurchaseOrderLog.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentPurchaseOrderPromotion.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentReturn.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentReturnCost.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentReturnDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentReturnPurchaseOrder.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStock.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockHistory.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockIn.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockInCost.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockInHistory.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockOut.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockOutCost.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockOutDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockTemployeeValid.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockTemployeeValidSave.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentTimeline.hbm.xml" />
+    <EmbeddedResource Include="Models\Distributor.hbm.xml" />
+    <EmbeddedResource Include="Models\Emp.hbm.xml" />
+    <EmbeddedResource Include="Models\EmployeeDayoff.hbm.xml" />
+    <EmbeddedResource Include="Models\EmployeeInfo.hbm.xml" />
+    <EmbeddedResource Include="Models\EmployeeMoney.hbm.xml" />
+    <EmbeddedResource Include="Models\EmployeeReward.hbm.xml" />
+    <EmbeddedResource Include="Models\EmployeeWorkingDays.hbm.xml" />
+    <EmbeddedResource Include="Models\ExProductColor.hbm.xml" />
+    <EmbeddedResource Include="Models\ExProductSize.hbm.xml" />
+    <EmbeddedResource Include="Models\Gift.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Models\MainPrice.hbm.xml" />
-    <Resource Include="Models\MainStock.hbm.xml" />
-    <Resource Include="Models\MainStockHistory.hbm.xml" />
-    <Resource Include="Models\OtherTransactionLog.hbm.xml" />
-    <Resource Include="Models\Packager.hbm.xml" />
-    <Resource Include="Models\Product.hbm.xml" />
-    <Resource Include="Models\ProductMaster.hbm.xml" />
-    <Resource Include="Models\ProductType.hbm.xml" />
-    <Resource Include="Models\ProductUnit.hbm.xml" />
-    <Resource Include="Models\Promotion.hbm.xml" />
-    <Resource Include="Models\PublishedCoupon.hbm.xml" />
-    <Resource Include="Models\PurchaseOrdersLog.hbm.xml" />
-    <Resource Include="Models\PurchaseOrdersTransaction.hbm.xml" />
-    <Resource Include="Models\Receipt.hbm.xml" />
-    <Resource Include="Models\ReceiptOut.hbm.xml" />
-    <Resource Include="Models\ReceiptOutCost.hbm.xml" />
-    <Resource Include="Models\ReturnBlockIn.hbm.xml" />
+    <EmbeddedResource Include="Models\MainPrice.hbm.xml" />
+    <EmbeddedResource Include="Models\MainStock.hbm.xml" />
+    <EmbeddedResource Include="Models\MainStockHistory.hbm.xml" />
+    <EmbeddedResource Include="Models\OtherTransactionLog.hbm.xml" />
+    <EmbeddedResource Include="Models\Packager.hbm.xml" />
+    <EmbeddedResource Include="Models\Product.hbm.xml" />
+    <EmbeddedResource Include="Models\ProductMaster.hbm.xml" />
+    <EmbeddedResource Include="Models\ProductType.hbm.xml" />
+    <EmbeddedResource Include="Models\ProductUnit.hbm.xml" />
+    <EmbeddedResource Include="Models\Promotion.hbm.xml" />
+    <EmbeddedResource Include="Models\PublishedCoupon.hbm.xml" />
+    <EmbeddedResource Include="Models\PurchaseOrdersLog.hbm.xml" />
+    <EmbeddedResource Include="Models\PurchaseOrdersTransaction.hbm.xml" />
+    <EmbeddedResource Include="Models\Receipt.hbm.xml" />
+    <EmbeddedResource Include="Models\ReceiptOut.hbm.xml" />
+    <EmbeddedResource Include="Models\ReceiptOutCost.hbm.xml" />
+    <EmbeddedResource Include="Models\ReturnBlockIn.hbm.xml" />
     <Resource Include="Models\ReturnProduct.hbm.xml" />
-    <Resource Include="Models\ReturnTransaction.hbm.xml" />
-    <Resource Include="Models\Role.hbm.xml" />
-    <Resource Include="Models\SaleTransaction.hbm.xml" />
-    <Resource Include="Models\ScheduleTemplate.hbm.xml" />
-    <Resource Include="Models\SimilarProduct.hbm.xml" />
-    <Resource Include="Models\StockDefinitionStatus.hbm.xml" />
-    <Resource Include="Models\StockIn.hbm.xml" />
-    <Resource Include="Models\StockInDetail.hbm.xml" />
-    <Resource Include="Models\StockOut.hbm.xml" />
-    <Resource Include="Models\StockOutCost.hbm.xml" />
-    <Resource Include="Models\StockOutDetail.hbm.xml" />
-    <Resource Include="Models\StockOutTemp.hbm.xml" />
-    <Resource Include="Models\Supplier.hbm.xml" />
-    <Resource Include="Models\SyncStatusus.hbm.xml" />
+    <EmbeddedResource Include="Models\ReturnTransaction.hbm.xml" />
+    <EmbeddedResource Include="Models\Role.hbm.xml" />
+    <EmbeddedResource Include="Models\SaleTransaction.hbm.xml" />
+    <EmbeddedResource Include="Models\ScheduleTemplate.hbm.xml" />
+    <EmbeddedResource Include="Models\SimilarProduct.hbm.xml" />
+    <EmbeddedResource Include="Models\StockDefinitionStatus.hbm.xml" />
+    <EmbeddedResource Include="Models\StockIn.hbm.xml" />
+    <EmbeddedResource Include="Models\StockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\StockOut.hbm.xml" />
+    <EmbeddedResource Include="Models\StockOutCost.hbm.xml" />
+    <EmbeddedResource Include="Models\StockOutDetail.hbm.xml" />
+    <EmbeddedResource Include="Models\Supplier.hbm.xml" />
+    <EmbeddedResource Include="Models\SyncStatusus.hbm.xml" />
     <Resource Include="Models\Tax.hbm.xml" />
-    <Resource Include="Models\Transaction.hbm.xml" />
-    <Resource Include="Models\UserInfo.hbm.xml" />
-    <Resource Include="Models\UserRole.hbm.xml" />
+    <EmbeddedResource Include="Models\Transaction.hbm.xml" />
+    <EmbeddedResource Include="Models\UserInfo.hbm.xml" />
+    <EmbeddedResource Include="Models\UserRole.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Models\Mainftr.hbm.xml" />
+    <EmbeddedResource Include="Models\Mainftr.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

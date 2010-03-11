@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.OtherTransactionLog, CoralPOS.Models" table="CRL_OTHER_TRANS_LOG" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="OtherTransactionLog" table="CRL_OTHER_TRANS_LOG" >
     <id name="TransactionDate" type="DateTime" column="TRANSACTION_DATE">
       <generator class="assigned" />
     </id>

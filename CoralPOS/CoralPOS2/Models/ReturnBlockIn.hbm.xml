@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.ReturnBlockIn, CoralPOS.Models" table="CRL_RET_BLK_IN" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ReturnBlockIn" table="CRL_RET_BLK_IN" >
     <composite-id name="ReturnBlockInPK" class="ReturnBlockInPK">
       <key-property name="BlockDetailId" type="Int64" column="BLOCK_DETAIL_ID" />
       <key-property name="BlockInId" type="Int64" column="BLOCK_IN_ID" />

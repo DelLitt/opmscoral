@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Packager, CoralPOS.Models" table="CRL_PKGR" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Packager" table="CRL_PKGR" >
     <id name="PackagerId" type="Int64" column="PACKAGER_ID">
       <generator class="assigned" />
     </id>

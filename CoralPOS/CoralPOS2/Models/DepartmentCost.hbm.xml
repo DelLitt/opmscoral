@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentCost, CoralPOS.Models" table="CRL_DEPT_COST" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentCost" table="CRL_DEPT_COST" >
     <composite-id name="DepartmentCostPK" class="DepartmentCostPK">
       <key-property name="CostDate" type="DateTime" column="COST_DATE" />
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />

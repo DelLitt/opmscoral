@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentStockOutDetail, CoralPOS.Models" table="CRL_DEPT_STK_OUT_DET" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentStockOutDetail" table="CRL_DEPT_STK_OUT_DET" >
     <composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="StockOutDetailId" type="Int64" column="STOCK_OUT_DETAIL_ID" />
@@ -25,12 +25,12 @@
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one lazy="true" update="false" insert="false" class="DepartmentStockOut" property-ref="DepartmentStockOutPK">
-      <column name="DEPARTMENT_ID" property-ref="DepartmentId" />
-      <column name="STOCK_OUT_ID" property-ref="StockOutId" />
+    <many-to-one update="false" insert="false" class="DepartmentStockOut" name="DepartmentStockOut" property-ref="DepartmentStockOutPK">
+      <column name="DEPARTMENT_ID" />
+      <column name="STOCK_OUT_ID" />
     </many-to-one>
-    <many-to-one lazy="true" update="false" insert="false" class="Product">
-      <column name="PRODUCT_ID" property-ref="ProductId" />
+    <many-to-one update="false" insert="false" class="Product" name="Product">
+      <column name="PRODUCT_ID" />
     </many-to-one>
   </class>
 </hibernate-mapping>

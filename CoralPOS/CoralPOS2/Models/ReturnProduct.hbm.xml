@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.ReturnProduct, CoralPOS.Models" table="CRL_RET_PRD" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ReturnProduct" table="CRL_RET_PRD" >
     <id name="ReturnProductId" type="Int64" column="RETURN_PRODUCT_ID">
       <generator class="assigned" />
     </id>

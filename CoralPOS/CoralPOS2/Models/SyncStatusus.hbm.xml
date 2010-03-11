@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.SyncStatusus, CoralPOS.Models" table="CRL_SYNC_STATUS" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="SyncStatusus" table="CRL_SYNC_STATUS" >
     <id name="LastSyncDate" type="DateTime" column="LAST_SYNC_DATE">
       <generator class="assigned" />
     </id>

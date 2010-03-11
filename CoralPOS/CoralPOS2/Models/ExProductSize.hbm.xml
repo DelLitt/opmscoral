@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.ExProductSize, CoralPOS.Models" table="CRL_EX_PRD_SIZE" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ExProductSize" table="CRL_EX_PRD_SIZE" >
     <id name="SizeId" type="Int64" column="SIZE_ID">
       <generator class="assigned" />
     </id>

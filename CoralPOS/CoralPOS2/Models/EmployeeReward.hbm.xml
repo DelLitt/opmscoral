@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.EmployeeReward, CoralPOS.Models" table="CRL_EMP_REWARD" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EmployeeReward" table="CRL_EMP_REWARD" >
     <composite-id name="EmployeeRewardPK" class="EmployeeRewardPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="EmployeeId" type="String" column="EMPLOYEE_ID" />

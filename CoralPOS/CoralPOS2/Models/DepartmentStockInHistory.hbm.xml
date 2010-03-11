@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentStockInHistory, CoralPOS.Models" table="CRL_DEPT_STK_IN_HIS" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentStockInHistory" table="CRL_DEPT_STK_IN_HIS" >
     <composite-id name="DepartmentStockInHistoryPK" class="DepartmentStockInHistoryPK">
       <key-property name="DestDepartmentId" type="Int64" column="DEST_DEPARTMENT_ID" />
       <key-property name="SourceDepartmentid" type="Int64" column="SOURCE_DEPARTMENTID" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Promotion, CoralPOS.Models" table="CRL_PROMO" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Promotion" table="CRL_PROMO" >
     <id name="PromotionId" type="Int64" column="PROMOTION_ID">
       <generator class="assigned" />
     </id>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.DepartmentStockOut, CoralPOS.Models" table="CRL_DEPT_STK_OUT" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DepartmentStockOut" table="CRL_DEPT_STK_OUT" >
     <composite-id name="DepartmentStockOutPK" class="DepartmentStockOutPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="StockOutId" type="Int64" column="STOCK_OUT_ID" />
@@ -21,7 +21,7 @@
     <property name="StockOutDate" column="STOCK_OUT_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <bag lazy="true" inverse="true" name="DepartmentStockOutDetails">
+    <bag inverse="true" name="DepartmentStockOutDetails">
       <key>
         <column name="DEPARTMENT_ID" />
         <column name="STOCK_OUT_ID" />

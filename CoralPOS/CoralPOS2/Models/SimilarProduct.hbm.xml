@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.SimilarProduct, CoralPOS.Models" table="CRL_SIM_PRD" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="SimilarProduct" table="CRL_SIM_PRD" >
     <composite-id name="SimilarProductPK" class="SimilarProductPK">
       <key-property name="BaseProductId" type="Int64" column="BASE_PRODUCT_ID" />
       <key-property name="OtherProductId" type="Int64" column="OTHER_PRODUCT_ID" />

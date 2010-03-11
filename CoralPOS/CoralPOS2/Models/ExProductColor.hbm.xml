@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.ExProductColor, CoralPOS.Models" table="CRL_EX_PRD_COLOR" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ExProductColor" table="CRL_EX_PRD_COLOR" >
     <id name="ColorId" type="Int64" column="COLOR_ID">
       <generator class="assigned" />
     </id>

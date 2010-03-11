@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.MainStock, CoralPOS.Models" table="CRL_MN_STK" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="MainStock" table="CRL_MN_STK" >
     <id name="StockId" type="Int64" column="STOCK_ID">
       <generator class="assigned" />
     </id>

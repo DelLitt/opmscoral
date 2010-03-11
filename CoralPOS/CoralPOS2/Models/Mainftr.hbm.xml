@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.Mainftr, CoralPOS.Models" table="CRL_MNFTR" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Mainftr" table="CRL_MNFTR" >
     <id name="ManufacturerId" type="Int64" column="MANUFACTURER_ID">
       <generator class="assigned" />
     </id>

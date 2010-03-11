@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping assembly="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="CoralPOS.Models.SaleTransaction, CoralPOS.Models" table="CRL_SALE_TRANS" lazy="true" >
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="SaleTransaction" table="CRL_SALE_TRANS" >
     <id name="SaleTransactionId" type="String" column="SALE_TRANSACTION_ID">
       <generator class="assigned" />
     </id>
