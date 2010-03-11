@@ -1,6 +1,7 @@
              
              
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
@@ -119,6 +120,11 @@ namespace POSServer.DataLayer.Implement
                     }
                 }
                 return hibernateCriteria.List<ProductType>();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
             }
             finally 
             {
