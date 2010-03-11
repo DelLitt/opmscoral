@@ -1,6 +1,7 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
@@ -12,7 +13,7 @@ namespace POSServer.BusinessLogic.Implement
     public class ProductMasterLogicImpl : IProductMasterLogic
     {
         private IProductMasterDao _innerDao;
-
+        
         public IProductMasterDao ProductMasterDao
         {
             get 
@@ -98,6 +99,11 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
             return _innerDao.FindPaging(criteria);
+        }
+
+        public void LoadProductMasterDefinition(out IList<ProductType> productTypes, out IList<Category> categories, out IList<ExProductColor> productColors, out IList<ExProductSize> productSizes)
+        {
+            
         }
     }
 }

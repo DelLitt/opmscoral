@@ -12,5 +12,10 @@ namespace POSServer.ViewModels
         void Open<T>() where T : IScreen;
         IServiceLocator ServiceLocator { get; set; }
         IScreen ActiveMenu { get; set; }
+
+        bool EnterFlow(string flowName);
+        bool StartFlow(string flowName);
+        bool ResumeFlow(string flowName);
+        void LeaveFlow();
     }
 }

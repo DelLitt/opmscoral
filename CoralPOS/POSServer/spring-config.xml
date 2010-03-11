@@ -7,10 +7,24 @@
   <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1ShowLoginForm" value="POSServer.ViewModels.Security.ILoginViewModel"/>
-        <entry key="Step2SetValue" value="POSServer.Actions.Security.IRegisterUserAction"/>
+        <!-- Show login form -->
+        <entry key="Step1" value="POSServer.ViewModels.Security.ILoginViewModel"/>
+        <!-- run register action -->
+        <entry key="Step2" value="POSServer.Actions.Security.IRegisterUserAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
-  </object>    
+  </object>
+  
+  <object id="ProductMasterCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductMasterViewModel"/>
+        <!-- Show product master summary form -->
+        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterSummaryViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

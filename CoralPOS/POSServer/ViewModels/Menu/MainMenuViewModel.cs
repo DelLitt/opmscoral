@@ -42,37 +42,37 @@ namespace POSServer.ViewModels.Menu
 		        
         public void Task()
         {
-            
+            MessageBox.Show("Task Menu!");
         }
 		        
         public void ProductMaster()
         {
-            
+            _startViewModel.EnterFlow("ProductMasterCreateFlow");
         }
 		        
         public void Stock()
         {
-            
+            MessageBox.Show("Stock Menu!");
         }
 		        
         public void Report()
         {
-            
+            MessageBox.Show("Report Menu!");
         }
 		        
         public void Management()
         {
-            
+            MessageBox.Show("Management Menu!");
         }
 		        
         public void Utility()
         {
-            
+            MessageBox.Show("Utility Menu!");
         }
 		        
         public void Synchronize()
         {
-            
+            MessageBox.Show("Synchronize Menu!");
         }
 				#endregion
 		

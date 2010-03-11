@@ -24,7 +24,6 @@ namespace POSServer.Actions.Security
             if(isLogged)
             {
                 LoginModel model = (LoginModel)Flow.Session.Get(CommonConstants.LOGGED_USER);
-                MessageBox.Show(model.Username + " logged OK and in step 2 of login flow ", "Congrat!");
                 GoToNextNode();
             }
         }

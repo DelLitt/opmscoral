@@ -198,6 +198,7 @@ namespace AppFrame.Base
             {
                 AttachMenuAttribute attribute = (AttachMenuAttribute) attachMenuAttributes[0];
                 IScreen menuScreen=(IScreen)_serviceLocator.GetInstance(attribute.AttachMenu);
+                
                 ActiveMenu = menuScreen;
             }
         }
