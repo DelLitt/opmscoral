@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class SyncStatususLogicImpl : ISyncStatususLogic
+    public class SyncStatususLogic : ISyncStatususLogic
     {
         private ISyncStatususDao _innerDao;
-
         public ISyncStatususDao SyncStatususDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public SyncStatusus FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return SyncStatususDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public SyncStatusus Add(SyncStatusus data)
         {
-            _innerDao.Add(data);
+            SyncStatususDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(SyncStatusus data)
         {
-            _innerDao.Update(data);
+            SyncStatususDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(SyncStatusus data)
         {
-            _innerDao.Delete(data);
+            SyncStatususDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            SyncStatususDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<SyncStatusus> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return SyncStatususDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return SyncStatususDao.FindPaging(criteria);
         }
     }
 }

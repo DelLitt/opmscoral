@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class UserRoleLogicImpl : IUserRoleLogic
+    public class UserRoleLogic : IUserRoleLogic
     {
         private IUserRoleDao _innerDao;
-
         public IUserRoleDao UserRoleDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public UserRole FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return UserRoleDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public UserRole Add(UserRole data)
         {
-            _innerDao.Add(data);
+            UserRoleDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(UserRole data)
         {
-            _innerDao.Update(data);
+            UserRoleDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(UserRole data)
         {
-            _innerDao.Delete(data);
+            UserRoleDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            UserRoleDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<UserRole> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return UserRoleDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return UserRoleDao.FindPaging(criteria);
         }
     }
 }

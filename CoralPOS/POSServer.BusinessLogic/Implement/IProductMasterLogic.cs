@@ -59,15 +59,5 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
-
-        /// <summary>
-        /// Load pre definition of product master
-        /// </summary>
-        /// <param name="productTypes"></param>
-        /// <param name="categories"></param>
-        /// <param name="productColors"></param>
-        /// <param name="productSizes"></param>
-        void LoadProductMasterDefinition(out IList<ProductType> productTypes, out IList<Category> categories,
-                                         out IList<ExProductColor> productColors, out IList<ExProductSize> productSizes);
     }
 }

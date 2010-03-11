@@ -1,7 +1,6 @@
 			 
 
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
@@ -10,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class ProductMasterLogicImpl : IProductMasterLogic
+    public class ProductMasterLogic : IProductMasterLogic
     {
         private IProductMasterDao _innerDao;
-        
         public IProductMasterDao ProductMasterDao
         {
             get 
@@ -33,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public ProductMaster FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return ProductMasterDao.FindById(id);
         }
         
         /// <summary>
@@ -44,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public ProductMaster Add(ProductMaster data)
         {
-            _innerDao.Add(data);
+            ProductMasterDao.Add(data);
             return data;
         }
         
@@ -56,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(ProductMaster data)
         {
-            _innerDao.Update(data);
+            ProductMasterDao.Update(data);
         }
         
         /// <summary>
@@ -67,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(ProductMaster data)
         {
-            _innerDao.Delete(data);
+            ProductMasterDao.Delete(data);
         }
         
         /// <summary>
@@ -78,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            ProductMasterDao.DeleteById(id);
         }
         
         /// <summary>
@@ -88,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<ProductMaster> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return ProductMasterDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -98,12 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
-        }
-
-        public void LoadProductMasterDefinition(out IList<ProductType> productTypes, out IList<Category> categories, out IList<ExProductColor> productColors, out IList<ExProductSize> productSizes)
-        {
-            
+            return ProductMasterDao.FindPaging(criteria);
         }
     }
 }

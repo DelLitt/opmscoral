@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class SimilarProductLogicImpl : ISimilarProductLogic
+    public class SimilarProductLogic : ISimilarProductLogic
     {
         private ISimilarProductDao _innerDao;
-
         public ISimilarProductDao SimilarProductDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public SimilarProduct FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return SimilarProductDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public SimilarProduct Add(SimilarProduct data)
         {
-            _innerDao.Add(data);
+            SimilarProductDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(SimilarProduct data)
         {
-            _innerDao.Update(data);
+            SimilarProductDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(SimilarProduct data)
         {
-            _innerDao.Delete(data);
+            SimilarProductDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            SimilarProductDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<SimilarProduct> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return SimilarProductDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return SimilarProductDao.FindPaging(criteria);
         }
     }
 }

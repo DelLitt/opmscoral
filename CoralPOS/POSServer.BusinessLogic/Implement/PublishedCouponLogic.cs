@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class PublishedCouponLogicImpl : IPublishedCouponLogic
+    public class PublishedCouponLogic : IPublishedCouponLogic
     {
         private IPublishedCouponDao _innerDao;
-
         public IPublishedCouponDao PublishedCouponDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public PublishedCoupon FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return PublishedCouponDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public PublishedCoupon Add(PublishedCoupon data)
         {
-            _innerDao.Add(data);
+            PublishedCouponDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(PublishedCoupon data)
         {
-            _innerDao.Update(data);
+            PublishedCouponDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(PublishedCoupon data)
         {
-            _innerDao.Delete(data);
+            PublishedCouponDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            PublishedCouponDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<PublishedCoupon> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return PublishedCouponDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return PublishedCouponDao.FindPaging(criteria);
         }
     }
 }

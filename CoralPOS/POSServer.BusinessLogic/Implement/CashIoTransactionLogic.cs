@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class CashIoTransactionLogicImpl : ICashIoTransactionLogic
+    public class CashIoTransactionLogic : ICashIoTransactionLogic
     {
         private ICashIoTransactionDao _innerDao;
-
         public ICashIoTransactionDao CashIoTransactionDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public CashIoTransaction FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return CashIoTransactionDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public CashIoTransaction Add(CashIoTransaction data)
         {
-            _innerDao.Add(data);
+            CashIoTransactionDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(CashIoTransaction data)
         {
-            _innerDao.Update(data);
+            CashIoTransactionDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(CashIoTransaction data)
         {
-            _innerDao.Delete(data);
+            CashIoTransactionDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            CashIoTransactionDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<CashIoTransaction> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return CashIoTransactionDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return CashIoTransactionDao.FindPaging(criteria);
         }
     }
 }

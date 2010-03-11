@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class DepartmentReturnDetailLogicImpl : IDepartmentReturnDetailLogic
+    public class DepartmentReturnDetailLogic : IDepartmentReturnDetailLogic
     {
         private IDepartmentReturnDetailDao _innerDao;
-
         public IDepartmentReturnDetailDao DepartmentReturnDetailDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public DepartmentReturnDetail FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return DepartmentReturnDetailDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public DepartmentReturnDetail Add(DepartmentReturnDetail data)
         {
-            _innerDao.Add(data);
+            DepartmentReturnDetailDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(DepartmentReturnDetail data)
         {
-            _innerDao.Update(data);
+            DepartmentReturnDetailDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(DepartmentReturnDetail data)
         {
-            _innerDao.Delete(data);
+            DepartmentReturnDetailDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            DepartmentReturnDetailDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<DepartmentReturnDetail> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return DepartmentReturnDetailDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return DepartmentReturnDetailDao.FindPaging(criteria);
         }
     }
 }

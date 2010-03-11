@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class ProductUnitLogicImpl : IProductUnitLogic
+    public class ProductUnitLogic : IProductUnitLogic
     {
         private IProductUnitDao _innerDao;
-
         public IProductUnitDao ProductUnitDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public ProductUnit FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return ProductUnitDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public ProductUnit Add(ProductUnit data)
         {
-            _innerDao.Add(data);
+            ProductUnitDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(ProductUnit data)
         {
-            _innerDao.Update(data);
+            ProductUnitDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(ProductUnit data)
         {
-            _innerDao.Delete(data);
+            ProductUnitDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            ProductUnitDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<ProductUnit> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return ProductUnitDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return ProductUnitDao.FindPaging(criteria);
         }
     }
 }

@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class ReceiptLogicImpl : IReceiptLogic
+    public class ReceiptLogic : IReceiptLogic
     {
         private IReceiptDao _innerDao;
-
         public IReceiptDao ReceiptDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public Receipt FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return ReceiptDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public Receipt Add(Receipt data)
         {
-            _innerDao.Add(data);
+            ReceiptDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(Receipt data)
         {
-            _innerDao.Update(data);
+            ReceiptDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(Receipt data)
         {
-            _innerDao.Delete(data);
+            ReceiptDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            ReceiptDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<Receipt> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return ReceiptDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return ReceiptDao.FindPaging(criteria);
         }
     }
 }

@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class BlockInDetailLogicImpl : IBlockInDetailLogic
+    public class BlockInDetailLogic : IBlockInDetailLogic
     {
         private IBlockInDetailDao _innerDao;
-
         public IBlockInDetailDao BlockInDetailDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public BlockInDetail FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return BlockInDetailDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public BlockInDetail Add(BlockInDetail data)
         {
-            _innerDao.Add(data);
+            BlockInDetailDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(BlockInDetail data)
         {
-            _innerDao.Update(data);
+            BlockInDetailDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(BlockInDetail data)
         {
-            _innerDao.Delete(data);
+            BlockInDetailDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            BlockInDetailDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<BlockInDetail> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return BlockInDetailDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return BlockInDetailDao.FindPaging(criteria);
         }
     }
 }

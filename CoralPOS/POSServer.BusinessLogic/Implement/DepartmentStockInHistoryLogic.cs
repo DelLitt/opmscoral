@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class DepartmentStockInHistoryLogicImpl : IDepartmentStockInHistoryLogic
+    public class DepartmentStockInHistoryLogic : IDepartmentStockInHistoryLogic
     {
         private IDepartmentStockInHistoryDao _innerDao;
-
         public IDepartmentStockInHistoryDao DepartmentStockInHistoryDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public DepartmentStockInHistory FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return DepartmentStockInHistoryDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public DepartmentStockInHistory Add(DepartmentStockInHistory data)
         {
-            _innerDao.Add(data);
+            DepartmentStockInHistoryDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(DepartmentStockInHistory data)
         {
-            _innerDao.Update(data);
+            DepartmentStockInHistoryDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(DepartmentStockInHistory data)
         {
-            _innerDao.Delete(data);
+            DepartmentStockInHistoryDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            DepartmentStockInHistoryDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<DepartmentStockInHistory> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return DepartmentStockInHistoryDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return DepartmentStockInHistoryDao.FindPaging(criteria);
         }
     }
 }

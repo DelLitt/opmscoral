@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class ReceiptOutCostLogicImpl : IReceiptOutCostLogic
+    public class ReceiptOutCostLogic : IReceiptOutCostLogic
     {
         private IReceiptOutCostDao _innerDao;
-
         public IReceiptOutCostDao ReceiptOutCostDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public ReceiptOutCost FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return ReceiptOutCostDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public ReceiptOutCost Add(ReceiptOutCost data)
         {
-            _innerDao.Add(data);
+            ReceiptOutCostDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(ReceiptOutCost data)
         {
-            _innerDao.Update(data);
+            ReceiptOutCostDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(ReceiptOutCost data)
         {
-            _innerDao.Delete(data);
+            ReceiptOutCostDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            ReceiptOutCostDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<ReceiptOutCost> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return ReceiptOutCostDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return ReceiptOutCostDao.FindPaging(criteria);
         }
     }
 }

@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class ScheduleTemplateLogicImpl : IScheduleTemplateLogic
+    public class ScheduleTemplateLogic : IScheduleTemplateLogic
     {
         private IScheduleTemplateDao _innerDao;
-
         public IScheduleTemplateDao ScheduleTemplateDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public ScheduleTemplate FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return ScheduleTemplateDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public ScheduleTemplate Add(ScheduleTemplate data)
         {
-            _innerDao.Add(data);
+            ScheduleTemplateDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(ScheduleTemplate data)
         {
-            _innerDao.Update(data);
+            ScheduleTemplateDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(ScheduleTemplate data)
         {
-            _innerDao.Delete(data);
+            ScheduleTemplateDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            ScheduleTemplateDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<ScheduleTemplate> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return ScheduleTemplateDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return ScheduleTemplateDao.FindPaging(criteria);
         }
     }
 }

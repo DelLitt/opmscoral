@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class EmployeeWorkingDaysLogicImpl : IEmployeeWorkingDaysLogic
+    public class EmployeeWorkingDaysLogic : IEmployeeWorkingDaysLogic
     {
         private IEmployeeWorkingDaysDao _innerDao;
-
         public IEmployeeWorkingDaysDao EmployeeWorkingDaysDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public EmployeeWorkingDays FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return EmployeeWorkingDaysDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public EmployeeWorkingDays Add(EmployeeWorkingDays data)
         {
-            _innerDao.Add(data);
+            EmployeeWorkingDaysDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(EmployeeWorkingDays data)
         {
-            _innerDao.Update(data);
+            EmployeeWorkingDaysDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(EmployeeWorkingDays data)
         {
-            _innerDao.Delete(data);
+            EmployeeWorkingDaysDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            EmployeeWorkingDaysDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<EmployeeWorkingDays> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return EmployeeWorkingDaysDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return EmployeeWorkingDaysDao.FindPaging(criteria);
         }
     }
 }

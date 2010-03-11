@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class MainftrLogicImpl : IMainftrLogic
+    public class MainftrLogic : IMainftrLogic
     {
         private IMainftrDao _innerDao;
-
         public IMainftrDao MainftrDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public Mainftr FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return MainftrDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public Mainftr Add(Mainftr data)
         {
-            _innerDao.Add(data);
+            MainftrDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(Mainftr data)
         {
-            _innerDao.Update(data);
+            MainftrDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(Mainftr data)
         {
-            _innerDao.Delete(data);
+            MainftrDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            MainftrDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<Mainftr> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return MainftrDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return MainftrDao.FindPaging(criteria);
         }
     }
 }

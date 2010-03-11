@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class StockOutTempLogicImpl : IStockOutTempLogic
+    public class StockOutTempLogic : IStockOutTempLogic
     {
         private IStockOutTempDao _innerDao;
-
         public IStockOutTempDao StockOutTempDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public StockOutTemp FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return StockOutTempDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public StockOutTemp Add(StockOutTemp data)
         {
-            _innerDao.Add(data);
+            StockOutTempDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(StockOutTemp data)
         {
-            _innerDao.Update(data);
+            StockOutTempDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(StockOutTemp data)
         {
-            _innerDao.Delete(data);
+            StockOutTempDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            StockOutTempDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<StockOutTemp> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return StockOutTempDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return StockOutTempDao.FindPaging(criteria);
         }
     }
 }

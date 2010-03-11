@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class EmployeeMoneyLogicImpl : IEmployeeMoneyLogic
+    public class EmployeeMoneyLogic : IEmployeeMoneyLogic
     {
         private IEmployeeMoneyDao _innerDao;
-
         public IEmployeeMoneyDao EmployeeMoneyDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public EmployeeMoney FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return EmployeeMoneyDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public EmployeeMoney Add(EmployeeMoney data)
         {
-            _innerDao.Add(data);
+            EmployeeMoneyDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(EmployeeMoney data)
         {
-            _innerDao.Update(data);
+            EmployeeMoneyDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(EmployeeMoney data)
         {
-            _innerDao.Delete(data);
+            EmployeeMoneyDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            EmployeeMoneyDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<EmployeeMoney> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return EmployeeMoneyDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return EmployeeMoneyDao.FindPaging(criteria);
         }
     }
 }

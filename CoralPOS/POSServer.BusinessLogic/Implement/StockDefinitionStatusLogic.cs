@@ -9,10 +9,9 @@ using  POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
 {
-    public class StockDefinitionStatusLogicImpl : IStockDefinitionStatusLogic
+    public class StockDefinitionStatusLogic : IStockDefinitionStatusLogic
     {
         private IStockDefinitionStatusDao _innerDao;
-
         public IStockDefinitionStatusDao StockDefinitionStatusDao
         {
             get 
@@ -32,7 +31,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public StockDefinitionStatus FindById(object id)
         {
-            return _innerDao.FindById(id);
+            return StockDefinitionStatusDao.FindById(id);
         }
         
         /// <summary>
@@ -43,7 +42,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public StockDefinitionStatus Add(StockDefinitionStatus data)
         {
-            _innerDao.Add(data);
+            StockDefinitionStatusDao.Add(data);
             return data;
         }
         
@@ -55,7 +54,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Update(StockDefinitionStatus data)
         {
-            _innerDao.Update(data);
+            StockDefinitionStatusDao.Update(data);
         }
         
         /// <summary>
@@ -66,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void Delete(StockDefinitionStatus data)
         {
-            _innerDao.Delete(data);
+            StockDefinitionStatusDao.Delete(data);
         }
         
         /// <summary>
@@ -77,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            _innerDao.DeleteById(id);
+            StockDefinitionStatusDao.DeleteById(id);
         }
         
         /// <summary>
@@ -87,7 +86,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public IList<StockDefinitionStatus> FindAll(ObjectCriteria criteria)
         {
-            return _innerDao.FindAll(criteria);
+            return StockDefinitionStatusDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
-            return _innerDao.FindPaging(criteria);
+            return StockDefinitionStatusDao.FindPaging(criteria);
         }
     }
 }
