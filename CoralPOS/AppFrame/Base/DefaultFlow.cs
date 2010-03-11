@@ -15,7 +15,7 @@ namespace AppFrame.Base
         private readonly Stack<INode> _next = new Stack<INode>();
         private readonly Stack<INode> _previous = new Stack<INode>();
         private IFlowSession _flowSession;
-        private readonly IList<string> _nodeList = new List<string>();
+        private readonly List<string> _nodeList = new List<string>();
         private INode _current;
         private bool _isNavigating;
 
@@ -27,10 +27,7 @@ namespace AppFrame.Base
         public DefaultFlow(ShellNavigator<IScreen,INode> rootNavigator) 
         {
             _rootNavigator = rootNavigator;
-            foreach (string key in FlowSteps.Keys)
-            {
-                _nodeList.Add(key);
-            }
+            InitFlow();
         }
 
         public virtual void InitFlow()
@@ -39,6 +36,7 @@ namespace AppFrame.Base
             {
                 _nodeList.Add(key);
             }
+            _nodeList.Sort();
         }
 
         public ShellNavigator<IScreen, INode> Navigator

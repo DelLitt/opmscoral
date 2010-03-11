@@ -33,5 +33,6 @@ namespace AppFrame.Base
         IDictionary FlowSteps { get; set; }
 
         IFlowSession Session { get; set; }
+        
     }
 }

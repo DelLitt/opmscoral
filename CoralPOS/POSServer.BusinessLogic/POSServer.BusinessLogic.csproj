@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\FlowConstants.cs" />
     <Compile Include="Implement\BlockInCostLogic.cs" />
     <Compile Include="Implement\BlockInDetailLogic.cs" />
     <Compile Include="Implement\BlockInLogic.cs" />
@@ -241,6 +242,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
+      <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
+      <Name>AppFrame2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>

@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -59,5 +60,11 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
+
+        /// <summary>
+        /// Preload definitions into session of flow
+        /// </summary>
+        /// <param name="session"></param>
+        void PreloadDefinition(ISession session);
     }
 }

@@ -18,11 +18,12 @@
   
   <object id="ProductMasterCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
-      <dictionary>
+      <dictionary>        
+        <entry key="Step1" value="POSServer.Actions.ProductMaster.IPmPreLoadDefinitionAction"/>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductMasterViewModel"/>
+        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterViewModel"/>
         <!-- Show product master summary form -->
-        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterSummaryViewModel"/>
+        <entry key="Step3" value="POSServer.ViewModels.ProductMaster.IProductMasterSummaryViewModel"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

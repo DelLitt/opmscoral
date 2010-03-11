@@ -9,7 +9,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-    [PerRequest(typeof(IPmPreLoadDefinitionAction))]
+    
     public class PmPreLoadDefinitionAction : PosAction,IPmPreLoadDefinitionAction
     {
         public void DoExecute()
@@ -19,7 +19,8 @@ namespace POSServer.Actions.ProductMaster
 
         private void LoadProductMasterDefinition()
         {
-            
+            ProductMasterLogic.PreloadDefinition(this.Flow.Session);
+            GoToNextNode();
         }
         
         public IProductMasterLogic ProductMasterLogic
