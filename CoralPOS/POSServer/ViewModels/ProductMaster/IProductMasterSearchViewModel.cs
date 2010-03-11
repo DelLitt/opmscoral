@@ -15,13 +15,13 @@ namespace POSServer.ViewModels.ProductMaster
     {
         #region Fields
 		                
-        public string ProductName
+        string ProductName
         {
             get;
             set;            
         }
 		                
-        public string ProductMasterId
+        string ProductMasterId
         {
             get;
             set;            
@@ -30,22 +30,22 @@ namespace POSServer.ViewModels.ProductMaster
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Save();
+        void Save();
         
 		        
-        public void Edit();
+        void Edit();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void Cancel();
+        void Cancel();
         
 		        
-        public void ProductMasterSearch();
+        void ProductMasterSearch();
         
 			#endregion
     }

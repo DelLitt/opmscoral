@@ -15,19 +15,19 @@ namespace POSServer.ViewModels.Stock.Inventory
     {
         #region Fields
 		                
-        public string CreateDate
+        string CreateDate
         {
             get;
             set;            
         }
 		                
-        public string Barcode
+        string Barcode
         {
             get;
             set;            
         }
 		                
-        public string Description
+        string Description
         {
             get;
             set;            
@@ -36,31 +36,31 @@ namespace POSServer.ViewModels.Stock.Inventory
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void TempLoad();
+        void TempLoad();
         
 		        
-        public void TempSave();
+        void TempSave();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void button1();
+        void button1();
         
 		        
-        public void SaveResult();
+        void SaveResult();
         
 		        
-        public void Delete();
+        void Delete();
         
 		        
-        public void Reset();
+        void Reset();
         
 		        
-        public void InputByFile();
+        void InputByFile();
         
 			#endregion
     }

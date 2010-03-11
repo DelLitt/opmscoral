@@ -15,13 +15,13 @@ namespace POSServer.ViewModels.Stock.StockIn
     {
         #region Fields
 		                
-        public string textBox4
+        string textBox4
         {
             get;
             set;            
         }
 		                
-        public string Description
+        string Description
         {
             get;
             set;            
@@ -30,16 +30,16 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Back();
+        void Back();
         
 		        
-        public void SaveConfirm();
+        void SaveConfirm();
         
 		        
-        public void Stop();
+        void Stop();
         
 			#endregion
     }

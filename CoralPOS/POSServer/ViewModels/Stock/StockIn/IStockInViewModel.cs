@@ -15,37 +15,37 @@ namespace POSServer.ViewModels.Stock.StockIn
     {
         #region Fields
 		                
-        public string WholeSalePrice
+        string WholeSalePrice
         {
             get;
             set;            
         }
 		                
-        public string Price
+        string Price
         {
             get;
             set;            
         }
 		                
-        public string InputPrice
+        string InputPrice
         {
             get;
             set;            
         }
 		                
-        public string textBox4
+        string textBox4
         {
             get;
             set;            
         }
 		                
-        public string ProductMaster
+        string ProductMaster
         {
             get;
             set;            
         }
 		                
-        public string Description
+        string Description
         {
             get;
             set;            
@@ -54,22 +54,22 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Recreate();
+        void Recreate();
         
 		        
-        public void Save();
+        void Save();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void CreateNewProductMaster();
+        void CreateNewProductMaster();
         
 		        
-        public void EditProductMaster();
+        void EditProductMaster();
         
 			#endregion
     }

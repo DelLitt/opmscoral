@@ -18,10 +18,10 @@ namespace POSServer.ViewModels.Dialogs
 		
 		#region Methods
 		        
-        public void button1();
+        void button1();
         
 		        
-        public void button2();
+        void button2();
         
 			#endregion
     }

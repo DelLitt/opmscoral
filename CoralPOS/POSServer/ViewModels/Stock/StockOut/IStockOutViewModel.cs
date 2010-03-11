@@ -15,19 +15,19 @@ namespace POSServer.ViewModels.Stock.StockOut
     {
         #region Fields
 		                
-        public string CreateDate
+        string CreateDate
         {
             get;
             set;            
         }
 		                
-        public string ProductMaster
+        string ProductMaster
         {
             get;
             set;            
         }
 		                
-        public string Description
+        string Description
         {
             get;
             set;            
@@ -36,25 +36,25 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Recreate();
+        void Recreate();
         
 		        
-        public void Save();
+        void Save();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void CreateByBlock();
+        void CreateByBlock();
         
 		        
-        public void CreateByFile();
+        void CreateByFile();
         
 		        
-        public void FixQuantityByAvailable();
+        void FixQuantityByAvailable();
         
 			#endregion
     }

@@ -15,19 +15,19 @@ namespace POSServer.ViewModels.ProductMaster
     {
         #region Fields
 		                
-        public string Description
+        string Description
         {
             get;
             set;            
         }
 		                
-        public string ColorName
+        string ColorName
         {
             get;
             set;            
         }
 		                
-        public string ColorId
+        string ColorId
         {
             get;
             set;            
@@ -36,19 +36,19 @@ namespace POSServer.ViewModels.ProductMaster
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Delete();
+        void Delete();
         
 		        
-        public void Edit();
+        void Edit();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void Create();
+        void Create();
         
 			#endregion
     }

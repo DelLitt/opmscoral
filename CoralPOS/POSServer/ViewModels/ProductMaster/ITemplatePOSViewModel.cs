@@ -18,25 +18,25 @@ namespace POSServer.ViewModels.ProductMaster
 		
 		#region Methods
 		        
-        public void Task();
+        void Task();
         
 		        
-        public void button1();
+        void button1();
         
 		        
-        public void button2();
+        void button2();
         
 		        
-        public void button3();
+        void button3();
         
 		        
-        public void button4();
+        void button4();
         
 		        
-        public void button5();
+        void button5();
         
 		        
-        public void button6();
+        void button6();
         
 			#endregion
     }

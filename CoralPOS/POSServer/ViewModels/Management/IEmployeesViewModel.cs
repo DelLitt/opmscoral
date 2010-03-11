@@ -15,25 +15,25 @@ namespace POSServer.ViewModels.Management
     {
         #region Fields
 		                
-        public string Address
+        string Address
         {
             get;
             set;            
         }
 		                
-        public string DepartmentName
+        string DepartmentName
         {
             get;
             set;            
         }
 		                
-        public string DepartmentId
+        string DepartmentId
         {
             get;
             set;            
         }
 		                
-        public string CardId
+        string CardId
         {
             get;
             set;            
@@ -42,19 +42,19 @@ namespace POSServer.ViewModels.Management
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Delete();
+        void Delete();
         
 		        
-        public void Edit();
+        void Edit();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void Create();
+        void Create();
         
 			#endregion
     }

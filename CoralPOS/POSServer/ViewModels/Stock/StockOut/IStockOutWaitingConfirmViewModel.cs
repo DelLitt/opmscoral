@@ -18,22 +18,22 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region Methods
 		        
-        public void Help();
+        void Help();
         
 		        
-        public void Unconfirm();
+        void Unconfirm();
         
 		        
-        public void Stop();
+        void Stop();
         
 		        
-        public void Confirm();
+        void Confirm();
         
 		        
-        public void Edit();
+        void Edit();
         
 		        
-        public void Search();
+        void Search();
         
 			#endregion
     }

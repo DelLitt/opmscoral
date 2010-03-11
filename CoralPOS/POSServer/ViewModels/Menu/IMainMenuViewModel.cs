@@ -18,25 +18,25 @@ namespace POSServer.ViewModels.Menu
 		
 		#region Methods
 		        
-        public void Task();
+        void Task();
         
 		        
-        public void ProductMaster();
+        void ProductMaster();
         
 		        
-        public void Stock();
+        void Stock();
         
 		        
-        public void Report();
+        void Report();
         
 		        
-        public void Management();
+        void Management();
         
 		        
-        public void Utility();
+        void Utility();
         
 		        
-        public void Synchronize();
+        void Synchronize();
         
 			#endregion
     }

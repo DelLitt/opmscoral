@@ -18,19 +18,19 @@ namespace POSServer.ViewModels.Menu
 		
 		#region Methods
 		        
-        public void ProductMasterNew();
+        void ProductMasterNew();
         
 		        
-        public void ProductMasterSearch();
+        void ProductMasterSearch();
         
 		        
-        public void BackToParent();
+        void BackToParent();
         
 		        
-        public void Back();
+        void Back();
         
 		        
-        public void ProductMasterDetail();
+        void ProductMasterDetail();
         
 			#endregion
     }
