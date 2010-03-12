@@ -28,5 +28,10 @@ namespace POSServer.Views.ProductMaster
         {
 
         }
+
+        private void ColorAddAll_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

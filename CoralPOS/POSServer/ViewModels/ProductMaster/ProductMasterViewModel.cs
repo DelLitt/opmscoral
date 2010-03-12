@@ -25,6 +25,14 @@ namespace POSServer.ViewModels.ProductMaster
     {
 
         private IShellViewModel _startViewModel;
+        private IList _productColors;
+
+        private IList _productSizes;
+
+        private IList _selectedProductColors;
+
+        private IList _selectedProductSizes;
+
         public ProductMasterViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
@@ -73,7 +81,39 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => Category);
             }
         }
-		        
+
+        public IList ProductColors
+        {
+            get { return _productColors; }
+            set { _productColors = value; 
+                NotifyOfPropertyChange(()=>ProductColors);
+            }
+        }
+
+        public IList ProductSizes
+        {
+            get { return _productSizes; }
+            set { _productSizes = value;
+            NotifyOfPropertyChange(() => ProductSizes);
+            }
+        }
+
+        public IList SelectedProductColors
+        {
+            get { return _selectedProductColors; }
+            set { _selectedProductColors = value;
+            NotifyOfPropertyChange(() => SelectedProductColors);
+            }
+        }
+
+        public IList SelectedProductSizes
+        {
+            get { return _selectedProductSizes; }
+            set { _selectedProductSizes = value;
+            NotifyOfPropertyChange(() => SelectedProductSizes);
+            }
+        }
+
         private string _textBox5;
         public string textBox5
         {
@@ -201,47 +241,51 @@ namespace POSServer.ViewModels.ProductMaster
         {
             
         }
-		        
-        public void button4()
+
+        public void ColorAddAll()
+        {
+            ProductColors = ProductColorsList;
+        }
+
+        public void ColorAdd()
+        {
+            foreach (var productColor in SelectedProductColors)
+            {
+                ProductColors.Add(productColor);
+            }
+            NotifyOfPropertyChange(() => ProductColors);
+        }
+
+        public void ColorRemove()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ColorRemoveAll()
+        {
+            ProductColors = new ArrayList();
+        }
+
+        public void SizeAddAll()
+        {
+            ProductSizes = ProductSizesList;
+        }
+
+        public void SizeAdd()
         {
             
         }
-		        
-        public void button5()
+
+        public void SizeRemove()
         {
             
         }
-		        
-        public void button7()
+
+        public void SizeRemoveAll()
         {
-            
+            ProductSizes = new ArrayList();
         }
-		        
-        public void button8()
-        {
-            
-        }
-		        
-        public void button9()
-        {
-            
-        }
-		        
-        public void button10()
-        {
-            
-        }
-		        
-        public void button11()
-        {
-            
-        }
-		        
-        public void button12()
-        {
-            
-        }
-		        
+
         public void MinorDetailEnter()
         {
             
@@ -263,6 +307,8 @@ namespace POSServer.ViewModels.ProductMaster
             ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
             ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
             ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
+            ProductColors = new ArrayList();
+            ProductSizes = new ArrayList();
         }
 
         #endregion

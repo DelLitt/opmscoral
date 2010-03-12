@@ -33,20 +33,20 @@
         </Grid>
         <GroupBox Header="CHI TIẾT" Margin="12,205,0,157.5" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
-                <ListBox Height="138.311" HorizontalAlignment="Left" Margin="124.25,5.111,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" />
-                <ListBox HorizontalAlignment="Left" Margin="124.25,164.529,0,48.177" Name="ProductSizes" Width="202.918" />
-                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName">                    
+                <ListBox Height="138.311" HorizontalAlignment="Left" Margin="124.25,5.111,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" DisplayMemberPath="ColorName" />
+                <ListBox HorizontalAlignment="Left" Margin="124.25,164.529,0,48.177" Name="ProductSizes" Width="202.918" DisplayMemberPath="SizeName" />
+                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Multiple" SelectedItem="{Binding SelectedProductColors,Mode=TwoWay}">                    
                 </ListBox>
-                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName">                    
+                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" SelectedItem="{Binding SelectedProductSizes,Mode=TwoWay}">                    
                 </ListBox>
-                <Button FontSize="14" FontWeight="Bold" Height="30" Margin="333.603,6,0,0" Name="button4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40">&lt;&lt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,41.451,0,0" Name="button5" VerticalAlignment="Top" Width="40">&lt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="332.694,78.72,0,0" Name="button7" VerticalAlignment="Top" Width="40">&gt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,114.171,0,0" Name="button8" VerticalAlignment="Top" Width="40">&gt;&gt;</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="333.603,164.166,0,165.801" Name="button9" Width="40">&lt;&lt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,199.53,0,0" Name="button10" VerticalAlignment="Top" Width="40">&lt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,0,0,93.99" Name="button11" VerticalAlignment="Bottom" Width="40">&gt;</Button>
-                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,0,0,58.539" Name="button12" VerticalAlignment="Bottom" Width="40">&gt;&gt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" Margin="333.603,6,0,0" Name="ColorAddAll" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Click="ColorAddAll_Click">&lt;&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,41.451,0,0" Name="ColorAdd" VerticalAlignment="Top" Width="40">&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="332.694,78.72,0,0" Name="ColorRemove" VerticalAlignment="Top" Width="40">&gt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,114.171,0,0" Name="ColorRemoveAll" VerticalAlignment="Top" Width="40">&gt;&gt;</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="333.603,164.166,0,165.801" Name="SizeAddAll" Width="40">&lt;&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,199.53,0,0" Name="SizeAdd" VerticalAlignment="Top" Width="40">&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,0,0,93.99" Name="SizeRemove" VerticalAlignment="Bottom" Width="40">&gt;</Button>
+                <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,0,0,58.539" Name="SizeRemoveAll" VerticalAlignment="Bottom" Width="40">&gt;&gt;</Button>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,1.25,0,0" Name="label6" VerticalAlignment="Top" Width="96.32">MÀU SẮC</Label>
                 <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,156.25,0,175" Name="label7" Width="102.32">KÍCH CỠ</Label>
                 <Button FontSize="14" FontWeight="Bold" Height="38" Margin="124.25,0,198.162,4.287" Name="MinorDetailEnter" VerticalAlignment="Bottom">CHI TIẾT PHỤ</Button>

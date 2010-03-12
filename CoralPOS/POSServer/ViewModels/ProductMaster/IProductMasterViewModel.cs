@@ -34,14 +34,22 @@ namespace POSServer.ViewModels.ProductMaster
             get;
             set;            
         }
-		
-                
-        string textBox5
+
+        IList ProductColors { get; set; }
+        IList ProductSizes { get; set; }
+        
+        IList SelectedProductColors
         {
             get;
             set;            
         }
-		                
+
+        IList SelectedProductSizes
+        {
+            get;
+            set;
+        }
+        
         string ProductMasterId
         {
             get;
@@ -72,28 +80,28 @@ namespace POSServer.ViewModels.ProductMaster
         void NewCategory();
         
 		        
-        void button4();
+        void ColorAddAll();
         
 		        
-        void button5();
+        void ColorAdd();
         
 		        
-        void button7();
+        void ColorRemove();
         
 		        
-        void button8();
+        void ColorRemoveAll();
         
 		        
-        void button9();
+        void SizeAddAll();
         
 		        
-        void button10();
+        void SizeAdd();
         
 		        
-        void button11();
+        void SizeRemove();
         
 		        
-        void button12();
+        void SizeRemoveAll();
         
 		        
         void MinorDetailEnter();
