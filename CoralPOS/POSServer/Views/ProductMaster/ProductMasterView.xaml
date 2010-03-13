@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="POSServer.Views.ProductMaster.ProductMasterView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lbe="clr-namespace:AppFrame.Extensions.ListBox;assembly=AppFrame"    
     Width="837" Height="748">
     <Grid>
             <Grid Height="150" VerticalAlignment="Bottom">                
@@ -35,9 +36,10 @@
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
                 <ListBox Height="138.311" HorizontalAlignment="Left" Margin="124.25,5.111,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" DisplayMemberPath="ColorName" />
                 <ListBox HorizontalAlignment="Left" Margin="124.25,164.529,0,48.177" Name="ProductSizes" Width="202.918" DisplayMemberPath="SizeName" />
-                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Multiple" SelectedItem="{Binding SelectedProductColors,Mode=TwoWay}">                    
+                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList1" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Multiple" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductColors}" ItemsSource="{Binding ProductColorsList}">                    
+                    
                 </ListBox>
-                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" SelectedItem="{Binding SelectedProductSizes,Mode=TwoWay}">                    
+                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" lbe:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedProductSizes}">                    
                 </ListBox>
                 <Button FontSize="14" FontWeight="Bold" Height="30" Margin="333.603,6,0,0" Name="ColorAddAll" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Click="ColorAddAll_Click">&lt;&lt;</Button>
                 <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,41.451,0,0" Name="ColorAdd" VerticalAlignment="Top" Width="40">&lt;</Button>

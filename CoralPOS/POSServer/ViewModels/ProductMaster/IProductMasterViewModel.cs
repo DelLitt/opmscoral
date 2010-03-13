@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
@@ -37,11 +38,10 @@ namespace POSServer.ViewModels.ProductMaster
 
         IList ProductColors { get; set; }
         IList ProductSizes { get; set; }
-        
+
         IList SelectedProductColors
         {
-            get;
-            set;            
+            get; set;
         }
 
         IList SelectedProductSizes

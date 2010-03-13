@@ -5,9 +5,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using AppFrame.Base;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
@@ -29,7 +31,7 @@ namespace POSServer.ViewModels.ProductMaster
 
         private IList _productSizes;
 
-        private IList _selectedProductColors;
+        
 
         private IList _selectedProductSizes;
 
@@ -98,13 +100,7 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 
-        public IList SelectedProductColors
-        {
-            get { return _selectedProductColors; }
-            set { _selectedProductColors = value;
-            NotifyOfPropertyChange(() => SelectedProductColors);
-            }
-        }
+        public IList SelectedProductColors { get; set; }
 
         public IList SelectedProductSizes
         {
@@ -249,11 +245,7 @@ namespace POSServer.ViewModels.ProductMaster
 
         public void ColorAdd()
         {
-            foreach (var productColor in SelectedProductColors)
-            {
-                ProductColors.Add(productColor);
-            }
-            NotifyOfPropertyChange(() => ProductColors);
+            ProductColors = SelectedProductColors; 
         }
 
         public void ColorRemove()
@@ -312,8 +304,13 @@ namespace POSServer.ViewModels.ProductMaster
         }
 
         #endregion
-		
-        
-        
+
+        #region special
+        public void SelectedColors(IList selectedItems)
+        {
+            SelectedProductColors = selectedItems;
+        }
+        #endregion
+
     }
 }
