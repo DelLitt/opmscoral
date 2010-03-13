@@ -100,7 +100,12 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 
-        public IList SelectedProductColors { get; set; }
+        private Collection<ExProductColor> _selectedProductColors;
+        public Collection<ExProductColor> SelectedProductColors
+        {
+            get { return _selectedProductColors; }
+            
+        }
 
         public IList SelectedProductSizes
         {
@@ -301,16 +306,10 @@ namespace POSServer.ViewModels.ProductMaster
             ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
             ProductColors = new ArrayList();
             ProductSizes = new ArrayList();
+            _selectedProductColors = new Collection<ExProductColor>();
         }
 
         #endregion
-
-        #region special
-        public void SelectedColors(IList selectedItems)
-        {
-            SelectedProductColors = selectedItems;
-        }
-        #endregion
-
+        
     }
 }

@@ -39,9 +39,9 @@ namespace POSServer.ViewModels.ProductMaster
         IList ProductColors { get; set; }
         IList ProductSizes { get; set; }
 
-        IList SelectedProductColors
+        Collection<ExProductColor> SelectedProductColors
         {
-            get; set;
+            get;
         }
 
         IList SelectedProductSizes
