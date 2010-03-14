@@ -208,6 +208,7 @@
     <Compile Include="Base\GlobalSession.cs" />
     <Compile Include="Base\IActionNode.cs" />
     <Compile Include="Base\IFlow.cs" />
+    <Compile Include="Base\IFlowManager.cs" />
     <Compile Include="Base\IFlowSession.cs" />
     <Compile Include="Base\IPosAction.cs" />
     <Compile Include="Base\IPosActionResult.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAttribute.cs" />
+    <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />
     <Compile Include="Extensions\ListBox\MultiSelectorBehaviours.cs" />

@@ -105,8 +105,7 @@ namespace AppFrame.Base
           if (ActiveFlow != null)
            {
                if (ActiveFlow.Name.Equals(flowName)) return true;
-
-               _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+              _freezeFlows[ActiveFlow.Name] = ActiveFlow;
            }
  
            if(_freezeFlows.ContainsKey(flowName))
@@ -130,6 +129,7 @@ namespace AppFrame.Base
             {
                 IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
                 flow.Name = flowName;
+                
                 flow.Navigator = this as ShellNavigator<IScreen, INode>;
                 flow.InitFlow();
                 ActiveFlow = flow;
