@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
@@ -250,7 +251,9 @@ namespace POSServer.ViewModels.ProductMaster
 
         public void ColorAdd()
         {
-            ProductColors = SelectedProductColors; 
+            IList newList = new ArrayList(_productColors);
+            ObjectUtility.AddToList(newList, SelectedProductColors, "ColorName");
+            ProductColors = newList; 
         }
 
         public void ColorRemove()
@@ -304,8 +307,8 @@ namespace POSServer.ViewModels.ProductMaster
             ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
             ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
             ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
-            ProductColors = new ArrayList();
-            ProductSizes = new ArrayList();
+            _productColors = new ArrayList();
+            _productSizes = new ArrayList();
             _selectedProductColors = new Collection<ExProductColor>();
         }
 
