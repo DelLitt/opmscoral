@@ -180,14 +180,33 @@ namespace AppFrame.Base
             return (U) instance;
         }
 
+        public T MainScreen
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Leave flow
         /// </summary>
         public virtual void LeaveFlow()
         {
             ActiveFlow = null;
+            if(MainScreen!=null) this.OpenScreen(MainScreen);
         }
-
+        public virtual void LeaveFlow(bool isRepeated)
+        {
+            if (isRepeated)
+            {
+                string name = ActiveFlow.Name;
+                ActiveFlow = null;
+                EnterFlow(name);
+            }
+            else
+            {
+                ActiveFlow = null;
+                if (MainScreen != null) this.OpenScreen(MainScreen);
+            }
+        }
         protected override void ChangeActiveScreenCore(T newActiveScreen)
         {
             base.ChangeActiveScreenCore(newActiveScreen);

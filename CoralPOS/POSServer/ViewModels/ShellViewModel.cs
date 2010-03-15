@@ -31,6 +31,7 @@ namespace POSServer.ViewModels
 
         public override void Initialize() 
         {
+            MainScreen = ServiceLocator.GetInstance<IMainView>();
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)
             {
@@ -42,11 +43,11 @@ namespace POSServer.ViewModels
             }
         }
 
-        public override void LeaveFlow()
+        /*public override void LeaveFlow()
         {
             ActiveFlow = null;
             Open<IMainView>();
-        }
+        }*/
         
         /*public override bool StartFlow(string flowName)
         {

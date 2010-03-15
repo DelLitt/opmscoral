@@ -15,7 +15,7 @@
         <TextBox Height="38" Margin="129.766,62.216,323.301,0" Name="ColorName" VerticalAlignment="Top" FontSize="14" />
         <Label Height="28" HorizontalAlignment="Left" Margin="12,71.104,0,0" Name="label1" VerticalAlignment="Top" Width="112.211" FontSize="14">TÊN MÀU</Label>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12,115.544,0,0" Name="label2" VerticalAlignment="Top" Width="112.211">DIỄN GIẢI</Label>
-        <TextBox FontSize="14" Height="38" Margin="129.766,18.887,0,0" Name="ColorId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.103" />
+        <TextBox FontSize="14" Height="38" Margin="129.766,18.887,0,0" Name="ColorId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.103" IsReadOnly="True" />
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="10.889,28.886,0,0" Name="label3" VerticalAlignment="Top" Width="112.211">MÃ SỐ</Label>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">

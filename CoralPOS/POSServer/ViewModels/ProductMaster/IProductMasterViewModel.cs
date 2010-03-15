@@ -39,15 +39,14 @@ namespace POSServer.ViewModels.ProductMaster
         IList ProductColors { get; set; }
         IList ProductSizes { get; set; }
 
-        Collection<ExProductColor> SelectedProductColors
+        IList<ExProductColor> SelectedProductColors
         {
             get;
         }
 
-        IList SelectedProductSizes
+        IList<ExProductSize> SelectedProductSizes
         {
             get;
-            set;
         }
         
         string ProductMasterId

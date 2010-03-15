@@ -201,6 +201,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\ChildFlow.cs" />
     <Compile Include="Base\DefaultFlow.cs" />
     <Compile Include="Base\DefaultSession.cs" />
     <Compile Include="Base\FlowSession.cs" />

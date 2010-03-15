@@ -34,7 +34,8 @@ namespace POSServer.ViewModels.ProductMaster
 
         
 
-        private IList _selectedProductSizes;
+        
+        
 
         public ProductMasterViewModel(IShellViewModel startViewModel)
         {
@@ -101,19 +102,30 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 
-        private Collection<ExProductColor> _selectedProductColors;
-        public Collection<ExProductColor> SelectedProductColors
+        private IList<ExProductColor> _selectedProductColors;
+        public IList<ExProductColor> SelectedProductColors
         {
             get { return _selectedProductColors; }
             
         }
 
-        public IList SelectedProductSizes
+        private IList<ExProductColor> _removeProductColors;
+        public IList<ExProductColor> RemoveProductColors
+        {
+            get { return _removeProductColors; }
+
+        }
+
+        private IList<ExProductSize> _selectedProductSizes;
+        public IList<ExProductSize> SelectedProductSizes
         {
             get { return _selectedProductSizes; }
-            set { _selectedProductSizes = value;
-            NotifyOfPropertyChange(() => SelectedProductSizes);
-            }
+        }
+
+        private IList<ExProductSize> _removeProductSizes;
+        public IList<ExProductSize> RemoveProductSizes
+        {
+            get { return _removeProductSizes; }
         }
 
         private string _textBox5;
@@ -258,7 +270,9 @@ namespace POSServer.ViewModels.ProductMaster
 
         public void ColorRemove()
         {
-            throw new NotImplementedException();
+            IList newList = new ArrayList(_productColors);
+            ObjectUtility.RemoveFromList(newList, RemoveProductColors, "ColorName");
+            ProductColors = newList; 
         }
 
         public void ColorRemoveAll()
@@ -273,12 +287,16 @@ namespace POSServer.ViewModels.ProductMaster
 
         public void SizeAdd()
         {
-            
+            IList newList = new ArrayList(_productSizes);
+            ObjectUtility.AddToList(newList, SelectedProductSizes, "SizeName");
+            ProductSizes = newList;  
         }
 
         public void SizeRemove()
         {
-            
+            IList newList = new ArrayList(_productSizes);
+            ObjectUtility.RemoveFromList(newList, RemoveProductSizes, "SizeName");
+            ProductSizes = newList; 
         }
 
         public void SizeRemoveAll()
@@ -310,6 +328,9 @@ namespace POSServer.ViewModels.ProductMaster
             _productColors = new ArrayList();
             _productSizes = new ArrayList();
             _selectedProductColors = new Collection<ExProductColor>();
+            _removeProductColors = new List<ExProductColor>();
+            _selectedProductSizes = new List<ExProductSize>();
+            _removeProductSizes = new List<ExProductSize>();
         }
 
         #endregion

@@ -303,6 +303,8 @@
     <Compile Include="Actions\ILoginAction.cs" />
     <Compile Include="Actions\LoginAction.cs" />
     <Compile Include="Actions\LoginActionResult.cs" />
+    <Compile Include="Actions\ProductMaster\ExProductColorsViewPreLoadAction.cs" />
+    <Compile Include="Actions\ProductMaster\IExProductColorsViewPreLoadAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />

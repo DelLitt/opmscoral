@@ -1,8 +1,11 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
+using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
@@ -97,6 +100,12 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
             return ExProductColorDao.FindPaging(criteria);
+        }
+
+        public void LoadProductColorDefinition(IFlowSession flowSession)
+        {
+            IList<ExProductColor> productColors = ExProductColorDao.FindAll(null);
+            flowSession.Put(FlowConstants.PRODUCT_COLOR_LIST, productColors);
         }
     }
 }
