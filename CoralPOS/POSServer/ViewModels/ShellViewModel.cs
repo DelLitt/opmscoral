@@ -42,30 +42,6 @@ namespace POSServer.ViewModels
                 EnterFlow("LoginFlow");    
             }
         }
-
-        /*public override void LeaveFlow()
-        {
-            ActiveFlow = null;
-            Open<IMainView>();
-        }*/
         
-        /*public override bool StartFlow(string flowName)
-        {
-            try
-            {
-                IFlow flow = ObjectUtility.GetObject<IFlow>(flowName);
-                flow.Name = flowName;
-                flow.InitFlow();
-                flow.Navigator = this;
-                ActiveFlow = flow;
-                flow.Start();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        
-        }*/
     }
 }

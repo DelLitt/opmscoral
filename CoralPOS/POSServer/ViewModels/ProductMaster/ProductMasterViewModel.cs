@@ -311,7 +311,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void NewColor()
         {
-            
+            _startViewModel.EnterChildFlow("ProductColorViewFlow", this.Flow);
         }
 		        
         public void NewSize()

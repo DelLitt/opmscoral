@@ -107,5 +107,10 @@ namespace POSServer.BusinessLogic.Implement
             IList<ExProductColor> productColors = ExProductColorDao.FindAll(null);
             flowSession.Put(FlowConstants.PRODUCT_COLOR_LIST, productColors);
         }
+
+        public void Process(IFlowSession session)
+        {
+            
+        }
     }
 }

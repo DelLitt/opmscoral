@@ -304,7 +304,9 @@
     <Compile Include="Actions\LoginAction.cs" />
     <Compile Include="Actions\LoginActionResult.cs" />
     <Compile Include="Actions\ProductMaster\ExProductColorsViewPreLoadAction.cs" />
+    <Compile Include="Actions\ProductMaster\ExProductColorsViewSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\IExProductColorsViewPreLoadAction.cs" />
+    <Compile Include="Actions\ProductMaster\IExProductColorsViewSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />
@@ -443,7 +445,7 @@
     <Compile Include="Views\ProductMaster\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\TemplatePOSView.xaml.cs">
+    <Compile Include="Views\Stock\Report\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale\TemplatePOSView.xaml.cs">
@@ -592,7 +594,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Report\TemplatePOSView.xaml">
+    <Page Include="Views\Stock\Report\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

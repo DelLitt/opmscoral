@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.CustomAttributes;
+using AppFrame.Utils;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
@@ -119,6 +120,28 @@ namespace AppFrame.Base
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="flow"></param>
+        /// <param name="isResume"></param>
+        protected void ExecuteFlow(IFlow flow,bool isResume)
+        {
+            if (!isResume)
+            {
+                flow.Navigator = this as ShellNavigator<IScreen, INode>;
+                flow.InitFlow();
+                ActiveFlow = flow;
+                flow.Start();
+            }
+            else
+            {
+                //set active flow equal to your flow
+                ActiveFlow = flow;
+                // resume it
+                flow.Resume();
+            }
+        }
+        /// <summary>
         /// Start a flow with specific name
         /// </summary>
         /// <param name="flowName">flow name</param>
@@ -129,11 +152,7 @@ namespace AppFrame.Base
             {
                 IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
                 flow.Name = flowName;
-                
-                flow.Navigator = this as ShellNavigator<IScreen, INode>;
-                flow.InitFlow();
-                ActiveFlow = flow;
-                flow.Start();
+                ExecuteFlow(flow,false);
                 return true;
             }
             catch (Exception exception)
@@ -155,11 +174,8 @@ namespace AppFrame.Base
                 // get flow in freezeflows and remove it from freeze flows.
                 IFlow flow = _freezeFlows[flowName];
                 _freezeFlows.Remove(flow.Name);
+                ExecuteFlow(flow,true);
                 
-                //set active flow equal to your flow
-                ActiveFlow = flow;
-                // resume it
-                flow.Resume();
                 return true;
             }
             catch (Exception)
@@ -220,6 +236,14 @@ namespace AppFrame.Base
                 
                 ActiveMenu = menuScreen;
             }
+        }
+
+        public virtual void EnterChildFlow(string childFlowName, IFlow parentFlow)
+        {
+            ChildFlow flow = ObjectUtility.GetObject<ChildFlow>(childFlowName);
+            flow.ParentFlow = parentFlow;
+            _freezeFlows[ActiveFlow.Name] = ActiveFlow;
+            ExecuteFlow(flow,false);
         }
     }
 }

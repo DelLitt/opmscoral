@@ -9,6 +9,7 @@ using AppFrame.Base;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 
 namespace POSServer.ViewModels.ProductMaster
 {
@@ -33,6 +34,11 @@ namespace POSServer.ViewModels.ProductMaster
             get;
             set;            
         }
+
+        IList ProductColorList { get; set; }
+
+        ExProductColor SelectedProductColor { get; set; }
+        bool IsCreateOrUpdate { get; set; }
 			#endregion
 		
 		#region Methods

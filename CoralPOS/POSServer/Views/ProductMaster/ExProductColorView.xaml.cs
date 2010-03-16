@@ -17,9 +17,9 @@ namespace POSServer.Views.ProductMaster
     /// <summary>
     /// Interaction logic for ProductTypeView.xaml
     /// </summary>
-    public partial class ProductColorView : UserControl
+    public partial class ExProductColorView : UserControl
     {
-        public ProductColorView()
+        public ExProductColorView()
         {
             InitializeComponent();
         }

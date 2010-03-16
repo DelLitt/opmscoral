@@ -241,6 +241,12 @@ namespace AppFrame.Base
         {
             _rootNavigator.LeaveFlow(); 
         }
+
+        public bool IsRepeated
+        {
+            get; set;
+        }
+
         public int CurrentPosition
         {
             get

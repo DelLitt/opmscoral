@@ -5,4 +5,10 @@
   <object id="IPmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
+  <object id="IExProductColorsViewPreLoadAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewPreLoadAction, POSServer" singleton="false">
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+  </object>
+  <object id="IExProductColorsViewSaveAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewSaveAction, POSServer" singleton="false">
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+  </object>
 </objects>

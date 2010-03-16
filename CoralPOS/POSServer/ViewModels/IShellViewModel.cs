@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AppFrame.Base;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
 
@@ -17,5 +18,6 @@ namespace POSServer.ViewModels
         bool StartFlow(string flowName);
         bool ResumeFlow(string flowName);
         void LeaveFlow();
+        void EnterChildFlow(string childFlowName, IFlow parentFlow);
     }
 }

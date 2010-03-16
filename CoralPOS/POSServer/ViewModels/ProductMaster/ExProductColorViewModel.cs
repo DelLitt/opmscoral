@@ -9,12 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
 
 
 namespace POSServer.ViewModels.ProductMaster
@@ -24,6 +26,10 @@ namespace POSServer.ViewModels.ProductMaster
     {
 
         private IShellViewModel _startViewModel;
+        private ExProductColor _selectedProductColor;
+
+        private bool _isCreateOrUpdate;
+
         public ExProductColorViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
@@ -72,7 +78,28 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => ColorId);
             }
         }
-				#endregion
+
+        public ExProductColor SelectedProductColor
+        {
+            get { return _selectedProductColor; }
+            set
+            {
+                _selectedProductColor = value;
+                NotifyOfPropertyChange(()=>SelectedProductColor);
+            }
+        }
+
+        public bool IsCreateOrUpdate
+        {
+            get { return _isCreateOrUpdate; }
+            set
+            {
+                _isCreateOrUpdate = value;
+                NotifyOfPropertyChange(()=>IsCreateOrUpdate);
+            }
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion
@@ -103,7 +130,9 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Delete()
         {
-            
+            IList list = new ArrayList(_productColorList);
+            ObjectUtility.RemoveFromList(list, SelectedProductColor, "ColorName");
+            ProductColorList = list;
         }
 		        
         public void Edit()
@@ -118,9 +147,25 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Create()
         {
-            
+            IList list= new ArrayList(_productColorList);
+            list.Add(new ExProductColor
+                         {
+                             ColorName = "NONAME"
+                         });
+            ProductColorList = list;
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            IList list = null;
+            list = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
+            if (list == null) list = new ArrayList();
+            ProductColorList = list;
+            SelectedProductColor = new ExProductColor();
+            IsCreateOrUpdate = false;
+        }
+
+        #endregion
 		
         
         

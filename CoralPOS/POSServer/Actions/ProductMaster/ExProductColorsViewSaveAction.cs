@@ -7,7 +7,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
 {
-    public class ExProductColorsViewPreLoadAction : PosAction, IExProductColorsViewPreLoadAction
+    public class ExProductColorsViewSaveAction : PosAction,IExProductColorsViewSaveAction
     {
         public IExProductColorLogic ProductColorLogic
         {
@@ -16,13 +16,8 @@ namespace POSServer.Actions.ProductMaster
 
         public override void DoExecute()
         {
-            LoadProductColorDefinition();
+            ProductColorLogic.Process(Flow.Session);
             GoToNextNode();
-        }
-
-        private void LoadProductColorDefinition()
-        {
-            ProductColorLogic.LoadProductColorDefinition(Flow.Session);
         }
     }
 }

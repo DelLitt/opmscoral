@@ -1,22 +1,16 @@
-﻿<UserControl x:Class="POSServer.Views.ProductMaster.ProductColorView"
+﻿<UserControl x:Class="POSServer.Views.ProductMaster.ExProductColorView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="12,159.984,12,53.328" Name="ProductColorList" FontSize="14">
+        <my:DataGrid AutoGenerateColumns="False" Margin="12,58,12,53.328" Name="ProductColorList" FontSize="14" ItemsSource="{Binding ProductColorList,Mode=TwoWay}" RowHeight="38" SelectedItem="{Binding SelectedProductColor}">
             <my:DataGrid.Columns>
-                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" />
-                <my:DataGridTextColumn FontSize="14" Header="TÊN MÀU" Width="200"/>
-                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" />
+                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=ColorId}" SortMemberPath="ColorId" IsReadOnly="True"/>
+                <my:DataGridTextColumn FontSize="14" Header="TÊN MÀU" Width="200" Binding="{Binding Path=ColorName}" SortMemberPath="ColorName"/>
+                <my:DataGridTextColumn FontSize="14" Header="NGƯỜI TẠO" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True"/>
             </my:DataGrid.Columns>
         </my:DataGrid>
-        <TextBox Height="38" Margin="129.766,105.545,12,0" Name="Description" VerticalAlignment="Top" FontSize="14" />
-        <TextBox Height="38" Margin="129.766,62.216,323.301,0" Name="ColorName" VerticalAlignment="Top" FontSize="14" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="12,71.104,0,0" Name="label1" VerticalAlignment="Top" Width="112.211" FontSize="14">TÊN MÀU</Label>
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12,115.544,0,0" Name="label2" VerticalAlignment="Top" Width="112.211">DIỄN GIẢI</Label>
-        <TextBox FontSize="14" Height="38" Margin="129.766,18.887,0,0" Name="ColorId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.103" IsReadOnly="True" />
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="10.889,28.886,0,0" Name="label3" VerticalAlignment="Top" Width="112.211">MÃ SỐ</Label>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>

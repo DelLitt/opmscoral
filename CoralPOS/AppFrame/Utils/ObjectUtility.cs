@@ -114,6 +114,25 @@ namespace AppFrame.Utils
             return false;
         }
 
-        
+
+
+        public static void RemoveFromList<TClass>(IList srcList, TClass element, string propertyName)
+        {
+            PropertyInfo info1 = element.GetType().GetProperty(propertyName, typeof(string));
+            string value1 = (string)(info1.GetValue(element, null));
+            object foundElement = null;
+            foreach (TClass compareObj in srcList)
+            {
+                    PropertyInfo info2 = compareObj.GetType().GetProperty(propertyName, typeof(string));
+                    string value2 = (string)(info2.GetValue(compareObj, null));
+                    if (!string.IsNullOrEmpty(value1) && value1.Equals(value2))
+                    {
+                        foundElement = compareObj;
+                        break;
+                    }
+             }
+             if (foundElement==null) return;
+             srcList.Remove(foundElement);
+        }
     }
 }

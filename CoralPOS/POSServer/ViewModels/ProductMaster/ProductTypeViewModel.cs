@@ -14,7 +14,7 @@ using Caliburn.Core.IoC;
 using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Common;
 
 
 namespace POSServer.ViewModels.ProductMaster
@@ -120,7 +120,13 @@ namespace POSServer.ViewModels.ProductMaster
         {
             
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            
+        }
+
+        #endregion
 		
         
         

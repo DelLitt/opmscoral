@@ -30,6 +30,7 @@ namespace AppFrame.Base
         void Start();
         void Resume();
         void End();
+        bool IsRepeated { get; set; }
         IDictionary FlowSteps { get; set; }
 
         IFlowSession Session { get; set; }
