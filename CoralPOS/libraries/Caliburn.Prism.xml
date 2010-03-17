@@ -56,6 +56,13 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.UsingModuleManager``1">
+            <summary>
+            Customizes the module manager.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.UsingRegionManager``1">
             <summary>
             Customizes the region manager.
@@ -133,13 +140,13 @@
             <param name="configureRegionAdapterMappings">The configure region adapter mappings.</param>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.GetComponentsCore">
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.GetComponents">
             <summary>
             Gets the component information for this module.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.InitializeCore(Microsoft.Practices.ServiceLocation.IServiceLocator)">
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryConfiguration.Initialize(Microsoft.Practices.ServiceLocation.IServiceLocator)">
             <summary>
             Initializes this module.
             </summary>

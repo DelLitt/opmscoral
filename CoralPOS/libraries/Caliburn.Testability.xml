@@ -1240,6 +1240,24 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Caliburn.Testability.TestResultEnumerator">
+            <summary>
+            Enumerates <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IResult"/> instances without calling execute or waiting for completion.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Testability.TestResultEnumerator.#ctor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Testability.TestResultEnumerator"/> class.
+            </summary>
+            <param name="enumerator">The enumerator.</param>
+        </member>
+        <member name="M:Caliburn.Testability.TestResultEnumerator.Next``1">
+            <summary>
+            Returns the next <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IResult"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="T:Caliburn.Testability.TriggerValidator">
             <summary>
             Validates a <see cref="T:System.Windows.TriggerCollection"/>.

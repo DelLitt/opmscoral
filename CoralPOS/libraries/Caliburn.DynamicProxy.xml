@@ -79,6 +79,29 @@
             <param name="behavior">The behavior being configured.</param>
             <returns>The interceptors.</returns>
         </member>
+        <member name="T:Caliburn.DynamicProxy.Configuration.ValidateConfiguration">
+            <summary>
+            Configures the Validate behavior.
+            </summary>
+        </member>
+        <member name="M:Caliburn.DynamicProxy.Configuration.ValidateConfiguration.GetInterceptors(System.Type,Caliburn.PresentationFramework.Behaviors.ValidateAttribute)">
+            <summary>
+            Gets the interceptors.
+            </summary>
+            <param name="implementation">The implementation.</param>
+            <param name="behavior">The behavior being configured.</param>
+            <returns>The interceptors.</returns>
+        </member>
+        <member name="T:Caliburn.DynamicProxy.Interceptors.DataErrorInfoInterceptor">
+            <summary>
+            An interceptor for <see cref="T:System.ComponentModel.IDataErrorInfo"/>.
+            </summary>
+        </member>
+        <member name="T:Caliburn.DynamicProxy.Interceptors.InterceptorBase">
+            <summary>
+            A base class for interceptors.
+            </summary>
+        </member>
         <member name="T:Caliburn.DynamicProxy.Interceptors.IInitializableInterceptor">
             <summary>
             An custom interceptor which is made aware of its proxy once immediately following proxy creation.
@@ -89,11 +112,6 @@
             Initializes the interceptor with the specified proxy.
             </summary>
             <param name="proxy">The proxy.</param>
-        </member>
-        <member name="T:Caliburn.DynamicProxy.Interceptors.InterceptorBase">
-            <summary>
-            A base class for interceptors.
-            </summary>
         </member>
         <member name="M:Caliburn.DynamicProxy.Interceptors.InterceptorBase.Intercept(Castle.Core.Interceptor.IInvocation)">
             <summary>
@@ -126,6 +144,18 @@
             <returns>
             A hash code for the current <see cref="T:System.Object"/>.
             </returns>
+        </member>
+        <member name="M:Caliburn.DynamicProxy.Interceptors.DataErrorInfoInterceptor.#ctor(Caliburn.PresentationFramework.ViewModels.IValidator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.DynamicProxy.Interceptors.DataErrorInfoInterceptor"/> class.
+            </summary>
+            <param name="validator">The validator.</param>
+        </member>
+        <member name="M:Caliburn.DynamicProxy.Interceptors.DataErrorInfoInterceptor.Intercept(Castle.Core.Interceptor.IInvocation)">
+            <summary>
+            Intercepts the specified invocation.
+            </summary>
+            <param name="invocation">The invocation.</param>
         </member>
         <member name="T:Caliburn.DynamicProxy.Interceptors.NotificationProfile">
             <summary>
@@ -294,6 +324,15 @@
             </summary>
             <typeparam name="T"></typeparam>
             <typeparam name="K"></typeparam>
+        </member>
+        <member name="M:Caliburn.DynamicProxy.DynamicProxyFactory.CreateProxyWithTarget(System.Type,System.Object,System.Collections.Generic.IEnumerable{Caliburn.Core.Behaviors.IBehavior})">
+            <summary>
+            Creates the proxy using the specified target.
+            </summary>
+            <param name="interfaceType">Type of the interface.</param>
+            <param name="target">The target.</param>
+            <param name="behaviors">The behaviors.</param>
+            <returns>The proxy.</returns>
         </member>
         <member name="M:Caliburn.DynamicProxy.DynamicProxyFactory.CreateProxy(System.Type,System.Collections.Generic.IEnumerable{Caliburn.Core.Behaviors.IBehavior},System.Collections.Generic.IEnumerable{System.Object})">
             <summary>
