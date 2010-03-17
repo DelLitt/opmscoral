@@ -23,5 +23,10 @@ namespace POSServer.Views.ProductMaster
         {
             InitializeComponent();
         }
+
+        private void ProductColorList_RowEditEnding(object sender, Microsoft.Windows.Controls.DataGridRowEditEndingEventArgs e)
+        {
+
+        }
     }
 }
