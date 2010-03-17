@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.ViewModels;
+using Caliburn.PresentationFramework.Views;
 
 namespace AppFrame.WPF
 {
@@ -18,7 +19,7 @@ namespace AppFrame.WPF
 
         public override void Show(object rootModel, object context, Action<ISubordinate, Action> handleShutdownModel)
         {
-            var window = CreateWindow(rootModel, context, handleShutdownModel);
+            var window = CreateWindow(rootModel, false,context, handleShutdownModel);
             if(window is Page)
             {
                 ((NavigationWindow) Application.Current.MainWindow).Navigate(window);

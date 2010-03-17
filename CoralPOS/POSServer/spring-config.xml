@@ -40,4 +40,31 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  <object id="ProductSizeViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>        
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IExProductSizeViewModel"/>        
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  <object id="ProductTypeViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductTypeViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  <object id="ProductCategoryViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IProductCategoryViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

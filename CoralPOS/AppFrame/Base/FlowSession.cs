@@ -12,5 +12,7 @@ namespace AppFrame.Base
         {
             get; set;
         }
+
+        public event EventHandler OnFlowChanged;
     }
 }

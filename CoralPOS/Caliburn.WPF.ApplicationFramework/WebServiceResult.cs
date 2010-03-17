@@ -6,10 +6,11 @@
     using Core;
     using Core.Invocation;
     using Microsoft.Practices.ServiceLocation;
-    using PresentationFramework;
+    using PresentationFramework.RoutedMessaging;
 
     public class WebServiceResult<T, K> : IResult
         where T : new()
+        where K : EventArgs
     {
         private readonly Action<K> _callback;
         private readonly Expression<Action<T>> _serviceCall;
@@ -25,46 +26,39 @@
             _callback = callback;
         }
 
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
+
         public void Execute(ResultExecutionContext context)
         {
-            ServiceLocator.Current.GetInstance<ILoadScreen>().StartLoading();
+            context.ServiceLocator.GetInstance<ILoadScreen>().StartLoading();
             //if you would rather disable the control that caused the service to be called, you could do this:
             //ChangeAvailability(message, false);
-
-            var factory = ServiceLocator.Current.GetInstance<IEventHandlerFactory>();
 
             var lambda = (LambdaExpression)_serviceCall;
             var methodCall = (MethodCallExpression)lambda.Body;
             var eventName = methodCall.Method.Name.Replace("Async", "Completed");
 
             var service = new T();
-            var handler = factory.Wire(service, eventName);
 
-            handler.SetActualHandler(ActualHandler);
+            EventHelper.WireEvent(
+                service, 
+                service.GetType().GetEvent(eventName),
+                OnEvent
+                );
 
             _serviceCall.Compile()(service);
         }
 
-        public event EventHandler<ResultCompletionEventArgs> Completed;
-        
-
-        //public event Action<IResult, Exception> Completed = delegate { };
-
-        /*public void Execute(IRoutedMessageWithOutcome message, IInteractionNode handlingNode)
-        {
-            
-        }*/
-
-        private void ActualHandler(object[] parameters)
+        private void OnEvent(object s, EventArgs e)
         {
             ServiceLocator.Current.GetInstance<ILoadScreen>().StopLoading();
             //or re-enable the control that caused the service to be called:
             //ChangeAvailability(message, true);
 
-            if(_callback != null)
-                _callback((K)parameters[1]);
+            if (_callback != null)
+                _callback((K)e);
 
-            Completed(this, null);
+            Completed(this, new ResultCompletionEventArgs());
         }
 
         private void ChangeAvailability(IRoutedMessage message, bool isAvailable)

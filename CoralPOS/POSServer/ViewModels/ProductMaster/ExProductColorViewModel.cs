@@ -12,7 +12,6 @@ using AppFrame.Base;
 using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-using Caliburn.Core.Metadata;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
@@ -88,7 +87,7 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(()=>SelectedProductColor);
             }
         }
-
+        
         public bool IsCreateOrUpdate
         {
             get { return _isCreateOrUpdate; }
@@ -142,7 +141,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Stop()
         {
-            
+           Flow.End(); 
         }
 		        
         public void Create()

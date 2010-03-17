@@ -6,7 +6,7 @@ namespace Caliburn.WPF.ApplicationFramework
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
     using ModelFramework;
-    using PresentationFramework;
+    using PresentationFramework.RoutedMessaging;
 
     public class ErrorResult : IResult
     {
@@ -17,8 +17,12 @@ namespace Caliburn.WPF.ApplicationFramework
             _results = results;
         }
 
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
+
         public void Execute(ResultExecutionContext context)
         {
+            //just demonstrating the power of a custom IExecutableResult
+
             var source = (FrameworkElement)context.Message.Source.UIElement;
             var popup = source.FindName("dirtyPopup") as Popup;
 
@@ -34,19 +38,7 @@ namespace Caliburn.WPF.ApplicationFramework
 
             popup.Child.MouseLeave += delegate { popup.IsOpen = false; };
 
-            Completed(this, null);
+            Completed(this, new ResultCompletionEventArgs());
         }
-
-        public event EventHandler<ResultCompletionEventArgs> Completed;
-        
-
-        /*public event Action<IResult, Exception> Completed = delegate { };
-
-        public void Execute(IRoutedMessageWithOutcome message, IInteractionNode handlingNode)
-        {
-            //just demonstrating the power of a custom IExecutableResult
-
-            
-        }*/
     }
 }

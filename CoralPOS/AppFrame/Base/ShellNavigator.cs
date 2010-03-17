@@ -206,9 +206,32 @@ namespace AppFrame.Base
         /// </summary>
         public virtual void LeaveFlow()
         {
+            IFlow flow = ActiveFlow;
             ActiveFlow = null;
-            if(MainScreen!=null) this.OpenScreen(MainScreen);
+            if(flow is ChildFlow)
+            {
+                ChildFlow childFlow = (ChildFlow) flow;
+                if(childFlow.ParentFlow!= null)
+                {
+                    ResumeFlow(childFlow.ParentFlow.Name);
+                }
+                else
+                {
+                    OpenMainScreen();
+                    
+                }
+            }
+            else
+            {
+                OpenMainScreen();
+            }
         }
+
+        private void OpenMainScreen()
+        {
+            if (MainScreen != null) this.OpenScreen(MainScreen);        
+        }
+
         public virtual void LeaveFlow(bool isRepeated)
         {
             if (isRepeated)
