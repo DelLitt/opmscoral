@@ -331,6 +331,15 @@ namespace POSServer.ViewModels.ProductMaster
             _removeProductColors = new List<ExProductColor>();
             _selectedProductSizes = new List<ExProductSize>();
             _removeProductSizes = new List<ExProductSize>();
+            Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
+        }
+
+        void Session_OnFlowChanged(object sender, EventArgs e)
+        {
+            CategoryList = Flow.Session.Get(FlowConstants.CATEGORY_LIST) as IList;
+            ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
+            ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
+            ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
         }
 
         #endregion

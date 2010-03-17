@@ -14,10 +14,12 @@
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,257.752,34" Name="Delete" Width="88">XÓA</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="0,28,369.963,34" Name="Edit" HorizontalAlignment="Right" Width="87.075">SỬA</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">THOÁT</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="271.084,28,0,34" Name="Create" Width="88">TẠO MỚI</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="0,28,325,34" Name="Delete" HorizontalAlignment="Right" Width="88">XÓA</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="313,28,0,34" Name="Edit" HorizontalAlignment="Left" Width="87.075">SỬA</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">BỎ QUA</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="204,28,0,34" Name="Create" HorizontalAlignment="Left" Width="88">TẠO MỚI</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,149,34" Name="Save" Width="88">
+                <TextBlock TextAlignment="Center" TextWrapping="Wrap">LƯU THAY ĐỔI</TextBlock></Button>
         </Grid>
     </Grid>
 </UserControl>
