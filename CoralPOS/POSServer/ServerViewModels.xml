@@ -2,15 +2,15 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx"> 
   
-  <object id="IProductTypeViewModel" type="POSServer.Actions.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
+  <object id="IProductTypeViewModel" type="POSServer.ViewModels.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
   </object>
 
-  <object id="IExProductSizeViewModel" type="POSServer.Actions.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
+  <!--<object id="IExProductSizeViewModel" type="POSServer.Actions.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
   </object>
 
   <object id="IProductCategoryViewModel" type="POSServer.Actions.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
     <property name="CategoryLogic" ref="ICategoryLogic" />
-  </object>
+  </object>-->
 </objects>

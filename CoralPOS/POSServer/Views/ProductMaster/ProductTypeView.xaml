@@ -6,9 +6,9 @@
         <Grid Margin="0,0,0,149">
         <my:DataGrid AutoGenerateColumns="False" Margin="12,159.984,12,7" Name="ProductTypeList" FontSize="14">
             <my:DataGrid.Columns>
-                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" />
-                <my:DataGridTextColumn FontSize="14" Header="TÊN LOẠI" Width="200"/>
-                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" />
+                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=TypeId}"/>
+                <my:DataGridTextColumn FontSize="14" Header="TÊN LOẠI" Width="200" Binding="{Binding Path=TypeName}"/>
+                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=Description}"/>
             </my:DataGrid.Columns>
         </my:DataGrid>
         <TextBox Height="38" Margin="129.766,105.545,12,0" Name="Description" VerticalAlignment="Top" FontSize="14" IsEnabled="{Binding IsCreateOrUpdate}" />

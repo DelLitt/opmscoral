@@ -248,7 +248,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void NewType()
         {
-            
+            _startViewModel.EnterChildFlow("ProductTypeViewFlow", this.Flow);
         }
 		        
         public void NewCategory()

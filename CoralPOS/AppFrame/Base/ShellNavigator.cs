@@ -106,6 +106,13 @@ namespace AppFrame.Base
           if (ActiveFlow != null)
            {
                if (ActiveFlow.Name.Equals(flowName)) return true;
+               bool isParentFlow = false;
+              if(ActiveFlow is ChildFlow)
+              {
+                  ChildFlow childFlow = (ChildFlow) ActiveFlow;
+                  if(childFlow.ParentFlow.Name.Equals(flowName)) isParentFlow = true;
+              }
+              if(!isParentFlow)
               _freezeFlows[ActiveFlow.Name] = ActiveFlow;
            }
  
@@ -264,6 +271,7 @@ namespace AppFrame.Base
         public virtual void EnterChildFlow(string childFlowName, IFlow parentFlow)
         {
             ChildFlow flow = ObjectUtility.GetObject<ChildFlow>(childFlowName);
+            flow.Name = childFlowName;
             flow.ParentFlow = parentFlow;
             _freezeFlows[ActiveFlow.Name] = ActiveFlow;
             ExecuteFlow(flow,false);

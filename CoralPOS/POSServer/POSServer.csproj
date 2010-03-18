@@ -311,6 +311,8 @@
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
+    <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
+    <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Presenters\Security\LoginPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -685,7 +687,7 @@
     <EmbeddedResource Include="ServerActions.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ServerViewModels.xml" />
+    <EmbeddedResource Include="ServerViewModels.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

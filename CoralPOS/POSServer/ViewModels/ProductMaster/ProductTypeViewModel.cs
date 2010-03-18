@@ -15,6 +15,7 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.ProductMaster
@@ -26,7 +27,8 @@ namespace POSServer.ViewModels.ProductMaster
         private IShellViewModel _startViewModel;
         public ProductTypeViewModel(IShellViewModel startViewModel)
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = startViewModel;
+            ProductTypeLogic = _startViewModel.ServiceLocator.GetInstance<IProductTypeLogic>("IProductTypeLogic");
         }
 		
 		#region Fields
@@ -72,7 +74,13 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => TypeId);
             }
         }
-				#endregion
+
+        public IProductTypeLogic ProductTypeLogic
+        {
+            get; set;
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion
@@ -123,9 +131,13 @@ namespace POSServer.ViewModels.ProductMaster
 
         public override void Initialize()
         {
-            
+            ProductTypeLogic.LoadDefinition(Flow.Session);
+            IList list = null;
+            list = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
+            if (list == null) list = new ArrayList();
+            ProductTypeList = list;
         }
-
+        
         #endregion
 		
         
