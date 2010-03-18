@@ -14,12 +14,12 @@ using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductCategoryViewModel))]
+    //[PerRequest(typeof(IProductCategoryViewModel))]
     public class ProductCategoryViewModel : PosViewModel,IProductCategoryViewModel  
     {
 
@@ -72,7 +72,13 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => CategoryId);
             }
         }
-				#endregion
+
+        public ICategoryLogic CategoryLogic
+        {
+            get; set;
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion

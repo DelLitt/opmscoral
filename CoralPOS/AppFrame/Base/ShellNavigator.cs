@@ -33,7 +33,10 @@ namespace AppFrame.Base
         {
             _serviceLocator = serviceLocator;
         }
-
+        public ShellNavigator()
+        {
+            _serviceLocator = ((CaliburnApplication) Application.Current).Container;
+        }
         /// <summary>
         /// Service locator
         /// </summary>

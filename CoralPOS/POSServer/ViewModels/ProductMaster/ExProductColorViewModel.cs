@@ -16,11 +16,12 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IExProductColorViewModel))]
+    //[PerRequest(typeof(IExProductColorViewModel))]
     public class ExProductColorViewModel : PosViewModel,IExProductColorViewModel  
     {
 
@@ -76,6 +77,11 @@ namespace POSServer.ViewModels.ProductMaster
                 _colorId = value;
                 NotifyOfPropertyChange(() => ColorId);
             }
+        }
+
+        public IExProductColorLogic ProductColorLogic
+        {
+            get; set;
         }
 
         public ExProductColor SelectedProductColor
@@ -154,11 +160,18 @@ namespace POSServer.ViewModels.ProductMaster
             ProductColorList = list;
         }
 
+        public void Save()
+        {
+            ProductColorLogic.Update(ProductColorList);
+            GoToNextNode();
+        }
+
         public override void Initialize()
         {
+            ProductColorLogic.LoadProductColorDefinition(Flow.Session);
             IList list = null;
             list = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
-            if (list == null) list = new ArrayList();
+            //if (list == null) list = new ArrayList();
             ProductColorList = list;
             SelectedProductColor = new ExProductColor();
             IsCreateOrUpdate = false;

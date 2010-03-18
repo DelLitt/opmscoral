@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
+using NHibernate.Criterion;
 using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
@@ -110,6 +111,30 @@ namespace POSServer.BusinessLogic.Implement
 
         public void Process(IFlowSession session)
         {
+            
+        }
+
+        public void Update(IList ProductColorList)
+        {
+            var maxIdResult = ExProductColorDao.SelectSpecificType(null, Projections.Max("ColorId"));
+            long maxColorId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1: 1;
+            foreach (ExProductColor productColor in ProductColorList)
+            {
+                if (productColor.ColorId > 0)
+                {
+                    ExProductColor current = ExProductColorDao.FindById(productColor.ColorId);
+                    current.ColorName = productColor.ColorName;
+                    current.UpdateDate = DateTime.Now;
+                    ExProductColorDao.Update(current);
+                }
+                else
+                {
+                    productColor.ColorId = maxColorId++;
+                    productColor.CreateDate = DateTime.Now;
+                    productColor.UpdateDate = DateTime.Now;
+                    ExProductColorDao.Add(productColor);
+                }
+            }
             
         }
     }

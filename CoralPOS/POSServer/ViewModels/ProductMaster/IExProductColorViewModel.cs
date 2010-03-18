@@ -9,6 +9,7 @@ using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
@@ -33,7 +34,7 @@ namespace POSServer.ViewModels.ProductMaster
             get;
             set;            
         }
-
+        IExProductColorLogic ProductColorLogic { get; set; }
         IList ProductColorList { get; set; }
 
         ExProductColor SelectedProductColor { get; set; }
@@ -55,7 +56,8 @@ namespace POSServer.ViewModels.ProductMaster
         
 		        
         void Create();
-        
+
+        void Save();
 			#endregion
     }
 }

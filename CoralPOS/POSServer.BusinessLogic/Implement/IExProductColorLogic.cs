@@ -72,5 +72,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="session"></param>
         void Process(IFlowSession session);
+
+        void Update(IList ProductColorList);
     }
 }

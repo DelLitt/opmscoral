@@ -16,7 +16,7 @@ using Spring.Context.Support;
 
 namespace POSServer.ViewModels
 {
-    [Singleton(typeof(IShellViewModel))]
+    //[Singleton(typeof(IShellViewModel))]
     public class ShellViewModel : ShellNavigator<IScreen,INode>, IShellViewModel
     {
         
@@ -26,6 +26,7 @@ namespace POSServer.ViewModels
         public string CurrentPath { get;set; }
 
         public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) {}
+        public ShellViewModel() : base() { }
 
         public override void Activate() {}
 

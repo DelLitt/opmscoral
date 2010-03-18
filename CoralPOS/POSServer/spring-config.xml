@@ -31,11 +31,11 @@
   <object id="ProductColorViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1" value="POSServer.Actions.ProductMaster.IExProductColorsViewPreLoadAction"/>
+        <!--<entry key="Step1" value="POSServer.Actions.ProductMaster.IExProductColorsViewPreLoadAction"/>-->
         <!-- Show product master form -->
-        <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IExProductColorViewModel"/>
+        <entry key="Step1" value="POSServer.ViewModels.ProductMaster.IExProductColorViewModel"/>
         <!-- Show product master summary form -->
-        <entry key="Step3" value="POSServer.Actions.ProductMaster.IExProductColorsViewSaveAction"/>
+        <!--<entry key="Step3" value="POSServer.Actions.ProductMaster.IExProductColorsViewSaveAction"/>-->
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

@@ -2,15 +2,33 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx"> 
   
+  <object id="IShellViewModel" type="POSServer.ViewModels.ShellViewModel, POSServer" singleton="true">    
+  </object>
+
+  <object id="IMainView" type="POSServer.ViewModels.MainView, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
+  
+  <object id="IProductMasterViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
+  
   <object id="IProductTypeViewModel" type="POSServer.ViewModels.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
   </object>
 
-  <!--<object id="IExProductSizeViewModel" type="POSServer.Actions.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
+  <object id="IExProductSizeViewModel" type="POSServer.ViewModels.ProductMaster.ExProductSizeViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
   </object>
 
-  <object id="IProductCategoryViewModel" type="POSServer.Actions.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
+  <object id="IExProductColorViewModel" type="POSServer.ViewModels.ProductMaster.ExProductColorViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+  </object>
+  
+  <object id="IProductCategoryViewModel" type="POSServer.ViewModels.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
     <property name="CategoryLogic" ref="ICategoryLogic" />
-  </object>-->
+  </object>
 </objects>

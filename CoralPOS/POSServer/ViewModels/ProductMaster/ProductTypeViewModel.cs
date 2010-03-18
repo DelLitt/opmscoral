@@ -20,7 +20,7 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductTypeViewModel))]
+    //[PerRequest(typeof(IProductTypeViewModel))]
     public class ProductTypeViewModel : PosViewModel,IProductTypeViewModel  
     {
 
@@ -28,7 +28,7 @@ namespace POSServer.ViewModels.ProductMaster
         public ProductTypeViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel;
-            ProductTypeLogic = _startViewModel.ServiceLocator.GetInstance<IProductTypeLogic>("IProductTypeLogic");
+            //ProductTypeLogic = _startViewModel.ServiceLocator.GetInstance<IProductTypeLogic>("IProductTypeLogic");
         }
 		
 		#region Fields

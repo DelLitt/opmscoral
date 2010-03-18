@@ -23,7 +23,7 @@ using POSServer.BusinessLogic.Common;
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductMasterViewModel))]
+    
     public class ProductMasterViewModel : PosViewModel,IProductMasterViewModel  
     {
 
@@ -302,8 +302,13 @@ namespace POSServer.ViewModels.ProductMaster
         public void SizeRemoveAll()
         {
             ProductSizes = new ArrayList();
+            TestPro();
         }
 
+        private void TestPro()
+        {
+            throw new NotImplementedException();
+        }
         public void MinorDetailEnter()
         {
             

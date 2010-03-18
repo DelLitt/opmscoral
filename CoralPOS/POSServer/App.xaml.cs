@@ -27,18 +27,14 @@ namespace POSServer
 
         private void InitSpring()
         {
-            
             GlobalSession.Instance.Put(CommonConstants.IS_LOGGED,false);
-            //IApplicationContext ctx = ContextRegistry.GetContext();
-            /*var cxt = ContextRegistry.GetContext();
-            GenericApplicationContext context = new GenericApplicationContext(cxt);*/
-            
         }
 
         protected override object CreateRootModel()
         {
-            return Container.GetInstance<IShellViewModel>();   
-            //return Container.GetInstance<INavLoginViewModel>();   
+            IShellViewModel viewModel = Container.GetInstance<IShellViewModel>("IShellViewModel");
+            viewModel.ServiceLocator = Container;
+            return viewModel;
         }
 
         protected override IServiceLocator CreateContainer()
@@ -48,10 +44,5 @@ namespace POSServer
             
             return new SpringAdapter(context);
         }
-
-        /*protected override void ConfigurePresentationFramework(PresentationFrameworkConfiguration module)
-        {
-            module.Using(x => x.WindowManager<NavigationViewManager>()); 
-        }*/
     }
 }

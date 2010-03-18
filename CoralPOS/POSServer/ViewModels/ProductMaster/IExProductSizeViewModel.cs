@@ -7,6 +7,7 @@ using AppFrame.Base;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
 {
@@ -30,6 +31,8 @@ namespace POSServer.ViewModels.ProductMaster
             get;
             set;            
         }
+
+        IExProductSizeLogic ProductSizeLogic { get; set; }
 			#endregion
 		
 		#region Methods

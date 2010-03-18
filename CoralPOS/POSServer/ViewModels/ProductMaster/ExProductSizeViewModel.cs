@@ -13,12 +13,12 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IExProductSizeViewModel))]
+    //[PerRequest(typeof(IExProductSizeViewModel))]
     public class ExProductSizeViewModel : PosViewModel,IExProductSizeViewModel  
     {
 
@@ -71,7 +71,13 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => SizeId);
             }
         }
-				#endregion
+
+        public IExProductSizeLogic ProductSizeLogic
+        {
+            get; set;
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion

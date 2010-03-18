@@ -4,7 +4,7 @@
     Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="12,58,12,53.328" Name="ProductColorList" FontSize="14" ItemsSource="{Binding ProductColorList,Mode=TwoWay}" RowHeight="38" SelectedItem="{Binding SelectedProductColor}" RowEditEnding="ProductColorList_RowEditEnding">
+        <my:DataGrid AutoGenerateColumns="False" Margin="12,58,12,53.328" Name="ProductColorList" FontSize="14" ItemsSource="{Binding ProductColorList,Mode=TwoWay}" RowHeight="38">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=ColorId}" SortMemberPath="ColorId" IsReadOnly="True"/>
                 <my:DataGridTextColumn FontSize="14" Header="TÊN MÀU" Width="200" Binding="{Binding Path=ColorName}" SortMemberPath="ColorName"/>
