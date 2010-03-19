@@ -61,6 +61,16 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="flowSession"></param>
         void LoadDefinition(IFlowSession flowSession);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ProductTypeList"></param>
+        void Update(IList ProductTypeList);
     }
 }

@@ -4,28 +4,21 @@
     Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="12,159.984,12,7" Name="ProductTypeList" FontSize="14">
+        <my:DataGrid AutoGenerateColumns="False" Margin="6,23,18,29" Name="ProductTypeList" FontSize="14">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=TypeId}"/>
                 <my:DataGridTextColumn FontSize="14" Header="TÊN LOẠI" Width="200" Binding="{Binding Path=TypeName}"/>
                 <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=Description}"/>
             </my:DataGrid.Columns>
         </my:DataGrid>
-        <TextBox Height="38" Margin="129.766,105.545,12,0" Name="Description" VerticalAlignment="Top" FontSize="14" IsEnabled="{Binding IsCreateOrUpdate}" />
-        <TextBox Height="38" Margin="129.766,62.216,323.301,0" Name="TypeName" VerticalAlignment="Top" FontSize="14" IsEnabled="{Binding IsCreateOrUpdate}" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="12,71.104,0,0" Name="label1" VerticalAlignment="Top" Width="112.211" FontSize="14">TÊN LOẠI</Label>
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="12,115.544,0,0" Name="label2" VerticalAlignment="Top" Width="112.211">DIỄN GIẢI</Label>
-        <TextBox FontSize="14" Height="38" Margin="129.766,18.887,0,0" Name="TypeId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.103" IsEnabled="{Binding IsCreateOrUpdate}" />
-        <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="10.889,28.886,0,0" Name="label3" VerticalAlignment="Top" Width="112.211">MÃ SỐ</Label>
-            <Button Height="38" HorizontalAlignment="Right" Margin="0,18.887,12,0" Name="Save" VerticalAlignment="Top" Width="157">LƯU</Button>
-            <Button Height="38" HorizontalAlignment="Right" Margin="0,63,12,0" Name="Cancel" VerticalAlignment="Top" Width="157">BỎ QUA</Button>
         </Grid>
     <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,257.752,34" Name="Delete" Width="88">XÓA</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="0,28,369.963,34" Name="Edit" HorizontalAlignment="Right" Width="87.075">SỬA</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">THOÁT</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="271.084,28,0,34" Name="Create" Width="88">TẠO MỚI</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="406,28,343,34" Name="Delete">XÓA</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="294,28,0,34" Name="Edit" HorizontalAlignment="Left" Width="87.075">SỬA</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">BỎ QUA</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="185,28,0,34" Name="Create" Width="88">TẠO MỚI</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,163,34" Name="Save" Width="88">LƯU</Button>
         </Grid>
     </Grid>
 </UserControl>

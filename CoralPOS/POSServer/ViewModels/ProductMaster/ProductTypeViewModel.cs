@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 
@@ -80,6 +82,17 @@ namespace POSServer.ViewModels.ProductMaster
             get; set;
         }
 
+        private ProductType _selectedProductType;
+        public ProductType SelectedProductType
+        {
+            get { return _selectedProductType; }
+            set
+            {
+                _selectedProductType = value;
+                NotifyOfPropertyChange(() => SelectedProductType);
+            }
+        }
+
         #endregion
 		
 		#region List use to fetch object for view
@@ -111,7 +124,9 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Delete()
         {
-            
+            IList list = new ArrayList(_productTypeList);
+            ObjectUtility.RemoveFromList(list, SelectedProductType, "TypeName");
+            ProductTypeList = list; 
         }
 		        
         public void Edit()
@@ -121,12 +136,23 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Stop()
         {
-            
+            Flow.End(); 
         }
 		        
         public void Create()
         {
-            
+            IList list = new ArrayList(_productTypeList);
+            list.Add(new ProductType
+            {
+                TypeName = "NONAME"
+            });
+            ProductTypeList = list;
+        }
+
+        public void Save()
+        {
+            ProductTypeLogic.Update(ProductTypeList);
+            GoToNextNode();
         }
 
         public override void Initialize()

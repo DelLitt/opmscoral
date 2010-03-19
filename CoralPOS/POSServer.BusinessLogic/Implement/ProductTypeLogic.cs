@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
+using NHibernate.Criterion;
 using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
@@ -106,6 +107,29 @@ namespace POSServer.BusinessLogic.Implement
         {
             IList<ProductType> productTypes = ProductTypeDao.FindAll(null);
             flowSession.Put(FlowConstants.PRODUCT_TYPE_LIST, productTypes);
+        }
+
+        public void Update(IList productTypeList)
+        {
+            var maxIdResult = ProductTypeDao.SelectSpecificType(null, Projections.Max("TypeId"));
+            long maxColorId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            foreach (ProductType productType in productTypeList)
+            {
+                if (productType.TypeId > 0)
+                {
+                    ProductType current = ProductTypeDao.FindById(productType.TypeId);
+                    current.TypeName = productType.TypeName;
+                    current.UpdateDate = DateTime.Now;
+                    ProductTypeDao.Update(current);
+                }
+                else
+                {
+                    productType.TypeId = maxColorId++;
+                    productType.CreateDate = DateTime.Now;
+                    productType.UpdateDate = DateTime.Now;
+                    ProductTypeDao.Add(productType);
+                }
+            }
         }
     }
 }

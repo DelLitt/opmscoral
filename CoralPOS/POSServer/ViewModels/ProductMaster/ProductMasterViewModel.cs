@@ -233,7 +233,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void ProductSave()
         {
-            
+            MessageBox.Show(ProductColors.Count.ToString());   
         }
 		        
         public void Stop()
@@ -321,7 +321,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void NewSize()
         {
-            
+            _startViewModel.EnterChildFlow("ProductSizeViewFlow", this.Flow);
         }
 
         public override void Initialize()
@@ -330,12 +330,12 @@ namespace POSServer.ViewModels.ProductMaster
             ProductTypeList = Flow.Session.Get(FlowConstants.PRODUCT_TYPE_LIST) as IList;
             ProductColorsList = Flow.Session.Get(FlowConstants.PRODUCT_COLOR_LIST) as IList;
             ProductSizesList = Flow.Session.Get(FlowConstants.PRODUCT_SIZE_LIST) as IList;
-            _productColors = new ArrayList();
-            _productSizes = new ArrayList();
-            _selectedProductColors = new Collection<ExProductColor>();
-            _removeProductColors = new List<ExProductColor>();
-            _selectedProductSizes = new List<ExProductSize>();
-            _removeProductSizes = new List<ExProductSize>();
+            if(_productColors==null) _productColors = new ArrayList();
+            if (_productSizes == null) _productSizes = new ArrayList();
+            if (_selectedProductColors == null) _selectedProductColors = new Collection<ExProductColor>();
+            if (_selectedProductColors == null) _removeProductColors = new List<ExProductColor>();
+            if (_selectedProductColors == null) _selectedProductSizes = new List<ExProductSize>();
+            if (_selectedProductColors == null) _removeProductSizes = new List<ExProductSize>();
             //Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
         }
 

@@ -131,6 +131,7 @@ namespace AppFrame.Extensions.ListBox
                         if (!list.Contains(obj))
                             list.Add(obj);
                     }
+                    //SetSelectedItemsSource(listBox,list);
                 }
             }
         }
