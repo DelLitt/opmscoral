@@ -233,7 +233,22 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void ProductSave()
         {
-            MessageBox.Show(ProductColors.Count.ToString());   
+            var savePM = new CoralPOS.Models.ProductMaster
+                             {
+                                ProductName = ProductName,
+                                Category = Category,
+                                ProductType = ProductType,
+                                CreateDate = DateTime.Now,
+                                CreateId = "admin",
+                                UpdateDate = DateTime.Now,
+                                UpdateId = "admin"
+                             };
+            var productColorList = ProductColors;
+            var productSizeList = ProductSizes;
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER,savePM);
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_COLORS_LIST, productColorList);
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_SIZES_LIST, productSizeList);
+            GoToNextNode();
         }
 		        
         public void Stop()
@@ -253,7 +268,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void NewCategory()
         {
-            
+            _startViewModel.EnterChildFlow("ProductCategoryViewFlow", this.Flow);
         }
 
         public void ColorAddAll()
@@ -333,9 +348,9 @@ namespace POSServer.ViewModels.ProductMaster
             if(_productColors==null) _productColors = new ArrayList();
             if (_productSizes == null) _productSizes = new ArrayList();
             if (_selectedProductColors == null) _selectedProductColors = new Collection<ExProductColor>();
-            if (_selectedProductColors == null) _removeProductColors = new List<ExProductColor>();
-            if (_selectedProductColors == null) _selectedProductSizes = new List<ExProductSize>();
-            if (_selectedProductColors == null) _removeProductSizes = new List<ExProductSize>();
+            if (_removeProductColors == null) _removeProductColors = new List<ExProductColor>();
+            if (_selectedProductSizes == null) _selectedProductSizes = new List<ExProductSize>();
+            if (_removeProductSizes == null) _removeProductSizes = new List<ExProductSize>();
             //Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
         }
 

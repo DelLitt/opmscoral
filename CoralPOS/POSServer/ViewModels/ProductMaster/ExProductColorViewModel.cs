@@ -36,48 +36,6 @@ namespace POSServer.ViewModels.ProductMaster
         }
 		
 		#region Fields
-		        
-        private string _description;
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                _description = value;
-                NotifyOfPropertyChange(() => Description);
-            }
-        }
-		        
-        private string _colorName;
-        public string ColorName
-        {
-            get
-            {
-                return _colorName;
-            }
-            set
-            {
-                _colorName = value;
-                NotifyOfPropertyChange(() => ColorName);
-            }
-        }
-		        
-        private string _colorId;
-        public string ColorId
-        {
-            get
-            {
-                return _colorId;
-            }
-            set
-            {
-                _colorId = value;
-                NotifyOfPropertyChange(() => ColorId);
-            }
-        }
 
         public IExProductColorLogic ProductColorLogic
         {
@@ -137,6 +95,7 @@ namespace POSServer.ViewModels.ProductMaster
         {
             IList list = new ArrayList(_productColorList);
             ObjectUtility.RemoveFromList(list, SelectedProductColor, "ColorName");
+
             ProductColorList = list;
         }
 		        
@@ -163,6 +122,7 @@ namespace POSServer.ViewModels.ProductMaster
         public void Save()
         {
             ProductColorLogic.Update(ProductColorList);
+            SetBackToParentFlow(FlowConstants.PRODUCT_COLOR_LIST,ProductColorList);
             GoToNextNode();
         }
 

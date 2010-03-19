@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,15 @@ namespace AppFrame.Base
         public IScreen AttachedMenu
         {
             get; set;
+        }
+
+        protected void SetBackToParentFlow(string key, IList list)
+        {
+            if(Flow is ChildFlow)
+            {
+                ChildFlow childFlow = (ChildFlow) Flow;
+                childFlow.ParentFlow.Session.Put(key,list);
+            }
         }
     }
 }

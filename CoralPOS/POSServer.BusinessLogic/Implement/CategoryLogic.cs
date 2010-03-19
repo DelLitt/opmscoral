@@ -1,8 +1,12 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
+using NHibernate.Criterion;
+using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
@@ -97,6 +101,35 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
             return CategoryDao.FindPaging(criteria);
+        }
+
+        public void LoadDefinition(IFlowSession session)
+        {
+            IList<Category> categories = CategoryDao.FindAll(null);
+            session.Put(FlowConstants.CATEGORY_LIST, categories);
+        }
+
+        public void Update(IList categoryList)
+        {
+            var maxIdResult = CategoryDao.SelectSpecificType(null, Projections.Max("CategoryId"));
+            long maxColorId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            foreach (Category category in categoryList)
+            {
+                if (category.CategoryId > 0)
+                {
+                    Category current = CategoryDao.FindById(category.CategoryId);
+                    current.CategoryName = category.CategoryName;
+                    current.UpdateDate = DateTime.Now;
+                    CategoryDao.Update(current);
+                }
+                else
+                {
+                    category.CategoryId = maxColorId++;
+                    category.CreateDate = DateTime.Now;
+                    category.UpdateDate = DateTime.Now;
+                    CategoryDao.Add(category);
+                }
+            } 
         }
     }
 }

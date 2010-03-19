@@ -16,24 +16,7 @@ namespace POSServer.ViewModels.ProductMaster
     public interface IExProductColorViewModel : IScreenNode
     {
         #region Fields
-		                
-        string Description
-        {
-            get;
-            set;            
-        }
-		                
-        string ColorName
-        {
-            get;
-            set;            
-        }
-		                
-        string ColorId
-        {
-            get;
-            set;            
-        }
+        
         IExProductColorLogic ProductColorLogic { get; set; }
         IList ProductColorList { get; set; }
 

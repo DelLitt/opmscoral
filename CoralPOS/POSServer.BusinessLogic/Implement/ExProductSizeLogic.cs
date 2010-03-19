@@ -1,8 +1,12 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
+using NHibernate.Criterion;
+using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
@@ -97,6 +101,36 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria criteria)
         {
             return ExProductSizeDao.FindPaging(criteria);
+        }
+
+        public void LoadDefinition(IFlowSession session)
+        {
+            IList<ExProductSize> productSizes = ExProductSizeDao.FindAll(null);
+            session.Put(FlowConstants.PRODUCT_SIZE_LIST, productSizes);
+        }
+
+        public void Update(IList productSizeList)
+        {
+            var maxIdResult = ExProductSizeDao.SelectSpecificType(null, Projections.Max("SizeId"));
+            long maxColorId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            foreach (ExProductSize productSize in productSizeList)
+            {
+                if (productSize.SizeId > 0)
+                {
+                    ExProductSize current = ExProductSizeDao.FindById(productSize.SizeId);
+                    current.SizeName = productSize.SizeName;
+                    current.UpdateDate = DateTime.Now;
+                    ExProductSizeDao.Update(current);
+                }
+                else
+                {
+                    productSize.SizeId = maxColorId++;
+                    productSize.CreateDate = DateTime.Now;
+                    productSize.UpdateDate = DateTime.Now;
+                    ExProductSizeDao.Add(productSize);
+                }
+            }
+
         }
     }
 }

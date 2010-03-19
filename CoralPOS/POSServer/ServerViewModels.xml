@@ -12,6 +12,10 @@
   <object id="IProductMasterViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
   </object>
+
+  <object id="IProductMasterSummaryViewModel" type="POSServer.ViewModels.ProductMaster.ProductMasterSummaryViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
   
   <object id="IProductTypeViewModel" type="POSServer.ViewModels.ProductMaster.ProductTypeViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
@@ -29,6 +33,7 @@
   </object>
   
   <object id="IProductCategoryViewModel" type="POSServer.ViewModels.ProductMaster.ProductCategoryViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
   </object>
 </objects>

@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -14,16 +15,24 @@ using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductMasterSummaryViewModel))]
+    //[PerRequest(typeof(IProductMasterSummaryViewModel))]
     public class ProductMasterSummaryViewModel : PosViewModel,IProductMasterSummaryViewModel  
     {
 
         private IShellViewModel _startViewModel;
+        private CoralPOS.Models.ProductMaster _productMaster;
+
+        private IList _productColors;
+
+        private IList _productSizes;
+
         public ProductMasterSummaryViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
@@ -44,9 +53,9 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => ProductName);
             }
         }
-		        
-        private string _productType;
-        public string ProductType
+
+        private ProductType _productType;
+        public ProductType ProductType
         {
             get
             {
@@ -59,8 +68,8 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 		        
-        private string _category;
-        public string Category
+        private Category _category;
+        public Category Category
         {
             get
             {
@@ -72,21 +81,12 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => Category);
             }
         }
-		        
-        private string _textBox5;
+
         public string textBox5
         {
-            get
-            {
-                return _textBox5;
-            }
-            set
-            {
-                _textBox5 = value;
-                NotifyOfPropertyChange(() => textBox5);
-            }
+            get; set;
         }
-		        
+
         private string _productMasterId;
         public string ProductMasterId
         {
@@ -100,7 +100,34 @@ namespace POSServer.ViewModels.ProductMaster
                 NotifyOfPropertyChange(() => ProductMasterId);
             }
         }
-				#endregion
+
+        public CoralPOS.Models.ProductMaster ProductMaster
+        {
+            get { return _productMaster; }
+            set { _productMaster = value; 
+                NotifyOfPropertyChange(()=>ProductMaster);
+            }
+        }
+
+        public IList ProductColors
+        {
+            get { return _productColors; }
+            set { _productColors = value;
+            NotifyOfPropertyChange(() => ProductColors);
+            }
+        }
+
+        public IList ProductSizes
+        {
+            get { return _productSizes; }
+            set { _productSizes = value;
+            NotifyOfPropertyChange(() => ProductSizes);
+            }
+        }
+
+        
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion
@@ -117,12 +144,12 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void ProductBack()
         {
-            
+            Flow.Back();
         }
 		        
         public void ProductSaveConfirm()
         {
-            
+            GoToNextNode();
         }
 		        
         public void Stop()
@@ -174,7 +201,20 @@ namespace POSServer.ViewModels.ProductMaster
         {
             
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            CoralPOS.Models.ProductMaster master = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
+
+            ProductMaster = master;
+            Category = master.Category;
+            ProductType = master.ProductType;
+            ProductColors = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_COLORS_LIST) as IList;
+            ProductSizes = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_SIZES_LIST) as IList;
+            //Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
+        }
+
+        #endregion
 		
         
         

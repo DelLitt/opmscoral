@@ -33,7 +33,7 @@
   </object>
 
 
-  <object id="transactionManager" type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate20">
+  <object id="transactionManager" type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>

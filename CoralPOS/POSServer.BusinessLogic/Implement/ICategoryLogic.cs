@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Base;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -59,5 +60,17 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria criteria);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="session"></param>
+        void LoadDefinition(IFlowSession session);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categoryList"></param>
+        void Update(IList categoryList);
     }
 }

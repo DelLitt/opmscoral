@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 
 
@@ -73,6 +76,11 @@ namespace POSServer.ViewModels.ProductMaster
             }
         }
 
+        public Category SelectedProductCategory
+        {
+            get; set;
+        }
+
         public ICategoryLogic CategoryLogic
         {
             get; set;
@@ -109,7 +117,9 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Delete()
         {
-            
+            IList list = new ArrayList(_productCategoryList);
+            ObjectUtility.RemoveFromList(list, SelectedProductCategory, "CategoryName");
+            ProductCategoryList = list;
         }
 		        
         public void Edit()
@@ -119,14 +129,38 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Stop()
         {
-            
+            Flow.End(); 
         }
 		        
         public void Create()
         {
+            IList list = new ArrayList(_productCategoryList);
+            list.Add(new Category
+            {
+                CategoryName = "NONAME"
+            });
+            ProductCategoryList = list;
+        }
+
+        public void Save()
+        {
+            CategoryLogic.Update(ProductCategoryList);
+            SetBackToParentFlow(FlowConstants.CATEGORY_LIST, ProductCategoryList);
+            GoToNextNode();
+        }
+
+        public override void Initialize()
+        {
+            CategoryLogic.LoadDefinition(Flow.Session);
+            IList list = null;
+            list = Flow.Session.Get(FlowConstants.CATEGORY_LIST) as IList;
+            //if (list == null) list = new ArrayList();
+            ProductCategoryList = list;
+            SelectedProductCategory = new Category();
             
         }
-				#endregion
+
+        #endregion
 		
         
         

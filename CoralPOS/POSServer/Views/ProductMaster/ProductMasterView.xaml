@@ -39,7 +39,7 @@
                 <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Extended" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductColors}">                    
                     
                 </ListBox>
-                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductSizes}" SelectionMode="Multiple">                    
+                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductSizes}" SelectionMode="Multiple" >                    
                 </ListBox>
                 <Button FontSize="14" FontWeight="Bold" Height="30" Margin="333.603,6,0,0" Name="ColorAddAll" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Click="ColorAddAll_Click">&lt;&lt;</Button>
                 <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,41.451,0,0" Name="ColorAdd" VerticalAlignment="Top" Width="40">&lt;</Button>

@@ -24,6 +24,8 @@
         <entry key="Step2" value="POSServer.ViewModels.ProductMaster.IProductMasterViewModel"/>
         <!-- Show product master summary form -->
         <entry key="Step3" value="POSServer.ViewModels.ProductMaster.IProductMasterSummaryViewModel"/>
+        <!-- Save Product Master -->
+        <entry key="Step4" value="POSServer.Actions.ProductMaster.IPmSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

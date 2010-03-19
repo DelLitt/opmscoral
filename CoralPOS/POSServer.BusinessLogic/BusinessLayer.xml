@@ -222,6 +222,7 @@
     <property name="ProductTypeDao" ref="IProductTypeDao"/>
     <property name="ProductColorDao" ref="IExProductColorDao"/>
     <property name="ProductSizeDao" ref="IExProductSizeDao"/>
+    <property name="ProductDao" ref="IProductDao"/>
   </object>
   	  
   <object id="IProductTypeLogic" type="POSServer.BusinessLogic.Implement.ProductTypeLogic, POSServer.BusinessLogic">

@@ -4,7 +4,7 @@
     Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="6,23,18,29" Name="ProductTypeList" FontSize="14">
+        <my:DataGrid AutoGenerateColumns="False" Margin="6,56,18,29" Name="ProductTypeList" FontSize="14" SelectedItem="{Binding SelectedProductType}" CanUserAddRows="False" RowHeight="38">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=TypeId}"/>
                 <my:DataGridTextColumn FontSize="14" Header="TÊN LOẠI" Width="200" Binding="{Binding Path=TypeName}"/>

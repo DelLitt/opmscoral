@@ -152,6 +152,7 @@ namespace POSServer.ViewModels.ProductMaster
         public void Save()
         {
             ProductTypeLogic.Update(ProductTypeList);
+            SetBackToParentFlow(FlowConstants.PRODUCT_TYPE_LIST, ProductTypeList);
             GoToNextNode();
         }
 

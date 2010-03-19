@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
+using Caliburn.PresentationFramework.RoutedMessaging;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -66,5 +67,14 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="session"></param>
         void PreloadDefinition(ISession session);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="master"></param>
+        /// <param name="colors"></param>
+        /// <param name="sizes"></param>
+        bool Save(ProductMaster master, IList colors, IList sizes);
     }
+    
 }

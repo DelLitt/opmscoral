@@ -308,7 +308,9 @@
     <Compile Include="Actions\ProductMaster\IExProductColorsViewPreLoadAction.cs" />
     <Compile Include="Actions\ProductMaster\IExProductColorsViewSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
+    <Compile Include="Actions\ProductMaster\IPmSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
+    <Compile Include="Actions\ProductMaster\PmSaveAction.cs" />
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />

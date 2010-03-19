@@ -32,6 +32,7 @@ namespace AppFrame.Base
 
         public virtual void InitFlow()
         {
+            
             foreach (string key in FlowSteps.Keys)
             {
                 _nodeList.Add(key);
@@ -39,6 +40,13 @@ namespace AppFrame.Base
             _nodeList.Sort();
         }
 
+        public IList<string> StepNames
+        {
+            get
+            {
+                return _nodeList;   
+            }
+        }
         public ShellNavigator<IScreen, INode> Navigator
         {
             get
@@ -81,7 +89,7 @@ namespace AppFrame.Base
         {
             get
             {
-                int currentPos = IndexOfNode(FlowSteps,_current);
+                int currentPos = IndexOfNode(StepNames, _current);
                 return (currentPos == (FlowSteps.Count - 1));
             }
             
@@ -184,7 +192,7 @@ namespace AppFrame.Base
                 int currentPos = 0;
                 if (_current != null)
                 {
-                    currentPos = IndexOfNode(FlowSteps, _current);
+                    currentPos = IndexOfNode(StepNames, _current);
                     _previous.Push(CurrentNode);
 
                 }
@@ -226,6 +234,22 @@ namespace AppFrame.Base
             return result;
         }
 
+        private int IndexOfNode(IList<string> dictionary, INode current)
+        {
+            int result = -1;
+            int i = 0;
+            foreach (string key in dictionary)
+            {
+                if (key.Equals(current.Name))
+                {
+                    result = i;
+                    break;
+                }
+                i += 1;
+            }
+            return result;
+        }
+
         public virtual void Start()
         {
             INode startNode = EnsureNode((string)StartNodeName, 0);
@@ -252,7 +276,7 @@ namespace AppFrame.Base
         {
             get
             {
-                return IndexOfNode(FlowSteps, CurrentNode);
+                return IndexOfNode(StepNames, CurrentNode);
             }
         }
         public bool IsNavigating

@@ -4,11 +4,11 @@
     Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="0,22,24,32" Name="ProductCategoryList" FontSize="14">
+        <my:DataGrid AutoGenerateColumns="False" Margin="0,22,24,32" Name="ProductCategoryList" FontSize="14" SelectedItem="{Binding SelectedProductCategory}" CanUserAddRows="False" RowHeight="38">
             <my:DataGrid.Columns>
-                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" />
-                <my:DataGridTextColumn FontSize="14" Header="TÊN PHÂN LOẠI" Width="200"/>
-                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" />
+                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=CategoryId}" SortMemberPath="CategoryId" IsReadOnly="True" />
+                <my:DataGridTextColumn FontSize="14" Header="TÊN PHÂN LOẠI" Width="200" Binding="{Binding Path=CategoryName}" SortMemberPath="CategoryName"/>
+                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True"/>
             </my:DataGrid.Columns>
         </my:DataGrid>
         </Grid>

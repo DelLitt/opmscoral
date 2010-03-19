@@ -47,12 +47,13 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual long ExFld1 {
+        public virtual ExProductColor ProductColor {
             get;
             set;
         }
-        
-        public virtual long ExFld2 {
+
+        public virtual ExProductSize ProductSize
+        {
             get;
             set;
         }

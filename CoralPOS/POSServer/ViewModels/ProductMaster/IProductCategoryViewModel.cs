@@ -9,6 +9,7 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.ProductMaster
@@ -34,6 +35,7 @@ namespace POSServer.ViewModels.ProductMaster
             get;
             set;            
         }
+        Category SelectedProductCategory { get; set; }
 
         ICategoryLogic CategoryLogic { get; set; }
 			#endregion
