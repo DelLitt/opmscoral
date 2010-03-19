@@ -336,7 +336,7 @@ namespace POSServer.ViewModels.ProductMaster
             _removeProductColors = new List<ExProductColor>();
             _selectedProductSizes = new List<ExProductSize>();
             _removeProductSizes = new List<ExProductSize>();
-            Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
+            //Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
         }
 
         void Session_OnFlowChanged(object sender, EventArgs e)

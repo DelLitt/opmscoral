@@ -172,7 +172,8 @@ namespace AppFrame.Base
 
             if (IsEndFlow) 
             {
-                End(); 
+                End();
+                return;
             }
             if(CanGoForward)
             {
