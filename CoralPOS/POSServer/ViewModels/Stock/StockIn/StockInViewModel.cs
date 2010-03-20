@@ -14,12 +14,12 @@ using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Common;
 
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-    [PerRequest(typeof(IStockInViewModel))]
+    //[PerRequest(typeof(IStockInViewModel))]
     public class StockInViewModel : PosViewModel,IStockInViewModel  
     {
 
@@ -181,7 +181,14 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
+            ProductMasterList = list as IList;
+        }
+
+        #endregion
 		
         
         

@@ -309,10 +309,14 @@
     <Compile Include="Actions\ProductMaster\IExProductColorsViewSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockIn\IStockInSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockIn\StockInPreLoadAction.cs" />
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
+    <Compile Include="Actions\Stock\StockIn\IStockInPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockIn\StockInSaveAction.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -690,6 +694,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ServerViewModels.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actions\Stock\StockOut\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

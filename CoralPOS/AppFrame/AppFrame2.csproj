@@ -154,6 +154,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Ninject.dll</HintPath>
@@ -183,6 +187,9 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Services">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -224,6 +231,8 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAttribute.cs" />
+    <Compile Include="DataLayer\PosContext.cs" />
+    <Compile Include="DataLayer\QueryHandler.cs" />
     <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />

@@ -1,10 +1,14 @@
              
              
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.Linq;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -305,7 +309,21 @@ namespace POSServer.DataLayer.Implement
                 }
             }
         }
-        
+
+        public IList FindAllProductNames()
+        {
+            return (IList) HibernateTemplate.Execute(
+                                       delegate(ISession session)
+                                           {
+                                               using (PosContext context = new PosContext(session))
+                                               {
+                                                   var result = from productMaster in context.Session.Linq<ProductMaster>()
+                                                                select productMaster.ProductName;
+                                                   return result.ToList();
+                                               }
+                                           });
+        }
+
         /// <summary>
         /// 
         /// </summary>

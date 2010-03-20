@@ -168,6 +168,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.Test, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.Test.dll</HintPath>

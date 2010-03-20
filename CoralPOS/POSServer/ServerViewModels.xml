@@ -36,4 +36,8 @@
     <constructor-arg ref="IShellViewModel" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
   </object>
+
+  <object id="IStockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />    
+  </object>
 </objects>

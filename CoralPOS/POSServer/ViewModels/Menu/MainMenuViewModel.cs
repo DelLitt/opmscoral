@@ -51,7 +51,7 @@ namespace POSServer.ViewModels.Menu
 		        
         public void Stock()
         {
-            MessageBox.Show("Stock Menu!");
+            _startViewModel.EnterFlow("StockInCreateFlow");
         }
 		        
         public void Report()

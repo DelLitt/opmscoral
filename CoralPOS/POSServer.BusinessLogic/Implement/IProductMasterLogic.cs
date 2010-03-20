@@ -75,6 +75,12 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="colors"></param>
         /// <param name="sizes"></param>
         bool Save(ProductMaster master, IList colors, IList sizes);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IList LoadAllProductNames();
     }
     
 }

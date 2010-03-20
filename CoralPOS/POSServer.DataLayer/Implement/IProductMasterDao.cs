@@ -67,6 +67,11 @@ namespace POSServer.DataLayer.Implement
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria criteria, IProjection type);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IList FindAllProductNames();
     }
 }

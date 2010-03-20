@@ -182,5 +182,10 @@ namespace POSServer.BusinessLogic.Implement
             }
             return true;
         }
+
+        public IList LoadAllProductNames()
+        {
+            return ProductMasterDao.FindAllProductNames();
+        }
     }
 }
