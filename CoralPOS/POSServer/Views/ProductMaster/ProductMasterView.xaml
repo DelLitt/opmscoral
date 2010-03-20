@@ -36,10 +36,9 @@
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
                 <ListBox Height="138.311" HorizontalAlignment="Left" Margin="124.25,5.111,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" DisplayMemberPath="ColorName" SelectionMode="Multiple" lbe:ListBoxExtension.SelectedItemsSource="{Binding RemoveProductColors}" />
                 <ListBox HorizontalAlignment="Left" Margin="124.25,164.529,0,48.177" Name="ProductSizes" Width="202.918" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding RemoveProductSizes}" SelectionMode="Multiple" />
-                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Extended" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductColors}">                    
-                    
+                <ListBox Height="139.2" Margin="389.961,4.222,198.162,0" Name="ProductColorsList" VerticalAlignment="Top" DisplayMemberPath="ColorName" SelectionMode="Extended" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductColors}" TextSearch.TextPath="ColorName" IsTextSearchEnabled="True">                                        
                 </ListBox>
-                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductSizes}" SelectionMode="Multiple" >                    
+                <ListBox Margin="389.961,163.62,198.162,48.177" Name="ProductSizesList" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding SelectedProductSizes}" SelectionMode="Extended" TextSearch.TextPath="SizeName">                    
                 </ListBox>
                 <Button FontSize="14" FontWeight="Bold" Height="30" Margin="333.603,6,0,0" Name="ColorAddAll" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Click="ColorAddAll_Click">&lt;&lt;</Button>
                 <Button FontSize="14" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="333.603,41.451,0,0" Name="ColorAdd" VerticalAlignment="Top" Width="40">&lt;</Button>
