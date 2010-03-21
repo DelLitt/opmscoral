@@ -60,6 +60,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>

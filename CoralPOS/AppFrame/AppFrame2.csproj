@@ -154,6 +154,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>
@@ -231,8 +235,11 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAttribute.cs" />
+    <Compile Include="DataLayer\LinqCriteria.cs" />
+    <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />
     <Compile Include="DataLayer\QueryHandler.cs" />
+    <Compile Include="DataLayer\SqlExtensions.cs" />
     <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />

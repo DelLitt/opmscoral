@@ -1,10 +1,10 @@
-             
-             
-
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.LambdaExtensions;
+using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -89,46 +89,69 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
+        public IList<Tax> FindAll(LinqCriteria<Tax> criteria)
+        {
+            return (IList<Tax>) HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                    {
+                                        session.CreateCriteria(typeof (Tax)).AddOrder<Tax>(p => p.CreateId, Order.Asc);
+                                        ;
+                                        ;
+                                        QueryHandler<Tax> handler = new QueryHandler<Tax>(session);
+                                        var result = handler.GetList(criteria);
+                                        return result;
+                                        
+                                    }
+                                    );
+        }
+
         public IList<Tax> FindAll(ObjectCriteria criteria)
         {
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
-            try 
-            {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(Tax));
-                if (criteria != null)
-                {
-                    IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                    if (map.Count > 0)
-                    {
-                        foreach (string key in map.Keys)
-                        {
-                            hibernateCriteria.CreateAlias(key, key);
-                        }
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-    
-                        foreach (string key in map.Keys)
-                        {
-                            SubObjectCriteria subCriteria = null;
-                            map.TryGetValue(key, out subCriteria);
-                            AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(), subCriteria.GetOrder());
-                        }
-                    } 
-                    else
-                    {
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-                    }
-                }
-                return hibernateCriteria.List<Tax>();
-            }
-            finally 
-            {
-                if (session != null)
-                {
-                    session.Disconnect();
-                }
-            }
+            return (IList<Tax>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    try
+                                    {
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(Tax));
+                                        if (criteria != null)
+                                        {
+                                            IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
+                                            if (map.Count > 0)
+                                            {
+                                                foreach (string key in map.Keys)
+                                                {
+                                                    hibernateCriteria.CreateAlias(key, key);
+                                                }
+                                                AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
+
+                                                foreach (string key in map.Keys)
+                                                {
+                                                    SubObjectCriteria subCriteria = null;
+                                                    map.TryGetValue(key, out subCriteria);
+                                                    AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(), subCriteria.GetOrder());
+                                                }
+                                            }
+                                            else
+                                            {
+                                                AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
+                                            }
+                                        }
+                                        return hibernateCriteria.List<Tax>();
+                                    }
+                                    finally
+                                    {
+                                        if (session != null)
+                                        {
+                                            session.Disconnect();
+                                        }
+                                    }
+                                }
+                                    );
+            
+            
         }
-        
+
+
         /// <summary>
         /// Find all Tax from database. Has pagination.
         /// </summary>

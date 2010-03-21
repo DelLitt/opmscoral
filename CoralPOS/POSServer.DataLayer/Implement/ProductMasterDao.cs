@@ -315,12 +315,12 @@ namespace POSServer.DataLayer.Implement
             return (IList) HibernateTemplate.Execute(
                                        delegate(ISession session)
                                            {
-                                               using (PosContext context = new PosContext(session))
-                                               {
+                                               PosContext context = new PosContext(session);
+                                               
                                                    var result = from productMaster in context.Session.Linq<ProductMaster>()
                                                                 select productMaster.ProductName;
-                                                   return result.ToList();
-                                               }
+                                                   var resList = result.ToList();
+                                                   return resList;
                                            });
         }
 

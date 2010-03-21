@@ -42,7 +42,7 @@ namespace POSServer.DataLayer.Implement
 
         public ObjectCriteria AddEqCriteria(string propertyName, object value)
         {
-
+            
             if (value != null)
             {
                 where.Add(Restrictions.Eq(propertyName, value));

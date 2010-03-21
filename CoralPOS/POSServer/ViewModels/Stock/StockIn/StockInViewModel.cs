@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.DataLayer;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 
 
@@ -186,6 +188,8 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
             ProductMasterList = list as IList;
+            LinqCriteria<CoralPOS.Models.ProductMaster> criteria = new LinqCriteria<CoralPOS.Models.ProductMaster>();
+            criteria.AddCriteria(item => item.ProductName.Contains("AO"));
         }
 
         #endregion
