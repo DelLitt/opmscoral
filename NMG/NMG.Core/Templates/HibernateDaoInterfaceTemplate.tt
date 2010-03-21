@@ -4,11 +4,11 @@
 <#@ property name="NamespaceName" type="System.String" 
              processor="PropertyProcessor" #>
 <#@ property name="ModelNamespaceName" type="System.String" 
-             processor="PropertyProcessor" #>
-			 
+             processor="PropertyProcessor" #>			 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -20,60 +20,72 @@ namespace <#= NamespaceName #>
     public interface I<#= ClassName #>Dao
     {
         /// <summary>
-        /// Find <#= ClassName #> object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of <#= ClassName #></param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         <#= ClassName #> FindById(object id);
         
         /// <summary>
-        /// Add <#= ClassName #> to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         <#= ClassName #> Add(<#= ClassName #> data);
         
         /// <summary>
-        /// Update <#= ClassName #> to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(<#= ClassName #> data);
         
         /// <summary>
-        /// Delete <#= ClassName #> from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(<#= ClassName #> data);
         
         /// <summary>
-        /// Delete <#= ClassName #> from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all <#= ClassName #> from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<<#= ClassName #>> FindAll(LinqCriteria<<#= ClassName #>> criteria);
+
+        IList<<#= ClassName #>> FindAll(ObjectCriteria<<#= ClassName #>> criteria);
+		
+        object FindFirst(ObjectCriteria<<#= ClassName #>> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<<#= ClassName #>> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<<#= ClassName #>> criteria);
+
         /// <summary>
-        /// Find all <#= ClassName #> from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<<#= ClassName #>> criteria);
+
         /// <summary>
-        /// Find min, max, count... <#= ClassName #> from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<<#= ClassName #>> criteria, IProjection type);
     }
 }
+

@@ -69,9 +69,23 @@ namespace NMG.Core.Generator
             var listNames = from comboBox in xDocument.Descendants()
                             where comboBox.Name.LocalName.Equals("ComboBox")
                             select (string)comboBox.Attribute("Name").Value;
+            
+            ArrayList genListNames = ConvertToArrayList(listNames);
+            listNames = from comboBox in xDocument.Descendants()
+                            where comboBox.Name.LocalName.Equals("ListBox")
+                            select (string)comboBox.Attribute("Name").Value;
+            genListNames.AddRange(ConvertToArrayList(listNames));
+            listNames = from comboBox in xDocument.Descendants()
+                            where comboBox.Name.LocalName.Equals("ListView")
+                            select (string)comboBox.Attribute("Name").Value;
+            
+            genListNames.AddRange(ConvertToArrayList(listNames));
+
             var detailList = from dataGrid in xDocument.Descendants()
                              where dataGrid.Name.LocalName.Equals("DataGrid")
                              select (string)dataGrid.Attribute("Name").Value;
+
+
 
             string interfaceName = "I" + className;
             string namespaceName = viewPath.Substring(viewPath.IndexOf(ViewModelPreferences.ViewModelAssembly));
@@ -95,7 +109,7 @@ namespace NMG.Core.Generator
                                                          ConvertToArrayList(fieldNames),
                                                          ConvertToArrayList(methodNames), 
                                                          ConvertToArrayList(detailList),
-                                                         ConvertToArrayList(listNames)
+                                                         genListNames
                                                      );
             source = ViewModelClassTemplate.Transform(classArgument);
             WriteToFile(className,source,saveViewModelPath);
