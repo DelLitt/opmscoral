@@ -28,13 +28,20 @@ namespace AppFrame.DataLayer
         }
         private bool isUsingQuery = false;
         private IList<ICriterion> where = new List<ICriterion>();
-        private IDictionary<Expression<Func<T, object>>,<Expression<Func<string,Order>>> order = new List<Expression<Func<T, object>>>();
+        private IDictionary<Expression<Func<T, object>>,Func<string,Order>> order = new Dictionary<Expression<Func<T, object>>, Func<string, Order>>();
         
-        public ObjectCriteria() {}
-        
+
+        public ObjectCriteria()
+        {
+            
+        }
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+
         public void ClearAllCriteria()
         {
             where.Clear();
+            order.Clear();
         }
         
         public ObjectCriteria<T> AddCriteria(Expression<Func<T, bool>> func)
@@ -63,9 +70,9 @@ namespace AppFrame.DataLayer
             return this;
         }
 
-        public ObjectCriteria<T> AddOrder(Expression<Func<T,object>> func)
+        public ObjectCriteria<T> AddOrder(Expression<Func<T,object>> func,Func<string,Order> orderType)
         {
-            order.Add(func);
+            order.Add(func,orderType);
             return this;
         }
 
@@ -79,7 +86,7 @@ namespace AppFrame.DataLayer
             return where;
         }
 
-        public IList<Expression<Func<T, object>>> GetOrder()
+        public IDictionary<Expression<Func<T, object>>, Func<string, Order>> GetOrder()
         {
             return order;
         }

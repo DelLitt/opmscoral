@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IEmployeeDayoffDao
     {
         /// <summary>
-        /// Find EmployeeDayoff object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of EmployeeDayoff</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         EmployeeDayoff FindById(object id);
         
         /// <summary>
-        /// Add EmployeeDayoff to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         EmployeeDayoff Add(EmployeeDayoff data);
         
         /// <summary>
-        /// Update EmployeeDayoff to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(EmployeeDayoff data);
         
         /// <summary>
-        /// Delete EmployeeDayoff from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(EmployeeDayoff data);
         
         /// <summary>
-        /// Delete EmployeeDayoff from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all EmployeeDayoff from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<EmployeeDayoff> FindAll(LinqCriteria<EmployeeDayoff> criteria);
+
+        IList<EmployeeDayoff> FindAll(ObjectCriteria<EmployeeDayoff> criteria);
+		
+        object FindFirst(ObjectCriteria<EmployeeDayoff> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<EmployeeDayoff> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<EmployeeDayoff> criteria);
+
         /// <summary>
-        /// Find all EmployeeDayoff from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<EmployeeDayoff> criteria);
+
         /// <summary>
-        /// Find min, max, count... EmployeeDayoff from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<EmployeeDayoff> criteria, IProjection type);
     }
 }
+

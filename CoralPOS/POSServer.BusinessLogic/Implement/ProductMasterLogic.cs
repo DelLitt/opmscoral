@@ -10,6 +10,7 @@ using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
+using AppFrame.DataLayer;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -93,7 +94,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<ProductMaster> FindAll(ObjectCriteria criteria)
+        public IList<ProductMaster> FindAll(ObjectCriteria<ProductMaster> criteria)
         {
             return ProductMasterDao.FindAll(criteria);
         }
@@ -103,7 +104,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria criteria)
+        public QueryResult FindPaging(ObjectCriteria<ProductMaster> criteria)
         {
             return ProductMasterDao.FindPaging(criteria);
         }
@@ -112,15 +113,15 @@ namespace POSServer.BusinessLogic.Implement
         /// 
         /// </summary>
         /// <param name="session"></param>
-        public void PreloadDefinition(ISession session)
+        public void PreloadDefinition(IFlowSession session)
         {
-            IList<Category> categories = CategoryDao.FindAll(null);
+            IList<Category> categories = CategoryDao.FindAll(new ObjectCriteria<Category>());
             session.Put(FlowConstants.CATEGORY_LIST,categories);
-            IList<ProductType> productTypes = ProductTypeDao.FindAll(null);
+            IList<ProductType> productTypes = ProductTypeDao.FindAll(new ObjectCriteria<ProductType>());
             session.Put(FlowConstants.PRODUCT_TYPE_LIST,productTypes);
-            IList<ExProductColor> productColors = ProductColorDao.FindAll(null);
+            IList<ExProductColor> productColors = ProductColorDao.FindAll(new ObjectCriteria<ExProductColor>());
             session.Put(FlowConstants.PRODUCT_COLOR_LIST, productColors);
-            IList<ExProductSize> productSizes = ProductSizeDao.FindAll(null);
+            IList<ExProductSize> productSizes = ProductSizeDao.FindAll(new ObjectCriteria<ExProductSize>());
             session.Put(FlowConstants.PRODUCT_SIZE_LIST, productSizes);
 
         }

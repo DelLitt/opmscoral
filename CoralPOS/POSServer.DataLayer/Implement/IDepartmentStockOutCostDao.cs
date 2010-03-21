@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IDepartmentStockOutCostDao
     {
         /// <summary>
-        /// Find DepartmentStockOutCost object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of DepartmentStockOutCost</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         DepartmentStockOutCost FindById(object id);
         
         /// <summary>
-        /// Add DepartmentStockOutCost to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         DepartmentStockOutCost Add(DepartmentStockOutCost data);
         
         /// <summary>
-        /// Update DepartmentStockOutCost to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(DepartmentStockOutCost data);
         
         /// <summary>
-        /// Delete DepartmentStockOutCost from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(DepartmentStockOutCost data);
         
         /// <summary>
-        /// Delete DepartmentStockOutCost from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all DepartmentStockOutCost from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<DepartmentStockOutCost> FindAll(LinqCriteria<DepartmentStockOutCost> criteria);
+
+        IList<DepartmentStockOutCost> FindAll(ObjectCriteria<DepartmentStockOutCost> criteria);
+		
+        object FindFirst(ObjectCriteria<DepartmentStockOutCost> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<DepartmentStockOutCost> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<DepartmentStockOutCost> criteria);
+
         /// <summary>
-        /// Find all DepartmentStockOutCost from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<DepartmentStockOutCost> criteria);
+
         /// <summary>
-        /// Find min, max, count... DepartmentStockOutCost from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<DepartmentStockOutCost> criteria, IProjection type);
     }
 }
+

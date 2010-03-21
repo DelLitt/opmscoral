@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IUserInfoDao
     {
         /// <summary>
-        /// Find UserInfo object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of UserInfo</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         UserInfo FindById(object id);
         
         /// <summary>
-        /// Add UserInfo to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         UserInfo Add(UserInfo data);
         
         /// <summary>
-        /// Update UserInfo to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(UserInfo data);
         
         /// <summary>
-        /// Delete UserInfo from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(UserInfo data);
         
         /// <summary>
-        /// Delete UserInfo from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all UserInfo from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<UserInfo> FindAll(LinqCriteria<UserInfo> criteria);
+
+        IList<UserInfo> FindAll(ObjectCriteria<UserInfo> criteria);
+		
+        object FindFirst(ObjectCriteria<UserInfo> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<UserInfo> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<UserInfo> criteria);
+
         /// <summary>
-        /// Find all UserInfo from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<UserInfo> criteria);
+
         /// <summary>
-        /// Find min, max, count... UserInfo from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<UserInfo> criteria, IProjection type);
     }
 }
+

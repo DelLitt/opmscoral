@@ -4,6 +4,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
+using System.Linq.Expressions;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.LambdaExtensions;
+using NHibernate.Linq.Expressions;
+using Spring.Data.NHibernate;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
 
@@ -84,7 +91,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<OtherTransactionLog> FindAll(ObjectCriteria criteria)
+        public IList<OtherTransactionLog> FindAll(ObjectCriteria<OtherTransactionLog> criteria)
         {
             return OtherTransactionLogDao.FindAll(criteria);
         }
@@ -94,7 +101,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria criteria)
+        public QueryResult FindPaging(ObjectCriteria<OtherTransactionLog> criteria)
         {
             return OtherTransactionLogDao.FindPaging(criteria);
         }

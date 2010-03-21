@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -46,27 +47,39 @@ namespace POSServer.DataLayer.Implement
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
         /// Find all Tax from database. No pagination.
         /// </summary>
         /// <param name="criteria"></param>
-        /// <returns></returns>
-        IList<Tax> FindAll(ObjectCriteria criteria);
-        
+        /// <returns></returns>		
+        IList<Tax> FindAll(LinqCriteria<Tax> criteria);
+
+        IList<Tax> FindAll(ObjectCriteria<Tax> criteria);
+		
+        object FindFirst(ObjectCriteria<Tax> criteria);
+
         /// <summary>
         /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<Tax> criteria);
+
         /// <summary>
-        /// Find min, max, count... Tax from database.
+        /// 
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        int Count(ObjectCriteria<Tax> criteria);
+
+        /// <summary>
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<Tax> criteria, IProjection type);
     }
 }
+

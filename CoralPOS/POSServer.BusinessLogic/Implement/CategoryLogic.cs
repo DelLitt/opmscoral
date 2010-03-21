@@ -5,9 +5,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
-using NHibernate.Criterion;
 using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
+using System.Linq.Expressions;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.LambdaExtensions;
+using NHibernate.Linq.Expressions;
+using Spring.Data.NHibernate;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
 
@@ -88,7 +94,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<Category> FindAll(ObjectCriteria criteria)
+        public IList<Category> FindAll(ObjectCriteria<Category> criteria)
         {
             return CategoryDao.FindAll(criteria);
         }
@@ -98,22 +104,16 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria criteria)
+        public QueryResult FindPaging(ObjectCriteria<Category> criteria)
         {
             return CategoryDao.FindPaging(criteria);
         }
 
-        public void LoadDefinition(IFlowSession session)
-        {
-            IList<Category> categories = CategoryDao.FindAll(null);
-            session.Put(FlowConstants.CATEGORY_LIST, categories);
-        }
-
-        public void Update(IList categoryList)
+        public void Update(IList productCategoryList)
         {
             var maxIdResult = CategoryDao.SelectSpecificType(null, Projections.Max("CategoryId"));
             long maxColorId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
-            foreach (Category category in categoryList)
+            foreach (Category category in productCategoryList)
             {
                 if (category.CategoryId > 0)
                 {
@@ -129,7 +129,13 @@ namespace POSServer.BusinessLogic.Implement
                     category.UpdateDate = DateTime.Now;
                     CategoryDao.Add(category);
                 }
-            } 
+            }
+        }
+
+        public void LoadDefinition(IFlowSession iFlowSession)
+        {
+            IList<Category> categories = CategoryDao.FindAll(new ObjectCriteria<Category>());
+            iFlowSession.Put(FlowConstants.CATEGORY_LIST, categories);
         }
     }
 }

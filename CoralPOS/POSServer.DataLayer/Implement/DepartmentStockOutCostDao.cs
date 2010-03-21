@@ -1,10 +1,13 @@
              
-             
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.LambdaExtensions;
+using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -89,116 +92,120 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<DepartmentStockOutCost> FindAll(ObjectCriteria criteria)
+        public IList<DepartmentStockOutCost> FindAll(LinqCriteria<DepartmentStockOutCost> criteria)
         {
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
-            try 
-            {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost));
-                if (criteria != null)
-                {
-                    IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                    if (map.Count > 0)
-                    {
-                        foreach (string key in map.Keys)
-                        {
-                            hibernateCriteria.CreateAlias(key, key);
-                        }
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-    
-                        foreach (string key in map.Keys)
-                        {
-                            SubObjectCriteria subCriteria = null;
-                            map.TryGetValue(key, out subCriteria);
-                            AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(), subCriteria.GetOrder());
-                        }
-                    } 
-                    else
-                    {
-                        AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-                    }
-                }
-                return hibernateCriteria.List<DepartmentStockOutCost>();
-            }
-            finally 
-            {
-                if (session != null)
-                {
-                    session.Disconnect();
-                }
-            }
+            return (IList<DepartmentStockOutCost>) HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                    {                                        
+                                        QueryHandler<DepartmentStockOutCost> handler = new QueryHandler<DepartmentStockOutCost>(session);
+                                        var result = handler.GetList(criteria);
+                                        return result;
+                                        
+                                    }
+                                    );
         }
-        
+
+        public IList<DepartmentStockOutCost> FindAll(ObjectCriteria<DepartmentStockOutCost> criteria)
+        {
+            return (IList<DepartmentStockOutCost>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList<DepartmentStockOutCost> result = new List<DepartmentStockOutCost>();
+                                    try
+                                    {
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost));
+                                        if (criteria != null)
+                                        {
+                                            PosContext.SetCriteria(hibernateCriteria, criteria);
+                                        }
+                                        result = hibernateCriteria.List<DepartmentStockOutCost>();
+                                        return result;
+                                    }
+                                    catch(Exception ex)
+                                    {
+                                        return result;
+                                    }
+                                }
+                                    );
+            
+            
+        }
+
+        public object FindFirst(ObjectCriteria<DepartmentStockOutCost> criteria)
+        {
+            return HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    object result = null;
+                                    try
+                                    {
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost));
+                                        if (criteria != null)
+                                        {
+                                            PosContext.SetCriteria(hibernateCriteria, criteria);
+                                        }
+                                        result = hibernateCriteria.List<DepartmentStockOutCost>()[0];
+                                        return result;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        return result;
+                                    }
+                                }
+                                    );
+
+
+        }
+
         /// <summary>
         /// Find all DepartmentStockOutCost from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria criteria)
+        public QueryResult FindPaging(ObjectCriteria<DepartmentStockOutCost> criteria)
         {
-            QueryResult queryResult = new QueryResult();
-            if (criteria == null)
-            {
-                return null;
-            }
+            return (QueryResult)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    QueryResult queryResult = new QueryResult();
+                                    if (criteria == null)
+                                    {
+                                        return queryResult;
+                                    }
+                                    int page = criteria.PageIndex;
+                                    int pageSize = criteria.PageSize;
+                                    queryResult.Page = page;
 
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
-            try 
-            {
-                int page = criteria.PageIndex;
-                int pageSize = criteria.PageSize;
-                queryResult.Page = page;
-    
-                int count = Count(criteria);
-                if (count == 0)
-                {
-                   return null;
-                }
-                queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
-    
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost));
-    
-                IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                if (map.Count > 0)
-                {
-                    foreach (string key in map.Keys)
-                    {
-                        hibernateCriteria.CreateAlias(key, key);
-                    }
-                    AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-    
-                    SubObjectCriteria subCriteria = null;
-                    foreach (string key in map.Keys)
-                    {
-                        map.TryGetValue(key, out subCriteria);
-                        AddCriteriaAndOrder(hibernateCriteria, subCriteria.GetWhere(), subCriteria.GetOrder());
-                    }
-                }
-                else
-                {
-                    AddCriteriaAndOrder(hibernateCriteria, criteria.GetWhere(), criteria.GetOrder());
-                }
-                hibernateCriteria.SetFirstResult((page - 1) * pageSize);
-                hibernateCriteria.SetMaxResults(pageSize);
-                IList list = hibernateCriteria.List();
-                if (list.Count == 0)
-                {
-                   return null;
-                }
-                else
-                {
-                   queryResult.Result = list;
-                }
-            }
-            finally 
-            {
-                if (session != null)
-                {
-                    session.Disconnect();
-                }
-            }
-         
-            return queryResult;
+                                    int count = Count(criteria);
+                                    if (count == 0)
+                                    {
+                                        return queryResult;
+                                    }
+
+            
+                                    queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
+
+                                    IList<DepartmentStockOutCost> result = new List<DepartmentStockOutCost>();
+                                    try
+                                    {
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost));
+                                        if (criteria != null)
+                                        {
+                                            PosContext.SetCriteria(hibernateCriteria, criteria);
+                                        }
+                                        hibernateCriteria.SetFirstResult((page - 1) * pageSize);
+                                        hibernateCriteria.SetMaxResults(pageSize);
+                                        IList list = hibernateCriteria.List();
+                                        queryResult.Result = list;
+                                        return queryResult;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        return queryResult;
+                                    }
+                                }
+                                    );
+            
         }
         
         /// <summary>
@@ -206,57 +213,40 @@ namespace POSServer.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        private int Count(ObjectCriteria criteria)
+        public int Count(ObjectCriteria<DepartmentStockOutCost> criteria)
         {
-           
-            ISession session = HibernateTemplate.SessionFactory.OpenSession();
-            try 
-            {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost)).SetProjection(Projections.RowCount()); ;
-                if (criteria != null)
-                {
-                    IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                    if (map.Count > 0)
-                    {
-                        foreach (string key in map.Keys)
-                        {
-                            hibernateCriteria.CreateAlias(key, key);
-                        }
-                        foreach (ICriterion criterion in criteria.GetWhere())
-                        {
-                            hibernateCriteria.Add(criterion);
-                        }
-    
-                        SubObjectCriteria subCriteria;
-                        foreach (string key in map.Keys)
-                        {
-                            map.TryGetValue(key, out subCriteria);
-                            foreach (ICriterion criterion in subCriteria.GetWhere())
-                            {
-                                hibernateCriteria.Add(criterion);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (ICriterion criterion in criteria.GetWhere())
-                        {
-                            hibernateCriteria.Add(criterion);
-                        }
-                    }
-                }
-                return ((int)hibernateCriteria.List()[0]);
-            }
-            finally 
-            {
-                if (session != null)
-                {
-                    session.Disconnect();
-                }
-            }
+
+            return (int)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    int result = 0;
+                                    try
+                                    {
+                                        ICriteria hibernateCriteria =
+                                            session.CreateCriteria(typeof (DepartmentStockOutCost)).SetProjection(Projections.RowCount());
+                                        if (criteria != null)
+                                        {
+                                            PosContext.SetCriteria(hibernateCriteria, criteria);
+                                        }
+                                        result = hibernateCriteria.List<int>()[0];
+                                        return result;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        return result;
+                                    }
+                                }
+                                    );
         }
+
         
-        public object SelectSpecificType(ObjectCriteria criteria, IProjection type)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public object SelectSpecificType(ObjectCriteria<DepartmentStockOutCost> criteria, IProjection type)
         {
 
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
@@ -265,35 +255,7 @@ namespace POSServer.DataLayer.Implement
                 ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockOutCost)).SetProjection(type); ;
                 if (criteria != null)
                 {
-                    IDictionary<string, SubObjectCriteria> map = criteria.GetSubCriteria();
-                    if (map.Count > 0)
-                    {
-                        foreach (string key in map.Keys)
-                        {
-                            hibernateCriteria.CreateAlias(key, key);
-                        }
-                        foreach (ICriterion criterion in criteria.GetWhere())
-                        {
-                            hibernateCriteria.Add(criterion);
-                        }
-
-                        SubObjectCriteria subCriteria;
-                        foreach (string key in map.Keys)
-                        {
-                            map.TryGetValue(key, out subCriteria);
-                            foreach (ICriterion criterion in subCriteria.GetWhere())
-                            {
-                                hibernateCriteria.Add(criterion);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (ICriterion criterion in criteria.GetWhere())
-                        {
-                            hibernateCriteria.Add(criterion);
-                        }
-                    }
+                    PosContext.SetCriteria(hibernateCriteria, criteria);
                 }
                 return (hibernateCriteria.List()[0]);
             }
@@ -305,24 +267,22 @@ namespace POSServer.DataLayer.Implement
                 }
             }
         }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="hibernateCriteria"></param>
-        /// <param name="where"></param>
-        /// <param name="orders"></param>
-        private void AddCriteriaAndOrder(ICriteria hibernateCriteria, IEnumerable<ICriterion> where, IEnumerable<Order> orders)
+
+        private void SetCriteria(ICriteria hibernateCriteria, ObjectCriteria<DepartmentStockOutCost> criteria)
         {
-            foreach (ICriterion criterion in where)
+            IList<ICriterion> criterionList = criteria.GetWhere();
+            foreach (ICriterion criterion in criterionList)
             {
                 hibernateCriteria.Add(criterion);
             }
-
-            foreach (Order order in orders)
+            foreach (KeyValuePair<Expression<Func<DepartmentStockOutCost, object>>, Func<string, Order>> pair in criteria.GetOrder())
             {
-                hibernateCriteria.AddOrder(order);
+                hibernateCriteria.AddOrder(pair.Key, pair.Value);
+
             }
+            if(criteria.MaxResult > 0)
+                hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }
     }
 }
+

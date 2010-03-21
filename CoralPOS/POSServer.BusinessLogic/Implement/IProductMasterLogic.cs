@@ -1,11 +1,12 @@
 			 
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.RoutedMessaging;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using Spring.Data.NHibernate;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -53,20 +54,20 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<ProductMaster> FindAll(ObjectCriteria criteria);
+        IList<ProductMaster> FindAll(ObjectCriteria<ProductMaster> criteria);
         
         /// <summary>
         /// Find all  ProductMaster from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
+        QueryResult FindPaging(ObjectCriteria<ProductMaster> criteria);
 
         /// <summary>
-        /// Preload definitions into session of flow
+        /// 
         /// </summary>
         /// <param name="session"></param>
-        void PreloadDefinition(ISession session);
+        void PreloadDefinition(IFlowSession session);
 
         /// <summary>
         /// 
@@ -74,6 +75,7 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="master"></param>
         /// <param name="colors"></param>
         /// <param name="sizes"></param>
+        /// <returns></returns>
         bool Save(ProductMaster master, IList colors, IList sizes);
 
         /// <summary>
@@ -82,5 +84,4 @@ namespace POSServer.BusinessLogic.Implement
         /// <returns></returns>
         IList LoadAllProductNames();
     }
-    
 }

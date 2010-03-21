@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface ITransactionDao
     {
         /// <summary>
-        /// Find Transaction object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of Transaction</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         Transaction FindById(object id);
         
         /// <summary>
-        /// Add Transaction to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         Transaction Add(Transaction data);
         
         /// <summary>
-        /// Update Transaction to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(Transaction data);
         
         /// <summary>
-        /// Delete Transaction from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(Transaction data);
         
         /// <summary>
-        /// Delete Transaction from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all Transaction from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<Transaction> FindAll(LinqCriteria<Transaction> criteria);
+
+        IList<Transaction> FindAll(ObjectCriteria<Transaction> criteria);
+		
+        object FindFirst(ObjectCriteria<Transaction> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<Transaction> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<Transaction> criteria);
+
         /// <summary>
-        /// Find all Transaction from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<Transaction> criteria);
+
         /// <summary>
-        /// Find min, max, count... Transaction from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<Transaction> criteria, IProjection type);
     }
 }
+

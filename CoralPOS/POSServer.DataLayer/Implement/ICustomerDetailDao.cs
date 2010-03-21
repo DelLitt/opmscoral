@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface ICustomerDetailDao
     {
         /// <summary>
-        /// Find CustomerDetail object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of CustomerDetail</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         CustomerDetail FindById(object id);
         
         /// <summary>
-        /// Add CustomerDetail to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         CustomerDetail Add(CustomerDetail data);
         
         /// <summary>
-        /// Update CustomerDetail to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(CustomerDetail data);
         
         /// <summary>
-        /// Delete CustomerDetail from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(CustomerDetail data);
         
         /// <summary>
-        /// Delete CustomerDetail from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all CustomerDetail from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<CustomerDetail> FindAll(LinqCriteria<CustomerDetail> criteria);
+
+        IList<CustomerDetail> FindAll(ObjectCriteria<CustomerDetail> criteria);
+		
+        object FindFirst(ObjectCriteria<CustomerDetail> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<CustomerDetail> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<CustomerDetail> criteria);
+
         /// <summary>
-        /// Find all CustomerDetail from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<CustomerDetail> criteria);
+
         /// <summary>
-        /// Find min, max, count... CustomerDetail from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<CustomerDetail> criteria, IProjection type);
     }
 }
+

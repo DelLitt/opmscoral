@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface ISupplierDao
     {
         /// <summary>
-        /// Find Supplier object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of Supplier</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         Supplier FindById(object id);
         
         /// <summary>
-        /// Add Supplier to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         Supplier Add(Supplier data);
         
         /// <summary>
-        /// Update Supplier to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(Supplier data);
         
         /// <summary>
-        /// Delete Supplier from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(Supplier data);
         
         /// <summary>
-        /// Delete Supplier from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all Supplier from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<Supplier> FindAll(LinqCriteria<Supplier> criteria);
+
+        IList<Supplier> FindAll(ObjectCriteria<Supplier> criteria);
+		
+        object FindFirst(ObjectCriteria<Supplier> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<Supplier> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<Supplier> criteria);
+
         /// <summary>
-        /// Find all Supplier from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<Supplier> criteria);
+
         /// <summary>
-        /// Find min, max, count... Supplier from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<Supplier> criteria, IProjection type);
     }
 }
+

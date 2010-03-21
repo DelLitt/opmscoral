@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IExProductColorDao
     {
         /// <summary>
-        /// Find ExProductColor object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of ExProductColor</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         ExProductColor FindById(object id);
         
         /// <summary>
-        /// Add ExProductColor to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         ExProductColor Add(ExProductColor data);
         
         /// <summary>
-        /// Update ExProductColor to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(ExProductColor data);
         
         /// <summary>
-        /// Delete ExProductColor from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(ExProductColor data);
         
         /// <summary>
-        /// Delete ExProductColor from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all ExProductColor from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<ExProductColor> FindAll(LinqCriteria<ExProductColor> criteria);
+
+        IList<ExProductColor> FindAll(ObjectCriteria<ExProductColor> criteria);
+		
+        object FindFirst(ObjectCriteria<ExProductColor> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<ExProductColor> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<ExProductColor> criteria);
+
         /// <summary>
-        /// Find all ExProductColor from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<ExProductColor> criteria);
+
         /// <summary>
-        /// Find min, max, count... ExProductColor from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<ExProductColor> criteria, IProjection type);
     }
 }
+

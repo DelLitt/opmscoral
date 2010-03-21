@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IMainftrDao
     {
         /// <summary>
-        /// Find Mainftr object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of Mainftr</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         Mainftr FindById(object id);
         
         /// <summary>
-        /// Add Mainftr to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         Mainftr Add(Mainftr data);
         
         /// <summary>
-        /// Update Mainftr to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(Mainftr data);
         
         /// <summary>
-        /// Delete Mainftr from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(Mainftr data);
         
         /// <summary>
-        /// Delete Mainftr from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all Mainftr from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<Mainftr> FindAll(LinqCriteria<Mainftr> criteria);
+
+        IList<Mainftr> FindAll(ObjectCriteria<Mainftr> criteria);
+		
+        object FindFirst(ObjectCriteria<Mainftr> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<Mainftr> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<Mainftr> criteria);
+
         /// <summary>
-        /// Find all Mainftr from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<Mainftr> criteria);
+
         /// <summary>
-        /// Find min, max, count... Mainftr from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<Mainftr> criteria, IProjection type);
     }
 }
+

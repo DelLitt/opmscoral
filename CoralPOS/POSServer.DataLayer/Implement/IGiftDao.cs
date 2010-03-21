@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IGiftDao
     {
         /// <summary>
-        /// Find Gift object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of Gift</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         Gift FindById(object id);
         
         /// <summary>
-        /// Add Gift to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         Gift Add(Gift data);
         
         /// <summary>
-        /// Update Gift to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(Gift data);
         
         /// <summary>
-        /// Delete Gift from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(Gift data);
         
         /// <summary>
-        /// Delete Gift from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all Gift from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<Gift> FindAll(LinqCriteria<Gift> criteria);
+
+        IList<Gift> FindAll(ObjectCriteria<Gift> criteria);
+		
+        object FindFirst(ObjectCriteria<Gift> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<Gift> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<Gift> criteria);
+
         /// <summary>
-        /// Find all Gift from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<Gift> criteria);
+
         /// <summary>
-        /// Find min, max, count... Gift from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<Gift> criteria, IProjection type);
     }
 }
+

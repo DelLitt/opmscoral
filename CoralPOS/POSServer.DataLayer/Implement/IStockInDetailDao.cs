@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IStockInDetailDao
     {
         /// <summary>
-        /// Find StockInDetail object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockInDetail</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         StockInDetail FindById(object id);
         
         /// <summary>
-        /// Add StockInDetail to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         StockInDetail Add(StockInDetail data);
         
         /// <summary>
-        /// Update StockInDetail to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(StockInDetail data);
         
         /// <summary>
-        /// Delete StockInDetail from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(StockInDetail data);
         
         /// <summary>
-        /// Delete StockInDetail from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all StockInDetail from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<StockInDetail> FindAll(LinqCriteria<StockInDetail> criteria);
+
+        IList<StockInDetail> FindAll(ObjectCriteria<StockInDetail> criteria);
+		
+        object FindFirst(ObjectCriteria<StockInDetail> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<StockInDetail> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<StockInDetail> criteria);
+
         /// <summary>
-        /// Find all StockInDetail from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<StockInDetail> criteria);
+
         /// <summary>
-        /// Find min, max, count... StockInDetail from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<StockInDetail> criteria, IProjection type);
     }
 }
+

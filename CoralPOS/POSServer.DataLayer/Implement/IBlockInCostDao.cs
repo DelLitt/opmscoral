@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IBlockInCostDao
     {
         /// <summary>
-        /// Find BlockInCost object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of BlockInCost</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         BlockInCost FindById(object id);
         
         /// <summary>
-        /// Add BlockInCost to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         BlockInCost Add(BlockInCost data);
         
         /// <summary>
-        /// Update BlockInCost to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(BlockInCost data);
         
         /// <summary>
-        /// Delete BlockInCost from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(BlockInCost data);
         
         /// <summary>
-        /// Delete BlockInCost from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all BlockInCost from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<BlockInCost> FindAll(LinqCriteria<BlockInCost> criteria);
+
+        IList<BlockInCost> FindAll(ObjectCriteria<BlockInCost> criteria);
+		
+        object FindFirst(ObjectCriteria<BlockInCost> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<BlockInCost> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<BlockInCost> criteria);
+
         /// <summary>
-        /// Find all BlockInCost from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<BlockInCost> criteria);
+
         /// <summary>
-        /// Find min, max, count... BlockInCost from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<BlockInCost> criteria, IProjection type);
     }
 }
+

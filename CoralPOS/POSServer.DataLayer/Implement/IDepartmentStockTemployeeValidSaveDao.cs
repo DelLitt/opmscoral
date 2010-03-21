@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IDepartmentStockTemployeeValidSaveDao
     {
         /// <summary>
-        /// Find DepartmentStockTemployeeValidSave object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of DepartmentStockTemployeeValidSave</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         DepartmentStockTemployeeValidSave FindById(object id);
         
         /// <summary>
-        /// Add DepartmentStockTemployeeValidSave to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         DepartmentStockTemployeeValidSave Add(DepartmentStockTemployeeValidSave data);
         
         /// <summary>
-        /// Update DepartmentStockTemployeeValidSave to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(DepartmentStockTemployeeValidSave data);
         
         /// <summary>
-        /// Delete DepartmentStockTemployeeValidSave from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(DepartmentStockTemployeeValidSave data);
         
         /// <summary>
-        /// Delete DepartmentStockTemployeeValidSave from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all DepartmentStockTemployeeValidSave from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<DepartmentStockTemployeeValidSave> FindAll(LinqCriteria<DepartmentStockTemployeeValidSave> criteria);
+
+        IList<DepartmentStockTemployeeValidSave> FindAll(ObjectCriteria<DepartmentStockTemployeeValidSave> criteria);
+		
+        object FindFirst(ObjectCriteria<DepartmentStockTemployeeValidSave> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<DepartmentStockTemployeeValidSave> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<DepartmentStockTemployeeValidSave> criteria);
+
         /// <summary>
-        /// Find all DepartmentStockTemployeeValidSave from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<DepartmentStockTemployeeValidSave> criteria);
+
         /// <summary>
-        /// Find min, max, count... DepartmentStockTemployeeValidSave from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<DepartmentStockTemployeeValidSave> criteria, IProjection type);
     }
 }
+

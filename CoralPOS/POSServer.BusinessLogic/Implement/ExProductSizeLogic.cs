@@ -10,6 +10,7 @@ using POSServer.BusinessLogic.Common;
 using Spring.Transaction.Interceptor;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
+using AppFrame.DataLayer;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -88,7 +89,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<ExProductSize> FindAll(ObjectCriteria criteria)
+        public IList<ExProductSize> FindAll(ObjectCriteria<ExProductSize> criteria)
         {
             return ExProductSizeDao.FindAll(criteria);
         }
@@ -98,14 +99,14 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria criteria)
+        public QueryResult FindPaging(ObjectCriteria<ExProductSize> criteria)
         {
             return ExProductSizeDao.FindPaging(criteria);
         }
 
         public void LoadDefinition(IFlowSession session)
         {
-            IList<ExProductSize> productSizes = ExProductSizeDao.FindAll(null);
+            IList<ExProductSize> productSizes = ExProductSizeDao.FindAll(new ObjectCriteria<ExProductSize>());
             session.Put(FlowConstants.PRODUCT_SIZE_LIST, productSizes);
         }
 

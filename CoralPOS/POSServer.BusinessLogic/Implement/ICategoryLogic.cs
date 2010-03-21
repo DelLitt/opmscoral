@@ -1,10 +1,11 @@
 			 
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using AppFrame.Base;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using Spring.Data.NHibernate;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -52,25 +53,17 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<Category> FindAll(ObjectCriteria criteria);
+        IList<Category> FindAll(ObjectCriteria<Category> criteria);
         
         /// <summary>
         /// Find all  Category from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
+        QueryResult FindPaging(ObjectCriteria<Category> criteria);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="session"></param>
-        void LoadDefinition(IFlowSession session);
+        void Update(IList ProductCategoryList);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="categoryList"></param>
-        void Update(IList categoryList);
+        void LoadDefinition(AppFrame.Base.IFlowSession iFlowSession);
     }
 }

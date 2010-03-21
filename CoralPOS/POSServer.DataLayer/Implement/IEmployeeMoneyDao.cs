@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IEmployeeMoneyDao
     {
         /// <summary>
-        /// Find EmployeeMoney object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of EmployeeMoney</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         EmployeeMoney FindById(object id);
         
         /// <summary>
-        /// Add EmployeeMoney to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         EmployeeMoney Add(EmployeeMoney data);
         
         /// <summary>
-        /// Update EmployeeMoney to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(EmployeeMoney data);
         
         /// <summary>
-        /// Delete EmployeeMoney from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(EmployeeMoney data);
         
         /// <summary>
-        /// Delete EmployeeMoney from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all EmployeeMoney from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<EmployeeMoney> FindAll(LinqCriteria<EmployeeMoney> criteria);
+
+        IList<EmployeeMoney> FindAll(ObjectCriteria<EmployeeMoney> criteria);
+		
+        object FindFirst(ObjectCriteria<EmployeeMoney> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<EmployeeMoney> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<EmployeeMoney> criteria);
+
         /// <summary>
-        /// Find all EmployeeMoney from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<EmployeeMoney> criteria);
+
         /// <summary>
-        /// Find min, max, count... EmployeeMoney from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<EmployeeMoney> criteria, IProjection type);
     }
 }
+

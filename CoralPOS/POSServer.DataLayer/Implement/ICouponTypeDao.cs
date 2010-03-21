@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface ICouponTypeDao
     {
         /// <summary>
-        /// Find CouponType object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of CouponType</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         CouponType FindById(object id);
         
         /// <summary>
-        /// Add CouponType to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         CouponType Add(CouponType data);
         
         /// <summary>
-        /// Update CouponType to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(CouponType data);
         
         /// <summary>
-        /// Delete CouponType from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(CouponType data);
         
         /// <summary>
-        /// Delete CouponType from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all CouponType from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<CouponType> FindAll(LinqCriteria<CouponType> criteria);
+
+        IList<CouponType> FindAll(ObjectCriteria<CouponType> criteria);
+		
+        object FindFirst(ObjectCriteria<CouponType> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<CouponType> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<CouponType> criteria);
+
         /// <summary>
-        /// Find all CouponType from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<CouponType> criteria);
+
         /// <summary>
-        /// Find min, max, count... CouponType from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<CouponType> criteria, IProjection type);
     }
 }
+

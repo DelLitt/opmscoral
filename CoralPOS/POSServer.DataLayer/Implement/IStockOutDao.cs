@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IStockOutDao
     {
         /// <summary>
-        /// Find StockOut object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of StockOut</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         StockOut FindById(object id);
         
         /// <summary>
-        /// Add StockOut to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         StockOut Add(StockOut data);
         
         /// <summary>
-        /// Update StockOut to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(StockOut data);
         
         /// <summary>
-        /// Delete StockOut from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(StockOut data);
         
         /// <summary>
-        /// Delete StockOut from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all StockOut from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<StockOut> FindAll(LinqCriteria<StockOut> criteria);
+
+        IList<StockOut> FindAll(ObjectCriteria<StockOut> criteria);
+		
+        object FindFirst(ObjectCriteria<StockOut> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<StockOut> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<StockOut> criteria);
+
         /// <summary>
-        /// Find all StockOut from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<StockOut> criteria);
+
         /// <summary>
-        /// Find min, max, count... StockOut from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<StockOut> criteria, IProjection type);
     }
 }
+

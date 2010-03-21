@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface IPurchaseOrdersLogDao
     {
         /// <summary>
-        /// Find PurchaseOrdersLog object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of PurchaseOrdersLog</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         PurchaseOrdersLog FindById(object id);
         
         /// <summary>
-        /// Add PurchaseOrdersLog to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         PurchaseOrdersLog Add(PurchaseOrdersLog data);
         
         /// <summary>
-        /// Update PurchaseOrdersLog to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(PurchaseOrdersLog data);
         
         /// <summary>
-        /// Delete PurchaseOrdersLog from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(PurchaseOrdersLog data);
         
         /// <summary>
-        /// Delete PurchaseOrdersLog from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all PurchaseOrdersLog from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<PurchaseOrdersLog> FindAll(LinqCriteria<PurchaseOrdersLog> criteria);
+
+        IList<PurchaseOrdersLog> FindAll(ObjectCriteria<PurchaseOrdersLog> criteria);
+		
+        object FindFirst(ObjectCriteria<PurchaseOrdersLog> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<PurchaseOrdersLog> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<PurchaseOrdersLog> criteria);
+
         /// <summary>
-        /// Find all PurchaseOrdersLog from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<PurchaseOrdersLog> criteria);
+
         /// <summary>
-        /// Find min, max, count... PurchaseOrdersLog from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<PurchaseOrdersLog> criteria, IProjection type);
     }
 }
+

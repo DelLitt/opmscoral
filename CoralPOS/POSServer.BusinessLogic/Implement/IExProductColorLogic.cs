@@ -1,10 +1,12 @@
 			 
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Base;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using Spring.Data.NHibernate;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
@@ -52,14 +54,14 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<ExProductColor> FindAll(ObjectCriteria criteria);
+        IList<ExProductColor> FindAll(ObjectCriteria<ExProductColor> criteria);
         
         /// <summary>
         /// Find all  ExProductColor from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
+        QueryResult FindPaging(ObjectCriteria<ExProductColor> criteria);
 
         /// <summary>
         /// 

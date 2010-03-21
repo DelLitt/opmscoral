@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
@@ -13,60 +14,72 @@ namespace POSServer.DataLayer.Implement
     public interface ISyncStatususDao
     {
         /// <summary>
-        /// Find SyncStatusus object by id. Return null if nothing is found
+        /// Find Tax object by id. Return null if nothing is found
         /// </summary>
-        /// <param name="id">Id of SyncStatusus</param>
+        /// <param name="id">Id of Tax</param>
         /// <returns></returns>
         SyncStatusus FindById(object id);
         
         /// <summary>
-        /// Add SyncStatusus to database.
+        /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         SyncStatusus Add(SyncStatusus data);
         
         /// <summary>
-        /// Update SyncStatusus to database.
+        /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Update(SyncStatusus data);
         
         /// <summary>
-        /// Delete SyncStatusus from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         int Delete(SyncStatusus data);
         
         /// <summary>
-        /// Delete SyncStatusus from database.
+        /// Delete Tax from database.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int DeleteById(object id);
-        
+
         /// <summary>
-        /// Find all SyncStatusus from database. No pagination.
+        /// Find all Tax from database. No pagination.
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>		
+        IList<SyncStatusus> FindAll(LinqCriteria<SyncStatusus> criteria);
+
+        IList<SyncStatusus> FindAll(ObjectCriteria<SyncStatusus> criteria);
+		
+        object FindFirst(ObjectCriteria<SyncStatusus> criteria);
+
+        /// <summary>
+        /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<SyncStatusus> FindAll(ObjectCriteria criteria);
-        
+        QueryResult FindPaging(ObjectCriteria<SyncStatusus> criteria);
+
         /// <summary>
-        /// Find all SyncStatusus from database. Has pagination.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
-        
+        int Count(ObjectCriteria<SyncStatusus> criteria);
+
         /// <summary>
-        /// Find min, max, count... SyncStatusus from database.
+        /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria criteria, IProjection type); 
+        object SelectSpecificType(ObjectCriteria<SyncStatusus> criteria, IProjection type);
     }
 }
+
