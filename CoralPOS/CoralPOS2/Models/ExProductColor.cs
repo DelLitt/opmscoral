@@ -96,5 +96,6 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
+        public virtual bool IsSelected { get; set; }
  }
 }
