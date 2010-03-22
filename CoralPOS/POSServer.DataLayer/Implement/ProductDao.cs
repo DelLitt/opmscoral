@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -155,6 +156,20 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
+        }
+
+        public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<Product> criteria,Func<Product,TClass> subProp)
+        {
+            return (IList<TClass>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    QueryHandler<Product> handler = new QueryHandler<Product>(session);
+                                    IList<Product> result = handler.GetList(criteria);
+                                    var list = result.Select(subProp);
+                                    return list;
+
+                                }
+                                    );
         }
 
         /// <summary>

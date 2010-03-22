@@ -61,5 +61,14 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<Product> criteria);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        IList GetColorsWithProductName(string productName);
+
+        IList GetSizesWithProductName(string productName);
     }
 }

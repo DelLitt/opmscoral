@@ -55,7 +55,6 @@ namespace AppFrame.DataLayer
             foreach (var criterion in criteria.Order)
             {
                 query = query.OrderBy(criterion);
-
             }
 
             return query.ToList();

@@ -8,20 +8,31 @@ using System.Text;
 using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
     public interface IProductPropertiesViewModel : IScreenNode
     {
         #region Fields
+        IList ProductColorList { get; set; }
+        IList ProductSizeList { get; set; }
+        IList ExtraProductColorList { get; set; }
+        IList ExtraProductSizeList { get; set; }
+        IList SelectedProductColors { get; set; }
+        IList SelectedProductSizes { get; set; }
+        IList ExtraSelectedProductColors { get; set; }
+        IList ExtraSelectedProductSizes { get; set; }
+        IExProductColorLogic ProductColorLogic { get; set; }
+        IExProductSizeLogic ProductSizeLogic { get; set; }
+        IProductLogic ProductLogic { get; set; }
 			#endregion
 		
 		#region Methods
-		        
-        void button1();
-        
-		        
-        void button2();
+
+        void Confirm();
+
+        void Cancel();
         
 			#endregion
     }

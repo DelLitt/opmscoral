@@ -19,6 +19,13 @@ namespace AppFrame.Utils
             return (T) obj;
         }
 
+        /// <summary>
+        /// Add with distinc values
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="destList"></param>
+        /// <param name="srcList"></param>
+        /// <param name="propertyName"></param>
         public static void AddToList<TClass>(IList destList, Collection<TClass> srcList, string propertyName)
         {
             foreach (TClass compareObj in srcList)
@@ -42,6 +49,26 @@ namespace AppFrame.Utils
             }
         }
 
+        /// <summary>
+        /// Add with distinc values
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="destList"></param>
+        /// <param name="srcList"></param>
+        /// <param name="func"></param>
+        public static void AddToList<TClass>(IList destList, Collection<TClass> srcList, Func<TClass,string> func)
+        {
+            string propName = func.Method.ReturnType.Name;
+            AddToList(destList,srcList,propName);
+        }
+
+        /// <summary>
+        /// Add with distinc values
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="destList"></param>
+        /// <param name="srcList"></param>
+        /// <param name="propertyName"></param>
         public static void AddToList<TClass>(IList destList, IList<TClass> srcList, string propertyName)
         {
             foreach (TClass compareObj in srcList)
@@ -65,6 +92,13 @@ namespace AppFrame.Utils
             }
         }
 
+        /// <summary>
+        /// Remove with distinc values
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="destList"></param>
+        /// <param name="srcList"></param>
+        /// <param name="propertyName"></param>
         public static void RemoveFromList<TClass>(IList destList, IList<TClass> srcList, string propertyName)
         {
             foreach (TClass compareObj in srcList)

@@ -1,8 +1,10 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -104,6 +106,30 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<Product> criteria)
         {
             return ProductDao.FindPaging(criteria);
+        }
+
+        public IList GetColorsWithProductName(string productName)
+        {
+            IList result = new ArrayList();
+            LinqCriteria<Product> prdCrit = new LinqCriteria<Product>();
+            prdCrit.AddCriteria(prd => prd.ProductMaster.ProductName.Equals(productName));
+            
+            IList<ExProductColor> productColor =ProductDao.FindAllSubProperty(prdCrit,prd => prd.ProductColor);
+            
+            ObjectUtility.AddToList(result,productColor,"ColorName");
+            return result;
+        }
+
+        public IList GetSizesWithProductName(string productName)
+        {
+            IList result = new ArrayList();
+            LinqCriteria<Product> prdCrit = new LinqCriteria<Product>();
+            prdCrit.AddCriteria(prd => prd.ProductMaster.ProductName.Equals(productName));
+
+            IList<ExProductSize> productColor = ProductDao.FindAllSubProperty(prdCrit, prd => prd.ProductSize);
+
+            ObjectUtility.AddToList(result, productColor, "SizeName");
+            return result;
         }
     }
 }
