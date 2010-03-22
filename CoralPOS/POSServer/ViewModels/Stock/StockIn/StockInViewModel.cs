@@ -171,7 +171,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 		        
         public void Stop()
         {
-            
+           Flow.End(); 
         }
 		        
         public void CreateNewProductMaster()
