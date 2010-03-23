@@ -16,7 +16,7 @@
                 <RowDefinition Height="175.999*"></RowDefinition>
                 <RowDefinition Height="271.97*"></RowDefinition>
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" />
                     <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" />

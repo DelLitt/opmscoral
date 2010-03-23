@@ -39,8 +39,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
-		                
-        string ProductMaster
+
+        CoralPOS.Models.ProductMaster ProductMaster
         {
             get;
             set;            

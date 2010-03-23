@@ -27,6 +27,7 @@ namespace POSServer.ViewModels.Dialogs
         IExProductColorLogic ProductColorLogic { get; set; }
         IExProductSizeLogic ProductSizeLogic { get; set; }
         IProductLogic ProductLogic { get; set; }
+        event EventHandler<ProductEventArgs> ConfirmEvent;
 			#endregion
 		
 		#region Methods

@@ -334,7 +334,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils\StockInHelper.cs" />
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ProductEventArgs.cs" />
     <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />

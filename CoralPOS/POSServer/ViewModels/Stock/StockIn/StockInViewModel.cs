@@ -17,6 +17,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.Utils;
 using POSServer.ViewModels.Dialogs;
 
 
@@ -90,8 +91,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             }
         }
 		        
-        private string _productMaster;
-        public string ProductMaster
+        private CoralPOS.Models.ProductMaster _productMaster;
+        public CoralPOS.Models.ProductMaster ProductMaster
         {
             get
             {
@@ -121,16 +122,16 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
 		#region List use to fetch object for view
 		        
-        private IList _productMasterList;
+        private IList _productMasterDetailList;
         public IList ProductMasterList
         {
             get
             {
-                return _productMasterList;
+                return _productMasterDetailList;
             }
             set
             {
-                _productMasterList = value;
+                _productMasterDetailList = value;
                 NotifyOfPropertyChange(() => ProductMasterList);
             }
         }
@@ -138,17 +139,17 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
 		#region List which just using in Data Grid
 		        
-        private IList _stockInList;
-        public IList StockInList
+        private IList _stockInDetailList;
+        public IList StockInDetailList
         {
             get
             {
-                return _stockInList;
+                return _stockInDetailList;
             }
             set
             {
-                _stockInList = value;
-                NotifyOfPropertyChange(() => StockInList);
+                _stockInDetailList = value;
+                NotifyOfPropertyChange(() => StockInDetailList);
             }
         }
 				#endregion
@@ -189,17 +190,75 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
             ProductMasterList = list as IList;
+            _stockInDetailList = new ArrayList();
         }
         public void OpenProperty()
         {
             var screen = _startViewModel.ServiceLocator.GetInstance<IProductPropertiesViewModel>("IProductPropertiesViewModel");
-            screen.ProductName = ProductMaster;
+            screen.ProductName = ProductMaster.ProductName;
             screen.Setup();
+            screen.ConfirmEvent += new EventHandler<ProductEventArgs>(screen_ConfirmEvent);
             _startViewModel.ShowDialog(screen);
         }
+
+        void screen_ConfirmEvent(object sender, ProductEventArgs e)
+        {
+            CreateProductIdForInput(e.ProductColorList, e.ProductSizeList);
+        }
+
+        private void CreateProductIdForInput(IList colorList, IList sizeList)
+        {
+            
+            var productMaster = ProductMaster;
+            IList<Product> products = StockInHelper.CreateProduct(productMaster, colorList, sizeList);
+            foreach (Product newProduct in products)
+            {
+                    bool isFound = CheckProductInStockInDetailList(newProduct); 
+                    if(isFound) continue;
+
+                    string inputPrice = string.IsNullOrEmpty(InputPrice) ? "0" : InputPrice;
+                    StockInDetail newDetail = new StockInDetail{
+                            Product = newProduct,
+                            CreateDate = DateTime.Now,
+                            UpdateDate = DateTime.Now,
+                            CreateId = "admin",
+                            UpdateId = "admin",
+                            Quantity = 0,
+                            Price = Int64.Parse(inputPrice)
+                        };
+                    string price = string.IsNullOrEmpty(Price) ? "0" : Price;
+                    string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
+                    
+                    MainPrice newPrice = new MainPrice
+                                             {
+                                                Price = Int64.Parse(price),
+                                                WholeSalePrice = Int64.Parse(wholesaleprice)
+                                             };
+                    MainPricePK newPricePK = new MainPricePK
+                                                 {
+                                                     DepartmentId = 0,
+                                                     ProductMasterId = productMaster.ProductMasterId
+                                                 };
+
+                    newPrice.MainPricePK =newPricePK;
+                    newDetail.MainPrice = newPrice;
+
+                    IList list = new ArrayList(_stockInDetailList);
+                    list.Add(newDetail);
+                    StockInDetailList = list;
+                
+            }
+        }
+
+        private bool CheckProductInStockInDetailList(Product product)
+        {
+            foreach (StockInDetail inDetail in _stockInDetailList)
+            {
+                if(inDetail.Product.ProductId.Equals(product.ProductId)) return true;
+            }
+            return false;
+        }
+    }
         #endregion
 		
-        
-        
-    }
 }

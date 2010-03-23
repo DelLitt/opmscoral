@@ -120,9 +120,9 @@ namespace POSServer.ViewModels.Dialogs
         public IExProductColorLogic ProductColorLogic { get; set; }
         public IExProductSizeLogic ProductSizeLogic { get; set; }
         public IProductLogic ProductLogic { get; set; }
+        public event EventHandler<ProductEventArgs> ConfirmEvent;
 
-
-		#endregion
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion
@@ -155,6 +155,10 @@ namespace POSServer.ViewModels.Dialogs
 
         public void Confirm()
         {
+            ProductEventArgs eventArgs = new ProductEventArgs();
+            eventArgs.ProductColorList = SelectedProductColors;
+            eventArgs.ProductSizeList = SelectedProductSizes;
+            if(ConfirmEvent!=null) ConfirmEvent(this, eventArgs);
             Shutdown();
         }
 
@@ -195,7 +199,7 @@ namespace POSServer.ViewModels.Dialogs
         }
         public void AddToAvailList(int listType,KeyEventArgs eventArgs)
         {
-            if(eventArgs.Key == Key.OemPlus)
+            if(eventArgs.Key == Key.OemPlus || eventArgs.Key == Key.Add)
             {
                 if(listType == 1)
                 {

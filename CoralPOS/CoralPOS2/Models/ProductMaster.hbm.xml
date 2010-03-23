@@ -37,6 +37,6 @@
     </many-to-one>
     <many-to-one update="false" insert="false" class="ProductUnit" name="ProductUnit" >
       <column name="UNIT_ID" />
-    </many-to-one>
+    </many-to-one>    
   </class>
 </hibernate-mapping>

@@ -11,7 +11,7 @@
         <local:RowNumberConverter x:Key="rowColorNumberConverter" />
         <local:RowNumberConverter x:Key="rowSizeNumberConverter" />
     </UserControl.Resources>
-    <Grid>
+    <Grid Opacity="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330*"></ColumnDefinition>
             <ColumnDefinition Width="70*"></ColumnDefinition>            
@@ -86,13 +86,13 @@
         </Grid>
         <Button Grid.Column="1" Height="51" Margin="9,6,9,0" Name="Confirm" VerticalAlignment="Top" TabIndex="5">XÁC NHẬN</Button>
         <Button Height="51" Margin="9,63,9,0" Name="Cancel" VerticalAlignment="Top" Grid.Column="1" TabIndex="6">BỎ QUA</Button>
-                <ListBox Height="129" Margin="0,0,0,-129" 
+                <ListBox Height="155" Margin="0,0,0,-155" 
                  Name="ExtraProductColorList" 
                  VerticalAlignment="Bottom" Visibility="Hidden" SelectionMode="Extended" 
                  lbe:ListBoxExtension.SelectedItemsSource="{Binding ExtraSelectedProductColors}" 
                  RoutedMessaging:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(1,$eventArgs)]"                            
                  DisplayMemberPath="ColorName" HorizontalAlignment="Left" Width="219.037" FontSize="13" />
-                 <ListBox Height="129" Margin="219,0,0,-129" Name="ExtraProductSizeList" VerticalAlignment="Bottom" Visibility="Hidden"
+                 <ListBox Height="155" Margin="219,0,0,-155" Name="ExtraProductSizeList" VerticalAlignment="Bottom" Visibility="Hidden"
                  SelectionMode="Extended" 
                  RoutedMessaging:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(2,$eventArgs)]"
                  lbe:ListBoxExtension.SelectedItemsSource="{Binding ExtraSelectedProductSizes}" DisplayMemberPath="SizeName" FontSize="13" />

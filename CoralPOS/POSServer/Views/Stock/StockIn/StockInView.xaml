@@ -16,28 +16,29 @@
             </Grid.RowDefinitions>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,54.583,214,0" Name="WholeSalePrice" VerticalAlignment="Top" Width="111.812" TabIndex="4" />
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="391.546,65.166,331.528,0" Name="label3" VerticalAlignment="Top">GIÁ SỈ</Label>
-            <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,96.657,214,69.993" Name="Price" Width="110.383" TabIndex="5" />
-            <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,95.546,548.224,71.104" Name="InputPrice" Width="141.097" TabIndex="3" />
-            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="391.546,0,331.528,67.771" Name="label4" VerticalAlignment="Bottom">GIÁ LẺ</Label>
-            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="10.394,0,0,67.771" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113.926">GIÁ NHẬP</Label>
+            <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,100,214,66" Name="Price" Width="110.383" TabIndex="5" />
+            <TextBox FontSize="14" HorizontalAlignment="Left" Margin="147.679,99,0,67" Name="InputPrice" Width="141.097" TabIndex="3" />
+            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="391.546,0,331.528,64" Name="label4" VerticalAlignment="Bottom">GIÁ LẺ</Label>
+            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="10.394,0,0,64" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113.926">GIÁ NHẬP</Label>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="textBox4" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="8">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="8" SelectionUnit="Cell">
                 <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />                                            
-                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" />
-                    <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80" />
+                    <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
+                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity}" SortMemberPath="Quantity" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price}" SortMemberPath="Price" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice}" SortMemberPath="MainPrice.WholeSalePrice" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price}" SortMemberPath="MainPrice.Price" />
                 </my:DataGrid.Columns>
             </my:DataGrid>
-            <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" />
-            <Button HorizontalAlignment="Right" Margin="0,55.55,6,67.771" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="6">MẶT HÀNG MỚI</Button>
-            <Button Height="39.581" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="7">CHỈNH SỬA</Button>
-            <TextBox FontSize="14" Height="37.774" Margin="147.679,0,214,14.028" Name="ProductMaster" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" />
-            <Button Margin="356.485,99,405.515,71.104" Name="OpenProperty">Button</Button>
+            <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" DisplayMemberPath="ProductName" />
+            <Button HorizontalAlignment="Right" Margin="0,0,3.333,58" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="6" Height="40" VerticalAlignment="Bottom">MẶT HÀNG MỚI</Button>
+            <Button Height="39" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="7">CHỈNH SỬA</Button>
+            <TextBox FontSize="14" Height="37.774" Margin="147.679,0,214,14.028" Name="ProductName" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" Text="{Binding ProductMaster.ProductName}"></TextBox>
+            <Button Margin="0,55,6,0" Name="OpenProperty" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="184" FontSize="14">NHẬP</Button>
         </Grid>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,20,0,0" Name="label1" VerticalAlignment="Top" Width="114.32">DIỄN TẢ</Label>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,64,0,0" Name="label2" VerticalAlignment="Top" Width="114.32">MÃ HÀNG</Label>
