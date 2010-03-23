@@ -5,6 +5,7 @@
     xmlns:Controls="clr-namespace:AppFrameControls.Controls;assembly=AppFrameControls"                      
     Title="Coral POS2" Height="748" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" 
      >
+    <Grid>
     <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"></ColumnDefinition>
@@ -20,7 +21,26 @@
                 <Controls:CrossFade />
             </Controls:TransitionPresenter.Transition>
         </Controls:TransitionPresenter>        
-    </Grid>
-
-
+    </Grid>    
+            <Grid x:Name="overlay"
+              Visibility="{Binding DialogModel, Converter={StaticResource collapsedWhenNullConverter}}"
+              Background="#55FFFFFF"
+              IsHitTestVisible="True">
+                <Grid Margin="2"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                    <Border
+                        BorderThickness="2"
+                        CornerRadius="4"
+                        Background="White"
+                        Margin="0 0 3 3"
+                        Padding="4">
+                        <Border.Effect>
+                            <DropShadowEffect />
+                        </Border.Effect>
+                        <ContentControl x:Name="DialogModel" />
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>    
 </Window>
