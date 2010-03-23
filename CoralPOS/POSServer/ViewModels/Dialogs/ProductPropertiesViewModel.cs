@@ -8,13 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using AppFrame.Base;
 using AppFrame.DataLayer;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using Microsoft.Windows.Controls;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 
@@ -48,45 +51,44 @@ namespace POSServer.ViewModels.Dialogs
         }
 		
 		#region Fields
-				#endregion
-		
-		#region List use to fetch object for view
-				#endregion
-		
-		#region List which just using in Data Grid
-				#endregion
-		
-		#region Methods
 
         public IList ProductColorList
         {
             get { return _productColorList; }
-            set { _productColorList = value; 
-                NotifyOfPropertyChange(()=>ProductColorList);
+            set
+            {
+                _productColorList = value;
+                NotifyOfPropertyChange(() => ProductColorList);
             }
         }
 
         public IList ProductSizeList
         {
             get { return _productSizeList; }
-            set { _productSizeList = value;
-            NotifyOfPropertyChange(() => ProductSizeList);
+            set
+            {
+                _productSizeList = value;
+                NotifyOfPropertyChange(() => ProductSizeList);
             }
         }
 
         public IList ExtraProductColorList
         {
             get { return _extraProductColorList; }
-            set { _extraProductColorList = value;
-            NotifyOfPropertyChange(() => ExtraProductColorList);
+            set
+            {
+                _extraProductColorList = value;
+                NotifyOfPropertyChange(() => ExtraProductColorList);
             }
         }
 
         public IList ExtraProductSizeList
         {
             get { return _extraProductSizeList; }
-            set { _extraProductSizeList = value;
-            NotifyOfPropertyChange(() => ExtraProductSizeList);
+            set
+            {
+                _extraProductSizeList = value;
+                NotifyOfPropertyChange(() => ExtraProductSizeList);
             }
         }
 
@@ -114,13 +116,29 @@ namespace POSServer.ViewModels.Dialogs
             set { _extraSelectedProductSizes = value; }
         }
 
+        public string ProductName { get; set; }
         public IExProductColorLogic ProductColorLogic { get; set; }
         public IExProductSizeLogic ProductSizeLogic { get; set; }
         public IProductLogic ProductLogic { get; set; }
 
-        public override void Initialize()
+
+		#endregion
+		
+		#region List use to fetch object for view
+				#endregion
+		
+		#region List which just using in Data Grid
+				#endregion
+		
+		#region Methods
+
+        
+
+        
+
+        public void Setup()
         {
-            string productName = Flow.Session.Get(FlowConstants.PRODUCT_NAME) as string;
+            string productName = ProductName;
             IList colors =ProductLogic.GetColorsWithProductName(productName);
             IList sizes = ProductLogic.GetSizesWithProductName(productName);
             IList<ExProductColor> extraColors = ProductColorLogic.FindAll(new ObjectCriteria<ExProductColor>());
@@ -129,18 +147,72 @@ namespace POSServer.ViewModels.Dialogs
             ProductSizeList = sizes;
             ExtraProductColorList = extraColors as IList;
             ExtraProductSizeList = extraSizes as IList;
+            SelectedProductColors = new ArrayList();
+            SelectedProductSizes = new ArrayList();
+            ExtraSelectedProductColors = new ArrayList();
+            ExtraSelectedProductSizes = new ArrayList();
         }
 
         public void Confirm()
         {
-            
+            Shutdown();
         }
 
         public void Cancel()
         {
+            Shutdown();
+        }
+        protected override void OnShutdown()
+        {
+            base.OnShutdown();
             
         }
 
+        public void ProgressKeyUp(object source,KeyEventArgs eventArgs)
+        {
+            DataGrid dataGrid = (DataGrid) source;
+            if(eventArgs.Key == Key.D0 || eventArgs.Key == Key.NumPad0)
+            {
+                dataGrid.SelectAll();
+            }
+            if ((eventArgs.Key >= Key.NumPad1 && eventArgs.Key <= Key.NumPad9)
+               || (eventArgs.Key >= Key.D1 && eventArgs.Key <= Key.D9))
+            {
+                KeyConverter converter = new KeyConverter();
+
+                try
+                {
+                    int select = Int32.Parse(converter.ConvertToString(eventArgs.Key));
+                    DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromItem(dataGrid.Items[select - 1]);
+                    row.IsSelected = !row.IsSelected;
+                }
+                catch (Exception exception)
+                {
+
+                }
+            }
+            
+        }
+        public void AddToAvailList(int listType,KeyEventArgs eventArgs)
+        {
+            if(eventArgs.Key == Key.OemPlus)
+            {
+                if(listType == 1)
+                {
+                    IList addList = ExtraSelectedProductColors;
+                    IList list = new ArrayList(_productColorList);
+                    ObjectUtility.AddToList<ExProductColor>(list,addList,pm => pm.ColorName);
+                    ProductColorList = list;
+                }
+                else
+                {
+                    IList addList = ExtraSelectedProductSizes;
+                    IList list = new ArrayList(_productSizeList);
+                    ObjectUtility.AddToList<ExProductSize>(list, addList, pm => pm.SizeName);
+                    ProductSizeList = list;
+                }
+            }
+        }
         #endregion
 		
         

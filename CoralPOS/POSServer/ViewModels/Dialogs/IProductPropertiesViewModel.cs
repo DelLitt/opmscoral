@@ -12,9 +12,10 @@ using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    public interface IProductPropertiesViewModel : IScreenNode
+    public interface IProductPropertiesViewModel : IScreenNode,IScreenEx
     {
         #region Fields
+        string ProductName { get; set; }
         IList ProductColorList { get; set; }
         IList ProductSizeList { get; set; }
         IList ExtraProductColorList { get; set; }
@@ -33,7 +34,8 @@ namespace POSServer.ViewModels.Dialogs
         void Confirm();
 
         void Cancel();
-        
+
+        void Setup();
 			#endregion
     }
 }

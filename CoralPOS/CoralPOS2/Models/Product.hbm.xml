@@ -21,15 +21,15 @@
     <property name="TaxId" column="TAX_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="ProductMaster" name="ProductMaster">
+    <many-to-one class="ProductMaster" name="ProductMaster" not-null="true">
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
 
-    <many-to-one update="false" insert="false" class="ExProductColor" name="ProductColor" property-ref="ColorId">
-      <column name="EX_FLD1" />
+    <many-to-one class="ExProductColor" name="ProductColor" not-null="true" lazy="false">
+      <column name="EX_FLD1" />      
     </many-to-one>
 
-    <many-to-one update="false" insert="false" class="ExProductSize" name="ProductSize" property-ref="SizeId">
+    <many-to-one class="ExProductSize" name="ProductSize" not-null="true"  lazy="false">
       <column name="EX_FLD2"  />
     </many-to-one>
   </class>

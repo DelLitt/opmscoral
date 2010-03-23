@@ -19,7 +19,7 @@ namespace AppFrame.WPF
             Object item = values[0];
             DataGrid grid = values[1] as DataGrid;
 
-            int index = grid.Items.IndexOf(item);
+            int index = grid.Items.IndexOf(item) + 1;
 
             return index.ToString();
         }

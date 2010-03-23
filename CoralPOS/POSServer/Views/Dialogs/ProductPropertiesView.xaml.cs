@@ -71,5 +71,29 @@ namespace POSServer.Views.Dialogs
                 this.Send("UpdateChosenList",addColorList);
             }
         }
+
+        private void AddNewColor_Click(object sender, RoutedEventArgs e)
+        {
+            if(ExtraProductColorList.Visibility == Visibility.Hidden)
+            {
+                ExtraProductColorList.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ExtraProductColorList.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void AddNewSize_Click(object sender, RoutedEventArgs e)
+        {
+            if (ExtraProductSizeList.Visibility == Visibility.Hidden)
+            {
+                ExtraProductSizeList.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ExtraProductSizeList.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

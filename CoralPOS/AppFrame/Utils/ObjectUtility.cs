@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Spring.Context;
+using System.Linq;
+using System.Linq.Expressions;
 using Spring.Context.Support;
 
 namespace AppFrame.Utils
@@ -56,9 +58,10 @@ namespace AppFrame.Utils
         /// <param name="destList"></param>
         /// <param name="srcList"></param>
         /// <param name="func"></param>
-        public static void AddToList<TClass>(IList destList, Collection<TClass> srcList, Func<TClass,string> func)
+        public static void AddToList<TClass>(IList destList, Collection<TClass> srcList, Expression<Func<TClass,string>> expression)
         {
-            string propName = func.Method.ReturnType.Name;
+            MemberExpression memberExpression = expression.Body as MemberExpression;
+            string propName = memberExpression.Member.Name;
             AddToList(destList,srcList,propName);
         }
 
@@ -167,6 +170,36 @@ namespace AppFrame.Utils
              }
              if (foundElement==null) return;
              srcList.Remove(foundElement);
+        }
+
+        public static void AddToList<T>(IList list, IList srcList, Expression<Func<T, string>> expression)
+        {
+            MemberExpression memberExpression = expression.Body as MemberExpression;
+            string propName = memberExpression.Member.Name;
+            AddToList<T>(list, srcList, propName);
+        }
+
+        public static void AddToList<TClass>(IList destList, IList srcList, string propertyName)
+        {
+            foreach (TClass compareObj in srcList)
+            {
+                bool isFound = false;
+                PropertyInfo info1 = compareObj.GetType().GetProperty(propertyName, typeof(string));
+                string value1 = (string)(info1.GetValue(compareObj, null));
+                foreach (var obj in destList)
+                {
+                    TClass destObj = (TClass)obj;
+                    PropertyInfo info2 = destObj.GetType().GetProperty(propertyName, typeof(string));
+                    string value2 = (string)(info2.GetValue(destObj, null));
+                    if (!string.IsNullOrEmpty(value1) && value1.Equals(value2))
+                    {
+                        isFound = true;
+                        break;
+                    }
+                }
+                if (isFound) continue;
+                destList.Add(compareObj);
+            }
         }
     }
 }

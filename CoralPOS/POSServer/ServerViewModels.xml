@@ -40,4 +40,12 @@
   <object id="IStockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />    
   </object>
+
+  <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductLogic" ref="IProductLogic" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+  </object>
+  
 </objects>

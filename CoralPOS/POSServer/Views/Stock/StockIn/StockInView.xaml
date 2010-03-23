@@ -33,10 +33,11 @@
                     <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80" />
                 </my:DataGrid.Columns>
             </my:DataGrid>
-            <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True" />
+            <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" />
             <Button HorizontalAlignment="Right" Margin="0,55.55,6,67.771" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="6">MẶT HÀNG MỚI</Button>
             <Button Height="39.581" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="7">CHỈNH SỬA</Button>
             <TextBox FontSize="14" Height="37.774" Margin="147.679,0,214,14.028" Name="ProductMaster" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" />
+            <Button Margin="356.485,99,405.515,71.104" Name="OpenProperty">Button</Button>
         </Grid>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,20,0,0" Name="label1" VerticalAlignment="Top" Width="114.32">DIỄN TẢ</Label>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,64,0,0" Name="label2" VerticalAlignment="Top" Width="114.32">MÃ HÀNG</Label>

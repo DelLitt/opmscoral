@@ -68,6 +68,18 @@ namespace AppFrame.Base
                 NotifyOfPropertyChange(() => ActiveMenu);
             }
         }
+        public IScreen DialogModel
+        {
+            get
+            {
+                return _dialogModel;
+            }
+            set
+            {
+                _dialogModel = value;
+                NotifyOfPropertyChange(()=>DialogModel);
+            }
+        }
         public IFlow ActiveFlow
         {
             get; set;
@@ -95,8 +107,15 @@ namespace AppFrame.Base
             T scr = screen as T;
             this.OpenScreen(scr);
         }
-        
-    
+
+        public void ShowDialog<T>(T screen) where T : IScreenEx
+        {
+            screen.WasShutdown +=
+                delegate { DialogModel = null; };
+
+            DialogModel = screen;
+        }
+
         /// <summary>
         /// Enter a flow with specific name, resume flow if flow has exist and start a new flow in vice versa
         /// </summary>

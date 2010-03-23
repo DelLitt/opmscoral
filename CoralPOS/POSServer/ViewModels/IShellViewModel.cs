@@ -11,6 +11,7 @@ namespace POSServer.ViewModels
     public interface IShellViewModel
     {
         void Open<T>() where T : IScreen;
+        void ShowDialog<U>(U screen) where U : IScreenEx;
         IServiceLocator ServiceLocator { get; set; }
         IScreen ActiveMenu { get; set; }
 
@@ -19,5 +20,6 @@ namespace POSServer.ViewModels
         bool ResumeFlow(string flowName);
         void LeaveFlow();
         void EnterChildFlow(string childFlowName, IFlow parentFlow);
+
     }
 }

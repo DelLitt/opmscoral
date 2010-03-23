@@ -17,6 +17,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.ViewModels.Dialogs;
 
 
 namespace POSServer.ViewModels.Stock.StockIn
@@ -188,10 +189,14 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
             ProductMasterList = list as IList;
-            LinqCriteria<CoralPOS.Models.ProductMaster> criteria = new LinqCriteria<CoralPOS.Models.ProductMaster>();
-            criteria.AddCriteria(item => item.ProductName.Contains("AO"));
         }
-
+        public void OpenProperty()
+        {
+            var screen = _startViewModel.ServiceLocator.GetInstance<IProductPropertiesViewModel>("IProductPropertiesViewModel");
+            screen.ProductName = ProductMaster;
+            screen.Setup();
+            _startViewModel.ShowDialog(screen);
+        }
         #endregion
 		
         

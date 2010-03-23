@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
+using AppFrame.Utils;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
@@ -163,10 +164,15 @@ namespace POSServer.DataLayer.Implement
             return (IList<TClass>)HibernateTemplate.Execute(
                                 delegate(ISession session)
                                 {
+                                    IList<TClass> res = new List<TClass>();
                                     QueryHandler<Product> handler = new QueryHandler<Product>(session);
-                                    IList<Product> result = handler.GetList(criteria);
-                                    var list = result.Select(subProp);
-                                    return list;
+                                    IList<Product> products = handler.GetList(criteria);
+                                    var list = products.Select(subProp);
+                                    foreach (TClass classe in list)
+                                    {
+                                        res.Add(classe);
+                                    }
+                                    return res;
 
                                 }
                                     );
