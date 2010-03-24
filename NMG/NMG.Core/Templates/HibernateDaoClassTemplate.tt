@@ -102,8 +102,7 @@ namespace <#= NamespaceName #>
         {
             return (IList<<#= ClassName #>>) HibernateTemplate.Execute(
                                 delegate(ISession session)
-                                    {
-                                        session.CreateCriteria(typeof (<#= ClassName #>)).AddOrder<<#= ClassName #>>(p => p.CreateId, Order.Asc);
+                                    {                                        
                                         QueryHandler<<#= ClassName #>> handler = new QueryHandler<<#= ClassName #>>(session);
                                         var result = handler.GetList(criteria);
                                         return result;

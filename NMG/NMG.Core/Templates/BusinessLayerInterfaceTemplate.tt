@@ -7,11 +7,13 @@
              processor="PropertyProcessor" #>
 <#@ property name="DaoNamespaceName" type="System.String" 
              processor="PropertyProcessor" #>			 
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.DataLayer;
+using NHibernate;
+using NHibernate.Criterion;
+using Spring.Data.NHibernate;
 using <#= ModelNamespaceName #>;
 using <#= DaoNamespaceName #>;
 
@@ -59,13 +61,13 @@ namespace <#= NamespaceName #>
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<<#= ClassName #>> FindAll(ObjectCriteria criteria);
+        IList<<#= ClassName #>> FindAll(ObjectCriteria<<#= ClassName #>> criteria);
         
         /// <summary>
         /// Find all  <#= ClassName #> from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria criteria);
+        QueryResult FindPaging(ObjectCriteria<<#= ClassName #>> criteria);
     }
 }
