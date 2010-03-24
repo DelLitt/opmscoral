@@ -82,6 +82,6 @@ namespace POSServer.BusinessLogic.Implement
         /// 
         /// </summary>
         /// <returns></returns>
-        IList LoadAllProductNames();
+        IList LoadAllProductMasterWIthType();
     }
 }

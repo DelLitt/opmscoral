@@ -286,7 +286,7 @@ namespace POSServer.DataLayer.Implement
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }
 
-        public IList FindAllProductNames()
+        public IList FindProductMasterWithTypes()
         {
             return (IList)HibernateTemplate.Execute(
                                        delegate(ISession session)
@@ -294,8 +294,12 @@ namespace POSServer.DataLayer.Implement
                                            PosContext context = new PosContext(session);
 
                                            var result = from productMaster in context.Session.Linq<ProductMaster>()
-                                                        select productMaster.ProductName;
+                                                        select productMaster;
                                            var resList = result.ToList();
+                                           foreach (ProductMaster master in resList)
+                                           {
+                                               string typeName = master.ProductType.TypeName;
+                                           }
                                            return resList;
                                        });
         }

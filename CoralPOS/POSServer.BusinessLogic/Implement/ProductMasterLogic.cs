@@ -184,9 +184,9 @@ namespace POSServer.BusinessLogic.Implement
             return true;
         }
 
-        public IList LoadAllProductNames()
+        public IList LoadAllProductMasterWIthType()
         {
-            return ProductMasterDao.FindAllProductNames();
+            return ProductMasterDao.FindProductMasterWithTypes();
         }
     }
 }

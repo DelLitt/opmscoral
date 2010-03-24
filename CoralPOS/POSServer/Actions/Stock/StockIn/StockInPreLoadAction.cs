@@ -16,7 +16,7 @@ namespace POSServer.Actions.Stock.StockIn
 
         public override void DoExecute()
         {
-            IList <CoralPOS.Models.ProductMaster> productMasters = ProductMasterLogic.FindAll(new ObjectCriteria<CoralPOS.Models.ProductMaster>());
+            IList  productMasters = ProductMasterLogic.LoadAllProductMasterWIthType();
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
             GoToNextNode();
         }

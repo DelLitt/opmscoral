@@ -81,7 +81,7 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria<ProductMaster> criteria, IProjection type);
 
-        IList FindAllProductNames();
+        IList FindProductMasterWithTypes();
     }
 }
 

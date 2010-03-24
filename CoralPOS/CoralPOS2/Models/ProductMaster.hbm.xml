@@ -20,22 +20,22 @@
     <property name="ManufacturerId" column="MANUFACTURER_ID" />
     <property name="PackagerId" column="PACKAGER_ID" />
     <property name="ProductName" column="PRODUCT_NAME" />
-    <property name="UnitId" column="UNIT_ID" />
+    <!--<property name="UnitId" column="UNIT_ID" />-->
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="ProductType" name="ProductType">
+    <many-to-one class="ProductType" name="ProductType" not-null="true">
       <column name="TYPE_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Category" name="Category">
+    <many-to-one class="Category" name="Category" not-null="true">
       <column name="CATEGORY_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Country" name="Country">
+    <many-to-one class="Country" name="Country">
       <column name="COUNTRY_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Supplier" name="Supplier">
+    <many-to-one class="Supplier" name="Supplier">
       <column name="SUPPLIER_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="ProductUnit" name="ProductUnit" >
+    <many-to-one class="ProductUnit" name="ProductUnit" >
       <column name="UNIT_ID" />
     </many-to-one>    
   </class>

@@ -24,7 +24,7 @@
             <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="8" SelectionUnit="Cell">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
                     <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
                     <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
@@ -35,10 +35,11 @@
                 </my:DataGrid.Columns>
             </my:DataGrid>
             <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" DisplayMemberPath="ProductName" />
-            <Button HorizontalAlignment="Right" Margin="0,0,3.333,58" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="6" Height="40" VerticalAlignment="Bottom">MẶT HÀNG MỚI</Button>
-            <Button Height="39" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="7">CHỈNH SỬA</Button>
-            <TextBox FontSize="14" Height="37.774" Margin="147.679,0,214,14.028" Name="ProductName" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" Text="{Binding ProductMaster.ProductName}"></TextBox>
-            <Button Margin="0,55,6,0" Name="OpenProperty" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="184" FontSize="14">NHẬP</Button>
+            <Button HorizontalAlignment="Right" Margin="0,0,3.333,58" Name="CreateNewProductMaster" Width="185.092" FontSize="14" TabIndex="7" Height="40" VerticalAlignment="Bottom">MẶT HÀNG MỚI</Button>
+            <Button Height="39" HorizontalAlignment="Right" Margin="0,0,6,12.221" Name="EditProductMaster" VerticalAlignment="Bottom" Width="182.425" FontSize="14" TabIndex="8">CHỈNH SỬA</Button>
+            <TextBox FontSize="14" Height="37.774" Margin="147.679,0,331.528,14.028" Name="ProductName" VerticalAlignment="Bottom" IsTabStop="False" IsReadOnly="True" Text="{Binding ProductMaster.ProductName}"></TextBox>
+            <Button Margin="0,55,6,0" Name="OpenProperty" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="184" FontSize="14" TabIndex="6">NHẬP</Button>
+            <Button FontSize="14" Height="45" HorizontalAlignment="Right" Margin="0,0,214,15" Name="PutPrice" VerticalAlignment="Bottom" Width="112">ÁP GIÁ</Button>
         </Grid>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,20,0,0" Name="label1" VerticalAlignment="Top" Width="114.32">DIỄN TẢ</Label>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,64,0,0" Name="label2" VerticalAlignment="Top" Width="114.32">MÃ HÀNG</Label>
