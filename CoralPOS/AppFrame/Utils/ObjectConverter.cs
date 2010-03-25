@@ -144,9 +144,9 @@ namespace AppFrame.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static List<T> ConvertGenericList<T>(IList list)
+        public static IList<T> ConvertTo<T>(IList list)
         {
-            List<T> retList = new List<T>();
+            IList<T> retList = new List<T>();
             if (list == null)
             {
                 return retList;
@@ -165,9 +165,9 @@ namespace AppFrame.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static List<T> ConvertGenericList<T>(BindingList<T> list)
+        public static IList<T> ConvertTo<T>(BindingList<T> list)
         {
-            List<T> retList = new List<T>();
+            IList<T> retList = new List<T>();
             if (list == null)
             {
                 return retList;
@@ -212,7 +212,7 @@ namespace AppFrame.Utils
 
         }
 
-        public static IList ConvertToNonGenericList<T>(BindingList<T> list)
+        public static IList ConvertFrom<T>(BindingList<T> list)
         {
             IList retList = new ArrayList();
             foreach (T t in list)
@@ -221,7 +221,7 @@ namespace AppFrame.Utils
             }
             return retList;
         }
-        public static IList ConvertToNonGenericList<T>(IList<T> list)
+        public static IList ConvertFrom<T>(IList<T> list)
         {
             IList retList = new ArrayList();
             foreach (T t in list)
@@ -278,7 +278,7 @@ namespace AppFrame.Utils
         public static DataTable ConvertToDataTable<T>(IList<T> list)
         {
             PropertyInfo[] properties = list.GetType().GetGenericArguments()[0].GetProperties();
-            DataTable dt = CreateDataTable(properties);
+            DataTable dt = ToDataTable(properties);
             if (list.Count > 0)
             {
                 foreach (T t in list)
@@ -289,10 +289,10 @@ namespace AppFrame.Utils
             }
             return dt;                 
         }
-        public static DataTable ConvertToDataTable(Object[] array)
+        public static DataTable ToDataTable(Object[] array)
         {
             PropertyInfo[] properties = array.GetType().GetElementType().GetProperties();
-            DataTable dt = CreateDataTable(properties);
+            DataTable dt = ToDataTable(properties);
             if (array.Length != 0)
             {
                 foreach (object o in array)
@@ -301,7 +301,7 @@ namespace AppFrame.Utils
             return dt;
         }
 
-        private static DataTable CreateDataTable(PropertyInfo[] properties)
+        private static DataTable ToDataTable(PropertyInfo[] properties)
         {
             DataTable dt = new DataTable();
             DataColumn dc = null;
@@ -333,7 +333,7 @@ namespace AppFrame.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static DataTable ConvertTo<T>(IList<T> list)
+        public static DataTable ToDataTable<T>(IList<T> list)
         {
             DataTable table = CreateTable<T>();
             Type entityType = typeof(T);
@@ -360,7 +360,7 @@ namespace AppFrame.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="rows"></param>
         /// <returns></returns>
-        public static IList<T> ConvertTo<T>(IList<DataRow> rows)
+        public static IList<T> ToList<T>(IList<DataRow> rows)
         {
             IList<T> list = null;
 
@@ -384,7 +384,7 @@ namespace AppFrame.Utils
         /// <typeparam name="T"></typeparam>
         /// <param name="table"></param>
         /// <returns></returns>
-        public static IList<T> ConvertTo<T>(DataTable table)
+        public static IList<T> ToList<T>(DataTable table)
         {
             if (table == null)
             {
@@ -398,7 +398,7 @@ namespace AppFrame.Utils
                 rows.Add(row);
             }
 
-            return ConvertTo<T>(rows);
+            return ToList<T>(rows);
         }
 
         /// <summary>
@@ -451,131 +451,6 @@ namespace AppFrame.Utils
 
             return table;
         }
-
-
-
-
-        /*protected IList GetListFromTable(DataTable Table, ICopy DummyObj, IList ObjList)
-     {
-         foreach (DataRow dr in Table.Rows) {
-             ObjList.Add(DummyObj.NewCopy(dr.ItemArray));
-         }
-         return ObjList;
-     }
-    
-     public interface ICopy
-     {
-         ICopy NewCopy(object[] @params);
-     }
-     public class Form1
-     {
-         List<elephant> ElephantList = new List<elephant>();
-         Collection GiraffeCollection = new Collection();
-         private class elephant : ICopy
-         {
-             private int _legs;
-             private bool _trunk;
-             public int Legs {
-                 get { return _legs; }
-                 set { _legs = value; }
-             }
-             public bool Trunk {
-                 get { return _trunk; }
-                 set { _trunk = false; }
-             }
-             public elephant()
-             {
-             }
-             public elephant(int legs, bool trunk)
-             {
-                 _legs = legs;
-                 _trunk = trunk;
-             }
-             public ICopy NewCopy(object[] @params)
-             {
-                 return new elephant(@params(0), @params(1));
-             }
-         }
-         private class giraffe : ICopy
-         {
-             private int _legs;
-             private string _neck;
-             private bool _tail;
-             public int Legs {
-                 get { return _legs; }
-                 set { _legs = value; }
-             }
-             public string Neck {
-                 get { return _neck; }
-                 set { _neck = false; }
-             }
-             public bool Tail {
-                 get { return _tail; }
-                 set { _tail = value; }
-             }
-             public giraffe()
-             {
-             }
-             public giraffe(int legs, string neck, bool tail)
-             {
-                 _legs = legs;
-                 _neck = neck;
-                 _tail = tail;
-             }
-             public ICopy NewCopy(object[] @params)
-             {
-                 return new giraffe(@params(0), @params(1), @params(2));
-             }
-         }
-         private DataTable ElephantTable = new DataTable();
-         private DataTable GiraffeTable = new DataTable();
-         private void makeElephantTable()
-         {
-             DataColumn dc0 = new DataColumn("Legs", typeof(int));
-             ElephantTable.Columns.Add(dc0);
-             DataColumn dc1 = new DataColumn("Trunk", typeof(bool));
-             ElephantTable.Columns.Add(dc1);
-             for (int i = 0; i <= 5; i++) {
-                 ElephantTable.Rows.Add(i, i % 2 == 0);
-             }
-             ElephantTable.AcceptChanges();
-         }
-         private void makeGiraffeTable()
-         {
-             DataColumn dc0 = new DataColumn("Legs", typeof(int));
-             GiraffeTable.Columns.Add(dc0);
-             DataColumn dc1 = new DataColumn("Neck", typeof(string));
-             GiraffeTable.Columns.Add(dc1);
-             DataColumn dc2 = new DataColumn("Tail", typeof(bool));
-             GiraffeTable.Columns.Add(dc2);
-             for (int i = 0; i <= 5; i++) {
-                 GiraffeTable.Rows.Add(i, "Long", i % 2 == 0);
-             }
-             GiraffeTable.AcceptChanges();
-         }
-         protected IList GetListFromTable(DataTable Table, ICopy DummyObj, IList ObjList)
-         {
-             foreach (DataRow dr in Table.Rows) {
-                 ObjList.Add(DummyObj.NewCopy(dr.ItemArray));
-             }
-             return ObjList;
-         }
-         private void // ERROR: Handles clauses are not supported in C# Button1_Click(object sender, System.EventArgs e)
-         {
-             makeElephantTable();
-             ElephantList = GetListFromTable(ElephantTable, new elephant(), ElephantList);
-             foreach (elephant item in ElephantList) {
-                 Debug.WriteLine(item.Legs.ToString + "|" + item.Trunk.ToString);
-             }
-             makeGiraffeTable();
-             GiraffeCollection = GetListFromTable(GiraffeTable, new giraffe(), GiraffeCollection);
-             foreach (giraffe item in GiraffeCollection) {
-                 Debug.WriteLine(item.Legs.ToString + "|" + item.Neck.ToString + "|" + item.Tail.ToString);
-             }
-         }
-     }*/
-
-
 
     }
 }

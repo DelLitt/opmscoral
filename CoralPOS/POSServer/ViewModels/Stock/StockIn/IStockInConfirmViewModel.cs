@@ -15,8 +15,8 @@ namespace POSServer.ViewModels.Stock.StockIn
     public interface IStockInConfirmViewModel : IScreenNode
     {
         #region Fields
-		                
-        string textBox4
+
+        DateTime CreateDate
         {
             get;
             set;            
@@ -27,6 +27,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+
+        IList StockInDetailList { get; set; }
 			#endregion
 		
 		#region Methods

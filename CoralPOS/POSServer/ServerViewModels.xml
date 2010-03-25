@@ -41,6 +41,10 @@
     <constructor-arg ref="IShellViewModel" />    
   </object>
 
+  <object id="IStockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
+
   <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
     <property name="ProductLogic" ref="IProductLogic" />

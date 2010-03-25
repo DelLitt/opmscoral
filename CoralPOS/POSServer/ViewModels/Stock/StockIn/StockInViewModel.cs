@@ -5,11 +5,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.DataLayer;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
@@ -168,7 +170,21 @@ namespace POSServer.ViewModels.Stock.StockIn
 		        
         public void Save()
         {
-            
+            CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
+                                                  {
+                                                      StockInType = 0,
+                                                      ConfirmFlg = 0,
+                                                      Description = Description,
+                                                      CreateDate = DateTime.Now,
+                                                      UpdateDate = DateTime.Now,
+                                                      CreateId = "admin",
+                                                      UpdateId = "admin",
+                                                      DelFlg = 0,
+                                                      ExclusiveKey = 0
+                                                  };
+            stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
+            GoToNextNode();
         }
 		        
         public void Stop()

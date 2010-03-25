@@ -9,17 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Common;
 
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-    [PerRequest(typeof(IStockInConfirmViewModel))]
+    
     public class StockInConfirmViewModel : PosViewModel,IStockInConfirmViewModel  
     {
 
@@ -30,18 +31,18 @@ namespace POSServer.ViewModels.Stock.StockIn
         }
 		
 		#region Fields
-		        
-        private string _textBox4;
-        public string textBox4
+
+        private DateTime _createDate;
+        public DateTime CreateDate
         {
             get
             {
-                return _textBox4;
+                return _createDate;
             }
             set
             {
-                _textBox4 = value;
-                NotifyOfPropertyChange(() => textBox4);
+                _createDate = value;
+                NotifyOfPropertyChange(() => CreateDate);
             }
         }
 		        
@@ -65,17 +66,17 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
 		#region List which just using in Data Grid
 		        
-        private IList _stockInList;
-        public IList StockInList
+        private IList _stockInDetailList;
+        public IList StockInDetailList
         {
             get
             {
-                return _stockInList;
+                return _stockInDetailList;
             }
             set
             {
-                _stockInList = value;
-                NotifyOfPropertyChange(() => StockInList);
+                _stockInDetailList = value;
+                NotifyOfPropertyChange(() => StockInDetailList);
             }
         }
 				#endregion
@@ -89,19 +90,30 @@ namespace POSServer.ViewModels.Stock.StockIn
 		        
         public void Back()
         {
-            
+            Flow.Back();
         }
 		        
         public void SaveConfirm()
         {
-            
+            GoToNextNode();
         }
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
+            Description = stockIn.Description;
+            StockInDetailList = ObjectConverter.ConvertFrom(stockIn.StockInDetails);
+            CreateDate = stockIn.CreateDate;
+
+        }
+
+        #endregion
 		
         
         
