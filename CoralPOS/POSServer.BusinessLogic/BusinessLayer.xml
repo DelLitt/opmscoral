@@ -299,6 +299,7 @@
     <property name="ProductDao" ref="IProductDao"/>
     <property name="StockInDetailDao" ref="IStockInDetailDao"/>
     <property name="MainStockDao" ref="IMainStockDao"/>
+    <property name="MainPriceDao" ref="IMainPriceDao"/>
   </object>
   	  
   <object id="IStockInDetailLogic" type="POSServer.BusinessLogic.Implement.StockInDetailLogic, POSServer.BusinessLogic">

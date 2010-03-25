@@ -67,7 +67,7 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual string ProductMasterId {
+        public virtual ProductMaster ProductMaster {
             get;
             set;
         }

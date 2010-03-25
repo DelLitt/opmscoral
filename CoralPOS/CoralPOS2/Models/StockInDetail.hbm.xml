@@ -15,7 +15,10 @@
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="Price" column="PRICE" />
-    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
+    <many-to-one class="ProductMaster" name="ProductMaster"                  
+                 column="PRODUCT_MASTER_ID">
+      <!--<column name="STOCK_IN_ID" />-->
+    </many-to-one>
     <property name="Quantity" column="QUANTITY" />
     <property name="SellPrice" column="SELL_PRICE" />
     <property name="StockInType" column="STOCK_IN_TYPE" />

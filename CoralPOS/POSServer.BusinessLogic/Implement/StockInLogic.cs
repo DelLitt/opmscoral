@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -35,6 +36,7 @@ namespace POSServer.BusinessLogic.Implement
         public IProductDao ProductDao { get; set; }
         public IStockInDetailDao StockInDetailDao { get; set; }
         public IMainStockDao MainStockDao { get; set; }
+        public IMainPriceDao MainPriceDao { get; set; }
         /// <summary>
         /// Find StockIn object by id. Return null if nothing is found
         /// </summary>
@@ -53,6 +55,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction()]
         public StockIn Add(StockIn data)
         {
+            IDictionary<string,MainPrice> prices = new Dictionary<string, MainPrice>();
             var maxIdResult = StockInDao.SelectSpecificType(null, Projections.Max("StockInId"));
             long nextStockInId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
             // add or update stock
@@ -100,7 +103,31 @@ namespace POSServer.BusinessLogic.Implement
                     currentStock.ExclusiveKey += 1;
                     MainStockDao.Update(currentStock);
                 }
+
+                // add price for update later
+                prices[inDetail.MainPrice.MainPricePK.ProductMasterId] = inDetail.MainPrice;
             }
+            
+            // update price if have
+            foreach (KeyValuePair<string, MainPrice> mainPrice in prices)
+            {
+                ObjectCriteria<MainPrice> findPrice = new ObjectCriteria<MainPrice>();
+                string productMasterId = mainPrice.Key;
+                findPrice.AddCriteria(
+                    price => price.MainPricePK.ProductMasterId == productMasterId);
+                MainPrice currentPrice = MainPriceDao.FindFirst(findPrice) as MainPrice;
+                if (currentPrice == null)
+                {
+                    MainPriceDao.Add(mainPrice.Value);
+                }
+                else
+                {
+                    currentPrice.Price = mainPrice.Value.Price;
+                    currentPrice.WholeSalePrice = mainPrice.Value.WholeSalePrice;
+                    MainPriceDao.Update(currentPrice);
+                }
+            }
+            
 
             return data;
         }

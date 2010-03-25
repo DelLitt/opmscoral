@@ -236,6 +236,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                     string inputPrice = string.IsNullOrEmpty(InputPrice) ? "0" : InputPrice;
                     StockInDetail newDetail = new StockInDetail{
                             Product = newProduct,
+                            ProductMaster = productMaster,
                             CreateDate = DateTime.Now,
                             UpdateDate = DateTime.Now,
                             CreateId = "admin",
