@@ -15,6 +15,7 @@ using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 
 
@@ -108,6 +109,10 @@ namespace POSServer.ViewModels.Stock.StockIn
             base.Initialize();
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             Description = stockIn.Description;
+            foreach (StockInDetail inDetail in stockIn.StockInDetails)
+            {
+                inDetail.StockIn = stockIn;
+            }
             StockInDetailList = ObjectConverter.ConvertFrom(stockIn.StockInDetails);
             CreateDate = stockIn.CreateDate;
 

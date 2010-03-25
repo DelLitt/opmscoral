@@ -25,6 +25,7 @@
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
+    <property name="StockInLogic" ref="IStockInLogic" />    
   </object>
   
 </objects>

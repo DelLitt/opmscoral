@@ -295,6 +295,10 @@
   	  
   <object id="IStockInLogic" type="POSServer.BusinessLogic.Implement.StockInLogic, POSServer.BusinessLogic">
     <property name="StockInDao" ref="IStockInDao"/>
+    <property name="ProductMasterDao" ref="IProductMasterDao"/>
+    <property name="ProductDao" ref="IProductDao"/>
+    <property name="StockInDetailDao" ref="IStockInDetailDao"/>
+    <property name="MainStockDao" ref="IMainStockDao"/>
   </object>
   	  
   <object id="IStockInDetailLogic" type="POSServer.BusinessLogic.Implement.StockInDetailLogic, POSServer.BusinessLogic">

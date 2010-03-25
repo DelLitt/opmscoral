@@ -15,5 +15,6 @@ namespace POSServer.Actions.Stock.StockIn
         IExProductSizeLogic ProductSizeLogic { get; set; }
         ICategoryLogic CategoryLogic { get; set; }
         IProductTypeLogic ProductTypeLogic { get; set; }
+        IStockInLogic StockInLogic { get; set; }
     }
 }

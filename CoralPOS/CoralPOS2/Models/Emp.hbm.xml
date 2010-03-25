@@ -18,7 +18,7 @@
     <property name="StartDate" column="START_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="EmployeeInfo" name="EmployeeInfo">
+    <many-to-one class="EmployeeInfo" name="EmployeeInfo">
       <column name="EMPLOYEE_ID" />
     </many-to-one>
   </class>

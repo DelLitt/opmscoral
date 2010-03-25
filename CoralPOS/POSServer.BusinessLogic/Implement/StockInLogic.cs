@@ -1,6 +1,7 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
@@ -30,7 +31,10 @@ namespace POSServer.BusinessLogic.Implement
                 _innerDao = value; 
             }
         }
-        
+        public IProductMasterDao ProductMasterDao { get; set; }
+        public IProductDao ProductDao { get; set; }
+        public IStockInDetailDao StockInDetailDao { get; set; }
+        public IMainStockDao MainStockDao { get; set; }
         /// <summary>
         /// Find StockIn object by id. Return null if nothing is found
         /// </summary>
@@ -46,10 +50,58 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        [Transaction(ReadOnly=false)]
+        [Transaction()]
         public StockIn Add(StockIn data)
         {
+            var maxIdResult = StockInDao.SelectSpecificType(null, Projections.Max("StockInId"));
+            long nextStockInId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            // add or update stock
+            var maxStockIdResult = MainStockDao.SelectSpecificType(null, Projections.Max("StockId"));
+            long nextStockId = maxStockIdResult != null ? Int64.Parse(maxStockIdResult.ToString()) + 1 : 1;
+
+
+            
+            data.StockInId = nextStockInId.ToString();
             StockInDao.Add(data);
+            foreach (StockInDetail inDetail in data.StockInDetails)
+            {
+                inDetail.StockInDetailPK.StockInId = nextStockInId.ToString();
+                Product current = ProductDao.FindById(inDetail.Product.ProductId);
+                if (current != null) inDetail.Product = current;
+                //StockInDetailDao.Add(inDetail);
+
+                ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
+                string productId = inDetail.Product.ProductId;
+                findStock.AddCriteria(stk => stk.Product.ProductId==productId);
+
+                MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
+                if(currentStock == null) // create new stock
+                {
+                   MainStock newStock = new MainStock
+                                            {
+                                                StockId = nextStockId++,
+                                                CreateDate = DateTime.Now,
+                                                UpdateDate = DateTime.Now,
+                                                CreateId = "admin",
+                                                UpdateId = "admin",
+                                                DelFlg = 0,
+                                                ExclusiveKey = 1,
+                                                Product = inDetail.Product,
+                                                ProductMaster = inDetail.Product.ProductMaster,
+                                                Quantity = inDetail.Quantity,
+                                                GoodQuantity = inDetail.Quantity
+                                            };
+                    MainStockDao.Add(newStock);
+                }
+                else // update current stock
+                {
+                    currentStock.Quantity += inDetail.Quantity;
+                    currentStock.GoodQuantity += inDetail.Quantity;
+                    currentStock.ExclusiveKey += 1;
+                    MainStockDao.Update(currentStock);
+                }
+            }
+
             return data;
         }
         

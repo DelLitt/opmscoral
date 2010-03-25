@@ -23,10 +23,10 @@
     <property name="Quantity" column="QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="StockOut" name="StockOut">
+    <many-to-one class="StockOut" name="StockOut">
       <column name="STOCK_OUT_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Product" name="Product">
+    <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
     </many-to-one>
   </class>

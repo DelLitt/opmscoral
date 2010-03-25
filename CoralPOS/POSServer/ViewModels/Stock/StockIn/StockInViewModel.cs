@@ -177,6 +177,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                       Description = Description,
                                                       CreateDate = DateTime.Now,
                                                       UpdateDate = DateTime.Now,
+                                                      StockInDate = DateTime.Now,
                                                       CreateId = "admin",
                                                       UpdateId = "admin",
                                                       DelFlg = 0,
@@ -242,6 +243,11 @@ namespace POSServer.ViewModels.Stock.StockIn
                             Quantity = 0,
                             Price = Int64.Parse(inputPrice)
                         };
+                    StockInDetailPK detailPK = new StockInDetailPK
+                                                   {
+                                                       ProductId = newProduct.ProductId
+                                                   };
+                    newDetail.StockInDetailPK = detailPK;
                     string price = string.IsNullOrEmpty(Price) ? "0" : Price;
                     string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
                     

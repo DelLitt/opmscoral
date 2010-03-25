@@ -23,7 +23,7 @@
     <property name="SupplierId" column="SUPPLIER_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="BlockIn" name="BlockIn">
+    <many-to-one class="BlockIn" name="BlockIn">
       <column name="BLOCK_ID" />
     </many-to-one>
   </class>

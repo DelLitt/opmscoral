@@ -25,11 +25,11 @@
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="DepartmentStockOut" name="DepartmentStockOut" property-ref="DepartmentStockOutPK">
+    <many-to-one class="DepartmentStockOut" name="DepartmentStockOut" property-ref="DepartmentStockOutPK">
       <column name="DEPARTMENT_ID" />
       <column name="STOCK_OUT_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Product" name="Product">
+    <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
     </many-to-one>
   </class>

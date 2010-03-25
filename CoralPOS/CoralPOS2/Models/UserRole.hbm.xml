@@ -5,7 +5,7 @@
       <key-property name="Roleid" type="Int64" column="ROLEID" />
       <key-property name="Userid" type="String" column="USERID" />
     </composite-id>
-    <many-to-one update="false" insert="false" class="Role" name="Role" />
-    <many-to-one update="false" insert="false" class="UserInfo" name="UserInfo" />
+    <many-to-one class="Role" name="Role" />
+    <many-to-one class="UserInfo" name="UserInfo" />
   </class>
 </hibernate-mapping>

@@ -291,16 +291,23 @@ namespace POSServer.DataLayer.Implement
             return (IList)HibernateTemplate.Execute(
                                        delegate(ISession session)
                                        {
-                                           PosContext context = new PosContext(session);
-
-                                           var result = from productMaster in context.Session.Linq<ProductMaster>()
-                                                        select productMaster;
-                                           var resList = result.ToList();
-                                           foreach (ProductMaster master in resList)
+                                           try
                                            {
-                                               string typeName = master.ProductType.TypeName;
+                                               PosContext context = new PosContext(session);
+
+                                               var result = from productMaster in context.Session.Linq<ProductMaster>()
+                                                            select productMaster;
+                                               var resList = result.ToList();
+                                               foreach (ProductMaster master in resList)
+                                               {
+                                                   string typeName = master.ProductType.TypeName;
+                                               }
+                                               return resList;
                                            }
-                                           return resList;
+                                           catch (Exception exception)
+                                           {
+                                               throw;
+                                           }
                                        });
         }
     }

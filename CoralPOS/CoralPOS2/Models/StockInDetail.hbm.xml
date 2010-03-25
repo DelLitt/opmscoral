@@ -15,16 +15,16 @@
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="Price" column="PRICE" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
     <property name="Quantity" column="QUANTITY" />
     <property name="SellPrice" column="SELL_PRICE" />
     <property name="StockInType" column="STOCK_IN_TYPE" />
-    <property name="UpdateDate" column="UPDATE_DATE" />
+    <property name="UpdateDate" column="UPDATE_DATE" />    
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="StockIn" name="StockIn">
+    <many-to-one class="StockIn" name="StockIn">
       <column name="STOCK_IN_ID" />
     </many-to-one>
-    <many-to-one update="false" insert="false" class="Product" name="Product">
+    <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
     </many-to-one>
   </class>

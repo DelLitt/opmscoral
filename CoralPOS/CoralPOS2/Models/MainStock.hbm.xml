@@ -18,8 +18,13 @@
     <property name="GoodQuantity" column="GOOD_QUANTITY" />
     <property name="LostQuantity" column="LOST_QUANTITY" />
     <property name="Position" column="POSITION" />
-    <property name="ProductId" column="PRODUCT_ID" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <!--<property name="ProductId" column="PRODUCT_ID" />-->
+    <many-to-one class="Product" name="Product" not-null="true">
+      <column name="PRODUCT_ID" />
+    </many-to-one>
+    <many-to-one class="ProductMaster" name="ProductMaster" not-null="true">
+      <column name="PRODUCT_MASTER_ID" />
+    </many-to-one>
     <property name="Quantity" column="QUANTITY" />
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />

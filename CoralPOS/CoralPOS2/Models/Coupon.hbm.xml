@@ -18,7 +18,7 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one update="false" insert="false" class="CouponType" name="CouponType">
+    <many-to-one class="CouponType" name="CouponType">
       <column name="COUPON_TYPE" />
     </many-to-one>
   </class>
