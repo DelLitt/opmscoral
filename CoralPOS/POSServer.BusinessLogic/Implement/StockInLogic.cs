@@ -90,7 +90,7 @@ namespace POSServer.BusinessLogic.Implement
                                                 DelFlg = 0,
                                                 ExclusiveKey = 1,
                                                 Product = inDetail.Product,
-                                                ProductMaster = inDetail.Product.ProductMaster,
+                                                ProductMaster = inDetail.ProductMaster,
                                                 Quantity = inDetail.Quantity,
                                                 GoodQuantity = inDetail.Quantity
                                             };

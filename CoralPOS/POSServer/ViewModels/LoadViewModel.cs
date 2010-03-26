@@ -22,13 +22,8 @@ namespace POSServer.ViewModels
             timer.Interval = 100;
             timer.Elapsed += new ElapsedEventHandler(timer_Elapsed);
             timer.Start();
-        }
-
-        protected override void OnViewLoaded(object view)
-        {
             ProgressValue = 0;
         }
-
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             int val = ProgressValue;

@@ -8,7 +8,7 @@
   <object id="IMainView" type="POSServer.ViewModels.MainView, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
   </object>
-  <object id="ILoadViewModel" type="POSServer.ViewModels.LoadViewModel, POSServer" singleton="false">
+  <object id="ILoadViewModel" type="POSServer.ViewModels.LoadViewModel, POSServer" singleton="true">
     <constructor-arg ref="IShellViewModel" />
   </object>
   

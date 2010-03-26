@@ -7,23 +7,35 @@ using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF.Screens;
 using Caliburn.PresentationFramework.Actions;
+using Caliburn.PresentationFramework.Filters;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.Utils;
 
 namespace POSServer.Actions.Stock.StockIn
 {
     public class StockInPreLoadAction : PosAction,IStockInPreLoadAction
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
-        private ILoadViewModel _loadViewModel;
-        [AsyncAction(BlockInteraction = false)]
+        
+
+        public StockInPreLoadAction()
+        {
+            
+        }
+
+        [AsyncAction(BlockInteraction = true)]
+        [ShowProcess]
         public override void DoExecute()
         {
-            _loadViewModel = Flow.Navigator.ServiceLocator.GetInstance<ILoadViewModel>("ILoadViewModel");
-            _loadViewModel.StartLoading();
-            IList  productMasters = ProductMasterLogic.LoadAllProductMasterWIthType();
+            
+            DoWork();
+        }
+
+        private void DoWork()
+        {
+            IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType();
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
-            if (_loadViewModel != null) _loadViewModel.StopLoading();
             GoToNextNode();
         }
     }
