@@ -342,6 +342,7 @@
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
+    <Compile Include="ViewModels\LoadViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
     <Compile Include="ViewModels\Management\DepartmentsViewModel.cs" />
     <Compile Include="ViewModels\Management\EmployeesViewModel.cs" />
@@ -398,6 +399,9 @@
     <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="Views\LoadView.xaml.cs">
+      <DependentUpon>LoadView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Menu\ProductMasterMenuView.xaml.cs">
       <DependentUpon>ProductMasterMenuView.xaml</DependentUpon>
     </Compile>
@@ -527,6 +531,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu\ProductMasterMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>

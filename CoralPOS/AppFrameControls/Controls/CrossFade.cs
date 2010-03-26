@@ -6,7 +6,7 @@ namespace AppFrameControls.Controls
 {
     public class CrossFade : ITransition
     {
-        private Duration _fadeLength = new Duration(TimeSpan.FromSeconds(.5));
+        private Duration _fadeLength = new Duration(TimeSpan.FromSeconds(.2));
 
         public bool RequiresNewContentTopmost
         {
