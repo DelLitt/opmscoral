@@ -6,12 +6,14 @@
     xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"                     
     xmlns:lbe="clr-namespace:AppFrame.Extensions.ListBox;assembly=AppFrame"    
     xmlns:dge="clr-namespace:AppFrame.Extensions.DataGrid;assembly=AppFrame"             
-    Height="286" Width="531">
+    Height="286" Width="531" Background="White">
     <UserControl.Resources>
         <local:RowNumberConverter x:Key="rowColorNumberConverter" />
         <local:RowNumberConverter x:Key="rowSizeNumberConverter" />
     </UserControl.Resources>
-    <Grid Opacity="2">
+    <Border>
+        <Border.Effect><DropShadowEffect /></Border.Effect>
+            <Grid Opacity="1" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330*"></ColumnDefinition>
             <ColumnDefinition Width="70*"></ColumnDefinition>            
@@ -97,4 +99,5 @@
                  RoutedMessaging:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(2,$eventArgs)]"
                  lbe:ListBoxExtension.SelectedItemsSource="{Binding ExtraSelectedProductSizes}" DisplayMemberPath="SizeName" FontSize="13" />
     </Grid>
+</Border>
 </UserControl>

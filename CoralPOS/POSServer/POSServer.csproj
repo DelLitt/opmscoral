@@ -345,6 +345,7 @@
     </Compile>
     <Compile Include="Utils\ShowProcessAttribute.cs" />
     <Compile Include="Utils\StockInHelper.cs" />
+    <Compile Include="ViewModels\CircularLoadViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\ProductEventArgs.cs" />
     <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
@@ -409,6 +410,9 @@
     <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="Views\CircularLoadView.xaml.cs">
+      <DependentUpon>CircularLoadView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoadView.xaml.cs">
       <DependentUpon>LoadView.xaml</DependentUpon>
     </Compile>
@@ -541,6 +545,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CircularLoadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoadView.xaml">
       <SubType>Designer</SubType>
