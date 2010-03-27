@@ -64,11 +64,11 @@ namespace POSServer.BusinessLogic.Implement
 
 
             
-            data.StockInId = nextStockInId.ToString();
+            data.StockInId = nextStockInId;
             StockInDao.Add(data);
             foreach (StockInDetail inDetail in data.StockInDetails)
             {
-                inDetail.StockInDetailPK.StockInId = nextStockInId.ToString();
+                inDetail.StockInDetailPK.StockInId = nextStockInId;
                 Product current = ProductDao.FindById(inDetail.Product.ProductId);
                 if (current != null) inDetail.Product = current;
                 StockInDetailDao.Add(inDetail);

@@ -3,7 +3,7 @@
   <class name="StockInDetail" table="CRL_STK_IN_DET" >
     <composite-id name="StockInDetailPK" class="StockInDetailPK">
       <key-property name="ProductId" type="String" column="PRODUCT_ID" />
-      <key-property name="StockInId" type="String" column="STOCK_IN_ID" />
+      <key-property name="StockInId" type="long" column="STOCK_IN_ID" />
     </composite-id>
     <property name="CreateDate" column="CREATE_DATE" />
     <property name="CreateId" column="CREATE_ID" />

@@ -14,7 +14,7 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual string StockInId {
+        public virtual long StockInId {
             get;
             set;
         }

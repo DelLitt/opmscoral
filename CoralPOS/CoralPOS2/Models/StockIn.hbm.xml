@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
   <class name="StockIn" table="CRL_STK_IN" >
-    <id name="StockInId" type="String" column="STOCK_IN_ID">
+    <id name="StockInId" type="long" column="STOCK_IN_ID">
       <generator class="assigned" />
     </id>
     <property name="ConfirmFlg" column="CONFIRM_FLG" />

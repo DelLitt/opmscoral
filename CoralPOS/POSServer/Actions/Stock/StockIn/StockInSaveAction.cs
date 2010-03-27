@@ -29,7 +29,7 @@ namespace POSServer.Actions.Stock.StockIn
         {
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             stockIn = StockInLogic.Add(stockIn);
-            if(!string.IsNullOrEmpty(stockIn.StockInId))
+            if(stockIn.StockInId>0)
             {
                 MessageBox.Show("Saved StockIn with id = " + stockIn.StockInId); 
             }
