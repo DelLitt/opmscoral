@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using ILoadViewModel=POSServer.ViewModels.ILoadViewModel;
+using AppFrame.WPF.Screens;
 
 namespace POSServer.Actions
 {

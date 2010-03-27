@@ -11,7 +11,7 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace AppFrame.WPF
 {
-    public class FlowActionTaskResult<T,K> : IResult 
+    public class FlowBackgroundTaskResult<T,K> : IResult 
         where T: IActionNode
         where K:EventArgs
     {
@@ -19,13 +19,13 @@ namespace AppFrame.WPF
         private readonly Expression<Action<T>> _methodCall;
         private T _action;
 
-        public FlowActionTaskResult(T action,Expression<Action<T>> methodCall)
+        public FlowBackgroundTaskResult(T action,Expression<Action<T>> methodCall)
         {
             _action = action;
             _methodCall = methodCall;
         }
 
-        public FlowActionTaskResult(T action,Expression<Action<T>> methodCall, Action<K> callback)
+        public FlowBackgroundTaskResult(T action,Expression<Action<T>> methodCall, Action<K> callback)
         {
             _action = action;
             _methodCall = methodCall;
@@ -39,7 +39,7 @@ namespace AppFrame.WPF
 
             var lambda = (LambdaExpression)_methodCall;
             var executeMethod = (MethodCallExpression)lambda.Body;
-            var eventName = executeMethod.Method.Name + "Completed";
+            var eventName = executeMethod.Method.Name.Replace("Async","Completed");
 
             EventHelper.WireEvent(
                 _action,

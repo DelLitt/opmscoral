@@ -7,6 +7,8 @@ using AppFrame.Base;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.PresentationFramework.Actions;
+using Caliburn.PresentationFramework.Invocation;
+using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Utils;
@@ -23,17 +25,18 @@ namespace POSServer.Actions.Stock.StockIn
         public IProductTypeLogic ProductTypeLogic { get; set; }
         public IStockInLogic StockInLogic { get; set; }
 
-        
-        [AsyncAction(BlockInteraction = false)]
         public override void DoExecute()
         {
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
-            stockIn = StockInLogic.Add(stockIn);
-            if(stockIn.StockInId>0)
-            {
-                MessageBox.Show("Saved StockIn with id = " + stockIn.StockInId); 
-            }
-            
+            ServiceLocator.Current.GetInstance<ILoadViewModel>().StartLoading();
+            DoExecuteCompleted += StockInSaveActionDoExecuteCompleted;
+            DoExecuteAsync(() => StockInLogic.Add(stockIn), stockIn);
+        }
+
+        void StockInSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ServiceLocator.Current.GetInstance<ILoadViewModel>().StopLoading();
+            MessageBox.Show("Saved StockIn successfully !!");
             GoToNextNode();
         }
     }
