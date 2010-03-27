@@ -306,6 +306,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ILoginAction.cs" />
+    <Compile Include="Actions\IStartLoadScreen.cs" />
+    <Compile Include="Actions\IStopLoadScreen.cs" />
     <Compile Include="Actions\LoginAction.cs" />
     <Compile Include="Actions\LoginActionResult.cs" />
     <Compile Include="Actions\ProductMaster\ExProductColorsViewPreLoadAction.cs" />
@@ -314,6 +316,7 @@
     <Compile Include="Actions\ProductMaster\IExProductColorsViewSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmSaveAction.cs" />
+    <Compile Include="Actions\StartLoadScreen.cs" />
     <Compile Include="Actions\Stock\StockIn\IStockInSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmSaveAction.cs" />
@@ -322,6 +325,7 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Actions\Stock\StockIn\IStockInPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockIn\StockInSaveAction.cs" />
+    <Compile Include="Actions\StopLoadScreen.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -344,6 +348,7 @@
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\ProductEventArgs.cs" />
     <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\ILoadViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />

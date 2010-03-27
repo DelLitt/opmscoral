@@ -71,14 +71,14 @@
   </object>
   <object id="StockInCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
-      <dictionary>
-        <entry key="Step1" value="POSServer.Actions.Stock.StockIn.IStockInPreLoadAction"/>
+      <dictionary>        
+        <entry key="Step1" value="POSServer.Actions.Stock.StockIn.IStockInPreLoadAction"/>        
         <!-- Show product master form -->
         <entry key="Step2" value="POSServer.ViewModels.Stock.StockIn.IStockInViewModel"/>
         <!-- Show product master summary form -->
         <entry key="Step3" value="POSServer.ViewModels.Stock.StockIn.IStockInConfirmViewModel"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.IStockInSaveAction"/>
+        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.IStockInSaveAction"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

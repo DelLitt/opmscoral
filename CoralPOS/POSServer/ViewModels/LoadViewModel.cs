@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Timers;
-using AppFrame.WPF.Screens;
+using AppFrame.Base;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.Screens;
 using System.Windows.Documents;
 
 namespace POSServer.ViewModels
 {
-    
-    public class LoadViewModel : Screen,ILoadViewModel
+
+    public class LoadViewModel : Screen, ILoadViewModel
     {
         private IShellViewModel _startViewModel;
         private Timer timer = null;
+        public event EventHandler NextNodeEvent;
         public LoadViewModel(IShellViewModel shellPresenter)
         {
             _startViewModel = shellPresenter;
@@ -33,7 +34,10 @@ namespace POSServer.ViewModels
                 val=0;
             }
             ProgressValue = val;
+            if (val >= 50 && NextNodeEvent != null) NextNodeEvent(this,new EventArgs()); 
         }
+
+        
 
         private int progressValue;
         public int ProgressValue { 
@@ -58,5 +62,12 @@ namespace POSServer.ViewModels
             timer.Stop();
             Shutdown(); 
         }
+
+        protected override void OnInitialize()
+        {
+            
+        }
+
+        
     }
 }

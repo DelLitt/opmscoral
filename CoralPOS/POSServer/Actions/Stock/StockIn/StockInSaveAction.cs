@@ -24,7 +24,7 @@ namespace POSServer.Actions.Stock.StockIn
         public IStockInLogic StockInLogic { get; set; }
 
         
-        [ShowProcess]
+        [AsyncAction(BlockInteraction = false)]
         public override void DoExecute()
         {
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;

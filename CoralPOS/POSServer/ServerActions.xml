@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net"
-         xmlns:tx="http://www.springframework.net/tx"> 
-  
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <object id="IStartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
+  </object>
+  <object id="IStopLoadScreen" type="POSServer.Actions.StopLoadScreen, POSServer" singleton="false">    
+  </object>
   <object id="IPmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-  </object>
+  </object>  
   <object id="IPmSaveAction" type="POSServer.Actions.ProductMaster.PmSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />    
   </object>

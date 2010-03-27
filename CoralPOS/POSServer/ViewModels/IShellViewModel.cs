@@ -14,6 +14,7 @@ namespace POSServer.ViewModels
         void ShowDialog<U>(U screen) where U : IScreenEx;
         IServiceLocator ServiceLocator { get; set; }
         IScreen ActiveMenu { get; set; }
+        IFlow ActiveFlow { get; set; }
 
         bool EnterFlow(string flowName);
         bool StartFlow(string flowName);

@@ -24,8 +24,7 @@ namespace POSServer.Actions.Stock.StockIn
             
         }
 
-        [AsyncAction(BlockInteraction = true)]
-        [ShowProcess]
+        [AsyncAction(BlockInteraction = false)]
         public override void DoExecute()
         {
             

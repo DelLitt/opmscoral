@@ -13,14 +13,11 @@ namespace POSServer.Utils
     {
         public override void OnEntry(MethodExecutionArgs args)
         {
-            ILoadViewModel _loadViewModel = ServiceLocator.Current.GetInstance<ILoadViewModel>("ILoadViewModel");
-            _loadViewModel.StartLoading();
             
         }
         public override void OnExit(MethodExecutionArgs args)
         {
-            ILoadViewModel _loadViewModel = ServiceLocator.Current.GetInstance<ILoadViewModel>("ILoadViewModel");
-            _loadViewModel.StopLoading();
+            
         }
     }
 }
