@@ -8,5 +8,6 @@ namespace AppFrame.Base
     public interface IPosAction
     {
         IPosActionResult Execute();
+
     }
 }

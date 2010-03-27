@@ -9,8 +9,9 @@ using Caliburn.PresentationFramework.Filters;
 
 namespace AppFrame.Base
 {
-    public class PosAction : IActionNode
+    public class PosAction : BackgroundTask,IActionNode
     {
+
         public string Name
         {
             get; set;
@@ -30,5 +31,7 @@ namespace AppFrame.Base
         {
             
         }
+
+        public event EventHandler<EventArgs> DoExecuteCompleted;
     }
 }

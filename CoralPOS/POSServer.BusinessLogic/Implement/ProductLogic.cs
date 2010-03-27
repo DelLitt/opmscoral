@@ -125,7 +125,6 @@ namespace POSServer.BusinessLogic.Implement
             IList result = new ArrayList();
             LinqCriteria<Product> prdCrit = new LinqCriteria<Product>();
             prdCrit.AddCriteria(prd => prd.ProductMaster.ProductName.Equals(productName));
-
             IList<ExProductSize> productColor = ProductDao.FindAllSubProperty(prdCrit, prd => prd.ProductSize);
 
             ObjectUtility.AddToList(result, productColor, "SizeName");

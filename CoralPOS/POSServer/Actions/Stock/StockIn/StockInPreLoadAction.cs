@@ -6,6 +6,7 @@ using System.Text;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF.Screens;
+using Caliburn.Core.Invocation;
 using Caliburn.PresentationFramework.Actions;
 using Caliburn.PresentationFramework.Filters;
 using POSServer.BusinessLogic.Common;
@@ -19,16 +20,10 @@ namespace POSServer.Actions.Stock.StockIn
         public IProductMasterLogic ProductMasterLogic { get; set; }
         
 
-        public StockInPreLoadAction()
-        {
-            
-        }
-
         [AsyncAction(BlockInteraction = false)]
         public override void DoExecute()
         {
             
-            DoWork();
         }
 
         private void DoWork()

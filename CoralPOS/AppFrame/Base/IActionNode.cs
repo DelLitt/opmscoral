@@ -9,5 +9,6 @@ namespace AppFrame.Base
     public interface IActionNode : INode
     {
         void DoExecute();
+        event EventHandler<EventArgs> DoExecuteCompleted;
     }
 }
