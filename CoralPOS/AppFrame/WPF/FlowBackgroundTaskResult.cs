@@ -12,52 +12,42 @@ using Microsoft.Practices.ServiceLocation;
 namespace AppFrame.WPF
 {
     public class FlowBackgroundTaskResult<T,K> : IResult 
-        where T: IActionNode
-        where K:EventArgs
+        where T: ILoadViewModel
+        where K:FlowBackgroundTaskResultEventArgs,new()
     {
         private readonly Action<K> _callback;
-        private readonly Expression<Action<T>> _methodCall;
-        private T _action;
+        private readonly Action _methodCall;
+        private T _loadScreen;
 
-        public FlowBackgroundTaskResult(T action,Expression<Action<T>> methodCall)
+        public FlowBackgroundTaskResult(Action methodCall)
         {
-            _action = action;
             _methodCall = methodCall;
         }
 
-        public FlowBackgroundTaskResult(T action,Expression<Action<T>> methodCall, Action<K> callback)
+        public FlowBackgroundTaskResult(Action methodCall,Action<K> callback)
         {
-            _action = action;
             _methodCall = methodCall;
             _callback = callback;
         }
         public void Execute(ResultExecutionContext context)
         {
-            context.ServiceLocator.GetInstance<ILoadViewModel>().StartLoading();
+            _loadScreen = context.ServiceLocator.GetInstance<T>();
+            _loadScreen.StartLoading();
             //if you would rather disable the control that caused the service to be called, you could do this:
             //ChangeAvailability(message, false);
-
-            var lambda = (LambdaExpression)_methodCall;
-            var executeMethod = (MethodCallExpression)lambda.Body;
-            var eventName = executeMethod.Method.Name.Replace("Async","Completed");
-
-            EventHelper.WireEvent(
-                _action,
-                _action.GetType().GetEvent(eventName),
-                OnEvent
-                );
-
-            _methodCall.Compile()(_action);                       
+            Caliburn.PresentationFramework.Invocation.Execute.OnBackgroundThread(_methodCall, WorkCompleted);
         }
-        private void OnEvent(object s, EventArgs e)
+        
+        void WorkCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ILoadViewModel>().StopLoading();
-            //or re-enable the control that caused the service to be called:
-            //ChangeAvailability(message, true);
+            if(_loadScreen!= null) _loadScreen.StopLoading();
 
             if (_callback != null)
-                _callback((K)e);
-
+            {
+                K eventArgs = new K();
+                eventArgs.Result = e.Result;
+                _callback(eventArgs);
+            }
             Completed(this, new ResultCompletionEventArgs());
         }
 

@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -12,9 +13,12 @@ using System.Windows.Input;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
+using AppFrame.WPF;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.RoutedMessaging;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using Microsoft.Windows.Controls;
@@ -135,7 +139,10 @@ namespace POSServer.ViewModels.Dialogs
         
 
         
-
+        public IResult LoadData()
+        {
+            return new FlowBackgroundTaskResult<INormalLoadViewModel, FlowBackgroundTaskResultEventArgs>(Setup);
+        }
         public void Setup()
         {
             string productName = ProductName;

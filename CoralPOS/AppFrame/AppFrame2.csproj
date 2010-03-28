@@ -257,6 +257,7 @@
     <Compile Include="Utils\RandomGenerator.cs" />
     <Compile Include="Utils\StringUtility.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResult.cs" />
+    <Compile Include="WPF\FlowBackgroundTaskResultEventArgs.cs" />
     <Compile Include="WPF\MessageExtensions.cs" />
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
