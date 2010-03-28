@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AppFrame.WPF.Screens;
 using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels
 {
-    public class CircularLoadViewModel : Screen,AppFrame.WPF.Screens.ILoadViewModel
+    public class CircularLoadViewModel : Screen,ICircularLoadViewModel
     {
         private IShellViewModel _startViewModel;
 

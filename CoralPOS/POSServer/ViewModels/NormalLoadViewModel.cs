@@ -13,11 +13,11 @@ using System.Windows.Documents;
 namespace POSServer.ViewModels
 {
 
-    public class LoadViewModel : Screen, ILoadViewModel
+    public class NormalLoadViewModel : Screen, INormalLoadViewModel
     {
         private IShellViewModel _startViewModel;
         private Timer timer = null;
-        public LoadViewModel(IShellViewModel shellPresenter)
+        public NormalLoadViewModel(IShellViewModel shellPresenter)
         {
             _startViewModel = shellPresenter;
             /*timer = new Timer();

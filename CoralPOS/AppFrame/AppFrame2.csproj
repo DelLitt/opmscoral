@@ -264,7 +264,9 @@
     <Compile Include="WPF\Screens\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPF\Screens\ICircularLoadViewModel.cs" />
     <Compile Include="WPF\Screens\ILoadViewModel.cs" />
+    <Compile Include="WPF\Screens\INormalLoadViewModel.cs" />
     <Compile Include="WPF\Screens\IPageScreen.cs" />
   </ItemGroup>
   <ItemGroup>

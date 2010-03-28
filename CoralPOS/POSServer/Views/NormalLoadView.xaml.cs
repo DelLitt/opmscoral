@@ -17,12 +17,12 @@ using Caliburn.PresentationFramework.Invocation;
 namespace POSServer.Views
 {
     /// <summary>
-    /// Interaction logic for LoadView.xaml
+    /// Interaction logic for NormalLoadView.xaml
     /// </summary>
-    public partial class LoadView : UserControl
+    public partial class NormalLoadView : UserControl
     {
         private Timer timer = null;
-        public LoadView()
+        public NormalLoadView()
         {
             InitializeComponent();
             timer = new Timer();

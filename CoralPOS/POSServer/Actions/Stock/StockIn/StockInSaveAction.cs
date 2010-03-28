@@ -28,14 +28,14 @@ namespace POSServer.Actions.Stock.StockIn
         public override void DoExecute()
         {
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
-            ServiceLocator.Current.GetInstance<ILoadViewModel>().StartLoading();
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockInSaveActionDoExecuteCompleted;
             DoExecuteAsync(() => StockInLogic.Add(stockIn), stockIn);
         }
 
         void StockInSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ILoadViewModel>().StopLoading();
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Saved StockIn successfully !!");
             GoToNextNode();
         }

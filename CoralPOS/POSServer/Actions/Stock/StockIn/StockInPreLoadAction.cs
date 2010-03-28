@@ -23,14 +23,14 @@ namespace POSServer.Actions.Stock.StockIn
         
         public override void DoExecute()
         {
-            ServiceLocator.Current.GetInstance<ILoadViewModel>().StartLoading();
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockInPreLoadAction_DoExecuteCompleted;
             DoExecuteAsync(() => DoWork(), null);
         }
 
         void StockInPreLoadAction_DoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ILoadViewModel>().StopLoading();
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
             GoToNextNode();
         }
 

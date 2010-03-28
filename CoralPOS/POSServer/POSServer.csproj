@@ -353,7 +353,7 @@
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
-    <Compile Include="ViewModels\LoadViewModel.cs" />
+    <Compile Include="ViewModels\NormalLoadViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
     <Compile Include="ViewModels\Management\DepartmentsViewModel.cs" />
     <Compile Include="ViewModels\Management\EmployeesViewModel.cs" />
@@ -413,8 +413,8 @@
     <Compile Include="Views\CircularLoadView.xaml.cs">
       <DependentUpon>CircularLoadView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoadView.xaml.cs">
-      <DependentUpon>LoadView.xaml</DependentUpon>
+    <Compile Include="Views\NormalLoadView.xaml.cs">
+      <DependentUpon>NormalLoadView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu\ProductMasterMenuView.xaml.cs">
       <DependentUpon>ProductMasterMenuView.xaml</DependentUpon>
@@ -550,7 +550,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoadView.xaml">
+    <Page Include="Views\NormalLoadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
