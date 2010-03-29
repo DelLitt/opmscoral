@@ -409,6 +409,7 @@
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\UserRolePK.cs" />
+    <Compile Include="ObjectValidators\StockInValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -521,6 +522,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Models\Mainftr.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
+      <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
+      <Name>AppFrame2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

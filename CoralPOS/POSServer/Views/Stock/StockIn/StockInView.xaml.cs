@@ -26,7 +26,7 @@ namespace POSServer.Views.Stock.StockIn
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

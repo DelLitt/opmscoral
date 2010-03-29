@@ -231,6 +231,7 @@
     <Compile Include="Base\ISession.cs" />
     <Compile Include="Base\PosAction.cs" />
     <Compile Include="Base\PosViewModel.cs" />
+    <Compile Include="Base\PosViewModelExtensions.cs" />
     <Compile Include="Base\ShellNavigator.cs" />
     <Compile Include="Common\GlobalCache.cs" />
     <Compile Include="Base\INode.cs" />
@@ -256,6 +257,11 @@
     <Compile Include="Utils\ObjectUtility.cs" />
     <Compile Include="Utils\RandomGenerator.cs" />
     <Compile Include="Utils\StringUtility.cs" />
+    <Compile Include="Validation\POSError.cs" />
+    <Compile Include="Validation\POSErrorResult.cs" />
+    <Compile Include="Validation\IObjectValidator.cs" />
+    <Compile Include="Validation\ObjectValidator.cs" />
+    <Compile Include="Validation\ValidatorProvider.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResult.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResultEventArgs.cs" />
     <Compile Include="WPF\MessageExtensions.cs" />
