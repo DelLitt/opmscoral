@@ -12,10 +12,12 @@ using System.Windows;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
+using AppFrame.Validation;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
@@ -167,7 +169,7 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             
         }
-		        
+		
         public void Save()
         {
             CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
@@ -184,10 +186,22 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                       ExclusiveKey = 0
                                                   };
             stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
-            GoToNextNode();
+            POSErrorResult validateResult = this.Validate(stockIn);
+            if (validateResult.HasError)
+            {
+                var errorDialog = _startViewModel.ServiceLocator.GetInstance<IErrorDialogViewModel>();
+                errorDialog.ErrorResult = validateResult;
+                _startViewModel.ShowDialog(errorDialog);
+            }
+            else
+            {
+                Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
+                GoToNextNode();    
+            }
         }
-		        
+		
+
+        
         public void Stop()
         {
            Flow.End(); 

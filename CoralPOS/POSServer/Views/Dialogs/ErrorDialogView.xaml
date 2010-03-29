@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="POSServer.Views.Dialogs.ErrorDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:Spring.Web.UI.Controls;assembly=Spring.Web"
+    Height="300" Width="519" Background="White" >
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect />
+        </Border.Effect>
+        <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="216*" />
+            <RowDefinition Height="40*" />
+        </Grid.RowDefinitions>
+        
+            <TextBlock  Name="textBlock1" Text="ERRORS" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+        <my:DataGrid AutoGenerateColumns="False" Margin="0,6,0,0" Name="ErrorsList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Row="1" ItemsSource="{Binding ErrorResult.Errors}" >
+            <my:DataGrid.Columns>
+                    <my:DataGridTextColumn Header="ERROR" Width="160*" IsReadOnly="True" Binding="{Binding Path=ErrorName}">                                              
+                    </my:DataGridTextColumn>
+                    <!--<my:DataGridTextColumn Header="DETAIL" Width="*" IsReadOnly="True" Binding="{Binding Path=ErrorDetail}" />-->
+            </my:DataGrid.Columns>
+        </my:DataGrid>
+        <Button Grid.Row="2" Margin="209,6,212,6" Name="Close">ĐÓNG</Button>
+            
+    </Grid>
+   </Border>
+</UserControl>

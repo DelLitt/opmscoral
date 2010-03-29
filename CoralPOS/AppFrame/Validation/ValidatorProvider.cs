@@ -8,18 +8,18 @@ namespace AppFrame.Validation
 {
     public class ValidatorProvider
     {
-        private static Dictionary<string,string> validators = new Dictionary<string, string>();
+        private static Dictionary<string,object> validators = new Dictionary<string, object>();
         public static IObjectValidator<T> For<T>(T obj) where T:class
         {
-            foreach (KeyValuePair<string, string> keyValuePair in validators)
+            foreach (KeyValuePair<string, object> keyValuePair in validators)
             {
                 if (keyValuePair.Key.Equals(typeof(T).Name))
                 {
-                    IObjectValidator<T> validator = 
-                        ServiceLocator.Current.GetInstance(Type.GetType(keyValuePair.Value)) as IObjectValidator<T>;
+                    IObjectValidator<T> validator = keyValuePair.Value as IObjectValidator<T>;
                     if(validator!=null)
                     {
                         validator.Target = obj;
+                        return validator;
                     }
                     else
                     {
@@ -29,9 +29,9 @@ namespace AppFrame.Validation
             }
             return null;
         }
-        public static void Register(Type obj,Type validator)
+        public static void Register(Type obj,object validator)
         {
-            validators.Add(obj.Name,validator.Name);
+            validators.Add(obj.Name,validator);
         }
 
         public static POSError CreateError(string errorName, string errorDetail, string invalidProperty, string stackTrace)

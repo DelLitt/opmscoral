@@ -6,8 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Validation;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.Spring;
+using CoralPOS.Models;
+using CoralPOS.ObjectValidators;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.Common;
 using POSServer.ViewModels;
@@ -23,6 +26,12 @@ namespace POSServer
         public App()
         {
             InitSpring();
+            InitValidators();
+        }
+
+        private void InitValidators()
+        {
+            ValidatorProvider.Register(typeof(StockIn), new StockInValidator());
         }
 
         private void InitSpring()
