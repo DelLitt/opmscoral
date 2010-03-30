@@ -355,6 +355,30 @@
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
+    <Compile Include="ViewModels\Management\IManagementMainViewModel.cs" />
+    <Compile Include="ViewModels\Management\ManagementMainViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\CostMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\DeptEmpMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\ICostMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\IDeptEmpMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\ProductMaster\IProductMasterMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\ProductMaster\ProductMasterMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Report\IReportsMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Report\ReportsMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\ConfirmMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IConfirmMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IInventoryMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\InventoryMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IStockInMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IStockOutMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\StockInMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\StockOutMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Synchronize\ISynchronizeMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Synchronize\SynchronizeMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Task\ITaskMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Task\TaskMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Tool\IToolMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Tool\ToolMenuViewModel.cs" />
     <Compile Include="ViewModels\NormalLoadViewModel.cs" />
     <Compile Include="ViewModels\MainView.cs" />
     <Compile Include="ViewModels\Management\DepartmentsViewModel.cs" />
@@ -385,7 +409,9 @@
     <Compile Include="ViewModels\ProductMaster\ProductMasterViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductTypeViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Report\IReportsMainViewModel.cs" />
     <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Report\ReportsMainViewModel.cs" />
     <Compile Include="ViewModels\Sale\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
@@ -394,6 +420,7 @@
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\IStockInventoryViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\StockInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\IStockMainViewModel.cs" />
     <Compile Include="ViewModels\Stock\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockIn\IStockInConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockIn\IStockInSearchViewModel.cs" />
@@ -403,6 +430,7 @@
     <Compile Include="ViewModels\Stock\StockIn\StockInSearchViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockIn\StockInViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockIn\StockInWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockMainViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutSearchViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutViewModel.cs" />
@@ -411,7 +439,13 @@
     <Compile Include="ViewModels\Stock\StockOut\StockOutSearchViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Task\ITaskMainViewModel.cs" />
+    <Compile Include="ViewModels\Task\TaskMainViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Tool\IToolMainViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ToolMainViewModel.cs" />
     <Compile Include="Views\CircularLoadView.xaml.cs">
       <DependentUpon>CircularLoadView.xaml</DependentUpon>
     </Compile>
