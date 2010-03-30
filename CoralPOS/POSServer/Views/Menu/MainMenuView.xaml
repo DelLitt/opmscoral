@@ -4,7 +4,7 @@
     Height="740" Width="174">
     <Grid>
         <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,12,40,0" Name="Task" VerticalAlignment="Top">TÁC VỤ</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,113.459,40,0" Name="ProductMaster" VerticalAlignment="Top">MẶT HÀNG</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,113.459,40,0" Name="ProductMaster" VerticalAlignment="Top">SẢN PHẨM</Button>
         <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,216.347,40,0" Name="Stock" VerticalAlignment="Top">KHO</Button>
         <Button FontSize="14" FontWeight="Bold" Margin="40,320.664,40,333.059" Name="Report">BÁO CÁO</Button>
         <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,227.313" Name="Management" VerticalAlignment="Bottom">QUẢN LÝ</Button>

@@ -418,6 +418,12 @@
     <Compile Include="Views\Dialogs\ErrorDialogView.xaml.cs">
       <DependentUpon>ErrorDialogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Report\ReportsMainView.xaml.cs">
+      <DependentUpon>ReportsMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductMaster\ProductMasterMainView.xaml.cs">
+      <DependentUpon>ProductMasterMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NormalLoadView.xaml.cs">
       <DependentUpon>NormalLoadView.xaml</DependentUpon>
     </Compile>
@@ -478,6 +484,18 @@
     <Compile Include="Views\ProductMaster\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Management\ManagementMainView.xaml.cs">
+      <DependentUpon>ManagementMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SynchronizeMainView.xaml.cs">
+      <DependentUpon>SynchronizeMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Task\TaskMainView.xaml.cs">
+      <DependentUpon>TaskMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tool\ToolMainView.xaml.cs">
+      <DependentUpon>ToolMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stock\Report\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
     </Compile>
@@ -489,6 +507,9 @@
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockMainView.xaml.cs">
+      <DependentUpon>StockMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Stock\StockIn\StockInWaitingConfirmView.xaml.cs">
       <DependentUpon>StockInWaitingConfirmView.xaml</DependentUpon>
@@ -558,6 +579,14 @@
     <Page Include="Views\Dialogs\ErrorDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Report\ReportsMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductMaster\ProductMasterMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\NormalLoadView.xaml">
       <SubType>Designer</SubType>
@@ -639,6 +668,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Management\ManagementMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Synchronize\SynchronizeMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Task\TaskMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tool\ToolMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Stock\Report\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -652,6 +697,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

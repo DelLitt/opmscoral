@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="POSServer.Views.Tool.ToolMainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="837" Height="748">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="167*" />
+            <ColumnDefinition Width="167*" />
+            <ColumnDefinition Width="167*" />
+            <ColumnDefinition Width="167*" />            
+        </Grid.ColumnDefinitions>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,15,64,0" Name="LogViewer" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XEM NHẬT KÝ</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,122.5,64,0" Name="BackupDatabase" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">SAO LƯU DỮ LIỆU</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,231.25,64,0" Name="CleanDatabase" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÓA DỮ LIỆU</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="57,340,64,281.25" Name="RestoreDatabase" TabIndex="9" Grid.Row="1">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">PHỤC HỒI DỮ LIỆU</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="86.75" Margin="56.39,0,64.61,173.75" Name="Configuration" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">CẤU HÌNH HỆ THỐNG</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="86.75" Margin="56.39,0,64.61,62.5" Name="ExportStockCollectorData" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">XUẤT DỮ LIỆU VÀO MÁY KIỂM KHO</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>
