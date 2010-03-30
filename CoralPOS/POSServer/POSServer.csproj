@@ -418,6 +418,36 @@
     <Compile Include="Views\Dialogs\ErrorDialogView.xaml.cs">
       <DependentUpon>ErrorDialogView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Menu\Tool\ToolMenuView.xaml.cs">
+      <DependentUpon>ToolMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Task\TaskMenuView.xaml.cs">
+      <DependentUpon>TaskMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Synchronize\SynchronizeMenuView.xaml.cs">
+      <DependentUpon>SynchronizeMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Report\ReportsMenuView.xaml.cs">
+      <DependentUpon>ReportsMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Management\DeptEmpMenuView.xaml.cs">
+      <DependentUpon>DeptEmpMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Management\CostMenuView.xaml.cs">
+      <DependentUpon>CostMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\StockOutMenuView.xaml.cs">
+      <DependentUpon>StockOutMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\InventoryMenuView.xaml.cs">
+      <DependentUpon>InventoryMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\ConfirmMenuView.xaml.cs">
+      <DependentUpon>ConfirmMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\StockInMenuView.xaml.cs">
+      <DependentUpon>StockInMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\ReportsMainView.xaml.cs">
       <DependentUpon>ReportsMainView.xaml</DependentUpon>
     </Compile>
@@ -427,7 +457,7 @@
     <Compile Include="Views\NormalLoadView.xaml.cs">
       <DependentUpon>NormalLoadView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Menu\ProductMasterMenuView.xaml.cs">
+    <Compile Include="Views\Menu\ProductMaster\ProductMasterMenuView.xaml.cs">
       <DependentUpon>ProductMasterMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductMaster\ProductMasterSearchView.xaml.cs">
@@ -580,6 +610,46 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Menu\Tool\ToolMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Task\TaskMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Synchronize\SynchronizeMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Report\ReportsMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Management\DeptEmpMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Management\CostMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\StockOutMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\InventoryMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\ConfirmMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\StockInMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Report\ReportsMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -592,7 +662,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Menu\ProductMasterMenuView.xaml">
+    <Page Include="Views\Menu\ProductMaster\ProductMasterMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

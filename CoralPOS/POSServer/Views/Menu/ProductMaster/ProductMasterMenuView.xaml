@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="POSServer.Views.Menu.ProductMasterMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="740" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,120.138" Name="BackToParent" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MENU TRƯỚC</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,17.25" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="45.75,12,40,0" Name="CreateProductMaster" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock Text="TẠO SẢN PHẨM" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" HorizontalContentAlignment="Stretch" Margin="45.75,119.5,40,0" Name="CreateProductMasterByTemplate" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock Text="TẠO SẢN PHẨM THEO TEMPLATE" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="45.75,228.25,40,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock Text="QUẢN LÝ SẢN PHẨM" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="45.75,337,40,316.25" Name="StockInByExcel" TabIndex="9">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">CẬP NHẬT GIÁ</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="45.75,0,40,206.48" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom">
+            <TextBlock Text="QUẢN LÝ CHI TIẾT SẢN PHẨM" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+    </Grid>
+</UserControl>

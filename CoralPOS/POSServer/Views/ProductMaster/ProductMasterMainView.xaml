@@ -14,18 +14,18 @@
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
         <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,15,64,0" Name="CreateProductMaster" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TẠO DANH MỤC</TextBlock></Button>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="TẠO SẢN PHẨM"></TextBlock></Button>
         <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,122.5,64,0" Name="CreateProductMasterByTemplate" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TẠO DANH MỤC THEO TEMPLATE</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="TẠO SẢN PHẨM THEO TEMPLATE"></TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,231.25,64,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH DANH MỤC</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="QUẢN LÝ SẢN PHẨM"></TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Margin="57,340,64,281.25" Name="StockInByExcel" TabIndex="9" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">CẬP NHẬT GIÁ</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,0,64,171.48" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">CHỨC NĂNG MỞ RỘNG</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="QUẢN LÝ CHI TIẾT SẢN PHẨM"></TextBlock>
         </Button>
     </Grid>
 </UserControl>
