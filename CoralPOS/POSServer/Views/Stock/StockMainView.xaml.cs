@@ -17,9 +17,9 @@ namespace POSServer.Views.Stock
     /// <summary>
     /// Interaction logic for TemplatePage.xaml
     /// </summary>
-    public partial class MainStockView : UserControl
+    public partial class StockMainView : UserControl
     {
-        public MainStockView()
+        public StockMainView()
         {
             InitializeComponent();
         }

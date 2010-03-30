@@ -32,7 +32,8 @@ namespace POSServer.ViewModels
 
         public override void Initialize() 
         {
-            MainScreen = ServiceLocator.GetInstance<IMainView>();
+            RootScreen = ServiceLocator.GetInstance<IMainView>();
+            MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)
             {

@@ -14,6 +14,8 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using POSServer.ViewModels.Management;
+using POSServer.ViewModels.ProductMaster;
+using POSServer.ViewModels.Stock;
 using POSServer.ViewModels.Synchronize;
 using POSServer.ViewModels.Task;
 using POSServer.ViewModels.Tool;
@@ -49,12 +51,14 @@ namespace POSServer.ViewModels.Menu
 		        
         public void ProductMaster()
         {
-            _startViewModel.EnterFlow("ProductMasterCreateFlow");
+            _startViewModel.Open<IProductMasterMainViewModel>();
+            //_startViewModel.EnterFlow("ProductMasterCreateFlow");
         }
 		        
         public void Stock()
         {
-            _startViewModel.EnterFlow("StockInCreateFlow");
+            _startViewModel.Open<IStockMainViewModel>();
+            //_startViewModel.EnterFlow("StockInCreateFlow");
         }
 		        
         public void Report()

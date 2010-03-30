@@ -11,19 +11,13 @@ using POSServer.ViewModels.Menu;
 namespace POSServer.ViewModels
 {
     [PerRequest(typeof(IMainView))]
-    [AttachMenu(typeof(IMainMenuViewModel))]
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel))]
     public class MainView : PosViewModel, IMainView
     {
         private IShellViewModel _startViewModel;
         public MainView(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel;
-        }
-        
-        protected override void OnActivate()
-        {
-            base.OnActivate();
-            //AttachedMenu = _startViewModel.ServiceLocator.GetInstance<IMainMenuViewModel>();
         }
     }
 }

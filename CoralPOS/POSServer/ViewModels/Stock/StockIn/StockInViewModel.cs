@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.Validation;
@@ -23,11 +24,14 @@ using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.Utils;
 using POSServer.ViewModels.Dialogs;
+using POSServer.ViewModels.Menu;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
-    //[PerRequest(typeof(IStockInViewModel))]
+
+    [AttachMenuAndMainScreen(typeof(IStockInMenuViewModel), typeof(IStockMainViewModel))]
     public class StockInViewModel : PosViewModel,IStockInViewModel  
     {
 

@@ -3,17 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="740" Width="174">
     <Grid>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="47,22,39,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="51,12,43,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">NHẬP HÀNG</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" HorizontalContentAlignment="Stretch" Margin="47,130,39,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="51,112,43,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="69">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="47,238,39,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH HÀNG TRẢ KHO CHÍNH</TextBlock>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="51,213,43,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">D.SÁCH HÀNG TRẢ KHO CHÍNH</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="47,347,39,306" Name="StockInByExcel" TabIndex="9">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">NHẬP HÀNG BẰNG EXCEL</TextBlock>
+        <Button FontSize="14" FontWeight="Bold" Margin="51,314,43,346" Name="StockInByExcel" TabIndex="9">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="60">NHẬP HÀNG BẰNG EXCEL</TextBlock>
         </Button>
     </Grid>
 </UserControl>

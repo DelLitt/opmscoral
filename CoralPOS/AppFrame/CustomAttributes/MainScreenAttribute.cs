@@ -6,19 +6,19 @@ using System.Text;
 namespace AppFrame.CustomAttributes
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class AttachMenuAttribute : Attribute
+    public class MainScreenAttribute : Attribute
     {
-        private Type _menuClass;
-        public AttachMenuAttribute(Type menuClass)
+        private Type _clazz;
+        public MainScreenAttribute(Type _clazz)
         {
-            _menuClass = menuClass;
+            
         }
 
-        public Type AttachMenu
+        public Type MainScreen
         {
             get
             {
-                return _menuClass;
+                return _clazz;
             }
         }
     }

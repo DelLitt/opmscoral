@@ -3,13 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="740" Width="174">
     <Grid>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="43,12,43,0" Name="LogViewer" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="43,12,43,0" Name="LogViewer" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XEM NHẬT KÝ</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" HorizontalContentAlignment="Stretch" Margin="43,119.5,43,0" Name="BackupDatabase" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" HorizontalContentAlignment="Stretch" Margin="43,119.5,43,0" Name="BackupDatabase" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">SAO LƯU DỮ LIỆU</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="43,228.25,43,0" Name="CleanDatabase" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="43,228.25,43,0" Name="CleanDatabase" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÓA DỮ LIỆU</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Margin="43,337,43,316.25" Name="RestoreDatabase" TabIndex="9">

@@ -9,28 +9,28 @@ using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
-namespace POSServer.ViewModels.Menu
+namespace POSServer.ViewModels.ProductMaster
 {
-    public interface IProductMasterMenuViewModel : IScreenNode
+    public interface IProductMasterMainViewModel : IScreenNode
     {
         #region Fields
 			#endregion
 		
 		#region Methods
 		        
-        void ProductMasterNew();
+        void CreateProductMaster();
         
 		        
-        void ProductMasterSearch();
+        void CreateProductMasterByTemplate();
         
 		        
-        void BackToParent();
+        void ProductMasterList();
         
 		        
-        void Back();
+        void StockInByExcel();
         
 		        
-        void ProductMasterDetail();
+        void ExtendFunctions();
         
 			#endregion
     }

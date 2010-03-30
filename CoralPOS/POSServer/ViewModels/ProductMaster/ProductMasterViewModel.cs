@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
@@ -19,11 +20,13 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.ViewModels.Menu.ProductMaster;
 
 
 namespace POSServer.ViewModels.ProductMaster
 {
-    
+
+    [AttachMenuAndMainScreen(typeof(IProductMasterMenuViewModel), typeof(IProductMasterMainViewModel))]
     public class ProductMasterViewModel : PosViewModel,IProductMasterViewModel  
     {
 

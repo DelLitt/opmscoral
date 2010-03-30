@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSServer.Views.Menu
+namespace POSServer.Views.Menu.ProductMaster
 {
     /// <summary>
     /// Interaction logic for MainMenuViewModel.xaml

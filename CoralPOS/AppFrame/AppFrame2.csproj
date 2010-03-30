@@ -236,7 +236,8 @@
     <Compile Include="Common\GlobalCache.cs" />
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
-    <Compile Include="CustomAttributes\AttachMenuAttribute.cs" />
+    <Compile Include="CustomAttributes\AttachMenuAndMainScreenAttribute.cs" />
+    <Compile Include="CustomAttributes\MainScreenAttribute.cs" />
     <Compile Include="DataLayer\LinqCriteria.cs" />
     <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />

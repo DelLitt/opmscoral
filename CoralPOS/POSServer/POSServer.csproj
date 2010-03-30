@@ -388,9 +388,7 @@
     <Compile Include="ViewModels\Management\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Management\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Menu\IMainMenuViewModel.cs" />
-    <Compile Include="ViewModels\Menu\IProductMasterMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\MainMenuViewModel.cs" />
-    <Compile Include="ViewModels\Menu\ProductMasterMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationShellViewModel.cs" />
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ExProductColorViewModel.cs" />
@@ -398,12 +396,14 @@
     <Compile Include="ViewModels\ProductMaster\IExProductColorViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IExProductSizeViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\IProductMasterMainViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterSearchViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductMasterViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\IProductTypeViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductMaster\ProductMasterMainViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterSearchViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterSummaryViewModel.cs" />
     <Compile Include="ViewModels\ProductMaster\ProductMasterViewModel.cs" />

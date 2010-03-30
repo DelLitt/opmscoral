@@ -9,21 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.ViewModels.Menu;
 
 
-
-namespace POSServer.ViewModels.Menu
+namespace POSServer.ViewModels.ProductMaster
 {
-    [PerRequest(typeof(IProductMasterMenuViewModel))]
-    public class ProductMasterMenuViewModel : PosViewModel,IProductMasterMenuViewModel  
+    [PerRequest(typeof(IProductMasterMainViewModel))]
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel))]
+    public class ProductMasterMainViewModel : PosViewModel,IProductMasterMainViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public ProductMasterMenuViewModel(IShellViewModel startViewModel)
+        public ProductMasterMainViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -39,27 +41,27 @@ namespace POSServer.ViewModels.Menu
 		
 		#region Methods
 		        
-        public void ProductMasterNew()
+        public void CreateProductMaster()
+        {
+            _startViewModel.EnterFlow("ProductMasterCreateFlow");
+        }
+		        
+        public void CreateProductMasterByTemplate()
         {
             
         }
 		        
-        public void ProductMasterSearch()
+        public void ProductMasterList()
         {
             
         }
 		        
-        public void BackToParent()
+        public void StockInByExcel()
         {
             
         }
 		        
-        public void Back()
-        {
-            
-        }
-		        
-        public void ProductMasterDetail()
+        public void ExtendFunctions()
         {
             
         }

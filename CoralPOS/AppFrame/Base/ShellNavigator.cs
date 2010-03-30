@@ -68,6 +68,18 @@ namespace AppFrame.Base
                 NotifyOfPropertyChange(() => ActiveMenu);
             }
         }
+
+        /// <summary>
+        /// Root screen
+        /// </summary>
+        public T RootScreen
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// Dialog viewmodel
+        /// </summary>
         public IScreen DialogModel
         {
             get
@@ -80,10 +92,15 @@ namespace AppFrame.Base
                 NotifyOfPropertyChange(()=>DialogModel);
             }
         }
+
+        /// <summary>
+        /// Flow whic navigator are using
+        /// </summary>
         public IFlow ActiveFlow
         {
             get; set;
         }
+
         /// <summary>
         /// Open a screen node
         /// </summary>
@@ -214,7 +231,7 @@ namespace AppFrame.Base
         }
 
         /// <summary>
-        /// Create a scren from type name
+        /// Create a screen from type name
         /// </summary>
         /// <param name="typeName">name type of screen</param>
         /// <returns>instance of screen</returns>
@@ -256,11 +273,18 @@ namespace AppFrame.Base
             }
         }
 
+        /// <summary>
+        /// Open Main Screen
+        /// </summary>
         private void OpenMainScreen()
         {
             if (MainScreen != null) this.OpenScreen(MainScreen);        
         }
 
+        /// <summary>
+        /// Leave current flow
+        /// </summary>
+        /// <param name="isRepeated">repeat the flow or not</param>
         public virtual void LeaveFlow(bool isRepeated)
         {
             if (isRepeated)
@@ -275,18 +299,30 @@ namespace AppFrame.Base
                 if (MainScreen != null) this.OpenScreen(MainScreen);
             }
         }
+        /// <summary>
+        /// Override original ChangeActiveScreenCore
+        /// </summary>
+        /// <param name="newActiveScreen"></param>
         protected override void ChangeActiveScreenCore(T newActiveScreen)
         {
             base.ChangeActiveScreenCore(newActiveScreen);
 
+            // process AttachMenu
             Type type = newActiveScreen.GetType();
-            object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAttribute), false);
+            object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAndMainScreenAttribute), false);
             if(attachMenuAttributes!= null && attachMenuAttributes.Count() > 0)
             {
-                AttachMenuAttribute attribute = (AttachMenuAttribute) attachMenuAttributes[0];
+                AttachMenuAndMainScreenAttribute attribute = (AttachMenuAndMainScreenAttribute) attachMenuAttributes[0];
                 IScreen menuScreen=(IScreen)_serviceLocator.GetInstance(attribute.AttachMenu);
-                
                 ActiveMenu = menuScreen;
+                if(attribute.MainScreen!=null)
+                {
+                    MainScreen = (T) _serviceLocator.GetInstance(attribute.MainScreen);
+                }
+                else
+                {
+                    MainScreen = null;
+                }
             }
         }
 

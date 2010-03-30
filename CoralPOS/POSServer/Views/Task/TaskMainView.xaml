@@ -13,12 +13,12 @@
             <ColumnDefinition Width="167*" />
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,15,64,0" Name="Login" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,0,68,0" Name="Login" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">ĐĂNG NHẬP</TextBlock></Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,122.5,64,0" Name="LogOut" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,107.5,68,0" Name="LogOut" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">ĐĂNG XUẤT</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="88" Margin="57,231.25,64,0" Name="ChangePassword" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,216.25,68,0" Name="ChangePassword" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">THAY ĐỔI MẬT MÃ</TextBlock>
         </Button>
     </Grid>

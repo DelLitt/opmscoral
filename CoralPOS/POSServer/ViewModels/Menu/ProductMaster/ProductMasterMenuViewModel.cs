@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
@@ -51,7 +52,7 @@ namespace POSServer.ViewModels.Menu.ProductMaster
 		        
         public void CreateProductMaster()
         {
-            
+            _startViewModel.EnterFlow("ProductMasterCreateFlow");
         }
 		        
         public void CreateProductMasterByTemplate()
