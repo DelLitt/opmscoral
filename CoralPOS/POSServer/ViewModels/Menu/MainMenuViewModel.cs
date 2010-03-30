@@ -13,7 +13,10 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.ViewModels.Management;
+using POSServer.ViewModels.Synchronize;
+using POSServer.ViewModels.Task;
+using POSServer.ViewModels.Tool;
 
 
 namespace POSServer.ViewModels.Menu
@@ -41,7 +44,7 @@ namespace POSServer.ViewModels.Menu
 		        
         public void Task()
         {
-            MessageBox.Show("Task Menu!");
+            _startViewModel.Open<ITaskMainViewModel>();
         }
 		        
         public void ProductMaster()
@@ -61,17 +64,17 @@ namespace POSServer.ViewModels.Menu
 		        
         public void Management()
         {
-            MessageBox.Show("Management Menu!");
+            _startViewModel.Open<IManagementMainViewModel>();
         }
 		        
         public void Utility()
         {
-            MessageBox.Show("Utility Menu!");
+            _startViewModel.Open<IToolMainViewModel>();
         }
 		        
         public void Synchronize()
         {
-            MessageBox.Show("Synchronize Menu!");
+            _startViewModel.Open<ISynchronizeMainViewModel>();
         }
 				#endregion
 		

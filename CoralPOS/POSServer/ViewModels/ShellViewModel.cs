@@ -36,7 +36,7 @@ namespace POSServer.ViewModels
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)
             {
-                Open<IMainView>();  
+                this.OpenScreen(MainScreen);
             }
             else
             {

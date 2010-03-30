@@ -3,12 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="740" Width="174">
     <Grid>
-        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,12,40,0" Name="Task" VerticalAlignment="Top">TÁC VỤ</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,113.459,40,0" Name="ProductMaster" VerticalAlignment="Top">SẢN PHẨM</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="87.169" Margin="40,216.347,40,0" Name="Stock" VerticalAlignment="Top">KHO</Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="40,320.664,40,333.059" Name="Report">BÁO CÁO</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,227.313" Name="Management" VerticalAlignment="Bottom">QUẢN LÝ</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,120.138" Name="Utility" VerticalAlignment="Bottom">TIỆN ÍCH</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="86.277" Margin="40,0,40,17.25" Name="Synchronize" VerticalAlignment="Bottom">ĐỒNG BỘ</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Width ="80" Margin="40,12,40,0" Name="Task" VerticalAlignment="Top">TÁC VỤ</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,108.878,47,0" Name="ProductMaster" VerticalAlignment="Top">SẢN PHẨM</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,208.375,47,0" Name="Stock" VerticalAlignment="Top">KHO</Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="47,308.395,47,351.737" Name="Report">BÁO CÁO</Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="47,0,47,251.717" Name="Management" Height="79.868" VerticalAlignment="Bottom">QUẢN LÝ</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,151.697" Name="Utility" VerticalAlignment="Bottom">TIỆN ÍCH</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,51.677" Name="Synchronize" VerticalAlignment="Bottom">ĐỒNG BỘ</Button>
     </Grid>
 </UserControl>
