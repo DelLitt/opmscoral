@@ -310,6 +310,25 @@ namespace POSServer.DataLayer.Implement
                                            }
                                        });
         }
+
+        public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<ProductMaster> criteria, Func<ProductMaster, TClass> subProp)
+        {
+            return (IList<TClass>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList<TClass> res = new List<TClass>();
+                                    QueryHandler<ProductMaster> handler = new QueryHandler<ProductMaster>(session);
+                                    IList<ProductMaster> products = handler.GetList(criteria);
+                                    var list = products.Select(subProp);
+                                    foreach (TClass classe in list)
+                                    {
+                                        res.Add(classe);
+                                    }
+                                    return res;
+
+                                }
+                                    );
+        }
     }
 }
 

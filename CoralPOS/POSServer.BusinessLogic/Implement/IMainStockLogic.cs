@@ -61,5 +61,11 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<MainStock> criteria);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IList FindProductMasterAvailInStock();
     }
 }

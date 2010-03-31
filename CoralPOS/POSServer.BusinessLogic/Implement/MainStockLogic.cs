@@ -1,8 +1,10 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -104,6 +106,14 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<MainStock> criteria)
         {
             return MainStockDao.FindPaging(criteria);
+        }
+
+        public IList FindProductMasterAvailInStock()
+        {
+            LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
+            crit.AddCriteria(stk =>stk.Quantity > 0);
+            IList<ProductMaster> list = MainStockDao.FindAllSubProperty(crit, stk => stk.ProductMaster);
+            return ObjectConverter.ConvertFrom(list);
         }
     }
 }

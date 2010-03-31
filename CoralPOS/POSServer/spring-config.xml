@@ -83,4 +83,19 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  
+  <object id="StockOutCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutPreLoadAction"/>
+        <!-- Show product master form -->
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutViewModel"/>
+        <!-- Show product master summary form -->
+        <entry key="Step3" value="POSServer.ViewModels.Stock.StockOut.IStockOutConfirmViewModel"/>
+        <!-- Save Product Master -->
+        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.IStockOutSaveAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

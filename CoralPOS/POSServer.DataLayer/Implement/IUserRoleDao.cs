@@ -58,6 +58,15 @@ namespace POSServer.DataLayer.Implement
         IList<UserRole> FindAll(ObjectCriteria<UserRole> criteria);
 		
         object FindFirst(ObjectCriteria<UserRole> criteria);
+		
+		/// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TClass"></typeparam>
+        /// <param name="criteria"></param>
+        /// <param name="subProp"></param>
+        /// <returns></returns>
+        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<UserRole> criteria,Func<UserRole,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.
