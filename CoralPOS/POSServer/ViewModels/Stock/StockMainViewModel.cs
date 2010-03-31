@@ -63,7 +63,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockOutToDepartment()
         {
-            
+            _startViewModel.EnterFlow("StockOutCreateFlow"); 
         }
 		        
         public void StockOutToOther()

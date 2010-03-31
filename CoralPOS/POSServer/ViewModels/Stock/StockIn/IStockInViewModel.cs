@@ -51,6 +51,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+        string ProductNameText { get; set; }
 			#endregion
 		
 		#region Methods

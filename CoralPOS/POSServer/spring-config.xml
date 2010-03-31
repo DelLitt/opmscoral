@@ -69,6 +69,16 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  <object id="DepartmentsViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.Management.IDepartmentsViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  
   <object id="StockInCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>        

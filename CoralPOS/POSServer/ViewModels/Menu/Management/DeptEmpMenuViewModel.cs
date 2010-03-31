@@ -41,7 +41,7 @@ namespace POSServer.ViewModels.Menu.Management
 		        
         public void CreateDepartment()
         {
-            
+            _startViewModel.EnterFlow("DepartmentsViewFlow"); 
         }
 		        
         public void DepartmentList()

@@ -14,14 +14,18 @@ using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.Validation;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
+using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 using POSServer.Utils;
 using POSServer.ViewModels.Dialogs;
 using POSServer.ViewModels.Menu;
@@ -126,6 +130,15 @@ namespace POSServer.ViewModels.Stock.StockIn
                 NotifyOfPropertyChange(() => Description);
             }
         }
+
+        public string _productNameText;
+        public string ProductNameText
+        {
+            get { return _productNameText; }
+            set { _productNameText=value;NotifyOfPropertyChange(()=>ProductNameText); }
+        }
+
+        public IProductMasterLogic ProductMasterLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
@@ -174,6 +187,23 @@ namespace POSServer.ViewModels.Stock.StockIn
             
         }
 		
+        public void ReloadProductMaster(string text)
+        {
+            Execute.OnBackgroundThread(()=>LoadProductMaster(text), CompletedLoadProductMaster);
+        }
+
+        private void LoadProductMaster(string text)
+        {
+            if (string.IsNullOrEmpty(text)) text = "";
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+            IList list = ProductMasterLogic.LoadAllProductMasterWithType(text.Trim());
+            ProductMasterList = list;
+        }
+        void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+        }
+
         public void Save()
         {
             CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
@@ -235,6 +265,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             screen.ConfirmEvent += new EventHandler<ProductEventArgs>(screen_ConfirmEvent);
             _startViewModel.ShowDialog(screen);
         }
+
+        
 
         void screen_ConfirmEvent(object sender, ProductEventArgs e)
         {

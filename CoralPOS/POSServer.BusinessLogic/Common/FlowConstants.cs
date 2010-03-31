@@ -14,6 +14,7 @@ namespace POSServer.BusinessLogic.Common
         public static string PRODUCT_NAME ="ProductName";
         public static string SAVE_STOCK_IN ="SaveStockIn";
         public static string SAVE_STOCK_OUT = "SaveStockOut";
+        public static string DEPARTMENTS ="Departments";
         public const string CATEGORY_LIST = "CategoryList";
         public const string PRODUCT_TYPE_LIST = "ProductTypeList";
         public const string PRODUCT_COLOR_LIST = "ProductColorList";

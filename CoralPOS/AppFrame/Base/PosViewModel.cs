@@ -34,7 +34,10 @@ namespace AppFrame.Base
             if(Flow is ChildFlow)
             {
                 ChildFlow childFlow = (ChildFlow) Flow;
-                childFlow.ParentFlow.Session.Put(key,list);
+                if (childFlow.ParentFlow != null)
+                {
+                    childFlow.ParentFlow.Session.Put(key, list);
+                }
             }
         }
     }

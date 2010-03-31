@@ -9,17 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Common;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    [PerRequest(typeof(IStockOutViewModel))]
+    [AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel),typeof(IStockMainViewModel))]
     public class StockOutViewModel : PosViewModel,IStockOutViewModel  
     {
 
@@ -30,9 +32,9 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 		
 		#region Fields
-		        
-        private string _createDate;
-        public string CreateDate
+
+        private DateTime _createDate;
+        public DateTime CreateDate
         {
             get
             {
@@ -45,8 +47,8 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
         }
 		        
-        private string _productMaster;
-        public string ProductMaster
+        private CoralPOS.Models.ProductMaster _productMaster;
+        public CoralPOS.Models.ProductMaster ProductMaster
         {
             get
             {
@@ -91,7 +93,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 		        
         private IList _department;
-        public IList Department
+        public IList Departments
         {
             get
             {
@@ -100,24 +102,24 @@ namespace POSServer.ViewModels.Stock.StockOut
             set
             {
                 _department = value;
-                NotifyOfPropertyChange(() => Department);
+                NotifyOfPropertyChange(() => Departments);
             }
         }
 				#endregion
 		
 		#region List which just using in Data Grid
 		        
-        private IList _stockOutList;
-        public IList StockOutList
+        private IList _stockOutDetails;
+        public IList StockOutDetails
         {
             get
             {
-                return _stockOutList;
+                return _stockOutDetails;
             }
             set
             {
-                _stockOutList = value;
-                NotifyOfPropertyChange(() => StockOutList);
+                _stockOutDetails = value;
+                NotifyOfPropertyChange(() => StockOutDetails);
             }
         }
 				#endregion
@@ -141,7 +143,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void CreateByBlock()
@@ -158,7 +160,20 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
+            ProductMasterList = list as IList;
+            var deptsList = Flow.Session.Get(FlowConstants.DEPARTMENTS);
+            Departments = deptsList as IList;
+
+            var details = new ArrayList();
+            StockOutDetails = details;
+            CreateDate = DateTime.Now;
+        }
+
+        #endregion
 		
         
         

@@ -9,16 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.ViewModels.Menu;
 
 
 namespace POSServer.ViewModels.Management
 {
     [PerRequest(typeof(IManagementMainViewModel))]
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainView))]
     public class ManagementMainViewModel : PosViewModel,IManagementMainViewModel  
     {
 
@@ -41,7 +43,7 @@ namespace POSServer.ViewModels.Management
 		        
         public void CreateDepartment()
         {
-            
+            _startViewModel.EnterFlow("DepartmentsViewFlow");
         }
 		        
         public void DepartmentList()

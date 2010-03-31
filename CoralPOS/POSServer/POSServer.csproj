@@ -317,10 +317,6 @@
     <Compile Include="Actions\ProductMaster\IPmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\IPmSaveAction.cs" />
     <Compile Include="Actions\StartLoadScreen.cs" />
-    <Compile Include="Actions\Stock\StockOut\IStockOutPreLoadAction.cs" />
-    <Compile Include="Actions\Stock\StockOut\IStockOutSaveAction.cs" />
-    <Compile Include="Actions\Stock\StockOut\StockOutPreLoadAction.cs" />
-    <Compile Include="Actions\Stock\StockOut\StockOutSaveAction.cs" />
     <Compile Include="Actions\Stock\StockIn\IStockInSaveAction.cs" />
     <Compile Include="Actions\ProductMaster\PmPreLoadDefinitionAction.cs" />
     <Compile Include="Actions\ProductMaster\PmSaveAction.cs" />
@@ -329,6 +325,10 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Actions\Stock\StockIn\IStockInPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockIn\StockInSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\IStockOutPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\IStockOutSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\StockOutPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\StockOutSaveAction.cs" />
     <Compile Include="Actions\StopLoadScreen.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />

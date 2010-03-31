@@ -184,9 +184,10 @@ namespace POSServer.BusinessLogic.Implement
             return true;
         }
 
-        public IList LoadAllProductMasterWithType()
+        public IList LoadAllProductMasterWithType(string filter)
         {
-            return ProductMasterDao.FindProductMasterWithTypes();
+            return ProductMasterDao.FindProductMasterWithTypes("%"+filter +"%");
+            //return ProductMasterDao.FindAll(new ObjectCriteria<ProductMaster>()) as IList;
         }
     }
 }

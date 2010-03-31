@@ -194,17 +194,17 @@ namespace AppFrame.Base
         /// <returns>true if start successfully</returns>
         public virtual bool StartFlow(string flowName)
         {
-            try
-            {
+            /*try
+            {*/
                 IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
                 flow.Name = flowName;
                 ExecuteFlow(flow,false);
                 return true;
-            }
+            /*}
             catch (Exception exception)
             {
                 return false;
-            }
+            }*/
         }
 
         /// <summary>
@@ -215,19 +215,19 @@ namespace AppFrame.Base
         public virtual bool ResumeFlow(string flowName)
         {
 
-            try
-            {
+            /*try
+            {*/
                 // get flow in freezeflows and remove it from freeze flows.
                 IFlow flow = _freezeFlows[flowName];
                 _freezeFlows.Remove(flow.Name);
                 ExecuteFlow(flow,true);
                 
                 return true;
-            }
+            /*}
             catch (Exception)
             {
                 return false;
-            }
+            }*/
         }
 
         /// <summary>

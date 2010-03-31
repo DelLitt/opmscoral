@@ -18,9 +18,11 @@ using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.RoutedMessaging;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Windows.Controls;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -145,8 +147,9 @@ namespace POSServer.ViewModels.Dialogs
         }
         public void Setup()
         {
+            
             string productName = ProductName;
-            IList colors =ProductLogic.GetColorsWithProductName(productName);
+            IList colors = ProductLogic.GetColorsWithProductName(productName);
             IList sizes = ProductLogic.GetSizesWithProductName(productName);
             IList<ExProductColor> extraColors = ProductColorLogic.FindAll(new ObjectCriteria<ExProductColor>());
             IList<ExProductSize> extraSizes = ProductSizeLogic.FindAll(new ObjectCriteria<ExProductSize>());
@@ -158,8 +161,9 @@ namespace POSServer.ViewModels.Dialogs
             SelectedProductSizes = new ArrayList();
             ExtraSelectedProductColors = new ArrayList();
             ExtraSelectedProductSizes = new ArrayList();
+            
         }
-
+        
         public void Confirm()
         {
             ProductEventArgs eventArgs = new ProductEventArgs();

@@ -16,13 +16,13 @@ namespace POSServer.ViewModels.Stock.StockOut
     {
         #region Fields
 		                
-        string CreateDate
+        DateTime CreateDate
         {
             get;
             set;            
         }
-		                
-        string ProductMaster
+
+        CoralPOS.Models.ProductMaster ProductMaster
         {
             get;
             set;            

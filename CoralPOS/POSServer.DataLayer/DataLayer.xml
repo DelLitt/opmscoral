@@ -41,7 +41,7 @@
   <object id="HibernateTemplate" type="Spring.Data.NHibernate.HibernateTemplate" singleton="true">
     <property name="SessionFactory" ref="NHibernateSessionFactory" />
     <property name="TemplateFlushMode" value="Auto" />
-    <property name="CacheQueries" value="true" />
+    <property name="CacheQueries" value="true" />    
   </object>
 
   <!-- Data Access Objects -->

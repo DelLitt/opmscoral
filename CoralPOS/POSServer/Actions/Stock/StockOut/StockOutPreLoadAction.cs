@@ -10,6 +10,7 @@ using AppFrame.WPF.Screens;
 using Caliburn.Core.Invocation;
 using Caliburn.PresentationFramework.Actions;
 using Caliburn.PresentationFramework.Filters;
+using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -21,6 +22,11 @@ namespace POSServer.Actions.Stock.StockOut
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
         public IMainStockLogic MainStockLogic
+        {
+            get; set;
+        }
+
+        public IDepartmentLogic DepartmentLogic
         {
             get; set;
         }
@@ -42,6 +48,8 @@ namespace POSServer.Actions.Stock.StockOut
         {
             IList productMasters = MainStockLogic.FindProductMasterAvailInStock();
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
+            IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
+            Flow.Session.Put(FlowConstants.DEPARTMENTS,departments);
             return null;
         }
     }

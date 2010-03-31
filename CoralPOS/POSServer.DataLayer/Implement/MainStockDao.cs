@@ -165,9 +165,10 @@ namespace POSServer.DataLayer.Implement
                                 {
                                     IList<TClass> res = new List<TClass>();
                                     QueryHandler<MainStock> handler = new QueryHandler<MainStock>(session);
+                                    handler.SetFetchMode(subProp.Method.ReturnParameter.ParameterType.Name);
                                     IList<MainStock> products = handler.GetList(criteria);
                                     var list = products.Select(subProp);
-                                    foreach (TClass classe in list)
+                                    foreach (TClass classe in list.Distinct())
                                     {
                                         res.Add(classe);
                                     }

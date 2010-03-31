@@ -28,5 +28,10 @@ namespace POSServer.Views.Stock.StockIn
         {
             
         }
+
+        private void ProductMasterList_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+        }
     }
 }

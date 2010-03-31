@@ -8,6 +8,7 @@ using System.Text;
 using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Management
 {
@@ -32,6 +33,8 @@ namespace POSServer.ViewModels.Management
             get;
             set;            
         }
+
+        IDepartmentLogic DepartmentLogic { get; set; }
 			#endregion
 		
 		#region Methods
@@ -42,7 +45,7 @@ namespace POSServer.ViewModels.Management
         void Delete();
         
 		        
-        void Edit();
+        void Save();
         
 		        
         void Stop();

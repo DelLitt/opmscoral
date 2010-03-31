@@ -11,5 +11,6 @@ namespace POSServer.Actions.Stock.StockOut
     {
         IProductMasterLogic ProductMasterLogic { get; set; }
         IMainStockLogic MainStockLogic { get; set; }
+        IDepartmentLogic DepartmentLogic { get; set; }
     }
 }

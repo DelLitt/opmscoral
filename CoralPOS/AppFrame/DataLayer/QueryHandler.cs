@@ -10,9 +10,10 @@ namespace AppFrame.DataLayer
 {
     public class QueryHandler<T>
     {
-        
+
         private IList<Expression<Func<T, bool>>> _criteria;
         private NHibernateContext _context;
+        private IList<string> fetchProps = new List<string>();
         public QueryHandler(NHibernateContext context)
         {
             _criteria = new List<Expression<Func<T, bool>>>();
@@ -27,7 +28,7 @@ namespace AppFrame.DataLayer
             _criteria.Add(lambdaFunc);
         }
 
-        
+
 
         public IList<T> GetList()
         {
@@ -37,14 +38,25 @@ namespace AppFrame.DataLayer
             foreach (var criterion in _criteria)
             {
                 query = query.Where<T>(criterion);
-                
+
             }
             return query.ToList();
         }
         public IList<T> GetList(LinqCriteria<T> criteria)
         {
-            var query = from item in _context.Session.Linq<T>()
+            /*var query = from item in _context.Session.Linq<T>()
+                        select item;*/
+            var items = _context.Session.Linq<T>();
+            
+            // set fetch mode
+            foreach (string fetchProp in fetchProps)
+            {
+                items.Expand(fetchProp);
+            }
+            
+            var query = from item in items
                         select item;
+
             //Tack on our query Criteria
             foreach (var criterion in criteria.Where)
             {
@@ -56,8 +68,14 @@ namespace AppFrame.DataLayer
             {
                 query = query.OrderBy(criterion);
             }
-
+            
+            
             return query.ToList();
+        }
+
+        public void SetFetchMode(string name)
+        {
+            fetchProps.Add(name);
         }
     }
     public class RepositoryContext : NHibernateContext

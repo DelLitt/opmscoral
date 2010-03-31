@@ -286,7 +286,7 @@ namespace POSServer.DataLayer.Implement
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }
 
-        public IList FindProductMasterWithTypes()
+        public IList FindProductMasterWithTypes(string filter)
         {
             return (IList)HibernateTemplate.Execute(
                                        delegate(ISession session)
@@ -294,15 +294,16 @@ namespace POSServer.DataLayer.Implement
                                            try
                                            {
                                                PosContext context = new PosContext(session);
+                                               ObjectCriteria<ProductMaster> objectCriteria = new ObjectCriteria<ProductMaster>();
+                                               objectCriteria.MaxResult = 20;
+                                               objectCriteria.AddCriteria(SqlExpression.Like<ProductMaster>(pm=>pm.ProductName,filter));
+                                               ICriteria hibernateCriteria = session.CreateCriteria(typeof (ProductMaster));
+                                               PosContext.SetCriteria(hibernateCriteria, objectCriteria);
 
-                                               var result = from productMaster in context.Session.Linq<ProductMaster>()
-                                                            select productMaster;
-                                               var resList = result.ToList();
-                                               foreach (ProductMaster master in resList)
-                                               {
-                                                   string typeName = master.ProductType.TypeName;
-                                               }
-                                               return resList;
+                                               return hibernateCriteria.List();
+                                               
+                                               
+                                               //return resList;
                                            }
                                            catch (Exception exception)
                                            {

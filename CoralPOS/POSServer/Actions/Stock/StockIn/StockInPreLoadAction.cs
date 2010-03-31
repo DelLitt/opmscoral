@@ -36,7 +36,7 @@ namespace POSServer.Actions.Stock.StockIn
 
         private object DoWork()
         {
-            IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType();
+            IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
             return null;
         }

@@ -43,12 +43,19 @@
     <property name="CategoryLogic" ref="ICategoryLogic" />
   </object>
 
+  <object id="IDepartmentsViewModel" type="POSServer.ViewModels.Management.DepartmentsViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+  </object>
+  
   <object id="IStockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
-    <constructor-arg ref="IShellViewModel" />    
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
 
   <object id="IStockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
+
   </object>
 
   <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
@@ -56,6 +63,10 @@
     <property name="ProductLogic" ref="IProductLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+  </object>
+
+  <object id="IStockOutViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
   </object>
   
 </objects>
