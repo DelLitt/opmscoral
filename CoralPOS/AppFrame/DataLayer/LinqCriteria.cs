@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
+using AppFrame.Extensions;
 
 namespace AppFrame.DataLayer
 {
@@ -31,10 +32,16 @@ namespace AppFrame.DataLayer
             _order.Add(lambdaFunc);
         }
         
-        public void AddFetchProp(string fetchProp)
+        public void AddFetchPath(string fetchProp)
         {
             _fetchProps.Add(fetchProp);
         }
+
+        public void AddFetchPath<TK>(Expression<Func<T, TK>> fetchProp)
+        {
+            _fetchProps.Add(TypedExpandExtension.ProcessSelector(fetchProp));
+        }
+
         public IList<Expression<Func<T, bool>>> Where
         {
             get

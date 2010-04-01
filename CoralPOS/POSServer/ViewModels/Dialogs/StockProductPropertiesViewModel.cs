@@ -158,8 +158,13 @@ namespace POSServer.ViewModels.Dialogs
             IList sizes = MainStockLogic.GetSizesFromAvailProductInStock(productName);
             LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
             crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
-            crit.AddFetchProp("Product");
-            crit.AddFetchProp("ProductMaster");
+            /*crit.AddFetchPath("Product");
+            crit.AddFetchPath("ProductMaster");
+            crit.AddFetchPath("ProductMaster.ProductType");
+             */
+            crit.AddFetchPath(i => i.Product);
+            crit.AddFetchPath(i => i.ProductMaster);
+            crit.AddFetchPath(i => i.ProductMaster.ProductType);
             _stockList = MainStockLogic.FindAll(crit);
             ProductColorList = colors;
             ProductSizeList = sizes;

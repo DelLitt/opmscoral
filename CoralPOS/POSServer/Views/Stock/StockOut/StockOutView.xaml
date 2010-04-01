@@ -19,7 +19,7 @@
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT"  />
                     <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100"  />
+                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
                     <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True" />                                            
                     <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
