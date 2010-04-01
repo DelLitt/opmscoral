@@ -350,6 +350,8 @@
     <Compile Include="Utils\ShowProcessAttribute.cs" />
     <Compile Include="Utils\StockInHelper.cs" />
     <Compile Include="ViewModels\CircularLoadViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IStockProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\StockProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\ErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
@@ -452,6 +454,9 @@
     <Compile Include="ViewModels\Tool\ToolMainViewModel.cs" />
     <Compile Include="Views\CircularLoadView.xaml.cs">
       <DependentUpon>CircularLoadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\StockProductPropertiesView.xaml.cs">
+      <DependentUpon>StockProductPropertiesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\ErrorDialogView.xaml.cs">
       <DependentUpon>ErrorDialogView.xaml</DependentUpon>
@@ -643,6 +648,10 @@
     <Page Include="Views\CircularLoadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\StockProductPropertiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Dialogs\ErrorDialogView.xaml">
       <SubType>Designer</SubType>

@@ -32,6 +32,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -46,11 +70,181 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implement\BlockInCostLogic.cs" />
+    <Compile Include="Implement\BlockInDetailLogic.cs" />
+    <Compile Include="Implement\BlockInLogic.cs" />
+    <Compile Include="Implement\CashIoTransactionLogic.cs" />
+    <Compile Include="Implement\CategoryLogic.cs" />
+    <Compile Include="Implement\ContractLogic.cs" />
+    <Compile Include="Implement\CountryLogic.cs" />
+    <Compile Include="Implement\CouponLogic.cs" />
+    <Compile Include="Implement\CouponTypeLogic.cs" />
+    <Compile Include="Implement\CustomerDetailLogic.cs" />
+    <Compile Include="Implement\CustomerLogic.cs" />
+    <Compile Include="Implement\DepartmentCostLogic.cs" />
+    <Compile Include="Implement\DepartmentLogic.cs" />
+    <Compile Include="Implement\DepartmentManagerLogic.cs" />
+    <Compile Include="Implement\DepartmentPromotionLogic.cs" />
+    <Compile Include="Implement\DepartmentPurchaseOrderDetailLogic.cs" />
+    <Compile Include="Implement\DepartmentPurchaseOrderDetailLogLogic.cs" />
+    <Compile Include="Implement\DepartmentPurchaseOrderLogic.cs" />
+    <Compile Include="Implement\DepartmentPurchaseOrderLogLogic.cs" />
+    <Compile Include="Implement\DepartmentPurchaseOrderPromotionLogic.cs" />
+    <Compile Include="Implement\DepartmentReturnCostLogic.cs" />
+    <Compile Include="Implement\DepartmentReturnDetailLogic.cs" />
+    <Compile Include="Implement\DepartmentReturnLogic.cs" />
+    <Compile Include="Implement\DepartmentReturnPurchaseOrderLogic.cs" />
+    <Compile Include="Implement\DepartmentStockHistoryLogic.cs" />
+    <Compile Include="Implement\DepartmentStockInCostLogic.cs" />
+    <Compile Include="Implement\DepartmentStockInDetailLogic.cs" />
+    <Compile Include="Implement\DepartmentStockInHistoryLogic.cs" />
+    <Compile Include="Implement\DepartmentStockInLogic.cs" />
+    <Compile Include="Implement\DepartmentStockLogic.cs" />
+    <Compile Include="Implement\DepartmentStockOutCostLogic.cs" />
+    <Compile Include="Implement\DepartmentStockOutDetailLogic.cs" />
+    <Compile Include="Implement\DepartmentStockOutLogic.cs" />
+    <Compile Include="Implement\DepartmentStockTemployeeValidLogic.cs" />
+    <Compile Include="Implement\DepartmentStockTemployeeValidSaveLogic.cs" />
+    <Compile Include="Implement\DepartmentTimelineLogic.cs" />
+    <Compile Include="Implement\DistributorLogic.cs" />
+    <Compile Include="Implement\EmpLogic.cs" />
+    <Compile Include="Implement\EmployeeDayoffLogic.cs" />
+    <Compile Include="Implement\EmployeeInfoLogic.cs" />
+    <Compile Include="Implement\EmployeeMoneyLogic.cs" />
+    <Compile Include="Implement\EmployeeRewardLogic.cs" />
+    <Compile Include="Implement\EmployeeWorkingDaysLogic.cs" />
+    <Compile Include="Implement\ExProductColorLogic.cs" />
+    <Compile Include="Implement\ExProductSizeLogic.cs" />
+    <Compile Include="Implement\GiftLogic.cs" />
+    <Compile Include="Implement\IBlockInCostLogic.cs" />
+    <Compile Include="Implement\IBlockInDetailLogic.cs" />
+    <Compile Include="Implement\IBlockInLogic.cs" />
+    <Compile Include="Implement\ICashIoTransactionLogic.cs" />
+    <Compile Include="Implement\ICategoryLogic.cs" />
+    <Compile Include="Implement\IContractLogic.cs" />
+    <Compile Include="Implement\ICountryLogic.cs" />
+    <Compile Include="Implement\ICouponLogic.cs" />
+    <Compile Include="Implement\ICouponTypeLogic.cs" />
+    <Compile Include="Implement\ICustomerDetailLogic.cs" />
+    <Compile Include="Implement\ICustomerLogic.cs" />
+    <Compile Include="Implement\IDepartmentCostLogic.cs" />
+    <Compile Include="Implement\IDepartmentLogic.cs" />
+    <Compile Include="Implement\IDepartmentManagerLogic.cs" />
+    <Compile Include="Implement\IDepartmentPromotionLogic.cs" />
+    <Compile Include="Implement\IDepartmentPurchaseOrderDetailLogic.cs" />
+    <Compile Include="Implement\IDepartmentPurchaseOrderDetailLogLogic.cs" />
+    <Compile Include="Implement\IDepartmentPurchaseOrderLogic.cs" />
+    <Compile Include="Implement\IDepartmentPurchaseOrderLogLogic.cs" />
+    <Compile Include="Implement\IDepartmentPurchaseOrderPromotionLogic.cs" />
+    <Compile Include="Implement\IDepartmentReturnCostLogic.cs" />
+    <Compile Include="Implement\IDepartmentReturnDetailLogic.cs" />
+    <Compile Include="Implement\IDepartmentReturnLogic.cs" />
+    <Compile Include="Implement\IDepartmentReturnPurchaseOrderLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockHistoryLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockInCostLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockInDetailLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockInHistoryLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockInLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockOutCostLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockOutDetailLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockOutLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockTemployeeValidLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockTemployeeValidSaveLogic.cs" />
+    <Compile Include="Implement\IDepartmentTimelineLogic.cs" />
+    <Compile Include="Implement\IDistributorLogic.cs" />
+    <Compile Include="Implement\IEmpLogic.cs" />
+    <Compile Include="Implement\IEmployeeDayoffLogic.cs" />
+    <Compile Include="Implement\IEmployeeInfoLogic.cs" />
+    <Compile Include="Implement\IEmployeeMoneyLogic.cs" />
+    <Compile Include="Implement\IEmployeeRewardLogic.cs" />
+    <Compile Include="Implement\IEmployeeWorkingDaysLogic.cs" />
+    <Compile Include="Implement\IExProductColorLogic.cs" />
+    <Compile Include="Implement\IExProductSizeLogic.cs" />
+    <Compile Include="Implement\IGiftLogic.cs" />
+    <Compile Include="Implement\IMainftrLogic.cs" />
+    <Compile Include="Implement\IMainPriceLogic.cs" />
+    <Compile Include="Implement\IMainStockHistoryLogic.cs" />
+    <Compile Include="Implement\IMainStockLogic.cs" />
+    <Compile Include="Implement\IOtherTransactionLogLogic.cs" />
+    <Compile Include="Implement\IPackagerLogic.cs" />
+    <Compile Include="Implement\IProductLogic.cs" />
+    <Compile Include="Implement\IProductMasterLogic.cs" />
+    <Compile Include="Implement\IProductTypeLogic.cs" />
+    <Compile Include="Implement\IProductUnitLogic.cs" />
+    <Compile Include="Implement\IPromotionLogic.cs" />
+    <Compile Include="Implement\IPublishedCouponLogic.cs" />
+    <Compile Include="Implement\IPurchaseOrdersLogLogic.cs" />
+    <Compile Include="Implement\IPurchaseOrdersTransactionLogic.cs" />
+    <Compile Include="Implement\IReceiptLogic.cs" />
+    <Compile Include="Implement\IReceiptOutCostLogic.cs" />
+    <Compile Include="Implement\IReceiptOutLogic.cs" />
+    <Compile Include="Implement\IReturnBlockInLogic.cs" />
+    <Compile Include="Implement\IReturnProductLogic.cs" />
+    <Compile Include="Implement\IReturnTransactionLogic.cs" />
+    <Compile Include="Implement\IRoleLogic.cs" />
+    <Compile Include="Implement\ISaleTransactionLogic.cs" />
+    <Compile Include="Implement\IScheduleTemplateLogic.cs" />
+    <Compile Include="Implement\ISimilarProductLogic.cs" />
+    <Compile Include="Implement\IStockDefinitionStatusLogic.cs" />
+    <Compile Include="Implement\IStockInDetailLogic.cs" />
+    <Compile Include="Implement\IStockInLogic.cs" />
+    <Compile Include="Implement\IStockOutCostLogic.cs" />
+    <Compile Include="Implement\IStockOutDetailLogic.cs" />
+    <Compile Include="Implement\IStockOutLogic.cs" />
+    <Compile Include="Implement\IStockOutTempLogic.cs" />
+    <Compile Include="Implement\ISupplierLogic.cs" />
+    <Compile Include="Implement\ISyncStatususLogic.cs" />
+    <Compile Include="Implement\ITaxLogic.cs" />
+    <Compile Include="Implement\ITransactionLogic.cs" />
+    <Compile Include="Implement\IUserInfoLogic.cs" />
+    <Compile Include="Implement\IUserRoleLogic.cs" />
+    <Compile Include="Implement\MainftrLogic.cs" />
+    <Compile Include="Implement\MainPriceLogic.cs" />
+    <Compile Include="Implement\MainStockHistoryLogic.cs" />
+    <Compile Include="Implement\MainStockLogic.cs" />
+    <Compile Include="Implement\OtherTransactionLogLogic.cs" />
+    <Compile Include="Implement\PackagerLogic.cs" />
+    <Compile Include="Implement\ProductLogic.cs" />
+    <Compile Include="Implement\ProductMasterLogic.cs" />
+    <Compile Include="Implement\ProductTypeLogic.cs" />
+    <Compile Include="Implement\ProductUnitLogic.cs" />
+    <Compile Include="Implement\PromotionLogic.cs" />
+    <Compile Include="Implement\PublishedCouponLogic.cs" />
+    <Compile Include="Implement\PurchaseOrdersLogLogic.cs" />
+    <Compile Include="Implement\PurchaseOrdersTransactionLogic.cs" />
+    <Compile Include="Implement\ReceiptLogic.cs" />
+    <Compile Include="Implement\ReceiptOutCostLogic.cs" />
+    <Compile Include="Implement\ReceiptOutLogic.cs" />
+    <Compile Include="Implement\ReturnBlockInLogic.cs" />
+    <Compile Include="Implement\ReturnProductLogic.cs" />
+    <Compile Include="Implement\ReturnTransactionLogic.cs" />
+    <Compile Include="Implement\RoleLogic.cs" />
+    <Compile Include="Implement\SaleTransactionLogic.cs" />
+    <Compile Include="Implement\ScheduleTemplateLogic.cs" />
+    <Compile Include="Implement\SimilarProductLogic.cs" />
+    <Compile Include="Implement\StockDefinitionStatusLogic.cs" />
+    <Compile Include="Implement\StockInDetailLogic.cs" />
+    <Compile Include="Implement\StockInLogic.cs" />
+    <Compile Include="Implement\StockOutCostLogic.cs" />
+    <Compile Include="Implement\StockOutDetailLogic.cs" />
+    <Compile Include="Implement\StockOutLogic.cs" />
+    <Compile Include="Implement\StockOutTempLogic.cs" />
+    <Compile Include="Implement\SupplierLogic.cs" />
+    <Compile Include="Implement\SyncStatususLogic.cs" />
+    <Compile Include="Implement\TaxLogic.cs" />
+    <Compile Include="Implement\TransactionLogic.cs" />
+    <Compile Include="Implement\UserInfoLogic.cs" />
+    <Compile Include="Implement\UserRoleLogic.cs" />
     <Compile Include="Logic\Security\ILoginLogic.cs" />
     <Compile Include="Logic\Security\LoginLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppFrame\AppFrame2.csproj">
+      <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
+      <Name>AppFrame2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CoralPOS2\CoralPOS.csproj">
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>
