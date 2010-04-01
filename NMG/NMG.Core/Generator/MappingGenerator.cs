@@ -162,8 +162,8 @@ namespace NMG.Core.Generator
             refTableName = refTableName.GetFormattedText();
             var xmlNode = xmldoc.CreateElement("many-to-one");
             //xmlNode.SetAttribute("lazy", "true");
-            xmlNode.SetAttribute("update", "false");
-            xmlNode.SetAttribute("insert", "false");
+            /*xmlNode.SetAttribute("update", "false");
+            xmlNode.SetAttribute("insert", "false");*/
             xmlNode.SetAttribute("class", refTableName);
             xmlNode.SetAttribute("name", refTableName);
 
