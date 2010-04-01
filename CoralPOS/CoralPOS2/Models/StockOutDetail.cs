@@ -96,8 +96,9 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
-        public virtual string ProductMasterId {
+
+        public virtual ProductMaster ProductMaster
+        {
             get;
             set;
         }
@@ -108,6 +109,12 @@ namespace CoralPOS.Models {
         }
         
         public virtual long StockOutId {
+            get;
+            set;
+        }
+
+        public virtual long StockQuantity
+        {
             get;
             set;
         }

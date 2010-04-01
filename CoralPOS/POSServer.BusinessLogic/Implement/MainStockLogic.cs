@@ -9,6 +9,8 @@ using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
+using System.Linq;
+using System.Linq.Expressions;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
@@ -114,6 +116,38 @@ namespace POSServer.BusinessLogic.Implement
             crit.AddCriteria(stk =>stk.Quantity > 0);
             IList<ProductMaster> list = MainStockDao.FindAllSubProperty(crit, stk => stk.ProductMaster);
             return ObjectConverter.ConvertFrom(list);
+        }
+
+        public IList GetColorsFromAvailProductInStock(string productName)
+        {
+            LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
+            crit.AddCriteria(stk => stk.Quantity > 0);
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
+            IList<ExProductColor> list = MainStockDao.FindAllSubProperty(crit, stk => stk.Product.ProductColor);
+            return ObjectConverter.ConvertFrom(list);
+        }
+
+        public IList GetSizesFromAvailProductInStock(string productName)
+        {
+            LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
+            crit.AddCriteria(stk => stk.Quantity > 0);
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
+            IList<ExProductSize> list = MainStockDao.FindAllSubProperty(crit, stk => stk.Product.ProductSize);
+            return ObjectConverter.ConvertFrom(list);
+        }
+
+        public IList GetProductFromAvailProductInStock(string productName)
+        {
+            LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
+            crit.AddCriteria(stk => stk.Quantity > 0);
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
+            IList<Product> list = MainStockDao.FindAllSubProperty(crit, stk => stk.Product);
+            return ObjectConverter.ConvertFrom(list);
+        }
+
+        public IList FindAll(LinqCriteria<MainStock> crit)
+        {
+            return ObjectConverter.ConvertFrom(MainStockDao.FindAll(crit));
         }
     }
 }

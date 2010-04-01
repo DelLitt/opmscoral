@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,10 +12,13 @@ namespace AppFrame.DataLayer
     {
         private IList<Expression<Func<T, bool>>> _where;
         private IList<Expression<Func<T, bool>>> _order;
+        private IList<string> _fetchProps;
+
         public LinqCriteria()
         {
             _where = new List<Expression<Func<T, bool>>>();
             _order = new List<Expression<Func<T, bool>>>();
+            _fetchProps = new List<string>();
         }
         public void AddCriteria(Expression<Func<T, bool>> lambdaFunc)
         {
@@ -25,6 +29,11 @@ namespace AppFrame.DataLayer
         {
             
             _order.Add(lambdaFunc);
+        }
+        
+        public void AddFetchProp(string fetchProp)
+        {
+            _fetchProps.Add(fetchProp);
         }
         public IList<Expression<Func<T, bool>>> Where
         {
@@ -46,6 +55,18 @@ namespace AppFrame.DataLayer
             set
             {
                 _order = value;
+            }
+        }
+
+        public IList<string> FetchProps
+        {
+            get
+            {
+                return _fetchProps;
+            }
+            set
+            {
+                _fetchProps = value; 
             }
         }
     }

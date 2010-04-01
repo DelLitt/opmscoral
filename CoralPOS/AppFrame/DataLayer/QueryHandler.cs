@@ -49,7 +49,7 @@ namespace AppFrame.DataLayer
             var items = _context.Session.Linq<T>();
             
             // set fetch mode
-            foreach (string fetchProp in fetchProps)
+            foreach (string fetchProp in criteria.FetchProps)
             {
                 items.Expand(fetchProp);
             }
@@ -73,7 +73,7 @@ namespace AppFrame.DataLayer
             return query.ToList();
         }
 
-        public void SetFetchMode(string name)
+        public void AddFetch(string name)
         {
             fetchProps.Add(name);
         }

@@ -32,7 +32,7 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual long DefectStatusId {
+        public virtual StockDefinitionStatus DefinitionStatus {
             get;
             set;
         }

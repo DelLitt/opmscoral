@@ -7,7 +7,6 @@
     <property name="ConfirmFlg" column="CONFIRM_FLG" />
     <property name="CreateDate" column="CREATE_DATE" />
     <property name="CreateId" column="CREATE_ID" />
-    <property name="DefectStatusId" column="DEFECT_STATUS_ID" />
     <property name="DelFlg" column="DEL_FLG" />
     <property name="DepartmentId" column="DEPARTMENT_ID" />
     <property name="ExFld1" column="EX_FLD1" />
@@ -20,6 +19,10 @@
     <property name="StockOutDate" column="STOCK_OUT_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <many-to-one class="StockDefinitionStatus" name="DefinitionStatus" not-null="true">
+      <column name="DEFECT_STATUS_ID" />
+    </many-to-one>
+    
     <bag inverse="true" name="StockOutDetails">
       <key>
         <column name="STOCK_OUT_ID" />

@@ -64,6 +64,15 @@
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
   </object>
+  
+  <object id="IStockProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.StockProductPropertiesViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductLogic" ref="IProductLogic" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+  </object>
 
   <object id="IStockOutViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />

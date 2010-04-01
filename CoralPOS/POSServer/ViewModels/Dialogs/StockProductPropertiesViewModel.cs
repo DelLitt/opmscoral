@@ -31,11 +31,12 @@ using POSServer.BusinessLogic.Implement;
 namespace POSServer.ViewModels.Dialogs
 {
     
-    public class StockProductPropertiesViewModel : PosViewModel,IProductPropertiesViewModel  
+    public class StockProductPropertiesViewModel : PosViewModel,IStockProductPropertiesViewModel  
     {
 
         private IShellViewModel _startViewModel;
         private IList _productColorList;
+        private IList _stockList;
 
         private IList _productSizeList;
 
@@ -151,18 +152,19 @@ namespace POSServer.ViewModels.Dialogs
         {
             
             string productName = ProductName;
-            IList colors = ProductLogic.GetColorsWithProductName(productName);
-            IList sizes = ProductLogic.GetSizesWithProductName(productName);
-            //IList<ExProductColor> extraColors = ProductColorLogic.FindAll(new ObjectCriteria<ExProductColor>());
-            //IList<ExProductSize> extraSizes = ProductSizeLogic.FindAll(new ObjectCriteria<ExProductSize>());
+            /*IList colors = ProductLogic.GetColorsWithProductName(productName);
+            IList sizes = ProductLogic.GetSizesWithProductName(productName);*/
+            IList colors = MainStockLogic.GetColorsFromAvailProductInStock(productName);
+            IList sizes = MainStockLogic.GetSizesFromAvailProductInStock(productName);
+            LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
+            crit.AddFetchProp("Product");
+            crit.AddFetchProp("ProductMaster");
+            _stockList = MainStockLogic.FindAll(crit);
             ProductColorList = colors;
             ProductSizeList = sizes;
-            //ExtraProductColorList = extraColors as IList;
-            //ExtraProductSizeList = extraSizes as IList;
             SelectedProductColors = new ArrayList();
             SelectedProductSizes = new ArrayList();
-            //ExtraSelectedProductColors = new ArrayList();
-            //ExtraSelectedProductSizes = new ArrayList();
             
         }
         
@@ -171,6 +173,7 @@ namespace POSServer.ViewModels.Dialogs
             ProductEventArgs eventArgs = new ProductEventArgs();
             eventArgs.ProductColorList = SelectedProductColors;
             eventArgs.ProductSizeList = SelectedProductSizes;
+            eventArgs.StockList = _stockList;
             if(ConfirmEvent!=null) ConfirmEvent(this, eventArgs);
             Shutdown();
         }

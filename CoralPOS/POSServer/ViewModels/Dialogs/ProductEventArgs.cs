@@ -8,6 +8,7 @@ namespace POSServer.ViewModels.Dialogs
 {
     public class ProductEventArgs : EventArgs
     {
+        public IList StockList { get; set;}
         public IList ProductColorList { get; set; }
         public IList ProductSizeList { get; set; }
     }

@@ -67,5 +67,11 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <returns></returns>
         IList FindProductMasterAvailInStock();
+
+        IList GetColorsFromAvailProductInStock(string name);
+        IList GetSizesFromAvailProductInStock(string name);
+        IList GetProductFromAvailProductInStock(string name);
+
+        IList FindAll(LinqCriteria<MainStock> crit);
     }
 }

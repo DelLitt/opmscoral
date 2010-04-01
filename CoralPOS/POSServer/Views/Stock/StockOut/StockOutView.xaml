@@ -18,12 +18,13 @@
             <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutDetails" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT"  />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
+                    <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
+                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100"  />
                     <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True" />                                            
                     <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="80" Binding="{Binding Path=Quantity}" SortMemberPath="Quantity" />
-                    <my:DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80*" Binding="{Binding Path=Quantity}" SortMemberPath="Quantity" />                    
+                    <my:DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80*" Binding="{Binding Path=StockQuantity}" SortMemberPath="StockQuantity" />                    
                 </my:DataGrid.Columns>
             </my:DataGrid>
             <ComboBox Margin="0,0,405.515,56" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectedItem="{Binding ProductMaster}" DisplayMemberPath="ProductName" HorizontalAlignment="Right" Width="285.235" IsEditable="True" />
