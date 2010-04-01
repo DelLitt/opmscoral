@@ -165,14 +165,15 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
         public void Create()
         {
+            if(ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
             var screen = _startViewModel.ServiceLocator.GetInstance<IStockProductPropertiesViewModel>("IStockProductPropertiesViewModel");
             screen.ProductName = ProductMaster.ProductName;
             screen.Setup();
-            screen.ConfirmEvent += new EventHandler<ProductEventArgs>(screen_ConfirmEvent);
+            screen.ConfirmEvent += new EventHandler<ProductEventArgs>(ScreenConfirmEvent);
             _startViewModel.ShowDialog(screen);
         }
 
-        void screen_ConfirmEvent(object sender, ProductEventArgs e)
+        void ScreenConfirmEvent(object sender, ProductEventArgs e)
         {
             CreateProductIdForInput(e.ProductColorList, e.ProductSizeList,e.StockList); 
         }

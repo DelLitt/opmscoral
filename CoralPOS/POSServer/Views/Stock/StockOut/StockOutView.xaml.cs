@@ -23,10 +23,5 @@ namespace POSServer.Views.Stock.StockOut
         {
             InitializeComponent();
         }
-
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
