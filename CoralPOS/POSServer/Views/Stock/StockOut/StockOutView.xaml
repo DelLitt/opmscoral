@@ -27,7 +27,7 @@
                     <my:DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80*" Binding="{Binding Path=StockQuantity}" SortMemberPath="StockQuantity" />                    
                 </my:DataGrid.Columns>
             </my:DataGrid>
-            <ComboBox Margin="0,0,405.515,56" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectedItem="{Binding ProductMaster}" DisplayMemberPath="ProductName" HorizontalAlignment="Right" Width="285.235" IsEditable="True" IsTextSearchEnabled="True" IsTabStop="True" />
+            <ComboBox Margin="0,0,405.515,56" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectedItem="{Binding ProductMaster,Mode=OneWayToSource}" DisplayMemberPath="ProductName" HorizontalAlignment="Right" Width="285.235" IsEditable="True" IsTextSearchEnabled="True" IsTabStop="True" />
             <Button HorizontalAlignment="Right" Margin="0,0,9,55" Name="CreateByBlock" Width="182.092" FontSize="14" Height="39.727" VerticalAlignment="Bottom">XUẤT THEO LÔ</Button>
             <Button Height="39.581" HorizontalAlignment="Right" Margin="0,0,197.3,55" Name="CreateByFile" VerticalAlignment="Bottom" Width="182.425" FontSize="14">XUẤT THEO FILE</Button>
             <TextBox FontSize="14" Height="37.774" Margin="146,0,197,10" Name="ProductName" VerticalAlignment="Bottom" Text="{Binding ProductMaster.ProductName}" IsTabStop="False" IsReadOnly="True" />

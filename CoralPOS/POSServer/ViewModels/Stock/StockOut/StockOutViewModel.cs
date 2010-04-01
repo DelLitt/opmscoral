@@ -241,7 +241,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             ProductMasterList = list as IList;
             var deptsList = Flow.Session.Get(FlowConstants.DEPARTMENTS);
             Departments = deptsList as IList;
-
+            ProductMaster = new CoralPOS.Models.ProductMaster();
             var details = new ArrayList();
             StockOutDetails = details;
             CreateDate = DateTime.Now;
