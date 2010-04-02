@@ -1,5 +1,6 @@
 using System; 
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text; 
 
 
@@ -7,7 +8,7 @@ namespace CoralPOS.Models {
     
     
     [Serializable()]
-    public class BlockInCost {
+    public class BlockInCost :IDataErrorInfo {
         
         public BlockInCost() {
         }
@@ -96,5 +97,15 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
- }
+
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public virtual string Error { get; private set; }
+    }
 }
