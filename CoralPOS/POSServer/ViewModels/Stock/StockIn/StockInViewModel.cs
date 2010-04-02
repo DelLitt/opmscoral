@@ -22,6 +22,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
+using Caliburn.PresentationFramework.ViewModels;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
@@ -220,6 +221,8 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                       ExclusiveKey = 0
                                                   };
             stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            DefaultValidator validator = new DefaultValidator();
+            
             POSErrorResult validateResult = this.Validate(stockIn);
             if (validateResult.HasError)
             {

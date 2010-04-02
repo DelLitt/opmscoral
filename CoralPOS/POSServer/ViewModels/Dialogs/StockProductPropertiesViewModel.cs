@@ -152,20 +152,19 @@ namespace POSServer.ViewModels.Dialogs
         {
             
             string productName = ProductName;
-            /*IList colors = ProductLogic.GetColorsWithProductName(productName);
-            IList sizes = ProductLogic.GetSizesWithProductName(productName);*/
-            IList colors = MainStockLogic.GetColorsFromAvailProductInStock(productName);
-            IList sizes = MainStockLogic.GetSizesFromAvailProductInStock(productName);
+            
             LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
             crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
-            /*crit.AddFetchPath("Product");
-            crit.AddFetchPath("ProductMaster");
-            crit.AddFetchPath("ProductMaster.ProductType");
-             */
+            crit.AddCriteria(stk => stk.Quantity > 0);
             crit.AddFetchPath(i => i.Product);
             crit.AddFetchPath(i => i.ProductMaster);
             crit.AddFetchPath(i => i.ProductMaster.ProductType);
             _stockList = MainStockLogic.FindAll(crit);
+            //IList colors = MainStockLogic.GetColorsFromAvailProductInStock(productName);
+            //IList sizes = MainStockLogic.GetSizesFromAvailProductInStock(productName);
+            IList<MainStock> _stocks = ObjectConverter.ConvertTo<MainStock>(_stockList);
+            IList colors = _stocks.Select(s => s.Product.ProductColor).Distinct().ToList();
+            IList sizes = _stocks.Select(s => s.Product.ProductSize).Distinct().ToList();
             ProductColorList = colors;
             ProductSizeList = sizes;
             SelectedProductColors = new ArrayList();
@@ -178,7 +177,7 @@ namespace POSServer.ViewModels.Dialogs
             ProductEventArgs eventArgs = new ProductEventArgs();
             eventArgs.ProductColorList = SelectedProductColors;
             eventArgs.ProductSizeList = SelectedProductSizes;
-            eventArgs.StockList = _stockList;
+            eventArgs.StockList = _stockList as IList;
             if(ConfirmEvent!=null) ConfirmEvent(this, eventArgs);
             Shutdown();
         }

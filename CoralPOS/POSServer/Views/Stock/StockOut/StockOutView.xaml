@@ -39,7 +39,7 @@
             <Button HorizontalAlignment="Right" Margin="0,0,9,55" Name="CreateByBlock" Width="182.092" FontSize="14" Height="39.727" VerticalAlignment="Bottom">XUẤT THEO LÔ</Button>
             <Button Height="39.581" HorizontalAlignment="Right" Margin="0,0,197.3,55" Name="CreateByFile" VerticalAlignment="Bottom" Width="182.425" FontSize="14">XUẤT THEO FILE</Button>
             <TextBox FontSize="14" Height="37.774" Margin="146,0,197,10" Name="ProductName1" VerticalAlignment="Bottom" 
-                     
+                     Text="{Binding ProductMaster.ProductName}"
                      IsTabStop="False" IsReadOnly="True" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,0,0,59" Name="label2" VerticalAlignment="Bottom" Width="114.32">MÃ HÀNG</Label>
             <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="9,75,0,101" Name="label1" Width="114.32">DIỄN TẢ</Label>

@@ -137,7 +137,8 @@ namespace POSServer.ViewModels.Stock.StockOut
             set { _productNameText = value; NotifyOfPropertyChange(() => ProductNameText); }
         }
         public IMainStockLogic MainStockLogic { get; set; }
-				#endregion
+        public IProductMasterLogic ProductMasterLogic { get; set; }		
+        #endregion
 		
 		#region Methods
 		        
@@ -185,8 +186,8 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             if (string.IsNullOrEmpty(text)) text = "";
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
-            IList list = MainStockLogic.FindProductMasterAvailInStock(text);
-            ProductMasterList = list;
+            IList productMasters = MainStockLogic.FindProductMasterAvailInStock(text);
+            ProductMasterList = productMasters;
         }
         void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {

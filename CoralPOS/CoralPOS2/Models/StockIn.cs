@@ -1,5 +1,6 @@
 using System; 
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text; 
 
 
@@ -96,7 +97,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+
+        [Required]
         public virtual IList<StockInDetail> StockInDetails {
             get;
             set;

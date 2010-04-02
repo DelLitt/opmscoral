@@ -169,7 +169,7 @@ namespace POSServer.DataLayer.Implement
                                     handler.AddFetch(subProp.Method.ReturnParameter.ParameterType.Name);
                                     IList<MainStock> products = handler.GetList(criteria);
                                     IList<TClass> list = products.Select(subProp).ToList();
-                                    ObjectUtility.AddToList<TClass>(res,list,"ProductName");
+                                    ObjectUtility.AddToList(res,list,"ProductName");
                                     return res;
 
                                 }

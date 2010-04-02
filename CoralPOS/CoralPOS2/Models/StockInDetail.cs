@@ -1,12 +1,15 @@
 using System; 
-using System.Collections.Generic; 
-using System.Text; 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using Caliburn.PresentationFramework.Behaviors;
 
 
 namespace CoralPOS.Models {
     
     
     [Serializable()]
+    [Validate]
     public class StockInDetail {
         
         public StockInDetail() {
@@ -61,7 +64,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+
+        [Range(1, 99999)]
         public virtual long Price {
             get;
             set;
@@ -71,7 +75,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+        [Range(1,99999)]    
         public virtual long Quantity {
             get;
             set;
@@ -101,7 +105,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+        [Required]
         public virtual Product Product {
             get;
             set;

@@ -110,10 +110,11 @@ namespace POSServer.BusinessLogic.Implement
             return MainStockDao.FindPaging(criteria);
         }
 
-        public IList FindProductMasterAvailInStock(string nam)
+        public IList FindProductMasterAvailInStock(string name)
         {
             LinqCriteria<MainStock> crit = new LinqCriteria<MainStock>();
             crit.AddCriteria(stk =>stk.Quantity > 0);
+            crit.AddCriteria(stk =>stk.ProductMaster.ProductName.Contains(name));
             crit.MaxResult = 20;
             IList<ProductMaster> list = MainStockDao.FindAllSubProperty(crit, stk => stk.ProductMaster);
             return list as IList;

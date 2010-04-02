@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Validation;
+using Caliburn.Core.Configuration;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.Spring;
 using CoralPOS.Models;
@@ -27,6 +28,7 @@ namespace POSServer
         {
             InitSpring();
             InitValidators();
+            
         }
 
         private void InitValidators()
