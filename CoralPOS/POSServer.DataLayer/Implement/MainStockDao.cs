@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
+using AppFrame.Utils;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
@@ -167,11 +168,8 @@ namespace POSServer.DataLayer.Implement
                                     QueryHandler<MainStock> handler = new QueryHandler<MainStock>(session);
                                     handler.AddFetch(subProp.Method.ReturnParameter.ParameterType.Name);
                                     IList<MainStock> products = handler.GetList(criteria);
-                                    var list = products.Select(subProp).Distinct();
-                                    foreach (TClass classe in list.Distinct())
-                                    {
-                                        res.Add(classe);
-                                    }
+                                    IList<TClass> list = products.Select(subProp).ToList();
+                                    ObjectUtility.AddToList<TClass>(res,list,"ProductName");
                                     return res;
 
                                 }

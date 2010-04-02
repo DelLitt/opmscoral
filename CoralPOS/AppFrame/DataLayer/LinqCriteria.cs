@@ -14,6 +14,7 @@ namespace AppFrame.DataLayer
         private IList<Expression<Func<T, bool>>> _where;
         private IList<Expression<Func<T, bool>>> _order;
         private IList<string> _fetchProps;
+        public int MaxResult { get; set; }
 
         public LinqCriteria()
         {

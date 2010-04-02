@@ -33,6 +33,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             get;
             set;            
         }
+        string ProductNameText { get; set; }
 			#endregion
 		
 		#region Methods

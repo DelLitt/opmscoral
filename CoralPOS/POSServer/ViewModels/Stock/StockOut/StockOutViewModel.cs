@@ -11,13 +11,17 @@ using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Utils;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 using POSServer.ViewModels.Dialogs;
 using POSServer.ViewModels.Menu.Stock;
 
@@ -125,6 +129,14 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => StockOutDetails);
             }
         }
+
+        public string _productNameText;
+        public string ProductNameText
+        {
+            get { return _productNameText; }
+            set { _productNameText = value; NotifyOfPropertyChange(() => ProductNameText); }
+        }
+        public IMainStockLogic MainStockLogic { get; set; }
 				#endregion
 		
 		#region Methods
@@ -163,6 +175,25 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             
         }
+
+        public void ReloadProductMaster(string text)
+        {
+            Execute.OnBackgroundThread(() => LoadProductMaster(text), CompletedLoadProductMaster);
+        }
+
+        private void LoadProductMaster(string text)
+        {
+            if (string.IsNullOrEmpty(text)) text = "";
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+            IList list = MainStockLogic.FindProductMasterAvailInStock(text);
+            ProductMasterList = list;
+        }
+        void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+        }
+
+
         public void Create()
         {
             if(ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
