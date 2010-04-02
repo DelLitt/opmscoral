@@ -149,10 +149,15 @@ namespace POSServer.ViewModels.Dialogs
         {
             
             string productName = ProductName;
-            IList colors = ProductLogic.GetColorsWithProductName(productName);
-            IList sizes = ProductLogic.GetSizesWithProductName(productName);
+            LinqCriteria<Product> crit = new LinqCriteria<Product>();
+            /*IList colors = ProductLogic.GetColorsWithProductName(productName);
+            IList sizes = ProductLogic.GetSizesWithProductName(productName);*/
+            crit.AddCriteria(p => p.ProductMaster.ProductName == productName);
+            IList<Product> products = ProductLogic.FindAll(crit);
             IList<ExProductColor> extraColors = ProductColorLogic.FindAll(new ObjectCriteria<ExProductColor>());
             IList<ExProductSize> extraSizes = ProductSizeLogic.FindAll(new ObjectCriteria<ExProductSize>());
+            IList colors = products.Select(s => s.ProductColor).Distinct().ToList();
+            IList sizes = products.Select(s => s.ProductSize).Distinct().ToList();
             ProductColorList = colors;
             ProductSizeList = sizes;
             ExtraProductColorList = extraColors as IList;

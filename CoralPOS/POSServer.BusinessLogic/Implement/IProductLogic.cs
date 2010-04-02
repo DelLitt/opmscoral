@@ -70,5 +70,7 @@ namespace POSServer.BusinessLogic.Implement
         IList GetColorsWithProductName(string productName);
 
         IList GetSizesWithProductName(string productName);
+
+        IList<Product> FindAll(LinqCriteria<Product> crit);
     }
 }

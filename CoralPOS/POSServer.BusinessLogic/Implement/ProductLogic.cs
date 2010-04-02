@@ -130,5 +130,10 @@ namespace POSServer.BusinessLogic.Implement
             ObjectUtility.AddToList(result, productColor, "SizeName");
             return result;
         }
+
+        public IList<Product> FindAll(LinqCriteria<Product> crit)
+        {
+            return ProductDao.FindAll(crit);
+        }
     }
 }

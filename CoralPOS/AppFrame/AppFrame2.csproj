@@ -48,6 +48,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Caliburn.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.DynamicProxy, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Caliburn.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="Caliburn.MEF, Version=1.0.0.26006, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Caliburn.MEF.dll</HintPath>
@@ -269,6 +273,9 @@
     <Compile Include="WPF\MessageExtensions.cs" />
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
+    <Compile Include="WPF\ObjectSupport.cs" />
+    <Compile Include="WPF\PosDynamicProxy.cs" />
+    <Compile Include="WPF\PosErrorValidationRule.cs" />
     <Compile Include="WPF\RowNumberConverter.cs" />
     <Compile Include="WPF\Screens\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>

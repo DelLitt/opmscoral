@@ -14,6 +14,7 @@ using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.Validation;
+using AppFrame.WPF;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
