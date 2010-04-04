@@ -32,6 +32,7 @@ namespace POSServer.BusinessLogic.Implement
                 _innerDao = value; 
             }
         }
+        
         public IProductMasterDao ProductMasterDao { get; set; }
         public IProductDao ProductDao { get; set; }
         public IStockInDetailDao StockInDetailDao { get; set; }

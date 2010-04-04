@@ -103,7 +103,7 @@
         <!-- Show product master summary form -->
         <entry key="Step3" value="POSServer.ViewModels.Stock.StockOut.IStockOutConfirmViewModel"/>
         <!-- Save Product Master -->
-        <entry key="Step4" value="POSServer.Actions.Stock.StockIn.IStockOutSaveAction"/>
+        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.IStockOutSaveAction"/>
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

@@ -27,10 +27,10 @@ namespace POSServer.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            CoralPOS.Models.StockOut stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
+            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
             ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
-            DoExecuteAsync(() => StockOutLogic.Add(stockIn), stockIn);
+            DoExecuteAsync(() => StockOutLogic.Add(stockOut), stockOut);
         }
 
         void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)

@@ -308,6 +308,11 @@
   	  
   <object id="IStockOutLogic" type="POSServer.BusinessLogic.Implement.StockOutLogic, POSServer.BusinessLogic">
     <property name="StockOutDao" ref="IStockOutDao"/>
+    <property name="ProductMasterDao" ref="IProductMasterDao"/>
+    <property name="ProductDao" ref="IProductDao"/>
+    <property name="StockOutDetailDao" ref="IStockOutDetailDao"/>
+    <property name="MainStockDao" ref="IMainStockDao"/>
+    <property name="MainPriceDao" ref="IMainPriceDao"/>
   </object>
   	  
   <object id="IStockOutCostLogic" type="POSServer.BusinessLogic.Implement.StockOutCostLogic, POSServer.BusinessLogic">

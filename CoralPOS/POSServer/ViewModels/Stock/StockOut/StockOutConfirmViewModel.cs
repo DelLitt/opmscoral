@@ -129,6 +129,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
             Department = stockOut.Department;
             CreateDate = stockOut.CreateDate.ToString();
+            
         }
 				#endregion
 		

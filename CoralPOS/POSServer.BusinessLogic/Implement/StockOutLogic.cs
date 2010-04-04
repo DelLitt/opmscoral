@@ -1,8 +1,10 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Spring.Dao;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -30,7 +32,12 @@ namespace POSServer.BusinessLogic.Implement
                 _innerDao = value; 
             }
         }
-        
+
+        public IProductMasterDao ProductMasterDao { get; set; }
+        public IProductDao ProductDao { get; set; }
+        public IStockOutDetailDao StockOutDetailDao { get; set; }
+        public IMainStockDao MainStockDao { get; set; }
+        public IMainPriceDao MainPriceDao { get; set; }
         /// <summary>
         /// Find StockOut object by id. Return null if nothing is found
         /// </summary>
@@ -49,7 +56,38 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public StockOut Add(StockOut data)
         {
+            IDictionary<string, MainPrice> prices = new Dictionary<string, MainPrice>();
+            var maxIdResult = StockOutDao.SelectSpecificType(null, Projections.Max("StockOutId"));
+            long nextStockOutId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            var maxDetailIdResult = StockOutDetailDao.SelectSpecificType(null, Projections.Max("StockOutDetailId"));
+            long nextStockOutDetailId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+
+
+            data.StockOutId = nextStockOutId;
             StockOutDao.Add(data);
+            foreach (StockOutDetail outDetail in data.StockOutDetails)
+            {
+                outDetail.StockOutDetailId = nextStockOutDetailId++;
+                StockOutDetailDao.Add(outDetail);
+
+                ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
+                string productId = outDetail.Product.ProductId;
+                findStock.AddCriteria(stk => stk.Product.ProductId == productId);
+
+                MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
+                if (currentStock == null) // create new stock
+                {
+                    throw new DataIntegrityViolationException();
+                }
+                else // update current stock
+                {
+                    currentStock.Quantity -= outDetail.Quantity;
+                    currentStock.GoodQuantity -= outDetail.Quantity;
+                    currentStock.ExclusiveKey += 1;
+                    MainStockDao.Update(currentStock);
+                }
+            }
+            
             return data;
         }
         
