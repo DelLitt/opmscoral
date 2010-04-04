@@ -154,7 +154,27 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Save()
         {
-            
+            StockDefinitionStatus definitionStatus = new StockDefinitionStatus
+            {
+                DefectStatusId = 0,
+                DefectStatusName = "NormalStockOut"
+            };
+            CoralPOS.Models.StockOut stockOut = new CoralPOS.Models.StockOut
+                                                    {
+                                                        ConfirmFlg = 0,
+                                                        //Description = Description,
+                                                        CreateDate = DateTime.Now,
+                                                        UpdateDate = DateTime.Now,
+                                                        StockOutDate = DateTime.Now,
+                                                        CreateId = "admin",
+                                                        UpdateId = "admin",
+                                                        DelFlg = 0,
+                                                        ExclusiveKey = 0,
+                                                        DefinitionStatus = definitionStatus
+                                                    };
+            stockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
+            GoToNextNode();
         }
 		        
         public void Stop()
@@ -246,11 +266,7 @@ namespace POSServer.ViewModels.Stock.StockOut
                                                        Quantity = stock.GoodQuantity,
                                                        StockQuantity = stock.Quantity
                                                    };
-                    StockDefinitionStatus definitionStatus = new StockDefinitionStatus
-                                                                 {
-                                                                     DefectStatusId = 0,
-                                                                     DefectStatusName = "NormalStockOut"
-                                                                 };
+                    
                     details.Add(newDetail);
                 }
             }
