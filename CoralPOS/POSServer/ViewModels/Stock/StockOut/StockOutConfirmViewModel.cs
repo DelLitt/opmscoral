@@ -9,12 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
@@ -103,17 +105,29 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Back()
         {
-            
+            Flow.Back();
         }
 		        
         public void SaveConfirm()
         {
-            
+            GoToNextNode();
         }
 		        
         public void Stop()
         {
-            
+            Flow.End();
+        }
+        public override void Initialize()
+        {
+            base.Initialize();
+            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
+            //Description = stockIn.Description;
+            foreach (StockOutDetail outDetail in stockOut.StockOutDetails)
+            {
+                outDetail.StockOut = stockOut;
+            }
+            StockOutList = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
+            CreateDate = stockOut.CreateDate.ToString();
         }
 				#endregion
 		
