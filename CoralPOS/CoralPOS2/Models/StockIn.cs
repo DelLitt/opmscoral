@@ -1,14 +1,21 @@
 using System; 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text; 
+using System.Text;
+using System.Linq;
+using System.Linq.Expressions;
+using Caliburn.PresentationFramework.Behaviors;
+using Caliburn.PresentationFramework.ViewModels;
+using Caliburn.Testability;
 
 
 namespace CoralPOS.Models {
     
     
     [Serializable()]
-    public class StockIn {
+    [Validate]
+    public class StockIn :IDataErrorInfo {
         
         public StockIn() {
         }
@@ -38,6 +45,7 @@ namespace CoralPOS.Models {
             set;
         }
         
+        [Required]
         public virtual string Description {
             get;
             set;
@@ -123,5 +131,20 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
- }
+
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                DefaultValidator validator = new DefaultValidator();
+                var error = validator.Validate(this, columnName).FirstOrDefault();
+                return error!=null?error.Message : string.Empty; 
+            }
+        }
+
+        public virtual string Error
+        {
+            get; set;
+        }
+    }
 }

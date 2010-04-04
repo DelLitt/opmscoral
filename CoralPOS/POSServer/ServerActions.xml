@@ -2,6 +2,8 @@
 <objects xmlns="http://www.springframework.net"
          xmlns:tx="http://www.springframework.net/tx">
 
+  <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
+  </object>
   <object id="IStartLoadScreen" type="POSServer.Actions.StartLoadScreen, POSServer" singleton="false">    
   </object>
   <object id="IStopLoadScreen" type="POSServer.Actions.StopLoadScreen, POSServer" singleton="false">    

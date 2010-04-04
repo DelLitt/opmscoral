@@ -1,13 +1,19 @@
 using System; 
-using System.Collections.Generic; 
-using System.Text; 
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using Caliburn.PresentationFramework.Behaviors;
+using Caliburn.PresentationFramework.ViewModels;
 
 
 namespace CoralPOS.Models {
     
     
     [Serializable()]
-    public class MainPrice {
+    [Validate]
+    public class MainPrice :IDataErrorInfo {
         
         public MainPrice() {
         }
@@ -61,7 +67,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+
+        [Range(1, 99999)]
         public virtual long Price {
             get;
             set;
@@ -76,7 +83,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+
+        [Range(1, 99999)]
         public virtual long WholeSalePrice {
             get;
             set;
@@ -101,5 +109,20 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                DefaultValidator validator = new DefaultValidator();
+                var error = validator.Validate(this, columnName).FirstOrDefault();
+                return error != null ? error.Message : string.Empty;
+            }
+        }
+
+        public virtual string Error
+        {
+            get;
+            set;
+        }
  }
 }

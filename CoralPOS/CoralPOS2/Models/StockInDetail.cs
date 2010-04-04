@@ -1,8 +1,11 @@
 using System; 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using Caliburn.PresentationFramework.Behaviors;
+using Caliburn.PresentationFramework.ViewModels;
 
 
 namespace CoralPOS.Models {
@@ -10,7 +13,7 @@ namespace CoralPOS.Models {
     
     [Serializable()]
     [Validate]
-    public class StockInDetail {
+    public class StockInDetail :IDataErrorInfo {
         
         public StockInDetail() {
         }
@@ -115,6 +118,7 @@ namespace CoralPOS.Models {
             get; 
             set;
         }
+
    	 protected bool Equals(StockInDetail entity)
 		{
 			if (entity == null) return false;
@@ -135,5 +139,20 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
- }
+
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                DefaultValidator validator = new DefaultValidator();
+                var error = validator.Validate(this, columnName).FirstOrDefault();
+                return error != null ? error.Message : string.Empty;
+            }
+        }
+
+        public virtual string Error
+        {
+            get;set;
+        }
+    }
 }

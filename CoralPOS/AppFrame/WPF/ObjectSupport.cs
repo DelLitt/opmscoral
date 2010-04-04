@@ -11,13 +11,13 @@ namespace AppFrame.WPF
 {
     public class ObjectSupport
     {
-        public static T CreateErrorInfoProxy<T>(T obj) where T:class
+        public static object CreateErrorInfoProxy<T>(T obj) where T:class
         {
             var type = typeof (T);
-            var factory = new PosDynamicProxy();
+            var factory = ServiceLocator.Current.GetInstance<IProxyFactory>("IProxyFactory");
             if(type.ShouldCreateProxy())
             {
-                return factory.CreateProxyWithTarget(typeof (IDataErrorInfo), obj, type.GetAttributes<IBehavior>(true)) as T;
+                return factory.CreateProxyWithTarget(typeof(T), obj, type.GetAttributes<IBehavior>(true));
             }
             else
             {
