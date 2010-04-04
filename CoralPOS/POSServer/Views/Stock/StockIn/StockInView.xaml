@@ -26,7 +26,7 @@
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
                     <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True"  />
+                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True"  Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
                     <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
                     <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
@@ -47,6 +47,6 @@
         </Grid>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,20,0,0" Name="label1" VerticalAlignment="Top" Width="114.32">DIỄN TẢ</Label>
         <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="10,64,0,0" Name="label2" VerticalAlignment="Top" Width="114.32">MÃ HÀNG</Label>
-        <TextBox FontSize="14" Height="38.583" Margin="146.25,10,214,0" Name="Description" VerticalAlignment="Top" TabIndex="1" />
+        <TextBox FontSize="14" Height="38.583" Margin="146.25,10,214,0" Name="Description1" VerticalAlignment="Top" TabIndex="1" Text="{Binding StockIn.Description,Mode=TwoWay,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>

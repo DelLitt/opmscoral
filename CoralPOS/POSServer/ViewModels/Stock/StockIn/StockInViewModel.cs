@@ -134,6 +134,20 @@ namespace POSServer.ViewModels.Stock.StockIn
             }
         }
 
+        private CoralPOS.Models.StockIn _stockIn;
+        public CoralPOS.Models.StockIn StockIn
+        {
+            get
+            {
+                return _stockIn;
+            }
+            set
+            {
+                _stockIn = value;
+                NotifyOfPropertyChange(()=>StockIn);
+            }
+        }
+
         public string _productNameText;
         public string ProductNameText
         {
@@ -208,53 +222,21 @@ namespace POSServer.ViewModels.Stock.StockIn
         }
 
 
-        public bool CanSave()
+        
+        public void Save()
         {
-            CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
+            StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            if (this.HasError(StockIn))
             {
-                StockInType = 0,
-                ConfirmFlg = 0,
-                Description = Description,
-                CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
-                StockInDate = DateTime.Now,
-                CreateId = "admin",
-                UpdateId = "admin",
-                DelFlg = 0,
-                ExclusiveKey = 0
-            };
-            stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            if(this.HasError(stockIn))
-            {
-                IErrorDialogViewModel errorDialog = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
-                errorDialog.ErrorResult = this.GetErrors(stockIn).ToList();
-                return false;
+                var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
+                test.ErrorResult = this.GetErrors(StockIn).ToList();
+                _startViewModel.ShowDialog(test);
             }
             else
             {
-                return true;    
+                Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, StockIn);
+                GoToNextNode();    
             }
-        }
-        [Preview("CanSave")]
-        public void Save()
-        {
-            CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
-                                                  {
-                                                      StockInType = 0,
-                                                      ConfirmFlg = 0,
-                                                      Description = Description,
-                                                      CreateDate = DateTime.Now,
-                                                      UpdateDate = DateTime.Now,
-                                                      StockInDate = DateTime.Now,
-                                                      CreateId = "admin",
-                                                      UpdateId = "admin",
-                                                      DelFlg = 0,
-                                                      ExclusiveKey = 0
-                                                  };
-            stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
-            GoToNextNode();    
-            
         }
 		
 
@@ -279,7 +261,31 @@ namespace POSServer.ViewModels.Stock.StockIn
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
             ProductMasterList = list as IList;
             _stockInDetailList = new ArrayList();
+            StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
+            if(StockIn == null)
+            {
+                CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
+                {
+                    StockInType = 0,
+                    ConfirmFlg = 0,
+                    Description = Description,
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    StockInDate = DateTime.Now,
+                    CreateId = "admin",
+                    UpdateId = "admin",
+                    DelFlg = 0,
+                    ExclusiveKey = 0
+                };
+                stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+                StockIn = stockIn;
+            }
+            else
+            {
+                StockInDetailList = ObjectConverter.ConvertFrom(StockIn.StockInDetails);
+            }
         }
+
         public void OpenProperty()
         {
             var screen = _startViewModel.ServiceLocator.GetInstance<IProductPropertiesViewModel>("IProductPropertiesViewModel");

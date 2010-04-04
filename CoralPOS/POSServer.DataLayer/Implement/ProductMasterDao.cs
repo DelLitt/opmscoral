@@ -298,6 +298,7 @@ namespace POSServer.DataLayer.Implement
                                                objectCriteria.MaxResult = 20;
                                                objectCriteria.AddCriteria(SqlExpression.Like<ProductMaster>(pm=>pm.ProductName,filter));
                                                ICriteria hibernateCriteria = session.CreateCriteria(typeof (ProductMaster));
+                                               hibernateCriteria.SetFetchMode("ProductType", FetchMode.Eager);
                                                PosContext.SetCriteria(hibernateCriteria, objectCriteria);
 
                                                return hibernateCriteria.List();

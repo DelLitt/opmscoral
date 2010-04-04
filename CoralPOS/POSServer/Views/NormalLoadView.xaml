@@ -4,10 +4,8 @@
     Height="57" Width="300">
     <Grid x:Name="LayoutRoot" Background="White" Height="57">
         <Border>
-        <Border.Effect> <DropShadowEffect /></Border.Effect>
-            <Viewbox>
-                <ProgressBar Name="Progress" Value="{Binding ProgressValue}" IsIndeterminate="True" />
-            </Viewbox>
+        <Border.Effect> <DropShadowEffect /></Border.Effect>            
+            <ProgressBar Name="Progress" Value="{Binding ProgressValue}" IsIndeterminate="True" />            
         </Border>
     </Grid>
 </UserControl>

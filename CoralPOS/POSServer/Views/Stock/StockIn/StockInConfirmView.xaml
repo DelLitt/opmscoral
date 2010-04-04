@@ -15,7 +15,8 @@
                 <RowDefinition Height="500.756*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,27.775,8.888,25.553" Name="CreateDate" Width="184.057" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                         CanUserAddRows="False" CanUserDeleteRows="False" >
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />

@@ -70,7 +70,14 @@ namespace POSServer.BusinessLogic.Implement
             {
                 inDetail.StockInDetailPK.StockInId = nextStockInId;
                 Product current = ProductDao.FindById(inDetail.Product.ProductId);
-                if (current != null) inDetail.Product = current;
+                if (current != null)
+                {
+                    inDetail.Product = current;
+                }
+                else
+                {
+                    ProductDao.Add(inDetail.Product);
+                }
                 StockInDetailDao.Add(inDetail);
 
                 ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();

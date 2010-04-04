@@ -22,7 +22,14 @@ namespace AppFrame.Base
 
         public object Get(string key)
         {
-            return _dictionary[key];
+            if (_dictionary.ContainsKey(key))
+            {
+                return _dictionary[key];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void Remove(string key)

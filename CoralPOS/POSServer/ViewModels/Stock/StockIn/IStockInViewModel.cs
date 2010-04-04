@@ -51,6 +51,9 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+
+        CoralPOS.Models.StockIn StockIn { get; set; }
+
         string ProductNameText { get; set; }
 			#endregion
 		
