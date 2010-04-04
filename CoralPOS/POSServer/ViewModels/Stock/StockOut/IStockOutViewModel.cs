@@ -9,6 +9,7 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
@@ -27,7 +28,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             get;
             set;            
         }
-		                
+        Department Department { get; set; }                
         string Description
         {
             get;

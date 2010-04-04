@@ -67,7 +67,32 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => ProductMaster);
             }
         }
-		        
+
+        private CoralPOS.Models.StockOut _stockOut;
+        public CoralPOS.Models.StockOut StockOut
+        {
+            get
+            {
+                return _stockOut;
+            }
+            set
+            {
+                _stockOut = value;
+                NotifyOfPropertyChange(() => StockOut);
+            }
+        }
+
+        private Department _department;
+        public Department Department
+        {
+            get { return _department; }
+            set
+            {
+                _department = value;
+                NotifyOfPropertyChange(()=>Department);
+            }
+        }
+
         private string _description;
         public string Description
         {
@@ -99,16 +124,16 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
         }
 		        
-        private IList _department;
+        private IList _departments;
         public IList Departments
         {
             get
             {
-                return _department;
+                return _departments;
             }
             set
             {
-                _department = value;
+                _departments = value;
                 NotifyOfPropertyChange(() => Departments);
             }
         }
@@ -154,26 +179,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Save()
         {
-            StockDefinitionStatus definitionStatus = new StockDefinitionStatus
-            {
-                DefectStatusId = 0,
-                DefectStatusName = "NormalStockOut"
-            };
-            CoralPOS.Models.StockOut stockOut = new CoralPOS.Models.StockOut
-                                                    {
-                                                        ConfirmFlg = 0,
-                                                        //Description = Description,
-                                                        CreateDate = DateTime.Now,
-                                                        UpdateDate = DateTime.Now,
-                                                        StockOutDate = DateTime.Now,
-                                                        CreateId = "admin",
-                                                        UpdateId = "admin",
-                                                        DelFlg = 0,
-                                                        ExclusiveKey = 0,
-                                                        DefinitionStatus = definitionStatus
-                                                    };
-            stockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
-            Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
+            StockOut.Department = Department;
+            StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, StockOut);
             GoToNextNode();
         }
 		        
@@ -293,6 +301,38 @@ namespace POSServer.ViewModels.Stock.StockOut
             var details = new ArrayList();
             StockOutDetails = details;
             CreateDate = DateTime.Now;
+
+            CoralPOS.Models.StockOut stockOut =  Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
+            if(stockOut!=null)
+            {
+                StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
+                Department = stockOut.Department;
+            }
+            else
+            {
+                StockDefinitionStatus definitionStatus = new StockDefinitionStatus
+                {
+                    DefectStatusId = 0,
+                    DefectStatusName = "NormalStockOut"
+                };
+
+                stockOut = new CoralPOS.Models.StockOut
+                {
+
+                    ConfirmFlg = 0,
+                    //Description = Description,
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    StockOutDate = DateTime.Now,
+                    CreateId = "admin",
+                    UpdateId = "admin",
+                    DelFlg = 0,
+                    ExclusiveKey = 0,
+                    DefinitionStatus = definitionStatus
+                };
+                
+            }
+            StockOut = stockOut; 
         }
 
         #endregion

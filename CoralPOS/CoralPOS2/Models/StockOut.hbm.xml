@@ -8,7 +8,7 @@
     <property name="CreateDate" column="CREATE_DATE" />
     <property name="CreateId" column="CREATE_ID" />
     <property name="DelFlg" column="DEL_FLG" />
-    <property name="DepartmentId" column="DEPARTMENT_ID" />
+    <!--<property name="DepartmentId" column="DEPARTMENT_ID" />-->
     <property name="ExFld1" column="EX_FLD1" />
     <property name="ExFld2" column="EX_FLD2" />
     <property name="ExFld3" column="EX_FLD3" />
@@ -19,6 +19,10 @@
     <property name="StockOutDate" column="STOCK_OUT_DATE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    
+    <many-to-one class="Department" name="Department" not-null="true">
+      <column name="DEPARTMENT_ID" />
+    </many-to-one>
     <many-to-one class="StockDefinitionStatus" name="DefinitionStatus" not-null="true">
       <column name="DEFECT_STATUS_ID" />
     </many-to-one>

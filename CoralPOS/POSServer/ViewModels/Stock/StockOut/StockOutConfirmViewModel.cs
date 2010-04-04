@@ -60,9 +60,9 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => Description);
             }
         }
-		        
-        private string _department;
-        public string Department
+
+        private Department _department;
+        public Department Department
         {
             get
             {
@@ -81,17 +81,17 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region List which just using in Data Grid
 		        
-        private IList _stockOutList;
-        public IList StockOutList
+        private IList _stockOutDetails;
+        public IList StockOutDetails
         {
             get
             {
-                return _stockOutList;
+                return _stockOutDetails;
             }
             set
             {
-                _stockOutList = value;
-                NotifyOfPropertyChange(() => StockOutList);
+                _stockOutDetails = value;
+                NotifyOfPropertyChange(() => StockOutDetails);
             }
         }
 				#endregion
@@ -126,7 +126,8 @@ namespace POSServer.ViewModels.Stock.StockOut
             {
                 outDetail.StockOut = stockOut;
             }
-            StockOutList = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
+            StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
+            Department = stockOut.Department;
             CreateDate = stockOut.CreateDate.ToString();
         }
 				#endregion

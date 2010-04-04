@@ -42,7 +42,7 @@ namespace CoralPOS.Models {
             set;
         }
         
-        public virtual long DepartmentId {
+        public virtual Department Department {
             get;
             set;
         }
