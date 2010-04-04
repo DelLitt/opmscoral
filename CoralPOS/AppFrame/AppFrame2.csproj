@@ -254,6 +254,7 @@
     <Compile Include="Extensions\ListBox\MultiSelectorBehaviours.cs" />
     <Compile Include="Extensions\ListBox\RelayCommand.cs" />
     <Compile Include="Extensions\ListBox\TwoListSynchronizer.cs" />
+    <Compile Include="Extensions\PosViewModelExtensions.cs" />
     <Compile Include="Extensions\TypedExpandExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DateUtility.cs" />

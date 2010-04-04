@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace POSServer.ViewModels.Dialogs
 {
     public interface IErrorDialogViewModel : IScreenNode, IScreenEx
     {
-        POSErrorResult ErrorResult { get; set; }
+        IList ErrorResult { get; set; }
     }
 }

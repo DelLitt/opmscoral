@@ -9,13 +9,13 @@ using Caliburn.Core.IoC;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    [PerRequest]
+    [PerRequest(typeof(IErrorDialogViewModel))]
     public class ErrorDialogViewModel : PosViewModel,IErrorDialogViewModel
     {
         //public IList ErrorsList { get; set; }
 
-        private POSErrorResult _errorResult;
-        public POSErrorResult ErrorResult
+        private IList _errorResult;
+        public IList ErrorResult
         {
             get
             {

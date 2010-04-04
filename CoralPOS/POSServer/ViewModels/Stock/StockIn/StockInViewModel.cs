@@ -14,6 +14,7 @@ using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.Validation;
+using AppFrame.Extensions;
 using AppFrame.WPF;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
@@ -206,6 +207,35 @@ namespace POSServer.ViewModels.Stock.StockIn
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
+
+        public bool CanSave()
+        {
+            CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
+            {
+                StockInType = 0,
+                ConfirmFlg = 0,
+                Description = Description,
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                StockInDate = DateTime.Now,
+                CreateId = "admin",
+                UpdateId = "admin",
+                DelFlg = 0,
+                ExclusiveKey = 0
+            };
+            stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            if(this.HasError(stockIn))
+            {
+                IErrorDialogViewModel errorDialog = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
+                errorDialog.ErrorResult = this.GetErrors(stockIn).ToList();
+                return false;
+            }
+            else
+            {
+                return true;    
+            }
+        }
+        [Preview("CanSave")]
         public void Save()
         {
             CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
@@ -222,20 +252,9 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                       ExclusiveKey = 0
                                                   };
             stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            DefaultValidator validator = new DefaultValidator();
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
+            GoToNextNode();    
             
-            POSErrorResult validateResult = this.Validate(stockIn);
-            if (validateResult.HasError)
-            {
-                var errorDialog = _startViewModel.ServiceLocator.GetInstance<IErrorDialogViewModel>();
-                errorDialog.ErrorResult = validateResult;
-                _startViewModel.ShowDialog(errorDialog);
-            }
-            else
-            {
-                Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockIn);
-                GoToNextNode();    
-            }
         }
 		
 
