@@ -40,10 +40,15 @@
 
   <object id="HibernateTemplate" type="Spring.Data.NHibernate.HibernateTemplate" singleton="true">
     <property name="SessionFactory" ref="NHibernateSessionFactory" />
+    <property name="EntityInterceptor" ref="dataErrorInfoInterceptor"/>
     <property name="TemplateFlushMode" value="Auto" />
     <property name="CacheQueries" value="true" />    
   </object>
 
+  <object id="dataErrorInfoInterceptor" type="AppFrame.DataLayer.PosDataErrorInfoIntercepter, AppFrame">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+  </object>
+  
   <!-- Data Access Objects -->
   	
   <object id="IBlockInDao" type="POSServer.DataLayer.Implement.BlockInDao, POSServer.DataLayer">

@@ -13,7 +13,8 @@ namespace CoralPOS.Models {
     
     [Serializable()]
     [Validate]
-    public class MainPrice :IDataErrorInfo {
+    public class MainPrice //:IDataErrorInfo 
+    {
         
         public MainPrice() {
         }
@@ -109,7 +110,7 @@ namespace CoralPOS.Models {
 			
 			return result;
 		}
-        public virtual string this[string columnName]
+       /* public virtual string this[string columnName]
         {
             get
             {
@@ -123,6 +124,6 @@ namespace CoralPOS.Models {
         {
             get;
             set;
-        }
+        }*/
  }
 }

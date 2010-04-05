@@ -15,7 +15,8 @@ namespace CoralPOS.Models {
     
     [Serializable()]
     [Validate]
-    public class StockIn :IDataErrorInfo {
+    public class StockIn //:IDataErrorInfo 
+    {
         
         public StockIn() {
         }
@@ -132,7 +133,7 @@ namespace CoralPOS.Models {
 			return result;
 		}
 
-        public virtual string this[string columnName]
+        /*public virtual string this[string columnName]
         {
             get
             {
@@ -145,6 +146,6 @@ namespace CoralPOS.Models {
         public virtual string Error
         {
             get; set;
-        }
+        }*/
     }
 }

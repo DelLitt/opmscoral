@@ -242,6 +242,7 @@
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAndMainScreenAttribute.cs" />
     <Compile Include="CustomAttributes\MainScreenAttribute.cs" />
+    <Compile Include="DataLayer\DataErrorInfoFactory.cs" />
     <Compile Include="DataLayer\LinqCriteria.cs" />
     <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />
@@ -275,6 +276,7 @@
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
     <Compile Include="WPF\ObjectSupport.cs" />
+    <Compile Include="WPF\PosDataErrorProvider.cs" />
     <Compile Include="WPF\PosDynamicProxy.cs" />
     <Compile Include="WPF\PosErrorValidationRule.cs" />
     <Compile Include="WPF\RowNumberConverter.cs" />

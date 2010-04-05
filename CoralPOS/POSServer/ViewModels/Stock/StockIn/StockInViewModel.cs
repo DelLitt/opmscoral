@@ -1,7 +1,3 @@
-			 
-
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -264,19 +260,18 @@ namespace POSServer.ViewModels.Stock.StockIn
             StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             if(StockIn == null)
             {
-                CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn
-                {
-                    StockInType = 0,
-                    ConfirmFlg = 0,
-                    Description = Description,
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    StockInDate = DateTime.Now,
-                    CreateId = "admin",
-                    UpdateId = "admin",
-                    DelFlg = 0,
-                    ExclusiveKey = 0
-                };
+                CoralPOS.Models.StockIn stockIn = DataErrorInfoFactory.Create<CoralPOS.Models.StockIn>();
+
+                stockIn.StockInType = 0;
+                stockIn.ConfirmFlg = 0;
+                stockIn.Description = Description;
+                stockIn.CreateDate = DateTime.Now;
+                stockIn.UpdateDate = DateTime.Now;
+                stockIn.StockInDate = DateTime.Now;
+                stockIn.CreateId = "admin";
+                stockIn.UpdateId = "admin";
+                stockIn.DelFlg = 0;
+                stockIn.ExclusiveKey = 0;
                 stockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
                 StockIn = stockIn;
             }
@@ -313,29 +308,29 @@ namespace POSServer.ViewModels.Stock.StockIn
                     if(isFound) continue;
 
                     string inputPrice = string.IsNullOrEmpty(InputPrice) ? "0" : InputPrice;
-                    StockInDetail newDetail = new StockInDetail{
-                            Product = newProduct,
-                            ProductMaster = productMaster,
-                            CreateDate = DateTime.Now,
-                            UpdateDate = DateTime.Now,
-                            CreateId = "admin",
-                            UpdateId = "admin",
-                            Quantity = 0,
-                            Price = Int64.Parse(inputPrice)
-                        };
+                    //StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
+                    StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
+                    newDetail.Product = newProduct;
+                    newDetail.ProductMaster = productMaster;
+                    newDetail.CreateDate = DateTime.Now;
+                    newDetail.UpdateDate = DateTime.Now;
+                    newDetail.CreateId = "admin";
+                    newDetail.UpdateId = "admin";
+                    newDetail.Quantity = 0;
+                    newDetail.Price = Int64.Parse(inputPrice);
                     StockInDetailPK detailPK = new StockInDetailPK
                                                    {
                                                        ProductId = newProduct.ProductId
                                                    };
+
                     newDetail.StockInDetailPK = detailPK;
                     string price = string.IsNullOrEmpty(Price) ? "0" : Price;
                     string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
-                    
-                    MainPrice newPrice = new MainPrice
-                                             {
-                                                Price = Int64.Parse(price),
-                                                WholeSalePrice = Int64.Parse(wholesaleprice)
-                                             };
+
+                    MainPrice newPrice = DataErrorInfoFactory.Create<MainPrice>();
+                    newPrice.Price = Int64.Parse(price);
+                    newPrice.WholeSalePrice = Int64.Parse(wholesaleprice);
+                                             
                     MainPricePK newPricePK = new MainPricePK
                                                  {
                                                      DepartmentId = 0,
