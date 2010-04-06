@@ -1,12 +1,15 @@
 using System; 
-using System.Collections.Generic; 
-using System.Text; 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using Caliburn.PresentationFramework.Behaviors;
 
 
 namespace CoralPOS.Models {
     
     
     [Serializable()]
+    [Validate]
     public class StockOut {
         
         public StockOut() {
@@ -31,7 +34,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+
+        [Required]
         public virtual StockDefinitionStatus DefinitionStatus {
             get;
             set;
@@ -41,7 +45,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+        [Required]
         public virtual Department Department {
             get;
             set;
@@ -96,7 +100,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        
+        [Required]
         public virtual IList<StockOutDetail> StockOutDetails {
             get;
             set;

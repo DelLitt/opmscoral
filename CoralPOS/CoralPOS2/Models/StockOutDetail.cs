@@ -1,6 +1,7 @@
 using System; 
 using System.Collections.Generic; 
-using System.Text; 
+using System.Text;
+using AppFrame.WPF.ValidationAttributes;
 
 
 namespace CoralPOS.Models {
@@ -103,6 +104,7 @@ namespace CoralPOS.Models {
             set;
         }
         
+        [Min(1)]
         public virtual long Quantity {
             get;
             set;

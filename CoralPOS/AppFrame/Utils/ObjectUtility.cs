@@ -223,6 +223,84 @@ namespace AppFrame.Utils
                 destList.Add(compareObj);
             }
         }
-        
+              /// <summary>
+     /// Return all properties from a type up to a specified base type in the inheritance hierarchy
+     /// </summary>
+     /// <param name="type">Type that will be examined</param>
+     /// <param name="baseType">Where to stop in the inheritance hierarchy. Must be a type that first parameter inherits from
+     /// </param>
+     /// <returns>A list of all found properties</returns>
+     public static List<PropertyInfo> GetAllProperties(Type type, Type baseType)
+     {
+       List<PropertyInfo> properties = new List<PropertyInfo>();
+       while (type != baseType && baseType != typeof(System.Object))
+       {
+          properties.AddRange(type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance).ToList());
+          type = type.BaseType;
+       }
+     
+       return properties;
+    }
+     
+    /// <summary>
+    /// Copy all property values from a page object to another using reflection to find all own declared properties
+    /// </summary>
+    /// <param name="sourcePage"></param>
+    /// <param name="targetPage"></param>
+    /// <returns></returns>
+    public static T CopyAllProperties<T>(T sourcePage, T targetPage) where T : class 
+    {
+       return (T)CopyAllProperties<T>(sourcePage, targetPage, GetAllProperties(typeof(T), typeof(object)));
+    }
+     
+    /// <summary>
+    /// Copy all specified properties from one page instance to another
+    /// </summary>
+    /// <param name="targetPage"></param>
+    /// <param name="sourcePage"></param>
+    /// <param name="properties"></param>
+    /// <returns></returns>
+    public static T CopyAllProperties<T>(T sourcePage, T targetPage, List<PropertyInfo> properties) where T : class 
+    {
+       foreach (PropertyInfo prop in properties)
+       {
+          if (prop.CanWrite)
+          {
+             try
+             {
+                object propVal = GetProperty(sourcePage, prop.Name);
+                SetProperty(targetPage, prop.Name, propVal);
+             }
+             catch
+             {
+                throw new Exception(); // TODO: Change to a proper exception with a  nice clean message ;)
+             }
+          }
+       }
+       return (T)targetPage;
+    }
+     
+    /// <summary>
+    /// Get a property value from an object
+    /// </summary>
+    /// <param name="containingObject"></param>
+    /// <param name="propertyName"></param>
+    /// <returns></returns>
+    private static object GetProperty(object containingObject, string propertyName)
+    {
+       return containingObject.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, containingObject, null);
+    }
+     
+    /// <summary>
+    /// Set a property value in an object
+    /// </summary>
+    /// <param name="containingObject"></param>
+    /// <param name="propertyName"></param>
+    /// <param name="newValue"></param>
+    private static void SetProperty(object containingObject, string propertyName, object newValue)
+    {
+       containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
+    }
+
     }
 }

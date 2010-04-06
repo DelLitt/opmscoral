@@ -6,18 +6,26 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using AppFrame.Utils;
 
 namespace AppFrame.WPF
 {
     public class PosDataErrorProvider : Decorator
     {
         List<FrameworkElement> bindingObjects = new List<FrameworkElement>();
-        private delegate void FoundBindingCallbackDelegate(FrameworkElement element, Binding binding);
+        private static FieldInfo _isSealedFieldInfo;
+        private delegate void FoundBindingCallbackDelegate(FrameworkElement element, Binding binding,DependencyProperty dp);
         public PosDataErrorProvider()
         {
-            this.Loaded += new System.Windows.RoutedEventHandler(PosDataErrorProvider_Loaded);
+            this.Name = "PosDataErrorProvider";
+            _isSealedFieldInfo =
+                typeof(BindingBase).GetField("_isSealed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            if (_isSealedFieldInfo == null)
+                throw new InvalidOperationException("Oops, we have a problem, it seems like the WPF team decided to change the name of the _isSealed field of the BindingBase class.");
+            this.Loaded += new System.Windows.RoutedEventHandler(PosDataErrorProviderLoaded);
         }
-        void PosDataErrorProvider_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        void PosDataErrorProviderLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             TurnOnValidateOnDataError();
         }
@@ -39,12 +47,18 @@ namespace AppFrame.WPF
         {
             FindBindingsRecursively(
                       this.Parent,
-                      delegate(FrameworkElement element, Binding binding)
+                      delegate(FrameworkElement element, Binding binding,DependencyProperty dp)
                       {
                           bindingObjects.Add(element);
                           // Turn on validate on error for this binding
+                          // well, WPF check if Binding is sealed , if true, then throw exception if we change
+                          // so I borrow trick from Marlon Grech.
+                          bool isSealed = (bool)_isSealedFieldInfo.GetValue(binding);
+                          if(isSealed) _isSealedFieldInfo.SetValue(binding,false);
                           binding.ValidatesOnDataErrors = true;
                           binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                          element.SetBinding(dp, binding);
+                          if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
                           if(ErrorTemplate!=null)
                           {
                               System.Windows.Controls.Validation.SetErrorTemplate(element, ErrorTemplate);
@@ -92,7 +106,7 @@ namespace AppFrame.WPF
                         {
                             if (((FrameworkElement)element).DataContext == this.DataContext)
                             {
-                                callbackDelegate((FrameworkElement)element, bb);
+                                callbackDelegate((FrameworkElement)element, bb,dp);
                             }
                         }
                     }
@@ -113,4 +127,5 @@ namespace AppFrame.WPF
         }
     
     }
+    
 }

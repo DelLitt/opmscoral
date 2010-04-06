@@ -222,7 +222,7 @@ namespace POSServer.ViewModels.Stock.StockIn
         public void Save()
         {
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            if (this.HasError(StockIn))
+            if (this.HasError())
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
                 test.ErrorResult = this.GetErrors(StockIn).ToList();

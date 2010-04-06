@@ -10,6 +10,8 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
+using AppFrame.DataLayer;
+using AppFrame.Extensions;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
@@ -181,8 +183,16 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             StockOut.Department = Department;
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
-            Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, StockOut);
-            GoToNextNode();
+            if (this.HasError())
+            {
+                var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
+                _startViewModel.ShowDialog(test);
+            }
+            else
+            {
+                Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, StockOut);
+                GoToNextNode();
+            }
         }
 		        
         public void Stop()
@@ -263,17 +273,17 @@ namespace POSServer.ViewModels.Stock.StockOut
                 if(!ProductInStockOutList(details,product))
                 {
                     // create new stockout detail for that product
-                    StockOutDetail newDetail = new StockOutDetail
-                                                   {
-                                                       Product = stock.Product,
-                                                       ProductMaster = stock.ProductMaster,
-                                                       CreateDate = DateTime.Now,
-                                                       UpdateDate = DateTime.Now,
-                                                       CreateId = "admin",
-                                                       UpdateId = "admin",
-                                                       Quantity = stock.GoodQuantity,
-                                                       StockQuantity = stock.Quantity
-                                                   };
+                    StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+
+                    newDetail.Product = stock.Product;
+                    newDetail.ProductMaster = stock.ProductMaster;
+                    newDetail.CreateDate = DateTime.Now;
+                    newDetail.UpdateDate = DateTime.Now;
+                    newDetail.CreateId = "admin";
+                    newDetail.UpdateId = "admin";
+                    newDetail.Quantity = stock.GoodQuantity;
+                    newDetail.StockQuantity = stock.Quantity;
+                                                   
                     
                     details.Add(newDetail);
                 }
@@ -310,26 +320,23 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
             else
             {
-                StockDefinitionStatus definitionStatus = new StockDefinitionStatus
-                {
-                    DefectStatusId = 0,
-                    DefectStatusName = "NormalStockOut"
-                };
+                StockDefinitionStatus definitionStatus = DataErrorInfoFactory.Create<StockDefinitionStatus>();
+                definitionStatus.DefectStatusId = 0;
+                definitionStatus.DefectStatusName = "NormalStockOut";
+                
 
-                stockOut = new CoralPOS.Models.StockOut
-                {
-
-                    ConfirmFlg = 0,
+                stockOut = DataErrorInfoFactory.Create<CoralPOS.Models.StockOut>();
+                stockOut.ConfirmFlg = 0;
                     //Description = Description,
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    StockOutDate = DateTime.Now,
-                    CreateId = "admin",
-                    UpdateId = "admin",
-                    DelFlg = 0,
-                    ExclusiveKey = 0,
-                    DefinitionStatus = definitionStatus
-                };
+                stockOut.CreateDate = DateTime.Now;
+                stockOut.UpdateDate = DateTime.Now;
+                stockOut.StockOutDate = DateTime.Now;
+                stockOut.CreateId = "admin";
+                stockOut.UpdateId = "admin";
+                stockOut.DelFlg = 0;
+                stockOut.ExclusiveKey = 0;
+                stockOut.DefinitionStatus = definitionStatus;
+                
                 
             }
             StockOut = stockOut; 

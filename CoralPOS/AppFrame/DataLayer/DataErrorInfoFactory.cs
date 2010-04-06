@@ -26,7 +26,7 @@ namespace AppFrame.DataLayer
 			typeof (IDataErrorInfo)
             ,typeof (IMarkerInterface)  
                 },  
-            new DataErrorInfoInterceptor(new DefaultValidator()));
+            new DataErrorInfoInterceptor(GlobalValidator.Instance));
             }
 
             public interface IMarkerInterface
@@ -59,6 +59,22 @@ namespace AppFrame.DataLayer
             var markerInterface = entity as DataErrorInfoFactory.IMarkerInterface;
             if (markerInterface != null) return markerInterface.TypeName;
             return base.GetEntityName(entity);
+        }
+    }
+
+    public class GlobalValidator : DefaultValidator
+    {
+        private static GlobalValidator _validator = null;
+        private GlobalValidator() : base()
+        {
+        }
+        public static GlobalValidator Instance
+        {
+            get
+            {
+                if(_validator==null) _validator = new GlobalValidator();
+                return _validator;
+            }
         }
     }
 }
