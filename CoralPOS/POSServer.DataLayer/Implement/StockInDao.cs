@@ -47,7 +47,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public StockIn Add(StockIn data)
         {
-            _hibernateTemplate.Save(data);
+            _hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.StockIn", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         

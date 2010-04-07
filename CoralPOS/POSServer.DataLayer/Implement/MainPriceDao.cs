@@ -47,6 +47,12 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public MainPrice Add(MainPrice data)
         {
+            _hibernateTemplate.Execute(delegate(ISession session)
+                    {
+                        session.Save("CoralPOS.Models.MainPrice", data);
+                        return data;
+                    }
+                );
             _hibernateTemplate.Save(data);
             return data;
         }
