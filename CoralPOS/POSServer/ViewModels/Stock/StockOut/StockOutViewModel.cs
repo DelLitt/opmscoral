@@ -1,7 +1,3 @@
-			 
-
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +12,6 @@ using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;

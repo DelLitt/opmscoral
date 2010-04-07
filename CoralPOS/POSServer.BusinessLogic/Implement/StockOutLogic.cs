@@ -84,6 +84,8 @@ namespace POSServer.BusinessLogic.Implement
                     currentStock.Quantity -= outDetail.Quantity;
                     currentStock.GoodQuantity -= outDetail.Quantity;
                     currentStock.ExclusiveKey += 1;
+                    if(currentStock.Quantity <0 || currentStock.GoodQuantity <0)
+                        throw new DataIntegrityViolationException();
                     MainStockDao.Update(currentStock);
                 }
             }
