@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -20,15 +21,15 @@ namespace POSServer.DataLayer.Implement
         public HibernateTemplate HibernateTemplate
         {
             get
-            { 
-                return _hibernateTemplate; 
+            {
+                return _hibernateTemplate;
             }
-            set 
-            { 
-                _hibernateTemplate = value; 
+            set
+            {
+                _hibernateTemplate = value;
             }
         }
-        
+
         /// <summary>
         /// Find ProductMaster object by id. Return null if nothing is found
         /// </summary>
@@ -36,9 +37,9 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public ProductMaster FindById(object id)
         {
-            return (ProductMaster) _hibernateTemplate.Get(typeof(ProductMaster), id);
+            return (ProductMaster)_hibernateTemplate.Get(typeof(ProductMaster), id);
         }
-        
+
         /// <summary>
         /// Add ProductMaster to database.
         /// </summary>
@@ -46,7 +47,7 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public ProductMaster Add(ProductMaster data)
         {
-			_hibernateTemplate.Execute(delegate(ISession session) 
+            _hibernateTemplate.Execute(delegate(ISession session)
                     {
                         session.Save("CoralPOS.Models.ProductMaster", data);
                         return data;
@@ -55,7 +56,7 @@ namespace POSServer.DataLayer.Implement
             //_hibernateTemplate.Save(data);
             return data;
         }
-        
+
         /// <summary>
         /// Update ProductMaster to database.
         /// </summary>
@@ -63,7 +64,7 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Update(ProductMaster data)
         {
-			_hibernateTemplate.Execute(delegate(ISession session) 
+            _hibernateTemplate.Execute(delegate(ISession session)
                     {
                         session.Update("CoralPOS.Models.ProductMaster", data);
                         return 0;
@@ -72,7 +73,7 @@ namespace POSServer.DataLayer.Implement
             //_hibernateTemplate.Update(data);
             return 0;
         }
-        
+
         /// <summary>
         /// Delete ProductMaster from database.
         /// </summary>
@@ -80,7 +81,7 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Delete(ProductMaster data)
         {
-			_hibernateTemplate.Execute(delegate(ISession session) 
+            _hibernateTemplate.Execute(delegate(ISession session)
                     {
                         session.Delete("CoralPOS.Models.ProductMaster", data);
                         return 0;
@@ -89,7 +90,7 @@ namespace POSServer.DataLayer.Implement
             //_hibernateTemplate.Delete(data);
             return 0;
         }
-        
+
         /// <summary>
         /// Delete ProductMaster from database.
         /// </summary>
@@ -97,14 +98,14 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int DeleteById(object id)
         {
-            ProductMaster obj = (ProductMaster) HibernateTemplate.Get(typeof (ProductMaster), id);
+            ProductMaster obj = (ProductMaster)HibernateTemplate.Get(typeof(ProductMaster), id);
             if (obj != null)
             {
                 HibernateTemplate.Delete(obj);
             }
             return 0;
         }
-        
+
         /// <summary>
         /// Find all ProductMaster from database. No pagination.
         /// </summary>
@@ -112,14 +113,14 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public IList<ProductMaster> FindAll(LinqCriteria<ProductMaster> criteria)
         {
-            return (IList<ProductMaster>) HibernateTemplate.Execute(
+            return (IList<ProductMaster>)HibernateTemplate.Execute(
                                 delegate(ISession session)
-                                    {                                        
-                                        QueryHandler<ProductMaster> handler = new QueryHandler<ProductMaster>(session);
-                                        var result = handler.GetList(criteria);
-                                        return result;
-                                        
-                                    }
+                                {
+                                    QueryHandler<ProductMaster> handler = new QueryHandler<ProductMaster>(session);
+                                    var result = handler.GetList(criteria);
+                                    return result;
+
+                                }
                                     );
         }
 
@@ -139,14 +140,14 @@ namespace POSServer.DataLayer.Implement
                                         result = hibernateCriteria.List<ProductMaster>();
                                         return result;
                                     }
-                                    catch(Exception ex)
+                                    catch (Exception ex)
                                     {
                                         return result;
                                     }
                                 }
                                     );
-            
-            
+
+
         }
 
         public object FindFirst(ObjectCriteria<ProductMaster> criteria)
@@ -175,6 +176,25 @@ namespace POSServer.DataLayer.Implement
 
         }
 
+        public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<ProductMaster> criteria, Func<ProductMaster, TClass> subProp)
+        {
+            return (IList<TClass>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList<TClass> res = new List<TClass>();
+                                    QueryHandler<ProductMaster> handler = new QueryHandler<ProductMaster>(session);
+                                    IList<ProductMaster> products = handler.GetList(criteria);
+                                    var list = products.Select(subProp);
+                                    foreach (TClass classe in list)
+                                    {
+                                        res.Add(classe);
+                                    }
+                                    return res;
+
+                                }
+                                    );
+        }
+
         /// <summary>
         /// Find all ProductMaster from database. Has pagination.
         /// </summary>
@@ -200,7 +220,7 @@ namespace POSServer.DataLayer.Implement
                                         return queryResult;
                                     }
 
-            
+
                                     queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
 
                                     IList<ProductMaster> result = new List<ProductMaster>();
@@ -223,9 +243,9 @@ namespace POSServer.DataLayer.Implement
                                     }
                                 }
                                     );
-            
+
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -241,7 +261,7 @@ namespace POSServer.DataLayer.Implement
                                     try
                                     {
                                         ICriteria hibernateCriteria =
-                                            session.CreateCriteria(typeof (ProductMaster)).SetProjection(Projections.RowCount());
+                                            session.CreateCriteria(typeof(ProductMaster)).SetProjection(Projections.RowCount());
                                         if (criteria != null)
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
@@ -257,7 +277,7 @@ namespace POSServer.DataLayer.Implement
                                     );
         }
 
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -298,8 +318,28 @@ namespace POSServer.DataLayer.Implement
                 hibernateCriteria.AddOrder(pair.Key, pair.Value);
 
             }
-            if(criteria.MaxResult > 0)
+            if (criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
+        }
+        public IList FindProductMasterWithTypes(string p)
+        {
+            return (IList<TClass>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList result;
+                                    ObjectCriteria<ProductMaster> crit = new ObjectCriteria<ProductMaster>();
+                                    crit.MaxResult = 15;
+                                    crit.AddCriteria(pm => pm.ProductName.Contains(p));
+                                    ICriteria hibernateCriteria =
+                                            session.CreateCriteria(typeof(ProductMaster));
+                                    if (criteria != null)
+                                    {
+                                        PosContext.SetCriteria(hibernateCriteria, criteria);
+                                    }
+                                    result = hibernateCriteria.List();
+                                    return result;
+                                }
+                                    );
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -173,6 +174,25 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
+        }
+		
+		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<SyncStatusus> criteria,Func<SyncStatusus,TClass> subProp)
+        {
+            return (IList<TClass>)HibernateTemplate.Execute(
+                                delegate(ISession session)
+                                {
+                                    IList<TClass> res = new List<TClass>();
+                                    QueryHandler<SyncStatusus> handler = new QueryHandler<SyncStatusus>(session);
+                                    IList<SyncStatusus> products = handler.GetList(criteria);
+                                    var list = products.Select(subProp);
+                                    foreach (TClass classe in list)
+                                    {
+                                        res.Add(classe);
+                                    }
+                                    return res;
+
+                                }
+                                    );
         }
 
         /// <summary>
