@@ -8,10 +8,12 @@ using Caliburn.PresentationFramework.ViewModels;
 using Castle.Core.Interceptor;
 using Castle.DynamicProxy;
 using NHibernate;
+using NHibernate.Proxy;
+using NHibernate.Type;
 
 namespace AppFrame.DataLayer
 {
-    public class DataErrorInfoFactory
+    public class DataErrorInfoFactory 
     {
             private static readonly ProxyGenerator ProxyGenerator = new ProxyGenerator();
 
@@ -22,17 +24,17 @@ namespace AppFrame.DataLayer
 
             public static object Create(Type type)
             {
-                return ProxyGenerator.CreateClassProxy(type, new[] {
-			typeof (IDataErrorInfo)
-            ,typeof (IMarkerInterface)  
-                },  
-            new DataErrorInfoInterceptor(GlobalValidator.Instance));
+                return ProxyGenerator.CreateClassProxy(type, 
+                    new[] { typeof (IDataErrorInfo),
+                            typeof (IMarkerInterface) },
+                            new DataErrorInfoInterceptor(GlobalValidator.Instance));
             }
 
             public interface IMarkerInterface
             {
                 string TypeName { get; }
             }
+        
     }
 
     public class PosDataErrorInfoIntercepter : EmptyInterceptor
@@ -59,6 +61,11 @@ namespace AppFrame.DataLayer
             var markerInterface = entity as DataErrorInfoFactory.IMarkerInterface;
             if (markerInterface != null) return markerInterface.TypeName;
             return base.GetEntityName(entity);
+        }
+
+        public override bool OnSave(object entity, object id, object[] state, string[] propertyNames, IType[] types)
+        {
+            return true;
         }
     }
 

@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<StockInDetail> FindAll(ObjectCriteria<StockInDetail> criteria);
 		
         object FindFirst(ObjectCriteria<StockInDetail> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<StockInDetail> criteria,Func<StockInDetail,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.

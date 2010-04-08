@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -47,7 +46,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public Department Add(Department data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.Department", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -58,7 +63,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Update(Department data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("CoralPOS.Models.Department", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -69,7 +80,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Delete(Department data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("CoralPOS.Models.Department", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
@@ -156,25 +173,6 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
-        }
-		
-		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<Department> criteria,Func<Department,TClass> subProp)
-        {
-            return (IList<TClass>)HibernateTemplate.Execute(
-                                delegate(ISession session)
-                                {
-                                    IList<TClass> res = new List<TClass>();
-                                    QueryHandler<Department> handler = new QueryHandler<Department>(session);
-                                    IList<Department> products = handler.GetList(criteria);
-                                    var list = products.Select(subProp);
-                                    foreach (TClass classe in list)
-                                    {
-                                        res.Add(classe);
-                                    }
-                                    return res;
-
-                                }
-                                    );
         }
 
         /// <summary>

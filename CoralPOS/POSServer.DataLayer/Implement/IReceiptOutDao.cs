@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<ReceiptOut> FindAll(ObjectCriteria<ReceiptOut> criteria);
 		
         object FindFirst(ObjectCriteria<ReceiptOut> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<ReceiptOut> criteria,Func<ReceiptOut,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.

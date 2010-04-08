@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<ReturnBlockIn> FindAll(ObjectCriteria<ReturnBlockIn> criteria);
 		
         object FindFirst(ObjectCriteria<ReturnBlockIn> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<ReturnBlockIn> criteria,Func<ReturnBlockIn,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.

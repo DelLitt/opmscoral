@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<EmployeeWorkingDays> FindAll(ObjectCriteria<EmployeeWorkingDays> criteria);
 		
         object FindFirst(ObjectCriteria<EmployeeWorkingDays> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<EmployeeWorkingDays> criteria,Func<EmployeeWorkingDays,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.

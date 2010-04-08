@@ -27,11 +27,11 @@ namespace AppFrame.Extensions
         /// <returns></returns>
         public static bool HasError(this PosViewModel viewModel)
         {
-            var view = viewModel.GetView(viewModel) as DependencyObject;
-            if(view == null) return true;
+            var view = viewModel.GetView(null) as DependencyObject;
+            if(view == null) return false;
             DependencyObject vp = LogicalTreeHelper.FindLogicalNode(view, "PosDataErrorProvider");
             PosDataErrorProvider pvp = vp as PosDataErrorProvider;
-            if(pvp == null) return true;
+            if(pvp == null) return false;
             return pvp.Validate();
         }
 

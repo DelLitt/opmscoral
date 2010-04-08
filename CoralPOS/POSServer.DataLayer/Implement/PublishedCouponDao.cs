@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -47,7 +46,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public PublishedCoupon Add(PublishedCoupon data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.PublishedCoupon", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -58,7 +63,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Update(PublishedCoupon data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("CoralPOS.Models.PublishedCoupon", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -69,7 +80,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Delete(PublishedCoupon data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("CoralPOS.Models.PublishedCoupon", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
@@ -156,25 +173,6 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
-        }
-		
-		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<PublishedCoupon> criteria,Func<PublishedCoupon,TClass> subProp)
-        {
-            return (IList<TClass>)HibernateTemplate.Execute(
-                                delegate(ISession session)
-                                {
-                                    IList<TClass> res = new List<TClass>();
-                                    QueryHandler<PublishedCoupon> handler = new QueryHandler<PublishedCoupon>(session);
-                                    IList<PublishedCoupon> products = handler.GetList(criteria);
-                                    var list = products.Select(subProp);
-                                    foreach (TClass classe in list)
-                                    {
-                                        res.Add(classe);
-                                    }
-                                    return res;
-
-                                }
-                                    );
         }
 
         /// <summary>

@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<ProductMaster> FindAll(ObjectCriteria<ProductMaster> criteria);
 		
         object FindFirst(ObjectCriteria<ProductMaster> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<ProductMaster> criteria,Func<ProductMaster,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.
@@ -89,8 +80,6 @@ namespace POSServer.DataLayer.Implement
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria<ProductMaster> criteria, IProjection type);
-
-        IList FindProductMasterWithTypes(string empty);
     }
 }
 

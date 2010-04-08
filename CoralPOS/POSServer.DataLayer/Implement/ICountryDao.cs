@@ -58,15 +58,6 @@ namespace POSServer.DataLayer.Implement
         IList<Country> FindAll(ObjectCriteria<Country> criteria);
 		
         object FindFirst(ObjectCriteria<Country> criteria);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TClass"></typeparam>
-        /// <param name="criteria"></param>
-        /// <param name="subProp"></param>
-        /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<Country> criteria,Func<Country,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.

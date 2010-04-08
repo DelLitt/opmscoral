@@ -2,10 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
-using AppFrame.Utils;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
@@ -48,7 +46,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public MainStock Add(MainStock data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.MainStock", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -59,7 +63,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Update(MainStock data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("CoralPOS.Models.MainStock", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -70,7 +80,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Delete(MainStock data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("CoralPOS.Models.MainStock", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
@@ -157,23 +173,6 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
-        }
-		
-		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<MainStock> criteria,Func<MainStock,TClass> subProp)
-        {
-            return (IList<TClass>)HibernateTemplate.Execute(
-                                delegate(ISession session)
-                                {
-                                    IList<TClass> res = new List<TClass>();
-                                    QueryHandler<MainStock> handler = new QueryHandler<MainStock>(session);
-                                    handler.AddFetch(subProp.Method.ReturnParameter.ParameterType.Name);
-                                    IList<MainStock> products = handler.GetList(criteria);
-                                    IList<TClass> list = products.Select(subProp).ToList();
-                                    ObjectUtility.AddToList(res,list,"ProductName");
-                                    return res;
-
-                                }
-                                    );
         }
 
         /// <summary>

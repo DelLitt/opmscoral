@@ -35,11 +35,11 @@ namespace AppFrame.WPF
         #endregion
         public bool Validate()
         {
-            bool val = true;
+            bool val = false;
             foreach (FrameworkElement bindingObject in bindingObjects)
             {
                 val = System.Windows.Controls.Validation.GetHasError(bindingObject);
-                if(val == false) return val;
+                if(val == true) return val;
             }
             return val;
         }

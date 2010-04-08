@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
@@ -47,7 +46,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public DepartmentStockOutCost Add(DepartmentStockOutCost data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.DepartmentStockOutCost", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -58,7 +63,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Update(DepartmentStockOutCost data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("CoralPOS.Models.DepartmentStockOutCost", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -69,7 +80,13 @@ namespace POSServer.DataLayer.Implement
         /// <returns></returns>
         public int Delete(DepartmentStockOutCost data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("CoralPOS.Models.DepartmentStockOutCost", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
@@ -156,25 +173,6 @@ namespace POSServer.DataLayer.Implement
                                     );
 
 
-        }
-		
-		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<DepartmentStockOutCost> criteria,Func<DepartmentStockOutCost,TClass> subProp)
-        {
-            return (IList<TClass>)HibernateTemplate.Execute(
-                                delegate(ISession session)
-                                {
-                                    IList<TClass> res = new List<TClass>();
-                                    QueryHandler<DepartmentStockOutCost> handler = new QueryHandler<DepartmentStockOutCost>(session);
-                                    IList<DepartmentStockOutCost> products = handler.GetList(criteria);
-                                    var list = products.Select(subProp);
-                                    foreach (TClass classe in list)
-                                    {
-                                        res.Add(classe);
-                                    }
-                                    return res;
-
-                                }
-                                    );
         }
 
         /// <summary>
