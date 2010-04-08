@@ -53,7 +53,13 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public <#= ClassName #> Add(<#= ClassName #> data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("<#= ModelNamespaceName #>.<#= ClassName #>", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -64,7 +70,13 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public int Update(<#= ClassName #> data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("<#= ModelNamespaceName #>.<#= ClassName #>", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -75,7 +87,13 @@ namespace <#= NamespaceName #>
         /// <returns></returns>
         public int Delete(<#= ClassName #> data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("<#= ModelNamespaceName #>.<#= ClassName #>", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
