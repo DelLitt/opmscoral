@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="POSServer.Views.Stock.StockIn.StockOutSearchView"
+﻿<UserControl x:Class="POSServer.Views.Stock.StockOut.StockOutSearchView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="837" Height="748">
@@ -13,13 +13,13 @@
                 <RowDefinition Height="204.424*"></RowDefinition>
                 <RowDefinition Height="388.545*"></RowDefinition>
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" />
+                    <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
                     <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" />                                            
                     <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" />
-                    <my:DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" />                   
+                    <my:DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
                     
                 </my:DataGrid.Columns>
             </my:DataGrid>

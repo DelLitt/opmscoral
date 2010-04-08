@@ -9,17 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
-
+using Microsoft.Practices.ServiceLocation;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    [PerRequest(typeof(IStockOutSearchViewModel))]
+    
     public class StockOutSearchViewModel : PosViewModel,IStockOutSearchViewModel  
     {
 
@@ -58,7 +62,13 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => textBox2);
             }
         }
-				#endregion
+
+        public IStockOutLogic StockOutLogic
+        {
+            get; set;
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 		        
@@ -93,17 +103,17 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region List which just using in Data Grid
 		        
-        private IList _stockInList;
-        public IList StockInList
+        private IList _stockOutList;
+        public IList StockOutList
         {
             get
             {
-                return _stockInList;
+                return _stockOutList;
             }
             set
             {
-                _stockInList = value;
-                NotifyOfPropertyChange(() => StockInList);
+                _stockOutList = value;
+                NotifyOfPropertyChange(() => StockOutList);
             }
         }
 				#endregion
@@ -122,13 +132,28 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Stop()
         {
-            
+           Flow.End(); 
         }
 		        
         public void Search()
         {
+            Execute.OnBackgroundThread(() => FindStockOuts(null), CompletedLoadProductMaster);
+
             
         }
+
+        private void FindStockOuts(object criteria)
+        {
+            
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+            IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByCriteria(criteria);
+            StockOutList = ObjectConverter.ConvertFrom(stockOuts);
+        }
+        void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+        }
+
 				#endregion
 		
         

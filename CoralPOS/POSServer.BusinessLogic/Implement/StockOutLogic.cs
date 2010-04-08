@@ -4,6 +4,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using NHibernate.Linq;
 using Spring.Dao;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
@@ -144,6 +146,34 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<StockOut> criteria)
         {
             return StockOutDao.FindPaging(criteria);
+        }
+
+        public IList<StockOut> FindByCriteria(object criteria)
+        {
+            return (IList<StockOut>)StockOutDao.Execute(delegate(ISession session)
+                                   {
+                                       var sql = from c in session.Linq<StockOut>()
+                                                 from o in c.StockOutDetails.Cast<StockOutDetail>()
+                                                 //on c.StockOutId equals o.StockOut.StockOutId into sods
+                                                 select c;
+                                       StockInEqualityComparer x = new StockInEqualityComparer();
+                                       return sql.ToList().Distinct().ToList();
+                                   }
+                                 );
+        }
+
+        
+    }
+    class StockInEqualityComparer : IEqualityComparer<StockIn>
+    {
+        public bool Equals(StockIn x, StockIn y)
+        {
+            return x.StockInId == y.StockInId;
+        }
+
+        public int GetHashCode(StockIn obj)
+        {
+            return obj.GetHashCode();
         }
     }
 }

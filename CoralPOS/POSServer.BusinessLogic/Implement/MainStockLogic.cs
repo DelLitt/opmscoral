@@ -117,7 +117,9 @@ namespace POSServer.BusinessLogic.Implement
             crit.AddCriteria(stk =>stk.ProductMaster.ProductName.Contains(name));
             crit.MaxResult = 20;
             IList<ProductMaster> list = MainStockDao.FindAllSubProperty(crit, stk => stk.ProductMaster);
-            return list as IList;
+            var reslist = new ArrayList();
+            ObjectUtility.AddToList(reslist,list,"ProductName");
+            return reslist;
         }
 
         public IList GetColorsFromAvailProductInStock(string productName)

@@ -89,6 +89,10 @@ namespace POSServer.DataLayer.Implement
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria<StockOut> criteria, IProjection type);
+
+        object Execute(IHibernateCallback callback, bool exposeSession);
+        object Execute(HibernateDelegate delegated);
+        object ExecuteExposedSession(HibernateDelegate delegated);
     }
 }
 

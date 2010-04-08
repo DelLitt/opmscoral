@@ -79,5 +79,10 @@
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
   </object>
-  
+
+  <object id="IStockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="StockOutLogic" ref="IStockOutLogic" />    
+  </object>
+
 </objects>

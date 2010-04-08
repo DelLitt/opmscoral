@@ -73,7 +73,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockOutList()
         {
-            
+            _startViewModel.EnterFlow("StockOutSearchFlow");  
         }
 		        
         public void StockOutByExcel()

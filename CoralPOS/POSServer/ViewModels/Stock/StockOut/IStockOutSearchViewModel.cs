@@ -9,6 +9,7 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
@@ -27,6 +28,8 @@ namespace POSServer.ViewModels.Stock.StockOut
             get;
             set;            
         }
+
+        IStockOutLogic StockOutLogic { get; set; }
 			#endregion
 		
 		#region Methods

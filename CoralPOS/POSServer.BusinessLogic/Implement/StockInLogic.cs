@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
@@ -11,6 +12,7 @@ using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
+using NHibernate.Linq;
 using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using  CoralPOS.Models;
@@ -191,6 +193,18 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<StockIn> criteria)
         {
             return StockInDao.FindPaging(criteria);
+        }
+
+        public IList<StockIn> Find(object criteria)
+        {
+            return (IList<StockIn>) StockInDao.Execute(delegate(ISession session)
+                                   {
+                                       var sql = from c in session.Linq<StockIn>()
+                                                 join o in session.Linq<StockInDetail>() on c.StockInId equals o.StockInDetailPK.StockInId
+                                                 select c;
+                                       return null;
+                                   }
+                                   );
         }
     }
 }

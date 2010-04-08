@@ -193,6 +193,7 @@ namespace POSServer.DataLayer.Implement
 
                                 }
                                     );
+            
         }
 
         /// <summary>
@@ -320,6 +321,21 @@ namespace POSServer.DataLayer.Implement
             }
             if(criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
+        }
+
+        public object Execute(IHibernateCallback callback,bool exposeSession)
+        {
+            return HibernateTemplate.Execute(callback, exposeSession);
+        }
+
+        public object Execute(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated);
+        }
+
+        public object ExecuteExposedSession(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated,true);
         }
     }
 }
