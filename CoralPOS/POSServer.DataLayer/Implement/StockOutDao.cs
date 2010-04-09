@@ -360,12 +360,18 @@ namespace POSServer.DataLayer.Implement
             return (StockOut) HibernateTemplate
                 .Execute(delegate(ISession session)
                   {
-                      string sql = "from StockOut so fetch all properties where so.StockOutId =" + stockOut.StockOutId + "";
+
+                      string sql = "from StockOut so fetch all properties " +
+                                    " where so.StockOutId =" + stockOut.StockOutId + "";
                       IQuery query = session.CreateQuery(sql);
-                      return query.List()[0];                                              
+                      StockOut res =  (StockOut)query.UniqueResult();
+                      NHibernateUtil.Initialize(res.StockOutDetails);
+                      NHibernateUtil.Initialize(res.DefinitionStatus);
+                      return res;
                   }
                   );
         }
     }
 }
+
 
