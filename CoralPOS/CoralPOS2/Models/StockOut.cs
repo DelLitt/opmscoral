@@ -100,6 +100,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+        public virtual long TotalQuantity { get; set; }
         [Required]
         public virtual IList<StockOutDetail> StockOutDetails {
             get;

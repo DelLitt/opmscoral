@@ -63,5 +63,6 @@ namespace POSServer.BusinessLogic.Implement
         QueryResult FindPaging(ObjectCriteria<StockOut> criteria);
 
         IList<StockOut> FindByCriteria(object criteria);
+        IList<StockOut> FindByMultiCriteria(StockOutCriteria criteria);
     }
 }

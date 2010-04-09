@@ -146,7 +146,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
-            IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByCriteria(criteria);
+            IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByMultiCriteria(null);
             StockOutList = ObjectConverter.ConvertFrom(stockOuts);
         }
         void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)

@@ -5,7 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AppFrame.Utils;
 using NHibernate.Linq;
+using NHibernate.SqlCommand;
 using Spring.Dao;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
@@ -162,8 +164,65 @@ namespace POSServer.BusinessLogic.Implement
                                  );
         }
 
+        public IList<StockOut> FindByMultiCriteria(StockOutCriteria criteria)
+        {
+            bool hasDetailQuery = false;
+            StockOutDetail detail = null;
+            DetachedCriteria critMaster = DetachedCriteria.For<StockOut>();
+            DetachedCriteria critDetail = critMaster.CreateCriteria<StockOut>(so => so.StockOutDetails, () => detail,
+                                                                              JoinType.InnerJoin);
+
+            if (criteria != null)
+            {
+                if (!ObjectUtility.IsNullOrEmpty(criteria.DepartmentName))
+                {
+                    critMaster.Add<StockOut>(so => so.Department.DepartmentName == criteria.DepartmentName);
+                }
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
+                {
+                    hasDetailQuery = true;
+                    critDetail.Add(SqlExpression.In<StockOutDetail>(sod => sod.ProductMaster.ProductName,
+                                                                    criteria.ProductMasterNames.ToArray()));
+                }
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.CategoryName))
+                {
+                    hasDetailQuery = true;
+                    critDetail.Add<StockOutDetail>(
+                        sod => sod.ProductMaster.Category.CategoryName == criteria.CategoryName);
+                }
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.TypeNames))
+                {
+                    hasDetailQuery = true;
+                    critDetail.Add(SqlExpression.In<StockOutDetail>(sod => sod.ProductMaster.ProductType.TypeName,
+                                                                    criteria.TypeNames.ToArray()));
+                }
+            }
+
+            return (IList<StockOut>)StockOutDao.Execute(delegate(ISession session)
+            {
+                if (hasDetailQuery)
+                {
+                    return critDetail.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
+                }
+                return critMaster.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
+            }
+                                 );
+        }
+    }
+
+
+    public class StockOutCriteria
+    {
+        public string DepartmentName { get; set; }
+        public IList<string> ProductMasterNames { get; set; }
+        public string CategoryName { get; set; }
+        public IList<string> TypeNames { get; set; }
         
     }
+
     class StockInEqualityComparer : IEqualityComparer<StockIn>
     {
         public bool Equals(StockIn x, StockIn y)
