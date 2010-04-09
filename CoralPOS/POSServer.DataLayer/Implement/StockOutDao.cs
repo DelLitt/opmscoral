@@ -360,8 +360,8 @@ namespace POSServer.DataLayer.Implement
             return (StockOut) HibernateTemplate
                 .Execute(delegate(ISession session)
                   {
-                      session.Lock(stockOut, LockMode.None);
-                      stockOut = LazyInitializer.InitializeEntity(stockOut,0, session);
+                      //session.Lock(stockOut, LockMode.None);
+                      stockOut = LazyInitializer.InitializeEntity(stockOut,0, "CoralPOS.Models",session);
 
                       /*string sql = "from StockOut so fetch all properties " +
                                     " where so.StockOutId =" + stockOut.StockOutId + "";
@@ -369,6 +369,7 @@ namespace POSServer.DataLayer.Implement
                       StockOut res =  (StockOut)query.UniqueResult();
                       res = LazyInitializer.InitializeCompletely(res, session);*/
                       return stockOut;
+                      //return res;
                   }
                   );
         }

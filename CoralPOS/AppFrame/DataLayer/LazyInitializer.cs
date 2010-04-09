@@ -14,30 +14,31 @@ namespace AppFrame.DataLayer
     public static class LazyInitializer
     {
         #region fields
-        /// <summary>
+        /*/// <summary>
         /// A container of all types containing lazy properties
         /// with a list of their respective lazy properties.
         /// </summary>
         private static IDictionary<Type, List<PropertyInfo>>
             propertiesToInitialise =
                 new Dictionary<Type, List<PropertyInfo>>();
-        private static IList<Type> proxyTypes = new List<Type>();
+        private static IList<Type> proxyTypes = new List<Type>();*/
         #endregion
 
         /// <summary>
-
+        private delegate bool CheckTraverseProp(object child,object parent,bool isRegister);
         /// Fully initialize the instance of T type with a primary key equal to id.
         /// </summary>
         /// <typeparam name="T">The type to resolve and load</typeparam>
         /// <param name="id">The primary key of the type to load</param>
 
         /// <param name="session">The session factory
+        /// <param name="modelNamespace"></param>
         /// used to extract the current session</param>
         /// <returns>The fully initialized entity</returns>
-        public static T ImmediateLoad<T>(object id, ISession session)
+        public static T ImmediateLoad<T>(object id, ISession session,string modelNamespace)
         {
             T entity = session.Load<T>(id);
-            return InitializeCompletely(entity, session);
+            return InitializeCompletely(entity, modelNamespace, session);
         }
 
         /// <summary>
@@ -59,13 +60,14 @@ namespace AppFrame.DataLayer
         /// entity object that holds lazy properties. From
         /// the LazyInitializer's scope, the entity is the top node in the object graph.
         /// </param>
+        /// <param name="modelNamespace"></param>
         /// <param name="session">The current session</param>
         /// <returns>The fully initialized entity</returns>
 
-        public static T InitializeCompletely<T>(T entity, ISession session)
+        public static T InitializeCompletely<T>(T entity, string modelNamespace,ISession session)
         {
             // Okay, first we must identify all the proxies we want to initialize:
-            ExtractNHMappedProperties(entity, 0, 9, false, session);
+            ExtractMappedProperties(entity, 0, 6, false, modelNamespace,session);
             return entity;
         }
 
@@ -90,17 +92,19 @@ namespace AppFrame.DataLayer
         /// wether this approach is inefficient. This must be tested.
         /// </param>
         /// <param name="maxFetchDepth">The search depth.</param>
+        /// <param name="modelNamespace"></param>
         /// <param name="session">The current session</param>
 
         /// <returns>A partly initialized entity,
         /// initialized to max fetch depth</returns>
         public static T InitializeEntity<T>(T entity,
-                                            int maxFetchDepth, ISession session)
+                                            int maxFetchDepth, string modelNamespace,ISession session)
         {
+            IDictionary<string, string> maps = new Dictionary<string, string>();
             // Let's reduce the max-fetch depth to something tolerable...
-            if (maxFetchDepth <= 0 || maxFetchDepth > 9) maxFetchDepth = 9;
+            if (maxFetchDepth <= 0 || maxFetchDepth > 6) maxFetchDepth = 6;
             // Okay, first we must identify all the proxies we want to initialize:
-            ExtractNHMappedProperties(entity, 0, maxFetchDepth, false, session);
+            ExtractMappedProperties(entity, 0, maxFetchDepth, false, modelNamespace, session);
             return entity;
         }
 
@@ -117,18 +121,18 @@ namespace AppFrame.DataLayer
 
         /// <param name="loadGraphCompletely">Bool flag indicating
         /// whether to ignore depth params</param>
+        /// <param name="modelNamespace"></param>
         /// <param name="session">The current session to the db</param>
-        private static void ExtractNHMappedProperties(object entity, int depth,
-                                                      int maxDepth, bool loadGraphCompletely, ISession session)
+        private static void ExtractMappedProperties(object entity, int depth, int maxDepth, bool loadGraphCompletely,string modelNamespace, ISession session)
         {
-            bool search;
-            if (loadGraphCompletely) search = true;
-            else search = (depth <= maxDepth);
+            bool isExtract;
+            if (loadGraphCompletely) isExtract = true;
+            else isExtract = (depth <= maxDepth);
 
             if (null != entity)
             {
                 // Should we stay or should we go now?
-                if (search)
+                if (isExtract)
                 {
                     // Check if the entity is a collection.
                     // If so, we must iterate the collection and
@@ -141,12 +145,13 @@ namespace AppFrame.DataLayer
                         if (iface == typeof(ICollection))
                         {
                             ICollection collection = (ICollection)entity;
-                            if(collection == null || collection.Count == 0) return;
+                            if(collection.Count == 0) return;
 
                             foreach (object item in collection)
                             {
-                                ExtractNHMappedProperties(item, depth + 1,
-                                                          maxDepth, loadGraphCompletely, session);
+                                ExtractMappedProperties(item, depth + 1,
+                                                          maxDepth, loadGraphCompletely, 
+                                                          modelNamespace, session);
                             }
                             return;
                         }
@@ -160,11 +165,16 @@ namespace AppFrame.DataLayer
                     // in the GetProperties call (so that we only get an array
                     // of PropertyInfo's that have NH mappings).
                     //List<PropertyInfo> props = propertiesToInitialise[entity.GetType()];
-                    
-                    if(!"CoralPOS.Models".Equals(entity.GetType().Namespace)) return;
+
+                    Type entityType = NHibernateProxyHelper.GetClassWithoutInitializingProxy(entity);
+                    if (!entityType.FullName.Contains(modelNamespace)) return;
                     PropertyInfo[] props = entity.GetType().GetProperties();
                     foreach (PropertyInfo prop in props)
                     {
+                        Type propType = prop.PropertyType;
+                        string propFullName = prop.PropertyType.FullName;
+                        if (!propFullName.Contains(modelNamespace)
+                            && !(propType is ICollection)) continue;
                         MethodInfo method = prop.GetGetMethod();
                         if (null != method)
                         {
@@ -177,16 +187,16 @@ namespace AppFrame.DataLayer
                                 // try to initialise
                                 /*try
                                 {*/
-                                    LazyInitialise(proxy, entity, session);
+                                    LazyInit(proxy, entity, session);
                                 /*}
                                 catch (NullReferenceException exception)
                                 {
                                     Console.WriteLine(exception.Message);
                                 }*/
                             /*}*/
-                            if (null != proxy)
-                                ExtractNHMappedProperties(proxy, depth + 1, maxDepth,
-                                                          loadGraphCompletely, session);
+                                ExtractMappedProperties(proxy, depth + 1, maxDepth,
+                                                          loadGraphCompletely, 
+                                                          modelNamespace, session);
                         }
                     }
                 }
@@ -203,7 +213,7 @@ namespace AppFrame.DataLayer
         /// entity holding the reference</param>
 
         /// <param name="session">The current session to the db</param>
-        private static void LazyInitialise(object proxy, object owner, ISession session)
+        private static void LazyInit(object proxy, object owner, ISession session)
         {
             if (null != proxy)
             {
@@ -245,7 +255,7 @@ namespace AppFrame.DataLayer
         /// this approach will work for ANY kind of mapping:
         /// Mapping.Attribute, Hbm and even NHibernate Fluent Interfaces.
         /// </remarks>
-        public static void AlternativeConstructor()
+        /*public static void AlternativeConstructor()
         {
             var cfg = new Configuration();
             // get all types (with their lazy props) having lazy 
@@ -292,7 +302,7 @@ namespace AppFrame.DataLayer
         static LazyInitializer()
         {
             
-        }
+        }*/
 
         #endregion
     }

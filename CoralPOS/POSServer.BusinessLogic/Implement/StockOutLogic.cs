@@ -8,6 +8,7 @@ using System.Linq;
 using AppFrame.Utils;
 using NHibernate.Linq;
 using NHibernate.SqlCommand;
+using NHibernate.Transform;
 using Spring.Dao;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
@@ -205,7 +206,7 @@ namespace POSServer.BusinessLogic.Implement
             {
                 if (hasDetailQuery)
                 {
-                    return critDetail.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
+                    return critDetail.GetExecutableCriteria(session).SetResultTransformer(Transformers.DistinctRootEntity).SetMaxResults(50).List<StockOut>();
                 }
                 return critMaster.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
             }
