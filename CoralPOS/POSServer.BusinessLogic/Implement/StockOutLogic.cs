@@ -170,9 +170,8 @@ namespace POSServer.BusinessLogic.Implement
             bool hasDetailQuery = false;
             StockOutDetail detail = null;
             DetachedCriteria critMaster = DetachedCriteria.For<StockOut>();
-            DetachedCriteria critDetail = critMaster.CreateCriteria<StockOut>(so => so.StockOutDetails, () => detail,
-                                                                              JoinType.InnerJoin);
-
+            DetachedCriteria critDetail = DetachedCriteria.For<StockOutDetail>();
+            
             if (criteria != null)
             {
                 if (!ObjectUtility.IsNullOrEmpty(criteria.DepartmentName))
@@ -204,11 +203,16 @@ namespace POSServer.BusinessLogic.Implement
 
             return (IList<StockOut>)StockOutDao.Execute(delegate(ISession session)
             {
-                if (hasDetailQuery)
+                ICriteria executeCrit = critMaster.GetExecutableCriteria(session);    
+                if(hasDetailQuery)
                 {
-                    return critDetail.GetExecutableCriteria(session).SetResultTransformer(Transformers.DistinctRootEntity).SetMaxResults(50).List<StockOut>();
+                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockOutId")));
+                    executeCrit.Add(LambdaSubquery.Property<StockOut>(p => p.StockOutId).In(critDetail)); 
                 }
-                return critMaster.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
+
+                executeCrit.SetMaxResults(20);
+                //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
+                return executeCrit.List<StockOut>();
             }
                                  );
         }
