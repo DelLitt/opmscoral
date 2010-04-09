@@ -85,7 +85,7 @@ namespace POSServer.BusinessLogic.Implement
 
                 ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
                 string productId = inDetail.Product.ProductId;
-                findStock.AddCriteria(stk => stk.Product.ProductId==productId);
+                findStock.Add(stk => stk.Product.ProductId==productId);
 
                 MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
                 if(currentStock == null) // create new stock
@@ -123,7 +123,7 @@ namespace POSServer.BusinessLogic.Implement
             {
                 ObjectCriteria<MainPrice> findPrice = new ObjectCriteria<MainPrice>();
                 string productMasterId = mainPrice.Key;
-                findPrice.AddCriteria(
+                findPrice.Add(
                     price => price.MainPricePK.ProductMasterId == productMasterId);
                 MainPrice currentPrice = MainPriceDao.FindFirst(findPrice) as MainPrice;
                 if (currentPrice == null)

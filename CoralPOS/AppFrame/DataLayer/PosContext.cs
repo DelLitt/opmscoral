@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using NHibernate.Criterion;
 using NHibernate.Linq;
@@ -31,8 +32,13 @@ namespace AppFrame.DataLayer
             foreach (var pair in criteria.GetOrder())
             {
                 hibernateCriteria.AddOrder(pair.Key, pair.Value);
-
             }
+
+            foreach (var fetch in criteria.GetFetchs())
+            {
+                hibernateCriteria.SetFetchMode(fetch.Key, fetch.Value);
+            }
+            
             if (criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }

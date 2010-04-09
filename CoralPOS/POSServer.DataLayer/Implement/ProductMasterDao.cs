@@ -328,13 +328,13 @@ namespace POSServer.DataLayer.Implement
                                 {
                                     IList result;
                                     /*LinqCriteria<ProductMaster> crit = new LinqCriteria<ProductMaster>();
-                                    crit.AddCriteria(pm => pm.ProductName.Contains(p));
+                                    crit.Add(pm => pm.ProductName.Contains(p));
                                     crit.MaxResult = 15;
                                     QueryHandler<ProductMaster> queryHandler = new QueryHandler<ProductMaster>(session);
                                     return queryHandler.GetList(crit);*/
                                     ObjectCriteria<ProductMaster> crit = new ObjectCriteria<ProductMaster>();
                                     crit.MaxResult = 15;
-                                    crit.AddCriteria(SqlExpression.Like<ProductMaster>(pm=>pm.ProductName,p));
+                                    crit.Add(SqlExpression.Like<ProductMaster>(pm=>pm.ProductName,p));
                                     ICriteria hibernateCriteria =
                                             session.CreateCriteria(typeof(ProductMaster));
                                     if (crit != null)

@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
@@ -21,18 +22,21 @@ using POSServer.BusinessLogic.Common;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    [PerRequest(typeof(IStockOutConfirmViewModel))]
+    
     public class StockOutConfirmViewModel : PosViewModel,IStockOutConfirmViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public StockOutConfirmViewModel(IShellViewModel startViewModel)
+        public StockOutConfirmViewModel(IShellViewModel startViewModel,bool isViewOnly)
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = startViewModel;
+            IsViewOnly = isViewOnly;
         }
 		
 		#region Fields
-		        
+
+
+        public bool IsViewOnly { get; set; }
         private string _createDate;
         public string CreateDate
         {
@@ -107,7 +111,16 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             Flow.Back();
         }
-		        
+		
+        public bool CanSaveConfirm
+        {
+            get
+            {
+                return !IsViewOnly;
+            }
+        }
+
+        [Preview("CanSaveConfirm")]
         public void SaveConfirm()
         {
             GoToNextNode();

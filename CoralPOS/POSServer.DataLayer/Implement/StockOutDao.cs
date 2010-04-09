@@ -8,6 +8,7 @@ using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
+using NHibernate.Linq;
 using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
@@ -266,6 +267,7 @@ namespace POSServer.DataLayer.Implement
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
                                         }
+                                        
                                         result = hibernateCriteria.List<int>()[0];
                                         return result;
                                     }
@@ -322,19 +324,47 @@ namespace POSServer.DataLayer.Implement
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="exposeSession"></param>
+        /// <returns></returns>
         public object Execute(IHibernateCallback callback, bool exposeSession)
         {
             return HibernateTemplate.Execute(callback, exposeSession);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
         public object Execute(HibernateDelegate delegated)
         {
             return HibernateTemplate.Execute(delegated);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
         public object ExecuteExposedSession(HibernateDelegate delegated)
         {
             return HibernateTemplate.Execute(delegated, true);
+        }
+
+        public StockOut Fetch(StockOut stockOut)
+        {
+            return (StockOut) HibernateTemplate
+                .Execute(delegate(ISession session)
+                  {
+                      string sql = "from StockOut so fetch all properties where so.StockOutId =" + stockOut.StockOutId + "";
+                      IQuery query = session.CreateQuery(sql);
+                      return query.List()[0];                                              
+                  }
+                  );
         }
     }
 }

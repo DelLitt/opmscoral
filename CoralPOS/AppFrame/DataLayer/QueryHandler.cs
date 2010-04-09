@@ -32,8 +32,10 @@ namespace AppFrame.DataLayer
 
         public IList<T> GetList()
         {
+            
             var query = from item in _context.Session.Linq<T>()
                         select item;
+            
             //Tack on our query Criteria
             foreach (var criterion in _criteria)
             {

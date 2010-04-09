@@ -22,20 +22,22 @@ namespace AppFrame.DataLayer
             _order = new List<Expression<Func<T, bool>>>();
             _fetchProps = new List<string>();
         }
-        public void AddCriteria(Expression<Func<T, bool>> lambdaFunc)
+        public LinqCriteria<T> AddCriteria(Expression<Func<T, bool>> lambdaFunc)
         {
             _where.Add(lambdaFunc);
+            return this;
         }
 
-        public void AddOrder(Expression<Func<T, bool>> lambdaFunc)
+        public LinqCriteria<T> AddOrder(Expression<Func<T, bool>> lambdaFunc)
         {
-            
             _order.Add(lambdaFunc);
+            return this;
         }
-        
-        public void AddFetchPath(string fetchProp)
+
+        public LinqCriteria<T> AddFetchPath(string fetchProp)
         {
             _fetchProps.Add(fetchProp);
+            return this;
         }
 
         public void AddFetchPath<TK>(Expression<Func<T, TK>> fetchProp)

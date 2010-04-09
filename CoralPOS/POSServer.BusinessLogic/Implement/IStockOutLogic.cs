@@ -64,5 +64,7 @@ namespace POSServer.BusinessLogic.Implement
 
         IList<StockOut> FindByCriteria(object criteria);
         IList<StockOut> FindByMultiCriteria(StockOutCriteria criteria);
+
+        StockOut Fetch(StockOut stockOut);
     }
 }

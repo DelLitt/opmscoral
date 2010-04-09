@@ -256,6 +256,7 @@
     <Compile Include="DataLayer\SqlExtensions.cs" />
     <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\DataGrid\DataGridExtension.cs" />
+    <Compile Include="Extensions\HibernateTemplateExtensions.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />
     <Compile Include="Extensions\ListBox\MultiSelectorBehaviours.cs" />

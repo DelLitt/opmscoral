@@ -76,7 +76,7 @@ namespace POSServer.BusinessLogic.Implement
 
                 ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
                 string productId = outDetail.Product.ProductId;
-                findStock.AddCriteria(stk => stk.Product.ProductId == productId);
+                findStock.Add(stk => stk.Product.ProductId == productId);
 
                 MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
                 if (currentStock == null) // create new stock
@@ -210,6 +210,11 @@ namespace POSServer.BusinessLogic.Implement
                 return critMaster.GetExecutableCriteria(session).SetMaxResults(50).List<StockOut>();
             }
                                  );
+        }
+
+        public StockOut Fetch(StockOut stockOut)
+        {
+            return StockOutDao.Fetch(stockOut);
         }
     }
 

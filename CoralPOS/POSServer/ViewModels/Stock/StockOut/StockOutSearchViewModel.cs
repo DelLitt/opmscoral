@@ -18,6 +18,7 @@ using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
 using Microsoft.Practices.ServiceLocation;
+using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 
 
@@ -60,6 +61,20 @@ namespace POSServer.ViewModels.Stock.StockOut
             {
                 _textBox2 = value;
                 NotifyOfPropertyChange(() => textBox2);
+            }
+        }
+
+        private CoralPOS.Models.StockOut _selectedStockOut;
+        public CoralPOS.Models.StockOut SelectedStockOut
+        {
+            get
+            {
+                return _selectedStockOut;
+            }
+            set
+            {
+                _selectedStockOut = value;
+                NotifyOfPropertyChange(() => SelectedStockOut);
             }
         }
 
@@ -127,7 +142,13 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void ViewDetail()
         {
-            
+            if (_selectedStockOut != null && _selectedStockOut.StockOutId > 0 )
+            {
+                CoralPOS.Models.StockOut stockOut = SelectedStockOut;
+                stockOut = StockOutLogic.Fetch(stockOut);
+                Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
+                GoToNextNode();
+            }
         }
 		        
         public void Stop()
@@ -137,9 +158,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Search()
         {
-            Execute.OnBackgroundThread(() => FindStockOuts(null), CompletedLoadProductMaster);
-
-            
+            Execute.OnBackgroundThread(() => FindStockOuts(null), CompletedLoadStockOuts);
         }
 
         private void FindStockOuts(object criteria)
@@ -149,12 +168,17 @@ namespace POSServer.ViewModels.Stock.StockOut
             IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByMultiCriteria(null);
             StockOutList = ObjectConverter.ConvertFrom(stockOuts);
         }
-        void CompletedLoadProductMaster(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        void CompletedLoadStockOuts(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
-				#endregion
+        public override void Initialize()
+        {
+            SelectedStockOut = new CoralPOS.Models.StockOut();
+        }
+
+        #endregion
 		
         
         

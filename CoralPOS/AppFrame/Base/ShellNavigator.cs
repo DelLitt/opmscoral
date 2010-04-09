@@ -237,6 +237,14 @@ namespace AppFrame.Base
         /// <returns>instance of screen</returns>
         public virtual U CreateNode(string typeName)
         {
+            // if lookup by name not by type
+            if(typeName.StartsWith("[") && typeName.EndsWith("]"))
+            {
+                string name = typeName.Replace("[", "");
+                       name = name.Replace("]", "");
+                var instanceByName = _serviceLocator.GetInstance<U>(name);
+                return (U) instanceByName;
+            }
             var type = System.Reflection.Assembly.GetEntryAssembly().GetType(typeName);
             var instance = _serviceLocator.GetInstance(type);
             return (U) instance;

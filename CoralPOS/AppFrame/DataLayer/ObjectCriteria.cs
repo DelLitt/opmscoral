@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AppFrame.Utils;
+using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Type;
@@ -27,9 +28,10 @@ namespace AppFrame.DataLayer
             }
         }
         private bool isUsingQuery = false;
-        private IList<ICriterion> where = new List<ICriterion>();
-        private IDictionary<Expression<Func<T, object>>,Func<string,Order>> order = new Dictionary<Expression<Func<T, object>>, Func<string, Order>>();
+        private IList<ICriterion> _where = new List<ICriterion>();
+        private IDictionary<Expression<Func<T, object>>,Func<string,Order>> _order = new Dictionary<Expression<Func<T, object>>, Func<string, Order>>();
         
+        private IDictionary<Expression<Func<T,object>>,FetchMode> _fetchObjects = new Dictionary<Expression<Func<T, object>>, FetchMode>();
 
         public ObjectCriteria()
         {
@@ -40,55 +42,71 @@ namespace AppFrame.DataLayer
 
         public void ClearAllCriteria()
         {
-            where.Clear();
-            order.Clear();
+            _where.Clear();
+            _order.Clear();
         }
         
-        public ObjectCriteria<T> AddCriteria(Expression<Func<T, bool>> func)
+        public ObjectCriteria<T> Add(Expression<Func<T, bool>> func)
         {
 
             if (func != null)
             {
-                where.Add(SqlExpression.CriterionFor(func));
+                _where.Add(SqlExpression.CriterionFor(func));
             }
             return this;
         }
 
-        public ObjectCriteria<T> AddCriteria(Expression<Func<bool>> func)
+        public ObjectCriteria<T> Add(Expression<Func<bool>> func)
         {
 
             if (func != null)
             {
-                where.Add(SqlExpression.CriterionFor(func));
+                _where.Add(SqlExpression.CriterionFor(func));
             }
             return this;
         }
 
-        public ObjectCriteria<T> AddCriteria(ICriterion criterion)
+        public ObjectCriteria<T> SetFetchMode(Expression<Func<T,object>> func,FetchMode fetchMode)
         {
-            if(criterion!=null) where.Add(criterion);
+            _fetchObjects.Add(func,fetchMode);
+            return this;
+        }
+
+        
+        public ObjectCriteria<T> Add(ICriterion criterion)
+        {
+            if(criterion!=null) _where.Add(criterion);
             return this;
         }
 
         public ObjectCriteria<T> AddOrder(Expression<Func<T,object>> func,Func<string,Order> orderType)
         {
-            order.Add(func,orderType);
+            _order.Add(func,orderType);
             return this;
         }
 
+        public void ClearWhere()
+        {
+            _where.Clear();
+        }
         public void ClearOrder()
         {
-            order.Clear();
+            _order.Clear();
         }
 
         public IList<ICriterion> GetWhere()
         {
-            return where;
+            return _where;
         }
 
         public IDictionary<Expression<Func<T, object>>, Func<string, Order>> GetOrder()
         {
-            return order;
+            return _order;
+        }
+
+        public IDictionary<Expression<Func<T,object>>,FetchMode> GetFetchs()
+        {
+            return _fetchObjects;
         }
     }
 }
