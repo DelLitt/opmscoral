@@ -249,6 +249,7 @@
     <Compile Include="CustomAttributes\AttachMenuAndMainScreenAttribute.cs" />
     <Compile Include="CustomAttributes\MainScreenAttribute.cs" />
     <Compile Include="DataLayer\DataErrorInfoFactory.cs" />
+    <Compile Include="DataLayer\LazyInitializer.cs" />
     <Compile Include="DataLayer\LinqCriteria.cs" />
     <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />

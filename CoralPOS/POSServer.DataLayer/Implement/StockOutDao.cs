@@ -360,14 +360,15 @@ namespace POSServer.DataLayer.Implement
             return (StockOut) HibernateTemplate
                 .Execute(delegate(ISession session)
                   {
+                      session.Lock(stockOut, LockMode.None);
+                      stockOut = LazyInitializer.InitializeEntity(stockOut,0, session);
 
-                      string sql = "from StockOut so fetch all properties " +
+                      /*string sql = "from StockOut so fetch all properties " +
                                     " where so.StockOutId =" + stockOut.StockOutId + "";
                       IQuery query = session.CreateQuery(sql);
                       StockOut res =  (StockOut)query.UniqueResult();
-                      NHibernateUtil.Initialize(res.StockOutDetails);
-                      NHibernateUtil.Initialize(res.DefinitionStatus);
-                      return res;
+                      res = LazyInitializer.InitializeCompletely(res, session);*/
+                      return stockOut;
                   }
                   );
         }
