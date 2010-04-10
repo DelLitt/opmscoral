@@ -66,8 +66,9 @@ namespace AppFrame.DataLayer
 
         public static T InitializeCompletely<T>(T entity, string modelNamespace,ISession session)
         {
+            LinkedList<string> linkedList = new LinkedList<string>();
             // Okay, first we must identify all the proxies we want to initialize:
-            ExtractMappedProperties(entity, 0, 6, false, modelNamespace,session);
+            ExtractMappedProperties(entity, 0, 6, false, modelNamespace,session,linkedList);
             return entity;
         }
 
@@ -100,11 +101,11 @@ namespace AppFrame.DataLayer
         public static T InitializeEntity<T>(T entity,
                                             int maxFetchDepth, string modelNamespace,ISession session)
         {
-            IDictionary<string, string> maps = new Dictionary<string, string>();
+            LinkedList<string> linkedList = new LinkedList<string>();
             // Let's reduce the max-fetch depth to something tolerable...
             if (maxFetchDepth <= 0 || maxFetchDepth > 6) maxFetchDepth = 6;
             // Okay, first we must identify all the proxies we want to initialize:
-            ExtractMappedProperties(entity, 0, maxFetchDepth, false, modelNamespace, session);
+            ExtractMappedProperties(entity, 0, maxFetchDepth, false, modelNamespace, session,linkedList);
             return entity;
         }
 
@@ -123,7 +124,9 @@ namespace AppFrame.DataLayer
         /// whether to ignore depth params</param>
         /// <param name="modelNamespace"></param>
         /// <param name="session">The current session to the db</param>
-        private static void ExtractMappedProperties(object entity, int depth, int maxDepth, bool loadGraphCompletely,string modelNamespace, ISession session)
+        private static void ExtractMappedProperties(object entity, int depth, 
+            int maxDepth, bool loadGraphCompletely, 
+            string modelNamespace, ISession session, LinkedList<string> linkedList)
         {
             bool isExtract;
             if (loadGraphCompletely) isExtract = true;
@@ -150,8 +153,8 @@ namespace AppFrame.DataLayer
                             foreach (object item in collection)
                             {
                                 ExtractMappedProperties(item, depth + 1,
-                                                          maxDepth, loadGraphCompletely, 
-                                                          modelNamespace, session);
+                                                          maxDepth, loadGraphCompletely,
+                                                          modelNamespace, session, linkedList);
                             }
                             return;
                         }
@@ -167,14 +170,20 @@ namespace AppFrame.DataLayer
                     //List<PropertyInfo> props = propertiesToInitialise[entity.GetType()];
 
                     Type entityType = NHibernateProxyHelper.GetClassWithoutInitializingProxy(entity);
-                    if (!entityType.FullName.Contains(modelNamespace)) return;
+                    string entityFullName = entityType.FullName;
+                    if (!entityFullName.Contains(modelNamespace)) return;
+                    if (!linkedList.Contains(entityFullName)) linkedList.AddLast(entityFullName);
+                    int entityPosInList = PosInList(linkedList, entityFullName);
                     PropertyInfo[] props = entity.GetType().GetProperties();
                     foreach (PropertyInfo prop in props)
                     {
                         Type propType = prop.PropertyType;
                         string propFullName = prop.PropertyType.FullName;
+                        
                         if (!propFullName.Contains(modelNamespace)
                             && !(propType is ICollection)) continue;
+                        int propPosInList = PosInList(linkedList, propFullName);
+                        if(propPosInList < entityPosInList) continue;
                         MethodInfo method = prop.GetGetMethod();
                         if (null != method)
                         {
@@ -195,12 +204,24 @@ namespace AppFrame.DataLayer
                                 }*/
                             /*}*/
                                 ExtractMappedProperties(proxy, depth + 1, maxDepth,
-                                                          loadGraphCompletely, 
-                                                          modelNamespace, session);
+                                                          loadGraphCompletely,
+                                                          modelNamespace, session, linkedList);
                         }
                     }
                 }
             }
+        }
+
+        private static int PosInList(LinkedList<string> linkedList, string entityFullName)
+        {
+            IEnumerator enumerator = linkedList.GetEnumerator();
+            int i = 0;
+            while(enumerator.MoveNext())
+            {
+                if (entityFullName.Equals(enumerator.Current.ToString())) return i;
+                i++;
+            }
+            return int.MaxValue;
         }
 
         /// <summary>

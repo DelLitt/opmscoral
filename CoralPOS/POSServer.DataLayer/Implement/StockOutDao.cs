@@ -363,11 +363,14 @@ namespace POSServer.DataLayer.Implement
                       //session.Lock(stockOut, LockMode.None);
                       stockOut = LazyInitializer.InitializeEntity(stockOut,0, "CoralPOS.Models",session);
 
+                      #region useless 
                       /*string sql = "from StockOut so fetch all properties " +
                                     " where so.StockOutId =" + stockOut.StockOutId + "";
                       IQuery query = session.CreateQuery(sql);
                       StockOut res =  (StockOut)query.UniqueResult();
                       res = LazyInitializer.InitializeCompletely(res, session);*/
+
+                      #endregion
                       return stockOut;
                       //return res;
                   }
