@@ -65,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
             var maxIdResult = StockOutDao.SelectSpecificType(null, Projections.Max("StockOutId"));
             long nextStockOutId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
             var maxDetailIdResult = StockOutDetailDao.SelectSpecificType(null, Projections.Max("StockOutDetailId"));
-            long nextStockOutDetailId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
+            long nextStockOutDetailId = maxDetailIdResult != null ? Int64.Parse(maxDetailIdResult.ToString()) + 1 : 1;
 
 
             data.StockOutId = nextStockOutId;
@@ -82,7 +82,7 @@ namespace POSServer.BusinessLogic.Implement
                 MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
                 if (currentStock == null) // create new stock
                 {
-                    throw new DataIntegrityViolationException();
+                    throw new DataIntegrityViolationException("Could not find the product id in stock");
                 }
                 else // update current stock
                 {
@@ -90,7 +90,7 @@ namespace POSServer.BusinessLogic.Implement
                     currentStock.GoodQuantity -= outDetail.Quantity;
                     currentStock.ExclusiveKey += 1;
                     if(currentStock.Quantity <0 || currentStock.GoodQuantity <0)
-                        throw new DataIntegrityViolationException();
+                        throw new DataIntegrityViolationException("Stock quantity of " + currentStock.Product.ProductId + " is zero.");
                     MainStockDao.Update(currentStock);
                 }
             }

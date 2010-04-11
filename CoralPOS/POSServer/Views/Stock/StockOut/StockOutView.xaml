@@ -46,9 +46,9 @@
                      IsTabStop="False" IsReadOnly="True" />
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,0,0,59" Name="label2" VerticalAlignment="Bottom" Width="114.32">MÃ HÀNG</Label>
                 <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="9,75,0,101" Name="label1" Width="114.32">DIỄN TẢ</Label>
-                <TextBox FontSize="14" Margin="145,65,197,101" Name="Description" />
+                <TextBox FontSize="14" Margin="145,65,197,101" Name="Description1" Text="{Binding StockOut.Description,Mode=TwoWay}" />
                 <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="146.251,9.856,299,0" Name="Departments" VerticalAlignment="Top" DisplayMemberPath="DepartmentName" 
-                      IsTextSearchEnabled="True" SelectedItem="{Binding Department}"/>
+                      IsTextSearchEnabled="True" SelectedItem="{Binding StockOut.Department,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}"/>
                 <Label FontSize="14" Height="28.424" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,20.159,0,0" Name="label3" VerticalAlignment="Top" Width="114.32">CỬA HÀNG</Label>
                 <Button FontSize="14" Height="39.581" HorizontalAlignment="Right" Margin="0,0,9,9" Name="FixQuantityByAvailable" VerticalAlignment="Bottom" Width="182.425">SỬA SL THEO TỒN KHO</Button>
                 <Button FontSize="14" HorizontalAlignment="Right" Margin="0,64,9,101" Name="Create" Width="182.092">XUẤT THEO MẶT HÀNG</Button>

@@ -9,6 +9,8 @@
     <property name="CreateId" column="CREATE_ID" />
     <property name="DelFlg" column="DEL_FLG" />
     <!--<property name="DepartmentId" column="DEPARTMENT_ID" />-->
+    <property name="Description" column="DESCRIPTION" />
+    <property name="TotalQuantity" column="TOTAL_QUANTITY" />
     <property name="ExFld1" column="EX_FLD1" />
     <property name="ExFld2" column="EX_FLD2" />
     <property name="ExFld3" column="EX_FLD3" />

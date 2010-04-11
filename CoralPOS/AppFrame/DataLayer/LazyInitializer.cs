@@ -66,7 +66,9 @@ namespace AppFrame.DataLayer
 
         public static T InitializeCompletely<T>(T entity, string modelNamespace,ISession session)
         {
-            LinkedList<string> linkedList = new LinkedList<string>();
+            LinkedList<string> linkedList  = new LinkedList<string>();
+            linkedList.AddFirst(entity.GetType().FullName);
+
             // Okay, first we must identify all the proxies we want to initialize:
             ExtractMappedProperties(entity, 0, 6, false, modelNamespace,session,linkedList);
             return entity;
@@ -101,11 +103,13 @@ namespace AppFrame.DataLayer
         public static T InitializeEntity<T>(T entity,
                                             int maxFetchDepth, string modelNamespace,ISession session)
         {
+            
             LinkedList<string> linkedList = new LinkedList<string>();
+            linkedList.AddFirst(entity.GetType().FullName);
             // Let's reduce the max-fetch depth to something tolerable...
             if (maxFetchDepth <= 0 || maxFetchDepth > 6) maxFetchDepth = 6;
             // Okay, first we must identify all the proxies we want to initialize:
-            ExtractMappedProperties(entity, 0, maxFetchDepth, false, modelNamespace, session,linkedList);
+            ExtractMappedProperties(entity, 0, maxFetchDepth, false, modelNamespace, session, linkedList);
             return entity;
         }
 
@@ -124,9 +128,11 @@ namespace AppFrame.DataLayer
         /// whether to ignore depth params</param>
         /// <param name="modelNamespace"></param>
         /// <param name="session">The current session to the db</param>
-        private static void ExtractMappedProperties(object entity, int depth, 
-            int maxDepth, bool loadGraphCompletely, 
-            string modelNamespace, ISession session, LinkedList<string> linkedList)
+        private static void ExtractMappedProperties(object entity, 
+            int depth, int maxDepth, bool loadGraphCompletely, 
+            string modelNamespace, ISession session, 
+            LinkedList<string> linkedList)
+
         {
             bool isExtract;
             if (loadGraphCompletely) isExtract = true;

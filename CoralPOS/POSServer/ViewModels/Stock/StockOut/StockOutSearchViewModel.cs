@@ -145,6 +145,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             if (_selectedStockOut != null && _selectedStockOut.StockOutId > 0 )
             {
                 CoralPOS.Models.StockOut stockOut = SelectedStockOut;
+                Flow.Session.Put(FlowConstants.STOCK_OUT_SEARCH_RESULT, StockOutList);
                 stockOut = StockOutLogic.Fetch(stockOut);
                 Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
                 GoToNextNode();
@@ -175,7 +176,20 @@ namespace POSServer.ViewModels.Stock.StockOut
 
         public override void Initialize()
         {
-            SelectedStockOut = new CoralPOS.Models.StockOut();
+            IList searchedStockOut = Flow.Session.Get(FlowConstants.STOCK_OUT_SEARCH_RESULT) as IList;
+            CoralPOS.Models.StockOut selectedStockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
+            if (searchedStockOut == null)
+            {
+                SelectedStockOut = new CoralPOS.Models.StockOut();
+            }
+            else
+            {
+                if(selectedStockOut!=null) SelectedStockOut = selectedStockOut;
+                else
+                {
+                    SelectedStockOut = new CoralPOS.Models.StockOut();
+                }
+            }
         }
 
         #endregion

@@ -19,6 +19,7 @@ using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.Common;
 using POSServer.ViewModels.Dialogs;
 using POSServer.ViewModels.Menu.Stock;
 
@@ -176,8 +177,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Save()
         {
-            StockOut.Department = Department;
+            //StockOut.Department = Department;
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
+            //StockOut.Description = Description;
             if (this.HasError())
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
@@ -316,13 +318,11 @@ namespace POSServer.ViewModels.Stock.StockOut
             else
             {
                 StockDefinitionStatus definitionStatus = DataErrorInfoFactory.Create<StockDefinitionStatus>();
-                definitionStatus.DefectStatusId = 0;
-                definitionStatus.DefectStatusName = "NormalStockOut";
-                
+                definitionStatus.DefectStatusId = (int)StockOutType.Normal;
+                definitionStatus.DefectStatusName = "NORMAL";
 
                 stockOut = DataErrorInfoFactory.Create<CoralPOS.Models.StockOut>();
                 stockOut.ConfirmFlg = 0;
-                    //Description = Description,
                 stockOut.CreateDate = DateTime.Now;
                 stockOut.UpdateDate = DateTime.Now;
                 stockOut.StockOutDate = DateTime.Now;

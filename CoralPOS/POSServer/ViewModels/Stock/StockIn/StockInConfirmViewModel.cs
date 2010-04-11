@@ -109,9 +109,11 @@ namespace POSServer.ViewModels.Stock.StockIn
             base.Initialize();
             CoralPOS.Models.StockIn stockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             Description = stockIn.Description;
+            stockIn.TotalQuantity = 0;
             foreach (StockInDetail inDetail in stockIn.StockInDetails)
             {
                 inDetail.StockIn = stockIn;
+                stockIn.TotalQuantity += inDetail.Quantity;
             }
             StockInDetailList = ObjectConverter.ConvertFrom(stockIn.StockInDetails);
             CreateDate = stockIn.CreateDate;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using AppFrame.WPF.ValidationAttributes;
 using Caliburn.PresentationFramework.Behaviors;
 
 
@@ -36,6 +37,16 @@ namespace CoralPOS.Models {
         }
 
         [Required]
+        public virtual string Description
+        {
+            get;
+            set;
+        }
+
+        public virtual long TotalQuantity { get; set; }
+
+        [Required]
+        [NotNull]
         public virtual StockDefinitionStatus DefinitionStatus {
             get;
             set;
@@ -46,6 +57,7 @@ namespace CoralPOS.Models {
             set;
         }
         [Required]
+        [NotNull]
         public virtual Department Department {
             get;
             set;
@@ -100,7 +112,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-        public virtual long TotalQuantity { get; set; }
+        
         [Required]
         public virtual IList<StockOutDetail> StockOutDetails {
             get;

@@ -134,10 +134,12 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             base.Initialize();
             CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
-            //Description = stockIn.Description;
+            Description = stockOut.Description;
+            stockOut.TotalQuantity = 0;
             foreach (StockOutDetail outDetail in stockOut.StockOutDetails)
             {
                 outDetail.StockOut = stockOut;
+                stockOut.TotalQuantity += outDetail.Quantity;
             }
             StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
             Department = stockOut.Department;

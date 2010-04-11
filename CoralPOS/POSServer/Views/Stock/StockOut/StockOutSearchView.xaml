@@ -19,8 +19,8 @@
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" />
                     <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
-                    <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" />                                            
-                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" />
+                    <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" Binding="{Binding Path=Description}"/>                                            
+                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" Binding="{Binding Path=TotalQuantity}"/>
                     <my:DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
                     
                 </my:DataGrid.Columns>

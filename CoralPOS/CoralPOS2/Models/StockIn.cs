@@ -51,6 +51,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+
+        public virtual long TotalQuantity { get; set; }
         
         public virtual long ExFld1 {
             get;
@@ -106,6 +108,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+        
 
         [Required]
         public virtual IList<StockInDetail> StockInDetails {
