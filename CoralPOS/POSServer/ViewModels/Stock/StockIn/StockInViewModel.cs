@@ -217,15 +217,28 @@ namespace POSServer.ViewModels.Stock.StockIn
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
+        public bool CanSave
+        {
+            get
+            {
+                //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+                if (this.HasError()) return false;
+                else
+                {
+                    return true;
+                }
+            }
+        }
 
-        
+        [Preview("CanSave")]
         public void Save()
         {
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-            if (this.HasError())
+            IEnumerable<IValidationError> errors = this.GetErrors(StockIn);
+            if (errors.Count()>0)
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
-                test.ErrorResult = this.GetErrors(StockIn).ToList();
+                test.ErrorResult = errors.ToList();
                 _startViewModel.ShowDialog(test);
             }
             else

@@ -32,13 +32,13 @@
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,16.583,0,0" Name="label3" VerticalAlignment="Top" Width="105">MÃ HÀNG</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,72.215" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">ĐẾN</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="31,60.419,0,0" Name="label4" VerticalAlignment="Top" Width="80">CỬA HÀNG</Label>
-            <TextBox FontSize="14" Height="38.583" Margin="128.75,6,229.5,0" Name="Description" VerticalAlignment="Top" />
+            <TextBox FontSize="14" Height="38.583" Margin="128.75,6,229.5,0" Name="ProductMasterNames" VerticalAlignment="Top" />
             <CheckBox Margin="625.465,0,108.535,71.104" Name="DatePick" Height="25.75" VerticalAlignment="Bottom" FontSize="14" HorizontalContentAlignment="Right">THEO NGÀY</CheckBox>
-            <ComboBox Height="38.996" HorizontalAlignment="Left" Margin="128.75,0,0,25.553" Name="Category" VerticalAlignment="Bottom" Width="203" />
+            <ComboBox Height="38.996" HorizontalAlignment="Left" Margin="128.75,0,0,25.553" Name="CategoryList" VerticalAlignment="Bottom" Width="203" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,0,0,25.553" Name="label5" VerticalAlignment="Bottom" Width="105.1">PHÂN LOẠI</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,25.553" Name="label6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">LOẠI</Label>
-            <TextBox FontSize="14" Height="38.424" Margin="405.515,0,229.5,27.775" Name="textBox2" VerticalAlignment="Bottom" />
-            <ComboBox Height="39" Margin="129,50,0,0" Name="Department" VerticalAlignment="Top" HorizontalAlignment="Left" Width="403" />
+            <TextBox FontSize="14" Height="38.424" Margin="405.515,0,229.5,27.775" Name="ProductTypes" VerticalAlignment="Bottom" />
+            <ComboBox Height="39" Margin="129,50,0,0" Name="Departments" VerticalAlignment="Top" HorizontalAlignment="Left" Width="403" />
         </Grid>
     </Grid>
 </UserControl>

@@ -9,6 +9,7 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Stock.StockOut
@@ -16,19 +17,24 @@ namespace POSServer.ViewModels.Stock.StockOut
     public interface IStockOutSearchViewModel : IScreenNode
     {
         #region Fields
-		                
-        string Description
+
+        string ProductMasterNames
         {
             get;
-            set;            
-        }
-		                
-        string textBox2
-        {
-            get;
-            set;            
+            set;
         }
 
+        string ProductTypes
+        {
+            get;
+            set;
+        }
+
+        Department SelectedDepartment { get; set; }
+        DateTime FromDate { get; set; }
+        DateTime ToDate { get; set; }
+        IList CategoryList { get; set; }
+        IList Departments { get; set; }
         IStockOutLogic StockOutLogic { get; set; }
 			#endregion
 		

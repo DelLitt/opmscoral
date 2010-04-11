@@ -13,8 +13,10 @@ using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
+using Caliburn.PresentationFramework.ViewModels;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
@@ -174,15 +176,29 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             
         }
-		        
+
+        public bool CanSave
+        {
+            get
+            {
+                if (this.HasError()) return false;
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        [Preview("CanSave")]
         public void Save()
         {
-            //StockOut.Department = Department;
+            
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
-            //StockOut.Description = Description;
+            IEnumerable<IValidationError> errors = this.GetErrors(StockOut);
             if (this.HasError())
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
+                test.ErrorResult = errors.ToList();
                 _startViewModel.ShowDialog(test);
             }
             else

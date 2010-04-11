@@ -17,6 +17,7 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -29,6 +30,14 @@ namespace POSServer.ViewModels.Stock.StockOut
     {
 
         private IShellViewModel _startViewModel;
+        private Department _selectedDepartment;
+
+        private DateTime _fromDate;
+
+        private DateTime _toDate;
+
+        private IList _categoryList;
+
         public StockOutSearchViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
@@ -36,32 +45,58 @@ namespace POSServer.ViewModels.Stock.StockOut
 		
 		#region Fields
 		        
-        private string _description;
-        public string Description
+        private string _productMasterNames;
+        public string ProductMasterNames
         {
             get
             {
-                return _description;
+                return _productMasterNames;
             }
             set
             {
-                _description = value;
-                NotifyOfPropertyChange(() => Description);
+                _productMasterNames = value;
+                NotifyOfPropertyChange(() => ProductMasterNames);
             }
         }
-		        
-        private string _textBox2;
-        public string textBox2
+
+        private string _productTypes;
+        public string ProductTypes
         {
             get
             {
-                return _textBox2;
+                return _productTypes;
             }
             set
             {
-                _textBox2 = value;
-                NotifyOfPropertyChange(() => textBox2);
+                _productTypes = value;
+                NotifyOfPropertyChange(() => ProductTypes);
             }
+        }
+
+        public Department SelectedDepartment
+        {
+            get { return _selectedDepartment; }
+            set { _selectedDepartment = value; 
+                NotifyOfPropertyChange(()=>SelectedDepartment);
+            }
+        }
+
+        public DateTime FromDate
+        {
+            get { return _fromDate; }
+            set { _fromDate = value; NotifyOfPropertyChange(() => FromDate); }
+        }
+
+        public DateTime ToDate
+        {
+            get { return _toDate; }
+            set { _toDate = value; NotifyOfPropertyChange(() => ToDate); }
+        }
+
+        public IList CategoryList
+        {
+            get { return _categoryList; }
+            set { _categoryList = value; NotifyOfPropertyChange(() => CategoryList); }
         }
 
         private CoralPOS.Models.StockOut _selectedStockOut;
@@ -101,17 +136,17 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
         }
 		        
-        private IList _department;
-        public IList Department
+        private IList _departments;
+        public IList Departments
         {
             get
             {
-                return _department;
+                return _departments;
             }
             set
             {
-                _department = value;
-                NotifyOfPropertyChange(() => Department);
+                _departments = value;
+                NotifyOfPropertyChange(() => Departments);
             }
         }
 				#endregion
