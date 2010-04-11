@@ -174,7 +174,7 @@ namespace POSServer.BusinessLogic.Implement
             
             if (criteria != null)
             {
-                if (!ObjectUtility.IsNullOrEmpty(criteria.DepartmentName))
+                if (criteria.DepartmentPick && !ObjectUtility.IsNullOrEmpty(criteria.DepartmentName))
                 {
                     critMaster.Add<StockOut>(so => so.Department.DepartmentName == criteria.DepartmentName);
                 }
@@ -182,8 +182,10 @@ namespace POSServer.BusinessLogic.Implement
                 if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
                 {
                     hasDetailQuery = true;
-                    critDetail.Add(SqlExpression.In<StockOutDetail>(sod => sod.ProductMaster.ProductName,
-                                                                    criteria.ProductMasterNames.ToArray()));
+                    foreach (string masterName in criteria.ProductMasterNames)
+                    {
+                        critDetail.Add(SqlExpression.Like<StockOutDetail>(sod => sod.ProductMaster.ProductName,masterName));
+                    }
                 }
 
                 if (!ObjectUtility.IsNullOrEmpty(criteria.CategoryName))
@@ -196,8 +198,16 @@ namespace POSServer.BusinessLogic.Implement
                 if (!ObjectUtility.IsNullOrEmpty(criteria.TypeNames))
                 {
                     hasDetailQuery = true;
-                    critDetail.Add(SqlExpression.In<StockOutDetail>(sod => sod.ProductMaster.ProductType.TypeName,
-                                                                    criteria.TypeNames.ToArray()));
+                    foreach (string typeName in criteria.TypeNames)
+                    {
+                        critDetail.Add(SqlExpression.Like<StockOutDetail>(sod => sod.ProductMaster.ProductType.TypeName,typeName));    
+                    }
+                }
+                if(criteria.DatePick)
+                {
+                    
+                    critMaster.Add(SqlExpression.Between<StockOut>(so => so.StockOutDate, criteria.FromDate,
+                                                                   criteria.ToDate));
                 }
             }
 
@@ -226,6 +236,10 @@ namespace POSServer.BusinessLogic.Implement
 
     public class StockOutCriteria
     {
+        public bool DatePick { get; set; }
+        public bool DepartmentPick { get; set; }
+        public DateTime ToDate { get; set;}
+        public DateTime FromDate { get; set;}
         public string DepartmentName { get; set; }
         public IList<string> ProductMasterNames { get; set; }
         public string CategoryName { get; set; }

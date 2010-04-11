@@ -30,13 +30,19 @@ namespace POSServer.ViewModels.Stock.StockOut
             set;
         }
 
+        bool DepartmentPick { get; set; }
+        bool DatePick { get; set; }
         Department SelectedDepartment { get; set; }
         DateTime FromDate { get; set; }
         DateTime ToDate { get; set; }
         IList CategoryList { get; set; }
         IList Departments { get; set; }
         IStockOutLogic StockOutLogic { get; set; }
-			#endregion
+        ICategoryLogic CategoryLogic { get; set; }
+        IDepartmentLogic DepartmentLogic { get; set; }
+        Category SelectedCategory { get; set; }
+
+        #endregion
 		
 		#region Methods
 		        

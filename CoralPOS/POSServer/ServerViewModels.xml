@@ -85,7 +85,9 @@
   </object>
   <object id="IStockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
-    <property name="StockOutLogic" ref="IStockOutLogic" />    
+    <property name="StockOutLogic" ref="IStockOutLogic" />
+    <property name="CategoryLogic" ref="ICategoryLogic" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
   <object id="IStockOutDetailViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />

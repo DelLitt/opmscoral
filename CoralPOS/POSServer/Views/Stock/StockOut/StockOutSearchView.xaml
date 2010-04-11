@@ -26,19 +26,20 @@
                 </my:DataGrid.Columns>
             </my:DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
-            <my:DatePicker HorizontalAlignment="Left" Margin="128.75,94.435,0,71.104" Name="FromDate" Width="203" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-            <my:DatePicker Margin="404.5,94.435,229.5,72.215" Name="ToDate" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,0,0,71.104" Name="label2" VerticalAlignment="Bottom" Width="31.25">TỪ</Label>
+            <my:DatePicker HorizontalAlignment="Left" Margin="128.75,0,0,24.442" Name="FromDate" Width="203" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="38.885" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />
+            <my:DatePicker Margin="405.515,0,227.755,24.442" Name="ToDate" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="37.774" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />
+            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,0,0,24.442" Name="label2" VerticalAlignment="Bottom" Width="31.25">TỪ</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,16.583,0,0" Name="label3" VerticalAlignment="Top" Width="105">MÃ HÀNG</Label>
-            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,72.215" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">ĐẾN</Label>
-            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="31,60.419,0,0" Name="label4" VerticalAlignment="Top" Width="80">CỬA HÀNG</Label>
+            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,24.442" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61.522">ĐẾN</Label>
+            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="31.1,0,0,68.882" Name="label4" VerticalAlignment="Bottom" Width="80">CỬA HÀNG</Label>
             <TextBox FontSize="14" Height="38.583" Margin="128.75,6,229.5,0" Name="ProductMasterNames" VerticalAlignment="Top" />
-            <CheckBox Margin="625.465,0,108.535,71.104" Name="DatePick" Height="25.75" VerticalAlignment="Bottom" FontSize="14" HorizontalContentAlignment="Right">THEO NGÀY</CheckBox>
-            <ComboBox Height="38.996" HorizontalAlignment="Left" Margin="128.75,0,0,25.553" Name="CategoryList" VerticalAlignment="Bottom" Width="203" />
-            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,0,0,25.553" Name="label5" VerticalAlignment="Bottom" Width="105.1">PHÂN LOẠI</Label>
-            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,25.553" Name="label6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">LOẠI</Label>
-            <TextBox FontSize="14" Height="38.424" Margin="405.515,0,229.5,27.775" Name="ProductTypes" VerticalAlignment="Bottom" />
-            <ComboBox Height="39" Margin="129,50,0,0" Name="Departments" VerticalAlignment="Top" HorizontalAlignment="Left" Width="403" />
+            <CheckBox Margin="0,0,108.535,26.692" Name="DatePick" Height="25.75" VerticalAlignment="Bottom" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="103">THEO NGÀY</CheckBox>
+            <ComboBox HorizontalAlignment="Left" Margin="128.75,51.106,0,0" Name="CategoryList" Width="203" Height="38.885" VerticalAlignment="Top" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="CategoryName"/>
+            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,61.105,0,0" Name="label5" VerticalAlignment="Top" Width="105.1">PHÂN LOẠI</Label>
+            <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="338.855,61.105,0,0" Name="label6" VerticalAlignment="Top" HorizontalAlignment="Left" Width="61">LOẠI</Label>
+            <TextBox FontSize="14" Margin="405.515,48.884,229.5,0" Name="ProductTypes" Height="38.885" VerticalAlignment="Top" />
+            <ComboBox Margin="128.75,96.657,364.534,68.882" Name="Departments" SelectedItem="{Binding SelectedDepartment}" DisplayMemberPath="DepartmentName" IsEnabled="{Binding DepartmentPick}"/>
+            <CheckBox FontSize="14" Height="25.75" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Margin="0,0,208.868,68.882" Name="DepartmentPick" VerticalAlignment="Bottom" Width="148.874">THEO CỬA HÀNG</CheckBox>
         </Grid>
     </Grid>
 </UserControl>

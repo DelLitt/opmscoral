@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
@@ -37,6 +38,10 @@ namespace POSServer.ViewModels.Stock.StockOut
         private DateTime _toDate;
 
         private IList _categoryList;
+
+        private bool _departmentPick;
+
+        private bool _datePick;
 
         public StockOutSearchViewModel(IShellViewModel startViewModel)
         {
@@ -71,6 +76,18 @@ namespace POSServer.ViewModels.Stock.StockOut
                 _productTypes = value;
                 NotifyOfPropertyChange(() => ProductTypes);
             }
+        }
+
+        public bool DepartmentPick
+        {
+            get { return _departmentPick; }
+            set { _departmentPick = value; NotifyOfPropertyChange(()=>DepartmentPick); }
+        }
+
+        public bool DatePick
+        {
+            get { return _datePick; }
+            set { _datePick = value; NotifyOfPropertyChange(()=>DatePick); }
         }
 
         public Department SelectedDepartment
@@ -112,27 +129,30 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => SelectedStockOut);
             }
         }
-
+        
         public IStockOutLogic StockOutLogic
         {
             get; set;
         }
 
+        public ICategoryLogic CategoryLogic { get; set; }
+        public IDepartmentLogic DepartmentLogic { get; set; }
+
         #endregion
 		
 		#region List use to fetch object for view
-		        
-        private IList _category;
-        public IList Category
+
+        private Category _selectedCategory;
+        public Category SelectedCategory
         {
             get
             {
-                return _category;
+                return _selectedCategory;
             }
             set
             {
-                _category = value;
-                NotifyOfPropertyChange(() => Category);
+                _selectedCategory = value;
+                NotifyOfPropertyChange(() => SelectedCategory);
             }
         }
 		        
@@ -194,14 +214,29 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Search()
         {
-            Execute.OnBackgroundThread(() => FindStockOuts(null), CompletedLoadStockOuts);
+            StockOutCriteria criteria = new StockOutCriteria();
+            if(SelectedCategory!=null) criteria.CategoryName = SelectedCategory.CategoryName;
+            if (SelectedDepartment != null) criteria.DepartmentName = SelectedDepartment.DepartmentName;
+            if(!string.IsNullOrEmpty(ProductMasterNames))
+            {
+                criteria.ProductMasterNames = ProductMasterNames.Split(',').ToList();
+            }
+            if(!string.IsNullOrEmpty(ProductTypes))
+            {
+                criteria.TypeNames = ProductTypes.Split(',').ToList();
+            }
+            criteria.DatePick = DatePick;
+            criteria.DepartmentPick = DepartmentPick;
+            criteria.FromDate = FromDate;
+            criteria.ToDate = ToDate;
+            Execute.OnBackgroundThread(() => FindStockOuts(criteria), CompletedLoadStockOuts);
         }
 
-        private void FindStockOuts(object criteria)
+        private void FindStockOuts(StockOutCriteria criteria)
         {
             
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
-            IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByMultiCriteria(null);
+            IList<CoralPOS.Models.StockOut> stockOuts = StockOutLogic.FindByMultiCriteria(criteria);
             StockOutList = ObjectConverter.ConvertFrom(stockOuts);
         }
         void CompletedLoadStockOuts(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
@@ -211,6 +246,10 @@ namespace POSServer.ViewModels.Stock.StockOut
 
         public override void Initialize()
         {
+            FromDate = DateTime.Now;
+            ToDate = DateTime.Now;
+            CategoryList = CategoryLogic.FindAll(new ObjectCriteria<Category>()) as IList;
+            Departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>()) as IList;
             IList searchedStockOut = Flow.Session.Get(FlowConstants.STOCK_OUT_SEARCH_RESULT) as IList;
             CoralPOS.Models.StockOut selectedStockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
             if (searchedStockOut == null)
