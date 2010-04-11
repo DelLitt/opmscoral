@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
@@ -26,9 +27,10 @@ namespace POSServer.ViewModels.Stock.StockIn
     {
 
         private IShellViewModel _startViewModel;
-        public StockInConfirmViewModel(IShellViewModel startViewModel)
+        public StockInConfirmViewModel(IShellViewModel startViewModel,bool _isViewOnly)
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = startViewModel;
+            IsViewOnly = _isViewOnly;
         }
 		
 		#region Fields
@@ -60,7 +62,13 @@ namespace POSServer.ViewModels.Stock.StockIn
                 NotifyOfPropertyChange(() => Description);
             }
         }
-				#endregion
+
+        public bool IsViewOnly
+        {
+            get; set;
+        }
+
+        #endregion
 		
 		#region List use to fetch object for view
 				#endregion
@@ -93,7 +101,16 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             Flow.Back();
         }
-		        
+
+        public bool CanSaveConfirm
+        {
+            get
+            {
+                return !IsViewOnly;
+            }
+        }
+
+        [Preview("CanSaveConfirm")]
         public void SaveConfirm()
         {
             GoToNextNode();

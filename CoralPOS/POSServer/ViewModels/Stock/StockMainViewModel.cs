@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.Common;
 using POSServer.ViewModels.Menu;
 
 
@@ -43,12 +44,12 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockIn()
         {
-            _startViewModel.EnterFlow("StockInCreateFlow"); 
+            _startViewModel.EnterFlow(FlowDefinition.StockInCreateFlow); 
         }
 		        
         public void StockInList()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockInSearchFlow); 
         }
 		        
         public void StockInBackList()
@@ -63,7 +64,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockOutToDepartment()
         {
-            _startViewModel.EnterFlow("StockOutCreateFlow"); 
+            _startViewModel.EnterFlow(FlowDefinition.StockOutCreateFlow); 
         }
 		        
         public void StockOutToOther()
@@ -73,7 +74,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockOutList()
         {
-            _startViewModel.EnterFlow("StockOutSearchFlow");  
+            _startViewModel.EnterFlow(FlowDefinition.StockOutSearchFlow);  
         }
 		        
         public void StockOutByExcel()

@@ -9,6 +9,8 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
@@ -33,6 +35,17 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+
+        string ProductMasterNames { get; set; }
+        string ProductTypes { get; set; }
+        bool DatePick { get; set; }
+        IList CategoryList { get; set; }
+        Category SelectedCategory { get; set; }
+        DateTime FromDate { get; set; }
+        DateTime ToDate { get; set; }
+        CoralPOS.Models.StockIn SelectedStockIn { get; set; }
+        ICategoryLogic CategoryLogic { get; set; }
+        IStockInLogic StockInLogic { get; set; }
 			#endregion
 		
 		#region Methods

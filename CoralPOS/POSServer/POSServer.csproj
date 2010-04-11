@@ -333,6 +333,7 @@
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\FlowDefinition.cs" />
     <Compile Include="Presenters\Security\LoginPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.Common;
 using POSServer.ViewModels.Menu;
 
 
@@ -43,7 +44,7 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void CreateProductMaster()
         {
-            _startViewModel.EnterFlow("ProductMasterCreateFlow");
+            _startViewModel.EnterFlow(FlowDefinition.ProductMasterCreateFlow);
         }
 		        
         public void CreateProductMasterByTemplate()

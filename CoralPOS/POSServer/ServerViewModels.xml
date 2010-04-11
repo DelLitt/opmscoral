@@ -55,7 +55,7 @@
 
   <object id="IStockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
-
+    <constructor-arg value="false" />
   </object>
 
   <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
@@ -93,4 +93,15 @@
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="true" />
   </object>
+
+  <object id="IStockInSearchViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="StockInLogic" ref="IStockInLogic" />
+    <property name="CategoryLogic" ref="ICategoryLogic" />    
+  </object>
+  <object id="IStockInDetailViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <constructor-arg value="true" />
+  </object>
+  
 </objects>

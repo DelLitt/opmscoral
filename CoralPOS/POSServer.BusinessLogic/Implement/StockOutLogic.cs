@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AppFrame.Utility;
 using AppFrame.Utils;
 using NHibernate.Linq;
 using NHibernate.SqlCommand;
@@ -206,8 +207,9 @@ namespace POSServer.BusinessLogic.Implement
                 if(criteria.DatePick)
                 {
                     
-                    critMaster.Add(SqlExpression.Between<StockOut>(so => so.StockOutDate, criteria.FromDate,
-                                                                   criteria.ToDate));
+                    critMaster.Add(SqlExpression.Between<StockOut>(so => so.StockOutDate, 
+                                                                   DateUtility.ZeroTime(criteria.FromDate),
+                                                                   DateUtility.MaxTime(criteria.ToDate)));
                 }
             }
 

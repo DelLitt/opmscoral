@@ -93,6 +93,7 @@ namespace POSServer.DataLayer.Implement
         object Execute(IHibernateCallback callback,bool exposeSession);
         object Execute(HibernateDelegate delegated);
         object ExecuteExposedSession(HibernateDelegate delegated);
+        StockIn Fetch(StockIn stockIn);
     }
 }
 

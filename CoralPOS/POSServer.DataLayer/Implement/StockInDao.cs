@@ -337,6 +337,19 @@ namespace POSServer.DataLayer.Implement
         {
             return HibernateTemplate.Execute(delegated,true);
         }
+
+        public StockIn Fetch(StockIn stockIn)
+        {
+            return (StockIn)HibernateTemplate
+                .Execute(delegate(ISession session)
+                {
+                    //session.Lock(stockOut, LockMode.None);
+                    stockIn = LazyInitializer.InitializeEntity(stockIn, 0, "CoralPOS.Models", session);
+                    return stockIn;
+                    //return res;
+                }
+                  );
+        }
     }
 }
 

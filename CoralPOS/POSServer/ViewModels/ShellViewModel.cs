@@ -41,7 +41,7 @@ namespace POSServer.ViewModels
             }
             else
             {
-                EnterFlow("LoginFlow");    
+                EnterFlow(FlowDefinition.LoginFlow);    
             }
         }
         

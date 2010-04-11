@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AppFrame.Utility;
 using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
@@ -206,5 +207,82 @@ namespace POSServer.BusinessLogic.Implement
                                    }
                                    );
         }
+
+        public IList<StockIn> FindByMultiCriteria(StockInCriteria criteria)
+        {
+            bool hasDetailQuery = false;
+            StockInDetail detail = null;
+            DetachedCriteria critMaster = DetachedCriteria.For<StockIn>();
+            DetachedCriteria critDetail = DetachedCriteria.For<StockInDetail>();
+
+            if (criteria != null)
+            {
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
+                {
+                    hasDetailQuery = true;
+                    foreach (string masterName in criteria.ProductMasterNames)
+                    {
+                        critDetail.Add(SqlExpression.Like<StockInDetail>(sod => sod.ProductMaster.ProductName, masterName));
+                    }
+                }
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.CategoryName))
+                {
+                    hasDetailQuery = true;
+                    critDetail.Add<StockInDetail>(
+                        sod => sod.ProductMaster.Category.CategoryName == criteria.CategoryName);
+                }
+
+                if (!ObjectUtility.IsNullOrEmpty(criteria.TypeNames))
+                {
+                    hasDetailQuery = true;
+                    foreach (string typeName in criteria.TypeNames)
+                    {
+                        critDetail.Add(SqlExpression.Like<StockInDetail>(sod => sod.ProductMaster.ProductType.TypeName, typeName));
+                    }
+                }
+                if (criteria.DatePick)
+                {
+
+                    critMaster.Add(SqlExpression.Between<StockIn>(so => so.StockInDate,
+                                                                   DateUtility.ZeroTime(criteria.FromDate),
+                                                                   DateUtility.MaxTime(criteria.ToDate)));
+                }
+            }
+
+            return (IList<StockIn>)StockInDao.Execute(delegate(ISession session)
+            {
+                ICriteria executeCrit = critMaster.GetExecutableCriteria(session);
+                if (hasDetailQuery)
+                {
+                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockInId")));
+                    executeCrit.Add(LambdaSubquery.Property<StockIn>(p => p.StockInId).In(critDetail));
+                }
+
+                executeCrit.SetMaxResults(20);
+                //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
+                return executeCrit.List<StockOut>();
+            }
+                                 );
+        }
+
+        public StockIn Fetch(StockIn stockIn)
+        {
+            return StockInDao.Fetch(stockIn);
+        }
+    }
+
+
+    public class StockInCriteria
+    {
+        public bool DatePick { get; set; }
+        public DateTime ToDate { get; set; }
+        public DateTime FromDate { get; set; }
+        public string Description { get; set; }
+        public IList<string> ProductMasterNames { get; set; }
+        public string CategoryName { get; set; }
+        public IList<string> TypeNames { get; set; }
+
     }
 }

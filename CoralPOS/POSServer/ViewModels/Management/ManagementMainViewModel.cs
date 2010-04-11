@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.Common;
 using POSServer.ViewModels.Menu;
 
 
@@ -43,7 +44,7 @@ namespace POSServer.ViewModels.Management
 		        
         public void CreateDepartment()
         {
-            _startViewModel.EnterFlow("DepartmentsViewFlow");
+            _startViewModel.EnterFlow(FlowDefinition.DepartmentsViewFlow);
         }
 		        
         public void DepartmentList()

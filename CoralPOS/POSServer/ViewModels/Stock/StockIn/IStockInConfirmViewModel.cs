@@ -27,6 +27,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+        bool IsViewOnly { get; set; }
 
         IList StockInDetailList { get; set; }
 			#endregion
