@@ -44,7 +44,6 @@ namespace POSServer.Utils
                                                  ProductId = productId,
                                                  Barcode = productId,
                                                  ProductMaster = productMaster,
-                                                 ProductMasterId = productMaster.ProductMasterId,
                                                  CreateDate = DateTime.Now,
                                                  UpdateDate = DateTime.Now,
                                                  CreateId = "admin",

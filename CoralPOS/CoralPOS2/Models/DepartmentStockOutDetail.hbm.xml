@@ -20,7 +20,7 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="GoodQuantity" column="GOOD_QUANTITY" />
     <property name="LostQuantity" column="LOST_QUANTITY" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
     <property name="Quantity" column="QUANTITY" />
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
@@ -31,6 +31,9 @@
     </many-to-one>
     <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
+    </many-to-one>
+    <many-to-one class="ProductMaster" name="ProductMaster">
+      <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
   </class>
 </hibernate-mapping>

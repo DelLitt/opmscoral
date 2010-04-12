@@ -168,7 +168,6 @@ namespace POSServer.BusinessLogic.Implement
                                                      ProductId = productId,
                                                      Barcode = productId,
                                                      ProductMaster = master,
-                                                     ProductMasterId = productMasterId,
                                                      CreateDate = DateTime.Now,
                                                      UpdateDate = DateTime.Now,
                                                      CreateId = "admin",

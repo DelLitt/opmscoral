@@ -17,7 +17,7 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="OnStorePrice" column="ON_STORE_PRICE" />
     <property name="Price" column="PRICE" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
     <property name="Quantity" column="QUANTITY" />
     <property name="Sold" column="SOLD" />
     <property name="UpdateDate" column="UPDATE_DATE" />
@@ -28,6 +28,9 @@
     </many-to-one>
     <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
+    </many-to-one>
+    <many-to-one class="ProductMaster" name="ProductMaster">
+      <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
   </class>
 </hibernate-mapping>

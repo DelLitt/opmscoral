@@ -1,3 +1,5 @@
+using Caliburn.PresentationFramework.Behaviors; 
+using System.Runtime.Serialization; 
 using System; 
 using System.Collections.Generic; 
 using System.Text; 
@@ -7,21 +9,26 @@ namespace CoralPOS.Models {
     
     
     [Serializable()]
+    [Validate()]
+    [DataContract()]
     public class UserRole {
         
         public UserRole() {
         }
         
+        [DataMember(Name="3", Order=3)]
         public virtual UserRolePK UserRolePK {
             get;
             set;
         }
         
+        [DataMember(Name="4", Order=4)]
         public virtual Role Role {
             get;
             set;
         }
         
+        [DataMember(Name="5", Order=5)]
         public virtual UserInfo UserInfo {
             get;
             set;
