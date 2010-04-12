@@ -485,13 +485,21 @@ namespace ImportPOSData
             id = dal.GetSingleValue("Select product_master_id from department_price where product_master_id = '" + obj.ProductMasterId + "'");
             if (id == null || id.ToString() == string.Empty)
             {
-                dal.ExecuteQuery("insert into department_price(department_id, product_master_id, price) values ("
-                    + "0, '" + obj.ProductMasterId + "', " + obj.Price + ")" );
+                dal.ExecuteQuery("insert into department_price(department_id, product_master_id, price,whole_sale_price) values ("
+                    + "0, '" + obj.ProductMasterId + "', " + obj.Price + ", " + obj.MassPrice + ")");
             }
             else
             {
-                dal.ExecuteQuery("update department_price set price = " + obj.Price
-                    + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                if (obj.Price > 0)
+                {
+                    dal.ExecuteQuery("update department_price set price = " + obj.Price
+                                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                }
+                if (obj.MassPrice > 0)
+                {
+                    dal.ExecuteQuery("update department_price set whole_sale_price = " + obj.MassPrice
+                                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                }
             }
 
             // stock_in_detail

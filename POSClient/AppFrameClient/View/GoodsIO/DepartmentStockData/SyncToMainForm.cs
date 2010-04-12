@@ -107,15 +107,15 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             catch (Exception exps)
             {
-                if(exps is BusinessException)
-                {
-                    MessageBox.Show(exps.Message);
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra");    
-                }
-                //throw;
+                //if(exps is BusinessException)
+                //{
+                //    MessageBox.Show(exps.Message);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Có lỗi xảy ra");    
+                //}
+                throw;
             }
 //            }
         }

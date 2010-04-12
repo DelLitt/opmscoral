@@ -166,8 +166,17 @@ namespace AppFrameClient.Utility
             }
             foreach (string sqlFile in sqlFiles)
             {
-                File.Delete(sqlFile);
+                try
+                {
+                    File.Delete(sqlFile);    
+                }
+                finally 
+                {
+                    
+                }
+                
             }
+
         }
 
         private static string GetTableNameFromFileName(string sqlFile)
@@ -342,14 +351,14 @@ namespace AppFrameClient.Utility
                 // department_stock_out
                 string deleteDetail = "\" delete from department_stock_out_detail where stock_out_id in ( select stock_out_id from department_stock_out where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now
-                                     //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                     .Subtract(new TimeSpan(1, 0, 0, 0))
                                      ).ToString(
                                          "yyyy-MM-dd") + "'); \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 string deleteHeader = "\" delete from department_stock_out where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now
-                                  //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                  .Subtract(new TimeSpan(1, 0, 0, 0))
                                   ).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);
@@ -372,7 +381,7 @@ namespace AppFrameClient.Utility
                 // stock_out
                 deleteDetail = "\" delete from stock_out_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now
-                                     //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                     .Subtract(new TimeSpan(1, 0, 0, 0))
                                      )
                                      .ToString(
                                          "yyyy-MM-dd") + "'; \"";
@@ -380,7 +389,7 @@ namespace AppFrameClient.Utility
 
                 deleteHeader = "\" delete from stock_out where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now
-                                  //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                  .Subtract(new TimeSpan(1, 0, 0, 0))
                                   )
                                   .ToString(
                                       "yyyy-MM-dd") + "';\"";
@@ -389,14 +398,14 @@ namespace AppFrameClient.Utility
                 // stock_in
                 deleteDetail = "\" delete from stock_in_detail where create_date < '" +
                                      DateUtility.DateOnly(DateTime.Now
-                                     //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                     .Subtract(new TimeSpan(1, 0, 0, 0))
                                      ).ToString(
                                          "yyyy-MM-dd") + "'; \"";
                 ExecuteMySqlCmdLine(deleteDetail, db, user, pass);
 
                 deleteHeader = "\" delete from stock_in where create_date < '" +
                                   DateUtility.DateOnly(DateTime.Now
-                                  //.Subtract(new TimeSpan(1, 0, 0, 0))
+                                  .Subtract(new TimeSpan(1, 0, 0, 0))
                                   ).ToString(
                                       "yyyy-MM-dd") + "';\"";
                 ExecuteMySqlCmdLine(deleteHeader, db, user, pass);

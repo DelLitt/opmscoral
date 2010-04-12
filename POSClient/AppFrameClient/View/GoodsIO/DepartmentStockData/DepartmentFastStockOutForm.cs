@@ -1707,6 +1707,147 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             //call the base object's OnRowPostPaint method
             //dgvBill.OnRowPostPaint(e);
         }
+
+        private ErrorForm _errorForm = null;
+        private void ImportByFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.CheckFileExists = true;
+            fileDialog.CheckPathExists = true;
+            fileDialog.Filter = "Text Files|*.txt";
+            DialogResult result = fileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                Dictionary<string, int> list = new Dictionary<string, int>();
+
+                string path = fileDialog.FileName;
+                StreamReader fileReader = new StreamReader(File.OpenRead(path));
+
+                while (!fileReader.EndOfStream)
+                {
+                    string line = fileReader.ReadLine();
+                    string[] parseLines = line.Split(',');
+
+                    try
+                    {
+                        if (parseLines.Length == 2)
+                        {
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += Int32.Parse(parseLines[1].Trim());
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                            }
+
+                        }
+                        else
+                        {
+                            if (list.ContainsKey(parseLines[0].Trim()))
+                            {
+                                list[parseLines[0].Trim()] += 1;
+                            }
+                            else
+                            {
+                                list.Add(parseLines[0].Trim(), 1);
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        if (_errorForm == null)
+                        {
+                            _errorForm = new ErrorForm();
+                            _errorForm.Caption = "Lỗi";
+                            _errorForm.ErrorString = "Các mã vạch bị lỗi khi nhập mã vạch từ file text";
+                        }
+                        _errorForm.ErrorDetails.Add(line);
+                        continue;
+                    }
+                }
+                foreach (KeyValuePair<string, int> barCodeLine in list)
+                {
+                    if (!string.IsNullOrEmpty(barCodeLine.Key) && barCodeLine.Key.Length == 12)
+                    {
+                        var eventArgs = new DepartmentStockOutEventArgs();
+                        eventArgs.ProductId = barCodeLine.Key;
+                        EventUtility.fireEvent(FindBarcodeEvent, this, eventArgs);
+                        if (eventArgs.EventResult == null)
+                        {
+                            if (_errorForm == null)
+                            {
+                                _errorForm = new ErrorForm();
+                                //_errorForm.Caption = "Lỗi";
+                                _errorForm.ErrorString = "Các mã vạch bị lỗi khi nhập mã vạch từ file text";
+                            }
+                            _errorForm.ErrorDetails.Add(barCodeLine.Key + "," + barCodeLine.Value);
+                            continue;
+                        }
+                        bool found = false;
+                        DepartmentStockOutDetail foundStockOutDetail = null;
+                        foreach (DepartmentStockOutDetail detail in deptSODetailList)
+                        {
+                            if (eventArgs.SelectedDepartmentStockOutDetail.Product.ProductId.Equals(detail.Product.ProductId))
+                            {
+                                found = true;
+                                foundStockOutDetail = detail;
+                                break;
+                            }
+                        }
+
+                        if (found)
+                        {
+                            foundStockOutDetail.GoodQuantity += barCodeLine.Value;
+                            bdsStockIn.ResetBindings(false);
+                            dgvDeptStockIn.Refresh();
+                            dgvDeptStockIn.Invalidate();
+                            CalculateTotalStorePrice();
+                        }
+                        else
+                        {
+                            // reset quantity to 1
+                            eventArgs.SelectedDepartmentStockOutDetail.GoodQuantity = barCodeLine.Value;
+                            deptSODetailList.Add(eventArgs.SelectedDepartmentStockOutDetail);
+                            bdsStockIn.ResetBindings(false);
+                            dgvDeptStockIn.Refresh();
+                            dgvDeptStockIn.Invalidate();
+                            cbbStockOutType.Enabled = false;
+                            LockField(deptSODetailList.Count - 1, eventArgs.SelectedDepartmentStockOutDetail);
+                            CalculateTotalStorePrice();
+                        }
+
+                        // process department stock
+                        if (eventArgs.DepartmentStock != null)
+                        {
+                            found = false;
+                            foreach (DepartmentStock detail in departmentStockList)
+                            {
+                                if (eventArgs.DepartmentStock.DepartmentStockPK.ProductId.Equals(detail.Product.ProductId))
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found)
+                            {
+                                departmentStockList.Add(eventArgs.DepartmentStock);
+                            }
+                        }
+                    }
+
+                }
+                CalculateTotalStorePrice();
+                if (_errorForm != null)
+                {
+                    _errorForm.ShowDialog();
+                    _errorForm = null;
+                }
+            }
+        }
     }
     
 }

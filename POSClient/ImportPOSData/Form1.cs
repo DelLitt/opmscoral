@@ -403,7 +403,7 @@ namespace ImportPOSData
 
             if (name.Length > 500)
             {
-                errorMsg.Append("Màu sắc tối đa 500 kí tự!!");
+                errorMsg.Append("Vị trí tối đa 500 kí tự!!");
             }
             else
             {
@@ -599,8 +599,22 @@ namespace ImportPOSData
             }
             else
             {
-                dal.ExecuteQuery("update department_price set price = " + obj.Price + ", whole_sale_price = " + + obj.MassPrice
-                    + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                //if (obj.Price > 0 && obj.MassPrice > 0)
+                //{
+                //    dal.ExecuteQuery("update department_price set price = " + obj.Price + ", whole_sale_price = " +
+                //                     +obj.MassPrice
+                //                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                //}
+                if (obj.Price > 0)
+                {
+                    dal.ExecuteQuery("update department_price set price = " + obj.Price
+                                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                }
+                if (obj.MassPrice > 0)
+                {
+                    dal.ExecuteQuery("update department_price set whole_sale_price = " + obj.MassPrice
+                                     + " where  product_master_id = '" + obj.ProductMasterId + "'");
+                }
             }
 
             // stock_in_detail

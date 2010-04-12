@@ -88,6 +88,7 @@
             this.systemHotkey1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemHotkey2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportByFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
@@ -117,7 +118,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(82, 75);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBarcode.Size = new System.Drawing.Size(204, 22);
+            this.txtBarcode.Size = new System.Drawing.Size(204, 23);
             this.txtBarcode.TabIndex = 1;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             this.txtBarcode.Enter += new System.EventHandler(this.txtBarcode_Enter);
@@ -128,7 +129,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 14);
+            this.label3.Size = new System.Drawing.Size(55, 16);
             this.label3.TabIndex = 94;
             this.label3.Text = "Mã vạch";
             // 
@@ -137,7 +138,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(8, 559);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 14);
+            this.lblStatus.Size = new System.Drawing.Size(0, 16);
             this.lblStatus.TabIndex = 90;
             // 
             // label7
@@ -146,7 +147,7 @@
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(424, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(324, 19);
+            this.label7.Size = new System.Drawing.Size(341, 21);
             this.label7.TabIndex = 85;
             this.label7.Text = "NHẬP NHANH HÀNG HOÁ TRONG KHO ";
             // 
@@ -156,7 +157,7 @@
             this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(474, 35);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 14);
+            this.label8.Size = new System.Drawing.Size(73, 16);
             this.label8.TabIndex = 87;
             this.label8.Text = "Ngày nhập:";
             // 
@@ -176,7 +177,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(504, 423);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 14);
+            this.label6.Size = new System.Drawing.Size(74, 16);
             this.label6.TabIndex = 83;
             this.label6.Text = "Tổng giá trị";
             this.label6.Visible = false;
@@ -188,7 +189,7 @@
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumValue.Size = new System.Drawing.Size(158, 22);
+            this.txtSumValue.Size = new System.Drawing.Size(158, 23);
             this.txtSumValue.TabIndex = 82;
             this.txtSumValue.Visible = false;
             // 
@@ -415,7 +416,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 14);
+            this.label1.Size = new System.Drawing.Size(61, 16);
             this.label1.TabIndex = 99;
             this.label1.Text = "Mặt hàng";
             // 
@@ -433,7 +434,7 @@
             this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(285, 423);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 14);
+            this.label13.Size = new System.Drawing.Size(97, 16);
             this.label13.TabIndex = 112;
             this.label13.Text = "Tổng sản phẩm";
             // 
@@ -444,7 +445,7 @@
             this.txtSumProduct.Name = "txtSumProduct";
             this.txtSumProduct.ReadOnly = true;
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(118, 22);
+            this.txtSumProduct.Size = new System.Drawing.Size(118, 23);
             this.txtSumProduct.TabIndex = 111;
             // 
             // groupBox1
@@ -463,7 +464,7 @@
             this.rdoStockIn.AutoSize = true;
             this.rdoStockIn.Location = new System.Drawing.Point(107, 21);
             this.rdoStockIn.Name = "rdoStockIn";
-            this.rdoStockIn.Size = new System.Drawing.Size(94, 18);
+            this.rdoStockIn.Size = new System.Drawing.Size(95, 20);
             this.rdoStockIn.TabIndex = 119;
             this.rdoStockIn.TabStop = true;
             this.rdoStockIn.Text = "Nhập từ chợ";
@@ -475,7 +476,7 @@
             this.rdoFastStockIn.AutoSize = true;
             this.rdoFastStockIn.Location = new System.Drawing.Point(6, 21);
             this.rdoFastStockIn.Name = "rdoFastStockIn";
-            this.rdoFastStockIn.Size = new System.Drawing.Size(95, 18);
+            this.rdoFastStockIn.Size = new System.Drawing.Size(96, 20);
             this.rdoFastStockIn.TabIndex = 118;
             this.rdoFastStockIn.TabStop = true;
             this.rdoFastStockIn.Text = "Nhập từ 142";
@@ -488,7 +489,7 @@
             this.txtInputDate.Location = new System.Drawing.Point(549, 33);
             this.txtInputDate.Name = "txtInputDate";
             this.txtInputDate.ReadOnly = true;
-            this.txtInputDate.Size = new System.Drawing.Size(163, 22);
+            this.txtInputDate.Size = new System.Drawing.Size(163, 23);
             this.txtInputDate.TabIndex = 122;
             // 
             // txtGoodsDescription
@@ -498,7 +499,7 @@
             this.txtGoodsDescription.Name = "txtGoodsDescription";
             this.txtGoodsDescription.ReadOnly = true;
             this.txtGoodsDescription.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtGoodsDescription.Size = new System.Drawing.Size(714, 22);
+            this.txtGoodsDescription.Size = new System.Drawing.Size(714, 23);
             this.txtGoodsDescription.TabIndex = 123;
             // 
             // button2
@@ -517,7 +518,7 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(383, 75);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(413, 22);
+            this.cboDepartment.Size = new System.Drawing.Size(413, 24);
             this.cboDepartment.TabIndex = 125;
             // 
             // label2
@@ -526,7 +527,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(322, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 14);
+            this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 126;
             this.label2.Text = "Nơi nhập";
             // 
@@ -537,7 +538,7 @@
             this.lblMessage.ForeColor = System.Drawing.Color.Blue;
             this.lblMessage.Location = new System.Drawing.Point(138, 476);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(116, 14);
+            this.lblMessage.Size = new System.Drawing.Size(121, 16);
             this.lblMessage.TabIndex = 127;
             this.lblMessage.Text = "Đang chờ nhập ...";
             // 
@@ -552,7 +553,7 @@
             this.lblDescription.ForeColor = System.Drawing.Color.Navy;
             this.lblDescription.Location = new System.Drawing.Point(141, 531);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(188, 29);
+            this.lblDescription.Size = new System.Drawing.Size(205, 31);
             this.lblDescription.TabIndex = 128;
             this.lblDescription.Text = "Nhập hàng từ ...";
             // 
@@ -563,13 +564,13 @@
             this.systemHotkey2ToolStripMenuItem,
             this.deleteStockToolStripMenuItem});
             this.ctxShorcuts.Name = "ctxShorcuts";
-            this.ctxShorcuts.Size = new System.Drawing.Size(197, 70);
+            this.ctxShorcuts.Size = new System.Drawing.Size(223, 76);
             // 
             // systemHotkey1ToolStripMenuItem
             // 
             this.systemHotkey1ToolStripMenuItem.Name = "systemHotkey1ToolStripMenuItem";
             this.systemHotkey1ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.systemHotkey1ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.systemHotkey1ToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.systemHotkey1ToolStripMenuItem.Text = "systemHotkey1";
             this.systemHotkey1ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey1_Pressed);
             // 
@@ -577,7 +578,7 @@
             // 
             this.systemHotkey2ToolStripMenuItem.Name = "systemHotkey2ToolStripMenuItem";
             this.systemHotkey2ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.systemHotkey2ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.systemHotkey2ToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.systemHotkey2ToolStripMenuItem.Text = "systemHotkey2";
             this.systemHotkey2ToolStripMenuItem.Click += new System.EventHandler(this.systemHotkey2_Pressed);
             // 
@@ -585,14 +586,25 @@
             // 
             this.deleteStockToolStripMenuItem.Name = "deleteStockToolStripMenuItem";
             this.deleteStockToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.deleteStockToolStripMenuItem.Size = new System.Drawing.Size(222, 24);
             this.deleteStockToolStripMenuItem.Text = "deleteStock";
             this.deleteStockToolStripMenuItem.Click += new System.EventHandler(this.deleteStock_Pressed);
+            // 
+            // ImportByFile
+            // 
+            this.ImportByFile.Location = new System.Drawing.Point(290, 76);
+            this.ImportByFile.Name = "ImportByFile";
+            this.ImportByFile.Size = new System.Drawing.Size(26, 23);
+            this.ImportByFile.TabIndex = 129;
+            this.ImportByFile.Text = "...";
+            this.ImportByFile.UseVisualStyleBackColor = true;
+            this.ImportByFile.Click += new System.EventHandler(this.ImportByFile_Click);
             // 
             // DepartmentFastStockInForm
             // 
             this.ClientSize = new System.Drawing.Size(808, 616);
             this.ContextMenuStrip = this.ctxShorcuts;
+            this.Controls.Add(this.ImportByFile);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.label2);
@@ -643,6 +655,7 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.lblMessage, 0);
             this.Controls.SetChildIndex(this.lblDescription, 0);
+            this.Controls.SetChildIndex(this.ImportByFile, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bdsStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
@@ -709,5 +722,6 @@
         private System.Windows.Forms.ToolStripMenuItem systemHotkey1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem systemHotkey2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteStockToolStripMenuItem;
+        private System.Windows.Forms.Button ImportByFile;
     }
 }
