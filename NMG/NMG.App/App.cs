@@ -527,7 +527,8 @@ namespace NHibernateMappingGenerator
         private void saveSettingButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.ShowDialog();
+            DialogResult result = saveFileDialog.ShowDialog();
+            if(result == DialogResult.Cancel) return;
             //var streamWriter = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj", FileMode.Create);
             var streamWriter = File.Open(saveFileDialog.FileName, FileMode.Create);
             BinaryFormatter xmlSerializer;

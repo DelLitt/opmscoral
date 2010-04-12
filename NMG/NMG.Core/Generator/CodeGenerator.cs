@@ -51,6 +51,8 @@ namespace NMG.Core.Generator
             List<ColumnDetail> pkColumns = columnDetails.FindAll(col => col.IsPrimaryKey);
             List<ColumnDetail> normalColumns = columnDetails.FindAll(col => col.IsPrimaryKey == false);
 
+            // data contract count
+            int dataContractCount = 1;
 
             // create pk columns
             if(pkColumns.Count > 0)
@@ -126,6 +128,22 @@ namespace NMG.Core.Generator
                     }
 
                     newPKType.CustomAttributes.Add(new CodeAttributeDeclaration("Serializable"));
+                    newPKType.CustomAttributes.Add(new CodeAttributeDeclaration("Validate"));
+                    newPKType.CustomAttributes.Add(new CodeAttributeDeclaration("DataContract"));
+                    foreach (var member in newPKType.Members)
+                    {
+                        if (member is CodeMemberProperty)
+                        {
+                            CodeMemberProperty property = (CodeMemberProperty)member;
+                            CodeAttributeArgument[] arguments =
+                                new CodeAttributeArgument[]
+                         {
+                            new CodeAttributeArgument("Name",new CodePrimitiveExpression(dataContractCount.ToString())),
+                            new CodeAttributeArgument("Order",new CodePrimitiveExpression(dataContractCount++))
+                         };
+                            property.CustomAttributes.Add(new CodeAttributeDeclaration("DataMember", arguments));
+                        }
+                    }
                 }
             }
 
@@ -134,7 +152,7 @@ namespace NMG.Core.Generator
             {
                 string propertyName = columnDetail.ColumnName.GetPreferenceFormattedText(applicationPreferences);
                 Type mapFromDbType = mapper.MapFromDBType(columnDetail.DataType, columnDetail.DataLength, columnDetail.DataPrecision, columnDetail.DataScale);
-
+                if(FiendInTableReference(columnDetail)) continue;
                 switch (applicationPreferences.FieldGenerationConvention)
                 {
                     case FieldGenerationConvention.Property:
@@ -177,11 +195,40 @@ namespace NMG.Core.Generator
 
             var constructor = new CodeConstructor {Attributes = MemberAttributes.Public};
             newType.Members.Add(constructor);
-
             newType.CustomAttributes.Add(new CodeAttributeDeclaration("Serializable"));
-            //newType.TypeAttributes = TypeAttributes.Serializable;
+            newType.CustomAttributes.Add(new CodeAttributeDeclaration("Validate"));
+            newType.CustomAttributes.Add(new CodeAttributeDeclaration("DataContract"));
+            foreach (var member in newType.Members)
+            {
+                if(member is CodeMemberProperty)
+                {
+                    CodeMemberProperty property = (CodeMemberProperty) member;
+                    CodeAttributeArgument[] arguments = 
+                        new CodeAttributeArgument[]
+                         {
+                            new CodeAttributeArgument("Name",new CodePrimitiveExpression(dataContractCount.ToString())),
+                            new CodeAttributeArgument("Order",new CodePrimitiveExpression(dataContractCount++))
+                         };
+                    property.CustomAttributes.Add(new CodeAttributeDeclaration("DataMember",arguments));
+                }
+            }
+            
             pkClass = pkCompileUnit;
             return compileUnit;
+        }
+
+        private bool FiendInTableReference(ColumnDetail detail)
+        {
+            if(tableReferences == null || tableReferences.Count == 0) return false;
+            foreach (KeyValuePair<string, TableReference> pair in tableReferences)
+            {
+                Dictionary<ColumnDetail,ColumnDetail> columns = pair.Value.TableColumns;
+                foreach (KeyValuePair<ColumnDetail, ColumnDetail> dictionary in columns)
+                {
+                    if(dictionary.Key.ColumnName.Equals(detail.ColumnName)) return true;
+                }
+            }
+            return false;
         }
 
         private void WriteToFile(CodeCompileUnit compileUnit, string className)
@@ -271,6 +318,8 @@ namespace NMG.Core.Generator
             entireContent = "using System.Text; \n" + entireContent;
             entireContent = "using System.Collections.Generic; \n" + entireContent;
             entireContent = "using System; \n" + entireContent;
+            entireContent = "using System.Runtime.Serialization; \n" + entireContent;
+            entireContent = "using Caliburn.PresentationFramework.Behaviors; \n" + entireContent;
             return entireContent;
         }
 
