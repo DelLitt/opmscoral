@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
+using POSServer.DataLayer.Common;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -344,7 +345,7 @@ namespace POSServer.DataLayer.Implement
                 .Execute(delegate(ISession session)
                 {
                     //session.Lock(stockOut, LockMode.None);
-                    stockIn = LazyInitializer.InitializeEntity(stockIn, 0, "CoralPOS.Models", session);
+                    stockIn = LazyInitializer.InitializeEntity(stockIn, 0, DaoConstants.MODEL_NAMESPACE, session);
                     return stockIn;
                     //return res;
                 }

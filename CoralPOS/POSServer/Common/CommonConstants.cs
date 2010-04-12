@@ -9,6 +9,7 @@ namespace POSServer.Common
     {
         public const string IS_LOGGED ="IsLogged";
         public const string LOGGED_USER = "LoggedUser";
+        
     }
 
     public enum StockOutType

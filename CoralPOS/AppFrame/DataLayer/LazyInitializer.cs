@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using FastReflectionLib;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Collection;
@@ -194,7 +195,8 @@ namespace AppFrame.DataLayer
                         if (null != method)
                         {
                             //Console.WriteLine(entity.GetType().Name + "." + prop.Name + " is invoked.");
-                            object proxy = method.Invoke(entity, new object[0]);     
+                            //object proxy = method.Invoke(entity, new object[0]);     
+                            object proxy = prop.FastGetValue(entity);
                             
                             //if(proxy == null) continue;
                             /*if (!NHibernateUtil.IsInitialized(proxy))
