@@ -250,19 +250,19 @@ namespace POSServer.BusinessLogic.Implement
                                                                    DateUtility.MaxTime(criteria.ToDate)));
                 }
             }
-
+            
             return (IList<StockIn>)StockInDao.Execute(delegate(ISession session)
             {
                 ICriteria executeCrit = critMaster.GetExecutableCriteria(session);
                 if (hasDetailQuery)
                 {
-                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockInId")));
+                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockInDetailPK.StockInId")));
                     executeCrit.Add(LambdaSubquery.Property<StockIn>(p => p.StockInId).In(critDetail));
                 }
 
                 executeCrit.SetMaxResults(20);
                 //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
-                return executeCrit.List<StockOut>();
+                return executeCrit.List<StockIn>();
             }
                                  );
         }

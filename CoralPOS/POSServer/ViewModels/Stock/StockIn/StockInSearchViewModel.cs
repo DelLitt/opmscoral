@@ -209,7 +209,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void Search()
@@ -228,10 +228,10 @@ namespace POSServer.ViewModels.Stock.StockIn
             criteria.DatePick = DatePick;
             criteria.FromDate = FromDate;
             criteria.ToDate = ToDate;
-            Execute.OnBackgroundThread(() => FindStockOuts(criteria), CompletedLoadStockIns);
+            Execute.OnBackgroundThread(() => FindStockIns(criteria), CompletedLoadStockIns);
         }
 
-        private void FindStockOuts(StockInCriteria criteria)
+        private void FindStockIns(StockInCriteria criteria)
         {
 
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
