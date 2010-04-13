@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"
     xmlns:WPF="clr-namespace:AppFrame.WPF;assembly=AppFrame"
-    Width="837" Height="748">
+    Width="837" Height="700">
     <WPF:PosDataErrorProvider Name="PosDataErrorProvider" >
         <Grid>
             <Grid Height="150" VerticalAlignment="Bottom">

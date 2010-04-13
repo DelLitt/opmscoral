@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="POSServer.Views.ProductMaster.TemplatePOSView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Width="1024" Height="748">
+    Width="1024" Height="700">
     <Grid>
         <GroupBox Header="" Name="GrpContent" HorizontalAlignment="Right" Width="848.826"></GroupBox>
     </Grid>

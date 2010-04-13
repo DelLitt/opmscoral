@@ -1,15 +1,15 @@
 ﻿<UserControl x:Class="POSServer.Views.Menu.Stock.ConfirmMenuView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="740" Width="174">
+    Height="700" Width="174">
     <Grid>
-        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="43.342,12,41.675,0" Name="StockInConfirm" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="50,12,45,0" Name="StockInConfirm" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN NHẬP KHO</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="47.833,112,46.167,0" Name="StockOutConfirm" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="50,112,44,0" Name="StockOutConfirm" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN XUẤT KHO</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47.834,212,46.166,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">X.NHẬN XUẤT KHO TỪ CỬA HÀNG</TextBlock>
         </Button>
     </Grid>

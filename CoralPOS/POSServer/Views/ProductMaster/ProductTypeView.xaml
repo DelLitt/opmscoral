@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="POSServer.Views.ProductMaster.ProductTypeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="748" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+    Height="700" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
         <my:DataGrid AutoGenerateColumns="False" Margin="6,56,18,29" Name="ProductTypeList" FontSize="14" SelectedItem="{Binding SelectedProductType}" CanUserAddRows="False" RowHeight="38">

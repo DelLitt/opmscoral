@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:cal="http://www.caliburnproject.org" 
     xmlns:Controls="clr-namespace:AppFrameControls.Controls;assembly=AppFrameControls"                      
-    Title="Coral POS2" Height="748" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" 
-     >
+    Title="Coral POS2" Height="700" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="ThreeDBorderWindow" 
+      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
     <Grid>
     <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid.ColumnDefinitions>

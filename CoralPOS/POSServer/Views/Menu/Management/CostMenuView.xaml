@@ -1,21 +1,21 @@
 ﻿<UserControl x:Class="POSServer.Views.Menu.Management.CostMenuView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="740" Width="174">
+    Height="700" Width="174">
     <Grid>
-        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="42,12,43,0" Name="CostManagement" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="50,12,45,0" Name="CostManagement" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">QUẢN LÝ CHI PHÍ</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="46,112,48,0" Name="TimeAttendance" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="50,112,44,0" Name="TimeAttendance" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">CHẤM CÔNG</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="46,212,48,0" Name="CalendarPresentList" TabIndex="9" VerticalAlignment="Top">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="CalendarPresentList" TabIndex="9" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LỊCH TRỰC</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="46,312,48,348" Name="CalendarAbsentList" TabIndex="9">
+        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="CalendarAbsentList" TabIndex="9">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="62">DANH SÁCH NGHỈ PHÉP</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="46,0,48,248" Name="CreateCalendarPresent" TabIndex="9" VerticalAlignment="Bottom">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,44,208" Name="CreateCalendarPresent" TabIndex="9" VerticalAlignment="Bottom">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">LÊN LỊCH TRỰC</TextBlock>
         </Button>
     </Grid>

@@ -2,21 +2,21 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lbe="clr-namespace:AppFrame.Extensions.ListBox;assembly=AppFrame"    
-    Width="837" Height="748">
+    Width="837" Height="700">
     <Grid>
-            <Grid Height="150" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="ProductRecreate" Width="88">TẠO LẠI</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="ProductSave">LƯU</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,6,34" Name="Stop" Width="88">DỪNG</Button>
+            <Grid Height="128" VerticalAlignment="Bottom">                
+                <Button FontSize="14" FontWeight="Bold" Margin="14,19,0,29" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,19,236,29" Name="ProductRecreate" Width="80">TẠO LẠI</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="380,19,377,29" Name="ProductSave">LƯU</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,19,15,29" Name="Stop" Width="80">DỪNG</Button>
             </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,6,0,128">
             <Grid.RowDefinitions>
-                <RowDefinition Height="200*"></RowDefinition>
-                <RowDefinition Height="398.969*"></RowDefinition>
+                <RowDefinition Height="202*"></RowDefinition>
+                <RowDefinition Height="364*"></RowDefinition>
             </Grid.RowDefinitions>
                 <TextBox FontSize="14" Height="38.583" Margin="142.25,53,199.872,0" Name="ProductName" VerticalAlignment="Top" />
-                <TextBox FontSize="14" HorizontalAlignment="Left" Margin="142.25,98,0,58.589" Name="ProductType" Width="202.918" Text="{Binding ProductType.TypeName}" IsReadOnly="True" />
+                <TextBox FontSize="14" HorizontalAlignment="Left" Margin="142.25,98,0,62.003" Name="ProductType" Width="202.918" Text="{Binding ProductType.TypeName}" IsReadOnly="True" />
                 <TextBox FontSize="14" Height="38" HorizontalAlignment="Left" Margin="142.583,0,0,14.29" Name="Category" VerticalAlignment="Bottom" Width="202.918" Text="{Binding Category.CategoryName}" IsReadOnly="True" />
             <Label Height="28" HorizontalAlignment="Left" Margin="6,19,0,0" Name="label1" VerticalAlignment="Top" Width="114.32" FontSize="14" HorizontalContentAlignment="Right">MÃ SẢN PHẨM</Label>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6,63,0,0" Name="label2" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">TÊN SẢN PHẨM</Label>
@@ -29,10 +29,10 @@
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="287.874,18,0,0" Name="label5" VerticalAlignment="Top" Width="114.32">HÌNH ẢNH</Label>
                 <Canvas HorizontalAlignment="Right" Margin="0,78,32.222,13" Name="ProductImage" Width="145.758" />
                 <TextBox Height="38.583" HorizontalAlignment="Left" Margin="142.25,9,0,0" Name="ProductMasterId" VerticalAlignment="Top" Width="120.036" FontSize="14" IsReadOnly="True" />
-            <Button Height="40" HorizontalAlignment="Right" Margin="0,0,199.872,58" Name="NewType" VerticalAlignment="Bottom" Width="42">**</Button>
+            <Button HorizontalAlignment="Right" Margin="0,98,199.872,64" Name="NewType" Width="42">**</Button>
             <Button Height="40" HorizontalAlignment="Right" Margin="0,0,199.872,12" Name="NewCategory" VerticalAlignment="Bottom" Width="42">**</Button>
         </Grid>
-        <GroupBox Header="CHI TIẾT" Margin="12,205,0,157.5" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
+        <GroupBox Header="CHI TIẾT" Margin="12,220,0,142" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
                 <ListBox Height="138.311" HorizontalAlignment="Left" Margin="124.25,5.111,0,0" Name="ProductColors" VerticalAlignment="Top" Width="202.918" DisplayMemberPath="ColorName" SelectionMode="Multiple" lbe:ListBoxExtension.SelectedItemsSource="{Binding RemoveProductColors}" />
                 <ListBox HorizontalAlignment="Left" Margin="124.25,164.529,0,48.177" Name="ProductSizes" Width="202.918" DisplayMemberPath="SizeName" lbe:ListBoxExtension.SelectedItemsSource="{Binding RemoveProductSizes}" SelectionMode="Multiple" />
