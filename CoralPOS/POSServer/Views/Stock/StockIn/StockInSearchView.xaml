@@ -3,18 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="837" Height="700">
     <Grid>
-            <Grid Height="150" VerticalAlignment="Bottom">                
+            <Grid Height="125" VerticalAlignment="Bottom">                
                 <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
             <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="ViewDetail">CHI TIẾT</Button>
                 <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">DỪNG</Button>
             </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
-                <RowDefinition Height="204.424*"></RowDefinition>
-                <RowDefinition Height="388.545*"></RowDefinition>
+                <RowDefinition Height="206*"></RowDefinition>
+                <RowDefinition Height="371*"></RowDefinition>
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                         SelectedItem="{Binding SelectedStockIn}">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" SelectedItem="{Binding SelectedStockIn}">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" />
                     <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockInId}" SortMemberPath="StockInId"/>

@@ -3,14 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="837" Height="700">
     <Grid>
-            <Grid Height="150" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="0,28,378,34" Name="Unconfirm" HorizontalAlignment="Right" Width="147">KHÔNG XÁC NHẬN</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">DỪNG</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="208,28,0,34" Name="Confirm" Width="88">XÁC NHẬN</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,220,34" Name="Edit" Width="88">CHỈNH SỬA</Button>
+            <Grid Height="125" VerticalAlignment="Bottom">                
+                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="0,28,378,34" Name="Unconfirm" HorizontalAlignment="Right" Width="80" Height="80">KHÔNG XÁC NHẬN</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80">DỪNG</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="208,28,0,34" Name="Confirm" Width="80" Height="80">XÁC NHẬN</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,220,34" Name="Edit" Width="80" Height="80">CHỈNH SỬA</Button>
         </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
                 <RowDefinition Height="145*"></RowDefinition>
                 <RowDefinition Height="175.999*"></RowDefinition>

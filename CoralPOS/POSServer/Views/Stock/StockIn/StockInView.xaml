@@ -6,25 +6,25 @@
     Width="837" Height="700">    
     <WPF:PosDataErrorProvider Name="PosDataErrorProvider" >
     <Grid>        
-            <Grid Height="150" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="Recreate" Width="88" TabIndex="10">TẠO LẠI</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="Save" TabIndex="9">LƯU</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88" TabIndex="11">DỪNG</Button>
+            <Grid Height="125" VerticalAlignment="Bottom">                
+                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="Recreate" Width="80" Height="80" TabIndex="10">TẠO LẠI</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="Save" TabIndex="9" Width="80" Height="80">LƯU</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80" TabIndex="11">DỪNG</Button>
             </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
-                <RowDefinition Height="204.424*"></RowDefinition>
-                <RowDefinition Height="388.545*"></RowDefinition>
+                <RowDefinition Height="204*"></RowDefinition>
+                <RowDefinition Height="373*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,54.583,214,0" Name="WholeSalePrice" VerticalAlignment="Top" Width="111.812" TabIndex="4" />
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="0,65.166,331.528,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="68">GIÁ SỈ</Label>
             <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,100,214,66" Name="Price" Width="110.383" TabIndex="5" />
-            <TextBox FontSize="14" HorizontalAlignment="Left" Margin="147.679,99,0,67" Name="InputPrice" Width="141.097" TabIndex="3" />
+            <TextBox FontSize="14" HorizontalAlignment="Left" Margin="147.679,102,0,64" Name="InputPrice" Width="141.097" TabIndex="3" />
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="0,0,331.528,64" Name="label4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="68">GIÁ LẺ</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="10.394,0,0,64" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113.926">GIÁ NHẬP</Label>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="textBox4" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="8" SelectionUnit="Cell" CanUserAddRows="False" CanUserDeleteRows="True">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" TabIndex="8" SelectionUnit="Cell" CanUserAddRows="False" CanUserDeleteRows="True">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
                     <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->

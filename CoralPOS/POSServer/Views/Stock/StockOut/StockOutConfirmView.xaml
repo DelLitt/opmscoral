@@ -3,20 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="837" Height="700">
     <Grid>
-            <Grid Height="150" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="Back" Width="88">TRỞ VỀ</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="385,28,0,34" Name="SaveConfirm" HorizontalAlignment="Left" Width="88">XÁC NHẬN</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">DỪNG</Button>
+            <Grid Height="125" VerticalAlignment="Bottom">                
+                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="Back" Width="80" Height="80">TRỞ VỀ</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="385,28,0,34" Name="SaveConfirm" HorizontalAlignment="Left" Width="80" Height="80">XÁC NHẬN</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80">DỪNG</Button>
             </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
-                <RowDefinition Height="114*"></RowDefinition>
-                <RowDefinition Height="478.969*"></RowDefinition>
+                <RowDefinition Height="116*"></RowDefinition>
+                <RowDefinition Height="461*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="CreateDate" VerticalAlignment="Top" Width="184.057" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutDetails" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                         CanUserAddRows="False" CanUserDeleteRows="False">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutDetails" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False">
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" />
                     <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" IsReadOnly="True"/>

@@ -4,7 +4,7 @@
     Width="837" Height="700">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition Height="12" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -15,16 +15,16 @@
         </Grid.ColumnDefinitions>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,0,68,0" Name="CreateProductMaster" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="TẠO SẢN PHẨM"></TextBlock></Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,107.5,68,0" Name="CreateProductMasterByTemplate" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,100,68,0" Name="CreateProductMasterByTemplate" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="TẠO SẢN PHẨM THEO TEMPLATE"></TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,216.25,68,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,200,68,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="QUẢN LÝ SẢN PHẨM"></TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="57,325,64,296.25" Name="StockInByExcel" TabIndex="9" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Margin="57,300,64,321" Name="StockInByExcel" TabIndex="9" Grid.Row="1" Width="80" Height="80">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">CẬP NHẬT GIÁ</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,0,68,186.48" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="61,0,68,207" Name="ExtendFunctions" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="QUẢN LÝ CHI TIẾT SẢN PHẨM"></TextBlock>
         </Button>
     </Grid>

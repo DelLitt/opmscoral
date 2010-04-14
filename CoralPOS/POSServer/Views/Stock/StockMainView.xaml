@@ -4,7 +4,7 @@
     Width="837" Height="748">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition Height="12" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -13,48 +13,48 @@
             <ColumnDefinition Width="167*" />
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,6,69,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,0,69,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">NHẬP HÀNG</TextBlock></Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,114,69,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,99.99,69,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,222,69,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,199.98,69,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">D.SÁCH HÀNG TRẢ KHO CHÍNH</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="60,334,69,294" Name="StockInByExcel" TabIndex="9" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Margin="60.125,299.97,69.125,356.631" Name="StockInByExcel" TabIndex="9" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5">NHẬP HÀNG BẰNG EXCEL</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="64,6,65,0" Name="StockOutToDepartment" TabIndex="9" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="64,0,65,0" Name="StockOutToDepartment" TabIndex="9" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XUẤT HÀNG ĐẾN CỬA HÀNG</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="64,114,65,0" Name="StockOutToOther" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="1">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="64,99.99,65,0" Name="StockOutToOther" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XUẤT HÀNG ĐẾN NƠI KHÁC</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="64,222,65,0" Name="StockOutList" TabIndex="9" VerticalAlignment="Top" Grid.Column="1">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="64,199.98,65,0" Name="StockOutList" TabIndex="9" VerticalAlignment="Top" Grid.Column="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ HÀNG XUẤT</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="64,334,65,294" Name="StockOutByExcel" TabIndex="9" Grid.Column="1">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="64.125,299.97,65.125,355.52" Name="StockOutByExcel" TabIndex="9" Grid.Column="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">XUẤT HÀNG BẰNG EXCEL</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="68,6,62,0" Name="InventoryCollector" TabIndex="9" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="68,0,62,0" Name="InventoryCollector" TabIndex="9" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">KIỂM KÊ</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="68,114,62,0" Name="AfterInventoryCollectorProcessing" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="2">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="68,99.99,62,0" Name="AfterInventoryCollectorProcessing" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="2">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XỬ LÝ SAU KIỂM KÊ</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="68,222,62,0" Name="StockSearch" TabIndex="9" VerticalAlignment="Top" Grid.Column="2">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="68,199.98,62,0" Name="StockSearch" TabIndex="9" VerticalAlignment="Top" Grid.Column="2">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">TÌM KIẾM KHO</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="68,334,62,294" Name="StockCategorySearch" TabIndex="9" Grid.Column="2">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="68,299.97,61.25,356.631" Name="StockCategorySearch" TabIndex="9" Grid.Column="2">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">TÌM KIẾM THEO CHỦNG LOẠI</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="69,6,60,0" Name="StockInConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1">
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="69,0,60,0" Name="StockInConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN NHẬP KHO</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="69,114,60,0" Name="StockOutConfirm" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="3">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" HorizontalContentAlignment="Stretch" Margin="69,99.99,60,0" Name="StockOutConfirm" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="3">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN XUẤT KHO</TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="69,222,60,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3">
+        <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="69,199.98,60,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">X.NHẬN XUẤT KHO TỪ CỬA HÀNG</TextBlock>
         </Button>
         <TextBlock Name="textBlock1" Text="NHẬP HÀNG" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />

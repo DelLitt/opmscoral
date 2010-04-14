@@ -3,17 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="840" Height="700" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
-            <Grid Height="150" VerticalAlignment="Bottom">
+            <Grid Height="125" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
                 <Button FontSize="14" FontWeight="Bold" Margin="418,28,334,34" Name="Save">LƯU</Button>
                 <Button FontSize="14" FontWeight="Bold" Margin="307,28,0,34" Name="Edit" HorizontalAlignment="Left" Width="91">SỬA</Button>
                 <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,6,34" Name="Stop" Width="88">DỪNG</Button>
             <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,221,34" Name="Cancel" Width="88">LƯU</Button>
         </Grid>        
-            <Grid Margin="0,0,0,155.031">
+            <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
-                <RowDefinition Height="200*"></RowDefinition>
-                <RowDefinition Height="398.969*"></RowDefinition>
+                <RowDefinition Height="204*"></RowDefinition>
+                <RowDefinition Height="373*"></RowDefinition>
             </Grid.RowDefinitions>
                 <TextBox FontSize="14" Height="38.583" Margin="142.25,53,199.872,0" Name="ProductName" VerticalAlignment="Top" />
             <Label Height="28" HorizontalAlignment="Left" Margin="6,19,0,0" Name="label1" VerticalAlignment="Top" Width="114.32" FontSize="14" HorizontalContentAlignment="Right">MÃ SẢN PHẨM</Label>
@@ -25,7 +25,7 @@
             <Button FontSize="14" FontWeight="Bold" Height="82.583" Margin="0,9,8.25,0" Name="ProductMasterSearch" VerticalAlignment="Top" HorizontalAlignment="Right" Width="172.73">NHẬP</Button>
             <TextBox Height="38.583" HorizontalAlignment="Left" Margin="142.25,9,0,0" Name="ProductMasterId" VerticalAlignment="Top" Width="120.036" FontSize="14" />
         </Grid>
-        <GroupBox Header="KẾT QUẢ TÌM KIẾM" Margin="12,205,0,157.5" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
+        <GroupBox Header="KẾT QUẢ TÌM KIẾM" Margin="12,230,0,132" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
                 <my:DataGrid AutoGenerateColumns="False" Name="ProductMasterList">
                     <my:DataGrid.Columns>
