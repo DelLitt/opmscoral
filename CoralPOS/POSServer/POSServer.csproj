@@ -447,7 +447,11 @@
     <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Synchronize\ISynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISyncToDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISyncToMainViewModel.cs" />
     <Compile Include="ViewModels\Synchronize\SynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SyncToDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SyncToMainViewModel.cs" />
     <Compile Include="ViewModels\Task\ITaskMainViewModel.cs" />
     <Compile Include="ViewModels\Task\TaskMainViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
@@ -560,6 +564,12 @@
     </Compile>
     <Compile Include="Views\Management\ManagementMainView.xaml.cs">
       <DependentUpon>ManagementMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SyncToMainView.xaml.cs">
+      <DependentUpon>SyncToMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SyncToDepartmentView.xaml.cs">
+      <DependentUpon>SyncToDepartmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Synchronize\SynchronizeMainView.xaml.cs">
       <DependentUpon>SynchronizeMainView.xaml</DependentUpon>
@@ -787,6 +797,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Management\ManagementMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Synchronize\SyncToMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Synchronize\SyncToDepartmentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

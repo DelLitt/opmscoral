@@ -207,6 +207,7 @@
     <Compile Include="Implement\IStockOutLogic.cs" />
     <Compile Include="Implement\IStockOutTempLogic.cs" />
     <Compile Include="Implement\ISupplierLogic.cs" />
+    <Compile Include="Implement\ISyncLogic.cs" />
     <Compile Include="Implement\ISyncStatususLogic.cs" />
     <Compile Include="Implement\ITaxLogic.cs" />
     <Compile Include="Implement\ITransactionLogic.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Implement\StockOutLogic.cs" />
     <Compile Include="Implement\StockOutTempLogic.cs" />
     <Compile Include="Implement\SupplierLogic.cs" />
+    <Compile Include="Implement\SyncLogic.cs" />
     <Compile Include="Implement\SyncStatususLogic.cs" />
     <Compile Include="Implement\TaxLogic.cs" />
     <Compile Include="Implement\TransactionLogic.cs" />
