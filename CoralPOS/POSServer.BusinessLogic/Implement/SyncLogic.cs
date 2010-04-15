@@ -16,15 +16,16 @@ namespace POSServer.BusinessLogic.Implement
         public DepartmentDao DepartmentDao { get; set; }
         public MainPriceDao MainPriceDao { get; set; }
 
-        public void SyncToMain(SyncToMainObject syncToMainObject)
+        public bool SyncToMain(SyncToMainObject syncToMainObject)
         {
             if(syncToMainObject.HasCommonInfo)
             {
                 
             }
+            return true;
         }
 
-        public void SyncToDepartment(SyncToDepartmentObject syncToDept)
+        public bool SyncToDepartment(SyncToDepartmentObject syncToDept)
         {
            if(syncToDept.DepartmentInfo)
            {
@@ -52,6 +53,7 @@ namespace POSServer.BusinessLogic.Implement
             IList<StockOut> stockOuts = StockOutDao.FindAll(stockOutCrit);
 
             syncToDept.StockOutList = stockOuts;
+            return true;
         }
     }
 }

@@ -330,6 +330,8 @@
     <Compile Include="Actions\Stock\StockOut\StockOutPreLoadAction.cs" />
     <Compile Include="Actions\Stock\StockOut\StockOutSaveAction.cs" />
     <Compile Include="Actions\StopLoadScreen.cs" />
+    <Compile Include="Actions\Synchronize\ISyncToDepartmentAction.cs" />
+    <Compile Include="Actions\Synchronize\SyncToDepartmentAction.cs" />
     <Compile Include="Commands\ProductMaster\IProductTypeCommand.cs" />
     <Compile Include="Commands\ProductMaster\ProductTypeCommand.cs" />
     <Compile Include="Common\CommonConstants.cs" />

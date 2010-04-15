@@ -13,11 +13,11 @@ namespace POSServer.BusinessLogic.Implement
         ProductMasterDao ProductMasterDao { get; set; }
         StockOutDao StockOutDao { get; set; }
         DepartmentDao DepartmentDao { get; set; }
-        MainPriceDao MainPriceDao { get; set; }       
+        MainPriceDao MainPriceDao { get; set; }
 
 
-        void SyncToMain(SyncToMainObject syncToMainObject);
-        void SyncToDepartment(SyncToDepartmentObject syncToDept);
+        bool SyncToMain(SyncToMainObject syncToMainObject);
+        bool SyncToDepartment(SyncToDepartmentObject syncToDept);
     }
 
     public class SyncToDepartmentObject
