@@ -315,11 +315,11 @@ namespace NMG.Core.Generator
 
         private static string AddStandardHeader(string entireContent)
         {
-            entireContent = "using System.Text; \n" + entireContent;
-            entireContent = "using System.Collections.Generic; \n" + entireContent;
-            entireContent = "using System; \n" + entireContent;
-            entireContent = "using System.Runtime.Serialization; \n" + entireContent;
             entireContent = "using Caliburn.PresentationFramework.Behaviors; \n" + entireContent;
+            entireContent = "using System.Runtime.Serialization; \n" + entireContent;
+            entireContent = "using System.Collections.Generic; \n" + entireContent;
+            entireContent = "using System.Text; \n" + entireContent;
+            entireContent = "using System; \n" + entireContent;
             return entireContent;
         }
 

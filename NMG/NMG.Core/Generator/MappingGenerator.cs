@@ -245,10 +245,8 @@ namespace NMG.Core.Generator
         {
             foreach (var columnDetail in columnDetails)
             {
-                if (columnDetail.IsPrimaryKey)
-                    continue;
-                if (IsReferenceColumn(columnDetail)) 
-                    continue;
+                if (columnDetail.IsPrimaryKey) continue;
+                if (IsReferenceColumn(columnDetail)) continue;
                 var xmlNode = xmldoc.CreateElement("property");
                 string propertyName = columnDetail.ColumnName.GetPreferenceFormattedText(applicationPreferences);
                 if (applicationPreferences.FieldGenerationConvention == FieldGenerationConvention.Property)
