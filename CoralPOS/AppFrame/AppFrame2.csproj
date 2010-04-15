@@ -247,6 +247,7 @@
     <Compile Include="Base\PosViewModel.cs" />
     <Compile Include="Base\PosViewModelExtensions.cs" />
     <Compile Include="Base\ShellNavigator.cs" />
+    <Compile Include="Base\Synchronize\UsbSyncDisc.cs" />
     <Compile Include="Common\GlobalCache.cs" />
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />

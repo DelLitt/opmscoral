@@ -16,8 +16,8 @@ namespace POSServer.BusinessLogic.Implement
         MainPriceDao MainPriceDao { get; set; }
 
 
-        bool SyncToMain(SyncToMainObject syncToMainObject);
-        bool SyncToDepartment(SyncToDepartmentObject syncToDept);
+        SyncToMainObject SyncToMain(SyncToMainObject syncToMainObject);
+        SyncToDepartmentObject SyncToDepartment(SyncToDepartmentObject syncToDept);
     }
 
     public class SyncToDepartmentObject
