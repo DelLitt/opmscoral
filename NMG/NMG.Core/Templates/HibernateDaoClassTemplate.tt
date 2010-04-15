@@ -327,6 +327,37 @@ namespace <#= NamespaceName #>
             if(criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
         }
+		
+		/// <summary>
+        /// 
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="exposeSession"></param>
+        /// <returns></returns>
+        public object Execute(IHibernateCallback callback, bool exposeSession)
+        {
+            return HibernateTemplate.Execute(callback, exposeSession);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
+        public object Execute(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
+        public object ExecuteExposedSession(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated, true);
+        }
     }
 }
 
