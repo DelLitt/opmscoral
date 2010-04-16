@@ -47,7 +47,13 @@ namespace POSClient.DataLayer.Implement
         /// <returns></returns>
         public ProductType Add(ProductType data)
         {
-            _hibernateTemplate.Save(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Save("CoralPOS.Models.ProductType", data);
+                        return data;
+                    }
+                );
+            //_hibernateTemplate.Save(data);
             return data;
         }
         
@@ -58,7 +64,13 @@ namespace POSClient.DataLayer.Implement
         /// <returns></returns>
         public int Update(ProductType data)
         {
-            _hibernateTemplate.Update(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Update("CoralPOS.Models.ProductType", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Update(data);
             return 0;
         }
         
@@ -69,7 +81,13 @@ namespace POSClient.DataLayer.Implement
         /// <returns></returns>
         public int Delete(ProductType data)
         {
-            _hibernateTemplate.Delete(data);
+			_hibernateTemplate.Execute(delegate(ISession session) 
+                    {
+                        session.Delete("CoralPOS.Models.ProductType", data);
+                        return 0;
+                    }
+                );
+            //_hibernateTemplate.Delete(data);
             return 0;
         }
         
@@ -302,6 +320,37 @@ namespace POSClient.DataLayer.Implement
             }
             if(criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
+        }
+		
+		/// <summary>
+        /// 
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="exposeSession"></param>
+        /// <returns></returns>
+        public object Execute(IHibernateCallback callback, bool exposeSession)
+        {
+            return HibernateTemplate.Execute(callback, exposeSession);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
+        public object Execute(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
+        public object ExecuteExposedSession(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated, true);
         }
     }
 }

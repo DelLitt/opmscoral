@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implement\ActiveDepartmentLogic.cs" />
     <Compile Include="Implement\BlockInCostLogic.cs" />
     <Compile Include="Implement\BlockInDetailLogic.cs" />
     <Compile Include="Implement\BlockInLogic.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Implement\ExProductColorLogic.cs" />
     <Compile Include="Implement\ExProductSizeLogic.cs" />
     <Compile Include="Implement\GiftLogic.cs" />
+    <Compile Include="Implement\IActiveDepartmentLogic.cs" />
     <Compile Include="Implement\IBlockInCostLogic.cs" />
     <Compile Include="Implement\IBlockInDetailLogic.cs" />
     <Compile Include="Implement\IBlockInLogic.cs" />
@@ -253,6 +255,9 @@
       <Project>{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}</Project>
       <Name>POSClient.DataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BusinessLayer.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

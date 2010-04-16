@@ -44,6 +44,8 @@ namespace AppFrame.Base
         {
             get
             {
+                if (_serviceLocator == null)
+                    _serviceLocator = Microsoft.Practices.ServiceLocation.ServiceLocator.Current;
                 return _serviceLocator;
             }
             set

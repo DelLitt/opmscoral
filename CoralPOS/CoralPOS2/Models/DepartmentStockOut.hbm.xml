@@ -7,7 +7,7 @@
     </composite-id>
     <property name="ConfirmFlg" column="CONFIRM_FLG" />
     <property name="CreateDate" column="CREATE_DATE" />
-    <property name="CreateId" column="CREATE_ID" />    
+    <property name="CreateId" column="CREATE_ID" />
     <property name="DelFlg" column="DEL_FLG" />
     <property name="Description" column="DESCRIPTION" />
     <property name="DestDepartmentId" column="DEST_DEPARTMENT_ID" />
@@ -17,13 +17,12 @@
     <property name="ExFld4" column="EX_FLD4" />
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
     <property name="StockOutDate" column="STOCK_OUT_DATE" />
+    <property name="TotalAmount" column="TOTAL_AMOUNT" />
+    <property name="TotalQuantity" column="TOTAL_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    
-    <many-to-one class="StockDefinitionStatus" name="DefinitionStatus" not-null="true">
-      <column name="DEFECT_STATUS_ID" />
-    </many-to-one>
     <bag inverse="true" name="DepartmentStockOutDetails">
       <key>
         <column name="DEPARTMENT_ID" />
@@ -31,5 +30,8 @@
       </key>
       <one-to-many class="DepartmentStockOutDetail" />
     </bag>
+    <many-to-one class="StockDefinitionStatus" name="StockDefinitionStatus">
+      <column name="DEFECT_STATUS_ID" />
+    </many-to-one>
   </class>
 </hibernate-mapping>

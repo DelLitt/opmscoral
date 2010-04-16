@@ -10,8 +10,6 @@
     <property name="CreateDate" column="CREATE_DATE" />
     <property name="CreateId" column="CREATE_ID" />
     <property name="DelFlg" column="DEL_FLG" />
-    <!--<property name="ExFld1" column="EX_FLD1" />
-    <property name="ExFld2" column="EX_FLD2" />-->
     <property name="ExFld3" column="EX_FLD3" />
     <property name="ExFld4" column="EX_FLD4" />
     <property name="ExFld5" column="EX_FLD5" />
@@ -21,16 +19,14 @@
     <property name="TaxId" column="TAX_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one class="ProductMaster" name="ProductMaster" not-null="true">
+    <many-to-one class="ProductMaster" name="ProductMaster">
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
-
-    <many-to-one class="ExProductColor" name="ProductColor" not-null="true" lazy="false">
-      <column name="EX_FLD1" />      
+    <many-to-one class="ExProductColor" name="ProductColor" lazy="false">
+      <column name="EX_FLD1" />
     </many-to-one>
-
-    <many-to-one class="ExProductSize" name="ProductSize" not-null="true" lazy="false">
-      <column name="EX_FLD2"  />
+    <many-to-one class="ExProductSize" name="ProductSize" lazy="false">
+      <column name="EX_FLD2" />
     </many-to-one>
   </class>
 </hibernate-mapping>

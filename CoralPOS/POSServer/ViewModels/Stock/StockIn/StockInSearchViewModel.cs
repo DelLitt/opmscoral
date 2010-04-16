@@ -197,7 +197,7 @@ namespace POSServer.ViewModels.Stock.StockIn
 		        
         public void ViewDetail()
         {
-            if (_selectedStockIn != null && _selectedStockIn.StockInId > 0)
+            if (_selectedStockIn != null && !string.IsNullOrEmpty(_selectedStockIn.StockInId))
             {
                 CoralPOS.Models.StockIn stockOut = SelectedStockIn;
                 Flow.Session.Put(FlowConstants.STOCK_IN_SEARCH_RESULT, StockInList);

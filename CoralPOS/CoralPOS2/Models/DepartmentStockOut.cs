@@ -1,8 +1,8 @@
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -95,31 +95,49 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual System.DateTime StockOutDate {
+        public virtual string ProductMasterId {
             get;
             set;
         }
         
         [DataMember(Name="17", Order=17)]
-        public virtual System.DateTime UpdateDate {
+        public virtual System.DateTime StockOutDate {
             get;
             set;
         }
         
         [DataMember(Name="18", Order=18)]
-        public virtual string UpdateId {
+        public virtual long TotalAmount {
             get;
             set;
         }
         
         [DataMember(Name="19", Order=19)]
-        public virtual IList<DepartmentStockOutDetail> DepartmentStockOutDetails {
+        public virtual long TotalQuantity {
             get;
             set;
         }
         
         [DataMember(Name="20", Order=20)]
-        public virtual StockDefinitionStatus DefinitionStatus {
+        public virtual System.DateTime UpdateDate {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="21", Order=21)]
+        public virtual string UpdateId {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="22", Order=22)]
+        public virtual IList<DepartmentStockOutDetail> DepartmentStockOutDetails {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="23", Order=23)]
+        public virtual StockDefinitionStatus StockDefinitionStatus {
             get;
             set;
         }

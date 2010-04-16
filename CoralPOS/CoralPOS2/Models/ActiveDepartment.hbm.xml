@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ActiveDepartment" table="CRL_ACTIVE_DEPT" >
+    <id name="DepartmentId" type="Int64" column="DEPARTMENT_ID">
+      <generator class="assigned" />
+    </id>
+    <property name="Active" column="ACTIVE" />
+    <property name="DepartmentName" column="DEPARTMENT_NAME" />
+    <many-to-one class="Department" name="Department" update="false" insert="false">
+      <column name="DEPARTMENT_ID" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

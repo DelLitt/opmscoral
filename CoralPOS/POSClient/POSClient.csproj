@@ -205,14 +205,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Spring.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data.NHibernate12, Version=1.3.0.20214, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Data.NHibernate12.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Data.NHibernate20, Version=1.3.0.20214, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Data.NHibernate20.dll</HintPath>
-    </Reference>
     <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20214, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Spring.Data.NHibernate21.dll</HintPath>
@@ -274,7 +266,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -408,6 +402,7 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
+    <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
     <Compile Include="ViewModels\INavLoginViewModel.cs" />
     <Compile Include="ViewModels\IShellViewModel.cs" />
@@ -426,13 +421,43 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\MainView.cs" />
+    <Compile Include="ViewModels\Management\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Management\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Menu\IMainMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationShellViewModel.cs" />
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
+    <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Report\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Sale\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Sale\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\DepartmentStockInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\IDepartmentStockInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\DepartmentStockInConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\DepartmentStockInSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\DepartmentStockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\DepartmentStockInWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IDepartmentStockInConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IDepartmentStockInSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IDepartmentStockInViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockIn\IDepartmentStockInWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\DepartmentStockOutConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\DepartmentStockOutSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\DepartmentStockOutViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\DepartmentStockOutWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutWaitingConfirmViewModel.cs" />
+    <Compile Include="ViewModels\Stock\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Tool\TemplatePOSViewModel.cs" />
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
@@ -546,9 +571,11 @@
     <EmbeddedResource Include="spring-config.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pos2.sdf">
+    <EmbeddedResource Include="ClientViewModels.xml" />
+    <EmbeddedResource Include="ClientActions.xml" />
+    <None Include="pos2.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

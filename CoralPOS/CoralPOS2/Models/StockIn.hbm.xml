@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
   <class name="StockIn" table="CRL_STK_IN" >
-    <id name="StockInId" type="long" column="STOCK_IN_ID">
+    <id name="StockInId" type="String" column="STOCK_IN_ID">
       <generator class="assigned" />
     </id>
     <property name="ConfirmFlg" column="CONFIRM_FLG" />
@@ -9,7 +9,6 @@
     <property name="CreateId" column="CREATE_ID" />
     <property name="DelFlg" column="DEL_FLG" />
     <property name="Description" column="DESCRIPTION" />
-    <property name="TotalQuantity" column="TOTAL_QUANTITY" />
     <property name="ExFld1" column="EX_FLD1" />
     <property name="ExFld2" column="EX_FLD2" />
     <property name="ExFld3" column="EX_FLD3" />
@@ -19,6 +18,7 @@
     <property name="StockInCost" column="STOCK_IN_COST" />
     <property name="StockInDate" column="STOCK_IN_DATE" />
     <property name="StockInType" column="STOCK_IN_TYPE" />
+    <property name="TotalQuantity" column="TOTAL_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
     <bag inverse="true" name="StockInDetails">

@@ -298,6 +298,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ActiveDepartment.cs" />
     <Compile Include="Models\BlockIn.cs" />
     <Compile Include="Models\BlockInCost.cs" />
     <Compile Include="Models\BlockInCostPK.cs" />
@@ -544,6 +545,9 @@
       <Project>{B57B71C6-9CD9-4A81-937C-5091F7C78225}</Project>
       <Name>AppFrame2</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\ActiveDepartment.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

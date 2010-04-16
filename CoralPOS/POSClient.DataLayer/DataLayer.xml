@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+
+  <!-- Referenced by main application context configuration file -->
+  <!-- Property placeholder configurer for database settings -->
+  <object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+    <property name="ConfigSections" value="databaseSettings"/>
+  </object>
+
+  <db:provider id="DbProvider" provider="SqlServerCe-3.5.1" connectionString="Data Source=pos2.sdf;Password=admin;"/>
+
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="MappingAssemblies">
+      <list>
+          <value>CoralPOS</value>
+		  <value>POSClient.DataLayer</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+
+        <entry key="connection.provider"
+               value="NHibernate.Connection.DriverConnectionProvider"/>
+        <entry key="dialect"
+               value="NHibernate.Dialect.MsSqlCeDialect"/>
+        <entry key="connection.driver_class"
+               value="NHibernate.Driver.SqlServerCeDriver"/>        
+        <entry key="show_sql"
+               value="true"/>
+      </dictionary>
+    </property>
+
+  </object>
+
+
+  <object id="transactionManager" type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
+    <property name="DbProvider" ref="DbProvider"/>
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="HibernateTemplate" type="Spring.Data.NHibernate.HibernateTemplate" singleton="true">
+    <property name="SessionFactory" ref="NHibernateSessionFactory" />
+    <property name="TemplateFlushMode" value="Auto" />
+    <property name="CacheQueries" value="true" />
+  </object>
+
+  <!-- Data Access Objects -->
+  	
+  <object id="IActiveDepartmentDao" type="POSClient.DataLayer.Implement.ActiveDepartmentDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IBlockInDao" type="POSClient.DataLayer.Implement.BlockInDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IBlockInCostDao" type="POSClient.DataLayer.Implement.BlockInCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IBlockInDetailDao" type="POSClient.DataLayer.Implement.BlockInDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICashIoTransactionDao" type="POSClient.DataLayer.Implement.CashIoTransactionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICategoryDao" type="POSClient.DataLayer.Implement.CategoryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IContractDao" type="POSClient.DataLayer.Implement.ContractDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICountryDao" type="POSClient.DataLayer.Implement.CountryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICouponDao" type="POSClient.DataLayer.Implement.CouponDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICouponTypeDao" type="POSClient.DataLayer.Implement.CouponTypeDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICustomerDao" type="POSClient.DataLayer.Implement.CustomerDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ICustomerDetailDao" type="POSClient.DataLayer.Implement.CustomerDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentDao" type="POSClient.DataLayer.Implement.DepartmentDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentCostDao" type="POSClient.DataLayer.Implement.DepartmentCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentManagerDao" type="POSClient.DataLayer.Implement.DepartmentManagerDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPromotionDao" type="POSClient.DataLayer.Implement.DepartmentPromotionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPurchaseOrderDao" type="POSClient.DataLayer.Implement.DepartmentPurchaseOrderDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPurchaseOrderDetailDao" type="POSClient.DataLayer.Implement.DepartmentPurchaseOrderDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPurchaseOrderDetailLogDao" type="POSClient.DataLayer.Implement.DepartmentPurchaseOrderDetailLogDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPurchaseOrderLogDao" type="POSClient.DataLayer.Implement.DepartmentPurchaseOrderLogDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentPurchaseOrderPromotionDao" type="POSClient.DataLayer.Implement.DepartmentPurchaseOrderPromotionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentReturnDao" type="POSClient.DataLayer.Implement.DepartmentReturnDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentReturnCostDao" type="POSClient.DataLayer.Implement.DepartmentReturnCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentReturnDetailDao" type="POSClient.DataLayer.Implement.DepartmentReturnDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentReturnPurchaseOrderDao" type="POSClient.DataLayer.Implement.DepartmentReturnPurchaseOrderDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockDao" type="POSClient.DataLayer.Implement.DepartmentStockDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockHistoryDao" type="POSClient.DataLayer.Implement.DepartmentStockHistoryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockInDao" type="POSClient.DataLayer.Implement.DepartmentStockInDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockInCostDao" type="POSClient.DataLayer.Implement.DepartmentStockInCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockInDetailDao" type="POSClient.DataLayer.Implement.DepartmentStockInDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockInHistoryDao" type="POSClient.DataLayer.Implement.DepartmentStockInHistoryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockOutDao" type="POSClient.DataLayer.Implement.DepartmentStockOutDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockOutCostDao" type="POSClient.DataLayer.Implement.DepartmentStockOutCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockOutDetailDao" type="POSClient.DataLayer.Implement.DepartmentStockOutDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockTemployeeValidDao" type="POSClient.DataLayer.Implement.DepartmentStockTemployeeValidDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentStockTemployeeValidSaveDao" type="POSClient.DataLayer.Implement.DepartmentStockTemployeeValidSaveDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDepartmentTimelineDao" type="POSClient.DataLayer.Implement.DepartmentTimelineDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IDistributorDao" type="POSClient.DataLayer.Implement.DistributorDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmpDao" type="POSClient.DataLayer.Implement.EmpDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmployeeDayoffDao" type="POSClient.DataLayer.Implement.EmployeeDayoffDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmployeeInfoDao" type="POSClient.DataLayer.Implement.EmployeeInfoDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmployeeMoneyDao" type="POSClient.DataLayer.Implement.EmployeeMoneyDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmployeeRewardDao" type="POSClient.DataLayer.Implement.EmployeeRewardDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IEmployeeWorkingDaysDao" type="POSClient.DataLayer.Implement.EmployeeWorkingDaysDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IExProductColorDao" type="POSClient.DataLayer.Implement.ExProductColorDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IExProductSizeDao" type="POSClient.DataLayer.Implement.ExProductSizeDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IGiftDao" type="POSClient.DataLayer.Implement.GiftDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IMainftrDao" type="POSClient.DataLayer.Implement.MainftrDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IMainPriceDao" type="POSClient.DataLayer.Implement.MainPriceDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IMainStockDao" type="POSClient.DataLayer.Implement.MainStockDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IMainStockHistoryDao" type="POSClient.DataLayer.Implement.MainStockHistoryDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+    	
+  <object id="IOtherTransactionLogDao" type="POSClient.DataLayer.Implement.OtherTransactionLogDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IPackagerDao" type="POSClient.DataLayer.Implement.PackagerDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IProductDao" type="POSClient.DataLayer.Implement.ProductDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IProductMasterDao" type="POSClient.DataLayer.Implement.ProductMasterDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IProductTypeDao" type="POSClient.DataLayer.Implement.ProductTypeDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IProductUnitDao" type="POSClient.DataLayer.Implement.ProductUnitDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IPromotionDao" type="POSClient.DataLayer.Implement.PromotionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IPublishedCouponDao" type="POSClient.DataLayer.Implement.PublishedCouponDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IPurchaseOrdersLogDao" type="POSClient.DataLayer.Implement.PurchaseOrdersLogDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IPurchaseOrdersTransactionDao" type="POSClient.DataLayer.Implement.PurchaseOrdersTransactionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReceiptDao" type="POSClient.DataLayer.Implement.ReceiptDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReceiptOutDao" type="POSClient.DataLayer.Implement.ReceiptOutDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReceiptOutCostDao" type="POSClient.DataLayer.Implement.ReceiptOutCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReturnBlockInDao" type="POSClient.DataLayer.Implement.ReturnBlockInDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReturnProductDao" type="POSClient.DataLayer.Implement.ReturnProductDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IReturnTransactionDao" type="POSClient.DataLayer.Implement.ReturnTransactionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IRoleDao" type="POSClient.DataLayer.Implement.RoleDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ISaleTransactionDao" type="POSClient.DataLayer.Implement.SaleTransactionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IScheduleTemplateDao" type="POSClient.DataLayer.Implement.ScheduleTemplateDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ISimilarProductDao" type="POSClient.DataLayer.Implement.SimilarProductDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockDefinitionStatusDao" type="POSClient.DataLayer.Implement.StockDefinitionStatusDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockInDao" type="POSClient.DataLayer.Implement.StockInDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockInDetailDao" type="POSClient.DataLayer.Implement.StockInDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockOutDao" type="POSClient.DataLayer.Implement.StockOutDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockOutCostDao" type="POSClient.DataLayer.Implement.StockOutCostDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockOutDetailDao" type="POSClient.DataLayer.Implement.StockOutDetailDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IStockOutTempDao" type="POSClient.DataLayer.Implement.StockOutTempDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ISupplierDao" type="POSClient.DataLayer.Implement.SupplierDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ISyncStatususDao" type="POSClient.DataLayer.Implement.SyncStatususDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ITaxDao" type="POSClient.DataLayer.Implement.TaxDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="ITransactionDao" type="POSClient.DataLayer.Implement.TransactionDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IUserInfoDao" type="POSClient.DataLayer.Implement.UserInfoDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+  	
+  <object id="IUserRoleDao" type="POSClient.DataLayer.Implement.UserRoleDao, POSClient.DataLayer">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+    
+  
+</objects>

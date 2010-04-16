@@ -1,9 +1,8 @@
-using AppFrame.WPF.ValidationAttributes;
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -102,7 +101,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="15", Order=15)]
-        [Min(1)]
         public virtual long GoodQuantity {
             get;
             set;
@@ -115,7 +113,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="17", Order=17)]
-        [Min(1)]
         public virtual long Quantity {
             get;
             set;
@@ -150,6 +147,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+
         public virtual long StockQuantity { get; set; }
    	 protected bool Equals(StockOutDetail entity)
 		{

@@ -1,10 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-using AppFrame.WPF.ValidationAttributes;
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -19,7 +17,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="1", Order=1)]
-        public virtual long StockInId {
+        public virtual string StockInId {
             get;
             set;
         }
@@ -49,8 +47,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="6", Order=6)]
-        [Required]
-        [NotNullOrEmpty]
         public virtual string Description {
             get;
             set;
@@ -129,8 +125,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="19", Order=19)]
-        [NotNull]
-        [Required]
         public virtual IList<StockInDetail> StockInDetails {
             get;
             set;

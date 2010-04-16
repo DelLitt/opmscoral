@@ -16,7 +16,7 @@ using Spring.Context.Support;
 
 namespace POSClient.ViewModels
 {
-    [Singleton(typeof(IShellViewModel))]
+    
     public class ShellViewModel : ShellNavigator<IScreen,INode>, IShellViewModel
     {
         
@@ -25,11 +25,8 @@ namespace POSClient.ViewModels
 
         public string CurrentPath { get;set; }
 
-        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator)
-        {
-            
-        }
-
+        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) { }
+        public ShellViewModel() : base() { }
         public override void Activate()
         {
            
@@ -37,10 +34,12 @@ namespace POSClient.ViewModels
 
         public override void Initialize() 
         {
+            RootScreen = ServiceLocator.GetInstance<IMainViewModel>();
+            MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)
             {
-                Open<IMainView>();  
+                Open<IMainViewModel>();  
             }
             else
             {
@@ -48,17 +47,17 @@ namespace POSClient.ViewModels
             }
         }
 
-        public override void LeaveFlow()
+        /*public override void LeaveFlow()
         {
             Open<IMainView>();
-        }
-        public override bool StartFlow(string flowName)
+        }*/
+        /*public override bool StartFlow(string flowName)
         {
             try
             {
                 
                 /*IApplicationContext ctx = ContextRegistry.GetContext();
-                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);*/
+                DefaultFlow flow = (DefaultFlow)ctx.GetObject(flowName);♥1♥
                 DefaultFlow flow = ObjectUtility.GetObject<DefaultFlow>(flowName);
                 flow.InitFlow();
                 flow.Navigator = this;
@@ -70,7 +69,7 @@ namespace POSClient.ViewModels
                 return false;
             }
         
-        }
+        }*/
 
         /*public override INode CreateNode(string typeName)
         {

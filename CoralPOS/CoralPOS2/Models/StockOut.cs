@@ -1,10 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-using AppFrame.WPF.ValidationAttributes;
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -49,8 +47,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="6", Order=6)]
-        [Required]
-        [NotNullOrEmpty]
         public virtual string Description {
             get;
             set;
@@ -105,36 +101,42 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="15", Order=15)]
-        public virtual long TotalQuantity {
+        public virtual long TotalAmount {
             get;
             set;
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual System.DateTime UpdateDate {
+        public virtual long TotalQuantity {
             get;
             set;
         }
         
         [DataMember(Name="17", Order=17)]
-        public virtual string UpdateId {
+        public virtual System.DateTime UpdateDate {
             get;
             set;
         }
         
         [DataMember(Name="18", Order=18)]
-        public virtual IList<StockOutDetail> StockOutDetails {
+        public virtual string UpdateId {
             get;
             set;
         }
         
         [DataMember(Name="19", Order=19)]
-        public virtual StockDefinitionStatus DefinitionStatus {
+        public virtual IList<StockOutDetail> StockOutDetails {
             get;
             set;
         }
         
         [DataMember(Name="20", Order=20)]
+        public virtual StockDefinitionStatus DefinitionStatus {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="21", Order=21)]
         public virtual Department Department {
             get;
             set;

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+
+  <!-- Data Access Objects -->
+  	  
+  <object id="IActiveDepartmentLogic" type="POSClient.BusinessLogic.Implement.ActiveDepartmentLogic, POSClient.BusinessLogic">
+    <property name="ActiveDepartmentDao" ref="IActiveDepartmentDao"/>
+  </object>
+  	  
+  <object id="IBlockInLogic" type="POSClient.BusinessLogic.Implement.BlockInLogic, POSClient.BusinessLogic">
+    <property name="BlockInDao" ref="IBlockInDao"/>
+  </object>
+  	  
+  <object id="IBlockInCostLogic" type="POSClient.BusinessLogic.Implement.BlockInCostLogic, POSClient.BusinessLogic">
+    <property name="BlockInCostDao" ref="IBlockInCostDao"/>
+  </object>
+  	  
+  <object id="IBlockInDetailLogic" type="POSClient.BusinessLogic.Implement.BlockInDetailLogic, POSClient.BusinessLogic">
+    <property name="BlockInDetailDao" ref="IBlockInDetailDao"/>
+  </object>
+  	  
+  <object id="ICashIoTransactionLogic" type="POSClient.BusinessLogic.Implement.CashIoTransactionLogic, POSClient.BusinessLogic">
+    <property name="CashIoTransactionDao" ref="ICashIoTransactionDao"/>
+  </object>
+  	  
+  <object id="ICategoryLogic" type="POSClient.BusinessLogic.Implement.CategoryLogic, POSClient.BusinessLogic">
+    <property name="CategoryDao" ref="ICategoryDao"/>
+  </object>
+  	  
+  <object id="IContractLogic" type="POSClient.BusinessLogic.Implement.ContractLogic, POSClient.BusinessLogic">
+    <property name="ContractDao" ref="IContractDao"/>
+  </object>
+  	  
+  <object id="ICountryLogic" type="POSClient.BusinessLogic.Implement.CountryLogic, POSClient.BusinessLogic">
+    <property name="CountryDao" ref="ICountryDao"/>
+  </object>
+  	  
+  <object id="ICouponLogic" type="POSClient.BusinessLogic.Implement.CouponLogic, POSClient.BusinessLogic">
+    <property name="CouponDao" ref="ICouponDao"/>
+  </object>
+  	  
+  <object id="ICouponTypeLogic" type="POSClient.BusinessLogic.Implement.CouponTypeLogic, POSClient.BusinessLogic">
+    <property name="CouponTypeDao" ref="ICouponTypeDao"/>
+  </object>
+  	  
+  <object id="ICustomerLogic" type="POSClient.BusinessLogic.Implement.CustomerLogic, POSClient.BusinessLogic">
+    <property name="CustomerDao" ref="ICustomerDao"/>
+  </object>
+  	  
+  <object id="ICustomerDetailLogic" type="POSClient.BusinessLogic.Implement.CustomerDetailLogic, POSClient.BusinessLogic">
+    <property name="CustomerDetailDao" ref="ICustomerDetailDao"/>
+  </object>
+  	  
+  <object id="IDepartmentLogic" type="POSClient.BusinessLogic.Implement.DepartmentLogic, POSClient.BusinessLogic">
+    <property name="DepartmentDao" ref="IDepartmentDao"/>
+  </object>
+  	  
+  <object id="IDepartmentCostLogic" type="POSClient.BusinessLogic.Implement.DepartmentCostLogic, POSClient.BusinessLogic">
+    <property name="DepartmentCostDao" ref="IDepartmentCostDao"/>
+  </object>
+  	  
+  <object id="IDepartmentManagerLogic" type="POSClient.BusinessLogic.Implement.DepartmentManagerLogic, POSClient.BusinessLogic">
+    <property name="DepartmentManagerDao" ref="IDepartmentManagerDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPromotionLogic" type="POSClient.BusinessLogic.Implement.DepartmentPromotionLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPromotionDao" ref="IDepartmentPromotionDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPurchaseOrderLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPurchaseOrderDao" ref="IDepartmentPurchaseOrderDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPurchaseOrderDetailLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderDetailLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPurchaseOrderDetailDao" ref="IDepartmentPurchaseOrderDetailDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPurchaseOrderDetailLogLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderDetailLogLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPurchaseOrderDetailLogDao" ref="IDepartmentPurchaseOrderDetailLogDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPurchaseOrderLogLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderLogLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPurchaseOrderLogDao" ref="IDepartmentPurchaseOrderLogDao"/>
+  </object>
+  	  
+  <object id="IDepartmentPurchaseOrderPromotionLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderPromotionLogic, POSClient.BusinessLogic">
+    <property name="DepartmentPurchaseOrderPromotionDao" ref="IDepartmentPurchaseOrderPromotionDao"/>
+  </object>
+  	  
+  <object id="IDepartmentReturnLogic" type="POSClient.BusinessLogic.Implement.DepartmentReturnLogic, POSClient.BusinessLogic">
+    <property name="DepartmentReturnDao" ref="IDepartmentReturnDao"/>
+  </object>
+  	  
+  <object id="IDepartmentReturnCostLogic" type="POSClient.BusinessLogic.Implement.DepartmentReturnCostLogic, POSClient.BusinessLogic">
+    <property name="DepartmentReturnCostDao" ref="IDepartmentReturnCostDao"/>
+  </object>
+  	  
+  <object id="IDepartmentReturnDetailLogic" type="POSClient.BusinessLogic.Implement.DepartmentReturnDetailLogic, POSClient.BusinessLogic">
+    <property name="DepartmentReturnDetailDao" ref="IDepartmentReturnDetailDao"/>
+  </object>
+  	  
+  <object id="IDepartmentReturnPurchaseOrderLogic" type="POSClient.BusinessLogic.Implement.DepartmentReturnPurchaseOrderLogic, POSClient.BusinessLogic">
+    <property name="DepartmentReturnPurchaseOrderDao" ref="IDepartmentReturnPurchaseOrderDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockDao" ref="IDepartmentStockDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockHistoryLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockHistoryLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockHistoryDao" ref="IDepartmentStockHistoryDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockInLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockInLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockInDao" ref="IDepartmentStockInDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockInCostLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockInCostLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockInCostDao" ref="IDepartmentStockInCostDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockInDetailLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockInDetailLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockInDetailDao" ref="IDepartmentStockInDetailDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockInHistoryLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockInHistoryLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockInHistoryDao" ref="IDepartmentStockInHistoryDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockOutLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockOutLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockOutDao" ref="IDepartmentStockOutDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockOutCostLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockOutCostLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockOutCostDao" ref="IDepartmentStockOutCostDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockOutDetailLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockOutDetailLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockOutDetailDao" ref="IDepartmentStockOutDetailDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockTemployeeValidLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockTemployeeValidLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockTemployeeValidDao" ref="IDepartmentStockTemployeeValidDao"/>
+  </object>
+  	  
+  <object id="IDepartmentStockTemployeeValidSaveLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockTemployeeValidSaveLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockTemployeeValidSaveDao" ref="IDepartmentStockTemployeeValidSaveDao"/>
+  </object>
+  	  
+  <object id="IDepartmentTimelineLogic" type="POSClient.BusinessLogic.Implement.DepartmentTimelineLogic, POSClient.BusinessLogic">
+    <property name="DepartmentTimelineDao" ref="IDepartmentTimelineDao"/>
+  </object>
+  	  
+  <object id="IDistributorLogic" type="POSClient.BusinessLogic.Implement.DistributorLogic, POSClient.BusinessLogic">
+    <property name="DistributorDao" ref="IDistributorDao"/>
+  </object>
+  	  
+  <object id="IEmpLogic" type="POSClient.BusinessLogic.Implement.EmpLogic, POSClient.BusinessLogic">
+    <property name="EmpDao" ref="IEmpDao"/>
+  </object>
+  	  
+  <object id="IEmployeeDayoffLogic" type="POSClient.BusinessLogic.Implement.EmployeeDayoffLogic, POSClient.BusinessLogic">
+    <property name="EmployeeDayoffDao" ref="IEmployeeDayoffDao"/>
+  </object>
+  	  
+  <object id="IEmployeeInfoLogic" type="POSClient.BusinessLogic.Implement.EmployeeInfoLogic, POSClient.BusinessLogic">
+    <property name="EmployeeInfoDao" ref="IEmployeeInfoDao"/>
+  </object>
+  	  
+  <object id="IEmployeeMoneyLogic" type="POSClient.BusinessLogic.Implement.EmployeeMoneyLogic, POSClient.BusinessLogic">
+    <property name="EmployeeMoneyDao" ref="IEmployeeMoneyDao"/>
+  </object>
+  	  
+  <object id="IEmployeeRewardLogic" type="POSClient.BusinessLogic.Implement.EmployeeRewardLogic, POSClient.BusinessLogic">
+    <property name="EmployeeRewardDao" ref="IEmployeeRewardDao"/>
+  </object>
+  	  
+  <object id="IEmployeeWorkingDaysLogic" type="POSClient.BusinessLogic.Implement.EmployeeWorkingDaysLogic, POSClient.BusinessLogic">
+    <property name="EmployeeWorkingDaysDao" ref="IEmployeeWorkingDaysDao"/>
+  </object>
+  	  
+  <object id="IExProductColorLogic" type="POSClient.BusinessLogic.Implement.ExProductColorLogic, POSClient.BusinessLogic">
+    <property name="ExProductColorDao" ref="IExProductColorDao"/>
+  </object>
+  	  
+  <object id="IExProductSizeLogic" type="POSClient.BusinessLogic.Implement.ExProductSizeLogic, POSClient.BusinessLogic">
+    <property name="ExProductSizeDao" ref="IExProductSizeDao"/>
+  </object>
+  	  
+  <object id="IGiftLogic" type="POSClient.BusinessLogic.Implement.GiftLogic, POSClient.BusinessLogic">
+    <property name="GiftDao" ref="IGiftDao"/>
+  </object>
+  	  
+  <object id="IMainftrLogic" type="POSClient.BusinessLogic.Implement.MainftrLogic, POSClient.BusinessLogic">
+    <property name="MainftrDao" ref="IMainftrDao"/>
+  </object>
+  	  
+  <object id="IMainPriceLogic" type="POSClient.BusinessLogic.Implement.MainPriceLogic, POSClient.BusinessLogic">
+    <property name="MainPriceDao" ref="IMainPriceDao"/>
+  </object>
+  	  
+  <object id="IMainStockLogic" type="POSClient.BusinessLogic.Implement.MainStockLogic, POSClient.BusinessLogic">
+    <property name="MainStockDao" ref="IMainStockDao"/>
+  </object>
+  	  
+  <object id="IMainStockHistoryLogic" type="POSClient.BusinessLogic.Implement.MainStockHistoryLogic, POSClient.BusinessLogic">
+    <property name="MainStockHistoryDao" ref="IMainStockHistoryDao"/>
+  </object>
+  	  
+  <object id="IOtherTransactionLogLogic" type="POSClient.BusinessLogic.Implement.OtherTransactionLogLogic, POSClient.BusinessLogic">
+    <property name="OtherTransactionLogDao" ref="IOtherTransactionLogDao"/>
+  </object>
+  	  
+  <object id="IPackagerLogic" type="POSClient.BusinessLogic.Implement.PackagerLogic, POSClient.BusinessLogic">
+    <property name="PackagerDao" ref="IPackagerDao"/>
+  </object>
+  	  
+  <object id="IProductLogic" type="POSClient.BusinessLogic.Implement.ProductLogic, POSClient.BusinessLogic">
+    <property name="ProductDao" ref="IProductDao"/>
+  </object>
+  	  
+  <object id="IProductMasterLogic" type="POSClient.BusinessLogic.Implement.ProductMasterLogic, POSClient.BusinessLogic">
+    <property name="ProductMasterDao" ref="IProductMasterDao"/>
+  </object>
+  	  
+  <object id="IProductTypeLogic" type="POSClient.BusinessLogic.Implement.ProductTypeLogic, POSClient.BusinessLogic">
+    <property name="ProductTypeDao" ref="IProductTypeDao"/>
+  </object>
+  	  
+  <object id="IProductUnitLogic" type="POSClient.BusinessLogic.Implement.ProductUnitLogic, POSClient.BusinessLogic">
+    <property name="ProductUnitDao" ref="IProductUnitDao"/>
+  </object>
+  	  
+  <object id="IPromotionLogic" type="POSClient.BusinessLogic.Implement.PromotionLogic, POSClient.BusinessLogic">
+    <property name="PromotionDao" ref="IPromotionDao"/>
+  </object>
+  	  
+  <object id="IPublishedCouponLogic" type="POSClient.BusinessLogic.Implement.PublishedCouponLogic, POSClient.BusinessLogic">
+    <property name="PublishedCouponDao" ref="IPublishedCouponDao"/>
+  </object>
+  	  
+  <object id="IPurchaseOrdersLogLogic" type="POSClient.BusinessLogic.Implement.PurchaseOrdersLogLogic, POSClient.BusinessLogic">
+    <property name="PurchaseOrdersLogDao" ref="IPurchaseOrdersLogDao"/>
+  </object>
+  	  
+  <object id="IPurchaseOrdersTransactionLogic" type="POSClient.BusinessLogic.Implement.PurchaseOrdersTransactionLogic, POSClient.BusinessLogic">
+    <property name="PurchaseOrdersTransactionDao" ref="IPurchaseOrdersTransactionDao"/>
+  </object>
+  	  
+  <object id="IReceiptLogic" type="POSClient.BusinessLogic.Implement.ReceiptLogic, POSClient.BusinessLogic">
+    <property name="ReceiptDao" ref="IReceiptDao"/>
+  </object>
+  	  
+  <object id="IReceiptOutLogic" type="POSClient.BusinessLogic.Implement.ReceiptOutLogic, POSClient.BusinessLogic">
+    <property name="ReceiptOutDao" ref="IReceiptOutDao"/>
+  </object>
+  	  
+  <object id="IReceiptOutCostLogic" type="POSClient.BusinessLogic.Implement.ReceiptOutCostLogic, POSClient.BusinessLogic">
+    <property name="ReceiptOutCostDao" ref="IReceiptOutCostDao"/>
+  </object>
+  	  
+  <object id="IReturnBlockInLogic" type="POSClient.BusinessLogic.Implement.ReturnBlockInLogic, POSClient.BusinessLogic">
+    <property name="ReturnBlockInDao" ref="IReturnBlockInDao"/>
+  </object>
+  	  
+  <object id="IReturnProductLogic" type="POSClient.BusinessLogic.Implement.ReturnProductLogic, POSClient.BusinessLogic">
+    <property name="ReturnProductDao" ref="IReturnProductDao"/>
+  </object>
+  	  
+  <object id="IReturnTransactionLogic" type="POSClient.BusinessLogic.Implement.ReturnTransactionLogic, POSClient.BusinessLogic">
+    <property name="ReturnTransactionDao" ref="IReturnTransactionDao"/>
+  </object>
+  	  
+  <object id="IRoleLogic" type="POSClient.BusinessLogic.Implement.RoleLogic, POSClient.BusinessLogic">
+    <property name="RoleDao" ref="IRoleDao"/>
+  </object>
+  	  
+  <object id="ISaleTransactionLogic" type="POSClient.BusinessLogic.Implement.SaleTransactionLogic, POSClient.BusinessLogic">
+    <property name="SaleTransactionDao" ref="ISaleTransactionDao"/>
+  </object>
+  	  
+  <object id="IScheduleTemplateLogic" type="POSClient.BusinessLogic.Implement.ScheduleTemplateLogic, POSClient.BusinessLogic">
+    <property name="ScheduleTemplateDao" ref="IScheduleTemplateDao"/>
+  </object>
+  	  
+  <object id="ISimilarProductLogic" type="POSClient.BusinessLogic.Implement.SimilarProductLogic, POSClient.BusinessLogic">
+    <property name="SimilarProductDao" ref="ISimilarProductDao"/>
+  </object>
+  	  
+  <object id="IStockDefinitionStatusLogic" type="POSClient.BusinessLogic.Implement.StockDefinitionStatusLogic, POSClient.BusinessLogic">
+    <property name="StockDefinitionStatusDao" ref="IStockDefinitionStatusDao"/>
+  </object>
+  	  
+  <object id="IStockInLogic" type="POSClient.BusinessLogic.Implement.StockInLogic, POSClient.BusinessLogic">
+    <property name="StockInDao" ref="IStockInDao"/>
+  </object>
+  	  
+  <object id="IStockInDetailLogic" type="POSClient.BusinessLogic.Implement.StockInDetailLogic, POSClient.BusinessLogic">
+    <property name="StockInDetailDao" ref="IStockInDetailDao"/>
+  </object>
+  	  
+  <object id="IStockOutLogic" type="POSClient.BusinessLogic.Implement.StockOutLogic, POSClient.BusinessLogic">
+    <property name="StockOutDao" ref="IStockOutDao"/>
+  </object>
+  	  
+  <object id="IStockOutCostLogic" type="POSClient.BusinessLogic.Implement.StockOutCostLogic, POSClient.BusinessLogic">
+    <property name="StockOutCostDao" ref="IStockOutCostDao"/>
+  </object>
+  	  
+  <object id="IStockOutDetailLogic" type="POSClient.BusinessLogic.Implement.StockOutDetailLogic, POSClient.BusinessLogic">
+    <property name="StockOutDetailDao" ref="IStockOutDetailDao"/>
+  </object>
+  	  
+  <object id="IStockOutTempLogic" type="POSClient.BusinessLogic.Implement.StockOutTempLogic, POSClient.BusinessLogic">
+    <property name="StockOutTempDao" ref="IStockOutTempDao"/>
+  </object>
+  	  
+  <object id="ISupplierLogic" type="POSClient.BusinessLogic.Implement.SupplierLogic, POSClient.BusinessLogic">
+    <property name="SupplierDao" ref="ISupplierDao"/>
+  </object>
+  	  
+  <object id="ISyncStatususLogic" type="POSClient.BusinessLogic.Implement.SyncStatususLogic, POSClient.BusinessLogic">
+    <property name="SyncStatususDao" ref="ISyncStatususDao"/>
+  </object>
+  	  
+  <object id="ITaxLogic" type="POSClient.BusinessLogic.Implement.TaxLogic, POSClient.BusinessLogic">
+    <property name="TaxDao" ref="ITaxDao"/>
+  </object>
+  	  
+  <object id="ITransactionLogic" type="POSClient.BusinessLogic.Implement.TransactionLogic, POSClient.BusinessLogic">
+    <property name="TransactionDao" ref="ITransactionDao"/>
+  </object>
+  	  
+  <object id="IUserInfoLogic" type="POSClient.BusinessLogic.Implement.UserInfoLogic, POSClient.BusinessLogic">
+    <property name="UserInfoDao" ref="IUserInfoDao"/>
+  </object>
+  	  
+  <object id="IUserRoleLogic" type="POSClient.BusinessLogic.Implement.UserRoleLogic, POSClient.BusinessLogic">
+    <property name="UserRoleDao" ref="IUserRoleDao"/>
+  </object>
+    
+  
+  <tx:attribute-driven />
+</objects>

@@ -4,7 +4,9 @@
     <composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="StockOutDetailId" type="Int64" column="STOCK_OUT_DETAIL_ID" />
+      <key-property name="StockOutId" type="Int64" column="STOCK_OUT_ID" />
     </composite-id>
+    <property name="Amount" column="AMOUNT" />
     <property name="CreateDate" column="CREATE_DATE" />
     <property name="CreateId" column="CREATE_ID" />
     <property name="DamageQuantity" column="DAMAGE_QUANTITY" />
@@ -20,12 +22,12 @@
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="GoodQuantity" column="GOOD_QUANTITY" />
     <property name="LostQuantity" column="LOST_QUANTITY" />
-    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
+    <property name="Price" column="PRICE" />
     <property name="Quantity" column="QUANTITY" />
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one class="DepartmentStockOut" name="DepartmentStockOut" property-ref="DepartmentStockOutPK">
+    <many-to-one class="DepartmentStockOut" name="DepartmentStockOut" property-ref="DepartmentStockOutPK" update="false" insert="false">
       <column name="DEPARTMENT_ID" />
       <column name="STOCK_OUT_ID" />
     </many-to-one>

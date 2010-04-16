@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+﻿using AppFrame.Base;
 
-namespace POSServer.ViewModels.Security
+namespace POSClient.ViewModels.Security
 {
     public interface ILoginViewModel : IScreenNode
     {

@@ -270,12 +270,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implement\ActiveDepartmentDao.cs" />
     <Compile Include="Implement\BlockInCostDao.cs" />
     <Compile Include="Implement\BlockInDao.cs" />
     <Compile Include="Implement\BlockInDetailDao.cs" />
     <Compile Include="Implement\CashIoTransactionDao.cs" />
     <Compile Include="Implement\CategoryDao.cs" />
     <Compile Include="Implement\ContractDao.cs" />
+    <Compile Include="Implement\IActiveDepartmentDao.cs" />
     <Compile Include="Implement\QueryResult.cs" />
     <Compile Include="Implement\CountryDao.cs" />
     <Compile Include="Implement\CouponDao.cs" />
@@ -452,6 +454,9 @@
       <Project>{71316BD2-CC94-4CDF-B449-4F93C46234E3}</Project>
       <Name>CoralPOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataLayer.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataLayer\" />

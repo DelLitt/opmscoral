@@ -1,8 +1,8 @@
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -21,6 +21,12 @@ namespace CoralPOS.Models {
         
         [DataMember(Name="2", Order=2)]
         public virtual long StockOutDetailId {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="3", Order=3)]
+        public virtual long StockOutId {
             get;
             set;
         }

@@ -18,7 +18,7 @@
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="GoodQuantity" column="GOOD_QUANTITY" />
-    <property name="LostQuantity" column="LOST_QUANTITY" />    
+    <property name="LostQuantity" column="LOST_QUANTITY" />
     <property name="Quantity" column="QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />

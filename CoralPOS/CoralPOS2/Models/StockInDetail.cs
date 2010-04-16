@@ -1,9 +1,8 @@
-using AppFrame.WPF.ValidationAttributes;
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -84,7 +83,6 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="14", Order=14)]
-        [Min(1)]
         public virtual long Quantity {
             get;
             set;
@@ -97,40 +95,47 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual long StockInType {
+        public virtual long SrcDepartmentId {
             get;
             set;
         }
         
         [DataMember(Name="17", Order=17)]
-        public virtual System.DateTime UpdateDate {
+        public virtual long StockInType {
             get;
             set;
         }
         
         [DataMember(Name="18", Order=18)]
-        public virtual string UpdateId {
+        public virtual System.DateTime UpdateDate {
             get;
             set;
         }
         
         [DataMember(Name="19", Order=19)]
-        public virtual StockIn StockIn {
+        public virtual string UpdateId {
             get;
             set;
         }
         
         [DataMember(Name="20", Order=20)]
-        public virtual Product Product {
+        public virtual StockIn StockIn {
             get;
             set;
         }
         
         [DataMember(Name="21", Order=21)]
+        public virtual Product Product {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="22", Order=22)]
         public virtual ProductMaster ProductMaster {
             get;
             set;
         }
+
         public virtual MainPrice MainPrice { get; set; }
    	 protected bool Equals(StockInDetail entity)
 		{

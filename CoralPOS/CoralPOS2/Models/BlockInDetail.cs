@@ -1,8 +1,8 @@
-using Caliburn.PresentationFramework.Behaviors; 
-using System.Runtime.Serialization; 
 using System; 
-using System.Collections.Generic; 
 using System.Text; 
+using System.Collections.Generic; 
+using System.Runtime.Serialization; 
+using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {
@@ -132,6 +132,12 @@ namespace CoralPOS.Models {
         
         [DataMember(Name="22", Order=22)]
         public virtual BlockIn BlockIn {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="23", Order=23)]
+        public virtual BlockInCost BlockInCost {
             get;
             set;
         }
