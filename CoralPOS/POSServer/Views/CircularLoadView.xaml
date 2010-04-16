@@ -1,9 +1,0 @@
-﻿<UserControl x:Class="POSServer.Views.CircularLoadView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Screens="clr-namespace:AppFrame.WPF.Screens;assembly=AppFrame"
-    Height="300" Width="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
-    <Grid Background="Transparent" OpacityMask="White">        
-            <Viewbox><Screens:CircularProgressBar /></Viewbox>
-    </Grid>
-</UserControl>
