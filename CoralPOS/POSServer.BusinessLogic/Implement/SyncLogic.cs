@@ -30,7 +30,7 @@ namespace POSServer.BusinessLogic.Implement
            if(syncToDept.DepartmentInfo)
            {
                ObjectCriteria<Department> deptCrit = new ObjectCriteria<Department>();
-               deptCrit.Add(dpm => dpm.DepartmentId = syncToDept.Department.DepartmentId);
+               deptCrit.Add(dpm => dpm.DepartmentId == syncToDept.Department.DepartmentId);
                syncToDept.Department = (Department)DepartmentDao.FindFirst(deptCrit);
            }
            
