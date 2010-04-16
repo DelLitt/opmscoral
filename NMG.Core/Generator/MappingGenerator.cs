@@ -142,10 +142,10 @@ namespace NMG.Core.Generator
                     switch(reference.ReferenceType)
                     {
                         case ReferenceType.OneToMany:
-                            AddOneToManyProperty(xmldoc, classElement, reference);    
+                            AddOneToManyProperty(xmldoc, classElement, reference, primaryKeyColumns);    
                             break;
                         case ReferenceType.ManyToOne:
-                            AddManyToOneProperty(xmldoc, classElement, reference);
+                            AddManyToOneProperty(xmldoc, classElement, reference, primaryKeyColumns);
                             break;
                     }
                 }
@@ -156,8 +156,10 @@ namespace NMG.Core.Generator
             return xmldoc;
         }
 
-        private void AddManyToOneProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
+       
+        private void AddManyToOneProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference,List<ColumnDetail> primaryKeyColumns)
         {
+            bool checkedInsertUpdate = false;
             string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());
             refTableName = refTableName.GetFormattedText();
             var xmlNode = xmldoc.CreateElement("many-to-one");
@@ -208,13 +210,22 @@ namespace NMG.Core.Generator
                     }
                     
                 }
+                if(!checkedInsertUpdate)
+                {
+                    if(primaryKeyColumns.Exists(col=>col.ColumnName.Equals(refColumn.Key.ColumnName)))
+                    {
+                        xmlNode.SetAttribute("update", "false");
+                        xmlNode.SetAttribute("insert", "false");
+                        checkedInsertUpdate = true;
+                    }
+                }
                 xmlNode.AppendChild(xmlColumn);
             }
 
             classElement.AppendChild(xmlNode);
         }
 
-        private void AddOneToManyProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference)
+        private void AddOneToManyProperty(XmlDocument xmldoc, XmlElement classElement, TableReference reference, List<ColumnDetail> primaryKeyColumn)
         {
             
                 string refTableName = GlobalCache.Instance.ReplaceShortWords(reference.ReferenceTable.ToUpper());

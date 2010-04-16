@@ -217,7 +217,21 @@ namespace NHibernateMappingGenerator
                                 {
                                     TablePreferenceSettings settings =
                                         (TablePreferenceSettings) xmlSerializer.Deserialize(fi);
-                                    if (settings != null) _tablePreferences = settings.TablePreferences;
+                                    if (settings != null) //_tablePreferences = settings.TablePreferences;
+                                    {
+                                        foreach (ApplicationPreferences tablePreferenceSetting in settings.TablePreferences)
+                                        {
+                                            for (int i = 0; i < _tablePreferences.Count; i++)
+                                            {
+                                                ApplicationPreferences preference = _tablePreferences[i];
+                                                if (preference.TableName.Equals(tablePreferenceSetting.TableName))
+                                                {
+                                                    _tablePreferences[i] = tablePreferenceSetting;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -589,7 +603,8 @@ namespace NHibernateMappingGenerator
         {
             var xmlSerializer = new BinaryFormatter();
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
+            DialogResult result = fileDialog.ShowDialog();
+            if (result == DialogResult.Cancel) return;
             //var fi = File.Open(Application.LocalUserAppDataPath + @"\tablePrefs.obj",FileMode.Open);
             var fi = File.Open(fileDialog.FileName, FileMode.Open);
             if (fi.CanRead)
@@ -597,7 +612,23 @@ namespace NHibernateMappingGenerator
                 using (fi)
                 {
                     TablePreferenceSettings settings = (TablePreferenceSettings)xmlSerializer.Deserialize(fi);
-                    if(settings!= null) _tablePreferences = settings.TablePreferences;
+
+                    if(settings!= null)
+                    {
+                        foreach (ApplicationPreferences tablePreferenceSetting in settings.TablePreferences)
+                        {
+                            for (int i = 0; i < _tablePreferences.Count;i++ )
+                            {
+                                ApplicationPreferences preference = _tablePreferences[i];
+                                if (preference.TableName.Equals(tablePreferenceSetting.TableName))
+                                {
+                                    _tablePreferences[i] = tablePreferenceSetting;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                        
                 }
             }
             MessageBox.Show("OK!");
