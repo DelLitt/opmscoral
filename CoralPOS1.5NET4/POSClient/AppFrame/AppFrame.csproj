@@ -1,0 +1,913 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73A362AB-99CF-4AA1-8278-01CAED2516F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppFrame</RootNamespace>
+    <AssemblyName>AppFrame</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <StartupObject>
+    </StartupObject>
+    <PublishUrl>http://localhost/AppFrame/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.2, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate20, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Data.NHibernate20.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Messaging, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Messaging.Nms, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Messaging.Nms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Services, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Testing.NUnit, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Testing.NUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Extensions, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppFrameWeb\Bin\Spring.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Advice\AuthoriseLogicAdvisor.cs" />
+    <Compile Include="Advice\AuthoriseLogicMixin.cs" />
+    <Compile Include="Advice\InsertUserInfoToLogicAdvice.cs" />
+    <Compile Include="Collection\BaseCollection.cs" />
+    <Compile Include="Collection\DepartmentCostCollection.cs" />
+    <Compile Include="Collection\DepartmentStockCollection.cs" />
+    <Compile Include="Collection\DepartmentStockInDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockOutCollection.cs" />
+    <Compile Include="Collection\DepartmentStockOutDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockOutViewDetailCollection.cs" />
+    <Compile Include="Collection\DepartmentStockViewCollection.cs" />
+    <Compile Include="Collection\EmployeeInfoCollection.cs" />
+    <Compile Include="Collection\EmployeeMoneyCollection.cs" />
+    <Compile Include="Collection\EmployeeWorkingDaysCollection.cs" />
+    <Compile Include="Collection\LoginModelCollection.cs" />
+    <Compile Include="Collection\ProductCollection.cs" />
+    <Compile Include="Collection\ProductMasterCollection.cs" />
+    <Compile Include="Collection\ProductReportCollection.cs" />
+    <Compile Include="Collection\PurchaseOrderCollection.cs" />
+    <Compile Include="Collection\PurchaseOrderDetailCollection.cs" />
+    <Compile Include="Collection\PurchaseOrderDetailReportCollection.cs" />
+    <Compile Include="Collection\ReportCollection.cs" />
+    <Compile Include="Collection\StockCollection.cs" />
+    <Compile Include="Collection\StockInDetailCollection.cs" />
+    <Compile Include="Collection\StockOutCollection.cs" />
+    <Compile Include="Collection\StockOutDetailCollection.cs" />
+    <Compile Include="Common\AbstractUser.cs" />
+    <Compile Include="Common\AppUserManager.cs" />
+    <Compile Include="Common\AsyncController.cs">
+    </Compile>
+    <Compile Include="Common\AuthManager.cs" />
+    <Compile Include="Common\BaseEventArgs.cs" />
+    <Compile Include="Common\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BaseUser.cs" />
+    <Compile Include="Common\ClientInfo.cs" />
+    <Compile Include="Common\ClonableObject.cs" />
+    <Compile Include="Common\Code39.cs" />
+    <Compile Include="Common\CurrentDepartment.cs" />
+    <Compile Include="Common\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GlobalCache.cs" />
+    <Compile Include="Common\GlobalMessage.cs" />
+    <Compile Include="Common\GlobalMessageEventArgs.cs" />
+    <Compile Include="Common\IBaseController.cs" />
+    <Compile Include="Common\IDefaultController.cs" />
+    <Compile Include="Common\InnerClipboard.cs" />
+    <Compile Include="Common\IView.cs" />
+    <Compile Include="Common\LogicItemPermission.cs" />
+    <Compile Include="Common\LogicResult.cs" />
+    <Compile Include="Common\RoleEqualityComparer.cs" />
+    <Compile Include="Common\ServiceResult.cs" />
+    <Compile Include="Common\ToolStripItemPermission.cs" />
+    <Compile Include="Controls\ComplexBindingSource.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ComplexBindingSource.Designer.cs">
+      <DependentUpon>ComplexBindingSource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ComplexCustomDescriptionProvider.cs" />
+    <Compile Include="Controls\ComplexCustomTypeDescriptor.cs" />
+    <Compile Include="Controls\ComplexListPropertyHelper.cs" />
+    <Compile Include="Controls\ComplexPropertyDescriptor.cs" />
+    <Compile Include="Controls\CoralMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\CoralMessageBox.Designer.cs">
+      <DependentUpon>CoralMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CoralTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewCalendarColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewCoralTextBoxColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewEditComboBoxColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ComplexGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewNotNullTextBoxColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DisableListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\HotKey\SystemHotkey.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CoralListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CoralListBox.Designer.cs">
+      <DependentUpon>CoralListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Win32.cs" />
+    <Compile Include="Controls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataLayer\IDepartmentStockInHistoryDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeMoneyDAO.cs" />
+    <Compile Include="DataLayer\ISubStockDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockTempDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentManagementDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentTimelineDAO.cs" />
+    <Compile Include="DataLayer\IPosLogDAO.cs" />
+    <Compile Include="DataLayer\ISyncStatusDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockHistoryDAO.cs" />
+    <Compile Include="DataLayer\IBlockInCostDAO.cs" />
+    <Compile Include="DataLayer\IBlockInDAO.cs" />
+    <Compile Include="DataLayer\IBlockInDetailDAO.cs" />
+    <Compile Include="DataLayer\ICategoryDAO.cs" />
+    <Compile Include="DataLayer\IContractDAO.cs" />
+    <Compile Include="DataLayer\ICountryDAO.cs" />
+    <Compile Include="DataLayer\ICouponDAO.cs" />
+    <Compile Include="DataLayer\ICouponTypeDAO.cs" />
+    <Compile Include="DataLayer\ICustomerDetailDAO.cs" />
+    <Compile Include="DataLayer\ICustomersDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentCostDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentPriceDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentPromotionDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentReturnCostDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentReturnDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentReturnDetailDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockInCostDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockInDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockInDetailDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockOutCostDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockOutDAO.cs" />
+    <Compile Include="DataLayer\IDepartmentStockOutDetailDAO.cs" />
+    <Compile Include="DataLayer\IDistributorDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeDayoffDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeDetailDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeRewardDAO.cs" />
+    <Compile Include="DataLayer\IEmployeeWorkingDayDAO.cs" />
+    <Compile Include="DataLayer\IGiftDAO.cs" />
+    <Compile Include="DataLayer\IManufacturerDAO.cs" />
+    <Compile Include="DataLayer\IOtherTransactionLogDAO.cs" />
+    <Compile Include="DataLayer\IPackagerDAO.cs" />
+    <Compile Include="DataLayer\IProductColorDAO.cs" />
+    <Compile Include="DataLayer\IProductDAO.cs" />
+    <Compile Include="DataLayer\IProductMasterDAO.cs" />
+    <Compile Include="DataLayer\IProductSizeDAO.cs" />
+    <Compile Include="DataLayer\IProductTypeDAO.cs" />
+    <Compile Include="DataLayer\IPromotionDAO.cs" />
+    <Compile Include="DataLayer\IPublishedCouponDAO.cs" />
+    <Compile Include="DataLayer\IPurchaseOrderDAO.cs" />
+    <Compile Include="DataLayer\IPurchaseOrderDetailDAO.cs" />
+    <Compile Include="DataLayer\IPurchaseOrderDetailLogDAO.cs" />
+    <Compile Include="DataLayer\IPurchaseOrderLogDAO.cs" />
+    <Compile Include="DataLayer\IPurchaseOrderPromotionDAO.cs" />
+    <Compile Include="DataLayer\IReceiptDAO.cs" />
+    <Compile Include="DataLayer\IReceiptOutCostDAO.cs" />
+    <Compile Include="DataLayer\IReceiptOutDAO.cs" />
+    <Compile Include="DataLayer\IReturnBlockInDAO.cs" />
+    <Compile Include="DataLayer\IReturnPoDAO.cs" />
+    <Compile Include="DataLayer\IReturnProductDAO.cs" />
+    <Compile Include="DataLayer\IScheduleTemplateDAO.cs" />
+    <Compile Include="DataLayer\ISimilarProductDAO.cs" />
+    <Compile Include="DataLayer\IStockDAO.cs" />
+    <Compile Include="DataLayer\IStockHistoryDAO.cs" />
+    <Compile Include="DataLayer\IStockInDAO.cs" />
+    <Compile Include="DataLayer\IStockInDetailDAO.cs" />
+    <Compile Include="DataLayer\IStockOutCostDAO.cs" />
+    <Compile Include="DataLayer\IStockOutDAO.cs" />
+    <Compile Include="DataLayer\IStockOutDetailDAO.cs" />
+    <Compile Include="DataLayer\ISupplierDAO.cs" />
+    <Compile Include="DataLayer\ITaxDAO.cs" />
+    <Compile Include="DataLayer\ITestCustomerDao.cs" />
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\DataLayerException.cs" />
+    <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="Logic\IDepartmentStockInHistoryLogic.cs" />
+    <Compile Include="Logic\IEmployeeMoneyLogic.cs" />
+    <Compile Include="Logic\ISubStockLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockTempLogic.cs" />
+    <Compile Include="Logic\IDepartmentManagementLogic.cs" />
+    <Compile Include="Logic\IDepartmentTimelineLogic.cs" />
+    <Compile Include="Logic\IPosLogLogic.cs" />
+    <Compile Include="Logic\ISyncStatusLogic.cs" />
+    <Compile Include="Logic\IAuthoriseLogic.cs" />
+    <Compile Include="Common\IPermission.cs" />
+    <Compile Include="Common\IUserManager.cs" />
+    <Compile Include="Common\LogicArgs.cs" />
+    <Compile Include="Common\MenuItemPermission.cs" />
+    <Compile Include="Common\Model.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\Role.cs" />
+    <Compile Include="Common\SpringSupport\AFAuthenticationObjectDefinitionParser.cs" />
+    <Compile Include="Common\SpringSupport\AFSecurityObjectDefinitionParser.cs" />
+    <Compile Include="Common\SpringSupport\AFUserManagerObjectDefinitionParser.cs" />
+    <Compile Include="Common\SpringSupport\AFUserObjectDefinitionParser.cs" />
+    <Compile Include="Common\SpringSupport\AppFrameSecurityParser.cs" />
+    <Compile Include="DataLayer\Dummy.cs" />
+    <Compile Include="DataLayer\ILoginDao.cs" />
+    <Compile Include="DataLayer\IRoleDao.cs" />
+    <Compile Include="Logic\IAuthorizationLogic.cs" />
+    <Compile Include="Logic\IBlockInCostLogic.cs" />
+    <Compile Include="Logic\IBlockInDetailLogic.cs" />
+    <Compile Include="Logic\IBlockInLogic.cs" />
+    <Compile Include="Logic\ICategoryLogic.cs" />
+    <Compile Include="Logic\IContractLogic.cs" />
+    <Compile Include="Logic\ICounter.cs" />
+    <Compile Include="Logic\ICountryLogic.cs" />
+    <Compile Include="Logic\ICouponLogic.cs" />
+    <Compile Include="Logic\ICouponTypeLogic.cs" />
+    <Compile Include="Logic\ICustomerDetailLogic.cs" />
+    <Compile Include="Logic\ICustomerLogic.cs" />
+    <Compile Include="Logic\IDepartmentCostLogic.cs" />
+    <Compile Include="Logic\IDepartmentLogic.cs" />
+    <Compile Include="Logic\IDepartmentPriceLogic.cs" />
+    <Compile Include="Logic\IDepartmentPromotionLogic.cs" />
+    <Compile Include="Logic\IDepartmentReturnCostLogic.cs" />
+    <Compile Include="Logic\IDepartmentReturnDetailLogic.cs" />
+    <Compile Include="Logic\IDepartmentReturnLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockHistoryLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockInCostLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockInDetailLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockInLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockOutCostLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockOutDetailLogic.cs" />
+    <Compile Include="Logic\IDepartmentStockOutLogic.cs" />
+    <Compile Include="Logic\IDistributorLogic.cs" />
+    <Compile Include="Logic\IEmployeeDayoffLogic.cs" />
+    <Compile Include="Logic\IEmployeeDetailLogic.cs" />
+    <Compile Include="Logic\IEmployeeLogic.cs" />
+    <Compile Include="Logic\IEmployeeRewardLogic.cs" />
+    <Compile Include="Logic\IEmployeeWorkingDayLogic.cs" />
+    <Compile Include="Logic\IGiftLogic.cs" />
+    <Compile Include="Logic\ILoginLogic.cs" />
+    <Compile Include="Logic\IManufacturerLogic.cs" />
+    <Compile Include="Logic\IOtherTransactionLogLogic.cs" />
+    <Compile Include="Logic\IPackagerLogic.cs" />
+    <Compile Include="Logic\IProductColorLogic.cs" />
+    <Compile Include="Logic\IProductLogic.cs" />
+    <Compile Include="Logic\IProductMasterLogic.cs" />
+    <Compile Include="Logic\IProductSizeLogic.cs" />
+    <Compile Include="Logic\IProductTypeLogic.cs" />
+    <Compile Include="Logic\IPromotionLogic.cs" />
+    <Compile Include="Logic\IPublishedCouponLogic.cs" />
+    <Compile Include="Logic\IPurchaseOrderDetailLogic.cs" />
+    <Compile Include="Logic\IPurchaseOrderDetailLogLogic.cs" />
+    <Compile Include="Logic\IPurchaseOrderLogic.cs" />
+    <Compile Include="Logic\IPurchaseOrderLogLogic.cs" />
+    <Compile Include="Logic\IPurchaseOrderPromotionLogic.cs" />
+    <Compile Include="Logic\IReceiptLogic.cs" />
+    <Compile Include="Logic\IReceiptOutCostLogic.cs" />
+    <Compile Include="Logic\IReceiptOutLogic.cs" />
+    <Compile Include="Logic\IReturnBlockInLogic.cs" />
+    <Compile Include="Logic\IReturnPoLogic.cs" />
+    <Compile Include="Logic\IReturnProductLogic.cs" />
+    <Compile Include="Logic\IScheduleTemplateLogic.cs" />
+    <Compile Include="Logic\ISimilarProductLogic.cs" />
+    <Compile Include="Logic\IStockHistoryLogic.cs" />
+    <Compile Include="Logic\IStockInDetailLogic.cs" />
+    <Compile Include="Logic\IStockInLogic.cs" />
+    <Compile Include="Logic\IStockLogic.cs" />
+    <Compile Include="Logic\IStockOutCostLogic.cs" />
+    <Compile Include="Logic\IStockOutDetailLogic.cs" />
+    <Compile Include="Logic\IStockOutLogic.cs" />
+    <Compile Include="Logic\ISupplierLogic.cs" />
+    <Compile Include="Logic\ITaxLogic.cs" />
+    <Compile Include="Logic\ITestCustomerLogic.cs" />
+    <Compile Include="ModelCriteria\PurchaseOrderCriteria.cs" />
+    <Compile Include="Model\BlockIn.cs" />
+    <Compile Include="Model\BlockInCost.cs" />
+    <Compile Include="Model\BlockInCostPK.cs" />
+    <Compile Include="Model\BlockInDetail.cs" />
+    <Compile Include="Model\BlockInDetailPK.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Contract.cs" />
+    <Compile Include="Model\ContractPK.cs" />
+    <Compile Include="Model\DepartmentStockInHistory.cs" />
+    <Compile Include="Model\DepartmentStockInHistoryPK.cs" />
+    <Compile Include="Model\DepartmentStockTempPK.cs" />
+    <Compile Include="Model\DepartmentStockTemp.cs" />
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\Coupon.cs" />
+    <Compile Include="Model\CouponType.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\CustomerDetail.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\DepartmentCost.cs" />
+    <Compile Include="Model\DepartmentCostPK.cs" />
+    <Compile Include="Model\DepartmentManagement.cs" />
+    <Compile Include="Model\DepartmentManagementPK.cs" />
+    <Compile Include="Model\DepartmentPrice.cs" />
+    <Compile Include="Model\DepartmentPricePK.cs" />
+    <Compile Include="Model\DepartmentPromotion.cs" />
+    <Compile Include="Model\DepartmentReturn.cs" />
+    <Compile Include="Model\DepartmentReturnCost.cs" />
+    <Compile Include="Model\DepartmentReturnCostPK.cs" />
+    <Compile Include="Model\DepartmentReturnDetail.cs" />
+    <Compile Include="Model\DepartmentReturnDetailPK.cs" />
+    <Compile Include="Model\DepartmentStock.cs" />
+    <Compile Include="Model\DepartmentStockHistory.cs" />
+    <Compile Include="Model\DepartmentStockHistoryPK.cs" />
+    <Compile Include="Model\DepartmentStockIn.cs" />
+    <Compile Include="Model\DepartmentStockInCost.cs" />
+    <Compile Include="Model\DepartmentStockInCostPK.cs" />
+    <Compile Include="Model\DepartmentStockInDetail.cs" />
+    <Compile Include="Model\DepartmentStockInDetailPK.cs" />
+    <Compile Include="Model\DepartmentStockInPK.cs" />
+    <Compile Include="Model\DepartmentStockOut.cs" />
+    <Compile Include="Model\DepartmentStockOutCost.cs" />
+    <Compile Include="Model\DepartmentStockOutCostPK.cs" />
+    <Compile Include="Model\DepartmentStockOutDetail.cs" />
+    <Compile Include="Model\DepartmentStockOutDetailPK.cs" />
+    <Compile Include="Model\DepartmentStockOutPK.cs" />
+    <Compile Include="Model\DepartmentStockPK.cs" />
+    <Compile Include="Model\DepartmentStockProductMasterView.cs" />
+    <Compile Include="Model\DepartmentStockProductMasterViewPK.cs" />
+    <Compile Include="Model\DepartmentStockSearchResult.cs" />
+    <Compile Include="Model\DepartmentStockView.cs" />
+    <Compile Include="Model\DepartmentTimeline.cs" />
+    <Compile Include="Model\DepartmentTimelinePK.cs" />
+    <Compile Include="Model\Distributor.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\EmployeeDayoff.cs" />
+    <Compile Include="Model\EmployeeDayoffPK.cs" />
+    <Compile Include="Model\EmployeeInfo.cs" />
+    <Compile Include="Model\EmployeeMoney.cs" />
+    <Compile Include="Model\EmployeeMoneyPK.cs" />
+    <Compile Include="Model\EmployeePK.cs" />
+    <Compile Include="Model\EmployeeReward.cs" />
+    <Compile Include="Model\EmployeeRewardPK.cs" />
+    <Compile Include="Model\EmployeeWorkingDay.cs" />
+    <Compile Include="Model\EmployeeWorkingDayPK.cs" />
+    <Compile Include="Model\Gift.cs" />
+    <Compile Include="Model\GiftPK.cs" />
+    <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\MasterType.cs" />
+    <Compile Include="Model\ModelResource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OtherTransactionLog.cs" />
+    <Compile Include="Model\Packager.cs" />
+    <Compile Include="Model\PosLog.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductColor.cs" />
+    <Compile Include="Model\ProductMaster.cs" />
+    <Compile Include="Model\ProductMasterView.cs" />
+    <Compile Include="Model\ProductSize.cs" />
+    <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\Promotion.cs" />
+    <Compile Include="Model\PublishedCoupon.cs" />
+    <Compile Include="Model\PublishedCouponPK.cs" />
+    <Compile Include="Model\PurchaseOrder.cs" />
+    <Compile Include="Model\PurchaseOrderDetail.cs" />
+    <Compile Include="Model\PurchaseOrderDetailLog.cs" />
+    <Compile Include="Model\PurchaseOrderDetailLogPK.cs" />
+    <Compile Include="Model\PurchaseOrderDetailPK.cs" />
+    <Compile Include="Model\PurchaseOrderlLogPK.cs" />
+    <Compile Include="Model\PurchaseOrderLog.cs" />
+    <Compile Include="Model\PurchaseOrderPK.cs" />
+    <Compile Include="Model\PurchaseOrderPromotion.cs" />
+    <Compile Include="Model\PurchaseOrderPromotionPK.cs" />
+    <Compile Include="Model\Receipt.cs" />
+    <Compile Include="Model\ReceiptOut.cs" />
+    <Compile Include="Model\ReceiptOutCost.cs" />
+    <Compile Include="Model\ReceiptOutCostPK.cs" />
+    <Compile Include="Model\ReceiptOutPK.cs" />
+    <Compile Include="Model\ReceiptPK.cs" />
+    <Compile Include="Model\ReturnBlockIn.cs" />
+    <Compile Include="Model\ReturnBlockInPK.cs" />
+    <Compile Include="Model\ReturnPo.cs" />
+    <Compile Include="Model\ReturnPoPK.cs" />
+    <Compile Include="Model\ReturnProduct.cs" />
+    <Compile Include="Model\RoleModel.cs" />
+    <Compile Include="Model\ScheduleTemplate.cs" />
+    <Compile Include="Model\ScheduleTemplatePK.cs" />
+    <Compile Include="Model\SimilarProduct.cs" />
+    <Compile Include="Model\Stock.cs" />
+    <Compile Include="Model\StockHistory.cs" />
+    <Compile Include="Model\StockDefectStatus.cs" />
+    <Compile Include="Model\StockIn.cs" />
+    <Compile Include="Model\StockInDetail.cs" />
+    <Compile Include="Model\StockInDetailPK.cs" />
+    <Compile Include="Model\StockOut.cs" />
+    <Compile Include="Model\StockOutCost.cs" />
+    <Compile Include="Model\StockOutCostPK.cs" />
+    <Compile Include="Model\StockOutDetail.cs" />
+    <Compile Include="Model\StockOutDetailPK.cs" />
+    <Compile Include="Model\SubStock.cs" />
+    <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Model\SyncFromDepartmentToMain.cs" />
+    <Compile Include="Model\SyncFromMainToDepartment.cs" />
+    <Compile Include="Model\SyncResult.cs" />
+    <Compile Include="Model\SyncStatus.cs" />
+    <Compile Include="Model\Tax.cs" />
+    <Compile Include="Model\UniversalStockReportObject.cs" />
+    <Compile Include="ObjectCriteria.cs" />
+    <Compile Include="Presenter\ClosedPeriodEventArgs.cs" />
+    <Compile Include="Presenter\CustomerEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentCostEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentPriceUpdateEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockCheckingEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockDetailEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockInEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockInSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockOutEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\DepartmentStockSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostEditView.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentCostListView.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockInController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockInExtraController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockInSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockOutController.cs" />
+    <Compile Include="Presenter\GoodsIO\DepartmentGoodsIO\IDepartmentStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\GoodsIOSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\IGoodsIOController.cs" />
+    <Compile Include="Presenter\GoodsIO\IGoodsIOSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\IProductMasterController.cs" />
+    <Compile Include="Presenter\GoodsIO\IProductMasterSearchDepartmentController.cs" />
+    <Compile Include="Presenter\GoodsIO\IProductMasterSearchOrCreateController.cs" />
+    <Compile Include="Presenter\GoodsIO\IStockCreateController.cs" />
+    <Compile Include="Presenter\GoodsIO\IStockInConfirmController.cs" />
+    <Compile Include="Presenter\GoodsIO\IStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IInventoryCheckingController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IMainStockInSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IMainStockOutController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IMainStockSearchController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\InventoryCheckingEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IBaseStockOutController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IProcessErrorGoodsController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\IStockOutDialogController.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\MainStockInEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\MainStockInSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\BaseStockOutEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\MainStockOutEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\ProcessErrorGoodsEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\ProductMasterEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\ProductMasterSearchOrCreateEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\StockCreateEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\StockInConfirmEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\StockSearchEventArgs.cs" />
+    <Compile Include="Presenter\GoodsSale\GoodsSaleEventArgs.cs" />
+    <Compile Include="Presenter\GoodsSale\GoodsSaleListEventArgs.cs" />
+    <Compile Include="Presenter\GoodsSale\GoodsSaleReturnEventArgs.cs" />
+    <Compile Include="Presenter\GoodsSale\IGoodsSaleController.cs" />
+    <Compile Include="Presenter\GoodsSale\IGoodsSaleListController.cs" />
+    <Compile Include="Presenter\GoodsSale\IGoodsSaleReturnController.cs" />
+    <Compile Include="Presenter\IAuthService.cs" />
+    <Compile Include="Presenter\IClosedPeriodLogic.cs" />
+    <Compile Include="Presenter\Inventory\DepartmentStockFixingEventArgs.cs" />
+    <Compile Include="Presenter\Inventory\IDepartmentStockFixingController.cs" />
+    <Compile Include="Presenter\Inventory\DepartmentStockAdhocProcessingEventArgs.cs" />
+    <Compile Include="Presenter\Inventory\IDepartmentStockAdhocProcessingController.cs" />
+    <Compile Include="Presenter\IPosLogController.cs" />
+    <Compile Include="Presenter\IProcessPeriodMoneyControler.cs" />
+    <Compile Include="Presenter\ISecurityController.cs" />
+    <Compile Include="Presenter\IStockOutConfirmController.cs" />
+    <Compile Include="Presenter\Masters\IUniversalMasterSaveController.cs" />
+    <Compile Include="Presenter\Masters\UniversalMasterSaveEventArgs.cs" />
+    <Compile Include="Presenter\GoodsIO\ProductMasterSearchDepartmentEventArgs.cs" />
+    <Compile Include="Presenter\PosLogEventArgs.cs" />
+    <Compile Include="Presenter\ProcessPeriodMoneyEventArgs.cs" />
+    <Compile Include="Presenter\Report\IReportStockInController.cs" />
+    <Compile Include="Presenter\Report\IReportStockOutController.cs" />
+    <Compile Include="Presenter\Report\ReportStockInEventArgs.cs" />
+    <Compile Include="Presenter\Report\ReportStockOutEventArgs.cs" />
+    <Compile Include="Presenter\SalePoints\ISalePointListController.cs" />
+    <Compile Include="Presenter\LoginEventArgs.cs" />
+    <Compile Include="Model\CustomerModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Presenter\ICustomerController.cs" />
+    <Compile Include="Presenter\ILoginController.cs" />
+    <Compile Include="Presenter\INotify.cs" />
+    <Compile Include="Presenter\SalePoints\EmployeeEventArgs.cs" />
+    <Compile Include="Presenter\SalePoints\IEmployeeController.cs" />
+    <Compile Include="Presenter\SalePoints\ISalePointController.cs" />
+    <Compile Include="Presenter\SalePoints\SalePointEventArgs.cs" />
+    <Compile Include="Presenter\SalePoints\SalePointListEventArgs.cs" />
+    <Compile Include="Presenter\SecurityEventArgs.cs" />
+    <Compile Include="Presenter\StockOutConfirmEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="AppFrameConfiguration.xsd" />
+    <None Include="Common\3OF9_NEW.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Common\ABC3914X.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Common\FREE3OF9.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\DataSources\AppFrame.Collection.PurchaseOrderDetailReportCollection.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="QueryResult.cs" />
+    <Compile Include="SearchCriteria.cs" />
+    <Compile Include="SQLQueryCriteria.cs" />
+    <Compile Include="SubObjectCriteria.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Utility\CheckUtility.cs" />
+    <Compile Include="Utility\DateUtility.cs" />
+    <Compile Include="Utility\DbUtility.cs" />
+    <Compile Include="Utility\EventUtility.cs" />
+    <Compile Include="Utility\GlobalUtility.cs" />
+    <Compile Include="Utility\Mapper\BaseMapper.cs" />
+    <Compile Include="Utility\Mapper\BaseTransform.cs" />
+    <Compile Include="Utility\Mapper\BaseUserMapper.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockInMapper.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockMapper.cs" />
+    <Compile Include="Utility\Mapper\DepartmentStockTempMapper.cs" />
+    <Compile Include="Utility\Mapper\FormTransform.cs" />
+    <Compile Include="Utility\Mapper\ObjectTransform.cs" />
+    <Compile Include="Utility\Mapper\StringMapper.cs" />
+    <Compile Include="Utility\Mapper\MapperRepository.cs" />
+    <Compile Include="Utility\Mapper\ModelMapper.cs" />
+    <Compile Include="Utility\Mapper\RoleMapper.cs" />
+    <Compile Include="Utility\MenuUtility.cs" />
+    <Compile Include="Utility\NumberUtility.cs" />
+    <Compile Include="Utility\ObjectConverter.cs" />
+    <Compile Include="Utility\RandomGenerator.cs" />
+    <Compile Include="Utility\ResourceUtility.cs" />
+    <Compile Include="Utility\SecurityUtility.cs" />
+    <Compile Include="Utility\StringUtility.cs" />
+    <Compile Include="View\Dummy.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentCostSummaryView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\ScanType.cs" />
+    <Compile Include="View\GoodsIO\IStockInConfirmView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentCostCreateView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentPriceUpdateView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockCheckingView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockDetailView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockInExtraView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockInSearchView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockInView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockOutView.cs" />
+    <Compile Include="View\GoodsIO\DepartmentGoodsIO\IDepartmentStockSearchView.cs" />
+    <Compile Include="View\GoodsIO\IDepartmentStockOutReportView.cs" />
+    <Compile Include="View\GoodsIO\IGoodsInput.cs" />
+    <Compile Include="View\GoodsIO\IGoodsIOSearchView.cs" />
+    <Compile Include="View\GoodsIO\IProductMasterEditView.cs" />
+    <Compile Include="View\GoodsIO\IProductMasterSearchDepartmentView.cs" />
+    <Compile Include="View\GoodsIO\IProductMasterSearchOrCreateView.cs" />
+    <Compile Include="View\GoodsIO\IProductMasterView.cs" />
+    <Compile Include="View\GoodsIO\IStockCreateView.cs" />
+    <Compile Include="View\GoodsIO\IStockOutConfirmView.cs" />
+    <Compile Include="View\GoodsIO\IStockSearchView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IInventoryCheckingView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IMainStockInSearchView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IMainStockInView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IBaseStockOutView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IMainStockOutView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IProcessErrorGoodsView.cs" />
+    <Compile Include="View\GoodsIO\MainStock\IStockOutDialogView.cs" />
+    <Compile Include="View\GoodsSale\IDayGoodsSaleListView.cs" />
+    <Compile Include="View\GoodsSale\IGoodsSaleListView.cs" />
+    <Compile Include="View\GoodsSale\IGoodsSaleReturnView.cs" />
+    <Compile Include="View\GoodsSale\IGoodsSaleView.cs" />
+    <Compile Include="View\GoodsSale\IMonthGoodsSaleListView.cs" />
+    <Compile Include="View\IChangePasswordView.cs" />
+    <Compile Include="View\IClosedPeriodView.cs" />
+    <Compile Include="View\ICustomerView.cs" />
+    <Compile Include="View\IEditCustomerView.cs" />
+    <Compile Include="View\ILoginView.cs" />
+    <Compile Include="View\INewCustomerView.cs" />
+    <Compile Include="View\Inventory\IDepartmentStockFixingView.cs" />
+    <Compile Include="View\Inventory\IDepartmentStockAdhocProcessingView.cs" />
+    <Compile Include="View\IPosLogView.cs" />
+    <Compile Include="View\IProcessPeriodMoneyView.cs" />
+    <Compile Include="View\ISecurityView.cs" />
+    <Compile Include="View\Masters\IUniversalMasterSaveView.cs" />
+    <Compile Include="View\Reports\IDepartmentStockInReportView.cs" />
+    <Compile Include="View\Reports\IStockOutReportView.cs" />
+    <Compile Include="View\Reports\IReportStockInParamView.cs" />
+    <Compile Include="View\Reports\IReportStockInView.cs" />
+    <Compile Include="View\SalePoints\IEmployeeListView.cs" />
+    <Compile Include="View\SalePoints\IEmployeeView.cs" />
+    <Compile Include="View\SalePoints\ISalePointListView.cs" />
+    <Compile Include="View\SalePoints\ISalePointSubStockView.cs" />
+    <Compile Include="View\SalePoints\ISalePointView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\LoginModel.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\ModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelResource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\RoleModel.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Advice\dummy.txt" />
+    <Content Include="Config\AppFrameSecurity.xml" />
+    <EmbeddedResource Include="Common\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CoralMessageBox.resx">
+      <DependentUpon>CoralMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CoralListBox.resx">
+      <DependentUpon>CoralListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\StockHistory.hbm.xml" />
+    <EmbeddedResource Include="Model\StockDefectStatus.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockHistory.hbm.xml" />
+    <EmbeddedResource Include="Model\SyncStatus.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentManagement.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentTimeline.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockTemp.hbm.xml" />
+    <EmbeddedResource Include="Model\SubStock.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockInHistory.hbm.xml" />
+    <Content Include="Model\DepartmentStockProductMasterView.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeMoney.hbm.xml" />
+    <EmbeddedResource Include="Model\PosLog.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentPrice.hbm.xml" />
+    <EmbeddedResource Include="Model\BlockIn.hbm.xml" />
+    <EmbeddedResource Include="Model\BlockInCost.hbm.xml" />
+    <EmbeddedResource Include="Model\BlockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\Category.hbm.xml" />
+    <EmbeddedResource Include="Model\Contract.hbm.xml" />
+    <EmbeddedResource Include="Model\Country.hbm.xml" />
+    <EmbeddedResource Include="Model\Coupon.hbm.xml" />
+    <EmbeddedResource Include="Model\CouponType.hbm.xml" />
+    <EmbeddedResource Include="Model\Customer.hbm.xml" />
+    <EmbeddedResource Include="Model\CustomerDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\Department.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentCost.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentPromotion.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentReturn.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentReturnCost.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentReturnDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStock.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockIn.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockInCost.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockOut.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockOutCost.hbm.xml" />
+    <EmbeddedResource Include="Model\DepartmentStockOutDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\Distributor.hbm.xml" />
+    <EmbeddedResource Include="Model\Employee.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeDayoff.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeInfo.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeReward.hbm.xml" />
+    <EmbeddedResource Include="Model\EmployeeWorkingDay.hbm.xml" />
+    <EmbeddedResource Include="Model\Gift.hbm.xml" />
+    <EmbeddedResource Include="Model\Manufacturer.hbm.xml" />
+    <EmbeddedResource Include="Model\OtherTransactionLog.hbm.xml" />
+    <EmbeddedResource Include="Model\Packager.hbm.xml" />
+    <EmbeddedResource Include="Model\Product.hbm.xml" />
+    <EmbeddedResource Include="Model\ProductColor.hbm.xml" />
+    <EmbeddedResource Include="Model\ProductMaster.hbm.xml" />
+    <EmbeddedResource Include="Model\ProductSize.hbm.xml" />
+    <EmbeddedResource Include="Model\ProductType.hbm.xml" />
+    <EmbeddedResource Include="Model\Promotion.hbm.xml" />
+    <EmbeddedResource Include="Model\PublishedCoupon.hbm.xml" />
+    <EmbeddedResource Include="Model\PurchaseOrder.hbm.xml" />
+    <EmbeddedResource Include="Model\PurchaseOrderDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\PurchaseOrderDetailLog.hbm.xml" />
+    <EmbeddedResource Include="Model\PurchaseOrderLog.hbm.xml" />
+    <EmbeddedResource Include="Model\PurchaseOrderPromotion.hbm.xml" />
+    <EmbeddedResource Include="Model\Receipt.hbm.xml" />
+    <EmbeddedResource Include="Model\ReceiptOut.hbm.xml" />
+    <EmbeddedResource Include="Model\ReceiptOutCost.hbm.xml" />
+    <EmbeddedResource Include="Model\ReturnBlockIn.hbm.xml" />
+    <EmbeddedResource Include="Model\ReturnPo.hbm.xml" />
+    <EmbeddedResource Include="Model\ReturnProduct.hbm.xml" />
+    <EmbeddedResource Include="Model\ScheduleTemplate.hbm.xml" />
+    <EmbeddedResource Include="Model\SimilarProduct.hbm.xml" />
+    <EmbeddedResource Include="Model\Stock.hbm.xml" />
+    <EmbeddedResource Include="Model\StockIn.hbm.xml" />
+    <EmbeddedResource Include="Model\StockInDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\StockOut.hbm.xml" />
+    <EmbeddedResource Include="Model\StockOutCost.hbm.xml" />
+    <EmbeddedResource Include="Model\StockOutDetail.hbm.xml" />
+    <EmbeddedResource Include="Model\Supplier.hbm.xml" />
+    <EmbeddedResource Include="Model\Tax.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="DepartmentStockTemp"
+	    table="department_stock_temp"
+>
+
+    <composite-id name="DepartmentStockTempPK" class="DepartmentStockTempPK">
+        <key-property 
+            name="DepartmentId" 
+            column="DEPARTMENT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+        <key-property 
+            name="ProductId" 
+            column="PRODUCT_ID" 
+            type="string"
+            length="20">
+        </key-property>
+      <key-property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+      >
+      </key-property>
+    </composite-id>    
+
+    <property
+        name="Quantity"
+        type="Int64"
+        column="QUANTITY"
+        length="10"
+    >
+    </property>
+    <property
+        name="OnStorePrice"
+        type="Int64"
+        column="ON_STORE_PRICE"
+        length="10"
+    >
+    </property>
+    
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+  <property
+        name="GoodQuantity"
+        type="Int64"
+        column="GOOD_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="ErrorQuantity"
+        type="Int64"
+        column="ERROR_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="LostQuantity"
+        type="Int64"
+        column="LOST_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="UnconfirmQuantity"
+        type="Int64"
+        column="UNCONFIRM_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="DamageQuantity"
+        type="Int64"
+        column="DAMAGE_QUANTITY"
+        length="10"
+    >
+    </property>
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to Product -->
+    <many-to-one
+        name="Product"
+	    class="Product"
+	    update="false"
+	    insert="false"
+        lazy="false"
+	>
+    	<column name="PRODUCT_ID" />
+	</many-to-one>
+  <many-to-one
+    name="ProductMaster"
+  class="ProductMaster"
+  lazy="false"
+	>
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
+  <property
+        name="Fixed"
+        type="Int64"
+        column="FIXED"
+        length="10"
+    >
+  </property>
+  <!--<property
+        name="TempSave"
+        type="Int64"
+        column="TEMPSAVE"
+        length="10"
+    >
+  </property>-->
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

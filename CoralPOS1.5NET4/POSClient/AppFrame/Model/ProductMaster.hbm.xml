@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="ProductMaster"
+	    table="product_master"
+>
+
+    <id
+        name="ProductMasterId"
+        type="string"
+        column="PRODUCT_MASTER_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="ProductName"
+        type="string"
+        column="PRODUCT_NAME"
+        length="500"
+    >
+    </property>
+    <property
+        name="Description"
+        type="string"
+        column="DESCRIPTION"
+        length="5000"
+    >
+    </property>
+    <property
+        name="SupplierId"
+        type="Int64"
+        column="SUPPLIER_ID"
+        length="10"
+    >
+    </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+  <property
+      name="Barcode"
+      type="string"
+      column="BARCODE"
+      length="13"
+    >
+  </property>
+
+  <property
+      name="ImagePath"
+      type="string"
+      column="IMAGE_PATH"
+      length="500"
+    >
+  </property>
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Packager -->
+    <many-to-one
+        name="Packager"
+        class="Packager"
+        lazy="false"
+    >
+      <column name="PACKAGER_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to ProductColor -->
+    <many-to-one
+        name="ProductColor"
+        class="ProductColor"
+        lazy="false"
+    >
+      <column name="COLOR_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Country -->
+    <many-to-one
+        name="Country"
+        class="Country"
+        lazy="false"
+    >
+      <column name="COUNTRY_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Category -->
+    <many-to-one
+        name="Category"
+        class="Category"
+        lazy="false"
+    >
+      <column name="CATEGORY_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Manufacturer -->
+    <many-to-one
+        name="Manufacturer"
+        class="Manufacturer"
+        lazy="false"
+    >
+      <column name="MANUFACTURER_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to ProductSize -->
+    <many-to-one
+        name="ProductSize"
+        class="ProductSize"
+        lazy="false"
+    >
+      <column name="SIZE_ID" />
+    </many-to-one>
+    <!-- bi-directional one-to-many association to Product -->
+    <!--<bag
+        name="Products"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="PRODUCT_MASTER_ID" />
+        </key>
+        <one-to-many 
+            class="Product"
+        />
+    </bag>-->
+    <!-- bi-directional many-to-one association to Distributor -->
+    <many-to-one
+        name="Distributor"
+        class="Distributor"
+        lazy="false"
+    >
+      <column name="DISTRIBUTOR_ID" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to ProductType -->
+    <many-to-one
+        name="ProductType"
+        class="ProductType"
+        lazy="false"
+    >
+      <column name="TYPE_ID" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

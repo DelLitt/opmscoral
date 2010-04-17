@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="appframe"
+           xmlns="http://www.appframe.com/schema/appframe"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:objects="http://www.springframework.net"
+           xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+           targetNamespace="http://www.appframe.com/schema/appframe"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           vs:friendlyname="AppFrame Security Configuration" vs:ishtmlschema="false"
+           vs:iscasesensitive="true" vs:requireattributequotes="true"
+           vs:defaultnamespacequalifier="" vs:defaultnsprefix=""
+           >
+
+  <xs:import namespace="http://www.springframework.net"/>
+
+  <xs:element name="security">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="authentication" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="type" type="xs:string" use="required" />
+            <xs:attribute name="usermanager" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="usermanager" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="type" type="xs:string" use="required" />
+            <xs:attribute name="user" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="user" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="type" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

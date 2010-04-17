@@ -1,0 +1,478 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>POSReports</RootNamespace>
+    <AssemblyName>POSReports</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0 Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0 Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllStockReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllStockReportViewer.Designer.cs">
+      <DependentUpon>AllStockReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockRemainsReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockRemainsReportViewer.Designer.cs">
+      <DependentUpon>StockRemainsReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductMasterStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductMasterStatisticReportViewer.Designer.cs">
+      <DependentUpon>ProductMasterStatisticReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraFilterCustomizeDepartmentReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraFilterCustomizeDepartmentReportViewer.Designer.cs">
+      <DependentUpon>ExtraFilterCustomizeDepartmentReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraCustomizeDepartmentReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraCustomizeDepartmentReportViewer.Designer.cs">
+      <DependentUpon>ExtraCustomizeDepartmentReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockEvaluationReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockEvaluationReportViewer.Designer.cs">
+      <DependentUpon>StockEvaluationReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DailyMatrixPurchaseOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DailyMatrixPurchaseOrderReportViewer.Designer.cs">
+      <DependentUpon>DailyMatrixPurchaseOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatrixPurchaseOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrixPurchaseOrderReportViewer.Designer.cs">
+      <DependentUpon>MatrixPurchaseOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentStockOutReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentStockOutReportViewer.Designer.cs">
+      <DependentUpon>DepartmentStockOutReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeDepartmentReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeDepartmentReportViewer.Designer.cs">
+      <DependentUpon>CustomizeDepartmentReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeReportViewer.Designer.cs">
+      <DependentUpon>CustomizeReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentStockinReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentStockinReportViewer.Designer.cs">
+      <DependentUpon>DepartmentStockinReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeptReStockReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeptReStockReportViewer.Designer.cs">
+      <DependentUpon>DeptReStockReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeptStockStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeptStockStatisticReportViewer.Designer.cs">
+      <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeptTempStockoutReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeptTempStockoutReportViewer.Designer.cs">
+      <DependentUpon>DeptTempStockoutReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsSaleStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsSaleStatisticReportViewer.Designer.cs">
+      <DependentUpon>GoodsSaleStatisticReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainStockReturnReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainStockReturnReportViewer.Designer.cs">
+      <DependentUpon>MainStockReturnReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="posDataSet.cs">
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="posDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetailsReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseDetailsReportViewer.Designer.cs">
+      <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrderReportViewer.Designer.cs">
+      <DependentUpon>PurchaseOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <EmbeddedResource Include="AllStockReport.rdlc" />
+    <EmbeddedResource Include="AllStockReportViewer.resx">
+      <DependentUpon>AllStockReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductMasterStatisticEx.rdlc" />
+    <EmbeddedResource Include="StockRemainsReportViewer.resx">
+      <DependentUpon>StockRemainsReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductMasterStatistic.rdlc" />
+    <EmbeddedResource Include="ProductMasterStatisticReportViewer.resx">
+      <DependentUpon>ProductMasterStatisticReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtraFilterCustomizeDepartmentReportViewer.resx">
+      <DependentUpon>ExtraFilterCustomizeDepartmentReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtraFilterCustomizeDepartmentReport.rdlc" />
+    <EmbeddedResource Include="ExtraCustomizeDepartmentColorReport.rdlc" />
+    <EmbeddedResource Include="ExtraCustomizeDepartmentSizeReport.rdlc" />
+    <EmbeddedResource Include="ExtraCustomizeDepartmentReportViewer.resx">
+      <DependentUpon>ExtraCustomizeDepartmentReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtraCustomizeDepartmentReport.rdlc" />
+    <EmbeddedResource Include="StockEvaluationReportViewer.resx">
+      <DependentUpon>StockEvaluationReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyDepartmentStockInReport.rdlc" />
+    <EmbeddedResource Include="DailyMatrixPurchaseOrderReportViewer.resx">
+      <DependentUpon>DailyMatrixPurchaseOrderReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyPurchaseOrders.rdlc" />
+    <EmbeddedResource Include="MatrixPurchaseOrderReportViewer.resx">
+      <DependentUpon>MatrixPurchaseOrderReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentStockOutReportViewer.resx">
+      <DependentUpon>DepartmentStockOutReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerDepartmentDetailReport.rdlc" />
+    <EmbeddedResource Include="CustomizeDepartmentReportViewer.resx">
+      <DependentUpon>CustomizeDepartmentReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeDepartmentReport.rdlc" />
+    <EmbeddedResource Include="CustomizeReport.rdlc" />
+    <EmbeddedResource Include="CustomizeReportViewer.resx">
+      <DependentUpon>CustomizeReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentStockinReport.rdlc" />
+    <EmbeddedResource Include="DepartmentStockinReportViewer.resx">
+      <DependentUpon>DepartmentStockinReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentStockOutReport.rdlc" />
+    <EmbeddedResource Include="DeptReStockReport.rdlc" />
+    <EmbeddedResource Include="DeptReStockReportViewer.resx">
+      <DependentUpon>DeptReStockReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeptStockStatisticReport.rdlc" />
+    <EmbeddedResource Include="DeptStockStatisticReportViewer.resx">
+      <DependentUpon>DeptStockStatisticReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeptTempStockOutReport.rdlc" />
+    <EmbeddedResource Include="DeptTempStockoutReportViewer.resx">
+      <DependentUpon>DeptTempStockoutReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsPurchaseOrderDetailReport.rdlc" />
+    <EmbeddedResource Include="GoodsPurchaseOrders.rdlc" />
+    <EmbeddedResource Include="GoodsSaleStatistic.rdlc" />
+    <EmbeddedResource Include="GoodsSaleStatisticReportViewer.resx">
+      <DependentUpon>GoodsSaleStatisticReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainStockReturnReport.rdlc" />
+    <EmbeddedResource Include="MainStockReturnReportViewer.resx">
+      <DependentUpon>MainStockReturnReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrixPurchaseOrders.rdlc" />
+    <EmbeddedResource Include="NormalDetailPurchaseOrders.rdlc" />
+    <EmbeddedResource Include="NormalPurchaseOrders.rdlc" />
+    <EmbeddedResource Include="PurchaseDetailReport.rdlc" />
+    <EmbeddedResource Include="PurchaseDetailsReportViewer.resx">
+      <DependentUpon>PurchaseDetailsReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrderDetailReport.rdlc" />
+    <EmbeddedResource Include="PurchaseOrderReportViewer.resx">
+      <DependentUpon>PurchaseOrderReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="RestockinReport.rdlc" />
+    <EmbeddedResource Include="RestockinReportViewer.resx">
+      <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnPOrderReport.rdlc" />
+    <EmbeddedResource Include="ReturnPOrderReportViewer.resx">
+      <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock2DeptReport.rdlc" />
+    <EmbeddedResource Include="Stock2DeptReportViewer.resx">
+      <DependentUpon>Stock2DeptReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockEvaluationReport.rdlc" />
+    <EmbeddedResource Include="StockInReport.rdlc" />
+    <EmbeddedResource Include="StockInReportViewer.resx">
+      <DependentUpon>StockInReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockRemainsReport.rdlc" />
+    <EmbeddedResource Include="StockStatisticReport.rdlc" />
+    <EmbeddedResource Include="StockStatisticReportViewer.resx">
+      <DependentUpon>StockStatisticReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierStockoutReport.rdlc" />
+    <EmbeddedResource Include="SupplierStockoutReportViewer.resx">
+      <DependentUpon>SupplierStockoutReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TempStockoutReport.rdlc" />
+    <EmbeddedResource Include="TempStockoutReportViewer.resx">
+      <DependentUpon>TempStockoutReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="posDataSet.xsc">
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="posDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LastGenOutput>posDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="posDataSet.xss">
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="RestockinReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestockinReportViewer.Designer.cs">
+      <DependentUpon>RestockinReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnPOrderReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnPOrderReportViewer.Designer.cs">
+      <DependentUpon>ReturnPOrderReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock2DeptReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock2DeptReportViewer.Designer.cs">
+      <DependentUpon>Stock2DeptReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockInReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockInReportViewer.Designer.cs">
+      <DependentUpon>StockInReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockStatisticReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockStatisticReportViewer.Designer.cs">
+      <DependentUpon>StockStatisticReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierStockoutReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierStockoutReportViewer.Designer.cs">
+      <DependentUpon>SupplierStockoutReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TempStockoutReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempStockoutReportViewer.Designer.cs">
+      <DependentUpon>TempStockoutReportViewer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppFrame\AppFrame.csproj">
+      <Project>{73A362AB-99CF-4AA1-8278-01CAED2516F0}</Project>
+      <Name>AppFrame</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

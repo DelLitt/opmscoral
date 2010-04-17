@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="DepartmentStockOutDetail"
+	    table="department_stock_out_detail"
+>
+
+    <!--<composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
+        <key-property 
+            name="StockOutId" 
+            column="STOCK_OUT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+        <key-property 
+            name="ProductId" 
+            column="PRODUCT_ID" 
+            type="string"
+            length="20">
+        </key-property>
+        <key-property 
+            name="DepartmentId" 
+            column="DEPARTMENT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+    </composite-id>-->
+  <composite-id name="DepartmentStockOutDetailPK" class="DepartmentStockOutDetailPK">
+    <key-property
+            name="StockOutDetailId"
+            column="STOCK_OUT_DETAIL_ID"
+            type="Int64"
+            length="10">
+    </key-property>
+    <key-property
+            name="DepartmentId"
+            column="DEPARTMENT_ID"
+            type="Int64"
+            length="10">
+    </key-property>
+  </composite-id>  
+  <!--<id
+       name="StockOutDetailId"
+       type="Int64"
+       column="STOCK_OUT_DETAIL_ID"
+    >
+    <generator class="assigned" />
+  </id>-->
+  <property
+            name="StockOutId"
+            column="STOCK_OUT_ID"
+            type="Int64"
+            length="10">
+  </property>
+  <property
+      name="Quantity"
+      type="Int64"
+      column="QUANTITY"
+      length="10"
+    >
+  </property>
+  <property
+      name="Description"
+      type="string"
+      column="DESCRIPTION"
+      length="5000"
+    >
+  </property>
+  <property
+      name="CreateDate"
+      type="DateTime"
+      column="CREATE_DATE"
+      length="19"
+    >
+  </property>
+  <property
+      name="CreateId"
+      type="string"
+      column="CREATE_ID"
+      length="50"
+    >
+  </property>
+  <property
+      name="UpdateDate"
+      type="DateTime"
+      column="UPDATE_DATE"
+      length="19"
+    >
+  </property>
+  <property
+      name="UpdateId"
+      type="string"
+      column="UPDATE_ID"
+      length="50"
+    >
+  </property>
+  <property
+      name="ExclusiveKey"
+      type="Int64"
+      column="EXCLUSIVE_KEY"
+      length="10"
+    >
+  </property>
+  <property
+      name="DelFlg"
+      type="Int64"
+      column="DEL_FLG"
+      length="10"
+    >
+  </property>
+
+  <!-- Associations -->
+  <!-- derived association(s) for compound key -->
+  <!-- bi-directional many-to-one association to DepartmentStockOut -->
+  <many-to-one
+        name="DepartmentStockOut"
+	    class="DepartmentStockOut"
+        update="false"
+	    insert="false"
+      lazy="false"        
+	>
+    
+    	<column name="STOCK_OUT_ID" />
+    	<column name="DEPARTMENT_ID" />
+	</many-to-one>
+
+  <!-- bi-directional many-to-one association to Product -->
+  <many-to-one
+      name="Product"
+    class="Product"
+    lazy="false"
+	>
+    <column name="PRODUCT_ID" />
+  </many-to-one>
+
+  <!-- end of derived association(s) -->
+
+  <many-to-one
+  name="ProductMaster"
+class="ProductMaster"
+lazy="false"
+	>
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
+
+  <property
+         name="GoodQuantity"
+         type="Int64"
+         column="GOOD_QUANTITY"
+         length="10"
+    >
+  </property>
+  <property
+         name="DamageQuantity"
+         type="Int64"
+         column="DAMAGE_QUANTITY"
+         length="10"
+    >
+  </property>
+  <property
+        name="ErrorQuantity"
+        type="Int64"
+        column="ERROR_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="LostQuantity"
+        type="Int64"
+        column="LOST_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="UnconfirmQuantity"
+        type="Int64"
+        column="UNCONFIRM_QUANTITY"
+        length="10"
+    >
+  </property>
+  <many-to-one
+   name="DefectStatus"
+   class="StockDefectStatus"
+   lazy="false"
+    >
+    <column name="DEFECT_STATUS_ID" />
+  </many-to-one>
+
+</class>
+</hibernate-mapping>
