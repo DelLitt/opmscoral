@@ -456,7 +456,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataLayer.xml" />
+    <Content Include="DataLayer.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataLayer\" />
