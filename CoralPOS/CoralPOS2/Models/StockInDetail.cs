@@ -95,48 +95,40 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual long SrcDepartmentId {
-            get;
-            set;
-        }
-        
-        [DataMember(Name="17", Order=17)]
         public virtual long StockInType {
             get;
             set;
         }
         
-        [DataMember(Name="18", Order=18)]
+        [DataMember(Name="17", Order=17)]
         public virtual System.DateTime UpdateDate {
             get;
             set;
         }
         
-        [DataMember(Name="19", Order=19)]
+        [DataMember(Name="18", Order=18)]
         public virtual string UpdateId {
             get;
             set;
         }
         
-        [DataMember(Name="20", Order=20)]
+        [DataMember(Name="19", Order=19)]
         public virtual StockIn StockIn {
             get;
             set;
         }
         
-        [DataMember(Name="21", Order=21)]
+        [DataMember(Name="20", Order=20)]
         public virtual Product Product {
             get;
             set;
         }
         
-        [DataMember(Name="22", Order=22)]
+        [DataMember(Name="21", Order=21)]
         public virtual ProductMaster ProductMaster {
             get;
             set;
         }
-
-        public virtual MainPrice MainPrice { get; set; }
    	 protected bool Equals(StockInDetail entity)
 		{
 			if (entity == null) return false;

@@ -17,7 +17,6 @@
     <property name="Price" column="PRICE" />
     <property name="Quantity" column="QUANTITY" />
     <property name="SellPrice" column="SELL_PRICE" />
-    <property name="SrcDepartmentId" column="SRC_DEPARTMENT_ID" />
     <property name="StockInType" column="STOCK_IN_TYPE" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />

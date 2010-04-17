@@ -15,6 +15,7 @@
     <property name="ExFld4" column="EX_FLD4" />
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
+    <property name="SrcDepartmentId" column="SRC_DEPARTMENT_ID" />
     <property name="StockInCost" column="STOCK_IN_COST" />
     <property name="StockInDate" column="STOCK_IN_DATE" />
     <property name="StockInType" column="STOCK_IN_TYPE" />

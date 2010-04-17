@@ -89,42 +89,48 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="13", Order=13)]
-        public virtual long StockInCost {
+        public virtual long SrcDepartmentId {
             get;
             set;
         }
         
         [DataMember(Name="14", Order=14)]
-        public virtual System.DateTime StockInDate {
+        public virtual long StockInCost {
             get;
             set;
         }
         
         [DataMember(Name="15", Order=15)]
-        public virtual long StockInType {
+        public virtual System.DateTime StockInDate {
             get;
             set;
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual long TotalQuantity {
+        public virtual long StockInType {
             get;
             set;
         }
         
         [DataMember(Name="17", Order=17)]
-        public virtual System.DateTime UpdateDate {
+        public virtual long TotalQuantity {
             get;
             set;
         }
         
         [DataMember(Name="18", Order=18)]
-        public virtual string UpdateId {
+        public virtual System.DateTime UpdateDate {
             get;
             set;
         }
         
         [DataMember(Name="19", Order=19)]
+        public virtual string UpdateId {
+            get;
+            set;
+        }
+        
+        [DataMember(Name="20", Order=20)]
         public virtual IList<StockInDetail> StockInDetails {
             get;
             set;

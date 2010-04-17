@@ -337,6 +337,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Sale\PurchaseOrderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Sale\PurchaseOrderSearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -401,6 +409,7 @@
     <Compile Include="Actions\Security\IRegisterUserAction.cs" />
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\FlowConstants.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
@@ -487,6 +496,12 @@
     </Compile>
     <Compile Include="Views\Stock\StockIn\DepartmentStockInWaitingConfirmView.xaml.cs">
       <DependentUpon>DepartmentStockInWaitingConfirmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sale\PurchaseOrderView.xaml.cs">
+      <DependentUpon>PurchaseOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sale\PurchaseOrderSearchView.xaml.cs">
+      <DependentUpon>PurchaseOrderSearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml.cs">
       <DependentUpon>DepartmentStockOutConfirmView.xaml</DependentUpon>
