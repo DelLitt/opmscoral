@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using FastReflectionLib;
@@ -244,9 +245,11 @@ namespace AppFrame.DataLayer
         /// <param name="session">The current session to the db</param>
         private static void LazyInit(object proxy, object owner, ISession session)
         {
+            bool needDeproxy = false;
             if (null != proxy)
             {
-                Type[] interfaces = proxy.GetType().GetInterfaces();
+                Type proxyType = proxy.GetType();
+                Type[] interfaces = proxyType.GetInterfaces();
                 foreach (Type iface in interfaces)
                 {
                     if (iface == typeof(INHibernateProxy) ||
@@ -255,11 +258,19 @@ namespace AppFrame.DataLayer
                         if (!NHibernateUtil.IsInitialized(proxy))
                         {
                             if (iface == typeof(INHibernateProxy))
+                            {
                                 session.Lock(proxy, LockMode.None);
+                                needDeproxy = true;
+                            }
                             else //if (session.Contains(owner)) 
                                 session.Lock(owner, LockMode.None);
 
                             NHibernateUtil.Initialize(proxy);
+                            
+                            /*if(needDeproxy)
+                            {                               
+                                proxy = NHibernateUtil.
+                            }*/
                         }
 
                         break;

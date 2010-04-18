@@ -79,6 +79,7 @@ namespace POSServer.Actions.Synchronize
                             result.Status = "Thành công";
                             resultList.Add(result);
                             Stream stream = File.Open(fileName, FileMode.Create);
+                            
                             Serializer.Serialize(stream, first);
                             stream.Flush();
                             stream.Close();
@@ -104,7 +105,7 @@ namespace POSServer.Actions.Synchronize
                                     soResult.Status = "Thành công";
                                     resultList.Add(soResult);
                                     Stream soStream = File.Open(soFileName, FileMode.Create);
-                                    Serializer.Serialize(stream, first);
+                                    Serializer.Serialize(stream, soSync);
                                     soStream.Flush();
                                     soStream.Close();
                                 }
