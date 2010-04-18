@@ -4,11 +4,11 @@
     Width="837" Height="700">
     <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="0,28,378,34" Name="Unconfirm" HorizontalAlignment="Right" Width="80" Height="80">KHÔNG XÁC NHẬN</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80">DỪNG</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="208,28,0,34" Name="Confirm" Width="80" Height="80">XÁC NHẬN</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,220,34" Name="Edit" Width="80" Height="80">CHỈNH SỬA</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="23,8,0,37" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="379,8,378,37" Name="Unconfirm">KHÔNG XÁC NHẬN</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,20,37" Name="Stop" Width="80">DỪNG</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="208,8,0,37" Name="Confirm" Width="80">XÁC NHẬN</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,220,37" Name="Edit" Width="80">CHỈNH SỬA</Button>
         </Grid>        
             <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>

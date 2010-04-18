@@ -10,6 +10,6 @@ namespace POSServer.Actions.Synchronize
     {
 
         ISyncLogic SyncLogic { get; set; }
-        void SyncToDepartment(SyncToDepartmentObject syncToDepartmentObject);
+        object SyncToDepartment(SyncToDepartmentObject syncToDepartmentObject);
     }
 }

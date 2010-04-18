@@ -89,6 +89,8 @@ namespace POSServer.DataLayer.Implement
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria<Product> criteria, IProjection type);
+
+        Product Fetch(Product product);
     }
 }
 

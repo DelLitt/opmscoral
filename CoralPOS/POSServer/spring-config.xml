@@ -129,4 +129,14 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  <object id="SyncToDepartmentFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ISyncToDepartmentViewModel"/>
+        <entry key="Step2" value="POSServer.Actions.Synchronize.ISyncToDepartmentAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

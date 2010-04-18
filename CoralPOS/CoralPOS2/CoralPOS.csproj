@@ -420,6 +420,7 @@
     <Compile Include="Models\StockOutDetail.cs" />
     <Compile Include="Models\StockOutTemp.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SyncResult.cs" />
     <Compile Include="Models\SyncStatusus.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Transaction.cs" />

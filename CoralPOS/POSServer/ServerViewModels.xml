@@ -103,5 +103,9 @@
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="true" />
   </object>
+  <object id="ISyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />    
+  </object>
   
 </objects>

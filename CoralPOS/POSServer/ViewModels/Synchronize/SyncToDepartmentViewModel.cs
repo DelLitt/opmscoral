@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.DataLayer;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Synchronize
@@ -23,7 +26,7 @@ namespace POSServer.ViewModels.Synchronize
     {
 
         private IShellViewModel _startViewModel;
-        private IList _departments;
+        private IList<Department> _departments;
 
         private Department _selectedDepartment;
 
@@ -79,7 +82,7 @@ namespace POSServer.ViewModels.Synchronize
 		
 		#region Methods
 
-        public IList Departments
+        public IList<Department> Departments
         {
             get { return _departments; }
             set { _departments = value; NotifyOfPropertyChange(()=>Departments);}
@@ -115,16 +118,34 @@ namespace POSServer.ViewModels.Synchronize
             set { _resultInfoList = value; NotifyOfPropertyChange(() => ResultInfoList); }
         }
 
+        public IDepartmentLogic DepartmentLogic
+        {
+            get; set;
+        }
+
         public void SyncToDepartment()
         {
-            
+           SyncToDepartmentObject obj = new SyncToDepartmentObject();
+            obj.Department = SelectedDepartment;
+            obj.DepartmentInfo = DepartmentInfo;
+            obj.ProductMasterInfo = ProductMasterInfo;
+            obj.PriceInfo = PriceInfo;
+            Flow.Session.Put(FlowConstants.SYNC_TO_DEPARTMENT,obj);
+            GoToNextNode();
         }
 		        
         public void Quit()
         {
-            
+            Flow.End();
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            IList<Department> list = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
+            Departments = list;
+        }
+
+        #endregion
 		
         
         

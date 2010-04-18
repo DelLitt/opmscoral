@@ -4,9 +4,9 @@
     Width="837" Height="700">
     <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="ViewDetail" Width="80" Height="80">CHI TIẾT</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80">DỪNG</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="22.22,8.888,0,36.663" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="387.739,8.888,368.852,36.663" Name="ViewDetail">CHI TIẾT</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8.888,21.109,36.663" Name="Stop" Width="80">DỪNG</Button>
             </Grid>        
             <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>

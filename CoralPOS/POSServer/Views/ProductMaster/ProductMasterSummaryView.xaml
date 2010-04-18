@@ -4,10 +4,10 @@
     Width="837" Height="700">
     <Grid>
             <Grid Height="128" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="14,13,0,57" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,13,236,57" Name="ProductBack" Width="80" Height="80">TRỞ VỀ</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="380,13,377,57" Name="ProductSaveConfirm" Height="80">XÁC NHẬN</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,13,15,57" Name="Stop" Width="80" Height="80">DỪNG</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="13,6,0,42" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,237,42" Name="ProductBack" Width="80">TRỞ VỀ</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="379,6,378,42" Name="ProductSaveConfirm">XÁC NHẬN</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,16,42" Name="Stop" Width="80">DỪNG</Button>
             </Grid>        
             <Grid Margin="0,0,0,155.031">
             <Grid.RowDefinitions>

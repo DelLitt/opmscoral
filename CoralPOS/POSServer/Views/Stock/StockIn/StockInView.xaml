@@ -7,10 +7,10 @@
     <WPF:PosDataErrorProvider Name="PosDataErrorProvider" >
     <Grid>        
             <Grid Height="125" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,227,34" Name="Recreate" Width="80" Height="80" TabIndex="10">TẠO LẠI</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="385,28,364,34" Name="Save" TabIndex="9" Width="80" Height="80">LƯU</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="80" Height="80" TabIndex="11">DỪNG</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="23,8,0,37" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,227,37" Name="Recreate" Width="80" TabIndex="10">TẠO LẠI</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="389,8,368,37" Name="Save" TabIndex="9">LƯU</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,8,20,37" Name="Stop" Width="80" TabIndex="11">DỪNG</Button>
             </Grid>        
             <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>

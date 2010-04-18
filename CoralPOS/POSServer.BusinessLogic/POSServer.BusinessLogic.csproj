@@ -72,6 +72,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -247,6 +250,8 @@
     <Compile Include="Implement\SupplierLogic.cs" />
     <Compile Include="Implement\SyncLogic.cs" />
     <Compile Include="Implement\SyncStatususLogic.cs" />
+    <Compile Include="Implement\SyncToDepartmentObject.cs" />
+    <Compile Include="Implement\SyncToMainObject.cs" />
     <Compile Include="Implement\TaxLogic.cs" />
     <Compile Include="Implement\TransactionLogic.cs" />
     <Compile Include="Implement\UserInfoLogic.cs" />

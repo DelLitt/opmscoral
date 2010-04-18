@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
+using POSServer.DataLayer.Common;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -320,6 +321,18 @@ namespace POSServer.DataLayer.Implement
             }
             if(criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
+        }
+
+        public MainPrice Fetch(MainPrice mainPrice)
+        {
+            return (MainPrice)HibernateTemplate
+                .Execute(delegate(ISession session)
+                {
+                    
+                    mainPrice = LazyInitializer.InitializeEntity(mainPrice, 0, DaoConstants.MODEL_NAMESPACE, session);
+                    return mainPrice;
+                }
+                  );
         }
     }
 }

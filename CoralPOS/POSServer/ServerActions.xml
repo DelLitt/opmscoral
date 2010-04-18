@@ -48,5 +48,7 @@
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
   </object>
-  
+  <object id="ISyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    
+    <property name="SyncLogic" ref="ISyncLogic" />
+  </object>
 </objects>

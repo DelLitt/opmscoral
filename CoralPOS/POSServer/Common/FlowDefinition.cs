@@ -7,6 +7,10 @@ namespace POSServer.Common
 {
     public class FlowDefinition
     {
+        #region Synchronize
+        public static string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
+        #endregion
+
         #region Task
 
         public const string LoginFlow = "LoginFlow";
@@ -35,6 +39,7 @@ namespace POSServer.Common
         public const string StockInSearchFlow = "StockInSearchFlow";
         public const string StockOutCreateFlow ="StockOutCreateFlow";
         public const string StockInCreateFlow = "StockInCreateFlow";
+        public const string SyncToDepartmentFlow = "SyncToDepartmentFlow";
 
         #endregion
 

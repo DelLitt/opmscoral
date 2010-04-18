@@ -13,7 +13,8 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Common;
+using POSServer.Common;
 
 
 namespace POSServer.ViewModels.Synchronize
@@ -41,7 +42,7 @@ namespace POSServer.ViewModels.Synchronize
 		        
         public void ToDepartment()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.SYNC_TO_DEPARTMENT);
         }
 		        
         public void FromDepartment()

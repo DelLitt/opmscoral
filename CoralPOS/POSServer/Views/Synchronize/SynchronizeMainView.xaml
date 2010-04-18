@@ -21,7 +21,7 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="59.994,216.25,68.882,0" Name="FromMainStock" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="NHẬP ĐỒNG BỘ"></TextBlock>
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="55.55,325,65.549,296.25" Name="ToMainStock" TabIndex="9" Grid.Row="1" Width="80" Height="80">
+        <Button FontSize="14" FontWeight="Bold" Margin="59.994,324.412,69.256,284.416" Name="ToMainStock" TabIndex="9" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5" Text="XUẤT ĐỒNG BỘ"></TextBlock>
         </Button>
     </Grid>
