@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
@@ -17,11 +18,12 @@ using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.ViewModels.Menu;
 
 
 namespace POSServer.ViewModels.Synchronize
 {
-    
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainView))]
     public class SyncToDepartmentViewModel : PosViewModel,ISyncToDepartmentViewModel  
     {
 

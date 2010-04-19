@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using AppFrame.DataLayer;
 using AppFrame.Utils;
 using CoralPOS.Models;
+using NeXtreme.OpenNxSerialization.Native.IO;
 using NHibernate;
 using NHibernate.Linq;
+using POSServer.DataLayer.Common;
 using POSServer.DataLayer.Implement;
 using ProtoBuf;
 
@@ -41,7 +45,9 @@ namespace POSServer.BusinessLogic.Implement
         {
             IList<SyncResult> resultList = new List<SyncResult>();
             Department department = syncToDept.Department;
-            return (IList<SyncResult>)StockOutDao.Execute(delegate(ISession session)
+            syncToDept = GetSyncData(syncToDept);
+           #region useless
+		/* return (IList<SyncResult>)StockOutDao.Execute(delegate(ISession session)
                                     {
                                         
                                         if (syncToDept.DepartmentInfo)
@@ -53,8 +59,8 @@ namespace POSServer.BusinessLogic.Implement
 
                                         if (syncToDept.ProductMasterInfo)
                                         {
-                                            IQuery query = session.CreateQuery("from Product fetch all properties");
-                                            syncToDept.ProductList = query.List<Product>();
+                                            IQuery query = session.CreateQuery("from ProductMaster fetch all properties");
+                                            syncToDept.ProductMasterList = query.List<ProductMaster>();
 
                                             IQuery priceQuery = session.CreateQuery("from MainPrice fetch all properties");
                                             syncToDept.PriceList = priceQuery.List<MainPrice>();
@@ -68,12 +74,14 @@ namespace POSServer.BusinessLogic.Implement
                                             }
                                         }
                                         var stockOutQuery = session.CreateQuery("from StockOut fetch all properties");
-                                        syncToDept.StockOutList = stockOutQuery.List<StockOut>();
+                                        syncToDept.StockOutList = stockOutQuery.List<StockOut>();*/ 
+	#endregion
                                         
                                         SyncToDepartmentObject first = new SyncToDepartmentObject();
                                         first.Department = syncToDept.Department;
-                                        first.ProductList = syncToDept.ProductList;
+                                        first.ProductMasterList = syncToDept.ProductMasterList;
                                         first.PriceList = syncToDept.PriceList;
+                                        first.StockOutList = new List<StockOut>();
                                         int countSyncFile = 1;
                                         string fileName = exportPath + "\\" + department.DepartmentId
                                                                       + "_" + countSyncFile.ToString()
@@ -85,7 +93,11 @@ namespace POSServer.BusinessLogic.Implement
                                         result.Status = "Thành công";
                                         resultList.Add(result);
                                         Stream stream = File.Open(fileName, FileMode.Create);
-                                        Serializer.Serialize(stream, first);
+                                        
+                                        BinaryFormatter writer = new BinaryFormatter();
+                                        writer.Serialize(stream,first);
+                                        /*NxBinaryWriter nxWriter = new NxBinaryWriter(stream);
+                                        nxWriter.WriteObject(first);*/
                                         stream.Flush();
                                         stream.Close();
 
@@ -94,8 +106,11 @@ namespace POSServer.BusinessLogic.Implement
                                         {
                                             foreach (StockOut stockOut in syncToDept.StockOutList)
                                             {
+                                                //StockOut _initedstockOut = LazyInitializer.InitializeEntity(stockOut, 0, DaoConstants.MODEL_NAMESPACE, session)
                                                 countSyncFile += 1;
                                                 SyncToDepartmentObject soSync = new SyncToDepartmentObject();
+                                                first.ProductMasterList = new List<ProductMaster>();
+                                                first.PriceList = new List<MainPrice>();
                                                 soSync.Department = syncToDept.Department;
                                                 soSync.StockOutList = new List<StockOut>();
                                                 soSync.StockOutList.Add(stockOut);
@@ -110,14 +125,18 @@ namespace POSServer.BusinessLogic.Implement
                                                 soResult.Status = "Thành công";
                                                 resultList.Add(soResult);
                                                 Stream soStream = File.Open(soFileName, FileMode.Create);
-                                                Serializer.Serialize(soStream, soSync);
+                                                BinaryFormatter soWriter = new BinaryFormatter();
+                                                soWriter.Serialize(soStream, soSync);
+                                                /*NxBinaryWriter nxSoWriter = new NxBinaryWriter(soStream);
+                                                nxSoWriter.WriteObject(soSync);*/
+                                                //Serializer.Serialize(soStream, soSync);
                                                 soStream.Flush();
                                                 soStream.Close();
                                             }
                                         }
                                         return resultList;
-                                    }
-                                    );
+                                    /*}
+                                    );*/
             
         }
 
@@ -135,16 +154,16 @@ namespace POSServer.BusinessLogic.Implement
 
                 ProductDao.Execute(delegate(ISession session)
                 {
-                    string hql = "from Product fetch all properties";
+                    string hql = "from ProductMaster fetch all properties";
                     IQuery query = session.CreateQuery(hql);
-                    syncToDept.ProductList = query.List<Product>();
+                    syncToDept.ProductMasterList = query.List<ProductMaster>();
                     return null;
                 })
                 ;
-                syncToDept.ProductList = ProductDao.FindAll(new LinqCriteria<Product>());
-                foreach (Product product in syncToDept.ProductList)
+                syncToDept.ProductMasterList = ProductMasterDao.FindAll(new LinqCriteria<ProductMaster>());
+                foreach (ProductMaster product in syncToDept.ProductMasterList)
                 {
-                    ProductDao.Fetch(product);
+                    ProductMasterDao.Fetch(product);
                 }
                 syncToDept.PriceList = MainPriceDao.FindAll(new LinqCriteria<MainPrice>());
                 foreach (MainPrice mainPrice in syncToDept.PriceList)

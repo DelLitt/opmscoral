@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
+using POSServer.DataLayer.Common;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -346,6 +347,29 @@ namespace POSServer.DataLayer.Implement
                                     return result;
                                 }
                                     );
+        }
+
+        public ProductMaster Fetch(ProductMaster product)
+        {
+            return (ProductMaster)HibernateTemplate
+                .Execute(delegate(ISession session)
+                {
+                    //session.Lock(stockOut, LockMode.None);
+                    //StockOut _initObject = session.Get<StockOut>(stockOut.StockOutId);
+                    product = LazyInitializer.InitializeEntity(product, 0, DaoConstants.MODEL_NAMESPACE, session);
+
+                    #region useless
+                    /*string sql = "from StockOut so fetch all properties " +
+                                    " where so.StockOutId =" + stockOut.StockOutId + "";
+                      IQuery query = session.CreateQuery(sql);
+                      StockOut res =  (StockOut)query.UniqueResult();
+                      res = LazyInitializer.InitializeCompletely(res, session);*/
+
+                    #endregion
+                    return product;
+                    //return res;
+                }
+                  );
         }
     }
 }

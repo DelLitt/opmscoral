@@ -418,6 +418,7 @@
     <Compile Include="Models\StockOutCost.cs" />
     <Compile Include="Models\StockOutCostPK.cs" />
     <Compile Include="Models\StockOutDetail.cs" />
+    <Compile Include="Models\StockOutDetailPK.cs" />
     <Compile Include="Models\StockOutTemp.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SyncResult.cs" />

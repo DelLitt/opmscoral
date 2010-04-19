@@ -16,7 +16,7 @@ namespace POSServer.BusinessLogic.Implement
         public Department Department { get; set;}
         
         [DataMember(Name = "3", Order = 3)]
-        public IList<Product> ProductList { get; set;}
+        public IList<ProductMaster> ProductMasterList { get; set;}
         
         [DataMember(Name = "4", Order = 4)]
         public IList<MainPrice> PriceList { get; set;}

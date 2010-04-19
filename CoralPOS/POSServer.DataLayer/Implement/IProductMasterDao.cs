@@ -96,6 +96,8 @@ namespace POSServer.DataLayer.Implement
         /// <param name="p"></param>
         /// <returns></returns>
         IList FindProductMasterWithTypes(string p);
+
+        ProductMaster Fetch(ProductMaster product);
     }
 }
 

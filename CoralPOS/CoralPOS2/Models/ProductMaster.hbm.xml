@@ -26,7 +26,7 @@
     <many-to-one class="ProductType" name="ProductType" lazy="false">
       <column name="TYPE_ID" />
     </many-to-one>
-    <many-to-one class="Category" name="Category" lazy="false">
+    <many-to-one class="Category" name="Category" lazy="no-proxy">
       <column name="CATEGORY_ID" />
     </many-to-one>
     <!--<many-to-one class="Country" name="Country">

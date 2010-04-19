@@ -73,7 +73,12 @@ namespace POSServer.BusinessLogic.Implement
             StockOutDao.Add(data);
             foreach (StockOutDetail outDetail in data.StockOutDetails)
             {
-                outDetail.StockOutDetailId = nextStockOutDetailId++;
+                StockOutDetailPK detailPK = new StockOutDetailPK
+                                                {
+                                                    StockOutDetailId = nextStockOutDetailId++,
+                                                    StockOutId = nextStockOutId
+                                                };
+                outDetail.StockOutDetailPK = detailPK;
                 StockOutDetailDao.Add(outDetail);
 
                 ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
