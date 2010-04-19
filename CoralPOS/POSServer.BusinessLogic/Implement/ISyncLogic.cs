@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
 namespace POSServer.BusinessLogic.Implement
@@ -16,5 +18,7 @@ namespace POSServer.BusinessLogic.Implement
 
         SyncToMainObject SyncToMain(SyncToMainObject syncToMainObject);
         SyncToDepartmentObject SyncToDepartment(SyncToDepartmentObject syncToDept);
+
+        IList<SyncResult> SyncToDepartment(string exportPath, SyncToDepartmentObject syncToDept);
     }
 }

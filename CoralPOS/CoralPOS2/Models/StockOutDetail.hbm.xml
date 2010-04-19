@@ -22,13 +22,13 @@
     <property name="Quantity" column="QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
-    <many-to-one class="StockOut" name="StockOut">
+    <many-to-one class="StockOut" name="StockOut" lazy="false" not-null="true">
       <column name="STOCK_OUT_ID" />
     </many-to-one>
-    <many-to-one class="Product" name="Product">
+    <many-to-one class="Product" name="Product" lazy="false">
       <column name="PRODUCT_ID" />
     </many-to-one>
-    <many-to-one class="ProductMaster" name="ProductMaster">
+    <many-to-one class="ProductMaster" name="ProductMaster" lazy="false">
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
   </class>

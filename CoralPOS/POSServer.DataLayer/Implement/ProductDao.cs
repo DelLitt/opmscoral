@@ -334,6 +334,11 @@ namespace POSServer.DataLayer.Implement
                 }
                   );
         }
+
+        public object Execute(HibernateDelegate action)
+        {
+            return HibernateTemplate.Execute(action);
+        }
     }
 }
 

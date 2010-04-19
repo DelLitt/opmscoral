@@ -38,7 +38,6 @@ namespace POSServer.Actions.Synchronize
         
         public object SyncToDepartment(SyncToDepartmentObject toDepartmentObject)
         {
-            toDepartmentObject = SyncLogic.SyncToDepartment(toDepartmentObject);
             IList departmentUsbList = ClientUtility.GetUSBDrives();
             foreach (var POSSyncDrive in departmentUsbList)
             {
@@ -51,66 +50,13 @@ namespace POSServer.Actions.Synchronize
                     return -1;
                 }
                 resultList = new ArrayList();
-                
 
-                    Department department = toDepartmentObject.Department;
+                //toDepartmentObject = SyncLogic.SyncToDepartment(toDepartmentObject);
+                Department department = toDepartmentObject.Department;
                     var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
                     int countSyncFile = 1;
-                        //DateTime lastSyncTime = ClientUtility.GetLastSyncTime(exportPath, department, ClientUtility.SyncType.SyncDown);
-                        /*deptEvent = new DepartmentStockInEventArgs();
-                        deptEvent.LastSyncTime = lastSyncTime;
-                        deptEvent.Department = department;
-                        EventUtility.fireEvent(LoadDepartmentStockInForExportEvent, this, deptEvent);
 
-                        int countSyncFile = 1;
-                        if (deptEvent.SyncFromMainToDepartment != null)*/
-                            SyncToDepartmentObject first = new SyncToDepartmentObject();
-                    first.Department = toDepartmentObject.Department;
-                    first.ProductList = toDepartmentObject.ProductList;
-                    first.PriceList = toDepartmentObject.PriceList;
-
-                            string fileName = exportPath + "\\" + department.DepartmentId
-                                              + "_" + countSyncFile.ToString()
-                                              + "_SyncDown_"
-                                              + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")
-                                              + CommonConstants.SERVER_SYNC_FORMAT;
-                            SyncResult result = new SyncResult();
-                            result.FileName = fileName;
-                            result.Status = "Thành công";
-                            resultList.Add(result);
-                            Stream stream = File.Open(fileName, FileMode.Create);
-                            
-                            Serializer.Serialize(stream, first);
-                            stream.Flush();
-                            stream.Close();
-
-                            // write each stock out to a sync file for avoiding duplicate update
-                            if (!ObjectUtility.IsNullOrEmpty(toDepartmentObject.StockOutList))
-                            {
-                                foreach (StockOut stockOut in toDepartmentObject.StockOutList)
-                                {
-                                    countSyncFile += 1;
-                                    SyncToDepartmentObject soSync = new SyncToDepartmentObject();
-                                    soSync.Department = toDepartmentObject.Department;
-                                    soSync.StockOutList = new List<StockOut>();
-                                    soSync.StockOutList.Add(stockOut);
-
-                                    string soFileName = exportPath + "\\" + department.DepartmentId
-                                                  + "_" + countSyncFile.ToString()
-                                                  + "_SyncDown_"
-                                                  + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")
-                                                  + CommonConstants.SERVER_SYNC_FORMAT;
-                                    SyncResult soResult = new SyncResult();
-                                    soResult.FileName = soFileName;
-                                    soResult.Status = "Thành công";
-                                    resultList.Add(soResult);
-                                    Stream soStream = File.Open(soFileName, FileMode.Create);
-                                    Serializer.Serialize(stream, soSync);
-                                    soStream.Flush();
-                                    soStream.Close();
-                                }
-                            }
-                    
+                SyncLogic.SyncToDepartment(exportPath, toDepartmentObject);
                 
                 MessageBox.Show("Đồng bộ hoàn tất !");
             }

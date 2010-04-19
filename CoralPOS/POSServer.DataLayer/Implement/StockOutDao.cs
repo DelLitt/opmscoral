@@ -362,7 +362,8 @@ namespace POSServer.DataLayer.Implement
                 .Execute(delegate(ISession session)
                   {
                       //session.Lock(stockOut, LockMode.None);
-                      stockOut = LazyInitializer.InitializeEntity(stockOut,0, DaoConstants.MODEL_NAMESPACE,session);
+                      //StockOut _initObject = session.Get<StockOut>(stockOut.StockOutId);
+                      stockOut = LazyInitializer.InitializeEntity(stockOut, 0, DaoConstants.MODEL_NAMESPACE, session);
 
                       #region useless 
                       /*string sql = "from StockOut so fetch all properties " +
