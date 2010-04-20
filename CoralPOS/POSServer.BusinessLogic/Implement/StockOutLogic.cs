@@ -65,7 +65,7 @@ namespace POSServer.BusinessLogic.Implement
             IDictionary<string, MainPrice> prices = new Dictionary<string, MainPrice>();
             var maxIdResult = StockOutDao.SelectSpecificType(null, Projections.Max("StockOutId"));
             long nextStockOutId = maxIdResult != null ? Int64.Parse(maxIdResult.ToString()) + 1 : 1;
-            var maxDetailIdResult = StockOutDetailDao.SelectSpecificType(null, Projections.Max("StockOutDetailId"));
+            var maxDetailIdResult = StockOutDetailDao.SelectSpecificType(null, Projections.Max("StockOutDetailPK.StockOutDetailId"));
             long nextStockOutDetailId = maxDetailIdResult != null ? Int64.Parse(maxDetailIdResult.ToString()) + 1 : 1;
 
 

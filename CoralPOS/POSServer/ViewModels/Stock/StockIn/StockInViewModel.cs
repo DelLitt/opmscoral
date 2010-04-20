@@ -223,10 +223,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             {
                 //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
                 if (this.HasError()) return false;
-                else
-                {
-                    return true;
-                }
+                return true;
+                
             }
         }
 

@@ -29,8 +29,8 @@
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
                     <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
                     <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True"  Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
-                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
-                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
+                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="180" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
+                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="Quantity" />
                     <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="Price" />

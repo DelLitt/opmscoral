@@ -33,15 +33,16 @@ namespace AppFrame.WPF
         #region properties
         public ControlTemplate ErrorTemplate { get; set; }
         #endregion
+        // return true if Ok and false if has error
         public bool Validate()
         {
-            bool val = false;
+            bool hasError = false;
             foreach (FrameworkElement bindingObject in bindingObjects)
             {
-                val = System.Windows.Controls.Validation.GetHasError(bindingObject);
-                if(val == true) return val;
+                hasError = System.Windows.Controls.Validation.GetHasError(bindingObject);
+                if(hasError == true) return false;
             }
-            return val;
+            return true;
         }
         private void TurnOnValidateOnDataError()
         {

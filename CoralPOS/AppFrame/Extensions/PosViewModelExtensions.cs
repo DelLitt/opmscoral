@@ -31,8 +31,8 @@ namespace AppFrame.Extensions
             if(view == null) return false;
             DependencyObject vp = LogicalTreeHelper.FindLogicalNode(view, "PosDataErrorProvider");
             PosDataErrorProvider pvp = vp as PosDataErrorProvider;
-            if(pvp == null) return false;
-            return pvp.Validate();
+            if (pvp == null) return false;
+            return !pvp.Validate();
         }
 
         public static bool HasError(this PosViewModel viewModel,string pdpName)

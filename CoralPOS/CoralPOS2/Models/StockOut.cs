@@ -1,7 +1,8 @@
 using System; 
 using System.Text; 
 using System.Collections.Generic; 
-using System.Runtime.Serialization; 
+using System.Runtime.Serialization;
+using AppFrame.WPF.ValidationAttributes;
 using Caliburn.PresentationFramework.Behaviors; 
 
 
@@ -47,6 +48,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="6", Order=6)]
+        //[NotNullOrEmpty]
         public virtual string Description {
             get;
             set;
