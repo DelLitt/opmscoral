@@ -217,18 +217,30 @@ namespace POSServer.ViewModels.Stock.StockIn
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
+        private bool _canSave;
         public bool CanSave
         {
             get
             {
                 //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-                if (this.HasError()) return false;
-                return true;
-                
+                if(ObjectUtility.IsNullOrEmpty(StockIn.StockInDetails)) return false;
+                return _canSave;
+                //return !this.HasError();
+            }
+            set
+            {
+                _canSave = value;
+                NotifyOfPropertyChange(()=>CanSave);
             }
         }
 
-        [Preview("CanSave")]
+        /*public bool CanSave()
+        {
+            //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            return !this.HasError();
+        }*/
+        
+        [Dependencies("StockIn", "StockInDetailList")]
         public void Save()
         {
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
@@ -355,6 +367,11 @@ namespace POSServer.ViewModels.Stock.StockIn
                     list.Add(newDetail);
                     StockInDetailList = list;
                 
+            }
+            if(StockIn.StockInDetails==null)
+            {
+                StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+                NotifyOfPropertyChange(()=>StockIn);
             }
         }
 

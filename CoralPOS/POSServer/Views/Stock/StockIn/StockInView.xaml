@@ -4,7 +4,7 @@
     xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"
     xmlns:WPF="clr-namespace:AppFrame.WPF;assembly=AppFrame"
     Width="837" Height="700">    
-    <WPF:PosDataErrorProvider Name="PosDataErrorProvider" >
+    <WPF:PosDataErrorProvider Name="PosDataErrorProvider" IsValid="{Binding CanSave,Mode=OneWayToSource}">
     <Grid>        
             <Grid Height="125" VerticalAlignment="Bottom">                
                 <Button FontSize="14" FontWeight="Bold" Margin="23,8,0,37" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
@@ -24,7 +24,7 @@
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="0,0,331.528,64" Name="label4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="68">GIÁ LẺ</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="10.394,0,0,64" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="113.926">GIÁ NHẬP</Label>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="textBox4" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" TabIndex="8" SelectionUnit="Cell" CanUserAddRows="False" CanUserDeleteRows="True">
+            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" TabIndex="8" SelectionUnit="Cell" CanUserAddRows="False" CanUserDeleteRows="True" >
                 <my:DataGrid.Columns>
                     <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
                     <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
@@ -32,10 +32,10 @@
                     <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="180" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
                     <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
                     <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
-                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="Quantity" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="Price" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="MainPrice.WholeSalePrice" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged}" SortMemberPath="MainPrice.Price" />
+                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="Quantity" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="Price" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.WholeSalePrice" />
+                    <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true}" SortMemberPath="MainPrice.Price"  />
                 </my:DataGrid.Columns>
             </my:DataGrid>
             <ComboBox Margin="146.25,54.439,405.515,0" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38" VerticalAlignment="Top" IsEditable="True" IsTextSearchEnabled="True" TabIndex="2" IsTabStop="True"  SelectedItem="{Binding ProductMaster}" 

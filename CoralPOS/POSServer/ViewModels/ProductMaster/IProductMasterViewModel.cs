@@ -17,7 +17,7 @@ namespace POSServer.ViewModels.ProductMaster
     public interface IProductMasterViewModel : IScreenNode
     {
         #region Fields
-		                
+        CoralPOS.Models.ProductMaster ProductMaster { get; set; }                
         string ProductName
         {
             get;
@@ -61,10 +61,10 @@ namespace POSServer.ViewModels.ProductMaster
         void Help();
         
 		        
-        void ProductRecreate();
+        void Recreate();
         
 		        
-        void ProductSave();
+        void Save();
         
 		        
         void Stop();

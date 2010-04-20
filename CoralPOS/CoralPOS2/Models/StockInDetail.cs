@@ -99,7 +99,7 @@ namespace CoralPOS.Models
         }
 
         [DataMember(Name = "14", Order = 14)]
-        //[Min(1)]
+        [Min(1)]
         public virtual long Quantity
         {
             get;

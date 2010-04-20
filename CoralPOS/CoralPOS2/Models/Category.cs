@@ -1,7 +1,8 @@
 using System; 
 using System.Text; 
 using System.Collections.Generic; 
-using System.Runtime.Serialization; 
+using System.Runtime.Serialization;
+using AppFrame.WPF.ValidationAttributes;
 using Caliburn.PresentationFramework.Behaviors; 
 
 
@@ -23,6 +24,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="2", Order=2)]
+        [NotNullOrEmpty]
         public virtual string CategoryName {
             get;
             set;

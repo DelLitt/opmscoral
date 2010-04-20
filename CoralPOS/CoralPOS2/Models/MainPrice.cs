@@ -78,7 +78,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="13", Order=13)]
-        //[Min(1)]
+        [Min(1)]
         public virtual long Price {
             get;
             set;
@@ -97,7 +97,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="16", Order=16)]
-        //[Min(0)]
+        [Min(0)]
         public virtual long WholeSalePrice {
             get;
             set;

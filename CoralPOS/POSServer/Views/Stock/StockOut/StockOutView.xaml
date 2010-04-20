@@ -4,7 +4,7 @@
     xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"
     xmlns:WPF="clr-namespace:AppFrame.WPF;assembly=AppFrame"
     Width="837" Height="700">
-    <WPF:PosDataErrorProvider Name="PosDataErrorProvider" >
+    <WPF:PosDataErrorProvider Name="PosDataErrorProvider" IsValid="{Binding CanSave,Mode=OneWayToSource}">
         <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">
                 <Button FontSize="14" FontWeight="Bold" Width="80" Margin="21,6,0,38" Name="Help" HorizontalAlignment="Left" >GIÚP ĐỠ</Button>

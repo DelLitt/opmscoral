@@ -115,7 +115,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="17", Order=17)]
-        //[NotNullOrEmpty]
+        [NotNullOrEmpty]
         public virtual string ProductName {
             get;
             set;
@@ -140,12 +140,14 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="21", Order=21)]
+        [Required]
         public virtual ProductType ProductType {
             get;
             set;
         }
         
         [DataMember(Name="22", Order=22)]
+        [Required]
         public virtual Category Category {
             get;
             set;

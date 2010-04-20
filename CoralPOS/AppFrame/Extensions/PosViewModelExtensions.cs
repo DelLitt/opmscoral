@@ -46,7 +46,7 @@ namespace AppFrame.Extensions
         }
 
 
-        public static IEnumerable<IValidationError> GetErrors(this PosViewModel viewModel,object target)
+        public static IEnumerable<IValidationError> GetErrors<T>(this PosViewModel viewModel,T target)
         {
             DefaultValidator validator = new DefaultValidator();
             return validator.Validate(target);

@@ -29,18 +29,32 @@ namespace AppFrame.WPF
         {
             TurnOnValidateOnDataError();
         }
-        
+
+
+        public static readonly DependencyProperty IsValidProperty =
+            DependencyProperty.Register("IsValid", typeof(Boolean), typeof(PosDataErrorProvider));
+        public bool IsValid
+        {
+            get
+            {
+                return (bool)GetValue(IsValidProperty);
+            }
+            set
+            {
+                SetValue(IsValidProperty, value);
+            }
+        }
         #region properties
         public ControlTemplate ErrorTemplate { get; set; }
         #endregion
         // return true if Ok and false if has error
         public bool Validate()
         {
-            bool hasError = false;
+            bool hasError;
             foreach (FrameworkElement bindingObject in bindingObjects)
             {
                 hasError = System.Windows.Controls.Validation.GetHasError(bindingObject);
-                if(hasError == true) return false;
+                if(hasError) return false;
             }
             return true;
         }
@@ -58,6 +72,8 @@ namespace AppFrame.WPF
                           if(isSealed) _isSealedFieldInfo.SetValue(binding,false);
                           binding.ValidatesOnDataErrors = true;
                           binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                          binding.NotifyOnValidationError = true;
+                          System.Windows.Controls.Validation.AddErrorHandler(element,ErrorHandler);
                           element.SetBinding(dp, binding);
                           if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
                           if(ErrorTemplate!=null)
@@ -65,6 +81,18 @@ namespace AppFrame.WPF
                               System.Windows.Controls.Validation.SetErrorTemplate(element, ErrorTemplate);
                           }
                       });  
+        }
+
+        private void ErrorHandler(object sender, ValidationErrorEventArgs e)
+        {
+            if(e.Action == ValidationErrorEventAction.Added)
+            {
+                IsValid = false;
+            }
+            else
+            {
+                IsValid = true;
+            }
         }
 
         private void FindBindingsRecursively(DependencyObject element, FoundBindingCallbackDelegate callbackDelegate)

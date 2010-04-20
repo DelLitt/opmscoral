@@ -49,7 +49,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="6", Order=6)]
-        //[NotNullOrEmpty]
+        [NotNullOrEmpty]
         public virtual string Description {
             get;
             set;
@@ -134,6 +134,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="20", Order=20)]
+        [Required]
         public virtual IList<StockInDetail> StockInDetails {
             get;
             set;

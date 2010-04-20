@@ -177,19 +177,25 @@ namespace POSServer.ViewModels.Stock.StockOut
             
         }
 
+        private bool _canSave;
         public bool CanSave
         {
             get
             {
-                if (this.HasError()) return false;
-                else
-                {
-                    return true;
-                }
+                //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+                if (ObjectUtility.IsNullOrEmpty(StockOut.StockOutDetails)) return false;
+                return _canSave;
+                //return !this.HasError();
+            }
+            set
+            {
+                _canSave = value;
+                NotifyOfPropertyChange(() => CanSave);
             }
         }
 
         [Preview("CanSave")]
+        [Dependencies("StockOut")]
         public void Save()
         {
             

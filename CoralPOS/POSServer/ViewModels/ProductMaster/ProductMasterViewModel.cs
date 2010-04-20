@@ -6,17 +6,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
+using AppFrame.DataLayer;
 using AppFrame.Utils;
+using AppFrame.WPF.ValidationAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
+using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
@@ -48,6 +52,19 @@ namespace POSServer.ViewModels.ProductMaster
 		#region Fields
 		        
         private string _productName;
+
+        private CoralPOS.Models.ProductMaster productMaster;
+        public CoralPOS.Models.ProductMaster ProductMaster
+        {
+            get { return productMaster; }
+            set 
+            { 
+                productMaster = value;
+                NotifyOfPropertyChange(()=>ProductMaster); 
+            }
+        }
+
+        [NotNullOrEmpty]
         public string ProductName
         {
             get
@@ -229,12 +246,27 @@ namespace POSServer.ViewModels.ProductMaster
             
         }
 		        
-        public void ProductRecreate()
+        public void Recreate()
         {
             
         }
-		        
-        public void ProductSave()
+
+        private bool _canSave;
+        public bool CanSave
+        {
+            get
+            {
+                return _canSave;
+            }
+            set
+            {
+                _canSave = value;
+                NotifyOfPropertyChange(()=>CanSave);
+            }
+        }
+
+        [Dependencies("ProductMaster")]
+        public void Save()
         {
             var savePM = new CoralPOS.Models.ProductMaster
                              {
@@ -246,9 +278,17 @@ namespace POSServer.ViewModels.ProductMaster
                                 UpdateDate = DateTime.Now,
                                 UpdateId = "admin"
                              };
+            var savePm = ProductMaster;
+            /*savePm.Category = Category;
+            savePm.ProductType = ProductType;*/
+            savePm.CreateDate = DateTime.Now;
+            savePm.CreateId = "admin";
+            savePm.UpdateDate = DateTime.Now;
+            savePm.UpdateId = "admin";
+
             var productColorList = ProductColors;
             var productSizeList = ProductSizes;
-            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER,savePM);
+            Flow.Session.Put(FlowConstants.SAVE_PRODUCT_MASTER,savePm);
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_COLORS_LIST, productColorList);
             Flow.Session.Put(FlowConstants.SAVE_PRODUCT_SIZES_LIST, productSizeList);
             GoToNextNode();
@@ -354,7 +394,16 @@ namespace POSServer.ViewModels.ProductMaster
             if (_removeProductColors == null) _removeProductColors = new List<ExProductColor>();
             if (_selectedProductSizes == null) _selectedProductSizes = new List<ExProductSize>();
             if (_removeProductSizes == null) _removeProductSizes = new List<ExProductSize>();
-            //Flow.Session.OnFlowChanged += new EventHandler(Session_OnFlowChanged);
+            ProductMaster = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
+            if(ProductMaster ==null) CreateNewProductMaster();
+            
+            
+        }
+
+        private void CreateNewProductMaster()
+        {
+            ProductMaster = DataErrorInfoFactory.Create<CoralPOS.Models.ProductMaster>();
+
         }
 
         void Session_OnFlowChanged(object sender, EventArgs e)

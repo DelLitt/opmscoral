@@ -48,7 +48,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="6", Order=6)]
-        //[NotNullOrEmpty]
+        [NotNullOrEmpty]
         public virtual string Description {
             get;
             set;
