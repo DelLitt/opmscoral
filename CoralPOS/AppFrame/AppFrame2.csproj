@@ -291,6 +291,7 @@
     <Compile Include="WPF\FlowBackgroundTaskResult.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResultEventArgs.cs" />
     <Compile Include="WPF\MessageExtensions.cs" />
+    <Compile Include="WPF\ModelMapper.cs" />
     <Compile Include="WPF\NavigationViewManager.cs" />
     <Compile Include="WPF\NavigationWindowLocator.cs" />
     <Compile Include="WPF\ObjectSupport.cs" />
@@ -322,6 +323,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WPF\Mappers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
