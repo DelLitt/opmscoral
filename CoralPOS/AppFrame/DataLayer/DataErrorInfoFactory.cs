@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using AopAlliance.Aop;
 using Caliburn.DynamicProxy.Interceptors;
 using Caliburn.PresentationFramework.ViewModels;
 using Castle.Core.Interceptor;
@@ -10,6 +11,9 @@ using Castle.DynamicProxy;
 using NHibernate;
 using NHibernate.Proxy;
 using NHibernate.Type;
+using Spring.Aop.Framework;
+using Spring.Aop.Support;
+
 
 namespace AppFrame.DataLayer
 {
@@ -29,7 +33,13 @@ namespace AppFrame.DataLayer
                             typeof (IMarkerInterface) },
                             new DataErrorInfoInterceptor(GlobalValidator.Instance));
             }
-
+            public static T CreateProxyFor<T>(T obj)
+            {
+                ProxyFactory factory = new ProxyFactory(obj);
+                factory.AddIntroduction(new DataErrorInfoAdvisor());
+                factory.ProxyTargetType = true;
+                return (T)factory.GetProxy();
+            }
             public interface IMarkerInterface
             {
                 string TypeName { get; }
@@ -83,5 +93,31 @@ namespace AppFrame.DataLayer
                 return _validator;
             }
         }
+    }
+
+    public class DataErrorInfoMixin : IDataErrorInfo,IAdvice
+    {
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                var errors = GlobalValidator.Instance.Validate(this, columnName);
+                    var arrayErrors= errors.Select(x => x.Message).ToArray();
+                    return string.Join(Environment.NewLine, arrayErrors);
+            }
+        }
+
+        public virtual string Error
+        {
+            get
+            {
+                var errors = GlobalValidator.Instance.Validate(this).Select(x => x.Message).ToArray();
+                return string.Join(Environment.NewLine, errors);
+            }
+        }
+    }
+    public class DataErrorInfoAdvisor : DefaultIntroductionAdvisor
+    {
+        public DataErrorInfoAdvisor() : base(new DataErrorInfoMixin()) {}
     }
 }

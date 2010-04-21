@@ -333,6 +333,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                     string inputPrice = string.IsNullOrEmpty(InputPrice) ? "0" : InputPrice;
                     //StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
                     StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
+                    //StockInDetail newDetail = new StockInDetail();
                     newDetail.Product = newProduct;
                     newDetail.ProductMaster = productMaster;
                     newDetail.CreateDate = DateTime.Now;
@@ -345,12 +346,14 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                    {
                                                        ProductId = newProduct.ProductId
                                                    };
-
+                    
                     newDetail.StockInDetailPK = detailPK;
+                    newDetail = DataErrorInfoFactory.CreateProxyFor(newDetail);
                     string price = string.IsNullOrEmpty(Price) ? "0" : Price;
                     string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
 
                     MainPrice newPrice = DataErrorInfoFactory.Create<MainPrice>();
+                    //MainPrice newPrice = new MainPrice();
                     newPrice.Price = Int64.Parse(price);
                     newPrice.WholeSalePrice = Int64.Parse(wholesaleprice);
                                              
@@ -361,6 +364,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                  };
 
                     newPrice.MainPricePK =newPricePK;
+                    newPrice = DataErrorInfoFactory.CreateProxyFor(newPrice);
                     newDetail.MainPrice = newPrice;
 
                     IList list = new ArrayList(_stockInDetailList);
