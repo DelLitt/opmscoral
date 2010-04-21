@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
+using AppFrame.Extensions;
 using AppFrame.Utils;
 using AppFrame.WPF.ValidationAttributes;
 using Caliburn.Core;
@@ -22,8 +23,11 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
+using Caliburn.PresentationFramework.ViewModels;
 using CoralPOS.Models;
+using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
+using POSServer.ViewModels.Dialogs;
 using POSServer.ViewModels.Menu.ProductMaster;
 
 
@@ -79,6 +83,7 @@ namespace POSServer.ViewModels.ProductMaster
         }
 
         private ProductType _productType;
+        [Required]
         public ProductType ProductType
         {
             get
@@ -93,6 +98,7 @@ namespace POSServer.ViewModels.ProductMaster
         }
 		        
         private Category _category;
+        [Required]
         public Category Category
         {
             get
@@ -126,20 +132,29 @@ namespace POSServer.ViewModels.ProductMaster
         public IList<ExProductColor> SelectedProductColors
         {
             get { return _selectedProductColors; }
-            
+            set
+            {
+                SelectedProductColors = value;
+                NotifyOfPropertyChange(() => SelectedProductColors);
+            }
         }
 
         private IList<ExProductColor> _removeProductColors;
         public IList<ExProductColor> RemoveProductColors
         {
             get { return _removeProductColors; }
-
+            
         }
 
         private IList<ExProductSize> _selectedProductSizes;
         public IList<ExProductSize> SelectedProductSizes
         {
             get { return _selectedProductSizes; }
+            set
+            { 
+                _selectedProductSizes= value;
+                NotifyOfPropertyChange(()=>SelectedProductSizes);
+            }
         }
 
         private IList<ExProductSize> _removeProductSizes;
@@ -248,10 +263,12 @@ namespace POSServer.ViewModels.ProductMaster
 		        
         public void Recreate()
         {
-            
+            CreateNewProductMaster();
+            ColorRemoveAll();
+            SizeRemoveAll();
         }
 
-        private bool _canSave;
+        /*private bool _canSave;
         public bool CanSave
         {
             get
@@ -263,24 +280,23 @@ namespace POSServer.ViewModels.ProductMaster
                 _canSave = value;
                 NotifyOfPropertyChange(()=>CanSave);
             }
-        }
+        }*/
 
-        [Dependencies("ProductMaster")]
+        
         public void Save()
         {
-            var savePM = new CoralPOS.Models.ProductMaster
-                             {
-                                ProductName = ProductName,
-                                Category = Category,
-                                ProductType = ProductType,
-                                CreateDate = DateTime.Now,
-                                CreateId = "admin",
-                                UpdateDate = DateTime.Now,
-                                UpdateId = "admin"
-                             };
+            IEnumerable<IValidationError> errors = this.GetErrors(ProductMaster);
+            if (errors.Count() > 0)
+            {
+                var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();
+                test.ErrorResult = errors.ToList();
+                _startViewModel.ShowDialog(test);
+                return;
+            }
+            
             var savePm = ProductMaster;
-            /*savePm.Category = Category;
-            savePm.ProductType = ProductType;*/
+            savePm.Category = Category;
+            savePm.ProductType = ProductType;
             savePm.CreateDate = DateTime.Now;
             savePm.CreateId = "admin";
             savePm.UpdateDate = DateTime.Now;
@@ -360,7 +376,7 @@ namespace POSServer.ViewModels.ProductMaster
         public void SizeRemoveAll()
         {
             ProductSizes = new ArrayList();
-            TestPro();
+            
         }
 
         private void TestPro()

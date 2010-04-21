@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using AppFrame.Base;
+using AppFrame.DataLayer;
 using AppFrame.WPF;
 using Caliburn.PresentationFramework.ViewModels;
 
@@ -48,14 +49,13 @@ namespace AppFrame.Extensions
 
         public static IEnumerable<IValidationError> GetErrors<T>(this PosViewModel viewModel,T target)
         {
-            DefaultValidator validator = new DefaultValidator();
-            return validator.Validate(target);
+            //DefaultValidator validator = new DefaultValidator();
+            return GlobalValidator.Instance.Validate(target);
         }
 
         public static IEnumerable<IValidationError> GetErrors(this PosViewModel viewModel)
         {
-            DefaultValidator validator = new DefaultValidator();
-            return validator.Validate(viewModel);
+            return GlobalValidator.Instance.Validate(viewModel);
         }
     }
 }

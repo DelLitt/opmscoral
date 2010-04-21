@@ -100,7 +100,7 @@ namespace AppFrame.WPF
     {
         public object ConvertFrom()
         {
-            
+            return null;
         }
     }
 }

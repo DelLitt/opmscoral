@@ -50,13 +50,25 @@ namespace AppFrame.WPF
         // return true if Ok and false if has error
         public bool Validate()
         {
-            bool hasError;
+            bool validated = true;           
+            
             foreach (FrameworkElement bindingObject in bindingObjects)
             {
-                hasError = System.Windows.Controls.Validation.GetHasError(bindingObject);
-                if(hasError) return false;
+                bool hasError = false;
+                //hasError = System.Windows.Controls.Validation.GetHasError(bindingObject);
+                var errors = System.Windows.Controls.Validation.GetErrors(bindingObject);
+                hasError = errors.Count > 0;
+                if(hasError)
+                {
+                    validated = false;
+                    foreach (ValidationError validationError in errors)
+                    {
+                        System.Windows.Controls.Validation.MarkInvalid((BindingExpressionBase)validationError.BindingInError,validationError);
+                    }
+                }
+                    
             }
-            return true;
+            return validated;
         }
         private void TurnOnValidateOnDataError()
         {
