@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -51,7 +52,11 @@ namespace AppFrame.WPF
         public bool Validate()
         {
             bool validated = true;           
-            
+            if(this.DataContext is IDataErrorInfo)
+            {
+                
+            }
+
             foreach (FrameworkElement bindingObject in bindingObjects)
             {
                 bool hasError = false;

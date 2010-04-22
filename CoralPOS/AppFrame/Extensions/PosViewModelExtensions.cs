@@ -35,7 +35,16 @@ namespace AppFrame.Extensions
             if (pvp == null) return false;
             return !pvp.Validate();
         }
-
+        
+        public static bool Validate(this PosViewModel viewModel)
+        {
+            var view = viewModel.GetView(viewModel) as DependencyObject;
+            if (view == null) return true;
+            DependencyObject vp = LogicalTreeHelper.FindLogicalNode(view, "PosDataErrorProvider");
+            PosDataErrorProvider pvp = vp as PosDataErrorProvider;
+            if (pvp == null) return true;
+            return pvp.Validate();
+        }
         public static bool HasError(this PosViewModel viewModel,string pdpName)
         {
             var view = viewModel.GetView(viewModel) as DependencyObject;

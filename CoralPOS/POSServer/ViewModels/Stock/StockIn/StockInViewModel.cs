@@ -240,9 +240,10 @@ namespace POSServer.ViewModels.Stock.StockIn
             return !this.HasError();
         }*/
         
-        [Dependencies("StockIn", "StockInDetailList")]
+        
         public void Save()
         {
+            
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
             IEnumerable<IValidationError> errors = this.GetErrors(StockIn);
             if (errors.Count()>0)
