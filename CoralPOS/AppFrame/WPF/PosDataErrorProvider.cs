@@ -1,19 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using AppFrame.Utils;
+using AppFrame.DataLayer;
+using Caliburn.PresentationFramework.ViewModels;
 
 namespace AppFrame.WPF
 {
     public class PosDataErrorProvider : Decorator
     {
-        List<FrameworkElement> bindingObjects = new List<FrameworkElement>();
+        List<BindingElementInfo> bindingObjects = new List<BindingElementInfo>();
+        
         private static FieldInfo _isSealedFieldInfo;
         private delegate void FoundBindingCallbackDelegate(FrameworkElement element, Binding binding,DependencyProperty dp);
         public PosDataErrorProvider()
@@ -28,9 +30,63 @@ namespace AppFrame.WPF
         }
         void PosDataErrorProviderLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            TurnOnValidateOnDataError();
+            ValidateContext = true;
+            GetBindingElementInformation();
+            if(EnabledValidation) TurnOnValidateOnDataError();
         }
 
+        private void GetBindingElementInformation()
+        {
+            FindBindingsRecursively(
+                     this.Parent,
+                     delegate(FrameworkElement element, Binding binding, DependencyProperty dp)
+                     {
+                         bindingObjects.Add(new BindingElementInfo(element, binding, dp));
+                     });
+        }
+
+        private bool enabledValidation = true;
+        public bool EnabledValidation
+        {
+            get { return enabledValidation; }
+            set { enabledValidation = value; 
+                if(enabledValidation)
+                {
+                    TurnOnValidateOnDataError();
+                }
+                else
+                {
+                    TurnOffValidateOnDataError();
+                }
+            }
+        }
+
+        public bool ValidateContext { get; set; }
+        private void TurnOffValidateOnDataError()
+        {
+            foreach (BindingElementInfo bbInfo in bindingObjects)
+            {
+                Binding binding = bbInfo.Binding;
+                FrameworkElement element = bbInfo.DependencyObject;
+                DependencyProperty dp = bbInfo.DependencyProperty;
+                // Turn on validate on error for this binding
+                // well, WPF check if Binding is sealed , if true, then throw exception if we change
+                // so I borrow trick from Marlon Grech.
+                bool isSealed = (bool)_isSealedFieldInfo.GetValue(binding);
+                if (isSealed) _isSealedFieldInfo.SetValue(binding, false);
+
+                binding.ValidatesOnDataErrors = false;
+                binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                binding.NotifyOnValidationError = false;
+                System.Windows.Controls.Validation.RemoveErrorHandler(element, ErrorHandler);
+                element.SetBinding(dp, binding);
+                if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
+                if (ErrorTemplate != null)
+                {
+                    System.Windows.Controls.Validation.SetErrorTemplate(element, ErrorTemplate);
+                }
+            }
+        }
 
         public static readonly DependencyProperty IsValidProperty =
             DependencyProperty.Register("IsValid", typeof(Boolean), typeof(PosDataErrorProvider));
@@ -51,42 +107,141 @@ namespace AppFrame.WPF
         // return true if Ok and false if has error
         public bool Validate()
         {
-            bool validated = true;           
-            if(this.DataContext is IDataErrorInfo)
+            bool validated = true;
+            if (ValidateContext)
             {
+                if (this.DataContext is IDataErrorInfo)
+                {
+                    ValidateDataContext(this.DataContext);
+                }
+            }
+            else
+            {
+                validated = ValidateBinding();
                 
             }
+            
+            return validated;
+        }
 
-            foreach (FrameworkElement bindingObject in bindingObjects)
+        private bool ValidateBinding()
+        {
+            bool validate = true;
+            foreach (BindingElementInfo bindingObject in bindingObjects)
             {
                 bool hasError = false;
                 //hasError = System.Windows.Controls.Validation.GetHasError(bindingObject);
-                var errors = System.Windows.Controls.Validation.GetErrors(bindingObject);
+                var errors = System.Windows.Controls.Validation.GetErrors(bindingObject.DependencyObject);
                 hasError = errors.Count > 0;
-                if(hasError)
+                if (hasError)
                 {
-                    validated = false;
+                    validate = false;
                     foreach (ValidationError validationError in errors)
                     {
-                        System.Windows.Controls.Validation.MarkInvalid((BindingExpressionBase)validationError.BindingInError,validationError);
+                        System.Windows.Controls.Validation.MarkInvalid((BindingExpressionBase)validationError.BindingInError, validationError);
                     }
                 }
-                    
+
             }
-            return validated;
+            return validate;
         }
+
+        private void ValidateDataContext(object dataContext)
+        {
+            List<IValidationError> errors = new List<IValidationError>();
+            LinkedList<string> linkedList = new LinkedList<string>();
+            linkedList.AddFirst(dataContext.GetType().FullName);
+            ValidateRecursively(dataContext, errors,linkedList);
+            foreach (IValidationError validationError in errors)
+            {
+                string propName = validationError.PropertyName;
+                var result = from bdi in bindingObjects
+                             where bdi.Binding.Path.Path.EndsWith(propName) 
+                             select new ValidationError
+                                        {
+                                            
+                                        };
+                
+            }
+        }
+
+        private void ValidateRecursively(object instance, List<IValidationError> validationErrors, LinkedList<string> linkedList)
+        {
+            Type type = instance.GetType();
+            PropertyInfo[] propInfos =type.GetProperties();
+            validationErrors.AddRange(GlobalValidator.Instance.Validate(instance).ToList());
+            
+            foreach (PropertyInfo propertyInfo in propInfos)
+            {
+                
+                var obj = propertyInfo.GetValue(instance, null);
+                if (obj == null) continue;
+                if (obj.GetType().IsPrimitive || obj.GetType().IsEnum) continue;
+                Type typeObj = obj.GetType();
+                if (obj.GetType().FullName.EndsWith("Proxy")) typeObj = obj.GetType().BaseType;
+                if(linkedList.Contains(typeObj.FullName))
+                {
+                    int propPos = PosInList(linkedList, typeObj.FullName);
+                    int entityPos = PosInList(linkedList, instance.GetType().FullName);
+                    if (propPos < entityPos) continue;
+                }
+                else
+                {
+                    linkedList.AddLast(typeObj.FullName);
+                }
+                ValidateRecursively(obj, validationErrors, linkedList);
+
+            }
+            
+        }
+
+        private int PosInList(LinkedList<string> linkedList, string entityFullName)
+        {
+            IEnumerator enumerator = linkedList.GetEnumerator();
+            int i = 0;
+            while (enumerator.MoveNext())
+            {
+                if (entityFullName.Equals(enumerator.Current.ToString())) return i;
+                i++;
+            }
+            return int.MaxValue;
+        }
+
         private void TurnOnValidateOnDataError()
         {
-            FindBindingsRecursively(
+            foreach (BindingElementInfo bbInfo in bindingObjects)
+            {
+                Binding binding = bbInfo.Binding;
+                FrameworkElement element = bbInfo.DependencyObject;
+                DependencyProperty dp = bbInfo.DependencyProperty;
+                // Turn on validate on error for this binding
+                // well, WPF check if Binding is sealed , if true, then throw exception if we change
+                // so I borrow trick from Marlon Grech.
+                bool isSealed = (bool)_isSealedFieldInfo.GetValue(binding);
+                if (isSealed) _isSealedFieldInfo.SetValue(binding, false);
+
+                binding.ValidatesOnDataErrors = true;
+                binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                binding.NotifyOnValidationError = true;
+                System.Windows.Controls.Validation.AddErrorHandler(element, ErrorHandler);
+                element.SetBinding(dp, binding);
+                if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
+                if (ErrorTemplate != null)
+                {
+                    System.Windows.Controls.Validation.SetErrorTemplate(element, ErrorTemplate);
+                }
+            }
+            /*FindBindingsRecursively(
                       this.Parent,
                       delegate(FrameworkElement element, Binding binding,DependencyProperty dp)
                       {
-                          bindingObjects.Add(element);
+                          bindingObjects.Add(new BindingElementInfo(element,binding,dp));
                           // Turn on validate on error for this binding
                           // well, WPF check if Binding is sealed , if true, then throw exception if we change
                           // so I borrow trick from Marlon Grech.
                           bool isSealed = (bool)_isSealedFieldInfo.GetValue(binding);
                           if(isSealed) _isSealedFieldInfo.SetValue(binding,false);
+                          
                           binding.ValidatesOnDataErrors = true;
                           binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                           binding.NotifyOnValidationError = true;
@@ -97,7 +252,7 @@ namespace AppFrame.WPF
                           {
                               System.Windows.Controls.Validation.SetErrorTemplate(element, ErrorTemplate);
                           }
-                      });  
+                      }); */ 
         }
 
         private void ErrorHandler(object sender, ValidationErrorEventArgs e)
@@ -172,6 +327,38 @@ namespace AppFrame.WPF
             }
         }
     
+    }
+    
+    class BindingElementInfo
+    {
+        private FrameworkElement dependencyObject;
+        private Binding binding;
+        private DependencyProperty dependencyProperty;
+
+        public BindingElementInfo(FrameworkElement dependencyObject, Binding binding, DependencyProperty dependencyProperty)
+        {
+            this.dependencyObject = dependencyObject;
+            this.binding = binding;
+            this.dependencyProperty = dependencyProperty;
+        }
+
+        public FrameworkElement DependencyObject
+        {
+            get { return dependencyObject; }
+            set { dependencyObject = value; }
+        }
+
+        public Binding Binding
+        {
+            get { return binding; }
+            set { binding = value; }
+        }
+
+        public DependencyProperty DependencyProperty
+        {
+            get { return dependencyProperty; }
+            set { dependencyProperty = value; }
+        }
     }
     
 }
