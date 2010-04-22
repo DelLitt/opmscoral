@@ -4,13 +4,13 @@
     Height="700" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="18,21,6,40" Name="ProductSizeList" FontSize="14" SelectedItem="{Binding SelectedProductSize}" CanUserAddRows="False" RowHeight="38">
-            <my:DataGrid.Columns>
-                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=SizeId}" SortMemberPath="SizeId" IsReadOnly="True"/>
-                <my:DataGridTextColumn FontSize="14" Header="TÊN KÍCH CỠ" Width="200" Binding="{Binding Path=SizeName}" SortMemberPath="SizeName"/>
-                <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True" />
-            </my:DataGrid.Columns>
-        </my:DataGrid>
+        <DataGrid AutoGenerateColumns="False" Margin="18,21,6,40" Name="ProductSizeList" FontSize="14" SelectedItem="{Binding SelectedProductSize}" CanUserAddRows="False" RowHeight="38">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=SizeId}" SortMemberPath="SizeId" IsReadOnly="True"/>
+                <DataGridTextColumn FontSize="14" Header="TÊN KÍCH CỠ" Width="200" Binding="{Binding Path=SizeName}" SortMemberPath="SizeName"/>
+                <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>

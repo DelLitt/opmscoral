@@ -13,18 +13,18 @@
                 <RowDefinition Height="204*"></RowDefinition>
                 <RowDefinition Height="373*"></RowDefinition>
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" 
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" 
                          SelectionMode="Single"
                          SelectedItem="{Binding SelectedStockOut}">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
-                    <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" Binding="{Binding Path=Description}"/>                                            
-                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" Binding="{Binding Path=TotalQuantity}"/>
-                    <my:DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="STT" />
+                    <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
+                    <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" Binding="{Binding Path=Description}"/>                                            
+                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" Binding="{Binding Path=TotalQuantity}"/>
+                    <DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" Binding="{Binding Path=CreateDate}" SortMemberPath="CreateDate" />                   
                     
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
             <my:DatePicker HorizontalAlignment="Left" Margin="128.75,0,0,24.442" Name="FromDate" Width="203" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="38.885" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />
             <my:DatePicker Margin="405.515,0,227.755,24.442" Name="ToDate" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="37.774" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />

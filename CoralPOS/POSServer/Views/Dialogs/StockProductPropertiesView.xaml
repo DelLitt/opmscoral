@@ -27,7 +27,7 @@
                 <RowDefinition Height="249*"></RowDefinition>
                 <RowDefinition Height="37*"></RowDefinition>
             </Grid.RowDefinitions>
-        <my:DataGrid AutoGenerateColumns="False" 
+        <DataGrid AutoGenerateColumns="False" 
                          Name="ProductColorList" 
                          FontSize="13"                          
                          CanUserAddRows="False" IsTabStop="True" 
@@ -36,20 +36,20 @@
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductColors"/>
                 </dge:DataGridExtension.SelectedItemsSource>
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
-                        <my:DataGridTextColumn.Binding>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource rowColorNumberConverter}">
                                 <Binding />
-                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type my:DataGrid}}" />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
                             </MultiBinding>
-                        </my:DataGridTextColumn.Binding>
-                    </my:DataGridTextColumn>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
 
-                    <my:DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=ColorName}" IsReadOnly="True" SortMemberPath="ColorName"/>
-                </my:DataGrid.Columns>
-            </my:DataGrid>
-            <my:DataGrid AutoGenerateColumns="False" 
+                    <DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=ColorName}" IsReadOnly="True" SortMemberPath="ColorName"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid AutoGenerateColumns="False" 
                          Name="ProductSizeList" 
                          FontSize="13"                          
                          CanUserAddRows="False" 
@@ -60,19 +60,19 @@
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductSizes"/>
                 </dge:DataGridExtension.SelectedItemsSource>
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
-                        <my:DataGridTextColumn.Binding>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource rowSizeNumberConverter}">
                                 <Binding />
-                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type my:DataGrid}}" />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
                             </MultiBinding>
-                        </my:DataGridTextColumn.Binding>
-                    </my:DataGridTextColumn>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
 
-                    <my:DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=SizeName}" IsReadOnly="True" SortMemberPath="ColorName"/>
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                    <DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=SizeName}" IsReadOnly="True" SortMemberPath="ColorName"/>
+                </DataGrid.Columns>
+            </DataGrid>
                 <Label Height="28" Name="label1" VerticalAlignment="Top" FontSize="14">0: CHỌN HẾT</Label>
             <Label Height="28" Name="label2" VerticalAlignment="Top" Grid.Column="1" FontSize="14">0: CHỌN HẾT</Label>
             <!--<ListView Margin="0,28,0,0" Name="ProductColorList" ItemsSource="{Binding ProductColorList}" Grid.Column="0" Grid.Row="0">

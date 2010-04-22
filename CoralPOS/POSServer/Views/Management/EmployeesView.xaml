@@ -10,14 +10,14 @@
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="10,102.5,0,0" Name="label2" VerticalAlignment="Top" Width="112.211">ĐỊA CHỈ</Label>
             <TextBox FontSize="14" Height="38" HorizontalAlignment="Left" Margin="127.5,6.25,0,0" Name="DepartmentId" VerticalAlignment="Top" Width="81.103" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="8.75,16.25,0,0" Name="label3" VerticalAlignment="Top" Width="112.211">MÃ SỐ</Label>
-            <my:DataGrid AutoGenerateColumns="False" Margin="10,186.25,6,6.25" Name="EmployeesList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn Header="MS" FontSize="14" Width="50" />
-                    <my:DataGridTextColumn Header="TÊN" FontSize="14" Width="250" />
-                    <my:DataGridTextColumn Header="NGÀY BẮT ĐẦU" FontSize="14" Width="150"  />
-                    <my:DataGridTextColumn Header="ĐỊA CHỈ" FontSize="14" Width="*" />
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+            <DataGrid AutoGenerateColumns="False" Margin="10,186.25,6,6.25" Name="EmployeesList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="MS" FontSize="14" Width="50" />
+                    <DataGridTextColumn Header="TÊN" FontSize="14" Width="250" />
+                    <DataGridTextColumn Header="NGÀY BẮT ĐẦU" FontSize="14" Width="150"  />
+                    <DataGridTextColumn Header="ĐỊA CHỈ" FontSize="14" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
             <my:DatePicker Height="37.5" Margin="325,6,326.25,0" Name="StartDay" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="207.5,15,0,0" Name="label4" VerticalAlignment="Top" Width="112.211" HorizontalContentAlignment="Right">NGÀY BẮT ĐẦU:</Label>
             <TextBox FontSize="14" Height="38" Margin="128,137,326.25,0" Name="CardId" VerticalAlignment="Top" />

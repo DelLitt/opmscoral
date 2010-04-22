@@ -3,9 +3,8 @@
     using System;
     using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Markup;
-
-    [ContentProperty("Content")]
+    
+    //[System.Windows.Markup.ContentProperty("Content")]
     public class TransitionPresenter : Grid
     {
         public event EventHandler TransitionCompleted = delegate { };

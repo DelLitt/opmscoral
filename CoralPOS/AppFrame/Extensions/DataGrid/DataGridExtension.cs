@@ -5,7 +5,6 @@ using System.Windows;
 using System.Collections;
 using System.Windows.Controls;
 using System.ComponentModel;
-using Microsoft.Windows.Controls;
 
 namespace AppFrame.Extensions.DataGrid
 {
@@ -78,7 +77,7 @@ namespace AppFrame.Extensions.DataGrid
         private static void OnSelectedItemsSourceChanged(DependencyObject d,
                                                          DependencyPropertyChangedEventArgs e)
         {
-            Microsoft.Windows.Controls.DataGrid dataGrid = d as Microsoft.Windows.Controls.DataGrid;
+            System.Windows.Controls.DataGrid dataGrid = d as System.Windows.Controls.DataGrid;
             if (dataGrid == null)
                 throw new InvalidOperationException("The DataGridExtension.SelectedItemsSource attached " +
                                                     "property can only be applied to DataGrid controls.");
@@ -91,7 +90,7 @@ namespace AppFrame.Extensions.DataGrid
             }
         }
 
-        private static void ListenForChanges(Microsoft.Windows.Controls.DataGrid dataGrid)
+        private static void ListenForChanges(System.Windows.Controls.DataGrid dataGrid)
         {
             // Wait until the element is initialised
             if (!dataGrid.IsInitialized)
@@ -112,7 +111,7 @@ namespace AppFrame.Extensions.DataGrid
 
         private static void OnListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Microsoft.Windows.Controls.DataGrid dataGrid = sender as Microsoft.Windows.Controls.DataGrid;
+            System.Windows.Controls.DataGrid dataGrid = sender as System.Windows.Controls.DataGrid;
             if (dataGrid != null)
             {
                 bool isResynching = (bool)dataGrid.GetValue(IsResynchingPropertyKey.DependencyProperty);
@@ -137,7 +136,7 @@ namespace AppFrame.Extensions.DataGrid
             }
         }
 
-        private static void ResynchList(Microsoft.Windows.Controls.DataGrid dataGrid)
+        private static void ResynchList(System.Windows.Controls.DataGrid dataGrid)
         {
             if (dataGrid != null)
             {

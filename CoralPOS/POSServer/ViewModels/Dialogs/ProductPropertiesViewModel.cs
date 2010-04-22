@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using AppFrame.Base;
 using AppFrame.DataLayer;
@@ -23,7 +24,6 @@ using Caliburn.PresentationFramework.RoutedMessaging;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Windows.Controls;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 

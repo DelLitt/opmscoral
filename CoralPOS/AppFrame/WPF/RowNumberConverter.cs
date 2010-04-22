@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Data;
 using System.Windows.Controls;
-using Microsoft.Windows.Controls;
 
 namespace AppFrame.WPF
 {

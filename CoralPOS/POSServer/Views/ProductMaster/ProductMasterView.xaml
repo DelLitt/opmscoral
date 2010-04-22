@@ -16,14 +16,14 @@
                 <RowDefinition Height="364*"></RowDefinition>
             </Grid.RowDefinitions>
                 <TextBox FontSize="14" Height="38.583" Margin="142.25,53,199.872,0" Name="ProductName" Text="{Binding ProductMaster.ProductName}" VerticalAlignment="Top" />
-                <TextBox FontSize="14" HorizontalAlignment="Left" Margin="142.25,98,0,62.003" x:Name="ProductType" Width="202.918" Text="{Binding ProductType.TypeName}" IsReadOnly="True" />
-                <TextBox FontSize="14" Height="38" HorizontalAlignment="Left" Margin="142.583,0,0,14.29" x:Name="Category" VerticalAlignment="Bottom" Width="202.918" Text="{Binding Category.CategoryName,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true,Mode=TwoWay}" IsReadOnly="True" />
+                <TextBox FontSize="14" HorizontalAlignment="Left" Margin="142.25,98,0,62.003" Name="ProductType" Width="202.918" Text="{Binding ProductType.TypeName}" IsReadOnly="True" />
+                <TextBox FontSize="14" Height="38" HorizontalAlignment="Left" Margin="142.583,0,0,14.29" Name="Category" VerticalAlignment="Bottom" Width="202.918" Text="{Binding Category.CategoryName,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError =true,Mode=TwoWay}" IsReadOnly="True" />
             <Label Height="28" HorizontalAlignment="Left" Margin="6,19,0,0" Name="label1" VerticalAlignment="Top" Width="114.32" FontSize="14" HorizontalContentAlignment="Right">MÃ SẢN PHẨM</Label>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6,63,0,0" Name="label2" VerticalAlignment="Top" Width="114.32" HorizontalContentAlignment="Right">TÊN SẢN PHẨM</Label>
                 <Label FontSize="14" HorizontalAlignment="Left" Margin="6,0,0,59.139" Name="label3" Width="114.32" HorizontalContentAlignment="Right" Height="30.888" VerticalAlignment="Bottom">CHỦNG LOẠI</Label>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6.333,0,0,14.29" Name="label4" VerticalAlignment="Bottom" Width="114.32" HorizontalContentAlignment="Right">NHÓM</Label>
-                <ComboBox Margin="352,98,256,0" Name="ProductTypeList" Height="41.997" VerticalAlignment="Top" DisplayMemberPath="TypeName" SelectedItem="{Binding ProductMaster.ProductType,Mode=TwoWay}" FontSize="16" />
-                <ComboBox Height="38.583" Margin="352,0,256,13" Name="CategoryList" VerticalAlignment="Bottom" DisplayMemberPath="CategoryName" FontSize="16" SelectedItem="{Binding ProductMaster.Category,Mode=TwoWay}" />
+                <ComboBox Margin="352,98,256,0" Name="ProductTypeList" Height="41.997" VerticalAlignment="Top" DisplayMemberPath="TypeName" SelectedItem="{Binding ProductType,Mode=TwoWay}" FontSize="16" />
+                <ComboBox Height="38.583" Margin="352,0,256,13" Name="CategoryList" VerticalAlignment="Bottom" DisplayMemberPath="CategoryName" FontSize="16" SelectedItem="{Binding Category,Mode=TwoWay}" />
                 <TextBox FontSize="14" Height="38" Margin="407.628,8,199.872,0" Name="textBox5" VerticalAlignment="Top" />
                 <Button FontSize="14" FontWeight="Bold" Height="38.773" Margin="0,7,32.222,0" Name="ProductImageSelect" VerticalAlignment="Top" HorizontalAlignment="Right" Width="145.758">NHẬP</Button>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="287.874,18,0,0" Name="label5" VerticalAlignment="Top" Width="114.32">HÌNH ẢNH</Label>

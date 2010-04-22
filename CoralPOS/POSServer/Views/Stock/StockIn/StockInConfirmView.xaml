@@ -15,20 +15,20 @@
                 <RowDefinition Height="500.756*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,27.775,8.888,25.553" Name="CreateDate" Width="184.057" />
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                          CanUserAddRows="False" CanUserDeleteRows="False" >
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
-                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>
-                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
-                    <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
-                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity}" SortMemberPath="Quantity" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price}" SortMemberPath="Price" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice}" SortMemberPath="MainPrice.WholeSalePrice" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price}" SortMemberPath="MainPrice.Price" />
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="80" Binding="{Binding Path=Product.ProductSize.SizeName}" SortMemberPath="Product.ProductSize.ProductName" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="80" Binding="{Binding Path=Quantity}" SortMemberPath="Quantity" />
+                    <DataGridTextColumn FontSize="14" Header="GIÁ NHẬP" Width="80" Binding="{Binding Path=Price}" SortMemberPath="Price" />
+                    <DataGridTextColumn FontSize="14" Header="GIÁ SỈ" Width="80" Binding="{Binding Path=MainPrice.WholeSalePrice}" SortMemberPath="MainPrice.WholeSalePrice" />
+                    <DataGridTextColumn FontSize="14" Header="GIÁ LẺ" Width="80*" Binding="{Binding Path=MainPrice.Price}" SortMemberPath="MainPrice.Price" />
+                </DataGrid.Columns>
+            </DataGrid>
             <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="7.777,37.774,0,26.664" Name="label1" Width="114.32">DIỄN TẢ</Label>
             <TextBox FontSize="14" Margin="144.43,27.775,197.758,25.553" Name="Description" />
         </Grid>

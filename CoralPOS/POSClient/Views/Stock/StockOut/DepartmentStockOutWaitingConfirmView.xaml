@@ -16,16 +16,16 @@
                 <RowDefinition Height="175.999*"></RowDefinition>
                 <RowDefinition Height="271.97*"></RowDefinition>
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" />
-                    <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" />                                            
-                    <my:DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" />
-                    <my:DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" />                   
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="STT" />
+                    <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" />
+                    <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" />                                            
+                    <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" />
+                    <DataGridTextColumn FontSize="14" Header="NGÀY NHẬP" Width="120*" />                   
                     
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                </DataGrid.Columns>
+            </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
             <my:DatePicker HorizontalAlignment="Left" Margin="128.75,6,0,0" Name="FromDate" Width="203" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="38.885" VerticalAlignment="Top" />
             <my:DatePicker Margin="404.5,6,229.5,0" Name="ToDate" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="37.774" VerticalAlignment="Top" />
@@ -35,17 +35,17 @@
             <ComboBox HorizontalAlignment="Left" Margin="129,0,0,9" Name="Category" Width="203" Height="39.424" VerticalAlignment="Bottom" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,0,0,9" Name="label5" VerticalAlignment="Bottom" Width="105.1">PHÂN LOẠI</Label>
             <ComboBox Height="39" Margin="129,50,0,0" Name="Department" VerticalAlignment="Top" HorizontalAlignment="Left" Width="403" />
-            <my:DataGrid AutoGenerateColumns="False" FontSize="14" Margin="0,0,0,-0.186" Name="StockOutList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Row="2">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />
-                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" />
-                    <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="80" />
-                    <my:DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80" />
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+            <DataGrid AutoGenerateColumns="False" FontSize="14" Margin="0,0,0,-0.186" Name="StockOutList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Row="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="STT" />
+                    <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" />
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
+                    <DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="80" />
+                    <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>

@@ -15,18 +15,18 @@
                 <RowDefinition Height="53*"></RowDefinition>
                 <RowDefinition Height="318*" />
             </Grid.RowDefinitions>
-            <my:DataGrid AutoGenerateColumns="False" Name="PurchaseOrderList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" Margin="0,0,0,-1" Grid.Row="2">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="STT" />
-                    <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />                                            
-                    <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
-                    <my:DataGridTextColumn FontSize="14" Header="SL" Width="80" />
-                    <my:DataGridTextColumn FontSize="14" Header="GIÁ" Width="80" />                    
-                    <my:DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="80*" />
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+            <DataGrid AutoGenerateColumns="False" Name="PurchaseOrderList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" Margin="0,0,0,-1" Grid.Row="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="STT" />
+                    <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />                                            
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" />
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
+                    <DataGridTextColumn FontSize="14" Header="SL" Width="80" />
+                    <DataGridTextColumn FontSize="14" Header="GIÁ" Width="80" />                    
+                    <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="80*" />
+                </DataGrid.Columns>
+            </DataGrid>
             <TextBox FontSize="14" Margin="127,98,0,59" Name="CustomerName" HorizontalAlignment="Left" Width="210" />
             <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="7,0,0,56" Name="label2" Width="114.32" Height="37" VerticalAlignment="Bottom">TÊN KHÁCH</Label>
             <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="5,55,0,0" Name="label1" Width="114.32" Height="33" VerticalAlignment="Top">SỐ HÓA ĐƠN</Label>

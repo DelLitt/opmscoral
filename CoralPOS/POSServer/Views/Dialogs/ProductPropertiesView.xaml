@@ -27,7 +27,7 @@
                 <RowDefinition Height="249*"></RowDefinition>
                 <RowDefinition Height="37*"></RowDefinition>
             </Grid.RowDefinitions>
-        <my:DataGrid AutoGenerateColumns="False" 
+        <DataGrid AutoGenerateColumns="False" 
                          Name="ProductColorList" 
                          FontSize="13"                          
                          CanUserAddRows="False" Grid.Column="0" IsTabStop="True" 
@@ -36,20 +36,20 @@
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductColors"/>
                 </dge:DataGridExtension.SelectedItemsSource>
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
-                        <my:DataGridTextColumn.Binding>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource rowColorNumberConverter}">
                                 <Binding />
-                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type my:DataGrid}}" />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
                             </MultiBinding>
-                        </my:DataGridTextColumn.Binding>
-                    </my:DataGridTextColumn>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
 
-                    <my:DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=ColorName}" IsReadOnly="True" SortMemberPath="ColorName"/>
-                </my:DataGrid.Columns>
-            </my:DataGrid>
-            <my:DataGrid AutoGenerateColumns="False" 
+                    <DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=ColorName}" IsReadOnly="True" SortMemberPath="ColorName"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid AutoGenerateColumns="False" 
                          Name="ProductSizeList" 
                          FontSize="13"                          
                          CanUserAddRows="False" 
@@ -60,19 +60,19 @@
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductSizes"/>
                 </dge:DataGridExtension.SelectedItemsSource>
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
-                        <my:DataGridTextColumn.Binding>
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="CHỌN" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource rowSizeNumberConverter}">
                                 <Binding />
-                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type my:DataGrid}}" />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
                             </MultiBinding>
-                        </my:DataGridTextColumn.Binding>
-                    </my:DataGridTextColumn>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
 
-                    <my:DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=SizeName}" IsReadOnly="True" SortMemberPath="ColorName"/>
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                    <DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" Binding="{Binding Path=SizeName}" IsReadOnly="True" SortMemberPath="ColorName"/>
+                </DataGrid.Columns>
+            </DataGrid>
             <Button Grid.Row="1" Name="AddNewColor" FontSize="14" TabIndex="1" Click="AddNewColor_Click">THÊM MÀU</Button>
             <Button Grid.Column="1" Grid.Row="1" Name="AddNewSize" FontSize="14" TabIndex="4" Click="AddNewSize_Click">THÊM KÍCH CỠ</Button>
             <Label Height="28" Name="label1" VerticalAlignment="Top" FontSize="14">0: CHỌN HẾT</Label>

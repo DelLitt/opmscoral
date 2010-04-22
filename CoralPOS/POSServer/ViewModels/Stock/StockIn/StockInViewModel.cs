@@ -284,7 +284,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             if(StockIn == null)
             {
                 CoralPOS.Models.StockIn stockIn = DataErrorInfoFactory.Create<CoralPOS.Models.StockIn>();
-
+                //CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn();
                 stockIn.StockInType = 0;
                 stockIn.ConfirmFlg = 0;
                 stockIn.Description = Description;
@@ -348,7 +348,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                    };
                     
                     newDetail.StockInDetailPK = detailPK;
-                    newDetail = DataErrorInfoFactory.CreateProxyFor(newDetail);
+                    //newDetail = DataErrorInfoFactory.CreateProxyFor(newDetail);
                     string price = string.IsNullOrEmpty(Price) ? "0" : Price;
                     string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
 
@@ -364,7 +364,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                                                  };
 
                     newPrice.MainPricePK =newPricePK;
-                    newPrice = DataErrorInfoFactory.CreateProxyFor(newPrice);
+                    //newPrice = DataErrorInfoFactory.CreateProxyFor(newPrice);
                     newDetail.MainPrice = newPrice;
 
                     IList list = new ArrayList(_stockInDetailList);

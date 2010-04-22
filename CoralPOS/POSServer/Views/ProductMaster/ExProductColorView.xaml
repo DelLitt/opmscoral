@@ -4,13 +4,13 @@
     Height="700" Width="837" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid>
         <Grid Margin="0,0,0,149">
-        <my:DataGrid AutoGenerateColumns="False" Margin="12,58,12,53.328" Name="ProductColorList" FontSize="14" ItemsSource="{Binding ProductColorList,Mode=TwoWay}" RowHeight="38" SelectedItem="{Binding SelectedProductColor}" CanUserAddRows="False" CanUserDeleteRows="False">
-            <my:DataGrid.Columns>
-                <my:DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=ColorId}" SortMemberPath="ColorId" IsReadOnly="True"/>
-                <my:DataGridTextColumn FontSize="14" Header="TÊN MÀU" Width="200" Binding="{Binding Path=ColorName}" SortMemberPath="ColorName"/>
-                <my:DataGridTextColumn FontSize="14" Header="NGƯỜI TẠO" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True"/>
-            </my:DataGrid.Columns>
-        </my:DataGrid>
+        <DataGrid AutoGenerateColumns="False" Margin="12,58,12,53.328" Name="ProductColorList" FontSize="14" ItemsSource="{Binding ProductColorList,Mode=TwoWay}" RowHeight="38" SelectedItem="{Binding SelectedProductColor}" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Binding="{Binding Path=ColorId}" SortMemberPath="ColorId" IsReadOnly="True"/>
+                <DataGridTextColumn FontSize="14" Header="TÊN MÀU" Width="200" Binding="{Binding Path=ColorName}" SortMemberPath="ColorName"/>
+                <DataGridTextColumn FontSize="14" Header="NGƯỜI TẠO" Width="*" Binding="{Binding Path=CreateId}" SortMemberPath="CreateId" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>

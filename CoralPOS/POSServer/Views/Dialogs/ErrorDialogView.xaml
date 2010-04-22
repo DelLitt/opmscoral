@@ -15,13 +15,13 @@
         </Grid.RowDefinitions>
         
             <TextBlock  Name="textBlock1" Text="ERRORS" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-        <my:DataGrid AutoGenerateColumns="False" Name="ErrorsList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Row="1" ItemsSource="{Binding ErrorResult}" >
-            <my:DataGrid.Columns>
-                    <!--<my:DataGridTextColumn Header="ERROR" Width="50*" IsReadOnly="True" Binding="{Binding Path=PropertyName}">                                              
-                    </my:DataGridTextColumn>-->
-                    <my:DataGridTextColumn Header="DETAIL" Width="*" IsReadOnly="True" Binding="{Binding Path=Message}" />
-            </my:DataGrid.Columns>
-        </my:DataGrid>
+        <DataGrid AutoGenerateColumns="False" Name="ErrorsList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Row="1" ItemsSource="{Binding ErrorResult}" >
+            <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="ERROR" Width="50*" IsReadOnly="True" Binding="{Binding Path=PropertyName}">                                              
+                    </DataGridTextColumn>-->
+                    <DataGridTextColumn Header="DETAIL" Width="*" IsReadOnly="True" Binding="{Binding Path=Message}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Grid.Row="2" Margin="209,6,212,6" Name="Close">ĐÓNG</Button>
             
     </Grid>

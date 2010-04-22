@@ -27,14 +27,14 @@
         </Grid>
         <GroupBox Header="KẾT QUẢ TÌM KIẾM" Margin="12,230,0,132" Name="groupBox1" FontSize="14" Grid.IsSharedSizeScope="True">
             <Grid HorizontalAlignment="Left" Width="813.75" Height="Auto">
-                <my:DataGrid AutoGenerateColumns="False" Name="ProductMasterList">
-                    <my:DataGrid.Columns>
-                        <my:DataGridTextColumn FontSize="14" Header="LOẠI" Width="150" />
-                        <my:DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />
-                        <my:DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" />
-                        <my:DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" />
-                    </my:DataGrid.Columns>
-                </my:DataGrid>
+                <DataGrid AutoGenerateColumns="False" Name="ProductMasterList">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn FontSize="14" Header="LOẠI" Width="150" />
+                        <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />
+                        <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" />
+                        <DataGridTextColumn FontSize="14" Header="KÍCH CỠ" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </GroupBox>
     </Grid>

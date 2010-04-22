@@ -4,16 +4,16 @@
     Width="837" Height="700">
     <Grid>
         <Grid Margin="0,0,0,149">
-            <my:DataGrid AutoGenerateColumns="False" Margin="6,28.75,10,6.25" 
+            <DataGrid AutoGenerateColumns="False" Margin="6,28.75,10,6.25" 
                     Name="DepartmentsList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" 
                          FontSize="14" SelectedItem="{Binding SelectedDepartment}" CanUserAddRows="False" CanUserDeleteRows="False">
-                <my:DataGrid.Columns>
-                    <my:DataGridTextColumn Header="MS" FontSize="14" Width="80" Binding="{Binding Path=DepartmentId}" />
-                    <my:DataGridTextColumn Header="TÊN" FontSize="14" Width="250" Binding="{Binding Path=DepartmentName}" />
-                    <my:DataGridTextColumn Header="NGÀY BẮT ĐẦU" FontSize="14" Width="120" Binding="{Binding Path=CreateDate}" />
-                    <my:DataGridTextColumn Header="ĐỊA CHỈ" FontSize="14" Width="*" Binding="{Binding Path=Address}" />
-                </my:DataGrid.Columns>
-            </my:DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="MS" FontSize="14" Width="80" Binding="{Binding Path=DepartmentId}" />
+                    <DataGridTextColumn Header="TÊN" FontSize="14" Width="250" Binding="{Binding Path=DepartmentName}" />
+                    <DataGridTextColumn Header="NGÀY BẮT ĐẦU" FontSize="14" Width="120" Binding="{Binding Path=CreateDate}" />
+                    <DataGridTextColumn Header="ĐỊA CHỈ" FontSize="14" Width="*" Binding="{Binding Path=Address}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
             <Button FontSize="14" FontWeight="Bold" Margin="20,17.5,0,52.5" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
