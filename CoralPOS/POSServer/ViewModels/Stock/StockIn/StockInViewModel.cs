@@ -217,7 +217,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
-        private bool _canSave;
+        /*private bool _canSave;
         public bool CanSave
         {
             get
@@ -232,7 +232,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                 _canSave = value;
                 NotifyOfPropertyChange(()=>CanSave);
             }
-        }
+        }*/
 
         /*public bool CanSave()
         {
@@ -245,6 +245,7 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
+            if (!this.Validate()) return;
             IEnumerable<IValidationError> errors = this.GetErrors(StockIn);
             if (errors.Count()>0)
             {
@@ -284,8 +285,8 @@ namespace POSServer.ViewModels.Stock.StockIn
             StockIn = Flow.Session.Get(FlowConstants.SAVE_STOCK_IN) as CoralPOS.Models.StockIn;
             if(StockIn == null)
             {
-                CoralPOS.Models.StockIn stockIn = DataErrorInfoFactory.Create<CoralPOS.Models.StockIn>();
-                //CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn();
+                //CoralPOS.Models.StockIn stockIn = DataErrorInfoFactory.Create<CoralPOS.Models.StockIn>();
+                CoralPOS.Models.StockIn stockIn = new CoralPOS.Models.StockIn();
                 stockIn.StockInType = 0;
                 stockIn.ConfirmFlg = 0;
                 stockIn.Description = Description;
@@ -333,8 +334,8 @@ namespace POSServer.ViewModels.Stock.StockIn
 
                     string inputPrice = string.IsNullOrEmpty(InputPrice) ? "0" : InputPrice;
                     //StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
-                    StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
-                    //StockInDetail newDetail = new StockInDetail();
+                    //StockInDetail newDetail = DataErrorInfoFactory.Create<StockInDetail>();
+                    StockInDetail newDetail = new StockInDetail();
                     newDetail.Product = newProduct;
                     newDetail.ProductMaster = productMaster;
                     newDetail.CreateDate = DateTime.Now;
@@ -353,8 +354,8 @@ namespace POSServer.ViewModels.Stock.StockIn
                     string price = string.IsNullOrEmpty(Price) ? "0" : Price;
                     string wholesaleprice = string.IsNullOrEmpty(WholeSalePrice) ? "0" : WholeSalePrice;
 
-                    MainPrice newPrice = DataErrorInfoFactory.Create<MainPrice>();
-                    //MainPrice newPrice = new MainPrice();
+                    //MainPrice newPrice = DataErrorInfoFactory.Create<MainPrice>();
+                    MainPrice newPrice = new MainPrice();
                     newPrice.Price = Int64.Parse(price);
                     newPrice.WholeSalePrice = Int64.Parse(wholesaleprice);
                                              

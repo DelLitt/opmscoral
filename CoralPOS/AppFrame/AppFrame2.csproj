@@ -326,6 +326,7 @@
     <Compile Include="WPF\PosDataErrorProvider.cs" />
     <Compile Include="WPF\PosDynamicProxy.cs" />
     <Compile Include="WPF\PosErrorValidationRule.cs" />
+    <Compile Include="WPF\PosValidationRule.cs" />
     <Compile Include="WPF\RowNumberConverter.cs" />
     <Compile Include="WPF\Screens\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>

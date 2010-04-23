@@ -415,7 +415,8 @@ namespace POSServer.ViewModels.ProductMaster
 
         private void CreateNewProductMaster()
         {
-            ProductMaster = DataErrorInfoFactory.Create<CoralPOS.Models.ProductMaster>();
+            //ProductMaster = DataErrorInfoFactory.Create<CoralPOS.Models.ProductMaster>();
+            ProductMaster = new CoralPOS.Models.ProductMaster();
 
         }
 
