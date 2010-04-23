@@ -18,7 +18,7 @@ namespace AppFrame.WPF
         List<BindingElementInfo> bindingObjects = new List<BindingElementInfo>();
         
         private static FieldInfo _isSealedFieldInfo;
-        private delegate void FoundBindingCallbackDelegate(FrameworkElement element, Binding binding,DependencyProperty dp);
+        private delegate void FoundBindingCallbackDelegate(DependencyObject element, Binding binding,DependencyProperty dp);
         public PosDataErrorProvider()
         {
             this.Name = "PosDataErrorProvider";
@@ -40,7 +40,7 @@ namespace AppFrame.WPF
         {
             FindBindingsRecursively(
                      this.Parent,
-                     delegate(FrameworkElement element, Binding binding, DependencyProperty dp)
+                     delegate(DependencyObject element, Binding binding, DependencyProperty dp)
                      {
                          bindingObjects.Add(new BindingElementInfo(element, binding, dp));
                      });
@@ -79,7 +79,7 @@ namespace AppFrame.WPF
             foreach (BindingElementInfo bbInfo in bindingObjects)
             {
                 Binding binding = bbInfo.Binding;
-                FrameworkElement element = bbInfo.DependencyObject;
+                DependencyObject element = bbInfo.DependencyObject;
                 DependencyProperty dp = bbInfo.DependencyProperty;
                 // Turn on validate on error for this binding
                 // well, WPF check if Binding is sealed , if true, then throw exception if we change
@@ -91,7 +91,11 @@ namespace AppFrame.WPF
                 binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                 binding.NotifyOnValidationError = false;
                 System.Windows.Controls.Validation.RemoveErrorHandler(element, ErrorHandler);
-                element.SetBinding(dp, binding);
+                if (dp != null)
+                    BindingOperations.SetBinding(element, dp, binding);
+                else
+                    ((DataGridBoundColumn)element).Binding = binding;
+                //element.SetBinding(dp, binding);
                 if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
                 if (ErrorTemplate != null)
                 {
@@ -251,7 +255,7 @@ namespace AppFrame.WPF
             foreach (BindingElementInfo bbInfo in bindingObjects)
             {
                 Binding binding = bbInfo.Binding;
-                FrameworkElement element = bbInfo.DependencyObject;
+                DependencyObject element = bbInfo.DependencyObject;
                 DependencyProperty dp = bbInfo.DependencyProperty;
                 // Turn on validate on error for this binding
                 // well, WPF check if Binding is sealed , if true, then throw exception if we change
@@ -263,8 +267,16 @@ namespace AppFrame.WPF
                 binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                 binding.ValidationRules.Add(PosErrorValidationRule.Instance);
                 binding.NotifyOnValidationError = true;
-                System.Windows.Controls.Validation.AddErrorHandler(element, ErrorHandler);
-                element.SetBinding(dp, binding);
+                if(dp!= null)
+                {
+                    System.Windows.Controls.Validation.AddErrorHandler(element, ErrorHandler);
+                    BindingOperations.SetBinding(element, dp, binding);
+                }
+                else
+                {
+                    ((DataGridBoundColumn)element).Binding = binding;
+                }
+                //element.SetBinding(dp, binding);
                 if (isSealed) _isSealedFieldInfo.SetValue(binding, true);
                 if (ErrorTemplate != null)
                 {
@@ -312,7 +324,19 @@ namespace AppFrame.WPF
 
             // See if we should display the errors on this element
             MemberInfo[] members = element.GetType().GetMembers(BindingFlags.Static | BindingFlags.Public | BindingFlags.GetField | BindingFlags.GetProperty);
-
+            if(element is DataGridBoundColumn)
+            {
+                DependencyProperty dp = null;
+                PropertyInfo bindingMember = element.GetType().GetProperty("Binding");
+                Binding binding = (Binding)bindingMember.GetValue(element, null);
+                if (binding == null)
+                {
+                    Console.WriteLine("dxm ss !");
+                    return;}
+                callbackDelegate(element, binding, null);
+                return;
+            }
+            
             foreach (MemberInfo member in members)
             {
                 DependencyProperty dp = null;
@@ -357,12 +381,22 @@ namespace AppFrame.WPF
             // Now, recurse through any child elements
             if (element is FrameworkElement || element is FrameworkContentElement)
             {
-                foreach (object childElement in LogicalTreeHelper.GetChildren(element))
+                if(element is DataGrid)
                 {
-                    if (childElement is DependencyObject)
+                    foreach (DataGridColumn dataGridColumn in ((DataGrid)element).Columns)
                     {
-                        FindBindingsRecursively((DependencyObject)childElement, callbackDelegate);
+                        FindBindingsRecursively(dataGridColumn,callbackDelegate);
                     }
+                }
+                else
+                {
+                    foreach (object childElement in LogicalTreeHelper.GetChildren(element))
+                    {
+                        if (childElement is DependencyObject)
+                        {
+                            FindBindingsRecursively((DependencyObject)childElement, callbackDelegate);
+                        }
+                    }    
                 }
             }
         }
@@ -371,33 +405,33 @@ namespace AppFrame.WPF
     
     class BindingElementInfo
     {
-        private FrameworkElement dependencyObject;
-        private Binding binding;
-        private DependencyProperty dependencyProperty;
+        private DependencyObject _dependencyObject;
+        private Binding _binding;
+        private DependencyProperty _dependencyProperty;
 
-        public BindingElementInfo(FrameworkElement dependencyObject, Binding binding, DependencyProperty dependencyProperty)
+        public BindingElementInfo(DependencyObject dependencyObject, Binding binding, DependencyProperty dependencyProperty)
         {
-            this.dependencyObject = dependencyObject;
-            this.binding = binding;
-            this.dependencyProperty = dependencyProperty;
+            this._dependencyObject = dependencyObject;
+            this._binding = binding;
+            this._dependencyProperty = dependencyProperty;
         }
 
-        public FrameworkElement DependencyObject
+        public DependencyObject DependencyObject
         {
-            get { return dependencyObject; }
-            set { dependencyObject = value; }
+            get { return _dependencyObject; }
+            set { _dependencyObject = value; }
         }
 
         public Binding Binding
         {
-            get { return binding; }
-            set { binding = value; }
+            get { return _binding; }
+            set { _binding = value; }
         }
 
         public DependencyProperty DependencyProperty
         {
-            get { return dependencyProperty; }
-            set { dependencyProperty = value; }
+            get { return _dependencyProperty; }
+            set { _dependencyProperty = value; }
         }
     }
     
