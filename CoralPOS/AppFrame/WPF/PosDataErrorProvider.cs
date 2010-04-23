@@ -30,7 +30,7 @@ namespace AppFrame.WPF
         }
         void PosDataErrorProviderLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            ValidateContext = true;
+            ValidateContext = false;
             GetBindingElementInformation();
             if(EnabledValidation) TurnOnValidateOnDataError();
         }
@@ -152,17 +152,24 @@ namespace AppFrame.WPF
             LinkedList<string> linkedList = new LinkedList<string>();
             linkedList.AddFirst(dataContext.GetType().FullName);
             ValidateRecursively(dataContext, errors,linkedList);
-            foreach (IValidationError validationError in errors)
-            {
-                string propName = validationError.PropertyName;
-                var result = from bdi in bindingObjects
-                             where bdi.Binding.Path.Path.EndsWith(propName) 
-                             select new ValidationError
-                                        {
-                                            
-                                        };
-                
-            }
+            /*foreach (IValidationError validationError in errors)
+            {*/
+                //string propName = validationError.PropertyName;
+
+            var result = from bdi in bindingObjects
+                         from validationError in errors
+                         where bdi.Binding.Path.Path.EndsWith(validationError.PropertyName)
+                         select CreateValidationError(bdi, validationError);
+                                 
+            
+            /*}*/
+        }
+
+        private object CreateValidationError(BindingElementInfo bdi, IValidationError validationError)
+        {
+            ValidationError error = new ValidationError(bdi.Binding.ValidationRules[0], bdi.Binding,validationError.Message, null);
+            System.Windows.Controls.Validation.MarkInvalid(BindingOperations.GetBindingExpression(bdi.DependencyObject,bdi.DependencyProperty),error);
+            return error;
         }
 
         private void ValidateRecursively(object instance, List<IValidationError> validationErrors, LinkedList<string> linkedList)
