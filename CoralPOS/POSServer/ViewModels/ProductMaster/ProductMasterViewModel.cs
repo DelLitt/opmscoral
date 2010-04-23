@@ -1,7 +1,3 @@
-			 
-
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -285,6 +281,7 @@ namespace POSServer.ViewModels.ProductMaster
         
         public void Save()
         {
+            this.Validate();
             IEnumerable<IValidationError> errors = this.GetErrors(ProductMaster);
             if (errors.Count() > 0)
             {

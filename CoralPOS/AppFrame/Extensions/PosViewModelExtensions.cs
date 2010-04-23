@@ -38,7 +38,7 @@ namespace AppFrame.Extensions
         
         public static bool Validate(this PosViewModel viewModel)
         {
-            var view = viewModel.GetView(viewModel) as DependencyObject;
+            var view = viewModel.GetView(null) as DependencyObject;
             if (view == null) return true;
             DependencyObject vp = LogicalTreeHelper.FindLogicalNode(view, "PosDataErrorProvider");
             PosDataErrorProvider pvp = vp as PosDataErrorProvider;

@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using AppFrame.DataLayer;
+using Caliburn.PresentationFramework.Behaviors;
 using Caliburn.PresentationFramework.ViewModels;
 
 namespace AppFrame.WPF
@@ -30,7 +31,7 @@ namespace AppFrame.WPF
         }
         void PosDataErrorProviderLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            ValidateContext = false;
+            ValidateContext = true;
             GetBindingElementInformation();
             if(EnabledValidation) TurnOnValidateOnDataError();
         }
@@ -60,8 +61,19 @@ namespace AppFrame.WPF
                 }
             }
         }
-
-        public bool ValidateContext { get; set; }
+        public static readonly DependencyProperty ValidateContextProperty =
+            DependencyProperty.Register("ValidateContext", typeof(Boolean), typeof(PosDataErrorProvider));
+        public bool ValidateContext
+        {
+            get
+            {
+                return (bool) GetValue(ValidateContextProperty);
+            }
+            set
+            {
+                SetValue(ValidateContextProperty,value);
+            }
+        }
         private void TurnOffValidateOnDataError()
         {
             foreach (BindingElementInfo bbInfo in bindingObjects)
@@ -175,17 +187,36 @@ namespace AppFrame.WPF
         private void ValidateRecursively(object instance, List<IValidationError> validationErrors, LinkedList<string> linkedList)
         {
             Type type = instance.GetType();
+            Type[] interfaces = instance.GetType().GetInterfaces();
+
+            foreach (Type iface in interfaces)
+            {
+                if (iface == typeof(ICollection))
+                {
+                    ICollection collection = (ICollection)instance;
+                    if (collection.Count == 0) return;
+
+                    foreach (object item in collection)
+                    {
+                        ValidateRecursively(item,validationErrors,linkedList);
+                    }
+                    return;
+                }
+            }
+
             PropertyInfo[] propInfos =type.GetProperties();
             validationErrors.AddRange(GlobalValidator.Instance.Validate(instance).ToList());
             
             foreach (PropertyInfo propertyInfo in propInfos)
             {
-                
+                Console.WriteLine(propertyInfo.Name);
+                if (!ShoudValidate(propertyInfo)) continue;
                 var obj = propertyInfo.GetValue(instance, null);
                 if (obj == null) continue;
                 if (obj.GetType().IsPrimitive || obj.GetType().IsEnum) continue;
                 Type typeObj = obj.GetType();
-                if (obj.GetType().FullName.EndsWith("Proxy")) typeObj = obj.GetType().BaseType;
+                if (typeObj.FullName.EndsWith("Proxy")) typeObj = typeObj.BaseType;
+                if (!typeObj.GetType().FullName.StartsWith("CoralPOS.Models")) continue;
                 if(linkedList.Contains(typeObj.FullName))
                 {
                     int propPos = PosInList(linkedList, typeObj.FullName);
@@ -200,6 +231,12 @@ namespace AppFrame.WPF
 
             }
             
+        }
+
+        private bool ShoudValidate(PropertyInfo propertyType)
+        {
+            object[] attrs = propertyType.PropertyType.GetCustomAttributes(typeof(ValidateAttribute),true);
+            return attrs!=null && attrs.Length > 0; 
         }
 
         private int PosInList(LinkedList<string> linkedList, string entityFullName)
