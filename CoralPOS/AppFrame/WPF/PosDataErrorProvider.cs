@@ -31,7 +31,7 @@ namespace AppFrame.WPF
         }
         void PosDataErrorProviderLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            ValidateContext = true;
+            ValidateContext = false;
             GetBindingElementInformation();
             if(EnabledValidation) TurnOnValidateOnDataError();
         }
@@ -148,12 +148,7 @@ namespace AppFrame.WPF
                 if (hasError)
                 {
                     validate = false;
-                    foreach (ValidationError validationError in errors)
-                    {
-                        System.Windows.Controls.Validation.MarkInvalid((BindingExpressionBase)validationError.BindingInError, validationError);
-                    }
                 }
-
             }
             return validate;
         }
@@ -266,6 +261,7 @@ namespace AppFrame.WPF
 
                 binding.ValidatesOnDataErrors = true;
                 binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                binding.ValidationRules.Add(PosErrorValidationRule.Instance);
                 binding.NotifyOnValidationError = true;
                 System.Windows.Controls.Validation.AddErrorHandler(element, ErrorHandler);
                 element.SetBinding(dp, binding);
