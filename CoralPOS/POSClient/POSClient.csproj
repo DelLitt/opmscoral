@@ -498,7 +498,11 @@
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
     <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Report\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Sale\IPurchaseOrderSearchViewModel.cs" />
+    <Compile Include="ViewModels\Sale\IPurchaseOrderViewModel.cs" />
     <Compile Include="ViewModels\Sale\ITemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Sale\PurchaseOrderSearchViewModel.cs" />
+    <Compile Include="ViewModels\Sale\PurchaseOrderViewModel.cs" />
     <Compile Include="ViewModels\Sale\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
