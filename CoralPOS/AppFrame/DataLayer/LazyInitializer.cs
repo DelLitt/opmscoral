@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using FastReflectionLib;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Collection;
 using NHibernate.Proxy;
+using Fasterflect;
 using LockMode = NHibernate.LockMode;
 
 namespace AppFrame.DataLayer
@@ -192,12 +192,14 @@ namespace AppFrame.DataLayer
                             && !(propType is ICollection)) continue;
                         int propPosInList = PosInList(linkedList, propFullName);
                         if(propPosInList < entityPosInList) continue;
-                        MethodInfo method = prop.GetGetMethod();
+                        /*MethodInfo method = prop.GetGetMethod();
                         if (null != method)
-                        {
+                        {*/
                             //Console.WriteLine(entity.GetType().Name + "." + prop.Name + " is invoked.");
                             //object proxy = method.Invoke(entity, new object[0]);     
-                            object proxy = prop.FastGetValue(entity);
+                            object proxy = entity.GetPropertyValue(prop.Name);
+                            /*var accessor = FastReflectionCaches.PropertyAccessorCache.Get(prop);
+                            object proxy = accessor.GetValue(entity);*/
                             
                             //if(proxy == null) continue;
                             /*if (!NHibernateUtil.IsInitialized(proxy))
@@ -215,7 +217,7 @@ namespace AppFrame.DataLayer
                                 ExtractMappedProperties(proxy, depth + 1, maxDepth,
                                                           loadGraphCompletely,
                                                           modelNamespace, session, linkedList);
-                        }
+                        /*}*/
                     }
                 }
             }

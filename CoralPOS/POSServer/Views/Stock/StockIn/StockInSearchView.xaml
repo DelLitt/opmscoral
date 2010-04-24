@@ -13,7 +13,7 @@
                 <RowDefinition Height="206*"></RowDefinition>
                 <RowDefinition Height="371*"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" SelectedItem="{Binding SelectedStockIn}">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" SelectedItem="{Binding SelectedStockIn}" CanUserDeleteRows="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" />
                     <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockInId}" SortMemberPath="StockInId"/>

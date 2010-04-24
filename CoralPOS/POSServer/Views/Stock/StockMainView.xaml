@@ -13,8 +13,28 @@
             <ColumnDefinition Width="167*" />
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
+        <Label Content="XÁC NHẬN" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label3" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </Label.LayoutTransform>
+        </Label>
+        <Label Content="TÌM KIẾM VÀ KIỂM KÊ" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label2" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </Label.LayoutTransform>
+        </Label>
+        <Label Content="NHẬP HÀNG" FontSize="16" FontStretch="Normal" FontStyle="Italic" FontWeight="Black" Name="label1" VerticalAlignment="Center" Grid.Row="1">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </Label.LayoutTransform>
+        </Label>
+        <Label Name="textBlock2" Grid.Column="1" Content="XUẤT HÀNG" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Black" FontStretch="Normal" FontStyle="Italic">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </Label.LayoutTransform>
+        </Label>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,0,69,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">NHẬP HÀNG</TextBlock></Button>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="None">NHẬP HÀNG</TextBlock></Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="60,99.99,69,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
         </Button>
@@ -34,7 +54,7 @@
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH LÔ HÀNG XUẤT</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="64.125,299.97,65.125,355.52" Name="StockOutByExcel" TabIndex="9" Grid.Column="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">XUẤT HÀNG BẰNG EXCEL</TextBlock>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="68">XUẤT HÀNG BẰNG EXCEL</TextBlock>
         </Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="68,0,62,0" Name="InventoryCollector" TabIndex="9" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">KIỂM KÊ</TextBlock>
@@ -57,9 +77,5 @@
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Height="80" Margin="69,199.98,60,0" Name="DepartmentStockOutConfirm" TabIndex="9" VerticalAlignment="Top" Grid.Column="3">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">X.NHẬN XUẤT KHO TỪ CỬA HÀNG</TextBlock>
         </Button>
-        <TextBlock Name="textBlock1" Text="NHẬP HÀNG" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
-        <TextBlock Name="textBlock2" Grid.Column="1" Text="XUẤT HÀNG" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
-        <TextBlock Name="textBlock3" Grid.Column="2" Text="TÌM KIẾM VÀ KIỂM KÊ" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
-        <TextBlock Name="textBlock4" Grid.Column="3" Text="XÁC NHẬN" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
     </Grid>
 </UserControl>

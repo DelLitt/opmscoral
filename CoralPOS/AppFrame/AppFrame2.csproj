@@ -130,9 +130,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="FastReflectionLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\FastReflectionLib.dll</HintPath>
+    <Reference Include="Fasterflect">
+      <HintPath>..\libraries\Fasterflect.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
