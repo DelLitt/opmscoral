@@ -12,7 +12,7 @@
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="FromMainStock" TabIndex="9" VerticalAlignment="Top">
             <TextBlock Text="NHẬP ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" />
         </Button>
-        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,348" Name="ToMainStock" TabIndex="9" Width="80" Height="80">
+        <Button FontSize="14" FontWeight="Bold" Margin="49,312,45,308" Name="ToMainStock" TabIndex="9" Width="80" Height="80">
             <TextBlock Text="XUẤT ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" Width="72.5" />
         </Button>
     </Grid>
