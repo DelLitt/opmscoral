@@ -192,9 +192,9 @@ namespace AppFrame.DataLayer
                             && !(propType is ICollection)) continue;
                         int propPosInList = PosInList(linkedList, propFullName);
                         if(propPosInList < entityPosInList) continue;
-                        /*MethodInfo method = prop.GetGetMethod();
+                        MethodInfo method = prop.GetGetMethod();
                         if (null != method)
-                        {*/
+                        {
                             //Console.WriteLine(entity.GetType().Name + "." + prop.Name + " is invoked.");
                             //object proxy = method.Invoke(entity, new object[0]);     
                             object proxy = entity.GetPropertyValue(prop.Name);
@@ -217,7 +217,7 @@ namespace AppFrame.DataLayer
                                 ExtractMappedProperties(proxy, depth + 1, maxDepth,
                                                           loadGraphCompletely,
                                                           modelNamespace, session, linkedList);
-                        /*}*/
+                        }
                     }
                 }
             }
