@@ -51,4 +51,13 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+  <object id="SyncFromMainStockFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSClient.ViewModels.Synchronize.ISyncFromMainStockViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

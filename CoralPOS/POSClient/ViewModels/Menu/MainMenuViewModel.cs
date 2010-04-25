@@ -13,7 +13,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSClient.ViewModels.Synchronize;
 
 
 namespace POSClient.ViewModels.Menu
@@ -44,34 +44,34 @@ namespace POSClient.ViewModels.Menu
             
         }
 		        
-        public void button1()
+        public void Sale()
         {
             
         }
 		        
-        public void button2()
+        public void DepartmentStock()
         {
             
         }
 		        
-        public void button3()
+        public void Report()
         {
             
         }
 		        
-        public void button4()
+        public void Management()
         {
             
         }
 		        
-        public void button5()
+        public void Utility()
         {
             
         }
 		        
-        public void button6()
+        public void Synchronize()
         {
-            
+            _startViewModel.Open<ISynchronizeMainViewModel>();
         }
 				#endregion
 		

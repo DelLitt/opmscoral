@@ -21,22 +21,22 @@ namespace POSClient.ViewModels.Menu
         void Task();
         
 		        
-        void button1();
+        void Sale();
         
 		        
-        void button2();
+        void DepartmentStock();
         
 		        
-        void button3();
+        void Report();
         
 		        
-        void button4();
+        void Management();
         
 		        
-        void button5();
+        void Utility();
         
 		        
-        void button6();
+        void Synchronize();
         
 			#endregion
     }

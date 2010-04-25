@@ -7,6 +7,7 @@ namespace POSClient.Common
 {
     public class FlowConstants
     {
+        public const string SYNC_FROM_MAINSTOCK_FLOW = "SyncFromMainStockFlow";
         public const string LOGIN_FLOW = "LoginFlow";
     }
 }

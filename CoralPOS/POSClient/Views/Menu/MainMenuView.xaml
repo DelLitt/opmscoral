@@ -4,11 +4,11 @@
     Height="700" Width="174">
     <Grid>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,12,47,0" Name="Task" VerticalAlignment="Top">TÁC VỤ</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,112,47,0" Name="button1" VerticalAlignment="Top">BÁN HÀNG</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,212,47,0" Name="button2" VerticalAlignment="Top">KHO</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,312,47,0" Name="button3" VerticalAlignment="Top">BÁO CÁO</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,212" Name="button4" VerticalAlignment="Bottom">QUẢN LÝ</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,112" Name="button5" VerticalAlignment="Bottom">TIỆN ÍCH</Button>
-        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,12" Name="button6" VerticalAlignment="Bottom">ĐỒNG BỘ</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,112,47,0" Name="Sale" VerticalAlignment="Top">BÁN HÀNG</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,212,47,0" Name="DepartmentStock" VerticalAlignment="Top">KHO</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,312,47,0" Name="Report" VerticalAlignment="Top">BÁO CÁO</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,212" Name="Management" VerticalAlignment="Bottom">QUẢN LÝ</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,112" Name="Utility" VerticalAlignment="Bottom">TIỆN ÍCH</Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="47,0,47,12" Name="Synchronize" VerticalAlignment="Bottom">ĐỒNG BỘ</Button>
     </Grid>
 </UserControl>
