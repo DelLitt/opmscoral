@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
+using Caliburn.Core.Invocation;
 using Common.Logging;
 
 namespace AppFrame.Utils
@@ -259,5 +261,11 @@ namespace AppFrame.Utils
                 }
             }
         }
+
+        
+
+        
+
+        public event RunWorkerCompletedEventHandler DoExecuteCompleted = delegate { };
     }
 }

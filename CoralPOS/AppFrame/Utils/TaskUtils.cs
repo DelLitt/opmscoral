@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using Caliburn.Core.Invocation;
+
+namespace AppFrame.Utils
+{
+    public class TaskUtils
+    {
+        public static void DoExecuteAsync(Func<object> theDelegate, object state, Func<object, object, RunWorkerCompletedEventArgs> completed)
+        {
+            BackgroundTask _backgroundTask = null;
+            _backgroundTask = new BackgroundTask(theDelegate);
+            _backgroundTask.Completed += (s, e) => completed(s, e);
+            _backgroundTask.Start(state);
+        }
+    }
+}
