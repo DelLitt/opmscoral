@@ -278,8 +278,6 @@
     <Compile Include="Implement\SupplierLogic.cs" />
     <Compile Include="Implement\SyncLogic.cs" />
     <Compile Include="Implement\SyncStatususLogic.cs" />
-    <Compile Include="Implement\SyncToDepartmentObject.cs" />
-    <Compile Include="Implement\SyncToMainObject.cs" />
     <Compile Include="Implement\TaxLogic.cs" />
     <Compile Include="Implement\TransactionLogic.cs" />
     <Compile Include="Implement\UserInfoLogic.cs" />
