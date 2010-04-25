@@ -111,6 +111,8 @@ namespace POSClient.DataLayer.Implement
         /// <param name="delegated"></param>
         /// <returns></returns>
         object ExecuteExposedSession(HibernateDelegate delegated);
+
+        void BatchUpdate(IList<ProductMaster> productMasterList);
     }
 }
 

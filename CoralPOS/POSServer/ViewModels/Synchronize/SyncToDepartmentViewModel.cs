@@ -1,23 +1,31 @@
-			 
+﻿			 
 
 			 
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Base.Synchronize;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using Microsoft.Practices.ServiceLocation;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
+using POSServer.Common;
+using POSServer.Utils;
 using POSServer.ViewModels.Menu;
 
 
@@ -125,6 +133,11 @@ namespace POSServer.ViewModels.Synchronize
             get; set;
         }
 
+        public SyncLogic SyncLogic
+        {
+            get; set;
+        }
+
         public void SyncToDepartment()
         {
            SyncToDepartmentObject obj = new SyncToDepartmentObject();
@@ -132,8 +145,11 @@ namespace POSServer.ViewModels.Synchronize
             obj.DepartmentInfo = DepartmentInfo;
             obj.ProductMasterInfo = ProductMasterInfo;
             obj.PriceInfo = PriceInfo;
-            Flow.Session.Put(FlowConstants.SYNC_TO_DEPARTMENT,obj);
-            GoToNextNode();
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
+            BackgroundTask _backgroundTask = null;
+            _backgroundTask = new BackgroundTask(()=>SyncToDepartment(obj));
+            _backgroundTask.Completed += (s, e) => SyncToDepartmentCompleted(s, e);
+            _backgroundTask.Start(obj);
         }
 		        
         public void Quit()
@@ -145,6 +161,44 @@ namespace POSServer.ViewModels.Synchronize
         {
             IList<Department> list = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
             Departments = list;
+        }
+
+        private IList resultList = null;
+        public object SyncToDepartment(SyncToDepartmentObject toDepartmentObject)
+        {
+            IList departmentUsbList = ClientUtility.GetUSBDrives();
+            foreach (var POSSyncDrive in departmentUsbList)
+            {
+
+                //var exportPath = (string)configurationAppSettings.GetValue("SyncExportPath", typeof(String));
+                var configExportPath = POSSyncDrive + ClientSetting.SyncExportPath;
+                if (string.IsNullOrEmpty(configExportPath) || !Directory.Exists(configExportPath))
+                {
+                    MessageBox.Show("Không thể tìm thấy đường dẫn đến thư mục " + configExportPath + "!Hãy kiễm tra file cấu hình phần SyncExportPath");
+                    return -1;
+                }
+                resultList = new ArrayList();
+
+                //toDepartmentObject = SyncLogic.SyncToDepartment(toDepartmentObject);
+                Department department = toDepartmentObject.Department;
+                var exportPath = ClientUtility.EnsureSyncPath(configExportPath, department);
+                int countSyncFile = 1;
+
+                SyncLogic.SyncToDepartment(exportPath, toDepartmentObject);
+
+                MessageBox.Show("Đồng bộ hoàn tất !");
+            }
+            return 0;
+        }
+
+        private IList<UsbSyncDisc> GetUSBDrives()
+        {
+            return new List<UsbSyncDisc>();
+        }
+
+        private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
         }
 
         #endregion

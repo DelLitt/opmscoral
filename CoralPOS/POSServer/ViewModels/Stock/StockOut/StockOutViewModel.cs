@@ -177,7 +177,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             
         }
 
-        private bool _canSave;
+        /*private bool _canSave;
         public bool CanSave
         {
             get
@@ -195,7 +195,8 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 
         [Preview("CanSave")]
-        [Dependencies("StockOut")]
+        [Dependencies("StockOut")]*/
+
         public void Save()
         {
             

@@ -352,6 +352,23 @@ namespace POSClient.DataLayer.Implement
         {
             return HibernateTemplate.Execute(delegated, true);
         }
+
+        public void SaveOrUpdate(Department department)
+        {
+            if (department == null) return;
+            Department current = (Department)HibernateTemplate.Get(typeof(Department),department.DepartmentId);
+            if(current!=null && DateTime.Compare(department.UpdateDate,current.UpdateDate) > 0 )
+            {
+                current.DepartmentName = department.DepartmentName;
+                current.UpdateDate = department.UpdateDate;
+                current.UpdateId = department.UpdateId;
+                HibernateTemplate.Update(department);
+            }
+            else
+            {
+                HibernateTemplate.Save(department);
+            }
+        }
     }
 }
 

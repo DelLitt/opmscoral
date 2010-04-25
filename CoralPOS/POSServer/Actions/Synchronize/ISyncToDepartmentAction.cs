@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.Synchronize

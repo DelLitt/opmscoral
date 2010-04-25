@@ -352,6 +352,17 @@ namespace POSClient.DataLayer.Implement
         {
             return HibernateTemplate.Execute(delegated, true);
         }
+
+        public void BatchUpdate(IList<ProductMaster> productMasterList)
+        {
+            var categoryList = from pm in productMasterList
+                               select pm.Category;
+            var productTypeList = from pm in productMasterList
+                                  select pm.ProductType;
+            HibernateTemplate.SaveOrUpdateAll(categoryList.ToList());
+            HibernateTemplate.SaveOrUpdateAll(productTypeList.ToList());
+            HibernateTemplate.SaveOrUpdateAll(productMasterList.ToList());
+        }
     }
 }
 

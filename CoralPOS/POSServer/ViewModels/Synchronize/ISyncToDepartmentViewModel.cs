@@ -23,7 +23,8 @@ namespace POSServer.ViewModels.Synchronize
         bool PriceInfo { get; set; }
         IList ResultInfoList { get; set; }
         IDepartmentLogic DepartmentLogic { get; set; }
-			#endregion
+        SyncLogic SyncLogic { get; set; }
+        #endregion
 		
 		#region Methods
 		        

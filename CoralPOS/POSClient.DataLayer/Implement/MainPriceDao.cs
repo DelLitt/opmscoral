@@ -352,6 +352,11 @@ namespace POSClient.DataLayer.Implement
         {
             return HibernateTemplate.Execute(delegated, true);
         }
+
+        public void BatchUpdate(IList<MainPrice> priceList)
+        {
+            HibernateTemplate.SaveOrUpdateAll(priceList.ToList());
+        }
     }
 }
 

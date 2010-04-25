@@ -101,7 +101,7 @@
         <!-- Show product master form -->
         <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutViewModel"/>
         <!-- Show product master summary form -->
-        <entry key="Step3" value="POSServer.ViewModels.Stock.StockOut.IStockOutConfirmViewModel"/>
+        <entry key="Step3" value="[IStockOutConfirmViewModel]"/>
         <!-- Save Product Master -->
         <entry key="Step4" value="POSServer.Actions.Stock.StockOut.IStockOutSaveAction"/>
       </dictionary>
@@ -133,8 +133,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ISyncToDepartmentViewModel"/>
-        <entry key="Step2" value="POSServer.Actions.Synchronize.ISyncToDepartmentAction"/>
+        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ISyncToDepartmentViewModel"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
