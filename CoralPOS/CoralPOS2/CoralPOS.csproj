@@ -446,6 +446,8 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SyncResult.cs" />
     <Compile Include="Models\SyncStatusus.cs" />
+    <Compile Include="Models\SyncToDepartmentObject.cs" />
+    <Compile Include="Models\SyncToMainObject.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\UserInfo.cs" />
