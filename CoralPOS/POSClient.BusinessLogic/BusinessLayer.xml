@@ -339,7 +339,14 @@
   <object id="IUserRoleLogic" type="POSClient.BusinessLogic.Implement.UserRoleLogic, POSClient.BusinessLogic">
     <property name="UserRoleDao" ref="IUserRoleDao"/>
   </object>
-    
+
+  <object id="ISyncLogic" type="POSClient.BusinessLogic.Implement.SyncLogic, POSClient.BusinessLogic">
+    <property name="ProductDao" ref="IProductDao"/>
+    <property name="ProductMasterDao" ref="IProductMasterDao"/>
+    <property name="StockOutDao" ref="IStockOutDao"/>
+    <property name="DepartmentDao" ref="IDepartmentDao"/>
+    <property name="MainPriceDao" ref="IMainPriceDao"/>
+  </object>
   
   <tx:attribute-driven />
 </objects>

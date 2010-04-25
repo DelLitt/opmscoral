@@ -99,6 +99,8 @@
     <Compile Include="Implement\CashIoTransactionLogic.cs" />
     <Compile Include="Implement\CategoryLogic.cs" />
     <Compile Include="Implement\ContractLogic.cs" />
+    <Compile Include="Implement\ISyncLogic.cs" />
+    <Compile Include="Implement\SyncLogic.cs" />
     <Compile Include="Implement\CountryLogic.cs" />
     <Compile Include="Implement\CouponLogic.cs" />
     <Compile Include="Implement\CouponTypeLogic.cs" />
