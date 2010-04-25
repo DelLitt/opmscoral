@@ -409,6 +409,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Synchronize\SyncFromMainStockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Synchronize\SynchronizeMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Synchronize\SyncToMainStockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -529,6 +541,12 @@
     <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IDepartmentStockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\TemplatePOSViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISyncFromMainStockViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\ISyncToMainStockViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SyncFromMainStockViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SynchronizeMainViewModel.cs" />
+    <Compile Include="ViewModels\Synchronize\SyncToMainStockViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Tool\TemplatePOSViewModel.cs" />
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
@@ -581,6 +599,15 @@
     </Compile>
     <Compile Include="Views\Stock\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SyncFromMainStockView.xaml.cs">
+      <DependentUpon>SyncFromMainStockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SynchronizeMainView.xaml.cs">
+      <DependentUpon>SynchronizeMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\SyncToMainStockView.xaml.cs">
+      <DependentUpon>SyncToMainStockView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>
