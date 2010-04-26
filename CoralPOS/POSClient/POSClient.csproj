@@ -680,7 +680,7 @@
     <EmbeddedResource Include="ClientViewModels.xml" />
     <EmbeddedResource Include="ClientActions.xml" />
     <None Include="pos2.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

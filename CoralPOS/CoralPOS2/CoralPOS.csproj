@@ -444,6 +444,8 @@
     <Compile Include="Models\StockOutDetailPK.cs" />
     <Compile Include="Models\StockOutTemp.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Synch\SyncToDepartmentObject.cs" />
+    <Compile Include="Models\Synch\SyncToMainObject.cs" />
     <Compile Include="Models\SyncResult.cs" />
     <Compile Include="Models\SyncStatusus.cs" />
     <Compile Include="Models\SyncToDepartmentObject.cs" />

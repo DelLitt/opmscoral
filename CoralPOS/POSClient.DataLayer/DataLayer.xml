@@ -10,6 +10,14 @@
 
   <db:provider id="DbProvider" provider="SqlServerCe-3.5.1" connectionString="Data Source=pos2.sdf;Password=admin;"/>
 
+  <object id="AdoTemplate" type="Spring.Data.Core.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider"/>
+  </object>
+
+  <object id="PosDatabase" type="AppFrame.DataLayer.Utils.PosDatabase, AppFrame" singleton="false">
+    <constructor-arg  ref="AdoTemplate"/>
+  </object>
+  
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="MappingAssemblies">

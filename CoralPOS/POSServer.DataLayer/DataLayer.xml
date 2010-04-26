@@ -9,6 +9,14 @@
   </object>
 
   <db:provider id="DbProvider" provider="OracleClient-2.0" connectionString="Data Source=XE; User ID=pos2; Password=admin;"/>
+  
+  <object id="AdoTemplate" type="Spring.Data.Core.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider"/>
+  </object>
+
+  <object id="PosDatabase" type="AppFrame.DataLayer.Utils.PosDatabase, AppFrame" singleton="false">
+    <constructor-arg  ref="AdoTemplate"/>
+  </object>
 
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
     <property name="DbProvider" ref="DbProvider"/>
