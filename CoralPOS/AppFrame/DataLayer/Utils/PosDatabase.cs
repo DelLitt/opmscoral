@@ -10,6 +10,7 @@ using Spring.Data.Common;
 using Spring.Data;
 using Spring.Data.Core;
 using Spring.Data.Objects;
+using Spring.Data.Support;
 
 namespace AppFrame.DataLayer.Utils
 {
@@ -75,6 +76,8 @@ namespace AppFrame.DataLayer.Utils
             }
             AdoTemplate.DataTableUpdateWithCommandBuilder(dataTable, CommandType.Text, "SELECT * FROM " + dataTable.TableName,
                                                           builder.GetParameters(), dataTable.TableName);
+
+            
             
         }
         public static PosDatabase Instance
@@ -103,10 +106,12 @@ namespace AppFrame.DataLayer.Utils
         public void UpdateDataTable(DataTable dataTable, string tableName)
         {
             DataTable current = ExecuteQueryAll(tableName);
-
-            current.Merge(ConvertDataType(dataTable, current));
             current.TableName = tableName;
-            UpdateDataTable(current);
+            current.Merge(ConvertDataType(dataTable, current));
+            DataTable update = current.GetChanges();
+            update.TableName = tableName;
+
+            UpdateDataTable(update);
         }
     }
 }

@@ -8,6 +8,8 @@ using CoralPOS.Models;
 using System.Linq;
 
 using POSClient.DataLayer.Implement;
+using Spring.Data.Common;
+using Spring.Data.Support;
 
 namespace POSClient.BusinessLogic.Implement
 {
@@ -80,7 +82,7 @@ namespace POSClient.BusinessLogic.Implement
 
             PosDatabase database = PosDatabase.Instance;
 
-            DataTable categoryCurrent = database.ExecuteQueryAll("CRL_CAT");
+            /*DataTable categoryCurrent = database.ExecuteQueryAll("CRL_CAT");
             categoryCurrent.Merge(database.ConvertDataType(syncToDept.Category, categoryCurrent));
             categoryCurrent.TableName = "CRL_CAT";
             database.UpdateDataTable(categoryCurrent);
@@ -89,11 +91,13 @@ namespace POSClient.BusinessLogic.Implement
             
             productTypeCurrent.Merge(database.ConvertDataType(syncToDept.ProductType, productTypeCurrent));
             productTypeCurrent.TableName = "CRL_PRD_TYP";
-            database.UpdateDataTable(productTypeCurrent);
-
+            database.UpdateDataTable(productTypeCurrent);*/
+            database.UpdateDataTable(syncToDept.Category, "CRL_CAT");
+            database.UpdateDataTable(syncToDept.ProductType, "CRL_PRD_TYP");
             database.UpdateDataTable(syncToDept.ProductMaster,"CRL_PRD_MST");
             database.UpdateDataTable(syncToDept.ProductColor, "CRL_EX_PRD_COLOR");
-            database.UpdateDataTable(syncToDept.ProductSize, "CRL_EX_PRD_COLOR");
+            database.UpdateDataTable(syncToDept.ProductSize, "CRL_EX_PRD_SIZE");
+            database.UpdateDataTable(syncToDept.Product, "CRL_PRD");
             return "";
         }
 
