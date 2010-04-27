@@ -156,16 +156,14 @@ namespace POSClient.BusinessLogic.Implement
             #endregion
 
             PosDatabase database = PosDatabase.Instance;
-            database.FastUpdateDataTable(syncToDept.DepartmentList,"CRL_DEPT");
+            database.UpdateDataTable(syncToDept.DepartmentList,"CRL_DEPT");
             database.UpdateDataTable(syncToDept.Category, "CRL_CAT");
             database.UpdateDataTable(syncToDept.ProductType, "CRL_PRD_TYP");
-            database.UpdateDataTable(syncToDept.ProductMaster,"CRL_PRD_MST");
             database.UpdateDataTable(syncToDept.ProductColor, "CRL_EX_PRD_COLOR");
             database.UpdateDataTable(syncToDept.ProductSize, "CRL_EX_PRD_SIZE");
+            database.UpdateDataTable(syncToDept.ProductMaster, "CRL_PRD_MST");
             database.UpdateDataTable(syncToDept.Product, "CRL_PRD");
-            
-
-            
+            database.UpdateDataTable(syncToDept.Prices, "CRL_MN_PRICE");
 
             return "";
         }

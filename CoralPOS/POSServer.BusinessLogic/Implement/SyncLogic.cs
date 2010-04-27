@@ -125,9 +125,9 @@ namespace POSServer.BusinessLogic.Implement
             if (syncToDept.ProductMasterInfo)
             {
 
-                syncToDept.ProductMaster = database.ExecuteQueryAll("CRL_PRD_MST");
                 syncToDept.ProductType = database.ExecuteQueryAll("CRL_PRD_TYP");
                 syncToDept.Category = database.ExecuteQueryAll("CRL_CAT");
+                syncToDept.ProductMaster = database.ExecuteQueryAll("CRL_PRD_MST");
                 syncToDept.ProductColor = database.ExecuteQueryAll("CRL_EX_PRD_COLOR");
                 syncToDept.ProductSize = database.ExecuteQueryAll("CRL_EX_PRD_SIZE");
                 syncToDept.Product = database.ExecuteQueryAll("CRL_PRD");

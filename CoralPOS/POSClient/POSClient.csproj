@@ -310,6 +310,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\CircularLoadView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\DeparmentStockMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -325,6 +329,10 @@
     <Page Include="Views\Menu\MainMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NormalLoadView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -485,6 +493,7 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\FlowConstants.cs" />
+    <Compile Include="ViewModels\CircularLoadViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
     <Compile Include="ViewModels\INavigationShellViewModel.cs" />
@@ -511,6 +520,7 @@
     <Compile Include="ViewModels\Menu\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\NavigationShellViewModel.cs" />
     <Compile Include="ViewModels\NavLoginViewModel.cs" />
+    <Compile Include="ViewModels\NormalLoadViewModel.cs" />
     <Compile Include="ViewModels\Report\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Report\TemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Sale\IPurchaseOrderSearchViewModel.cs" />
@@ -552,6 +562,9 @@
     <Compile Include="ViewModels\Synchronize\SyncToMainStockViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Tool\TemplatePOSViewModel.cs" />
+    <Compile Include="Views\CircularLoadView.xaml.cs">
+      <DependentUpon>CircularLoadView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeparmentStockMenuView.xaml.cs">
       <DependentUpon>DeparmentStockMenuView.xaml</DependentUpon>
     </Compile>
@@ -560,6 +573,9 @@
     </Compile>
     <Compile Include="Views\Menu\MainMenuView.xaml.cs">
       <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NormalLoadView.xaml.cs">
+      <DependentUpon>NormalLoadView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Report\TemplatePOSView.xaml.cs">
       <DependentUpon>TemplatePOSView.xaml</DependentUpon>

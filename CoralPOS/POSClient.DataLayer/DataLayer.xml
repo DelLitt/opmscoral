@@ -14,9 +14,7 @@
     <property name="DbProvider" ref="DbProvider"/>
   </object>
 
-  <object id="PosDatabase" type="AppFrame.DataLayer.Utils.PosDatabase, AppFrame" singleton="false">
-    <constructor-arg  ref="AdoTemplate"/>
-  </object>
+  
   
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
     <property name="DbProvider" ref="DbProvider"/>
@@ -39,7 +37,7 @@
                value="true"/>
       </dictionary>
     </property>
-
+    <property name="ExposeTransactionAwareSessionFactory" value="true" />
   </object>
 
 
@@ -54,6 +52,11 @@
     <property name="CacheQueries" value="true" />
   </object>
 
+  <object id="PosDatabase" type="AppFrame.DataLayer.Utils.PosDatabase, AppFrame" singleton="false">
+    <constructor-arg  ref="AdoTemplate"/>
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+  
   <!-- Data Access Objects -->
   	
   <object id="IActiveDepartmentDao" type="POSClient.DataLayer.Implement.ActiveDepartmentDao, POSClient.DataLayer">

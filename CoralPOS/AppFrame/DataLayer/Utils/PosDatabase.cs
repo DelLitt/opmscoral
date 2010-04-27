@@ -5,10 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.ServiceLocation;
+using NHibernate;
 using Spring.Data;
 using Spring.Data.Common;
 using Spring.Data;
 using Spring.Data.Core;
+using Spring.Data.NHibernate;
 using Spring.Data.Objects;
 using Spring.Data.Support;
 
@@ -19,6 +21,10 @@ namespace AppFrame.DataLayer.Utils
         public PosDatabase(AdoTemplate adoTemplate)
         {
             AdoTemplate = adoTemplate;
+        }
+        public ISessionFactory SessionFactory
+        {
+            set; get;
         }
 
         public DataTable ExecuteQuery(string query)
@@ -116,11 +122,13 @@ namespace AppFrame.DataLayer.Utils
 
         public void FastUpdateDataTable(DataTable dataTable,string tableName)
         {
-            DataTable current = ExecuteQueryTableDirect(tableName);
+            DataTable current = ExecuteQueryAll(tableName);
             current.TableName = tableName;
             ReflectUpdateTable(current, dataTable);
-
             
+            // submit changes
+            //Flush the session to execute sql in the db.
+            SessionFactoryUtils.GetSession(SessionFactory, true).Flush();
         }
 
         private DataTable ExecuteQueryTableDirect(string tableName)

@@ -5,16 +5,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Utils;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using Microsoft.Practices.ServiceLocation;
 using POSClient.BusinessLogic.Implement;
 using POSClient.ViewModels.Menu;
 
@@ -62,13 +66,30 @@ namespace POSClient.ViewModels.Synchronize
         public void SyncFromMainStock()
         {
             IList departmentUsbList = ClientUtility.GetUSBDrives();
+
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
+            BackgroundTask _backgroundTask = null;
+            _backgroundTask = new BackgroundTask(() => SyncFromMain(departmentUsbList));
+            _backgroundTask.Completed += (s, e) => SyncToDepartmentCompleted(s, e);
+            _backgroundTask.Start(departmentUsbList);
+
+        }
+
+        private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
+        {
+            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
+        }
+
+        private object SyncFromMain(IList departmentUsbList)
+        {
             foreach (var POSSyncDrive in departmentUsbList)
             {
                 var configExportPath = POSSyncDrive + @"\POS\KHO-CH" + @"\1";
                 SyncLogic.SyncFromMain(configExportPath);
             }
+            return null;
         }
-		        
+
         public void Quit()
         {
            Flow.End(); 

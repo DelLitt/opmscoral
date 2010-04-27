@@ -13,5 +13,10 @@
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
     <property name="SyncLogic" ref="ISyncLogic" />
   </object>
-  
+  <object id="ICircularLoadViewModel" type="POSClient.ViewModels.CircularLoadViewModel, POSClient" singleton="true">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
+  <object id="INormalLoadViewModel" type="POSClient.ViewModels.NormalLoadViewModel, POSClient" singleton="true">
+    <constructor-arg ref="IShellViewModel" />
+  </object>
 </objects>
