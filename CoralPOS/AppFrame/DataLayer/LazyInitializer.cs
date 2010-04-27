@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Collection;
 using NHibernate.Proxy;
-using Fasterflect;
+
 using LockMode = NHibernate.LockMode;
 
 namespace AppFrame.DataLayer
@@ -196,8 +193,8 @@ namespace AppFrame.DataLayer
                         if (null != method)
                         {
                             //Console.WriteLine(entity.GetType().Name + "." + prop.Name + " is invoked.");
-                            //object proxy = method.Invoke(entity, new object[0]);     
-                            object proxy = entity.GetPropertyValue(prop.Name);
+                            object proxy = method.Invoke(entity, new object[0]);     
+                            //object proxy = entity.GetPropertyValue(prop.Name);
                             /*var accessor = FastReflectionCaches.PropertyAccessorCache.Get(prop);
                             object proxy = accessor.GetValue(entity);*/
                             

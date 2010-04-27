@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using AppFrame.DataLayer.Utils;
 using AppFrame.Utils;
+using CoralPOS;
 using CoralPOS.Models;
 using System.Linq;
-
+using System.Linq.Expressions;
 using POSClient.DataLayer.Implement;
+using CoralPOS.pos2DataSetTableAdapters;
 using Spring.Data.Common;
 using Spring.Data.Support;
 
@@ -20,6 +23,9 @@ namespace POSClient.BusinessLogic.Implement
         public StockOutDao StockOutDao { get; set; }
         public DepartmentDao DepartmentDao { get; set; }
         public MainPriceDao MainPriceDao { get; set; }
+        public DepartmentStockInDao DepartmentStockInDao { get; set; }
+        public DepartmentStockInDetailDao DepartmentStockInDetailDao { get; set; }
+        public DepartmentStockDao DepartmentStockDao { get; set; }
 
         public SyncToMainObject SyncToMain(SyncToMainObject syncToMainObject)
         {
@@ -50,21 +56,90 @@ namespace POSClient.BusinessLogic.Implement
 
         private string SyncStockOut(SyncToDepartmentObject syncToDept)
         {
-            /*var stockOutList = syncToDept.StockOutList;
-            var productList = from so in stockOutList
-                              from soDetail in so.StockOutDetails
-                              select soDetail.Product;
-
-            var colorList = from prd in productList
-                            select prd.ProductColor;
-            var sizeList = from prd in productList
-                            select prd.ProductSize;*/
-
-            PosDatabase database = PosDatabase.Instance;
+            pos2DataSet dataSet = new pos2DataSet();
             
-            /*database.UpdateDataTable(syncToDept.ProductColor, "CRL_EX_PRD_COLOR");
-            database.UpdateDataTable(syncToDept.ProductSize, "CRL_EX_PRD_COLOR");*/
+            PosDatabase database = PosDatabase.Instance;
+            var deptStkInAdapter = new crl_dept_stk_inTableAdapter();
+            deptStkInAdapter.ClearBeforeFill = true;
+            deptStkInAdapter.Fill(dataSet.crl_dept_stk_in);
+            
+            var deptStkInDetAdapter = new crl_dept_stk_in_detTableAdapter();
+            deptStkInDetAdapter.Fill(dataSet.crl_dept_stk_in_det);
+            
+            string template = DateTime.Now.ToString("yyMMdd");
+            var maxId = from dr in dataSet.crl_dept_stk_in
+                        where dr.STOCK_IN_ID.Contains(template)
+                        orderby dr.STOCK_IN_ID descending
+                        select dr.STOCK_IN_ID.FirstOrDefault();
+            string maxStockInId = ObjectUtility.IsNullOrEmpty(maxId) ? (Int64.Parse(maxId.ToString()) + 1).ToString() : syncToDept.Department.DepartmentId.ToString() + template + "1";
 
+            Department department = syncToDept.Department;
+            /*dataSet.crl_dept.Addcrl_deptRow(department.DepartmentId, department.DepartmentName, department.Address,
+                                            department.Active, department.CreateDate, department.CreateId,
+                                            department.UpdateDate, department.UpdateId, department.ExclusiveKey,
+                                            department.DelFlg, department.ExFld1, department.ExFld2, department.ExFld3,
+                                            department.ExFld4, department.ExFld5,department.StartDate);
+            pos2DataSet.crl_deptRow deptRow = dataSet.crl_dept.FindByDEPARTMENT_ID(department.DepartmentId);*/
+
+            
+            pos2DataSet.crl_stk_out_detDataTable details = new pos2DataSet.crl_stk_out_detDataTable();
+            foreach (DataRow dataRow in syncToDept.StockOutDetail.Rows)
+            {
+                var itemArray = dataRow.ItemArray;
+                details.Rows.Add(itemArray);
+            }
+
+
+            foreach (DataRow stockOut in syncToDept.StockOut.Rows)
+            {
+                string filter = "STOCK_OUT_ID = " + stockOut["STOCK_OUT_ID"].ToString();
+                var currents = from dr in dataSet.crl_stk_out
+                                     where dr.STOCK_OUT_ID == Int64.Parse(stockOut["STOCK_OUT_ID"].ToString())
+                                     select dr;
+                
+                if(currents.Count()>0) continue;
+                // create new department stock in 
+                pos2DataSet.crl_dept_stk_inRow newRow = dataSet.crl_dept_stk_in.Newcrl_dept_stk_inRow();
+                newRow.STOCK_IN_ID = maxStockInId;
+                newRow.STOCK_IN_TYPE = 0;
+                newRow.SRC_DEPARTMENT_ID = Int64.Parse(stockOut["DEPARTMENT_ID"].ToString());
+                newRow.TOTAL_QUANTITY = Int64.Parse(stockOut["TOTAL_QUANTITY"].ToString());
+                newRow.DEPARTMENT_ID = department.DepartmentId;
+                newRow.STOCK_IN_DATE = DateTime.Now;
+                newRow.CREATE_DATE = DateTime.Now;
+                newRow.UPDATE_DATE = DateTime.Now;
+                newRow.CREATE_ID = "admin";
+                newRow.UPDATE_ID = "admin";
+                newRow.DESCRIPTION = stockOut["DESCRIPTION"].ToString();
+                newRow.EXCLUSIVE_KEY = 1;
+                dataSet.crl_dept_stk_in.Addcrl_dept_stk_inRow(newRow);
+                // create department stock in detail
+                var specificDetails = from dt in details
+                                      where dt.STOCK_OUT_ID == Int64.Parse(stockOut["STOCK_OUT_ID"].ToString())
+                                      select dt;
+                foreach (pos2DataSet.crl_stk_out_detRow crlStkOutDetRow in specificDetails)
+                {
+                    pos2DataSet.crl_dept_stk_in_detRow detail = dataSet.crl_dept_stk_in_det.Newcrl_dept_stk_in_detRow();
+                    detail.STOCK_IN_ID = maxStockInId;
+                    detail.DEPARTMENT_ID = newRow.DEPARTMENT_ID;
+                    detail.EXCLUSIVE_KEY = newRow.EXCLUSIVE_KEY;
+                    detail.CREATE_DATE = newRow.CREATE_DATE;
+                    detail.UPDATE_DATE = newRow.UPDATE_DATE;
+                    detail.CREATE_ID = newRow.CREATE_ID;
+                    detail.UPDATE_ID = newRow.UPDATE_ID;
+                    detail.PRODUCT_ID = crlStkOutDetRow.PRODUCT_ID;
+                    detail.PRODUCT_MASTER_ID = crlStkOutDetRow.PRODUCT_MASTER_ID;
+                    detail.QUANTITY = crlStkOutDetRow.QUANTITY;
+
+                    dataSet.crl_dept_stk_in_det.Addcrl_dept_stk_in_detRow(detail);
+                }
+                maxStockInId = (Int64.Parse(maxStockInId) + 1).ToString();
+                // update departmentstock in
+            }
+            
+            deptStkInAdapter.Update(dataSet.crl_dept_stk_in);
+            deptStkInDetAdapter.Update(dataSet.crl_dept_stk_in_det);
+            
             return "";
         }
 
@@ -81,23 +156,17 @@ namespace POSClient.BusinessLogic.Implement
             #endregion
 
             PosDatabase database = PosDatabase.Instance;
-
-            /*DataTable categoryCurrent = database.ExecuteQueryAll("CRL_CAT");
-            categoryCurrent.Merge(database.ConvertDataType(syncToDept.Category, categoryCurrent));
-            categoryCurrent.TableName = "CRL_CAT";
-            database.UpdateDataTable(categoryCurrent);
-
-            DataTable productTypeCurrent = database.ExecuteQueryAll("CRL_PRD_TYP");
-            
-            productTypeCurrent.Merge(database.ConvertDataType(syncToDept.ProductType, productTypeCurrent));
-            productTypeCurrent.TableName = "CRL_PRD_TYP";
-            database.UpdateDataTable(productTypeCurrent);*/
+            database.FastUpdateDataTable(syncToDept.DepartmentList,"CRL_DEPT");
             database.UpdateDataTable(syncToDept.Category, "CRL_CAT");
             database.UpdateDataTable(syncToDept.ProductType, "CRL_PRD_TYP");
             database.UpdateDataTable(syncToDept.ProductMaster,"CRL_PRD_MST");
             database.UpdateDataTable(syncToDept.ProductColor, "CRL_EX_PRD_COLOR");
             database.UpdateDataTable(syncToDept.ProductSize, "CRL_EX_PRD_SIZE");
             database.UpdateDataTable(syncToDept.Product, "CRL_PRD");
+            
+
+            
+
             return "";
         }
 

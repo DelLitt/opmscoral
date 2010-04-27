@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using AppFrame.DataLayer;
 using AppFrame.DataLayer.Utils;
-using AppFrame.Utils;
 using CoralPOS.Models;
-using NeXtreme.OpenNxSerialization.Native.IO;
-using NHibernate;
-using NHibernate.Linq;
-using POSServer.DataLayer.Common;
 using POSServer.DataLayer.Implement;
-using ProtoBuf;
 using Spring.Data.Common;
 
 namespace POSServer.BusinessLogic.Implement

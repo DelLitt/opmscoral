@@ -113,5 +113,97 @@ namespace AppFrame.DataLayer.Utils
 
             UpdateDataTable(update);
         }
+
+        public void FastUpdateDataTable(DataTable dataTable,string tableName)
+        {
+            DataTable current = ExecuteQueryTableDirect(tableName);
+            current.TableName = tableName;
+            ReflectUpdateTable(current, dataTable);
+
+            
+        }
+
+        private DataTable ExecuteQueryTableDirect(string tableName)
+        {
+            return AdoTemplate.DataTableCreate(CommandType.TableDirect, tableName);
+        }
+
+        private void ReflectUpdateTable(DataTable current, DataTable dataTable)
+        {
+            DataColumnCollection columns = current.Columns;
+            DataColumn[] priKeys = current.PrimaryKey;
+            
+            var duplicateRow =     from crow in current.AsEnumerable()
+                                   from row in dataTable.AsEnumerable()
+                                   where CompareRow(crow,row,priKeys) == true
+                                   select crow;
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                var result = from dupRow in duplicateRow
+                             where CompareRow(dupRow, dataRow, priKeys) == true
+                             select dupRow;
+
+                if(result.Count()>0)
+                {
+                    DataRow currRow = result.FirstOrDefault();
+                    AssignValue(currRow,dataRow,columns);
+                }
+                else
+                {
+                    DataRow newRow = current.NewRow();
+                    AssignValue(newRow, dataRow, columns);
+                    current.Rows.Add(newRow);
+                }
+            }
+
+            IDbParametersBuilder builder = new DbParametersBuilder(DbProvider);
+            AdoTemplate.DataTableUpdateWithCommandBuilder(current, CommandType.Text, "SELECT * FROM " + current.TableName,
+                                                          builder.GetParameters(), current.TableName);
+        }
+
+        private void AssignValue(DataRow newRow, DataRow dataRow, DataColumnCollection columns)
+        {
+            foreach (DataColumn dataColumn in columns)
+            {
+                var val = dataRow[dataColumn.ColumnName];
+                
+                if (val == null)
+                    newRow[dataColumn.ColumnName] = dataColumn.DefaultValue;
+                else
+                    newRow[dataColumn.ColumnName] = ConvertValue(val,dataColumn.DataType);
+            }
+        }
+
+        private object ConvertValue(object val, Type dataType)
+        {
+            DateTime dt=new DateTime(1976,1,1);
+            if(val is DateTime)
+            {
+                val=DateTime.Parse(val.ToString());
+                if (dt.CompareTo(DateTime.Parse(val.ToString())) > 0)
+                    val = dt;
+            }
+            return val;
+        }
+
+        private bool ExistRow(DataRow dataRow, IEnumerable<DataRow> duplicateRow, DataColumn[] priKeys)
+        {
+            var result = from dupRow in duplicateRow
+                         where CompareRow(dupRow, dataRow, priKeys) == true 
+                         select dupRow;
+            return result.Count() > 0;             
+        }
+
+        private bool CompareRow(DataRow crow, DataRow row, DataColumn[] priKeys)
+        {
+            foreach (DataColumn dataColumn in priKeys)
+            {
+                if(!crow[dataColumn.ColumnName].ToString().Equals(row[dataColumn.ColumnName].ToString()))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

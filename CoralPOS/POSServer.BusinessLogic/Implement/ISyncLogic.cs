@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AppFrame.DataLayer.Utils;
+﻿using System.Collections.Generic;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
 
