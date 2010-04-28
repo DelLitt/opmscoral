@@ -284,7 +284,7 @@ namespace POSClient.ViewModels.Sale
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void SearchBarcode()
@@ -307,7 +307,11 @@ namespace POSClient.ViewModels.Sale
             
             if(ObjectUtility.LengthEqual(barCode,12))
             {
-                Product product = DepartmentPurchaseOrderLogic.ProcessBarcode(barCode);
+                IEnumerable enumerable = DepartmentPurchaseOrderLogic.ProcessBarcode(barCode);
+                IEnumerator enumerator = enumerable.GetEnumerator();
+                enumerator.MoveNext();
+                Product product = (Product) enumerator.Current;
+
                 DepartmentPurchaseOrderDetail detail = new DepartmentPurchaseOrderDetail
                                                            {
                                                                DelFlg = 0,
@@ -334,16 +338,31 @@ namespace POSClient.ViewModels.Sale
                 DepartmentPurchaseOrderDetail current =
                     detailList.OfType<DepartmentPurchaseOrderDetail>().FirstOrDefault(
                         det => det.Product.ProductId.Equals(detail.Product.ProductId));
+
                 if(current!=null)
                 {
                     current.Quantity += detail.Quantity;
                 }
                 else
                 {
+                    enumerator.MoveNext();
+                    detail.Price = ((MainPrice) enumerator.Current).Price;
                     detailList.Add(detail);
                 }
+                
                 PurchaseOrderDetails = detailList;
+                CalculatePrice();
             }
+        }
+
+        private void CalculatePrice()
+        {
+            long amount = 0;
+            foreach (DepartmentPurchaseOrderDetail detail in PurchaseOrderDetails)
+            {
+                amount += detail.Price*detail.Quantity;
+            }
+            DepartmentPurchaseOrder.PurchasePrice = amount;
         }
 
         public override void Initialize()

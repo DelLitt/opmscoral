@@ -37,6 +37,7 @@ namespace POSClient.BusinessLogic.Implement
         public IDepartmentStockDao DepartmentStockDao { get; set; }
         public IExProductColorDao ProductColorDao { get; set; }
         public IExProductSizeDao ProductSizeDao { get; set; }
+        public IMainPriceDao MainPriceDao { get; set; }
 
         /// <summary>
         /// Find DepartmentPurchaseOrder object by id. Return null if nothing is found
@@ -113,13 +114,20 @@ namespace POSClient.BusinessLogic.Implement
             return DepartmentPurchaseOrderDao.FindPaging(criteria);
         }
 
-        public Product ProcessBarcode(string barCode)
+        public IEnumerable ProcessBarcode(string barCode)
         {
+            MainPrice price;
             var product = ProductDao.FindById(barCode);
             if (product != null)
             {
                 // process sale actions
-                return product;
+                price =
+                    MainPriceDao.FindById(new MainPricePK
+                                              {
+                                                  DepartmentId = 0,
+                                                  ProductMasterId = product.ProductMaster.ProductMasterId
+                                              });
+
             }
             else
             {
@@ -142,9 +150,16 @@ namespace POSClient.BusinessLogic.Implement
                                             Barcode = barCode,
                                             AdhocCase = 1
                                         };
-                return exProduct;
-
+                product = exProduct;
+                price =
+                    MainPriceDao.FindById(new MainPricePK
+                    {
+                        DepartmentId = 0,
+                        ProductMasterId = productMaster.ProductMasterId
+                    });
             }
+            yield return product;
+            yield return price;
         }
     }
 }

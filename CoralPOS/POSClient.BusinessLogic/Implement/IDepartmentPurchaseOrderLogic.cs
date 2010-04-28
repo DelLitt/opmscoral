@@ -62,6 +62,6 @@ namespace POSClient.BusinessLogic.Implement
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<DepartmentPurchaseOrder> criteria);
 
-        Product ProcessBarcode(string  barCode);
+        IEnumerable ProcessBarcode(string  barCode);
     }
 }
