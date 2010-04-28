@@ -125,7 +125,9 @@ namespace AppFrame.DataLayer.Utils
             DataTable current = ExecuteQueryAll(tableName);
             current.TableName = tableName;
             ReflectUpdateTable(current, dataTable);
-            
+            IDbParametersBuilder builder = new DbParametersBuilder(DbProvider);
+            AdoTemplate.DataTableUpdateWithCommandBuilder(current.GetChanges(), CommandType.Text, "SELECT * FROM " + current.TableName,
+                                                          builder.GetParameters(), current.TableName);
             // submit changes
             //Flush the session to execute sql in the db.
             SessionFactoryUtils.GetSession(SessionFactory, true).Flush();
@@ -136,7 +138,7 @@ namespace AppFrame.DataLayer.Utils
             return AdoTemplate.DataTableCreate(CommandType.TableDirect, tableName);
         }
 
-        private void ReflectUpdateTable(DataTable current, DataTable dataTable)
+        public void ReflectUpdateTable(DataTable current, DataTable dataTable)
         {
             DataColumnCollection columns = current.Columns;
             DataColumn[] priKeys = current.PrimaryKey;
@@ -164,9 +166,7 @@ namespace AppFrame.DataLayer.Utils
                 }
             }
 
-            IDbParametersBuilder builder = new DbParametersBuilder(DbProvider);
-            AdoTemplate.DataTableUpdateWithCommandBuilder(current, CommandType.Text, "SELECT * FROM " + current.TableName,
-                                                          builder.GetParameters(), current.TableName);
+            
         }
 
         private void AssignValue(DataRow newRow, DataRow dataRow, DataColumnCollection columns)

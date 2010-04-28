@@ -46,7 +46,7 @@
     <property name="FlowSteps">
       <dictionary>
         <entry key="Step1" value="POSClient.ViewModels.Sale.IPurchaseOrderViewModel"/>
-        <entry key="Step2" value="POSClient.Actions.Sale.IPurchaseOrderPostAction"/>
+        <!--<entry key="Step2" value="POSClient.Actions.Sale.IPurchaseOrderPostAction"/>-->
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />
