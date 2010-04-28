@@ -300,6 +300,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization">
@@ -325,6 +326,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PosServer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosServer.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Models\ActiveDepartment.cs" />
     <Compile Include="Models\BlockIn.cs" />
     <Compile Include="Models\BlockInCost.cs" />
@@ -460,14 +466,14 @@
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\UserRolePK.cs" />
     <Compile Include="ObjectValidators\StockInValidator.cs" />
-    <Compile Include="pos2DataSet.cs">
-      <DependentUpon>pos2DataSet.xsd</DependentUpon>
+    <Compile Include="PosClient.cs">
+      <DependentUpon>PosClient.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pos2DataSet.Designer.cs">
+    <Compile Include="PosClient.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>pos2DataSet.xsd</DependentUpon>
+      <DependentUpon>PosClient.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -487,16 +493,27 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="pos2DataSet.xsc">
-      <DependentUpon>pos2DataSet.xsd</DependentUpon>
+    <None Include="PosServer.xsc">
+      <DependentUpon>PosServer.xsd</DependentUpon>
     </None>
-    <None Include="pos2DataSet.xsd">
+    <None Include="PosServer.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>pos2DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>PosServer.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="pos2DataSet.xss">
-      <DependentUpon>pos2DataSet.xsd</DependentUpon>
+    <None Include="PosServer.xss">
+      <DependentUpon>PosServer.xsd</DependentUpon>
+    </None>
+    <None Include="PosClient.xsc">
+      <DependentUpon>PosClient.xsd</DependentUpon>
+    </None>
+    <None Include="PosClient.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PosClient.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PosClient.xss">
+      <DependentUpon>PosClient.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

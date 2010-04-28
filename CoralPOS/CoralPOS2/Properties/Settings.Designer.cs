@@ -32,5 +32,16 @@ namespace CoralPOS.Properties {
                 return ((string)(this["pos2ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=XE;Persist Security Info=True;User ID=pos2;Password=admin;Unicode=Tru" +
+            "e")]
+        public string pos2ServerString {
+            get {
+                return ((string)(this["pos2ServerString"]));
+            }
+        }
     }
 }
