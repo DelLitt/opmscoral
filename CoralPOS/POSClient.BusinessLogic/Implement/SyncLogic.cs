@@ -10,7 +10,7 @@ using CoralPOS.Models;
 using System.Linq;
 using System.Linq.Expressions;
 using POSClient.DataLayer.Implement;
-using CoralPOS.pos2DataSetTableAdapters;
+using CoralPOS.PosClientDbTableAdapters;
 using Spring.Data.Common;
 using Spring.Data.Support;
 
@@ -56,7 +56,7 @@ namespace POSClient.BusinessLogic.Implement
 
         private string SyncStockOut(SyncToDepartmentObject syncToDept)
         {
-            pos2DataSet dataSet = new pos2DataSet();
+            PosClientDb dataSet = new PosClientDb();
             
             PosDatabase database = PosDatabase.Instance;
             var deptStkInAdapter = new crl_dept_stk_inTableAdapter();
@@ -74,15 +74,8 @@ namespace POSClient.BusinessLogic.Implement
             string maxStockInId = ObjectUtility.IsNullOrEmpty(maxId) ? (Int64.Parse(maxId.ToString()) + 1).ToString() : syncToDept.Department.DepartmentId.ToString() + template + "1";
 
             Department department = syncToDept.Department;
-            /*dataSet.crl_dept.Addcrl_deptRow(department.DepartmentId, department.DepartmentName, department.Address,
-                                            department.Active, department.CreateDate, department.CreateId,
-                                            department.UpdateDate, department.UpdateId, department.ExclusiveKey,
-                                            department.DelFlg, department.ExFld1, department.ExFld2, department.ExFld3,
-                                            department.ExFld4, department.ExFld5,department.StartDate);
-            pos2DataSet.crl_deptRow deptRow = dataSet.crl_dept.FindByDEPARTMENT_ID(department.DepartmentId);*/
 
-            
-            pos2DataSet.crl_stk_out_detDataTable details = new pos2DataSet.crl_stk_out_detDataTable();
+            PosClientDb.crl_stk_out_detDataTable details = new PosClientDb.crl_stk_out_detDataTable();
             foreach (DataRow dataRow in syncToDept.StockOutDetail.Rows)
             {
                 var itemArray = dataRow.ItemArray;
@@ -99,7 +92,7 @@ namespace POSClient.BusinessLogic.Implement
                 
                 if(currents.Count()>0) continue;
                 // create new department stock in 
-                pos2DataSet.crl_dept_stk_inRow newRow = dataSet.crl_dept_stk_in.Newcrl_dept_stk_inRow();
+                PosClientDb.crl_dept_stk_inRow newRow = dataSet.crl_dept_stk_in.Newcrl_dept_stk_inRow();
                 newRow.STOCK_IN_ID = maxStockInId;
                 newRow.STOCK_IN_TYPE = 0;
                 newRow.SRC_DEPARTMENT_ID = Int64.Parse(stockOut["DEPARTMENT_ID"].ToString());
@@ -117,9 +110,9 @@ namespace POSClient.BusinessLogic.Implement
                 var specificDetails = from dt in details
                                       where dt.STOCK_OUT_ID == Int64.Parse(stockOut["STOCK_OUT_ID"].ToString())
                                       select dt;
-                foreach (pos2DataSet.crl_stk_out_detRow crlStkOutDetRow in specificDetails)
+                foreach (PosClientDb.crl_stk_out_detRow crlStkOutDetRow in specificDetails)
                 {
-                    pos2DataSet.crl_dept_stk_in_detRow detail = dataSet.crl_dept_stk_in_det.Newcrl_dept_stk_in_detRow();
+                    PosClientDb.crl_dept_stk_in_detRow detail = dataSet.crl_dept_stk_in_det.Newcrl_dept_stk_in_detRow();
                     detail.STOCK_IN_ID = maxStockInId;
                     detail.DEPARTMENT_ID = newRow.DEPARTMENT_ID;
                     detail.EXCLUSIVE_KEY = newRow.EXCLUSIVE_KEY;
