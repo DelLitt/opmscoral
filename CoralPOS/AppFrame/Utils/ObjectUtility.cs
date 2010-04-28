@@ -302,5 +302,10 @@ namespace AppFrame.Utils
        containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
     }
 
+        public static bool LengthEqual(string barCode, int length)
+        {
+            if (IsNullOrEmpty(barCode)) return false;
+            return barCode.Length == length;
+        }
     }
 }

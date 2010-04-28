@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSClient.BusinessLogic.Implement;
+using POSClient.Common;
 
 
 namespace POSClient.ViewModels.Sale
@@ -29,7 +32,20 @@ namespace POSClient.ViewModels.Sale
         }
 		
 		#region Fields
-		        
+
+        private DepartmentPurchaseOrder _departmentPurchaseOrder;
+        public DepartmentPurchaseOrder DepartmentPurchaseOrder
+        {
+            get
+            {
+                return _departmentPurchaseOrder;  
+            }
+            set
+            {
+                _departmentPurchaseOrder = value;
+                NotifyOfPropertyChange(()=>DepartmentPurchaseOrder);
+            }
+        }
         private string _customerName;
         public string CustomerName
         {
@@ -225,6 +241,8 @@ namespace POSClient.ViewModels.Sale
                 NotifyOfPropertyChange(() => Note);
             }
         }
+
+        public IDepartmentPurchaseOrderLogic DepartmentPurchaseOrderLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
@@ -232,17 +250,17 @@ namespace POSClient.ViewModels.Sale
 		
 		#region List which just using in Data Grid
 		        
-        private IList _purchaseOrderList;
-        public IList PurchaseOrderList
+        private IList _purchaseOrderDetails;
+        public IList PurchaseOrderDetails
         {
             get
             {
-                return _purchaseOrderList;
+                return _purchaseOrderDetails;
             }
             set
             {
-                _purchaseOrderList = value;
-                NotifyOfPropertyChange(() => PurchaseOrderList);
+                _purchaseOrderDetails = value;
+                NotifyOfPropertyChange(() => PurchaseOrderDetails);
             }
         }
 				#endregion
@@ -283,7 +301,81 @@ namespace POSClient.ViewModels.Sale
         {
             
         }
-				#endregion
+
+        public void ProcessBarcode(string barCode)
+        {
+            
+            if(ObjectUtility.LengthEqual(barCode,12))
+            {
+                Product product = DepartmentPurchaseOrderLogic.ProcessBarcode(barCode);
+                DepartmentPurchaseOrderDetail detail = new DepartmentPurchaseOrderDetail
+                                                           {
+                                                               DelFlg = 0,
+                                                               CreateDate = DateTime.Now,
+                                                               CreateId = "admin",
+                                                               UpdateDate = DateTime.Now,
+                                                               UpdateId = "admin",
+                                                               ExclusiveKey = 1,
+                                                               Product  = product,
+                                                               DepartmentPurchaseOrder = DepartmentPurchaseOrder,
+                                                               Quantity = 1
+                                                           };
+
+                long maxId = PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>().Max(
+                    det => det.DepartmentPurchaseOrderDetailPK.PurchaseOrderDetailId);
+
+                DepartmentPurchaseOrderDetailPK pk = new DepartmentPurchaseOrderDetailPK
+                                                         {
+                                                             DepartmentId = 1,
+                                                             PurchaseOrderDetailId = ++maxId
+                                                         };
+                detail.DepartmentPurchaseOrderDetailPK = pk;
+                var detailList = new ArrayList(PurchaseOrderDetails);
+                DepartmentPurchaseOrderDetail current =
+                    detailList.OfType<DepartmentPurchaseOrderDetail>().FirstOrDefault(
+                        det => det.Product.ProductId.Equals(detail.Product.ProductId));
+                if(current!=null)
+                {
+                    current.Quantity += detail.Quantity;
+                }
+                else
+                {
+                    detailList.Add(detail);
+                }
+                PurchaseOrderDetails = detailList;
+            }
+        }
+
+        public override void Initialize()
+        {
+            this.DepartmentPurchaseOrder = Flow.Session.Get(FlowDefinition.PURCHASE_ORDER) as DepartmentPurchaseOrder;
+            if(DepartmentPurchaseOrder == null)
+            {
+                DepartmentPurchaseOrder = CreateNewDepartmentPurchaseOrder();
+            }
+            PurchaseOrderDetails = new ArrayList();
+        }
+
+        private DepartmentPurchaseOrder CreateNewDepartmentPurchaseOrder()
+        {
+            CoralPOS.Models.DepartmentPurchaseOrder order = new DepartmentPurchaseOrder
+                                                                {
+                                                                    CreateDate = DateTime.Now,
+                                                                    CreateId = "admin",
+                                                                    UpdateDate = DateTime.Now,
+                                                                    UpdateId = "admin",
+                                                                    ExclusiveKey = 1,
+                                                                    DelFlg = 0,
+                                                                };
+            DepartmentPurchaseOrderPK pk = new DepartmentPurchaseOrderPK
+                                               {
+                                                   DepartmentId = 1
+                                               };
+            order.DepartmentPurchaseOrderPK = pk;
+            return order;
+        }
+
+        #endregion
 		
         
         

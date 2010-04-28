@@ -13,6 +13,8 @@ namespace CoralPOS.Models {
     [DataContract()]
     public class Product {
         
+        
+
         public Product() {
         }
         
@@ -125,9 +127,15 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="19", Order=19)]
-        public virtual ExProductSize ProductSize {
+        public virtual ExProductSize ProductSize 
+        {
             get;
             set;
+        }
+        [DataMember(Name = "20", Order = 20)]
+        public virtual int AdhocCase
+        {
+            get; set;
         }
    	 protected bool Equals(Product entity)
 		{

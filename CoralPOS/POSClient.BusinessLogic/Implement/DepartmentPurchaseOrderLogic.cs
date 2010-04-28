@@ -1,6 +1,7 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
@@ -30,7 +31,13 @@ namespace POSClient.BusinessLogic.Implement
                 _innerDao = value; 
             }
         }
-        
+
+        public IProductDao ProductDao { get; set; }
+        public IProductMasterDao ProductMasterDao { get; set; }
+        public IDepartmentStockDao DepartmentStockDao { get; set; }
+        public IExProductColorDao ProductColorDao { get; set; }
+        public IExProductSizeDao ProductSizeDao { get; set; }
+
         /// <summary>
         /// Find DepartmentPurchaseOrder object by id. Return null if nothing is found
         /// </summary>
@@ -104,6 +111,40 @@ namespace POSClient.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<DepartmentPurchaseOrder> criteria)
         {
             return DepartmentPurchaseOrderDao.FindPaging(criteria);
+        }
+
+        public Product ProcessBarcode(string barCode)
+        {
+            var product = ProductDao.FindById(barCode);
+            if (product != null)
+            {
+                // process sale actions
+                return product;
+            }
+            else
+            {
+                // check whether it is a valid barcode
+                string productMasterId = string.Format("{0:0000000000000}", Int64.Parse(barCode.Substring(0, 7)));
+                long colorId = Int64.Parse(barCode.Substring(7, 2));
+                long sizeId = Int64.Parse(barCode.Substring(9, 2));
+                var productMaster = ProductMasterDao.FindById(productMasterId);
+                
+
+                var color = ProductColorDao.FindById(colorId);
+                var size = ProductSizeDao.FindById(sizeId);
+                if (productMaster == null || color == null || size == null) throw new ArgumentException("Invalid Barcode");
+
+                Product exProduct = new Product
+                                        {
+                                            ProductColor = color,
+                                            ProductSize = size,
+                                            ProductMaster = productMaster,
+                                            Barcode = barCode,
+                                            AdhocCase = 1
+                                        };
+                return exProduct;
+
+            }
         }
     }
 }

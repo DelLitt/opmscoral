@@ -493,6 +493,7 @@
     <Compile Include="Actions\Security\RegisterUserAction.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\FlowConstants.cs" />
+    <Compile Include="Common\FlowDefinition.cs" />
     <Compile Include="ViewModels\CircularLoadViewModel.cs" />
     <Compile Include="ViewModels\IMainView.cs" />
     <Compile Include="ViewModels\IMainViewModel.cs" />
