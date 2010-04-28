@@ -5,14 +5,14 @@
   <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
   </object>
 
-  <object id="IPurchaseOrderPostAction" type="POSClient.Actions.Stock.StockIn.PurchaseOrderPostAction, POSClient" singleton="false">
+  <!--<object id="IPurchaseOrderPostAction" type="POSClient.Actions.Stock.StockIn.PurchaseOrderPostAction, POSClient" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockInLogic" ref="IStockInLogic" />  
-  </object>
+  </object>-->
     
     <!--<object id="IStartLoadScreen" type="POSClient.Actions.StartLoadScreen, POSServer" singleton="false">    
   </object>

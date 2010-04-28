@@ -20,7 +20,7 @@
     <constructor-arg ref="IShellViewModel" />
   </object>
 
-  <object id="IPurchaseOrderViewModel" type="POSClient.ViewModels.Synchronize.PurchaseOrderViewModel, POSClient" singleton="false">
+  <object id="IPurchaseOrderViewModel" type="POSClient.ViewModels.Sale.PurchaseOrderViewModel, POSClient" singleton="false">
     <constructor-arg ref="IShellViewModel" />    
   </object>
   

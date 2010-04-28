@@ -13,6 +13,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSClient.Common;
 using POSClient.ViewModels.Synchronize;
 
 
@@ -46,7 +47,7 @@ namespace POSClient.ViewModels.Menu
 		        
         public void Sale()
         {
-            
+            _startViewModel.EnterFlow(FlowConstants.PURCHASE_ORDER_VIEW_FLOW);   
         }
 		        
         public void DepartmentStock()
