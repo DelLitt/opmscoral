@@ -26,7 +26,7 @@ namespace CoralPOS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\pos2.sdf;Password=admin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\pos2.sdf;Password=admin;Persist Security Info=True")]
         public string pos2ConnectionString {
             get {
                 return ((string)(this["pos2ConnectionString"]));
