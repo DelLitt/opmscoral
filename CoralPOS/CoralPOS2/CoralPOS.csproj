@@ -326,6 +326,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PosClient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosClient.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PosServer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -466,15 +471,6 @@
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\UserRolePK.cs" />
     <Compile Include="ObjectValidators\StockInValidator.cs" />
-    <Compile Include="PosClient.cs">
-      <DependentUpon>PosClient.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PosClient.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PosClient.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -493,17 +489,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="PosServer.xsc">
-      <DependentUpon>PosServer.xsd</DependentUpon>
-    </None>
-    <None Include="PosServer.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PosServer.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PosServer.xss">
-      <DependentUpon>PosServer.xsd</DependentUpon>
-    </None>
     <None Include="PosClient.xsc">
       <DependentUpon>PosClient.xsd</DependentUpon>
     </None>
@@ -514,6 +499,17 @@
     </None>
     <None Include="PosClient.xss">
       <DependentUpon>PosClient.xsd</DependentUpon>
+    </None>
+    <None Include="PosServer.xsc">
+      <DependentUpon>PosServer.xsd</DependentUpon>
+    </None>
+    <None Include="PosServer.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PosServer.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PosServer.xss">
+      <DependentUpon>PosServer.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

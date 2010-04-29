@@ -69,6 +69,8 @@ namespace POSClient.BusinessLogic.Implement
 
             var deptStkTableAdapter = new crl_dept_stkTableAdapter();
             deptStkTableAdapter.Fill(clientDb.crl_dept_stk);
+            var stkOutTableAdapter = new crl_stk_outTableAdapter();
+            stkOutTableAdapter.Fill(clientDb.crl_stk_out);
             
             string template = DateTime.Now.ToString("yyMMdd");
             var maxId = from dr in clientDb.crl_dept_stk_in
@@ -182,27 +184,33 @@ namespace POSClient.BusinessLogic.Implement
             catTableAdapter.Update(clientDb.crl_cat);
 
             crl_prd_typTableAdapter prdTypTableAdapter = new crl_prd_typTableAdapter();
+            prdTypTableAdapter.Fill(clientDb.crl_prd_typ);
             database.ReflectUpdateTable(clientDb.crl_prd_typ, syncToDept.ProductType);
             prdTypTableAdapter.Update(clientDb.crl_prd_typ);
 
             crl_ex_prd_colorTableAdapter crlExPrdColorTableAdapter = new crl_ex_prd_colorTableAdapter();
+            crlExPrdColorTableAdapter.Fill(clientDb.crl_ex_prd_color);
             database.ReflectUpdateTable(clientDb.crl_ex_prd_color, syncToDept.ProductColor);
             crlExPrdColorTableAdapter.Update(clientDb.crl_ex_prd_color);
 
             crl_ex_prd_sizeTableAdapter prdSizeTableAdapter = new crl_ex_prd_sizeTableAdapter();
+            prdSizeTableAdapter.Fill(clientDb.crl_ex_prd_size);
             database.ReflectUpdateTable(clientDb.crl_ex_prd_size, syncToDept.ProductSize);
             prdSizeTableAdapter.Update(clientDb.crl_ex_prd_size);
 
             crl_prd_mstTableAdapter crlPrdMstTableAdapter = new crl_prd_mstTableAdapter();
+            crlPrdMstTableAdapter.Fill(clientDb.crl_prd_mst);
             database.ReflectUpdateTable(clientDb.crl_prd_mst, syncToDept.ProductMaster);
             crlPrdMstTableAdapter.Update(clientDb.crl_prd_mst);
 
             crl_prdTableAdapter crlPrdTableAdapter = new crl_prdTableAdapter();
+            crlPrdTableAdapter.Fill(clientDb.crl_prd);
             database.ReflectUpdateTable(clientDb.crl_prd, syncToDept.Product);
             crlPrdTableAdapter.Update(clientDb.crl_prd);
             
             // sync price information
             crl_mn_priceTableAdapter crlMnPriceTableAdapter = new crl_mn_priceTableAdapter();
+            crlMnPriceTableAdapter.Fill(clientDb.crl_mn_price);
             database.ReflectUpdateTable(clientDb.crl_mn_price, syncToDept.Prices);
             crlMnPriceTableAdapter.Update(clientDb.crl_mn_price);
 
