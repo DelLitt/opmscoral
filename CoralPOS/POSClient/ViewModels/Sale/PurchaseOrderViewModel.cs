@@ -21,7 +21,7 @@ using POSClient.Common;
 
 namespace POSClient.ViewModels.Sale
 {
-    [PerRequest(typeof(IPurchaseOrderViewModel))]
+    /*[PerRequest(typeof(IPurchaseOrderViewModel))]*/
     public class PurchaseOrderViewModel : PosViewModel,IPurchaseOrderViewModel  
     {
 
