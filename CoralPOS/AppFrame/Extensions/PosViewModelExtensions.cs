@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF;
+using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.ViewModels;
 
 namespace AppFrame.Extensions
@@ -65,6 +66,23 @@ namespace AppFrame.Extensions
         public static IEnumerable<IValidationError> GetErrors(this PosViewModel viewModel)
         {
             return GlobalValidator.Instance.Validate(viewModel);
+        }
+
+        public static void CatchExecute(this PosViewModel viewModel,Func<object> theDelegate)
+        {
+            try
+            {
+                theDelegate.Invoke();
+            }
+            catch (Exception exception)
+            {
+                Execute.OnUIThread(() => ProcessException(exception)); 
+            }
+        }
+
+        private static void ProcessException(Exception exception)
+        {
+            MessageBox.Show(exception.Message);
         }
     }
 }

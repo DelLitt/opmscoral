@@ -117,6 +117,7 @@ namespace POSClient.BusinessLogic.Implement
 
         public IEnumerable ProcessBarcode(string barCode)
         {
+            
             MainPrice price;
             var product = ProductDao.FindById(barCode);
             if (product != null)

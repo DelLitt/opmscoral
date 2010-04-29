@@ -15,13 +15,13 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using AppFrame.Extensions;
 using POSClient.BusinessLogic.Implement;
 using POSClient.Common;
 
 
 namespace POSClient.ViewModels.Sale
 {
-    /*[PerRequest(typeof(IPurchaseOrderViewModel))]*/
     public class PurchaseOrderViewModel : PosViewModel,IPurchaseOrderViewModel  
     {
 
@@ -304,55 +304,61 @@ namespace POSClient.ViewModels.Sale
 
         public void ProcessBarcode(string barCode)
         {
+            this.CatchExecute(()=>LoadBarcode(barCode));
             
-            if(ObjectUtility.LengthEqual(barCode,12))
+        }
+
+        private object LoadBarcode(string barCode)
+        {
+            if (ObjectUtility.LengthEqual(barCode, 12))
             {
                 IEnumerable enumerable = DepartmentPurchaseOrderLogic.ProcessBarcode(barCode);
                 IEnumerator enumerator = enumerable.GetEnumerator();
                 enumerator.MoveNext();
-                Product product = (Product) enumerator.Current;
+                Product product = (Product)enumerator.Current;
 
                 DepartmentPurchaseOrderDetail detail = new DepartmentPurchaseOrderDetail
-                                                           {
-                                                               DelFlg = 0,
-                                                               CreateDate = DateTime.Now,
-                                                               CreateId = "admin",
-                                                               UpdateDate = DateTime.Now,
-                                                               UpdateId = "admin",
-                                                               ExclusiveKey = 1,
-                                                               Product  = product,
-                                                               DepartmentPurchaseOrder = DepartmentPurchaseOrder,
-                                                               Quantity = 1
-                                                           };
+                {
+                    DelFlg = 0,
+                    CreateDate = DateTime.Now,
+                    CreateId = "admin",
+                    UpdateDate = DateTime.Now,
+                    UpdateId = "admin",
+                    ExclusiveKey = 1,
+                    Product = product,
+                    DepartmentPurchaseOrder = DepartmentPurchaseOrder,
+                    Quantity = 1
+                };
 
                 long maxId = PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>().Max(
                     det => det.DepartmentPurchaseOrderDetailPK.PurchaseOrderDetailId);
 
                 DepartmentPurchaseOrderDetailPK pk = new DepartmentPurchaseOrderDetailPK
-                                                         {
-                                                             DepartmentId = 1,
-                                                             PurchaseOrderDetailId = ++maxId
-                                                         };
+                {
+                    DepartmentId = 1,
+                    PurchaseOrderDetailId = ++maxId
+                };
                 detail.DepartmentPurchaseOrderDetailPK = pk;
                 var detailList = new ArrayList(PurchaseOrderDetails);
                 DepartmentPurchaseOrderDetail current =
                     detailList.OfType<DepartmentPurchaseOrderDetail>().FirstOrDefault(
                         det => det.Product.ProductId.Equals(detail.Product.ProductId));
 
-                if(current!=null)
+                if (current != null)
                 {
                     current.Quantity += detail.Quantity;
                 }
                 else
                 {
                     enumerator.MoveNext();
-                    detail.Price = ((MainPrice) enumerator.Current).Price;
+                    detail.Price = ((MainPrice)enumerator.Current).Price;
                     detailList.Add(detail);
                 }
-                
+
                 PurchaseOrderDetails = detailList;
                 CalculatePrice();
             }
+            return null;
         }
 
         private void CalculatePrice()
