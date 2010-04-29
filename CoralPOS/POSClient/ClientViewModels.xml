@@ -21,7 +21,8 @@
   </object>
 
   <object id="IPurchaseOrderViewModel" type="POSClient.ViewModels.Sale.PurchaseOrderViewModel, POSClient" singleton="false">
-    <constructor-arg ref="IShellViewModel" />    
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentPurchaseOrderLogic" ref="IDepartmentPurchaseOrderLogic"/>
   </object>
   
 </objects>

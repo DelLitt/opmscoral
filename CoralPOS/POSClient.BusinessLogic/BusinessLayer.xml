@@ -70,6 +70,13 @@
   	  
   <object id="IDepartmentPurchaseOrderLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderLogic, POSClient.BusinessLogic">
     <property name="DepartmentPurchaseOrderDao" ref="IDepartmentPurchaseOrderDao"/>
+    <property name="ProductDao" ref="IProductDao"/>
+    <property name="ProductMasterDao" ref="IProductMasterDao"/>
+    <property name="DepartmentStockDao" ref="IDepartmentStockDao"/>
+    <property name="ProductColorDao" ref="IExProductColorDao"/>
+    <property name="ProductSizeDao" ref="IExProductSizeDao"/>
+    <property name="MainPriceDao" ref="IMainPriceDao"/>
+    <property name="DepartmentPurchaseOrderDetailDao" ref="IDepartmentPurchaseOrderDetailDao"/>
   </object>
   	  
   <object id="IDepartmentPurchaseOrderDetailLogic" type="POSClient.BusinessLogic.Implement.DepartmentPurchaseOrderDetailLogic, POSClient.BusinessLogic">

@@ -63,5 +63,13 @@ namespace POSClient.BusinessLogic.Implement
         QueryResult FindPaging(ObjectCriteria<DepartmentPurchaseOrder> criteria);
 
         IEnumerable ProcessBarcode(string  barCode);
+        IDepartmentPurchaseOrderDao DepartmentPurchaseOrderDao { get; set; }
+        IProductDao ProductDao { get; set; }
+        IProductMasterDao ProductMasterDao { get; set; }
+        IDepartmentStockDao DepartmentStockDao { get; set; }
+        IExProductColorDao ProductColorDao { get; set; }
+        IExProductSizeDao ProductSizeDao { get; set; }
+        IMainPriceDao MainPriceDao { get; set; }
+        IDepartmentPurchaseOrderDetailDao DepartmentPurchaseOrderDetailDao { get; set; }
     }
 }

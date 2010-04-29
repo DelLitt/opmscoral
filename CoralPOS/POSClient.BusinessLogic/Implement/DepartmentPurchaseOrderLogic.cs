@@ -38,7 +38,8 @@ namespace POSClient.BusinessLogic.Implement
         public IExProductColorDao ProductColorDao { get; set; }
         public IExProductSizeDao ProductSizeDao { get; set; }
         public IMainPriceDao MainPriceDao { get; set; }
-
+        public IDepartmentPurchaseOrderDetailDao DepartmentPurchaseOrderDetailDao { get; set; }
+        
         /// <summary>
         /// Find DepartmentPurchaseOrder object by id. Return null if nothing is found
         /// </summary>
@@ -140,7 +141,7 @@ namespace POSClient.BusinessLogic.Implement
 
                 var color = ProductColorDao.FindById(colorId);
                 var size = ProductSizeDao.FindById(sizeId);
-                if (productMaster == null || color == null || size == null) throw new ArgumentException("Invalid Barcode");
+                if (productMaster == null || color == null || size == null) throw new Exception("Invalid Barcode");
 
                 Product exProduct = new Product
                                         {
