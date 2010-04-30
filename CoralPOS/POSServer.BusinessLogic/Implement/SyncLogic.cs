@@ -115,6 +115,7 @@ namespace POSServer.BusinessLogic.Implement
         private SyncToDepartmentObject GetSyncData(SyncToDepartmentObject syncToDept)
         {
             PosDatabase database = PosDatabase.Instance;
+            syncToDept.StockDefinitionStatus = database.ExecuteQueryAll("CRL_STK_DEF_STAT");
             if (syncToDept.DepartmentInfo)
             {
                 IDbParametersBuilder builder = new DbParametersBuilder(database.DbProvider);

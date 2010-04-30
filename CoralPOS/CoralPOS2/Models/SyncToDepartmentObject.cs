@@ -55,5 +55,8 @@ namespace CoralPOS.Models
 
         [DataMember(Name = "12", Order = 12)]
         public DataTable Prices { get; set; }
+        [DataMember(Name = "13", Order = 13)]
+        public DataTable StockDefinitionStatus { get; set;}
+        
     }
 }

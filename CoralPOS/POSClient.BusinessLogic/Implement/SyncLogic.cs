@@ -81,7 +81,9 @@ namespace POSClient.BusinessLogic.Implement
 
             Department department = syncToDept.Department;
 
+            PosClientDb.crl_stk_outDataTable master = clientDb.crl_stk_out;
             PosClientDb.crl_stk_out_detDataTable details = new PosClientDb.crl_stk_out_detDataTable();
+
             foreach (DataRow dataRow in syncToDept.StockOutDetail.Rows)
             {
                 /*var itemArray = dataRow.ItemArray;
@@ -94,9 +96,10 @@ namespace POSClient.BusinessLogic.Implement
 
             foreach (DataRow stockOut in syncToDept.StockOut.Rows)
             {
+                long stockOutId = Int64.Parse(stockOut["STOCK_OUT_ID"].ToString());
                 string filter = "STOCK_OUT_ID = " + stockOut["STOCK_OUT_ID"].ToString();
                 var currents = from dr in clientDb.crl_stk_out
-                                     where dr.STOCK_OUT_ID == Int64.Parse(stockOut["STOCK_OUT_ID"].ToString())
+                                     where dr.STOCK_OUT_ID == stockOutId
                                      select dr;
                 
                 if(currents.Count()>0) continue;
@@ -160,8 +163,14 @@ namespace POSClient.BusinessLogic.Implement
                         clientDb.crl_dept_stk.Addcrl_dept_stkRow(newStkRow);
                     }
                 }
+
                 maxStockInId = (Int64.Parse(maxStockInId) + 1).ToString();
-                // update departmentstock in
+                
+                // update stockOut
+                PosClientDb.crl_stk_outRow row = clientDb.crl_stk_out.Newcrl_stk_outRow();
+                database.AssignValue(row, stockOut, master.Columns);
+                clientDb.crl_stk_out.Addcrl_stk_outRow(row);
+                stkOutTableAdapter.Update(clientDb.crl_stk_out);
             }
             
             deptStkInAdapter.Update(clientDb.crl_dept_stk_in);
@@ -217,6 +226,10 @@ namespace POSClient.BusinessLogic.Implement
             database.ReflectUpdateTable(clientDb.crl_mn_price, syncToDept.Prices);
             crlMnPriceTableAdapter.Update(clientDb.crl_mn_price);
 
+            var crl_stk_def_statAdapter = new crl_stk_def_statTableAdapter();
+            crl_stk_def_statAdapter.Fill(clientDb.crl_stk_def_stat);
+            database.ReflectUpdateTable(clientDb.crl_stk_def_stat,syncToDept.StockDefinitionStatus);
+            crl_stk_def_statAdapter.Update(clientDb.crl_stk_def_stat);
             return "";
         }
 
