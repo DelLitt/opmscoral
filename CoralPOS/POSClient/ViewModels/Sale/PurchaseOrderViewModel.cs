@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
@@ -18,10 +19,12 @@ using CoralPOS.Models;
 using AppFrame.Extensions;
 using POSClient.BusinessLogic.Implement;
 using POSClient.Common;
+using POSClient.ViewModels.Menu;
 
 
 namespace POSClient.ViewModels.Sale
 {
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
     public class PurchaseOrderViewModel : PosViewModel,IPurchaseOrderViewModel  
     {
 
@@ -284,35 +287,35 @@ namespace POSClient.ViewModels.Sale
 		        
         public void Stop()
         {
-            Flow.End();
+            GoToNextNode();
         }
 		        
         public void SearchBarcode()
         {
-            
+            MessageBox.Show("SearchBarcode"); 
         }
 		        
         public void SearchReturnBarcode()
         {
-            
+            MessageBox.Show("SearchReturnBarcode");
         }
 		        
         public void EnterReturnBarcode()
         {
+            MessageBox.Show("EnterReturnBarcode");
+        }
+
+        public void ProcessBarcode()
+        {
+            this.CatchExecute(()=>LoadBarcode());
             
         }
 
-        public void ProcessBarcode(string barCode)
+        private object LoadBarcode()
         {
-            this.CatchExecute(()=>LoadBarcode(barCode));
-            
-        }
-
-        private object LoadBarcode(string barCode)
-        {
-            if (ObjectUtility.LengthEqual(barCode, 12))
+            if (ObjectUtility.LengthEqual(Barcode, 12))
             {
-                IEnumerable enumerable = DepartmentPurchaseOrderLogic.ProcessBarcode(barCode);
+                IEnumerable enumerable = DepartmentPurchaseOrderLogic.ProcessBarcode(Barcode);
                 IEnumerator enumerator = enumerable.GetEnumerator();
                 enumerator.MoveNext();
                 Product product = (Product)enumerator.Current;
@@ -326,13 +329,17 @@ namespace POSClient.ViewModels.Sale
                     UpdateId = "admin",
                     ExclusiveKey = 1,
                     Product = product,
+                    ProductMaster = product.ProductMaster,
                     DepartmentPurchaseOrder = DepartmentPurchaseOrder,
                     Quantity = 1
                 };
 
-                long maxId = PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>().Max(
-                    det => det.DepartmentPurchaseOrderDetailPK.PurchaseOrderDetailId);
-
+                long maxId = 0;
+                if (PurchaseOrderDetails.Count > 0)
+                {
+                     maxId = PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>().Max(
+                        det => det.DepartmentPurchaseOrderDetailPK.PurchaseOrderDetailId);
+                }
                 DepartmentPurchaseOrderDetailPK pk = new DepartmentPurchaseOrderDetailPK
                 {
                     DepartmentId = 1,
@@ -346,7 +353,7 @@ namespace POSClient.ViewModels.Sale
 
                 if (current != null)
                 {
-                    current.Quantity += detail.Quantity;
+                    current.Quantity += 1;
                 }
                 else
                 {
@@ -357,6 +364,8 @@ namespace POSClient.ViewModels.Sale
 
                 PurchaseOrderDetails = detailList;
                 CalculatePrice();
+                Barcode = "";
+
             }
             return null;
         }

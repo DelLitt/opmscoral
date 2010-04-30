@@ -16,8 +16,7 @@
     <property name="ExFld5" column="EX_FLD5" />
     <property name="ExclusiveKey" column="EXCLUSIVE_KEY" />
     <property name="Note" column="NOTE" />
-    <property name="Price" column="PRICE" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <property name="Price" column="PRICE" />    
     <property name="PurchaseStatus" column="PURCHASE_STATUS" />
     <property name="PurchaseType" column="PURCHASE_TYPE" />
     <property name="Quantity" column="QUANTITY" />
@@ -30,6 +29,9 @@
     </many-to-one>
     <many-to-one class="Product" name="Product">
       <column name="PRODUCT_ID" />
+    </many-to-one>
+    <many-to-one class="ProductMaster" name="ProductMaster">
+      <column name="PRODUCT_MASTER_ID" />
     </many-to-one>
   </class>
 </hibernate-mapping>

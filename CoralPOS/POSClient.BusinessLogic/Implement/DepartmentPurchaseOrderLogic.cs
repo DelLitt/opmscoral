@@ -122,6 +122,7 @@ namespace POSClient.BusinessLogic.Implement
             var product = ProductDao.FindById(barCode);
             if (product != null)
             {
+                product.ProductMaster = ProductMasterDao.FindById(product.ProductMaster.ProductMasterId);
                 // process sale actions
                 price =
                     MainPriceDao.FindById(new MainPricePK

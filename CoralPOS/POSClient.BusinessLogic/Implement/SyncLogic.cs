@@ -39,16 +39,7 @@ namespace POSClient.BusinessLogic.Implement
         public SyncResult SyncFromMain(SyncToDepartmentObject syncToDept)
         {
             SyncResult result = new SyncResult();
-            #region useless
-            /*Department department = syncToDept.Department;
-            DepartmentDao.SaveOrUpdate(department);
-            if(!ObjectUtility.IsNullOrEmpty(syncToDept.ProductMasterList))
-                SyncCommonInformation(syncToDept);
-            if(!ObjectUtility.IsNullOrEmpty(syncToDept.StockOutList))
-                SyncStockOut(syncToDept);*/
-
-            #endregion
-
+            
             SyncCommonInformation(syncToDept);
             SyncStockOut(syncToDept);
             return result;
@@ -77,7 +68,7 @@ namespace POSClient.BusinessLogic.Implement
                         where dr.STOCK_IN_ID.Contains(template)
                         orderby dr.STOCK_IN_ID descending
                         select dr).Max(r => r.STOCK_IN_ID);
-            string maxStockInId = !ObjectUtility.IsNullOrEmpty(maxId) ? (Int64.Parse(maxId.ToString()) + 1).ToString() : syncToDept.Department.DepartmentId.ToString() + template + "1";
+            string maxStockInId = !ObjectUtility.IsNullOrEmpty(maxId) ? string.Format("{0:0000000000000000}",Int64.Parse(maxId.ToString()) + 1) : string.Format("{0:00000}",syncToDept.Department.DepartmentId) + template + "0001";
 
             Department department = syncToDept.Department;
 
@@ -86,8 +77,6 @@ namespace POSClient.BusinessLogic.Implement
 
             foreach (DataRow dataRow in syncToDept.StockOutDetail.Rows)
             {
-                /*var itemArray = dataRow.ItemArray;
-                details.Rows.Add(itemArray);*/
                 PosClientDb.crl_stk_out_detRow row = details.Newcrl_stk_out_detRow();
                 database.AssignValue(row,dataRow,details.Columns);
                 details.Addcrl_stk_out_detRow(row);
@@ -101,7 +90,7 @@ namespace POSClient.BusinessLogic.Implement
                 var currents = from dr in clientDb.crl_stk_out
                                      where dr.STOCK_OUT_ID == stockOutId
                                      select dr;
-                
+                // if has synchronizes stock out then continue
                 if(currents.Count()>0) continue;
                 // create new department stock in 
                 PosClientDb.crl_dept_stk_inRow newRow = clientDb.crl_dept_stk_in.Newcrl_dept_stk_inRow();

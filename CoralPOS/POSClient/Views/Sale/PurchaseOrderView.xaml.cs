@@ -42,5 +42,11 @@ namespace POSClient.Views.Sale
 
             return isValid;
         }
+
+        private void Grid_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Barcode.Focus();
+        }
+        
     }
 }

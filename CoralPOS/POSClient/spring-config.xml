@@ -45,8 +45,7 @@
   <object id="PurchaseOrderViewFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
-        <entry key="Step1" value="POSClient.ViewModels.Sale.IPurchaseOrderViewModel"/>
-        <!--<entry key="Step2" value="POSClient.Actions.Sale.IPurchaseOrderPostAction"/>-->
+        <entry key="Step1" value="POSClient.ViewModels.Sale.IPurchaseOrderViewModel"/>        
       </dictionary>
     </property>
     <property name="Session" ref="FlowSession" />

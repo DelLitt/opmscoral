@@ -89,7 +89,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="16", Order=16)]
-        public virtual string ProductMasterId {
+        public virtual ProductMaster ProductMaster {
             get;
             set;
         }
