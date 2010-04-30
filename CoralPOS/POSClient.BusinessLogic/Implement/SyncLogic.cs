@@ -247,6 +247,12 @@ namespace POSClient.BusinessLogic.Implement
                 resultList.Add(SyncFromMain(syncToDept));
                 readerStream.Close();
             }
+
+            // clean import path
+            foreach (string importFile in importFiles)
+            {
+                File.Delete(importFile);
+            }
             return resultList;
             
         }
