@@ -71,5 +71,6 @@ namespace POSClient.BusinessLogic.Implement
         IExProductSizeDao ProductSizeDao { get; set; }
         IMainPriceDao MainPriceDao { get; set; }
         IDepartmentPurchaseOrderDetailDao DepartmentPurchaseOrderDetailDao { get; set; }
+        string FindNextId();
     }
 }

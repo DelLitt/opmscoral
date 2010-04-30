@@ -404,7 +404,8 @@ namespace POSClient.ViewModels.Sale
                                                                 };
             DepartmentPurchaseOrderPK pk = new DepartmentPurchaseOrderPK
                                                {
-                                                   DepartmentId = 1
+                                                   DepartmentId = 1,
+                                                   PurchaseOrderId = DepartmentPurchaseOrderLogic.FindNextId()
                                                };
             order.DepartmentPurchaseOrderPK = pk;
             return order;

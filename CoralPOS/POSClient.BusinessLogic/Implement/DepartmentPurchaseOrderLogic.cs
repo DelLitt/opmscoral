@@ -8,8 +8,11 @@ using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
+using System.Linq;
+using System.Linq.Expressions;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
+using NHibernate.Linq;
 using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using  CoralPOS.Models;
@@ -39,7 +42,21 @@ namespace POSClient.BusinessLogic.Implement
         public IExProductSizeDao ProductSizeDao { get; set; }
         public IMainPriceDao MainPriceDao { get; set; }
         public IDepartmentPurchaseOrderDetailDao DepartmentPurchaseOrderDetailDao { get; set; }
-        
+
+        public string FindNextId()
+        {
+            return (string) DepartmentPurchaseOrderDao.Execute(
+                delegate(ISession session)
+                {
+                    var maxId = (from po in session.Linq<DepartmentPurchaseOrder>()
+                                 select po.DepartmentPurchaseOrderPK.PurchaseOrderId).Max();
+                    string nextId = string.IsNullOrEmpty(maxId) ? "1" : (Int64.Parse(maxId)+1).ToString();
+                    return nextId;
+                }
+                                );
+  
+        }
+
         /// <summary>
         /// Find DepartmentPurchaseOrder object by id. Return null if nothing is found
         /// </summary>
