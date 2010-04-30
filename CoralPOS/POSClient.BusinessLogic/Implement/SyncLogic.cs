@@ -73,19 +73,22 @@ namespace POSClient.BusinessLogic.Implement
             stkOutTableAdapter.Fill(clientDb.crl_stk_out);
             
             string template = DateTime.Now.ToString("yyMMdd");
-            var maxId = from dr in clientDb.crl_dept_stk_in
+            var maxId = (from dr in clientDb.crl_dept_stk_in
                         where dr.STOCK_IN_ID.Contains(template)
                         orderby dr.STOCK_IN_ID descending
-                        select dr.STOCK_IN_ID.FirstOrDefault();
-            string maxStockInId = ObjectUtility.IsNullOrEmpty(maxId) ? (Int64.Parse(maxId.ToString()) + 1).ToString() : syncToDept.Department.DepartmentId.ToString() + template + "1";
+                        select dr).Max(r => r.STOCK_IN_ID);
+            string maxStockInId = !ObjectUtility.IsNullOrEmpty(maxId) ? (Int64.Parse(maxId.ToString()) + 1).ToString() : syncToDept.Department.DepartmentId.ToString() + template + "1";
 
             Department department = syncToDept.Department;
 
             PosClientDb.crl_stk_out_detDataTable details = new PosClientDb.crl_stk_out_detDataTable();
             foreach (DataRow dataRow in syncToDept.StockOutDetail.Rows)
             {
-                var itemArray = dataRow.ItemArray;
-                details.Rows.Add(itemArray);
+                /*var itemArray = dataRow.ItemArray;
+                details.Rows.Add(itemArray);*/
+                PosClientDb.crl_stk_out_detRow row = details.Newcrl_stk_out_detRow();
+                database.AssignValue(row,dataRow,details.Columns);
+                details.Addcrl_stk_out_detRow(row);
             }
 
 
@@ -229,6 +232,7 @@ namespace POSClient.BusinessLogic.Implement
                 SyncToDepartmentObject syncToDept = (SyncToDepartmentObject)reader.Deserialize(readerStream);
                 if(syncToDept == null) continue;
                 resultList.Add(SyncFromMain(syncToDept));
+                readerStream.Close();
             }
             return resultList;
             

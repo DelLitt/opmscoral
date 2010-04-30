@@ -169,7 +169,7 @@ namespace AppFrame.DataLayer.Utils
             
         }
 
-        private void AssignValue(DataRow newRow, DataRow dataRow, DataColumnCollection columns)
+        public void AssignValue(DataRow newRow, DataRow dataRow, DataColumnCollection columns)
         {
             foreach (DataColumn dataColumn in columns)
             {
