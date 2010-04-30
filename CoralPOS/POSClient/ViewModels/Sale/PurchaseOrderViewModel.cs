@@ -282,7 +282,8 @@ namespace POSClient.ViewModels.Sale
 		        
         public void Save()
         {
-            
+            DepartmentPurchaseOrder.DepartmentPurchaseOrderDetails = ObjectConverter.ConvertTo<DepartmentPurchaseOrderDetail>(PurchaseOrderDetails);
+            DepartmentPurchaseOrderLogic.Add(DepartmentPurchaseOrder);
         }
 		        
         public void Stop()
