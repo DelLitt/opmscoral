@@ -277,10 +277,10 @@ namespace POSServer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("CODE39")]
-        public string BarcodeType {
+        [global::System.Configuration.DefaultSettingValueAttribute("CODE128")]
+        public global::BarcodeLib.TYPE BarcodeType {
             get {
-                return ((string)(this["BarcodeType"]));
+                return ((global::BarcodeLib.TYPE)(this["BarcodeType"]));
             }
             set {
                 this["BarcodeType"] = value;

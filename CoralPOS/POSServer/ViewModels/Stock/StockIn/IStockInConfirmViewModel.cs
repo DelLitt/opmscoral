@@ -27,9 +27,17 @@ namespace POSServer.ViewModels.Stock.StockIn
             get;
             set;            
         }
+        
         bool IsViewOnly { get; set; }
 
+        bool ContinousPrint { get; set; }
+        bool PricePrint { get; set; }
+        bool FollowQuantityPrint { get; set; }
+        int BarcodeNumbers { get; set; }
+        string Barcode { get; set; }
+        string BarcodeText { get; set; }
         IList StockInDetailList { get; set; }
+        IList SelectedStockInDetails { get; set; }
 			#endregion
 		
 		#region Methods
@@ -44,6 +52,8 @@ namespace POSServer.ViewModels.Stock.StockIn
         
 		        
         void Stop();
+
+        void PrintBarcode();
         
 			#endregion
     }

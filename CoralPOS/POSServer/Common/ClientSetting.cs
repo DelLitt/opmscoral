@@ -245,7 +245,7 @@ namespace POSServer.Common
             }
         }
 
-        /*public static BarcodeLib.TYPE BarcodeType
+        public static BarcodeLib.TYPE BarcodeType
         {
             get
             {
@@ -255,7 +255,7 @@ namespace POSServer.Common
             {
                 AFCSetting.Default.BarcodeType = value;
             }
-        }*/
+        }
 
         public static void Reset()
         {

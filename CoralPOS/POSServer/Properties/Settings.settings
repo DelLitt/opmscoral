@@ -65,8 +65,8 @@
     <Setting Name="TempNegativeSelling" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="BarcodeType" Type="System.String" Scope="User">
-      <Value Profile="(Default)">CODE39</Value>
+    <Setting Name="BarcodeType" Type="BarcodeLib.TYPE" Scope="User">
+      <Value Profile="(Default)">CODE128</Value>
     </Setting>
     <Setting Name="MaxPOId" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">0</Value>
