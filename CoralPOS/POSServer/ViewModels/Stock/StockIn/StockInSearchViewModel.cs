@@ -13,6 +13,7 @@ using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
@@ -199,14 +200,27 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             if (_selectedStockIn != null && !string.IsNullOrEmpty(_selectedStockIn.StockInId))
             {
-                CoralPOS.Models.StockIn stockOut = SelectedStockIn;
+                CoralPOS.Models.StockIn stockIn = SelectedStockIn;
                 Flow.Session.Put(FlowConstants.STOCK_IN_SEARCH_RESULT, StockInList);
-                stockOut = StockInLogic.Fetch(stockOut);
-                Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockOut);
-                GoToNextNode();
+                BackgroundTask task = new BackgroundTask(()=>LoadStockInAndGoToDetail(stockIn));
+                task.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(task_Completed);
+                StartWaitingScreen(0);
+                task.Start(stockIn);
             }
         }
-		        
+
+        void task_Completed(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            StopWaitingScreen(0);
+            GoToNextNode();
+        }
+        
+		private object LoadStockInAndGoToDetail(CoralPOS.Models.StockIn stockOut)
+		{
+            stockOut = StockInLogic.Fetch(stockOut);
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_IN, stockOut);
+		    return null;
+		}
         public void Stop()
         {
             Flow.End();
@@ -226,8 +240,11 @@ namespace POSServer.ViewModels.Stock.StockIn
                 criteria.TypeNames = ProductTypes.Split(',').ToList();
             }
             criteria.DatePick = DatePick;
-            criteria.FromDate = FromDate;
-            criteria.ToDate = ToDate;
+            if (criteria.DatePick)
+            {
+                criteria.FromDate = FromDate;
+                criteria.ToDate = ToDate;
+            }
             Execute.OnBackgroundThread(() => FindStockIns(criteria), CompletedLoadStockIns);
         }
 

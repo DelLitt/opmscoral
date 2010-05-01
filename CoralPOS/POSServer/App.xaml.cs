@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Validation;
@@ -28,7 +30,9 @@ namespace POSServer
         {
             InitSpring();
             InitValidators();
-            
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
         }
 
         private void InitValidators()

@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -13,6 +14,7 @@ using AppFrame.DataLayer;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 
 using Caliburn.PresentationFramework.ApplicationModel;
@@ -201,12 +203,27 @@ namespace POSServer.ViewModels.Stock.StockOut
             {
                 CoralPOS.Models.StockOut stockOut = SelectedStockOut;
                 Flow.Session.Put(FlowConstants.STOCK_OUT_SEARCH_RESULT, StockOutList);
-                stockOut = StockOutLogic.Fetch(stockOut);
-                Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
-                GoToNextNode();
+                BackgroundTask task = new BackgroundTask(() => LoadStockOutAndGoToDetail(stockOut));
+                task.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(task_Completed);
+                StartWaitingScreen(0);
+                task.Start(stockOut);
+                
             }
         }
-		        
+
+        private void task_Completed(object sender, RunWorkerCompletedEventArgs e)
+        {
+            StopWaitingScreen(0);
+            GoToNextNode();
+        }
+
+        private object LoadStockOutAndGoToDetail(CoralPOS.Models.StockOut stockOut)
+        {
+            stockOut = StockOutLogic.Fetch(stockOut);
+            Flow.Session.Put(FlowConstants.SAVE_STOCK_OUT, stockOut);
+            return null;
+        }
+
         public void Stop()
         {
            Flow.End(); 

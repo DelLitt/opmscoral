@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AppFrame.Utility;
 using AppFrame.Utils;
+using NHibernate.SqlCommand;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -18,6 +19,7 @@ using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
+using Expression = NHibernate.Criterion.Expression;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -212,39 +214,62 @@ namespace POSServer.BusinessLogic.Implement
         {
             bool hasDetailQuery = false;
             StockInDetail detail = null;
+            // create detached criteria
             DetachedCriteria critMaster = DetachedCriteria.For<StockIn>();
             DetachedCriteria critDetail = DetachedCriteria.For<StockInDetail>();
 
             if (criteria != null)
             {
+                // create ICriteria provider for all properties we need to search
+                ProductMaster pm = null;
+                DetachedCriteria pmCrit = critDetail.CreateCriteria((StockInDetail sod) => sod.ProductMaster,
+                                                                    () => pm, JoinType.InnerJoin);
+                Category cat = null;
+                DetachedCriteria catCrit = pmCrit.CreateCriteria((ProductMaster p) => p.Category, () => cat,
+                                                                 JoinType.InnerJoin);
+                
+                ProductType type = null;
+                DetachedCriteria typeCrit = pmCrit.CreateCriteria((ProductMaster p) => p.ProductType, () => type,
+                                                                 JoinType.InnerJoin);
 
+                // has search product master name
                 if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
                 {
                     hasDetailQuery = true;
+                    int count = 1;
+                    // create OR expression A or B or C
+                    Junction pmJunction = Expression.Disjunction();
                     foreach (string masterName in criteria.ProductMasterNames)
                     {
-                        critDetail.Add(SqlExpression.Like<StockInDetail>(sod => sod.ProductMaster.ProductName, masterName));
+                        pmJunction.Add(SqlExpression.Like<ProductMaster>(sod => sod.ProductName, masterName, MatchMode.Anywhere));
                     }
+                    pmCrit.Add(pmJunction);
                 }
 
+                // search follow category name
                 if (!ObjectUtility.IsNullOrEmpty(criteria.CategoryName))
                 {
                     hasDetailQuery = true;
-                    critDetail.Add<StockInDetail>(
-                        sod => sod.ProductMaster.Category.CategoryName == criteria.CategoryName);
+                    catCrit.Add<Category>(
+                        sod => sod.CategoryName == criteria.CategoryName);
                 }
 
+                // search follow type names
                 if (!ObjectUtility.IsNullOrEmpty(criteria.TypeNames))
                 {
                     hasDetailQuery = true;
+                    // create OR expression A or B or C
+                    Junction typeJunction = Expression.Disjunction();
                     foreach (string typeName in criteria.TypeNames)
                     {
-                        critDetail.Add(SqlExpression.Like<StockInDetail>(sod => sod.ProductMaster.ProductType.TypeName, typeName));
+                        typeJunction.Add(SqlExpression.Like<ProductType>(sod => sod.TypeName, typeName,MatchMode.Anywhere));
                     }
+                    typeCrit.Add(typeJunction);
                 }
+                
+                // search from date to date
                 if (criteria.DatePick)
                 {
-
                     critMaster.Add(SqlExpression.Between<StockIn>(so => so.StockInDate,
                                                                    DateUtility.ZeroTime(criteria.FromDate),
                                                                    DateUtility.MaxTime(criteria.ToDate)));
@@ -254,12 +279,15 @@ namespace POSServer.BusinessLogic.Implement
             return (IList<StockIn>)StockInDao.Execute(delegate(ISession session)
             {
                 ICriteria executeCrit = critMaster.GetExecutableCriteria(session);
-                if (hasDetailQuery)
+                if (hasDetailQuery) // if has search in detail
                 {
-                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockInDetailPK.StockInId")));
+                    // set projection so detail return stock_in_id
+                    critDetail.SetProjection(LambdaProjection.Property<StockInDetail>(p=>p.StockIn.StockInId));
+                    // set master follow return values in subquery of detail
                     executeCrit.Add(LambdaSubquery.Property<StockIn>(p => p.StockInId).In(critDetail));
                 }
 
+                // max result, should put in common properties
                 executeCrit.SetMaxResults(20);
                 //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
                 return executeCrit.List<StockIn>();

@@ -21,6 +21,7 @@ using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
+using Expression = NHibernate.Criterion.Expression;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -157,6 +158,11 @@ namespace POSServer.BusinessLogic.Implement
             return StockOutDao.FindPaging(criteria);
         }
 
+        /// <summary>
+        /// Find by a criteria
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
         public IList<StockOut> FindByCriteria(object criteria)
         {
             return (IList<StockOut>)StockOutDao.Execute(delegate(ISession session)
@@ -171,44 +177,80 @@ namespace POSServer.BusinessLogic.Implement
                                  );
         }
 
+        /// <summary>
+        /// Find by multicriteria define in StockOutCriteria
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
         public IList<StockOut> FindByMultiCriteria(StockOutCriteria criteria)
         {
             bool hasDetailQuery = false;
             StockOutDetail detail = null;
+            // create detached criteria
             DetachedCriteria critMaster = DetachedCriteria.For<StockOut>();
             DetachedCriteria critDetail = DetachedCriteria.For<StockOutDetail>();
             
+
             if (criteria != null)
             {
+                // create ICriteria provider for all properties we need to search
+                Department dep = null;
+                DetachedCriteria depCrit = critMaster.CreateCriteria((StockOut so) => so.Department,
+                                                                    () => dep, JoinType.InnerJoin);
+                ProductMaster pm = null;
+                DetachedCriteria pmCrit = critDetail.CreateCriteria((StockOutDetail sod) => sod.ProductMaster,
+                                                                    () => pm, JoinType.InnerJoin);
+                Category cat = null;
+                DetachedCriteria catCrit = pmCrit.CreateCriteria((ProductMaster p) => p.Category, () => cat,
+                                                                 JoinType.InnerJoin);
+
+                ProductType type = null;
+                DetachedCriteria typeCrit = pmCrit.CreateCriteria((ProductMaster p) => p.ProductType, () => type,
+                                                                 JoinType.InnerJoin);
+                
+                // search by department
                 if (criteria.DepartmentPick && !ObjectUtility.IsNullOrEmpty(criteria.DepartmentName))
                 {
-                    critMaster.Add<StockOut>(so => so.Department.DepartmentName == criteria.DepartmentName);
+                    depCrit.Add<Department>(so => so.DepartmentName == criteria.DepartmentName);
                 }
 
+                // has search product master name
                 if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
                 {
                     hasDetailQuery = true;
+                    // create OR expression A or B or C
+                    Junction pmJunction = Expression.Disjunction();
                     foreach (string masterName in criteria.ProductMasterNames)
                     {
-                        critDetail.Add(SqlExpression.Like<StockOutDetail>(sod => sod.ProductMaster.ProductName,masterName));
+                        pmJunction.Add(SqlExpression.Like<ProductMaster>(sod => sod.ProductName, 
+                            masterName.ToUpper().Trim(),MatchMode.Anywhere));
                     }
+                    pmCrit.Add(pmJunction);
                 }
 
+                // search follow category name
                 if (!ObjectUtility.IsNullOrEmpty(criteria.CategoryName))
                 {
                     hasDetailQuery = true;
-                    critDetail.Add<StockOutDetail>(
-                        sod => sod.ProductMaster.Category.CategoryName == criteria.CategoryName);
+                    catCrit.Add<Category>(
+                        sod => sod.CategoryName == criteria.CategoryName);
                 }
 
+                // search follow type names
                 if (!ObjectUtility.IsNullOrEmpty(criteria.TypeNames))
                 {
                     hasDetailQuery = true;
+                    // create OR expression A or B or C
+                    Junction typeJunction = Expression.Disjunction();
                     foreach (string typeName in criteria.TypeNames)
                     {
-                        critDetail.Add(SqlExpression.Like<StockOutDetail>(sod => sod.ProductMaster.ProductType.TypeName,typeName));    
+                        typeJunction.Add(SqlExpression.Like<ProductType>(
+                            sod => sod.TypeName, typeName.ToUpper().Trim(), MatchMode.Anywhere));    
                     }
+                    typeCrit.Add(typeJunction);
                 }
+
+                // search from date to date
                 if(criteria.DatePick)
                 {
                     
@@ -223,7 +265,7 @@ namespace POSServer.BusinessLogic.Implement
                 ICriteria executeCrit = critMaster.GetExecutableCriteria(session);    
                 if(hasDetailQuery)
                 {
-                    critDetail.SetProjection(Projections.Distinct(Projections.Property("StockOutId")));
+                    critDetail.SetProjection(LambdaProjection.Property<StockOutDetail>(p=>p.StockOut.StockOutId));
                     executeCrit.Add(LambdaSubquery.Property<StockOut>(p => p.StockOutId).In(critDetail)); 
                 }
 
