@@ -193,8 +193,9 @@ namespace POSServer.ViewModels.Stock.StockIn
 
         public void GridSelectionChanged()
         {
-            if (ObjectUtility.IsNullOrEmpty(SelectedStockInDetails)) return;
+            
             StockInDetail detail = SelectedStockInDetail;
+            if (detail == null) return;
             Barcode = detail.Product.ProductId;
             BarcodeText = detail.ProductMaster.ProductName;
         }

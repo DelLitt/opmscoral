@@ -198,13 +198,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Microsoft.Practices.Unity.StaticFactory.dll</HintPath>
     </Reference>
-    <Reference Include="Neodynamic.WPF.Barcode, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=c6b33c3093a0d4cd, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\Program Files (x86)\Neodynamic\Barcode Professional WPF\v3.0\Bin\Neodynamic.WPF.Barcode.dll</HintPath>
+    <Reference Include="Neodynamic.WPF.Barcode">
+      <HintPath>..\libraries\trial\Neodynamic.WPF.Barcode.dll</HintPath>
     </Reference>
-    <Reference Include="Neodynamic.WPF.Barcode.Design, Version=3.0.3500.0, Culture=neutral, PublicKeyToken=c6b33c3093a0d4cd, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\Program Files (x86)\Neodynamic\Barcode Professional WPF\v3.0\Bin\Neodynamic.WPF.Barcode.Design.dll</HintPath>
+    <Reference Include="Neodynamic.WPF.Barcode.Design">
+      <HintPath>..\libraries\trial\Neodynamic.WPF.Barcode.Design.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
