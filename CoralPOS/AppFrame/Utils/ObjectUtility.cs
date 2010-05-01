@@ -307,5 +307,29 @@ namespace AppFrame.Utils
             if (IsNullOrEmpty(barCode)) return false;
             return barCode.Length == length;
         }
+
+        public static void AddToList<T>(IList<T> destList, T addObject, string propertyName)
+        {
+            PropertyInfo info2 = addObject.GetType().GetProperty(propertyName, typeof(string));
+            string value2 = (string) (info2.GetValue(addObject, null));
+            bool notFound = true;
+            foreach (T compareObj in destList)
+            {
+                
+                PropertyInfo info1 = compareObj.GetType().GetProperty(propertyName, typeof (string));
+                string value1 = (string) (info1.GetValue(compareObj, null));
+                
+                if (!string.IsNullOrEmpty(value1) && value1.Equals(value2))
+                {
+                    notFound = false;
+                    break;
+                }
+            }
+
+            if(notFound)
+            {
+               destList.Add(addObject); 
+            }
+        }
     }
 }

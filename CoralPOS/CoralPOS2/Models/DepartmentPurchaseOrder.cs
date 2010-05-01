@@ -117,6 +117,13 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+
+        [DataMember(Name = "20", Order = 20)]
+        public virtual long PurchaseQuantity
+        {
+            get;
+            set;
+        }
    	 protected bool Equals(DepartmentPurchaseOrder entity)
 		{
 			if (entity == null) return false;

@@ -141,6 +141,8 @@ namespace CoralPOS.Models {
             get;
             set;
         }
+        [DataMember(Name = "25", Order = 25)]
+        public virtual int AdhocCase { get; set; }
    	 protected bool Equals(DepartmentPurchaseOrderDetail entity)
 		{
 			if (entity == null) return false;

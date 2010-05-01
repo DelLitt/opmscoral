@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -73,8 +74,10 @@ namespace POSClient.BusinessLogic.Implement
         public DepartmentPurchaseOrder Add(DepartmentPurchaseOrder data)
         {
             IList<DepartmentStock> needUpdateStocks = new List<DepartmentStock>();
+            IList<Product> adhocProducts = new List<Product>();
+            IList<DepartmentStock> adhocStocks = new List<DepartmentStock>();
             // process master
-            DepartmentPurchaseOrderDao.Add(data);
+            
             // if has financial invoice 
             // if has not financial invoice
 
@@ -86,72 +89,118 @@ namespace POSClient.BusinessLogic.Implement
                         foreach (DepartmentPurchaseOrderDetail detail in details)
                         {
                             // 1:NORMAL CASE
+                            if (detail.Product.AdhocCase == 0)
+                            {
+                                // select all stocks
+                                var stockList = from stk in session.Linq<DepartmentStock>()
+                                                where
+                                                    stk.ProductMaster.ProductMasterId ==
+                                                    detail.ProductMaster.ProductMasterId
+                                                orderby stk.Product.ProductId
+                                                select stk;
+                                AddToList(needUpdateStocks, stockList.ToList());
+                                // select stk correspond to product id
+                                // find from founded stock
+                                DepartmentStock deptStk = null;
+                                deptStk = (from stk in needUpdateStocks
+                                           where stk.Product.ProductId == detail.Product.ProductId
+                                           select stk).FirstOrDefault();
 
-                            // select all stocks
-                            var stockList = from stk in session.Linq<DepartmentStock>()
-                                            where stk.ProductMaster.ProductMasterId == detail.ProductMaster.ProductMasterId
-                                            orderby stk.Product.ProductId
-                                            select stk;
-                            AddToList(needUpdateStocks, stockList.ToList());
-                            // select stk correspond to product id
-                            // find from founded stock
-                            DepartmentStock deptStk = null;
-                            deptStk = (from stk in needUpdateStocks
-                                      where stk.Product.ProductId == detail.Product.ProductId
-                                      select stk).FirstOrDefault();
-                            
-                            // minus stock
-                            if(detail.Quantity < 0 || deptStk.GoodQuantity >=detail.Quantity)
-                            {
-                                deptStk.Quantity -= detail.Quantity;
-                                deptStk.GoodQuantity -= detail.Quantity;
-                                if (deptStk.HasChanges) deptStk.HasChanges = true;
-                                continue;
-                            }
-                            else // update relevant stock
-                            {
-                                long quantity = detail.Quantity;
-                                quantity -= deptStk.GoodQuantity;
-                                deptStk.Quantity = 0;
-                                deptStk.GoodQuantity = 0;
-                                if (deptStk.HasChanges) deptStk.HasChanges = true;
-                                var otherStocks = from stk in needUpdateStocks
-                                                 where
-                                                     stk.ProductMaster.ProductMasterId.Equals(detail.ProductMaster.ProductMasterId)
-                                                     && !stk.Product.ProductId.Equals(detail.Product.ProductId)
-                                                 orderby stk.Product.ProductId
-                                                 select stk;
-                                foreach (DepartmentStock departmentStock in otherStocks)
+                                // minus stock
+                                if (detail.Quantity < 0 || deptStk.GoodQuantity >= detail.Quantity)
                                 {
-                                    if (departmentStock.GoodQuantity == 0) continue;
-                                    if(departmentStock.GoodQuantity>=quantity)
-                                    {
-                                        departmentStock.GoodQuantity -= quantity;
-                                        departmentStock.Quantity -= quantity;
-                                        quantity = 0;
-                                        if (deptStk.HasChanges) deptStk.HasChanges = true;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        quantity -= deptStk.GoodQuantity;
-                                        deptStk.Quantity = 0;
-                                        deptStk.GoodQuantity = 0;
-                                        if (deptStk.HasChanges) deptStk.HasChanges = true;
-                                    }
+                                    deptStk.Quantity -= detail.Quantity;
+                                    deptStk.GoodQuantity -= detail.Quantity;
+                                    if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                    continue;
                                 }
-                                if(quantity > 0) throw new ArgumentException("Available stock of "+ detail.ProductMaster.ProductName +"does not enough for selling");
+                                else // update relevant stock
+                                {
+                                    long quantity = detail.Quantity;
+                                    quantity -= deptStk.GoodQuantity;
+                                    deptStk.Quantity = 0;
+                                    deptStk.GoodQuantity = 0;
+                                    if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                    var otherStocks = from stk in needUpdateStocks
+                                                      where
+                                                          stk.ProductMaster.ProductMasterId.Equals(
+                                                              detail.ProductMaster.ProductMasterId)
+                                                          && !stk.Product.ProductId.Equals(detail.Product.ProductId)
+                                                      orderby stk.Product.ProductId
+                                                      select stk;
+                                    foreach (DepartmentStock departmentStock in otherStocks)
+                                    {
+                                        if (departmentStock.GoodQuantity == 0) continue;
+                                        if (departmentStock.GoodQuantity >= quantity)
+                                        {
+                                            departmentStock.GoodQuantity -= quantity;
+                                            departmentStock.Quantity -= quantity;
+                                            quantity = 0;
+                                            if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            quantity -= deptStk.GoodQuantity;
+                                            deptStk.Quantity = 0;
+                                            deptStk.GoodQuantity = 0;
+                                            if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                        }
+                                    }
+                                    if (quantity > 0)
+                                        throw new ArgumentException("Available stock of " +
+                                                                    detail.ProductMaster.ProductName +
+                                                                    "does not enough for selling");
+                                }
                             }
-
-                            // 2:ADHOC CASE
+                            else // 2:ADHOC CASE
+                            {
+                                ObjectUtility.AddToList<Product>(adhocProducts,detail.Product,"ProductId");
+                                var result = (from stk in session.Linq<DepartmentStock>()
+                                             where stk.DepartmentStockPK.ProductId == detail.Product.ProductId
+                                             select stk)
+                                             .Union
+                                             (from stk in adhocStocks
+                                             where stk.DepartmentStockPK.ProductId == detail.Product.ProductId
+                                             select stk);
+                                if (result.Count() == 0)
+                                {
+                                    DepartmentStock adhocStock = new DepartmentStock
+                                                                     {
+                                                                         CreateDate = DateTime.Now,
+                                                                         CreateId = "admin",
+                                                                         UpdateDate = DateTime.Now,
+                                                                         UpdateId = "admin",
+                                                                         GoodQuantity = 0,
+                                                                         Quantity = 0,
+                                                                         DelFlg = 0,
+                                                                         ExclusiveKey = 1
+                                                                     };
+                                    adhocStocks.Add(adhocStock);
+                                }
+                            }
                         }
                         return null;   
                     }  
                 );
+
+            // save adhoc
+            foreach (var adhocProduct in adhocProducts)
+            {
+                ProductDao.Add(adhocProduct);
+            }
+            foreach (DepartmentStock adhocStock in adhocStocks)
+            {
+                DepartmentStockDao.Add(adhocStock);
+            }
+            // save master
+            DepartmentPurchaseOrderDao.Add(data);
+            // save detail
             foreach (DepartmentPurchaseOrderDetail departmentPurchaseOrderDetail in details)
             {
                 DepartmentPurchaseOrderDetailDao.Add(departmentPurchaseOrderDetail);
             }
+            // update stock
             foreach (DepartmentStock departmentStock in needUpdateStocks)
             {
                 if(departmentStock.HasChanges)
@@ -271,6 +320,10 @@ namespace POSClient.BusinessLogic.Implement
 
                 Product exProduct = new Product
                                         {
+                                            ProductId = string.Format("{0:0000000}",Int64.Parse(productMaster.ProductMasterId)) 
+                                                         + string.Format("{0:00}",color.ColorId)
+                                                         + string.Format("{0:00}", size.SizeId)
+                                                         +"F",
                                             ProductColor = color,
                                             ProductSize = size,
                                             ProductMaster = productMaster,

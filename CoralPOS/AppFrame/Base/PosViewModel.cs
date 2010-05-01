@@ -5,8 +5,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using AppFrame.DataLayer;
+using AppFrame.WPF.Screens;
 using Caliburn.PresentationFramework.Screens;
 using Caliburn.PresentationFramework.ViewModels;
+using Microsoft.Practices.ServiceLocation;
 
 namespace AppFrame.Base
 {
@@ -68,5 +70,13 @@ namespace AppFrame.Base
             }
         }
         
+        public void StartWaitingScreen(int type)
+        {
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+        }
+        public void StopWaitingScreen( int type)
+        {
+            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+        }
     }
 }

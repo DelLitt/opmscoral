@@ -59,10 +59,10 @@
             <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,0,13,56" Name="Discount" Width="80.575" Height="40" VerticalAlignment="Bottom" TabIndex="5" />
             <Label FontSize="14" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,0,99,56" Name="label5" Width="97" Height="37" VerticalAlignment="Bottom">CHIẾT KHẤU</Label>
             <CheckBox Height="16" HorizontalAlignment="Right" Margin="0,0,11,34" Name="HasFinancialInvoice" VerticalAlignment="Bottom" Width="185" IsChecked="False" TabIndex="6" IsTabStop="True">HÓA ĐƠN TÀI CHÍNH</CheckBox>
-            <TextBox FontSize="14" HorizontalAlignment="Left" Margin="440,98,0,59" Name="Payment" Width="185" IsTabStop="True" TabIndex="4" />
+            <TextBox FontSize="14" HorizontalAlignment="Left" Margin="440,98,0,59" Name="Payment" Width="185" IsTabStop="True" TabIndex="4" RoutedMessaging:Message.Attach="[Event TextChanged]=[Action CalculateCharge]"/>
             <Label FontSize="14" HorizontalContentAlignment="Right" Margin="344,0,403,51" Name="label6" Height="37" VerticalAlignment="Bottom">KHÁCH TRẢ</Label>
             <Label FontSize="14" Height="33" HorizontalContentAlignment="Right" Margin="343,59,403,0" Name="label7" VerticalAlignment="Top">THUẾ</Label>
-            <TextBox FontSize="14" Height="40" HorizontalAlignment="Left" Margin="439,6,0,0" Name="TotalQuantity" VerticalAlignment="Top" Width="186" Text="{Binding DepartmentPurchaseOrder.PurchasePrice}" IsTabStop="False" IsReadOnly="True" />
+            <TextBox FontSize="14" Height="40" HorizontalAlignment="Left" Margin="439,6,0,0" Name="TotalQuantity" VerticalAlignment="Top" Width="186" IsTabStop="False" IsReadOnly="True" />
             <Label FontSize="14" Height="28.424" HorizontalContentAlignment="Right" Margin="343,10,405,0" Name="label8" VerticalAlignment="Top">TỔNG TIỀN</Label>
             <TextBox FontSize="14" Height="40" HorizontalAlignment="Left" Margin="440,52,0,0" Name="Tax" VerticalAlignment="Top" Width="184" IsReadOnly="True" IsTabStop="False" Text="10%" />
             <TextBox FontSize="14" Height="40" HorizontalAlignment="Right" Margin="0,0,212,13" Name="Changes" VerticalAlignment="Bottom" Width="185" IsReadOnly="True" IsTabStop="False" />

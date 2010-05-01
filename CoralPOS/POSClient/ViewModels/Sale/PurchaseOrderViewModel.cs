@@ -11,12 +11,15 @@ using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Utils;
+using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using AppFrame.Extensions;
+using Microsoft.Practices.ServiceLocation;
 using POSClient.BusinessLogic.Implement;
 using POSClient.Common;
 using POSClient.ViewModels.Menu;
@@ -104,9 +107,9 @@ namespace POSClient.ViewModels.Sale
                 NotifyOfPropertyChange(() => Employee);
             }
         }
-		        
-        private string _discount;
-        public string Discount
+
+        private long _discount;
+        public long Discount
         {
             get
             {
@@ -118,9 +121,9 @@ namespace POSClient.ViewModels.Sale
                 NotifyOfPropertyChange(() => Discount);
             }
         }
-		        
-        private string _payment;
-        public string Payment
+
+        private long _payment;
+        public long Payment
         {
             get
             {
@@ -133,8 +136,8 @@ namespace POSClient.ViewModels.Sale
             }
         }
 		        
-        private string _totalQuantity;
-        public string TotalQuantity
+        private long _totalQuantity;
+        public long TotalQuantity
         {
             get
             {
@@ -160,9 +163,9 @@ namespace POSClient.ViewModels.Sale
                 NotifyOfPropertyChange(() => Tax);
             }
         }
-		        
-        private string _changes;
-        public string Changes
+
+        private long _changes;
+        public long Changes
         {
             get
             {
@@ -283,9 +286,51 @@ namespace POSClient.ViewModels.Sale
         public void Save()
         {
             DepartmentPurchaseOrder.DepartmentPurchaseOrderDetails = ObjectConverter.ConvertTo<DepartmentPurchaseOrderDetail>(PurchaseOrderDetails);
-            DepartmentPurchaseOrderLogic.Add(DepartmentPurchaseOrder);
+            DepartmentPurchaseOrder.PurchasePrice = TotalQuantity;
+            DepartmentPurchaseOrder.PurchaseDescription = CreateDescription();
+            DepartmentPurchaseOrder.PurchaseQuantity = CreateQuantity();
+            if(Changes < 0 )
+            {
+                MessageBox.Show(" So tien tra chua du");
+                return;
+            }
+            BackgroundTask task = new BackgroundTask(() => DepartmentPurchaseOrderLogic.Add(DepartmentPurchaseOrder));
+            task.Completed += task_Completed;
+            StartWaitingScreen(0);
+            task.Start(DepartmentPurchaseOrder);
         }
-		        
+
+        void task_Completed(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            StopWaitingScreen(0);
+            if(this.Flow is ChildFlow)
+            {
+                ((ChildFlow) this.Flow).IsRepeated = true;
+                GoToNextNode();
+            }
+        }
+
+        private long CreateQuantity()
+        {
+            long amount = 0;
+            foreach (var detail in PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>())
+            {
+                amount += detail.Quantity;
+            }
+            return amount;
+        }
+
+        private string CreateDescription()
+        {
+            string description = "";
+            foreach(var purchaseOrderDetail in PurchaseOrderDetails.OfType<DepartmentPurchaseOrderDetail>())
+            {
+                description = purchaseOrderDetail.ProductMaster.ProductName + ":" +
+                              purchaseOrderDetail.Quantity.ToString() + Environment.NewLine;
+            }
+            return description;
+        }
+
         public void Stop()
         {
             GoToNextNode();
@@ -335,6 +380,8 @@ namespace POSClient.ViewModels.Sale
                     Quantity = 1
                 };
 
+                if (product.AdhocCase > 0)
+                    detail.AdhocCase = product.AdhocCase;
                 long maxId = 0;
                 if (PurchaseOrderDetails.Count > 0)
                 {
@@ -344,7 +391,8 @@ namespace POSClient.ViewModels.Sale
                 DepartmentPurchaseOrderDetailPK pk = new DepartmentPurchaseOrderDetailPK
                 {
                     DepartmentId = 1,
-                    PurchaseOrderDetailId = ++maxId
+                    PurchaseOrderDetailId = ++maxId,
+                    PurchaseOrderId = DepartmentPurchaseOrder.DepartmentPurchaseOrderPK.PurchaseOrderId
                 };
                 detail.DepartmentPurchaseOrderDetailPK = pk;
                 var detailList = new ArrayList(PurchaseOrderDetails);
@@ -378,7 +426,8 @@ namespace POSClient.ViewModels.Sale
             {
                 amount += detail.Price*detail.Quantity;
             }
-            DepartmentPurchaseOrder.PurchasePrice = amount;
+            TotalQuantity = amount;
+            CalculateCharge();
         }
 
         public override void Initialize()
@@ -389,6 +438,11 @@ namespace POSClient.ViewModels.Sale
                 DepartmentPurchaseOrder = CreateNewDepartmentPurchaseOrder();
             }
             PurchaseOrderDetails = new ArrayList();
+            TotalQuantity = 0;
+            Payment = 0;
+            Changes = 0;
+            Discount = 0;
+            Tax = "10%";
         }
 
         private DepartmentPurchaseOrder CreateNewDepartmentPurchaseOrder()
@@ -410,7 +464,16 @@ namespace POSClient.ViewModels.Sale
             order.DepartmentPurchaseOrderPK = pk;
             return order;
         }
+        public void CalculateCharge()
+        {
+            long totalQty = TotalQuantity;
+            long payment = Payment;
+            long change = Changes;
+            long discount = Discount;
 
+            change = ( payment + discount) - totalQty;
+            Changes = change;
+        }
         #endregion
 		
         

@@ -19,6 +19,7 @@
     <property name="TaxId" column="TAX_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <property name="AdhocCase" column="ADHOC_CASE" />
     <many-to-one class="ProductMaster" name="ProductMaster" lazy="no-proxy">
       <column name="PRODUCT_MASTER_ID" />
     </many-to-one>

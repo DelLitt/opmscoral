@@ -273,8 +273,15 @@ namespace AppFrame.Base
                 }
                 else
                 {
-                    OpenMainScreen();
-                    
+                    if(childFlow.IsRepeated)
+                    {
+                        EnterFlow(childFlow.Name);
+                        childFlow.IsRepeated = false;
+                    }
+                    else
+                    {
+                        OpenMainScreen();    
+                    }
                 }
             }
             else

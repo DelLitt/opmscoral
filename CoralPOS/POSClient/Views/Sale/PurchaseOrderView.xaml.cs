@@ -33,7 +33,7 @@ namespace POSClient.Views.Sale
                 Int64 result = -1;
                 if (Int64.TryParse(text, out result))
                 {
-                    if (result > 0)
+                    if (result >= 0)
                     {
                         isValid = true;
                     }
@@ -46,6 +46,13 @@ namespace POSClient.Views.Sale
         private void Grid_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             Barcode.Focus();
+        }
+
+        private void Payment_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            int payment = Int32.Parse(Payment.Text);
+            int change = payment - Int32.Parse(TotalQuantity.Text);
+            Changes.Text = change.ToString();
         }
         
     }

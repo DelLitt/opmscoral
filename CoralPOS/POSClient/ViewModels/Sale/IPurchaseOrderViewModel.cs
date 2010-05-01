@@ -39,19 +39,19 @@ namespace POSClient.ViewModels.Sale
             set;            
         }
 		                
-        string Discount
+        long Discount
         {
             get;
             set;            
         }
-		                
-        string Payment
+
+        long Payment
         {
             get;
             set;            
         }
-		                
-        string TotalQuantity
+
+        long TotalQuantity
         {
             get;
             set;            
@@ -62,8 +62,8 @@ namespace POSClient.ViewModels.Sale
             get;
             set;            
         }
-		                
-        string Changes
+
+        long Changes
         {
             get;
             set;            

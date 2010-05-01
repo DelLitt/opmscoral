@@ -23,6 +23,7 @@
     <property name="TaxId" column="TAX_ID" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <property name="AdhocCase" column="ADHOC_CASE" />
     <many-to-one class="DepartmentPurchaseOrder" name="DepartmentPurchaseOrder" property-ref="DepartmentPurchaseOrderPK" update="false" insert="false">
       <column name="DEPARTMENT_ID" />
       <column name="PURCHASE_ORDER_ID" />
