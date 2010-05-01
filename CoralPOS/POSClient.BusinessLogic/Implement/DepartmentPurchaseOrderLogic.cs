@@ -1,6 +1,3 @@
-			 
-
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -72,13 +69,123 @@ namespace POSClient.BusinessLogic.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        [Transaction(ReadOnly=false)]
+        [Transaction()]
         public DepartmentPurchaseOrder Add(DepartmentPurchaseOrder data)
         {
+            IList<DepartmentStock> needUpdateStocks = new List<DepartmentStock>();
+            // process master
             DepartmentPurchaseOrderDao.Add(data);
+            // if has financial invoice 
+            // if has not financial invoice
+
+            // process details
+            var details = data.DepartmentPurchaseOrderDetails;
+            DepartmentPurchaseOrderDao.Execute(
+                delegate(ISession session)
+                    {
+                        foreach (DepartmentPurchaseOrderDetail detail in details)
+                        {
+                            // 1:NORMAL CASE
+
+                            // select all stocks
+                            var stockList = from stk in session.Linq<DepartmentStock>()
+                                            where stk.ProductMaster.ProductMasterId == detail.ProductMaster.ProductMasterId
+                                            orderby stk.Product.ProductId
+                                            select stk;
+                            AddToList(needUpdateStocks, stockList.ToList());
+                            // select stk correspond to product id
+                            // find from founded stock
+                            DepartmentStock deptStk = null;
+                            deptStk = (from stk in needUpdateStocks
+                                      where stk.Product.ProductId == detail.Product.ProductId
+                                      select stk).FirstOrDefault();
+                            
+                            // minus stock
+                            if(detail.Quantity < 0 || deptStk.GoodQuantity >=detail.Quantity)
+                            {
+                                deptStk.Quantity -= detail.Quantity;
+                                deptStk.GoodQuantity -= detail.Quantity;
+                                if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                continue;
+                            }
+                            else // update relevant stock
+                            {
+                                long quantity = detail.Quantity;
+                                quantity -= deptStk.GoodQuantity;
+                                deptStk.Quantity = 0;
+                                deptStk.GoodQuantity = 0;
+                                if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                var otherStocks = from stk in needUpdateStocks
+                                                 where
+                                                     stk.ProductMaster.ProductMasterId.Equals(detail.ProductMaster.ProductMasterId)
+                                                     && !stk.Product.ProductId.Equals(detail.Product.ProductId)
+                                                 orderby stk.Product.ProductId
+                                                 select stk;
+                                foreach (DepartmentStock departmentStock in otherStocks)
+                                {
+                                    if (departmentStock.GoodQuantity == 0) continue;
+                                    if(departmentStock.GoodQuantity>=quantity)
+                                    {
+                                        departmentStock.GoodQuantity -= quantity;
+                                        departmentStock.Quantity -= quantity;
+                                        quantity = 0;
+                                        if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        quantity -= deptStk.GoodQuantity;
+                                        deptStk.Quantity = 0;
+                                        deptStk.GoodQuantity = 0;
+                                        if (deptStk.HasChanges) deptStk.HasChanges = true;
+                                    }
+                                }
+                                if(quantity > 0) throw new ArgumentException("Available stock of "+ detail.ProductMaster.ProductName +"does not enough for selling");
+                            }
+
+                            // 2:ADHOC CASE
+                        }
+                        return null;   
+                    }  
+                );
+            foreach (DepartmentPurchaseOrderDetail departmentPurchaseOrderDetail in details)
+            {
+                DepartmentPurchaseOrderDetailDao.Add(departmentPurchaseOrderDetail);
+            }
+            foreach (DepartmentStock departmentStock in needUpdateStocks)
+            {
+                if(departmentStock.HasChanges)
+                {
+                    DepartmentStockDao.Update(departmentStock);
+                }
+            }
+            // process print
+            
             return data;
         }
-        
+
+        private void AddToList(IList<DepartmentStock> needUpdateStocks, IList<DepartmentStock> stockList)
+        {
+            foreach (DepartmentStock departmentStock in stockList)
+            {
+                if(!ProductIdExistInStockList(needUpdateStocks,departmentStock))
+                    needUpdateStocks.Add(departmentStock);
+            }
+        }
+
+        private bool ProductIdExistInStockList(IList<DepartmentStock> needUpdateStocks, DepartmentStock departmentStock)
+        {
+            var exist = from stk in needUpdateStocks
+                        where stk.Product.ProductId.Equals(departmentStock.Product.ProductId)
+                        select stk;
+            return exist.Count() > 0;
+        }
+
+        private void AddOrReplace(IList<DepartmentStock> needUpdateStocks, DepartmentStock deptStk)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Update DepartmentPurchaseOrder to database.
         /// </summary>

@@ -147,7 +147,10 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-   	 protected bool Equals(DepartmentStock entity)
+
+        public bool HasChanges { get; set; }
+
+        protected bool Equals(DepartmentStock entity)
 		{
 			if (entity == null) return false;
 			if (!base.Equals(entity)) return false;
