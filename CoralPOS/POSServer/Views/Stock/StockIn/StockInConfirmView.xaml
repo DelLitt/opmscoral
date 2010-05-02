@@ -16,7 +16,8 @@
             <CheckBox Content="In hàng loạt" Height="16" Name="ContinuousPrint" FontSize="12" Margin="224,16,0,32" HorizontalAlignment="Left" Width="92" />
             <CheckBox Content="In giá" Height="16" Name="PricePrint" FontSize="12" Margin="322,16,0,32" HorizontalAlignment="Left" Width="71" />
             <CheckBox Content="In theo số lượng" Height="16" Name="FollowQuantityPrint" FontSize="12" Margin="399,16,286,32" />
-            <my:BarcodeProfessional HorizontalAlignment="Left" Margin="512,0,0,0" Name="NeoBarcode" VerticalAlignment="Top" Text="{Binding BarcodeText}" Height="64" TextAlignment="AboveCenter" BarcodeUnit="Inch" DisplayLightMarginIndicator="False" Symbology="Code128" Code="{Binding Barcode}" />
+            <my:BarcodeProfessional HorizontalAlignment="Left" Margin="557,0,0,0" Name="NeoBarcode" VerticalAlignment="Top" Height="64" TextAlignment="AboveCenter" BarcodeUnit="Inch" DisplayLightMarginIndicator="False" Symbology="Code128" Code="{Binding Barcode}" BarcodeAlignment="Center" BarRatio="2" />
+            <TextBox Height="21" HorizontalAlignment="Left" Margin="631,0,0,0" Name="BarcodeText" VerticalAlignment="Top" Width="130" BorderThickness="0" Text="{Binding BarcodeText,Mode=TwoWay}" TextAlignment="Center" />
         </Grid>
         <Grid Margin="0,0,0,185">
             <Grid.RowDefinitions>
