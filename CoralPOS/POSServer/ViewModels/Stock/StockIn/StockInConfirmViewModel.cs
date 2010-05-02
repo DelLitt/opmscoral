@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using AppFrame.Base;
 using AppFrame.Utils;
+using AppFrame.WPF;
 using BarcodeLib;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
@@ -215,16 +216,6 @@ namespace POSServer.ViewModels.Stock.StockIn
             if(printDialog.ShowDialog()!=true) return;
 
             //Image image = GetBarcodeImage();
-            
-             StockInDetail detail = SelectedStockInDetails[0] as StockInDetail;
-
-            BarcodeProfessional bc = new BarcodeProfessional();
-            bc.BarcodeUnit = BarcodeUnit.Inch;
-            bc.FitBarcodeToSize = new Size(1.4,0.4);
-            bc.Code = detail.Product.ProductId;
-            bc.Text = detail.ProductMaster.ProductName;
-            bc.Symbology = Symbology.Code128;
-            DrawingVisual drawingVisual = new DrawingVisual();
             Visual[] rows = GetBarcodeVisual(SelectedStockInDetails);
             foreach (var visual in rows)
             {
@@ -235,17 +226,75 @@ namespace POSServer.ViewModels.Stock.StockIn
         private Visual[] GetBarcodeVisual(IList selectedStockInDetails)
         {
             Visual[] rows = null;
-            
+            int barcodeWidth = 140;
+
             if(ContinousPrint)
             {
-                
+                rows = new Visual[1];
+                int count = 1;
+                DrawingVisual drawingVisual = new DrawingVisual();
+
+                //create barcode list needed to print
+                IList<BarcodeLine> barcodeLines = new List<BarcodeLine>();
+
+                foreach (StockInDetail line in SelectedStockInDetails)
+                {
+                    // just create max 3  barcodes
+                    if (count > 3) break;
+
+                    // set up barcode printing
+                    BarcodeProfessional bc = new BarcodeProfessional();
+                    bc.BarcodeUnit = BarcodeUnit.Inch;
+                    bc.FitBarcodeToSize = new Size(1.1, 0.8);
+                    bc.Code = line.Product.ProductId;
+                    bc.Symbology = Symbology.Code128;
+
+                    // set up extra printing information 
+                    string titleString = line.ProductMaster.ProductName;
+                    string priceString = "";
+                    string extraString = "";
+
+                    if (PricePrint) // if print price on barcode
+                    {
+                        MainPrice price =
+                            MainPriceLogic.FindById(new MainPricePK
+                                                        {
+                                                            DepartmentId = 0,
+                                                            ProductMasterId = line.ProductMaster.ProductMasterId
+                                                        });
+                        // print price
+                        priceString = "GIA:" + price.Price + ".00";
+                    }
+
+                    // if it has specific Color or Size
+                    if (line.Product.ProductColor.ColorId > 0 || line.Product.ProductSize.SizeId > 0)
+                    {
+                        // print it too
+                        extraString = "M:" + line.Product.ProductColor.ColorName + " - " + "S:" +
+                                      line.Product.ProductSize.SizeName;
+                    }
+
+                    BarcodeLine barcodeLine = new BarcodeLine
+                                                      {
+                                                          TitleString = titleString,
+                                                          BarcodeString = line.Product.ProductId,
+                                                          ExtraString = extraString,
+                                                          Barcode = bc.GetBarcodeDrawing(),
+                                                          PriceString = priceString
+                                                      };
+                    barcodeLines.Add(barcodeLine);
+                    count += 1;
+                }
+                // draw barcode line
+                CreateBarcodeLine(barcodeLines, drawingVisual, barcodeWidth);
+                rows[0] = drawingVisual;
             }
             else
             {
                 StockInDetail line = selectedStockInDetails[0] as StockInDetail;
-                if(FollowQuantityPrint) // create line follow number of barcode
-                { 
-                    int numberOfRow = ((int)line.Quantity)/3;
+                if (FollowQuantityPrint) // create line follow number of barcode
+                {
+                    int numberOfRow = ((int)line.Quantity) / 3;
                     if ((line.Quantity % 3) > 0) numberOfRow += 1;
                     rows = new Visual[numberOfRow];
                 }
@@ -257,7 +306,7 @@ namespace POSServer.ViewModels.Stock.StockIn
                 // set up barcode printing
                 BarcodeProfessional bc = new BarcodeProfessional();
                 bc.BarcodeUnit = BarcodeUnit.Inch;
-                bc.FitBarcodeToSize = new Size(1.35, 0.9);
+                bc.FitBarcodeToSize = new Size(1.1, 0.8);
                 bc.Code = line.Product.ProductId;
                 bc.Symbology = Symbology.Code128;
 
@@ -279,103 +328,124 @@ namespace POSServer.ViewModels.Stock.StockIn
                 }
 
                 // if it has specific Color or Size
-                if(line.Product.ProductColor.ColorId > 0 || line.Product.ProductSize.SizeId>0)
+                if (line.Product.ProductColor.ColorId > 0 || line.Product.ProductSize.SizeId > 0)
                 {
                     // print it too
                     extraString = "M:" + line.Product.ProductColor.ColorName + " - " + "S:" +
                                   line.Product.ProductSize.SizeName;
                 }
-                
+
                 // maximum barcode for print on a line
                 int printBarcodes = BarcodeNumbers;
                 int quantityOfLine = (int)line.Quantity;
-                int barCodeWith = 140;
-                for(int i=0;i<rows.Count();i++)
+
+                for (int i = 0; i < rows.Count(); i++)
                 {
                     DrawingVisual drawingVisual = new DrawingVisual();
                     DrawingContext drawingContext = drawingVisual.RenderOpen();
-                    
-                    if(FollowQuantityPrint && quantityOfLine > 0) // we get maximum barcode on a line by quantity of product
+
+                    if (FollowQuantityPrint && quantityOfLine > 0) // we get maximum barcode on a line by quantity of product
                     {
                         printBarcodes = quantityOfLine > 3 ? 3 : quantityOfLine;
                         quantityOfLine -= 3; // subtract for next row
                     }
-                    
-                    // create visual base on barcode
-                    for(int j =0;j<printBarcodes;j++)
+                    //create barcode list needed to print
+                    IList<BarcodeLine> barcodeLines = new List<BarcodeLine>();
+                    for (int j = 0; j < printBarcodes; j++)
                     {
-                        int startX = (j%3)*140;
-                        
-                        //drawingContext.DrawImage(bc.GetBarcodeImageSource(), barcodeRec);
-                        // draw name of product
-
-                        // write barcode first
-                        Rect barcodeRec = new Rect(startX + XCentered(125, barCodeWith), 35, 130, 40); // 1.3 x 0.3 inch
-                        DrawingGroup group = bc.GetBarcodeDrawing();
-                        group.Transform = new TranslateTransform(startX + 5, 10);
-                        
-                        drawingContext.DrawDrawing(group);
-                        
-                        FormattedText formattedTitle = new FormattedText(
-                            titleString,
-                            CultureInfo.GetCultureInfo("en-us"),
-                            FlowDirection.LeftToRight,
-                            new Typeface("Verdana"),
-                            8,
-                            Brushes.Black);
-                        formattedTitle.SetFontSize(8 * (96.0 / 72.0));
-                        formattedTitle.TextAlignment = TextAlignment.Center;
-                        formattedTitle.MaxTextWidth = 135;
-                        drawingContext.DrawText(formattedTitle, new Point(startX+10, 30));
-                        
-                        // draw extra information if it has
-                        if(!string.IsNullOrEmpty(extraString))
-                        {
-                            FormattedText formattedExtra = new FormattedText(
-                            titleString,
-                            CultureInfo.GetCultureInfo("en-us"),
-                            FlowDirection.LeftToRight,
-                            new Typeface("Verdana"),
-                            8,
-                            Brushes.Black);
-                            formattedExtra.SetFontSize(8 * (96.0 / 72.0));
-                            formattedExtra.TextAlignment = TextAlignment.Center;
-                            formattedExtra.MaxTextWidth = 135;
-                            drawingContext.DrawText(formattedExtra, new Point(startX+10, 88));
-                        }
-                        // draw price if it has information
-                        if (!string.IsNullOrEmpty(priceString))
-                        {
-                            FormattedText formattedPrice = new FormattedText(
-                            titleString,
-                            CultureInfo.GetCultureInfo("en-us"),
-                            FlowDirection.LeftToRight,
-                            new Typeface("Verdana"),
-                            8,
-                            Brushes.Black);
-                            formattedPrice.TextAlignment = TextAlignment.Center;
-                            formattedPrice.SetFontSize(8 * (96.0 / 72.0));
-                            formattedPrice.MaxTextWidth = 135;
-                            RotateTransform rt = new RotateTransform(90);
-
-                            rt.CenterX = startX+10 / 2;
-
-                            rt.CenterY = 44 / 2;
-
-                            drawingContext.PushTransform(rt);
-
-                            /*drawingContext.DrawText(, new Point(r.Width / 2, r.Height / 2));*/
-                            drawingContext.DrawText(formattedPrice, new Point(startX+10+130, 88));
-                            drawingContext.Pop();
-                        }
-                        
+                        BarcodeLine barcodeLine = new BarcodeLine
+                                                      {
+                                                          TitleString = titleString,
+                                                          BarcodeString = line.Product.ProductId,
+                                                          ExtraString = extraString,
+                                                          Barcode = bc.GetBarcodeDrawing(),
+                                                          PriceString = priceString
+                                                      };
+                        barcodeLines.Add(barcodeLine);
                     }
-                    drawingContext.Close();
+                    // draw barcode line
+                    CreateBarcodeLine(barcodeLines, drawingVisual, barcodeWidth);
                     rows[i] = drawingVisual;
-                    Console.WriteLine("MANY DRAWS :" + drawingVisual.Children.Count.ToString());
                 }
             }
             return rows;
+        }
+
+        private void CreateBarcodeLine(IList<BarcodeLine> barcodeLines, DrawingVisual drawingVisual,int barcodeWidth)
+        {
+            DrawingContext drawingContext = drawingVisual.RenderOpen();
+            // create visual base on barcode
+            for (int index = 0; index < barcodeLines.Count; index++)
+            {
+                BarcodeLine line = barcodeLines[index];
+                int startX = (index % 3) * 140;
+                //drawingContext.DrawImage(bc.GetBarcodeImageSource(), barcodeRec);
+                // draw name of product
+
+                // write barcode first
+                //Rect barcodeRec = new Rect(startX + XCentered(125, barCodeWith), 35, 130, 40); // 1.3 x 0.3 inch
+                DrawingGroup group = line.Barcode;
+                group.Transform = new TranslateTransform(startX, 10);
+
+                drawingContext.DrawDrawing(group);
+                // erase the title area
+                drawingContext.DrawRectangle(Brushes.White, null, new Rect(startX + 5, 0, barcodeWidth, 30));
+                // erase the footer area
+                drawingContext.DrawRectangle(Brushes.White, null, new Rect(startX + 5, 68, barcodeWidth, 40));
+
+                #region useless
+                /*FormattedText formattedTitle = new FormattedText(
+                    titleString,
+                    CultureInfo.GetCultureInfo("en-us"),
+                    FlowDirection.LeftToRight,
+                    new Typeface("Verdana"),
+                    8,
+                    Brushes.Black);*/
+
+                #endregion
+                FormattedText formattedTitle = WPFUtils.CreateFormattedText(line.TitleString, 8, Brushes.Black,
+                                                                            new Typeface("Verdana"), 120,
+                                                                            TextAlignment.Center);
+                formattedTitle.SetFontSize(8 * (96.0 / 72.0));
+                formattedTitle.TextAlignment = TextAlignment.Center;
+                formattedTitle.MaxTextWidth = 120;
+                drawingContext.DrawText(formattedTitle, new Point(startX + 10, 10));
+                // draw barcode string
+                FormattedText formattedBarcode = WPFUtils.CreateFormattedText(line.BarcodeString, 7, Brushes.Black,
+                                                                            new Typeface("Verdana"), 120,
+                                                                            TextAlignment.Center);
+
+                drawingContext.DrawText(formattedBarcode, new Point(startX + 10, 68));
+
+                // draw extra information if it has
+                if (!string.IsNullOrEmpty(line.ExtraString))
+                {
+                    FormattedText formattedExtra = WPFUtils.CreateFormattedText(line.ExtraString, 7, Brushes.Black,
+                                                                            new Typeface("Verdana"), 120,
+                                                                            TextAlignment.Center);
+                    drawingContext.DrawText(formattedExtra, new Point(startX + 10, 80));
+                }
+                // draw price if it has information
+                if (!string.IsNullOrEmpty(line.PriceString))
+                {
+                    FormattedText formattedPrice = WPFUtils.CreateFormattedText(line.PriceString, 7, Brushes.Black,
+                                                                            new Typeface("Verdana"), 100,
+                                                                            TextAlignment.Center);
+
+                    // transform text to vertical
+                    RotateTransform rt = new RotateTransform(-90);
+                    // center point using for rotating text
+                    rt.CenterX = startX + barcodeWidth - 10;
+                    rt.CenterY = 92;
+
+                    drawingContext.PushTransform(rt);
+                    /*drawingContext.DrawText(, new Point(r.Width / 2, r.Height / 2));*/
+                    drawingContext.DrawText(formattedPrice, new Point(startX + barcodeWidth - 10, 92));
+                    drawingContext.Pop();
+                }
+
+            }
+            drawingContext.Close();
         }
 
         private float XCentered(float localWidth, float globalWidth)
@@ -386,233 +456,7 @@ namespace POSServer.ViewModels.Stock.StockIn
         {
             return ((globalWidth - localWidth) / 2);
         }
-        /*private Image GetBarcodeImage()
-        {
-            if (!ContinousPrint)
-            {
-                StockInDetail detail = SelectedStockInDetails[0] as StockInDetail;
-                var height = 87;
-                var numberToPrint = (int)detail.Quantity;
-                string code = detail.Product.ProductId;
-
-                if (numberToPrint > 3)
-                {
-                    height = (numberToPrint / 3) * 87;
-                    numberToPrint = 3;
-                }
-                
-                string titleString = "";
-                string name = detail.ProductMaster.ProductName;
-                if (PricePrint && detail.MainPrice != null)
-                {
-                    titleString = name + " - " + detail.MainPrice.Price.ToString() + ".00 ";
-                }
-                else
-                {
-                    titleString = name;
-                }
-
-                Barcode barcode = new Barcode();
-                string barCodeStr =detail.Product.ProductId;
-                string colorSize = "";
-                if (detail.Product.ProductColor.ColorId > 0)
-                {
-                    colorSize += "M:" +
-                                 deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductColor.
-                                     ColorName;
-                }
-                if (detail.Product.ProductSize.SizeId > 0)
-                {
-                    if (colorSize.Length > 0)
-                    {
-                        colorSize += " - ";
-                    }
-                    colorSize += "S:" +
-                                 deptSIDetailList[dgvDeptStockIn.CurrentRow.Index].Product.ProductMaster.ProductSize.
-                                     SizeName;
-                }
-
-                Image imageBC = null;
-                if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
-                {
-                    imageBC = barcode.Encode()
-                }
-                else
-                {
-                    imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                                   (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
-                }
-
-                Bitmap bitmap1 = new Bitmap(imageBC);
-                bitmap1.SetResolution(204, 204);
-                /*Bitmap bitmap2 = new Bitmap(code39Gen);
-                bitmap2.SetResolution(203,203);♥1♥
-                e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-
-                // draw title string
-
-                // calculate scale for title
-                var titleStrSize = e.Graphics.MeasureString(titleString.PadRight(25), new Font("Arial", 10));
-                float currTitleSize = new Font("Arial", 10).Size;
-                float scaledTitleSize = (150 * currTitleSize) / titleStrSize.Width;
-                //Font _titleFont = new Font("Arial", scaledTitleSize);
-                Font _titleFont = new Font("Arial", 7);
-                //string nameString = titleString.Substring(0, titleString.IndexOf(" - "));
-                //string priceString = titleString.Substring(titleString.IndexOf(" - "));
-                var priceTotalSize = e.Graphics.MeasureString(titleString, _titleFont);
-                var colorSizeSize = e.Graphics.MeasureString(colorSize, _titleFont);
-                //var nameSize = e.Graphics.MeasureString(nameString, _titleFont);
-                //var priceSize = e.Graphics.MeasureString(priceString, _titleFont);
-                var barCodeSize = e.Graphics.MeasureString(barCodeStr, _titleFont);
-                /*Bitmap bitmapName = new Bitmap(nameString, true);
-                Bitmap bitmapPrice = new Bitmap(priceString, true);♥1♥
-                for (int i = 0; i < numberToPrint; i++)
-                {
-
-                    System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
-                    e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
-
-                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
-                    {
-                        e.Graphics.DrawImage(imageBC,// (i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + priceTotalSize.Height)
-                                             new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.3 * 100), 140),
-                                                           (int)(25 + priceTotalSize.Height), (int)(1.3 * 100), (int)(0.3 * 100))
-                                                           );
-
-                    }
-                    else
-                    {
-                        e.Graphics.DrawImage(bitmap1,
-                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
-                                                           (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
-                                                           (int)(0.3 * 100)));
-                    }
-
-                    e.Graphics.DrawString(barCodeStr, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)72);
-                    e.Graphics.DrawString(colorSize, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(colorSizeSize.Width, 140), (float)88);
-                    //e.Graphics.DrawImage(barcodeControl1.GetMetaFile(), new Rectangle((i % 3) * 135, 120, (i % 3) * 135 + (int)(1.4 * 100), (int)(0.75 * 100)));                    
-
-                }
-            }
-            else // continue printing
-            {
-                var height = 87;
-                if (printList == null || printList.Count == 0)
-                {
-                    return;
-                }
-                var numberToPrint = printList.Count;
-
-                for (int i = 0; i < numberToPrint; i++)
-                {
-                    string code = printList[i].ProductId;
-                    var eventArgs = new MainStockInEventArgs
-                    {
-                        ProductMasterIdForPrice = printList[i].ProductMaster.ProductMasterId
-                    };
-                    EventUtility.fireEvent(GetPriceEvent, this, eventArgs);
-                    string titleString = "";
-                    string name = printList[i].ProductMaster.ProductName;
-                    if (chkPrintPrice.Checked && eventArgs.DepartmentPrice != null)
-                    {
-                        titleString = name + " - " + eventArgs.DepartmentPrice.Price.ToString() + ".00 ";
-                    }
-                    else
-                    {
-                        titleString = name;
-                    }
-
-                    BarcodeLib.Barcode barcode = new Barcode();
-                    string barCodeStr = printList[i].ProductId;
-                    string colorSize = "";
-                    if (printList[i].ProductMaster.ProductColor.ColorId > 0)
-                    {
-                        colorSize += "M:" +
-                                     printList[i].ProductMaster.ProductColor.ColorName;
-                    }
-                    if (printList[i].ProductMaster.ProductSize.SizeId > 0)
-                    {
-                        if (colorSize.Length > 0)
-                        {
-                            colorSize += " - ";
-                        }
-                        colorSize += "S:" +
-                                     printList[i].ProductMaster.ProductSize.SizeName;
-                    }
-
-                    Image imageBC = null;
-                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
-                    {
-                        imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr
-                            //, Color.Black, Color.White,
-                            //(int) (1.35*e.Graphics.DpiX), (int) (0.3*e.Graphics.DpiY)
-                                                        );
-
-                    }
-                    else
-                    {
-                        imageBC = barcode.Encode(ClientSetting.BarcodeType, barCodeStr, Color.Black, Color.White,
-                                                       (int)(1.35 * e.Graphics.DpiX), (int)(0.3 * e.Graphics.DpiY));
-
-                    }
-
-                    Bitmap bitmap1 = new Bitmap(imageBC);
-                    bitmap1.SetResolution(204, 204);
-                    /*Bitmap bitmap2 = new Bitmap(code39Gen);
-                    bitmap2.SetResolution(203,203);♥1♥
-                    e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-                    e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-
-                    // draw title string
-
-                    // calculate scale for title
-                    var titleStrSize = e.Graphics.MeasureString(titleString.PadRight(25), new Font("Arial", 10));
-                    float currTitleSize = new Font("Arial", 10).Size;
-                    float scaledTitleSize = (150 * currTitleSize) / titleStrSize.Width;
-                    //Font _titleFont = new Font("Arial", scaledTitleSize);
-                    Font _titleFont = new Font("Arial", 7);
-                    Font _barCodeFont = new Font("Arial", 8);
-                    var priceTotalSize = e.Graphics.MeasureString(titleString, _titleFont);
-                    var colorSizeSize = e.Graphics.MeasureString(colorSize, _titleFont);
-                    var barCodeSize = e.Graphics.MeasureString(barCodeStr, _barCodeFont);
-
-
-                    System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100),
-                                                                               (int)(0.4 * 100));
-
-
-                    e.Graphics.DrawString(titleString, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 135 + XCentered(priceTotalSize.Width, 140), (float)25);
-
-                    if (ClientSetting.BarcodeType == BarcodeLib.TYPE.CODE128)
-                    {
-                        e.Graphics.DrawImage(imageBC,// (i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140), (int)(25 + priceTotalSize.Height)
-                                             new Rectangle((i % 3) * 135 + (int)XCentered((float)(1.3 * 100), 140),
-                                                           (int)(25 + priceTotalSize.Height), (int)(1.3 * 100),
-                                                           (int)(0.3 * 100))
-                                             );
-
-                    }
-                    else
-                    {
-                        e.Graphics.DrawImage(bitmap1,
-                                             new Rectangle((i % 3) * 140 + (int)XCentered((float)(1.35 * 100), 140),
-                                                           (int)(25 + priceTotalSize.Height), (int)(1.35 * 100),
-                                                           (int)(0.3 * 100)));
-                    }
-
-                    e.Graphics.DrawString(barCodeStr, _barCodeFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(barCodeSize.Width, 140), (float)72);
-                    e.Graphics.DrawString(colorSize, _titleFont, new SolidBrush(Color.Black),
-                                          (i % 3) * 140 + XCentered(colorSizeSize.Width, 140), (float)88);
-
-                }
-            }
-        }*/
+        
 
         public override void Initialize()
         {
@@ -635,5 +479,15 @@ namespace POSServer.ViewModels.Stock.StockIn
 		
         
         
+    }
+
+    public class BarcodeLine
+    {
+        public string TitleString { get; set; }
+        public string BarcodeString { get; set; }
+        public string ExtraString { get; set; }
+        public DrawingGroup Barcode { get; set; }
+
+        public string PriceString { get; set; }
     }
 }

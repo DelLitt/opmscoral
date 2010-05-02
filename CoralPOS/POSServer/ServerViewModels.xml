@@ -56,6 +56,7 @@
   <object id="IStockInConfirmViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="false" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
   <object id="IProductPropertiesViewModel" type="POSServer.ViewModels.Dialogs.ProductPropertiesViewModel, POSServer" singleton="false">
@@ -82,6 +83,7 @@
   <object id="IStockOutConfirmViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="false" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
   <object id="IStockOutSearchViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutSearchViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
@@ -92,6 +94,7 @@
   <object id="IStockOutDetailViewModel" type="POSServer.ViewModels.Stock.StockOut.StockOutConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="true" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
 
   <object id="IStockInSearchViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInSearchViewModel, POSServer" singleton="false">
@@ -102,6 +105,7 @@
   <object id="IStockInDetailViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInConfirmViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />
     <constructor-arg value="true" />
+    <property name="MainPriceLogic" ref="IMainPriceLogic" />
   </object>
   <object id="ISyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />

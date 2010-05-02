@@ -18,6 +18,7 @@ using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
@@ -78,6 +79,9 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => Department);
             }
         }
+
+
+        public IMainPriceLogic MainPriceLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view

@@ -9,6 +9,7 @@ using AppFrame.Base;
 
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {
@@ -38,7 +39,9 @@ namespace POSServer.ViewModels.Stock.StockIn
         string BarcodeText { get; set; }
         IList StockInDetailList { get; set; }
         IList SelectedStockInDetails { get; set; }
-			#endregion
+        IMainPriceLogic MainPriceLogic { get; set; }
+
+        #endregion
 		
 		#region Methods
 		        

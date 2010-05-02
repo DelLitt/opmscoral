@@ -10,6 +10,7 @@ using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
@@ -36,6 +37,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 
         IList StockOutDetails { get; set; }
+        IMainPriceLogic MainPriceLogic { get; set; }
 
         #endregion
 		

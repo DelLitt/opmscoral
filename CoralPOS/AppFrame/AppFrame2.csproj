@@ -349,6 +349,7 @@
     <Compile Include="WPF\ValidationAttributes\NotEmptyValidationRule.cs" />
     <Compile Include="WPF\ValidationAttributes\NotNullOrEmptyValidationRule.cs" />
     <Compile Include="WPF\ValidationAttributes\PastAttribute.cs" />
+    <Compile Include="WPF\WPFUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
