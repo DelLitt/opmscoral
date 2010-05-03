@@ -390,6 +390,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Tool\ConfigView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tool\SetDepartmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -604,6 +612,12 @@
     </Compile>
     <Compile Include="Views\Sale\PurchaseOrderSearchView.xaml.cs">
       <DependentUpon>PurchaseOrderSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tool\ConfigView.xaml.cs">
+      <DependentUpon>ConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tool\SetDepartmentView.xaml.cs">
+      <DependentUpon>SetDepartmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Stock\StockOut\DepartmentStockOutConfirmView.xaml.cs">
       <DependentUpon>DepartmentStockOutConfirmView.xaml</DependentUpon>
