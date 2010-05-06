@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="POSClient.Views.Menu.Management.CostMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="700" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="50,12,44,0" Name="IncomeInvoice" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">NHẬP PHIẾU THU</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="50,112,44,0" Name="OutcomeInvoice" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">NHẬP PHIẾU CHI</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="IncomeOutcomeList" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH PHIẾU THU CHI</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

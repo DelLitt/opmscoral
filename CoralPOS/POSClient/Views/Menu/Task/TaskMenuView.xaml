@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="POSClient.Views.Menu.Task.TaskMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="700" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="48,12,46,0" Name="Login" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">ĐĂNG NHẬP</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="48,212,46,0" Name="LogOut" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">ĐĂNG XUẤT</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="48,112,46,0" Name="ChangePassword" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">THAY ĐỔI MẬT MÃ</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

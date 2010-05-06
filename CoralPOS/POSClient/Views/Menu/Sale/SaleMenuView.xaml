@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="POSClient.Views.Menu.Sale.SaleMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="700" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,45,8" Name="BackToParent" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MENU TRƯỚC</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,0,44,108" Name="Back" VerticalAlignment="Bottom">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TRỞ VỀ MÀN HÌNH CHÍNH</TextBlock></Button>
+        <Button FontSize="14" FontWeight="Bold" Width="80" Height="80" Margin="45.75,12,40,0" Name="CreatePurchaseOrder" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock Text="NHẬP HÓA ĐƠN" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="50,112,44,0" Name="PurchaseOrderList" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock Text="DANH SÁCH HÓA ĐƠN" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="ProductMasterList" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock Text="QUẢN LÝ SẢN PHẨM" TextAlignment="Center" TextWrapping="Wrap" />
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="PriceList" TabIndex="9">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="75">BẢNG GIÁ</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

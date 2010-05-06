@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="POSClient.Views.Menu.Stock.DepartmentStockInMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="700" Width="174">
+    <Grid>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,12,45,0" Name="StockIn" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">XÁC NHẬN NHẬP HÀNG</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" HorizontalContentAlignment="Stretch" Margin="50,112,44,0" Name="StockInList" TabIndex="9" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="69">DANH SÁCH LÔ NHẬP HÀNG</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Height="80" Margin="50,212,44,0" Name="StockInBackList" TabIndex="9" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">D.SÁCH HÀNG TRẢ KHO CHÍNH</TextBlock>
+        </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="50,312,44,308" Name="StockInByExcel" TabIndex="9" Width="80" Height="80">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="60">TÁI NHẬP HÀNG</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

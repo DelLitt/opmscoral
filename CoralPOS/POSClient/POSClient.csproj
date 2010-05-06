@@ -332,6 +332,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Menu\Management\CostMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Management\DeptEmpMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Sale\SaleMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Report\ReportsMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\DepartmentStockSearchMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\StockInventoryMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\DepartmentStockInMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Stock\DepartmentStockOutMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Synchronize\SynchronizeMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Task\TaskMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Menu\Tool\ToolMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\NormalLoadView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -582,6 +626,39 @@
     </Compile>
     <Compile Include="Views\Menu\MainMenuView.xaml.cs">
       <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Management\CostMenuView.xaml.cs">
+      <DependentUpon>CostMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Management\DeptEmpMenuView.xaml.cs">
+      <DependentUpon>DeptEmpMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Sale\SaleMenuView.xaml.cs">
+      <DependentUpon>SaleMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Report\ReportsMenuView.xaml.cs">
+      <DependentUpon>ReportsMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\DepartmentStockSearchMenuView.xaml.cs">
+      <DependentUpon>DepartmentStockSearchMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\StockInventoryMenuView.xaml.cs">
+      <DependentUpon>StockInventoryMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\DepartmentStockInMenuView.xaml.cs">
+      <DependentUpon>DepartmentStockInMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Stock\DepartmentStockOutMenuView.xaml.cs">
+      <DependentUpon>DepartmentStockOutMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Synchronize\SynchronizeMenuView.xaml.cs">
+      <DependentUpon>SynchronizeMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Task\TaskMenuView.xaml.cs">
+      <DependentUpon>TaskMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\Tool\ToolMenuView.xaml.cs">
+      <DependentUpon>ToolMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NormalLoadView.xaml.cs">
       <DependentUpon>NormalLoadView.xaml</DependentUpon>
