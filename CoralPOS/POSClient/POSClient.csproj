@@ -310,6 +310,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Sale\SaleMainView.xaml.cs">
+      <DependentUpon>SaleMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockMainView.xaml.cs">
+      <DependentUpon>StockMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tool\ToolMainView.xaml.cs">
+      <DependentUpon>ToolMainView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\CircularLoadView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -386,6 +395,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Sale\SaleMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Sale\TemplatePOSView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -431,6 +444,10 @@
     <Page Include="Views\Sale\PurchaseOrderSearchView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -536,6 +553,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Tool\ToolMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ILoginAction.cs" />
