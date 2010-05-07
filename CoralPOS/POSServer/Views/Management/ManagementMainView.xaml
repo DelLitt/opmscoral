@@ -14,7 +14,7 @@
             <ColumnDefinition Width="167*" />            
         </Grid.ColumnDefinitions>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="63,0,66,0" Name="CreateDepartment" TabIndex="9" VerticalAlignment="Top" Grid.Row="1">
-            <TextBlock TextAlignment="Center" TextWrapping="Wrap">TẠO CỬA HÀNG</TextBlock></Button>
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">QUẢN LÝ CỬA HÀNG</TextBlock></Button>
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="63,100.03,66,0" Name="DepartmentList" TabIndex="9" VerticalAlignment="Top" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">DANH SÁCH CỬA HÀNG</TextBlock>
         </Button>
@@ -36,8 +36,6 @@
         <Button FontSize="14" FontWeight="Bold" Grid.Row="1" Margin="60.625,298.661,68.625,308.664" Name="CalendarAbsentList" TabIndex="9" Grid.Column="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="78.881">DANH SÁCH NGHỈ PHÉP</TextBlock>
         </Button>
-        <TextBlock Name="textBlock1" Text="CỬA HÀNG VÀ NHÂN VIÊN" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
-        <TextBlock Name="textBlock2" Grid.Column="1" Text="CHI PHÍ" TextAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Normal" />
         <Button FontSize="14" FontWeight="Bold" Height="80" Margin="63,0,66,187.5" Name="AccountManagement" TabIndex="9" VerticalAlignment="Bottom" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap">QUẢN LÝ TÀI KHOẢN</TextBlock>
         </Button>

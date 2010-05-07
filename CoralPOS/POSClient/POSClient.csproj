@@ -310,6 +310,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Management\ManagementMainView.xaml.cs">
+      <DependentUpon>ManagementMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sale\SaleMainView.xaml.cs">
       <DependentUpon>SaleMainView.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,10 @@
     <Page Include="Views\DeparmentStockMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Management\ManagementMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
