@@ -55,9 +55,32 @@ namespace BonSoChinConvert
             BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
             VBBDataContext context = new VBBDataContext();
 
+            var avatarsource = (from member in bonSoChinContext.Members
+                               select member.Memberimage).Distinct<string>();
+
+            foreach (string avatarImg in avatarsource)
+            {
+                string img;
+                if (avatarImg == null)
+                    img = "000.gif";
+                else
+                    img = avatarImg.ToString();
+                
+                Avatar avatar = new Avatar();
+                string number = img.Substring(0, img.IndexOf("."));
+                number = RemoveAllSpecialCharacter(number);
+                avatar.Avatarid = Int32.Parse(number);
+                avatar.Avatarpath = img;
+                avatar.Displayorder = 1;
+                avatar.Imagecategoryid = 3;
+                avatar.Title = "";
+                avatar.Minimumposts = 0;
+                context.Avatars.InsertOnSubmit(avatar);
+            }
+            
+            context.SubmitChanges();
             var result = from member in bonSoChinContext.Members
                          select member;
-
             foreach (Member member in result)
             {
                 string salt = FetchUserSalt(3);
@@ -67,13 +90,35 @@ namespace BonSoChinConvert
                 user.Userid = (uint)member.Memberid;
                 user.Username = member.Memberlogin.Trim();
                 user.Password = CreatePassword(member.Memberpassword.Trim(), salt);
-                user.Usergroupid = 2;
+                switch (member.Securitylevelid)
+                {
+                    case 1:
+                        user.Usergroupid = 2;
+                        break;
+                    case 2:
+                        user.Usergroupid = 7;
+                        break;
+                    case 3:
+                        user.Usergroupid = 6;
+                        break;
+                    default:
+                        user.Usergroupid = 2;
+                        break;
+                }
+                
+                
+                
                 user.Passworddate = DateTime.Now;
                 user.Email = member.Memberemail;
                 user.Showvbcode = 1;
                 user.Showbirthday = 0;
                 user.Usertitle = "Junior Member";
+                user.Usertitle = (from title in context.Usertitles
+                                  where title.Minposts < member.Numberofmessages
+                                  orderby title.Usertitleid ascending
+                                  select title.Title).FirstOrDefault();
                 user.Joindate = 1273158780;
+                //ConvertToUnixTimestamp(member.Memberdateadded);
                 user.Lastvisit = 1273158780;
                 user.Daysprune = -1;
                 user.Lastactivity = 1273158780;
@@ -81,15 +126,24 @@ namespace BonSoChinConvert
                 user.Reputationlevelid = 5;
                 user.Timezoneoffset = "7";
                 user.Options = 45108311;
-                user.Birthday = "1984-06-30";
+                user.Birthday = member.Memberdateadded.Value.ToString("yyyy-MM-dd");
                 user.Birthdaysearch = DateTime.Now;
-                user.Posts = (uint)member.Numberofmessages;
+                user.Posts = (long)member.Numberofmessages;
                 user.Maxposts = -1;
                 user.Startofweek = 1;
                 user.Autosubscribe = -1;
                 user.Salt = salt;
                 user.Showblogcss = 1;
-                user.Membergroupids = "";
+                string img = "000.gif";
+                if (member.Memberimage != null)
+                {
+                    img = member.Memberimage;
+                }
+
+                user.Avatarid =
+                    (short)(from avt in context.Avatars where avt.Avatarpath.Equals(img) select avt.Avatarid).FirstOrDefault();
+                
+                /*user.Membergroupids = "";
                 user.Assetposthash = "";
                 user.Displaygroupid = 0;
                 user.Styleid = 0;
@@ -102,7 +156,7 @@ namespace BonSoChinConvert
                 user.Yahoo = "";
                 user.Msn = "";
                 user.Lastpost = 0;
-                user.Ipaddress = "";
+                user.Ipaddress = "";*/
                 PopulateUShort(user);
                 context.Users.InsertOnSubmit(user);
                 
@@ -118,7 +172,13 @@ namespace BonSoChinConvert
                 context.Usertextfields.InsertOnSubmit(usertextfield);
                 //}
             }
+
             context.SubmitChanges();
+        }
+
+        private string RemoveAllSpecialCharacter(string number)
+        {
+            return number.Replace("\"", "");
         }
 
         private void PopulateUShort(object user)
@@ -175,6 +235,26 @@ namespace BonSoChinConvert
             }
             string password = s.ToString();
             return password;
+        }
+
+        private double ConvertToUnixTimestamp(DateTime value)
+        {
+            //create Timespan by subtracting the value provided from
+            //the Unix Epoch
+            TimeSpan span = (value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+
+            //return the total seconds (which is a UNIX timestamp)
+            return (double)span.TotalSeconds;
+        }
+
+        private long ConvertToUnixTimestamp(DateTime? value)
+        {
+            //create Timespan by subtracting the value provided from
+            //the Unix Epoch
+            TimeSpan span = (value.Value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+
+            //return the total seconds (which is a UNIX timestamp)
+            return (long)span.TotalSeconds;
         }
     }
 }
