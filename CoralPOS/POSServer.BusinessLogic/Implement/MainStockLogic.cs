@@ -153,5 +153,12 @@ namespace POSServer.BusinessLogic.Implement
         {
             return ObjectConverter.ConvertFrom(MainStockDao.FindAll(crit));
         }
+
+        public MainStock FindByProductId(string productId)
+        {
+            ObjectCriteria<MainStock> objectCriteria = new ObjectCriteria<MainStock>();
+            objectCriteria.Add(mstk => mstk.Product.ProductId == productId);
+            return (MainStock)MainStockDao.FindFirst(objectCriteria);
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="POSClient.Views.Dialogs.StockOutChoosingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:Spring.Web.UI.Controls;assembly=Spring.Web"
+    Height="400" Width="600" Background="White" >
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect />
+        </Border.Effect>
+        <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="79" />
+            <RowDefinition Height="263*" />
+            
+        </Grid.RowDefinitions>
+            <DataGrid AutoGenerateColumns="False" Name="StockInList" Grid.Row="1" ItemsSource="{Binding StockInList}" Margin="0,0,113,0"
+                      SelectedItem="{Binding SelectedStockIn}">
+            <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="ERROR" Width="50*" IsReadOnly="True" Binding="{Binding Path=PropertyName}">                                              
+                    </DataGridTextColumn>-->
+                    <DataGridTextColumn Header="MÃ LÔ" Width="*" IsReadOnly="True" Binding="{Binding Path=StockInId}" />
+                    <DataGridTextColumn Header="SỐ LƯỢNG" Width="*" IsReadOnly="True" Binding="{Binding Path=TotalQuantity}" />
+                    <DataGridTextColumn Header="NGÀY NHẬP" Width="*" IsReadOnly="True" Binding="{Binding Path=StockInDate}" />
+                </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" Margin="491,52,6,221" Name="Close">ĐÓNG</Button>
+            <DatePicker Height="25" HorizontalAlignment="Left" Margin="6,34,0,0" Name="FromDate" VerticalAlignment="Top" Width="182" />
+            <DatePicker Height="25" HorizontalAlignment="Left" Margin="194,34,0,0" Name="ToDate" VerticalAlignment="Top" Width="192" />
+            <Button Content="TÌM KIẾM" Height="53" HorizontalAlignment="Left" Margin="392,6,0,0" Name="Search" VerticalAlignment="Top" Width="75" />
+            <Button Content="CHỌN" Margin="491,0,6,273" Name="Choose" Grid.Row="1" />
+            <Label Content="Từ ngày" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label1" VerticalAlignment="Top" Width="111" />
+            <Label Content="Đến ngày" Height="28" HorizontalAlignment="Right" Margin="0,6,286,0" Name="label2" VerticalAlignment="Top" Width="118" />
+        </Grid>
+   </Border>
+</UserControl>

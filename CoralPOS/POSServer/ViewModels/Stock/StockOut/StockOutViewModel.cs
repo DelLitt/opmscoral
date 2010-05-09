@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ using Caliburn.PresentationFramework.Screens;
 using Caliburn.PresentationFramework.ViewModels;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.Win32;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Common;
@@ -286,9 +288,50 @@ namespace POSServer.ViewModels.Stock.StockOut
 
         public void CreateByFile()
         {
-            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "*.txt | Text Files";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.ShowDialog();
+            // if has file to open
+            if(!string.IsNullOrEmpty(openFileDialog.FileName))
+            {
+                IList<string> errorList;
+                IDictionary<string,long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName,out errorList);
+
+                // add to stockOut list
+                ArrayList details = new ArrayList(StockOutDetails);
+                foreach (KeyValuePair<string, long> keyValuePair in productList)
+                {
+                    StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
+                                 where sod.Product.ProductId.Equals(keyValuePair.Key)
+                                 select sod).FirstOrDefault();
+                    if(result!=null) // if exist in list
+                    {
+                        result.Quantity += keyValuePair.Value;
+                    }
+                    else
+                    {
+                        // get information from database
+                        MainStock stock = MainStockLogic.FindByProductId(keyValuePair.Key);
+                        errorList.Add(keyValuePair.Key);
+                        // create new stockout detail for that product
+                        StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+                        newDetail.Product = stock.Product;
+                        newDetail.ProductMaster = stock.ProductMaster;
+                        newDetail.CreateDate = DateTime.Now;
+                        newDetail.UpdateDate = DateTime.Now;
+                        newDetail.CreateId = "admin";
+                        newDetail.UpdateId = "admin";
+                        newDetail.Quantity = stock.GoodQuantity;
+                        newDetail.StockQuantity = stock.Quantity;
+                        
+                        details.Add(newDetail);
+                    }
+                }
+                StockOutDetails = details;
+            }
         }
-		        
+        
         public void FixQuantityByAvailable()
         {
             

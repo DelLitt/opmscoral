@@ -61,5 +61,8 @@ namespace POSClient.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<DepartmentStockIn> criteria);
+
+        DepartmentStockIn Fetch(DepartmentStockIn selectedStockIn);
+        void FetchMainStock(DepartmentStockIn stockIn);
     }
 }

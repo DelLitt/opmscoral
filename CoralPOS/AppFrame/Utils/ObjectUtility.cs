@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -329,6 +330,52 @@ namespace AppFrame.Utils
             if(notFound)
             {
                destList.Add(addObject); 
+            }
+        }
+
+        public static System.Collections.Generic.IDictionary<string,long> ReadProductList(string path,out IList<string> errorList)
+        {
+            errorList = new List<string>();
+            System.Collections.Generic.IDictionary<string,long> list = new Dictionary<string, long>();
+            FileStream fileStream = new FileStream(path, FileMode.Open);
+            StreamReader fileReader = new StreamReader(fileStream);
+            while (!fileReader.EndOfStream)
+            {
+                string line = fileReader.ReadLine();
+                string[] parseLines = line.Split(',');
+
+                try
+                {
+                    if (parseLines.Length == 2)
+                    {
+                        if (list.ContainsKey(parseLines[0].Trim()))
+                        {
+                            list[parseLines[0].Trim()] += Int32.Parse(parseLines[1].Trim());
+                        }
+                        else
+                        {
+                            list.Add(parseLines[0].Trim(), Int32.Parse(parseLines[1].Trim()));
+                        }
+
+                    }
+                    else
+                    {
+                        if (list.ContainsKey(parseLines[0].Trim()))
+                        {
+                            list[parseLines[0].Trim()] += 1;
+                        }
+                        else
+                        {
+                            list.Add(parseLines[0].Trim(), 1);
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+                    errorList.Add(line);
+                    continue;
+                }
             }
         }
     }

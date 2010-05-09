@@ -9,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSClient.ViewModels.Dialogs;
 
 
 namespace POSClient.ViewModels.Stock.StockOut
@@ -156,6 +157,16 @@ namespace POSClient.ViewModels.Stock.StockOut
         public void FixQuantityByAvailable()
         {
             
+        }
+
+        public void Create()
+        {
+            if (ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
+            var screen = _startViewModel.ServiceLocator.GetInstance<IStockProductPropertiesViewModel>("IStockProductPropertiesViewModel");
+            screen.ProductName = ProductMaster.ProductName;
+            screen.Setup();
+            screen.ConfirmEvent += new EventHandler<ProductEventArgs>(ScreenConfirmEvent);
+            _startViewModel.ShowDialog(screen);
         }
 				#endregion
 		

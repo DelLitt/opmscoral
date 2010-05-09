@@ -54,6 +54,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
@@ -310,6 +311,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Dialogs\ErrorDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IErrorDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IStockOutChoosingViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IStockProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ProductEventArgs.cs" />
+    <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\StockOutChoosingViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\StockProductPropertiesViewModel.cs" />
+    <Compile Include="Views\Dialogs\ErrorDialogView.xaml.cs">
+      <DependentUpon>ErrorDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ProductPropertiesView.xaml.cs">
+      <DependentUpon>ProductPropertiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\StockOutChoosingView.xaml.cs">
+      <DependentUpon>StockOutChoosingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\StockProductPropertiesView.xaml.cs">
+      <DependentUpon>StockProductPropertiesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Management\DepartmentSetView.xaml.cs">
       <DependentUpon>DepartmentSetView.xaml</DependentUpon>
     </Compile>
@@ -329,6 +351,22 @@
     <Page Include="Views\DeparmentStockMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ErrorDialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ProductPropertiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\StockOutChoosingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\StockProductPropertiesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
