@@ -8,6 +8,7 @@ using NHibernate.Criterion;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 using POSServer.DataLayer.Implement;
+using ISession = AppFrame.Base.ISession;
 
 namespace POSServer.BusinessLogic.Implement
 {
@@ -65,5 +66,7 @@ namespace POSServer.BusinessLogic.Implement
         IList<StockIn> Find(object criteria);
         IList<StockIn> FindByMultiCriteria(StockInCriteria criteria);
         StockIn Fetch(StockIn stockIn);
+        void Execute(HibernateDelegate action);
+        void FetchMainStock(StockIn stockIn);
     }
 }

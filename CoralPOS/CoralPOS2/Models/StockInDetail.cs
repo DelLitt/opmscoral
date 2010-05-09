@@ -155,6 +155,9 @@ namespace CoralPOS.Models
             set;
         }
         public virtual MainPrice MainPrice { get; set; }
+
+        public virtual MainStock Stock { get; set; }
+
         protected bool Equals(StockInDetail entity)
         {
             if (entity == null) return false;

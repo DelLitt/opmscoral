@@ -393,7 +393,9 @@
     <Compile Include="Utils\ShowProcessAttribute.cs" />
     <Compile Include="Utils\StockInHelper.cs" />
     <Compile Include="ViewModels\CircularLoadViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\IStockOutChoosingViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IStockProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\StockOutChoosingViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\StockProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\ErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IErrorDialogViewModel.cs" />
@@ -501,6 +503,9 @@
     <Compile Include="ViewModels\Tool\ToolMainViewModel.cs" />
     <Compile Include="Views\CircularLoadView.xaml.cs">
       <DependentUpon>CircularLoadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\StockOutChoosingView.xaml.cs">
+      <DependentUpon>StockOutChoosingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\StockProductPropertiesView.xaml.cs">
       <DependentUpon>StockProductPropertiesView.xaml</DependentUpon>
@@ -703,6 +708,10 @@
     <Page Include="Views\CircularLoadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\StockOutChoosingView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

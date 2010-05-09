@@ -299,6 +299,28 @@ namespace POSServer.BusinessLogic.Implement
         {
             return StockInDao.Fetch(stockIn);
         }
+
+        public void Execute(HibernateDelegate action)
+        {
+            StockInDao.Execute(action);
+        }
+
+        public void FetchMainStock(StockIn stockIn)
+        {
+            StockInDao.Execute(delegate(ISession session)
+                                   {
+                                       foreach (StockInDetail inDetail in stockIn.StockInDetails)
+                                       {
+                                           MainStock stock = (from stk in session.Linq<MainStock>()
+                                                           where
+                                                               stk.Product.ProductId.Equals(inDetail.Product.ProductId)
+                                                           select stk).FirstOrDefault();
+                                           inDetail.Stock = stock;
+                                       }
+                                       
+                                       return null;
+                                   });
+        }
     }
 
 

@@ -11,6 +11,7 @@ using AppFrame.Extensions;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
@@ -222,9 +223,67 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void CreateByBlock()
         {
-            
+            var screen = _startViewModel.ServiceLocator.GetInstance<IStockOutChoosingViewModel>("IStockOutChoosingViewModel");
+            screen.ConfirmEvent += new EventHandler<StockInChoosingArg>(StockInConfirmEvent);
+            _startViewModel.ShowDialog(screen);
         }
-		        
+
+        void StockInConfirmEvent(object sender, StockInChoosingArg e)
+        {
+            
+            CoralPOS.Models.StockIn selectedStockIn = e.SelectedStockIn;
+            BackgroundTask backgroundTask = new BackgroundTask(()=>PopulateStockOutList(selectedStockIn));
+            backgroundTask.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(backgroundTask_Completed);
+            StartWaitingScreen(0);
+            backgroundTask.Start(selectedStockIn);
+        }
+
+        private object PopulateStockOutList(CoralPOS.Models.StockIn selectedStockIn)
+        {
+            var details = new ArrayList(StockOutDetails);
+            foreach (StockInDetail inDetail in selectedStockIn.StockInDetails)
+            {
+                Product product = inDetail.Product;
+                if (!ProductInStockOutList(details, product))
+                {
+                    // create new stockout detail for that product
+                    StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+                    newDetail.Product = inDetail.Product;
+                    newDetail.ProductMaster = inDetail.ProductMaster;
+                    newDetail.CreateDate = DateTime.Now;
+                    newDetail.UpdateDate = DateTime.Now;
+                    newDetail.CreateId = "admin";
+                    newDetail.UpdateId = "admin";
+                    newDetail.Quantity = inDetail.Quantity;
+                    newDetail.StockQuantity = inDetail.Stock.Quantity;
+
+
+                    details.Add(newDetail);
+                }
+                else
+                {
+                    StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
+                                             where sod.Product.ProductId.Equals(product.ProductId)
+                                             select sod).FirstOrDefault();
+                    result.Quantity += inDetail.Quantity;
+
+                }
+            }
+
+            StockOutDetails = details;
+            return null;
+        }
+
+        void backgroundTask_Completed(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            StopWaitingScreen(0);
+        }
+
+        void ScreenConfirmEvent(object sender, ProductEventArgs e)
+        {
+            CreateProductIdForInput(e.ProductColorList, e.ProductSizeList, e.StockList);
+        }
+
         public void CreateByFile()
         {
             
@@ -263,10 +322,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             _startViewModel.ShowDialog(screen);
         }
 
-        void ScreenConfirmEvent(object sender, ProductEventArgs e)
-        {
-            CreateProductIdForInput(e.ProductColorList, e.ProductSizeList,e.StockList); 
-        }
+        
 
         private void CreateProductIdForInput(IList colorList, IList sizeList,IList stockList)
         {

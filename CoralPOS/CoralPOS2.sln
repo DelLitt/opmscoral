@@ -1,6 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoralPOS", "CoralPOS2\CoralPOS.csproj", "{71316BD2-CC94-4CDF-B449-4F93C46234E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient", "POSClient\POSClient.csproj", "{1260D01A-426E-4BFA-AB25-610715DEB402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSService", "POSService\POSService.csproj", "{AFD25592-40CF-4B1D-AB25-C1A18C590124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame\AppFrame2.csproj", "{B57B71C6-9CD9-4A81-937C-5091F7C78225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameControls", "AppFrameControls\AppFrameControls.csproj", "{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.BusinessLogic", "POSClient.BusinessLogic\POSClient.BusinessLogic.csproj", "{456168C0-3001-4D6C-9519-B048921BDDAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.DataLayer", "POSClient.DataLayer\POSClient.DataLayer.csproj", "{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.DataLayer", "POSServer.DataLayer\POSServer.DataLayer.csproj", "{28ADF592-ED6B-4E5F-A80D-B737B67DB364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.BusinessLogic", "POSServer.BusinessLogic\POSServer.BusinessLogic.csproj", "{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caliburn.WPF.ApplicationFramework", "Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj", "{0567B942-B5ED-430F-8E45-FE639039B75B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer", "POSServer\POSServer.csproj", "{C2F8629F-F92A-42D3-BCCB-62DFB44C0511}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A7646901-8909-4E62-BEBE-E45B2C9CE6A8}"
 	ProjectSection(SolutionItems) = preProject
 		libraries\Antlr3.Runtime.dll = libraries\Antlr3.Runtime.dll
@@ -115,28 +137,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 		libraries\System.ComponentModel.Composition.dll = libraries\System.ComponentModel.Composition.dll
 		libraries\System.ComponentModel.Composition.xml = libraries\System.ComponentModel.Composition.xml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoralPOS", "CoralPOS2\CoralPOS.csproj", "{71316BD2-CC94-4CDF-B449-4F93C46234E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient", "POSClient\POSClient.csproj", "{1260D01A-426E-4BFA-AB25-610715DEB402}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSService", "POSService\POSService.csproj", "{AFD25592-40CF-4B1D-AB25-C1A18C590124}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame2", "AppFrame\AppFrame2.csproj", "{B57B71C6-9CD9-4A81-937C-5091F7C78225}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameControls", "AppFrameControls\AppFrameControls.csproj", "{0A6151D7-6811-4A5B-BE9A-44ECD31287B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.BusinessLogic", "POSClient.BusinessLogic\POSClient.BusinessLogic.csproj", "{456168C0-3001-4D6C-9519-B048921BDDAC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSClient.DataLayer", "POSClient.DataLayer\POSClient.DataLayer.csproj", "{3A6E753E-5B42-4845-997C-1F5CF6E9DC1E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.DataLayer", "POSServer.DataLayer\POSServer.DataLayer.csproj", "{28ADF592-ED6B-4E5F-A80D-B737B67DB364}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer.BusinessLogic", "POSServer.BusinessLogic\POSServer.BusinessLogic.csproj", "{1381B25F-5E35-48F8-8F30-F36B8DCB95DA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caliburn.WPF.ApplicationFramework", "Caliburn.WPF.ApplicationFramework\Caliburn.WPF.ApplicationFramework.csproj", "{0567B942-B5ED-430F-8E45-FE639039B75B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSServer", "POSServer\POSServer.csproj", "{C2F8629F-F92A-42D3-BCCB-62DFB44C0511}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

@@ -7,10 +7,10 @@
     <WPF:PosDataErrorProvider Name="PosDataErrorProvider" IsValid="{Binding CanSave,Mode=OneWayToSource}">
         <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">
-                <Button FontSize="14" FontWeight="Bold" Width="80" Margin="21,6,0,38" Name="Help" HorizontalAlignment="Left" >GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,229,38" Name="Recreate" Width="80">TẠO LẠI</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="384,6,373,38" Name="Save">LƯU</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,21,38" Name="Stop" Width="80">DỪNG</Button>
+                <Button FontSize="14" FontWeight="Bold" Width="80" Margin="21,6,0,38" Name="Help" HorizontalAlignment="Left" Height="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,229,38" Name="Recreate" Width="80" Height="80">TẠO LẠI</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="384,6,373,38" Name="Save" Width="80" Height="80">LƯU</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,21,38" Name="Stop" Width="80" Height="80">DỪNG</Button>
             </Grid>
             <Grid Margin="0,6.25,0,125">
                 <Grid.RowDefinitions>
