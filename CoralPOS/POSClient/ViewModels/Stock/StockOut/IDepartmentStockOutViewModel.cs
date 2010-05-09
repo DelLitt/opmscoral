@@ -8,6 +8,7 @@ using System.Text;
 using AppFrame.Base;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 
 namespace POSClient.ViewModels.Stock.StockOut
 {
@@ -15,13 +16,13 @@ namespace POSClient.ViewModels.Stock.StockOut
     {
         #region Fields
 		                
-        string CreateDate
+        DateTime CreateDate
         {
             get;
             set;            
         }
-		                
-        string ProductMaster
+
+        ProductMaster ProductMaster
         {
             get;
             set;            

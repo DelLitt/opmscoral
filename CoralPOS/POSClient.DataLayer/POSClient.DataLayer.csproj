@@ -293,6 +293,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DaoConstants.cs" />
     <Compile Include="Implement\ActiveDepartmentDao.cs" />
     <Compile Include="Implement\BlockInCostDao.cs" />
     <Compile Include="Implement\BlockInDao.cs" />

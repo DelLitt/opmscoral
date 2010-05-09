@@ -15,7 +15,7 @@
                 <RowDefinition Height="319*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,4,6,0" Name="CreateDate" VerticalAlignment="Top" Width="184.057" />
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" />
                     <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
@@ -26,18 +26,20 @@
                     <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80" />                    
                 </DataGrid.Columns>
             </DataGrid>
-            <ComboBox Margin="0,0,405.515,52" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectionChanged="comboBox1_SelectionChanged" HorizontalAlignment="Right" Width="285.235" />
+            <ComboBox Margin="0,0,452,92" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectionChanged="comboBox1_SelectionChanged" HorizontalAlignment="Right" Width="239" IsEditable="True" />
             <Button HorizontalAlignment="Right" Margin="0,0,8,51" Name="CreateByBlock" Width="182.092" FontSize="14" Height="62" VerticalAlignment="Bottom">XUẤT THEO LÔ</Button>
-            <Button Height="63" HorizontalAlignment="Right" Margin="0,0,197.3,64" Name="CreateByFile" VerticalAlignment="Bottom" Width="203" FontSize="14">XUẤT THEO FILE</Button>
-            <TextBox FontSize="14" Height="37.774" Margin="146.251,0,197.3,9" Name="ProductMaster" VerticalAlignment="Bottom" />
-            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,0,0,55" Name="label2" VerticalAlignment="Bottom" Width="114.32">MÃ HÀNG</Label>
-            <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="12,47,0,141" Name="label1" Width="114.32">DIỄN TẢ</Label>
-            <TextBox FontSize="14" Margin="146,45,197,141" Name="Description" />
-            <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="146.251,4,299,0" Name="Department" VerticalAlignment="Top" />
-            <Label FontSize="14" Height="28.424" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,14,0,0" Name="label3" VerticalAlignment="Top" Width="114.32">CỬA HÀNG</Label>
+            <Button Height="40" HorizontalAlignment="Right" Margin="0,0,197,136" Name="CreateByFile" VerticalAlignment="Bottom" Width="239" FontSize="14">XUẤT THEO FILE</Button>
+            <TextBox FontSize="14" Height="37.774" Margin="401,0,197,92" Name="ProductMaster" VerticalAlignment="Bottom" />
+            <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,0,0,125" Name="label2" VerticalAlignment="Bottom" Width="126">MÃ HÀNG</Label>
+            <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,6,0,182" Name="label1" Width="126">DIỄN TẢ</Label>
+            <TextBox FontSize="14" Margin="146,4,197,182" Name="Description" />
+            <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="401,178,197,0" Name="Department" VerticalAlignment="Top" />
+            <Label FontSize="14" Height="28.424" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="401,147,0,0" Name="label3" VerticalAlignment="Top" Width="89">CỬA HÀNG</Label>
             <Button FontSize="14" Height="38" HorizontalAlignment="Right" Margin="0,0,6,9" Name="FixQuantityByAvailable" VerticalAlignment="Bottom" Width="182.425">SỬA SL THEO TỒN KHO</Button>
             <Button Content="XUẤT THEO MÃ HÀNG" FontSize="14" Height="62" HorizontalAlignment="Right" Margin="0,0,8,119" Name="Create" VerticalAlignment="Bottom" Width="182.425" />
-            <TextBox Height="42" HorizontalAlignment="Left" Margin="146,87,0,0" Name="Barcode" VerticalAlignment="Top" Width="285" />
+            <TextBox Height="39" HorizontalAlignment="Left" Margin="146,50,0,0" Name="Barcode" VerticalAlignment="Top" Width="239" />
+            <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="146,179,452,0" Name="comboBox1" VerticalAlignment="Top" />
+            <Label Content="LOẠI XUẤT HÀNG" FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,179,0,9" Name="label4" Width="126" />
         </Grid>
     </Grid>
 </UserControl>

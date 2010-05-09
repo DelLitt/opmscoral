@@ -377,6 +377,7 @@ namespace AppFrame.Utils
                     continue;
                 }
             }
+            return list;
         }
     }
 }

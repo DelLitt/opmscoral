@@ -13,7 +13,7 @@
                 <RowDefinition Height="204.424*"></RowDefinition>
                 <RowDefinition Height="388.545*"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInList" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" />
                     <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" />
@@ -24,8 +24,8 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
-            <my:DatePicker HorizontalAlignment="Left" Margin="128.75,94.435,0,71.104" Name="FromDate" Width="203" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-            <my:DatePicker Margin="404.5,94.435,229.5,72.215" Name="ToDate" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+            <DatePicker HorizontalAlignment="Left" Margin="128.75,94.435,0,71.104" Name="FromDate" Width="203"  />
+            <DatePicker Margin="404.5,94.435,229.5,72.215" Name="ToDate"  />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,0,0,71.104" Name="label2" VerticalAlignment="Bottom" Width="31.25">TỪ</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,16.583,0,0" Name="label3" VerticalAlignment="Top" Width="105">MÃ HÀNG</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,72.215" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">ĐẾN</Label>

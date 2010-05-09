@@ -311,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\Stock\StockOut\IDepartmentStockOutPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\IDepartmentStockOutSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\DepartmentStockOutPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\DepartmentStockOutSaveAction.cs" />
     <Compile Include="ViewModels\Dialogs\ErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IErrorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\IProductPropertiesViewModel.cs" />

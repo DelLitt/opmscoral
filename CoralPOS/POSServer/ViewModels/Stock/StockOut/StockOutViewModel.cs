@@ -11,6 +11,7 @@ using AppFrame.DataLayer;
 using AppFrame.Extensions;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
+using BarcodeLib;
 using Caliburn.Core;
 using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
@@ -19,6 +20,7 @@ using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
 using Caliburn.PresentationFramework.ViewModels;
+using CoralPOS.Common;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Win32;
@@ -159,6 +161,8 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 
         public string _productNameText;
+        private string _barcode;
+
         public string ProductNameText
         {
             get { return _productNameText; }
@@ -179,26 +183,6 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             
         }
-
-        /*private bool _canSave;
-        public bool CanSave
-        {
-            get
-            {
-                //StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
-                if (ObjectUtility.IsNullOrEmpty(StockOut.StockOutDetails)) return false;
-                return _canSave;
-                //return !this.HasError();
-            }
-            set
-            {
-                _canSave = value;
-                NotifyOfPropertyChange(() => CanSave);
-            }
-        }
-
-        [Preview("CanSave")]
-        [Dependencies("StockOut")]*/
 
         public void Save()
         {
@@ -457,6 +441,61 @@ namespace POSServer.ViewModels.Stock.StockOut
                 
             }
             StockOut = stockOut; 
+        }
+
+
+        public void ProcessBarcode()
+        {
+            this.CatchExecute(() => LoadBarcode());
+
+        }
+
+        private object LoadBarcode()
+        {
+            if (ObjectUtility.LengthEqual(Barcode, 12))
+            {
+                ArrayList details = new ArrayList(StockOutDetails);
+                
+                    StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
+                                             where sod.Product.ProductId.Equals(Barcode)
+                                             select sod).FirstOrDefault();
+                    if (result != null) // if exist in list
+                    {
+                        result.Quantity += 1;
+                    }
+                    else
+                    {
+                        // get information from database
+                        MainStock stock = MainStockLogic.FindByProductId(Barcode);
+                        // create new stockout detail for that product
+                        StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+                        newDetail.Product = stock.Product;
+                        newDetail.ProductMaster = stock.ProductMaster;
+                        newDetail.CreateDate = DateTime.Now;
+                        newDetail.UpdateDate = DateTime.Now;
+                        newDetail.CreateId = "admin";
+                        newDetail.UpdateId = "admin";
+                        newDetail.Quantity = 1;
+                        newDetail.StockQuantity = stock.Quantity;
+
+                        details.Add(newDetail);
+                    }
+                
+                StockOutDetails = details;
+
+            }
+            return null;
+        }
+
+        public string Barcode
+        {
+            get {
+                return _barcode;
+            }
+            set {
+                _barcode = value;
+                NotifyOfPropertyChange(()=>Barcode);
+            }
         }
 
         #endregion

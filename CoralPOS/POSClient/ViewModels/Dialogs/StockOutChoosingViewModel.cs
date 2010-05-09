@@ -62,19 +62,19 @@ namespace POSClient.ViewModels.Dialogs
                                                FromDate = FromDate,
                                                ToDate = ToDate
                                            };
-            IList<StockIn> list = DepartmentStockInLogic.FindByMultiCriteria(criteria);
+            IList<DepartmentStockIn> list = DepartmentStockInLogic.FindByMultiCriteria(criteria);
             StockInList = ObjectConverter.ConvertFrom(list);
         }
 
         public DateTime ToDate { get; set; }
         public DateTime FromDate { get; set; }
-        public event EventHandler<StockInChoosingArg> ConfirmEvent;
+        public event EventHandler<DepartmentStockInChoosingArg> ConfirmEvent;
         public void Choose()
         {
             DepartmentStockIn stockIn = DepartmentStockInLogic.Fetch(SelectedStockIn);
-            DepartmentStockInLogic.FetchMainStock(stockIn);
+            DepartmentStockInLogic.FetchDeptStock(stockIn);
                                      
-            StockInChoosingArg eventArgs = new StockInChoosingArg();
+            DepartmentStockInChoosingArg eventArgs = new DepartmentStockInChoosingArg();
             eventArgs.SelectedStockIn = stockIn;
             if (ConfirmEvent != null) ConfirmEvent(this, eventArgs);
             Shutdown();
@@ -92,8 +92,8 @@ namespace POSClient.ViewModels.Dialogs
         
     }
 
-    public class StockInChoosingArg : EventArgs
+    public class DepartmentStockInChoosingArg : EventArgs
     {
-        public StockIn SelectedStockIn { get; set; }
+        public DepartmentStockIn SelectedStockIn { get; set; }
     }
 }

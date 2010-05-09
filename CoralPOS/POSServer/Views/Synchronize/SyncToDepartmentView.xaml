@@ -23,7 +23,7 @@
             </Grid>
         </GroupBox>
         <Label Grid.Column="1" Height="28" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Width="120" FontSize="14">NƠI HÀNG ĐẾN</Label>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.ColumnSpan="2" Margin="0,0,0,191">
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid"  Grid.ColumnSpan="2" Margin="0,0,0,191">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tập tin" Width="200"/>
                 <DataGridTextColumn Header="Trạng thái" Width="100" />

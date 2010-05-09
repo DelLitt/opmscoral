@@ -1,8 +1,10 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utils;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -104,6 +106,25 @@ namespace POSClient.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<DepartmentStock> criteria)
         {
             return DepartmentStockDao.FindPaging(criteria);
+        }
+
+        public IList FindProductMasterAvailInStock(string name)
+        {
+            LinqCriteria<DepartmentStock> crit = new LinqCriteria<DepartmentStock>();
+            crit.AddCriteria(stk => stk.Quantity > 0);
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName.Contains(name));
+            crit.MaxResult = 20;
+            IList<ProductMaster> list = DepartmentStockDao.FindAllSubProperty(crit, stk => stk.ProductMaster);
+            var reslist = new ArrayList();
+            ObjectUtility.AddToList(reslist, list, "ProductName");
+            return reslist;
+        }
+
+        public DepartmentStock FindByProductId(string key)
+        {
+            ObjectCriteria<DepartmentStock> objectCriteria = new ObjectCriteria<DepartmentStock>();
+            objectCriteria.Add(mstk => mstk.Product.ProductId == key);
+            return (DepartmentStock)DepartmentStockDao.FindFirst(objectCriteria);
         }
     }
 }

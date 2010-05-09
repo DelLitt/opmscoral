@@ -14,13 +14,13 @@
         </Grid.ColumnDefinitions>
         <Button FontSize="14" FontWeight="Bold" Margin="12,12,0,14" Name="ToMainStock" TabIndex="9" HorizontalAlignment="Left" Width="250">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="BẮT ĐẦU ĐỒNG BỘ"></TextBlock></Button>
-        <my:DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.ColumnSpan="2" Margin="0,0,0,191">
-            <my:DataGrid.Columns>
-                <my:DataGridTextColumn Header="Tập tin" Width="200"/>
-                <my:DataGridTextColumn Header="Trạng thái" Width="100" />
-                <my:DataGridTextColumn Header="Trình bày" Width="*" />
-            </my:DataGrid.Columns>
-        </my:DataGrid>
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid" Grid.ColumnSpan="2" Margin="0,0,0,191">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tập tin" Width="200"/>
+                <DataGridTextColumn Header="Trạng thái" Width="100" />
+                <DataGridTextColumn Header="Trình bày" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Height="37" HorizontalAlignment="Right" Margin="0,0,0,12" Name="Quit" VerticalAlignment="Bottom" Width="149" FontSize="14">THOÁT</Button>
     </Grid>
 </UserControl>

@@ -61,5 +61,8 @@ namespace POSClient.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<DepartmentStock> criteria);
+
+        IList FindProductMasterAvailInStock(string text);
+        DepartmentStock FindByProductId(string key);
     }
 }

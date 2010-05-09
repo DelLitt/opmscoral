@@ -5,58 +5,19 @@
   <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
   </object>
 
-  <!--<object id="IPurchaseOrderPostAction" type="POSClient.Actions.Stock.StockIn.PurchaseOrderPostAction, POSClient" singleton="false">
+  <object id="IDepartmentStockOutPreLoadAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-    <property name="ProductColorLogic" ref="IExProductColorLogic" />
-    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
-    <property name="CategoryLogic" ref="ICategoryLogic" />
-    <property name="ProductTypeLogic" ref="IProductTypeLogic" />
-    <property name="StockInLogic" ref="IStockInLogic" />  
-  </object>-->
-    
-    <!--<object id="IStartLoadScreen" type="POSClient.Actions.StartLoadScreen, POSServer" singleton="false">    
-  </object>
-  <object id="IStopLoadScreen" type="POSClient.Actions.StopLoadScreen, POSServer" singleton="false">    
-  </object>-->
-  <!--<object id="IPmPreLoadDefinitionAction" type="POSServer.Actions.ProductMaster.PmPreLoadDefinitionAction, POSServer" singleton="false">         
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-  </object>  
-  <object id="IPmSaveAction" type="POSServer.Actions.ProductMaster.PmSaveAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />    
-  </object>
-  <object id="IExProductColorsViewPreLoadAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewPreLoadAction, POSServer" singleton="false">
-    <property name="ProductColorLogic" ref="IExProductColorLogic" />
-  </object>
-  <object id="IExProductColorsViewSaveAction" type="POSServer.Actions.ProductMaster.ExProductColorsViewSaveAction, POSServer" singleton="false">
-    <property name="ProductColorLogic" ref="IExProductColorLogic" />
-  </object>
-
-  <object id="IStockInPreLoadAction" type="POSServer.Actions.Stock.StockIn.StockInPreLoadAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-  </object>
-
-  <object id="IStockInSaveAction" type="POSServer.Actions.Stock.StockIn.StockInSaveAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-    <property name="ProductColorLogic" ref="IExProductColorLogic" />
-    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
-    <property name="CategoryLogic" ref="ICategoryLogic" />
-    <property name="ProductTypeLogic" ref="IProductTypeLogic" />
-    <property name="StockInLogic" ref="IStockInLogic" />    
-  </object>
-
-  <object id="IStockOutPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutPreLoadAction, POSServer" singleton="false">
-    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
-    <property name="MainStockLogic" ref="IMainStockLogic" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
 
-  <object id="IStockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
+  <object id="IDepartmentStockOutSaveAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
-  </object>-->
+  </object>
   
 </objects>

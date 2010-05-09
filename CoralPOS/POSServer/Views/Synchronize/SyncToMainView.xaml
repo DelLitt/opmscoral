@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Button FontSize="14" FontWeight="Bold" Margin="12,12,0,14" Name="SyncToMain" TabIndex="9" HorizontalAlignment="Left" Width="250">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="BẮT ĐẦU ĐỒNG BỘ"></TextBlock></Button>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.ColumnSpan="2" Margin="0,0,0,191">
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="ResultGrid"  Grid.ColumnSpan="2" Margin="0,0,0,191">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tập tin" Width="200"/>
                 <DataGridTextColumn Header="Trạng thái" Width="100" />

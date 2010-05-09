@@ -9,6 +9,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
+using POSClient.DataLayer.Common;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
@@ -351,6 +352,19 @@ namespace POSClient.DataLayer.Implement
         public object ExecuteExposedSession(HibernateDelegate delegated)
         {
             return HibernateTemplate.Execute(delegated, true);
+        }
+
+        public DepartmentStockIn Fetch(DepartmentStockIn selectedStockIn)
+        {
+            return (DepartmentStockIn)HibernateTemplate
+                .Execute(delegate(ISession session)
+                {
+                    //session.Lock(stockOut, LockMode.None);
+                    selectedStockIn = LazyInitializer.InitializeEntity(selectedStockIn, 0, DaoConstants.MODEL_NAMESPACE, session);
+                    return selectedStockIn;
+                    //return res;
+                }
+                  );
         }
     }
 }

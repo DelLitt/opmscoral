@@ -63,6 +63,7 @@ namespace POSClient.BusinessLogic.Implement
         QueryResult FindPaging(ObjectCriteria<DepartmentStockIn> criteria);
 
         DepartmentStockIn Fetch(DepartmentStockIn selectedStockIn);
-        void FetchMainStock(DepartmentStockIn stockIn);
+        void FetchDeptStock(DepartmentStockIn stockIn);
+        IList<DepartmentStockIn> FindByMultiCriteria(DeptStockInCriteria criteria);
     }
 }

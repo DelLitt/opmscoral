@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="POSClient.Views.Dialogs.ProductPropertiesView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"  
+      
     xmlns:local="clr-namespace:AppFrame.WPF;assembly=AppFrame"  
     xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"                     
     xmlns:lbe="clr-namespace:AppFrame.Extensions.ListBox;assembly=AppFrame"    

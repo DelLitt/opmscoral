@@ -27,6 +27,6 @@ namespace POSClient.ViewModels.Dialogs
         
 			#endregion
 
-        event EventHandler<StockInChoosingArg> ConfirmEvent;
+        event EventHandler<DepartmentStockInChoosingArg> ConfirmEvent;
     }
 }

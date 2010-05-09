@@ -5,7 +5,7 @@
     <Grid>
         <Grid Margin="0,0,0,149">
             <DataGrid AutoGenerateColumns="False" Margin="6,28.75,10,6.25" 
-                    Name="DepartmentsList" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" 
+                    Name="DepartmentsList"  
                          FontSize="14" SelectedItem="{Binding SelectedDepartment}" CanUserAddRows="False" CanUserDeleteRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="MS" FontSize="14" Width="80" Binding="{Binding Path=DepartmentId}" />

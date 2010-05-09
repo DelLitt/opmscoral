@@ -129,7 +129,10 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-   	 protected bool Equals(DepartmentStockInDetail entity)
+
+        public virtual DepartmentStock DepartmentStock { get; set; }
+
+        protected bool Equals(DepartmentStockInDetail entity)
 		{
 			if (entity == null) return false;
 			if (!base.Equals(entity)) return false;

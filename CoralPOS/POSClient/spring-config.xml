@@ -59,4 +59,30 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+
+  <object id="DepartmentStockOutCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="Step1" value="POSClient.Actions.Stock.StockOut.IDepartmentStockOutPreLoadAction"/>
+        <!-- Show product master form -->
+        <entry key="Step2" value="POSClient.ViewModels.Stock.StockOut.IDepartmentStockOutViewModel"/>
+        <!-- Show product master summary form -->
+        <entry key="Step3" value="[IDepartmentStockOutConfirmViewModel]"/>
+        <!-- Save Product Master -->
+        <entry key="Step4" value="POSClient.Actions.Stock.StockOut.IStockOutSaveAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  <!-- StockOutSearch List -->
+  <object id="StockOutSearchFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSClient.ViewModels.Stock.StockOut.IDepartmentStockOutSearchViewModel"/>
+        <entry key="Step2" value="[IDepartmentStockOutDetailViewModel]"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
 </objects>

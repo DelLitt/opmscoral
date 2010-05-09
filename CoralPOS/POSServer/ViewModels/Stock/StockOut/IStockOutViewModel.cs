@@ -35,7 +35,9 @@ namespace POSServer.ViewModels.Stock.StockOut
             set;            
         }
         string ProductNameText { get; set; }
-			#endregion
+        string Barcode { get; set; }
+
+        #endregion
 		
 		#region Methods
 		        
@@ -60,5 +62,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         void FixQuantityByAvailable();
         
 			#endregion
+
+        void ProcessBarcode();
     }
 }

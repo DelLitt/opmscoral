@@ -25,4 +25,41 @@
     <property name="DepartmentPurchaseOrderLogic" ref="IDepartmentPurchaseOrderLogic"/>
   </object>
   
+  <object id="IProductPropertiesViewModel" type="POSClient.ViewModels.Dialogs.ProductPropertiesViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductLogic" ref="IProductLogic" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+  </object>
+
+  <object id="IStockProductPropertiesViewModel" type="POSClient.ViewModels.Dialogs.StockProductPropertiesViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="ProductLogic" ref="IProductLogic" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+  </object>
+
+  <object id="IStockOutChoosingViewModel" type="POSClient.ViewModels.Dialogs.StockOutChoosingViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentStockInLogic" ref="IDepartmentStockInLogic" />
+  </object>
+
+  <object id="IDepartmentStockOutViewModel" type="POSClient.ViewModels.Stock.StockOut.DepartmentStockOutViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+  </object>
+  <object id="IDepartmentStockOutConfirmViewModel" type="POSClient.ViewModels.Stock.StockOut.DepartmentStockOutConfirmViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <constructor-arg value="false" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
+  </object>
+
+  <object id="IDepartmentStockOutDetailViewModel" type="POSClient.ViewModels.Stock.StockOut.DepartmentStockOutConfirmViewModel, POSClient" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <constructor-arg value="true" />
+    <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
+  </object>
 </objects>
