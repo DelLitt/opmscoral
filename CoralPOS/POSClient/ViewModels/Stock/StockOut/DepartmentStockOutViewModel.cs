@@ -82,6 +82,9 @@ namespace POSClient.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => Description);
             }
         }
+
+        public IDepartmentStockOutLogic DepartmentStockOutLogic { get; set; }
+        public IProductMasterLogic ProductMasterLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
@@ -281,7 +284,7 @@ namespace POSClient.ViewModels.Stock.StockOut
         {
             if (string.IsNullOrEmpty(text)) text = "";
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
-            IList productMasters = DepartmentStockLogic.FindProductMasterAvailInStock(text);
+            IList productMasters = DepartmentStockLogic.FindProductMasterAvailInStock(text.ToUpper());
             ProductMasterList = productMasters;
         }
 
@@ -305,7 +308,7 @@ namespace POSClient.ViewModels.Stock.StockOut
         private void CreateProductIdForInput(IList colorList, IList sizeList, IList stockList)
         {
             IList addStockList = new ArrayList();
-            foreach (MainStock stock in stockList)
+            foreach (DepartmentStock stock in stockList)
             {
                 Product product = stock.Product;
                 foreach (ExProductColor color in colorList)
@@ -321,13 +324,13 @@ namespace POSClient.ViewModels.Stock.StockOut
                 }
             }
             var details = new ArrayList(DepartmentStockOutDetails);
-            foreach (MainStock stock in addStockList)
+            foreach (DepartmentStock stock in addStockList)
             {
                 Product product = stock.Product;
                 if (!ProductInStockOutList(details, product))
                 {
                     // create new stockout detail for that product
-                    StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+                    DepartmentStockOutDetail newDetail = DataErrorInfoFactory.Create<DepartmentStockOutDetail>();
 
                     newDetail.Product = stock.Product;
                     newDetail.ProductMaster = stock.ProductMaster;
@@ -399,7 +402,7 @@ namespace POSClient.ViewModels.Stock.StockOut
             DepartmentStockOut = stockOut; 
         }
 
-        protected DepartmentStockOut DepartmentStockOut
+        public DepartmentStockOut DepartmentStockOut
         {
             get {
                 return _departmentStockOut;
@@ -410,7 +413,7 @@ namespace POSClient.ViewModels.Stock.StockOut
             }
         }
 
-        protected IList Departments
+        public IList Departments
         {
             get {
                 return _departments;

@@ -126,5 +126,10 @@ namespace POSClient.BusinessLogic.Implement
             objectCriteria.Add(mstk => mstk.Product.ProductId == key);
             return (DepartmentStock)DepartmentStockDao.FindFirst(objectCriteria);
         }
+
+        public IList<DepartmentStock> FindAll(LinqCriteria<DepartmentStock> criteria)
+        {
+            return DepartmentStockDao.FindAll(criteria);
+        }
     }
 }

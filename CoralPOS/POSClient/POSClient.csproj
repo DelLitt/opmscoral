@@ -855,7 +855,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="spring-config.xml" />
+    <EmbeddedResource Include="spring-config.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ClientViewModels.xml" />

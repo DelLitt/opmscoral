@@ -33,7 +33,11 @@ namespace POSClient.ViewModels.Stock.StockOut
             get;
             set;            
         }
-			#endregion
+
+        DepartmentStockOut DepartmentStockOut { get; set; }
+        IList Departments { get; set; }
+
+        #endregion
 		
 		#region Methods
 		        

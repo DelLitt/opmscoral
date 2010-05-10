@@ -64,5 +64,7 @@ namespace POSClient.BusinessLogic.Implement
 
         IList FindProductMasterAvailInStock(string text);
         DepartmentStock FindByProductId(string key);
+
+        IList<DepartmentStock> FindAll(LinqCriteria<DepartmentStock> criteria);
     }
 }

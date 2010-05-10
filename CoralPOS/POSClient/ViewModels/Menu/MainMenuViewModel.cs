@@ -47,12 +47,12 @@ namespace POSClient.ViewModels.Menu
 		        
         public void Sale()
         {
-            _startViewModel.EnterFlow(FlowConstants.PURCHASE_ORDER_VIEW_FLOW);   
+            _startViewModel.EnterFlow(FlowDefinition.PURCHASE_ORDER_VIEW_FLOW);   
         }
 		        
         public void DepartmentStock()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.DEPARTMENT_STOCK_OUT_CREATE_FLOW);
         }
 		        
         public void Report()

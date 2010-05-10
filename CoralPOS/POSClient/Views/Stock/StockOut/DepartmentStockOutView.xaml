@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="POSClient.Views.Stock.StockOut.DepartmentStockOutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Width="837" Height="700">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework" Width="837" Height="700">
     <Grid>
             <Grid Height="150" VerticalAlignment="Bottom">                
                 <Button FontSize="14" FontWeight="Bold" Margin="23,6,0,64" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
@@ -15,25 +14,31 @@
                 <RowDefinition Height="319*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,4,6,0" Name="CreateDate" VerticalAlignment="Top" Width="184.057" />
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockOutList" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="DepartmentStockOutDetails" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" />
-                    <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" />
-                    <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" />                                            
-                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" />
-                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" />
-                    <DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="80" />
-                    <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80" />                    
+                    <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" Binding="{Binding Path=ProductMaster.ProductType.TypeName}" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=ProductMaster.ProductName}" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=ProductMaster.ProductColor.TypeName}" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="100" Binding="{Binding Path=Product.ProductSize.SizeName}" IsReadOnly="True"/>
+                    <DataGridTextColumn FontSize="14" Header="SL XUẤT" Width="80" Binding="{Binding Path=Quantity}"/>
+                    <DataGridTextColumn FontSize="14" Header="SL TỒN" Width="80" Binding="{Binding Path=StockQuantity}" IsReadOnly="True"/>                    
                 </DataGrid.Columns>
             </DataGrid>
-            <ComboBox Margin="0,0,452,92" Name="ProductMasterList" FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" SelectionChanged="comboBox1_SelectionChanged" HorizontalAlignment="Right" Width="239" IsEditable="True" />
+            <ComboBox Margin="0,0,452,92" Name="ProductMasterList" 
+                      FontSize="14" AllowDrop="False" Height="38.727" VerticalAlignment="Bottom" 
+                      HorizontalAlignment="Right" Width="239" IsEditable="True" 
+                      DisplayMemberPath="ProductName"
+                      SelectedItem="{Binding ProductMaster}" 
+                      Text ="{Binding ProductNameText}"
+                      RoutedMessaging:Message.Attach="[Event DropDownOpened]=[Action ReloadProductMaster(ProductMasterList.Text)]" IsTextSearchCaseSensitive="False" />
             <Button HorizontalAlignment="Right" Margin="0,0,8,51" Name="CreateByBlock" Width="182.092" FontSize="14" Height="62" VerticalAlignment="Bottom">XUẤT THEO LÔ</Button>
             <Button Height="40" HorizontalAlignment="Right" Margin="0,0,197,136" Name="CreateByFile" VerticalAlignment="Bottom" Width="239" FontSize="14">XUẤT THEO FILE</Button>
-            <TextBox FontSize="14" Height="37.774" Margin="401,0,197,92" Name="ProductMaster" VerticalAlignment="Bottom" />
+            <TextBox FontSize="14" Height="37.774" Margin="401,0,197,92" Name="ProductMaster1" VerticalAlignment="Bottom" Text="{Binding ProductMaster.ProductName}" IsReadOnly="True" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,0,0,125" Name="label2" VerticalAlignment="Bottom" Width="126">MÃ HÀNG</Label>
             <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,6,0,182" Name="label1" Width="126">DIỄN TẢ</Label>
             <TextBox FontSize="14" Margin="146,4,197,182" Name="Description" />
-            <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="401,178,197,0" Name="Department" VerticalAlignment="Top" />
+            <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="401,178,197,0" Name="Departments" VerticalAlignment="Top" DisplayMemberPath="DepartmentName"/>
             <Label FontSize="14" Height="28.424" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="401,147,0,0" Name="label3" VerticalAlignment="Top" Width="89">CỬA HÀNG</Label>
             <Button FontSize="14" Height="38" HorizontalAlignment="Right" Margin="0,0,6,9" Name="FixQuantityByAvailable" VerticalAlignment="Bottom" Width="182.425">SỬA SL THEO TỒN KHO</Button>
             <Button Content="XUẤT THEO MÃ HÀNG" FontSize="14" Height="62" HorizontalAlignment="Right" Margin="0,0,8,119" Name="Create" VerticalAlignment="Bottom" Width="182.425" />

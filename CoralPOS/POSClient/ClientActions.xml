@@ -5,13 +5,13 @@
   <object id="IProxyFactory" type="AppFrame.WPF.PosDynamicProxy, AppFrame" singleton="false">    
   </object>
 
-  <object id="IDepartmentStockOutPreLoadAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutPreLoadAction, POSServer" singleton="false">
+  <object id="IDepartmentStockOutPreLoadAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutPreLoadAction, POSClient" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="DepartmentStockLogic" ref="IDepartmentStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
 
-  <object id="IDepartmentStockOutSaveAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutSaveAction, POSServer" singleton="false">
+  <object id="IDepartmentStockOutSaveAction" type="POSClient.Actions.Stock.StockOut.DepartmentStockOutSaveAction, POSClient" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
     <property name="ProductSizeLogic" ref="IExProductSizeLogic" />

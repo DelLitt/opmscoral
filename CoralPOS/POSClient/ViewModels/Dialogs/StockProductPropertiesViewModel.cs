@@ -22,7 +22,7 @@ namespace POSClient.ViewModels.Dialogs
 
         private IShellViewModel _startViewModel;
         private IList _productColorList;
-        private IList _stockList;
+        private IList<DepartmentStock> _stockList;
 
         private IList _productSizeList;
 
@@ -139,14 +139,13 @@ namespace POSClient.ViewModels.Dialogs
             
             string productName = ProductName;
 
-            ObjectCriteria<DepartmentStock> crit = new ObjectCriteria<DepartmentStock>();
-            
-            crit.Add(stk => stk.ProductMaster.ProductName == productName);
-            crit.Add(stk => stk.Quantity > 0);
-            crit.SetFetchMode(stk => stk.Product,FetchMode.Eager);
-            crit.SetFetchMode(stk => stk.ProductMaster,FetchMode.Eager);
-            crit.SetFetchMode(stk => stk.ProductMaster.ProductType,FetchMode.Eager);
-            var _stockList = DepartmentStockLogic.FindAll(crit);
+            LinqCriteria<DepartmentStock> crit = new LinqCriteria<DepartmentStock>();
+            crit.AddCriteria(stk => stk.ProductMaster.ProductName == productName);
+            crit.AddCriteria(stk => stk.Quantity > 0);
+            crit.AddFetchPath(stk => stk.Product);
+            crit.AddFetchPath(stk => stk.ProductMaster);
+            crit.AddFetchPath(stk => stk.ProductMaster.ProductType);
+            _stockList = DepartmentStockLogic.FindAll(crit);
             //IList colors = MainStockLogic.GetColorsFromAvailProductInStock(productName);
             //IList sizes = MainStockLogic.GetSizesFromAvailProductInStock(productName);
             IList<DepartmentStock> _stocks = _stockList;

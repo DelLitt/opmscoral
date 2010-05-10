@@ -130,8 +130,6 @@ namespace POSClient.DataLayer.Implement
                                 delegate(ISession session)
                                 {
                                     IList<DepartmentStock> result = new List<DepartmentStock>();
-                                    try
-                                    {
                                         ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStock));
                                         if (criteria != null)
                                         {
@@ -139,11 +137,11 @@ namespace POSClient.DataLayer.Implement
                                         }
                                         result = hibernateCriteria.List<DepartmentStock>();
                                         return result;
-                                    }
+                                    /*}
                                     catch(Exception ex)
                                     {
                                         return result;
-                                    }
+                                    }*/
                                 }
                                     );
             

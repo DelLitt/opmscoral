@@ -41,7 +41,7 @@ namespace POSClient.Actions.Stock.StockOut
             IList productMasters = DepartmentStockLogic.FindProductMasterAvailInStock("");
             //IList productMasters = ProductMasterLogic.LoadAllProductMasterWithType("%%");
             Flow.Session.Put(FlowConstants.PRODUCT_NAMES_LIST, productMasters);
-            IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
+            IList<Department> departments = DepartmentLogic.FindAll(null);
             Flow.Session.Put(FlowConstants.DEPARTMENTS,departments);
             return null;
         }

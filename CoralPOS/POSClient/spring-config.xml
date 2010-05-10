@@ -79,7 +79,7 @@
     <property name="FlowSteps">
       <dictionary>
         <!-- Show product master form -->
-        <entry key="Step1" value="POSClient.ViewModels.Stock.StockOut.IDepartmentStockOutSearchViewModel"/>
+        <entry key="Step1" value="[IDepartmentStockOutViewModel]"/>
         <entry key="Step2" value="[IDepartmentStockOutDetailViewModel]"/>
       </dictionary>
     </property>
