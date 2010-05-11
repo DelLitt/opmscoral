@@ -1,4 +1,5 @@
-using System; 
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text; 
 using System.Collections.Generic; 
 using System.Runtime.Serialization;
@@ -139,6 +140,7 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="21", Order=21)]
+        [NotNull]
         public virtual Department Department {
             get;
             set;

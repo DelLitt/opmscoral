@@ -60,7 +60,7 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        [Transaction(ReadOnly=false)]
+        [Transaction()]
         public StockOut Add(StockOut data)
         {
             IDictionary<string, MainPrice> prices = new Dictionary<string, MainPrice>();

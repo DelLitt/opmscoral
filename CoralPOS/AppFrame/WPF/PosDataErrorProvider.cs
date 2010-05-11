@@ -328,7 +328,7 @@ namespace AppFrame.WPF
             {
                 DependencyProperty dp = null;
                 PropertyInfo bindingMember = element.GetType().GetProperty("Binding");
-                Binding binding = (Binding)bindingMember.GetValue(element, null);
+                Binding binding = bindingMember.GetValue(element, null) as Binding;
                 if (binding == null)
                 {
                     Console.WriteLine("dxm ss !");

@@ -26,8 +26,15 @@
             <TextBox FontSize="14" Height="38.583" HorizontalAlignment="Right" Margin="0,10,6,0" Name="textBox4" VerticalAlignment="Top" Width="184.057" IsTabStop="False" />
             <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInDetailList"  FontSize="14" TabIndex="8" SelectionUnit="Cell" CanUserAddRows="False" CanUserDeleteRows="True" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
-                    <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
+                        <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" >
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding Converter="{StaticResource rowNumberConverter}">
+                                    <Binding />
+                                    <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <!--Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName"-->
                     <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True"  Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
                     <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="180" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>                                            
                     <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />

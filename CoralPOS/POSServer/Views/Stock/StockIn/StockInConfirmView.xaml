@@ -34,7 +34,14 @@
                        SelectedItem="{Binding SelectedStockInDetail}"
                         RoutedMessaging:Message.Attach="[Event SelectionChanged]=[Action GridSelectionChanged]">
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" />
+                    <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True" >
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource rowNumberConverter}">
+                                <Binding />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                     <DataGridTextColumn FontSize="14" Header="LOẠI" Width="100" IsReadOnly="True" Binding="{Binding Path=Product.ProductMaster.ProductType.TypeName}" SortMemberPath="Product.ProductMaster.ProductType.TypeName" />
                     <DataGridTextColumn FontSize="14" Header="TÊN SP" Width="200" Binding="{Binding Path=Product.ProductMaster.ProductName}" SortMemberPath="Product.ProductMaster.ProductName" IsReadOnly="True"/>
                     <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="120" Binding="{Binding Path=Product.ProductColor.ColorName}" SortMemberPath="Product.ProductColor.ProductName" IsReadOnly="True" />

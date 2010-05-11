@@ -13,12 +13,12 @@
         </DataGrid>
         </Grid>
         <Grid Height="150" VerticalAlignment="Bottom">
-            <Button FontSize="14" FontWeight="Bold" Margin="23,28,0,34" Name="Help" HorizontalAlignment="Left" Width="88">GIÚP ĐỠ</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="408,28,341,34" Name="Delete">XÓA</Button>
-            <Button FontSize="14" FontWeight="Bold" Margin="297,28,0,34" Name="Edit" HorizontalAlignment="Left" Width="87.075">SỬA</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,20.006,34" Name="Stop" Width="88">THOÁT</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="188,28,0,34" Name="Create" Width="88">TẠO MỚI</Button>
-            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,28,155,34" Name="Save" Width="88">LƯU</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="25,6,0,64" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="414,6,343,64" Name="Delete" Height="80" Width="80">XÓA</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="299,6,0,64" Name="Edit" HorizontalAlignment="Left" Width="80" Height="80">SỬA</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,18,64" Name="Stop" Width="80" Height="80">THOÁT</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="190,6,0,64" Name="Create" Width="80" Height="80">TẠO MỚI</Button>
+            <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,153,64" Name="Save" Width="80" Height="80">LƯU</Button>
         </Grid>
     </Grid>
 </UserControl>

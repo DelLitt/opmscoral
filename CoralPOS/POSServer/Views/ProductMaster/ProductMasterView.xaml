@@ -5,10 +5,10 @@
     <WPF:PosDataErrorProvider>
     <Grid>
             <Grid Height="128" VerticalAlignment="Bottom">                
-                <Button FontSize="14" FontWeight="Bold" Margin="15,6,0,42" Name="Help" HorizontalAlignment="Left" Width="80">GIÚP ĐỠ</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,235,42" Name="Recreate" Width="80">TẠO LẠI</Button>
-                <Button FontSize="14" FontWeight="Bold" Margin="381,6,376,42" Name="Save">LƯU</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,14,42" Name="Stop" Width="80">DỪNG</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="15,6,0,42" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,235,42" Name="Recreate" Width="80" Height="80">TẠO LẠI</Button>
+                <Button FontSize="14" FontWeight="Bold" Margin="381,6,376,42" Name="Save" Width="80" Height="80">LƯU</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,14,42" Name="Stop" Width="80" Height="80">DỪNG</Button>
             </Grid>        
             <Grid Margin="0,6,0,128">
             <Grid.RowDefinitions>

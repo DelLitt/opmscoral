@@ -186,7 +186,7 @@ namespace POSServer.ViewModels.Stock.StockOut
 
         public void Save()
         {
-            
+            if (StockOut.Department == null || StockOut.Department.DepartmentId <= 0) return;
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
             IEnumerable<IValidationError> errors = this.GetErrors(StockOut);
             if (this.HasError())

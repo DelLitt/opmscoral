@@ -17,7 +17,14 @@
                          SelectionMode="Single"
                          SelectedItem="{Binding SelectedStockOut}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="14" Header="STT" />
+                    <DataGridTextColumn FontSize="14" Header="STT" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource rowNumberConverter}">
+                                <Binding />
+                                <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType ={x:Type DataGrid}}" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                     <DataGridTextColumn FontSize="14" Header="MÃ LÔ" Width="150" Binding="{Binding Path=StockOutId}" SortMemberPath="StockOutId" />
                     <DataGridTextColumn FontSize="14" Header="DIỄN GIẢI" Width="250" Binding="{Binding Path=Description}"/>                                            
                     <DataGridTextColumn FontSize="14" Header="SỐ LƯỢNG" Width="150" Binding="{Binding Path=TotalQuantity}"/>
@@ -26,8 +33,8 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
-            <DatePicker HorizontalAlignment="Left" Margin="128.75,0,0,24.442" Name="FromDate" Width="203"  Height="38.885" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />
-            <DatePicker Margin="405.515,0,227.755,24.442" Name="ToDate" Height="37.774" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" />
+            <DatePicker HorizontalAlignment="Left" Margin="128.75,0,0,24.442" Name="FromDate" Width="203"  Height="38.885" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" FontSize="14" />
+            <DatePicker Margin="405.515,0,227.755,24.442" Name="ToDate" Height="37.774" VerticalAlignment="Bottom" IsEnabled="{Binding DatePick}" Text="dd/MM/yyyy" SelectedDateFormat="Long" FontSize="14" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,0,0,24.442" Name="label2" VerticalAlignment="Bottom" Width="31.25">TỪ</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,16.583,0,0" Name="label3" VerticalAlignment="Top" Width="105">MÃ HÀNG</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,24.442" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61.522">ĐẾN</Label>

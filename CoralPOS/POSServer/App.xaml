@@ -3,13 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="clr-namespace:Caliburn.PresentationFramework.ApplicationModel;assembly=Caliburn.PresentationFramework"
     xmlns:Converters="clr-namespace:Caliburn.WPF.ApplicationFramework.Converters;assembly=Caliburn.WPF.ApplicationFramework"
-    xmlns:Converters1="clr-namespace:Caliburn.PresentationFramework.Converters;assembly=Caliburn.PresentationFramework"
-    >
+    xmlns:Converters1="clr-namespace:Caliburn.PresentationFramework.Converters;assembly=Caliburn.PresentationFramework" xmlns:local="clr-namespace:AppFrame.WPF;assembly=AppFrame">
     <Application.Resources>
         <Converters1:EnumConverter x:Key="enumConverter" />
         <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />        
         <Converters:CollapsedWhenNullConverter x:Key="collapsedWhenNullConverter" />
-       
+        <local:RowNumberConverter x:Key="rowNumberConverter" />
+        
 
         <SolidColorBrush x:Key="brownBrush"
                          Color="#FF513100" />
