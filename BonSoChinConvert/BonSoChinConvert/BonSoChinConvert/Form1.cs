@@ -75,9 +75,9 @@ namespace BonSoChinConvert
             VBBDataContext context = new VBBDataContext();
 
             // process null users
-            var lackingMembers = from msg in bonSoChinContext.Messages
-                                 where !bonSoChinContext.Members.Any(c => c.Memberid == msg.Memberidauthor)
-                                 select msg.Messageauthor;
+            var lackingMembers = (from msg in bonSoChinContext.Messages
+                                  where !bonSoChinContext.Members.Any(c => c.Memberid == msg.Memberidauthor)
+                                  select msg.Messageauthor).Distinct<string>();
             string tempUser = "tempUser";
             int tempUserCount = 1;
             foreach (string lackingMember in lackingMembers)
@@ -191,6 +191,7 @@ namespace BonSoChinConvert
                     vThread.Prefixid = "";
                     vThread.Forumid = vForumId;
                     vThread.Open = 1;
+                    vThread.Visible = 1;
                     vThread.Dateline = ConvertToUnixTimestamp(thread.Messagedateentered);
 
                     #region thread user
