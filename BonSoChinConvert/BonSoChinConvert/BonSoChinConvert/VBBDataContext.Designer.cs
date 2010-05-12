@@ -48605,7 +48605,7 @@ namespace VBBContext
 
         private short _Customtitle;
 
-        private long _Joindate;
+        private int _Joindate;
 
         private short _Daysprune;
 
@@ -49249,7 +49249,7 @@ namespace VBBContext
         }
 
         [Column(Name = @"joindate", Storage = "_Joindate", CanBeNull = false, DbType = "int(10) NOT NULL")]
-        public long Joindate
+        public int Joindate
         {
             get
             {
