@@ -86,10 +86,10 @@ namespace BonSoChinConvert
             var vPostId = maxPostId;
             VBBContext.Forum vForum = new VBBContext.Forum
             {
-                Title = "Article",
-                Titleclean = "Article",
-                Description = "Article",
-                Descriptionclean = "Article",
+                Title = "Article1",
+                Titleclean = "Article1",
+                Description = "Article1",
+                Descriptionclean = "Article1",
                 Displayorder = 1,
                 // replycount
                 Replycount = 0,
@@ -111,6 +111,7 @@ namespace BonSoChinConvert
             };
             PopulateUShort(vForum);
             short vForumId = (short) (maxVForumId + 1);
+            short superForumId = vForumId;
             vForum.Forumid = (short)(maxVForumId + 1);
             vForum.Parentlist = vForumId + ",-1";
             vForum.Childlist = vForumId + ",-1";
@@ -140,7 +141,7 @@ namespace BonSoChinConvert
                     Lastthreadid = 0,
                     Newpostemail = "",
                     Newthreademail = "",
-                    Parentid = (short)vForum.Forumid,
+                    Parentid = superForumId,
                     Parentlist = "",
                     Childlist = "",
                     Defaultsortfield = "lastpost",
@@ -158,10 +159,11 @@ namespace BonSoChinConvert
                 var article4source = (from articles1 in bonSoChinContext.Articles
                                       where articles1.Articlecategoryid == articlecategory.Articlecategoryid
                                       select articles1).ToList();
+
                 foreach (Article article in article4source)
                 {
                     var vThreadId = ++maxVThreadId;
-
+                    int dtline = ConvertToUnixTimestamp(article.Articledateposted);
                     Thread vThread = new Thread();
                     vThread.Title = article.Articletitle;
                     vThread.Prefixid = "";
@@ -196,7 +198,7 @@ namespace BonSoChinConvert
                         Allowsmilie = 1,
                         Ipaddress = "127.0.0.1",
                         Visible = 1,
-                        Parentid = -1,
+                        Parentid = vPostId,
                         Userid = vThread.Postuserid,
                         Username = vThread.Postusername,
                     };
@@ -219,8 +221,11 @@ namespace BonSoChinConvert
 
                     vThread.Firstpostid = vPostId;
 
-                    vSubForum.Lastthread = vThread.Dateline.ToString();
+                    vSubForum.Lastthread = vThread.Title.ToString();
                     vSubForum.Lastthreadid = vThreadId;
+
+                    vForum.Lastthread = vThread.Title.ToString();
+                    vForum.Lastthreadid = vThreadId;
 
                     vSubForum.Threadcount++;
                     vThread.Replycount = 1;
@@ -651,7 +656,7 @@ namespace BonSoChinConvert
                         context.Postparseds.InsertOnSubmit(postparsed);
                     }
 
-                    vForum.Lastthread = vThread.Dateline.ToString();
+                    vForum.Lastthread = vThread.Title.ToString();
                     vForum.Lastthreadid = vThreadId;
 
                     Threadview vThreadview = new Threadview();
@@ -875,7 +880,17 @@ namespace BonSoChinConvert
         {
             //create Timespan by subtracting the value provided from
             //the Unix Epoch
-            TimeSpan span = (value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+            DateTime first = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            TimeSpan span;
+            if(first.CompareTo(value) > 0 )
+            {
+                span = (DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());    
+            }
+            else
+            {
+                span = (value - first);    
+            }
+            
 
             //return the total seconds (which is a UNIX timestamp)
             return (int)span.TotalSeconds;
@@ -883,12 +898,7 @@ namespace BonSoChinConvert
 
         private int ConvertToUnixTimestamp(DateTime? value)
         {
-            //create Timespan by subtracting the value provided from
-            //the Unix Epoch
-            TimeSpan span = (value.Value - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
-
-            //return the total seconds (which is a UNIX timestamp)
-            return (int)span.TotalSeconds;
+            return ConvertToUnixTimestamp(value.Value);
         }
         public string MySqlEscape(string usString)
         {
