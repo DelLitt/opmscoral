@@ -51,9 +51,9 @@ namespace BonSoChinConvert
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //ConvertUser((BackgroundWorker)sender);
-           // ConvertForum((BackgroundWorker)sender);
-            //ConvertThread();
+            ConvertUser((BackgroundWorker)sender);
+            ConvertForum((BackgroundWorker)sender);
+            ConvertThread();
             ConvertArticle();
         }
 
@@ -213,12 +213,12 @@ namespace BonSoChinConvert
                         Hasimages = 0,
                         Pagetexthtml = v1Post.Pagetext,
                     };
-
+                    
                     context.Posts.InsertOnSubmit(v1Post);
                     context.Postparseds.InsertOnSubmit(postparsed1);
 
                     UpdateStatusOfForumAndThread(vThread, vSubForum, v1Post, vPostId, vThreadId);
-
+                    vForum.Threadcount++;
                     vThread.Firstpostid = vPostId;
 
                     vSubForum.Lastthread = vThread.Title.ToString();
@@ -228,7 +228,9 @@ namespace BonSoChinConvert
                     vForum.Lastthreadid = vThreadId;
 
                     vSubForum.Threadcount++;
-                    vThread.Replycount = 1;
+                    vForum.Replycount ++;
+                    vSubForum.Replycount ++;
+                    vThread.Replycount = 0;
 
                     Threadview vThreadview = new Threadview();
                     vThreadview.Threadid = vThreadId;
@@ -248,7 +250,7 @@ namespace BonSoChinConvert
             // process null users
             var lackingMembers = (from msg in bonSoChinContext.Messages
                                   where !bonSoChinContext.Members.Any(c => c.Memberid == msg.Memberidauthor)
-                                  select msg.Messageauthor).Distinct<string>();
+                                  select msg.Messageauthor).Distinct<string>().ToList();
             string tempUser = "tempUser";
             int tempUserCount = 1;
             foreach (string lackingMember in lackingMembers)
@@ -691,7 +693,7 @@ namespace BonSoChinConvert
             VBBDataContext context = new VBBDataContext();
 
             var avatarsource = (from member in bonSoChinContext.Members
-                                select member.Memberimage).Distinct<string>();
+                                select member.Memberimage).Distinct<string>().ToList();
 
             int count = 1;
             sender.ReportProgress(10, new UserProgress("avatar", count++, avatarsource.Count()));
@@ -726,8 +728,8 @@ namespace BonSoChinConvert
 
             // ----------------------- USERS TABLE ------------------------------------
 
-            var result = from member in bonSoChinContext.Members
-                         select member;
+            var result = (from member in bonSoChinContext.Members
+                         select member).ToList();
 
             count = 1;
             sender.ReportProgress(10, new UserProgress("user", count++, result.Count()));
@@ -751,8 +753,8 @@ namespace BonSoChinConvert
                                  where title.Minposts < member.Numberofmessages
                                  orderby title.Usertitleid ascending
                                  select title.Title).FirstOrDefault(),
-                    Joindate = 1273158780,
-                    //ConvertToUnixTimestamp(member.Memberdateadded);
+                    Joindate = ConvertToUnixTimestamp(member.Memberdateadded), //1273158780,
+                    //;
                     Lastvisit = 1273158780,
                     Daysprune = -1,
                     Lastactivity = 1273158780,
