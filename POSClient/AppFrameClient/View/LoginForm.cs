@@ -197,6 +197,7 @@ namespace AppFrameClient.View
         public event EventHandler<LoginEventArgs> LoginEvent;
         public event EventHandler<LoginEventArgs> ConfirmLoginEvent;
         public event EventHandler<LoginEventArgs> ConfirmEmployeeIdEvent;
+        public event EventHandler<LoginEventArgs> ConfirmJustEmployeeIdEvent;
 
         #endregion
 

@@ -267,7 +267,6 @@ namespace AppFrameClient.View
         private ErrorForm _errorForm = null;
         private void btnImportResult_Click(object sender, EventArgs e)
         {
-            
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
             fileDialog.CheckFileExists = true;
@@ -339,10 +338,11 @@ namespace AppFrameClient.View
                         bool found = false;
                         foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
                         {
-                            if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                            //if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                            if (barCodeLine.Key.Equals(stockqtyRow.PRODUCT_ID))
                             {
                                 stockqtyRow.realquantity = barCodeLine.Value;
-                                AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                AddToReviewTypeList(stockqtyRow.TYPE_ID.ToString());
 
                                 found = true;
                                 break;
@@ -361,15 +361,15 @@ namespace AppFrameClient.View
                         {
                             foreach (MasterDB.mainstkqtyRow stockqtyRow in masterDB3.mainstkqty)
                             {
-                                if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                                if (barCodeLine.Key.Equals(stockqtyRow.PRODUCT_ID.ToString()))
                                 {
-                                    AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                    AddToReviewTypeList(stockqtyRow.TYPE_ID.ToString());
                                     masterDB1.stockqty.AddstockqtyRow(
                                         stockqtyRow.TYPE_ID,
                                         stockqtyRow.TYPE_NAME,
                                         stockqtyRow.PRODUCT_MASTER_ID,
                                         barCodeLine.Key,
-                                        " NOT_IN_STOCK - " + stockqtyRow.PRODUCT_NAME,
+                                        stockqtyRow.PRODUCT_NAME,
                                         stockqtyRow.COLOR_NAME,
                                         stockqtyRow.SIZE_NAME,
                                         barCodeLine.Key,
@@ -395,10 +395,10 @@ namespace AppFrameClient.View
                     {
                         foreach (MasterDB.mainstkqtyRow stockqtyRow in masterDB3.mainstkqty)
                         {
-                            if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                            if (barCodeLine.Key.Equals(stockqtyRow.PRODUCT_ID.ToString()))
                             {
                                 stockqtyRow.realquantity = barCodeLine.Value;
-                                AddToReviewTypeList(stockqtyRow["TYPE_ID"].ToString());
+                                AddToReviewTypeList(stockqtyRow.TYPE_ID.ToString());
                                 
                                 break;
                             }

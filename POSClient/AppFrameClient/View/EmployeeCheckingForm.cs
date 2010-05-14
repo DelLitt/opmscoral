@@ -54,8 +54,27 @@ namespace AppFrameClient.View
             //backgroundWorker.DoWork += new DoWorkEventHandler(DoWorkUsingBackgroundHandler);
             //backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DoWorkUsingBackgroundCompleted);
             //backgroundWorker.RunWorkerAsync();
-            DoWorkUsingEvent();
+            DoCheckingEmployeeId();
+            //DoWorkUsingEvent();
 
+        }
+
+        private void DoCheckingEmployeeId()
+        {
+            button1.Enabled = false;
+            // create model and raise event
+
+            LoginEventArgs loginEventArgs = new LoginEventArgs();
+            loginEventArgs.EmployeeBarcode = txtEmployeeId.Text.Trim();
+            if (LoginEvent != null)
+            {
+                EventUtility.fireEvent(ConfirmJustEmployeeIdEvent, this, loginEventArgs);
+                if (!loginEventArgs.HasErrors)
+                {
+                    GlobalCache.Instance().Session["EmployeeId"] = loginEventArgs.EmployeeId;
+                }
+                ReturnResult();
+            } 
         }
 
 
@@ -102,6 +121,7 @@ namespace AppFrameClient.View
         public event EventHandler<LoginEventArgs> LoginEvent;
         public event EventHandler<LoginEventArgs> ConfirmLoginEvent;
         public event EventHandler<LoginEventArgs> ConfirmEmployeeIdEvent;
+        public event EventHandler<LoginEventArgs> ConfirmJustEmployeeIdEvent;
 
         #endregion
 

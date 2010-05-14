@@ -36,7 +36,7 @@ namespace AppFrameClient.View.GoodsSale
             pODList = new PurchaseOrderDetailCollection(bdsBill);
             bdsBill.DataSource = pODList;
             dgvBill.DataError += new DataGridViewDataErrorEventHandler(dgvBill_DataError);
-            
+            txtBillDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         void dgvBill_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -419,7 +419,19 @@ namespace AppFrameClient.View.GoodsSale
                 MessageBox.Show("Số tiền trả chưa đủ !");
                 return false;
             }   
-            
+            if(ClientSetting.ConfirmByEmployeeId)
+            {
+                DialogResult result = DialogResult.Cancel;
+                EmployeeCheckingForm employeeCheckingForm = GlobalUtility.GetFormObject<EmployeeCheckingForm>(FormConstants.EMPLOYEE_CHECKING_VIEW);
+                employeeCheckingForm.StartPosition = FormStartPosition.CenterScreen;
+                result = employeeCheckingForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
             return true;
         }
 
@@ -481,7 +493,16 @@ namespace AppFrameClient.View.GoodsSale
             receipt.Charge = Int64.Parse(string.IsNullOrEmpty(txtCharge.Text)?"0":txtCharge.Text);
             GoodsSaleController.PurchaseOrder.Receipts = new ArrayList();
             GoodsSaleController.PurchaseOrder.Receipts.Add(receipt);
-                        
+
+            if (GlobalCache.Instance().Session.ContainsKey("EmployeeId"))
+            {
+                string employeeId = GlobalCache.Instance().Session["EmployeeId"] as string;
+                if(!string.IsNullOrEmpty(employeeId))
+                {
+                    GoodsSaleController.PurchaseOrder.CreateId = employeeId;
+                    GoodsSaleController.PurchaseOrder.UpdateId = employeeId;
+                }
+            }
             GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
             if(ReturnPurchaseOrder!=null)
             {

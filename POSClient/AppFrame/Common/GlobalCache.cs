@@ -15,7 +15,7 @@ namespace AppFrame.Common
 
         private GlobalCache()
         {
-            
+            Session = new Dictionary<string, object>();
         }
         /// <summary>
         /// 
@@ -39,8 +39,6 @@ namespace AppFrame.Common
             set { mainForm = value; }
         }
 
-        
-
-        
+        public IDictionary<string,object > Session { get; set; }
     }
 }

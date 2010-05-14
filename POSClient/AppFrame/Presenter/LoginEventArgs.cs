@@ -1,4 +1,5 @@
-﻿using System.Web.UI.WebControls;
+﻿using System;
+using System.Web.UI.WebControls;
 using AppFrame.Common;
 using AppFrame.Model;
 
@@ -38,6 +39,8 @@ namespace AppFrame.Presenter
         private bool isValid;
         public string Barcode { get; set; }
         public string ConfirmType { get; set;}
+
+        public string EmployeeBarcode { get; set; }
     }
     
 }

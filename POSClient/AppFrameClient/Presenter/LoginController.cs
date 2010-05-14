@@ -29,6 +29,24 @@ namespace AppFrame.Presenter
                 mView.LoginEvent +=new EventHandler<LoginEventArgs>(mView_LoginEvent);
                 mView.ConfirmLoginEvent += new EventHandler<LoginEventArgs>(mView_ConfirmLoginEvent);
                 mView.ConfirmEmployeeIdEvent += new EventHandler<LoginEventArgs>(mView_ConfirmEmployeeIdEvent);
+                mView.ConfirmJustEmployeeIdEvent += new EventHandler<LoginEventArgs>(mView_ConfirmJustEmployeeIdEvent);
+            }
+        }
+
+        void mView_ConfirmJustEmployeeIdEvent(object sender, LoginEventArgs e)
+        {
+            //EmployeePK employeePk = new EmployeePK { DepartmentId = 0,EmployeeId = e.EmployeeId};
+            ObjectCriteria criteria = new ObjectCriteria();
+            criteria.AddEqCriteria("Barcode", e.EmployeeBarcode);
+            IList list = EmployeeDetailLogic.FindAll(criteria);
+            if(list!=null && list.Count > 0)
+            {
+                e.HasErrors = false;
+                e.EmployeeId = (list[0] as EmployeeInfo).EmployeePK.EmployeeId;
+            }
+            else
+            {
+                e.HasErrors = true;
             }
         }
 
@@ -145,6 +163,7 @@ namespace AppFrame.Presenter
             set { loginLogic = value; }
         }
 
+        public IEmployeeDetailLogic EmployeeDetailLogic { get; set; }
 
         #endregion
         

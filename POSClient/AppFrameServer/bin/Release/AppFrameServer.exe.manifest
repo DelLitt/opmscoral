@@ -74,14 +74,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrame.dll" size="646656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AppFrame.dll" size="647168">
       <assemblyIdentity name="AppFrame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>5p1p3rG7FIpvDbxhuxh+VA5vEIM=</dsig:DigestValue>
+        <dsig:DigestValue>ykkSZRzlukSALRHlBiyj28cJCvI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -93,7 +93,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>l+6GgrnKmf2JBRL9c1FJqwUqWsQ=</dsig:DigestValue>
+        <dsig:DigestValue>oFKhhYGsq8iWxzxqy/mUSRLjCKM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

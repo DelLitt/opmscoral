@@ -80,7 +80,7 @@ namespace AppFrameClient.View.SalePoints
             EventUtility.fireEvent(SaveEmployeeEvent,this,eventArgs);
             if(!eventArgs.HasErrors)
             {
-                MessageBox.Show("Lưu nhân viên thành công");
+                
             }
             if(Status == ViewStatus.OPENDIALOG)
             {

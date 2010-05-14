@@ -13,5 +13,6 @@ namespace AppFrame.View
         event EventHandler<T> LoginEvent;
         event EventHandler<T> ConfirmLoginEvent;
         event EventHandler<T> ConfirmEmployeeIdEvent;
+        event EventHandler<T> ConfirmJustEmployeeIdEvent;
     }
 }
