@@ -66,11 +66,12 @@ namespace AppFrameClient.View
 
             LoginEventArgs loginEventArgs = new LoginEventArgs();
             loginEventArgs.EmployeeBarcode = txtEmployeeId.Text.Trim();
-            if (LoginEvent != null)
+            if (ConfirmJustEmployeeIdEvent != null)
             {
                 EventUtility.fireEvent(ConfirmJustEmployeeIdEvent, this, loginEventArgs);
                 if (!loginEventArgs.HasErrors)
                 {
+                    IsConfirmed = true;
                     GlobalCache.Instance().Session["EmployeeId"] = loginEventArgs.EmployeeId;
                 }
                 ReturnResult();

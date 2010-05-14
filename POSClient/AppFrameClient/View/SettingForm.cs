@@ -53,7 +53,13 @@ namespace AppFrameClient.View
             }
             else
             {
+                               
                 grpSubStock.Visible = false;
+                if(ClientSetting.IsClient())
+                {
+                    if (ClientSetting.ConfirmByEmployeeId) chkCheckingById.Checked = true;
+                    else chkCheckingById.Checked = false;
+                }
             }
 
             chkNegativeExport.Checked = ClientSetting.NegativeExport;
@@ -99,7 +105,10 @@ namespace AppFrameClient.View
             }
             else
             {
-                
+                if(ClientSetting.IsClient())
+                {
+                    ClientSetting.ConfirmByEmployeeId = chkCheckingById.Checked;
+                }
             }
             ClientSetting.NegativeSelling = chkNegativeSelling.Checked;
             ClientSetting.NegativeExport = chkNegativeExport.Checked;

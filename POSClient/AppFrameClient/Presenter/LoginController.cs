@@ -48,6 +48,7 @@ namespace AppFrame.Presenter
             {
                 e.HasErrors = true;
             }
+            
         }
 
         void mView_ConfirmEmployeeIdEvent(object sender, LoginEventArgs e)

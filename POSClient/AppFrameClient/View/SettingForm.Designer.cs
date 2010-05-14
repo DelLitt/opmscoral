@@ -67,6 +67,8 @@
             this.departmentTableAdapter = new AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter();
             this.grpSync = new System.Windows.Forms.GroupBox();
             this.grpPrinting = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboBarcodeType = new System.Windows.Forms.ComboBox();
             this.grpSubStock = new System.Windows.Forms.GroupBox();
             this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
             this.rdoLogin = new System.Windows.Forms.RadioButton();
@@ -79,8 +81,7 @@
             this.chkImportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkExportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkNegativeSelling = new System.Windows.Forms.CheckBox();
-            this.cboBarcodeType = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.chkCheckingById = new System.Windows.Forms.CheckBox();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -382,6 +383,24 @@
             this.grpPrinting.TabStop = false;
             this.grpPrinting.Text = "In ấn";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(342, 15);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 15);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Loại mã vạch:";
+            // 
+            // cboBarcodeType
+            // 
+            this.cboBarcodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBarcodeType.FormattingEnabled = true;
+            this.cboBarcodeType.Location = new System.Drawing.Point(431, 12);
+            this.cboBarcodeType.Name = "cboBarcodeType";
+            this.cboBarcodeType.Size = new System.Drawing.Size(150, 21);
+            this.cboBarcodeType.TabIndex = 4;
+            // 
             // grpSubStock
             // 
             this.grpSubStock.Controls.Add(this.rdoEmployeeId);
@@ -462,6 +481,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkCheckingById);
             this.groupBox1.Controls.Add(this.chkNegativeExport);
             this.groupBox1.Controls.Add(this.chkImportConfirmation);
             this.groupBox1.Controls.Add(this.chkExportConfirmation);
@@ -513,23 +533,15 @@
             this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
             this.chkNegativeSelling.UseVisualStyleBackColor = true;
             // 
-            // cboBarcodeType
+            // chkCheckingById
             // 
-            this.cboBarcodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBarcodeType.FormattingEnabled = true;
-            this.cboBarcodeType.Location = new System.Drawing.Point(431, 12);
-            this.cboBarcodeType.Name = "cboBarcodeType";
-            this.cboBarcodeType.Size = new System.Drawing.Size(150, 21);
-            this.cboBarcodeType.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(342, 15);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 15);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Loại mã vạch:";
+            this.chkCheckingById.AutoSize = true;
+            this.chkCheckingById.Location = new System.Drawing.Point(6, 115);
+            this.chkCheckingById.Name = "chkCheckingById";
+            this.chkCheckingById.Size = new System.Drawing.Size(134, 19);
+            this.chkCheckingById.TabIndex = 4;
+            this.chkCheckingById.Text = "Xác nhận nhân viên";
+            this.chkCheckingById.UseVisualStyleBackColor = true;
             // 
             // SettingForm
             // 
@@ -619,5 +631,6 @@
         private System.Windows.Forms.CheckBox chkNegativeExport;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboBarcodeType;
+        private System.Windows.Forms.CheckBox chkCheckingById;
     }
 }

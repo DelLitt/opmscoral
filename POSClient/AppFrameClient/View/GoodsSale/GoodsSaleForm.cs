@@ -1291,7 +1291,7 @@ namespace AppFrameClient.View.GoodsSale
 
         private void QuickSaveOrderShortcut_Pressed(object sender, EventArgs e)
         {
-            txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
+            txtPayment.Text = txtTotalAmount.Text;
             btnPrint_Click(null,e);
         }
 
