@@ -107,7 +107,7 @@ namespace BonSoChinConvert
                 Defaultsortfield = "lastpost",
                 Defaultsortorder = "desc",
                 Threadcount = 0,
-                Options = 221127,
+                Options = 86017,
             };
             PopulateUShort(vForum);
             short vForumId = (short) (maxVForumId + 1);
