@@ -86,10 +86,10 @@ namespace BonSoChinConvert
             var vPostId = maxPostId;
             VBBContext.Forum vForum = new VBBContext.Forum
             {
-                Title = "Article1",
-                Titleclean = "Article1",
-                Description = "Article1",
-                Descriptionclean = "Article1",
+                Title = "Article",
+                Titleclean = "Article",
+                Description = "Article",
+                Descriptionclean = "Article",
                 Displayorder = 1,
                 // replycount
                 Replycount = 0,
@@ -228,9 +228,10 @@ namespace BonSoChinConvert
                     vForum.Lastthreadid = vThreadId;
 
                     vSubForum.Threadcount++;
-                    vForum.Replycount ++;
-                    vSubForum.Replycount ++;
+                    vSubForum.Replycount++;
+                    vForum.Replycount++;
                     vThread.Replycount = 0;
+
 
                     Threadview vThreadview = new Threadview();
                     vThreadview.Threadid = vThreadId;
