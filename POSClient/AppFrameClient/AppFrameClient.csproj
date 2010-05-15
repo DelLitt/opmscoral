@@ -1815,6 +1815,8 @@
     <Content Include="Resources\black folder documents.png" />
     <Content Include="Resources\box2.png" />
     <Content Include="Resources\Calender.png" />
+    <None Include="Resources\CherriLogo.bmp" />
+    <None Include="Resources\CHERRI.png" />
     <Content Include="Resources\classic folder documents.png" />
     <Content Include="Resources\Close Folder.png" />
     <Content Include="Resources\Close.png" />

@@ -80,7 +80,7 @@ namespace AppFrameClient.View.SalePoints
             EventUtility.fireEvent(SaveEmployeeEvent,this,eventArgs);
             if(!eventArgs.HasErrors)
             {
-                
+                btnReset_Click(null, null);
             }
             if(Status == ViewStatus.OPENDIALOG)
             {

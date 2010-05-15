@@ -203,6 +203,9 @@ namespace AppFrameClient.View.SalePoints
                     // draw title string
 
                     // calculate scale for title
+                    string lastName = employeeName.Substring(employeeName.LastIndexOf(" "));
+                    string firstName = employeeName.Substring(0, employeeName.IndexOf(" "));
+                    employeeName = (firstName + " " +lastName).Trim();
                     var titleStrSize = e.Graphics.MeasureString(employeeName + "0000", new Font("Arial", 10));
                     float currTitleSize = new Font("Arial", 10).Size;
                     float scaledTitleSize = (220*currTitleSize)/titleStrSize.Width;
@@ -210,7 +213,7 @@ namespace AppFrameClient.View.SalePoints
                     
                     if (employeeName.Length < 17)
                     {
-                        _empFont = new Font("Arial Black", 10);
+                        _empFont = new Font("Arial Black", 11);
                     }
                     else
                     {
@@ -218,12 +221,12 @@ namespace AppFrameClient.View.SalePoints
                     }
 
                     Font _titleFont = new Font("Arial", 8);
-                    string titleName = "QUẢN LÝ";
+                    string titleName = "CÔNG TY TNHH NGUYỄN HOÀNG";
                     var barCodeSize = e.Graphics.MeasureString(code, _titleFont);
                     var empCodeSize = e.Graphics.MeasureString(employeeName, _empFont);
                     var titleSize = e.Graphics.MeasureString(titleName, _titleFont);
                     Bitmap logoAChay = new Bitmap(AppFrameClient.Properties.Resources.AChayLogo);
-
+                    Bitmap logoCherri = new Bitmap(Properties.Resources.CHERRI);
                     
                     Rectangle boundRec = new Rectangle((i%2)*(int) (3.6*100)+ 50 , (j%3)*(int)(2.3*100)+ 50 , (int) (3.45*100), (int) (2.15*100));
                     e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), boundRec);
@@ -231,19 +234,20 @@ namespace AppFrameClient.View.SalePoints
                     
                     e.Graphics.DrawImage(bitmapBarcode,
                                          new Rectangle((i % 2) * 360 + (int)XCentered((float)(1.1 * 100), 228) + 170,
-                                                       (int)((j%3)*230 + 25) + 190 , (int)(1.1 * 100),(int)(0.4 * 100)));
+                                                       (int)((j%3)*230 + 25) + 170 , (int)(1.1 * 100),(int)(0.4 * 100)));
                     System.Drawing.Rectangle rc = new System.Drawing.Rectangle((i % 3) * 135, 50, (int)(1.4 * 100), (int)(0.4 * 100));
                     
-                    e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 70 + 160, ((j % 3) * 230) + 52);
+                    e.Graphics.DrawImage(logoAChay, (i % 2) * 360 + 120 + 160, ((j % 3) * 230) + 52);
+                    e.Graphics.DrawImage(logoCherri, (i % 2) * 360 + 20 + 160, ((j % 3) * 230) + 52);
                     e.Graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), (i % 2) * (int)(3.6 * 100) + 52, (j % 3) * (int)(2.3 * 100) + 52,
                                                 (int)(1.18 * 100), (int)(1.97 * 100));
                     e.Graphics.DrawString(employeeName, _empFont, new SolidBrush(Color.Black),
                         (i % 2) * 360 + 170 + XCentered(empCodeSize.Width, 228) ,
-                        (float)((j % 3) * 230 + 60 + _titleFont.Height + 70));
+                        (float)((j % 3) * 230  + _titleFont.Height + 130));
 
-                    e.Graphics.DrawString(titleName, _titleFont, new SolidBrush(Color.Black),
+                    /*e.Graphics.DrawString(titleName, _titleFont, new SolidBrush(Color.Black),
                         (i % 2) * 360 + 170 + XCentered(titleSize.Width, 228),
-                        (float)((j % 3) * 230 + 60 + _titleFont.Height + 90));
+                        (float)((j % 3) * 230  + _titleFont.Height + 40));*/
 
 
 

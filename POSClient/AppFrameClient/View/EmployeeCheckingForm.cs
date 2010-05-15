@@ -154,6 +154,18 @@ namespace AppFrameClient.View
             txtEmployeeId.Focus();
         }
 
+        private void txtEmployeeId_TextChanged(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtEmployeeId.Text))
+            {
+                if (txtEmployeeId.Text.Length == 8)
+                {
+                    button1_Click(null,e);
+                }
+            }
+        }
+
         
+
     }
 }

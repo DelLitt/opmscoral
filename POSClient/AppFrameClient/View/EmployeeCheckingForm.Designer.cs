@@ -51,7 +51,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 14);
+            this.label1.Size = new System.Drawing.Size(89, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Mã nhân viên:";
             // 
@@ -60,7 +60,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(17, 122);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblStatus.Size = new System.Drawing.Size(0, 15);
             this.lblStatus.TabIndex = 5;
             // 
             // txtEmployeeId
@@ -69,11 +69,12 @@
             this.txtEmployeeId.Location = new System.Drawing.Point(12, 40);
             this.txtEmployeeId.Name = "txtEmployeeId";
             this.txtEmployeeId.PasswordChar = '*';
-            this.txtEmployeeId.Size = new System.Drawing.Size(312, 36);
+            this.txtEmployeeId.Size = new System.Drawing.Size(312, 38);
             this.txtEmployeeId.TabIndex = 6;
             this.txtEmployeeId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmployeeId_KeyDown);
             this.txtEmployeeId.Leave += new System.EventHandler(this.txtEmployeeId_Leave);
             this.txtEmployeeId.Enter += new System.EventHandler(this.txtEmployeeId_Enter);
+            this.txtEmployeeId.TextChanged += new System.EventHandler(this.txtEmployeeId_TextChanged);
             // 
             // EmployeeCheckingForm
             // 
