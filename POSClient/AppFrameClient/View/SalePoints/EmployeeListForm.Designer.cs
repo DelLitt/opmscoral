@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,8 +88,9 @@
             this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmployee.Size = new System.Drawing.Size(807, 407);
             this.dgvEmployee.TabIndex = 0;
+            this.dgvEmployee.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvEmployee_MouseDoubleClick);
             this.dgvEmployee.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellContentDoubleClick);
-            this.dgvEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellContentClick);
+            this.dgvEmployee.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvEmployee_KeyDown);
             // 
             // Column1
             // 
@@ -109,8 +110,8 @@
             // startDateDataGridViewTextBoxColumn
             // 
             this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.startDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            this.startDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.startDateDataGridViewTextBoxColumn.HeaderText = "Ngày bắt đầu";
             this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
             this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
@@ -268,9 +269,14 @@
             this.Name = "EmployeeListForm";
             this.Text = "EmployeeListForm";
             this.Load += new System.EventHandler(this.EmployeeListForm_Load);
+            this.Controls.SetChildIndex(this.dgvEmployee, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.button3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsEmployee)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

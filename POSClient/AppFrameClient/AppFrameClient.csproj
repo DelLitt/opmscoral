@@ -1809,6 +1809,7 @@
     <EmbeddedResource Include="SubStockToolStripPermissions.xml" />
     <EmbeddedResource Include="ServerToolStripPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
+    <None Include="Resources\achaylogo.png" />
     <Content Include="Resources\Add.png" />
     <Content Include="Resources\Address Book.png" />
     <Content Include="Resources\Alert.png" />
@@ -1884,7 +1885,6 @@
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.DepartmentStockOutView.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockOutDetailView.datasource" />
     <None Include="Properties\DataSources\AppFrameClient.ViewModel.StockOutView.datasource" />
-    <None Include="Resources\AChayLogo.PNG" />
     <None Include="MasterDB.xsc">
       <DependentUpon>MasterDB.xsd</DependentUpon>
     </None>
