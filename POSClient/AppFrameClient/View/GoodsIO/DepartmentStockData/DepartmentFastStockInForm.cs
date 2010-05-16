@@ -419,7 +419,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             eventArgs.DepartmentStockIn = deptSO;
             eventArgs.Department = (Department)cboDepartment.SelectedItem;
             eventArgs.DepartmentStockList = departmentStockList;
-            if(rdoFastStockIn.Checked)
+            
+            /*if(rdoFastStockIn.Checked)
             {
                 try
                 {
@@ -440,17 +441,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
             else
-            {
+            {*/
                 EventUtility.fireEvent(SaveStockInBackEvent, this, eventArgs);
-            }
+            /*}*/
             
             if (eventArgs.EventResult != null)
             {
-                if (!rdoFastStockIn.Checked)
-                {
+                /*if (!rdoFastStockIn.Checked)
+                {*/
                     lblMessage.ForeColor = Color.Blue;
                     lblMessage.Text = "Lưu thành công !";
-                }
+                /*}*/
                 deptSO = new DepartmentStockIn();
                 deptSODetailList.Clear();
 //                    txtDexcription.Text = "";

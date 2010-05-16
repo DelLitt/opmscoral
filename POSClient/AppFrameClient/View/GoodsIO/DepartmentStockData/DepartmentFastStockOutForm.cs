@@ -696,10 +696,11 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 ShowMessage("Đang truyền thông tin .... ");
             }
+
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
-            if(rdoFastStockOut.Checked)
+
+            /*if(rdoFastStockOut.Checked)
             {
-                
                 try
                 {
                     if(eventArgs.EventResult!=null)
@@ -722,9 +723,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtSumValue.Text = "";
                     return;
                 }
-            }
-            if(rdoStockOut.Checked)
-            {
+            }*/
+            /*if(rdoStockOut.Checked || rd)
+            {*/
                 if (eventArgs.DepartmentStockOut.DepartmentStockOutPK == null || eventArgs.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
                 {
                     ShowError(lblInformation, "Có lỗi phát sinh làm chương trình không in được. Liên hệ nhà quản trị.");
@@ -736,13 +737,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     DoPrinting(eventArgs.DepartmentStockOut);
                 }
 
-            }
+            /*}*/
             if (eventArgs.EventResult != null)
             {
-                if(!rdoFastStockOut.Checked)
-                {
+                /*if(!rdoFastStockOut.Checked)
+                {*/
                     lblInformation.Text = "Lưu thành công";    
-                }
+                /*}*/
                 
                 if (isNeedClearData)
                 {
