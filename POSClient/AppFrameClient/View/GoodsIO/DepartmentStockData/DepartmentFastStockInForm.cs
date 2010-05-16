@@ -335,6 +335,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+            
             // first remove all blank row
             int count = 0;
             int length = deptSODetailList.Count;
@@ -470,6 +471,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     lblMessage.Text = "Đã yêu cầu cửa hàng trả hàng ... ";
                     return;
                 }
+
                 lblMessage.ForeColor = Color.Red;
                 lblMessage.Text = "Có lỗi khi lưu !";
             }

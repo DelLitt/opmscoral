@@ -572,6 +572,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 return;
             }
+
             // first remove all blank row
             int count = 0;
             int length = deptSODetailList.Count;
@@ -596,7 +597,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             int line = 1;
             foreach (DepartmentStockOutDetail detail in deptSODetailList)
             {
-                
                 foreach (DepartmentStock stock in departmentStockList)
                 {
                     if (detail.Product.ProductId.Equals(stock.Product.ProductId))
@@ -633,6 +633,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                         }
                     }
                 }
+
                 if ((detail.DefectStatus.DefectStatusId == 4 && detail.ErrorQuantity == 0)
                     || (detail.DefectStatus.DefectStatusId == 6 && detail.DamageQuantity + detail.GoodQuantity + detail.ErrorQuantity == 0)
                     || (detail.DefectStatus.DefectStatusId == 7 && detail.GoodQuantity == 0)) 
