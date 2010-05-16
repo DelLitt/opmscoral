@@ -22,7 +22,10 @@ namespace NMG.Core
                     new TemplateArgument("FieldNames",viewModelGenerateArgument.FieldNames),
                     new TemplateArgument("MethodNames",viewModelGenerateArgument.MethodNames),
                     new TemplateArgument("DetailList",viewModelGenerateArgument.DetailList),
-                    new TemplateArgument("ListNames",viewModelGenerateArgument.ListName)
+                    new TemplateArgument("ListNames",viewModelGenerateArgument.ListName),
+                    new TemplateArgument("BoolList",viewModelGenerateArgument.BoolList),
+                    new TemplateArgument("DateList",viewModelGenerateArgument.DateList),
+
                 };
             //Allows us to show the generated class
             var transformer = new TextTransformer();

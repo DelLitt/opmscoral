@@ -12,6 +12,10 @@
 <#@ property name="DetailList" type="System.Collections.ArrayList" 
              processor="PropertyProcessor" #>
 <#@ property name="ListNames" type="System.Collections.ArrayList" 
+             processor="PropertyProcessor" #>
+<#@ property name="BoolList" type="System.Collections.ArrayList" 
+             processor="PropertyProcessor" #>
+<#@ property name="DateList" type="System.Collections.ArrayList" 
              processor="PropertyProcessor" #>			 
 
 using System;
@@ -70,6 +74,60 @@ namespace <#= NamespaceName #>
 		#region List use to fetch object for view
 		<# 
 			foreach(string listName in ListNames)
+			{
+				char lower = char.ToLower(listName[0]);
+            	string listLower = listName.Remove(0, 1);
+            	listLower = lower + listLower;
+            
+		#>        
+        private IList _<#=listLower  #>;
+        public IList <#= listName #>
+        {
+            get
+            {
+                return _<#=listLower  #>;
+            }
+            set
+            {
+                _<#=listLower  #> = value;
+                NotifyOfPropertyChange(() => <#= listName #>);
+            }
+        }
+		<# 
+			}
+		#>
+		#endregion
+		
+		#region List of boolean object
+		<# 
+			foreach(string listName in BoolList)
+			{
+				char lower = char.ToLower(listName[0]);
+            	string listLower = listName.Remove(0, 1);
+            	listLower = lower + listLower;
+            
+		#>        
+        private IList _<#=listLower  #>;
+        public IList <#= listName #>
+        {
+            get
+            {
+                return _<#=listLower  #>;
+            }
+            set
+            {
+                _<#=listLower  #> = value;
+                NotifyOfPropertyChange(() => <#= listName #>);
+            }
+        }
+		<# 
+			}
+		#>
+		#endregion
+		
+		#region List of date object
+		<# 
+			foreach(string listName in DateList)
 			{
 				char lower = char.ToLower(listName[0]);
             	string listLower = listName.Remove(0, 1);

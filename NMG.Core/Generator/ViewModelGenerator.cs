@@ -60,32 +60,38 @@ namespace NMG.Core.Generator
             }*/
 
             var methodNames = from button in xDocument.Descendants()
-                              where button.Name.LocalName.Equals("Button")
+                              where button.Name.LocalName.EndsWith("Button")
                               select (string)button.Attribute("Name").Value;
 
             var fieldNames = from textBox in xDocument.Descendants()
-                             where textBox.Name.LocalName.Equals("TextBox")
+                             where textBox.Name.LocalName.EndsWith("TextBox")
                              select (string)textBox.Attribute("Name").Value;
             var listNames = from comboBox in xDocument.Descendants()
-                            where comboBox.Name.LocalName.Equals("ComboBox")
+                            where comboBox.Name.LocalName.EndsWith("ComboBox")
                             select (string)comboBox.Attribute("Name").Value;
             
             ArrayList genListNames = ConvertToArrayList(listNames);
             listNames = from comboBox in xDocument.Descendants()
-                            where comboBox.Name.LocalName.Equals("ListBox")
+                        where comboBox.Name.LocalName.EndsWith("ListBox")
                             select (string)comboBox.Attribute("Name").Value;
             genListNames.AddRange(ConvertToArrayList(listNames));
             listNames = from comboBox in xDocument.Descendants()
-                            where comboBox.Name.LocalName.Equals("ListView")
+                        where comboBox.Name.LocalName.EndsWith("ListView")
                             select (string)comboBox.Attribute("Name").Value;
             
             genListNames.AddRange(ConvertToArrayList(listNames));
 
             var detailList = from dataGrid in xDocument.Descendants()
-                             where dataGrid.Name.LocalName.Equals("DataGrid")
+                             where dataGrid.Name.LocalName.EndsWith("DataGrid")
                              select (string)dataGrid.Attribute("Name").Value;
 
+            var boolNames = from checkBox in xDocument.Descendants()
+                            where checkBox.Name.LocalName.EndsWith("CheckBox")
+                            select (string) checkBox.Attribute("Name").Value;
 
+            var dateNames = from dateTime in xDocument.Descendants()
+                            where dateTime.Name.LocalName.EndsWith("DatePicker")
+                            select (string) dateTime.Attribute("Name").Value;
 
             string interfaceName = "I" + className;
             string namespaceName = viewPath.Substring(viewPath.IndexOf(ViewModelPreferences.ViewModelAssembly));
@@ -109,7 +115,9 @@ namespace NMG.Core.Generator
                                                          ConvertToArrayList(fieldNames),
                                                          ConvertToArrayList(methodNames), 
                                                          ConvertToArrayList(detailList),
-                                                         genListNames
+                                                         genListNames,
+                                                         ConvertToArrayList(boolNames),
+                                                         ConvertToArrayList(dateNames)
                                                      );
             source = ViewModelClassTemplate.Transform(classArgument);
             WriteToFile(className,source,saveViewModelPath);
