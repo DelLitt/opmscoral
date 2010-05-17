@@ -34,8 +34,8 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
-            <DatePicker HorizontalAlignment="Left" Margin="128.75,6,0,0" Name="FromDate" Width="203"  Height="38.885" VerticalAlignment="Top" />
-            <DatePicker Margin="404.5,6,229.5,0" Name="ToDate" Height="37.774" VerticalAlignment="Top" />
+            <DatePicker HorizontalAlignment="Left" Margin="128.75,6,0,0" Name="FromDate" Width="203"  Height="38.885" VerticalAlignment="Top" FontSize="16" />
+            <DatePicker Margin="404.5,6,229.5,0" Name="ToDate" Height="37.774" VerticalAlignment="Top" FontSize="16" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,17,0,0" Name="label2" VerticalAlignment="Top" Width="31.25">TỪ</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,16,0,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="61">ĐẾN</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="31,60.419,0,0" Name="label4" VerticalAlignment="Top" Width="80">CỬA HÀNG</Label>

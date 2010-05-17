@@ -628,6 +628,9 @@
     <Compile Include="Views\Task\TaskMainView.xaml.cs">
       <DependentUpon>TaskMainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tool\SystemConfigView.xaml.cs">
+      <DependentUpon>SystemConfigView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tool\ToolMainView.xaml.cs">
       <DependentUpon>ToolMainView.xaml</DependentUpon>
     </Compile>
@@ -950,6 +953,10 @@
     <Page Include="Views\Task\TaskMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Tool\SystemConfigView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

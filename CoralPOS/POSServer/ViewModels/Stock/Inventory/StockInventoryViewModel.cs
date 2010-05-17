@@ -11,7 +11,6 @@ using System.Windows;
 using AppFrame.Base;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
@@ -76,17 +75,17 @@ namespace POSServer.ViewModels.Stock.Inventory
 		
 		#region List use to fetch object for view
 		        
-        private IList _department;
-        public IList Department
+        private IList _departments;
+        public IList Departments
         {
             get
             {
-                return _department;
+                return _departments;
             }
             set
             {
-                _department = value;
-                NotifyOfPropertyChange(() => Department);
+                _departments = value;
+                NotifyOfPropertyChange(() => Departments);
             }
         }
 		        
@@ -103,6 +102,26 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => ProductType);
             }
         }
+		        
+        private IList _productMasterList;
+        public IList ProductMasterList
+        {
+            get
+            {
+                return _productMasterList;
+            }
+            set
+            {
+                _productMasterList = value;
+                NotifyOfPropertyChange(() => ProductMasterList);
+            }
+        }
+				#endregion
+		
+		#region List of boolean object
+				#endregion
+		
+		#region List of date object
 				#endregion
 		
 		#region List which just using in Data Grid

@@ -11,7 +11,6 @@ using System.Windows;
 using AppFrame.Base;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
@@ -45,6 +44,40 @@ namespace POSServer.ViewModels.Stock.StockIn
             {
                 _category = value;
                 NotifyOfPropertyChange(() => Category);
+            }
+        }
+				#endregion
+		
+		#region List of boolean object
+				#endregion
+		
+		#region List of date object
+		        
+        private IList _fromDate;
+        public IList FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                NotifyOfPropertyChange(() => FromDate);
+            }
+        }
+		        
+        private IList _toDate;
+        public IList ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                NotifyOfPropertyChange(() => ToDate);
             }
         }
 				#endregion

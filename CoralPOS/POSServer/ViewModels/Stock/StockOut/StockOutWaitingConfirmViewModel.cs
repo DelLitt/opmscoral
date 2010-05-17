@@ -11,7 +11,6 @@ using System.Windows;
 using AppFrame.Base;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 
@@ -63,19 +62,53 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 				#endregion
 		
-		#region List which just using in Data Grid
+		#region List of boolean object
+				#endregion
+		
+		#region List of date object
 		        
-        private IList _stockInList;
-        public IList StockInList
+        private IList _fromDate;
+        public IList FromDate
         {
             get
             {
-                return _stockInList;
+                return _fromDate;
             }
             set
             {
-                _stockInList = value;
-                NotifyOfPropertyChange(() => StockInList);
+                _fromDate = value;
+                NotifyOfPropertyChange(() => FromDate);
+            }
+        }
+		        
+        private IList _toDate;
+        public IList ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                NotifyOfPropertyChange(() => ToDate);
+            }
+        }
+				#endregion
+		
+		#region List which just using in Data Grid
+		        
+        private IList _stockInDetailList;
+        public IList StockInDetailList
+        {
+            get
+            {
+                return _stockInDetailList;
+            }
+            set
+            {
+                _stockInDetailList = value;
+                NotifyOfPropertyChange(() => StockInDetailList);
             }
         }
 		        

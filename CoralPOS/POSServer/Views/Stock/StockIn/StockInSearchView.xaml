@@ -31,8 +31,8 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button HorizontalAlignment="Right" Margin="0,6,6,0" Name="Search" Width="205.535" FontSize="14" Height="82.419" VerticalAlignment="Top">TÌM KIẾM</Button>
-            <DatePicker HorizontalAlignment="Left" Margin="128.75,94.435,0,71.104" Name="FromDate" Width="203" IsEnabled="{Binding DatePick}" SelectedDate="{Binding FromDate}" FirstDayOfWeek="Monday" />
-            <DatePicker Margin="0,94.435,229.5,72.215" Name="ToDate" IsEnabled="{Binding DatePick}" HorizontalAlignment="Right" Width="203" SelectedDate="{Binding ToDate}" FirstDayOfWeek="Monday" SelectedDateFormat="Short" />
+            <DatePicker HorizontalAlignment="Left" Margin="128.75,94.435,0,71.104" Name="FromDate" Width="203" IsEnabled="{Binding DatePick}" SelectedDate="{Binding FromDate}" FirstDayOfWeek="Monday" FontSize="16" />
+            <DatePicker Margin="0,94.435,229.5,72.215" Name="ToDate" IsEnabled="{Binding DatePick}" HorizontalAlignment="Right" Width="203" SelectedDate="{Binding ToDate}" FirstDayOfWeek="Monday" SelectedDateFormat="Short" FontSize="16" />
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="79.75,0,0,71.104" Name="label2" VerticalAlignment="Bottom" Width="31.25">TỪ</Label>
             <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,16.583,0,0" Name="label3" VerticalAlignment="Top" Width="105">MÃ HÀNG</Label>
             <Label FontSize="14" Height="28" HorizontalContentAlignment="Right" Margin="337.744,0,0,72.215" Name="label1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="61">ĐẾN</Label>
