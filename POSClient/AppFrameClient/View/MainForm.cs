@@ -1376,6 +1376,11 @@ namespace AppFrame.View
         {
             new DailyMatrixPurchaseOrderReportViewer().Show();
         }
+
+        private void mnuEmployeePurchaseOrder_Click(object sender, EventArgs e)
+        {
+            new EmployeePurchaseOrderReportViewer().Show();
+        }
         
     }
 }
