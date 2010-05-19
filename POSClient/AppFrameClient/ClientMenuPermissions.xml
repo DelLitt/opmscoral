@@ -88,7 +88,8 @@
     <menuitem name="mnuDeptGoodsPurchaseOrderPeriodReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuDeptPurchaseOrderReport" role="Administrator,Manager,Supervisor" />
     <menuitem name="mnuPurchaseOrderStats" role="Administrator,Manager,Supervisor" />
-    
+    <menuitem name="mnuDeptEmployeeOrder" role="Administrator,Manager,Supervisor" />    
+
   </menu>
   <menu name="mnuReport" role="NotImplement">
     <menuitem name="mnuGoodsSaleDepartmentReport" role="Administrator,Supervisor" />
@@ -114,7 +115,7 @@
     <menuitem name="mnuStockEvaluationReport" role="NotImplement" />
     <menuitem name="mnuProductMasterStatistic" role="NotImplement" />
     <menuitem name="mnuStockRemainsReport" role="NotImplement" />
-    <menuitem name="mnuEmployeePurchaseOrder" role="NotImplement" />
+    <menuitem name="mnuEmployeePurchaseOrder" role="Administrator,Manager,Supervisor" />
     
 
   </menu>

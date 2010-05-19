@@ -501,6 +501,11 @@ namespace AppFrameClient.View.GoodsSale
                 {
                     GoodsSaleController.PurchaseOrder.CreateId = employeeId;
                     GoodsSaleController.PurchaseOrder.UpdateId = employeeId;
+                    foreach (PurchaseOrderDetail purchaseOrderDetail in GoodsSaleController.PurchaseOrder.PurchaseOrderDetails)
+                    {
+                        purchaseOrderDetail.CreateId = employeeId;
+                        purchaseOrderDetail.UpdateId = employeeId;
+                    }
                 }
             }
             GoodsSaleEventArgs eventArgs = new GoodsSaleEventArgs();
@@ -1285,14 +1290,15 @@ namespace AppFrameClient.View.GoodsSale
 
         private void SaveOrderShortcut_Pressed(object sender, EventArgs e)
         {
-            txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
-            btnPrint_Click(null, e);
+            //txtPayment.Text = (0 - Int64.Parse(txtCharge.Text)).ToString();
+            txtPayment.Text = txtTotalAmount.Text;
+            btnPrint_Click(sender, e);
         }
 
         private void QuickSaveOrderShortcut_Pressed(object sender, EventArgs e)
         {
             txtPayment.Text = txtTotalAmount.Text;
-            btnPrint_Click(null,e);
+            btnPrint_Click(sender, e);
         }
 
         private void FindRetOrder_Pressed(object sender, EventArgs e)

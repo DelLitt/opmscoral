@@ -1381,6 +1381,11 @@ namespace AppFrame.View
         {
             new EmployeePurchaseOrderReportViewer().Show();
         }
+
+        private void mnuDeptEmployeeOrder_Click(object sender, EventArgs e)
+        {
+            new EmployeePurchaseOrderReportViewer().Show();
+        }
         
     }
 }

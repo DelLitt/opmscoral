@@ -112,6 +112,7 @@
             this.mnuGoodsSaleStatisticReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSaleDepartmentReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGoodsSaleDepartmentDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEmployeePurchaseOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMainReturnPOReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAllPurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTotalReport = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,7 +137,6 @@
             this.mnuDeptReStockReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDeptTempStockOutReport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStockRemainsReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEmployeePurchaseOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTool = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSaleOffCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
@@ -217,6 +217,7 @@
             this.crlBackupHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlRestoreHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
             this.crlDeleteHotkey = new AppFrame.Controls.HotKey.SystemHotkey(this.components);
+            this.mnuDeptEmployeeOrder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStripClient.SuspendLayout();
@@ -457,7 +458,8 @@
             this.toolStripMenuItem21,
             this.mnuDeptGoodsPurchaseOrderPeriodReport,
             this.mnuDeptPurchaseOrderReport,
-            this.mnuPurchaseOrderStats});
+            this.mnuPurchaseOrderStats,
+            this.mnuDeptEmployeeOrder});
             this.mnuSale.Name = "mnuSale";
             this.mnuSale.Size = new System.Drawing.Size(79, 23);
             this.mnuSale.Text = "Bán hàng";
@@ -888,6 +890,13 @@
             this.mnuGoodsSaleDepartmentDetail.Text = "Báo cáo doanh số theo chủng loại";
             this.mnuGoodsSaleDepartmentDetail.Click += new System.EventHandler(this.mnuGoodsSaleDepartmentDetail_Click);
             // 
+            // mnuEmployeePurchaseOrder
+            // 
+            this.mnuEmployeePurchaseOrder.Name = "mnuEmployeePurchaseOrder";
+            this.mnuEmployeePurchaseOrder.Size = new System.Drawing.Size(338, 24);
+            this.mnuEmployeePurchaseOrder.Text = "Báo cáo doanh số bán hàng của nhân viên";
+            this.mnuEmployeePurchaseOrder.Click += new System.EventHandler(this.mnuEmployeePurchaseOrder_Click);
+            // 
             // mnuMainReturnPOReport
             // 
             this.mnuMainReturnPOReport.Name = "mnuMainReturnPOReport";
@@ -1044,13 +1053,6 @@
             this.mnuStockRemainsReport.Size = new System.Drawing.Size(338, 24);
             this.mnuStockRemainsReport.Text = "Báo cáo hàng tồn số lượng nhỏ";
             this.mnuStockRemainsReport.Click += new System.EventHandler(this.mnuStockRemainsReport_Click);
-            // 
-            // mnuEmployeePurchaseOrder
-            // 
-            this.mnuEmployeePurchaseOrder.Name = "mnuEmployeePurchaseOrder";
-            this.mnuEmployeePurchaseOrder.Size = new System.Drawing.Size(338, 24);
-            this.mnuEmployeePurchaseOrder.Text = "Báo cáo doanh số bán hàng của nhân viên";
-            this.mnuEmployeePurchaseOrder.Click += new System.EventHandler(this.mnuEmployeePurchaseOrder_Click);
             // 
             // mnuTool
             // 
@@ -1733,6 +1735,13 @@
             this.crlDeleteHotkey.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftC;
             this.crlDeleteHotkey.Pressed += new System.EventHandler(this.crlDeleteHotkey_Pressed);
             // 
+            // mnuDeptEmployeeOrder
+            // 
+            this.mnuDeptEmployeeOrder.Name = "mnuDeptEmployeeOrder";
+            this.mnuDeptEmployeeOrder.Size = new System.Drawing.Size(311, 24);
+            this.mnuDeptEmployeeOrder.Text = "Báo cáo doanh số nhân viên";
+            this.mnuDeptEmployeeOrder.Click += new System.EventHandler(this.mnuDeptEmployeeOrder_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1954,6 +1963,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCreateSyncUSB;
         private System.Windows.Forms.ToolStripMenuItem mnuPurchaseOrderStats;
         private System.Windows.Forms.ToolStripMenuItem mnuEmployeePurchaseOrder;
+        private System.Windows.Forms.ToolStripMenuItem mnuDeptEmployeeOrder;
 
     }
 }
