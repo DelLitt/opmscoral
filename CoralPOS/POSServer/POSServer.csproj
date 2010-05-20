@@ -502,8 +502,10 @@
     <Compile Include="ViewModels\Synchronize\SyncToMainViewModel.cs" />
     <Compile Include="ViewModels\Task\ITaskMainViewModel.cs" />
     <Compile Include="ViewModels\Task\TaskMainViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ISystemConfigViewModel.cs" />
     <Compile Include="ViewModels\Tool\ITemplatePOSViewModel.cs" />
     <Compile Include="ViewModels\Tool\IToolMainViewModel.cs" />
+    <Compile Include="ViewModels\Tool\SystemConfigViewModel.cs" />
     <Compile Include="ViewModels\Tool\ToolMainViewModel.cs" />
     <Compile Include="Views\CircularLoadView.xaml.cs">
       <DependentUpon>CircularLoadView.xaml</DependentUpon>
