@@ -107,8 +107,8 @@ namespace <#= NamespaceName #>
             	listLower = lower + listLower;
             
 		#>        
-        private IList _<#=listLower  #>;
-        public IList <#= listName #>
+        private bool _<#=listLower  #>;
+        public bool <#= listName #>
         {
             get
             {
@@ -134,8 +134,8 @@ namespace <#= NamespaceName #>
             	listLower = lower + listLower;
             
 		#>        
-        private IList _<#=listLower  #>;
-        public IList <#= listName #>
+        private DateTime _<#=listLower  #>;
+        public DateTime <#= listName #>
         {
             get
             {
