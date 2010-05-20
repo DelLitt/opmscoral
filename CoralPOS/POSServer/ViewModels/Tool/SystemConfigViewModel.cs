@@ -117,45 +117,45 @@ namespace POSServer.ViewModels.Tool
 		
 		#region List use to fetch object for view
 		        
-        private IList _billPrinter;
-        public IList BillPrinter
+        private IList _billPrinterList;
+        public IList BillPrinterList
         {
             get
             {
-                return _billPrinter;
+                return _billPrinterList;
             }
             set
             {
-                _billPrinter = value;
-                NotifyOfPropertyChange(() => BillPrinter);
+                _billPrinterList = value;
+                NotifyOfPropertyChange(() => BillPrinterList);
             }
         }
 		        
-        private IList _barcodeType;
-        public IList BarcodeType
+        private IList _barcodeTypeList;
+        public IList BarcodeTypeList
         {
             get
             {
-                return _barcodeType;
+                return _barcodeTypeList;
             }
             set
             {
-                _barcodeType = value;
-                NotifyOfPropertyChange(() => BarcodeType);
+                _barcodeTypeList = value;
+                NotifyOfPropertyChange(() => BarcodeTypeList);
             }
         }
 		        
-        private IList _subStockInvoiceStockOut;
-        public IList SubStockInvoiceStockOut
+        private IList _subStockInvoiceStockOutList;
+        public IList SubStockInvoiceStockOutList
         {
             get
             {
-                return _subStockInvoiceStockOut;
+                return _subStockInvoiceStockOutList;
             }
             set
             {
-                _subStockInvoiceStockOut = value;
-                NotifyOfPropertyChange(() => SubStockInvoiceStockOut);
+                _subStockInvoiceStockOutList = value;
+                NotifyOfPropertyChange(() => SubStockInvoiceStockOutList);
             }
         }
 		        
@@ -176,8 +176,8 @@ namespace POSServer.ViewModels.Tool
 		
 		#region List of boolean object
 		        
-        private IList _negativeSelling;
-        public IList NegativeSelling
+        private bool _negativeSelling;
+        public bool NegativeSelling
         {
             get
             {
@@ -190,8 +190,8 @@ namespace POSServer.ViewModels.Tool
             }
         }
 		        
-        private IList _negativeStockOut;
-        public IList NegativeStockOut
+        private bool _negativeStockOut;
+        public bool NegativeStockOut
         {
             get
             {
@@ -204,8 +204,8 @@ namespace POSServer.ViewModels.Tool
             }
         }
 		        
-        private IList _stockInConfirm;
-        public IList StockInConfirm
+        private bool _stockInConfirm;
+        public bool StockInConfirm
         {
             get
             {
@@ -218,8 +218,8 @@ namespace POSServer.ViewModels.Tool
             }
         }
 		        
-        private IList _stockOutConfirm;
-        public IList StockOutConfirm
+        private bool _stockOutConfirm;
+        public bool StockOutConfirm
         {
             get
             {
@@ -232,8 +232,8 @@ namespace POSServer.ViewModels.Tool
             }
         }
 		        
-        private IList _purchaseOrderConfirm;
-        public IList PurchaseOrderConfirm
+        private bool _purchaseOrderConfirm;
+        public bool PurchaseOrderConfirm
         {
             get
             {
@@ -246,8 +246,8 @@ namespace POSServer.ViewModels.Tool
             }
         }
 		        
-        private IList _subStockEmployeeChecking;
-        public IList SubStockEmployeeChecking
+        private bool _subStockEmployeeChecking;
+        public bool SubStockEmployeeChecking
         {
             get
             {
