@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using EmitMapper.MappingConfiguration;
-
 namespace AppFrame.Mapper
 {
     public class MapperConfig<TSource,TDest> where TSource : class where TDest:class
@@ -21,7 +20,7 @@ namespace AppFrame.Mapper
         {
             Type source = typeof (TSource);
             Type dest = typeof(TSource);
-
+            
             PropertyInfo[] sourceInfos = source.GetProperties(BindingFlags.Public);
             PropertyInfo[] desInfos = source.GetProperties(BindingFlags.Public);
             foreach (PropertyInfo sourceInfo in sourceInfos)
@@ -62,6 +61,17 @@ namespace AppFrame.Mapper
             return this;
         }
 
+        public MapperConfig<TSource, TDest> IgnoreProperty(Expression<Func<TSource,string>> e1, bool ignored)
+        {
+
+            return this;
+        }
+
+        public MapperConfig<TSource, TDest> MapProperty(string e1, bool ignored)
+        {
+            ignoreMaps[e1] = ignored;
+            return this;
+        }
         /// <summary>
         /// 
         /// </summary>
