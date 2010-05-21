@@ -13,7 +13,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Common;
 
 
 namespace POSServer.ViewModels.Tool
@@ -313,7 +313,30 @@ namespace POSServer.ViewModels.Tool
         {
             
         }
-				#endregion
+
+        public override void Initialize()
+        {
+            SystemConfig config = SystemConfig.Instance;
+            bool loadSuccess = config.Load();
+            if(!loadSuccess)
+            {
+                config.CreateDefaultValue();
+            }
+            SyncImportPath = config.SyncImportPath;
+            SyncExportPath = config.SyncExportPath;
+            SyncErrorPath = config.SyncErrorPath;
+            SyncBackupPath = config.SyncBackupPath;
+            SyncSuccessPath = config.SyncSuccessPath;
+            NegativeSelling = config.NegativeSelling;
+            NegativeStockOut = config.NegativeStockOut;
+            DbToolPath = config.DbToolPath;
+            StockInConfirm = config.StockInConfirm;
+            StockOutConfirm = config.StockOutConfirm;
+            SubStockEmployeeChecking = config.SubStockEmployeeChecking;
+            PurchaseOrderConfirm = config.PurchaseOrderConfirm;
+        }
+
+        #endregion
 		
         
         
