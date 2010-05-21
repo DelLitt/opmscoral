@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using EmitMapper.MappingConfiguration;
+using EmitMapper.Utils;
 namespace AppFrame.Mapper
 {
     public class MapperConfig<TSource,TDest> where TSource : class where TDest:class
@@ -20,7 +21,7 @@ namespace AppFrame.Mapper
         {
             Type source = typeof (TSource);
             Type dest = typeof(TSource);
-            
+
             PropertyInfo[] sourceInfos = source.GetProperties(BindingFlags.Public);
             PropertyInfo[] desInfos = source.GetProperties(BindingFlags.Public);
             foreach (PropertyInfo sourceInfo in sourceInfos)
