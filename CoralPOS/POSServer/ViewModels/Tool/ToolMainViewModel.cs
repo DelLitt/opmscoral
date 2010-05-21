@@ -13,7 +13,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.Common;
 
 
 namespace POSServer.ViewModels.Tool
@@ -61,7 +61,7 @@ namespace POSServer.ViewModels.Tool
 		        
         public void Configuration()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.SystemConfigFlow);
         }
 		        
         public void ExportStockCollectorData()

@@ -5,20 +5,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
+using AppFrame.DataLayer;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Common;
+using CoralPOS.Models;
+using Neodynamic.WPF;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Tool
 {
-    [PerRequest(typeof(ISystemConfigViewModel))]
+
+    [AttachMenuAndMainScreen(typeof(IToolMainViewModel), typeof(IMainView))]
     public class SystemConfigViewModel : PosViewModel,ISystemConfigViewModel  
     {
 
@@ -259,6 +266,8 @@ namespace POSServer.ViewModels.Tool
                 NotifyOfPropertyChange(() => SubStockEmployeeChecking);
             }
         }
+
+        public IDepartmentLogic DepartmentLogic { get; set; }
 				#endregion
 		
 		#region List of date object
@@ -322,6 +331,8 @@ namespace POSServer.ViewModels.Tool
             {
                 config.CreateDefaultValue();
             }
+
+
             SyncImportPath = config.SyncImportPath;
             SyncExportPath = config.SyncExportPath;
             SyncErrorPath = config.SyncErrorPath;
@@ -334,6 +345,26 @@ namespace POSServer.ViewModels.Tool
             StockOutConfirm = config.StockOutConfirm;
             SubStockEmployeeChecking = config.SubStockEmployeeChecking;
             PurchaseOrderConfirm = config.PurchaseOrderConfirm;
+
+            // load printer lists
+            IList cboPrinters = new ArrayList();
+            PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
+            foreach (string printerName in printerNames)
+            {
+                cboPrinters.Add(printerName);    
+            }
+            BillPrinterList = cboPrinters;
+
+            // load department list
+            IList deptList = DepartmentLogic.FindAll(new ObjectCriteria<Department>()) as IList;
+            SubStockInvoiceStockOutList = deptList;
+
+            BarcodeTypeList = Enum.GetNames(typeof(Symbology));
+            // protocol list
+            IList protocolList = new ArrayList();
+            protocolList.Add("TcpIp");
+            protocolList.Add("Http");
+            ConnectionProtocol = protocolList;
         }
 
         #endregion

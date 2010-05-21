@@ -118,4 +118,8 @@
     <property name="SyncLogic" ref="ISyncLogic" />
   </object>
   
+  <object id="ISystemConfigViewModel" type="POSServer.ViewModels.Tool.SystemConfigViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />    
+  </object>
 </objects>

@@ -43,13 +43,13 @@
                 <Label Content="Máy in hóa đơn:" Height="28" HorizontalAlignment="Left" Margin="36,13,0,0" Name="label7" VerticalAlignment="Top" />
                 <ComboBox Height="34" HorizontalAlignment="Left" Margin="152,7,0,0" Name="BillPrinterList" VerticalAlignment="Top" Width="258" />
                 <Label Content="Loại mã vạch:" Height="28" HorizontalAlignment="Left" Margin="446,13,0,0" Name="label8" VerticalAlignment="Top" />
-                <ComboBox Height="34" HorizontalAlignment="Left" Margin="562,7,0,0" Name="BarcodeTypeList" VerticalAlignment="Top" Width="258" />
+                <ComboBox Height="34" HorizontalAlignment="Right" Margin="0,7,6,0" Name="BarcodeTypeList" VerticalAlignment="Top" Width="258" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Kho phụ" Height="84" HorizontalAlignment="Left" Margin="4,392,0,0" Name="GroupSubStock" VerticalAlignment="Top" Width="838" FontSize="14">
             <Grid>
                 <Label Content="Nơi xuất của kho phụ:" Height="28" HorizontalAlignment="Left" Margin="3,6,0,0" Name="label9" VerticalAlignment="Top" Width="150" />
-                <ComboBox Height="34" HorizontalAlignment="Left" Margin="148,6,0,0" Name="SubStockInvoiceStockOutList" VerticalAlignment="Top" Width="258" />
+                <ComboBox Height="34" HorizontalAlignment="Left" Margin="148,6,0,0" Name="SubStockInvoiceStockOutList" VerticalAlignment="Top" Width="258" DisplayMemberPath="DepartmentName"/>
                 <CheckBox Content="Kiểm tra mã nhân viên trước khi xuất" Height="16" HorizontalAlignment="Left" Margin="442,18,0,0" Name="SubStockEmployeeChecking" VerticalAlignment="Top" Width="306" />
             </Grid>
         </GroupBox>

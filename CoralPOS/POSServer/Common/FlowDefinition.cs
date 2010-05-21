@@ -40,10 +40,10 @@ namespace POSServer.Common
         public const string StockOutCreateFlow ="StockOutCreateFlow";
         public const string StockInCreateFlow = "StockInCreateFlow";
         public const string SyncToDepartmentFlow = "SyncToDepartmentFlow";
-
+        public const string SystemConfigFlow = "SystemConfigFlow";
         #endregion
 
-
-
+        
+        
     }
 }
