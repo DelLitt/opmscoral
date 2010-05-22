@@ -135,7 +135,7 @@ namespace AppFrame.Security
             if (helper == null) return;
 
             if (trigger.Message.RelatesTo(_target))
-                helper.MakeAwareOf(trigger, new[] { MethodName });
+                helper.MakeAwareOf(trigger, new[] { _target.Name });
         }
     }
 }
