@@ -119,9 +119,18 @@ namespace POSReports
                 this.posDataSet.department.AdddepartmentRow(0, "TẤT CẢ CỬA HÀNG", "", 0, 0, DateTime.Now, "admin",
                                                             DateTime.Now, "admin", 0, 0, DateTime.Now);
                 this.departmentBindingSource.DataSource = this.posDataSet.department.OrderBy(dm => dm.DEPARTMENT_ID);
-                if (CurrentDepartment.Get().DepartmentId != 0)
+                long currentDept = CurrentDepartment.Get().DepartmentId;
+                if (currentDept != 0)
                 {
-                    departments.SelectedValue = CurrentDepartment.Get().DepartmentId.ToString();
+                    departments.SelectedIndex = 0;
+                    foreach (POSReports.posDataSet.departmentRow item in departments.Items)
+                    {
+                        if(item.DEPARTMENT_ID == currentDept)
+                        {
+                            departments.SelectedValue = item.DEPARTMENT_ID;
+                            break;        
+                        }
+                    }
                     departments.Enabled = false;
                 }
             }

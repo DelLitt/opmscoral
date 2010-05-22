@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.PurchaseOrderDetailReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.EmployeePurchaseOrderDetailReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
+            this.PurchaseOrderDetailReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PurchaseOrderReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,25 +46,29 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.purchaseOrderDetailReportTableAdapter1 = new POSReports.posDataSetTableAdapters.PurchaseOrderDetailReportTableAdapter();
             this.departmentTableAdapter1 = new POSReports.posDataSetTableAdapters.departmentTableAdapter();
-            this.EmployeePurchaseOrderDetailReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeePurchaseOrderDetailReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderReportBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeePurchaseOrderDetailReportBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // PurchaseOrderDetailReportBindingSource
+            // EmployeePurchaseOrderDetailReportBindingSource
             // 
-            this.PurchaseOrderDetailReportBindingSource.DataMember = "PurchaseOrderDetailReport";
-            this.PurchaseOrderDetailReportBindingSource.DataSource = this.posDataSet;
+            this.EmployeePurchaseOrderDetailReportBindingSource.DataMember = "EmployeePurchaseOrderDetailReport";
+            this.EmployeePurchaseOrderDetailReportBindingSource.DataSource = this.posDataSet;
             // 
             // posDataSet
             // 
             this.posDataSet.DataSetName = "posDataSet";
             this.posDataSet.EnforceConstraints = false;
             this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // PurchaseOrderDetailReportBindingSource
+            // 
+            this.PurchaseOrderDetailReportBindingSource.DataMember = "PurchaseOrderDetailReport";
+            this.PurchaseOrderDetailReportBindingSource.DataSource = this.posDataSet;
             // 
             // PurchaseOrderReportBindingSource
             // 
@@ -199,11 +204,6 @@
             // 
             this.departmentTableAdapter1.ClearBeforeFill = true;
             // 
-            // EmployeePurchaseOrderDetailReportBindingSource
-            // 
-            this.EmployeePurchaseOrderDetailReportBindingSource.DataMember = "EmployeePurchaseOrderDetailReport";
-            this.EmployeePurchaseOrderDetailReportBindingSource.DataSource = this.posDataSet;
-            // 
             // EmployeePurchaseOrderReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,13 +216,13 @@
             this.Load += new System.EventHandler(this.PurchaseDetailsReportViewer_Load);
             this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             this.Controls.SetChildIndex(this.reportViewer1, 0);
-            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeePurchaseOrderDetailReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderDetailReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PurchaseOrderReportBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EmployeePurchaseOrderDetailReportBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

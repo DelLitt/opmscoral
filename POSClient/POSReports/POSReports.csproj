@@ -238,11 +238,12 @@
     <EmbeddedResource Include="AllStockReportViewer.resx">
       <DependentUpon>AllStockReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeePurchaseOrder.rdlc" />
     <EmbeddedResource Include="EmployeePurchasOrderReportViewer.resx">
       <DependentUpon>EmployeePurchasOrderReportViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeePurchaseOrder.rdlc" />
+    <EmbeddedResource Include="EmployeePurchaseOrderEx.rdlc" />
     <EmbeddedResource Include="ProductMasterStatisticEx.rdlc" />
     <EmbeddedResource Include="StockRemainsReportViewer.resx">
       <DependentUpon>StockRemainsReportViewer.cs</DependentUpon>
