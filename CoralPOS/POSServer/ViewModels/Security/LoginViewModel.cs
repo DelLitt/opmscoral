@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Security;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 
@@ -71,6 +72,8 @@ namespace POSServer.ViewModels.Security
             {
                 GlobalSession.Instance.Put(CommonConstants.IS_LOGGED,true);
                 Flow.Session.Put(CommonConstants.LOGGED_USER, model);
+                ClientInfo.Instance.Username = model.Username;
+                ClientInfo.Instance.Role = "Supervisor";
                 //_startViewModel.Open<IMainView>();
                 GoToNextNode();
             }

@@ -326,6 +326,7 @@
     <Compile Include="Utils\RandomGenerator.cs" />
     <Compile Include="Utils\StringUtility.cs" />
     <Compile Include="Utils\TaskUtils.cs" />
+    <Compile Include="Security\ClientInfo.cs" />
     <Compile Include="Validation\POSError.cs" />
     <Compile Include="Validation\POSErrorResult.cs" />
     <Compile Include="Validation\IObjectValidator.cs" />
