@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using Caliburn.Core;
 using Caliburn.Core.Invocation;
+using Caliburn.PresentationFramework.Actions;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.RoutedMessaging;
 using Microsoft.Practices.ServiceLocation;
@@ -135,7 +136,16 @@ namespace AppFrame.Security
             if (helper == null) return;
 
             if (trigger.Message.RelatesTo(_target))
-                helper.MakeAwareOf(trigger, new[] { _target.Name });
+
+            {
+                //helper.MakeAwareOf(trigger, new[] { _target.Name });
+                var actionMessage = trigger.Message as ActionMessage;
+                if (actionMessage == null) return;
+
+                //var handler = helper.Host.FindActionHandler(actionMessage);
+                bool isAvailable = Execute(actionMessage, trigger.Node,null);
+                trigger.UpdateAvailabilty(isAvailable);
+            }
         }
     }
 }
