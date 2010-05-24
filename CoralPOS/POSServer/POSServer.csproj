@@ -344,6 +344,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\Stock\StockOut\IStockOutSpecificPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\IStockOutSpecificSaveAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\StockOutSpecificPreLoadAction.cs" />
+    <Compile Include="Actions\Stock\StockOut\StockOutSpecificSaveAction.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -491,10 +495,12 @@
     <Compile Include="ViewModels\Stock\StockMainViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\IStockOutSpecificViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\IStockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutConfirmViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutSearchViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockOut\StockOutSpecificViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutViewModel.cs" />
     <Compile Include="ViewModels\Stock\StockOut\StockOutWaitingConfirmViewModel.cs" />
     <Compile Include="ViewModels\Synchronize\ISynchronizeMainViewModel.cs" />
@@ -620,6 +626,9 @@
     </Compile>
     <Compile Include="Views\Management\ManagementMainView.xaml.cs">
       <DependentUpon>ManagementMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stock\StockOut\StockOutSpecificView.xaml.cs">
+      <DependentUpon>StockOutSpecificView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Synchronize\SyncToMainView.xaml.cs">
       <DependentUpon>SyncToMainView.xaml</DependentUpon>
@@ -934,6 +943,10 @@
     <Page Include="Views\Management\ManagementMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\StockOut\StockOutSpecificView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

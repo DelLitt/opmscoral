@@ -67,7 +67,6 @@ namespace POSServer.ViewModels.Menu
             MessageBox.Show("Report Menu!");
         }
 		
-        [InRole("Administrator")]
         public void Management()
         {
             _startViewModel.Open<IManagementMainViewModel>();

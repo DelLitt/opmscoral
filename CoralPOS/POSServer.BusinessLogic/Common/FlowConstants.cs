@@ -23,5 +23,8 @@ namespace POSServer.BusinessLogic.Common
         public const string PRODUCT_TYPE_LIST = "ProductTypeList";
         public const string PRODUCT_COLOR_LIST = "ProductColorList";
         public const string PRODUCT_SIZE_LIST = "ProductSizeList";
+
+        public const string DEFINITION_STATUS_LIST = "DefinitionStatusList";
+        
     }
 }

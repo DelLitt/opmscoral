@@ -48,4 +48,18 @@ namespace CoralPOS.Models {
 			return result;
 		}
  }
+
+    public class DefinitionStatus
+    {
+        public const long NORMAL_STOCKOUT = 0;
+        public const long ERROR = 1;
+        public const long DAMAGE = 2;
+        public const long LOST = 3;
+        public const long TEMP_STOCKOUT = 4;
+        public const long TO_PRODUCER = 5;
+        public const long TO_MAINSTOCK = 6;
+        public const long TO_OTHER_DEPT = 7;
+        public const long DESTROY_LOST_AND_DAMAGE = 8;
+        public const long PROTOTYPE = 9;
+    }
 }

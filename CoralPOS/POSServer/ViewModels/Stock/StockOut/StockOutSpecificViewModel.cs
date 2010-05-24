@@ -1,50 +1,50 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Extensions;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
-using BarcodeLib;
 using Caliburn.Core;
 using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.Screens;
-using Caliburn.PresentationFramework.ViewModels;
 using CoralPOS.Common;
 using CoralPOS.Models;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Win32;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
-using POSServer.Common;
 using POSServer.ViewModels.Dialogs;
 using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    [AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel),typeof(IStockMainViewModel))]
-    public class StockOutViewModel : PosViewModel,IStockOutViewModel  
+    [AttachMenuAndMainScreen(typeof(IStockOutMenuViewModel), typeof(IStockMainViewModel))]
+    public class StockOutSpecificViewModel : PosViewModel,IStockOutSpecificViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public StockOutViewModel(IShellViewModel startViewModel)
+        public StockOutSpecificViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
 		
 		#region Fields
+
+
+        public IMainStockLogic MainStockLogic { get; set; }
+        public IProductMasterLogic ProductMasterLogic { get; set; }	
+
 
         private DateTime _createDate;
         public DateTime CreateDate
@@ -60,6 +60,48 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
         }
 		        
+        private string _productName1;
+        public string ProductName1
+        {
+            get
+            {
+                return _productName1;
+            }
+            set
+            {
+                _productName1 = value;
+                NotifyOfPropertyChange(() => ProductName1);
+            }
+        }
+		        
+        private string _description1;
+        public string Description1
+        {
+            get
+            {
+                return _description1;
+            }
+            set
+            {
+                _description1 = value;
+                NotifyOfPropertyChange(() => Description1);
+            }
+        }
+		        
+        private string _barcode;
+        public string Barcode
+        {
+            get
+            {
+                return _barcode;
+            }
+            set
+            {
+                _barcode = value;
+                NotifyOfPropertyChange(() => Barcode);
+            }
+        }
+
         private CoralPOS.Models.ProductMaster _productMaster;
         public CoralPOS.Models.ProductMaster ProductMaster
         {
@@ -88,28 +130,17 @@ namespace POSServer.ViewModels.Stock.StockOut
             }
         }
 
-        private Department _department;
-        public Department Department
-        {
-            get { return _department; }
-            set
-            {
-                _department = value;
-                NotifyOfPropertyChange(()=>Department);
-            }
-        }
-
-        private string _description;
-        public string Description
+        private CoralPOS.Models.StockDefinitionStatus _definitionStatus;
+        public CoralPOS.Models.StockDefinitionStatus DefinitionStatus
         {
             get
             {
-                return _description;
+                return _definitionStatus;
             }
             set
             {
-                _description = value;
-                NotifyOfPropertyChange(() => Description);
+                _definitionStatus = value;
+                NotifyOfPropertyChange(() => DefinitionStatus);
             }
         }
 				#endregion
@@ -143,6 +174,26 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => Departments);
             }
         }
+
+        private IList _definitionStatusList;
+        public IList DefinitionStatusList
+        {
+            get
+            {
+                return _definitionStatusList;
+            }
+            set
+            {
+                _definitionStatusList = value;
+                NotifyOfPropertyChange(() => DefinitionStatusList);
+            }
+        }
+				#endregion
+		
+		#region List of boolean object
+				#endregion
+		
+		#region List of date object
 				#endregion
 		
 		#region List which just using in Data Grid
@@ -160,18 +211,7 @@ namespace POSServer.ViewModels.Stock.StockOut
                 NotifyOfPropertyChange(() => StockOutDetails);
             }
         }
-
-        public string _productNameText;
-        private string _barcode;
-
-        public string ProductNameText
-        {
-            get { return _productNameText; }
-            set { _productNameText = value; NotifyOfPropertyChange(() => ProductNameText); }
-        }
-        public IMainStockLogic MainStockLogic { get; set; }
-        public IProductMasterLogic ProductMasterLogic { get; set; }		
-        #endregion
+				#endregion
 		
 		#region Methods
 		        
@@ -185,7 +225,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             Flow.IsRepeated = true;
             Flow.End();
         }
-
+		        
         public void Save()
         {
             if (StockOut.Department == null || StockOut.Department.DepartmentId <= 0) return;
@@ -213,19 +253,18 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             var screen = _startViewModel.ServiceLocator.GetInstance<IStockOutChoosingViewModel>("IStockOutChoosingViewModel");
             screen.ConfirmEvent += new EventHandler<StockInChoosingArg>(StockInConfirmEvent);
-            _startViewModel.ShowDialog(screen);
+            _startViewModel.ShowDialog(screen); 
         }
 
         void StockInConfirmEvent(object sender, StockInChoosingArg e)
         {
-            
+
             CoralPOS.Models.StockIn selectedStockIn = e.SelectedStockIn;
-            BackgroundTask backgroundTask = new BackgroundTask(()=>PopulateStockOutList(selectedStockIn));
+            BackgroundTask backgroundTask = new BackgroundTask(() => PopulateStockOutList(selectedStockIn));
             backgroundTask.Completed += new System.ComponentModel.RunWorkerCompletedEventHandler(backgroundTask_Completed);
             StartWaitingScreen(0);
             backgroundTask.Start(selectedStockIn);
         }
-
         private object PopulateStockOutList(CoralPOS.Models.StockIn selectedStockIn)
         {
             var details = new ArrayList(StockOutDetails);
@@ -272,6 +311,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             CreateProductIdForInput(e.ProductColorList, e.ProductSizeList, e.StockList);
         }
 
+
         public void CreateByFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -279,19 +319,19 @@ namespace POSServer.ViewModels.Stock.StockOut
             openFileDialog.CheckFileExists = true;
             openFileDialog.ShowDialog();
             // if has file to open
-            if(!string.IsNullOrEmpty(openFileDialog.FileName))
+            if (!string.IsNullOrEmpty(openFileDialog.FileName))
             {
                 IList<string> errorList;
-                IDictionary<string,long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName,out errorList);
+                IDictionary<string, long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName, out errorList);
 
                 // add to stockOut list
                 ArrayList details = new ArrayList(StockOutDetails);
                 foreach (KeyValuePair<string, long> keyValuePair in productList)
                 {
                     StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
-                                 where sod.Product.ProductId.Equals(keyValuePair.Key)
-                                 select sod).FirstOrDefault();
-                    if(result!=null) // if exist in list
+                                             where sod.Product.ProductId.Equals(keyValuePair.Key)
+                                             select sod).FirstOrDefault();
+                    if (result != null) // if exist in list
                     {
                         result.Quantity += keyValuePair.Value;
                     }
@@ -310,14 +350,14 @@ namespace POSServer.ViewModels.Stock.StockOut
                         newDetail.UpdateId = "admin";
                         newDetail.Quantity = stock.GoodQuantity;
                         newDetail.StockQuantity = stock.Quantity;
-                        
+
                         details.Add(newDetail);
                     }
                 }
                 StockOutDetails = details;
             }
         }
-        
+		        
         public void FixQuantityByAvailable()
         {
             
@@ -340,10 +380,9 @@ namespace POSServer.ViewModels.Stock.StockOut
             ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
         }
 
-
         public void Create()
         {
-            if(ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
+            if (ObjectUtility.IsNullOrEmpty(ProductMaster)) return;
             var screen = _startViewModel.ServiceLocator.GetInstance<IStockProductPropertiesViewModel>("IStockProductPropertiesViewModel");
             screen.ProductName = ProductMaster.ProductName;
             screen.Setup();
@@ -351,9 +390,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             _startViewModel.ShowDialog(screen);
         }
 
-        
-
-        private void CreateProductIdForInput(IList colorList, IList sizeList,IList stockList)
+        private void CreateProductIdForInput(IList colorList, IList sizeList, IList stockList)
         {
             IList addStockList = new ArrayList();
             foreach (MainStock stock in stockList)
@@ -363,8 +400,8 @@ namespace POSServer.ViewModels.Stock.StockOut
                 {
                     foreach (ExProductSize size in sizeList)
                     {
-                        if(   product.ProductColor.ColorName.Equals(color.ColorName)
-                           && product.ProductSize.SizeName.Equals(size.SizeName) )
+                        if (product.ProductColor.ColorName.Equals(color.ColorName)
+                           && product.ProductSize.SizeName.Equals(size.SizeName))
                         {
                             addStockList.Add(stock);
                         }
@@ -375,7 +412,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             foreach (MainStock stock in addStockList)
             {
                 Product product = stock.Product;
-                if(!ProductInStockOutList(details,product))
+                if (!ProductInStockOutList(details, product))
                 {
                     // create new stockout detail for that product
                     StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
@@ -388,8 +425,8 @@ namespace POSServer.ViewModels.Stock.StockOut
                     newDetail.UpdateId = "admin";
                     newDetail.Quantity = stock.GoodQuantity;
                     newDetail.StockQuantity = stock.Quantity;
-                                                   
-                    
+
+
                     details.Add(newDetail);
                 }
             }
@@ -400,36 +437,37 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             foreach (StockOutDetail outDetail in detail)
             {
-                if(outDetail.Product.ProductId.Equals(product.ProductId))
+                if (outDetail.Product.ProductId.Equals(product.ProductId))
                     return true;
             }
             return false;
         }
 
-        protected override void OnInitialize()
+        public override void Initialize()
         {
-            base.OnInitialize();
-
+            base.Initialize();
+            
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
             ProductMasterList = list as IList;
-            var deptsList = Flow.Session.Get(FlowConstants.DEPARTMENTS);
-            Departments = deptsList as IList;
+            var deptsList = Flow.Session.Get(FlowConstants.DEFINITION_STATUS_LIST); 
+            DefinitionStatusList = deptsList as IList;
             ProductMaster = new CoralPOS.Models.ProductMaster();
             var details = new ArrayList();
             StockOutDetails = details;
             CreateDate = DateTime.Now;
 
-            CoralPOS.Models.StockOut stockOut =  Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
-            if(stockOut!=null)
+            CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
+            if (stockOut != null)
             {
                 StockOutDetails = ObjectConverter.ConvertFrom(stockOut.StockOutDetails);
-                Department = stockOut.Department;
+                DefinitionStatus = stockOut.DefinitionStatus;
             }
             else
             {
-                StockDefinitionStatus definitionStatus = DataErrorInfoFactory.Create<StockDefinitionStatus>();
+                /*StockDefinitionStatus definitionStatus = DataErrorInfoFactory.Create<StockDefinitionStatus>();
                 definitionStatus.DefectStatusId = (int)StockOutType.Normal;
-                definitionStatus.DefectStatusName = "NORMAL";
+                definitionStatus.DefectStatusName = "NORMAL";*/
+                Department department = new Department{ DepartmentId = 0,DepartmentName = "KHO CHINH"};
 
                 stockOut = DataErrorInfoFactory.Create<CoralPOS.Models.StockOut>();
                 stockOut.ConfirmFlg = 0;
@@ -440,13 +478,14 @@ namespace POSServer.ViewModels.Stock.StockOut
                 stockOut.UpdateId = "admin";
                 stockOut.DelFlg = 0;
                 stockOut.ExclusiveKey = 0;
-                stockOut.DefinitionStatus = definitionStatus;
-                
-                
-            }
-            StockOut = stockOut; 
-        }
+                stockOut.Department = department;
+                /*stockOut.DefinitionStatus = definitionStatus;*/
 
+
+            }
+            StockOut = stockOut;
+        
+        }
 
         public void ProcessBarcode()
         {
@@ -459,50 +498,38 @@ namespace POSServer.ViewModels.Stock.StockOut
             if (ObjectUtility.LengthEqual(Barcode, 12))
             {
                 ArrayList details = new ArrayList(StockOutDetails);
-                
-                    StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
-                                             where sod.Product.ProductId.Equals(Barcode)
-                                             select sod).FirstOrDefault();
-                    if (result != null) // if exist in list
-                    {
-                        result.Quantity += 1;
-                    }
-                    else
-                    {
-                        // get information from database
-                        MainStock stock = MainStockLogic.FindByProductId(Barcode);
-                        // create new stockout detail for that product
-                        StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
-                        newDetail.Product = stock.Product;
-                        newDetail.ProductMaster = stock.ProductMaster;
-                        newDetail.CreateDate = DateTime.Now;
-                        newDetail.UpdateDate = DateTime.Now;
-                        newDetail.CreateId = "admin";
-                        newDetail.UpdateId = "admin";
-                        newDetail.Quantity = 1;
-                        newDetail.StockQuantity = stock.Quantity;
 
-                        details.Add(newDetail);
-                    }
-                
+                StockOutDetail result = (from sod in details.OfType<StockOutDetail>()
+                                         where sod.Product.ProductId.Equals(Barcode)
+                                         select sod).FirstOrDefault();
+                if (result != null) // if exist in list
+                {
+                    result.Quantity += 1;
+                }
+                else
+                {
+                    // get information from database
+                    MainStock stock = MainStockLogic.FindByProductId(Barcode);
+                    // create new stockout detail for that product
+                    StockOutDetail newDetail = DataErrorInfoFactory.Create<StockOutDetail>();
+                    newDetail.Product = stock.Product;
+                    newDetail.ProductMaster = stock.ProductMaster;
+                    newDetail.CreateDate = DateTime.Now;
+                    newDetail.UpdateDate = DateTime.Now;
+                    newDetail.CreateId = "admin";
+                    newDetail.UpdateId = "admin";
+                    newDetail.Quantity = 1;
+                    newDetail.StockQuantity = stock.Quantity;
+
+                    details.Add(newDetail);
+                }
+
                 StockOutDetails = details;
 
             }
             return null;
         }
-
-        public string Barcode
-        {
-            get {
-                return _barcode;
-            }
-            set {
-                _barcode = value;
-                NotifyOfPropertyChange(()=>Barcode);
-            }
-        }
-
-        #endregion
+				#endregion
 		
         
         

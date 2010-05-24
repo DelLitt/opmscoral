@@ -82,10 +82,13 @@ namespace POSServer.BusinessLogic.Implement
                 outDetail.StockOutDetailPK = detailPK;
                 StockOutDetailDao.Add(outDetail);
 
+                long definitionStatusId = data.DefinitionStatus.DefectStatusId;
+                if(definitionStatusId == DefinitionStatus.TEMP_STOCKOUT
+                   || definitionStatusId == DefinitionStatus.PROTOTYPE) continue;
+
                 ObjectCriteria<MainStock> findStock = new ObjectCriteria<MainStock>();
                 string productId = outDetail.Product.ProductId;
                 findStock.Add(stk => stk.Product.ProductId == productId);
-
                 MainStock currentStock = MainStockDao.FindFirst(findStock) as MainStock;
                 if (currentStock == null) // create new stock
                 {
@@ -93,6 +96,7 @@ namespace POSServer.BusinessLogic.Implement
                 }
                 else // update current stock
                 {
+                    // * ---- CHUA CO PHAN XUAT HANG HU LOI HONG MAT O DAY --------
                     currentStock.Quantity -= outDetail.Quantity;
                     currentStock.GoodQuantity -= outDetail.Quantity;
                     currentStock.ExclusiveKey += 1;

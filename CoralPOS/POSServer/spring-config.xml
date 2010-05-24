@@ -108,6 +108,22 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
+
+  <object id="StockOutSpecificCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutSpecificPreLoadAction"/>
+        <!-- Show product master form -->
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutSpecificViewModel"/>
+        <!-- Show product master summary form -->
+        <entry key="Step3" value="[IStockOutConfirmViewModel]"/>
+        <!-- Save Product Master -->
+        <entry key="Step4" value="POSServer.Actions.Stock.StockOut.IStockOutSpecificSaveAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  
   <!-- StockOutSearch List -->
   <object id="StockOutSearchFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">

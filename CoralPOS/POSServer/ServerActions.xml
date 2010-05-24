@@ -48,6 +48,23 @@
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
   </object>
+
+  <object id="IStockOutSpecificPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+    <property name="StockDefinitionStatusLogic" ref="IStockDefinitionStatusLogic" />
+  </object>
+
+  <object id="IStockOutSpecificSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificSaveAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="ProductColorLogic" ref="IExProductColorLogic" />
+    <property name="ProductSizeLogic" ref="IExProductSizeLogic" />
+    <property name="CategoryLogic" ref="ICategoryLogic" />
+    <property name="ProductTypeLogic" ref="IProductTypeLogic" />
+    <property name="StockOutLogic" ref="IStockOutLogic" />
+  </object>
+  
   <object id="ISyncToDepartmentAction" type="POSServer.Actions.Synchronize.SyncToDepartmentAction, POSServer" singleton="false">    
     <property name="SyncLogic" ref="ISyncLogic" />
   </object>
