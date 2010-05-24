@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using AppFrame.DataLayer;
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.Behaviors;
 using Caliburn.PresentationFramework.ViewModels;
 
@@ -159,31 +160,31 @@ namespace AppFrame.WPF
 
         private void ValidateDataContext(object dataContext)
         {
-            List<IValidationError> errors = new List<IValidationError>();
+            List<IError> errors = new List<IError>();
             LinkedList<string> linkedList = new LinkedList<string>();
             linkedList.AddFirst(dataContext.GetType().FullName);
             ValidateRecursively(dataContext, errors,linkedList);
-            /*foreach (IValidationError validationError in errors)
+            /*foreach (IError validationError in errors)
             {*/
                 //string propName = validationError.PropertyName;
 
             var result = from bdi in bindingObjects
                          from validationError in errors
-                         where bdi.Binding.Path.Path.EndsWith(validationError.PropertyName)
+                         where bdi.Binding.Path.Path.EndsWith(validationError.Key)
                          select CreateValidationError(bdi, validationError);
                                  
             
             /*}*/
         }
 
-        private object CreateValidationError(BindingElementInfo bdi, IValidationError validationError)
+        private object CreateValidationError(BindingElementInfo bdi, IError validationError)
         {
             ValidationError error = new ValidationError(bdi.Binding.ValidationRules[0], bdi.Binding,validationError.Message, null);
             System.Windows.Controls.Validation.MarkInvalid(BindingOperations.GetBindingExpression(bdi.DependencyObject,bdi.DependencyProperty),error);
             return error;
         }
 
-        private void ValidateRecursively(object instance, List<IValidationError> validationErrors, LinkedList<string> linkedList)
+        private void ValidateRecursively(object instance, List<IError> validationErrors, LinkedList<string> linkedList)
         {
             Type type = instance.GetType();
             Type[] interfaces = instance.GetType().GetInterfaces();

@@ -95,14 +95,12 @@
             Represents a single action.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.IAction.Matches(Caliburn.PresentationFramework.Actions.ActionMessage)">
+        <member name="T:Caliburn.PresentationFramework.Actions.IActionHandler">
             <summary>
-            Determines whether this action matches the specified message.
+            Implemented by classes which can handle an <see cref="T:Caliburn.PresentationFramework.Actions.ActionMessage"/>.
             </summary>
-            <param name="message">The message.</param>
-            <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.IAction.ShouldTriggerBeAvailable(Caliburn.PresentationFramework.Actions.ActionMessage,Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode)">
+        <member name="M:Caliburn.PresentationFramework.Actions.IActionHandler.ShouldTriggerBeAvailable(Caliburn.PresentationFramework.Actions.ActionMessage,Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode)">
             <summary>
             Determines how this instance affects trigger availability.
             </summary>
@@ -112,13 +110,20 @@
             	<c>true</c> if this instance enables triggers; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.IAction.Execute(Caliburn.PresentationFramework.Actions.ActionMessage,Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode,System.Object)">
+        <member name="M:Caliburn.PresentationFramework.Actions.IActionHandler.Execute(Caliburn.PresentationFramework.Actions.ActionMessage,Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode,System.Object)">
             <summary>
             Executes the specified action on the specified target.
             </summary>
             <param name="actionMessage">The action message.</param>
             <param name="handlingNode">The node.</param>
             <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Actions.IAction.Matches(Caliburn.PresentationFramework.Actions.ActionMessage)">
+            <summary>
+            Determines whether this action matches the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <returns></returns>
         </member>
         <member name="P:Caliburn.PresentationFramework.Actions.IAction.Name">
             <summary>
@@ -196,6 +201,14 @@
             <param name="actionMessage">The action message.</param>
             <param name="handlingNode">The node.</param>
             <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.Actions.ActionBase.HasTriggerEffects">
+            <summary>
+            Determines whether this action has trigger effects.
+            </summary>
+            <returns>
+            	<c>true</c> if has trigger effects; otherwise, <c>false</c>.
+            </returns>
         </member>
         <member name="M:Caliburn.PresentationFramework.Actions.ActionBase.TryApplyRescue(Caliburn.PresentationFramework.RoutedMessaging.IRoutedMessage,Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode,System.Exception)">
             <summary>
@@ -316,15 +329,6 @@
             <summary>
             Hosts extension methods related to actions.
             </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.Actions.ActionExtensions.HasTriggerEffects(Caliburn.PresentationFramework.Actions.IAction)">
-            <summary>
-            Determines whether the action has trigger effects.
-            </summary>
-            <param name="action">The action.</param>
-            <returns>
-            	<c>true</c> if has trigger effects; otherwise, <c>false</c>.
-            </returns>
         </member>
         <member name="M:Caliburn.PresentationFramework.Actions.ActionExtensions.CreateFilterManager(Caliburn.PresentationFramework.Actions.ActionCreationContext,Caliburn.Core.Invocation.IMethod)">
             <summary>
@@ -1267,6 +1271,14 @@
             </summary>
             <param name="element">The element.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.IInputManager.GetDisplayString(System.Windows.Input.Key,System.Windows.Input.ModifierKeys)">
+            <summary>
+            Gets a display string representing this key combination.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="modifierKeys">The modifier keys.</param>
+            <returns>The display string.</returns>
+        </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.DefaultInputManager.Focus(System.Object)">
             <summary>
             Focuses the view bound to the view model.
@@ -1594,6 +1606,12 @@
             Commits the changes.
             </summary>
             <param name="stateName">Name of the state.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.ApplicationModel.IsolatedStorageStateManager.GetStorageFile">
+            <summary>
+            Gets the storage file.
+            </summary>
             <returns></returns>
         </member>
         <member name="M:Caliburn.PresentationFramework.ApplicationModel.IsolatedStorageStateManager.InsertOrUpdate(System.String,System.String)">
@@ -2322,12 +2340,6 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Configuration.IPresentationFrameworkServicesDescription.Validator``1">
-            <summary>
-            Customizes the validator used by Caliburn.
-            </summary>
-            <typeparam name="T">The validator type.</typeparam>
-        </member>
         <member name="M:Caliburn.PresentationFramework.Configuration.IPresentationFrameworkServicesDescription.WindowManager``1">
             <summary>
             Customizes the window manager used by Caliburn.
@@ -2462,7 +2474,7 @@
             Hosts extension methods related to conventions.
             </summary>
         </member>
-        <member name="F:Caliburn.PresentationFramework.Conventions.ConventionExtensions.GetNamedElementsImplementation">
+        <member name="F:Caliburn.PresentationFramework.Conventions.ConventionExtensions.SelectElementsToInspect">
             <summary>
             The overridable implemenation of GetNamedElements.
             </summary>
@@ -2494,7 +2506,7 @@
             A base class for binding conventions.
             </summary>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase.Initialize(Caliburn.PresentationFramework.RoutedMessaging.IMessageBinder,Caliburn.PresentationFramework.ViewModels.IViewModelDescriptionFactory,Caliburn.PresentationFramework.ViewModels.IValidator)">
+        <member name="M:Caliburn.PresentationFramework.Conventions.ViewConventionBase.Initialize(Caliburn.PresentationFramework.RoutedMessaging.IMessageBinder,Caliburn.PresentationFramework.ViewModels.IViewModelDescriptionFactory,Caliburn.Core.Validation.IValidator)">
             <summary>
             Initializes the specified message binder.
             </summary>
@@ -3707,6 +3719,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.Parsers.AttachedEventTriggerParser.IsDynamicAssembly(System.Reflection.Assembly)">
+            <summary>
+            Checks if an assembly is dynamically generated (it doesn't support GetExportedTypes)
+            </summary>
+            <param name="test">the assembly being test</param>
+            <returns></returns>
+        </member>
         <member name="T:Caliburn.PresentationFramework.RoutedMessaging.Parsers.CommandTriggerParser">
             <summary>
             An implementation of <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.Parsers.ITriggerParser"/> that parses command source hookups.
@@ -4724,6 +4743,12 @@
             Hosts extension methods and method overrides for execution of <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IResult"/> and <see cref="T:System.Collections.Generic.IEnumerable`1"/>
             </summary>
         </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.Initialize(Microsoft.Practices.ServiceLocation.IServiceLocator)">
+            <summary>
+            Initializes the helper with the service locator.
+            </summary>
+            <param name="serviceLocator">The service locator.</param>
+        </member>
         <member name="F:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteEnumerableResultCore">
             <summary>
             Executes an <see cref="T:System.Collections.Generic.IEnumerable`1"/>, optionally looking up the <see cref="T:Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode"/>.
@@ -4756,18 +4781,18 @@
             </summary>
             <param name="results">The results.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.Execute(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.EventHandler{Caliburn.PresentationFramework.RoutedMessaging.ResultCompletionEventArgs})">
+            <summary>
+            Executes the specified results.
+            </summary>
+            <param name="results">The results.</param>
+            <param name="callback">Called when enumeration completes.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(Caliburn.PresentationFramework.RoutedMessaging.IResult,System.Object)">
             <summary>
             Executes the result for the model.
             </summary>
             <param name="result">The result.</param>
-            <param name="model">The model.</param>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.Object)">
-            <summary>
-            Executes the results for the model.
-            </summary>
-            <param name="results">The results.</param>
             <param name="model">The model.</param>
         </member>
         <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(Caliburn.PresentationFramework.RoutedMessaging.IResult,System.Object,System.Object)">
@@ -4778,6 +4803,21 @@
             <param name="model">The model.</param>
             <param name="context">The context.</param>
         </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.Object)">
+            <summary>
+            Executes the results for the model.
+            </summary>
+            <param name="results">The results.</param>
+            <param name="model">The model.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.Object,System.EventHandler{Caliburn.PresentationFramework.RoutedMessaging.ResultCompletionEventArgs})">
+            <summary>
+            Executes the results for the model.
+            </summary>
+            <param name="results">The results.</param>
+            <param name="model">The model.</param>
+            <param name="callback">Called when enumeration completes.</param>
+        </member>
         <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.Object,System.Object)">
             <summary>
             Executes the results for the model within the given context.
@@ -4785,6 +4825,15 @@
             <param name="results">The results.</param>
             <param name="model">The model.</param>
             <param name="context">The context.</param>
+        </member>
+        <member name="M:Caliburn.PresentationFramework.RoutedMessaging.EnumerableResults.ExecuteFor(System.Collections.Generic.IEnumerable{Caliburn.PresentationFramework.RoutedMessaging.IResult},System.Object,System.Object,System.EventHandler{Caliburn.PresentationFramework.RoutedMessaging.ResultCompletionEventArgs})">
+            <summary>
+            Executes the results for the model within the given context.
+            </summary>
+            <param name="results">The results.</param>
+            <param name="model">The model.</param>
+            <param name="context">The context.</param>
+            <param name="callback">Called when enumeration completes.</param>
         </member>
         <member name="T:Caliburn.PresentationFramework.RoutedMessaging.IInteractionNode">
             <summary>
@@ -5014,6 +5063,11 @@
             Gets or sets the result.
             </summary>
             <value>The result.</value>
+        </member>
+        <member name="T:Caliburn.PresentationFramework.RoutedMessaging.MessagingExtensions">
+            <summary>
+            Extensions related to routed UI messaging.
+            </summary>
         </member>
         <member name="M:Caliburn.PresentationFramework.RoutedMessaging.MessagingExtensions.Bind(Caliburn.PresentationFramework.RoutedMessaging.Parameter,System.Windows.DependencyObject,System.String,System.String)">
             <summary>
@@ -6316,116 +6370,6 @@
             <summary>
             Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.ViewModels.BindableEnumCollection`1"/> class.
             </summary>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ViewModels.DefaultValidationError">
-            <summary>
-            The default implementation of <see cref="T:Caliburn.PresentationFramework.ViewModels.IValidationError"/>.
-            </summary>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ViewModels.IValidationError">
-            <summary>
-            Represents a validation error.
-            </summary>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.IValidationError.Instance">
-            <summary>
-            Gets the invalid instance.
-            </summary>
-            <value>The instance.</value>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.IValidationError.PropertyName">
-            <summary>
-            Gets the name of the invalid property.
-            </summary>
-            <value>The name of the property.</value>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.IValidationError.Message">
-            <summary>
-            Gets the error message.
-            </summary>
-            <value>The message.</value>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultValidationError.#ctor(System.Object,System.String,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Caliburn.PresentationFramework.ViewModels.DefaultValidationError"/> class.
-            </summary>
-            <param name="instance">The instance.</param>
-            <param name="propertyName">Name of the property.</param>
-            <param name="message">The message.</param>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.DefaultValidationError.Instance">
-            <summary>
-            Gets the invalid instance.
-            </summary>
-            <value>The instance.</value>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.DefaultValidationError.PropertyName">
-            <summary>
-            Gets the name of the invalid property.
-            </summary>
-            <value>The name of the property.</value>
-        </member>
-        <member name="P:Caliburn.PresentationFramework.ViewModels.DefaultValidationError.Message">
-            <summary>
-            Gets the error message.
-            </summary>
-            <value>The message.</value>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ViewModels.DefaultValidator">
-            <summary>
-            The default implemenation of <see cref="T:Caliburn.PresentationFramework.ViewModels.IValidator"/>.
-            </summary>
-        </member>
-        <member name="T:Caliburn.PresentationFramework.ViewModels.IValidator">
-            <summary>
-            A service that validates the state of classes and their properties.
-            </summary>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.IValidator.ShouldValidate(System.Reflection.PropertyInfo)">
-            <summary>
-            Inidcates whether the specified property should be validated.
-            </summary>
-            <param name="property">The property.</param>
-            <returns>true if should be validated; otherwise false</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.IValidator.Validate(System.Object)">
-            <summary>
-            Validates the specified instance.
-            </summary>
-            <param name="instance">The instance.</param>
-            <returns>The validation errors.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.IValidator.Validate(System.Object,System.String)">
-            <summary>
-            Validates the specified property on the instance.
-            </summary>
-            <param name="instance">The instance.</param>
-            <param name="propertyName">Name of the property.</param>
-            <returns>The validation errors.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultValidator.ShouldValidate(System.Reflection.PropertyInfo)">
-            <summary>
-            Indicates whether the specified property should be validated.
-            </summary>
-            <param name="property">The property.</param>
-            <returns>
-            true if should be validated; otherwise false
-            </returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultValidator.Validate(System.Object)">
-            <summary>
-            Validates the specified instance.
-            </summary>
-            <param name="instance">The instance.</param>
-            <returns>The validation errors.</returns>
-        </member>
-        <member name="M:Caliburn.PresentationFramework.ViewModels.DefaultValidator.Validate(System.Object,System.String)">
-            <summary>
-            Validates the specified property on the instance.
-            </summary>
-            <param name="instance">The instance.</param>
-            <param name="propertyName">Name of the property.</param>
-            <returns>The validation errors.</returns>
         </member>
         <member name="T:Caliburn.PresentationFramework.ViewModels.DefaultViewModelBinder">
             <summary>

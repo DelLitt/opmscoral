@@ -6,7 +6,7 @@
     <members>
         <member name="T:Caliburn.Autofac.AutofacAdapter">
             <summary>
-            An adapter allowing an <see cref="T:Autofac.IContext"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
+            An adapter allowing an <see cref="T:Autofac.IContainer"/> to plug into Caliburn via <see cref="T:Microsoft.Practices.ServiceLocation.IServiceLocator"/> and <see cref="T:Caliburn.Core.IoC.IRegistry"/>.
             </summary>
         </member>
         <member name="M:Caliburn.Autofac.AutofacAdapter.#ctor(Autofac.IContainer)">

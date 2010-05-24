@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Data;
 using AppFrame.DataLayer;
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.Behaviors;
 using Caliburn.PresentationFramework.ViewModels;
 

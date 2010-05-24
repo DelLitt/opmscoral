@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using AopAlliance.Aop;
+using Caliburn.Core.Validation;
 using Caliburn.DynamicProxy.Interceptors;
 using Caliburn.PresentationFramework.ViewModels;
 using Castle.Core.Interceptor;

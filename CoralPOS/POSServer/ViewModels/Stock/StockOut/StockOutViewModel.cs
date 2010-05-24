@@ -15,6 +15,7 @@ using BarcodeLib;
 using Caliburn.Core;
 using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
@@ -188,7 +189,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         {
             if (StockOut.Department == null || StockOut.Department.DepartmentId <= 0) return;
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
-            IEnumerable<IValidationError> errors = this.GetErrors(StockOut);
+            IEnumerable<IError> errors = this.GetErrors(StockOut);
             if (this.HasError())
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();

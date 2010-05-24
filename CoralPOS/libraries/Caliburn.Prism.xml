@@ -188,6 +188,75 @@
              <remarks>Calls <see cref="M:Caliburn.Prism.ConsoleLogger.Dispose(System.Boolean)"/></remarks>.
             <filterpriority>2</filterpriority>
         </member>
+        <member name="T:Caliburn.Prism.DefaultModelRegionManager">
+            <summary>
+            The default implemenation of <see cref="T:Caliburn.Prism.IModelRegionManager"/>.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Prism.IModelRegionManager">
+            <summary>
+            Enables working with Prism's <see cref="T:Microsoft.Practices.Composite.Regions.IRegionManager"/> using a model or screen subject first approach.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.IModelRegionManager.RegisterScreenSubjectWithRegion``1(System.String,``0)">
+            <summary>
+            Locates a screen for the subject and registers it with with region.
+            </summary>
+            <typeparam name="TSubject">The type of the subject.</typeparam>
+            <param name="regionName">Name of the region.</param>
+            <param name="subject">The subject.</param>
+            <returns>The manager.</returns>
+        </member>
+        <member name="M:Caliburn.Prism.IModelRegionManager.RegisterModelWithRegion``1(System.String)">
+            <summary>
+            Registers the model with the region.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <param name="regionName">Name of the region.</param>
+            <returns>The manager.</returns>
+        </member>
+        <member name="M:Caliburn.Prism.IModelRegionManager.RegisterModelWithRegion(System.String,System.Object)">
+            <summary>
+            Registers the model with the region.
+            </summary>
+            <param name="regionName">Name of the region.</param>
+            <param name="viewModel">The view model.</param>
+            <returns>The manager.</returns>
+        </member>
+        <member name="M:Caliburn.Prism.DefaultModelRegionManager.#ctor(Microsoft.Practices.Composite.Regions.IRegionManager,Caliburn.PresentationFramework.ViewModels.IViewModelBinder,Caliburn.PresentationFramework.Views.IViewLocator,Caliburn.PresentationFramework.ViewModels.IViewModelFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Prism.DefaultModelRegionManager"/> class.
+            </summary>
+            <param name="regionManager">The region manager.</param>
+            <param name="viewModelBinder">The view model binder.</param>
+            <param name="viewLocator">The view locator.</param>
+            <param name="viewModelFactory">The view model factory.</param>
+        </member>
+        <member name="M:Caliburn.Prism.DefaultModelRegionManager.RegisterScreenSubjectWithRegion``1(System.String,``0)">
+            <summary>
+            Locates a screen for the subject and registers it with with region.
+            </summary>
+            <typeparam name="TSubject">The type of the subject.</typeparam>
+            <param name="regionName">Name of the region.</param>
+            <param name="subject">The subject.</param>
+            <returns>The manager.</returns>
+        </member>
+        <member name="M:Caliburn.Prism.DefaultModelRegionManager.RegisterModelWithRegion``1(System.String)">
+            <summary>
+            Registers the model with the region.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <param name="regionName">Name of the region.</param>
+            <returns>The manager.</returns>
+        </member>
+        <member name="M:Caliburn.Prism.DefaultModelRegionManager.RegisterModelWithRegion(System.String,System.Object)">
+            <summary>
+            Registers the model with the region.
+            </summary>
+            <param name="regionName">Name of the region.</param>
+            <param name="viewModel">The view model.</param>
+            <returns>The manager.</returns>
+        </member>
         <member name="T:Caliburn.Prism.ExtensionMethods">
             <summary>
             Extension methods related to Prism integration.

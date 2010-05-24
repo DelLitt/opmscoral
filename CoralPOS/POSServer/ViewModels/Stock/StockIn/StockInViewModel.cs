@@ -15,7 +15,7 @@ using AppFrame.WPF;
 using AppFrame.WPF.Screens;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Invocation;
@@ -246,7 +246,7 @@ namespace POSServer.ViewModels.Stock.StockIn
             
             StockIn.StockInDetails = ObjectConverter.ConvertTo<StockInDetail>(StockInDetailList);
             if (!this.Validate()) return;
-            IEnumerable<IValidationError> errors = this.GetErrors(StockIn);
+            IEnumerable<IError> errors = this.GetErrors(StockIn);
             if (errors.Count()>0)
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();

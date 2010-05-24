@@ -15,7 +15,7 @@ using AppFrame.Utils;
 using AppFrame.WPF.ValidationAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
-
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Filters;
 using Caliburn.PresentationFramework.Screens;
@@ -284,7 +284,7 @@ namespace POSServer.ViewModels.ProductMaster
             this.Validate();
             ProductMaster.Category = Category;
             ProductMaster.ProductType = ProductType;
-            IEnumerable<IValidationError> errors = this.GetErrors(ProductMaster);
+            IEnumerable<IError> errors = this.GetErrors(ProductMaster);
             if (errors.Count() > 0)
             {
                 var test = ServiceLocator.Current.GetInstance<IErrorDialogViewModel>();

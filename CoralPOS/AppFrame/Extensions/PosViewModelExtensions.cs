@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF;
+using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.ViewModels;
 
@@ -57,13 +58,13 @@ namespace AppFrame.Extensions
         }
 
 
-        public static IEnumerable<IValidationError> GetErrors<T>(this PosViewModel viewModel,T target)
+        public static IEnumerable<IError> GetErrors<T>(this PosViewModel viewModel,T target)
         {
             //DefaultValidator validator = new DefaultValidator();
             return GlobalValidator.Instance.Validate(target);
         }
 
-        public static IEnumerable<IValidationError> GetErrors(this PosViewModel viewModel)
+        public static IEnumerable<IError> GetErrors(this PosViewModel viewModel)
         {
             return GlobalValidator.Instance.Validate(viewModel);
         }
