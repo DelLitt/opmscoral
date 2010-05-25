@@ -30,8 +30,9 @@ namespace POSServer.ViewModels
 
         public override void Activate() {}
 
-        public override void Initialize() 
+        protected override void OnInitialize() 
         {
+            base.OnInitialize();
             RootScreen = ServiceLocator.GetInstance<IMainView>();
             MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
