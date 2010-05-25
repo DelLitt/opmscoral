@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Validation;
+using AppFrame.WPF.Screens;
 using Caliburn.Core.Configuration;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.Spring;
@@ -26,6 +27,7 @@ namespace POSServer
     /// </summary>
     public partial class App : CaliburnApplication
     {
+        private TLoadScreen screen;
         public App()
         {
             InitSpring();
@@ -49,6 +51,7 @@ namespace POSServer
         {
             IShellViewModel viewModel = Container.GetInstance<IShellViewModel>("IShellViewModel");
             viewModel.ServiceLocator = Container;
+            
             return viewModel;
         }
 
