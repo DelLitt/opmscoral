@@ -54,7 +54,7 @@
                 <Label FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="21,161,0,15" Name="label1" Width="114.32">DIỄN TẢ</Label>
                 <TextBox FontSize="14" Margin="146,156,197,10" Name="Description1" Text="{Binding StockOut.Description,Mode=TwoWay}" BorderThickness="1" />
                 <ComboBox AllowDrop="False" FontSize="14" Height="38.727" Margin="146.251,9.856,197,0" Name="DefinitionStatusList" VerticalAlignment="Top" DisplayMemberPath="DefectStatusName" 
-                      IsTextSearchEnabled="True" SelectedItem="{Binding StockOut.StockDefinitionStatus,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="False" />
+                      IsTextSearchEnabled="True" SelectedItem="{Binding DefinitionStatus,ValidatesOnDataErrors=true,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="False" />
                 <Label FontSize="14" Height="28.424" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="11.429,20.159,0,0" Name="label3" VerticalAlignment="Top" Width="124" Content="LOẠI XUẤT HÀNG"></Label>
                 <Button FontSize="14" Height="39.581" HorizontalAlignment="Left" Margin="646,0,0,10" Name="FixQuantityByAvailable" VerticalAlignment="Bottom" Width="182">SỬA SL THEO TỒN KHO</Button>
                 <Button FontSize="14" HorizontalAlignment="Right" Margin="0,64,9,101" Name="Create" Width="182.092">XUẤT THEO MẶT HÀNG</Button>

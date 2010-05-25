@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -131,6 +132,7 @@ namespace POSServer.ViewModels.Stock.StockOut
         }
 
         private CoralPOS.Models.StockDefinitionStatus _definitionStatus;
+        [Required]
         public CoralPOS.Models.StockDefinitionStatus DefinitionStatus
         {
             get
@@ -228,8 +230,9 @@ namespace POSServer.ViewModels.Stock.StockOut
 		        
         public void Save()
         {
-            if (StockOut.Department == null || StockOut.Department.DepartmentId <= 0) return;
+            if (StockOut.Department == null) return;
             StockOut.StockOutDetails = ObjectConverter.ConvertTo<StockOutDetail>(StockOutDetails);
+            StockOut.DefinitionStatus = DefinitionStatus;
             IEnumerable<IError> errors = this.GetErrors(StockOut);
             if (this.HasError())
             {
@@ -448,6 +451,7 @@ namespace POSServer.ViewModels.Stock.StockOut
             base.Initialize();
             
             var list = Flow.Session.Get(FlowConstants.PRODUCT_NAMES_LIST);
+            DefinitionStatus = new StockDefinitionStatus();
             ProductMasterList = list as IList;
             var deptsList = Flow.Session.Get(FlowConstants.DEFINITION_STATUS_LIST); 
             DefinitionStatusList = deptsList as IList;
