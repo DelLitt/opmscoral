@@ -352,6 +352,7 @@
     <Compile Include="WPF\Screens\ILoadViewModel.cs" />
     <Compile Include="WPF\Screens\INormalLoadViewModel.cs" />
     <Compile Include="WPF\Screens\IPageScreen.cs" />
+    <Compile Include="WPF\Screens\TLoadScreen.cs" />
     <Compile Include="WPF\ValidationAttributes\NotNullValidationRule.cs" />
     <Compile Include="WPF\ValidationAttributes\FutureAttribute.cs" />
     <Compile Include="WPF\ValidationAttributes\LengthAttribute.cs" />
@@ -369,6 +370,10 @@
     <Page Include="WPF\Screens\CircularProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPF\Screens\TLoadScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

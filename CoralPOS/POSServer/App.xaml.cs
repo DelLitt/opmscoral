@@ -51,7 +51,6 @@ namespace POSServer
         {
             IShellViewModel viewModel = Container.GetInstance<IShellViewModel>("IShellViewModel");
             viewModel.ServiceLocator = Container;
-            
             return viewModel;
         }
 
@@ -62,5 +61,6 @@ namespace POSServer
             
             return new SpringAdapter(context);
         }
+        
     }
 }
