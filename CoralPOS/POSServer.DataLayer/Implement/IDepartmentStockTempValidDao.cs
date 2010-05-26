@@ -8,38 +8,38 @@ using NHibernate.Criterion;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
-namespace POSClient.DataLayer.Implement
+namespace POSServer.DataLayer.Implement
 {
 	
-    public interface IDepartmentStockTemployeeValidDao
+    public interface IDepartmentStockTempValidDao
     {
         /// <summary>
         /// Find Tax object by id. Return null if nothing is found
         /// </summary>
         /// <param name="id">Id of Tax</param>
         /// <returns></returns>
-        DepartmentStockTemployeeValid FindById(object id);
+        DepartmentStockTempValid FindById(object id);
         
         /// <summary>
         /// Add Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        DepartmentStockTemployeeValid Add(DepartmentStockTemployeeValid data);
+        DepartmentStockTempValid Add(DepartmentStockTempValid data);
         
         /// <summary>
         /// Update Tax to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        int Update(DepartmentStockTemployeeValid data);
+        int Update(DepartmentStockTempValid data);
         
         /// <summary>
         /// Delete Tax from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        int Delete(DepartmentStockTemployeeValid data);
+        int Delete(DepartmentStockTempValid data);
         
         /// <summary>
         /// Delete Tax from database.
@@ -53,11 +53,11 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>		
-        IList<DepartmentStockTemployeeValid> FindAll(LinqCriteria<DepartmentStockTemployeeValid> criteria);
+        IList<DepartmentStockTempValid> FindAll(LinqCriteria<DepartmentStockTempValid> criteria);
 
-        IList<DepartmentStockTemployeeValid> FindAll(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        IList<DepartmentStockTempValid> FindAll(ObjectCriteria<DepartmentStockTempValid> criteria);
 		
-        object FindFirst(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        object FindFirst(ObjectCriteria<DepartmentStockTempValid> criteria);
 		
 		/// <summary>
         /// 
@@ -66,21 +66,21 @@ namespace POSClient.DataLayer.Implement
         /// <param name="criteria"></param>
         /// <param name="subProp"></param>
         /// <returns></returns>
-        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<DepartmentStockTemployeeValid> criteria,Func<DepartmentStockTemployeeValid,TClass> subProp);
+        IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<DepartmentStockTempValid> criteria,Func<DepartmentStockTempValid,TClass> subProp);
 
         /// <summary>
         /// Find all Tax from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        QueryResult FindPaging(ObjectCriteria<DepartmentStockTempValid> criteria);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        int Count(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        int Count(ObjectCriteria<DepartmentStockTempValid> criteria);
 
         /// <summary>
         /// 
@@ -88,29 +88,9 @@ namespace POSClient.DataLayer.Implement
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        object SelectSpecificType(ObjectCriteria<DepartmentStockTemployeeValid> criteria, IProjection type);
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <param name="exposeSession"></param>
-        /// <returns></returns>
-        object Execute(IHibernateCallback callback, bool exposeSession);
+        object SelectSpecificType(ObjectCriteria<DepartmentStockTempValid> criteria, IProjection type);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="delegated"></param>
-        /// <returns></returns>
-        object Execute(HibernateDelegate delegated);
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="delegated"></param>
-        /// <returns></returns>
-        object ExecuteExposedSession(HibernateDelegate delegated);
+        object Execute(HibernateDelegate hibernateDelegate);
     }
 }
 

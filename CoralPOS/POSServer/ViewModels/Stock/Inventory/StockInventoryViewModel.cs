@@ -9,16 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.DataLayer;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Stock.Inventory
 {
-    [PerRequest(typeof(IStockInventoryViewModel))]
     public class StockInventoryViewModel : PosViewModel,IStockInventoryViewModel  
     {
 
@@ -71,6 +72,36 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => Description);
             }
         }
+
+        private bool _checkSelectedDepartment;
+        public bool CheckSelectedDepartment
+        {
+            get
+            {
+                return _checkSelectedDepartment;
+            }
+            set
+            {
+                _checkSelectedDepartment = value;
+                NotifyOfPropertyChange(()=>CheckSelectedDepartment);
+            }
+        }
+
+        private Department _selectedDepartment;
+        public Department SelectedDepartment
+        {
+            get
+            {
+                return _selectedDepartment;
+            }
+            set
+            {
+                _selectedDepartment = value;
+                NotifyOfPropertyChange(() => SelectedDepartment);
+            }
+        }
+        public IDepartmentLogic DepartmentLogic { get; set; }
+        public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
@@ -187,7 +218,22 @@ namespace POSServer.ViewModels.Stock.Inventory
         {
             
         }
-				#endregion
+
+        public void ChangeDepartmentForEvaluate()
+        {
+            IList<DepartmentStockTempValid> list = DepartmentStockTempValidLogic.FindStockTempValidForDepartment(SelectedDepartment);
+            StockInventoryList = list as IList;
+        }
+        public override void Initialize()
+        {
+            IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
+            departments.Insert(0,new Department { DepartmentId = 0,DepartmentName = "KHO CHINH"});
+            Departments = departments as IList;
+            SelectedDepartment = departments[0];
+            StockInventoryList = new ArrayList();
+        }
+
+        #endregion
 		
         
         

@@ -145,7 +145,15 @@
     </property>
     <property name="Session" ref="FlowSession" />
   </object>
-  
+  <object id="StockInventoryViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.Stock.Inventory.IStockInventoryViewModel"/>        
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
   <object id="SyncToDepartmentFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>

@@ -16,10 +16,10 @@ using  POSClient.DataLayer.Implement;
 
 namespace POSClient.BusinessLogic.Implement
 {
-    public class DepartmentStockTemployeeValidLogic : IDepartmentStockTemployeeValidLogic
+    public class DepartmentStockTempValidLogic : IDepartmentStockTempValidLogic
     {
-        private IDepartmentStockTemployeeValidDao _innerDao;
-        public IDepartmentStockTemployeeValidDao DepartmentStockTemployeeValidDao
+        private IDepartmentStockTempValidDao _innerDao;
+        public IDepartmentStockTempValidDao DepartmentStockTempValidDao
         {
             get 
             { 
@@ -36,9 +36,9 @@ namespace POSClient.BusinessLogic.Implement
         /// </summary>
         /// <param name="id">Id of DepartmentStockTemployeeValid</param>
         /// <returns></returns>
-        public DepartmentStockTemployeeValid FindById(object id)
+        public DepartmentStockTempValid FindById(object id)
         {
-            return DepartmentStockTemployeeValidDao.FindById(id);
+            return DepartmentStockTempValidDao.FindById(id);
         }
         
         /// <summary>
@@ -47,9 +47,9 @@ namespace POSClient.BusinessLogic.Implement
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly=false)]
-        public DepartmentStockTemployeeValid Add(DepartmentStockTemployeeValid data)
+        public DepartmentStockTempValid Add(DepartmentStockTempValid data)
         {
-            DepartmentStockTemployeeValidDao.Add(data);
+            DepartmentStockTempValidDao.Add(data);
             return data;
         }
         
@@ -59,9 +59,9 @@ namespace POSClient.BusinessLogic.Implement
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly=false)]
-        public void Update(DepartmentStockTemployeeValid data)
+        public void Update(DepartmentStockTempValid data)
         {
-            DepartmentStockTemployeeValidDao.Update(data);
+            DepartmentStockTempValidDao.Update(data);
         }
         
         /// <summary>
@@ -70,9 +70,9 @@ namespace POSClient.BusinessLogic.Implement
         /// <param name="data"></param>
         /// <returns></returns>
         [Transaction(ReadOnly=false)]
-        public void Delete(DepartmentStockTemployeeValid data)
+        public void Delete(DepartmentStockTempValid data)
         {
-            DepartmentStockTemployeeValidDao.Delete(data);
+            DepartmentStockTempValidDao.Delete(data);
         }
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace POSClient.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public void DeleteById(object id)
         {
-            DepartmentStockTemployeeValidDao.DeleteById(id);
+            DepartmentStockTempValidDao.DeleteById(id);
         }
         
         /// <summary>
@@ -91,9 +91,9 @@ namespace POSClient.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<DepartmentStockTemployeeValid> FindAll(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public IList<DepartmentStockTempValid> FindAll(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
-            return DepartmentStockTemployeeValidDao.FindAll(criteria);
+            return DepartmentStockTempValidDao.FindAll(criteria);
         }
         
         /// <summary>
@@ -101,9 +101,9 @@ namespace POSClient.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public QueryResult FindPaging(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
-            return DepartmentStockTemployeeValidDao.FindPaging(criteria);
+            return DepartmentStockTempValidDao.FindPaging(criteria);
         }
     }
 }

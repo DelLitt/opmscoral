@@ -84,7 +84,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void InventoryCollector()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockInventoryViewFlow);  
         }
 		        
         public void AfterInventoryCollectorProcessing()

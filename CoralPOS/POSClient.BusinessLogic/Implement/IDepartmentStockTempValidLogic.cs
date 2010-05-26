@@ -7,39 +7,39 @@ using NHibernate;
 using NHibernate.Criterion;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
-using POSServer.DataLayer.Implement;
+using POSClient.DataLayer.Implement;
 
-namespace POSServer.BusinessLogic.Implement
+namespace POSClient.BusinessLogic.Implement
 {
-    public interface IDepartmentStockTemployeeValidLogic
+    public interface IDepartmentStockTempValidLogic
     {
         /// <summary>
         /// Find  DepartmentStockTemployeeValid object by id. Return null if nothing is found
         /// </summary>
         /// <param name="id">Id of  DepartmentStockTemployeeValid</param>
         /// <returns></returns>
-         DepartmentStockTemployeeValid FindById(object id);
+         DepartmentStockTempValid FindById(object id);
         
         /// <summary>
         /// Add  DepartmentStockTemployeeValid to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-         DepartmentStockTemployeeValid Add( DepartmentStockTemployeeValid data);
+         DepartmentStockTempValid Add( DepartmentStockTempValid data);
         
         /// <summary>
         /// Update  DepartmentStockTemployeeValid to database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Update( DepartmentStockTemployeeValid data);
+        void Update( DepartmentStockTempValid data);
         
         /// <summary>
         /// Delete  DepartmentStockTemployeeValid from database.
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        void Delete( DepartmentStockTemployeeValid data);
+        void Delete( DepartmentStockTempValid data);
         
         /// <summary>
         /// Delete  DepartmentStockTemployeeValid from database.
@@ -53,13 +53,13 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        IList<DepartmentStockTemployeeValid> FindAll(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        IList<DepartmentStockTempValid> FindAll(ObjectCriteria<DepartmentStockTempValid> criteria);
         
         /// <summary>
         /// Find all  DepartmentStockTemployeeValid from database. Has pagination.
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        QueryResult FindPaging(ObjectCriteria<DepartmentStockTemployeeValid> criteria);
+        QueryResult FindPaging(ObjectCriteria<DepartmentStockTempValid> criteria);
     }
 }

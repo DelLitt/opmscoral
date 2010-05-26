@@ -11,7 +11,7 @@ namespace CoralPOS.Models {
     [Serializable()]
     [Validate()]
     [DataContract()]
-    public class DepartmentStockTemployeeValidPK {
+    public class DepartmentStockTempValidPK {
         
         [DataMember(Name="1", Order=1)]
         public virtual System.DateTime CreateDate {
@@ -30,7 +30,7 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-   	 protected bool Equals(DepartmentStockTemployeeValidPK entity)
+   	 protected bool Equals(DepartmentStockTempValidPK entity)
 		{
 			if (entity == null) return false;
 			if (!base.Equals(entity)) return false;
@@ -41,7 +41,7 @@ namespace CoralPOS.Models {
 		public override bool Equals(object obj)
 		{
 			if (ReferenceEquals(this, obj)) return true;
-			return Equals(obj as DepartmentStockTemployeeValidPK);
+			return Equals(obj as DepartmentStockTempValidPK);
 		}
 
 		public override int GetHashCode()

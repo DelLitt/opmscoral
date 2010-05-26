@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="DepartmentStockTemployeeValid" table="CRL_DEPT_STK_TEMP_VALID" >
-    <composite-id name="DepartmentStockTemployeeValidPK" class="DepartmentStockTemployeeValidPK">
+  <class name="DepartmentStockTempValid" table="CRL_DEPT_STK_TEMP_VALID" >
+    <composite-id name="DepartmentStockTempValidPK" class="DepartmentStockTempValidPK">
       <key-property name="CreateDate" type="DateTime" column="CREATE_DATE" />
       <key-property name="DepartmentId" type="Int64" column="DEPARTMENT_ID" />
       <key-property name="ProductId" type="String" column="PRODUCT_ID" />
@@ -20,10 +20,16 @@
     <property name="GoodQuantity" column="GOOD_QUANTITY" />
     <property name="LostQuantity" column="LOST_QUANTITY" />
     <property name="OnStorePrice" column="ON_STORE_PRICE" />
-    <property name="ProductMasterId" column="PRODUCT_MASTER_ID" />
+    <!--<property name="ProductMasterId" column="PRODUCT_MASTER_ID" />-->
     <property name="Quantity" column="QUANTITY" />
     <property name="UnconfirmQuantity" column="UNCONFIRM_QUANTITY" />
     <property name="UpdateDate" column="UPDATE_DATE" />
     <property name="UpdateId" column="UPDATE_ID" />
+    <many-to-one class="Product" name="Product" update="false" insert="false">
+      <column name="PRODUCT_ID" />
+    </many-to-one>
+    <many-to-one class="ProductMaster" name="ProductMaster">
+      <column name="PRODUCT_MASTER_ID" />
+    </many-to-one>
   </class>
 </hibernate-mapping>

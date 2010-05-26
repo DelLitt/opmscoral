@@ -9,6 +9,8 @@ namespace POSServer.Common
     {
         #region Synchronize
         public static string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
+        
+
         #endregion
 
         #region Task
@@ -34,7 +36,7 @@ namespace POSServer.Common
         
 
         #region Stock flow
-
+        public const string StockInventoryViewFlow = "StockInventoryViewFlow";
         public const string StockOutSearchFlow = "StockOutSearchFlow";
         public const string StockInSearchFlow = "StockInSearchFlow";
         public const string StockOutCreateFlow ="StockOutCreateFlow";

@@ -330,7 +330,7 @@
     <Compile Include="Implement\DepartmentStockOutCostDao.cs" />
     <Compile Include="Implement\DepartmentStockOutDao.cs" />
     <Compile Include="Implement\DepartmentStockOutDetailDao.cs" />
-    <Compile Include="Implement\DepartmentStockTemployeeValidDao.cs" />
+    <Compile Include="Implement\DepartmentStockTempValidDao.cs" />
     <Compile Include="Implement\DepartmentStockTemployeeValidSaveDao.cs" />
     <Compile Include="Implement\DepartmentTimelineDao.cs" />
     <Compile Include="Implement\DistributorDao.cs" />
@@ -376,7 +376,7 @@
     <Compile Include="Implement\IDepartmentStockOutCostDao.cs" />
     <Compile Include="Implement\IDepartmentStockOutDao.cs" />
     <Compile Include="Implement\IDepartmentStockOutDetailDao.cs" />
-    <Compile Include="Implement\IDepartmentStockTemployeeValidDao.cs" />
+    <Compile Include="Implement\IDepartmentStockTempValidDao.cs" />
     <Compile Include="Implement\IDepartmentStockTemployeeValidSaveDao.cs" />
     <Compile Include="Implement\IDepartmentTimelineDao.cs" />
     <Compile Include="Implement\IDistributorDao.cs" />

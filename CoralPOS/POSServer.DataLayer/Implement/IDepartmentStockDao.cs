@@ -89,6 +89,13 @@ namespace POSServer.DataLayer.Implement
         /// <param name="type"></param>
         /// <returns></returns>
         object SelectSpecificType(ObjectCriteria<DepartmentStock> criteria, IProjection type);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="delegated"></param>
+        /// <returns></returns>
+        object Execute(HibernateDelegate delegated);
     }
 }
 

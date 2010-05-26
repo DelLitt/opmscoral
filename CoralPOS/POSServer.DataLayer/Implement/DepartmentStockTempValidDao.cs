@@ -12,9 +12,9 @@ using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
 using CoralPOS.Models;
 
-namespace POSClient.DataLayer.Implement
+namespace POSServer.DataLayer.Implement
 {
-    public class DepartmentStockTemployeeValidDao : IDepartmentStockTemployeeValidDao
+    public class DepartmentStockTempValidDao : IDepartmentStockTempValidDao
     {
         private HibernateTemplate _hibernateTemplate;
 
@@ -35,9 +35,9 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="id">Id of DepartmentStockTemployeeValid</param>
         /// <returns></returns>
-        public DepartmentStockTemployeeValid FindById(object id)
+        public DepartmentStockTempValid FindById(object id)
         {
-            return (DepartmentStockTemployeeValid) _hibernateTemplate.Get(typeof(DepartmentStockTemployeeValid), id);
+            return (DepartmentStockTempValid) _hibernateTemplate.Get(typeof(DepartmentStockTempValid), id);
         }
         
         /// <summary>
@@ -45,7 +45,7 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public DepartmentStockTemployeeValid Add(DepartmentStockTemployeeValid data)
+        public DepartmentStockTempValid Add(DepartmentStockTempValid data)
         {
 			_hibernateTemplate.Execute(delegate(ISession session) 
                     {
@@ -62,7 +62,7 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public int Update(DepartmentStockTemployeeValid data)
+        public int Update(DepartmentStockTempValid data)
         {
 			_hibernateTemplate.Execute(delegate(ISession session) 
                     {
@@ -79,7 +79,7 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public int Delete(DepartmentStockTemployeeValid data)
+        public int Delete(DepartmentStockTempValid data)
         {
 			_hibernateTemplate.Execute(delegate(ISession session) 
                     {
@@ -98,7 +98,7 @@ namespace POSClient.DataLayer.Implement
         /// <returns></returns>
         public int DeleteById(object id)
         {
-            DepartmentStockTemployeeValid obj = (DepartmentStockTemployeeValid) HibernateTemplate.Get(typeof (DepartmentStockTemployeeValid), id);
+            DepartmentStockTempValid obj = (DepartmentStockTempValid) HibernateTemplate.Get(typeof (DepartmentStockTempValid), id);
             if (obj != null)
             {
                 HibernateTemplate.Delete(obj);
@@ -111,12 +111,12 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public IList<DepartmentStockTemployeeValid> FindAll(LinqCriteria<DepartmentStockTemployeeValid> criteria)
+        public IList<DepartmentStockTempValid> FindAll(LinqCriteria<DepartmentStockTempValid> criteria)
         {
-            return (IList<DepartmentStockTemployeeValid>) HibernateTemplate.Execute(
+            return (IList<DepartmentStockTempValid>) HibernateTemplate.Execute(
                                 delegate(ISession session)
                                     {                                        
-                                        QueryHandler<DepartmentStockTemployeeValid> handler = new QueryHandler<DepartmentStockTemployeeValid>(session);
+                                        QueryHandler<DepartmentStockTempValid> handler = new QueryHandler<DepartmentStockTempValid>(session);
                                         var result = handler.GetList(criteria);
                                         return result;
                                         
@@ -124,20 +124,20 @@ namespace POSClient.DataLayer.Implement
                                     );
         }
 
-        public IList<DepartmentStockTemployeeValid> FindAll(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public IList<DepartmentStockTempValid> FindAll(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
-            return (IList<DepartmentStockTemployeeValid>)HibernateTemplate.Execute(
+            return (IList<DepartmentStockTempValid>)HibernateTemplate.Execute(
                                 delegate(ISession session)
                                 {
-                                    IList<DepartmentStockTemployeeValid> result = new List<DepartmentStockTemployeeValid>();
+                                    IList<DepartmentStockTempValid> result = new List<DepartmentStockTempValid>();
                                     try
                                     {
-                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTemployeeValid));
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTempValid));
                                         if (criteria != null)
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
                                         }
-                                        result = hibernateCriteria.List<DepartmentStockTemployeeValid>();
+                                        result = hibernateCriteria.List<DepartmentStockTempValid>();
                                         return result;
                                     }
                                     catch(Exception ex)
@@ -150,7 +150,7 @@ namespace POSClient.DataLayer.Implement
             
         }
 
-        public object FindFirst(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public object FindFirst(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
             return HibernateTemplate.Execute(
                                 delegate(ISession session)
@@ -158,12 +158,12 @@ namespace POSClient.DataLayer.Implement
                                     object result = null;
                                     try
                                     {
-                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTemployeeValid));
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTempValid));
                                         if (criteria != null)
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
                                         }
-                                        result = hibernateCriteria.List<DepartmentStockTemployeeValid>()[0];
+                                        result = hibernateCriteria.List<DepartmentStockTempValid>()[0];
                                         return result;
                                     }
                                     catch (Exception ex)
@@ -176,14 +176,14 @@ namespace POSClient.DataLayer.Implement
 
         }
 		
-		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<DepartmentStockTemployeeValid> criteria,Func<DepartmentStockTemployeeValid,TClass> subProp)
+		public IList<TClass> FindAllSubProperty<TClass>(LinqCriteria<DepartmentStockTempValid> criteria,Func<DepartmentStockTempValid,TClass> subProp)
         {
             return (IList<TClass>)HibernateTemplate.Execute(
                                 delegate(ISession session)
                                 {
                                     IList<TClass> res = new List<TClass>();
-                                    QueryHandler<DepartmentStockTemployeeValid> handler = new QueryHandler<DepartmentStockTemployeeValid>(session);
-                                    IList<DepartmentStockTemployeeValid> products = handler.GetList(criteria);
+                                    QueryHandler<DepartmentStockTempValid> handler = new QueryHandler<DepartmentStockTempValid>(session);
+                                    IList<DepartmentStockTempValid> products = handler.GetList(criteria);
                                     var list = products.Select(subProp);
                                     foreach (TClass classe in list)
                                     {
@@ -200,7 +200,7 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public QueryResult FindPaging(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public QueryResult FindPaging(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
             return (QueryResult)HibernateTemplate.Execute(
                                 delegate(ISession session)
@@ -223,10 +223,10 @@ namespace POSClient.DataLayer.Implement
             
                                     queryResult.TotalPage = (((count % pageSize == 0) ? (count / pageSize) : (count / pageSize + 1)));
 
-                                    IList<DepartmentStockTemployeeValid> result = new List<DepartmentStockTemployeeValid>();
+                                    IList<DepartmentStockTempValid> result = new List<DepartmentStockTempValid>();
                                     try
                                     {
-                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTemployeeValid));
+                                        ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTempValid));
                                         if (criteria != null)
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
@@ -251,7 +251,7 @@ namespace POSClient.DataLayer.Implement
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public int Count(ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public int Count(ObjectCriteria<DepartmentStockTempValid> criteria)
         {
 
             return (int)HibernateTemplate.Execute(
@@ -261,7 +261,7 @@ namespace POSClient.DataLayer.Implement
                                     try
                                     {
                                         ICriteria hibernateCriteria =
-                                            session.CreateCriteria(typeof (DepartmentStockTemployeeValid)).SetProjection(Projections.RowCount());
+                                            session.CreateCriteria(typeof (DepartmentStockTempValid)).SetProjection(Projections.RowCount());
                                         if (criteria != null)
                                         {
                                             PosContext.SetCriteria(hibernateCriteria, criteria);
@@ -284,13 +284,13 @@ namespace POSClient.DataLayer.Implement
         /// <param name="criteria"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public object SelectSpecificType(ObjectCriteria<DepartmentStockTemployeeValid> criteria, IProjection type)
+        public object SelectSpecificType(ObjectCriteria<DepartmentStockTempValid> criteria, IProjection type)
         {
 
             ISession session = HibernateTemplate.SessionFactory.OpenSession();
             try
             {
-                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTemployeeValid)).SetProjection(type); ;
+                ICriteria hibernateCriteria = session.CreateCriteria(typeof(DepartmentStockTempValid)).SetProjection(type); ;
                 if (criteria != null)
                 {
                     PosContext.SetCriteria(hibernateCriteria, criteria);
@@ -306,51 +306,25 @@ namespace POSClient.DataLayer.Implement
             }
         }
 
-        private void SetCriteria(ICriteria hibernateCriteria, ObjectCriteria<DepartmentStockTemployeeValid> criteria)
+        public object Execute(HibernateDelegate hibernateDelegate)
+        {
+            return HibernateTemplate.Execute(hibernateDelegate);
+        }
+
+        private void SetCriteria(ICriteria hibernateCriteria, ObjectCriteria<DepartmentStockTempValid> criteria)
         {
             IList<ICriterion> criterionList = criteria.GetWhere();
             foreach (ICriterion criterion in criterionList)
             {
                 hibernateCriteria.Add(criterion);
             }
-            foreach (KeyValuePair<Expression<Func<DepartmentStockTemployeeValid, object>>, Func<string, Order>> pair in criteria.GetOrder())
+            foreach (KeyValuePair<Expression<Func<DepartmentStockTempValid, object>>, Func<string, Order>> pair in criteria.GetOrder())
             {
                 hibernateCriteria.AddOrder(pair.Key, pair.Value);
 
             }
             if(criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
-        }
-		
-		/// <summary>
-        /// 
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <param name="exposeSession"></param>
-        /// <returns></returns>
-        public object Execute(IHibernateCallback callback, bool exposeSession)
-        {
-            return HibernateTemplate.Execute(callback, exposeSession);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="delegated"></param>
-        /// <returns></returns>
-        public object Execute(HibernateDelegate delegated)
-        {
-            return HibernateTemplate.Execute(delegated);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="delegated"></param>
-        /// <returns></returns>
-        public object ExecuteExposedSession(HibernateDelegate delegated)
-        {
-            return HibernateTemplate.Execute(delegated, true);
         }
     }
 }

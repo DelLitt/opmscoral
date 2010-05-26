@@ -400,8 +400,8 @@
     <Compile Include="Models\DepartmentStockOutDetailPK.cs" />
     <Compile Include="Models\DepartmentStockOutPK.cs" />
     <Compile Include="Models\DepartmentStockPK.cs" />
-    <Compile Include="Models\DepartmentStockTemployeeValid.cs" />
-    <Compile Include="Models\DepartmentStockTemployeeValidPK.cs" />
+    <Compile Include="Models\DepartmentStockTempValid.cs" />
+    <Compile Include="Models\DepartmentStockTempValidPK.cs" />
     <Compile Include="Models\DepartmentStockTemployeeValidSave.cs" />
     <Compile Include="Models\DepartmentStockTemployeeValidSavePK.cs" />
     <Compile Include="Models\DepartmentTimeline.cs" />
@@ -560,8 +560,12 @@
     <EmbeddedResource Include="Models\DepartmentStockOut.hbm.xml" />
     <EmbeddedResource Include="Models\DepartmentStockOutCost.hbm.xml" />
     <EmbeddedResource Include="Models\DepartmentStockOutDetail.hbm.xml" />
-    <EmbeddedResource Include="Models\DepartmentStockTemployeeValid.hbm.xml" />
-    <EmbeddedResource Include="Models\DepartmentStockTemployeeValidSave.hbm.xml" />
+    <EmbeddedResource Include="Models\DepartmentStockTempValid.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\DepartmentStockTemployeeValidSave.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Models\DepartmentTimeline.hbm.xml" />
     <EmbeddedResource Include="Models\Distributor.hbm.xml" />
     <EmbeddedResource Include="Models\Emp.hbm.xml" />

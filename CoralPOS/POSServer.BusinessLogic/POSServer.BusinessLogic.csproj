@@ -148,7 +148,7 @@
     <Compile Include="Implement\DepartmentStockOutCostLogic.cs" />
     <Compile Include="Implement\DepartmentStockOutDetailLogic.cs" />
     <Compile Include="Implement\DepartmentStockOutLogic.cs" />
-    <Compile Include="Implement\DepartmentStockTemployeeValidLogic.cs" />
+    <Compile Include="Implement\DepartmentStockTempValidLogic.cs" />
     <Compile Include="Implement\DepartmentStockTemployeeValidSaveLogic.cs" />
     <Compile Include="Implement\DepartmentTimelineLogic.cs" />
     <Compile Include="Implement\DistributorLogic.cs" />
@@ -194,7 +194,7 @@
     <Compile Include="Implement\IDepartmentStockOutCostLogic.cs" />
     <Compile Include="Implement\IDepartmentStockOutDetailLogic.cs" />
     <Compile Include="Implement\IDepartmentStockOutLogic.cs" />
-    <Compile Include="Implement\IDepartmentStockTemployeeValidLogic.cs" />
+    <Compile Include="Implement\IDepartmentStockTempValidLogic.cs" />
     <Compile Include="Implement\IDepartmentStockTemployeeValidSaveLogic.cs" />
     <Compile Include="Implement\IDepartmentTimelineLogic.cs" />
     <Compile Include="Implement\IDistributorLogic.cs" />

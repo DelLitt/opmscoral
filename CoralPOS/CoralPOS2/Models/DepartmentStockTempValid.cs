@@ -11,13 +11,13 @@ namespace CoralPOS.Models {
     [Serializable()]
     [Validate()]
     [DataContract()]
-    public class DepartmentStockTemployeeValid {
+    public class DepartmentStockTempValid {
         
-        public DepartmentStockTemployeeValid() {
+        public DepartmentStockTempValid() {
         }
         
         [DataMember(Name="4", Order=4)]
-        public virtual DepartmentStockTemployeeValidPK DepartmentStockTemployeeValidPK {
+        public virtual DepartmentStockTempValidPK DepartmentStockTempValidPK {
             get;
             set;
         }
@@ -107,7 +107,8 @@ namespace CoralPOS.Models {
         }
         
         [DataMember(Name="19", Order=19)]
-        public virtual string ProductMasterId {
+        public virtual ProductMaster ProductMaster
+        {
             get;
             set;
         }
@@ -135,7 +136,13 @@ namespace CoralPOS.Models {
             get;
             set;
         }
-   	 protected bool Equals(DepartmentStockTemployeeValid entity)
+        [DataMember(Name = "24", Order = 23)]
+        public virtual Product Product
+        {
+            get;
+            set;
+        }
+   	 protected bool Equals(DepartmentStockTempValid entity)
 		{
 			if (entity == null) return false;
 			if (!base.Equals(entity)) return false;
@@ -146,7 +153,7 @@ namespace CoralPOS.Models {
 		public override bool Equals(object obj)
 		{
 			if (ReferenceEquals(this, obj)) return true;
-			return Equals(obj as DepartmentStockTemployeeValid);
+			return Equals(obj as DepartmentStockTempValid);
 		}
 
 		public override int GetHashCode()
