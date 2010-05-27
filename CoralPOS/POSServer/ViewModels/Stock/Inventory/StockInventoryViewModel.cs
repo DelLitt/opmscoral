@@ -189,6 +189,21 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => StockInventoryList);
             }
         }
+
+        private IList _stockInventoryListFooter;
+        public IList StockInventoryListFooter
+        {
+            get
+            {
+                return _stockInventoryListFooter;
+            }
+            set
+            {
+                _stockInventoryListFooter = value;
+                NotifyOfPropertyChange(() => StockInventoryListFooter);
+            }
+        }
+        
 				#endregion
 		
 		#region Methods
@@ -281,6 +296,8 @@ namespace POSServer.ViewModels.Stock.Inventory
             SelectedDepartment = departments[0];
             StockInventoryList = new ArrayList();
             CheckSelectedDepartment = true;
+
+            IList list = new ArrayList();
         }
 
         #endregion

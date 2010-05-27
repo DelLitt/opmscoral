@@ -30,6 +30,15 @@ namespace POSServer.Views.Stock.Inventory
         private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FilterText();
+            CalculateSum();
+        }
+
+        private void CalculateSum()
+        {
+            foreach (var item in StockInventoryList.Items)
+            {
+                
+            }
         }
 
         public void FilterText()
@@ -50,7 +59,7 @@ namespace POSServer.Views.Stock.Inventory
                 if (type.TypeId == 0) return true;
                 DepartmentStockTempValid master = (DepartmentStockTempValid)obj;
                 return master.ProductMaster.ProductType.TypeId == type.TypeId;
-            }; 
+            };
         }
     }
 }
