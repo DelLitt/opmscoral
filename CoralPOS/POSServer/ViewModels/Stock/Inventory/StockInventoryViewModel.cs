@@ -5,21 +5,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using Caliburn.Core;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Implement;
+using POSServer.ViewModels.Menu.Stock;
 
 
 namespace POSServer.ViewModels.Stock.Inventory
 {
+    [AttachMenuAndMainScreen(typeof(IInventoryMenuViewModel),typeof(IStockMainViewModel))]
     public class StockInventoryViewModel : PosViewModel,IStockInventoryViewModel  
     {
 
@@ -100,6 +105,20 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => SelectedDepartment);
             }
         }
+
+        private ProductType _selectedProductType;
+        public ProductType SelectedProductType
+        {
+            get
+            {
+                return _selectedProductType;
+            }
+            set
+            {
+                _selectedProductType = value;
+                NotifyOfPropertyChange(() => SelectedProductType);
+            }
+        }
         public IDepartmentLogic DepartmentLogic { get; set; }
         public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
 				#endregion
@@ -120,17 +139,17 @@ namespace POSServer.ViewModels.Stock.Inventory
             }
         }
 		        
-        private IList _productType;
-        public IList ProductType
+        private IList _productTypeList;
+        public IList ProductTypeList
         {
             get
             {
-                return _productType;
+                return _productTypeList;
             }
             set
             {
-                _productType = value;
-                NotifyOfPropertyChange(() => ProductType);
+                _productTypeList = value;
+                NotifyOfPropertyChange(() => ProductTypeList);
             }
         }
 		        
@@ -191,7 +210,7 @@ namespace POSServer.ViewModels.Stock.Inventory
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void button1()
@@ -219,18 +238,49 @@ namespace POSServer.ViewModels.Stock.Inventory
             
         }
 
+        public void ProcessProductTypeChange()
+        {
+            
+        }
         public void ChangeDepartmentForEvaluate()
+        {
+            BackgroundTask backgroundTask = new BackgroundTask(() => PopulateStockTempValidList(SelectedDepartment));
+            backgroundTask.Completed +=backgroundTask_Completed;
+            StartWaitingScreen(0);
+            backgroundTask.Start(SelectedDepartment);
+            
+        }
+
+        private void backgroundTask_Completed(object sender, RunWorkerCompletedEventArgs e)
+        {
+            StopWaitingScreen(0);
+            CheckSelectedDepartment = false;
+        }
+
+        private object PopulateStockTempValidList(Department selectedDepartment)
         {
             IList<DepartmentStockTempValid> list = DepartmentStockTempValidLogic.FindStockTempValidForDepartment(SelectedDepartment);
             StockInventoryList = list as IList;
+
+            // populate ProductTypeList
+            var productMasterList = (from stockValid in list
+                                     select stockValid.ProductMaster).Distinct().ToList();
+            var productTypeList = (from prdMaster in productMasterList
+                                   select prdMaster.ProductType).Distinct().ToList();
+            productTypeList.Insert(0,new ProductType{TypeId = 0,TypeName = "TAT CA CAC LOAI"});
+            ProductTypeList = productTypeList as IList;
+            ProductMasterList = productMasterList as IList;
+            return 0;
         }
+
         public override void Initialize()
         {
             IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
-            departments.Insert(0,new Department { DepartmentId = 0,DepartmentName = "KHO CHINH"});
+            departments.OrderBy(m => m.DepartmentId);
             Departments = departments as IList;
             SelectedDepartment = departments[0];
             StockInventoryList = new ArrayList();
+            CheckSelectedDepartment = true;
         }
 
         #endregion

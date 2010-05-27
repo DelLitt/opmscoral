@@ -118,7 +118,14 @@ namespace POSServer.BusinessLogic.Implement
             {
                 return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute(delegate(ISession session)
                 {
-                    var result = from stock in session.Linq<MainStock>()
+                    var query = session.Linq<MainStock>();
+                    query.Expand("Product");
+                    query.Expand("ProductMaster");
+                    var stockList = from stock in query
+                                    where stock.Quantity > 0 
+                                    select stock;
+                    
+                    var result = from stock in (stockList.ToList())
                                   select new DepartmentStockTempValid
                                  {
                                      DepartmentStockTempValidPK = new DepartmentStockTempValidPK
@@ -137,7 +144,17 @@ namespace POSServer.BusinessLogic.Implement
                                      ErrorQuantity = 0,
                                      ExclusiveKey = 0,
                                      Quantity = stock.Quantity,
-                                     GoodQuantity = 0
+                                     GoodQuantity = 0,
+                                     LostQuantity = 0,
+                                     ExFld1 = 0,
+                                     ExFld2 = 0,
+                                     ExFld3 = 0,
+                                     ExFld4 = "",
+                                     ExFld5 = "",
+                                     Fixed = 0,
+                                     OnStorePrice = 0,
+                                     UnconfirmQuantity = 0
+
                                  };
                     return result.ToList();
                 }
