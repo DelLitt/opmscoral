@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BonSoChinContext;
 using VBBContext;
+using Event = BonSoChinContext.Event;
 using Forum = BonSoChinContext.Forum;
 using Message = BonSoChinContext.Message;
 
@@ -51,10 +52,360 @@ namespace BonSoChinConvert
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            ConvertUser((BackgroundWorker)sender);
+            /*ConvertUser((BackgroundWorker)sender);
             ConvertForum((BackgroundWorker)sender);
             ConvertThread();
-            ConvertArticle();
+            ConvertArticle();*/
+            ConvertEvents();
+        }
+
+        private void ConvertEvents()
+        {
+            BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
+            VBBDataContext context = new VBBDataContext();
+
+
+            // process null users
+            var lackingMembers = (from msg in bonSoChinContext.Eventregistrations
+                                  where msg.Memberid == null
+                                  select msg).ToList();
+            string tempUser = "tempUser";
+            int tempUserCount = 1;
+            foreach (Eventregistration lackingMember in lackingMembers)
+            {
+                string salt = FetchUserSalt(3);
+                User user = new User
+                {
+                    Username = lackingMember.Regfirstname + lackingMember.Reglastname + "TEMP",//tempUser + string.Format("{0:000}", tempUserCount++),
+                    Password = CreatePassword("bscpassword", salt),
+                    Usergroupid = 2,
+                    Passworddate = DateTime.Now,
+                    Email = "a@a.com",
+                    Showvbcode = 1,
+                    Showbirthday = 0,
+                    Usertitle = "Junior Member",
+                    Joindate = ConvertToUnixTimestamp(DateTime.Now),
+                    Lastvisit = 1273158780,
+                    Daysprune = -1,
+                    Lastactivity = 1273158780,
+                    Reputation = 10,
+                    Reputationlevelid = 5,
+                    Timezoneoffset = "7",
+                    Options = 45108311,
+                    Birthday = "",
+                    Birthdaysearch = DateTime.Now,
+                    Posts = 0,
+                    Maxposts = -1,
+                    Startofweek = 1,
+                    Autosubscribe = -1,
+                    Salt = salt,
+                    Showblogcss = 1,
+                };
+                string img = "000.gif";
+                user.Avatarid = (short)(from avt in context.Avatars where avt.Avatarpath.Equals(img) select avt.Avatarid).FirstOrDefault();
+                PopulateUShort(user);
+                context.Users.InsertOnSubmit(user);
+            }
+            context.SubmitChanges();
+
+
+
+            short maxVForumId = (short)(from vForum1 in context.Forums
+                                        select vForum1.Forumid).Max();
+
+            long maxVThreadId = (from vThread1 in context.Threads
+                                 select vThread1.Threadid).Max();
+
+            int maxPostId = (int)(from vPost1 in context.Posts
+                                  select vPost1.Postid).Max();
+            var vPostId = maxPostId;
+            VBBContext.Forum vForum = new VBBContext.Forum
+            {
+                Title = "Sự kiện",
+                Titleclean = "Sự kiện",
+                Description = "Sự kiện",
+                Descriptionclean = "Sự kiện",
+                Displayorder = 1,
+                // replycount
+                Replycount = 0,
+                Lastpost = 0,
+                Lastposter = "",
+                Lastposterid = 0,
+                Lastpostid = 0,
+                Lastthread = "",
+                Lastthreadid = 0,
+                Newpostemail = "",
+                Newthreademail = "",
+                Parentid = -1,
+                Parentlist = "",
+                Childlist = "",
+                Defaultsortfield = "lastpost",
+                Defaultsortorder = "desc",
+                Threadcount = 0,
+                Options = 221127,
+            };
+            PopulateUShort(vForum);
+            short vForumId = (short)(maxVForumId + 1);
+            short superForumId = vForumId;
+            vForum.Forumid = (short)(maxVForumId + 1);
+            vForum.Parentlist = vForumId + ",-1";
+            vForum.Childlist = vForumId + ",-1";
+
+            context.Forums.InsertOnSubmit(vForum);
+            context.SubmitChanges();
+            // ---------------------------------- CREATE SUB FORUM -----------------------------------
+            var events = (from @event in bonSoChinContext.Events
+                                            select @event).ToList();
+
+            /*foreach (Event @event in events)
+            {
+                VBBContext.Forum vSubForum = new VBBContext.Forum
+                {
+                    Title = @event.Articlecategory1,
+                    Titleclean = @event.Articlecategory1,
+                    Description = @event.Articlecategory1,
+                    Descriptionclean = @event.Articlecategory1,
+                    Displayorder = 1,
+                    // replycount
+                    Replycount = 0,
+                    Lastpost = 0,
+                    Lastposter = "",
+                    Lastposterid = 0,
+                    Lastpostid = 0,
+                    Lastthread = "",
+                    Lastthreadid = 0,
+                    Newpostemail = "",
+                    Newthreademail = "",
+                    Parentid = superForumId,
+                    Parentlist = "",
+                    Childlist = "",
+                    Defaultsortfield = "lastpost",
+                    Defaultsortorder = "desc",
+                    Threadcount = 0,
+                    Options = 221127,
+                };
+                PopulateUShort(vSubForum);
+                ++vForumId;
+                vSubForum.Forumid = vForumId;
+                vSubForum.Parentlist = vForumId + "," + vSubForum.Parentid + ",-1";
+                vSubForum.Childlist = vForumId + ",-1";*/
+
+                // ---------------------------------- CREATE Thread -----------------------------------
+               /* var article4source = (from articles1 in bonSoChinContext.Events
+                                      where articles1.Articlecategoryid == @event.Articlecategoryid
+                                      select articles1).ToList();*/
+
+                foreach (Event @event in events)
+                {
+                    DateTime? dateStart = null;
+                    DateTime? dateAdded = null;
+                    dateStart = @event.Eventdatestart;
+                    dateAdded = @event.Eventdateadded;
+                    if(@event.Eventdateadded == null)
+                    {
+                        if (@event.Eventdatestart != null) dateAdded = @event.Eventdatestart;
+                    }
+                    else
+                    {
+                        if (@event.Eventdatestart == null) dateStart = @event.Eventdateadded;
+                    }
+                    if(dateAdded ==null && dateStart == null)
+                    {
+                        dateAdded = dateStart = new DateTime(2007, 1, 1);
+                    }
+                    var vThreadId = ++maxVThreadId;
+                    int dtline = ConvertToUnixTimestamp(dateAdded);
+                    Thread vThread = new Thread();
+                    vThread.Title = @event.Eventname;
+                    vThread.Prefixid = "";
+                    vThread.Forumid = vForumId;
+                    short allowReplies = short.Parse(@event.Eventallowregistrations.GetValueOrDefault().ToString());
+                    vThread.Open = allowReplies;
+                    vThread.Visible = 1;
+                    vThread.Dateline = ConvertToUnixTimestamp(dateAdded);
+                    int postMemberInThreadId = 126;
+                    if (@event.Eventaddedby != null) postMemberInThreadId = @event.Eventaddedby.Value;
+                    var postMemberInThread = (from member1 in bonSoChinContext.Members
+                                              where (member1.Memberid == postMemberInThreadId)
+                                              select member1).FirstOrDefault();
+                    var postUserInThread = (from user1 in context.Users
+                                            where user1.Username.Equals(postMemberInThread.Memberlogin.Trim())
+                                            select user1).FirstOrDefault();
+                    vThread.Postuserid = postUserInThread.Userid;
+                    vThread.Postusername = postMemberInThread.Memberlogin;
+
+                    vThread.Lastposter = "";
+                    vThread.Notes = "";
+                    vThread.Similar = "";
+
+                    PopulateUShort(vThread);
+                    vPostId++;
+
+                    // 1st post entered
+                    Post v1Post = new Post
+                    {
+                        Threadid = vThreadId,
+                        Title = "",
+                        Dateline = ConvertToUnixTimestamp(dateAdded),
+                        Pagetext = @event.Eventdesc,
+                        Allowsmilie = 1,
+                        Ipaddress = "127.0.0.1",
+                        Visible = 1,
+                        Parentid = vPostId,
+                        Userid = vThread.Postuserid,
+                        Username = vThread.Postusername,
+                    };
+
+                    // insert post parser
+                    Postparsed postparsed1 = new Postparsed
+                    {
+                        Dateline = v1Post.Dateline,
+                        Postid = vPostId,
+                        Styleid = 1,
+                        Languageid = 1,
+                        Hasimages = 0,
+                        Pagetexthtml = v1Post.Pagetext,
+                    };
+
+                    context.Posts.InsertOnSubmit(v1Post);
+                    context.Postparseds.InsertOnSubmit(postparsed1);
+                    //v1Post.Postid = vPostId;
+                    UpdateStatusOfForumAndThread(vThread, vForum, v1Post, vPostId, vThreadId);
+                    vForum.Threadcount++;
+                    vThread.Firstpostid = vPostId;
+
+                    /*vSubForum.Lastthread = vThread.Title.ToString();
+                    vSubForum.Lastthreadid = vThreadId;*/
+
+                    vForum.Lastthread = vThread.Title.ToString();
+                    vForum.Lastthreadid = vThreadId;
+
+                    /*vSubForum.Threadcount++;
+                    vSubForum.Replycount++;*/
+                    vForum.Replycount++;
+                    vThread.Replycount = 0;
+
+
+                    Threadview vThreadview = new Threadview();
+                    vThreadview.Threadid = vThreadId;
+                    context.Threads.InsertOnSubmit(vThread);
+
+                    // insert announcement
+                    #region INSERT events
+                    VBBContext.Event vbbEvent = new VBBContext.Event();
+                    vbbEvent.Calendarid = 1;
+                    vbbEvent.Allowsmilies = 1;
+                    vbbEvent.Customfields = @"a:0:{}";
+                    vbbEvent.Dateline = ConvertToUnixTimestamp(dateAdded);
+                    vbbEvent.Datelinefrom = ConvertToUnixTimestamp(dateStart);
+                    vbbEvent.Datelineto = ConvertToUnixTimestamp(@event.Eventdateend);
+                    vbbEvent.Dst = 0;
+                    vbbEvent.Event1 = @event.Eventdesc;
+                    vbbEvent.Recurring = 0;
+                    vbbEvent.Recuroption = "";
+                    vbbEvent.Title = @event.Eventname;
+                    vbbEvent.Utc = new decimal(7.00);
+                    vbbEvent.Visible = 1;
+                    vbbEvent.Userid = vThread.Postuserid;
+                    context.Events.InsertOnSubmit(vbbEvent);
+                    #endregion
+                    // insert replies
+                    #region INSERT REPLIES
+                    if (allowReplies == 1)
+                    {
+                        var replies = from reg in bonSoChinContext.Eventregistrations
+                                      where reg.Eventid == @event.Eventid
+                                      select reg;
+                        int postCount = 1;
+                        foreach (Eventregistration post in replies.ToList())
+                        {
+
+                            // ---------------------------------- CREATE POSTS -----------------------------------
+                            vPostId++;
+
+                            Post vPost = new Post();
+                            //vPost.Postid = vPostId;
+                            vPost.Threadid = vThreadId;
+                            vPost.Title = "";
+                            vPost.Dateline = v1Post.Dateline;
+                            vPost.Pagetext = post.Regcomments;
+                            vPost.Allowsmilie = 1;
+                            vPost.Ipaddress = "127.0.0.1";
+                            vPost.Visible = 1;
+                            vPost.Parentid = vPostId;
+
+
+                            #region post user
+                            postMemberInThread = (from member1 in bonSoChinContext.Members
+                                                  where (member1.Memberid == post.Memberid)
+                                                  select member1).FirstOrDefault();
+                            if (postMemberInThread == null)
+                            {
+                                postUserInThread = (from user1 in context.Users
+                                                    where user1.Username.Equals(post.Regfirstname + post.Reglastname + "TEMP")
+                                                    select user1).FirstOrDefault();
+                                if (postUserInThread != null)
+                                {
+                                    vPost.Userid = postUserInThread.Userid;
+                                    vPost.Username = postUserInThread.Username;
+                                }
+                                else
+                                {
+
+                                }
+
+                            }
+                            else
+                            {
+                                postUserInThread = (from user1 in context.Users
+                                                    where user1.Username.Equals(postMemberInThread.Memberlogin.Trim())
+                                                    select user1).FirstOrDefault();
+                                vPost.Userid = postUserInThread.Userid;
+                                vPost.Username = postMemberInThread.Memberlogin;
+                            }
+                            #endregion
+
+
+                            PopulateUShort(vPost);
+                            //context.SubmitChanges();
+
+                            /*postId = (int) (from vPost1 in context.Posts
+                                      select vPost1.Postid).Max();*/
+
+                            vThread.Replycount++;
+
+                            vForum.Threadcount++;
+                            vForum.Replycount++;
+                            postCount++;
+                            vThread.Lastpostid = vPostId;
+                            vThread.Lastposter = vPost.Username;
+                            vThread.Lastposterid = vPost.Userid;
+                            vThread.Lastpost = vPost.Dateline;
+
+                            // update thread & forum
+                            UpdateStatusOfForumAndThread(vThread, vForum, vPost, vPostId, vThreadId);
+
+                            //postId++;
+                            context.Posts.InsertOnSubmit(vPost);
+
+                            // insert post parser
+                            Postparsed postparsed = new Postparsed();
+                            postparsed.Dateline = vPost.Dateline;
+                            postparsed.Postid = vPostId;
+                            postparsed.Styleid = 1;
+                            postparsed.Languageid = 1;
+                            postparsed.Hasimages = 0;
+                            postparsed.Pagetexthtml = vPost.Pagetext;
+                            context.Postparseds.InsertOnSubmit(postparsed);
+
+                        } 
+                    #endregion
+                    }
+                }
+
+                //context.Forums.InsertOnSubmit(vSubForum);
+            /*}*/
+            context.SubmitChanges();
         }
 
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -901,6 +1252,8 @@ namespace BonSoChinConvert
 
         private int ConvertToUnixTimestamp(DateTime? value)
         {
+            DateTime first = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            if (value == null) return ConvertToUnixTimestamp(first);
             return ConvertToUnixTimestamp(value.Value);
         }
         public string MySqlEscape(string usString)
