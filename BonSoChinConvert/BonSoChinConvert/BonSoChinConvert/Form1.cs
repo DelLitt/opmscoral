@@ -57,6 +57,180 @@ namespace BonSoChinConvert
             ConvertThread();
             ConvertArticle();*/
             ConvertEvents();
+            ConvertAds();
+        }
+
+        private void ConvertAds()
+        {
+            BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
+            VBBDataContext context = new VBBDataContext();
+
+            short maxVForumId = (short)(from vForum1 in context.Forums
+                                        select vForum1.Forumid).Max();
+
+            long maxVThreadId = (from vThread1 in context.Threads
+                                 select vThread1.Threadid).Max();
+
+            int maxPostId = (int)(from vPost1 in context.Posts
+                                  select vPost1.Postid).Max();
+            var vPostId = maxPostId;
+            VBBContext.Forum vForum = new VBBContext.Forum
+            {
+                Title = "Ads",
+                Titleclean = "Ads",
+                Description = "Ads",
+                Descriptionclean = "Ads",
+                Displayorder = 1,
+                // replycount
+                Replycount = 0,
+                Lastpost = 0,
+                Lastposter = "",
+                Lastposterid = 0,
+                Lastpostid = 0,
+                Lastthread = "",
+                Lastthreadid = 0,
+                Newpostemail = "",
+                Newthreademail = "",
+                Parentid = -1,
+                Parentlist = "",
+                Childlist = "",
+                Defaultsortfield = "lastpost",
+                Defaultsortorder = "desc",
+                Threadcount = 0,
+                Options = 86017,
+            };
+            PopulateUShort(vForum);
+            short vForumId = (short)(maxVForumId + 1);
+            short superForumId = vForumId;
+            vForum.Forumid = (short)(maxVForumId + 1);
+            vForum.Parentlist = vForumId + ",-1";
+            vForum.Childlist = vForumId + ",-1";
+
+            context.Forums.InsertOnSubmit(vForum);
+            context.SubmitChanges();
+            // ---------------------------------- CREATE SUB FORUM -----------------------------------
+            var adsCategories4source = (from ads1 in bonSoChinContext.Adcategories
+                                        select ads1).ToList();
+
+            foreach (Adcategory adcategory in adsCategories4source)
+            {
+                VBBContext.Forum vSubForum = new VBBContext.Forum
+                {
+                    Title = adcategory.Adcategory1,
+                    Titleclean = adcategory.Adcategory1,
+                    Description = adcategory.Adcategory1,
+                    Descriptionclean = adcategory.Adcategory1,
+                    Displayorder = 1,
+                    // replycount
+                    Replycount = 0,
+                    Lastpost = 0,
+                    Lastposter = "",
+                    Lastposterid = 0,
+                    Lastpostid = 0,
+                    Lastthread = "",
+                    Lastthreadid = 0,
+                    Newpostemail = "",
+                    Newthreademail = "",
+                    Parentid = superForumId,
+                    Parentlist = "",
+                    Childlist = "",
+                    Defaultsortfield = "lastpost",
+                    Defaultsortorder = "desc",
+                    Threadcount = 0,
+                    Options = 221127,
+                };
+                PopulateUShort(vSubForum);
+                ++vForumId;
+                vSubForum.Forumid = vForumId;
+                vSubForum.Parentlist = vForumId + "," + vSubForum.Parentid + ",-1";
+                vSubForum.Childlist = vForumId + ",-1";
+
+                // ---------------------------------- CREATE Thread -----------------------------------
+                var ads4source = (from ads1 in bonSoChinContext.Ads
+                                  where ads1.Adcategoryid == adcategory.Adcategoryid
+                                      select ads1).ToList();
+
+                foreach (Ads ads in ads4source)
+                {
+                    var vThreadId = ++maxVThreadId;
+                    int dtline = ConvertToUnixTimestamp(ads.Addateposted);
+                    Thread vThread = new Thread();
+                    vThread.Title = ads.Adtitle;
+                    vThread.Prefixid = "";
+                    vThread.Forumid = vForumId;
+                    vThread.Open = 1;
+                    vThread.Visible = 1;
+                    vThread.Dateline = ConvertToUnixTimestamp(ads.Addateposted);
+
+                    var postMemberInThread = (from member1 in bonSoChinContext.Members
+                                              where (member1.Memberid == ads.Adaddedby)
+                                              select member1).FirstOrDefault();
+                    var postUserInThread = (from user1 in context.Users
+                                            where user1.Username.Equals(postMemberInThread.Memberlogin.Trim())
+                                            select user1).FirstOrDefault();
+                    vThread.Postuserid = postUserInThread.Userid;
+                    vThread.Postusername = postMemberInThread.Memberlogin;
+
+                    vThread.Lastposter = "";
+                    vThread.Notes = "";
+                    vThread.Similar = "";
+
+                    PopulateUShort(vThread);
+                    vPostId++;
+
+                    // 1st post entered
+                    Post v1Post = new Post
+                    {
+                        Threadid = vThreadId,
+                        Title = "",
+                        Dateline = ConvertToUnixTimestamp(ads.Addateposted),
+                        Pagetext = ads.Adtext,
+                        Allowsmilie = 1,
+                        Ipaddress = "127.0.0.1",
+                        Visible = 1,
+                        Parentid = vPostId,
+                        Userid = vThread.Postuserid,
+                        Username = vThread.Postusername,
+                    };
+
+                    // insert post parser
+                    Postparsed postparsed1 = new Postparsed
+                    {
+                        Dateline = v1Post.Dateline,
+                        Postid = vPostId,
+                        Styleid = 1,
+                        Languageid = 1,
+                        Hasimages = 0,
+                        Pagetexthtml = v1Post.Pagetext,
+                    };
+
+                    context.Posts.InsertOnSubmit(v1Post);
+                    context.Postparseds.InsertOnSubmit(postparsed1);
+
+                    UpdateStatusOfForumAndThread(vThread, vSubForum, v1Post, vPostId, vThreadId);
+                    vForum.Threadcount++;
+                    vThread.Firstpostid = vPostId;
+
+                    vSubForum.Lastthread = vThread.Title.ToString();
+                    vSubForum.Lastthreadid = vThreadId;
+
+                    vForum.Lastthread = vThread.Title.ToString();
+                    vForum.Lastthreadid = vThreadId;
+
+                    vSubForum.Threadcount++;
+                    vSubForum.Replycount++;
+                    vForum.Replycount++;
+                    vThread.Replycount = 0;
+
+
+                    Threadview vThreadview = new Threadview();
+                    vThreadview.Threadid = vThreadId;
+                    context.Threads.InsertOnSubmit(vThread);
+                }
+
+                context.Forums.InsertOnSubmit(vSubForum);
+            }
+            context.SubmitChanges();
         }
 
         private void ConvertEvents()
