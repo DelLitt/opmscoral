@@ -61,7 +61,23 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<DepartmentStockTempValid> criteria);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="selectedDepartment"></param>
+        /// <returns></returns>
         IList<DepartmentStockTempValid> FindStockTempValidForDepartment(Department selectedDepartment);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        DepartmentStockTempValid CreateFromProductId(string productId,long departmentId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stockInventoryList"></param>
+        void AddBatch(IList<DepartmentStockTempValid> stockInventoryList);
     }
 }

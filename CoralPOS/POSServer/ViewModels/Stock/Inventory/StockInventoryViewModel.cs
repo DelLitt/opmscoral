@@ -6,12 +6,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
+using AppFrame.Extensions;
+using AppFrame.Utils;
 using Caliburn.Core;
 using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
@@ -235,7 +239,7 @@ namespace POSServer.ViewModels.Stock.Inventory
 		        
         public void SaveResult()
         {
-            
+            this.ExecuteAsync(SaveEvaluationResult); 
         }
 		        
         public void Delete()
@@ -245,12 +249,53 @@ namespace POSServer.ViewModels.Stock.Inventory
 		        
         public void Reset()
         {
-            
+            Flow.IsRepeated = true;
+            Flow.End();
         }
-		        
+		
+        private object SaveEvaluationResult()
+        {
+            DepartmentStockTempValidLogic.AddBatch(StockInventoryList as IList<DepartmentStockTempValid>);
+            return 0;
+        }
+
+
         public void InputByFile()
         {
-            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "*.txt | Text Files";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.ShowDialog();
+            // if has file to open
+            if (!string.IsNullOrEmpty(openFileDialog.FileName))
+            {
+                IList<string> errorList;
+                IDictionary<string, long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName,
+                                                                                      out errorList);
+
+                // add to stockOut list
+                ArrayList details = new ArrayList(StockInventoryList);
+                foreach (KeyValuePair<string, long> keyValuePair in productList)
+                {
+                    DepartmentStockTempValid result = (from sod in details.OfType<DepartmentStockTempValid>()
+                                             where sod.Product.ProductId.Equals(keyValuePair.Key)
+                                             select sod).FirstOrDefault();
+                    if (result != null) // if exist in list
+                    {
+                        result.Quantity += keyValuePair.Value;
+                    }
+                    else
+                    {
+                        
+                        // get information from database
+                        DepartmentStockTempValid tempValid = DepartmentStockTempValidLogic.CreateFromProductId(keyValuePair.Key,SelectedDepartment.DepartmentId);
+                        if(tempValid == null) throw new InvalidDataException("Can not found product in database !");
+                        tempValid.GoodQuantity = keyValuePair.Value;
+                        details.Add(tempValid);
+                    }
+                }
+                StockInventoryList = details;
+            }
         }
 
         public void ProcessProductTypeChange()

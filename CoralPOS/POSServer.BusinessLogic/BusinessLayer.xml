@@ -138,8 +138,9 @@
   	  
   <object id="IDepartmentStockTempValidLogic" type="POSServer.BusinessLogic.Implement.DepartmentStockTempValidLogic, POSServer.BusinessLogic">
     <property name="DepartmentStockTempValidDao" ref="IDepartmentStockTempValidDao"/>
-    <property name="DepartmentStockDao" ref="IDepartmentStockDao"/>
-    <property name="MainStockDao" ref="IMainStockDao"/>
+    <property name="DepartmentStockDao" ref="IDepartmentStockDao" />
+    <property name="MainStockDao" ref="IMainStockDao" />
+    <property name="ProductDao" ref="IProductDao" />
   </object>
   	  
   <object id="IDepartmentStockTemployeeValidSaveLogic" type="POSServer.BusinessLogic.Implement.DepartmentStockTemployeeValidSaveLogic, POSServer.BusinessLogic">

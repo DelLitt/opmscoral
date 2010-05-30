@@ -37,6 +37,7 @@ namespace POSServer.BusinessLogic.Implement
 
         public IDepartmentStockDao DepartmentStockDao { get; set; }
         public IMainStockDao MainStockDao { get; set; }
+        public IProductDao ProductDao { get; set; }
         /// <summary>
         /// Find DepartmentStockTemployeeValid object by id. Return null if nothing is found
         /// </summary>
@@ -164,7 +165,14 @@ namespace POSServer.BusinessLogic.Implement
             {
                 return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute(delegate(ISession session)
                 {
-                    var result = from stock in session.Linq<DepartmentStock>()
+                    var query = session.Linq<DepartmentStock>();
+                    query.Expand("Product");
+                    query.Expand("ProductMaster");
+                    var stockList = from stock in query
+                                    where stock.Quantity > 0
+                                    select stock;
+
+                    var result = from stock in (stockList.ToList())
                                  select new DepartmentStockTempValid
                                             {
                                                 DepartmentStockTempValidPK = new DepartmentStockTempValidPK
@@ -188,6 +196,58 @@ namespace POSServer.BusinessLogic.Implement
                     return result.ToList();
                 }
                 );
+            }
+        }
+
+        public DepartmentStockTempValid CreateFromProductId(string productId,long departmentId )
+        {
+            return (DepartmentStockTempValid)DepartmentStockTempValidDao.Execute(delegate(ISession session)
+            {
+                DepartmentStockTempValid tempValid = null;
+                var query = session.Linq<Product>();
+                query.Expand("ProductMaster");
+                Product foundedProduct =(from product in query
+                                where product.ProductId == productId
+                                select product).FirstOrDefault();
+                if(foundedProduct!=null) // if found in db
+                {
+                    tempValid = new DepartmentStockTempValid
+                                    {
+                                        DepartmentStockTempValidPK = new DepartmentStockTempValidPK
+                                        {
+                                            CreateDate = DateTime.Now,
+                                            DepartmentId = departmentId,
+                                            ProductId = foundedProduct.ProductId
+                                        },
+                                        CreateId = "admin",
+                                        UpdateId = "admin",
+                                        UpdateDate = DateTime.Now,
+                                        ProductMaster = foundedProduct.ProductMaster,
+                                        Product = foundedProduct,
+                                        DamageQuantity = 0,
+                                        DelFlg = 0,
+                                        ErrorQuantity = 0,
+                                        ExclusiveKey = 0,
+                                        Quantity = 0,
+                                        GoodQuantity = 0
+                                    };
+                }
+                else
+                {
+                    // TODO: SHOULD CREATE A TEMP PRODUCT HERE
+                }
+
+                
+                return tempValid;
+            }
+                 ); 
+        }
+
+        public void AddBatch(IList<DepartmentStockTempValid> stockInventoryList)
+        {
+            foreach (DepartmentStockTempValid departmentStockTempValid in stockInventoryList)
+            {
+                DepartmentStockTempValidDao.Add(departmentStockTempValid);
             }
         }
     }

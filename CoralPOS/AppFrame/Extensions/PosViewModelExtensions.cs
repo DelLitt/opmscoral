@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF;
+using Caliburn.Core.Invocation;
 using Caliburn.Core.Validation;
 using Caliburn.PresentationFramework.Invocation;
 using Caliburn.PresentationFramework.ViewModels;
@@ -85,5 +87,14 @@ namespace AppFrame.Extensions
         {
             MessageBox.Show(exception.Message);
         }
+
+        public static void ExecuteAsync(this PosViewModel viewModel, Func<object> theDelegate,int loadScreenType = 0,bool catchException = false)
+        {
+            BackgroundTask task = new BackgroundTask(theDelegate);
+            viewModel.StartWaitingScreen(loadScreenType);
+            task.Completed += (sender, e) => viewModel.StopWaitingScreen(loadScreenType);
+            task.Start(theDelegate);
+        }
+        
     }
 }
