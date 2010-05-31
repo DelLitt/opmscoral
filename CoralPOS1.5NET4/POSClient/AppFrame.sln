@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSReports", "POSReports\POSReports.csproj", "{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameClient", "AppFrameClient\AppFrameClient.csproj", "{65E17626-8E16-448C-A89D-ADE344360AF4}"
