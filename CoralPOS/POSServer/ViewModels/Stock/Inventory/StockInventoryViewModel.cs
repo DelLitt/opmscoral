@@ -298,6 +298,43 @@ namespace POSServer.ViewModels.Stock.Inventory
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ProcessBarcode()
+        {
+            this.ExecuteAsync(() => LoadBarcode());
+
+        }
+
+        private object LoadBarcode()
+        {
+            if (ObjectUtility.LengthEqual(Barcode, 12))
+            {
+                // add to stockOut list
+                string barCode = Barcode;
+                ArrayList details = new ArrayList(StockInventoryList);
+                DepartmentStockTempValid result = (from sod in details.OfType<DepartmentStockTempValid>()
+                                                   where sod.Product.ProductId.Equals(barCode)
+                                                   select sod).FirstOrDefault();
+                if (result != null) // if exist in list
+                {
+                    result.Quantity += 1;
+                }
+                else
+                {
+
+                    // get information from database
+                    DepartmentStockTempValid tempValid = DepartmentStockTempValidLogic.CreateFromProductId(barCode, SelectedDepartment.DepartmentId);
+                    if (tempValid == null) throw new InvalidDataException("Can not found product in database !");
+                    tempValid.GoodQuantity = 1;
+                    details.Add(tempValid);
+                }
+
+            }
+            return null;
+        }
+
         public void ProcessProductTypeChange()
         {
             
@@ -332,7 +369,7 @@ namespace POSServer.ViewModels.Stock.Inventory
             ProductMasterList = productMasterList as IList;
             return 0;
         }
-
+        
         public override void Initialize()
         {
             IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());

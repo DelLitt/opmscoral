@@ -48,6 +48,8 @@
             <Button Content="CHỌN" Height="36" HorizontalAlignment="Left" Margin="544,13,0,0" Name="ChangeDepartmentForEvaluate" VerticalAlignment="Top" Width="96" />
             <TextBox Grid.Row="1" Height="32" HorizontalAlignment="Left" Margin="429,345,0,0" VerticalAlignment="Top" Width="98" FontWeight="ExtraBold" Name="LogicalSum" />
             <TextBox Height="34" HorizontalAlignment="Right" Margin="0,344,184,0" Name="RealSum" VerticalAlignment="Top" Width="120" Grid.Row="1" FontWeight="ExtraBold" />
+            <CheckBox Content="LOẠI DÒNG TRÙNG" Height="16" HorizontalAlignment="Left" Margin="6,177,0,0" Name="FilterDuplicate" VerticalAlignment="Top" />
+            <CheckBox Content="BÙ TRƯỢT MÃ" Height="16" HorizontalAlignment="Left" Margin="147,177,0,0" Name="FilterSlidedBarcode" VerticalAlignment="Top" />
         </Grid>
     </Grid>
 </UserControl>

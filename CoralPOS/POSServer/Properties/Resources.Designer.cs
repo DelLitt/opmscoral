@@ -59,5 +59,12 @@ namespace POSServer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon Stats {
+            get {
+                object obj = ResourceManager.GetObject("Stats", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
