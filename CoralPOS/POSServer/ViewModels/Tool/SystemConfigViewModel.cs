@@ -122,6 +122,7 @@ namespace POSServer.ViewModels.Tool
         }
 				#endregion
 		
+
 		#region List use to fetch object for view
 		        
         private IList _billPrinterList;
@@ -180,7 +181,52 @@ namespace POSServer.ViewModels.Tool
             }
         }
 				#endregion
-		
+
+        private string _selectedBarcode;
+        public string SelectedBarcode
+        {
+            get
+            {
+                return _selectedBarcode; 
+            }
+            set
+            {
+                _selectedBarcode = value;
+                NotifyOfPropertyChange(()=>SelectedBarcode);
+            }
+
+        }
+
+        private string _selectedPrinter;
+        public string SelectedPrinter
+        {
+            get
+            {
+                return _selectedPrinter;
+            }
+            set
+            {
+                _selectedPrinter = value;
+                NotifyOfPropertyChange(() => SelectedPrinter);
+            }
+
+        }
+
+        private Department _selectedExportDept;
+        public Department SelectedExportDept
+        {
+            get
+            {
+                return _selectedExportDept;
+            }
+            set
+            {
+                _selectedExportDept = value;
+                NotifyOfPropertyChange(() => SelectedExportDept);
+            }
+
+        }
+        
 		#region List of boolean object
 		        
         private bool _negativeSelling;
@@ -254,6 +300,8 @@ namespace POSServer.ViewModels.Tool
         }
 		        
         private bool _subStockEmployeeChecking;
+        private string _selectedProtocol;
+
         public bool SubStockEmployeeChecking
         {
             get
@@ -310,17 +358,53 @@ namespace POSServer.ViewModels.Tool
 		        
         public void Update()
         {
+            SystemConfig config = SystemConfig.Instance;
+
+            config.SyncImportPath = SyncImportPath;
+            config.SyncExportPath = SyncExportPath;
+            config.SyncErrorPath = SyncErrorPath;
+            config.SyncBackupPath = SyncBackupPath;
+            config.SyncSuccessPath = SyncSuccessPath;
+            config.NegativeSelling = NegativeSelling;
+            config.NegativeStockOut = NegativeStockOut;
+            config.DbToolPath = DbToolPath;
+            config.StockInConfirm = StockInConfirm;
+            config.StockOutConfirm = StockOutConfirm;
+            config.SubStockEmployeeChecking = SubStockEmployeeChecking;
+            config.PurchaseOrderConfirm = PurchaseOrderConfirm;
+
+            // printer
+            config.BillPrinter = SelectedPrinter;
+
+            config.BarcodeType = SelectedBarcode;
+            config.ConnectionProtocol = SelectedProtocol;
+
+            config.Save();
+            MessageBox.Show("Update config OK!");
             
         }
-		        
+
+
+        public string SelectedProtocol
+        {
+            get {
+                return _selectedProtocol;
+            }
+            set {
+                _selectedProtocol = value;
+                NotifyOfPropertyChange(()=>SelectedProtocol);
+            }
+        }
+
         public void Default()
         {
-            
+            SystemConfig.Instance.CreateDefaultValue();
+
         }
 		        
         public void Quit()
         {
-            
+            Flow.End();
         }
 
         public override void Initialize()
@@ -331,7 +415,32 @@ namespace POSServer.ViewModels.Tool
             {
                 config.CreateDefaultValue();
             }
+            // load printer lists
+            IList cboPrinters = new ArrayList();
+            PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
+            foreach (string printerName in printerNames)
+            {
+                cboPrinters.Add(printerName);
+            }
+            BillPrinterList = cboPrinters;
+            // load department list
+            IList deptList = DepartmentLogic.FindAll(new ObjectCriteria<Department>()) as IList;
+            SubStockInvoiceStockOutList = deptList;
 
+            BarcodeTypeList = Enum.GetNames(typeof(Symbology));
+            // protocol list
+            IList protocolList = new ArrayList();
+            protocolList.Add("TcpIp");
+            protocolList.Add("Http");
+            ConnectionProtocol = protocolList;
+            LoadConfigToViewModel();
+
+            
+        }
+
+        private void LoadConfigToViewModel()
+        {
+            SystemConfig config = SystemConfig.Instance;
 
             SyncImportPath = config.SyncImportPath;
             SyncExportPath = config.SyncExportPath;
@@ -345,26 +454,9 @@ namespace POSServer.ViewModels.Tool
             StockOutConfirm = config.StockOutConfirm;
             SubStockEmployeeChecking = config.SubStockEmployeeChecking;
             PurchaseOrderConfirm = config.PurchaseOrderConfirm;
-
-            // load printer lists
-            IList cboPrinters = new ArrayList();
-            PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
-            foreach (string printerName in printerNames)
-            {
-                cboPrinters.Add(printerName);    
-            }
-            BillPrinterList = cboPrinters;
-
-            // load department list
-            IList deptList = DepartmentLogic.FindAll(new ObjectCriteria<Department>()) as IList;
-            SubStockInvoiceStockOutList = deptList;
-
-            BarcodeTypeList = Enum.GetNames(typeof(Symbology));
-            // protocol list
-            IList protocolList = new ArrayList();
-            protocolList.Add("TcpIp");
-            protocolList.Add("Http");
-            ConnectionProtocol = protocolList;
+            SelectedPrinter = config.BillPrinter;
+            SelectedBarcode = config.BarcodeType;
+            SelectedProtocol = config.ConnectionProtocol;
         }
 
         #endregion

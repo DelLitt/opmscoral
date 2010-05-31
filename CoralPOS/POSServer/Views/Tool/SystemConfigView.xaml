@@ -41,9 +41,9 @@
         <GroupBox Header="In ấn" Height="82" HorizontalAlignment="Left" Margin="0,304,0,0" Name="GroupPrinting" VerticalAlignment="Top" Width="838" FontSize="14">
             <Grid>
                 <Label Content="Máy in hóa đơn:" Height="28" HorizontalAlignment="Left" Margin="36,13,0,0" Name="label7" VerticalAlignment="Top" />
-                <ComboBox Height="34" HorizontalAlignment="Left" Margin="152,7,0,0" Name="BillPrinterList" VerticalAlignment="Top" Width="258" />
+                <ComboBox Height="34" HorizontalAlignment="Left" Margin="152,7,0,0" Name="BillPrinterList" VerticalAlignment="Top" Width="258" SelectedItem="{Binding SelectedPrinter,Mode=TwoWay}" />
                 <Label Content="Loại mã vạch:" Height="28" HorizontalAlignment="Left" Margin="446,13,0,0" Name="label8" VerticalAlignment="Top" />
-                <ComboBox Height="34" HorizontalAlignment="Right" Margin="0,7,6,0" Name="BarcodeTypeList" VerticalAlignment="Top" Width="258" />
+                <ComboBox Height="34" HorizontalAlignment="Right" Margin="0,7,6,0" Name="BarcodeTypeList" VerticalAlignment="Top" Width="258" SelectedItem="{Binding SelectedBarcode,Mode=TwoWay}"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Kho phụ" Height="84" HorizontalAlignment="Left" Margin="4,392,0,0" Name="GroupSubStock" VerticalAlignment="Top" Width="833" FontSize="14">
@@ -53,18 +53,18 @@
                     <ColumnDefinition Width="723*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Nơi xuất của kho phụ:" Height="28" HorizontalAlignment="Left" Margin="3,6,0,0" Name="label9" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" />
-                <ComboBox Height="34" HorizontalAlignment="Left" Margin="45,6,0,0" Name="SubStockInvoiceStockOutList" VerticalAlignment="Top" Width="258" DisplayMemberPath="DepartmentName" Grid.Column="1" />
+                <ComboBox Height="34" HorizontalAlignment="Left" Margin="45,6,0,0" Name="SubStockInvoiceStockOutList" VerticalAlignment="Top" Width="258" DisplayMemberPath="DepartmentName" Grid.Column="1" SelectedItem="{Binding SelectedExportDept,Mode=TwoWay}"/>
                 <CheckBox Content="Kiểm tra mã nhân viên trước khi xuất" Height="16" HorizontalAlignment="Left" Margin="339,18,0,0" Name="SubStockEmployeeChecking" VerticalAlignment="Top" Width="306" Grid.Column="1" />
             </Grid>
         </GroupBox>
         <GroupBox Header="Kết nối" Height="80" HorizontalAlignment="Left" Margin="0,482,0,0" Name="GroupConnection" VerticalAlignment="Top" Width="838" FontSize="14">
             <Grid>
                 <Label Content="Giao thức kết nối" Height="28" HorizontalAlignment="Left" Margin="7,6,0,0" Name="label10" VerticalAlignment="Top" Width="150" />
-                <ComboBox Height="34" HorizontalAlignment="Left" Margin="152,6,0,0" Name="ConnectionProtocol" VerticalAlignment="Top" Width="258" />
+                <ComboBox Height="34" HorizontalAlignment="Left" Margin="152,6,0,0" Name="ConnectionProtocol" VerticalAlignment="Top" Width="258" SelectedItem="{Binding SelectedProtocol,Mode=TwoWay}"/>
             </Grid>
         </GroupBox>
-        <Button Content="LƯU" Height="80" HorizontalAlignment="Left" Margin="258,13,0,0" Name="Update" VerticalAlignment="Top" Width="80" Grid.Row="1" FontSize="16" FontWeight="Bold" />
-        <Button Content="MẶC ĐỊNH" Height="80" HorizontalAlignment="Left" Margin="358,13,0,0" Name="Default" VerticalAlignment="Top" Width="112" Grid.Row="1" FontSize="16" FontWeight="Bold" />
-        <Button Content="THOÁT" Height="80" HorizontalAlignment="Left" Margin="494,13,0,0" Name="Quit" VerticalAlignment="Top" Width="80" Grid.Row="1" FontSize="16" FontWeight="Bold" />
+        <Button Content="LƯU" Height="80" HorizontalAlignment="Left" Margin="256,8,0,0" Name="Update" VerticalAlignment="Top" Width="80" Grid.Row="1" FontSize="16" FontWeight="Bold" />
+        <Button Content="MẶC ĐỊNH" Height="80" HorizontalAlignment="Left" Margin="356,8,0,0" Name="Default" VerticalAlignment="Top" Width="112" Grid.Row="1" FontSize="16" FontWeight="Bold" />
+        <Button Content="THOÁT" Height="80" HorizontalAlignment="Left" Margin="492,8,0,0" Name="Quit" VerticalAlignment="Top" Width="80" Grid.Row="1" FontSize="16" FontWeight="Bold" />
     </Grid>
 </UserControl>
