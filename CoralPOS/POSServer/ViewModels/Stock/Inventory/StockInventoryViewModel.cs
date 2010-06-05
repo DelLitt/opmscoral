@@ -22,6 +22,7 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
+using NHibernate.Criterion;
 using POSServer.BusinessLogic.Implement;
 using POSServer.ViewModels.Menu.Stock;
 
@@ -372,9 +373,11 @@ namespace POSServer.ViewModels.Stock.Inventory
         
         public override void Initialize()
         {
-            IList<Department> departments = DepartmentLogic.FindAll(new ObjectCriteria<Department>());
-            departments.OrderBy(m => m.DepartmentId);
-            Departments = departments as IList;
+            ObjectCriteria<Department> crit = new ObjectCriteria<Department>();
+            crit.AddOrder(m => m.DepartmentId,Order.Asc);
+            IList<Department> departments = DepartmentLogic.FindAll(crit);
+            
+            Departments =  departments as IList;
             SelectedDepartment = departments[0];
             StockInventoryList = new ArrayList();
             CheckSelectedDepartment = true;
