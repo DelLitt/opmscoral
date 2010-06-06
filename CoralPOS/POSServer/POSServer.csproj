@@ -483,7 +483,9 @@
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\IStockInventoryProcessingViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\IStockInventoryViewModel.cs" />
+    <Compile Include="ViewModels\Stock\Inventory\StockInventoryProcessingViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\StockInventoryViewModel.cs" />
     <Compile Include="ViewModels\Stock\IStockMainViewModel.cs" />
     <Compile Include="ViewModels\Stock\ITemplatePOSViewModel.cs" />
