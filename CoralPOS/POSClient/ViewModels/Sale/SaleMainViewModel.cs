@@ -14,19 +14,18 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-using POSClient.Common;
 using POSClient.ViewModels.Menu;
 
 
-namespace POSClient.ViewModels.Synchronize
+namespace POSClient.ViewModels.Sale
 {
-    [PerRequest(typeof(ISynchronizeMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SynchronizeMainViewModel : PosViewModel,ISynchronizeMainViewModel  
+    [PerRequest(typeof(ISaleMainViewModel))]
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
+    public class SaleMainViewModel : PosViewModel,ISaleMainViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public SynchronizeMainViewModel(IShellViewModel startViewModel)
+        public SaleMainViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -42,12 +41,27 @@ namespace POSClient.ViewModels.Synchronize
 		
 		#region Methods
 		        
-        public void FromMainStock()
+        public void CreateProductMaster()
         {
-            _startViewModel.EnterFlow(FlowConstants.SYNC_FROM_MAINSTOCK_FLOW);
+            
         }
 		        
-        public void ToMainStock()
+        public void CreateProductMasterByTemplate()
+        {
+            
+        }
+		        
+        public void ProductMasterList()
+        {
+            
+        }
+		        
+        public void StockInByExcel()
+        {
+            
+        }
+		        
+        public void ExtendFunctions()
         {
             
         }

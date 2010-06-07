@@ -14,7 +14,11 @@ using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
 using POSClient.Common;
+using POSClient.ViewModels.Management;
+using POSClient.ViewModels.Sale;
+using POSClient.ViewModels.Stock;
 using POSClient.ViewModels.Synchronize;
+using POSClient.ViewModels.Tool;
 
 
 namespace POSClient.ViewModels.Menu
@@ -42,32 +46,32 @@ namespace POSClient.ViewModels.Menu
 		        
         public void Task()
         {
-            
+            MessageBox.Show("Task Menu!");   
         }
 		        
         public void Sale()
         {
-            _startViewModel.EnterFlow(FlowDefinition.PURCHASE_ORDER_VIEW_FLOW);   
+            _startViewModel.Open<ISaleMainViewModel>();
         }
 		        
         public void DepartmentStock()
         {
-            _startViewModel.EnterFlow(FlowDefinition.DEPARTMENT_STOCK_OUT_CREATE_FLOW);
+            _startViewModel.Open<IStockMainViewModel>();
         }
 		        
         public void Report()
         {
-            
+            MessageBox.Show("Report!");
         }
 		        
         public void Management()
         {
-            
+            _startViewModel.Open<IManagementMainViewModel>();
         }
 		        
         public void Utility()
         {
-            
+            _startViewModel.Open<IToolMainViewModel>();
         }
 		        
         public void Synchronize()

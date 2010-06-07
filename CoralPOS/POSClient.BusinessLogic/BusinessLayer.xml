@@ -147,8 +147,8 @@
     <property name="DepartmentStockOutDetailDao" ref="IDepartmentStockOutDetailDao"/>
   </object>
   	  
-  <object id="IDepartmentStockTemployeeValidLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockTemployeeValidLogic, POSClient.BusinessLogic">
-    <property name="DepartmentStockTemployeeValidDao" ref="IDepartmentStockTemployeeValidDao"/>
+  <object id="IDepartmentStockTempValidLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockTempValidLogic, POSClient.BusinessLogic">
+    <property name="DepartmentStockTempValidDao" ref="IDepartmentStockTempValidDao"/>
   </object>
   	  
   <object id="IDepartmentStockTemployeeValidSaveLogic" type="POSClient.BusinessLogic.Implement.DepartmentStockTemployeeValidSaveLogic, POSClient.BusinessLogic">

@@ -14,19 +14,18 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-using POSClient.Common;
 using POSClient.ViewModels.Menu;
 
 
-namespace POSClient.ViewModels.Synchronize
+namespace POSClient.ViewModels.Management
 {
-    [PerRequest(typeof(ISynchronizeMainViewModel))]
+    [PerRequest(typeof(IManagementMainViewModel))]
     [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SynchronizeMainViewModel : PosViewModel,ISynchronizeMainViewModel  
+    public class ManagementMainViewModel : PosViewModel,IManagementMainViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public SynchronizeMainViewModel(IShellViewModel startViewModel)
+        public ManagementMainViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -42,12 +41,37 @@ namespace POSClient.ViewModels.Synchronize
 		
 		#region Methods
 		        
-        public void FromMainStock()
+        public void ManageDepartment()
         {
-            _startViewModel.EnterFlow(FlowConstants.SYNC_FROM_MAINSTOCK_FLOW);
+            
         }
 		        
-        public void ToMainStock()
+        public void ManageEmployee()
+        {
+            
+        }
+		        
+        public void EmployeeAbsentList()
+        {
+            
+        }
+		        
+        public void InputCost()
+        {
+            
+        }
+		        
+        public void OutputCost()
+        {
+            
+        }
+		        
+        public void CostList()
+        {
+            
+        }
+		        
+        public void WorkingUnit()
         {
             
         }

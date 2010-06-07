@@ -9,24 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-using POSClient.Common;
-using POSClient.ViewModels.Menu;
 
 
-namespace POSClient.ViewModels.Synchronize
+
+namespace POSClient.ViewModels.Menu.Management
 {
-    [PerRequest(typeof(ISynchronizeMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SynchronizeMainViewModel : PosViewModel,ISynchronizeMainViewModel  
+    [PerRequest(typeof(IDeptEmpMenuViewModel))]
+    public class DeptEmpMenuViewModel : PosViewModel,IDeptEmpMenuViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public SynchronizeMainViewModel(IShellViewModel startViewModel)
+        public DeptEmpMenuViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -42,12 +39,22 @@ namespace POSClient.ViewModels.Synchronize
 		
 		#region Methods
 		        
-        public void FromMainStock()
+        public void DepartmentManagement()
         {
-            _startViewModel.EnterFlow(FlowConstants.SYNC_FROM_MAINSTOCK_FLOW);
+            
         }
 		        
-        public void ToMainStock()
+        public void EmployeeManagement()
+        {
+            
+        }
+		        
+        public void EmpInHolidaysList()
+        {
+            
+        }
+		        
+        public void AccountManagement()
         {
             
         }

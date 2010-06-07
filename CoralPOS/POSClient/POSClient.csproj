@@ -302,6 +302,9 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="WPF.Themes">
+      <HintPath>..\libraries\WPF.Themes.dll</HintPath>
+    </Reference>
     <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +327,42 @@
     <Compile Include="ViewModels\Dialogs\ProductPropertiesViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\StockOutChoosingViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\StockProductPropertiesViewModel.cs" />
+    <Compile Include="ViewModels\Management\DepartmentSetViewModel.cs" />
+    <Compile Include="ViewModels\Management\IDepartmentSetViewModel.cs" />
+    <Compile Include="ViewModels\Management\IManagementMainViewModel.cs" />
+    <Compile Include="ViewModels\Management\ManagementMainViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\CostMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\DeptEmpMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\ICostMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Management\IDeptEmpMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Report\IReportsMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Report\ReportsMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Sale\ISaleMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Sale\SaleMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\DepartmentStockInMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\DepartmentStockOutMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\DepartmentStockSearchMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IDepartmentStockInMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IDepartmentStockOutMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IDepartmentStockSearchMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\IStockInventoryMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Stock\StockInventoryMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Synchronize\ISynchronizeMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Synchronize\SynchronizeMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Task\ITaskMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Task\TaskMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Tool\IToolMenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\Tool\ToolMenuViewModel.cs" />
+    <Compile Include="ViewModels\Sale\ISaleMainViewModel.cs" />
+    <Compile Include="ViewModels\Sale\SaleMainViewModel.cs" />
+    <Compile Include="ViewModels\Stock\IStockMainViewModel.cs" />
+    <Compile Include="ViewModels\Stock\StockMainViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ConfigViewModel.cs" />
+    <Compile Include="ViewModels\Tool\IConfigViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ISetDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\Tool\IToolMainViewModel.cs" />
+    <Compile Include="ViewModels\Tool\SetDepartmentViewModel.cs" />
+    <Compile Include="ViewModels\Tool\ToolMainViewModel.cs" />
     <Compile Include="Views\Dialogs\ErrorDialogView.xaml.cs">
       <DependentUpon>ErrorDialogView.xaml</DependentUpon>
     </Compile>
@@ -338,6 +377,9 @@
     </Compile>
     <Compile Include="Views\Management\DepartmentSetView.xaml.cs">
       <DependentUpon>DepartmentSetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Management\ManagementMainView.xaml.cs">
+      <DependentUpon>ManagementMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sale\SaleMainView.xaml.cs">
       <DependentUpon>SaleMainView.xaml</DependentUpon>
@@ -375,6 +417,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Management\DepartmentSetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Management\ManagementMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

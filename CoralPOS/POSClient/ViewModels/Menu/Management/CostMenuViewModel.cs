@@ -9,24 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using AppFrame.CustomAttributes;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-using POSClient.Common;
-using POSClient.ViewModels.Menu;
 
 
-namespace POSClient.ViewModels.Synchronize
+
+namespace POSClient.ViewModels.Menu.Management
 {
-    [PerRequest(typeof(ISynchronizeMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SynchronizeMainViewModel : PosViewModel,ISynchronizeMainViewModel  
+    [PerRequest(typeof(ICostMenuViewModel))]
+    public class CostMenuViewModel : PosViewModel,ICostMenuViewModel  
     {
 
         private IShellViewModel _startViewModel;
-        public SynchronizeMainViewModel(IShellViewModel startViewModel)
+        public CostMenuViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
         }
@@ -42,12 +39,17 @@ namespace POSClient.ViewModels.Synchronize
 		
 		#region Methods
 		        
-        public void FromMainStock()
+        public void IncomeInvoice()
         {
-            _startViewModel.EnterFlow(FlowConstants.SYNC_FROM_MAINSTOCK_FLOW);
+            
         }
 		        
-        public void ToMainStock()
+        public void OutcomeInvoice()
+        {
+            
+        }
+		        
+        public void IncomeOutcomeList()
         {
             
         }

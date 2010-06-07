@@ -195,7 +195,7 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
   	
-  <object id="IDepartmentStockTemployeeValidDao" type="POSClient.DataLayer.Implement.DepartmentStockTemployeeValidDao, POSClient.DataLayer">
+  <object id="IDepartmentStockTempValidDao" type="POSClient.DataLayer.Implement.DepartmentStockTempValidDao, POSClient.DataLayer">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
   	
