@@ -9,16 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.Utility;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using CoralPOS.Models;
+using POSServer.BusinessLogic.Common;
+using POSServer.BusinessLogic.Implement;
+using POSServer.Common;
 
 
 namespace POSServer.ViewModels.Stock.Inventory
 {
-    [PerRequest(typeof(IStockInventoryProcessingViewModel))]
+    //[PerRequest(typeof(IStockInventoryProcessingViewModel))]
     public class StockInventoryProcessingViewModel : PosViewModel,IStockInventoryProcessingViewModel  
     {
 
@@ -29,34 +33,6 @@ namespace POSServer.ViewModels.Stock.Inventory
         }
 		
 		#region Fields
-		        
-        private string _createDate;
-        public string CreateDate
-        {
-            get
-            {
-                return _createDate;
-            }
-            set
-            {
-                _createDate = value;
-                NotifyOfPropertyChange(() => CreateDate);
-            }
-        }
-		        
-        private string _barcode;
-        public string Barcode
-        {
-            get
-            {
-                return _barcode;
-            }
-            set
-            {
-                _barcode = value;
-                NotifyOfPropertyChange(() => Barcode);
-            }
-        }
 		        
         private string _description;
         public string Description
@@ -99,23 +75,26 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => RealSum);
             }
         }
-				#endregion
-		
-		#region List use to fetch object for view
-		        
-        private IList _departments;
-        public IList Departments
+
+        private DepartmentStockTempValidPK _selectedEvaluationKey;
+        public DepartmentStockTempValidPK SelectedEvaluationKey
         {
             get
             {
-                return _departments;
+                return _selectedEvaluationKey;
             }
-            set
+            set 
             {
-                _departments = value;
-                NotifyOfPropertyChange(() => Departments);
+                _selectedEvaluationKey = value;
+                NotifyOfPropertyChange(() => SelectedEvaluationKey);
             }
         }
+
+        public IDepartmentLogic DepartmentLogic { get; set; }
+        public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
+				#endregion
+		
+		#region List use to fetch object for view
 		        
         private IList _productTypeList;
         public IList ProductTypeList
@@ -178,6 +157,34 @@ namespace POSServer.ViewModels.Stock.Inventory
 				#endregion
 		
 		#region List of date object
+		        
+        private DateTime _fromDate;
+        public DateTime FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                NotifyOfPropertyChange(() => FromDate);
+            }
+        }
+		        
+        private DateTime _toDate;
+        public DateTime ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                NotifyOfPropertyChange(() => ToDate);
+            }
+        }
 				#endregion
 		
 		#region List which just using in Data Grid
@@ -195,21 +202,28 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => StockInventoryList);
             }
         }
-				#endregion
+		        
+        private IList _evaluationList;
+        public IList EvaluationList
+        {
+            get
+            {
+                return _evaluationList;
+            }
+            set
+            {
+                _evaluationList = value;
+                NotifyOfPropertyChange(() => EvaluationList);
+            }
+        }
+
+        
+
+        #endregion
 		
 		#region Methods
 		        
         public void Help()
-        {
-            
-        }
-		        
-        public void TempLoad()
-        {
-            
-        }
-		        
-        public void TempSave()
         {
             
         }
@@ -219,12 +233,12 @@ namespace POSServer.ViewModels.Stock.Inventory
             
         }
 		        
-        public void button1()
+        public void ExcelExport()
         {
-            
+            Flow.End();
         }
 		        
-        public void SaveResult()
+        public void ProcessResult()
         {
             
         }
@@ -239,16 +253,50 @@ namespace POSServer.ViewModels.Stock.Inventory
             
         }
 		        
-        public void InputByFile()
+        public void SearchEvaluation()
         {
-            
+            DateTime fromDate = DateUtility.ZeroTime(FromDate);
+            DateTime toDate = DateUtility.MaxTime(ToDate);
+            IList<DepartmentStockTempValid> foundList = DepartmentStockTempValidLogic.FindByDate(fromDate,toDate);
+
+            Flow.Session.Put(FlowConstants.TEMP_VALID_FOUND_LIST,foundList);
+
+            var evaluateDateList =  (from tempValid in foundList
+                                    group tempValid by new { tempValid.DepartmentStockTempValidPK.CreateDate,
+                                                             tempValid.DepartmentStockTempValidPK.DepartmentId
+                                                           } into gr
+                                    select new DepartmentStockTempValidPK
+                                               {
+                                                  CreateDate = gr.Key.CreateDate,
+                                                  DepartmentId = gr.Key.DepartmentId
+                                               }).ToList();
+            EvaluationList = evaluateDateList.ToList();
         }
 		        
-        public void ChangeDepartmentForEvaluate()
+        public void Fixing()
         {
             
         }
-				#endregion
+
+        public void SelectEvaluationDate()
+        {
+            IList<DepartmentStockTempValid> foundList = Flow.Session.Get(FlowConstants.TEMP_VALID_FOUND_LIST) as IList<DepartmentStockTempValid>;
+            var processList = from tempValid in foundList
+                              where tempValid.DepartmentStockTempValidPK.CreateDate == SelectedEvaluationKey.CreateDate
+                              select tempValid;
+            Flow.Session.Put(FlowConstants.TEMP_VALID_PROCESSING_LIST,processList.ToList());
+
+            StockInventoryList = processList.ToList();
+        }
+        public override void Initialize()
+        {
+            StockInventoryList = new ArrayList();
+            EvaluationList = new ArrayList();
+            FromDate = ToDate = DateTime.Now;
+            SelectedEvaluationKey = new DepartmentStockTempValidPK();
+        }
+
+        #endregion
 		
         
         

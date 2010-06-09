@@ -126,6 +126,12 @@
     <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />    
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
+
+  <object id="IStockInventoryProcessingViewModel" type="POSServer.ViewModels.Stock.Inventory.StockInventoryProcessingViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="DepartmentStockTempValidLogic" ref="IDepartmentStockTempValidLogic" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+  </object>
   
   <object id="ISyncToDepartmentViewModel" type="POSServer.ViewModels.Synchronize.SyncToDepartmentViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />

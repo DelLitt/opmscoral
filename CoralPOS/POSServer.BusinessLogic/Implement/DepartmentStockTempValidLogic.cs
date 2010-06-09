@@ -250,5 +250,26 @@ namespace POSServer.BusinessLogic.Implement
                 DepartmentStockTempValidDao.Add(departmentStockTempValid);
             }
         }
+
+        public IList<DepartmentStockTempValid> FindByDate(DateTime fromDate, DateTime toDate)
+        {
+            return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute((session) =>
+                                                    {
+                                                        var rs = session.Linq<DepartmentStockTempValid>();
+                                                        rs.Expand("ProductMaster");
+                                                        rs.Expand("Product");
+                                                        var list =
+                                                            from tempValid in rs
+                                                            where
+                                                                tempValid.DepartmentStockTempValidPK.CreateDate <=
+                                                                toDate
+                                                                &&
+                                                                tempValid.DepartmentStockTempValidPK.CreateDate >=
+                                                                fromDate
+                                                                && tempValid.Fixed == 0
+                                                            select tempValid;
+                                                        return list.ToList();
+                                                    });
+        }
     }
 }

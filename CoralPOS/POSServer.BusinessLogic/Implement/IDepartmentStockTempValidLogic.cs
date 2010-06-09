@@ -79,5 +79,13 @@ namespace POSServer.BusinessLogic.Implement
         /// </summary>
         /// <param name="stockInventoryList"></param>
         void AddBatch(IList<DepartmentStockTempValid> stockInventoryList);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fromDate"></param>
+        /// <param name="toDate"></param>
+        /// <returns></returns>
+        IList<DepartmentStockTempValid> FindByDate(DateTime fromDate, DateTime toDate);
     }
 }
