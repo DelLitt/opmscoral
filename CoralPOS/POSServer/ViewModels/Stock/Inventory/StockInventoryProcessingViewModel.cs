@@ -230,16 +230,65 @@ namespace POSServer.ViewModels.Stock.Inventory
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void ExcelExport()
         {
-            Flow.End();
+            
         }
 		        
         public void ProcessResult()
         {
+            IList<DepartmentStockTempValid> list = Flow.Session.Get(FlowConstants.TEMP_VALID_PROCESSING_LIST) as IList<DepartmentStockTempValid>;
+
+            // remove element which has TotalQuantity = RealTotalQuantity
+            var processList1 = from tvl in list
+                              where tvl.Quantity != tvl.GoodQuantity
+                              select tvl;
+
+            var okList = from t in list
+                         group t by
+                             new
+                                 {
+                                     t.ProductMaster.ProductMasterId,
+                                     t.Product.ProductColor.ColorId,
+                                     t.Product.ProductSize.SizeId
+                                 }
+                         into gr
+                         from p1 in gr
+                         where gr.Sum(m => m.Quantity) != gr.Sum(m => m.GoodQuantity)
+                         select p1;
+            foreach (DepartmentStockTempValid departmentStockTempValid in okList)
+            {
+                Console.WriteLine(departmentStockTempValid.ProductMaster.ProductName);
+            }                    
+                             /*new
+                                    {
+                                        TempValid = gr,
+                                        TotalQuantity = gr.Sum(m => m.Quantity),
+                                        RealTotalQuantity = gr.Sum(m => m.GoodQuantity)
+                                    };*/
+            
+            /*var remainList =    from t in processList1
+                                join p in okList on 
+                                                new
+                                                  {
+                                                      t.ProductMaster.ProductMasterId,
+                                                      t.Product.ProductColor.ColorId,
+                                                      t.Product.ProductSize.SizeId
+                                                  } 
+                                                equals
+                                                new  {
+                                                        p.TempValid.Key.ProductMasterId,
+                                                        p.TempValid.Key.ColorId,
+                                                        p.TempValid.Key.SizeId
+                                                   }
+                                into ps
+                                from p1 in ps
+                                where p1.RealTotalQuantity!=p1.TotalQuantity
+                                select p1.TempValid.Select(m =>m);*/
+
             
         }
 		        
