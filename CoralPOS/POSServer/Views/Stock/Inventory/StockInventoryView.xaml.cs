@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CoralPOS.DTO;
 using CoralPOS.Models;
 
 namespace POSServer.Views.Stock.Inventory
@@ -35,10 +36,17 @@ namespace POSServer.Views.Stock.Inventory
 
         private void CalculateSum()
         {
+            long totalQuantity =0;
+            long totalGoodQuantity=0;
             foreach (var item in StockInventoryList.Items)
             {
-                
+                DepartmentStockTempValidDTO master = (DepartmentStockTempValidDTO)item;
+                master.CountQuantities();
+                totalQuantity += master.TotalQuantity;
+                totalGoodQuantity += master.TotalGoodQuantity;
             }
+            LogicalSum.Text = totalQuantity.ToString();
+            RealSum.Text = totalGoodQuantity.ToString();
         }
 
         public void FilterText()
@@ -57,7 +65,7 @@ namespace POSServer.Views.Stock.Inventory
                 if (ProductTypeList.SelectedItem == null) return true;
                 ProductType type = (ProductType)ProductTypeList.SelectedItem;
                 if (type.TypeId == 0) return true;
-                DepartmentStockTempValid master = (DepartmentStockTempValid)obj;
+                DepartmentStockTempValidDTO master = (DepartmentStockTempValidDTO)obj;
                 return master.ProductMaster.ProductType.TypeId == type.TypeId;
             };
         }

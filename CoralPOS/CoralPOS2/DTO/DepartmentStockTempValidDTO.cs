@@ -13,6 +13,7 @@ namespace CoralPOS.DTO
     [DataContract()]
     public class DepartmentStockTempValidDTO
     {
+
         [DataMember(Name = "1", Order = 1)]
         public virtual System.DateTime CreateDate
         {
@@ -189,6 +190,32 @@ namespace CoralPOS.DTO
             }
         }
 
+        public static IList<DepartmentStockTempValidDTO> From(IList<DepartmentStockTempValid> list)
+        {
+            var result = from tvl in list
+                         group tvl by new
+                                          {
+                                              tvl.DepartmentStockTempValidPK.CreateDate,
+                                              tvl.ProductMaster.ProductName,
+                                              tvl.Product.ProductColor.ColorId,
+                                              tvl.Product.ProductSize.SizeId
+                                          }
+                         into grpTvl
+                         from t in grpTvl
+                         select new DepartmentStockTempValidDTO
+                                    {
+                                        CreateDate = grpTvl.Key.CreateDate,
+                                        DepartmentId = t.DepartmentStockTempValidPK.DepartmentId,
+                                        DepartmentStockTempValids = grpTvl.Select(m => m).ToList(),
+                                        ProductMaster = t.ProductMaster,
+                                        ProductColor = t.Product.ProductColor,
+                                        ProductSize = t.Product.ProductSize,
+                                        TotalQuantity = grpTvl.Sum(m=>m.Quantity),
+                                        TotalGoodQuantity = grpTvl.Sum(m=>m.GoodQuantity)
+                                    };
+            return result.ToList();
+
+        }
         protected bool Equals(DepartmentStockTempValidDTO entity)
         {
             if (entity == null) return false;

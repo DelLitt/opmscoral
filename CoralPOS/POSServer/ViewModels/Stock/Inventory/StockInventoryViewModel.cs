@@ -1,7 +1,3 @@
-			 
-
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +17,7 @@ using Caliburn.Core.Invocation;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.DTO;
 using CoralPOS.Models;
 using NHibernate.Criterion;
 using POSServer.BusinessLogic.Implement;
@@ -358,7 +355,9 @@ namespace POSServer.ViewModels.Stock.Inventory
         private object PopulateStockTempValidList(Department selectedDepartment)
         {
             IList<DepartmentStockTempValid> list = DepartmentStockTempValidLogic.FindStockTempValidForDepartment(SelectedDepartment);
-            StockInventoryList = list as IList;
+            /* ------------ PATCH FOR USING DepartmentStockTempValidDTO --------- */
+            var showList = DepartmentStockTempValidDTO.From(list);
+            StockInventoryList = showList as IList;
 
             // populate ProductTypeList
             var productMasterList = (from stockValid in list
