@@ -632,6 +632,9 @@
     <Compile Include="Views\Management\ManagementMainView.xaml.cs">
       <DependentUpon>ManagementMainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stock\Inventory\StockInventoryProcessingResultView.xaml.cs">
+      <DependentUpon>StockInventoryProcessingResultView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stock\Inventory\StockInventoryProcessingView.xaml.cs">
       <DependentUpon>StockInventoryProcessingView.xaml</DependentUpon>
     </Compile>
@@ -951,6 +954,10 @@
     <Page Include="Views\Management\ManagementMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Stock\Inventory\StockInventoryProcessingResultView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
