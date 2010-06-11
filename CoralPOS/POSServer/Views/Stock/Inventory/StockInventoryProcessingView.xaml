@@ -13,7 +13,7 @@
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="80" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">XUẤT RA EXCEL</TextBlock>
                 </Button>
             <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,6,0,39" Name="ProcessResult" Width="80" Height="80" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="69" Height="29" VerticalAlignment="Center">XỬ LÝ</TextBlock>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="68" Height="29" VerticalAlignment="Center">XỬ LÝ</TextBlock>
                </Button>
             <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,259,39" Name="Delete" Width="80" Height="80" Grid.Column="1">XÓA</Button>
             <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,153,39" Name="Reset" Width="80" Height="80" Grid.Column="1">LÀM LẠI</Button>
@@ -23,7 +23,9 @@
                 <RowDefinition Height="204.424*"></RowDefinition>
                 <RowDefinition Height="388.545*"></RowDefinition>
             </Grid.RowDefinitions>
-            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInventoryList"  FontSize="14" Margin="0,0,184.426,33" CanUserAddRows="False" CanUserResizeColumns="False">
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="StockInventoryList"  FontSize="14" Margin="0,0,184.426,33" CanUserAddRows="False" CanUserResizeColumns="False"
+                      SelectedItem="{Binding SelectedTempValidDTO}"
+                      >
                 <DataGrid.Columns>
                     <DataGridTextColumn FontSize="14" Header="STT" >
                         <DataGridTextColumn.Binding>
@@ -34,10 +36,10 @@
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
                     <DataGridTextColumn FontSize="14" Header="TÊN HÀNG" Width="200" Binding="{Binding ProductMaster.ProductName}" />
-                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding Product.ProductColor.ColorName}" />
-                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="70" Binding="{Binding Product.ProductSize.SizeName}" />
-                    <DataGridTextColumn FontSize="14" Header="SL MÁY" Width="100" Binding="{Binding Quantity}" />
-                    <DataGridTextColumn FontSize="14" Header="SL THỰC" Width="100" Binding="{Binding GoodQuantity}" />
+                    <DataGridTextColumn FontSize="14" Header="MÀU SẮC" Width="100" Binding="{Binding ProductColor.ColorName}" />
+                    <DataGridTextColumn FontSize="14" Header="K.CỠ" Width="70" Binding="{Binding ProductSize.SizeName}" />
+                    <DataGridTextColumn FontSize="14" Header="SL MÁY" Width="100" Binding="{Binding TotalQuantity}" />
+                    <DataGridTextColumn FontSize="14" Header="SL THỰC" Width="100" Binding="{Binding TotalGoodQuantity}" />
                     <DataGridCheckBoxColumn Header="KHỚP" Width="100*" Binding="{Binding Fixed}" />
                 </DataGrid.Columns>                
             </DataGrid>

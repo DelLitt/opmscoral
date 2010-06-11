@@ -14,6 +14,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.DTO;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -90,6 +91,7 @@ namespace POSServer.ViewModels.Stock.Inventory
             }
         }
 
+        private DepartmentStockTempValidDTO _tempValidDTO;
         public IDepartmentLogic DepartmentLogic { get; set; }
         public IDepartmentStockTempValidLogic DepartmentStockTempValidLogic { get; set; }
 				#endregion
@@ -217,33 +219,53 @@ namespace POSServer.ViewModels.Stock.Inventory
             }
         }
 
-        
+        public DepartmentStockTempValidDTO TempValidDTO
+        {
+            get { return _tempValidDTO; }
+            set { _tempValidDTO = value; 
+                NotifyOfPropertyChange(()=>TempValidDTO);
+            }
+        }
 
         #endregion
 		
 		#region Methods
-		        
+
+        /// <summary>
+        /// Helps this instance.
+        /// </summary>
         public void Help()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             Flow.End();
         }
-		        
+
+        /// <summary>
+        /// Excels export.
+        /// </summary>
         public void ExcelExport()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Processes the result.
+        /// </summary>
         public void ProcessResult()
         {
-            IList<DepartmentStockTempValid> list = Flow.Session.Get(FlowConstants.TEMP_VALID_PROCESSING_LIST) as IList<DepartmentStockTempValid>;
+            //IList<DepartmentStockTempValid> list = Flow.Session.Get(FlowConstants.TEMP_VALID_PROCESSING_LIST) as IList<DepartmentStockTempValid>;
+            
+            IList<DepartmentStockTempValidDTO> processList = StockInventoryList as IList<DepartmentStockTempValidDTO>;
 
             // remove element which has TotalQuantity = RealTotalQuantity
-            var processList1 = from tvl in list
+            /*var processList1 = from tvl in list
                               where tvl.Quantity != tvl.GoodQuantity
                               select tvl;
 
@@ -258,50 +280,40 @@ namespace POSServer.ViewModels.Stock.Inventory
                          into gr
                          from p1 in gr
                          where gr.Sum(m => m.Quantity) != gr.Sum(m => m.GoodQuantity)
-                         select p1;
+                         select p1;*/
+            var okList = from dto in processList
+                         from tempValid in dto.DepartmentStockTempValids
+                         where    dto.TotalQuantity != dto.TotalGoodQuantity 
+                               && dto.Fixed == 0
+                         select tempValid;
+            // set processing flag for these product
             foreach (DepartmentStockTempValid departmentStockTempValid in okList)
             {
-                Console.WriteLine(departmentStockTempValid.ProductMaster.ProductName);
-            }                    
-                             /*new
-                                    {
-                                        TempValid = gr,
-                                        TotalQuantity = gr.Sum(m => m.Quantity),
-                                        RealTotalQuantity = gr.Sum(m => m.GoodQuantity)
-                                    };*/
-            
-            /*var remainList =    from t in processList1
-                                join p in okList on 
-                                                new
-                                                  {
-                                                      t.ProductMaster.ProductMasterId,
-                                                      t.Product.ProductColor.ColorId,
-                                                      t.Product.ProductSize.SizeId
-                                                  } 
-                                                equals
-                                                new  {
-                                                        p.TempValid.Key.ProductMasterId,
-                                                        p.TempValid.Key.ColorId,
-                                                        p.TempValid.Key.SizeId
-                                                   }
-                                into ps
-                                from p1 in ps
-                                where p1.RealTotalQuantity!=p1.TotalQuantity
-                                select p1.TempValid.Select(m =>m);*/
-
-            
+                departmentStockTempValid.ExFld1 = 1;
+            }
+            Flow.Session.Put(FlowConstants.TEMP_VALID_PROCESSING_LIST, processList);
+            GoToNextNode(); 
         }
-		        
+
+        /// <summary>
+        /// Deletes this instance.
+        /// </summary>
         public void Delete()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Resets this instance.
+        /// </summary>
         public void Reset()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Searches evaluation.
+        /// </summary>
         public void SearchEvaluation()
         {
             DateTime fromDate = DateUtility.ZeroTime(FromDate);
@@ -319,14 +331,21 @@ namespace POSServer.ViewModels.Stock.Inventory
                                                   CreateDate = gr.Key.CreateDate,
                                                   DepartmentId = gr.Key.DepartmentId
                                                }).ToList();
+
             EvaluationList = evaluateDateList.ToList();
         }
-		        
+
+        /// <summary>
+        /// Fixings this instance.
+        /// </summary>
         public void Fixing()
         {
-            
+            TempValidDTO.Fixed = 1;
         }
 
+        /// <summary>
+        /// Selects the evaluation date.
+        /// </summary>
         public void SelectEvaluationDate()
         {
             IList<DepartmentStockTempValid> foundList = Flow.Session.Get(FlowConstants.TEMP_VALID_FOUND_LIST) as IList<DepartmentStockTempValid>;
@@ -334,15 +353,21 @@ namespace POSServer.ViewModels.Stock.Inventory
                               where tempValid.DepartmentStockTempValidPK.CreateDate == SelectedEvaluationKey.CreateDate
                               select tempValid;
             Flow.Session.Put(FlowConstants.TEMP_VALID_PROCESSING_LIST,processList.ToList());
-
-            StockInventoryList = processList.ToList();
+            /* ------------ PATCH FOR USING DepartmentStockTempValidDTO --------- */
+            var showList = DepartmentStockTempValidDTO.From(processList.ToList());
+            StockInventoryList = showList.ToList();
         }
+
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public override void Initialize()
         {
             StockInventoryList = new ArrayList();
             EvaluationList = new ArrayList();
             FromDate = ToDate = DateTime.Now;
             SelectedEvaluationKey = new DepartmentStockTempValidPK();
+            TempValidDTO = new DepartmentStockTempValidDTO();
         }
 
         #endregion

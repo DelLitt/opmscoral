@@ -22,10 +22,14 @@ using CoralPOS.Models;
 using NHibernate.Criterion;
 using POSServer.BusinessLogic.Implement;
 using POSServer.ViewModels.Menu.Stock;
+using MessageBox = System.Windows.MessageBox;
 
 
 namespace POSServer.ViewModels.Stock.Inventory
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [AttachMenuAndMainScreen(typeof(IInventoryMenuViewModel),typeof(IStockMainViewModel))]
     public class StockInventoryViewModel : PosViewModel,IStockInventoryViewModel  
     {
@@ -181,6 +185,10 @@ namespace POSServer.ViewModels.Stock.Inventory
 		#region List which just using in Data Grid
 		        
         private IList _stockInventoryList;
+        /// <summary>
+        /// Gets or sets the stock inventory list.
+        /// </summary>
+        /// <value>The stock inventory list.</value>
         public IList StockInventoryList
         {
             get
@@ -223,22 +231,34 @@ namespace POSServer.ViewModels.Stock.Inventory
         #endregion
 		
 		#region Methods
-		        
+
+        /// <summary>
+        /// Helps this instance.
+        /// </summary>
         public void Help()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Temps the load.
+        /// </summary>
         public void TempLoad()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Temps the save.
+        /// </summary>
         public void TempSave()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             Flow.End();
@@ -248,30 +268,50 @@ namespace POSServer.ViewModels.Stock.Inventory
         {
             
         }
-		        
+
+        /// <summary>
+        /// Saves the result.
+        /// </summary>
         public void SaveResult()
         {
             this.ExecuteAsync(SaveEvaluationResult); 
         }
-		        
+
+        /// <summary>
+        /// Deletes this instance.
+        /// </summary>
         public void Delete()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Resets this instance.
+        /// </summary>
         public void Reset()
         {
             Flow.IsRepeated = true;
             Flow.End();
         }
-		
+
+        /// <summary>
+        /// Saves the evaluation result.
+        /// </summary>
+        /// <returns></returns>
         private object SaveEvaluationResult()
         {
-            DepartmentStockTempValidLogic.AddBatch(StockInventoryList as IList<DepartmentStockTempValid>);
+            var saveResult = from dto in StockInventoryList.OfType<DepartmentStockTempValidDTO>()
+                             from stv in dto.DepartmentStockTempValids
+                             select stv;
+            DepartmentStockTempValidLogic.AddBatch(saveResult.ToList());
+            MessageBox.Show("Save successfully !");
             return 0;
         }
 
 
+        /// <summary>
+        /// Inputs by file.
+        /// </summary>
         public void InputByFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -281,38 +321,71 @@ namespace POSServer.ViewModels.Stock.Inventory
             // if has file to open
             if (!string.IsNullOrEmpty(openFileDialog.FileName))
             {
-                IList<string> errorList;
-                IDictionary<string, long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName,
-                                                                                      out errorList);
+                this.ExecuteAsync(()=>
+                                      {
+                                          IList<string> errorList;
+                                          IDictionary<string, long> productList = ObjectUtility.ReadProductList(openFileDialog.FileName,
+                                                                                                                out errorList);
 
-                // add to stockOut list
-                ArrayList details = new ArrayList(StockInventoryList);
-                foreach (KeyValuePair<string, long> keyValuePair in productList)
-                {
-                    DepartmentStockTempValid result = (from sod in details.OfType<DepartmentStockTempValid>()
-                                             where sod.Product.ProductId.Equals(keyValuePair.Key)
-                                             select sod).FirstOrDefault();
-                    if (result != null) // if exist in list
-                    {
-                        result.Quantity += keyValuePair.Value;
-                    }
-                    else
-                    {
-                        
-                        // get information from database
-                        DepartmentStockTempValid tempValid = DepartmentStockTempValidLogic.CreateFromProductId(keyValuePair.Key,SelectedDepartment.DepartmentId);
-                        if(tempValid == null) throw new InvalidDataException("Can not found product in database !");
-                        tempValid.GoodQuantity = keyValuePair.Value;
-                        details.Add(tempValid);
-                    }
-                }
-                StockInventoryList = details;
-                CalculateSum();
+                                          // add to stockOut list
+                                          ArrayList details = new ArrayList(StockInventoryList);
+
+                                          foreach (KeyValuePair<string, long> keyValuePair in productList)
+                                          {
+                                              InsertBarcodeToList(details, keyValuePair.Key, keyValuePair.Value);
+                                          }
+                                          StockInventoryList = details;
+                                          CalculateSum();
+                                          return null;
+                                      });
+                
             }
         }
 
         /// <summary>
-        /// 
+        /// Inserts the barcode to list.
+        /// </summary>
+        /// <param name="details">The details.</param>
+        /// <param name="productId">The product id.</param>
+        /// <param name="quantity">The quantity.</param>
+        private void InsertBarcodeToList(ArrayList details, string productId, long quantity)
+        {
+            DepartmentStockTempValid result = (from sod in details.OfType<DepartmentStockTempValidDTO>()
+                                               from stv in sod.DepartmentStockTempValids
+                                               where stv.Product.ProductId.Equals(productId)
+                                               select stv).FirstOrDefault();
+            if (result != null) // if exist in list
+            {
+                result.GoodQuantity += quantity;
+            }
+            else
+            {
+
+                // get information from database
+                DepartmentStockTempValid tempValid = DepartmentStockTempValidLogic.CreateFromProductId(productId, SelectedDepartment.DepartmentId);
+                if (tempValid == null) throw new InvalidDataException("Can not found product in database !");
+                tempValid.GoodQuantity = quantity;
+
+                DepartmentStockTempValidDTO dto = (from sod in details.OfType<DepartmentStockTempValidDTO>()
+                                                   where
+                                                           sod.ProductMaster.ProductMasterId == tempValid.ProductMaster.ProductMasterId
+                                                       && sod.ProductColor.ColorId == tempValid.Product.ProductColor.ColorId
+                                                       && sod.ProductSize.SizeId == tempValid.Product.ProductSize.SizeId
+                                                   select sod).FirstOrDefault();
+                if (dto != null)
+                {
+                    dto.DepartmentStockTempValids.Add(tempValid);
+                }
+                else
+                {
+                    details.Add(DepartmentStockTempValidDTO.CreateFrom(tempValid));
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Processes the barcode.
         /// </summary>
         public void ProcessBarcode()
         {
@@ -320,13 +393,20 @@ namespace POSServer.ViewModels.Stock.Inventory
 
         }
 
+        /// <summary>
+        /// Loads the barcode.
+        /// </summary>
+        /// <returns></returns>
         private object LoadBarcode()
         {
             if (ObjectUtility.LengthEqual(Barcode, 12))
             {
+                ArrayList details = new ArrayList(StockInventoryList);
                 // add to stockOut list
                 string barCode = Barcode;
-                ArrayList details = new ArrayList(StockInventoryList);
+                InsertBarcodeToList(details,barCode,1);
+                #region useless
+                /*ArrayList details = new ArrayList(StockInventoryList);
                 DepartmentStockTempValid result = (from sod in details.OfType<DepartmentStockTempValid>()
                                                    where sod.Product.ProductId.Equals(barCode)
                                                    select sod).FirstOrDefault();
@@ -342,17 +422,26 @@ namespace POSServer.ViewModels.Stock.Inventory
                     if (tempValid == null) throw new InvalidDataException("Can not found product in database !");
                     tempValid.GoodQuantity = 1;
                     details.Add(tempValid);
-                }
+                }*/
+                
+                #endregion
+                StockInventoryList = details;
 
             }
             CalculateSum();
             return null;
         }
 
+        /// <summary>
+        /// Processes the product type change.
+        /// </summary>
         public void ProcessProductTypeChange()
         {
             
         }
+        /// <summary>
+        /// Changes the department for evaluate.
+        /// </summary>
         public void ChangeDepartmentForEvaluate()
         {
             BackgroundTask backgroundTask = new BackgroundTask(() => PopulateStockTempValidList(SelectedDepartment));
@@ -362,12 +451,22 @@ namespace POSServer.ViewModels.Stock.Inventory
             
         }
 
+        /// <summary>
+        /// Handles the Completed event of the backgroundTask control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.RunWorkerCompletedEventArgs"/> instance containing the event data.</param>
         private void backgroundTask_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
             StopWaitingScreen(0);
             CheckSelectedDepartment = false;
         }
 
+        /// <summary>
+        /// Populates the stock temp valid list.
+        /// </summary>
+        /// <param name="selectedDepartment">The selected department.</param>
+        /// <returns></returns>
         private object PopulateStockTempValidList(Department selectedDepartment)
         {
             IList<DepartmentStockTempValid> list = DepartmentStockTempValidLogic.FindStockTempValidForDepartment(SelectedDepartment);
@@ -385,7 +484,10 @@ namespace POSServer.ViewModels.Stock.Inventory
             ProductMasterList = productMasterList as IList;
             return 0;
         }
-        
+
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public override void Initialize()
         {
             ObjectCriteria<Department> crit = new ObjectCriteria<Department>();
@@ -400,6 +502,9 @@ namespace POSServer.ViewModels.Stock.Inventory
             IList list = new ArrayList();
         }
 
+        /// <summary>
+        /// Calculates the sum.
+        /// </summary>
         private void CalculateSum()
         {
             long totalQuantity = 0;

@@ -236,5 +236,21 @@ namespace CoralPOS.DTO
 
             return result;
         }
+
+        public static DepartmentStockTempValidDTO CreateFrom(DepartmentStockTempValid tempValid)
+        {
+            return new DepartmentStockTempValidDTO
+                       {
+                           CreateDate = tempValid.DepartmentStockTempValidPK.CreateDate,
+                           DepartmentId = tempValid.DepartmentStockTempValidPK.DepartmentId,
+                           ProductMaster = tempValid.ProductMaster,
+                           ProductColor = tempValid.Product.ProductColor,
+                           ProductSize = tempValid.Product.ProductSize,
+                           DepartmentStockTempValids = new List<DepartmentStockTempValid>
+                                                           {
+                                                               tempValid
+                                                           }
+                       };
+        }
     }
 }
