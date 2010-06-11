@@ -1,7 +1,3 @@
-			 
-
-			 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,12 +16,19 @@ using POSServer.ViewModels.Menu;
 
 namespace POSServer.ViewModels.Stock
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [PerRequest(typeof(IStockMainViewModel))]
     [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainView))]
     public class StockMainViewModel : PosViewModel,IStockMainViewModel  
     {
 
         private IShellViewModel _startViewModel;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StockMainViewModel"/> class.
+        /// </summary>
+        /// <param name="startViewModel">The start view model.</param>
         public StockMainViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel; 
@@ -41,17 +44,26 @@ namespace POSServer.ViewModels.Stock
 				#endregion
 		
 		#region Methods
-		        
+
+        /// <summary>
+        /// Stocks the in.
+        /// </summary>
         public void StockIn()
         {
             _startViewModel.EnterFlow(FlowDefinition.StockInCreateFlow); 
         }
-		        
+
+        /// <summary>
+        /// Stocks the in list.
+        /// </summary>
         public void StockInList()
         {
             _startViewModel.EnterFlow(FlowDefinition.StockInSearchFlow); 
         }
-		        
+
+        /// <summary>
+        /// Stocks the in back list.
+        /// </summary>
         public void StockInBackList()
         {
             

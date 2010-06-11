@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:cal="http://www.caliburnproject.org" 
     xmlns:Themes="clr-namespace:WPF.Themes;assembly=WPF.Themes" 
-        Themes:ThemeManager.Theme="ExpressionDark"       
+        Themes:ThemeManager.Theme="WhistlerBlue"       
         Background="{DynamicResource WindowBackgroundBrush}"
     xmlns:Controls="clr-namespace:AppFrameControls.Controls;assembly=AppFrameControls"        
     Title="Coral POS2" Height="700" Width="1024" Visibility="Visible" WindowStartupLocation="CenterScreen" WindowState="Maximized" 
