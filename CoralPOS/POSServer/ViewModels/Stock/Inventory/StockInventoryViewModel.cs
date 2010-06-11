@@ -37,7 +37,9 @@ namespace POSServer.ViewModels.Stock.Inventory
         }
 		
 		#region Fields
-		        
+
+        private long _logicalSum;
+        private long _realSum;
         private string _createDate;
         public string CreateDate
         {
@@ -205,8 +207,20 @@ namespace POSServer.ViewModels.Stock.Inventory
                 NotifyOfPropertyChange(() => StockInventoryListFooter);
             }
         }
-        
-				#endregion
+
+        public long LogicalSum
+        {
+            get { return _logicalSum; }
+            set { _logicalSum = value; NotifyOfPropertyChange(()=>LogicalSum);}
+        }
+
+        public long RealSum
+        {
+            get { return _realSum; }
+            set { _realSum = value; NotifyOfPropertyChange(()=>RealSum);}
+        }
+
+        #endregion
 		
 		#region Methods
 		        
@@ -293,6 +307,7 @@ namespace POSServer.ViewModels.Stock.Inventory
                     }
                 }
                 StockInventoryList = details;
+                CalculateSum();
             }
         }
 
@@ -330,6 +345,7 @@ namespace POSServer.ViewModels.Stock.Inventory
                 }
 
             }
+            CalculateSum();
             return null;
         }
 
@@ -358,7 +374,7 @@ namespace POSServer.ViewModels.Stock.Inventory
             /* ------------ PATCH FOR USING DepartmentStockTempValidDTO --------- */
             var showList = DepartmentStockTempValidDTO.From(list);
             StockInventoryList = showList as IList;
-
+            CalculateSum();
             // populate ProductTypeList
             var productMasterList = (from stockValid in list
                                      select stockValid.ProductMaster).Distinct().ToList();
@@ -384,6 +400,19 @@ namespace POSServer.ViewModels.Stock.Inventory
             IList list = new ArrayList();
         }
 
+        private void CalculateSum()
+        {
+            long totalQuantity = 0;
+            long totalGoodQuantity = 0;
+            foreach (DepartmentStockTempValidDTO master in StockInventoryList)
+            {
+                master.CountQuantities();
+                totalQuantity += master.TotalQuantity;
+                totalGoodQuantity += master.TotalGoodQuantity;
+            }
+            LogicalSum = totalQuantity;
+            RealSum = totalGoodQuantity;
+        }
         #endregion
 		
         
