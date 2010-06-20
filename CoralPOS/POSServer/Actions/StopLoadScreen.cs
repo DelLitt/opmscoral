@@ -9,7 +9,7 @@ namespace POSServer.Actions
 {
     public class StopLoadScreen : PosAction, IStopLoadScreen
     {
-        public void DoExecute()
+        public override void DoExecute()
         {
             ILoadViewModel var = GlobalSession.Instance.Get("GLOBALLOADSCREEN") as ILoadViewModel;
             var.StopLoading();

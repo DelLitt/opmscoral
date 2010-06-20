@@ -14,7 +14,7 @@ namespace POSServer.Actions.ProductMaster
     {
         public IProductMasterLogic ProductMasterLogic { get; set; }
 
-        public void DoExecute()
+        public override void DoExecute()
         {
             CoralPOS.Models.ProductMaster master = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
 
