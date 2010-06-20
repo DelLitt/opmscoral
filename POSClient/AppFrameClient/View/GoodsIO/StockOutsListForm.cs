@@ -112,7 +112,7 @@ namespace AppFrameClient.View.GoodsIO
             }
             deptStockOutDetailList.Clear();
             StockOutView stockOut = deptStockOutList[dgvStockOut.CurrentCell.OwningRow.Index];
-            IList stockOutDetails = stockOut.StockOut.StockOutDetails;
+            IList stockOutDetails = SortStockOutDetail(stockOut.StockOut.StockOutDetails);
             foreach (StockOutDetail stockOutDetail in stockOutDetails)
             {
                 if (!HasCreatedView(stockOutDetail))
@@ -134,6 +134,16 @@ namespace AppFrameClient.View.GoodsIO
             dgvStockOutDetail.Refresh();
             dgvStockOutDetail.Invalidate();
             CalculateGrandTotalCount();
+        }
+
+        private IList SortStockOutDetail(IList stockOutDetails)
+        {
+            var result = from detail in stockOutDetails.OfType<StockOutDetail>()
+                         orderby detail.Product.ProductMaster.ProductName,
+                                 detail.Product.ProductMaster.ProductColor.ColorId,
+                                 detail.Product.ProductMaster.ProductSize.SizeId ascending
+                         select detail;
+            return result.ToList();
         }
 
         private void CalculateGrandTotalCount()

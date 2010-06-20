@@ -80,8 +80,8 @@ namespace AppFrameClient.DataLayer
             return (IList)HibernateTemplate.Execute(
                 delegate(ISession session)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         ICriteria hibernateCriteria = session.CreateCriteria(typeof(LoginModel));
                         if (criteria != null)
                         {
@@ -107,11 +107,11 @@ namespace AppFrameClient.DataLayer
                             }
                         }
                         return hibernateCriteria.List();
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    return null;
+                    //}
 
                 }
                 );

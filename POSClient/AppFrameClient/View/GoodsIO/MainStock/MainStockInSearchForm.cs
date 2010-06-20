@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Model;
@@ -175,6 +177,12 @@ namespace AppFrameClient.View.GoodsIO.MainStock
 
                 if (selected != null)
                 {
+                    ArrayList details = new ArrayList();
+                    foreach (StockInDetail stockInDetail in selected.StockInDetails)
+                    {
+                        details.Add(stockInDetail);
+                    }
+                    selected.StockInDetails = SortDetail(details);
                     var departmentStockIn = GlobalUtility.GetFormObject<MainStockInForm>(FormConstants.MAIN_STOCK_IN_FORM);
                     departmentStockIn.deptSI = selected;
                     departmentStockIn.ShowDialog();
@@ -195,6 +203,17 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
         }
 
+        private IList SortDetail(ArrayList stockInDetails)
+        {
+            var result = from detail in stockInDetails.OfType<StockInDetail>()
+                         orderby detail.Product.ProductMaster.ProductName,
+                                 detail.Product.ProductMaster.ProductColor.ColorId,
+                                 detail.Product.ProductMaster.ProductSize.SizeId ascending 
+                         select detail;
+            return result.ToList();
+        }
+
+        
         private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ViewStockInDetail(e.RowIndex);

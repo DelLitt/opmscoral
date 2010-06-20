@@ -46,7 +46,7 @@
     <menuitem name="mnuDepartmentCost" role="Administrator,Supervisor,Manager" />
     <menuitem name="mnuDepartmentCostSummary" role="Manager,Administrator,Supervisor" />
     <menuitem name="mnuSubStockOut" role="NotImplement" />
-    <menuitem name="mnuCheckStockEvaluation" role="NotImplement" />
+    <menuitem name="mnuCheckStockEvaluation" role="Administrator,Supervisor" />
     
   </menu>
   <menu name="mnuSalePoint" role="Administrator,Supervisor,Manager">
@@ -112,7 +112,7 @@
     <menuitem name="mnuAllStockReturnReport" role="Administrator,Supervisor" />
     <menuitem name="mnuAllStock" role="Administrator,Supervisor" />
     <menuitem name="mnuAllPurchaseOrders" role="Administrator,Supervisor" />
-    <menuitem name="mnuStockEvaluationReport" role="NotImplement" />
+    <menuitem name="mnuStockEvaluationReport" role="Administrator,Supervisor" />
     <menuitem name="mnuProductMasterStatistic" role="NotImplement" />
     <menuitem name="mnuStockRemainsReport" role="NotImplement" />
     <menuitem name="mnuEmployeePurchaseOrder" role="Administrator,Manager,Supervisor" />

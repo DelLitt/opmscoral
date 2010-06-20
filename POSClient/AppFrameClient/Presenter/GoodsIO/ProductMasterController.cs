@@ -10,6 +10,8 @@ using AppFrame.Logic;
 using AppFrame.Model;
 using AppFrame.Presenter.GoodsIO;
 using AppFrame.Presenter.SalePoints;
+using System.Linq;
+using System.Linq.Expressions;
 using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrameClient.Utility;
@@ -82,21 +84,21 @@ namespace AppFrameClient.Presenter.GoodsIO
             criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddOrder("TypeName", true);
-            e.ProductTypeList = ProductTypeLogic.FindAll(criteria);
+            e.ProductTypeList = SortType((ArrayList)ProductTypeLogic.FindAll(criteria));
             e.ProductTypeList.Insert(0, new ProductType());
 
             // product size
             criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddOrder("SizeName", true);
-            e.ProductSizeList = ProductSizeLogic.FindAll(criteria);
+            e.ProductSizeList = SortSize((ArrayList)ProductSizeLogic.FindAll(criteria));
             e.ProductSizeList.Insert(0, new ProductSize());
 
             // product color
             criteria = new ObjectCriteria();
             criteria.AddEqCriteria("DelFlg", CommonConstants.DEL_FLG_NO);
             criteria.AddOrder("ColorName", true);
-            e.ProductColorList = ProductColorLogic.FindAll(criteria);
+            e.ProductColorList = SortColor((ArrayList)ProductColorLogic.FindAll(criteria));
             e.ProductColorList.Insert(0, new ProductColor());
             
 
@@ -113,6 +115,30 @@ namespace AppFrameClient.Presenter.GoodsIO
 
                 e.SameProductMasterList = ProductMasterLogic.FindAll(criteria);
             }
+        }
+
+        private IList SortColor(ArrayList findAll)
+        {
+            var result = from det in findAll.OfType<ProductColor>()
+                         orderby det.ColorName ascending
+                         select det;
+            return result.ToList();
+        }
+
+        private IList SortSize(ArrayList findAll)
+        {
+            var result = from det in findAll.OfType<ProductSize>()
+                         orderby det.SizeName ascending
+                         select det;
+            return result.ToList();
+        }
+
+        private IList SortType(ArrayList findAll)
+        {
+            var result = from det in findAll.OfType<ProductType>()
+                         orderby det.TypeName ascending
+                         select det;
+            return result.ToList();
         }
 
         public void productMasterView_LoadProductMasterEvent(object sender, ProductMasterEventArgs e)

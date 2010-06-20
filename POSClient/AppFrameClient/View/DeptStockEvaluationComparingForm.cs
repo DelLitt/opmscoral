@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Utility;
 using AppFrameClient.MasterDBTableAdapters;
@@ -48,6 +49,7 @@ namespace AppFrameClient.View
                 DepartmentName = "KHO CHINH"
             };
             departmentBindingSource.Add(mainStock);
+            Department chooseDepartment = null;
             foreach (MasterDB.DepartmentRow row in masterDB.Department)
             {
                 Department department = new Department
@@ -55,13 +57,25 @@ namespace AppFrameClient.View
                     DepartmentId = row.DEPARTMENT_ID,
                     DepartmentName = row.DEPARTMENT_NAME
                 };
+                if(row.DEPARTMENT_ID == CurrentDepartment.Get().DepartmentId)
+                {
+                    chooseDepartment = department;
+                }
                 departmentBindingSource.Add(department);
             }
             departmentBindingSource.ResetBindings(false);
-
-            InitTypeList();
             
+            InitTypeList();
 
+            if (chooseDepartment != null)
+            {
+                cboDepartments.SelectedItem = chooseDepartment;
+                cboDepartments.Enabled = false;
+            }
+            if(CurrentDepartment.Get().DepartmentId == 0)
+            {
+                txtBarcode.Enabled = false;
+            }
             this.masterDB1.EnforceConstraints = false;
             this.masterDB3.EnforceConstraints = false;
         }
@@ -332,7 +346,6 @@ namespace AppFrameClient.View
                     
                     IDictionary<string, int> lackingIdList = new Dictionary<string, int>();
 
-
                     foreach (KeyValuePair<string, int> barCodeLine in list)
                     {
                         bool found = false;
@@ -431,6 +444,13 @@ namespace AppFrameClient.View
                 TypeName = "-- TẤT CẢ MẶT HÀNG --"
             };
             cboTypeBds.Add(allTypes);
+            ProductType unknownType = new ProductType
+            {
+                TypeId = 9999,
+                TypeName = "++ UNKNOWN TYPE ++"
+            };
+            cboTypeBds.Add(unknownType);
+
             foreach (MasterDB.product_typeRow row in masterDB2.product_type)
             {
                 ProductType productType = new ProductType
@@ -598,7 +618,72 @@ namespace AppFrameClient.View
         {
             Close();
         }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            IList lackingIdList = new ArrayList();
+            if (!string.IsNullOrEmpty(txtBarcode.Text) && txtBarcode.Text.Length == 12)
+            {
+                    string barCode = txtBarcode.Text;
+
+                    bool found = false;
+                    foreach (MasterDB.stockqtyRow stockqtyRow in masterDB1.stockqty)
+                    {
+                        //if (barCodeLine.Key.Equals(stockqtyRow["PRODUCT_ID"].ToString()))
+                        if (barCode.Equals(stockqtyRow.PRODUCT_ID))
+                        {
+                            stockqtyRow.realquantity += 1;
+                            AddToReviewTypeList(stockqtyRow.TYPE_ID.ToString());
+
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                                                
+                            lackingIdList.Add(barCode);
+                        
+                    }
+                
+                if (lackingIdList.Count > 0)
+                {
+                    foreach (string barCodeLine in lackingIdList)
+                    {
+                        AddToReviewTypeList("9999");
+                        masterDB1.stockqty.AddstockqtyRow(
+                            9999,
+                            "UNKNOWN",
+                            "9999999999999",
+                            barCodeLine,
+                            "UNKNOWN PRODUCT",
+                            "UNKNOWN",
+                            "UNKNOWN",
+                            barCodeLine,
+                            0,
+                            0,
+                            1
+                            );
+
+                     
+
+                    }
+                }
+
+            stockqtyBindingSource.ResetBindings(false);
+            dgvDeptStock.Refresh();
+            dgvDeptStock.Invalidate();
+            CreateTypeList(ReviewTypeList);
+            FilterDataset();
+            CalculateTotal();
+            txtBarcode.Text = "";
+            }
+            
+        }
+        
     }
+
     class TypeViewObject
     {
         int TypeId { get; set; }

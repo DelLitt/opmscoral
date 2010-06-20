@@ -16,35 +16,35 @@ namespace AppFrame.Model
         private EmployeeInfo employeeInfo;
         private IList roles = new ArrayList();
 
-        public string RoleType { get; set; }
-        public string Username
+        public virtual string RoleType { get; set; }
+        public virtual string Username
         {
             get { return username; }
             set { username = value; }
         }
-        
-        public string Password
+
+        public virtual string Password
         {
             get { return password; }
             set { password = value; }
         }
 
         [XmlArrayItem(typeof(Role))]
-        public IList Roles
+        public virtual IList Roles
         {
             get { return roles; }
             set { roles = value; }
         }
 
-        public EmployeeInfo EmployeeInfo
+        public virtual EmployeeInfo EmployeeInfo
         {
             get { return employeeInfo; }
             set { employeeInfo = value; }
         }
-        public Int32 Suspended { get; set; }
-        public Int32 Deleted { get; set; }
+        public virtual Int32 Suspended { get; set; }
+        public virtual Int32 Deleted { get; set; }
 
-        public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public virtual DateTime CreateDate { get; set; }
+        public virtual DateTime UpdateDate { get; set; }
     }
 }

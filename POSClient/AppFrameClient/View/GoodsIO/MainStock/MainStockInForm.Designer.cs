@@ -78,6 +78,7 @@
             this.txtPNFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkNameFilter = new System.Windows.Forms.CheckBox();
+            this.chkPrintByQuantity = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).BeginInit();
             this.ctxMenuDept.SuspendLayout();
@@ -103,7 +104,7 @@
             this.txtStockInId.Name = "txtStockInId";
             this.txtStockInId.ReadOnly = true;
             this.txtStockInId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtStockInId.Size = new System.Drawing.Size(122, 22);
+            this.txtStockInId.Size = new System.Drawing.Size(122, 23);
             this.txtStockInId.TabIndex = 71;
             // 
             // label9
@@ -111,7 +112,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(399, 586);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.Size = new System.Drawing.Size(62, 15);
             this.label9.TabIndex = 70;
             this.label9.Text = "sản phẩm";
             // 
@@ -121,7 +122,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(6, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 14);
+            this.label3.Size = new System.Drawing.Size(71, 16);
             this.label3.TabIndex = 72;
             this.label3.Text = "Mã lô hàng";
             // 
@@ -141,7 +142,7 @@
             0});
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDown.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDown.Size = new System.Drawing.Size(51, 23);
             this.numericUpDown.TabIndex = 69;
             this.numericUpDown.Value = new decimal(new int[] {
             1,
@@ -154,7 +155,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(6, 489);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblStatus.Size = new System.Drawing.Size(0, 15);
             this.lblStatus.TabIndex = 68;
             // 
             // btnAddProduct
@@ -175,7 +176,7 @@
             this.dtpImportDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpImportDate.Location = new System.Drawing.Point(318, 44);
             this.dtpImportDate.Name = "dtpImportDate";
-            this.dtpImportDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpImportDate.Size = new System.Drawing.Size(200, 23);
             this.dtpImportDate.TabIndex = 66;
             // 
             // label8
@@ -184,7 +185,7 @@
             this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(238, 48);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 14);
+            this.label8.Size = new System.Drawing.Size(73, 16);
             this.label8.TabIndex = 65;
             this.label8.Text = "Ngày nhập:";
             // 
@@ -205,7 +206,7 @@
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(289, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(352, 19);
+            this.label7.Size = new System.Drawing.Size(372, 21);
             this.label7.TabIndex = 63;
             this.label7.Text = "NHẬP HÀNG HÓA/ CHỈNH SỬA HÀNG HÓA";
             // 
@@ -225,7 +226,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(650, 557);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 14);
+            this.label6.Size = new System.Drawing.Size(74, 16);
             this.label6.TabIndex = 61;
             this.label6.Text = "Tổng giá trị";
             // 
@@ -236,7 +237,7 @@
             this.txtSumValue.Name = "txtSumValue";
             this.txtSumValue.ReadOnly = true;
             this.txtSumValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumValue.Size = new System.Drawing.Size(80, 22);
+            this.txtSumValue.Size = new System.Drawing.Size(80, 23);
             this.txtSumValue.TabIndex = 60;
             // 
             // label5
@@ -245,7 +246,7 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(6, 145);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 14);
+            this.label5.Size = new System.Drawing.Size(94, 16);
             this.label5.TabIndex = 59;
             this.label5.Text = "Chi tiết lô hàng";
             // 
@@ -254,7 +255,7 @@
             this.txtDexcription.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDexcription.Location = new System.Drawing.Point(100, 70);
             this.txtDexcription.Name = "txtDexcription";
-            this.txtDexcription.Size = new System.Drawing.Size(709, 22);
+            this.txtDexcription.Size = new System.Drawing.Size(709, 23);
             this.txtDexcription.TabIndex = 58;
             // 
             // label2
@@ -263,7 +264,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 14);
+            this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 57;
             this.label2.Text = "Diễn tả lô hàng";
             // 
@@ -432,20 +433,20 @@
             this.mnuCreateDupItem,
             this.mnuCreateNewItem});
             this.ctxMenuDept.Name = "ctxMenuDept";
-            this.ctxMenuDept.Size = new System.Drawing.Size(279, 48);
+            this.ctxMenuDept.Size = new System.Drawing.Size(347, 52);
             this.ctxMenuDept.Opening += new System.ComponentModel.CancelEventHandler(this.ctxMenuDept_Opening);
             // 
             // mnuCreateDupItem
             // 
             this.mnuCreateDupItem.Name = "mnuCreateDupItem";
-            this.mnuCreateDupItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateDupItem.Size = new System.Drawing.Size(346, 24);
             this.mnuCreateDupItem.Text = "Tạo dòng mới với nội dung từ dòng hiện tại";
             this.mnuCreateDupItem.Click += new System.EventHandler(this.nhToolStripMenuItem_Click);
             // 
             // mnuCreateNewItem
             // 
             this.mnuCreateNewItem.Name = "mnuCreateNewItem";
-            this.mnuCreateNewItem.Size = new System.Drawing.Size(278, 22);
+            this.mnuCreateNewItem.Size = new System.Drawing.Size(346, 24);
             this.mnuCreateNewItem.Text = "Tạo dòng mới với nội dung mới hoàn toàn";
             this.mnuCreateNewItem.Click += new System.EventHandler(this.mnuCreateNewItem_Click);
             // 
@@ -469,7 +470,7 @@
             0});
             this.numericUpDownBarcode.Name = "numericUpDownBarcode";
             this.numericUpDownBarcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownBarcode.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDownBarcode.Size = new System.Drawing.Size(51, 23);
             this.numericUpDownBarcode.TabIndex = 74;
             this.numericUpDownBarcode.Value = new decimal(new int[] {
             3,
@@ -501,20 +502,20 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(456, 558);
+            this.label13.Location = new System.Drawing.Point(537, 555);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 14);
+            this.label13.Size = new System.Drawing.Size(37, 16);
             this.label13.TabIndex = 114;
-            this.label13.Text = "Tổng sản phẩm";
+            this.label13.Text = "Tổng";
             // 
             // txtSumProduct
             // 
             this.txtSumProduct.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSumProduct.Location = new System.Drawing.Point(554, 552);
+            this.txtSumProduct.Location = new System.Drawing.Point(580, 552);
             this.txtSumProduct.Name = "txtSumProduct";
             this.txtSumProduct.ReadOnly = true;
             this.txtSumProduct.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSumProduct.Size = new System.Drawing.Size(90, 22);
+            this.txtSumProduct.Size = new System.Drawing.Size(64, 23);
             this.txtSumProduct.TabIndex = 113;
             // 
             // chkContinuePrint
@@ -523,7 +524,7 @@
             this.chkContinuePrint.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkContinuePrint.Location = new System.Drawing.Point(249, 557);
             this.chkContinuePrint.Name = "chkContinuePrint";
-            this.chkContinuePrint.Size = new System.Drawing.Size(92, 18);
+            this.chkContinuePrint.Size = new System.Drawing.Size(95, 20);
             this.chkContinuePrint.TabIndex = 115;
             this.chkContinuePrint.Text = "In hàng loạt";
             this.chkContinuePrint.UseVisualStyleBackColor = true;
@@ -534,7 +535,7 @@
             this.chkPrintPrice.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPrintPrice.Location = new System.Drawing.Point(348, 557);
             this.chkPrintPrice.Name = "chkPrintPrice";
-            this.chkPrintPrice.Size = new System.Drawing.Size(56, 18);
+            this.chkPrintPrice.Size = new System.Drawing.Size(59, 20);
             this.chkPrintPrice.TabIndex = 116;
             this.chkPrintPrice.Text = "In giá";
             this.chkPrintPrice.UseVisualStyleBackColor = true;
@@ -553,7 +554,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 111);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 14);
+            this.label1.Size = new System.Drawing.Size(90, 16);
             this.label1.TabIndex = 118;
             this.label1.Text = "Tên sản phẩm";
             // 
@@ -563,17 +564,30 @@
             this.chkNameFilter.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNameFilter.Location = new System.Drawing.Point(272, 112);
             this.chkNameFilter.Name = "chkNameFilter";
-            this.chkNameFilter.Size = new System.Drawing.Size(114, 18);
+            this.chkNameFilter.Size = new System.Drawing.Size(114, 20);
             this.chkNameFilter.TabIndex = 119;
             this.chkNameFilter.Text = "Lọc theo tên sp";
             this.chkNameFilter.UseVisualStyleBackColor = true;
             this.chkNameFilter.CheckedChanged += new System.EventHandler(this.chkNameFilter_CheckedChanged);
+            // 
+            // chkPrintByQuantity
+            // 
+            this.chkPrintByQuantity.AutoSize = true;
+            this.chkPrintByQuantity.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPrintByQuantity.Location = new System.Drawing.Point(413, 557);
+            this.chkPrintByQuantity.Name = "chkPrintByQuantity";
+            this.chkPrintByQuantity.Size = new System.Drawing.Size(119, 20);
+            this.chkPrintByQuantity.TabIndex = 120;
+            this.chkPrintByQuantity.Text = "In theo so luong";
+            this.chkPrintByQuantity.UseVisualStyleBackColor = true;
+            this.chkPrintByQuantity.Visible = false;
             // 
             // MainStockInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 616);
+            this.Controls.Add(this.chkPrintByQuantity);
             this.Controls.Add(this.chkNameFilter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPNFilter);
@@ -583,9 +597,9 @@
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.numericUpDownBarcode);
             this.Controls.Add(this.txtStockInId);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSumProduct);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.numericUpDown);
@@ -606,6 +620,36 @@
             this.Name = "MainStockInForm";
             this.Text = "Chi tiết nhập hàng";
             this.Load += new System.EventHandler(this.DepartmentStockInExtra_Load);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.dgvDeptStockIn, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.txtSumValue, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.txtDexcription, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.button4, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.dtpImportDate, 0);
+            this.Controls.SetChildIndex(this.btnBarcode, 0);
+            this.Controls.SetChildIndex(this.btnAddProduct, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.numericUpDown, 0);
+            this.Controls.SetChildIndex(this.lblStatus, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.txtSumProduct, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.txtStockInId, 0);
+            this.Controls.SetChildIndex(this.numericUpDownBarcode, 0);
+            this.Controls.SetChildIndex(this.btnPreview, 0);
+            this.Controls.SetChildIndex(this.chkContinuePrint, 0);
+            this.Controls.SetChildIndex(this.chkPrintPrice, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.txtPNFilter, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.chkNameFilter, 0);
+            this.Controls.SetChildIndex(this.chkPrintByQuantity, 0);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeptStockIn)).EndInit();
             this.ctxMenuDept.ResumeLayout(false);
@@ -669,5 +713,6 @@
         private System.Windows.Forms.TextBox txtPNFilter;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkNameFilter;
+        private System.Windows.Forms.CheckBox chkPrintByQuantity;
     }
 }

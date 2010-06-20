@@ -11,15 +11,15 @@ namespace AppFrame.Model
     {
         private int id;
         private String name;
-        
 
-        public int Id
+
+        public virtual int Id
         {
             get { return id; }
             set { id = value; }
         }
 
-        public string Name
+        public virtual string Name
         {
             get { return name; }
             set { name = value; }

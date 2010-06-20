@@ -661,17 +661,28 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                     {
                         try
                         {
+                            int extraPrint = 0;
+                            int extraCount = 0;
                             var numberToPrint = (int)numericUpDownBarcode.Value;
                             var count = numberToPrint / 3;
-                            if ((numberToPrint % 3) != 0)
+                            if ((extraPrint = numberToPrint % 3) != 0)
                             {
-                                count += 1;
+                                extraCount= 1;
                             }
-                            for (int i = 0; i < count; i++)
+                            if (count > 0)
                             {
+                                barcodePrintDocument.PrinterSettings.Copies = (short) count;
+                                /*for (int i = 0; i < count; i++)
+                                {*/
+                                    barcodePrintDocument.Print();
+                                /*}*/
+                            }
+                            if(extraCount > 0)
+                            {
+                                if (numericUpDownBarcode.Value != extraPrint) numericUpDownBarcode.Value = extraPrint;
+                                barcodePrintDocument.PrinterSettings.Copies = (short) extraCount;
                                 barcodePrintDocument.Print();
                             }
-
                         }
                         catch (Exception)
                         {

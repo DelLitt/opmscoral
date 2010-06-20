@@ -42,13 +42,14 @@
       <key column="userid" />
       <many-to-many class="AppFrame.Model.RoleModel, AppFrame" column="roleid" />
     </bag>
+    
     <many-to-one
   name="EmployeeInfo"
 class="EmployeeInfo"
-lazy="false"
-	>
-      <column name="EMPLOYEE_ID" />
-      <column name="DEPARTMENT_ID" />
+lazy="false" cascade="none" 
+	not-null="false">
+      <column name="EMPLOYEE_ID" not-null="false" />
+      <column name="DEPARTMENT_ID" not-null="false" />
     </many-to-one>
   </class>
 </hibernate-mapping>
