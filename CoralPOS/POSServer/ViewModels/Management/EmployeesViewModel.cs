@@ -13,7 +13,7 @@ using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
-
+using POSServer.BusinessLogic.Implement;
 
 
 namespace POSServer.ViewModels.Management
@@ -44,31 +44,31 @@ namespace POSServer.ViewModels.Management
             }
         }
 		        
-        private string _departmentName;
-        public string DepartmentName
+        private string _employeeName;
+        public string EmployeeName
         {
             get
             {
-                return _departmentName;
+                return _employeeName;
             }
             set
             {
-                _departmentName = value;
-                NotifyOfPropertyChange(() => DepartmentName);
+                _employeeName = value;
+                NotifyOfPropertyChange(() => EmployeeName);
             }
         }
 		        
-        private string _departmentId;
-        public string DepartmentId
+        private string _employeeId;
+        public string EmployeeId
         {
             get
             {
-                return _departmentId;
+                return _employeeId;
             }
             set
             {
-                _departmentId = value;
-                NotifyOfPropertyChange(() => DepartmentId);
+                _employeeId = value;
+                NotifyOfPropertyChange(() => EmployeeId);
             }
         }
 		        
@@ -85,24 +85,46 @@ namespace POSServer.ViewModels.Management
                 NotifyOfPropertyChange(() => CardId);
             }
         }
+
+        public IEmployeeInfoLogic EmployeeInfoLogic { get; set; }
 				#endregion
 		
 		#region List use to fetch object for view
 				#endregion
 		
-		#region List which just using in Data Grid
+		#region List of boolean object
+				#endregion
+		
+		#region List of date object
 		        
-        private IList _employeesList;
-        public IList EmployeesList
+        private DateTime _startDay;
+        public DateTime StartDay
         {
             get
             {
-                return _employeesList;
+                return _startDay;
             }
             set
             {
-                _employeesList = value;
-                NotifyOfPropertyChange(() => EmployeesList);
+                _startDay = value;
+                NotifyOfPropertyChange(() => StartDay);
+            }
+        }
+				#endregion
+		
+		#region List which just using in Data Grid
+		        
+        private IList _employeeList;
+        public IList EmployeeList
+        {
+            get
+            {
+                return _employeeList;
+            }
+            set
+            {
+                _employeeList = value;
+                NotifyOfPropertyChange(() => EmployeeList);
             }
         }
 				#endregion

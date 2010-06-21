@@ -47,6 +47,12 @@
     <constructor-arg ref="IShellViewModel" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
+
+  <object id="IEmployeesViewModel" type="POSServer.ViewModels.Management.EmployeesViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="EmployeeInfoLogic" ref="IEmployeeInfoLogic" />
+  </object>
+  
   
   <object id="IStockInViewModel" type="POSServer.ViewModels.Stock.StockIn.StockInViewModel, POSServer" singleton="false">
     <constructor-arg ref="IShellViewModel" />

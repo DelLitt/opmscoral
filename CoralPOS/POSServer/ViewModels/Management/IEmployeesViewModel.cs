@@ -21,13 +21,13 @@ namespace POSServer.ViewModels.Management
             set;            
         }
 		                
-        string DepartmentName
+        string EmployeeName
         {
             get;
             set;            
         }
 		                
-        string DepartmentId
+        string EmployeeId
         {
             get;
             set;            

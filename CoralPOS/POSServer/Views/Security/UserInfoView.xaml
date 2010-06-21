@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="POSServer.Views.Security.UserInfoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="837" Height="700">
+    <Grid>
+            <Grid Height="125" VerticalAlignment="Bottom">                
+                <Button FontSize="14" FontWeight="Bold" Margin="21,6,0,39" Name="Help" HorizontalAlignment="Left" Width="80" Height="80">GIÚP ĐỠ</Button>
+            <Button FontSize="14" FontWeight="Bold" Margin="318,6,439,39" Name="Save" Width="80" Height="80" Content="LƯU"></Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,6,39" Name="Stop" Width="80" Height="80">DỪNG</Button>
+            <Button Content="BỎ QUA" FontSize="14" FontWeight="Bold" Height="80" Margin="420,6,337,39" Name="Cancel" Width="80" />
+            <CheckBox Height="37" HorizontalAlignment="Left" Margin="522,10,0,0" Name="checkBox2" VerticalAlignment="Top" Width="180" >
+                <TextBlock  TextWrapping="Wrap"  TextAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Left" Height="17" Width="177">HIỂN THỊ TÀI KHOẢN ĐÃ XÓA</TextBlock>
+            </CheckBox>
+        </Grid>        
+            <Grid Margin="0,0,0,123">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="58*"></RowDefinition>
+                <RowDefinition Height="519*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="EmployeeList"  FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" 
+                         SelectionMode="Single"
+                         SelectedItem="{Binding SelectedStockOut}" Margin="0,0,522,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Width="100" Binding="{Binding Path=EmployeeId}" SortMemberPath="StockOutId" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN NHÂN VIÊN" Width="150*" Binding="{Binding Path=EmployeeName}" SortMemberPath="StockOutId" />                                       
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" FontSize="14" Margin="506,0,0,0" Name="UserAccountList" SelectedItem="{Binding SelectedStockOut}" SelectionMode="Single" Grid.Row="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Username}" FontSize="14" Header="TÊN Đ.NHẬP" SortMemberPath="StockOutId" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Path=UserRight}" FontSize="14" Header="QUYỀN" SortMemberPath="StockOutId" Width="100" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=IsSuspend}" Header="NGƯNG" SortMemberPath="StockOutId" Width="140*" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=IsDeleted}" Header="XÓA" SortMemberPath="StockOutId" Width="150*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBox Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="321,138,0,0" Name="Username" VerticalAlignment="Top" Width="179" FontSize="14" />
+            <TextBox Height="36" HorizontalAlignment="Left" Margin="321,208,0,0" Name="Password" VerticalAlignment="Top" Width="179" Grid.Row="1" FontSize="14" />
+            <Label Content="TÊN ĐĂNG NHẬP" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="321,111,0,0" Name="label1" VerticalAlignment="Top" FontSize="14" />
+            <Label Content="MẬT KHẨU" Height="28" HorizontalAlignment="Left" Margin="321,180,0,0" Name="label2" VerticalAlignment="Top" Grid.Row="1" FontSize="14" />
+            <CheckBox Content="Hiện mật khẩu" Grid.Row="1" Height="16" HorizontalAlignment="Left" Margin="323,248,0,0" Name="IsShowPassword" VerticalAlignment="Top" />
+            <ListBox Grid.Row="1" Height="143" HorizontalAlignment="Left" Margin="323,318,0,0" Name="RightList" VerticalAlignment="Top" Width="178">
+                <ListBoxItem Content="ADMIN" />
+                <ListBoxItem Content="TỔNG QUẢN LÝ" />
+                <ListBoxItem Content="QUẢN LÝ" />
+                <ListBoxItem Content="NGƯỜI DÙNG" />
+            </ListBox>
+            <Label Content="QUYỀN HẠN" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="323,290,0,0" Name="label3" VerticalAlignment="Top" FontSize="14" />
+            <Button Content="TẠO TÀI KHOẢN" Grid.Row="1" Height="35" HorizontalAlignment="Left" Margin="323,61,0,0" Name="CreateAccount" VerticalAlignment="Top" Width="177" />
+            <ComboBox Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="325,11,0,0" Name="CreateAccountBy" VerticalAlignment="Top" Width="175" />
+        </Grid>
+    </Grid>
+</UserControl>
