@@ -1,0 +1,2729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF.Pos2ClientModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0">
+  <EntityContainer Name="Pos2EntitiesStoreContainer">
+    <EntitySet Name="crl_trans" EntityType="EF.Pos2ClientModel.Store.crl_trans" store:Type="Tables" Table="crl_trans" />
+    <EntitySet Name="crl_sync_status" EntityType="EF.Pos2ClientModel.Store.crl_sync_status" store:Type="Tables" Table="crl_sync_status" />
+    <EntitySet Name="crl_dept_po_dets" EntityType="EF.Pos2ClientModel.Store.crl_dept_po_det" store:Type="Tables" Table="crl_dept_po_det" />
+    <EntitySet Name="crl_contracts" EntityType="EF.Pos2ClientModel.Store.crl_contract" store:Type="Tables" Table="crl_contract" />
+    <EntitySet Name="crl_sale_trans" EntityType="EF.Pos2ClientModel.Store.crl_sale_trans" store:Type="Tables" Table="crl_sale_trans" />
+    <EntitySet Name="crl_dept_prmtns" EntityType="EF.Pos2ClientModel.Store.crl_dept_prmtn" store:Type="Tables" Table="crl_dept_prmtn" />
+    <EntitySet Name="crl_emp_wrkg_days" EntityType="EF.Pos2ClientModel.Store.crl_emp_wrkg_days" store:Type="Tables" Table="crl_emp_wrkg_days" />
+    <EntitySet Name="crl_usr_infos" EntityType="EF.Pos2ClientModel.Store.crl_usr_info" store:Type="Tables" Table="crl_usr_info" />
+    <EntitySet Name="crl_stk_ins" EntityType="EF.Pos2ClientModel.Store.crl_stk_in" store:Type="Tables" Table="crl_stk_in" />
+    <EntitySet Name="crl_dept_stk_out_dets" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_out_det" store:Type="Tables" Table="crl_dept_stk_out_det" />
+    <EntitySet Name="crl_dept_stks" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk" store:Type="Tables" Table="crl_dept_stk" />
+    <EntitySet Name="crl_dept_stk_temp_valids" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_temp_valid" store:Type="Tables" Table="crl_dept_stk_temp_valid" />
+    <EntitySet Name="crl_stk_in_dets" EntityType="EF.Pos2ClientModel.Store.crl_stk_in_det" store:Type="Tables" Table="crl_stk_in_det" />
+    <EntitySet Name="crl_dept_ret_pos" EntityType="EF.Pos2ClientModel.Store.crl_dept_ret_po" store:Type="Tables" Table="crl_dept_ret_po" />
+    <EntitySet Name="crl_pos_logs" EntityType="EF.Pos2ClientModel.Store.crl_pos_log" store:Type="Tables" Table="crl_pos_log" />
+    <EntitySet Name="crl_ex_prd_colors" EntityType="EF.Pos2ClientModel.Store.crl_ex_prd_color" store:Type="Tables" Table="crl_ex_prd_color" />
+    <EntitySet Name="crl_dept_rets" EntityType="EF.Pos2ClientModel.Store.crl_dept_ret" store:Type="Tables" Table="crl_dept_ret" />
+    <EntitySet Name="temp_deptstock_max_temps" EntityType="EF.Pos2ClientModel.Store.temp_deptstock_max_temp" store:Type="Tables" Table="temp_deptstock_max_temp" />
+    <EntitySet Name="crl_dept_stk_his" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_his" store:Type="Tables" Table="crl_dept_stk_his" />
+    <EntitySet Name="temp_stk_his" EntityType="EF.Pos2ClientModel.Store.temp_stk_his" store:Type="Tables" Table="temp_stk_his" />
+    <EntitySet Name="crl_emp_infos" EntityType="EF.Pos2ClientModel.Store.crl_emp_info" store:Type="Tables" Table="crl_emp_info" />
+    <EntitySet Name="crl_prd_typs" EntityType="EF.Pos2ClientModel.Store.crl_prd_typ" store:Type="Tables" Table="crl_prd_typ" />
+    <EntitySet Name="crl_prd_units" EntityType="EF.Pos2ClientModel.Store.crl_prd_unit" store:Type="Tables" Table="crl_prd_unit" />
+    <EntitySet Name="crl_pos_trans" EntityType="EF.Pos2ClientModel.Store.crl_pos_trans" store:Type="Tables" Table="crl_pos_trans" />
+    <EntitySet Name="crl_reicpt_out_csts" EntityType="EF.Pos2ClientModel.Store.crl_reicpt_out_cst" store:Type="Tables" Table="crl_reicpt_out_cst" />
+    <EntitySet Name="crl_stk_out_dets" EntityType="EF.Pos2ClientModel.Store.crl_stk_out_det" store:Type="Tables" Table="crl_stk_out_det" />
+    <EntitySet Name="temp_deptstocks" EntityType="EF.Pos2ClientModel.Store.temp_deptstock" store:Type="Tables" Table="temp_deptstock" />
+    <EntitySet Name="crl_blk_in_dets" EntityType="EF.Pos2ClientModel.Store.crl_blk_in_det" store:Type="Tables" Table="crl_blk_in_det" />
+    <EntitySet Name="crl_sim_prds" EntityType="EF.Pos2ClientModel.Store.crl_sim_prd" store:Type="Tables" Table="crl_sim_prd" />
+    <EntitySet Name="crl_dept_stk_outs" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_out" store:Type="Tables" Table="crl_dept_stk_out" />
+    <EntitySet Name="crl_active_depts" EntityType="EF.Pos2ClientModel.Store.crl_active_dept" store:Type="Tables" Table="crl_active_dept" />
+    <EntitySet Name="crl_ret_prds" EntityType="EF.Pos2ClientModel.Store.crl_ret_prd" store:Type="Tables" Table="crl_ret_prd" />
+    <EntitySet Name="crl_coupons" EntityType="EF.Pos2ClientModel.Store.crl_coupon" store:Type="Tables" Table="crl_coupon" />
+    <EntitySet Name="crl_depts" EntityType="EF.Pos2ClientModel.Store.crl_dept" store:Type="Tables" Table="crl_dept" />
+    <EntitySet Name="crl_other_trans_logs" EntityType="EF.Pos2ClientModel.Store.crl_other_trans_log" store:Type="Tables" Table="crl_other_trans_log" />
+    <EntitySet Name="crl_gifts" EntityType="EF.Pos2ClientModel.Store.crl_gift" store:Type="Tables" Table="crl_gift" />
+    <EntitySet Name="crl_dept_po_det_logs" EntityType="EF.Pos2ClientModel.Store.crl_dept_po_det_log" store:Type="Tables" Table="crl_dept_po_det_log" />
+    <EntitySet Name="crl_emp_rewards" EntityType="EF.Pos2ClientModel.Store.crl_emp_reward" store:Type="Tables" Table="crl_emp_reward" />
+    <EntitySet Name="crl_stk_out_tmps" EntityType="EF.Pos2ClientModel.Store.crl_stk_out_tmp" store:Type="Tables" Table="crl_stk_out_tmp" />
+    <EntitySet Name="crl_blk_in_costs" EntityType="EF.Pos2ClientModel.Store.crl_blk_in_cost" store:Type="Tables" Table="crl_blk_in_cost" />
+    <EntitySet Name="crl_cust_dets" EntityType="EF.Pos2ClientModel.Store.crl_cust_det" store:Type="Tables" Table="crl_cust_det" />
+    <EntitySet Name="crl_dept_ret_dets" EntityType="EF.Pos2ClientModel.Store.crl_dept_ret_det" store:Type="Tables" Table="crl_dept_ret_det" />
+    <EntitySet Name="crl_sups" EntityType="EF.Pos2ClientModel.Store.crl_sup" store:Type="Tables" Table="crl_sup" />
+    <EntitySet Name="crl_ctries" EntityType="EF.Pos2ClientModel.Store.crl_ctry" store:Type="Tables" Table="crl_ctry" />
+    <EntitySet Name="crl_dept_mngs" EntityType="EF.Pos2ClientModel.Store.crl_dept_mng" store:Type="Tables" Table="crl_dept_mng" />
+    <EntitySet Name="crl_dept_pos" EntityType="EF.Pos2ClientModel.Store.crl_dept_po" store:Type="Tables" Table="crl_dept_po" />
+    <EntitySet Name="crl_usr_roles" EntityType="EF.Pos2ClientModel.Store.crl_usr_role" store:Type="Tables" Table="crl_usr_role" />
+    <EntitySet Name="crl_emp_moneys" EntityType="EF.Pos2ClientModel.Store.crl_emp_money" store:Type="Tables" Table="crl_emp_money" />
+    <EntitySet Name="crl_dept_costs" EntityType="EF.Pos2ClientModel.Store.crl_dept_cost" store:Type="Tables" Table="crl_dept_cost" />
+    <EntitySet Name="crl_dept_ret_costs" EntityType="EF.Pos2ClientModel.Store.crl_dept_ret_cost" store:Type="Tables" Table="crl_dept_ret_cost" />
+    <EntitySet Name="crl_taxes" EntityType="EF.Pos2ClientModel.Store.crl_tax" store:Type="Tables" Table="crl_tax" />
+    <EntitySet Name="crl_dept_stk_in_his" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_in_his" store:Type="Tables" Table="crl_dept_stk_in_his" />
+    <EntitySet Name="crl_cash_io_trans" EntityType="EF.Pos2ClientModel.Store.crl_cash_io_trans" store:Type="Tables" Table="crl_cash_io_trans" />
+    <EntitySet Name="crl_mn_stks" EntityType="EF.Pos2ClientModel.Store.crl_mn_stk" store:Type="Tables" Table="crl_mn_stk" />
+    <EntitySet Name="crl_sche_tmplates" EntityType="EF.Pos2ClientModel.Store.crl_sche_tmplate" store:Type="Tables" Table="crl_sche_tmplate" />
+    <EntitySet Name="crl_reicpt_outs" EntityType="EF.Pos2ClientModel.Store.crl_reicpt_out" store:Type="Tables" Table="crl_reicpt_out" />
+    <EntitySet Name="crl_stk_def_stats" EntityType="EF.Pos2ClientModel.Store.crl_stk_def_stat" store:Type="Tables" Table="crl_stk_def_stat" />
+    <EntitySet Name="crl_dept_stk_in_dets" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_in_det" store:Type="Tables" Table="crl_dept_stk_in_det" />
+    <EntitySet Name="crl_ex_prd_sizes" EntityType="EF.Pos2ClientModel.Store.crl_ex_prd_size" store:Type="Tables" Table="crl_ex_prd_size" />
+    <EntitySet Name="crl_emps" EntityType="EF.Pos2ClientModel.Store.crl_emp" store:Type="Tables" Table="crl_emp" />
+    <EntitySet Name="crl_mn_prices" EntityType="EF.Pos2ClientModel.Store.crl_mn_price" store:Type="Tables" Table="crl_mn_price" />
+    <EntitySet Name="temp_dp_stockouts" EntityType="EF.Pos2ClientModel.Store.temp_dp_stockout" store:Type="Tables" Table="temp_dp_stockout" />
+    <EntitySet Name="crl_stk_outs" EntityType="EF.Pos2ClientModel.Store.crl_stk_out" store:Type="Tables" Table="crl_stk_out" />
+    <EntitySet Name="temp_prs" EntityType="EF.Pos2ClientModel.Store.temp_pr" store:Type="Tables" Table="temp_pr" />
+    <EntitySet Name="crl_dept_po_promos" EntityType="EF.Pos2ClientModel.Store.crl_dept_po_promo" store:Type="Tables" Table="crl_dept_po_promo" />
+    <EntitySet Name="crl_custs" EntityType="EF.Pos2ClientModel.Store.crl_cust" store:Type="Tables" Table="crl_cust" />
+    <EntitySet Name="crl_coupon_typs" EntityType="EF.Pos2ClientModel.Store.crl_coupon_typ" store:Type="Tables" Table="crl_coupon_typ" />
+    <EntitySet Name="crl_dept_po_logs" EntityType="EF.Pos2ClientModel.Store.crl_dept_po_log" store:Type="Tables" Table="crl_dept_po_log" />
+    <EntitySet Name="crl_dept_stk_temp_valid_saves" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_temp_valid_save" store:Type="Tables" Table="crl_dept_stk_temp_valid_save" />
+    <EntitySet Name="crl_prds" EntityType="EF.Pos2ClientModel.Store.crl_prd" store:Type="Tables" Table="crl_prd" />
+    <EntitySet Name="crl_roles" EntityType="EF.Pos2ClientModel.Store.crl_role" store:Type="Tables" Table="crl_role" />
+    <EntitySet Name="crl_pkgrs" EntityType="EF.Pos2ClientModel.Store.crl_pkgr" store:Type="Tables" Table="crl_pkgr" />
+    <EntitySet Name="crl_dept_stk_in_csts" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_in_cst" store:Type="Tables" Table="crl_dept_stk_in_cst" />
+    <EntitySet Name="crl_ret_blk_ins" EntityType="EF.Pos2ClientModel.Store.crl_ret_blk_in" store:Type="Tables" Table="crl_ret_blk_in" />
+    <EntitySet Name="crl_stk_out_csts" EntityType="EF.Pos2ClientModel.Store.crl_stk_out_cst" store:Type="Tables" Table="crl_stk_out_cst" />
+    <EntitySet Name="crl_ret_trans" EntityType="EF.Pos2ClientModel.Store.crl_ret_trans" store:Type="Tables" Table="crl_ret_trans" />
+    <EntitySet Name="crl_distbtors" EntityType="EF.Pos2ClientModel.Store.crl_distbtor" store:Type="Tables" Table="crl_distbtor" />
+    <EntitySet Name="crl_mn_stk_his" EntityType="EF.Pos2ClientModel.Store.crl_mn_stk_his" store:Type="Tables" Table="crl_mn_stk_his" />
+    <EntitySet Name="crl_blk_ins" EntityType="EF.Pos2ClientModel.Store.crl_blk_in" store:Type="Tables" Table="crl_blk_in" />
+    <EntitySet Name="crl_reicpts" EntityType="EF.Pos2ClientModel.Store.crl_reicpt" store:Type="Tables" Table="crl_reicpt" />
+    <EntitySet Name="crl_prd_msts" EntityType="EF.Pos2ClientModel.Store.crl_prd_mst" store:Type="Tables" Table="crl_prd_mst" />
+    <EntitySet Name="crl_emp_dayoffs" EntityType="EF.Pos2ClientModel.Store.crl_emp_dayoff" store:Type="Tables" Table="crl_emp_dayoff" />
+    <EntitySet Name="crl_dept_timelines" EntityType="EF.Pos2ClientModel.Store.crl_dept_timeline" store:Type="Tables" Table="crl_dept_timeline" />
+    <EntitySet Name="temp_products" EntityType="EF.Pos2ClientModel.Store.temp_product" store:Type="Tables" Table="temp_product" />
+    <EntitySet Name="crl_dept_stk_out_csts" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_out_cst" store:Type="Tables" Table="crl_dept_stk_out_cst" />
+    <EntitySet Name="crl_pblsh_cpns" EntityType="EF.Pos2ClientModel.Store.crl_pblsh_cpn" store:Type="Tables" Table="crl_pblsh_cpn" />
+    <EntitySet Name="temp_dept_stock_statistics" EntityType="EF.Pos2ClientModel.Store.temp_dept_stock_statistics" store:Type="Tables" Table="temp_dept_stock_statistics" />
+    <EntitySet Name="crl_mnftrs" EntityType="EF.Pos2ClientModel.Store.crl_mnftr" store:Type="Tables" Table="crl_mnftr" />
+    <EntitySet Name="crl_ex_discounts" EntityType="EF.Pos2ClientModel.Store.crl_ex_discount" store:Type="Tables" Table="crl_ex_discount" />
+    <EntitySet Name="crl_dept_stk_ins" EntityType="EF.Pos2ClientModel.Store.crl_dept_stk_in" store:Type="Tables" Table="crl_dept_stk_in" />
+    <EntitySet Name="crl_cats" EntityType="EF.Pos2ClientModel.Store.crl_cat" store:Type="Tables" Table="crl_cat" />
+    <EntitySet Name="crl_promos" EntityType="EF.Pos2ClientModel.Store.crl_promo" store:Type="Tables" Table="crl_promo" />
+    <AssociationSet Name="dept_soout_master" Association="EF.Pos2ClientModel.Store.dept_soout_master">
+      <End Role="crl_dept_stk_out" EntitySet="crl_dept_stk_outs" />
+      <End Role="crl_dept_stk_out_det" EntitySet="crl_dept_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="sin_dept" Association="EF.Pos2ClientModel.Store.sin_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_stk_in" EntitySet="crl_stk_ins" />
+    </AssociationSet>
+    <AssociationSet Name="dept_soout_dept" Association="EF.Pos2ClientModel.Store.dept_soout_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_dept_stk_out_det" EntitySet="crl_dept_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="sodet_mst_dept" Association="EF.Pos2ClientModel.Store.sodet_mst_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_dept_stk_out" EntitySet="crl_dept_stk_outs" />
+    </AssociationSet>
+    <AssociationSet Name="gfdgfd" Association="EF.Pos2ClientModel.Store.gfdgfd">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_active_dept" EntitySet="crl_active_depts" />
+    </AssociationSet>
+    <AssociationSet Name="purchase_order_rule" Association="EF.Pos2ClientModel.Store.purchase_order_rule">
+      <End Role="crl_dept_po" EntitySet="crl_dept_pos" />
+      <End Role="crl_dept_po_det" EntitySet="crl_dept_po_dets" />
+    </AssociationSet>
+    <AssociationSet Name="po_dept" Association="EF.Pos2ClientModel.Store.po_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_dept_po" EntitySet="crl_dept_pos" />
+    </AssociationSet>
+    <AssociationSet Name="username_ref" Association="EF.Pos2ClientModel.Store.username_ref">
+      <End Role="crl_usr_info" EntitySet="crl_usr_infos" />
+      <End Role="crl_usr_role" EntitySet="crl_usr_roles" />
+    </AssociationSet>
+    <AssociationSet Name="deptso_sdf" Association="EF.Pos2ClientModel.Store.deptso_sdf">
+      <End Role="crl_stk_def_stat" EntitySet="crl_stk_def_stats" />
+      <End Role="crl_dept_stk_out" EntitySet="crl_dept_stk_outs" />
+    </AssociationSet>
+    <AssociationSet Name="emp_dept" Association="EF.Pos2ClientModel.Store.emp_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_emp" EntitySet="crl_emps" />
+    </AssociationSet>
+    <AssociationSet Name="emp_emp_info" Association="EF.Pos2ClientModel.Store.emp_emp_info">
+      <End Role="crl_emp_info" EntitySet="crl_emp_infos" />
+      <End Role="crl_emp" EntitySet="crl_emps" />
+    </AssociationSet>
+    <AssociationSet Name="det_to_mas_out" Association="EF.Pos2ClientModel.Store.det_to_mas_out">
+      <End Role="crl_stk_out" EntitySet="crl_stk_outs" />
+      <End Role="crl_stk_out_det" EntitySet="crl_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="so_dept" Association="EF.Pos2ClientModel.Store.so_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_stk_out" EntitySet="crl_stk_outs" />
+    </AssociationSet>
+    <AssociationSet Name="stkout_matsee_sdf" Association="EF.Pos2ClientModel.Store.stkout_matsee_sdf">
+      <End Role="crl_stk_def_stat" EntitySet="crl_stk_def_stats" />
+      <End Role="crl_stk_out" EntitySet="crl_stk_outs" />
+    </AssociationSet>
+    <AssociationSet Name="po_product" Association="EF.Pos2ClientModel.Store.po_product">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_dept_po_det" EntitySet="crl_dept_po_dets" />
+    </AssociationSet>
+    <AssociationSet Name="dept_soout_prd" Association="EF.Pos2ClientModel.Store.dept_soout_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_dept_stk_out_det" EntitySet="crl_dept_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="ds_prd" Association="EF.Pos2ClientModel.Store.ds_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_dept_stk" EntitySet="crl_dept_stks" />
+    </AssociationSet>
+    <AssociationSet Name="stkin_prd" Association="EF.Pos2ClientModel.Store.stkin_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_stk_in_det" EntitySet="crl_stk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="sodet_mstprd" Association="EF.Pos2ClientModel.Store.sodet_mstprd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_stk_out_det" EntitySet="crl_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="mn_stk_prd" Association="EF.Pos2ClientModel.Store.mn_stk_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_mn_stk" EntitySet="crl_mn_stks" />
+    </AssociationSet>
+    <AssociationSet Name="dept_so_prd" Association="EF.Pos2ClientModel.Store.dept_so_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_dept_stk_in_det" EntitySet="crl_dept_stk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="prd_pmcolor" Association="EF.Pos2ClientModel.Store.prd_pmcolor">
+      <End Role="crl_ex_prd_color" EntitySet="crl_ex_prd_colors" />
+      <End Role="crl_prd" EntitySet="crl_prds" />
+    </AssociationSet>
+    <AssociationSet Name="prd_pmsize" Association="EF.Pos2ClientModel.Store.prd_pmsize">
+      <End Role="crl_ex_prd_size" EntitySet="crl_ex_prd_sizes" />
+      <End Role="crl_prd" EntitySet="crl_prds" />
+    </AssociationSet>
+    <AssociationSet Name="role_ref" Association="EF.Pos2ClientModel.Store.role_ref">
+      <End Role="crl_role" EntitySet="crl_roles" />
+      <End Role="crl_usr_role" EntitySet="crl_usr_roles" />
+    </AssociationSet>
+    <AssociationSet Name="stk_his_prd" Association="EF.Pos2ClientModel.Store.stk_his_prd">
+      <End Role="crl_prd" EntitySet="crl_prds" />
+      <End Role="crl_mn_stk_his" EntitySet="crl_mn_stk_his" />
+    </AssociationSet>
+    <AssociationSet Name="fdsfsdfs" Association="EF.Pos2ClientModel.Store.fdsfsdfs">
+      <End Role="crl_blk_in" EntitySet="crl_blk_ins" />
+      <End Role="crl_blk_in_det" EntitySet="crl_blk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="receipt_dept" Association="EF.Pos2ClientModel.Store.receipt_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_reicpt" EntitySet="crl_reicpts" />
+    </AssociationSet>
+    <AssociationSet Name="receipt_deptpo" Association="EF.Pos2ClientModel.Store.receipt_deptpo">
+      <End Role="crl_dept_po" EntitySet="crl_dept_pos" />
+      <End Role="crl_reicpt" EntitySet="crl_reicpts" />
+    </AssociationSet>
+    <AssociationSet Name="po_pm" Association="EF.Pos2ClientModel.Store.po_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_dept_po_det" EntitySet="crl_dept_po_dets" />
+    </AssociationSet>
+    <AssociationSet Name="dept_soout_pm" Association="EF.Pos2ClientModel.Store.dept_soout_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_dept_stk_out_det" EntitySet="crl_dept_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="ds_pm" Association="EF.Pos2ClientModel.Store.ds_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_dept_stk" EntitySet="crl_dept_stks" />
+    </AssociationSet>
+    <AssociationSet Name="stkin_pm" Association="EF.Pos2ClientModel.Store.stkin_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_stk_in_det" EntitySet="crl_stk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="sodet_mstpm" Association="EF.Pos2ClientModel.Store.sodet_mstpm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_stk_out_det" EntitySet="crl_stk_out_dets" />
+    </AssociationSet>
+    <AssociationSet Name="mn_stk_prdmst" Association="EF.Pos2ClientModel.Store.mn_stk_prdmst">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_mn_stk" EntitySet="crl_mn_stks" />
+    </AssociationSet>
+    <AssociationSet Name="dept_so_pm" Association="EF.Pos2ClientModel.Store.dept_so_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_dept_stk_in_det" EntitySet="crl_dept_stk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="price_pm" Association="EF.Pos2ClientModel.Store.price_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_mn_price" EntitySet="crl_mn_prices" />
+    </AssociationSet>
+    <AssociationSet Name="prd_pm" Association="EF.Pos2ClientModel.Store.prd_pm">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_prd" EntitySet="crl_prds" />
+    </AssociationSet>
+    <AssociationSet Name="stk_his_prd_mt" Association="EF.Pos2ClientModel.Store.stk_his_prd_mt">
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+      <End Role="crl_mn_stk_his" EntitySet="crl_mn_stk_his" />
+    </AssociationSet>
+    <AssociationSet Name="pm_typ" Association="EF.Pos2ClientModel.Store.pm_typ">
+      <End Role="crl_prd_typ" EntitySet="crl_prd_typs" />
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+    </AssociationSet>
+    <AssociationSet Name="dept_timeline_dept" Association="EF.Pos2ClientModel.Store.dept_timeline_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_dept_timeline" EntitySet="crl_dept_timelines" />
+    </AssociationSet>
+    <AssociationSet Name="dept_so_dept_so" Association="EF.Pos2ClientModel.Store.dept_so_dept_so">
+      <End Role="crl_dept_stk_in" EntitySet="crl_dept_stk_ins" />
+      <End Role="crl_dept_stk_in_det" EntitySet="crl_dept_stk_in_dets" />
+    </AssociationSet>
+    <AssociationSet Name="dept_so_dept" Association="EF.Pos2ClientModel.Store.dept_so_dept">
+      <End Role="crl_dept" EntitySet="crl_depts" />
+      <End Role="crl_dept_stk_in" EntitySet="crl_dept_stk_ins" />
+    </AssociationSet>
+    <AssociationSet Name="pm_typcat" Association="EF.Pos2ClientModel.Store.pm_typcat">
+      <End Role="crl_cat" EntitySet="crl_cats" />
+      <End Role="crl_prd_mst" EntitySet="crl_prd_msts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="crl_trans">
+    <Key>
+      <PropertyRef Name="Transaction_Id" />
+    </Key>
+    <Property Name="Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Store_Id" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Register_Id" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Cashier_Id" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="Transaction_Type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_sync_status">
+    <Key>
+      <PropertyRef Name="LAST_SYNC_DATE" />
+    </Key>
+    <Property Name="LAST_SYNC_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_po_det">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_ID" />
+      <PropertyRef Name="PURCHASE_ORDER_DETAIL_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PURCHASE_ORDER_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="PURCHASE_STATUS" Type="bigint" />
+    <Property Name="TAX_ID" Type="bigint" />
+    <Property Name="PURCHASE_TYPE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="NOTE" Type="nvarchar" MaxLength="200" />
+    <Property Name="ADHOC_CASE" Type="int" />
+  </EntityType>
+  <EntityType Name="crl_contract">
+    <Key>
+      <PropertyRef Name="CONTRACT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="CONTRACT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CONTRACT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CONTRACT_TYPE" Type="bigint" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_sale_trans">
+    <Key>
+      <PropertyRef Name="Sale_Transaction_Id" />
+    </Key>
+    <Property Name="Sale_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="POS_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Store_Id" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Register_Id" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Cashier_Id" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="Purchase_Order_Id" Type="nvarchar" MaxLength="15" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_prmtn">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_PROMOTION_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_PROMOTION_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PROMOTION_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_emp_wrkg_days">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="WORKING_DAY" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="WORKING_DAY" Type="datetime" Nullable="false" />
+    <Property Name="PERIOD" Type="bigint" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="START_TIME" Type="datetime" />
+    <Property Name="END_TIME" Type="datetime" />
+  </EntityType>
+  <EntityType Name="crl_usr_info">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="int" />
+    <Property Name="SUSPENDED" Type="bigint" />
+    <Property Name="DELETED" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_stk_in">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="11" />
+    <Property Name="STOCK_IN_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="STOCK_IN_COST" Type="bigint" />
+    <Property Name="STOCK_IN_TYPE" Type="bigint" />
+    <Property Name="CONFIRM_FLG" Type="bigint" />
+    <Property Name="TOTAL_QUANTITY" Type="bigint" />
+    <Property Name="SRC_DEPARTMENT_ID" Type="bigint" />
+    <Property Name="TOTAL_AMOUNT" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_out_det">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="STOCK_OUT_DETAIL_ID" />
+    </Key>
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="STOCK_OUT_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="GOOD_QUANTITY" Type="bigint" />
+    <Property Name="ERROR_QUANTITY" Type="bigint" />
+    <Property Name="DAMAGE_QUANTITY" Type="bigint" />
+    <Property Name="LOST_QUANTITY" Type="bigint" />
+    <Property Name="UNCONFIRM_QUANTITY" Type="bigint" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="AMOUNT" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="ON_STORE_PRICE" Type="int" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="GOOD_QUANTITY" Type="int" />
+    <Property Name="ERROR_QUANTITY" Type="int" />
+    <Property Name="LOST_QUANTITY" Type="int" />
+    <Property Name="DAMAGE_QUANTITY" Type="int" />
+    <Property Name="UNCONFIRM_QUANTITY" Type="int" />
+    <Property Name="POSITION" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_temp_valid">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="CREATE_DATE" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="ON_STORE_PRICE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="GOOD_QUANTITY" Type="int" />
+    <Property Name="ERROR_QUANTITY" Type="int" />
+    <Property Name="LOST_QUANTITY" Type="int" />
+    <Property Name="DAMAGE_QUANTITY" Type="int" />
+    <Property Name="UNCONFIRM_QUANTITY" Type="int" />
+    <Property Name="FIXED" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_stk_in_det">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="11" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="STOCK_IN_TYPE" Type="bigint" />
+    <Property Name="SELL_PRICE" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_dept_ret_po">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_ID" />
+      <PropertyRef Name="PURCHASE_ORDER_DETAIL_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="CREATE_DATE" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PURCHASE_ORDER_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="RETURN_DATE" Type="datetime" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="NEXT_PURCHASE_ORDER_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRICE" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_pos_log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Thread" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Level" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Logger" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Exception" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Pos_User" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pos_Action" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="crl_ex_prd_color">
+    <Key>
+      <PropertyRef Name="COLOR_ID" />
+    </Key>
+    <Property Name="COLOR_ID" Type="int" Nullable="false" />
+    <Property Name="COLOR_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_ret">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_RETURN_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_RETURN_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" />
+    <Property Name="RETURN_STATUS" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="temp_deptstock_max_temp">
+    <Key>
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="good_qty" />
+      <PropertyRef Name="perror_qty" />
+      <PropertyRef Name="predmg" />
+    </Key>
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="good_qty" Type="int" Nullable="false" />
+    <Property Name="perror_qty" Type="int" Nullable="false" />
+    <Property Name="predmg" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_his">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_STOCK_HISTORY_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_STOCK_HISTORY_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="int" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="GOOD_COUNT" Type="int" />
+    <Property Name="ERROR_COUNT" Type="int" />
+    <Property Name="DAMAGE_COUNT" Type="int" />
+    <Property Name="LOST_COUNT" Type="int" />
+    <Property Name="UNCONFIRM_COUNT" Type="int" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="temp_stk_his">
+    <Key>
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="good_qty" />
+      <PropertyRef Name="perror_qty" />
+      <PropertyRef Name="predmg" />
+    </Key>
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="good_qty" Type="int" Nullable="false" />
+    <Property Name="perror_qty" Type="int" Nullable="false" />
+    <Property Name="predmg" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_emp_info">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="500" />
+    <Property Name="BIRTHDAY" Type="datetime" />
+    <Property Name="CONTRACT_ID" Type="bigint" />
+    <Property Name="SALARY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="MANAGER" Type="nvarchar" MaxLength="20" />
+    <Property Name="BARCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_prd_typ">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+    </Key>
+    <Property Name="TYPE_ID" Type="bigint" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_prd_unit">
+    <Key>
+      <PropertyRef Name="UNIT_ID" />
+    </Key>
+    <Property Name="UNIT_ID" Type="int" Nullable="false" />
+    <Property Name="UNIT_NAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="EXCLUSIVE_KEY" Type="int" />
+    <Property Name="DEL_FLG" Type="int" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_pos_trans">
+    <Key>
+      <PropertyRef Name="POS_Transaction_Id" />
+    </Key>
+    <Property Name="POS_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Store_Id" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Register_Id" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Cashier_Id" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="Amount_In" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="Amount_Out" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="DEL_FLG" Type="int" />
+  </EntityType>
+  <EntityType Name="crl_reicpt_out_cst">
+    <Key>
+      <PropertyRef Name="RECEIPT_OUT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="COST_TYPE" />
+    </Key>
+    <Property Name="RECEIPT_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_stk_out_det">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_DETAIL_ID" />
+      <PropertyRef Name="STOCK_OUT_ID" />
+    </Key>
+    <Property Name="STOCK_OUT_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="GOOD_QUANTITY" Type="bigint" />
+    <Property Name="ERROR_QUANTITY" Type="bigint" />
+    <Property Name="DAMAGE_QUANTITY" Type="bigint" />
+    <Property Name="LOST_QUANTITY" Type="bigint" />
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="temp_deptstock">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+      <PropertyRef Name="PRODUCT_MASTER_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="PRICE" />
+    </Key>
+    <Property Name="TYPE_ID" Type="bigint" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="COLOR_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="SIZE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+    <Property Name="department_name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="crl_blk_in_det">
+    <Key>
+      <PropertyRef Name="BLOCK_ID" />
+      <PropertyRef Name="BLOCK_DETAIL_ID" />
+    </Key>
+    <Property Name="BLOCK_ID" Type="bigint" Nullable="false" />
+    <Property Name="BLOCK_DETAIL_ID" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="DETAIL_VALUE" Type="nvarchar" MaxLength="500" />
+    <Property Name="MANUFACTURE_ID" Type="bigint" />
+    <Property Name="PACKAGER_ID" Type="bigint" />
+    <Property Name="COUNTRY_ID" Type="bigint" />
+    <Property Name="SUPPLIER_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="STOCK_IN_ID" Type="bigint" />
+    <Property Name="IMPORT_DATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="crl_sim_prd">
+    <Key>
+      <PropertyRef Name="BASE_PRODUCT_ID" />
+      <PropertyRef Name="OTHER_PRODUCT_ID" />
+    </Key>
+    <Property Name="BASE_PRODUCT_ID" Type="bigint" Nullable="false" />
+    <Property Name="OTHER_PRODUCT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_out">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="STOCK_OUT_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="CONFIRM_FLG" Type="bigint" Nullable="false" />
+    <Property Name="DEST_DEPARTMENT_ID" Type="bigint" />
+    <Property Name="TOTAL_QUANTITY" Type="bigint" />
+    <Property Name="TOTAL_AMOUNT" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_active_dept">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="ACTIVE" Type="int" />
+  </EntityType>
+  <EntityType Name="crl_ret_prd">
+    <Key>
+      <PropertyRef Name="RETURN_PRODUCT_ID" />
+    </Key>
+    <Property Name="RETURN_PRODUCT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="DESCRIPTION" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="QUANTITY" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_coupon">
+    <Key>
+      <PropertyRef Name="COUPON_ID" />
+    </Key>
+    <Property Name="COUPON_ID" Type="bigint" Nullable="false" />
+    <Property Name="COUPON_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="COUPON_TYPE" Type="bigint" />
+    <Property Name="DISCOUNT_VALUE" Type="bigint" />
+    <Property Name="DISCOUNT_PERCENT" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="500" />
+    <Property Name="ACTIVE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="START_DATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="crl_other_trans_log">
+    <Key>
+      <PropertyRef Name="TRANSACTION_DATE" />
+    </Key>
+    <Property Name="TRANSACTION_DATE" Type="datetime" Nullable="false" />
+    <Property Name="TABLE_NAME" Type="bigint" Nullable="false" />
+    <Property Name="FIELD_NAME" Type="bigint" />
+    <Property Name="ACTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="VALUE_BEFORE" Type="nvarchar" MaxLength="500" />
+    <Property Name="VALUE_AFTER" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_gift">
+    <Key>
+      <PropertyRef Name="GIFT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="GIFT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="GIFT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="SUPPLIER_ID" Type="bigint" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_po_det_log">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_DETAIL_LOG_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_DETAIL_LOG_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PURCHASE_ORDER_DETAIL_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_emp_reward">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="REWARD_DATE" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="REWARD_DATE" Type="datetime" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="REWARD_VALUE" Type="bigint" />
+    <Property Name="REWARD_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="MONEY_VALUE" Type="bigint" />
+    <Property Name="GIFT_ID" Type="bigint" />
+    <Property Name="GIFT_PRODUCT_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_stk_out_tmp">
+    <Key>
+      <PropertyRef Name="STOCKOUT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCKOUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="STOCK_OUT_DATE" Type="datetime" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="STOCK_ID" Type="bigint" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="CONFIRM_FLG" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_blk_in_cost">
+    <Key>
+      <PropertyRef Name="BLOCK_ID" />
+      <PropertyRef Name="COST_TYPE" />
+    </Key>
+    <Property Name="BLOCK_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_cust_det">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="bigint" Nullable="false" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="500" />
+    <Property Name="COUNTRY_ID" Type="bigint" />
+    <Property Name="BIRTHDAY" Type="datetime" />
+    <Property Name="PASSPORT_NUMBER" Type="nvarchar" MaxLength="500" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="500" />
+    <Property Name="MONEY_SPENT" Type="bigint" />
+    <Property Name="BUY_COUNT" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_dept_ret_det">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_RETURN_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_RETURN_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_sup">
+    <Key>
+      <PropertyRef Name="SUPPLIER_ID" />
+    </Key>
+    <Property Name="SUPPLIER_ID" Type="bigint" Nullable="false" />
+    <Property Name="SUPPLIER_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_ctry">
+    <Key>
+      <PropertyRef Name="COUNTRY_ID" />
+    </Key>
+    <Property Name="COUNTRY_ID" Type="bigint" Nullable="false" />
+    <Property Name="COUNTRY_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_mng">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="WORKING_DAY" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="POSITION" Type="bigint" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="45" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="45" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="WORKING_DAY" Type="datetime" Nullable="false" />
+    <Property Name="START_TIME" Type="datetime" />
+    <Property Name="END_TIME" Type="datetime" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_po">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PURCHASE_PRICE" Type="bigint" />
+    <Property Name="ORDER_STATUS" Type="bigint" />
+    <Property Name="CUSTOMER_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="PURCHASE_DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="PURCHASE_QUANTITY" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_usr_role">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="roleid" />
+    </Key>
+    <Property Name="userid" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_emp_money">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="WORKING_DAY" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DATE_LOGIN" Type="datetime" />
+    <Property Name="DATE_LOGOUT" Type="datetime" />
+    <Property Name="WORKING_DAY" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="IN_MONEY" Type="bigint" />
+    <Property Name="OUT_MONEY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_cost">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="COST_DATE" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_DATE" Type="datetime" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" />
+    <Property Name="COST_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="COST_DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_ret_cost">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_RETURN_ID" />
+      <PropertyRef Name="COST_TYPE" />
+    </Key>
+    <Property Name="DEPARTMENT_RETURN_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_tax">
+    <Key>
+      <PropertyRef Name="TAX_ID" />
+    </Key>
+    <Property Name="TAX_ID" Type="bigint" Nullable="false" />
+    <Property Name="TAX_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_in_his">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+      <PropertyRef Name="SOURCE_DEPARTMENTID" />
+      <PropertyRef Name="STOCK_OUT_ID" />
+      <PropertyRef Name="DEST_DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="SOURCE_DEPARTMENTID" Type="bigint" Nullable="false" />
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEST_DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_cash_io_trans">
+    <Key>
+      <PropertyRef Name="Cash_In_Out_Transaction_Id" />
+    </Key>
+    <Property Name="Cash_In_Out_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="Store_Id" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Register_Id" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Cashier_Id" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="Amount" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="Reason_Code" Type="int" />
+    <Property Name="Customer_Id" Type="nvarchar" MaxLength="15" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="1000" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_mn_stk">
+    <Key>
+      <PropertyRef Name="STOCK_ID" />
+    </Key>
+    <Property Name="STOCK_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="GOOD_QUANTITY" Type="bigint" />
+    <Property Name="ERROR_QUANTITY" Type="bigint" />
+    <Property Name="DAMAGE_QUANTITY" Type="bigint" />
+    <Property Name="LOST_QUANTITY" Type="bigint" />
+    <Property Name="UNCONFIRM_QUANTITY" Type="bigint" />
+    <Property Name="POSITION" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="crl_sche_tmplate">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="SCHEDULE_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="SCHEDULE_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="MONDAY" Type="bigint" />
+    <Property Name="TUESDAY" Type="bigint" />
+    <Property Name="WEDNESDAY" Type="bigint" />
+    <Property Name="THURSDAY" Type="bigint" />
+    <Property Name="FRIDAY" Type="bigint" />
+    <Property Name="SATURDAY" Type="bigint" />
+    <Property Name="SUNDAY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_reicpt_out">
+    <Key>
+      <PropertyRef Name="RECEIPT_OUT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="RECEIPT_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="RECEIPT_OUT_NAME" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_stk_def_stat">
+    <Key>
+      <PropertyRef Name="DEFECT_STATUS_ID" />
+    </Key>
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEFECT_STATUS_NAME" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_in_det">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="ON_STORE_PRICE" Type="bigint" />
+    <Property Name="SOLD" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_ex_prd_size">
+    <Key>
+      <PropertyRef Name="SIZE_ID" />
+    </Key>
+    <Property Name="SIZE_ID" Type="int" Nullable="false" />
+    <Property Name="SIZE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_emp">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="crl_mn_price">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PRODUCT_MASTER_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="int" Nullable="false" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="int" />
+    <Property Name="DEL_FLG" Type="int" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="WHOLE_SALE_PRICE" Type="bigint" />
+  </EntityType>
+  <EntityType Name="temp_dp_stockout">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="quantity" Type="numeric" Precision="33" Scale="0" />
+  </EntityType>
+  <EntityType Name="crl_stk_out">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_ID" />
+    </Key>
+    <Property Name="STOCK_OUT_DATE" Type="datetime" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="STOCK_ID" Type="bigint" />
+    <Property Name="DEFECT_STATUS_ID" Type="bigint" />
+    <Property Name="CONFIRM_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="TOTAL_QUANTITY" Type="bigint" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="TOTAL_AMOUNT" Type="bigint" />
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="temp_pr">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+      <PropertyRef Name="PRODUCT_MASTER_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="PRICE" />
+    </Key>
+    <Property Name="TYPE_ID" Type="bigint" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="COLOR_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="SIZE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_dept_po_promo">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_ID" />
+      <PropertyRef Name="PURCHASE_ORDER_DETAIL_ID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PURCHASE_ORDER_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="GIFT_DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_PROMOTION_ID" Type="bigint" />
+    <Property Name="GIFT_ID" Type="bigint" />
+    <Property Name="GIFT_PRODUCT_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_cust">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="bigint" Nullable="false" />
+    <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="MONEY_SPENT" Type="bigint" />
+    <Property Name="BUY_COUNT" Type="bigint" />
+    <Property Name="NEAREST_COME_1" Type="datetime" />
+    <Property Name="NEAREST_COME_2" Type="datetime" />
+    <Property Name="NEAREST_COME_3" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_coupon_typ">
+    <Key>
+      <PropertyRef Name="COUPON_TYPE_ID" />
+    </Key>
+    <Property Name="COUPON_TYPE_ID" Type="bigint" Nullable="false" />
+    <Property Name="COUPON_TYPE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_po_log">
+    <Key>
+      <PropertyRef Name="PURCHASE_ORDER_LOG_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="PURCHASE_ORDER_LOG_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_temp_valid_save">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="CREATE_DATE" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="ON_STORE_PRICE" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="GOOD_QUANTITY" Type="bigint" />
+    <Property Name="ERROR_QUANTITY" Type="bigint" />
+    <Property Name="LOST_QUANTITY" Type="bigint" />
+    <Property Name="DAMAGE_QUANTITY" Type="bigint" />
+    <Property Name="UNCONFIRM_QUANTITY" Type="bigint" />
+    <Property Name="FIXED" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="crl_prd">
+    <Key>
+      <PropertyRef Name="PRODUCT_ID" />
+    </Key>
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" MaxLength="13" />
+    <Property Name="BLOCK_ID" Type="bigint" />
+    <Property Name="BLOCK_DETAIL_ID" Type="nvarchar" MaxLength="10" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="QUANTITY" Type="bigint" />
+    <Property Name="PRICE" Type="bigint" />
+    <Property Name="TAX_ID" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="BARCODE" Type="nvarchar" MaxLength="20" />
+    <Property Name="ADHOC_CASE" Type="int" />
+  </EntityType>
+  <EntityType Name="crl_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="crl_pkgr">
+    <Key>
+      <PropertyRef Name="PACKAGER_ID" />
+    </Key>
+    <Property Name="PACKAGER_ID" Type="bigint" Nullable="false" />
+    <Property Name="PACKAGER_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_in_cst">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+      <PropertyRef Name="COST_TYPE" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_ret_blk_in">
+    <Key>
+      <PropertyRef Name="BLOCK_IN_ID" />
+      <PropertyRef Name="BLOCK_DETAIL_ID" />
+    </Key>
+    <Property Name="BLOCK_IN_ID" Type="bigint" Nullable="false" />
+    <Property Name="BLOCK_DETAIL_ID" Type="bigint" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_stk_out_cst">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_ID" />
+      <PropertyRef Name="COST_TYPE" />
+    </Key>
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="STOCKOUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_ret_trans">
+    <Key>
+      <PropertyRef Name="Return_Transaction_Id" />
+    </Key>
+    <Property Name="Return_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="POS_Transaction_Id" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Store_Id" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="Register_Id" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Cashier_Id" Type="nvarchar" Nullable="false" MaxLength="6" />
+    <Property Name="Customer_Id" Type="nvarchar" MaxLength="15" />
+    <Property Name="Purchase_Order_Id" Type="nvarchar" MaxLength="15" />
+    <Property Name="Return_Id" Type="nvarchar" MaxLength="15" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_distbtor">
+    <Key>
+      <PropertyRef Name="DISTRIBUTOR_ID" />
+    </Key>
+    <Property Name="DISTRIBUTOR_ID" Type="bigint" Nullable="false" />
+    <Property Name="DISTRIBUTOR_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_mn_stk_his">
+    <Key>
+      <PropertyRef Name="STOCK_HISTORY_ID" />
+    </Key>
+    <Property Name="STOCK_HISTORY_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="QUANTITY" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="STOCK_ID" Type="bigint" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="GOOD_COUNT" Type="bigint" />
+    <Property Name="ERROR_COUNT" Type="bigint" />
+    <Property Name="DAMAGE_COUNT" Type="bigint" />
+    <Property Name="LOST_COUNT" Type="bigint" />
+    <Property Name="UNCONFIRM_COUNT" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_blk_in">
+    <Key>
+      <PropertyRef Name="BLOCK_ID" />
+    </Key>
+    <Property Name="BLOCK_ID" Type="bigint" Nullable="false" />
+    <Property Name="BLOCK_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="IMPORT_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_reicpt">
+    <Key>
+      <PropertyRef Name="RECEIPT_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="RECEIPT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PURCHASE_ORDER_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="RECEIPT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="RECEIPT_NUMBER" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_prd_mst">
+    <Key>
+      <PropertyRef Name="PRODUCT_MASTER_ID" />
+    </Key>
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+    <Property Name="IMAGE_PATH" Type="nvarchar" MaxLength="500" />
+    <Property Name="CATEGORY_ID" Type="bigint" />
+    <Property Name="COUNTRY_ID" Type="bigint" />
+    <Property Name="UNIT_ID" Type="bigint" />
+    <Property Name="TYPE_ID" Type="bigint" />
+    <Property Name="MANUFACTURER_ID" Type="bigint" />
+    <Property Name="SUPPLIER_ID" Type="bigint" />
+    <Property Name="PACKAGER_ID" Type="bigint" />
+    <Property Name="DISTRIBUTOR_ID" Type="bigint" />
+    <Property Name="BARCODE" Type="nvarchar" MaxLength="13" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="int" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_emp_dayoff">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="DAYOFF_TIME" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DAYOFF_TIME" Type="datetime" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_dept_timeline">
+    <Key>
+      <PropertyRef Name="DEPARTMENT_ID" />
+      <PropertyRef Name="PERIOD" />
+    </Key>
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="PERIOD" Type="bigint" Nullable="false" />
+    <Property Name="START_TIME" Type="datetime" />
+    <Property Name="END_TIME" Type="datetime" />
+    <Property Name="WORKING_DAY" Type="datetime" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="45" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="45" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="temp_product">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+      <PropertyRef Name="PRODUCT_MASTER_ID" />
+      <PropertyRef Name="PRODUCT_ID" />
+      <PropertyRef Name="PRICE" />
+    </Key>
+    <Property Name="TYPE_ID" Type="bigint" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRODUCT_MASTER_ID" Type="nvarchar" Nullable="false" MaxLength="13" />
+    <Property Name="PRODUCT_ID" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="COLOR_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="SIZE_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="PRICE" Type="int" Nullable="false" />
+    <Property Name="department_name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_out_cst">
+    <Key>
+      <PropertyRef Name="STOCK_OUT_ID" />
+      <PropertyRef Name="COST_TYPE" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_OUT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="COST" Type="bigint" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_pblsh_cpn">
+    <Key>
+      <PropertyRef Name="COUPON_ID" />
+      <PropertyRef Name="PUBLISHED_COUPON_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="COUPON_ID" Type="bigint" Nullable="false" />
+    <Property Name="PUBLISHED_COUPON_ID" Type="bigint" Nullable="false" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="temp_dept_stock_statistics">
+    <Key>
+      <PropertyRef Name="temp_pri_key" />
+    </Key>
+    <Property Name="department_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="type_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="product_id" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="product_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="color_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="size_name" Type="nvarchar" MaxLength="500" />
+    <Property Name="prestk_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="instock_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="error_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="dmg_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="stkout_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="tmpout_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="rtn_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="destroy_qty" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="bkpro" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="realstock" Type="numeric" Precision="38" Scale="0" />
+    <Property Name="temp_pri_key" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="crl_mnftr">
+    <Key>
+      <PropertyRef Name="MANUFACTURER_ID" />
+    </Key>
+    <Property Name="MANUFACTURER_ID" Type="bigint" Nullable="false" />
+    <Property Name="MANUFACTURER_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_ex_discount">
+    <Key>
+      <PropertyRef Name="DISCOUNT_TYPE" />
+    </Key>
+    <Property Name="DISCOUNT_TYPE" Type="bigint" Nullable="false" />
+    <Property Name="DISCOUNT_NAME" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="crl_dept_stk_in">
+    <Key>
+      <PropertyRef Name="STOCK_IN_ID" />
+      <PropertyRef Name="DEPARTMENT_ID" />
+    </Key>
+    <Property Name="STOCK_IN_ID" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="DEPARTMENT_ID" Type="bigint" Nullable="false" />
+    <Property Name="STOCK_IN_DATE" Type="datetime" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+    <Property Name="EXPORT_STATUS" Type="bigint" />
+    <Property Name="STOCK_IN_COST" Type="bigint" />
+    <Property Name="STOCK_IN_TYPE" Type="bigint" />
+    <Property Name="SRC_DEPARTMENT_ID" Type="bigint" />
+    <Property Name="TOTAL_QUANTITY" Type="bigint" />
+    <Property Name="TOTAL_AMOUNT" Type="bigint" />
+  </EntityType>
+  <EntityType Name="crl_cat">
+    <Key>
+      <PropertyRef Name="CATEGORY_ID" />
+    </Key>
+    <Property Name="CATEGORY_ID" Type="bigint" Nullable="false" />
+    <Property Name="PARENT_CATEGORY_ID" Type="bigint" />
+    <Property Name="CATEGORY_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="int" />
+    <Property Name="EX_FLD2" Type="int" />
+    <Property Name="EX_FLD3" Type="int" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="crl_promo">
+    <Key>
+      <PropertyRef Name="PROMOTION_ID" />
+    </Key>
+    <Property Name="PROMOTION_ID" Type="bigint" Nullable="false" />
+    <Property Name="PROMOTION_NAME" Type="nvarchar" MaxLength="500" />
+    <Property Name="DISCOUNT_PRICE" Type="bigint" />
+    <Property Name="DISCOUNT_PERCENT" Type="bigint" />
+    <Property Name="PROMOTION_TYPE" Type="bigint" />
+    <Property Name="GIFT_PRODUCT_ID" Type="bigint" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="CREATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="EXCLUSIVE_KEY" Type="bigint" />
+    <Property Name="DEL_FLG" Type="bigint" />
+    <Property Name="EX_FLD1" Type="bigint" />
+    <Property Name="EX_FLD2" Type="bigint" />
+    <Property Name="EX_FLD3" Type="bigint" />
+    <Property Name="EX_FLD4" Type="nvarchar" MaxLength="45" />
+    <Property Name="EX_FLD5" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="dept_soout_master">
+    <End Role="crl_dept_stk_out" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out" Multiplicity="1" />
+    <End Role="crl_dept_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept_stk_out">
+        <PropertyRef Name="STOCK_OUT_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out_det">
+        <PropertyRef Name="STOCK_OUT_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sin_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="0..1" />
+    <End Role="crl_stk_in" Type="EF.Pos2ClientModel.Store.crl_stk_in" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_in">
+        <PropertyRef Name="SRC_DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_soout_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_dept_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out_det">
+        <PropertyRef Name="STOCK_OUT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sodet_mst_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="0..1" />
+    <End Role="crl_dept_stk_out" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out">
+        <PropertyRef Name="DEST_DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gfdgfd">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_active_dept" Type="EF.Pos2ClientModel.Store.crl_active_dept" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_active_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="purchase_order_rule">
+    <End Role="crl_dept_po" Type="EF.Pos2ClientModel.Store.crl_dept_po" Multiplicity="1" />
+    <End Role="crl_dept_po_det" Type="EF.Pos2ClientModel.Store.crl_dept_po_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept_po">
+        <PropertyRef Name="PURCHASE_ORDER_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_po_det">
+        <PropertyRef Name="PURCHASE_ORDER_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="po_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_dept_po" Type="EF.Pos2ClientModel.Store.crl_dept_po" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_po">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="username_ref">
+    <End Role="crl_usr_info" Type="EF.Pos2ClientModel.Store.crl_usr_info" Multiplicity="1" />
+    <End Role="crl_usr_role" Type="EF.Pos2ClientModel.Store.crl_usr_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_usr_info">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="crl_usr_role">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="deptso_sdf">
+    <End Role="crl_stk_def_stat" Type="EF.Pos2ClientModel.Store.crl_stk_def_stat" Multiplicity="0..1" />
+    <End Role="crl_dept_stk_out" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_stk_def_stat">
+        <PropertyRef Name="DEFECT_STATUS_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out">
+        <PropertyRef Name="DEFECT_STATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="emp_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_emp" Type="EF.Pos2ClientModel.Store.crl_emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_emp">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="emp_emp_info">
+    <End Role="crl_emp_info" Type="EF.Pos2ClientModel.Store.crl_emp_info" Multiplicity="1" />
+    <End Role="crl_emp" Type="EF.Pos2ClientModel.Store.crl_emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_emp_info">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="crl_emp">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="det_to_mas_out">
+    <End Role="crl_stk_out" Type="EF.Pos2ClientModel.Store.crl_stk_out" Multiplicity="1" />
+    <End Role="crl_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_stk_out">
+        <PropertyRef Name="STOCK_OUT_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_out_det">
+        <PropertyRef Name="STOCK_OUT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="so_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_stk_out" Type="EF.Pos2ClientModel.Store.crl_stk_out" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_out">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stkout_matsee_sdf">
+    <End Role="crl_stk_def_stat" Type="EF.Pos2ClientModel.Store.crl_stk_def_stat" Multiplicity="0..1" />
+    <End Role="crl_stk_out" Type="EF.Pos2ClientModel.Store.crl_stk_out" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_stk_def_stat">
+        <PropertyRef Name="DEFECT_STATUS_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_out">
+        <PropertyRef Name="DEFECT_STATUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="po_product">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="0..1" />
+    <End Role="crl_dept_po_det" Type="EF.Pos2ClientModel.Store.crl_dept_po_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_po_det">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_soout_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_dept_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out_det">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ds_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_dept_stk" Type="EF.Pos2ClientModel.Store.crl_dept_stk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stkin_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_stk_in_det" Type="EF.Pos2ClientModel.Store.crl_stk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_in_det">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sodet_mstprd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_out_det">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mn_stk_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_mn_stk" Type="EF.Pos2ClientModel.Store.crl_mn_stk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_mn_stk">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_so_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_dept_stk_in_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_in_det">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prd_pmcolor">
+    <End Role="crl_ex_prd_color" Type="EF.Pos2ClientModel.Store.crl_ex_prd_color" Multiplicity="0..1" />
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_ex_prd_color">
+        <PropertyRef Name="COLOR_ID" />
+      </Principal>
+      <Dependent Role="crl_prd">
+        <PropertyRef Name="EX_FLD1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prd_pmsize">
+    <End Role="crl_ex_prd_size" Type="EF.Pos2ClientModel.Store.crl_ex_prd_size" Multiplicity="0..1" />
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_ex_prd_size">
+        <PropertyRef Name="SIZE_ID" />
+      </Principal>
+      <Dependent Role="crl_prd">
+        <PropertyRef Name="EX_FLD2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="role_ref">
+    <End Role="crl_role" Type="EF.Pos2ClientModel.Store.crl_role" Multiplicity="1" />
+    <End Role="crl_usr_role" Type="EF.Pos2ClientModel.Store.crl_usr_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="crl_usr_role">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stk_his_prd">
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="1" />
+    <End Role="crl_mn_stk_his" Type="EF.Pos2ClientModel.Store.crl_mn_stk_his" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="crl_mn_stk_his">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fdsfsdfs">
+    <End Role="crl_blk_in" Type="EF.Pos2ClientModel.Store.crl_blk_in" Multiplicity="1" />
+    <End Role="crl_blk_in_det" Type="EF.Pos2ClientModel.Store.crl_blk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_blk_in">
+        <PropertyRef Name="BLOCK_ID" />
+      </Principal>
+      <Dependent Role="crl_blk_in_det">
+        <PropertyRef Name="BLOCK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="receipt_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_reicpt" Type="EF.Pos2ClientModel.Store.crl_reicpt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_reicpt">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="receipt_deptpo">
+    <End Role="crl_dept_po" Type="EF.Pos2ClientModel.Store.crl_dept_po" Multiplicity="1" />
+    <End Role="crl_reicpt" Type="EF.Pos2ClientModel.Store.crl_reicpt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept_po">
+        <PropertyRef Name="PURCHASE_ORDER_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_reicpt">
+        <PropertyRef Name="PURCHASE_ORDER_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="po_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="1" />
+    <End Role="crl_dept_po_det" Type="EF.Pos2ClientModel.Store.crl_dept_po_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_po_det">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_soout_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_dept_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_out_det">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ds_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_dept_stk" Type="EF.Pos2ClientModel.Store.crl_dept_stk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stkin_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_stk_in_det" Type="EF.Pos2ClientModel.Store.crl_stk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_in_det">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sodet_mstpm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_stk_out_det" Type="EF.Pos2ClientModel.Store.crl_stk_out_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_stk_out_det">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="mn_stk_prdmst">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_mn_stk" Type="EF.Pos2ClientModel.Store.crl_mn_stk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_mn_stk">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_so_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_dept_stk_in_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_in_det">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="price_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="1" />
+    <End Role="crl_mn_price" Type="EF.Pos2ClientModel.Store.crl_mn_price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_mn_price">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="prd_pm">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="0..1" />
+    <End Role="crl_prd" Type="EF.Pos2ClientModel.Store.crl_prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_prd">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stk_his_prd_mt">
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="1" />
+    <End Role="crl_mn_stk_his" Type="EF.Pos2ClientModel.Store.crl_mn_stk_his" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_mst">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="crl_mn_stk_his">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pm_typ">
+    <End Role="crl_prd_typ" Type="EF.Pos2ClientModel.Store.crl_prd_typ" Multiplicity="0..1" />
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_prd_typ">
+        <PropertyRef Name="TYPE_ID" />
+      </Principal>
+      <Dependent Role="crl_prd_mst">
+        <PropertyRef Name="TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_timeline_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_dept_timeline" Type="EF.Pos2ClientModel.Store.crl_dept_timeline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_timeline">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_so_dept_so">
+    <End Role="crl_dept_stk_in" Type="EF.Pos2ClientModel.Store.crl_dept_stk_in" Multiplicity="1" />
+    <End Role="crl_dept_stk_in_det" Type="EF.Pos2ClientModel.Store.crl_dept_stk_in_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept_stk_in">
+        <PropertyRef Name="STOCK_IN_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_in_det">
+        <PropertyRef Name="STOCK_IN_ID" />
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dept_so_dept">
+    <End Role="crl_dept" Type="EF.Pos2ClientModel.Store.crl_dept" Multiplicity="1" />
+    <End Role="crl_dept_stk_in" Type="EF.Pos2ClientModel.Store.crl_dept_stk_in" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_dept">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Principal>
+      <Dependent Role="crl_dept_stk_in">
+        <PropertyRef Name="DEPARTMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pm_typcat">
+    <End Role="crl_cat" Type="EF.Pos2ClientModel.Store.crl_cat" Multiplicity="0..1" />
+    <End Role="crl_prd_mst" Type="EF.Pos2ClientModel.Store.crl_prd_mst" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="crl_cat">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="crl_prd_mst">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

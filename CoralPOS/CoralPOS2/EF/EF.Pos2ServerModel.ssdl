@@ -1,295 +1,295 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PosServerModels.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="Ora10gR2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0">
-  <EntityContainer Name="PosServerEntitiesStoreContainer">
-    <EntitySet Name="CRL_ACTIVE_DEPTs" EntityType="PosServerModels.Store.CRL_ACTIVE_DEPT" store:Type="Tables" Schema="POS2" Table="CRL_ACTIVE_DEPT" />
-    <EntitySet Name="CRL_BLK_INs" EntityType="PosServerModels.Store.CRL_BLK_IN" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN" />
-    <EntitySet Name="CRL_BLK_IN_COSTs" EntityType="PosServerModels.Store.CRL_BLK_IN_COST" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN_COST" />
-    <EntitySet Name="CRL_BLK_IN_DETs" EntityType="PosServerModels.Store.CRL_BLK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN_DET" />
-    <EntitySet Name="CRL_CASH_IO_TRANS" EntityType="PosServerModels.Store.CRL_CASH_IO_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_CASH_IO_TRANS" />
-    <EntitySet Name="CRL_CATs" EntityType="PosServerModels.Store.CRL_CAT" store:Type="Tables" Schema="POS2" Table="CRL_CAT" />
-    <EntitySet Name="CRL_CONTRACTs" EntityType="PosServerModels.Store.CRL_CONTRACT" store:Type="Tables" Schema="POS2" Table="CRL_CONTRACT" />
-    <EntitySet Name="CRL_COUPONs" EntityType="PosServerModels.Store.CRL_COUPON" store:Type="Tables" Schema="POS2" Table="CRL_COUPON" />
-    <EntitySet Name="CRL_COUPON_TYPs" EntityType="PosServerModels.Store.CRL_COUPON_TYP" store:Type="Tables" Schema="POS2" Table="CRL_COUPON_TYP" />
-    <EntitySet Name="CRL_CTRies" EntityType="PosServerModels.Store.CRL_CTRY" store:Type="Tables" Schema="POS2" Table="CRL_CTRY" />
-    <EntitySet Name="CRL_CUSTs" EntityType="PosServerModels.Store.CRL_CUST" store:Type="Tables" Schema="POS2" Table="CRL_CUST" />
-    <EntitySet Name="CRL_CUST_DETs" EntityType="PosServerModels.Store.CRL_CUST_DET" store:Type="Tables" Schema="POS2" Table="CRL_CUST_DET" />
-    <EntitySet Name="CRL_DEPTs" EntityType="PosServerModels.Store.CRL_DEPT" store:Type="Tables" Schema="POS2" Table="CRL_DEPT" />
-    <EntitySet Name="CRL_DEPT_COSTs" EntityType="PosServerModels.Store.CRL_DEPT_COST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_COST" />
-    <EntitySet Name="CRL_DEPT_MNGs" EntityType="PosServerModels.Store.CRL_DEPT_MNG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_MNG" />
-    <EntitySet Name="CRL_DEPT_POs" EntityType="PosServerModels.Store.CRL_DEPT_PO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO" />
-    <EntitySet Name="CRL_DEPT_PO_DETs" EntityType="PosServerModels.Store.CRL_DEPT_PO_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_DET" />
-    <EntitySet Name="CRL_DEPT_PO_DET_LOGs" EntityType="PosServerModels.Store.CRL_DEPT_PO_DET_LOG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_DET_LOG" />
-    <EntitySet Name="CRL_DEPT_PO_LOGs" EntityType="PosServerModels.Store.CRL_DEPT_PO_LOG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_LOG" />
-    <EntitySet Name="CRL_DEPT_PO_PROMOs" EntityType="PosServerModels.Store.CRL_DEPT_PO_PROMO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_PROMO" />
-    <EntitySet Name="CRL_DEPT_PRMTNs" EntityType="PosServerModels.Store.CRL_DEPT_PRMTN" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PRMTN" />
-    <EntitySet Name="CRL_DEPT_RETs" EntityType="PosServerModels.Store.CRL_DEPT_RET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET" />
-    <EntitySet Name="CRL_DEPT_RET_COSTs" EntityType="PosServerModels.Store.CRL_DEPT_RET_COST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_COST" />
-    <EntitySet Name="CRL_DEPT_RET_DETs" EntityType="PosServerModels.Store.CRL_DEPT_RET_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_DET" />
-    <EntitySet Name="CRL_DEPT_RET_POs" EntityType="PosServerModels.Store.CRL_DEPT_RET_PO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_PO" />
-    <EntitySet Name="CRL_DEPT_STKs" EntityType="PosServerModels.Store.CRL_DEPT_STK" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK" />
-    <EntitySet Name="CRL_DEPT_STK_HIS" EntityType="PosServerModels.Store.CRL_DEPT_STK_HIS" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_HIS" />
-    <EntitySet Name="CRL_DEPT_STK_INs" EntityType="PosServerModels.Store.CRL_DEPT_STK_IN" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN" />
-    <EntitySet Name="CRL_DEPT_STK_IN_CSTs" EntityType="PosServerModels.Store.CRL_DEPT_STK_IN_CST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_CST" />
-    <EntitySet Name="CRL_DEPT_STK_IN_DETs" EntityType="PosServerModels.Store.CRL_DEPT_STK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_DET" />
-    <EntitySet Name="CRL_DEPT_STK_IN_HIS" EntityType="PosServerModels.Store.CRL_DEPT_STK_IN_HIS" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_HIS" />
-    <EntitySet Name="CRL_DEPT_STK_OUTs" EntityType="PosServerModels.Store.CRL_DEPT_STK_OUT" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT" />
-    <EntitySet Name="CRL_DEPT_STK_OUT_CSTs" EntityType="PosServerModels.Store.CRL_DEPT_STK_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT_CST" />
-    <EntitySet Name="CRL_DEPT_STK_OUT_DETs" EntityType="PosServerModels.Store.CRL_DEPT_STK_OUT_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT_DET" />
-    <EntitySet Name="CRL_DEPT_STK_TEMP_VALIDs" EntityType="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_TEMP_VALID" />
-    <EntitySet Name="CRL_DEPT_STK_TEMP_VALID_SAVEs" EntityType="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID_SAVE" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_TEMP_VALID_SAVE" />
-    <EntitySet Name="CRL_DEPT_TIMELINEs" EntityType="PosServerModels.Store.CRL_DEPT_TIMELINE" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_TIMELINE" />
-    <EntitySet Name="CRL_DISTBTORs" EntityType="PosServerModels.Store.CRL_DISTBTOR" store:Type="Tables" Schema="POS2" Table="CRL_DISTBTOR" />
-    <EntitySet Name="CRL_EMPs" EntityType="PosServerModels.Store.CRL_EMP" store:Type="Tables" Schema="POS2" Table="CRL_EMP" />
-    <EntitySet Name="CRL_EMP_DAYOFFs" EntityType="PosServerModels.Store.CRL_EMP_DAYOFF" store:Type="Tables" Schema="POS2" Table="CRL_EMP_DAYOFF" />
-    <EntitySet Name="CRL_EMP_INFOs" EntityType="PosServerModels.Store.CRL_EMP_INFO" store:Type="Tables" Schema="POS2" Table="CRL_EMP_INFO" />
-    <EntitySet Name="CRL_EMP_MONEYs" EntityType="PosServerModels.Store.CRL_EMP_MONEY" store:Type="Tables" Schema="POS2" Table="CRL_EMP_MONEY" />
-    <EntitySet Name="CRL_EMP_REWARDs" EntityType="PosServerModels.Store.CRL_EMP_REWARD" store:Type="Tables" Schema="POS2" Table="CRL_EMP_REWARD" />
-    <EntitySet Name="CRL_EMP_WRKG_DAYS" EntityType="PosServerModels.Store.CRL_EMP_WRKG_DAYS" store:Type="Tables" Schema="POS2" Table="CRL_EMP_WRKG_DAYS" />
-    <EntitySet Name="CRL_EX_PRD_COLORs" EntityType="PosServerModels.Store.CRL_EX_PRD_COLOR" store:Type="Tables" Schema="POS2" Table="CRL_EX_PRD_COLOR" />
-    <EntitySet Name="CRL_EX_PRD_SIZEs" EntityType="PosServerModels.Store.CRL_EX_PRD_SIZE" store:Type="Tables" Schema="POS2" Table="CRL_EX_PRD_SIZE" />
-    <EntitySet Name="CRL_GIFTs" EntityType="PosServerModels.Store.CRL_GIFT" store:Type="Tables" Schema="POS2" Table="CRL_GIFT" />
-    <EntitySet Name="CRL_MN_PRICEs" EntityType="PosServerModels.Store.CRL_MN_PRICE" store:Type="Tables" Schema="POS2" Table="CRL_MN_PRICE" />
-    <EntitySet Name="CRL_MN_STKs" EntityType="PosServerModels.Store.CRL_MN_STK" store:Type="Tables" Schema="POS2" Table="CRL_MN_STK" />
-    <EntitySet Name="CRL_MN_STK_HIS" EntityType="PosServerModels.Store.CRL_MN_STK_HIS" store:Type="Tables" Schema="POS2" Table="CRL_MN_STK_HIS" />
-    <EntitySet Name="CRL_MNFTRs" EntityType="PosServerModels.Store.CRL_MNFTR" store:Type="Tables" Schema="POS2" Table="CRL_MNFTR" />
-    <EntitySet Name="CRL_OTHER_TRANS_LOGs" EntityType="PosServerModels.Store.CRL_OTHER_TRANS_LOG" store:Type="Tables" Schema="POS2" Table="CRL_OTHER_TRANS_LOG" />
-    <EntitySet Name="CRL_PBLSH_CPNs" EntityType="PosServerModels.Store.CRL_PBLSH_CPN" store:Type="Tables" Schema="POS2" Table="CRL_PBLSH_CPN" />
-    <EntitySet Name="CRL_PKGRs" EntityType="PosServerModels.Store.CRL_PKGR" store:Type="Tables" Schema="POS2" Table="CRL_PKGR" />
-    <EntitySet Name="CRL_POS_LOGs" EntityType="PosServerModels.Store.CRL_POS_LOG" store:Type="Tables" Schema="POS2" Table="CRL_POS_LOG" />
-    <EntitySet Name="CRL_POS_TRANS" EntityType="PosServerModels.Store.CRL_POS_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_POS_TRANS" />
-    <EntitySet Name="CRL_PRDs" EntityType="PosServerModels.Store.CRL_PRD" store:Type="Tables" Schema="POS2" Table="CRL_PRD" />
-    <EntitySet Name="CRL_PRD_MSTs" EntityType="PosServerModels.Store.CRL_PRD_MST" store:Type="Tables" Schema="POS2" Table="CRL_PRD_MST" />
-    <EntitySet Name="CRL_PRD_TYPs" EntityType="PosServerModels.Store.CRL_PRD_TYP" store:Type="Tables" Schema="POS2" Table="CRL_PRD_TYP" />
-    <EntitySet Name="CRL_PRD_UNITs" EntityType="PosServerModels.Store.CRL_PRD_UNIT" store:Type="Tables" Schema="POS2" Table="CRL_PRD_UNIT" />
-    <EntitySet Name="CRL_PROMOs" EntityType="PosServerModels.Store.CRL_PROMO" store:Type="Tables" Schema="POS2" Table="CRL_PROMO" />
-    <EntitySet Name="CRL_REICPTs" EntityType="PosServerModels.Store.CRL_REICPT" store:Type="Tables" Schema="POS2" Table="CRL_REICPT" />
-    <EntitySet Name="CRL_REICPT_OUTs" EntityType="PosServerModels.Store.CRL_REICPT_OUT" store:Type="Tables" Schema="POS2" Table="CRL_REICPT_OUT" />
-    <EntitySet Name="CRL_REICPT_OUT_CSTs" EntityType="PosServerModels.Store.CRL_REICPT_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_REICPT_OUT_CST" />
-    <EntitySet Name="CRL_RET_BLK_INs" EntityType="PosServerModels.Store.CRL_RET_BLK_IN" store:Type="Tables" Schema="POS2" Table="CRL_RET_BLK_IN" />
-    <EntitySet Name="CRL_RET_PRDs" EntityType="PosServerModels.Store.CRL_RET_PRD" store:Type="Tables" Schema="POS2" Table="CRL_RET_PRD" />
-    <EntitySet Name="CRL_RET_TRANS" EntityType="PosServerModels.Store.CRL_RET_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_RET_TRANS" />
-    <EntitySet Name="CRL_ROLEs" EntityType="PosServerModels.Store.CRL_ROLE" store:Type="Tables" Schema="POS2" Table="CRL_ROLE" />
-    <EntitySet Name="CRL_SALE_TRANS" EntityType="PosServerModels.Store.CRL_SALE_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_SALE_TRANS" />
-    <EntitySet Name="CRL_SCHE_TMPLATEs" EntityType="PosServerModels.Store.CRL_SCHE_TMPLATE" store:Type="Tables" Schema="POS2" Table="CRL_SCHE_TMPLATE" />
-    <EntitySet Name="CRL_SIM_PRDs" EntityType="PosServerModels.Store.CRL_SIM_PRD" store:Type="Tables" Schema="POS2" Table="CRL_SIM_PRD" />
-    <EntitySet Name="CRL_STK_DEF_STATs" EntityType="PosServerModels.Store.CRL_STK_DEF_STAT" store:Type="Tables" Schema="POS2" Table="CRL_STK_DEF_STAT" />
-    <EntitySet Name="CRL_STK_INs" EntityType="PosServerModels.Store.CRL_STK_IN" store:Type="Tables" Schema="POS2" Table="CRL_STK_IN" />
-    <EntitySet Name="CRL_STK_IN_DETs" EntityType="PosServerModels.Store.CRL_STK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_STK_IN_DET" />
-    <EntitySet Name="CRL_STK_OUTs" EntityType="PosServerModels.Store.CRL_STK_OUT" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT" />
-    <EntitySet Name="CRL_STK_OUT_CSTs" EntityType="PosServerModels.Store.CRL_STK_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_CST" />
-    <EntitySet Name="CRL_STK_OUT_DETs" EntityType="PosServerModels.Store.CRL_STK_OUT_DET" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_DET" />
-    <EntitySet Name="CRL_STK_OUT_TMPs" EntityType="PosServerModels.Store.CRL_STK_OUT_TMP" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_TMP" />
-    <EntitySet Name="CRL_SUPs" EntityType="PosServerModels.Store.CRL_SUP" store:Type="Tables" Schema="POS2" Table="CRL_SUP" />
-    <EntitySet Name="CRL_SYNC_STATUS" EntityType="PosServerModels.Store.CRL_SYNC_STATUS" store:Type="Tables" Schema="POS2" Table="CRL_SYNC_STATUS" />
-    <EntitySet Name="CRL_TAXes" EntityType="PosServerModels.Store.CRL_TAX" store:Type="Tables" Schema="POS2" Table="CRL_TAX" />
-    <EntitySet Name="CRL_TRANS" EntityType="PosServerModels.Store.CRL_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_TRANS" />
-    <EntitySet Name="CRL_USR_INFOs" EntityType="PosServerModels.Store.CRL_USR_INFO" store:Type="Tables" Schema="POS2" Table="CRL_USR_INFO" />
-    <EntitySet Name="CRL_USR_ROLEs" EntityType="PosServerModels.Store.CRL_USR_ROLE" store:Type="Tables" Schema="POS2" Table="CRL_USR_ROLE" />
-    <AssociationSet Name="CRL_COUPON_IBFK_1" Association="PosServerModels.Store.CRL_COUPON_IBFK_1">
+<Schema Namespace="EF.Pos2ServerModel.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="Ora10gR2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0">
+  <EntityContainer Name="Pos2ServerEntitiesStoreContainer">
+    <EntitySet Name="CRL_ACTIVE_DEPTs" EntityType="EF.Pos2ServerModel.Store.CRL_ACTIVE_DEPT" store:Type="Tables" Schema="POS2" Table="CRL_ACTIVE_DEPT" />
+    <EntitySet Name="CRL_BLK_INs" EntityType="EF.Pos2ServerModel.Store.CRL_BLK_IN" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN" />
+    <EntitySet Name="CRL_BLK_IN_COSTs" EntityType="EF.Pos2ServerModel.Store.CRL_BLK_IN_COST" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN_COST" />
+    <EntitySet Name="CRL_BLK_IN_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_BLK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_BLK_IN_DET" />
+    <EntitySet Name="CRL_CASH_IO_TRANS" EntityType="EF.Pos2ServerModel.Store.CRL_CASH_IO_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_CASH_IO_TRANS" />
+    <EntitySet Name="CRL_CATs" EntityType="EF.Pos2ServerModel.Store.CRL_CAT" store:Type="Tables" Schema="POS2" Table="CRL_CAT" />
+    <EntitySet Name="CRL_CONTRACTs" EntityType="EF.Pos2ServerModel.Store.CRL_CONTRACT" store:Type="Tables" Schema="POS2" Table="CRL_CONTRACT" />
+    <EntitySet Name="CRL_COUPONs" EntityType="EF.Pos2ServerModel.Store.CRL_COUPON" store:Type="Tables" Schema="POS2" Table="CRL_COUPON" />
+    <EntitySet Name="CRL_COUPON_TYPs" EntityType="EF.Pos2ServerModel.Store.CRL_COUPON_TYP" store:Type="Tables" Schema="POS2" Table="CRL_COUPON_TYP" />
+    <EntitySet Name="CRL_CTRies" EntityType="EF.Pos2ServerModel.Store.CRL_CTRY" store:Type="Tables" Schema="POS2" Table="CRL_CTRY" />
+    <EntitySet Name="CRL_CUSTs" EntityType="EF.Pos2ServerModel.Store.CRL_CUST" store:Type="Tables" Schema="POS2" Table="CRL_CUST" />
+    <EntitySet Name="CRL_CUST_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_CUST_DET" store:Type="Tables" Schema="POS2" Table="CRL_CUST_DET" />
+    <EntitySet Name="CRL_DEPTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT" store:Type="Tables" Schema="POS2" Table="CRL_DEPT" />
+    <EntitySet Name="CRL_DEPT_COSTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_COST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_COST" />
+    <EntitySet Name="CRL_DEPT_MNGs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_MNG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_MNG" />
+    <EntitySet Name="CRL_DEPT_POs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO" />
+    <EntitySet Name="CRL_DEPT_PO_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PO_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_DET" />
+    <EntitySet Name="CRL_DEPT_PO_DET_LOGs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PO_DET_LOG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_DET_LOG" />
+    <EntitySet Name="CRL_DEPT_PO_LOGs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PO_LOG" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_LOG" />
+    <EntitySet Name="CRL_DEPT_PO_PROMOs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PO_PROMO" />
+    <EntitySet Name="CRL_DEPT_PRMTNs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_PRMTN" />
+    <EntitySet Name="CRL_DEPT_RETs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_RET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET" />
+    <EntitySet Name="CRL_DEPT_RET_COSTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_RET_COST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_COST" />
+    <EntitySet Name="CRL_DEPT_RET_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_RET_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_DET" />
+    <EntitySet Name="CRL_DEPT_RET_POs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_RET_PO" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_RET_PO" />
+    <EntitySet Name="CRL_DEPT_STKs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK" />
+    <EntitySet Name="CRL_DEPT_STK_HIS" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_HIS" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_HIS" />
+    <EntitySet Name="CRL_DEPT_STK_INs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN" />
+    <EntitySet Name="CRL_DEPT_STK_IN_CSTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_CST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_CST" />
+    <EntitySet Name="CRL_DEPT_STK_IN_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_DET" />
+    <EntitySet Name="CRL_DEPT_STK_IN_HIS" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_HIS" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_IN_HIS" />
+    <EntitySet Name="CRL_DEPT_STK_OUTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT" />
+    <EntitySet Name="CRL_DEPT_STK_OUT_CSTs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT_CST" />
+    <EntitySet Name="CRL_DEPT_STK_OUT_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_OUT_DET" />
+    <EntitySet Name="CRL_DEPT_STK_TEMP_VALIDs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_TEMP_VALID" />
+    <EntitySet Name="CRL_DEPT_STK_TEMP_VALID_SAVEs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID_SAVE" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_STK_TEMP_VALID_SAVE" />
+    <EntitySet Name="CRL_DEPT_TIMELINEs" EntityType="EF.Pos2ServerModel.Store.CRL_DEPT_TIMELINE" store:Type="Tables" Schema="POS2" Table="CRL_DEPT_TIMELINE" />
+    <EntitySet Name="CRL_DISTBTORs" EntityType="EF.Pos2ServerModel.Store.CRL_DISTBTOR" store:Type="Tables" Schema="POS2" Table="CRL_DISTBTOR" />
+    <EntitySet Name="CRL_EMPs" EntityType="EF.Pos2ServerModel.Store.CRL_EMP" store:Type="Tables" Schema="POS2" Table="CRL_EMP" />
+    <EntitySet Name="CRL_EMP_DAYOFFs" EntityType="EF.Pos2ServerModel.Store.CRL_EMP_DAYOFF" store:Type="Tables" Schema="POS2" Table="CRL_EMP_DAYOFF" />
+    <EntitySet Name="CRL_EMP_INFOs" EntityType="EF.Pos2ServerModel.Store.CRL_EMP_INFO" store:Type="Tables" Schema="POS2" Table="CRL_EMP_INFO" />
+    <EntitySet Name="CRL_EMP_MONEYs" EntityType="EF.Pos2ServerModel.Store.CRL_EMP_MONEY" store:Type="Tables" Schema="POS2" Table="CRL_EMP_MONEY" />
+    <EntitySet Name="CRL_EMP_REWARDs" EntityType="EF.Pos2ServerModel.Store.CRL_EMP_REWARD" store:Type="Tables" Schema="POS2" Table="CRL_EMP_REWARD" />
+    <EntitySet Name="CRL_EMP_WRKG_DAYS" EntityType="EF.Pos2ServerModel.Store.CRL_EMP_WRKG_DAYS" store:Type="Tables" Schema="POS2" Table="CRL_EMP_WRKG_DAYS" />
+    <EntitySet Name="CRL_EX_PRD_COLORs" EntityType="EF.Pos2ServerModel.Store.CRL_EX_PRD_COLOR" store:Type="Tables" Schema="POS2" Table="CRL_EX_PRD_COLOR" />
+    <EntitySet Name="CRL_EX_PRD_SIZEs" EntityType="EF.Pos2ServerModel.Store.CRL_EX_PRD_SIZE" store:Type="Tables" Schema="POS2" Table="CRL_EX_PRD_SIZE" />
+    <EntitySet Name="CRL_GIFTs" EntityType="EF.Pos2ServerModel.Store.CRL_GIFT" store:Type="Tables" Schema="POS2" Table="CRL_GIFT" />
+    <EntitySet Name="CRL_MN_PRICEs" EntityType="EF.Pos2ServerModel.Store.CRL_MN_PRICE" store:Type="Tables" Schema="POS2" Table="CRL_MN_PRICE" />
+    <EntitySet Name="CRL_MN_STKs" EntityType="EF.Pos2ServerModel.Store.CRL_MN_STK" store:Type="Tables" Schema="POS2" Table="CRL_MN_STK" />
+    <EntitySet Name="CRL_MN_STK_HIS" EntityType="EF.Pos2ServerModel.Store.CRL_MN_STK_HIS" store:Type="Tables" Schema="POS2" Table="CRL_MN_STK_HIS" />
+    <EntitySet Name="CRL_MNFTRs" EntityType="EF.Pos2ServerModel.Store.CRL_MNFTR" store:Type="Tables" Schema="POS2" Table="CRL_MNFTR" />
+    <EntitySet Name="CRL_OTHER_TRANS_LOGs" EntityType="EF.Pos2ServerModel.Store.CRL_OTHER_TRANS_LOG" store:Type="Tables" Schema="POS2" Table="CRL_OTHER_TRANS_LOG" />
+    <EntitySet Name="CRL_PBLSH_CPNs" EntityType="EF.Pos2ServerModel.Store.CRL_PBLSH_CPN" store:Type="Tables" Schema="POS2" Table="CRL_PBLSH_CPN" />
+    <EntitySet Name="CRL_PKGRs" EntityType="EF.Pos2ServerModel.Store.CRL_PKGR" store:Type="Tables" Schema="POS2" Table="CRL_PKGR" />
+    <EntitySet Name="CRL_POS_LOGs" EntityType="EF.Pos2ServerModel.Store.CRL_POS_LOG" store:Type="Tables" Schema="POS2" Table="CRL_POS_LOG" />
+    <EntitySet Name="CRL_POS_TRANS" EntityType="EF.Pos2ServerModel.Store.CRL_POS_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_POS_TRANS" />
+    <EntitySet Name="CRL_PRDs" EntityType="EF.Pos2ServerModel.Store.CRL_PRD" store:Type="Tables" Schema="POS2" Table="CRL_PRD" />
+    <EntitySet Name="CRL_PRD_MSTs" EntityType="EF.Pos2ServerModel.Store.CRL_PRD_MST" store:Type="Tables" Schema="POS2" Table="CRL_PRD_MST" />
+    <EntitySet Name="CRL_PRD_TYPs" EntityType="EF.Pos2ServerModel.Store.CRL_PRD_TYP" store:Type="Tables" Schema="POS2" Table="CRL_PRD_TYP" />
+    <EntitySet Name="CRL_PRD_UNITs" EntityType="EF.Pos2ServerModel.Store.CRL_PRD_UNIT" store:Type="Tables" Schema="POS2" Table="CRL_PRD_UNIT" />
+    <EntitySet Name="CRL_PROMOs" EntityType="EF.Pos2ServerModel.Store.CRL_PROMO" store:Type="Tables" Schema="POS2" Table="CRL_PROMO" />
+    <EntitySet Name="CRL_REICPTs" EntityType="EF.Pos2ServerModel.Store.CRL_REICPT" store:Type="Tables" Schema="POS2" Table="CRL_REICPT" />
+    <EntitySet Name="CRL_REICPT_OUTs" EntityType="EF.Pos2ServerModel.Store.CRL_REICPT_OUT" store:Type="Tables" Schema="POS2" Table="CRL_REICPT_OUT" />
+    <EntitySet Name="CRL_REICPT_OUT_CSTs" EntityType="EF.Pos2ServerModel.Store.CRL_REICPT_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_REICPT_OUT_CST" />
+    <EntitySet Name="CRL_RET_BLK_INs" EntityType="EF.Pos2ServerModel.Store.CRL_RET_BLK_IN" store:Type="Tables" Schema="POS2" Table="CRL_RET_BLK_IN" />
+    <EntitySet Name="CRL_RET_PRDs" EntityType="EF.Pos2ServerModel.Store.CRL_RET_PRD" store:Type="Tables" Schema="POS2" Table="CRL_RET_PRD" />
+    <EntitySet Name="CRL_RET_TRANS" EntityType="EF.Pos2ServerModel.Store.CRL_RET_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_RET_TRANS" />
+    <EntitySet Name="CRL_ROLEs" EntityType="EF.Pos2ServerModel.Store.CRL_ROLE" store:Type="Tables" Schema="POS2" Table="CRL_ROLE" />
+    <EntitySet Name="CRL_SALE_TRANS" EntityType="EF.Pos2ServerModel.Store.CRL_SALE_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_SALE_TRANS" />
+    <EntitySet Name="CRL_SCHE_TMPLATEs" EntityType="EF.Pos2ServerModel.Store.CRL_SCHE_TMPLATE" store:Type="Tables" Schema="POS2" Table="CRL_SCHE_TMPLATE" />
+    <EntitySet Name="CRL_SIM_PRDs" EntityType="EF.Pos2ServerModel.Store.CRL_SIM_PRD" store:Type="Tables" Schema="POS2" Table="CRL_SIM_PRD" />
+    <EntitySet Name="CRL_STK_DEF_STATs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_DEF_STAT" store:Type="Tables" Schema="POS2" Table="CRL_STK_DEF_STAT" />
+    <EntitySet Name="CRL_STK_INs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_IN" store:Type="Tables" Schema="POS2" Table="CRL_STK_IN" />
+    <EntitySet Name="CRL_STK_IN_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_IN_DET" store:Type="Tables" Schema="POS2" Table="CRL_STK_IN_DET" />
+    <EntitySet Name="CRL_STK_OUTs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_OUT" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT" />
+    <EntitySet Name="CRL_STK_OUT_CSTs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_OUT_CST" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_CST" />
+    <EntitySet Name="CRL_STK_OUT_DETs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_DET" />
+    <EntitySet Name="CRL_STK_OUT_TMPs" EntityType="EF.Pos2ServerModel.Store.CRL_STK_OUT_TMP" store:Type="Tables" Schema="POS2" Table="CRL_STK_OUT_TMP" />
+    <EntitySet Name="CRL_SUPs" EntityType="EF.Pos2ServerModel.Store.CRL_SUP" store:Type="Tables" Schema="POS2" Table="CRL_SUP" />
+    <EntitySet Name="CRL_SYNC_STATUS" EntityType="EF.Pos2ServerModel.Store.CRL_SYNC_STATUS" store:Type="Tables" Schema="POS2" Table="CRL_SYNC_STATUS" />
+    <EntitySet Name="CRL_TAXes" EntityType="EF.Pos2ServerModel.Store.CRL_TAX" store:Type="Tables" Schema="POS2" Table="CRL_TAX" />
+    <EntitySet Name="CRL_TRANS" EntityType="EF.Pos2ServerModel.Store.CRL_TRANS" store:Type="Tables" Schema="POS2" Table="CRL_TRANS" />
+    <EntitySet Name="CRL_USR_INFOs" EntityType="EF.Pos2ServerModel.Store.CRL_USR_INFO" store:Type="Tables" Schema="POS2" Table="CRL_USR_INFO" />
+    <EntitySet Name="CRL_USR_ROLEs" EntityType="EF.Pos2ServerModel.Store.CRL_USR_ROLE" store:Type="Tables" Schema="POS2" Table="CRL_USR_ROLE" />
+    <AssociationSet Name="CRL_COUPON_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_COUPON_IBFK_1">
       <End Role="CRL_COUPON_TYP" EntitySet="CRL_COUPON_TYPs" />
       <End Role="CRL_COUPON" EntitySet="CRL_COUPONs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_CUST_DET_IBFK_1" Association="PosServerModels.Store.CRL_CUST_DET_IBFK_1">
+    <AssociationSet Name="CRL_CUST_DET_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_CUST_DET_IBFK_1">
       <End Role="CRL_CUST" EntitySet="CRL_CUSTs" />
       <End Role="CRL_CUST_DET" EntitySet="CRL_CUST_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_COST_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_COST_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_COST_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_COST_IBFK_1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_COST" EntitySet="CRL_DEPT_COSTs" />
     </AssociationSet>
-    <AssociationSet Name="FK_CRL_DEPT_MNG_CRL_DEPT1" Association="PosServerModels.Store.FK_CRL_DEPT_MNG_CRL_DEPT1">
+    <AssociationSet Name="FK_CRL_DEPT_MNG_CRL_DEPT1" Association="EF.Pos2ServerModel.Store.FK_CRL_DEPT_MNG_CRL_DEPT1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_MNG" EntitySet="CRL_DEPT_MNGs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PO_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_PO_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_PO_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PO_IBFK_1">
       <End Role="CRL_CUST" EntitySet="CRL_CUSTs" />
       <End Role="CRL_DEPT_PO" EntitySet="CRL_DEPT_POs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_PO_PROMO_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO_IBFK_1">
       <End Role="CRL_DEPT_PO_DET" EntitySet="CRL_DEPT_PO_DETs" />
       <End Role="CRL_DEPT_PO_PROMO" EntitySet="CRL_DEPT_PO_PROMOs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_2" Association="PosServerModels.Store.CRL_DEPT_PO_PROMO_IBFK_2">
+    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO_IBFK_2">
       <End Role="CRL_DEPT_PRMTN" EntitySet="CRL_DEPT_PRMTNs" />
       <End Role="CRL_DEPT_PO_PROMO" EntitySet="CRL_DEPT_PO_PROMOs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_RET_COST_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_RET_COST_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_RET_COST_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_RET_COST_IBFK_1">
       <End Role="CRL_DEPT_RET" EntitySet="CRL_DEPT_RETs" />
       <End Role="CRL_DEPT_RET_COST" EntitySet="CRL_DEPT_RET_COSTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_RET_DET_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_RET_DET_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_RET_DET_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_RET_DET_IBFK_1">
       <End Role="CRL_DEPT_RET" EntitySet="CRL_DEPT_RETs" />
       <End Role="CRL_DEPT_RET_DET" EntitySet="CRL_DEPT_RET_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_CRL_DEPT_FK2" Association="PosServerModels.Store.CRL_DEPT_STK_IN_CRL_DEPT_FK2">
+    <AssociationSet Name="CRL_DEPT_STK_IN_CRL_DEPT_FK2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_CRL_DEPT_FK2">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_STK_IN" EntitySet="CRL_DEPT_STK_INs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_CRL_DEPT_FK1" Association="PosServerModels.Store.CRL_DEPT_STK_IN_CRL_DEPT_FK1">
+    <AssociationSet Name="CRL_DEPT_STK_IN_CRL_DEPT_FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_CRL_DEPT_FK1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_STK_IN" EntitySet="CRL_DEPT_STK_INs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_CST_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_STK_IN_CST_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_STK_IN_CST_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_CST_IBFK_1">
       <End Role="CRL_DEPT_STK_IN" EntitySet="CRL_DEPT_STK_INs" />
       <End Role="CRL_DEPT_STK_IN_CST" EntitySet="CRL_DEPT_STK_IN_CSTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_DET_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_STK_IN_DET_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_STK_IN_DET_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET_IBFK_1">
       <End Role="CRL_DEPT_STK_IN" EntitySet="CRL_DEPT_STK_INs" />
       <End Role="CRL_DEPT_STK_IN_DET" EntitySet="CRL_DEPT_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK2" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_CRL_DEPT_FK2">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CRL_DEPT_FK2">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK1" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_CRL_DEPT_FK1">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CRL_DEPT_FK1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_CST_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_CST_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_CST_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CST_IBFK_1">
       <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
       <End Role="CRL_DEPT_STK_OUT_CST" EntitySet="CRL_DEPT_STK_OUT_CSTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK1" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_DET_CRL__FK1">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET_CRL__FK1">
       <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
       <End Role="CRL_DEPT_STK_OUT_DET" EntitySet="CRL_DEPT_STK_OUT_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_CONTRACT_IBFK_1" Association="PosServerModels.Store.CRL_CONTRACT_IBFK_1">
+    <AssociationSet Name="CRL_CONTRACT_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_CONTRACT_IBFK_1">
       <End Role="CRL_EMP" EntitySet="CRL_EMPs" />
       <End Role="CRL_CONTRACT" EntitySet="CRL_CONTRACTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_EMP_DAYOFF_IBFK_1" Association="PosServerModels.Store.CRL_EMP_DAYOFF_IBFK_1">
+    <AssociationSet Name="CRL_EMP_DAYOFF_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_EMP_DAYOFF_IBFK_1">
       <End Role="CRL_EMP" EntitySet="CRL_EMPs" />
       <End Role="CRL_EMP_DAYOFF" EntitySet="CRL_EMP_DAYOFFs" />
     </AssociationSet>
-    <AssociationSet Name="FK_CRL_DEPT_MNG_CRL_EMP_INFO1" Association="PosServerModels.Store.FK_CRL_DEPT_MNG_CRL_EMP_INFO1">
+    <AssociationSet Name="FK_CRL_DEPT_MNG_CRL_EMP_INFO1" Association="EF.Pos2ServerModel.Store.FK_CRL_DEPT_MNG_CRL_EMP_INFO1">
       <End Role="CRL_EMP_INFO" EntitySet="CRL_EMP_INFOs" />
       <End Role="CRL_DEPT_MNG" EntitySet="CRL_DEPT_MNGs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_EMP_REWARD_IBFK_1" Association="PosServerModels.Store.CRL_EMP_REWARD_IBFK_1">
+    <AssociationSet Name="CRL_EMP_REWARD_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_EMP_REWARD_IBFK_1">
       <End Role="CRL_EMP" EntitySet="CRL_EMPs" />
       <End Role="CRL_EMP_REWARD" EntitySet="CRL_EMP_REWARDs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_3" Association="PosServerModels.Store.CRL_DEPT_PO_PROMO_IBFK_3">
+    <AssociationSet Name="CRL_DEPT_PO_PROMO_IBFK_3" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO_IBFK_3">
       <End Role="CRL_GIFT" EntitySet="CRL_GIFTs" />
       <End Role="CRL_DEPT_PO_PROMO" EntitySet="CRL_DEPT_PO_PROMOs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_PBLSH_CPN_IBFK_1" Association="PosServerModels.Store.CRL_PBLSH_CPN_IBFK_1">
+    <AssociationSet Name="CRL_PBLSH_CPN_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_PBLSH_CPN_IBFK_1">
       <End Role="CRL_COUPON" EntitySet="CRL_COUPONs" />
       <End Role="CRL_PBLSH_CPN" EntitySet="CRL_PBLSH_CPNs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PO_DET_IBFK_2" Association="PosServerModels.Store.CRL_DEPT_PO_DET_IBFK_2">
+    <AssociationSet Name="CRL_DEPT_PO_DET_IBFK_2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PO_DET_IBFK_2">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_PO_DET" EntitySet="CRL_DEPT_PO_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PRMTN_IBFK_2" Association="PosServerModels.Store.CRL_DEPT_PRMTN_IBFK_2">
+    <AssociationSet Name="CRL_DEPT_PRMTN_IBFK_2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN_IBFK_2">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_PRMTN" EntitySet="CRL_DEPT_PRMTNs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_STK_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_STK_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IBFK_1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK" EntitySet="CRL_DEPT_STKs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_DET_IBFK_2" Association="PosServerModels.Store.CRL_DEPT_STK_IN_DET_IBFK_2">
+    <AssociationSet Name="CRL_DEPT_STK_IN_DET_IBFK_2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET_IBFK_2">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK_IN_DET" EntitySet="CRL_DEPT_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_PRD_FK1" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_CRL_PRD_FK1">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_PRD_FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CRL_PRD_FK1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK2" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_DET_CRL__FK2">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK2" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET_CRL__FK2">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK_OUT_DET" EntitySet="CRL_DEPT_STK_OUT_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_TEMP_VALID_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_STK_TEMP_VALID_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID_IBFK_1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK_TEMP_VALID" EntitySet="CRL_DEPT_STK_TEMP_VALIDs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_TEMP_VALID_SAVE_I" Association="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID_SAVE_I">
+    <AssociationSet Name="CRL_DEPT_STK_TEMP_VALID_SAVE_I" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID_SAVE_I">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_DEPT_STK_TEMP_VALID_SAVE" EntitySet="CRL_DEPT_STK_TEMP_VALID_SAVEs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_MN_STK_CRL_PRD_FK1" Association="PosServerModels.Store.CRL_MN_STK_CRL_PRD_FK1">
+    <AssociationSet Name="CRL_MN_STK_CRL_PRD_FK1" Association="EF.Pos2ServerModel.Store.CRL_MN_STK_CRL_PRD_FK1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_MN_STK" EntitySet="CRL_MN_STKs" />
     </AssociationSet>
-    <AssociationSet Name="PRODUCT_SIZE" Association="PosServerModels.Store.PRODUCT_SIZE">
+    <AssociationSet Name="PRODUCT_SIZE" Association="EF.Pos2ServerModel.Store.PRODUCT_SIZE">
       <End Role="CRL_EX_PRD_SIZE" EntitySet="CRL_EX_PRD_SIZEs" />
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
     </AssociationSet>
-    <AssociationSet Name="PRODUCT_COLOR" Association="PosServerModels.Store.PRODUCT_COLOR">
+    <AssociationSet Name="PRODUCT_COLOR" Association="EF.Pos2ServerModel.Store.PRODUCT_COLOR">
       <End Role="CRL_EX_PRD_COLOR" EntitySet="CRL_EX_PRD_COLORs" />
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_IN_DET_CRL_P_FK1" Association="PosServerModels.Store.CRL_DEPT_STK_IN_DET_CRL_P_FK1">
+    <AssociationSet Name="CRL_DEPT_STK_CRL_PRD_MST_FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_CRL_PRD_MST_FK1">
+      <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
+      <End Role="CRL_DEPT_STK" EntitySet="CRL_DEPT_STKs" />
+    </AssociationSet>
+    <AssociationSet Name="CRL_DEPT_STK_IN_DET_CRL_P_FK1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET_CRL_P_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_DEPT_STK_IN_DET" EntitySet="CRL_DEPT_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_CRL_PRD__FK1" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_CRL_PRD__FK1">
-      <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
-      <End Role="CRL_DEPT_STK_OUT" EntitySet="CRL_DEPT_STK_OUTs" />
-    </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK3" Association="PosServerModels.Store.CRL_DEPT_STK_OUT_DET_CRL__FK3">
+    <AssociationSet Name="CRL_DEPT_STK_OUT_DET_CRL__FK3" Association="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET_CRL__FK3">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_DEPT_STK_OUT_DET" EntitySet="CRL_DEPT_STK_OUT_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_MN_PRICE_CRL_PRD_MST_FK1" Association="PosServerModels.Store.CRL_MN_PRICE_CRL_PRD_MST_FK1">
+    <AssociationSet Name="CRL_MN_PRICE_CRL_PRD_MST_FK1" Association="EF.Pos2ServerModel.Store.CRL_MN_PRICE_CRL_PRD_MST_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_MN_PRICE" EntitySet="CRL_MN_PRICEs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_MN_STK_CRL_PRD_MST_FK1" Association="PosServerModels.Store.CRL_MN_STK_CRL_PRD_MST_FK1">
+    <AssociationSet Name="CRL_MN_STK_CRL_PRD_MST_FK1" Association="EF.Pos2ServerModel.Store.CRL_MN_STK_CRL_PRD_MST_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_MN_STK" EntitySet="CRL_MN_STKs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_PRD_CRL_PRD_MST_FK1" Association="PosServerModels.Store.CRL_PRD_CRL_PRD_MST_FK1">
+    <AssociationSet Name="CRL_PRD_CRL_PRD_MST_FK1" Association="EF.Pos2ServerModel.Store.CRL_PRD_CRL_PRD_MST_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_PRD_MST_CRL_PRD_TYP_FK1" Association="PosServerModels.Store.CRL_PRD_MST_CRL_PRD_TYP_FK1">
+    <AssociationSet Name="CRL_PRD_MST_CRL_PRD_TYP_FK1" Association="EF.Pos2ServerModel.Store.CRL_PRD_MST_CRL_PRD_TYP_FK1">
       <End Role="CRL_PRD_TYP" EntitySet="CRL_PRD_TYPs" />
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_DEPT_PRMTN_IBFK_1" Association="PosServerModels.Store.CRL_DEPT_PRMTN_IBFK_1">
+    <AssociationSet Name="CRL_DEPT_PRMTN_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN_IBFK_1">
       <End Role="CRL_PROMO" EntitySet="CRL_PROMOs" />
       <End Role="CRL_DEPT_PRMTN" EntitySet="CRL_DEPT_PRMTNs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_REICPT_IBFK_1" Association="PosServerModels.Store.CRL_REICPT_IBFK_1">
+    <AssociationSet Name="CRL_REICPT_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_REICPT_IBFK_1">
       <End Role="CRL_DEPT_PO" EntitySet="CRL_DEPT_POs" />
       <End Role="CRL_REICPT" EntitySet="CRL_REICPTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_REICPT_OUT_CST_IBFK_1" Association="PosServerModels.Store.CRL_REICPT_OUT_CST_IBFK_1">
+    <AssociationSet Name="CRL_REICPT_OUT_CST_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_REICPT_OUT_CST_IBFK_1">
       <End Role="CRL_REICPT_OUT" EntitySet="CRL_REICPT_OUTs" />
       <End Role="CRL_REICPT_OUT_CST" EntitySet="CRL_REICPT_OUT_CSTs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_SCHE_TMPLATE_IBFK_1" Association="PosServerModels.Store.CRL_SCHE_TMPLATE_IBFK_1">
+    <AssociationSet Name="CRL_SCHE_TMPLATE_IBFK_1" Association="EF.Pos2ServerModel.Store.CRL_SCHE_TMPLATE_IBFK_1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_SCHE_TMPLATE" EntitySet="CRL_SCHE_TMPLATEs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_STK_IN_DET_CRL_STK_IN_FK1" Association="PosServerModels.Store.CRL_STK_IN_DET_CRL_STK_IN_FK1">
+    <AssociationSet Name="CRL_STK_IN_DET_CRL_STK_IN_FK1" Association="EF.Pos2ServerModel.Store.CRL_STK_IN_DET_CRL_STK_IN_FK1">
       <End Role="CRL_STK_IN" EntitySet="CRL_STK_INs" />
       <End Role="CRL_STK_IN_DET" EntitySet="CRL_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_STK_IN_DET_CRL_PRD_MS_FK1" Association="PosServerModels.Store.CRL_STK_IN_DET_CRL_PRD_MS_FK1">
+    <AssociationSet Name="CRL_STK_IN_DET_CRL_PRD_MS_FK1" Association="EF.Pos2ServerModel.Store.CRL_STK_IN_DET_CRL_PRD_MS_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_STK_IN_DET" EntitySet="CRL_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_STK_IN_DET_CRL_PRD_FK1" Association="PosServerModels.Store.CRL_STK_IN_DET_CRL_PRD_FK1">
+    <AssociationSet Name="CRL_STK_IN_DET_CRL_PRD_FK1" Association="EF.Pos2ServerModel.Store.CRL_STK_IN_DET_CRL_PRD_FK1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_STK_IN_DET" EntitySet="CRL_STK_IN_DETs" />
     </AssociationSet>
-    <AssociationSet Name="FK_CRL_STK_OUT_CRL_DEPT1" Association="PosServerModels.Store.FK_CRL_STK_OUT_CRL_DEPT1">
+    <AssociationSet Name="FK_CRL_STK_OUT_CRL_DEPT1" Association="EF.Pos2ServerModel.Store.FK_CRL_STK_OUT_CRL_DEPT1">
       <End Role="CRL_DEPT" EntitySet="CRL_DEPTs" />
       <End Role="CRL_STK_OUT" EntitySet="CRL_STK_OUTs" />
     </AssociationSet>
-    <AssociationSet Name="FK_STOCK_OUT" Association="PosServerModels.Store.FK_STOCK_OUT">
+    <AssociationSet Name="FK_STOCK_OUT" Association="EF.Pos2ServerModel.Store.FK_STOCK_OUT">
       <End Role="CRL_STK_OUT" EntitySet="CRL_STK_OUTs" />
       <End Role="CRL_STK_OUT_DET" EntitySet="CRL_STK_OUT_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_STK_OUT_DET_CRL_PRD_M_FK1" Association="PosServerModels.Store.CRL_STK_OUT_DET_CRL_PRD_M_FK1">
+    <AssociationSet Name="CRL_STK_OUT_DET_CRL_PRD_M_FK1" Association="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET_CRL_PRD_M_FK1">
       <End Role="CRL_PRD_MST" EntitySet="CRL_PRD_MSTs" />
       <End Role="CRL_STK_OUT_DET" EntitySet="CRL_STK_OUT_DETs" />
     </AssociationSet>
-    <AssociationSet Name="CRL_STK_OUT_DET_CRL_PRD_FK1" Association="PosServerModels.Store.CRL_STK_OUT_DET_CRL_PRD_FK1">
+    <AssociationSet Name="CRL_STK_OUT_DET_CRL_PRD_FK1" Association="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET_CRL_PRD_FK1">
       <End Role="CRL_PRD" EntitySet="CRL_PRDs" />
       <End Role="CRL_STK_OUT_DET" EntitySet="CRL_STK_OUT_DETs" />
     </AssociationSet>
@@ -1034,7 +1034,6 @@
       </Documentation>
     </Property>
     <Property Name="DEST_DEPARTMENT_ID" Type="int64" />
-    <Property Name="PRODUCT_MASTER_ID" Type="VARCHAR2" MaxLength="20" />
     <Property Name="TOTAL_QUANTITY" Type="int64" />
     <Property Name="TOTAL_AMOUNT" Type="int64" />
   </EntityType>
@@ -1967,7 +1966,6 @@
     <Property Name="EX_FLD5" Type="VARCHAR2" MaxLength="180" />
     <Property Name="STOCK_IN_TYPE" Type="int64" />
     <Property Name="SELL_PRICE" Type="int64" />
-    <Property Name="SRC_DEPARTMENT_ID" Type="int64" />
   </EntityType>
   <EntityType Name="CRL_STK_OUT">
     <Key>
@@ -2018,6 +2016,7 @@
   <EntityType Name="CRL_STK_OUT_DET">
     <Key>
       <PropertyRef Name="STOCK_OUT_DETAIL_ID" />
+      <PropertyRef Name="STOCK_OUT_ID" />
     </Key>
     <Property Name="STOCK_OUT_DETAIL_ID" Type="int64" Nullable="false" />
     <Property Name="STOCK_OUT_ID" Type="int64" Nullable="false" />
@@ -2149,8 +2148,8 @@
     <Property Name="ROLEID" Type="int64" Nullable="false" />
   </EntityType>
   <Association Name="CRL_COUPON_IBFK_1">
-    <End Role="CRL_COUPON_TYP" Type="PosServerModels.Store.CRL_COUPON_TYP" Multiplicity="0..1" />
-    <End Role="CRL_COUPON" Type="PosServerModels.Store.CRL_COUPON" Multiplicity="*" />
+    <End Role="CRL_COUPON_TYP" Type="EF.Pos2ServerModel.Store.CRL_COUPON_TYP" Multiplicity="0..1" />
+    <End Role="CRL_COUPON" Type="EF.Pos2ServerModel.Store.CRL_COUPON" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_COUPON_TYP">
         <PropertyRef Name="COUPON_TYPE_ID" />
@@ -2161,8 +2160,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_CUST_DET_IBFK_1">
-    <End Role="CRL_CUST" Type="PosServerModels.Store.CRL_CUST" Multiplicity="1" />
-    <End Role="CRL_CUST_DET" Type="PosServerModels.Store.CRL_CUST_DET" Multiplicity="0..1" />
+    <End Role="CRL_CUST" Type="EF.Pos2ServerModel.Store.CRL_CUST" Multiplicity="1" />
+    <End Role="CRL_CUST_DET" Type="EF.Pos2ServerModel.Store.CRL_CUST_DET" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="CRL_CUST">
         <PropertyRef Name="CUSTOMER_ID" />
@@ -2173,8 +2172,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_COST_IBFK_1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_DEPT_COST" Type="PosServerModels.Store.CRL_DEPT_COST" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_DEPT_COST" Type="EF.Pos2ServerModel.Store.CRL_DEPT_COST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2185,8 +2184,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CRL_DEPT_MNG_CRL_DEPT1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_DEPT_MNG" Type="PosServerModels.Store.CRL_DEPT_MNG" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_DEPT_MNG" Type="EF.Pos2ServerModel.Store.CRL_DEPT_MNG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2197,8 +2196,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PO_IBFK_1">
-    <End Role="CRL_CUST" Type="PosServerModels.Store.CRL_CUST" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_PO" Type="PosServerModels.Store.CRL_DEPT_PO" Multiplicity="*" />
+    <End Role="CRL_CUST" Type="EF.Pos2ServerModel.Store.CRL_CUST" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_PO" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_CUST">
         <PropertyRef Name="CUSTOMER_ID" />
@@ -2209,8 +2208,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PO_PROMO_IBFK_1">
-    <End Role="CRL_DEPT_PO_DET" Type="PosServerModels.Store.CRL_DEPT_PO_DET" Multiplicity="1" />
-    <End Role="CRL_DEPT_PO_PROMO" Type="PosServerModels.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
+    <End Role="CRL_DEPT_PO_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO_DET" Multiplicity="1" />
+    <End Role="CRL_DEPT_PO_PROMO" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_PO_DET">
         <PropertyRef Name="PURCHASE_ORDER_ID" />
@@ -2225,8 +2224,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PO_PROMO_IBFK_2">
-    <End Role="CRL_DEPT_PRMTN" Type="PosServerModels.Store.CRL_DEPT_PRMTN" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_PO_PROMO" Type="PosServerModels.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
+    <End Role="CRL_DEPT_PRMTN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_PO_PROMO" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_PRMTN">
         <PropertyRef Name="DEPARTMENT_PROMOTION_ID" />
@@ -2237,8 +2236,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_RET_COST_IBFK_1">
-    <End Role="CRL_DEPT_RET" Type="PosServerModels.Store.CRL_DEPT_RET" Multiplicity="1" />
-    <End Role="CRL_DEPT_RET_COST" Type="PosServerModels.Store.CRL_DEPT_RET_COST" Multiplicity="*" />
+    <End Role="CRL_DEPT_RET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_RET" Multiplicity="1" />
+    <End Role="CRL_DEPT_RET_COST" Type="EF.Pos2ServerModel.Store.CRL_DEPT_RET_COST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_RET">
         <PropertyRef Name="DEPARTMENT_RETURN_ID" />
@@ -2249,8 +2248,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_RET_DET_IBFK_1">
-    <End Role="CRL_DEPT_RET" Type="PosServerModels.Store.CRL_DEPT_RET" Multiplicity="1" />
-    <End Role="CRL_DEPT_RET_DET" Type="PosServerModels.Store.CRL_DEPT_RET_DET" Multiplicity="*" />
+    <End Role="CRL_DEPT_RET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_RET" Multiplicity="1" />
+    <End Role="CRL_DEPT_RET_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_RET_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_RET">
         <PropertyRef Name="DEPARTMENT_RETURN_ID" />
@@ -2261,8 +2260,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IN_CRL_DEPT_FK2">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_IN" Type="PosServerModels.Store.CRL_DEPT_STK_IN" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK_IN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2273,8 +2272,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IN_CRL_DEPT_FK1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_IN" Type="PosServerModels.Store.CRL_DEPT_STK_IN" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_IN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2285,8 +2284,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IN_CST_IBFK_1">
-    <End Role="CRL_DEPT_STK_IN" Type="PosServerModels.Store.CRL_DEPT_STK_IN" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_IN_CST" Type="PosServerModels.Store.CRL_DEPT_STK_IN_CST" Multiplicity="*" />
+    <End Role="CRL_DEPT_STK_IN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_IN_CST" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_CST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_STK_IN">
         <PropertyRef Name="STOCK_IN_ID" />
@@ -2299,8 +2298,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IN_DET_IBFK_1">
-    <End Role="CRL_DEPT_STK_IN" Type="PosServerModels.Store.CRL_DEPT_STK_IN" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_IN_DET" Type="PosServerModels.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_DEPT_STK_IN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_STK_IN">
         <PropertyRef Name="STOCK_IN_ID" />
@@ -2313,8 +2312,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK2">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2325,8 +2324,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_CRL_DEPT_FK1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2337,8 +2336,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_CST_IBFK_1">
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_OUT_CST" Type="PosServerModels.Store.CRL_DEPT_STK_OUT_CST" Multiplicity="*" />
+    <End Role="CRL_DEPT_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_OUT_CST" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_CST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_STK_OUT">
         <PropertyRef Name="STOCK_OUT_ID" />
@@ -2351,8 +2350,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_DET_CRL__FK1">
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_OUT_DET" Type="PosServerModels.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_DEPT_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_STK_OUT">
         <PropertyRef Name="STOCK_OUT_ID" />
@@ -2365,8 +2364,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_CONTRACT_IBFK_1">
-    <End Role="CRL_EMP" Type="PosServerModels.Store.CRL_EMP" Multiplicity="0..1" />
-    <End Role="CRL_CONTRACT" Type="PosServerModels.Store.CRL_CONTRACT" Multiplicity="*" />
+    <End Role="CRL_EMP" Type="EF.Pos2ServerModel.Store.CRL_EMP" Multiplicity="0..1" />
+    <End Role="CRL_CONTRACT" Type="EF.Pos2ServerModel.Store.CRL_CONTRACT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EMP">
         <PropertyRef Name="EMPLOYEE_ID" />
@@ -2379,8 +2378,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_EMP_DAYOFF_IBFK_1">
-    <End Role="CRL_EMP" Type="PosServerModels.Store.CRL_EMP" Multiplicity="1" />
-    <End Role="CRL_EMP_DAYOFF" Type="PosServerModels.Store.CRL_EMP_DAYOFF" Multiplicity="*" />
+    <End Role="CRL_EMP" Type="EF.Pos2ServerModel.Store.CRL_EMP" Multiplicity="1" />
+    <End Role="CRL_EMP_DAYOFF" Type="EF.Pos2ServerModel.Store.CRL_EMP_DAYOFF" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EMP">
         <PropertyRef Name="EMPLOYEE_ID" />
@@ -2393,8 +2392,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CRL_DEPT_MNG_CRL_EMP_INFO1">
-    <End Role="CRL_EMP_INFO" Type="PosServerModels.Store.CRL_EMP_INFO" Multiplicity="1" />
-    <End Role="CRL_DEPT_MNG" Type="PosServerModels.Store.CRL_DEPT_MNG" Multiplicity="*" />
+    <End Role="CRL_EMP_INFO" Type="EF.Pos2ServerModel.Store.CRL_EMP_INFO" Multiplicity="1" />
+    <End Role="CRL_DEPT_MNG" Type="EF.Pos2ServerModel.Store.CRL_DEPT_MNG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EMP_INFO">
         <PropertyRef Name="EMPLOYEE_ID" />
@@ -2405,8 +2404,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_EMP_REWARD_IBFK_1">
-    <End Role="CRL_EMP" Type="PosServerModels.Store.CRL_EMP" Multiplicity="1" />
-    <End Role="CRL_EMP_REWARD" Type="PosServerModels.Store.CRL_EMP_REWARD" Multiplicity="*" />
+    <End Role="CRL_EMP" Type="EF.Pos2ServerModel.Store.CRL_EMP" Multiplicity="1" />
+    <End Role="CRL_EMP_REWARD" Type="EF.Pos2ServerModel.Store.CRL_EMP_REWARD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EMP">
         <PropertyRef Name="EMPLOYEE_ID" />
@@ -2419,8 +2418,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PO_PROMO_IBFK_3">
-    <End Role="CRL_GIFT" Type="PosServerModels.Store.CRL_GIFT" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_PO_PROMO" Type="PosServerModels.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
+    <End Role="CRL_GIFT" Type="EF.Pos2ServerModel.Store.CRL_GIFT" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_PO_PROMO" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO_PROMO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_GIFT">
         <PropertyRef Name="GIFT_ID" />
@@ -2433,8 +2432,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_PBLSH_CPN_IBFK_1">
-    <End Role="CRL_COUPON" Type="PosServerModels.Store.CRL_COUPON" Multiplicity="1" />
-    <End Role="CRL_PBLSH_CPN" Type="PosServerModels.Store.CRL_PBLSH_CPN" Multiplicity="*" />
+    <End Role="CRL_COUPON" Type="EF.Pos2ServerModel.Store.CRL_COUPON" Multiplicity="1" />
+    <End Role="CRL_PBLSH_CPN" Type="EF.Pos2ServerModel.Store.CRL_PBLSH_CPN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_COUPON">
         <PropertyRef Name="COUPON_ID" />
@@ -2445,8 +2444,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PO_DET_IBFK_2">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_PO_DET" Type="PosServerModels.Store.CRL_DEPT_PO_DET" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_PO_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2457,8 +2456,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PRMTN_IBFK_2">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_PRMTN" Type="PosServerModels.Store.CRL_DEPT_PRMTN" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_PRMTN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2469,8 +2468,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IBFK_1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK" Type="PosServerModels.Store.CRL_DEPT_STK" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2481,8 +2480,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_IN_DET_IBFK_2">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_IN_DET" Type="PosServerModels.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2493,8 +2492,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_CRL_PRD_FK1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2505,8 +2504,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_OUT_DET_CRL__FK2">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_OUT_DET" Type="PosServerModels.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2517,8 +2516,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_TEMP_VALID_IBFK_1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_TEMP_VALID" Type="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_TEMP_VALID" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2529,8 +2528,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_STK_TEMP_VALID_SAVE_I">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_DEPT_STK_TEMP_VALID_SAVE" Type="PosServerModels.Store.CRL_DEPT_STK_TEMP_VALID_SAVE" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_DEPT_STK_TEMP_VALID_SAVE" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_TEMP_VALID_SAVE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2541,8 +2540,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_MN_STK_CRL_PRD_FK1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_MN_STK" Type="PosServerModels.Store.CRL_MN_STK" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_MN_STK" Type="EF.Pos2ServerModel.Store.CRL_MN_STK" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2553,8 +2552,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PRODUCT_SIZE">
-    <End Role="CRL_EX_PRD_SIZE" Type="PosServerModels.Store.CRL_EX_PRD_SIZE" Multiplicity="0..1" />
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="*" />
+    <End Role="CRL_EX_PRD_SIZE" Type="EF.Pos2ServerModel.Store.CRL_EX_PRD_SIZE" Multiplicity="0..1" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EX_PRD_SIZE">
         <PropertyRef Name="SIZE_ID" />
@@ -2565,8 +2564,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PRODUCT_COLOR">
-    <End Role="CRL_EX_PRD_COLOR" Type="PosServerModels.Store.CRL_EX_PRD_COLOR" Multiplicity="0..1" />
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="*" />
+    <End Role="CRL_EX_PRD_COLOR" Type="EF.Pos2ServerModel.Store.CRL_EX_PRD_COLOR" Multiplicity="0..1" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_EX_PRD_COLOR">
         <PropertyRef Name="COLOR_ID" />
@@ -2576,9 +2575,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CRL_DEPT_STK_CRL_PRD_MST_FK1">
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CRL_PRD_MST">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Principal>
+      <Dependent Role="CRL_DEPT_STK">
+        <PropertyRef Name="PRODUCT_MASTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="CRL_DEPT_STK_IN_DET_CRL_P_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_IN_DET" Type="PosServerModels.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2588,21 +2599,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CRL_DEPT_STK_OUT_CRL_PRD__FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_OUT" Type="PosServerModels.Store.CRL_DEPT_STK_OUT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CRL_PRD_MST">
-        <PropertyRef Name="PRODUCT_MASTER_ID" />
-      </Principal>
-      <Dependent Role="CRL_DEPT_STK_OUT">
-        <PropertyRef Name="PRODUCT_MASTER_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="CRL_DEPT_STK_OUT_DET_CRL__FK3">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_DEPT_STK_OUT_DET" Type="PosServerModels.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_DEPT_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_DEPT_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2613,8 +2612,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_MN_PRICE_CRL_PRD_MST_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="1" />
-    <End Role="CRL_MN_PRICE" Type="PosServerModels.Store.CRL_MN_PRICE" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="1" />
+    <End Role="CRL_MN_PRICE" Type="EF.Pos2ServerModel.Store.CRL_MN_PRICE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2625,8 +2624,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_MN_STK_CRL_PRD_MST_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_MN_STK" Type="PosServerModels.Store.CRL_MN_STK" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_MN_STK" Type="EF.Pos2ServerModel.Store.CRL_MN_STK" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2637,8 +2636,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_PRD_CRL_PRD_MST_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2649,8 +2648,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_PRD_MST_CRL_PRD_TYP_FK1">
-    <End Role="CRL_PRD_TYP" Type="PosServerModels.Store.CRL_PRD_TYP" Multiplicity="0..1" />
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="*" />
+    <End Role="CRL_PRD_TYP" Type="EF.Pos2ServerModel.Store.CRL_PRD_TYP" Multiplicity="0..1" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_TYP">
         <PropertyRef Name="TYPE_ID" />
@@ -2661,8 +2660,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_DEPT_PRMTN_IBFK_1">
-    <End Role="CRL_PROMO" Type="PosServerModels.Store.CRL_PROMO" Multiplicity="1" />
-    <End Role="CRL_DEPT_PRMTN" Type="PosServerModels.Store.CRL_DEPT_PRMTN" Multiplicity="*" />
+    <End Role="CRL_PROMO" Type="EF.Pos2ServerModel.Store.CRL_PROMO" Multiplicity="1" />
+    <End Role="CRL_DEPT_PRMTN" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PRMTN" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PROMO">
         <PropertyRef Name="PROMOTION_ID" />
@@ -2673,8 +2672,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_REICPT_IBFK_1">
-    <End Role="CRL_DEPT_PO" Type="PosServerModels.Store.CRL_DEPT_PO" Multiplicity="1" />
-    <End Role="CRL_REICPT" Type="PosServerModels.Store.CRL_REICPT" Multiplicity="*" />
+    <End Role="CRL_DEPT_PO" Type="EF.Pos2ServerModel.Store.CRL_DEPT_PO" Multiplicity="1" />
+    <End Role="CRL_REICPT" Type="EF.Pos2ServerModel.Store.CRL_REICPT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT_PO">
         <PropertyRef Name="PURCHASE_ORDER_ID" />
@@ -2687,8 +2686,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_REICPT_OUT_CST_IBFK_1">
-    <End Role="CRL_REICPT_OUT" Type="PosServerModels.Store.CRL_REICPT_OUT" Multiplicity="1" />
-    <End Role="CRL_REICPT_OUT_CST" Type="PosServerModels.Store.CRL_REICPT_OUT_CST" Multiplicity="*" />
+    <End Role="CRL_REICPT_OUT" Type="EF.Pos2ServerModel.Store.CRL_REICPT_OUT" Multiplicity="1" />
+    <End Role="CRL_REICPT_OUT_CST" Type="EF.Pos2ServerModel.Store.CRL_REICPT_OUT_CST" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_REICPT_OUT">
         <PropertyRef Name="RECEIPT_OUT_ID" />
@@ -2701,8 +2700,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_SCHE_TMPLATE_IBFK_1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_SCHE_TMPLATE" Type="PosServerModels.Store.CRL_SCHE_TMPLATE" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_SCHE_TMPLATE" Type="EF.Pos2ServerModel.Store.CRL_SCHE_TMPLATE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2713,8 +2712,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_STK_IN_DET_CRL_STK_IN_FK1">
-    <End Role="CRL_STK_IN" Type="PosServerModels.Store.CRL_STK_IN" Multiplicity="1" />
-    <End Role="CRL_STK_IN_DET" Type="PosServerModels.Store.CRL_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_STK_IN" Type="EF.Pos2ServerModel.Store.CRL_STK_IN" Multiplicity="1" />
+    <End Role="CRL_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_STK_IN">
         <PropertyRef Name="STOCK_IN_ID" />
@@ -2725,8 +2724,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_STK_IN_DET_CRL_PRD_MS_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_STK_IN_DET" Type="PosServerModels.Store.CRL_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2737,8 +2736,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_STK_IN_DET_CRL_PRD_FK1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_STK_IN_DET" Type="PosServerModels.Store.CRL_STK_IN_DET" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_STK_IN_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_IN_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />
@@ -2749,8 +2748,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CRL_STK_OUT_CRL_DEPT1">
-    <End Role="CRL_DEPT" Type="PosServerModels.Store.CRL_DEPT" Multiplicity="1" />
-    <End Role="CRL_STK_OUT" Type="PosServerModels.Store.CRL_STK_OUT" Multiplicity="*" />
+    <End Role="CRL_DEPT" Type="EF.Pos2ServerModel.Store.CRL_DEPT" Multiplicity="1" />
+    <End Role="CRL_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_STK_OUT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_DEPT">
         <PropertyRef Name="DEPARTMENT_ID" />
@@ -2761,8 +2760,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_STOCK_OUT">
-    <End Role="CRL_STK_OUT" Type="PosServerModels.Store.CRL_STK_OUT" Multiplicity="1" />
-    <End Role="CRL_STK_OUT_DET" Type="PosServerModels.Store.CRL_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_STK_OUT" Type="EF.Pos2ServerModel.Store.CRL_STK_OUT" Multiplicity="1" />
+    <End Role="CRL_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_STK_OUT">
         <PropertyRef Name="STOCK_OUT_ID" />
@@ -2773,8 +2772,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_STK_OUT_DET_CRL_PRD_M_FK1">
-    <End Role="CRL_PRD_MST" Type="PosServerModels.Store.CRL_PRD_MST" Multiplicity="0..1" />
-    <End Role="CRL_STK_OUT_DET" Type="PosServerModels.Store.CRL_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_PRD_MST" Type="EF.Pos2ServerModel.Store.CRL_PRD_MST" Multiplicity="0..1" />
+    <End Role="CRL_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD_MST">
         <PropertyRef Name="PRODUCT_MASTER_ID" />
@@ -2785,8 +2784,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CRL_STK_OUT_DET_CRL_PRD_FK1">
-    <End Role="CRL_PRD" Type="PosServerModels.Store.CRL_PRD" Multiplicity="1" />
-    <End Role="CRL_STK_OUT_DET" Type="PosServerModels.Store.CRL_STK_OUT_DET" Multiplicity="*" />
+    <End Role="CRL_PRD" Type="EF.Pos2ServerModel.Store.CRL_PRD" Multiplicity="1" />
+    <End Role="CRL_STK_OUT_DET" Type="EF.Pos2ServerModel.Store.CRL_STK_OUT_DET" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CRL_PRD">
         <PropertyRef Name="PRODUCT_ID" />

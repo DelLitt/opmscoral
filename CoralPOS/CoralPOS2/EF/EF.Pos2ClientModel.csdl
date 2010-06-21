@@ -1,0 +1,2798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF.Pos2ClientModel" Alias="Self" devart:FilePerClass="false" devart:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0">
+  <EntityContainer Name="Pos2ClientEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Trans" EntityType="EF.Pos2ClientModel.Tran" />
+    <EntitySet Name="SyncStatus" EntityType="EF.Pos2ClientModel.SyncStatus" />
+    <EntitySet Name="DeptPoDets" EntityType="EF.Pos2ClientModel.DeptPoDet" />
+    <EntitySet Name="Contracts" EntityType="EF.Pos2ClientModel.Contract" />
+    <EntitySet Name="SaleTrans" EntityType="EF.Pos2ClientModel.SaleTran" />
+    <EntitySet Name="DeptPrmtns" EntityType="EF.Pos2ClientModel.DeptPrmtn" />
+    <EntitySet Name="EmpWrkgDays" EntityType="EF.Pos2ClientModel.EmpWrkgDay" />
+    <EntitySet Name="UsrInfos" EntityType="EF.Pos2ClientModel.UsrInfo" />
+    <EntitySet Name="StkIns" EntityType="EF.Pos2ClientModel.StkIn" />
+    <EntitySet Name="DeptStkOutDets" EntityType="EF.Pos2ClientModel.DeptStkOutDet" />
+    <EntitySet Name="DeptStks" EntityType="EF.Pos2ClientModel.DeptStk" />
+    <EntitySet Name="DeptStkTempValids" EntityType="EF.Pos2ClientModel.DeptStkTempValid" />
+    <EntitySet Name="StkInDets" EntityType="EF.Pos2ClientModel.StkInDet" />
+    <EntitySet Name="DeptRetPos" EntityType="EF.Pos2ClientModel.DeptRetPo" />
+    <EntitySet Name="PosLogs" EntityType="EF.Pos2ClientModel.PosLog" />
+    <EntitySet Name="ExPrdColors" EntityType="EF.Pos2ClientModel.ExPrdColor" />
+    <EntitySet Name="DeptRets" EntityType="EF.Pos2ClientModel.DeptRet" />
+    <EntitySet Name="TempDeptstockMaxTemps" EntityType="EF.Pos2ClientModel.TempDeptstockMaxTemp" />
+    <EntitySet Name="DeptStkHis" EntityType="EF.Pos2ClientModel.DeptStkHis" />
+    <EntitySet Name="TempStkHis" EntityType="EF.Pos2ClientModel.TempStkHis" />
+    <EntitySet Name="EmpInfos" EntityType="EF.Pos2ClientModel.EmpInfo" />
+    <EntitySet Name="PrdTyps" EntityType="EF.Pos2ClientModel.PrdTyp" />
+    <EntitySet Name="PrdUnits" EntityType="EF.Pos2ClientModel.PrdUnit" />
+    <EntitySet Name="PosTrans" EntityType="EF.Pos2ClientModel.PosTran" />
+    <EntitySet Name="ReicptOutCsts" EntityType="EF.Pos2ClientModel.ReicptOutCst" />
+    <EntitySet Name="StkOutDets" EntityType="EF.Pos2ClientModel.StkOutDet" />
+    <EntitySet Name="TempDeptstocks" EntityType="EF.Pos2ClientModel.TempDeptstock" />
+    <EntitySet Name="BlkInDets" EntityType="EF.Pos2ClientModel.BlkInDet" />
+    <EntitySet Name="SimPrds" EntityType="EF.Pos2ClientModel.SimPrd" />
+    <EntitySet Name="DeptStkOuts" EntityType="EF.Pos2ClientModel.DeptStkOut" />
+    <EntitySet Name="ActiveDepts" EntityType="EF.Pos2ClientModel.ActiveDept" />
+    <EntitySet Name="RetPrds" EntityType="EF.Pos2ClientModel.RetPrd" />
+    <EntitySet Name="Coupons" EntityType="EF.Pos2ClientModel.Coupon" />
+    <EntitySet Name="Depts" EntityType="EF.Pos2ClientModel.Dept" />
+    <EntitySet Name="OtherTransLogs" EntityType="EF.Pos2ClientModel.OtherTransLog" />
+    <EntitySet Name="Gifts" EntityType="EF.Pos2ClientModel.Gift" />
+    <EntitySet Name="DeptPoDetLogs" EntityType="EF.Pos2ClientModel.DeptPoDetLog" />
+    <EntitySet Name="EmpRewards" EntityType="EF.Pos2ClientModel.EmpReward" />
+    <EntitySet Name="StkOutTmps" EntityType="EF.Pos2ClientModel.StkOutTmp" />
+    <EntitySet Name="BlkInCosts" EntityType="EF.Pos2ClientModel.BlkInCost" />
+    <EntitySet Name="CustDets" EntityType="EF.Pos2ClientModel.CustDet" />
+    <EntitySet Name="DeptRetDets" EntityType="EF.Pos2ClientModel.DeptRetDet" />
+    <EntitySet Name="Sups" EntityType="EF.Pos2ClientModel.Sup" />
+    <EntitySet Name="Ctries" EntityType="EF.Pos2ClientModel.Ctry" />
+    <EntitySet Name="DeptMngs" EntityType="EF.Pos2ClientModel.DeptMng" />
+    <EntitySet Name="DeptPos" EntityType="EF.Pos2ClientModel.DeptPo" />
+    <EntitySet Name="EmpMoneys" EntityType="EF.Pos2ClientModel.EmpMoney" />
+    <EntitySet Name="DeptCosts" EntityType="EF.Pos2ClientModel.DeptCost" />
+    <EntitySet Name="DeptRetCosts" EntityType="EF.Pos2ClientModel.DeptRetCost" />
+    <EntitySet Name="Taxes" EntityType="EF.Pos2ClientModel.Tax" />
+    <EntitySet Name="DeptStkInHis" EntityType="EF.Pos2ClientModel.DeptStkInHis" />
+    <EntitySet Name="CashIoTrans" EntityType="EF.Pos2ClientModel.CashIoTran" />
+    <EntitySet Name="MnStks" EntityType="EF.Pos2ClientModel.MnStk" />
+    <EntitySet Name="ScheTmplates" EntityType="EF.Pos2ClientModel.ScheTmplate" />
+    <EntitySet Name="ReicptOuts" EntityType="EF.Pos2ClientModel.ReicptOut" />
+    <EntitySet Name="StkDefStats" EntityType="EF.Pos2ClientModel.StkDefStat" />
+    <EntitySet Name="DeptStkInDets" EntityType="EF.Pos2ClientModel.DeptStkInDet" />
+    <EntitySet Name="ExPrdSizes" EntityType="EF.Pos2ClientModel.ExPrdSize" />
+    <EntitySet Name="Emps" EntityType="EF.Pos2ClientModel.Emp" />
+    <EntitySet Name="MnPrices" EntityType="EF.Pos2ClientModel.MnPrice" />
+    <EntitySet Name="TempDpStockouts" EntityType="EF.Pos2ClientModel.TempDpStockout" />
+    <EntitySet Name="StkOuts" EntityType="EF.Pos2ClientModel.StkOut" />
+    <EntitySet Name="TempPrs" EntityType="EF.Pos2ClientModel.TempPr" />
+    <EntitySet Name="DeptPoPromos" EntityType="EF.Pos2ClientModel.DeptPoPromo" />
+    <EntitySet Name="Custs" EntityType="EF.Pos2ClientModel.Cust" />
+    <EntitySet Name="CouponTyps" EntityType="EF.Pos2ClientModel.CouponTyp" />
+    <EntitySet Name="DeptPoLogs" EntityType="EF.Pos2ClientModel.DeptPoLog" />
+    <EntitySet Name="DeptStkTempValidSaves" EntityType="EF.Pos2ClientModel.DeptStkTempValidSave" />
+    <EntitySet Name="Prds" EntityType="EF.Pos2ClientModel.Prd" />
+    <EntitySet Name="Roles" EntityType="EF.Pos2ClientModel.Role" />
+    <EntitySet Name="Pkgrs" EntityType="EF.Pos2ClientModel.Pkgr" />
+    <EntitySet Name="DeptStkInCsts" EntityType="EF.Pos2ClientModel.DeptStkInCst" />
+    <EntitySet Name="RetBlkIns" EntityType="EF.Pos2ClientModel.RetBlkIn" />
+    <EntitySet Name="StkOutCsts" EntityType="EF.Pos2ClientModel.StkOutCst" />
+    <EntitySet Name="RetTrans" EntityType="EF.Pos2ClientModel.RetTran" />
+    <EntitySet Name="Distbtors" EntityType="EF.Pos2ClientModel.Distbtor" />
+    <EntitySet Name="MnStkHis" EntityType="EF.Pos2ClientModel.MnStkHis" />
+    <EntitySet Name="BlkIns" EntityType="EF.Pos2ClientModel.BlkIn" />
+    <EntitySet Name="Reicpts" EntityType="EF.Pos2ClientModel.Reicpt" />
+    <EntitySet Name="PrdMsts" EntityType="EF.Pos2ClientModel.PrdMst" />
+    <EntitySet Name="EmpDayoffs" EntityType="EF.Pos2ClientModel.EmpDayoff" />
+    <EntitySet Name="DeptTimelines" EntityType="EF.Pos2ClientModel.DeptTimeline" />
+    <EntitySet Name="TempProducts" EntityType="EF.Pos2ClientModel.TempProduct" />
+    <EntitySet Name="DeptStkOutCsts" EntityType="EF.Pos2ClientModel.DeptStkOutCst" />
+    <EntitySet Name="PblshCpns" EntityType="EF.Pos2ClientModel.PblshCpn" />
+    <EntitySet Name="TempDeptStockStatistics" EntityType="EF.Pos2ClientModel.TempDeptStockStatistic" />
+    <EntitySet Name="Mnftrs" EntityType="EF.Pos2ClientModel.Mnftr" />
+    <EntitySet Name="ExDiscounts" EntityType="EF.Pos2ClientModel.ExDiscount" />
+    <EntitySet Name="DeptStkIns" EntityType="EF.Pos2ClientModel.DeptStkIn" />
+    <EntitySet Name="Cats" EntityType="EF.Pos2ClientModel.Cat" />
+    <EntitySet Name="Promos" EntityType="EF.Pos2ClientModel.Promo" />
+    <AssociationSet Name="DeptStkOut_DeptStkOutDetSet" Association="EF.Pos2ClientModel.DeptStkOut_DeptStkOutDet">
+      <End Role="DeptStkOut" EntitySet="DeptStkOuts" />
+      <End Role="DeptStkOutDets" EntitySet="DeptStkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_StkInSet" Association="EF.Pos2ClientModel.Dept_StkIn">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="StkIns" EntitySet="StkIns" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptStkOutDetSet" Association="EF.Pos2ClientModel.Dept_DeptStkOutDet">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="DeptStkOutDets" EntitySet="DeptStkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptStkOutSet" Association="EF.Pos2ClientModel.Dept_DeptStkOut">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="DeptStkOuts" EntitySet="DeptStkOuts" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptStkOut1Set" Association="EF.Pos2ClientModel.Dept_DeptStkOut1">
+      <End Role="Dept1" EntitySet="Depts" />
+      <End Role="DeptStkOuts1" EntitySet="DeptStkOuts" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_ActiveDeptSet" Association="EF.Pos2ClientModel.Dept_ActiveDept">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="ActiveDept" EntitySet="ActiveDepts" />
+    </AssociationSet>
+    <AssociationSet Name="DeptPo_DeptPoDetSet" Association="EF.Pos2ClientModel.DeptPo_DeptPoDet">
+      <End Role="DeptPo" EntitySet="DeptPos" />
+      <End Role="DeptPoDets" EntitySet="DeptPoDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptPoSet" Association="EF.Pos2ClientModel.Dept_DeptPo">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="DeptPos" EntitySet="DeptPos" />
+    </AssociationSet>
+    <AssociationSet Name="StkDefStat_DeptStkOutSet" Association="EF.Pos2ClientModel.StkDefStat_DeptStkOut">
+      <End Role="StkDefStat" EntitySet="StkDefStats" />
+      <End Role="DeptStkOuts" EntitySet="DeptStkOuts" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_EmpSet" Association="EF.Pos2ClientModel.Dept_Emp">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="Emps" EntitySet="Emps" />
+    </AssociationSet>
+    <AssociationSet Name="EmpInfo_EmpSet" Association="EF.Pos2ClientModel.EmpInfo_Emp">
+      <End Role="EmpInfo" EntitySet="EmpInfos" />
+      <End Role="Emps" EntitySet="Emps" />
+    </AssociationSet>
+    <AssociationSet Name="StkOut_StkOutDetSet" Association="EF.Pos2ClientModel.StkOut_StkOutDet">
+      <End Role="StkOut" EntitySet="StkOuts" />
+      <End Role="StkOutDets" EntitySet="StkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_StkOutSet" Association="EF.Pos2ClientModel.Dept_StkOut">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="StkOuts" EntitySet="StkOuts" />
+    </AssociationSet>
+    <AssociationSet Name="StkDefStat_StkOutSet" Association="EF.Pos2ClientModel.StkDefStat_StkOut">
+      <End Role="StkDefStat" EntitySet="StkDefStats" />
+      <End Role="StkOuts" EntitySet="StkOuts" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_DeptPoDetSet" Association="EF.Pos2ClientModel.Prd_DeptPoDet">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="DeptPoDets" EntitySet="DeptPoDets" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_DeptStkOutDetSet" Association="EF.Pos2ClientModel.Prd_DeptStkOutDet">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="DeptStkOutDets" EntitySet="DeptStkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_DeptStkSet" Association="EF.Pos2ClientModel.Prd_DeptStk">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="DeptStks" EntitySet="DeptStks" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_StkInDetSet" Association="EF.Pos2ClientModel.Prd_StkInDet">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="StkInDets" EntitySet="StkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_StkOutDetSet" Association="EF.Pos2ClientModel.Prd_StkOutDet">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="StkOutDets" EntitySet="StkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_MnStkSet" Association="EF.Pos2ClientModel.Prd_MnStk">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="MnStks" EntitySet="MnStks" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_DeptStkInDetSet" Association="EF.Pos2ClientModel.Prd_DeptStkInDet">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="DeptStkInDets" EntitySet="DeptStkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="ExPrdColor_PrdSet" Association="EF.Pos2ClientModel.ExPrdColor_Prd">
+      <End Role="ExPrdColor" EntitySet="ExPrdColors" />
+      <End Role="Prds" EntitySet="Prds" />
+    </AssociationSet>
+    <AssociationSet Name="ExPrdSize_PrdSet" Association="EF.Pos2ClientModel.ExPrdSize_Prd">
+      <End Role="ExPrdSize" EntitySet="ExPrdSizes" />
+      <End Role="Prds" EntitySet="Prds" />
+    </AssociationSet>
+    <AssociationSet Name="Role_UsrInfoSet" Association="EF.Pos2ClientModel.Role_UsrInfo">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UsrInfos" EntitySet="UsrInfos" />
+    </AssociationSet>
+    <AssociationSet Name="Prd_MnStkHisSet" Association="EF.Pos2ClientModel.Prd_MnStkHis">
+      <End Role="Prd" EntitySet="Prds" />
+      <End Role="MnStkHis" EntitySet="MnStkHis" />
+    </AssociationSet>
+    <AssociationSet Name="BlkIn_BlkInDetSet" Association="EF.Pos2ClientModel.BlkIn_BlkInDet">
+      <End Role="BlkIn" EntitySet="BlkIns" />
+      <End Role="BlkInDets" EntitySet="BlkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_ReicptSet" Association="EF.Pos2ClientModel.Dept_Reicpt">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="Reicpts" EntitySet="Reicpts" />
+    </AssociationSet>
+    <AssociationSet Name="DeptPo_ReicptSet" Association="EF.Pos2ClientModel.DeptPo_Reicpt">
+      <End Role="DeptPo" EntitySet="DeptPos" />
+      <End Role="Reicpts" EntitySet="Reicpts" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_DeptPoDetSet" Association="EF.Pos2ClientModel.PrdMst_DeptPoDet">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="DeptPoDets" EntitySet="DeptPoDets" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_DeptStkOutDetSet" Association="EF.Pos2ClientModel.PrdMst_DeptStkOutDet">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="DeptStkOutDets" EntitySet="DeptStkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_DeptStkSet" Association="EF.Pos2ClientModel.PrdMst_DeptStk">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="DeptStks" EntitySet="DeptStks" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_StkInDetSet" Association="EF.Pos2ClientModel.PrdMst_StkInDet">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="StkInDets" EntitySet="StkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_StkOutDetSet" Association="EF.Pos2ClientModel.PrdMst_StkOutDet">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="StkOutDets" EntitySet="StkOutDets" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_MnStkSet" Association="EF.Pos2ClientModel.PrdMst_MnStk">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="MnStks" EntitySet="MnStks" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_DeptStkInDetSet" Association="EF.Pos2ClientModel.PrdMst_DeptStkInDet">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="DeptStkInDets" EntitySet="DeptStkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_MnPriceSet" Association="EF.Pos2ClientModel.PrdMst_MnPrice">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="MnPrices" EntitySet="MnPrices" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_PrdSet" Association="EF.Pos2ClientModel.PrdMst_Prd">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="Prds" EntitySet="Prds" />
+    </AssociationSet>
+    <AssociationSet Name="PrdMst_MnStkHisSet" Association="EF.Pos2ClientModel.PrdMst_MnStkHis">
+      <End Role="PrdMst" EntitySet="PrdMsts" />
+      <End Role="MnStkHis" EntitySet="MnStkHis" />
+    </AssociationSet>
+    <AssociationSet Name="PrdTyp_PrdMstSet" Association="EF.Pos2ClientModel.PrdTyp_PrdMst">
+      <End Role="PrdTyp" EntitySet="PrdTyps" />
+      <End Role="PrdMsts" EntitySet="PrdMsts" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptTimelineSet" Association="EF.Pos2ClientModel.Dept_DeptTimeline">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="DeptTimelines" EntitySet="DeptTimelines" />
+    </AssociationSet>
+    <AssociationSet Name="DeptStkIn_DeptStkInDetSet" Association="EF.Pos2ClientModel.DeptStkIn_DeptStkInDet">
+      <End Role="DeptStkIn" EntitySet="DeptStkIns" />
+      <End Role="DeptStkInDets" EntitySet="DeptStkInDets" />
+    </AssociationSet>
+    <AssociationSet Name="Dept_DeptStkInSet" Association="EF.Pos2ClientModel.Dept_DeptStkIn">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="DeptStkIns" EntitySet="DeptStkIns" />
+    </AssociationSet>
+    <AssociationSet Name="Cat_PrdMstSet" Association="EF.Pos2ClientModel.Cat_PrdMst">
+      <End Role="Cat" EntitySet="Cats" />
+      <End Role="PrdMsts" EntitySet="PrdMsts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Tran">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="12" />
+    <Property Name="StoreId" Type="String" Nullable="false" MaxLength="5" />
+    <Property Name="RegisterId" Type="String" Nullable="false" MaxLength="2" />
+    <Property Name="CashierId" Type="String" Nullable="false" MaxLength="6" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="TransactionType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SyncStatus">
+    <Key>
+      <PropertyRef Name="LastSyncDate" />
+    </Key>
+    <Property Name="LastSyncDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreateId" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptPoDet">
+    <Key>
+      <PropertyRef Name="PurchaseOrderId" />
+      <PropertyRef Name="PurchaseOrderDetailId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="PurchaseOrderDetailId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" MaxLength="20" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="PurchaseStatus" Type="Int64" />
+    <Property Name="TaxId" Type="Int64" />
+    <Property Name="PurchaseType" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="Note" Type="String" MaxLength="200" />
+    <Property Name="AdhocCase" Type="Int32" DefaultValue="0" />
+    <NavigationProperty Name="DeptPo" Relationship="EF.Pos2ClientModel.DeptPo_DeptPoDet" FromRole="DeptPoDets" ToRole="DeptPo" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_DeptPoDet" FromRole="DeptPoDets" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_DeptPoDet" FromRole="DeptPoDets" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="ContractId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ContractName" Type="String" MaxLength="500" />
+    <Property Name="ContractType" Type="Int64" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="EmployeeId" Type="String" MaxLength="20" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="SaleTran">
+    <Key>
+      <PropertyRef Name="SaleTransactionId" />
+    </Key>
+    <Property Name="SaleTransactionId" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="12" />
+    <Property Name="PosTransactionId" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="StoreId" Type="String" Nullable="false" MaxLength="5" />
+    <Property Name="RegisterId" Type="String" Nullable="false" MaxLength="2" />
+    <Property Name="CashierId" Type="String" Nullable="false" MaxLength="6" />
+    <Property Name="PurchaseOrderId" Type="String" MaxLength="15" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptPrmtn">
+    <Key>
+      <PropertyRef Name="DepartmentPromotionId" />
+    </Key>
+    <Property Name="DepartmentPromotionId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="PromotionId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="EmpWrkgDay">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="WorkingDay" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="WorkingDay" Type="DateTime" Nullable="false" />
+    <Property Name="Period" Type="Int64" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="UsrInfo">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="String" MaxLength="50" />
+    <Property Name="EmployeeId" Type="String" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="Suspended" Type="Int64" />
+    <Property Name="Deleted" Type="Int64" />
+    <NavigationProperty Name="Roles" Relationship="EF.Pos2ClientModel.Role_UsrInfo" FromRole="UsrInfos" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="StkIn">
+    <Key>
+      <PropertyRef Name="StockInId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="11" />
+    <Property Name="StockInDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="2000" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StockInCost" Type="Int64" />
+    <Property Name="StockInType" Type="Int64" />
+    <Property Name="ConfirmFlg" Type="Int64" />
+    <Property Name="TotalQuantity" Type="Int64" DefaultValue="0" />
+    <Property Name="SrcDepartmentId" Type="Int64" DefaultValue="0" />
+    <Property Name="TotalAmount" Type="Int64" DefaultValue="0" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_StkIn" FromRole="StkIns" ToRole="Dept" />
+  </EntityType>
+  <EntityType Name="DeptStkOutDet">
+    <Key>
+      <PropertyRef Name="StockOutId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="StockOutDetailId" />
+    </Key>
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="StockOutDetailId" Type="Int64" Nullable="false" />
+    <Property Name="GoodQuantity" Type="Int64" />
+    <Property Name="ErrorQuantity" Type="Int64" />
+    <Property Name="DamageQuantity" Type="Int64" />
+    <Property Name="LostQuantity" Type="Int64" />
+    <Property Name="UnconfirmQuantity" Type="Int64" />
+    <Property Name="Price" Type="Int64" DefaultValue="0" />
+    <Property Name="Amount" Type="Int64" DefaultValue="0" />
+    <NavigationProperty Name="DeptStkOut" Relationship="EF.Pos2ClientModel.DeptStkOut_DeptStkOutDet" FromRole="DeptStkOutDets" ToRole="DeptStkOut" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_DeptStkOutDet" FromRole="DeptStkOutDets" ToRole="Dept" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_DeptStkOutDet" FromRole="DeptStkOutDets" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_DeptStkOutDet" FromRole="DeptStkOutDets" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="DeptStk">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="OnStorePrice" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="GoodQuantity" Type="Int32" />
+    <Property Name="ErrorQuantity" Type="Int32" />
+    <Property Name="LostQuantity" Type="Int32" />
+    <Property Name="DamageQuantity" Type="Int32" />
+    <Property Name="UnconfirmQuantity" Type="Int32" />
+    <Property Name="Position" Type="String" MaxLength="200" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_DeptStk" FromRole="DeptStks" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_DeptStk" FromRole="DeptStks" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="DeptStkTempValid">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="CreateDate" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="OnStorePrice" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="GoodQuantity" Type="Int32" />
+    <Property Name="ErrorQuantity" Type="Int32" />
+    <Property Name="LostQuantity" Type="Int32" />
+    <Property Name="DamageQuantity" Type="Int32" />
+    <Property Name="UnconfirmQuantity" Type="Int32" />
+    <Property Name="Fixed" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StkInDet">
+    <Key>
+      <PropertyRef Name="StockInId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="11" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StockInType" Type="Int64" />
+    <Property Name="SellPrice" Type="Int64" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_StkInDet" FromRole="StkInDets" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_StkInDet" FromRole="StkInDets" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="DeptRetPo">
+    <Key>
+      <PropertyRef Name="PurchaseOrderId" />
+      <PropertyRef Name="PurchaseOrderDetailId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="CreateDate" />
+    </Key>
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="PurchaseOrderDetailId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ReturnDate" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="NextPurchaseOrderId" Type="String" MaxLength="20" />
+    <Property Name="ProductId" Type="String" MaxLength="20" />
+    <Property Name="Price" Type="Int64" />
+  </EntityType>
+  <EntityType Name="PosLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" />
+    <Property Name="Level" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="500" />
+    <Property Name="Exception" Type="String" MaxLength="2000" />
+    <Property Name="PosUser" Type="String" MaxLength="100" />
+    <Property Name="PosAction" Type="String" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ExPrdColor">
+    <Key>
+      <PropertyRef Name="ColorId" />
+    </Key>
+    <Property Name="ColorId" Type="Int32" Nullable="false" />
+    <Property Name="ColorName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="Prds" Relationship="EF.Pos2ClientModel.ExPrdColor_Prd" FromRole="ExPrdColor" ToRole="Prds" />
+  </EntityType>
+  <EntityType Name="DeptRet">
+    <Key>
+      <PropertyRef Name="DepartmentReturnId" />
+    </Key>
+    <Property Name="DepartmentReturnId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int64" />
+    <Property Name="ReturnStatus" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="TempDeptstockMaxTemp">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="GoodQty" />
+      <PropertyRef Name="PerrorQty" />
+      <PropertyRef Name="Predmg" />
+    </Key>
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="GoodQty" Type="Int32" Nullable="false" />
+    <Property Name="PerrorQty" Type="Int32" Nullable="false" />
+    <Property Name="Predmg" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeptStkHis">
+    <Key>
+      <PropertyRef Name="DepartmentStockHistoryId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentStockHistoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="String" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="Description" Type="String" MaxLength="200" />
+    <Property Name="GoodCount" Type="Int32" />
+    <Property Name="ErrorCount" Type="Int32" />
+    <Property Name="DamageCount" Type="Int32" />
+    <Property Name="LostCount" Type="Int32" />
+    <Property Name="UnconfirmCount" Type="Int32" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TempStkHis">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="GoodQty" />
+      <PropertyRef Name="PerrorQty" />
+      <PropertyRef Name="Predmg" />
+    </Key>
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="GoodQty" Type="Int32" Nullable="false" />
+    <Property Name="PerrorQty" Type="Int32" Nullable="false" />
+    <Property Name="Predmg" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpInfo">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="EmployeeName" Type="String" MaxLength="500" />
+    <Property Name="Address" Type="String" MaxLength="500" />
+    <Property Name="Birthday" Type="DateTime" />
+    <Property Name="ContractId" Type="Int64" />
+    <Property Name="Salary" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="Manager" Type="String" MaxLength="20" />
+    <Property Name="Barcode" Type="String" MaxLength="10" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="Emps" Relationship="EF.Pos2ClientModel.EmpInfo_Emp" FromRole="EmpInfo" ToRole="Emps" />
+  </EntityType>
+  <EntityType Name="PrdTyp">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="Int64" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="PrdMsts" Relationship="EF.Pos2ClientModel.PrdTyp_PrdMst" FromRole="PrdTyp" ToRole="PrdMsts" />
+  </EntityType>
+  <EntityType Name="PrdUnit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+    <Property Name="UnitName" Type="String" MaxLength="30" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="20" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="20" />
+    <Property Name="ExclusiveKey" Type="Int32" />
+    <Property Name="DelFlg" Type="Int32" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="PosTran">
+    <Key>
+      <PropertyRef Name="PosTransactionId" />
+    </Key>
+    <Property Name="PosTransactionId" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="12" />
+    <Property Name="StoreId" Type="String" Nullable="false" MaxLength="5" />
+    <Property Name="RegisterId" Type="String" Nullable="false" MaxLength="2" />
+    <Property Name="CashierId" Type="String" Nullable="false" MaxLength="6" />
+    <Property Name="AmountIn" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="AmountOut" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="DelFlg" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ReicptOutCst">
+    <Key>
+      <PropertyRef Name="ReceiptOutId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="CostType" />
+    </Key>
+    <Property Name="ReceiptOutId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="StkOutDet">
+    <Key>
+      <PropertyRef Name="StockOutDetailId" />
+      <PropertyRef Name="StockOutId" />
+    </Key>
+    <Property Name="StockOutDetailId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="GoodQuantity" Type="Int64" />
+    <Property Name="ErrorQuantity" Type="Int64" />
+    <Property Name="DamageQuantity" Type="Int64" />
+    <Property Name="LostQuantity" Type="Int64" />
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="StkOut" Relationship="EF.Pos2ClientModel.StkOut_StkOutDet" FromRole="StkOutDets" ToRole="StkOut" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_StkOutDet" FromRole="StkOutDets" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_StkOutDet" FromRole="StkOutDets" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="TempDeptstock">
+    <Key>
+      <PropertyRef Name="TypeId" />
+      <PropertyRef Name="ProductMasterId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="TypeId" Type="Int64" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="500" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductName" Type="String" MaxLength="500" />
+    <Property Name="ColorName" Type="String" MaxLength="500" />
+    <Property Name="SizeName" Type="String" MaxLength="500" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="BlkInDet">
+    <Key>
+      <PropertyRef Name="BlockId" />
+      <PropertyRef Name="BlockDetailId" />
+    </Key>
+    <Property Name="BlockId" Type="Int64" Nullable="false" />
+    <Property Name="BlockDetailId" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="DetailValue" Type="String" MaxLength="500" />
+    <Property Name="ManufactureId" Type="Int64" />
+    <Property Name="PackagerId" Type="Int64" />
+    <Property Name="CountryId" Type="Int64" />
+    <Property Name="SupplierId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StockInId" Type="Int64" />
+    <Property Name="ImportDate" Type="DateTime" />
+    <NavigationProperty Name="BlkIn" Relationship="EF.Pos2ClientModel.BlkIn_BlkInDet" FromRole="BlkInDets" ToRole="BlkIn" />
+  </EntityType>
+  <EntityType Name="SimPrd">
+    <Key>
+      <PropertyRef Name="BaseProductId" />
+      <PropertyRef Name="OtherProductId" />
+    </Key>
+    <Property Name="BaseProductId" Type="Int64" Nullable="false" />
+    <Property Name="OtherProductId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptStkOut">
+    <Key>
+      <PropertyRef Name="StockOutId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="StockOutDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="Description" Type="String" MaxLength="200" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="ConfirmFlg" Type="Int64" Nullable="false" />
+    <Property Name="DestDepartmentId" Type="Int64" DefaultValue="0" />
+    <Property Name="TotalQuantity" Type="Int64" />
+    <Property Name="TotalAmount" Type="Int64" />
+    <NavigationProperty Name="DeptStkOutDets" Relationship="EF.Pos2ClientModel.DeptStkOut_DeptStkOutDet" FromRole="DeptStkOut" ToRole="DeptStkOutDets" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_DeptStkOut" FromRole="DeptStkOuts" ToRole="Dept" />
+    <NavigationProperty Name="Dept1" Relationship="EF.Pos2ClientModel.Dept_DeptStkOut1" FromRole="DeptStkOuts1" ToRole="Dept1" />
+    <NavigationProperty Name="StkDefStat" Relationship="EF.Pos2ClientModel.StkDefStat_DeptStkOut" FromRole="DeptStkOuts" ToRole="StkDefStat" />
+  </EntityType>
+  <EntityType Name="ActiveDept">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="255" />
+    <Property Name="Active" Type="Int32" DefaultValue="0" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_ActiveDept" FromRole="ActiveDept" ToRole="Dept" />
+  </EntityType>
+  <EntityType Name="RetPrd">
+    <Key>
+      <PropertyRef Name="ReturnProductId" />
+    </Key>
+    <Property Name="ReturnProductId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Description" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="Quantity" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponId" />
+    </Key>
+    <Property Name="CouponId" Type="Int64" Nullable="false" />
+    <Property Name="CouponName" Type="String" MaxLength="500" />
+    <Property Name="CouponType" Type="Int64" />
+    <Property Name="DiscountValue" Type="Int64" />
+    <Property Name="DiscountPercent" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Dept">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="500" />
+    <Property Name="Address" Type="String" MaxLength="500" />
+    <Property Name="Active" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StartDate" Type="DateTime" />
+    <NavigationProperty Name="StkIns" Relationship="EF.Pos2ClientModel.Dept_StkIn" FromRole="Dept" ToRole="StkIns" />
+    <NavigationProperty Name="DeptStkOutDets" Relationship="EF.Pos2ClientModel.Dept_DeptStkOutDet" FromRole="Dept" ToRole="DeptStkOutDets" />
+    <NavigationProperty Name="DeptStkOuts" Relationship="EF.Pos2ClientModel.Dept_DeptStkOut" FromRole="Dept" ToRole="DeptStkOuts" />
+    <NavigationProperty Name="DeptStkOuts1" Relationship="EF.Pos2ClientModel.Dept_DeptStkOut1" FromRole="Dept1" ToRole="DeptStkOuts1" />
+    <NavigationProperty Name="ActiveDept" Relationship="EF.Pos2ClientModel.Dept_ActiveDept" FromRole="Dept" ToRole="ActiveDept" />
+    <NavigationProperty Name="DeptPos" Relationship="EF.Pos2ClientModel.Dept_DeptPo" FromRole="Dept" ToRole="DeptPos" />
+    <NavigationProperty Name="Emps" Relationship="EF.Pos2ClientModel.Dept_Emp" FromRole="Dept" ToRole="Emps" />
+    <NavigationProperty Name="StkOuts" Relationship="EF.Pos2ClientModel.Dept_StkOut" FromRole="Dept" ToRole="StkOuts" />
+    <NavigationProperty Name="Reicpts" Relationship="EF.Pos2ClientModel.Dept_Reicpt" FromRole="Dept" ToRole="Reicpts" />
+    <NavigationProperty Name="DeptTimelines" Relationship="EF.Pos2ClientModel.Dept_DeptTimeline" FromRole="Dept" ToRole="DeptTimelines" />
+    <NavigationProperty Name="DeptStkIns" Relationship="EF.Pos2ClientModel.Dept_DeptStkIn" FromRole="Dept" ToRole="DeptStkIns" />
+  </EntityType>
+  <EntityType Name="OtherTransLog">
+    <Key>
+      <PropertyRef Name="TransactionDate" />
+    </Key>
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" />
+    <Property Name="TableName" Type="Int64" Nullable="false" />
+    <Property Name="FieldName" Type="Int64" />
+    <Property Name="Action" Type="String" MaxLength="500" />
+    <Property Name="ValueBefore" Type="String" MaxLength="500" />
+    <Property Name="ValueAfter" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Gift">
+    <Key>
+      <PropertyRef Name="GiftId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="GiftId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="GiftName" Type="String" MaxLength="500" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="SupplierId" Type="Int64" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptPoDetLog">
+    <Key>
+      <PropertyRef Name="PurchaseOrderDetailLogId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="PurchaseOrderDetailLogId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="PurchaseOrderDetailId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="EmpReward">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="RewardDate" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="RewardDate" Type="DateTime" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="RewardValue" Type="Int64" />
+    <Property Name="RewardName" Type="String" MaxLength="500" />
+    <Property Name="MoneyValue" Type="Int64" />
+    <Property Name="GiftId" Type="Int64" />
+    <Property Name="GiftProductId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="StkOutTmp">
+    <Key>
+      <PropertyRef Name="StockoutId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockoutId" Type="Int64" Nullable="false" />
+    <Property Name="StockOutDate" Type="DateTime" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StockId" Type="Int64" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="ConfirmFlg" Type="Int64" />
+  </EntityType>
+  <EntityType Name="BlkInCost">
+    <Key>
+      <PropertyRef Name="BlockId" />
+      <PropertyRef Name="CostType" />
+    </Key>
+    <Property Name="BlockId" Type="Int64" Nullable="false" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="CustDet">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" />
+    <Property Name="CountryId" Type="Int64" />
+    <Property Name="Birthday" Type="DateTime" />
+    <Property Name="PassportNumber" Type="String" MaxLength="500" />
+    <Property Name="Cmnd" Type="String" MaxLength="500" />
+    <Property Name="MoneySpent" Type="Int64" />
+    <Property Name="BuyCount" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+  </EntityType>
+  <EntityType Name="DeptRetDet">
+    <Key>
+      <PropertyRef Name="DepartmentReturnId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentReturnId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Sup">
+    <Key>
+      <PropertyRef Name="SupplierId" />
+    </Key>
+    <Property Name="SupplierId" Type="Int64" Nullable="false" />
+    <Property Name="SupplierName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Ctry">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int64" Nullable="false" />
+    <Property Name="CountryName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptMng">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="WorkingDay" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="Position" Type="Int64" />
+    <Property Name="CreateId" Type="String" MaxLength="45" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="45" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="WorkingDay" Type="DateTime" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptPo">
+    <Key>
+      <PropertyRef Name="PurchaseOrderId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="PurchasePrice" Type="Int64" DefaultValue="0" />
+    <Property Name="OrderStatus" Type="Int64" DefaultValue="0" />
+    <Property Name="CustomerId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" DefaultValue="0" />
+    <Property Name="ExFld2" Type="Int64" DefaultValue="0" />
+    <Property Name="ExFld3" Type="Int64" DefaultValue="0" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="PurchaseDescription" Type="String" MaxLength="500" />
+    <Property Name="PurchaseQuantity" Type="Int64" DefaultValue="0" />
+    <NavigationProperty Name="DeptPoDets" Relationship="EF.Pos2ClientModel.DeptPo_DeptPoDet" FromRole="DeptPo" ToRole="DeptPoDets" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_DeptPo" FromRole="DeptPos" ToRole="Dept" />
+    <NavigationProperty Name="Reicpts" Relationship="EF.Pos2ClientModel.DeptPo_Reicpt" FromRole="DeptPo" ToRole="Reicpts" />
+  </EntityType>
+  <EntityType Name="EmpMoney">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="WorkingDay" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DateLogin" Type="DateTime" />
+    <Property Name="DateLogout" Type="DateTime" />
+    <Property Name="WorkingDay" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="InMoney" Type="Int64" />
+    <Property Name="OutMoney" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptCost">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="CostDate" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CostDate" Type="DateTime" Nullable="false" />
+    <Property Name="CostType" Type="Int64" />
+    <Property Name="CostName" Type="String" MaxLength="500" />
+    <Property Name="CostDescription" Type="String" MaxLength="500" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptRetCost">
+    <Key>
+      <PropertyRef Name="DepartmentReturnId" />
+      <PropertyRef Name="CostType" />
+    </Key>
+    <Property Name="DepartmentReturnId" Type="Int64" Nullable="false" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="Int64" Nullable="false" />
+    <Property Name="TaxName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptStkInHis">
+    <Key>
+      <PropertyRef Name="StockInId" />
+      <PropertyRef Name="SourceDepartmentid" />
+      <PropertyRef Name="StockOutId" />
+      <PropertyRef Name="DestDepartmentId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="SourceDepartmentid" Type="Int64" Nullable="false" />
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <Property Name="DestDepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="CashIoTran">
+    <Key>
+      <PropertyRef Name="CashInOutTransactionId" />
+    </Key>
+    <Property Name="CashInOutTransactionId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="12" />
+    <Property Name="StoreId" Type="String" Nullable="false" MaxLength="5" />
+    <Property Name="RegisterId" Type="String" Nullable="false" MaxLength="2" />
+    <Property Name="CashierId" Type="String" Nullable="false" MaxLength="6" />
+    <Property Name="Amount" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="ReasonCode" Type="Int32" />
+    <Property Name="CustomerId" Type="String" MaxLength="15" />
+    <Property Name="Comment" Type="String" MaxLength="1000" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="MnStk">
+    <Key>
+      <PropertyRef Name="StockId" />
+    </Key>
+    <Property Name="StockId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="GoodQuantity" Type="Int64" />
+    <Property Name="ErrorQuantity" Type="Int64" />
+    <Property Name="DamageQuantity" Type="Int64" />
+    <Property Name="LostQuantity" Type="Int64" />
+    <Property Name="UnconfirmQuantity" Type="Int64" />
+    <Property Name="Position" Type="String" MaxLength="200" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_MnStk" FromRole="MnStks" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_MnStk" FromRole="MnStks" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="ScheTmplate">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="ScheduleId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ScheduleId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Monday" Type="Int64" />
+    <Property Name="Tuesday" Type="Int64" />
+    <Property Name="Wednesday" Type="Int64" />
+    <Property Name="Thursday" Type="Int64" />
+    <Property Name="Friday" Type="Int64" />
+    <Property Name="Saturday" Type="Int64" />
+    <Property Name="Sunday" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+  </EntityType>
+  <EntityType Name="ReicptOut">
+    <Key>
+      <PropertyRef Name="ReceiptOutId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="ReceiptOutId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ReceiptOutName" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="StkDefStat">
+    <Key>
+      <PropertyRef Name="DefectStatusId" />
+    </Key>
+    <Property Name="DefectStatusId" Type="Int64" Nullable="false" />
+    <Property Name="DefectStatusName" Type="String" Nullable="false" MaxLength="200" />
+    <NavigationProperty Name="DeptStkOuts" Relationship="EF.Pos2ClientModel.StkDefStat_DeptStkOut" FromRole="StkDefStat" ToRole="DeptStkOuts" />
+    <NavigationProperty Name="StkOuts" Relationship="EF.Pos2ClientModel.StkDefStat_StkOut" FromRole="StkDefStat" ToRole="StkOuts" />
+  </EntityType>
+  <EntityType Name="DeptStkInDet">
+    <Key>
+      <PropertyRef Name="StockInId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="OnStorePrice" Type="Int64" />
+    <Property Name="Sold" Type="Int64" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_DeptStkInDet" FromRole="DeptStkInDets" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_DeptStkInDet" FromRole="DeptStkInDets" ToRole="PrdMst" />
+    <NavigationProperty Name="DeptStkIn" Relationship="EF.Pos2ClientModel.DeptStkIn_DeptStkInDet" FromRole="DeptStkInDets" ToRole="DeptStkIn" />
+  </EntityType>
+  <EntityType Name="ExPrdSize">
+    <Key>
+      <PropertyRef Name="SizeId" />
+    </Key>
+    <Property Name="SizeId" Type="Int32" Nullable="false" />
+    <Property Name="SizeName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="Prds" Relationship="EF.Pos2ClientModel.ExPrdSize_Prd" FromRole="ExPrdSize" ToRole="Prds" />
+  </EntityType>
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_Emp" FromRole="Emps" ToRole="Dept" />
+    <NavigationProperty Name="EmpInfo" Relationship="EF.Pos2ClientModel.EmpInfo_Emp" FromRole="Emps" ToRole="EmpInfo" />
+  </EntityType>
+  <EntityType Name="MnPrice">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="ProductMasterId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int32" />
+    <Property Name="DelFlg" Type="Int32" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="WholeSalePrice" Type="Int64" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_MnPrice" FromRole="MnPrices" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="TempDpStockout">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="Quantity" Type="Decimal" Precision="33" Scale="0" />
+  </EntityType>
+  <EntityType Name="StkOut">
+    <Key>
+      <PropertyRef Name="StockOutId" />
+    </Key>
+    <Property Name="StockOutDate" Type="DateTime" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="StockId" Type="Int64" />
+    <Property Name="DefectStatusId" Type="Int64" />
+    <Property Name="ConfirmFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="TotalQuantity" Type="Int64" DefaultValue="0" />
+    <Property Name="Description" Type="String" MaxLength="200" />
+    <Property Name="TotalAmount" Type="Int64" DefaultValue="0" />
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="StkOutDets" Relationship="EF.Pos2ClientModel.StkOut_StkOutDet" FromRole="StkOut" ToRole="StkOutDets" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_StkOut" FromRole="StkOuts" ToRole="Dept" />
+    <NavigationProperty Name="StkDefStat" Relationship="EF.Pos2ClientModel.StkDefStat_StkOut" FromRole="StkOuts" ToRole="StkDefStat" />
+  </EntityType>
+  <EntityType Name="TempPr">
+    <Key>
+      <PropertyRef Name="TypeId" />
+      <PropertyRef Name="ProductMasterId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="TypeId" Type="Int64" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="500" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductName" Type="String" MaxLength="500" />
+    <Property Name="ColorName" Type="String" MaxLength="500" />
+    <Property Name="SizeName" Type="String" MaxLength="500" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeptPoPromo">
+    <Key>
+      <PropertyRef Name="PurchaseOrderId" />
+      <PropertyRef Name="PurchaseOrderDetailId" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="PurchaseOrderDetailId" Type="Int64" Nullable="false" />
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="GiftDepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentPromotionId" Type="Int64" />
+    <Property Name="GiftId" Type="Int64" />
+    <Property Name="GiftProductId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Cust">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int64" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="500" />
+    <Property Name="MoneySpent" Type="Int64" />
+    <Property Name="BuyCount" Type="Int64" />
+    <Property Name="NearestCome1" Type="DateTime" />
+    <Property Name="NearestCome2" Type="DateTime" />
+    <Property Name="NearestCome3" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="CouponTyp">
+    <Key>
+      <PropertyRef Name="CouponTypeId" />
+    </Key>
+    <Property Name="CouponTypeId" Type="Int64" Nullable="false" />
+    <Property Name="CouponTypeName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptPoLog">
+    <Key>
+      <PropertyRef Name="PurchaseOrderLogId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="PurchaseOrderLogId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptStkTempValidSave">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="CreateDate" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="OnStorePrice" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="GoodQuantity" Type="Int64" />
+    <Property Name="ErrorQuantity" Type="Int64" />
+    <Property Name="LostQuantity" Type="Int64" />
+    <Property Name="DamageQuantity" Type="Int64" />
+    <Property Name="UnconfirmQuantity" Type="Int64" />
+    <Property Name="Fixed" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prd">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" MaxLength="13" />
+    <Property Name="BlockId" Type="Int64" />
+    <Property Name="BlockDetailId" Type="String" MaxLength="10" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="TaxId" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="Barcode" Type="String" MaxLength="20" />
+    <Property Name="AdhocCase" Type="Int32" DefaultValue="0" />
+    <NavigationProperty Name="DeptPoDets" Relationship="EF.Pos2ClientModel.Prd_DeptPoDet" FromRole="Prd" ToRole="DeptPoDets" />
+    <NavigationProperty Name="DeptStkOutDets" Relationship="EF.Pos2ClientModel.Prd_DeptStkOutDet" FromRole="Prd" ToRole="DeptStkOutDets" />
+    <NavigationProperty Name="DeptStks" Relationship="EF.Pos2ClientModel.Prd_DeptStk" FromRole="Prd" ToRole="DeptStks" />
+    <NavigationProperty Name="StkInDets" Relationship="EF.Pos2ClientModel.Prd_StkInDet" FromRole="Prd" ToRole="StkInDets" />
+    <NavigationProperty Name="StkOutDets" Relationship="EF.Pos2ClientModel.Prd_StkOutDet" FromRole="Prd" ToRole="StkOutDets" />
+    <NavigationProperty Name="MnStks" Relationship="EF.Pos2ClientModel.Prd_MnStk" FromRole="Prd" ToRole="MnStks" />
+    <NavigationProperty Name="DeptStkInDets" Relationship="EF.Pos2ClientModel.Prd_DeptStkInDet" FromRole="Prd" ToRole="DeptStkInDets" />
+    <NavigationProperty Name="ExPrdColor" Relationship="EF.Pos2ClientModel.ExPrdColor_Prd" FromRole="Prds" ToRole="ExPrdColor" />
+    <NavigationProperty Name="ExPrdSize" Relationship="EF.Pos2ClientModel.ExPrdSize_Prd" FromRole="Prds" ToRole="ExPrdSize" />
+    <NavigationProperty Name="MnStkHis" Relationship="EF.Pos2ClientModel.Prd_MnStkHis" FromRole="Prd" ToRole="MnStkHis" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_Prd" FromRole="Prds" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" />
+    <NavigationProperty Name="UsrInfos" Relationship="EF.Pos2ClientModel.Role_UsrInfo" FromRole="Roles" ToRole="UsrInfos" />
+  </EntityType>
+  <EntityType Name="Pkgr">
+    <Key>
+      <PropertyRef Name="PackagerId" />
+    </Key>
+    <Property Name="PackagerId" Type="Int64" Nullable="false" />
+    <Property Name="PackagerName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptStkInCst">
+    <Key>
+      <PropertyRef Name="StockInId" />
+      <PropertyRef Name="CostType" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="RetBlkIn">
+    <Key>
+      <PropertyRef Name="BlockInId" />
+      <PropertyRef Name="BlockDetailId" />
+    </Key>
+    <Property Name="BlockInId" Type="Int64" Nullable="false" />
+    <Property Name="BlockDetailId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="StkOutCst">
+    <Key>
+      <PropertyRef Name="StockOutId" />
+      <PropertyRef Name="CostType" />
+    </Key>
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="StockoutId" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="RetTran">
+    <Key>
+      <PropertyRef Name="ReturnTransactionId" />
+    </Key>
+    <Property Name="ReturnTransactionId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="12" />
+    <Property Name="PosTransactionId" Type="String" Nullable="false" MaxLength="10" />
+    <Property Name="StoreId" Type="String" Nullable="false" MaxLength="5" />
+    <Property Name="RegisterId" Type="String" Nullable="false" MaxLength="2" />
+    <Property Name="CashierId" Type="String" Nullable="false" MaxLength="6" />
+    <Property Name="CustomerId" Type="String" MaxLength="15" />
+    <Property Name="PurchaseOrderId" Type="String" MaxLength="15" />
+    <Property Name="ReturnId" Type="String" MaxLength="15" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Distbtor">
+    <Key>
+      <PropertyRef Name="DistributorId" />
+    </Key>
+    <Property Name="DistributorId" Type="Int64" Nullable="false" />
+    <Property Name="DistributorName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="MnStkHis">
+    <Key>
+      <PropertyRef Name="StockHistoryId" />
+    </Key>
+    <Property Name="StockHistoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="Quantity" Type="Int64" Nullable="false" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="StockId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" />
+    <Property Name="GoodCount" Type="Int64" />
+    <Property Name="ErrorCount" Type="Int64" />
+    <Property Name="DamageCount" Type="Int64" />
+    <Property Name="LostCount" Type="Int64" />
+    <Property Name="UnconfirmCount" Type="Int64" />
+    <NavigationProperty Name="Prd" Relationship="EF.Pos2ClientModel.Prd_MnStkHis" FromRole="MnStkHis" ToRole="Prd" />
+    <NavigationProperty Name="PrdMst" Relationship="EF.Pos2ClientModel.PrdMst_MnStkHis" FromRole="MnStkHis" ToRole="PrdMst" />
+  </EntityType>
+  <EntityType Name="BlkIn">
+    <Key>
+      <PropertyRef Name="BlockId" />
+    </Key>
+    <Property Name="BlockId" Type="Int64" Nullable="false" />
+    <Property Name="BlockName" Type="String" MaxLength="500" />
+    <Property Name="ImportDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="BlkInDets" Relationship="EF.Pos2ClientModel.BlkIn_BlkInDet" FromRole="BlkIn" ToRole="BlkInDets" />
+  </EntityType>
+  <EntityType Name="Reicpt">
+    <Key>
+      <PropertyRef Name="ReceiptId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="ReceiptId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="PurchaseOrderId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ReceiptName" Type="String" MaxLength="500" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_Reicpt" FromRole="Reicpts" ToRole="Dept" />
+    <NavigationProperty Name="DeptPo" Relationship="EF.Pos2ClientModel.DeptPo_Reicpt" FromRole="Reicpts" ToRole="DeptPo" />
+  </EntityType>
+  <EntityType Name="PrdMst">
+    <Key>
+      <PropertyRef Name="ProductMasterId" />
+    </Key>
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="ProductName" Type="String" MaxLength="500" />
+    <Property Name="Description" Type="String" MaxLength="500" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" />
+    <Property Name="CategoryId" Type="Int64" />
+    <Property Name="CountryId" Type="Int64" />
+    <Property Name="UnitId" Type="Int64" />
+    <Property Name="TypeId" Type="Int64" />
+    <Property Name="ManufacturerId" Type="Int64" />
+    <Property Name="SupplierId" Type="Int64" />
+    <Property Name="PackagerId" Type="Int64" />
+    <Property Name="DistributorId" Type="Int64" />
+    <Property Name="Barcode" Type="String" MaxLength="13" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int32" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="DeptPoDets" Relationship="EF.Pos2ClientModel.PrdMst_DeptPoDet" FromRole="PrdMst" ToRole="DeptPoDets" />
+    <NavigationProperty Name="DeptStkOutDets" Relationship="EF.Pos2ClientModel.PrdMst_DeptStkOutDet" FromRole="PrdMst" ToRole="DeptStkOutDets" />
+    <NavigationProperty Name="DeptStks" Relationship="EF.Pos2ClientModel.PrdMst_DeptStk" FromRole="PrdMst" ToRole="DeptStks" />
+    <NavigationProperty Name="StkInDets" Relationship="EF.Pos2ClientModel.PrdMst_StkInDet" FromRole="PrdMst" ToRole="StkInDets" />
+    <NavigationProperty Name="StkOutDets" Relationship="EF.Pos2ClientModel.PrdMst_StkOutDet" FromRole="PrdMst" ToRole="StkOutDets" />
+    <NavigationProperty Name="MnStks" Relationship="EF.Pos2ClientModel.PrdMst_MnStk" FromRole="PrdMst" ToRole="MnStks" />
+    <NavigationProperty Name="DeptStkInDets" Relationship="EF.Pos2ClientModel.PrdMst_DeptStkInDet" FromRole="PrdMst" ToRole="DeptStkInDets" />
+    <NavigationProperty Name="MnPrices" Relationship="EF.Pos2ClientModel.PrdMst_MnPrice" FromRole="PrdMst" ToRole="MnPrices" />
+    <NavigationProperty Name="Prds" Relationship="EF.Pos2ClientModel.PrdMst_Prd" FromRole="PrdMst" ToRole="Prds" />
+    <NavigationProperty Name="MnStkHis" Relationship="EF.Pos2ClientModel.PrdMst_MnStkHis" FromRole="PrdMst" ToRole="MnStkHis" />
+    <NavigationProperty Name="PrdTyp" Relationship="EF.Pos2ClientModel.PrdTyp_PrdMst" FromRole="PrdMsts" ToRole="PrdTyp" />
+    <NavigationProperty Name="Cat" Relationship="EF.Pos2ClientModel.Cat_PrdMst" FromRole="PrdMsts" ToRole="Cat" />
+  </EntityType>
+  <EntityType Name="EmpDayoff">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="DayoffTime" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="EmployeeId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="DayoffTime" Type="DateTime" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DeptTimeline">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+      <PropertyRef Name="Period" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Period" Type="Int64" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" />
+    <Property Name="EndTime" Type="DateTime" />
+    <Property Name="WorkingDay" Type="DateTime" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="45" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="45" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_DeptTimeline" FromRole="DeptTimelines" ToRole="Dept" />
+  </EntityType>
+  <EntityType Name="TempProduct">
+    <Key>
+      <PropertyRef Name="TypeId" />
+      <PropertyRef Name="ProductMasterId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="TypeId" Type="Int64" Nullable="false" />
+    <Property Name="TypeName" Type="String" MaxLength="500" />
+    <Property Name="ProductMasterId" Type="String" Nullable="false" MaxLength="13" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductName" Type="String" MaxLength="500" />
+    <Property Name="ColorName" Type="String" MaxLength="500" />
+    <Property Name="SizeName" Type="String" MaxLength="500" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="DeptStkOutCst">
+    <Key>
+      <PropertyRef Name="StockOutId" />
+      <PropertyRef Name="CostType" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockOutId" Type="Int64" Nullable="false" />
+    <Property Name="CostType" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="Cost" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="PblshCpn">
+    <Key>
+      <PropertyRef Name="CouponId" />
+      <PropertyRef Name="PublishedCouponId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="CouponId" Type="Int64" Nullable="false" />
+    <Property Name="PublishedCouponId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="TempDeptStockStatistic">
+    <Key>
+      <PropertyRef Name="TempPriKey" />
+    </Key>
+    <Property Name="DepartmentName" Type="String" MaxLength="500" />
+    <Property Name="TypeName" Type="String" MaxLength="500" />
+    <Property Name="ProductId" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="ProductName" Type="String" MaxLength="500" />
+    <Property Name="ColorName" Type="String" MaxLength="500" />
+    <Property Name="SizeName" Type="String" MaxLength="500" />
+    <Property Name="PrestkQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="InstockQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ErrorQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DmgQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="StkoutQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TmpoutQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="RtnQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DestroyQty" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Bkpro" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="Realstock" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TempPriKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Mnftr">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="Int64" Nullable="false" />
+    <Property Name="ManufacturerName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ExDiscount">
+    <Key>
+      <PropertyRef Name="DiscountType" />
+    </Key>
+    <Property Name="DiscountType" Type="Int64" Nullable="false" />
+    <Property Name="DiscountName" Type="String" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DeptStkIn">
+    <Key>
+      <PropertyRef Name="StockInId" />
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="StockInId" Type="String" Nullable="false" MaxLength="15" />
+    <Property Name="DepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="StockInDate" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="2000" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <Property Name="ExportStatus" Type="Int64" />
+    <Property Name="StockInCost" Type="Int64" />
+    <Property Name="StockInType" Type="Int64" />
+    <Property Name="SrcDepartmentId" Type="Int64" DefaultValue="0" />
+    <Property Name="TotalQuantity" Type="Int64" DefaultValue="0" />
+    <Property Name="TotalAmount" Type="Int64" DefaultValue="0" />
+    <NavigationProperty Name="DeptStkInDets" Relationship="EF.Pos2ClientModel.DeptStkIn_DeptStkInDet" FromRole="DeptStkIn" ToRole="DeptStkInDets" />
+    <NavigationProperty Name="Dept" Relationship="EF.Pos2ClientModel.Dept_DeptStkIn" FromRole="DeptStkIns" ToRole="Dept" />
+  </EntityType>
+  <EntityType Name="Cat">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int64" Nullable="false" />
+    <Property Name="ParentCategoryId" Type="Int64" />
+    <Property Name="CategoryName" Type="String" MaxLength="500" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int32" />
+    <Property Name="ExFld2" Type="Int32" />
+    <Property Name="ExFld3" Type="Int32" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+    <NavigationProperty Name="PrdMsts" Relationship="EF.Pos2ClientModel.Cat_PrdMst" FromRole="Cat" ToRole="PrdMsts" />
+  </EntityType>
+  <EntityType Name="Promo">
+    <Key>
+      <PropertyRef Name="PromotionId" />
+    </Key>
+    <Property Name="PromotionId" Type="Int64" Nullable="false" />
+    <Property Name="PromotionName" Type="String" MaxLength="500" />
+    <Property Name="DiscountPrice" Type="Int64" />
+    <Property Name="DiscountPercent" Type="Int64" />
+    <Property Name="PromotionType" Type="Int64" />
+    <Property Name="GiftProductId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="CreateId" Type="String" MaxLength="50" />
+    <Property Name="UpdateDate" Type="DateTime" />
+    <Property Name="UpdateId" Type="String" MaxLength="50" />
+    <Property Name="ExclusiveKey" Type="Int64" />
+    <Property Name="DelFlg" Type="Int64" />
+    <Property Name="ExFld1" Type="Int64" />
+    <Property Name="ExFld2" Type="Int64" />
+    <Property Name="ExFld3" Type="Int64" />
+    <Property Name="ExFld4" Type="String" MaxLength="45" />
+    <Property Name="ExFld5" Type="String" MaxLength="45" />
+  </EntityType>
+  <Association Name="DeptStkOut_DeptStkOutDet">
+    <End Role="DeptStkOut" Type="EF.Pos2ClientModel.DeptStkOut" Multiplicity="1" />
+    <End Role="DeptStkOutDets" Type="EF.Pos2ClientModel.DeptStkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeptStkOut">
+        <PropertyRef Name="StockOutId" />
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkOutDets">
+        <PropertyRef Name="StockOutId" />
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_StkIn">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="0..1" />
+    <End Role="StkIns" Type="EF.Pos2ClientModel.StkIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="StkIns">
+        <PropertyRef Name="SrcDepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptStkOutDet">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="DeptStkOutDets" Type="EF.Pos2ClientModel.DeptStkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkOutDets">
+        <PropertyRef Name="StockOutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptStkOut">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="DeptStkOuts" Type="EF.Pos2ClientModel.DeptStkOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkOuts">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptStkOut1">
+    <End Role="Dept1" Type="EF.Pos2ClientModel.Dept" Multiplicity="0..1" />
+    <End Role="DeptStkOuts1" Type="EF.Pos2ClientModel.DeptStkOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept1">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkOuts1">
+        <PropertyRef Name="DestDepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_ActiveDept">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="ActiveDept" Type="EF.Pos2ClientModel.ActiveDept" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="ActiveDept">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeptPo_DeptPoDet">
+    <End Role="DeptPo" Type="EF.Pos2ClientModel.DeptPo" Multiplicity="1" />
+    <End Role="DeptPoDets" Type="EF.Pos2ClientModel.DeptPoDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeptPo">
+        <PropertyRef Name="PurchaseOrderId" />
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptPoDets">
+        <PropertyRef Name="PurchaseOrderId" />
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptPo">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="DeptPos" Type="EF.Pos2ClientModel.DeptPo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptPos">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StkDefStat_DeptStkOut">
+    <End Role="StkDefStat" Type="EF.Pos2ClientModel.StkDefStat" Multiplicity="0..1" />
+    <End Role="DeptStkOuts" Type="EF.Pos2ClientModel.DeptStkOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StkDefStat">
+        <PropertyRef Name="DefectStatusId" />
+      </Principal>
+      <Dependent Role="DeptStkOuts">
+        <PropertyRef Name="DefectStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_Emp">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="Emps" Type="EF.Pos2ClientModel.Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="Emps">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpInfo_Emp">
+    <End Role="EmpInfo" Type="EF.Pos2ClientModel.EmpInfo" Multiplicity="1" />
+    <End Role="Emps" Type="EF.Pos2ClientModel.Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmpInfo">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Emps">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StkOut_StkOutDet">
+    <End Role="StkOut" Type="EF.Pos2ClientModel.StkOut" Multiplicity="1" />
+    <End Role="StkOutDets" Type="EF.Pos2ClientModel.StkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StkOut">
+        <PropertyRef Name="StockOutId" />
+      </Principal>
+      <Dependent Role="StkOutDets">
+        <PropertyRef Name="StockOutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_StkOut">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="StkOuts" Type="EF.Pos2ClientModel.StkOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="StkOuts">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StkDefStat_StkOut">
+    <End Role="StkDefStat" Type="EF.Pos2ClientModel.StkDefStat" Multiplicity="0..1" />
+    <End Role="StkOuts" Type="EF.Pos2ClientModel.StkOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StkDefStat">
+        <PropertyRef Name="DefectStatusId" />
+      </Principal>
+      <Dependent Role="StkOuts">
+        <PropertyRef Name="DefectStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_DeptPoDet">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="0..1" />
+    <End Role="DeptPoDets" Type="EF.Pos2ClientModel.DeptPoDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="DeptPoDets">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_DeptStkOutDet">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="DeptStkOutDets" Type="EF.Pos2ClientModel.DeptStkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="DeptStkOutDets">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_DeptStk">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="DeptStks" Type="EF.Pos2ClientModel.DeptStk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="DeptStks">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_StkInDet">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="StkInDets" Type="EF.Pos2ClientModel.StkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="StkInDets">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_StkOutDet">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="StkOutDets" Type="EF.Pos2ClientModel.StkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="StkOutDets">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_MnStk">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="MnStks" Type="EF.Pos2ClientModel.MnStk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="MnStks">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prd_DeptStkInDet">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="DeptStkInDets" Type="EF.Pos2ClientModel.DeptStkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="DeptStkInDets">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ExPrdColor_Prd">
+    <End Role="ExPrdColor" Type="EF.Pos2ClientModel.ExPrdColor" Multiplicity="0..1" />
+    <End Role="Prds" Type="EF.Pos2ClientModel.Prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExPrdColor">
+        <PropertyRef Name="ColorId" />
+      </Principal>
+      <Dependent Role="Prds">
+        <PropertyRef Name="ExFld1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ExPrdSize_Prd">
+    <End Role="ExPrdSize" Type="EF.Pos2ClientModel.ExPrdSize" Multiplicity="0..1" />
+    <End Role="Prds" Type="EF.Pos2ClientModel.Prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExPrdSize">
+        <PropertyRef Name="SizeId" />
+      </Principal>
+      <Dependent Role="Prds">
+        <PropertyRef Name="ExFld2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Role_UsrInfo">
+    <End Role="Roles" Type="EF.Pos2ClientModel.Role" Multiplicity="*" />
+    <End Role="UsrInfos" Type="EF.Pos2ClientModel.UsrInfo" Multiplicity="*" />
+  </Association>
+  <Association Name="Prd_MnStkHis">
+    <End Role="Prd" Type="EF.Pos2ClientModel.Prd" Multiplicity="1" />
+    <End Role="MnStkHis" Type="EF.Pos2ClientModel.MnStkHis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prd">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="MnStkHis">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BlkIn_BlkInDet">
+    <End Role="BlkIn" Type="EF.Pos2ClientModel.BlkIn" Multiplicity="1" />
+    <End Role="BlkInDets" Type="EF.Pos2ClientModel.BlkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlkIn">
+        <PropertyRef Name="BlockId" />
+      </Principal>
+      <Dependent Role="BlkInDets">
+        <PropertyRef Name="BlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_Reicpt">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="Reicpts" Type="EF.Pos2ClientModel.Reicpt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="Reicpts">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeptPo_Reicpt">
+    <End Role="DeptPo" Type="EF.Pos2ClientModel.DeptPo" Multiplicity="1" />
+    <End Role="Reicpts" Type="EF.Pos2ClientModel.Reicpt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeptPo">
+        <PropertyRef Name="PurchaseOrderId" />
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="Reicpts">
+        <PropertyRef Name="PurchaseOrderId" />
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_DeptPoDet">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="1" />
+    <End Role="DeptPoDets" Type="EF.Pos2ClientModel.DeptPoDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="DeptPoDets">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_DeptStkOutDet">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="DeptStkOutDets" Type="EF.Pos2ClientModel.DeptStkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="DeptStkOutDets">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_DeptStk">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="DeptStks" Type="EF.Pos2ClientModel.DeptStk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="DeptStks">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_StkInDet">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="StkInDets" Type="EF.Pos2ClientModel.StkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="StkInDets">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_StkOutDet">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="StkOutDets" Type="EF.Pos2ClientModel.StkOutDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="StkOutDets">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_MnStk">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="MnStks" Type="EF.Pos2ClientModel.MnStk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="MnStks">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_DeptStkInDet">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="DeptStkInDets" Type="EF.Pos2ClientModel.DeptStkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="DeptStkInDets">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_MnPrice">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="1" />
+    <End Role="MnPrices" Type="EF.Pos2ClientModel.MnPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="MnPrices">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_Prd">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="0..1" />
+    <End Role="Prds" Type="EF.Pos2ClientModel.Prd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="Prds">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdMst_MnStkHis">
+    <End Role="PrdMst" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="1" />
+    <End Role="MnStkHis" Type="EF.Pos2ClientModel.MnStkHis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdMst">
+        <PropertyRef Name="ProductMasterId" />
+      </Principal>
+      <Dependent Role="MnStkHis">
+        <PropertyRef Name="ProductMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrdTyp_PrdMst">
+    <End Role="PrdTyp" Type="EF.Pos2ClientModel.PrdTyp" Multiplicity="0..1" />
+    <End Role="PrdMsts" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrdTyp">
+        <PropertyRef Name="TypeId" />
+      </Principal>
+      <Dependent Role="PrdMsts">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptTimeline">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="DeptTimelines" Type="EF.Pos2ClientModel.DeptTimeline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptTimelines">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeptStkIn_DeptStkInDet">
+    <End Role="DeptStkIn" Type="EF.Pos2ClientModel.DeptStkIn" Multiplicity="1" />
+    <End Role="DeptStkInDets" Type="EF.Pos2ClientModel.DeptStkInDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeptStkIn">
+        <PropertyRef Name="StockInId" />
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkInDets">
+        <PropertyRef Name="StockInId" />
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dept_DeptStkIn">
+    <End Role="Dept" Type="EF.Pos2ClientModel.Dept" Multiplicity="1" />
+    <End Role="DeptStkIns" Type="EF.Pos2ClientModel.DeptStkIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DeptStkIns">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Cat_PrdMst">
+    <End Role="Cat" Type="EF.Pos2ClientModel.Cat" Multiplicity="0..1" />
+    <End Role="PrdMsts" Type="EF.Pos2ClientModel.PrdMst" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cat">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="PrdMsts">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,21 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PosServerEntitiesStoreContainer" CdmEntityContainer="PosServerEntities">
-    <EntitySetMapping Name="ActiveDepts">
-      <EntityTypeMapping TypeName="PosServerModels.ActiveDept">
-        <MappingFragment StoreEntitySet="CRL_ACTIVE_DEPTs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="DepartmentName" ColumnName="DEPARTMENT_NAME" />
-          <ScalarProperty Name="Active" ColumnName="ACTIVE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BlkIns">
-      <EntityTypeMapping TypeName="PosServerModels.BlkIn">
-        <MappingFragment StoreEntitySet="CRL_BLK_INs">
-          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
-          <ScalarProperty Name="BlockName" ColumnName="BLOCK_NAME" />
-          <ScalarProperty Name="ImportDate" ColumnName="IMPORT_DATE" />
+  <EntityContainerMapping StorageEntityContainer="Pos2EntitiesStoreContainer" CdmEntityContainer="Pos2ClientEntities">
+    <EntitySetMapping Name="Trans">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Tran">
+        <MappingFragment StoreEntitySet="crl_trans">
+          <ScalarProperty Name="TransactionId" ColumnName="Transaction_Id" />
+          <ScalarProperty Name="StoreId" ColumnName="Store_Id" />
+          <ScalarProperty Name="RegisterId" ColumnName="Register_Id" />
+          <ScalarProperty Name="CashierId" ColumnName="Cashier_Id" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -27,323 +19,21 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="TransactionType" ColumnName="Transaction_Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BlkInCosts">
-      <EntityTypeMapping TypeName="PosServerModels.BlkInCost">
-        <MappingFragment StoreEntitySet="CRL_BLK_IN_COSTs">
-          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+    <EntitySetMapping Name="SyncStatus">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.SyncStatus">
+        <MappingFragment StoreEntitySet="crl_sync_status">
+          <ScalarProperty Name="LastSyncDate" ColumnName="LAST_SYNC_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BlkInDets">
-      <EntityTypeMapping TypeName="PosServerModels.BlkInDet">
-        <MappingFragment StoreEntitySet="CRL_BLK_IN_DETs">
-          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
-          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
-          <ScalarProperty Name="DetailValue" ColumnName="DETAIL_VALUE" />
-          <ScalarProperty Name="ManufactureId" ColumnName="MANUFACTURE_ID" />
-          <ScalarProperty Name="PackagerId" ColumnName="PACKAGER_ID" />
-          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
-          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="ImportDate" ColumnName="IMPORT_DATE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CashIoTrans">
-      <EntityTypeMapping TypeName="PosServerModels.CashIoTran">
-        <MappingFragment StoreEntitySet="CRL_CASH_IO_TRANS">
-          <ScalarProperty Name="CashInOutTransactionId" ColumnName="CASH_IN_OUT_TRANSACTION_ID" />
-          <ScalarProperty Name="TransactionId" ColumnName="TRANSACTION_ID" />
-          <ScalarProperty Name="StoreId" ColumnName="STORE_ID" />
-          <ScalarProperty Name="RegisterId" ColumnName="REGISTER_ID" />
-          <ScalarProperty Name="CashierId" ColumnName="CASHIER_ID" />
-          <ScalarProperty Name="Amount" ColumnName="AMOUNT" />
-          <ScalarProperty Name="ReasonCode" ColumnName="REASON_CODE" />
-          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
-          <ScalarProperty Name="Comment" ColumnName="COMMENT_" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cats">
-      <EntityTypeMapping TypeName="PosServerModels.Cat">
-        <MappingFragment StoreEntitySet="CRL_CATs">
-          <ScalarProperty Name="CategoryId" ColumnName="CATEGORY_ID" />
-          <ScalarProperty Name="ParentCategoryId" ColumnName="PARENT_CATEGORY_ID" />
-          <ScalarProperty Name="CategoryName" ColumnName="CATEGORY_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Contracts">
-      <EntityTypeMapping TypeName="PosServerModels.Contract">
-        <MappingFragment StoreEntitySet="CRL_CONTRACTs">
-          <ScalarProperty Name="ContractId" ColumnName="CONTRACT_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ContractName" ColumnName="CONTRACT_NAME" />
-          <ScalarProperty Name="ContractType" ColumnName="CONTRACT_TYPE" />
-          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
-          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Coupons">
-      <EntityTypeMapping TypeName="PosServerModels.Coupon">
-        <MappingFragment StoreEntitySet="CRL_COUPONs">
-          <ScalarProperty Name="CouponId" ColumnName="COUPON_ID" />
-          <ScalarProperty Name="CouponName" ColumnName="COUPON_NAME" />
-          <ScalarProperty Name="CouponType" ColumnName="COUPON_TYPE" />
-          <ScalarProperty Name="DiscountValue" ColumnName="DISCOUNT_VALUE" />
-          <ScalarProperty Name="DiscountPercent" ColumnName="DISCOUNT_PERCENT" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CouponTyps">
-      <EntityTypeMapping TypeName="PosServerModels.CouponTyp">
-        <MappingFragment StoreEntitySet="CRL_COUPON_TYPs">
-          <ScalarProperty Name="CouponTypeId" ColumnName="COUPON_TYPE_ID" />
-          <ScalarProperty Name="CouponTypeName" ColumnName="COUPON_TYPE_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ctries">
-      <EntityTypeMapping TypeName="PosServerModels.Ctry">
-        <MappingFragment StoreEntitySet="CRL_CTRies">
-          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
-          <ScalarProperty Name="CountryName" ColumnName="COUNTRY_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Custs">
-      <EntityTypeMapping TypeName="PosServerModels.Cust">
-        <MappingFragment StoreEntitySet="CRL_CUSTs">
-          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
-          <ScalarProperty Name="CustomerName" ColumnName="CUSTOMER_NAME" />
-          <ScalarProperty Name="MoneySpent" ColumnName="MONEY_SPENT" />
-          <ScalarProperty Name="BuyCount" ColumnName="BUY_COUNT" />
-          <ScalarProperty Name="NearestCome1" ColumnName="NEAREST_COME_1" />
-          <ScalarProperty Name="NearestCome2" ColumnName="NEAREST_COME_2" />
-          <ScalarProperty Name="NearestCome3" ColumnName="NEAREST_COME_3" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CustDets">
-      <EntityTypeMapping TypeName="PosServerModels.CustDet">
-        <MappingFragment StoreEntitySet="CRL_CUST_DETs">
-          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
-          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
-          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
-          <ScalarProperty Name="Birthday" ColumnName="BIRTHDAY" />
-          <ScalarProperty Name="PassportNumber" ColumnName="PASSPORT_NUMBER" />
-          <ScalarProperty Name="Cmnd" ColumnName="CMND" />
-          <ScalarProperty Name="MoneySpent" ColumnName="MONEY_SPENT" />
-          <ScalarProperty Name="BuyCount" ColumnName="BUY_COUNT" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Depts">
-      <EntityTypeMapping TypeName="PosServerModels.Dept">
-        <MappingFragment StoreEntitySet="CRL_DEPTs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="DepartmentName" ColumnName="DEPARTMENT_NAME" />
-          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
-          <ScalarProperty Name="Active" ColumnName="ACTIVE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptCosts">
-      <EntityTypeMapping TypeName="PosServerModels.DeptCost">
-        <MappingFragment StoreEntitySet="CRL_DEPT_COSTs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="CostDate" ColumnName="COST_DATE" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="CostName" ColumnName="COST_NAME" />
-          <ScalarProperty Name="CostDescription" ColumnName="COST_DESCRIPTION" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptMngs">
-      <EntityTypeMapping TypeName="PosServerModels.DeptMng">
-        <MappingFragment StoreEntitySet="CRL_DEPT_MNGs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="Position" ColumnName="POSITION" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
-          <ScalarProperty Name="StartTime" ColumnName="START_TIME" />
-          <ScalarProperty Name="EndTime" ColumnName="END_TIME" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptPos">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPo">
-        <MappingFragment StoreEntitySet="CRL_DEPT_POs">
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="PurchasePrice" ColumnName="PURCHASE_PRICE" />
-          <ScalarProperty Name="OrderStatus" ColumnName="ORDER_STATUS" />
-          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="PurchaseDescription" ColumnName="PURCHASE_DESCRIPTION" />
-          <ScalarProperty Name="PurchaseQuantity" ColumnName="PURCHASE_QUANTITY" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DeptPoDets">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPoDet">
-        <MappingFragment StoreEntitySet="CRL_DEPT_PO_DETs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPoDet">
+        <MappingFragment StoreEntitySet="crl_dept_po_dets">
           <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
           <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
@@ -370,12 +60,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptPoDetLogs">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPoDetLog">
-        <MappingFragment StoreEntitySet="CRL_DEPT_PO_DET_LOGs">
-          <ScalarProperty Name="PurchaseOrderDetailLogId" ColumnName="PURCHASE_ORDER_DETAIL_LOG_ID" />
+    <EntitySetMapping Name="Contracts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Contract">
+        <MappingFragment StoreEntitySet="crl_contracts">
+          <ScalarProperty Name="ContractId" ColumnName="CONTRACT_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
+          <ScalarProperty Name="ContractName" ColumnName="CONTRACT_NAME" />
+          <ScalarProperty Name="ContractType" ColumnName="CONTRACT_TYPE" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -390,37 +84,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptPoLogs">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPoLog">
-        <MappingFragment StoreEntitySet="CRL_DEPT_PO_LOGs">
-          <ScalarProperty Name="PurchaseOrderLogId" ColumnName="PURCHASE_ORDER_LOG_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptPoPromos">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPoPromo">
-        <MappingFragment StoreEntitySet="CRL_DEPT_PO_PROMOs">
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
-          <ScalarProperty Name="Id" ColumnName="ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="GiftDepartmentId" ColumnName="GIFT_DEPARTMENT_ID" />
-          <ScalarProperty Name="DepartmentPromotionId" ColumnName="DEPARTMENT_PROMOTION_ID" />
-          <ScalarProperty Name="GiftId" ColumnName="GIFT_ID" />
-          <ScalarProperty Name="GiftProductId" ColumnName="GIFT_PRODUCT_ID" />
+    <EntitySetMapping Name="SaleTrans">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.SaleTran">
+        <MappingFragment StoreEntitySet="crl_sale_trans">
+          <ScalarProperty Name="SaleTransactionId" ColumnName="Sale_Transaction_Id" />
+          <ScalarProperty Name="TransactionId" ColumnName="Transaction_Id" />
+          <ScalarProperty Name="PosTransactionId" ColumnName="POS_Transaction_Id" />
+          <ScalarProperty Name="StoreId" ColumnName="Store_Id" />
+          <ScalarProperty Name="RegisterId" ColumnName="Register_Id" />
+          <ScalarProperty Name="CashierId" ColumnName="Cashier_Id" />
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="Purchase_Order_Id" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -436,8 +109,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DeptPrmtns">
-      <EntityTypeMapping TypeName="PosServerModels.DeptPrmtn">
-        <MappingFragment StoreEntitySet="CRL_DEPT_PRMTNs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPrmtn">
+        <MappingFragment StoreEntitySet="crl_dept_prmtns">
           <ScalarProperty Name="DepartmentPromotionId" ColumnName="DEPARTMENT_PROMOTION_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
           <ScalarProperty Name="PromotionId" ColumnName="PROMOTION_ID" />
@@ -458,13 +131,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptRets">
-      <EntityTypeMapping TypeName="PosServerModels.DeptRet">
-        <MappingFragment StoreEntitySet="CRL_DEPT_RETs">
-          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+    <EntitySetMapping Name="EmpWrkgDays">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.EmpWrkgDay">
+        <MappingFragment StoreEntitySet="crl_emp_wrkg_days">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
+          <ScalarProperty Name="Period" ColumnName="PERIOD" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ReturnStatus" ColumnName="RETURN_STATUS" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -476,142 +149,30 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StartTime" ColumnName="START_TIME" />
+          <ScalarProperty Name="EndTime" ColumnName="END_TIME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptRetCosts">
-      <EntityTypeMapping TypeName="PosServerModels.DeptRetCost">
-        <MappingFragment StoreEntitySet="CRL_DEPT_RET_COSTs">
-          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptRetDets">
-      <EntityTypeMapping TypeName="PosServerModels.DeptRetDet">
-        <MappingFragment StoreEntitySet="CRL_DEPT_RET_DETs">
-          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+    <EntitySetMapping Name="UsrInfos">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.UsrInfo">
+        <MappingFragment StoreEntitySet="crl_usr_infos">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Suspended" ColumnName="SUSPENDED" />
+          <ScalarProperty Name="Deleted" ColumnName="DELETED" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptRetPos">
-      <EntityTypeMapping TypeName="PosServerModels.DeptRetPo">
-        <MappingFragment StoreEntitySet="CRL_DEPT_RET_POs">
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ReturnDate" ColumnName="RETURN_DATE" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="NextPurchaseOrderId" ColumnName="NEXT_PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStks">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStk">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STKs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
-          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
-          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
-          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
-          <ScalarProperty Name="UnconfirmQuantity" ColumnName="UNCONFIRM_QUANTITY" />
-          <ScalarProperty Name="Position" ColumnName="POSITION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkHis">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkHis">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_HIS">
-          <ScalarProperty Name="DepartmentStockHistoryId" ColumnName="DEPARTMENT_STOCK_HISTORY_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="GoodCount" ColumnName="GOOD_COUNT" />
-          <ScalarProperty Name="ErrorCount" ColumnName="ERROR_COUNT" />
-          <ScalarProperty Name="DamageCount" ColumnName="DAMAGE_COUNT" />
-          <ScalarProperty Name="LostCount" ColumnName="LOST_COUNT" />
-          <ScalarProperty Name="UnconfirmCount" ColumnName="UNCONFIRM_COUNT" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkIns">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkIn">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_INs">
+    <EntitySetMapping Name="StkIns">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkIn">
+        <MappingFragment StoreEntitySet="crl_stk_ins">
           <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
           <ScalarProperty Name="StockInDate" ColumnName="STOCK_IN_DATE" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
           <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
@@ -622,134 +183,18 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="ExportStatus" ColumnName="EXPORT_STATUS" />
           <ScalarProperty Name="StockInCost" ColumnName="STOCK_IN_COST" />
           <ScalarProperty Name="StockInType" ColumnName="STOCK_IN_TYPE" />
-          <ScalarProperty Name="SrcDepartmentId" ColumnName="SRC_DEPARTMENT_ID" />
-          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkInCsts">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkInCst">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_IN_CSTs">
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkInDets">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkInDet">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_IN_DETs">
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
-          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
-          <ScalarProperty Name="Sold" ColumnName="SOLD" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkInHis">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkInHis">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_IN_HIS">
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="SourceDepartmentid" ColumnName="SOURCE_DEPARTMENTID" />
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="DestDepartmentId" ColumnName="DEST_DEPARTMENT_ID" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkOuts">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkOut">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_OUTs">
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
           <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
-          <ScalarProperty Name="DestDepartmentId" ColumnName="DEST_DEPARTMENT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
           <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
+          <ScalarProperty Name="SrcDepartmentId" ColumnName="SRC_DEPARTMENT_ID" />
           <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkOutCsts">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkOutCst">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_OUT_CSTs">
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DeptStkOutDets">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkOutDet">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_OUT_DETs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkOutDet">
+        <MappingFragment StoreEntitySet="crl_dept_stk_out_dets">
           <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
           <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
@@ -779,9 +224,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DeptStks">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStk">
+        <MappingFragment StoreEntitySet="crl_dept_stks">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
+          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
+          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
+          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
+          <ScalarProperty Name="UnconfirmQuantity" ColumnName="UNCONFIRM_QUANTITY" />
+          <ScalarProperty Name="Position" ColumnName="POSITION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DeptStkTempValids">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkTempValid">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_TEMP_VALIDs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkTempValid">
+        <MappingFragment StoreEntitySet="crl_dept_stk_temp_valids">
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
           <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
@@ -807,14 +280,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptStkTempValidSaves">
-      <EntityTypeMapping TypeName="PosServerModels.DeptStkTempValidSave">
-        <MappingFragment StoreEntitySet="CRL_DEPT_STK_TEMP_VALID_SAVEs">
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+    <EntitySetMapping Name="StkInDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkInDet">
+        <MappingFragment StoreEntitySet="crl_stk_in_dets">
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
           <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
           <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -826,41 +299,57 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
-          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
-          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
-          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
-          <ScalarProperty Name="UnconfirmQuantity" ColumnName="UNCONFIRM_QUANTITY" />
-          <ScalarProperty Name="Fixed" ColumnName="FIXED" />
+          <ScalarProperty Name="StockInType" ColumnName="STOCK_IN_TYPE" />
+          <ScalarProperty Name="SellPrice" ColumnName="SELL_PRICE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DeptTimelines">
-      <EntityTypeMapping TypeName="PosServerModels.DeptTimeline">
-        <MappingFragment StoreEntitySet="CRL_DEPT_TIMELINEs">
+    <EntitySetMapping Name="DeptRetPos">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptRetPo">
+        <MappingFragment StoreEntitySet="crl_dept_ret_pos">
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
+          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Period" ColumnName="PERIOD" />
-          <ScalarProperty Name="StartTime" ColumnName="START_TIME" />
-          <ScalarProperty Name="EndTime" ColumnName="END_TIME" />
-          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
+          <ScalarProperty Name="ReturnDate" ColumnName="RETURN_DATE" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
           <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
           <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
           <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
           <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="NextPurchaseOrderId" ColumnName="NEXT_PURCHASE_ORDER_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Distbtors">
-      <EntityTypeMapping TypeName="PosServerModels.Distbtor">
-        <MappingFragment StoreEntitySet="CRL_DISTBTORs">
-          <ScalarProperty Name="DistributorId" ColumnName="DISTRIBUTOR_ID" />
-          <ScalarProperty Name="DistributorName" ColumnName="DISTRIBUTOR_NAME" />
+    <EntitySetMapping Name="PosLogs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PosLog">
+        <MappingFragment StoreEntitySet="crl_pos_logs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Thread" ColumnName="Thread" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Logger" ColumnName="Logger" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Exception" ColumnName="Exception" />
+          <ScalarProperty Name="PosUser" ColumnName="Pos_User" />
+          <ScalarProperty Name="PosAction" ColumnName="Pos_Action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExPrdColors">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ExPrdColor">
+        <MappingFragment StoreEntitySet="crl_ex_prd_colors">
+          <ScalarProperty Name="ColorId" ColumnName="COLOR_ID" />
+          <ScalarProperty Name="ColorName" ColumnName="COLOR_NAME" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -875,11 +364,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Emps">
-      <EntityTypeMapping TypeName="PosServerModels.Emp">
-        <MappingFragment StoreEntitySet="CRL_EMPs">
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+    <EntitySetMapping Name="DeptRets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptRet">
+        <MappingFragment StoreEntitySet="crl_dept_rets">
+          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="ReturnStatus" ColumnName="RETURN_STATUS" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -891,21 +382,30 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
-          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmpDayoffs">
-      <EntityTypeMapping TypeName="PosServerModels.EmpDayoff">
-        <MappingFragment StoreEntitySet="CRL_EMP_DAYOFFs">
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="DayoffTime" ColumnName="DAYOFF_TIME" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+    <EntitySetMapping Name="TempDeptstockMaxTemps">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempDeptstockMaxTemp">
+        <MappingFragment StoreEntitySet="temp_deptstock_max_temps">
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="GoodQty" ColumnName="good_qty" />
+          <ScalarProperty Name="PerrorQty" ColumnName="perror_qty" />
+          <ScalarProperty Name="Predmg" ColumnName="predmg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkHis">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkHis">
+        <MappingFragment StoreEntitySet="crl_dept_stk_his">
+          <ScalarProperty Name="DepartmentStockHistoryId" ColumnName="DEPARTMENT_STOCK_HISTORY_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
           <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
           <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
           <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
@@ -913,12 +413,29 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="GoodCount" ColumnName="GOOD_COUNT" />
+          <ScalarProperty Name="ErrorCount" ColumnName="ERROR_COUNT" />
+          <ScalarProperty Name="DamageCount" ColumnName="DAMAGE_COUNT" />
+          <ScalarProperty Name="LostCount" ColumnName="LOST_COUNT" />
+          <ScalarProperty Name="UnconfirmCount" ColumnName="UNCONFIRM_COUNT" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempStkHis">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempStkHis">
+        <MappingFragment StoreEntitySet="temp_stk_his">
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="GoodQty" ColumnName="good_qty" />
+          <ScalarProperty Name="PerrorQty" ColumnName="perror_qty" />
+          <ScalarProperty Name="Predmg" ColumnName="predmg" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EmpInfos">
-      <EntityTypeMapping TypeName="PosServerModels.EmpInfo">
-        <MappingFragment StoreEntitySet="CRL_EMP_INFOs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.EmpInfo">
+        <MappingFragment StoreEntitySet="crl_emp_infos">
           <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="EmployeeName" ColumnName="EMPLOYEE_NAME" />
           <ScalarProperty Name="Address" ColumnName="ADDRESS" />
@@ -941,16 +458,330 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmpMoneys">
-      <EntityTypeMapping TypeName="PosServerModels.EmpMoney">
-        <MappingFragment StoreEntitySet="CRL_EMP_MONEYs">
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+    <EntitySetMapping Name="PrdTyps">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PrdTyp">
+        <MappingFragment StoreEntitySet="crl_prd_typs">
+          <ScalarProperty Name="TypeId" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrdUnits">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PrdUnit">
+        <MappingFragment StoreEntitySet="crl_prd_units">
+          <ScalarProperty Name="UnitId" ColumnName="UNIT_ID" />
+          <ScalarProperty Name="UnitName" ColumnName="UNIT_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PosTrans">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PosTran">
+        <MappingFragment StoreEntitySet="crl_pos_trans">
+          <ScalarProperty Name="PosTransactionId" ColumnName="POS_Transaction_Id" />
+          <ScalarProperty Name="TransactionId" ColumnName="Transaction_Id" />
+          <ScalarProperty Name="StoreId" ColumnName="Store_Id" />
+          <ScalarProperty Name="RegisterId" ColumnName="Register_Id" />
+          <ScalarProperty Name="CashierId" ColumnName="Cashier_Id" />
+          <ScalarProperty Name="AmountIn" ColumnName="Amount_In" />
+          <ScalarProperty Name="AmountOut" ColumnName="Amount_Out" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReicptOutCsts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ReicptOutCst">
+        <MappingFragment StoreEntitySet="crl_reicpt_out_csts">
+          <ScalarProperty Name="ReceiptOutId" ColumnName="RECEIPT_OUT_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="DateLogin" ColumnName="DATE_LOGIN" />
-          <ScalarProperty Name="DateLogout" ColumnName="DATE_LOGOUT" />
-          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
-          <ScalarProperty Name="InMoney" ColumnName="IN_MONEY" />
-          <ScalarProperty Name="OutMoney" ColumnName="OUT_MONEY" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StkOutDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkOutDet">
+        <MappingFragment StoreEntitySet="crl_stk_out_dets">
+          <ScalarProperty Name="StockOutDetailId" ColumnName="STOCK_OUT_DETAIL_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
+          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
+          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
+          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempDeptstocks">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempDeptstock">
+        <MappingFragment StoreEntitySet="temp_deptstocks">
+          <ScalarProperty Name="TypeId" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductName" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="ColorName" ColumnName="COLOR_NAME" />
+          <ScalarProperty Name="SizeName" ColumnName="SIZE_NAME" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="DepartmentName" ColumnName="department_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlkInDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.BlkInDet">
+        <MappingFragment StoreEntitySet="crl_blk_in_dets">
+          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
+          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
+          <ScalarProperty Name="DetailValue" ColumnName="DETAIL_VALUE" />
+          <ScalarProperty Name="ManufactureId" ColumnName="MANUFACTURE_ID" />
+          <ScalarProperty Name="PackagerId" ColumnName="PACKAGER_ID" />
+          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
+          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
+          <ScalarProperty Name="ImportDate" ColumnName="IMPORT_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SimPrds">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.SimPrd">
+        <MappingFragment StoreEntitySet="crl_sim_prds">
+          <ScalarProperty Name="BaseProductId" ColumnName="BASE_PRODUCT_ID" />
+          <ScalarProperty Name="OtherProductId" ColumnName="OTHER_PRODUCT_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkOuts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkOut">
+        <MappingFragment StoreEntitySet="crl_dept_stk_outs">
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
+          <ScalarProperty Name="DestDepartmentId" ColumnName="DEST_DEPARTMENT_ID" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiveDepts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ActiveDept">
+        <MappingFragment StoreEntitySet="crl_active_depts">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DEPARTMENT_NAME" />
+          <ScalarProperty Name="Active" ColumnName="ACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RetPrds">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.RetPrd">
+        <MappingFragment StoreEntitySet="crl_ret_prds">
+          <ScalarProperty Name="ReturnProductId" ColumnName="RETURN_PRODUCT_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coupons">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Coupon">
+        <MappingFragment StoreEntitySet="crl_coupons">
+          <ScalarProperty Name="CouponId" ColumnName="COUPON_ID" />
+          <ScalarProperty Name="CouponName" ColumnName="COUPON_NAME" />
+          <ScalarProperty Name="CouponType" ColumnName="COUPON_TYPE" />
+          <ScalarProperty Name="DiscountValue" ColumnName="DISCOUNT_VALUE" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DISCOUNT_PERCENT" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Depts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Dept">
+        <MappingFragment StoreEntitySet="crl_depts">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DEPARTMENT_NAME" />
+          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
+          <ScalarProperty Name="Active" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherTransLogs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.OtherTransLog">
+        <MappingFragment StoreEntitySet="crl_other_trans_logs">
+          <ScalarProperty Name="TransactionDate" ColumnName="TRANSACTION_DATE" />
+          <ScalarProperty Name="TableName" ColumnName="TABLE_NAME" />
+          <ScalarProperty Name="FieldName" ColumnName="FIELD_NAME" />
+          <ScalarProperty Name="Action" ColumnName="ACTION" />
+          <ScalarProperty Name="ValueBefore" ColumnName="VALUE_BEFORE" />
+          <ScalarProperty Name="ValueAfter" ColumnName="VALUE_AFTER" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gifts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Gift">
+        <MappingFragment StoreEntitySet="crl_gifts">
+          <ScalarProperty Name="GiftId" ColumnName="GIFT_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="GiftName" ColumnName="GIFT_NAME" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptPoDetLogs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPoDetLog">
+        <MappingFragment StoreEntitySet="crl_dept_po_det_logs">
+          <ScalarProperty Name="PurchaseOrderDetailLogId" ColumnName="PURCHASE_ORDER_DETAIL_LOG_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -966,8 +797,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="EmpRewards">
-      <EntityTypeMapping TypeName="PosServerModels.EmpReward">
-        <MappingFragment StoreEntitySet="CRL_EMP_REWARDs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.EmpReward">
+        <MappingFragment StoreEntitySet="crl_emp_rewards">
           <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="RewardDate" ColumnName="REWARD_DATE" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
@@ -990,12 +821,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmpWrkgDays">
-      <EntityTypeMapping TypeName="PosServerModels.EmpWrkgDay">
-        <MappingFragment StoreEntitySet="CRL_EMP_WRKG_DAYS">
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
-          <ScalarProperty Name="Period" ColumnName="PERIOD" />
+    <EntitySetMapping Name="StkOutTmps">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkOutTmp">
+        <MappingFragment StoreEntitySet="crl_stk_out_tmps">
+          <ScalarProperty Name="StockoutId" ColumnName="STOCKOUT_ID" />
+          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
@@ -1008,21 +838,126 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StockId" ColumnName="STOCK_ID" />
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlkInCosts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.BlkInCost">
+        <MappingFragment StoreEntitySet="crl_blk_in_costs">
+          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.CustDet">
+        <MappingFragment StoreEntitySet="crl_cust_dets">
+          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
+          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
+          <ScalarProperty Name="Birthday" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PASSPORT_NUMBER" />
+          <ScalarProperty Name="Cmnd" ColumnName="CMND" />
+          <ScalarProperty Name="MoneySpent" ColumnName="MONEY_SPENT" />
+          <ScalarProperty Name="BuyCount" ColumnName="BUY_COUNT" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptRetDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptRetDet">
+        <MappingFragment StoreEntitySet="crl_dept_ret_dets">
+          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sups">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Sup">
+        <MappingFragment StoreEntitySet="crl_sups">
+          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
+          <ScalarProperty Name="SupplierName" ColumnName="SUPPLIER_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ctries">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Ctry">
+        <MappingFragment StoreEntitySet="crl_ctries">
+          <ScalarProperty Name="CountryId" ColumnName="COUNTRY_ID" />
+          <ScalarProperty Name="CountryName" ColumnName="COUNTRY_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptMngs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptMng">
+        <MappingFragment StoreEntitySet="crl_dept_mngs">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="Position" ColumnName="POSITION" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
           <ScalarProperty Name="StartTime" ColumnName="START_TIME" />
           <ScalarProperty Name="EndTime" ColumnName="END_TIME" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ExPrdColors">
-      <EntityTypeMapping TypeName="PosServerModels.ExPrdColor">
-        <MappingFragment StoreEntitySet="CRL_EX_PRD_COLORs">
-          <ScalarProperty Name="ColorId" ColumnName="COLOR_ID" />
-          <ScalarProperty Name="ColorName" ColumnName="COLOR_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
           <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
           <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
           <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
@@ -1032,34 +967,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ExPrdSizes">
-      <EntityTypeMapping TypeName="PosServerModels.ExPrdSize">
-        <MappingFragment StoreEntitySet="CRL_EX_PRD_SIZEs">
-          <ScalarProperty Name="SizeId" ColumnName="SIZE_ID" />
-          <ScalarProperty Name="SizeName" ColumnName="SIZE_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Gifts">
-      <EntityTypeMapping TypeName="PosServerModels.Gift">
-        <MappingFragment StoreEntitySet="CRL_GIFTs">
-          <ScalarProperty Name="GiftId" ColumnName="GIFT_ID" />
+    <EntitySetMapping Name="DeptPos">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPo">
+        <MappingFragment StoreEntitySet="crl_dept_pos">
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="GiftName" ColumnName="GIFT_NAME" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="PurchasePrice" ColumnName="PURCHASE_PRICE" />
+          <ScalarProperty Name="OrderStatus" ColumnName="ORDER_STATUS" />
+          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="PurchaseDescription" ColumnName="PURCHASE_DESCRIPTION" />
+          <ScalarProperty Name="PurchaseQuantity" ColumnName="PURCHASE_QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpMoneys">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.EmpMoney">
+        <MappingFragment StoreEntitySet="crl_emp_moneys">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="DateLogin" ColumnName="DATE_LOGIN" />
+          <ScalarProperty Name="DateLogout" ColumnName="DATE_LOGOUT" />
+          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
+          <ScalarProperty Name="InMoney" ColumnName="IN_MONEY" />
+          <ScalarProperty Name="OutMoney" ColumnName="OUT_MONEY" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -1074,12 +1015,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MnPrices">
-      <EntityTypeMapping TypeName="PosServerModels.MnPrice">
-        <MappingFragment StoreEntitySet="CRL_MN_PRICEs">
+    <EntitySetMapping Name="DeptCosts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptCost">
+        <MappingFragment StoreEntitySet="crl_dept_costs">
           <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="CostDate" ColumnName="COST_DATE" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="CostName" ColumnName="COST_NAME" />
+          <ScalarProperty Name="CostDescription" ColumnName="COST_DESCRIPTION" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -1091,13 +1035,99 @@
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="WholeSalePrice" ColumnName="WHOLE_SALE_PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptRetCosts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptRetCost">
+        <MappingFragment StoreEntitySet="crl_dept_ret_costs">
+          <ScalarProperty Name="DepartmentReturnId" ColumnName="DEPARTMENT_RETURN_ID" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Tax">
+        <MappingFragment StoreEntitySet="crl_taxes">
+          <ScalarProperty Name="TaxId" ColumnName="TAX_ID" />
+          <ScalarProperty Name="TaxName" ColumnName="TAX_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkInHis">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkInHis">
+        <MappingFragment StoreEntitySet="crl_dept_stk_in_his">
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
+          <ScalarProperty Name="SourceDepartmentid" ColumnName="SOURCE_DEPARTMENTID" />
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+          <ScalarProperty Name="DestDepartmentId" ColumnName="DEST_DEPARTMENT_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashIoTrans">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.CashIoTran">
+        <MappingFragment StoreEntitySet="crl_cash_io_trans">
+          <ScalarProperty Name="CashInOutTransactionId" ColumnName="Cash_In_Out_Transaction_Id" />
+          <ScalarProperty Name="TransactionId" ColumnName="Transaction_Id" />
+          <ScalarProperty Name="StoreId" ColumnName="Store_Id" />
+          <ScalarProperty Name="RegisterId" ColumnName="Register_Id" />
+          <ScalarProperty Name="CashierId" ColumnName="Cashier_Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ReasonCode" ColumnName="Reason_Code" />
+          <ScalarProperty Name="CustomerId" ColumnName="Customer_Id" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MnStks">
-      <EntityTypeMapping TypeName="PosServerModels.MnStk">
-        <MappingFragment StoreEntitySet="CRL_MN_STKs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.MnStk">
+        <MappingFragment StoreEntitySet="crl_mn_stks">
           <ScalarProperty Name="StockId" ColumnName="STOCK_ID" />
           <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
@@ -1122,9 +1152,478 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ScheTmplates">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ScheTmplate">
+        <MappingFragment StoreEntitySet="crl_sche_tmplates">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="ScheduleId" ColumnName="SCHEDULE_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Monday" ColumnName="MONDAY" />
+          <ScalarProperty Name="Tuesday" ColumnName="TUESDAY" />
+          <ScalarProperty Name="Wednesday" ColumnName="WEDNESDAY" />
+          <ScalarProperty Name="Thursday" ColumnName="THURSDAY" />
+          <ScalarProperty Name="Friday" ColumnName="FRIDAY" />
+          <ScalarProperty Name="Saturday" ColumnName="SATURDAY" />
+          <ScalarProperty Name="Sunday" ColumnName="SUNDAY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReicptOuts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ReicptOut">
+        <MappingFragment StoreEntitySet="crl_reicpt_outs">
+          <ScalarProperty Name="ReceiptOutId" ColumnName="RECEIPT_OUT_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="ReceiptOutName" ColumnName="RECEIPT_OUT_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StkDefStats">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkDefStat">
+        <MappingFragment StoreEntitySet="crl_stk_def_stats">
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="DefectStatusName" ColumnName="DEFECT_STATUS_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkInDets">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkInDet">
+        <MappingFragment StoreEntitySet="crl_dept_stk_in_dets">
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
+          <ScalarProperty Name="Sold" ColumnName="SOLD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExPrdSizes">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ExPrdSize">
+        <MappingFragment StoreEntitySet="crl_ex_prd_sizes">
+          <ScalarProperty Name="SizeId" ColumnName="SIZE_ID" />
+          <ScalarProperty Name="SizeName" ColumnName="SIZE_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emps">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Emp">
+        <MappingFragment StoreEntitySet="crl_emps">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MnPrices">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.MnPrice">
+        <MappingFragment StoreEntitySet="crl_mn_prices">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="WholeSalePrice" ColumnName="WHOLE_SALE_PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempDpStockouts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempDpStockout">
+        <MappingFragment StoreEntitySet="temp_dp_stockouts">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StkOuts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkOut">
+        <MappingFragment StoreEntitySet="crl_stk_outs">
+          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="StockId" ColumnName="STOCK_ID" />
+          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
+          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempPrs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempPr">
+        <MappingFragment StoreEntitySet="temp_prs">
+          <ScalarProperty Name="TypeId" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductName" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="ColorName" ColumnName="COLOR_NAME" />
+          <ScalarProperty Name="SizeName" ColumnName="SIZE_NAME" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptPoPromos">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPoPromo">
+        <MappingFragment StoreEntitySet="crl_dept_po_promos">
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
+          <ScalarProperty Name="PurchaseOrderDetailId" ColumnName="PURCHASE_ORDER_DETAIL_ID" />
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="GiftDepartmentId" ColumnName="GIFT_DEPARTMENT_ID" />
+          <ScalarProperty Name="DepartmentPromotionId" ColumnName="DEPARTMENT_PROMOTION_ID" />
+          <ScalarProperty Name="GiftId" ColumnName="GIFT_ID" />
+          <ScalarProperty Name="GiftProductId" ColumnName="GIFT_PRODUCT_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Custs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Cust">
+        <MappingFragment StoreEntitySet="crl_custs">
+          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CUSTOMER_NAME" />
+          <ScalarProperty Name="MoneySpent" ColumnName="MONEY_SPENT" />
+          <ScalarProperty Name="BuyCount" ColumnName="BUY_COUNT" />
+          <ScalarProperty Name="NearestCome1" ColumnName="NEAREST_COME_1" />
+          <ScalarProperty Name="NearestCome2" ColumnName="NEAREST_COME_2" />
+          <ScalarProperty Name="NearestCome3" ColumnName="NEAREST_COME_3" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CouponTyps">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.CouponTyp">
+        <MappingFragment StoreEntitySet="crl_coupon_typs">
+          <ScalarProperty Name="CouponTypeId" ColumnName="COUPON_TYPE_ID" />
+          <ScalarProperty Name="CouponTypeName" ColumnName="COUPON_TYPE_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptPoLogs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptPoLog">
+        <MappingFragment StoreEntitySet="crl_dept_po_logs">
+          <ScalarProperty Name="PurchaseOrderLogId" ColumnName="PURCHASE_ORDER_LOG_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkTempValidSaves">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkTempValidSave">
+        <MappingFragment StoreEntitySet="crl_dept_stk_temp_valid_saves">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="OnStorePrice" ColumnName="ON_STORE_PRICE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
+          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
+          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
+          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
+          <ScalarProperty Name="UnconfirmQuantity" ColumnName="UNCONFIRM_QUANTITY" />
+          <ScalarProperty Name="Fixed" ColumnName="FIXED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prds">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Prd">
+        <MappingFragment StoreEntitySet="crl_prds">
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
+          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="TaxId" ColumnName="TAX_ID" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="Barcode" ColumnName="BARCODE" />
+          <ScalarProperty Name="AdhocCase" ColumnName="ADHOC_CASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Role">
+        <MappingFragment StoreEntitySet="crl_roles">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pkgrs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Pkgr">
+        <MappingFragment StoreEntitySet="crl_pkgrs">
+          <ScalarProperty Name="PackagerId" ColumnName="PACKAGER_ID" />
+          <ScalarProperty Name="PackagerName" ColumnName="PACKAGER_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkInCsts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkInCst">
+        <MappingFragment StoreEntitySet="crl_dept_stk_in_csts">
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RetBlkIns">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.RetBlkIn">
+        <MappingFragment StoreEntitySet="crl_ret_blk_ins">
+          <ScalarProperty Name="BlockInId" ColumnName="BLOCK_IN_ID" />
+          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StkOutCsts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.StkOutCst">
+        <MappingFragment StoreEntitySet="crl_stk_out_csts">
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="StockoutId" ColumnName="STOCKOUT_ID" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RetTrans">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.RetTran">
+        <MappingFragment StoreEntitySet="crl_ret_trans">
+          <ScalarProperty Name="ReturnTransactionId" ColumnName="Return_Transaction_Id" />
+          <ScalarProperty Name="TransactionId" ColumnName="Transaction_Id" />
+          <ScalarProperty Name="PosTransactionId" ColumnName="POS_Transaction_Id" />
+          <ScalarProperty Name="StoreId" ColumnName="Store_Id" />
+          <ScalarProperty Name="RegisterId" ColumnName="Register_Id" />
+          <ScalarProperty Name="CashierId" ColumnName="Cashier_Id" />
+          <ScalarProperty Name="CustomerId" ColumnName="Customer_Id" />
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="Purchase_Order_Id" />
+          <ScalarProperty Name="ReturnId" ColumnName="Return_Id" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distbtors">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Distbtor">
+        <MappingFragment StoreEntitySet="crl_distbtors">
+          <ScalarProperty Name="DistributorId" ColumnName="DISTRIBUTOR_ID" />
+          <ScalarProperty Name="DistributorName" ColumnName="DISTRIBUTOR_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MnStkHis">
-      <EntityTypeMapping TypeName="PosServerModels.MnStkHis">
-        <MappingFragment StoreEntitySet="CRL_MN_STK_HIS">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.MnStkHis">
+        <MappingFragment StoreEntitySet="crl_mn_stk_his">
           <ScalarProperty Name="StockHistoryId" ColumnName="STOCK_HISTORY_ID" />
           <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
@@ -1150,157 +1649,51 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Mnftrs">
-      <EntityTypeMapping TypeName="PosServerModels.Mnftr">
-        <MappingFragment StoreEntitySet="CRL_MNFTRs">
-          <ScalarProperty Name="ManufacturerId" ColumnName="MANUFACTURER_ID" />
-          <ScalarProperty Name="ManufacturerName" ColumnName="MANUFACTURER_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OtherTransLogs">
-      <EntityTypeMapping TypeName="PosServerModels.OtherTransLog">
-        <MappingFragment StoreEntitySet="CRL_OTHER_TRANS_LOGs">
-          <ScalarProperty Name="TransactionDate" ColumnName="TRANSACTION_DATE" />
-          <ScalarProperty Name="TableName" ColumnName="TABLE_NAME" />
-          <ScalarProperty Name="FieldName" ColumnName="FIELD_NAME" />
-          <ScalarProperty Name="Action" ColumnName="ACTION" />
-          <ScalarProperty Name="ValueBefore" ColumnName="VALUE_BEFORE" />
-          <ScalarProperty Name="ValueAfter" ColumnName="VALUE_AFTER" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PblshCpns">
-      <EntityTypeMapping TypeName="PosServerModels.PblshCpn">
-        <MappingFragment StoreEntitySet="CRL_PBLSH_CPNs">
-          <ScalarProperty Name="CouponId" ColumnName="COUPON_ID" />
-          <ScalarProperty Name="PublishedCouponId" ColumnName="PUBLISHED_COUPON_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
-          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Pkgrs">
-      <EntityTypeMapping TypeName="PosServerModels.Pkgr">
-        <MappingFragment StoreEntitySet="CRL_PKGRs">
-          <ScalarProperty Name="PackagerId" ColumnName="PACKAGER_ID" />
-          <ScalarProperty Name="PackagerName" ColumnName="PACKAGER_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PosLogs">
-      <EntityTypeMapping TypeName="PosServerModels.PosLog">
-        <MappingFragment StoreEntitySet="CRL_POS_LOGs">
-          <ScalarProperty Name="Id" ColumnName="ID" />
-          <ScalarProperty Name="Date" ColumnName="DATE_" />
-          <ScalarProperty Name="Thread" ColumnName="THREAD" />
-          <ScalarProperty Name="Level" ColumnName="LEVEL_" />
-          <ScalarProperty Name="Logger" ColumnName="LOGGER" />
-          <ScalarProperty Name="Message" ColumnName="MESSAGE" />
-          <ScalarProperty Name="Exception" ColumnName="EXCEPTION" />
-          <ScalarProperty Name="PosUser" ColumnName="POS_USER" />
-          <ScalarProperty Name="PosAction" ColumnName="POS_ACTION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PosTrans">
-      <EntityTypeMapping TypeName="PosServerModels.PosTran">
-        <MappingFragment StoreEntitySet="CRL_POS_TRANS">
-          <ScalarProperty Name="PosTransactionId" ColumnName="POS_TRANSACTION_ID" />
-          <ScalarProperty Name="TransactionId" ColumnName="TRANSACTION_ID" />
-          <ScalarProperty Name="StoreId" ColumnName="STORE_ID" />
-          <ScalarProperty Name="RegisterId" ColumnName="REGISTER_ID" />
-          <ScalarProperty Name="CashierId" ColumnName="CASHIER_ID" />
-          <ScalarProperty Name="AmountIn" ColumnName="AMOUNT_IN" />
-          <ScalarProperty Name="AmountOut" ColumnName="AMOUNT_OUT" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Prds">
-      <EntityTypeMapping TypeName="PosServerModels.Prd">
-        <MappingFragment StoreEntitySet="CRL_PRDs">
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+    <EntitySetMapping Name="BlkIns">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.BlkIn">
+        <MappingFragment StoreEntitySet="crl_blk_ins">
           <ScalarProperty Name="BlockId" ColumnName="BLOCK_ID" />
-          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
+          <ScalarProperty Name="BlockName" ColumnName="BLOCK_NAME" />
+          <ScalarProperty Name="ImportDate" ColumnName="IMPORT_DATE" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
           <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
           <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
           <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
-          <ScalarProperty Name="TaxId" ColumnName="TAX_ID" />
           <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
           <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
           <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
           <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
           <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="Barcode" ColumnName="BARCODE" />
-          <ScalarProperty Name="AdhocCase" ColumnName="ADHOC_CASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reicpts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Reicpt">
+        <MappingFragment StoreEntitySet="crl_reicpts">
+          <ScalarProperty Name="ReceiptId" ColumnName="RECEIPT_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
+          <ScalarProperty Name="ReceiptName" ColumnName="RECEIPT_NAME" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="RECEIPT_NUMBER" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PrdMsts">
-      <EntityTypeMapping TypeName="PosServerModels.PrdMst">
-        <MappingFragment StoreEntitySet="CRL_PRD_MSTs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PrdMst">
+        <MappingFragment StoreEntitySet="crl_prd_msts">
           <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
           <ScalarProperty Name="ProductName" ColumnName="PRODUCT_NAME" />
           <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
@@ -1328,11 +1721,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PrdTyps">
-      <EntityTypeMapping TypeName="PosServerModels.PrdTyp">
-        <MappingFragment StoreEntitySet="CRL_PRD_TYPs">
-          <ScalarProperty Name="TypeId" ColumnName="TYPE_ID" />
-          <ScalarProperty Name="TypeName" ColumnName="TYPE_NAME" />
+    <EntitySetMapping Name="EmpDayoffs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.EmpDayoff">
+        <MappingFragment StoreEntitySet="crl_emp_dayoffs">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="DayoffTime" ColumnName="DAYOFF_TIME" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -1347,11 +1741,168 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PrdUnits">
-      <EntityTypeMapping TypeName="PosServerModels.PrdUnit">
-        <MappingFragment StoreEntitySet="CRL_PRD_UNITs">
-          <ScalarProperty Name="UnitId" ColumnName="UNIT_ID" />
-          <ScalarProperty Name="UnitName" ColumnName="UNIT_NAME" />
+    <EntitySetMapping Name="DeptTimelines">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptTimeline">
+        <MappingFragment StoreEntitySet="crl_dept_timelines">
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Period" ColumnName="PERIOD" />
+          <ScalarProperty Name="StartTime" ColumnName="START_TIME" />
+          <ScalarProperty Name="EndTime" ColumnName="END_TIME" />
+          <ScalarProperty Name="WorkingDay" ColumnName="WORKING_DAY" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempProducts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempProduct">
+        <MappingFragment StoreEntitySet="temp_products">
+          <ScalarProperty Name="TypeId" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
+          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="ProductName" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="ColorName" ColumnName="COLOR_NAME" />
+          <ScalarProperty Name="SizeName" ColumnName="SIZE_NAME" />
+          <ScalarProperty Name="Price" ColumnName="PRICE" />
+          <ScalarProperty Name="DepartmentName" ColumnName="department_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkOutCsts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkOutCst">
+        <MappingFragment StoreEntitySet="crl_dept_stk_out_csts">
+          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
+          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="Cost" ColumnName="COST" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PblshCpns">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.PblshCpn">
+        <MappingFragment StoreEntitySet="crl_pblsh_cpns">
+          <ScalarProperty Name="CouponId" ColumnName="COUPON_ID" />
+          <ScalarProperty Name="PublishedCouponId" ColumnName="PUBLISHED_COUPON_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempDeptStockStatistics">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.TempDeptStockStatistic">
+        <MappingFragment StoreEntitySet="temp_dept_stock_statistics">
+          <ScalarProperty Name="DepartmentName" ColumnName="department_name" />
+          <ScalarProperty Name="TypeName" ColumnName="type_name" />
+          <ScalarProperty Name="ProductId" ColumnName="product_id" />
+          <ScalarProperty Name="ProductName" ColumnName="product_name" />
+          <ScalarProperty Name="ColorName" ColumnName="color_name" />
+          <ScalarProperty Name="SizeName" ColumnName="size_name" />
+          <ScalarProperty Name="PrestkQty" ColumnName="prestk_qty" />
+          <ScalarProperty Name="InstockQty" ColumnName="instock_qty" />
+          <ScalarProperty Name="ErrorQty" ColumnName="error_qty" />
+          <ScalarProperty Name="DmgQty" ColumnName="dmg_qty" />
+          <ScalarProperty Name="StkoutQty" ColumnName="stkout_qty" />
+          <ScalarProperty Name="TmpoutQty" ColumnName="tmpout_qty" />
+          <ScalarProperty Name="RtnQty" ColumnName="rtn_qty" />
+          <ScalarProperty Name="DestroyQty" ColumnName="destroy_qty" />
+          <ScalarProperty Name="Bkpro" ColumnName="bkpro" />
+          <ScalarProperty Name="Realstock" ColumnName="realstock" />
+          <ScalarProperty Name="TempPriKey" ColumnName="temp_pri_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mnftrs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Mnftr">
+        <MappingFragment StoreEntitySet="crl_mnftrs">
+          <ScalarProperty Name="ManufacturerId" ColumnName="MANUFACTURER_ID" />
+          <ScalarProperty Name="ManufacturerName" ColumnName="MANUFACTURER_NAME" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExDiscounts">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.ExDiscount">
+        <MappingFragment StoreEntitySet="crl_ex_discounts">
+          <ScalarProperty Name="DiscountType" ColumnName="DISCOUNT_TYPE" />
+          <ScalarProperty Name="DiscountName" ColumnName="DISCOUNT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptStkIns">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.DeptStkIn">
+        <MappingFragment StoreEntitySet="crl_dept_stk_ins">
+          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
+          <ScalarProperty Name="StockInDate" ColumnName="STOCK_IN_DATE" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
+          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
+          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
+          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
+          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
+          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
+          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
+          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
+          <ScalarProperty Name="ExportStatus" ColumnName="EXPORT_STATUS" />
+          <ScalarProperty Name="StockInCost" ColumnName="STOCK_IN_COST" />
+          <ScalarProperty Name="StockInType" ColumnName="STOCK_IN_TYPE" />
+          <ScalarProperty Name="SrcDepartmentId" ColumnName="SRC_DEPARTMENT_ID" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cats">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Cat">
+        <MappingFragment StoreEntitySet="crl_cats">
+          <ScalarProperty Name="CategoryId" ColumnName="CATEGORY_ID" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="PARENT_CATEGORY_ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CATEGORY_NAME" />
           <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
           <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
           <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
@@ -1367,8 +1918,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Promos">
-      <EntityTypeMapping TypeName="PosServerModels.Promo">
-        <MappingFragment StoreEntitySet="CRL_PROMOs">
+      <EntityTypeMapping TypeName="EF.Pos2ClientModel.Promo">
+        <MappingFragment StoreEntitySet="crl_promos">
           <ScalarProperty Name="PromotionId" ColumnName="PROMOTION_ID" />
           <ScalarProperty Name="PromotionName" ColumnName="PROMOTION_NAME" />
           <ScalarProperty Name="DiscountPrice" ColumnName="DISCOUNT_PRICE" />
@@ -1389,461 +1940,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reicpts">
-      <EntityTypeMapping TypeName="PosServerModels.Reicpt">
-        <MappingFragment StoreEntitySet="CRL_REICPTs">
-          <ScalarProperty Name="ReceiptId" ColumnName="RECEIPT_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="ReceiptName" ColumnName="RECEIPT_NAME" />
-          <ScalarProperty Name="ReceiptNumber" ColumnName="RECEIPT_NUMBER" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ReicptOuts">
-      <EntityTypeMapping TypeName="PosServerModels.ReicptOut">
-        <MappingFragment StoreEntitySet="CRL_REICPT_OUTs">
-          <ScalarProperty Name="ReceiptOutId" ColumnName="RECEIPT_OUT_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="ReceiptOutName" ColumnName="RECEIPT_OUT_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ReicptOutCsts">
-      <EntityTypeMapping TypeName="PosServerModels.ReicptOutCst">
-        <MappingFragment StoreEntitySet="CRL_REICPT_OUT_CSTs">
-          <ScalarProperty Name="ReceiptOutId" ColumnName="RECEIPT_OUT_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RetBlkIns">
-      <EntityTypeMapping TypeName="PosServerModels.RetBlkIn">
-        <MappingFragment StoreEntitySet="CRL_RET_BLK_INs">
-          <ScalarProperty Name="BlockInId" ColumnName="BLOCK_IN_ID" />
-          <ScalarProperty Name="BlockDetailId" ColumnName="BLOCK_DETAIL_ID" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RetPrds">
-      <EntityTypeMapping TypeName="PosServerModels.RetPrd">
-        <MappingFragment StoreEntitySet="CRL_RET_PRDs">
-          <ScalarProperty Name="ReturnProductId" ColumnName="RETURN_PRODUCT_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RetTrans">
-      <EntityTypeMapping TypeName="PosServerModels.RetTran">
-        <MappingFragment StoreEntitySet="CRL_RET_TRANS">
-          <ScalarProperty Name="ReturnTransactionId" ColumnName="RETURN_TRANSACTION_ID" />
-          <ScalarProperty Name="TransactionId" ColumnName="TRANSACTION_ID" />
-          <ScalarProperty Name="PosTransactionId" ColumnName="POS_TRANSACTION_ID" />
-          <ScalarProperty Name="StoreId" ColumnName="STORE_ID" />
-          <ScalarProperty Name="RegisterId" ColumnName="REGISTER_ID" />
-          <ScalarProperty Name="CashierId" ColumnName="CASHIER_ID" />
-          <ScalarProperty Name="CustomerId" ColumnName="CUSTOMER_ID" />
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="ReturnId" ColumnName="RETURN_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="PosServerModels.Role">
-        <MappingFragment StoreEntitySet="CRL_ROLEs">
-          <ScalarProperty Name="Id" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="NAME" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SaleTrans">
-      <EntityTypeMapping TypeName="PosServerModels.SaleTran">
-        <MappingFragment StoreEntitySet="CRL_SALE_TRANS">
-          <ScalarProperty Name="SaleTransactionId" ColumnName="SALE_TRANSACTION_ID" />
-          <ScalarProperty Name="TransactionId" ColumnName="TRANSACTION_ID" />
-          <ScalarProperty Name="PosTransactionId" ColumnName="POS_TRANSACTION_ID" />
-          <ScalarProperty Name="StoreId" ColumnName="STORE_ID" />
-          <ScalarProperty Name="RegisterId" ColumnName="REGISTER_ID" />
-          <ScalarProperty Name="CashierId" ColumnName="CASHIER_ID" />
-          <ScalarProperty Name="PurchaseOrderId" ColumnName="PURCHASE_ORDER_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ScheTmplates">
-      <EntityTypeMapping TypeName="PosServerModels.ScheTmplate">
-        <MappingFragment StoreEntitySet="CRL_SCHE_TMPLATEs">
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="ScheduleId" ColumnName="SCHEDULE_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Monday" ColumnName="MONDAY" />
-          <ScalarProperty Name="Tuesday" ColumnName="TUESDAY" />
-          <ScalarProperty Name="Wednesday" ColumnName="WEDNESDAY" />
-          <ScalarProperty Name="Thursday" ColumnName="THURSDAY" />
-          <ScalarProperty Name="Friday" ColumnName="FRIDAY" />
-          <ScalarProperty Name="Saturday" ColumnName="SATURDAY" />
-          <ScalarProperty Name="Sunday" ColumnName="SUNDAY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
-          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SimPrds">
-      <EntityTypeMapping TypeName="PosServerModels.SimPrd">
-        <MappingFragment StoreEntitySet="CRL_SIM_PRDs">
-          <ScalarProperty Name="BaseProductId" ColumnName="BASE_PRODUCT_ID" />
-          <ScalarProperty Name="OtherProductId" ColumnName="OTHER_PRODUCT_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkDefStats">
-      <EntityTypeMapping TypeName="PosServerModels.StkDefStat">
-        <MappingFragment StoreEntitySet="CRL_STK_DEF_STATs">
-          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
-          <ScalarProperty Name="DefectStatusName" ColumnName="DEFECT_STATUS_NAME" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkIns">
-      <EntityTypeMapping TypeName="PosServerModels.StkIn">
-        <MappingFragment StoreEntitySet="CRL_STK_INs">
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="StockInDate" ColumnName="STOCK_IN_DATE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StockInCost" ColumnName="STOCK_IN_COST" />
-          <ScalarProperty Name="StockInType" ColumnName="STOCK_IN_TYPE" />
-          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
-          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
-          <ScalarProperty Name="SrcDepartmentId" ColumnName="SRC_DEPARTMENT_ID" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkInDets">
-      <EntityTypeMapping TypeName="PosServerModels.StkInDet">
-        <MappingFragment StoreEntitySet="CRL_STK_IN_DETs">
-          <ScalarProperty Name="StockInId" ColumnName="STOCK_IN_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="Price" ColumnName="PRICE" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StockInType" ColumnName="STOCK_IN_TYPE" />
-          <ScalarProperty Name="SellPrice" ColumnName="SELL_PRICE" />
-          <ScalarProperty Name="SrcDepartmentId" ColumnName="SRC_DEPARTMENT_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkOuts">
-      <EntityTypeMapping TypeName="PosServerModels.StkOut">
-        <MappingFragment StoreEntitySet="CRL_STK_OUTs">
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="StockId" ColumnName="STOCK_ID" />
-          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
-          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="TotalQuantity" ColumnName="TOTAL_QUANTITY" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TOTAL_AMOUNT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkOutCsts">
-      <EntityTypeMapping TypeName="PosServerModels.StkOutCst">
-        <MappingFragment StoreEntitySet="CRL_STK_OUT_CSTs">
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
-          <ScalarProperty Name="StockoutId" ColumnName="STOCKOUT_ID" />
-          <ScalarProperty Name="Cost" ColumnName="COST" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkOutDets">
-      <EntityTypeMapping TypeName="PosServerModels.StkOutDet">
-        <MappingFragment StoreEntitySet="CRL_STK_OUT_DETs">
-          <ScalarProperty Name="StockOutDetailId" ColumnName="STOCK_OUT_DETAIL_ID" />
-          <ScalarProperty Name="StockOutId" ColumnName="STOCK_OUT_ID" />
-          <ScalarProperty Name="ProductId" ColumnName="PRODUCT_ID" />
-          <ScalarProperty Name="ProductMasterId" ColumnName="PRODUCT_MASTER_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
-          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
-          <ScalarProperty Name="GoodQuantity" ColumnName="GOOD_QUANTITY" />
-          <ScalarProperty Name="ErrorQuantity" ColumnName="ERROR_QUANTITY" />
-          <ScalarProperty Name="DamageQuantity" ColumnName="DAMAGE_QUANTITY" />
-          <ScalarProperty Name="LostQuantity" ColumnName="LOST_QUANTITY" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StkOutTmps">
-      <EntityTypeMapping TypeName="PosServerModels.StkOutTmp">
-        <MappingFragment StoreEntitySet="CRL_STK_OUT_TMPs">
-          <ScalarProperty Name="StockoutId" ColumnName="STOCKOUT_ID" />
-          <ScalarProperty Name="StockOutDate" ColumnName="STOCK_OUT_DATE" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="StockId" ColumnName="STOCK_ID" />
-          <ScalarProperty Name="DefectStatusId" ColumnName="DEFECT_STATUS_ID" />
-          <ScalarProperty Name="ConfirmFlg" ColumnName="CONFIRM_FLG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sups">
-      <EntityTypeMapping TypeName="PosServerModels.Sup">
-        <MappingFragment StoreEntitySet="CRL_SUPs">
-          <ScalarProperty Name="SupplierId" ColumnName="SUPPLIER_ID" />
-          <ScalarProperty Name="SupplierName" ColumnName="SUPPLIER_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SyncStatus">
-      <EntityTypeMapping TypeName="PosServerModels.SyncStatus">
-        <MappingFragment StoreEntitySet="CRL_SYNC_STATUS">
-          <ScalarProperty Name="LastSyncDate" ColumnName="LAST_SYNC_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Taxes">
-      <EntityTypeMapping TypeName="PosServerModels.Tax">
-        <MappingFragment StoreEntitySet="CRL_TAXes">
-          <ScalarProperty Name="TaxId" ColumnName="TAX_ID" />
-          <ScalarProperty Name="TaxName" ColumnName="TAX_NAME" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Trans">
-      <EntityTypeMapping TypeName="PosServerModels.Tran">
-        <MappingFragment StoreEntitySet="CRL_TRANS">
-          <ScalarProperty Name="TransactionId" ColumnName="TRANSACTION_ID" />
-          <ScalarProperty Name="StoreId" ColumnName="STORE_ID" />
-          <ScalarProperty Name="RegisterId" ColumnName="REGISTER_ID" />
-          <ScalarProperty Name="CashierId" ColumnName="CASHIER_ID" />
-          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
-          <ScalarProperty Name="CreateId" ColumnName="CREATE_ID" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UPDATE_DATE" />
-          <ScalarProperty Name="UpdateId" ColumnName="UPDATE_ID" />
-          <ScalarProperty Name="ExclusiveKey" ColumnName="EXCLUSIVE_KEY" />
-          <ScalarProperty Name="DelFlg" ColumnName="DEL_FLG" />
-          <ScalarProperty Name="ExFld1" ColumnName="EX_FLD1" />
-          <ScalarProperty Name="ExFld2" ColumnName="EX_FLD2" />
-          <ScalarProperty Name="ExFld3" ColumnName="EX_FLD3" />
-          <ScalarProperty Name="ExFld4" ColumnName="EX_FLD4" />
-          <ScalarProperty Name="ExFld5" ColumnName="EX_FLD5" />
-          <ScalarProperty Name="TransactionType" ColumnName="TRANSACTION_TYPE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsrInfos">
-      <EntityTypeMapping TypeName="PosServerModels.UsrInfo">
-        <MappingFragment StoreEntitySet="CRL_USR_INFOs">
-          <ScalarProperty Name="Username" ColumnName="USERNAME" />
-          <ScalarProperty Name="Password" ColumnName="PASSWORD" />
-          <ScalarProperty Name="EmployeeId" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DEPARTMENT_ID" />
-          <ScalarProperty Name="Suspended" ColumnName="SUSPENDED" />
-          <ScalarProperty Name="Deleted" ColumnName="DELETED" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsrRoles">
-      <EntityTypeMapping TypeName="PosServerModels.UsrRole">
-        <MappingFragment StoreEntitySet="CRL_USR_ROLEs">
-          <ScalarProperty Name="Userid" ColumnName="USERID" />
-          <ScalarProperty Name="Roleid" ColumnName="ROLEID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <AssociationSetMapping Name="Role_UsrInfoSet" TypeName="EF.Pos2ClientModel.Role_UsrInfo" StoreEntitySet="crl_usr_roles">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="Id" ColumnName="roleid" />
+      </EndProperty>
+      <EndProperty Name="UsrInfos">
+        <ScalarProperty Name="Username" ColumnName="userid" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

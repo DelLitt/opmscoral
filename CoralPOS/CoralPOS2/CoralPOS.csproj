@@ -159,6 +159,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\trial\Devart.Data.Oracle.dll</HintPath>
     </Reference>
+    <Reference Include="Devart.Data.Oracle.Entity, Version=5.70.140.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.Oracle.Entity.dll</HintPath>
+    </Reference>
     <Reference Include="Devart.Data.Oracle.Linq, Version=1.0.36.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\trial\Devart.Data.Oracle.Linq.dll</HintPath>
@@ -355,7 +359,8 @@
     <Compile Include="Common\StockOutType.cs" />
     <Compile Include="Common\SystemConfig.cs" />
     <Compile Include="DTO\DepartmentStockTempValidDTO.cs" />
-    <Compile Include="EF\PosServerModels.Designer.cs" />
+    <Compile Include="EF\EF.Pos2ClientModel.Designer.cs" />
+    <Compile Include="EF\EF.Pos2ServerModel.Designer.cs" />
     <Compile Include="LingToSql\Pos2ClientContext.Designer.cs" />
     <Compile Include="LingToSql\Pos2ServerContext.Designer.cs" />
     <Compile Include="PosClient.Designer.cs">
@@ -522,9 +527,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="EF\PosServerModels.csdl" />
-    <None Include="EF\PosServerModels.msl" />
-    <None Include="EF\PosServerModels.ssdl" />
+    <None Include="EF\EF.Pos2ClientModel.csdl" />
+    <None Include="EF\EF.Pos2ClientModel.msl" />
+    <None Include="EF\EF.Pos2ClientModel.ssdl" />
+    <None Include="EF\EF.Pos2ServerModel.csdl" />
+    <None Include="EF\EF.Pos2ServerModel.msl" />
+    <None Include="EF\EF.Pos2ServerModel.ssdl" />
     <None Include="PosClient.xsc">
       <DependentUpon>PosClient.xsd</DependentUpon>
     </None>
