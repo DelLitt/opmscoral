@@ -147,6 +147,26 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libraries\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="Devart.Data, Version=5.0.93.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Linq, Version=1.0.36.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle, Version=5.70.140.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle.Linq, Version=1.0.36.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.Oracle.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.SqlServer.Linq, Version=1.0.36.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\trial\Devart.Data.SqlServer.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="EmitMapper">
       <HintPath>..\libraries\EmitMapper.dll</HintPath>
     </Reference>
@@ -336,6 +356,8 @@
     <Compile Include="Common\SystemConfig.cs" />
     <Compile Include="DTO\DepartmentStockTempValidDTO.cs" />
     <Compile Include="EF\PosServerModels.Designer.cs" />
+    <Compile Include="LingToSql\Pos2ClientContext.Designer.cs" />
+    <Compile Include="LingToSql\Pos2ServerContext.Designer.cs" />
     <Compile Include="PosClient.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -494,6 +516,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -663,9 +686,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LingToSql\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
