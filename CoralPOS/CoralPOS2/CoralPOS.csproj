@@ -304,6 +304,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Drawing" />
@@ -334,6 +335,7 @@
     <Compile Include="Common\StockOutType.cs" />
     <Compile Include="Common\SystemConfig.cs" />
     <Compile Include="DTO\DepartmentStockTempValidDTO.cs" />
+    <Compile Include="EF\PosServerModels.Designer.cs" />
     <Compile Include="PosClient.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -497,6 +499,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="EF\PosServerModels.csdl" />
+    <None Include="EF\PosServerModels.msl" />
+    <None Include="EF\PosServerModels.ssdl" />
     <None Include="PosClient.xsc">
       <DependentUpon>PosClient.xsd</DependentUpon>
     </None>
@@ -654,6 +659,12 @@
     <None Include="pos2.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LingToSql\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
