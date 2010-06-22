@@ -7,6 +7,7 @@ namespace POSServer.BusinessLogic.Common
 {
     public class FlowConstants
     {
+        public const string SAVE_EMPLOYEE_LIST = "SaveEmployeeList";
         public const string TEMP_VALID_FOUND_LIST = "TempValidFoundList";
         public const string TEMP_VALID_PROCESSING_LIST = "TempValidProcessingList";
         public const string SAVE_PRODUCT_MASTER = "SaveProductMaster";
