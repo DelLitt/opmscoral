@@ -1,16 +1,20 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AppFrame.Utility;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
+using NHibernate.Linq;
 using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
+using System.Linq;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
 
@@ -104,6 +108,56 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<EmployeeInfo> criteria)
         {
             return EmployeeInfoDao.FindPaging(criteria);
+        }
+
+        public string GenerateEmpId(string employeeName)
+        {
+            int index = -1;
+            string empId = StringUtility.ConvertUnicodeToUnmarkVI(employeeName);
+            string[] nameParts = empId.Split(' ');
+            string shortName = nameParts[nameParts.Length - 1];
+            
+            if(nameParts.Length > 1)
+            {
+                for(int i=0;i<nameParts.Length-1;i++)
+                {
+                    shortName += nameParts[i][0];
+                }
+            }
+            
+            string lastEmpId = (string)EmployeeInfoDao.Execute((m) =>
+                                        {
+                                            var result = (from emp in m.Linq<EmployeeInfo>()
+                                                          where emp.EmployeeId.StartsWith(shortName)
+                                                          select emp.EmployeeId).Max();
+                                            return result;
+                                        });
+            if(string.IsNullOrEmpty(lastEmpId))
+            {
+                shortName += "1";
+            }
+            else
+            {
+                int nextId = Int32.Parse(lastEmpId.Substring(shortName.Length));
+                shortName += (nextId + 1).ToString();
+            }
+            return shortName;
+        }
+
+        public string GetNextBarcode()
+        {
+            return (string)EmployeeInfoDao.Execute((m) =>
+            {
+                string nextBarcode = "NV000001";
+                var result = (from emp in m.Linq<EmployeeInfo>()
+                              select emp.Barcode).Max();
+                
+                if(!string.IsNullOrEmpty(result))
+                {
+                    nextBarcode = "NV" + string.Format("{0:000000}", Int32.Parse(result.Substring(2)) + 1);
+                }
+                return nextBarcode;
+            }); 
         }
     }
 }

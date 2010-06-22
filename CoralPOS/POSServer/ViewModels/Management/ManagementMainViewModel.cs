@@ -54,7 +54,7 @@ namespace POSServer.ViewModels.Management
 		        
         public void CreateEmployee()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.EmployeesViewFlow);
         }
 		        
         public void EmployeeList()

@@ -9,16 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
+using AppFrame.DataLayer;
+using AppFrame.Utility;
 using Caliburn.Core;
 using Caliburn.Core.IoC;
 using Caliburn.PresentationFramework.ApplicationModel;
 using Caliburn.PresentationFramework.Screens;
+using CoralPOS.Models;
 using POSServer.BusinessLogic.Implement;
+using System.Linq;
+using System.Linq.Expressions;
+using POSServer.ViewModels.Menu.Management;
 
 
 namespace POSServer.ViewModels.Management
 {
-    [PerRequest(typeof(IEmployeesViewModel))]
+    [AttachMenuAndMainScreen(typeof(IDeptEmpMenuViewModel), typeof(IManagementMainViewModel))]
     public class EmployeesViewModel : PosViewModel,IEmployeesViewModel  
     {
 
@@ -148,14 +155,47 @@ namespace POSServer.ViewModels.Management
 		        
         public void Stop()
         {
-            
+            Flow.End();
         }
 		        
         public void Create()
         {
+            EmployeeInfo info = new EmployeeInfo
+                                    {
+                                        EmployeeName = EmployeeName,
+                                        CreateDate = DateTime.Now,
+                                        ExFld4= CardId,
+                                        CreateId = "admin",
+                                        UpdateDate = DateTime.Now,
+                                        UpdateId = "admin",
+                                        Birthday = StartDay
+                                    };
             
+            string empId = EmployeeInfoLogic.GenerateEmpId(info.EmployeeName);
+            info.EmployeeId = empId;
+            info.Barcode = EmployeeInfoLogic.GetNextBarcode();
+            EmployeeInfoLogic.Add(info);
+            MessageBox.Show("Save OK");
+            InitContent();
         }
-				#endregion
+
+        private void InitContent()
+        {
+            EmployeeName = "";
+            CardId = "";
+            StartDay = DateTime.Now;
+            IList<EmployeeInfo> list = EmployeeInfoLogic.FindAll(new ObjectCriteria<EmployeeInfo>());
+            EmployeeList = list.OrderBy(m => m.EmployeeName).ToList();
+        }
+
+        public override void Initialize()
+        {
+            EmployeeList = new ArrayList();
+            IList<EmployeeInfo> list = EmployeeInfoLogic.FindAll(new ObjectCriteria<EmployeeInfo>());
+            EmployeeList = list.OrderBy(m => m.EmployeeName).ToList();
+        }
+
+        #endregion
 		
         
         

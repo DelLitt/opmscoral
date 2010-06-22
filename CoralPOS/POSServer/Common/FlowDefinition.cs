@@ -9,6 +9,7 @@ namespace POSServer.Common
     {
         #region Synchronize
         public static string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
+        public const string EmployeesViewFlow = "EmployeesViewFlow";
 
         #endregion
 

@@ -306,6 +306,11 @@ namespace POSServer.DataLayer.Implement
             }
         }
 
+        public object Execute(HibernateDelegate delegated)
+        {
+            return HibernateTemplate.Execute(delegated);
+        }
+
         private void SetCriteria(ICriteria hibernateCriteria, ObjectCriteria<EmployeeInfo> criteria)
         {
             IList<ICriterion> criterionList = criteria.GetWhere();

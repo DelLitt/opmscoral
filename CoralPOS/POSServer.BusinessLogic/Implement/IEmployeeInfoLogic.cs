@@ -61,5 +61,8 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<EmployeeInfo> criteria);
+
+        string GenerateEmpId(string employeeName);
+        string GetNextBarcode();
     }
 }
