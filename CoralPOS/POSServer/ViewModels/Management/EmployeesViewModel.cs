@@ -168,7 +168,8 @@ namespace POSServer.ViewModels.Management
                                         CreateId = "admin",
                                         UpdateDate = DateTime.Now,
                                         UpdateId = "admin",
-                                        Birthday = StartDay
+                                        Birthday = StartDay,
+                                        Address = Address
                                     };
             
             string empId = EmployeeInfoLogic.GenerateEmpId(info.EmployeeName);
