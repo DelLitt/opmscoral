@@ -231,6 +231,7 @@ namespace POSServer.BusinessLogic.Implement
                 ProductType type = null;
                 DetachedCriteria typeCrit = pmCrit.CreateCriteria((ProductMaster p) => p.ProductType, () => type,
                                                                  JoinType.InnerJoin);
+                
 
                 // has search product master name
                 if (!ObjectUtility.IsNullOrEmpty(criteria.ProductMasterNames))
@@ -290,7 +291,7 @@ namespace POSServer.BusinessLogic.Implement
                 // max result, should put in common properties
                 executeCrit.SetMaxResults(20);
                 //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
-                return executeCrit.List<StockIn>();
+                return executeCrit.Future<StockIn>();
             }
                                  );
         }

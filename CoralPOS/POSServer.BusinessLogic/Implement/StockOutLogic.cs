@@ -275,7 +275,7 @@ namespace POSServer.BusinessLogic.Implement
 
                 executeCrit.SetMaxResults(20);
                 //executeCrit.SetResultTransformer(Transformers.DistinctRootEntity);
-                return executeCrit.List<StockOut>();
+                return executeCrit.Future<StockOut>();
             }
                                  );
         }
