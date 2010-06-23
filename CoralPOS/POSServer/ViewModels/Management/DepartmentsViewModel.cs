@@ -77,8 +77,16 @@ namespace POSServer.ViewModels.Management
                 NotifyOfPropertyChange(() => DepartmentId);
             }
         }
+        /// <summary>
+        /// Gets or sets the selected department.
+        /// </summary>
+        /// <value>The selected department.</value>
         public Department SelectedDepartment { get; set; }
 
+        /// <summary>
+        /// Gets or sets the department logic.
+        /// </summary>
+        /// <value>The department logic.</value>
         public IDepartmentLogic DepartmentLogic
         {
             get; set;
@@ -107,31 +115,46 @@ namespace POSServer.ViewModels.Management
 				#endregion
 		
 		#region Methods
-		        
+
+        /// <summary>
+        /// Helps this instance.
+        /// </summary>
         public void Help()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Deletes this instance.
+        /// </summary>
         public void Delete()
         {
             IList list = new ArrayList(_departmentsList);
             ObjectUtility.RemoveFromList(list, SelectedDepartment, "DepartmentName");
             DepartmentsList = list;
         }
-		        
+
+        /// <summary>
+        /// Saves this instance.
+        /// </summary>
         public void Save()
         {
             DepartmentLogic.Update(DepartmentsList);
             SetBackToParentFlow(FlowConstants.DEPARTMENTS, DepartmentsList);
             GoToNextNode(); 
         }
-		        
+
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             Flow.End(); 
         }
-		        
+
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
         public void Create()
         {
             IList list = new ArrayList(_departmentsList);
@@ -144,6 +167,9 @@ namespace POSServer.ViewModels.Management
             DepartmentsList = list;
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public override void Initialize()
         {
             DepartmentLogic.LoadDefinition(Flow.Session);

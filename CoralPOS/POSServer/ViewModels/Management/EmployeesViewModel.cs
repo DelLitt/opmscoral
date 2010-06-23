@@ -27,11 +27,18 @@ using POSServer.ViewModels.Menu.Management;
 
 namespace POSServer.ViewModels.Management
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [AttachMenuAndMainScreen(typeof(IDeptEmpMenuViewModel), typeof(IManagementMainViewModel))]
     public class EmployeesViewModel : PosViewModel, IEmployeesViewModel
     {
 
         private IShellViewModel _startViewModel;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeesViewModel"/> class.
+        /// </summary>
+        /// <param name="startViewModel">The start view model.</param>
         public EmployeesViewModel(IShellViewModel startViewModel)
         {
             _startViewModel = startViewModel;
@@ -40,6 +47,10 @@ namespace POSServer.ViewModels.Management
         #region Fields
 
         private string _address;
+        /// <summary>
+        /// Gets or sets the address.
+        /// </summary>
+        /// <value>The address.</value>
         public string Address
         {
             get
@@ -54,6 +65,10 @@ namespace POSServer.ViewModels.Management
         }
 
         private string _employeeName;
+        /// <summary>
+        /// Gets or sets the name of the employee.
+        /// </summary>
+        /// <value>The name of the employee.</value>
         public string EmployeeName
         {
             get
@@ -67,7 +82,14 @@ namespace POSServer.ViewModels.Management
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private string _employeeId;
+        /// <summary>
+        /// Gets or sets the employee id.
+        /// </summary>
+        /// <value>The employee id.</value>
         public string EmployeeId
         {
             get
@@ -82,6 +104,10 @@ namespace POSServer.ViewModels.Management
         }
 
         private string _cardId;
+        /// <summary>
+        /// Gets or sets the card id.
+        /// </summary>
+        /// <value>The card id.</value>
         public string CardId
         {
             get
@@ -95,6 +121,10 @@ namespace POSServer.ViewModels.Management
             }
         }
 
+        /// <summary>
+        /// Gets or sets the employee info logic.
+        /// </summary>
+        /// <value>The employee info logic.</value>
         public IEmployeeInfoLogic EmployeeInfoLogic { get; set; }
         #endregion
 
@@ -107,6 +137,10 @@ namespace POSServer.ViewModels.Management
         #region List of date object
 
         private DateTime _startDay;
+        /// <summary>
+        /// Gets or sets the start day.
+        /// </summary>
+        /// <value>The start day.</value>
         public DateTime StartDay
         {
             get
@@ -124,6 +158,10 @@ namespace POSServer.ViewModels.Management
         #region List which just using in Data Grid
 
         private IList _employeeList;
+        /// <summary>
+        /// Gets or sets the employee list.
+        /// </summary>
+        /// <value>The employee list.</value>
         public IList EmployeeList
         {
             get
@@ -137,8 +175,12 @@ namespace POSServer.ViewModels.Management
             }
         }
 
-        
 
+
+        /// <summary>
+        /// Gets or sets the selected employee.
+        /// </summary>
+        /// <value>The selected employee.</value>
         public EmployeeInfo SelectedEmployee
         {
             get
@@ -157,17 +199,27 @@ namespace POSServer.ViewModels.Management
 
         #region Methods
 
+        /// <summary>
+        /// Helps this instance.
+        /// </summary>
         public void Help()
         {
 
         }
 
+        /// <summary>
+        /// Deletes this instance.
+        /// </summary>
         public void Delete()
         {
 
         }
 
 
+        /// <summary>
+        /// Gets a value indicating whether this instance can edit.
+        /// </summary>
+        /// <value><c>true</c> if this instance can edit; otherwise, <c>false</c>.</value>
         public bool CanEdit
         {
             get
@@ -180,6 +232,9 @@ namespace POSServer.ViewModels.Management
             }
         }
 
+        /// <summary>
+        /// Edits this instance.
+        /// </summary>
         public void Edit()
         {
             if(SelectedEmployee!=null && !string.IsNullOrEmpty(SelectedEmployee.EmployeeId))
@@ -193,15 +248,31 @@ namespace POSServer.ViewModels.Management
             }
         }
 
+        /// <summary>
+        /// Gets or sets the edit employee.
+        /// </summary>
+        /// <value>The edit employee.</value>
         protected EmployeeInfo EditEmployee { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is edit mode.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is edit mode; otherwise, <c>false</c>.
+        /// </value>
         protected bool IsEditMode { get; set; }
 
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             Flow.End();
         }
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
         public void Create()
         {
             if (!IsEditMode) // create mode
@@ -237,6 +308,9 @@ namespace POSServer.ViewModels.Management
             InitContent();
         }
 
+        /// <summary>
+        /// Inits the content.
+        /// </summary>
         private void InitContent()
         {
             EmployeeName = "";
@@ -253,6 +327,9 @@ namespace POSServer.ViewModels.Management
             }
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public override void Initialize()
         {
             InitContent();

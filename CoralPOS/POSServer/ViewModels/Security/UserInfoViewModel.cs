@@ -18,6 +18,9 @@ using Caliburn.PresentationFramework.Screens;
 
 namespace POSServer.ViewModels.Security
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [PerRequest(typeof(IUserInfoViewModel))]
     public class UserInfoViewModel : PosViewModel,IUserInfoViewModel  
     {
@@ -142,32 +145,50 @@ namespace POSServer.ViewModels.Security
 				#endregion
 		
 		#region Methods
-		        
+
+        /// <summary>
+        /// Helps this instance.
+        /// </summary>
         public void Help()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Saves this instance.
+        /// </summary>
         public void Save()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Cancels this instance.
+        /// </summary>
         public void Cancel()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Creates the employee account.
+        /// </summary>
         public void CreateEmployeeAccount()
         {
             
         }
-		        
+
+        /// <summary>
+        /// Creates the normal account.
+        /// </summary>
         public void CreateNormalAccount()
         {
             
