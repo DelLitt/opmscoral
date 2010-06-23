@@ -481,7 +481,9 @@
     <Compile Include="ViewModels\Security\CaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ICaliburnLoginViewModel.cs" />
     <Compile Include="ViewModels\Security\ILoginViewModel.cs" />
+    <Compile Include="ViewModels\Security\IUserInfoViewModel.cs" />
     <Compile Include="ViewModels\Security\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Security\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\IStockInventoryProcessingViewModel.cs" />
     <Compile Include="ViewModels\Stock\Inventory\IStockInventoryViewModel.cs" />

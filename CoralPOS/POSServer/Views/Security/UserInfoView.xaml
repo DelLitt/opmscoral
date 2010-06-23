@@ -45,8 +45,10 @@
                 <ListBoxItem Content="NGƯỜI DÙNG" />
             </ListBox>
             <Label Content="QUYỀN HẠN" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="323,290,0,0" Name="label3" VerticalAlignment="Top" FontSize="14" />
-            <Button Content="TẠO TÀI KHOẢN" Grid.Row="1" Height="35" HorizontalAlignment="Left" Margin="323,61,0,0" Name="CreateAccount" VerticalAlignment="Top" Width="177" />
-            <ComboBox Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="325,11,0,0" Name="CreateAccountBy" VerticalAlignment="Top" Width="175" />
+            <Button Grid.Row="1" Height="53" HorizontalAlignment="Left" Margin="321,0,0,0" Name="CreateEmployeeAccount" VerticalAlignment="Top" Width="177" >
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">TẠO TÀI KHOẢN TỪ TÊN NHÂN VIÊN</TextBlock>
+            </Button>
+            <Button Content="TẠO TÀI KHOẢN BÌNH THƯỜNG" Height="36" HorizontalAlignment="Left" Margin="321,69,0,0" Name="CreateNormalAccount" VerticalAlignment="Top" Width="177" Grid.Row="1" />
         </Grid>
     </Grid>
 </UserControl>
