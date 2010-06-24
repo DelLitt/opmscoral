@@ -1,6 +1,7 @@
 			 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Spring.Transaction.Interceptor;
@@ -104,6 +105,14 @@ namespace POSServer.BusinessLogic.Implement
         public QueryResult FindPaging(ObjectCriteria<UserRole> criteria)
         {
             return UserRoleDao.FindPaging(criteria);
+        }
+
+        public UserRole FindRole(string username)
+        {
+            LinqCriteria<UserRole> linqCriteria = new LinqCriteria<UserRole>();
+            linqCriteria.AddCriteria(m => m.Userid.Equals(username));
+            var result = UserRoleDao.FindAll(linqCriteria);
+            return result.Count > 0 ? result[0] : null;
         }
     }
 }

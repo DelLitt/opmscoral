@@ -111,7 +111,7 @@ namespace POSServer.ViewModels.Management
         /// </summary>
         public void AccountManagement()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.UserInfoViewFlow);
         }
 
         /// <summary>

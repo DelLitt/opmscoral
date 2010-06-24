@@ -7,7 +7,7 @@ namespace AppFrame.Base
 {
     public class DefaultSession : ISession
     {
-        private IDictionary<string,object> _dictionary = new Dictionary<string, object>();
+        protected IDictionary<string,object> _dictionary = new Dictionary<string, object>();
         public void Put(string key, object value)
         {
             if (IsSet(key))

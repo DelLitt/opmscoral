@@ -149,6 +149,13 @@
     <constructor-arg ref="IShellViewModel" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />    
   </object>
-  
+
+  <object id="IUserInfoViewModel" type="POSServer.ViewModels.Security.UserInfoViewModel, POSServer" singleton="false">
+    <constructor-arg ref="IShellViewModel" />
+    <property name="UserInfoLogic" ref="IUserInfoLogic" />
+    <property name="UserRoleLogic" ref="IUserRoleLogic" />
+    <property name="RoleLogic" ref="IRoleLogic" />
+    <property name="EmployeeInfoLogic" ref="IEmployeeInfoLogic" />
+  </object>
   
 </objects>

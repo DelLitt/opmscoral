@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="CoralPOS" namespace="CoralPOS.Models" xmlns="urn:nhibernate-mapping-2.2">
   <class name="UserRole" table="CRL_USR_ROLE" >
-    <composite-id name="UserRolePK" class="UserRolePK">
+    <id name="Userid" type="String" column="USERID">
+      <generator class="assigned" />
+    </id>
+    <!--<composite-id name="UserRolePK" class="UserRolePK">
       <key-property name="Roleid" type="Int64" column="ROLEID" />
       <key-property name="Userid" type="String" column="USERID" />
-    </composite-id>
-    <many-to-one class="Role" name="Role" />
-    <many-to-one class="UserInfo" name="UserInfo" />
+    </composite-id>-->    
+    <many-to-one class="Role" name="Role" insert="true" update="true" lazy="false">
+              <column name="ROLEID" />      
+    </many-to-one>
+    <many-to-one class="UserInfo" name="UserInfo" insert="false" update="false" lazy="false">      
+        <column name="USERID" />      
+    </many-to-one>
   </class>
 </hibernate-mapping>

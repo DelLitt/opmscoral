@@ -8,8 +8,8 @@ namespace POSServer.Common
     public class FlowDefinition
     {
         #region Synchronize
-        public static string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
-        public const string EmployeesViewFlow = "EmployeesViewFlow";
+        public const string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
+        
 
         #endregion
 
@@ -23,6 +23,8 @@ namespace POSServer.Common
         #region Management
 
         public const string DepartmentsViewFlow = "DepartmentsViewFlow";
+        public const string UserInfoViewFlow = "UserInfoViewFlow";
+        public const string EmployeesViewFlow = "EmployeesViewFlow";
 
         #endregion
 

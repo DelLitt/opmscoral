@@ -14,5 +14,9 @@ namespace AppFrame.Base
         }
 
         public event EventHandler OnFlowChanged;
+        public void Clear()
+        {
+            _dictionary.Clear();
+        }
     }
 }

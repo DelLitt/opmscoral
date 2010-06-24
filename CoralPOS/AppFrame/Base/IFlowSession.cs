@@ -9,5 +9,6 @@ namespace AppFrame.Base
     {
         IFlow Flow { get; set; }
         event EventHandler OnFlowChanged;
+        void Clear();
     }
 }

@@ -8,47 +8,52 @@
             <Button FontSize="14" FontWeight="Bold" Margin="318,6,439,39" Name="Save" Width="80" Height="80" Content="LƯU"></Button>
                 <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,6,6,39" Name="Stop" Width="80" Height="80">DỪNG</Button>
             <Button Content="BỎ QUA" FontSize="14" FontWeight="Bold" Height="80" Margin="420,6,337,39" Name="Cancel" Width="80" />
-            <CheckBox Height="37" HorizontalAlignment="Left" Margin="522,10,0,0" Name="checkBox2" VerticalAlignment="Top" Width="180" >
+            <CheckBox Height="37" HorizontalAlignment="Left" Margin="522,10,0,0" Name="ShowDeletedAccount" VerticalAlignment="Top" Width="180" >
                 <TextBlock  TextWrapping="Wrap"  TextAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Left" Height="17" Width="177">HIỂN THỊ TÀI KHOẢN ĐÃ XÓA</TextBlock>
             </CheckBox>
         </Grid>        
             <Grid Margin="0,0,0,123">
             <Grid.RowDefinitions>
-                <RowDefinition Height="58*"></RowDefinition>
-                <RowDefinition Height="519*"></RowDefinition>
+                <RowDefinition Height="12*"></RowDefinition>
+                <RowDefinition Height="565*"></RowDefinition>
             </Grid.RowDefinitions>
             <DataGrid AutoGenerateColumns="False" Grid.Row="1" Name="EmployeeList"  FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" 
                          SelectionMode="Single"
-                         SelectedItem="{Binding SelectedStockOut}" Margin="0,0,522,0">
+                         SelectedItem="{Binding SelectedEmployeeInfo,Mode=TwoWay}" Margin="0,0,522,0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Width="100" Binding="{Binding Path=EmployeeId}" SortMemberPath="StockOutId" />
-                    <DataGridTextColumn FontSize="14" Header="TÊN NHÂN VIÊN" Width="150*" Binding="{Binding Path=EmployeeName}" SortMemberPath="StockOutId" />                                       
+                    <DataGridTextColumn FontSize="14" Header="MÃ SỐ" Width="100" Binding="{Binding Path=EmployeeId}" SortMemberPath="EmployeeId" />
+                    <DataGridTextColumn FontSize="14" Header="TÊN NHÂN VIÊN" Width="150*" Binding="{Binding Path=EmployeeName}" SortMemberPath="EmployeeName" />                                       
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" FontSize="14" Margin="506,0,0,0" Name="UserAccountList" SelectedItem="{Binding SelectedStockOut}" SelectionMode="Single" Grid.Row="1">
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" FontSize="14" Margin="506,0,0,0" Name="UserAccountList" 
+                      SelectedItem="{Binding SelectedUserInfo,Mode=TwoWay}" SelectionMode="Single" Grid.Row="1">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Username}" FontSize="14" Header="TÊN Đ.NHẬP" SortMemberPath="StockOutId" Width="100" />
-                    <DataGridTextColumn Binding="{Binding Path=UserRight}" FontSize="14" Header="QUYỀN" SortMemberPath="StockOutId" Width="100" />
-                    <DataGridCheckBoxColumn Binding="{Binding Path=IsSuspend}" Header="NGƯNG" SortMemberPath="StockOutId" Width="140*" />
-                    <DataGridCheckBoxColumn Binding="{Binding Path=IsDeleted}" Header="XÓA" SortMemberPath="StockOutId" Width="150*" />
+                    <DataGridTextColumn Binding="{Binding Path=Username}" FontSize="14" Header="TÊN Đ.NHẬP" SortMemberPath="Username" Width="100" />
+                    <DataGridTextColumn Binding="{Binding Path=UserRight}" FontSize="14" Header="QUYỀN" SortMemberPath="UserRight" Width="100" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Suspended}" Header="NGƯNG" SortMemberPath="Suspended" Width="140*" />
+                    <DataGridCheckBoxColumn Binding="{Binding Path=Deleted}" Header="XÓA" SortMemberPath="Deleted" Width="150*" />
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBox Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="321,138,0,0" Name="Username" VerticalAlignment="Top" Width="179" FontSize="14" />
-            <TextBox Height="36" HorizontalAlignment="Left" Margin="321,208,0,0" Name="Password" VerticalAlignment="Top" Width="179" Grid.Row="1" FontSize="14" />
-            <Label Content="TÊN ĐĂNG NHẬP" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="321,111,0,0" Name="label1" VerticalAlignment="Top" FontSize="14" />
-            <Label Content="MẬT KHẨU" Height="28" HorizontalAlignment="Left" Margin="321,180,0,0" Name="label2" VerticalAlignment="Top" Grid.Row="1" FontSize="14" />
-            <CheckBox Content="Hiện mật khẩu" Grid.Row="1" Height="16" HorizontalAlignment="Left" Margin="323,248,0,0" Name="IsShowPassword" VerticalAlignment="Top" />
-            <ListBox Grid.Row="1" Height="143" HorizontalAlignment="Left" Margin="323,318,0,0" Name="RightList" VerticalAlignment="Top" Width="178">
-                <ListBoxItem Content="ADMIN" />
+            <TextBox Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="321,234,0,0" Name="Username" VerticalAlignment="Top" Width="179" FontSize="14" IsEnabled="{Binding EnableEditUsername,Mode=TwoWay}"/>
+            <TextBox Height="36" HorizontalAlignment="Left" Margin="321,304,0,0" Name="Password" VerticalAlignment="Top" Width="179" Grid.Row="1" FontSize="14" IsEnabled="{Binding IsEdit,Mode=TwoWay}"/>
+            <Label Content="TÊN ĐĂNG NHẬP" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="321,207,0,0" Name="label1" VerticalAlignment="Top" FontSize="14" />
+            <Label Content="MẬT KHẨU" Height="28" HorizontalAlignment="Left" Margin="321,276,0,0" Name="label2" VerticalAlignment="Top" Grid.Row="1" FontSize="14" />
+            <CheckBox Content="Hiện mật khẩu" Grid.Row="1" Height="16" HorizontalAlignment="Left" Margin="323,344,0,0" Name="IsShowPassword" VerticalAlignment="Top" />
+            <ListBox Grid.Row="1" Height="143" HorizontalAlignment="Left" Margin="323,414,0,0" Name="RightList" VerticalAlignment="Top" Width="178" IsEnabled="{Binding IsEdit,Mode=TwoWay}"
+                     ItemsSource="{Binding RightList}" DisplayMemberPath="Name" 
+                     SelectedItem="{Binding SelectedRole,Mode=TwoWay}"
+                     >                
+                <!--<ListBoxItem Content="ADMIN" />
                 <ListBoxItem Content="TỔNG QUẢN LÝ" />
                 <ListBoxItem Content="QUẢN LÝ" />
-                <ListBoxItem Content="NGƯỜI DÙNG" />
+                <ListBoxItem Content="NGƯỜI DÙNG" />-->
             </ListBox>
-            <Label Content="QUYỀN HẠN" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="323,290,0,0" Name="label3" VerticalAlignment="Top" FontSize="14" />
+            <Label Content="QUYỀN HẠN" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="323,386,0,0" Name="label3" VerticalAlignment="Top" FontSize="14" />
             <Button Grid.Row="1" Height="53" HorizontalAlignment="Left" Margin="321,0,0,0" Name="CreateEmployeeAccount" VerticalAlignment="Top" Width="177" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">TẠO TÀI KHOẢN TỪ TÊN NHÂN VIÊN</TextBlock>
             </Button>
             <Button Content="TẠO TÀI KHOẢN BÌNH THƯỜNG" Height="36" HorizontalAlignment="Left" Margin="321,69,0,0" Name="CreateNormalAccount" VerticalAlignment="Top" Width="177" Grid.Row="1" />
+            <Button Content="CHỈNH SỬA TÀI KHOẢN" Height="36" HorizontalAlignment="Left" Margin="321,146,0,0" Name="EditUserInfo" VerticalAlignment="Top" Width="177" Grid.Row="1" />
         </Grid>
     </Grid>
 </UserControl>

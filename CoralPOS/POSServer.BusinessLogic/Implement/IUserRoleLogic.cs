@@ -61,5 +61,12 @@ namespace POSServer.BusinessLogic.Implement
         /// <param name="criteria"></param>
         /// <returns></returns>
         QueryResult FindPaging(ObjectCriteria<UserRole> criteria);
+
+        /// <summary>
+        /// Finds the role.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <returns></returns>
+        UserRole FindRole(string username);
     }
 }
