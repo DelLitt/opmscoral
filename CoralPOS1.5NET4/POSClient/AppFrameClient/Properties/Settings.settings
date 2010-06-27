@@ -34,14 +34,6 @@
     <Setting Name="DBBackupPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">\POS\BackupDB</Value>
     </Setting>
-    <Setting Name="posConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Password=1qw45DCM9rl;user id=dbadmin;server=localhost;persist security info=True;database=pos</Value>
-    </Setting>
     <Setting Name="DeptMarket" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
@@ -86,6 +78,14 @@
     </Setting>
     <Setting Name="MaxPOId" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="posConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;User Id=dbadmin;Password=1qw45DCM9rl;Host=localhost;Database=pos;Persist Security Info=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;Devart.Data.MySql&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">User Id=dbadmin;Password=1qw45DCM9rl;Host=localhost;Database=pos;Persist Security Info=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
