@@ -41,11 +41,8 @@ namespace AppFrameClient.View.GoodsIO
             this.label1 = new System.Windows.Forms.Label();
             this.typeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sizeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtDescription1 = new System.Windows.Forms.Label();
             this.manufacturerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lbxProductSize = new System.Windows.Forms.ListBox();
-            this.lbxProductColor = new System.Windows.Forms.ListBox();
             this.btnCreateDistributor = new System.Windows.Forms.Button();
             this.btnCreatePackager = new System.Windows.Forms.Button();
             this.btnCreateManufacturer = new System.Windows.Forms.Button();
@@ -62,8 +59,6 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbManufacturer = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbbCountry = new System.Windows.Forms.ComboBox();
-            this.cbbProductType = new System.Windows.Forms.ComboBox();
-            this.txtProductMasterId = new System.Windows.Forms.TextBox();
             this.lblProductMasterId = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,10 +76,15 @@ namespace AppFrameClient.View.GoodsIO
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.txtProductName = new AppFrame.Controls.CoralTextBox();
             this.lstProductColors = new Rafael.Windows.Forms.ListBox.CoralListBox();
             this.lstProductSizes = new Rafael.Windows.Forms.ListBox.CoralListBox();
             this.imagePathFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.txtProductMasterId = new DevExpress.XtraEditors.TextEdit();
+            this.txtProductName = new DevExpress.XtraEditors.TextEdit();
+            this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
+            this.lbxProductColor = new DevExpress.XtraEditors.ListBoxControl();
+            this.lbxProductSize = new DevExpress.XtraEditors.ListBoxControl();
+            this.cbbProductType = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeBindingSource)).BeginInit();
@@ -95,6 +95,12 @@ namespace AppFrameClient.View.GoodsIO
             ((System.ComponentModel.ISupportInitialize)(this.bdsColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSizes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProductMasterId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbxProductColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbxProductSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbProductType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -103,7 +109,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(164, 1);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(200, 20);
+            this.label8.Size = new System.Drawing.Size(212, 20);
             this.label8.TabIndex = 21;
             this.label8.Text = "THÔNG TIN SẢN PHẨM";
             // 
@@ -125,7 +131,7 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.txtImagePath.Location = new System.Drawing.Point(135, 521);
             this.txtImagePath.Name = "txtImagePath";
-            this.txtImagePath.Size = new System.Drawing.Size(379, 22);
+            this.txtImagePath.Size = new System.Drawing.Size(379, 23);
             this.txtImagePath.TabIndex = 102;
             // 
             // colorBindingSource
@@ -137,7 +143,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 524);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 14);
+            this.label1.Size = new System.Drawing.Size(58, 16);
             this.label1.TabIndex = 120;
             this.label1.Text = "Hình ảnh";
             // 
@@ -149,52 +155,19 @@ namespace AppFrameClient.View.GoodsIO
             // 
             this.sizeBindingSource.DataSource = typeof(AppFrame.Model.ProductSize);
             // 
-            // txtDescription
-            // 
-            this.txtDescription.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(135, 81);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(423, 48);
-            this.txtDescription.TabIndex = 94;
-            // 
             // txtDescription1
             // 
             this.txtDescription1.AutoSize = true;
             this.txtDescription1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription1.Location = new System.Drawing.Point(24, 88);
             this.txtDescription1.Name = "txtDescription1";
-            this.txtDescription1.Size = new System.Drawing.Size(38, 14);
+            this.txtDescription1.Size = new System.Drawing.Size(40, 16);
             this.txtDescription1.TabIndex = 119;
             this.txtDescription1.Text = "Mô tả";
             // 
             // manufacturerBindingSource
             // 
             this.manufacturerBindingSource.DataSource = typeof(AppFrame.Model.Manufacturer);
-            // 
-            // lbxProductSize
-            // 
-            this.lbxProductSize.DataSource = this.sizeBindingSource;
-            this.lbxProductSize.DisplayMember = "SizeName";
-            this.lbxProductSize.FormattingEnabled = true;
-            this.lbxProductSize.ItemHeight = 14;
-            this.lbxProductSize.Location = new System.Drawing.Point(133, 277);
-            this.lbxProductSize.Name = "lbxProductSize";
-            this.lbxProductSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbxProductSize.Size = new System.Drawing.Size(185, 88);
-            this.lbxProductSize.TabIndex = 97;
-            // 
-            // lbxProductColor
-            // 
-            this.lbxProductColor.DataSource = this.colorBindingSource;
-            this.lbxProductColor.DisplayMember = "ColorName";
-            this.lbxProductColor.FormattingEnabled = true;
-            this.lbxProductColor.ItemHeight = 14;
-            this.lbxProductColor.Location = new System.Drawing.Point(133, 175);
-            this.lbxProductColor.Name = "lbxProductColor";
-            this.lbxProductColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbxProductColor.Size = new System.Drawing.Size(185, 88);
-            this.lbxProductColor.TabIndex = 96;
             // 
             // btnCreateDistributor
             // 
@@ -281,7 +254,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbDistributor.FormattingEnabled = true;
             this.cbbDistributor.Location = new System.Drawing.Point(135, 479);
             this.cbbDistributor.Name = "cbbDistributor";
-            this.cbbDistributor.Size = new System.Drawing.Size(185, 22);
+            this.cbbDistributor.Size = new System.Drawing.Size(185, 24);
             this.cbbDistributor.TabIndex = 101;
             // 
             // distributorBindingSource
@@ -294,7 +267,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(24, 482);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 14);
+            this.label7.Size = new System.Drawing.Size(97, 16);
             this.label7.TabIndex = 111;
             this.label7.Text = "Hãng phân phối";
             // 
@@ -306,7 +279,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbPackager.FormattingEnabled = true;
             this.cbbPackager.Location = new System.Drawing.Point(135, 449);
             this.cbbPackager.Name = "cbbPackager";
-            this.cbbPackager.Size = new System.Drawing.Size(185, 22);
+            this.cbbPackager.Size = new System.Drawing.Size(185, 24);
             this.cbbPackager.TabIndex = 100;
             // 
             // packagerBindingSource
@@ -319,7 +292,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(24, 454);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 14);
+            this.label6.Size = new System.Drawing.Size(90, 16);
             this.label6.TabIndex = 110;
             this.label6.Text = "Hãng đóng gói";
             // 
@@ -331,7 +304,7 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbManufacturer.FormattingEnabled = true;
             this.cbbManufacturer.Location = new System.Drawing.Point(135, 420);
             this.cbbManufacturer.Name = "cbbManufacturer";
-            this.cbbManufacturer.Size = new System.Drawing.Size(185, 22);
+            this.cbbManufacturer.Size = new System.Drawing.Size(185, 24);
             this.cbbManufacturer.TabIndex = 99;
             // 
             // label5
@@ -340,7 +313,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(24, 425);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 14);
+            this.label5.Size = new System.Drawing.Size(89, 16);
             this.label5.TabIndex = 109;
             this.label5.Text = "Hãng sản xuất";
             // 
@@ -352,29 +325,8 @@ namespace AppFrameClient.View.GoodsIO
             this.cbbCountry.FormattingEnabled = true;
             this.cbbCountry.Location = new System.Drawing.Point(135, 391);
             this.cbbCountry.Name = "cbbCountry";
-            this.cbbCountry.Size = new System.Drawing.Size(185, 22);
+            this.cbbCountry.Size = new System.Drawing.Size(185, 24);
             this.cbbCountry.TabIndex = 98;
-            // 
-            // cbbProductType
-            // 
-            this.cbbProductType.DataSource = this.typeBindingSource;
-            this.cbbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbProductType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbProductType.FormattingEnabled = true;
-            this.cbbProductType.Location = new System.Drawing.Point(135, 144);
-            this.cbbProductType.Name = "cbbProductType";
-            this.cbbProductType.Size = new System.Drawing.Size(183, 22);
-            this.cbbProductType.TabIndex = 95;
-            this.cbbProductType.SelectedIndexChanged += new System.EventHandler(this.cbbProductType_SelectedIndexChanged);
-            // 
-            // txtProductMasterId
-            // 
-            this.txtProductMasterId.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductMasterId.Location = new System.Drawing.Point(135, 24);
-            this.txtProductMasterId.Name = "txtProductMasterId";
-            this.txtProductMasterId.ReadOnly = true;
-            this.txtProductMasterId.Size = new System.Drawing.Size(185, 22);
-            this.txtProductMasterId.TabIndex = 92;
             // 
             // lblProductMasterId
             // 
@@ -382,7 +334,7 @@ namespace AppFrameClient.View.GoodsIO
             this.lblProductMasterId.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductMasterId.Location = new System.Drawing.Point(24, 31);
             this.lblProductMasterId.Name = "lblProductMasterId";
-            this.lblProductMasterId.Size = new System.Drawing.Size(78, 14);
+            this.lblProductMasterId.Size = new System.Drawing.Size(85, 16);
             this.lblProductMasterId.TabIndex = 108;
             this.lblProductMasterId.Text = "Mã sản phẩm";
             // 
@@ -392,7 +344,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(24, 394);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 14);
+            this.label15.Size = new System.Drawing.Size(89, 16);
             this.label15.TabIndex = 107;
             this.label15.Text = "Nước sản xuất";
             // 
@@ -402,7 +354,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(24, 277);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 14);
+            this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 106;
             this.label4.Text = "Kích cỡ / Size";
             // 
@@ -412,7 +364,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(24, 175);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 14);
+            this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 105;
             this.label3.Text = "Màu sắc:";
             // 
@@ -422,7 +374,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(24, 147);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 14);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 104;
             this.label2.Text = "Chủng loại:";
             // 
@@ -432,7 +384,7 @@ namespace AppFrameClient.View.GoodsIO
             this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(24, 60);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 14);
+            this.label9.Size = new System.Drawing.Size(88, 16);
             this.label9.TabIndex = 103;
             this.label9.Text = "Tên mặt hàng";
             // 
@@ -441,7 +393,7 @@ namespace AppFrameClient.View.GoodsIO
             this.txtProductType.Location = new System.Drawing.Point(373, 144);
             this.txtProductType.Name = "txtProductType";
             this.txtProductType.ReadOnly = true;
-            this.txtProductType.Size = new System.Drawing.Size(185, 22);
+            this.txtProductType.Size = new System.Drawing.Size(185, 23);
             this.txtProductType.TabIndex = 122;
             // 
             // btnAddColor
@@ -531,16 +483,6 @@ namespace AppFrameClient.View.GoodsIO
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // txtProductName
-            // 
-            this.txtProductName.DigitOnly = false;
-            this.txtProductName.Format = null;
-            this.txtProductName.LetterFormat = AppFrame.Controls.LetterFormat.Upper;
-            this.txtProductName.Location = new System.Drawing.Point(135, 53);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(423, 22);
-            this.txtProductName.TabIndex = 133;
-            // 
             // lstProductColors
             // 
             this.lstProductColors.DataSource = this.bdsColors;
@@ -572,14 +514,111 @@ namespace AppFrameClient.View.GoodsIO
             this.imagePathFileDialog.Filter = "JPG files |*.jpg|All files|*.*";
             this.imagePathFileDialog.RestoreDirectory = true;
             // 
+            // txtProductMasterId
+            // 
+            this.txtProductMasterId.Enabled = false;
+            this.txtProductMasterId.Location = new System.Drawing.Point(133, 25);
+            this.txtProductMasterId.Name = "txtProductMasterId";
+            this.txtProductMasterId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtProductMasterId.Properties.Appearance.Options.UseFont = true;
+            this.txtProductMasterId.Properties.NullText = "Mã sản phẩm sẽ tự sinh ra khi lưu";
+            this.txtProductMasterId.Properties.ReadOnly = true;
+            this.txtProductMasterId.Size = new System.Drawing.Size(234, 22);
+            this.txtProductMasterId.TabIndex = 136;
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.EditValue = "Tên mặt hàng";
+            this.txtProductName.EnterMoveNextControl = true;
+            this.txtProductName.Location = new System.Drawing.Point(133, 53);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.txtProductName.Properties.Appearance.Options.UseFont = true;
+            this.txtProductName.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtProductName.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtProductName.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtProductName.Properties.NullValuePrompt = "Tên mặt hàng";
+            this.txtProductName.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtProductName.Size = new System.Drawing.Size(423, 22);
+            this.txtProductName.TabIndex = 2;
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.EnterMoveNextControl = true;
+            this.txtDescription.Location = new System.Drawing.Point(133, 82);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtDescription.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtDescription.Properties.NullValuePrompt = "Mô tả mặt hàng";
+            this.txtDescription.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtDescription.Size = new System.Drawing.Size(423, 56);
+            this.txtDescription.TabIndex = 3;
+            // 
+            // lbxProductColor
+            // 
+            this.lbxProductColor.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lbxProductColor.Appearance.Options.UseFont = true;
+            this.lbxProductColor.DataSource = this.colorBindingSource;
+            this.lbxProductColor.DisplayMember = "ColorName";
+            this.lbxProductColor.Location = new System.Drawing.Point(133, 176);
+            this.lbxProductColor.Name = "lbxProductColor";
+            this.lbxProductColor.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lbxProductColor.Size = new System.Drawing.Size(185, 95);
+            this.lbxProductColor.SortOrder = System.Windows.Forms.SortOrder.Ascending;
+            this.lbxProductColor.TabIndex = 5;
+            // 
+            // lbxProductSize
+            // 
+            this.lbxProductSize.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.lbxProductSize.Appearance.Options.UseFont = true;
+            this.lbxProductSize.DataSource = this.sizeBindingSource;
+            this.lbxProductSize.DisplayMember = "SizeName";
+            this.lbxProductSize.Location = new System.Drawing.Point(133, 277);
+            this.lbxProductSize.Name = "lbxProductSize";
+            this.lbxProductSize.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lbxProductSize.Size = new System.Drawing.Size(185, 95);
+            this.lbxProductSize.SortOrder = System.Windows.Forms.SortOrder.Ascending;
+            this.lbxProductSize.TabIndex = 6;
+            // 
+            // cbbProductType
+            // 
+            this.cbbProductType.EnterMoveNextControl = true;
+            this.cbbProductType.Location = new System.Drawing.Point(133, 142);
+            this.cbbProductType.Name = "cbbProductType";
+            this.cbbProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cbbProductType.Properties.Appearance.Options.UseFont = true;
+            this.cbbProductType.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbbProductType.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.cbbProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbProductType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TypeId", "Mã", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.True),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TypeName", "Chủng loại", 20, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.True)});
+            this.cbbProductType.Properties.DataSource = this.typeBindingSource;
+            this.cbbProductType.Properties.DisplayMember = "TypeName";
+            this.cbbProductType.Properties.ImmediatePopup = true;
+            this.cbbProductType.Properties.NullText = "";
+            this.cbbProductType.Properties.NullValuePrompt = "Chưa chọn chủng loại";
+            this.cbbProductType.Properties.NullValuePromptShowForEmptyValue = true;
+            this.cbbProductType.Properties.SortColumnIndex = 1;
+            this.cbbProductType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.cbbProductType.Size = new System.Drawing.Size(185, 22);
+            this.cbbProductType.TabIndex = 4;
+            this.cbbProductType.EditValueChanged += new System.EventHandler(this.cbbProductType_EditValueChanged);
+            // 
             // ProductMasterExtraForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 631);
+            this.Controls.Add(this.cbbProductType);
+            this.Controls.Add(this.lbxProductSize);
+            this.Controls.Add(this.lbxProductColor);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.txtProductMasterId);
             this.Controls.Add(this.lstProductSizes);
             this.Controls.Add(this.lstProductColors);
-            this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -592,10 +631,7 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.txtImagePath);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtDescription1);
-            this.Controls.Add(this.lbxProductSize);
-            this.Controls.Add(this.lbxProductColor);
             this.Controls.Add(this.btnCreateDistributor);
             this.Controls.Add(this.btnCreatePackager);
             this.Controls.Add(this.btnCreateManufacturer);
@@ -610,8 +646,6 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.Add(this.cbbManufacturer);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbbCountry);
-            this.Controls.Add(this.cbbProductType);
-            this.Controls.Add(this.txtProductMasterId);
             this.Controls.Add(this.lblProductMasterId);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label4);
@@ -631,8 +665,6 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label15, 0);
             this.Controls.SetChildIndex(this.lblProductMasterId, 0);
-            this.Controls.SetChildIndex(this.txtProductMasterId, 0);
-            this.Controls.SetChildIndex(this.cbbProductType, 0);
             this.Controls.SetChildIndex(this.cbbCountry, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.cbbManufacturer, 0);
@@ -647,10 +679,7 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.SetChildIndex(this.btnCreateManufacturer, 0);
             this.Controls.SetChildIndex(this.btnCreatePackager, 0);
             this.Controls.SetChildIndex(this.btnCreateDistributor, 0);
-            this.Controls.SetChildIndex(this.lbxProductColor, 0);
-            this.Controls.SetChildIndex(this.lbxProductSize, 0);
             this.Controls.SetChildIndex(this.txtDescription1, 0);
-            this.Controls.SetChildIndex(this.txtDescription, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtImagePath, 0);
             this.Controls.SetChildIndex(this.btnSelect, 0);
@@ -663,9 +692,14 @@ namespace AppFrameClient.View.GoodsIO
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
-            this.Controls.SetChildIndex(this.txtProductName, 0);
             this.Controls.SetChildIndex(this.lstProductColors, 0);
             this.Controls.SetChildIndex(this.lstProductSizes, 0);
+            this.Controls.SetChildIndex(this.txtProductMasterId, 0);
+            this.Controls.SetChildIndex(this.txtProductName, 0);
+            this.Controls.SetChildIndex(this.txtDescription, 0);
+            this.Controls.SetChildIndex(this.lbxProductColor, 0);
+            this.Controls.SetChildIndex(this.lbxProductSize, 0);
+            this.Controls.SetChildIndex(this.cbbProductType, 0);
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeBindingSource)).EndInit();
@@ -676,6 +710,12 @@ namespace AppFrameClient.View.GoodsIO
             ((System.ComponentModel.ISupportInitialize)(this.bdsColors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSizes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProductMasterId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbxProductColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lbxProductSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbProductType.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,11 +731,8 @@ namespace AppFrameClient.View.GoodsIO
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.BindingSource typeBindingSource;
         public System.Windows.Forms.BindingSource sizeBindingSource;
-        public System.Windows.Forms.TextBox txtDescription;
         public System.Windows.Forms.Label txtDescription1;
         public System.Windows.Forms.BindingSource manufacturerBindingSource;
-        public System.Windows.Forms.ListBox lbxProductSize;
-        public System.Windows.Forms.ListBox lbxProductColor;
         public System.Windows.Forms.Button btnCreateDistributor;
         public System.Windows.Forms.Button btnCreatePackager;
         public System.Windows.Forms.Button btnCreateManufacturer;
@@ -712,8 +749,6 @@ namespace AppFrameClient.View.GoodsIO
         public System.Windows.Forms.ComboBox cbbManufacturer;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.ComboBox cbbCountry;
-        public System.Windows.Forms.ComboBox cbbProductType;
-        public System.Windows.Forms.TextBox txtProductMasterId;
         private System.Windows.Forms.Label lblProductMasterId;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label4;
@@ -731,10 +766,15 @@ namespace AppFrameClient.View.GoodsIO
         public System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.BindingSource bdsColors;
         private System.Windows.Forms.BindingSource bdsSizes;
-        private AppFrame.Controls.CoralTextBox txtProductName;
         private Rafael.Windows.Forms.ListBox.CoralListBox lstProductColors;
         private Rafael.Windows.Forms.ListBox.CoralListBox lstProductSizes;
         private System.Windows.Forms.OpenFileDialog imagePathFileDialog;
+        private DevExpress.XtraEditors.TextEdit txtProductMasterId;
+        private DevExpress.XtraEditors.TextEdit txtProductName;
+        private DevExpress.XtraEditors.MemoEdit txtDescription;
+        private DevExpress.XtraEditors.ListBoxControl lbxProductColor;
+        private DevExpress.XtraEditors.ListBoxControl lbxProductSize;
+        private DevExpress.XtraEditors.LookUpEdit cbbProductType;
 
         public event EventHandler<ProductMasterEventArgs> DeleteProductMasterEvent;
     }

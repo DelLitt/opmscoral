@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductMasterForm));
             this.label8 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -37,6 +38,8 @@
             this.barcodePrintPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.btnDelete = new System.Windows.Forms.Button();
             this.productMasterControl = new AppFrameClient.View.GoodsIO.ProductMasterControl();
+            this.productMasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -45,7 +48,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(190, 3);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(179, 20);
+            this.label8.Size = new System.Drawing.Size(188, 20);
             this.label8.TabIndex = 20;
             this.label8.Text = "CHI TIẾT SẢN PHẨM";
             // 
@@ -106,9 +109,13 @@
             this.productMasterControl.Size = new System.Drawing.Size(535, 489);
             this.productMasterControl.TabIndex = 0;
             // 
+            // productMasterBindingSource
+            // 
+            this.productMasterBindingSource.DataSource = typeof(AppFrame.Model.ProductMaster);
+            // 
             // ProductMasterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 552);
             this.Controls.Add(this.btnDelete);
@@ -120,6 +127,12 @@
             this.Name = "ProductMasterForm";
             this.Text = "ProductMasterForm";
             this.Load += new System.EventHandler(this.ProductMasterForm_Load);
+            this.Controls.SetChildIndex(this.productMasterControl, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.productMasterBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +148,6 @@
         private System.Drawing.Printing.PrintDocument barcodePrintDocument;
         private System.Windows.Forms.PrintPreviewDialog barcodePrintPreviewDialog;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.BindingSource productMasterBindingSource;
     }
 }

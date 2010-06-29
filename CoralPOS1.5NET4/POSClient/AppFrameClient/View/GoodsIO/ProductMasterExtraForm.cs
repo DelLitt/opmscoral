@@ -14,6 +14,8 @@ using AppFrame.Utility;
 using AppFrame.View.GoodsIO;
 using AppFrameClient.Common;
 using AppFrameClient.View.Masters;
+using DevExpress.XtraEditors;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace AppFrameClient.View.GoodsIO
 {
@@ -59,7 +61,8 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductTypeList.RemoveAt(0);
                 typeBindingSource.DataSource = eventArgs.ProductTypeList;
-                cbbProductType.DisplayMember = "TypeName";
+                //cbbProductType.Properties.Items.Add(typeBindingSource.DataSource);
+                //cbbProductType.di = "TypeName";
             }
 
             if (eventArgs.ProductSizeList.Count > 1)
@@ -129,14 +132,15 @@ namespace AppFrameClient.View.GoodsIO
                 i = 0;
                 if (ProductMaster.ProductType != null)
                 {
-                    foreach (ProductType productType in eventArgs.ProductTypeList)
+                    cbbProductType.EditValue = ProductMaster.ProductType;
+                    /*foreach (ProductType productType in eventArgs.ProductTypeList)
                     {
                         if (productType.TypeId == ProductMaster.ProductType.TypeId)
                         {
-                            cbbProductType.SelectedIndex = i;
+                            cbbProductType.EditValue = i;
                         }
                         i++;
-                    }
+                    }*/
                 }
                 cbbProductType.Enabled = false;
 
@@ -268,7 +272,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnAddColor_Click(object sender, EventArgs e)
         {
-            ListBox.SelectedObjectCollection selectedColors = lbxProductColor.SelectedItems;
+            BaseListBoxControl.SelectedItemCollection selectedColors = lbxProductColor.SelectedItems;
 
             foreach (ProductColor color in selectedColors)
             {
@@ -317,7 +321,7 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnAddSize_Click(object sender, EventArgs e)
         {
-            ListBox.SelectedObjectCollection selectedSizes = lbxProductSize.SelectedItems;
+            BaseListBoxControl.SelectedItemCollection selectedSizes = lbxProductSize.SelectedItems;
 
             foreach (ProductSize size in selectedSizes)
             {
@@ -368,7 +372,7 @@ namespace AppFrameClient.View.GoodsIO
         {
             try
             {
-                txtProductType.Text = ((ProductType)cbbProductType.SelectedItem).TypeName;
+                txtProductType.Text = ((ProductType)cbbProductType.EditValue).TypeName;
             }
             catch (Exception)
             {
@@ -386,7 +390,7 @@ namespace AppFrameClient.View.GoodsIO
                 MessageBox.Show("Hãy nhập tên sản phẩm !");
                 return;
             }
-            if (cbbProductType.SelectedIndex < 0)
+            if (cbbProductType.EditValue ==null)
             {
                 MessageBox.Show("Hãy chọn loại sản phẩm !");
                 return;
@@ -498,14 +502,14 @@ namespace AppFrameClient.View.GoodsIO
             cbbCountry.SelectedIndex = 0;
             cbbDistributor.SelectedIndex = 0;
             cbbManufacturer.SelectedIndex = 0;
-            cbbProductType.SelectedIndex = 0;
+            //cbbProductType.p = 0;
             cbbPackager.SelectedIndex = 0;
 
             bdsColors.Clear();
             bdsColors.ResetBindings(false);
             lstProductColors.Refresh();
-            lbxProductColor.SelectedIndices.Clear();
-            lbxProductSize.SelectedIndices.Clear();
+            lbxProductColor.UnSelectAll();
+            lbxProductSize.UnSelectAll();
             bdsSizes.Clear();
             bdsSizes.ResetBindings(false);
             lstProductSizes.Refresh();
@@ -523,7 +527,7 @@ namespace AppFrameClient.View.GoodsIO
                 Description = txtDescription.Text,
                 Packager = cbbPackager.SelectedIndex > 0 ? ((Packager)cbbPackager.SelectedItem) : null,
                 ProductSize = size,
-                ProductType = (ProductType)cbbProductType.SelectedItem,
+                ProductType = (ProductType)cbbProductType.EditValue,
                 ProductColor = color,
                 Country = cbbCountry.SelectedIndex > 0 ? ((Country)cbbCountry.SelectedItem) : null,
                 Manufacturer = cbbManufacturer.SelectedIndex > 0 ? ((Manufacturer)cbbManufacturer.SelectedItem) : null,
@@ -619,8 +623,112 @@ namespace AppFrameClient.View.GoodsIO
 
         private void btnCreateType_Click(object sender, EventArgs e)
         {
-            AddToDataToComboBox(MasterType.PRODUCT_TYPE,
-                cbbProductType, typeBindingSource);
+            AddToDataToComboBox(MasterType.PRODUCT_TYPE,cbbProductType, typeBindingSource);
+        }
+
+        private void AddToDataToComboBox(MasterType masterType, BaseControl cbb1, BindingSource s)
+        {
+            var universalMasterCreateForm =
+                GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
+            universalMasterCreateForm.IsNeedClosing = true;
+            universalMasterCreateForm.MasterType = masterType;
+            universalMasterCreateForm.ShowDialog();
+            ComboBoxEdit edit1;
+            ListBoxControl edit2;
+            object obj = universalMasterCreateForm.CreatedItem;
+            if (obj != null)
+            {
+                int index = 0;
+                switch (masterType)
+                {
+                    case MasterType.PRODUCT_TYPE:
+                        edit1 = (ComboBoxEdit) cbb1;
+                        foreach (ProductType type in edit1.Properties.Items)
+                        {
+                            if (type.TypeId.Equals(((ProductType) obj).TypeId))
+                            {
+                                edit1.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.PRODUCT_SIZE:
+                        edit2 = (ListBoxControl) cbb1;
+                        foreach (ProductSize type in edit2.Items)
+                        {
+                            if (type.SizeId.Equals(((ProductSize) obj).SizeId))
+                            {
+                                edit2.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.PRODUCT_COLOR:
+                        edit2 = (ListBoxControl) cbb1;
+                        foreach (ProductColor type in edit2.Items)
+                        {
+                            if (type.ColorId.Equals(((ProductColor) obj).ColorId))
+                            {
+                                edit2.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    /*case MasterType.COUNTRY:
+                        foreach (Country type in cbb1.Items)
+                        {
+                            if (type.CountryId.Equals(((Country) obj).CountryId))
+                            {
+                                cbb1.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.DISTRIBUTOR:
+                        foreach (Distributor type in cbb1.Items)
+                        {
+                            if (type.DistributorId.Equals(((Distributor) obj).DistributorId))
+                            {
+                                cbb1.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.MANUFACTURER:
+                        foreach (Manufacturer type in cbb1.Items)
+                        {
+                            if (type.ManufacturerId.Equals(((Manufacturer) obj).ManufacturerId))
+                            {
+                                cbb1.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.PACKAGER:
+                        foreach (Packager type in cbb1.Items)
+                        {
+                            if (type.PackagerId.Equals(((Packager) obj).PackagerId))
+                            {
+                                cbb1.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;*/
+                }
+                s.Add(obj);
+                edit1 =  cbb1 as ComboBoxEdit;
+                edit2 =  cbb1 as ListBoxControl;
+                if(edit1!=null) edit1.SelectedIndex = s.Count - 1;
+                if (edit2 != null) edit2.SelectedIndex = s.Count - 1;
+                Refresh();
+            }
         }
 
         private void AddToDataToComboBox(MasterType masterType, ComboBox cbb1, BindingSource s)
@@ -727,6 +835,48 @@ namespace AppFrameClient.View.GoodsIO
                 lbxProductColor);
         }
 
+        private void AddToDataToBindingSource(MasterType masterType, BindingSource source, ListBoxControl listBox)
+        {
+            var universalMasterCreateForm = GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
+            universalMasterCreateForm.IsNeedClosing = true;
+            universalMasterCreateForm.MasterType = masterType;
+            universalMasterCreateForm.ShowDialog();
+
+            object obj = universalMasterCreateForm.CreatedItem;
+            if (obj != null)
+            {
+                int index = 0;
+                switch (masterType)
+                {
+                    case MasterType.PRODUCT_COLOR:
+                        foreach (ProductColor type in source)
+                        {
+                            if (type.ColorId.Equals(((ProductColor)obj).ColorId))
+                            {
+                                listBox.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                    case MasterType.PRODUCT_SIZE:
+                        foreach (ProductSize type in source)
+                        {
+                            if (type.SizeId.Equals(((ProductSize)obj).SizeId))
+                            {
+                                listBox.SelectedIndex = index;
+                                return;
+                            }
+                            index++;
+                        }
+                        break;
+                }
+                source.Add(obj);
+                listBox.SelectedIndex = source.Count - 1;
+                Refresh();
+            }
+        }
+
         private void btnCreateSize_Click(object sender, EventArgs e)
         {
             AddToDataToBindingSource(MasterType.PRODUCT_SIZE,
@@ -813,6 +963,12 @@ namespace AppFrameClient.View.GoodsIO
         private void ProductMasterExtraForm_LocationChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbbProductType_EditValueChanged(object sender, EventArgs e)
+        {
+            var type =  (cbbProductType.EditValue as ProductType);
+            txtProductName.Text = type.TypeName;
         }
     }
 }
