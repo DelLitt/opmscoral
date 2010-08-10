@@ -728,6 +728,8 @@ namespace BonSoChinConvert
                         Username = vThread.Postusername,
                     };
 
+                    v1Post.Pagetext = ReplaceString(v1Post.Pagetext);
+
                     // insert post parser
                     Postparsed postparsed1 = new Postparsed
                     {
@@ -738,7 +740,8 @@ namespace BonSoChinConvert
                         Hasimages = 0,
                         Pagetexthtml = v1Post.Pagetext,
                     };
-                    
+
+                    postparsed1.Pagetexthtml = ReplaceString(postparsed1.Pagetexthtml);
                     context.Posts.InsertOnSubmit(v1Post);
                     context.Postparseds.InsertOnSubmit(postparsed1);
 
@@ -766,6 +769,49 @@ namespace BonSoChinConvert
                 context.Forums.InsertOnSubmit(vSubForum);
             }
             context.SubmitChanges();
+        }
+
+        private string ReplaceString(string inStr)
+        {
+            string result = "";
+
+            IDictionary<string, string> map = new Dictionary<string, string>();
+            map.Add("&Agrave;", "À");
+            map.Add("&agrave;", "à");
+            map.Add("&Egrave;", "È");
+            map.Add("&egrave;", "è");
+            map.Add("&Eacute;", "É");
+            map.Add("&Iacute;", "Í");
+            map.Add("&iacute;", "í");
+            map.Add("&Ograve;", "Ò");
+            map.Add("&ograve;", "ò");
+            map.Add("&Oacute;", "Ó");
+            map.Add("&oacute;", "ó");
+            map.Add("&Uacute;", "Ú");
+            map.Add("&uacute;", "ú");
+            map.Add("&Aacute;", "Á");
+            map.Add("&aacute;", "á");
+            map.Add("&ETH;", "Ð");
+            map.Add("&Iacute;", "Í");
+            map.Add("&iacute;", "í");
+            map.Add("&Oacute;", "Ó");
+            map.Add("&oacute;", "ó");
+            map.Add("&Uacute;", "Ú");
+            map.Add("&uacute;", "ú");
+            map.Add("&Yacute;", "Ý");
+            map.Add("&yacute;", "ý");
+            map.Add("&#272;", "Đ");
+            map.Add("&#273;", "đ");
+
+            result = inStr;
+
+            foreach (string key in map.Keys)
+            {
+                result = result.Replace(key, map[key]);
+            }
+
+            return result;
+
         }
 
         private void ConvertForum(BackgroundWorker sender)
@@ -990,6 +1036,8 @@ namespace BonSoChinConvert
                         Username = vThread.Postusername,
                     };
 
+                    v1Post.Pagetext = ReplaceString(v1Post.Pagetext);
+
                     // insert post parser
                     Postparsed postparsed1 = new Postparsed
                     {
@@ -1000,7 +1048,7 @@ namespace BonSoChinConvert
                         Hasimages = 0,
                         Pagetexthtml = v1Post.Pagetext,
                     };
-
+                    postparsed1.Pagetexthtml = ReplaceString(postparsed1.Pagetexthtml);
                     context.Posts.InsertOnSubmit(v1Post);
                     context.Postparseds.InsertOnSubmit(postparsed1);
 
@@ -1066,6 +1114,7 @@ namespace BonSoChinConvert
                         vPost.Visible = 1;
                         vPost.Parentid = vPostId;
 
+                        vPost.Pagetext = ReplaceString(vPost.Pagetext);
 
                         #region post user
                         postMemberInThread = (from member1 in bonSoChinContext.Members
@@ -1180,7 +1229,9 @@ namespace BonSoChinConvert
                         postparsed.Styleid = 1;
                         postparsed.Languageid = 1;
                         postparsed.Hasimages = 0;
-                        postparsed.Pagetexthtml = vPost.Pagetext;
+
+                        postparsed.Pagetexthtml = postparsed.Pagetexthtml;
+
                         context.Postparseds.InsertOnSubmit(postparsed);
                     }
 
