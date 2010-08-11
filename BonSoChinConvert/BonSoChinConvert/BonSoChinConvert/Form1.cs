@@ -52,10 +52,10 @@ namespace BonSoChinConvert
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            /*ConvertUser((BackgroundWorker)sender);
+            ConvertUser((BackgroundWorker)sender);
             ConvertForum((BackgroundWorker)sender);
             ConvertThread();
-            ConvertArticle();*/
+            ConvertArticle();
             ConvertEvents();
             ConvertAds();
         }
@@ -293,6 +293,9 @@ namespace BonSoChinConvert
             int maxPostId = (int)(from vPost1 in context.Posts
                                   select vPost1.Postid).Max();
             var vPostId = maxPostId;
+
+            int maxEventId = (int)(from vPost1 in context.Events
+                                  select vPost1.Eventid).Max();
             VBBContext.Forum vForum = new VBBContext.Forum
             {
                 Title = "Sự kiện",
@@ -464,8 +467,10 @@ namespace BonSoChinConvert
                     vThreadview.Threadid = vThreadId;
                     context.Threads.InsertOnSubmit(vThread);
 
-                    // insert announcement
+                    // insert event
                     #region INSERT events
+
+                    maxEventId++;
                     VBBContext.Event vbbEvent = new VBBContext.Event();
                     vbbEvent.Calendarid = 1;
                     vbbEvent.Allowsmilies = 1;
@@ -482,6 +487,14 @@ namespace BonSoChinConvert
                     vbbEvent.Visible = 1;
                     vbbEvent.Userid = vThread.Postuserid;
                     context.Events.InsertOnSubmit(vbbEvent);
+
+                    // insert subribe event
+                    VBBContext.Subscribeevent subscribeevent = new Subscribeevent();
+                    subscribeevent.Eventid = maxEventId;
+                    subscribeevent.Lastreminder = 0;
+                    subscribeevent.Reminder = 259200;
+                    subscribeevent.Userid = vThread.Postuserid;
+                    context.Subscribeevents.InsertOnSubmit(subscribeevent);
                     #endregion
                     // insert replies
                     #region INSERT REPLIES
