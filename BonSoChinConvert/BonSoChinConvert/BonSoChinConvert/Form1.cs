@@ -836,7 +836,6 @@ namespace BonSoChinConvert
             
             BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
             VBBDataContext context = new VBBDataContext();
-
             // process null users
             var lackingMembers = (from msg in bonSoChinContext.Messages
                                   where !bonSoChinContext.Members.Any(c => c.Memberid == msg.Memberidauthor)
@@ -913,6 +912,7 @@ namespace BonSoChinConvert
             context.SubmitChanges();
 
             var forum4source = (from fr in bonSoChinContext.Forums
+                                orderby fr.Forumid ascending 
                                 select fr).ToList();
             int maxVForumId = (from vForum1 in context.Forums
                                select vForum1.Forumid).Max();
@@ -931,6 +931,13 @@ namespace BonSoChinConvert
             long totalPostsCount = (from message in bonSoChinContext.Messages
                                     select message).Count();
             long currentPostCount = 0;
+
+            //context.SubmitChanges();
+            var unknowUser = (from user2 in context.Users
+                              where user2.Username.Equals("UNKNOWN")
+                              select user2).FirstOrDefault();
+            var TotalThreads = (from message in bonSoChinContext.Messages
+                                select message).ToList();
             // ---------------------------------- CREATE FORUM -----------------------------------
             foreach (Forum forum in forum4source)
             {
@@ -963,10 +970,7 @@ namespace BonSoChinConvert
                 PopulateUShort(vForum);
 
 
-                //context.SubmitChanges();
-                var unknowUser = (from user2 in context.Users
-                                  where user2.Username.Equals("UNKNOWN")
-                                  select user2).FirstOrDefault();
+                
                 //int vForumId = (from vForum1 in context.Forums select vForum1.Forumid).Max();
                 int vForumId = ++maxVForumId;
                 vForum.Forumid = vForumId;
@@ -979,21 +983,31 @@ namespace BonSoChinConvert
                 int forumId = forum.Forumid;
                 
                 // insert thread
-                var thread4source = (from message in bonSoChinContext.Messages
+                /*var thread4source = (from message in bonSoChinContext.Messages
                                      where message.Forumid == forumId
                                       //&& (message.Messageparentid.Equals("") || message.Messageparentid == null)
                                       && (message.Messageparentid.HasValue == false)
                                      orderby message.Messagedateentered
+                                     select message).ToList();*/
+
+                var thread4Source = (from message in TotalThreads
+                                     where message.Forumid == forumId
+                                         //&& (message.Messageparentid.Equals("") || message.Messageparentid == null)
+                                      && (message.Messageparentid.HasValue == false)
+                                     orderby message.Messagedateentered
                                      select message).ToList();
 
-                int totalThreads = thread4source.Count;
+
+
+                int totalThreads = thread4Source.Count;
                 currentThreadsCount += totalThreads;
                 Console.WriteLine("Dang convert tong so thread " + currentThreadsCount + " / " + totalThreadsCount);
                 int threadCount = 0;
+                sender.ReportProgress(10, new UserProgress(forum.Forumname, (int)currentThreadsCount, (int)totalThreadsCount));
                 // ---------------------------------- CREATE THREADS -----------------------------------
-                foreach (Message thread in thread4source)
+                foreach (Message thread in thread4Source)
                 {
-                    sender.ReportProgress(10, new UserProgress(forum.Forumname, threadCount++, totalThreads));
+                    
                     var vThreadId = ++maxVThreadId;
 
                     Thread vThread = new Thread();
@@ -1095,7 +1109,12 @@ namespace BonSoChinConvert
                     vThread.Replycount = 0;
                     int threadId = thread.Messageid;
                     // insert post
-                    var post4source = (from message1 in bonSoChinContext.Messages
+                    /*var post4source = (from message1 in bonSoChinContext.Messages
+                                       where message1.Forumid == forumId
+                                         && (message1.Messageparentid == threadId)
+                                       orderby message1.Messageid ascending
+                                       select message1).ToList();*/
+                    var post4source = (from message1 in TotalThreads
                                        where message1.Forumid == forumId
                                          && (message1.Messageparentid == threadId)
                                        orderby message1.Messageid ascending
