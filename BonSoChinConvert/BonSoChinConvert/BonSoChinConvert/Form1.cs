@@ -83,8 +83,8 @@ namespace BonSoChinConvert
             ConvertForum((BackgroundWorker)sender);
             ConvertThread();
             ConvertArticle();
-            ConvertEvents();
-            ConvertAds();
+            //ConvertEvents();
+            //ConvertAds();
         }
 
         private void ConvertAds()
@@ -637,6 +637,7 @@ namespace BonSoChinConvert
 
         private void ConvertArticle()
         {
+            
             BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
             VBBDataContext context = new VBBDataContext();
 
@@ -768,7 +769,7 @@ namespace BonSoChinConvert
                         Username = vThread.Postusername,
                     };
 
-                    v1Post.Pagetext = ReplaceString(v1Post.Pagetext);
+                    //v1Post.Pagetext = ReplaceString(v1Post.Pagetext);
 
                     // insert post parser
                     Postparsed postparsed1 = new Postparsed
@@ -781,7 +782,7 @@ namespace BonSoChinConvert
                         Pagetexthtml = v1Post.Pagetext,
                     };
 
-                    postparsed1.Pagetexthtml = ReplaceString(postparsed1.Pagetexthtml);
+                    //postparsed1.Pagetexthtml = ReplaceString(postparsed1.Pagetexthtml);
                     context.Posts.InsertOnSubmit(v1Post);
                     context.Postparseds.InsertOnSubmit(postparsed1);
 
@@ -832,6 +833,7 @@ namespace BonSoChinConvert
 
         private void ConvertForum(BackgroundWorker sender)
         {
+            
             BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
             VBBDataContext context = new VBBDataContext();
 
@@ -841,7 +843,7 @@ namespace BonSoChinConvert
                                   select msg.Messageauthor).Distinct<string>().ToList();
             string tempUser = "tempUser";
             int tempUserCount = 1;
-            foreach (string lackingMember in lackingMembers)
+            /*foreach (string lackingMember in lackingMembers)
             {
                 string salt = FetchUserSalt(3);
                 User user = new User
@@ -875,7 +877,39 @@ namespace BonSoChinConvert
                 user.Avatarid = (short)(from avt in context.Avatars where avt.Avatarpath.Equals(img) select avt.Avatarid).FirstOrDefault();
                 PopulateUShort(user);
                 context.Users.InsertOnSubmit(user);
-            }
+            }*/
+            string salt = FetchUserSalt(3);
+            User user = new User
+            {
+                Username = "UNKNOWN",//tempUser + string.Format("{0:000}", tempUserCount++),
+                Password = CreatePassword("bscpassword", salt),
+                Usergroupid = 2,
+                Passworddate = DateTime.Now,
+                Email = "a@a.com",
+                Showvbcode = 1,
+                Showbirthday = 0,
+                Usertitle = "Junior Member",
+                Joindate = ConvertToUnixTimestamp(DateTime.Now),
+                Lastvisit = 1273158780,
+                Daysprune = -1,
+                Lastactivity = 1273158780,
+                Reputation = 10,
+                Reputationlevelid = 5,
+                Timezoneoffset = "7",
+                Options = 45108311,
+                Birthday = "",
+                Birthdaysearch = DateTime.Now,
+                Posts = 0,
+                Maxposts = -1,
+                Startofweek = 1,
+                Autosubscribe = -1,
+                Salt = salt,
+                Showblogcss = 1,
+            };
+            string img = "000.gif";
+            user.Avatarid = (short)(from avt in context.Avatars where avt.Avatarpath.Equals(img) select avt.Avatarid).FirstOrDefault();
+            PopulateUShort(user);
+            context.Users.InsertOnSubmit(user);
             context.SubmitChanges();
 
             var forum4source = (from fr in bonSoChinContext.Forums
@@ -923,7 +957,9 @@ namespace BonSoChinConvert
 
 
                 //context.SubmitChanges();
-
+                var unknowUser = (from user2 in context.Users
+                                  where user2.Username.Equals("UNKNOWN")
+                                  select user2).FirstOrDefault();
                 //int vForumId = (from vForum1 in context.Forums select vForum1.Forumid).Max();
                 int vForumId = ++maxVForumId;
                 vForum.Forumid = vForumId;
@@ -959,9 +995,9 @@ namespace BonSoChinConvert
                     var postMemberInThread = (from member1 in bonSoChinContext.Members
                                               where (member1.Memberid == thread.Memberidauthor)
                                               select member1).FirstOrDefault();
-                    if (postMemberInThread == null)
+                    if (thread.Memberidauthor ==null || postMemberInThread == null)
                     {
-                        var postUserInThread = (from user1 in context.Users
+                        /*var postUserInThread = (from user1 in context.Users
                                                 where user1.Username.Equals(thread.Messageauthor)
                                                 select user1).FirstOrDefault();
                         if (postUserInThread != null)
@@ -970,7 +1006,10 @@ namespace BonSoChinConvert
                             vThread.Postusername = postUserInThread.Username;
                         }
                         else
-                        {
+                        {*/
+                            
+                            vThread.Postuserid = unknowUser.Userid;
+                            vThread.Postusername = unknowUser.Username;
                             #region useless
                             /*User user = new User();
                             user.Username = tempUser + string.Format("{0:000}",tempUserCount++);
@@ -1010,7 +1049,7 @@ namespace BonSoChinConvert
                                                        select user1.Userid).Max();*/
 
                             #endregion
-                        }
+                        /*}*/
 
                     }
                     else
@@ -1135,10 +1174,11 @@ namespace BonSoChinConvert
                         #region post user
                         postMemberInThread = (from member1 in bonSoChinContext.Members
                                               where (member1.Memberid == post.Memberidauthor)
+                                              //where (member1.Memberid == 1093)
                                               select member1).FirstOrDefault();
-                        if (postMemberInThread == null)
+                        if (thread.Memberidauthor == null || postMemberInThread == null)
                         {
-                            var postUserInThread = (from user1 in context.Users
+                            /*var postUserInThread = (from user1 in context.Users
                                                     where user1.Username.Equals(post.Messageauthor)
                                                     select user1).FirstOrDefault();
                             if (postUserInThread != null)
@@ -1147,8 +1187,15 @@ namespace BonSoChinConvert
                                 vPost.Username = postUserInThread.Username;
                             }
                             else
-                            {
+                            {*/
+                                /*var unknowUser = (from user2 in context.Users
+                                                  where user2.Username.Equals("UNKNOWN")
+                                                  select user2).FirstOrDefault();*/
+                                vPost.Userid = unknowUser.Userid;
+                                vPost.Username = unknowUser.Username;
+
                                 #region useless
+
                                 /*string salt = FetchUserSalt();
                                 User user = new User();
                                 user.Username = tempUser + string.Format("{0:000}", tempUserCount++);
@@ -1187,7 +1234,7 @@ namespace BonSoChinConvert
                                                            select user1.Userid).Max();*/
 
                                 #endregion
-                            }
+                            /*}*/
 
                         }
                         else
@@ -1246,7 +1293,7 @@ namespace BonSoChinConvert
                         postparsed.Languageid = 1;
                         postparsed.Hasimages = 0;
 
-                        postparsed.Pagetexthtml = postparsed.Pagetexthtml;
+                        postparsed.Pagetexthtml = vPost.Pagetext;
 
                         context.Postparseds.InsertOnSubmit(postparsed);
                     }
@@ -1282,6 +1329,7 @@ namespace BonSoChinConvert
         #region Convert Users
         private void ConvertUser(BackgroundWorker sender)
         {
+            
             BonSoChinDataContext bonSoChinContext = new BonSoChinDataContext();
             VBBDataContext context = new VBBDataContext();
 
