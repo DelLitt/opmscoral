@@ -924,6 +924,13 @@ namespace BonSoChinConvert
                                   select vPost1.Postid).Max();
             int forumcount = 1;
 
+            long totalThreadsCount = (from message in bonSoChinContext.Messages
+                                      where message.Messageparentid.HasValue == false
+                                      select message).Count();
+            long currentThreadsCount = 0;
+            long totalPostsCount = (from message in bonSoChinContext.Messages
+                                    select message).Count();
+            long currentPostCount = 0;
             // ---------------------------------- CREATE FORUM -----------------------------------
             foreach (Forum forum in forum4source)
             {
@@ -967,20 +974,26 @@ namespace BonSoChinConvert
                 vForum.Childlist = vForumId + ",-1";
 
                 //context.SubmitChanges();
-                int forumId = forum.Forumid;
+                context.Forums.InsertOnSubmit(vForum);
 
+                int forumId = forum.Forumid;
+                
                 // insert thread
                 var thread4source = (from message in bonSoChinContext.Messages
                                      where message.Forumid == forumId
-                                      && (message.Messageparentid.Equals("") || message.Messageparentid == null)
+                                      //&& (message.Messageparentid.Equals("") || message.Messageparentid == null)
+                                      && (message.Messageparentid.HasValue == false)
                                      orderby message.Messagedateentered
                                      select message).ToList();
 
+                int totalThreads = thread4source.Count;
+                currentThreadsCount += totalThreads;
+                Console.WriteLine("Dang convert tong so thread " + currentThreadsCount + " / " + totalThreadsCount);
                 int threadCount = 0;
                 // ---------------------------------- CREATE THREADS -----------------------------------
                 foreach (Message thread in thread4source)
                 {
-                    sender.ReportProgress(10, new UserProgress("thread", threadCount++, thread4source.Count()));
+                    sender.ReportProgress(10, new UserProgress(forum.Forumname, threadCount++, totalThreads));
                     var vThreadId = ++maxVThreadId;
 
                     Thread vThread = new Thread();
@@ -990,12 +1003,15 @@ namespace BonSoChinConvert
                     vThread.Open = 1;
                     vThread.Visible = 1;
                     vThread.Dateline = ConvertToUnixTimestamp(thread.Messagedateentered);
-
+                    
                     #region thread user
                     var postMemberInThread = (from member1 in bonSoChinContext.Members
                                               where (member1.Memberid == thread.Memberidauthor)
                                               select member1).FirstOrDefault();
-                    if (thread.Memberidauthor ==null || postMemberInThread == null)
+                    if (
+                        //thread.Memberidauthor ==null 
+                        !thread.Memberidauthor.HasValue
+                        || postMemberInThread == null)
                     {
                         /*var postUserInThread = (from user1 in context.Users
                                                 where user1.Username.Equals(thread.Messageauthor)
@@ -1010,45 +1026,7 @@ namespace BonSoChinConvert
                             
                             vThread.Postuserid = unknowUser.Userid;
                             vThread.Postusername = unknowUser.Username;
-                            #region useless
-                            /*User user = new User();
-                            user.Username = tempUser + string.Format("{0:000}",tempUserCount++);
-                            user.Password = "";
-                            user.Usergroupid = 2;
-                            user.Passworddate = DateTime.Now;
-                            user.Email = "a@a.com";
-                            user.Showvbcode = 1;
-                            user.Showbirthday = 0;
-                            user.Usertitle = "Junior Member";
-                            user.Usertitle = "aaa";
-                            user.Joindate = 1273158780;
-                            //ConvertToUnixTimestamp(member.Memberdateadded);
-                            user.Lastvisit = 1273158780;
-                            user.Daysprune = -1;
-                            user.Lastactivity = 1273158780;
-                            user.Reputation = 10;
-                            user.Reputationlevelid = 5;
-                            user.Timezoneoffset = "7";
-                            user.Options = 45108311;
-                            user.Birthday = "";
-                            user.Birthdaysearch = DateTime.Now;
-                            user.Posts = 0;
-                            user.Maxposts = -1;
-                            user.Startofweek = 1;
-                            user.Autosubscribe = -1;
-                            user.Salt = "";
-                            user.Showblogcss = 1;
-                            string img = "000.gif";
-                            PopulateUShort(user);
-                            context.Users.InsertOnSubmit(user);
-
-                            context.SubmitChanges();
-
-                            vThread.Postusername = user.Username;
-                            vThread.Postuserid = (int)(from user1 in context.Users
-                                                       select user1.Userid).Max();*/
-
-                            #endregion
+                            
                         /*}*/
 
                     }
@@ -1067,7 +1045,7 @@ namespace BonSoChinConvert
                     vThread.Similar = "";
 
                     PopulateUShort(vThread);
-
+                    context.Threads.InsertOnSubmit(vThread);
                     // create first post
                     int vPostId = 0;
                     if (vPostId == 0)
@@ -1106,37 +1084,13 @@ namespace BonSoChinConvert
                     //postparsed1.Pagetexthtml = ReplaceString(postparsed1.Pagetexthtml);
                     context.Posts.InsertOnSubmit(v1Post);
                     context.Postparseds.InsertOnSubmit(postparsed1);
-
+                    currentPostCount += 1;
                     UpdateStatusOfForumAndThread(vThread, vForum, v1Post, vPostId, vThreadId);
 
                     vForum.Lastthread = vThread.Dateline.ToString();
                     vForum.Lastthreadid = vThreadId;
 
-
-                    #region useless
-                    /*vThread.Lastpost = v1Post.Dateline;
-                    vThread.Lastposter = v1Post.Username;
-                    vThread.Lastposterid = v1Post.Userid;
-                    vThread.Lastpostid = vPostId;
-
-                    vForum.Lastpost = (int)vThread.Lastpost;
-                    vForum.Lastposter = vThread.Lastposter;
-                    vForum.Lastposterid = vThread.Lastposterid;
-                    vForum.Lastpostid = vThread.Lastpostid;
-
-                    vForum.Lastthread = vThread.Dateline.ToString();
-                    vForum.Lastthreadid = vThreadId;*/
-
-                    #endregion
-
-
-
-                    //context.SubmitChanges();
-
-                    /*var vThreadId = (from vThread1 in context.Threads 
-                                     select vThread1.Threadid).Max();*/
-
-
+                    
                     vForum.Threadcount++;
                     vThread.Replycount = 0;
                     int threadId = thread.Messageid;
@@ -1147,12 +1101,8 @@ namespace BonSoChinConvert
                                        orderby message1.Messageid ascending
                                        select message1).ToList();
 
-
-
-                    /*postId = (int)(from vPost1 in context.Posts
-                                   select vPost1.Postid).Max();*/
-
-
+                    currentPostCount += post4source.Count;
+                    Console.WriteLine("Dang convert tong so post " + currentPostCount + " / " + totalPostsCount);
                     int postCount = 1;
                     // ---------------------------------- CREATE POSTS -----------------------------------
                     foreach (Message post in post4source)
@@ -1176,65 +1126,13 @@ namespace BonSoChinConvert
                                               where (member1.Memberid == post.Memberidauthor)
                                               //where (member1.Memberid == 1093)
                                               select member1).FirstOrDefault();
-                        if (thread.Memberidauthor == null || postMemberInThread == null)
+                        if (//post.Memberidauthor == null 
+                            !post.Memberidauthor.HasValue
+                            || postMemberInThread == null)
                         {
-                            /*var postUserInThread = (from user1 in context.Users
-                                                    where user1.Username.Equals(post.Messageauthor)
-                                                    select user1).FirstOrDefault();
-                            if (postUserInThread != null)
-                            {
-                                vPost.Userid = postUserInThread.Userid;
-                                vPost.Username = postUserInThread.Username;
-                            }
-                            else
-                            {*/
-                                /*var unknowUser = (from user2 in context.Users
-                                                  where user2.Username.Equals("UNKNOWN")
-                                                  select user2).FirstOrDefault();*/
+                            
                                 vPost.Userid = unknowUser.Userid;
                                 vPost.Username = unknowUser.Username;
-
-                                #region useless
-
-                                /*string salt = FetchUserSalt();
-                                User user = new User();
-                                user.Username = tempUser + string.Format("{0:000}", tempUserCount++);
-                                user.Password = CreatePassword("bscpassword",salt);
-                                user.Usergroupid = 2;
-                                user.Passworddate = DateTime.Now;
-                                user.Email = "a@a.com";
-                                user.Showvbcode = 1;
-                                user.Showbirthday = 0;
-                                user.Usertitle = "Junior Member";
-                                user.Joindate = 1273158780;
-                                //ConvertToUnixTimestamp(member.Memberdateadded);
-                                user.Lastvisit = 1273158780;
-                                user.Daysprune = -1;
-                                user.Lastactivity = 1273158780;
-                                user.Reputation = 10;
-                                user.Reputationlevelid = 5;
-                                user.Timezoneoffset = "7";
-                                user.Options = 45108311;
-                                user.Birthday = "";
-                                user.Birthdaysearch = DateTime.Now;
-                                user.Posts = 0;
-                                user.Maxposts = -1;
-                                user.Startofweek = 1;
-                                user.Autosubscribe = -1;
-                                user.Salt = salt;
-                                user.Showblogcss = 1;
-                                string img = "000.gif";
-                                PopulateUShort(user);
-                                context.Users.InsertOnSubmit(user);
-
-                                context.SubmitChanges();
-
-                                vPost.Username = MySqlEscape(user.Username);
-                                vPost.Userid = (int)(from user1 in context.Users
-                                                           select user1.Userid).Max();*/
-
-                                #endregion
-                            /*}*/
 
                         }
                         else
@@ -1249,11 +1147,7 @@ namespace BonSoChinConvert
 
 
                         PopulateUShort(vPost);
-                        //context.SubmitChanges();
-
-                        /*postId = (int) (from vPost1 in context.Posts
-                                  select vPost1.Postid).Max();*/
-
+                        
                         vThread.Replycount++;
 
                         vForum.Threadcount++;
@@ -1266,21 +1160,6 @@ namespace BonSoChinConvert
                             vThread.Lastposterid = vPost.Userid;
                             vThread.Lastpost = vPost.Dateline;
                         }
-
-                        // update thread & forum
-                        UpdateStatusOfForumAndThread(vThread, vForum, vPost, vPostId, vThreadId);
-                        #region useless
-                        /*vThread.Lastpost = vPost.Dateline;
-                        vThread.Lastposter = vPost.Username;
-                        vThread.Lastposterid = vPost.Userid;
-                        vThread.Lastpostid = vPostId;
-
-                        vForum.Lastpost = (int)vThread.Lastpost;
-                        vForum.Lastposter = vThread.Lastposter;
-                        vForum.Lastposterid = vThread.Lastposterid;
-                        vForum.Lastpostid = vThread.Lastpostid;*/
-
-                        #endregion
 
                         //postId++;
                         context.Posts.InsertOnSubmit(vPost);
@@ -1296,6 +1175,9 @@ namespace BonSoChinConvert
                         postparsed.Pagetexthtml = vPost.Pagetext;
 
                         context.Postparseds.InsertOnSubmit(postparsed);
+
+                        // update thread & forum
+                        UpdateStatusOfForumAndThread(vThread, vForum, vPost, vPostId, vThreadId);
                     }
 
                     vForum.Lastthread = vThread.Title.ToString();
@@ -1303,10 +1185,10 @@ namespace BonSoChinConvert
 
                     Threadview vThreadview = new Threadview();
                     vThreadview.Threadid = vThreadId;
-                    context.Threads.InsertOnSubmit(vThread);
+                    
+                    //context.SubmitChanges();
                 }
 
-                context.Forums.InsertOnSubmit(vForum);
                 context.SubmitChanges();
             }
 
