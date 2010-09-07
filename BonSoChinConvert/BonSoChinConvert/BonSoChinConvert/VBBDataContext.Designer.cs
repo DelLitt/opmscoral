@@ -17,6 +17,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Linq.Expressions;
+using Devart.Data;
+using Devart.Data.Linq;
+using Devart.Data.MySql.Linq;
 
 namespace VBBContext
 {
@@ -26,8 +29,8 @@ namespace VBBContext
     public partial class VBBDataContext : Devart.Data.Linq.DataContext
     {
         private static System.Data.Linq.Mapping.MappingSource mappingSource = new Devart.Data.Linq.Mapping.AttributeMappingSource();
-        public static Devart.Data.Linq.CompiledQueryCache compiledQueryCache = Devart.Data.Linq.CompiledQueryCache.RegisterDataContext(typeof(VBBDataContext));
-
+        //public static Devart.Data.Linq.CompileQueryCache compiledQueryCache = Devart.Data.Linq.CompiledQueryCache.RegisterDataContext(typeof(VBBDataContext));
+        
         #region Extensibility Method Definitions
     
         partial void OnCreated();
