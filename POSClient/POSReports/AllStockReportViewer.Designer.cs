@@ -33,14 +33,18 @@
             this.allStockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.posDataSet = new POSReports.posDataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ToDate = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.ToDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.FromDate = new System.Windows.Forms.DateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.AllStockTableAdapter = new POSReports.posDataSetTableAdapters.AllStockTableAdapter();
-            this.FromDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtProducts = new System.Windows.Forms.TextBox();
+            this.chkZeroValue = new System.Windows.Forms.CheckBox();
+            this.cboProductTypes = new System.Windows.Forms.ComboBox();
+            this.product_typeTableAdapter = new POSReports.posDataSetTableAdapters.product_typeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.allStockBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -72,6 +76,9 @@
             this.tableLayoutPanel1.Controls.Add(this.ToDate, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.FromDate, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtProducts, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkZeroValue, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cboProductTypes, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -82,26 +89,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(923, 74);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(309, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Đến ngày:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // ToDate
-            // 
-            this.ToDate.CustomFormat = "dd/MM/yyyyy";
-            this.ToDate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ToDate.Location = new System.Drawing.Point(462, 39);
-            this.ToDate.Name = "ToDate";
-            this.ToDate.Size = new System.Drawing.Size(143, 27);
-            this.ToDate.TabIndex = 2;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Từ ngày:";
             // 
             // label1
             // 
@@ -125,22 +121,26 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // reportViewer1
+            // ToDate
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "posDataSet_allStock";
-            reportDataSource1.Value = this.allStockBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.AllStockReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 74);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(923, 534);
-            this.reportViewer1.TabIndex = 8;
-            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.ToDate.CustomFormat = "dd/MM/yyyyy";
+            this.ToDate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ToDate.Location = new System.Drawing.Point(462, 39);
+            this.ToDate.Name = "ToDate";
+            this.ToDate.Size = new System.Drawing.Size(143, 27);
+            this.ToDate.TabIndex = 2;
             // 
-            // AllStockTableAdapter
+            // label2
             // 
-            this.AllStockTableAdapter.ClearBeforeFill = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(309, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Đến ngày:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // FromDate
             // 
@@ -152,15 +152,53 @@
             this.FromDate.Size = new System.Drawing.Size(143, 27);
             this.FromDate.TabIndex = 7;
             // 
-            // label3
+            // reportViewer1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Từ ngày:";
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "posDataSet_allStock";
+            reportDataSource1.Value = this.allStockBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "POSReports.AllStockReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 74);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(923, 511);
+            this.reportViewer1.TabIndex = 8;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            // 
+            // AllStockTableAdapter
+            // 
+            this.AllStockTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtProducts
+            // 
+            this.txtProducts.Font = new System.Drawing.Font("Times New Roman", 9.882353F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProducts.Location = new System.Drawing.Point(613, 5);
+            this.txtProducts.Name = "txtProducts";
+            this.txtProducts.Size = new System.Drawing.Size(264, 24);
+            this.txtProducts.TabIndex = 8;
+            // 
+            // chkZeroValue
+            // 
+            this.chkZeroValue.AutoSize = true;
+            this.chkZeroValue.Location = new System.Drawing.Point(309, 5);
+            this.chkZeroValue.Name = "chkZeroValue";
+            this.chkZeroValue.Size = new System.Drawing.Size(84, 19);
+            this.chkZeroValue.TabIndex = 9;
+            this.chkZeroValue.Text = "Sp giá trị 0";
+            this.chkZeroValue.UseVisualStyleBackColor = true;
+            // 
+            // cboProductTypes
+            // 
+            this.cboProductTypes.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProductTypes.FormattingEnabled = true;
+            this.cboProductTypes.Location = new System.Drawing.Point(462, 5);
+            this.cboProductTypes.Name = "cboProductTypes";
+            this.cboProductTypes.Size = new System.Drawing.Size(143, 24);
+            this.cboProductTypes.TabIndex = 10;
+            // 
+            // product_typeTableAdapter
+            // 
+            this.product_typeTableAdapter.ClearBeforeFill = true;
             // 
             // AllStockReportViewer
             // 
@@ -196,5 +234,9 @@
         private POSReports.posDataSetTableAdapters.AllStockTableAdapter AllStockTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker FromDate;
+        private System.Windows.Forms.TextBox txtProducts;
+        private System.Windows.Forms.CheckBox chkZeroValue;
+        private System.Windows.Forms.ComboBox cboProductTypes;
+        private POSReports.posDataSetTableAdapters.product_typeTableAdapter product_typeTableAdapter;
     }
 }

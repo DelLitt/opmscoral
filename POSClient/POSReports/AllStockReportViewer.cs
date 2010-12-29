@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
+using AppFrame.Model;
 using POSReports.posDataSetTableAdapters;
 
 namespace POSReports
@@ -29,6 +30,15 @@ namespace POSReports
             //this.AllStockTableAdapter.Fill(this.posDataSet.allStock);
 
             //this.reportViewer1.RefreshReport();
+            this.product_typeTableAdapter.Fill(this.posDataSet.product_type);
+            cboProductTypes.Items.Add(new ProductType { TypeId = 0, TypeName = "Tất cả mặt hàng" });
+            foreach (posDataSet.product_typeRow row in posDataSet.product_type)
+            {
+                cboProductTypes.Items.Add(new ProductType { TypeId = row.TYPE_ID, TypeName = row.TYPE_NAME });
+            }
+
+            cboProductTypes.DisplayMember = "TypeName";
+            cboProductTypes.ValueMember = "TypeName";    
         }
         public static DateTime ZeroTime(DateTime value)
         {
@@ -63,23 +73,92 @@ namespace POSReports
             reqToDate = MaxTime(ToDate.Value);
 
             Enabled = false;
+
+            if (!string.IsNullOrEmpty(txtProducts.Text))
+            {
+                string productNamesFilter = txtProducts.Text.Trim();
+                string[] pmFilters = productNamesFilter.Split(',');
+                if (pmFilters.Length <= 1)
+                {
+                    allStockBindingSource.Filter = "product_name like '%" + productNamesFilter + "%'";
+                }
+                else
+                {
+                    string startFilterStr = "";
+                    int count = 0;
+                    string endFilterStr = "";
+                    string filter = "";
+
+                    foreach (string pmFilter in pmFilters)
+                    {
+                        count += 1;
+                        if (string.IsNullOrEmpty(filter))
+                        {
+                            startFilterStr = "( ";
+                        }
+                        else
+                        {
+                            startFilterStr = " ";
+                        }
+
+                        if (count == pmFilters.Length) endFilterStr = " ) ";
+                        else
+                        {
+                            endFilterStr = " OR ";
+                        }
+
+                        filter += startFilterStr + " ( product_name like '%" + pmFilter.Trim() + "%') " + endFilterStr;
+
+                    }
+                    allStockBindingSource.Filter = filter;
+                }
+            }
+            else
+            {
+                allStockBindingSource.Filter = "";
+            }
+
+            if (cboProductTypes.SelectedIndex > 0)
+            {
+                string extraFilterStr = "";
+                if (!string.IsNullOrEmpty(allStockBindingSource.Filter))
+                {
+                    extraFilterStr += " AND ";
+                }
+
+                allStockBindingSource.Filter += extraFilterStr + " type_name = '" + ((ProductType)cboProductTypes.SelectedItem).TypeName + "'";
+            }
+
+            if (!chkZeroValue.Checked)
+            {
+                string extraFilterStr = "";
+                if (!string.IsNullOrEmpty(allStockBindingSource.Filter))
+                {
+                    extraFilterStr += " AND ";
+                }
+                //=Fields!preqty.Value+Fields!dpreqty.Value+Fields!inqty.Value+Fields!mainrtn.Value+Fields!rtnpr.Value-Fields!moutqty.Value-Fields!maindmg.Value-Fields!dpoutqty.Value-Fields!dpdmg.Value-Fields!saleqty.Value
+                allStockBindingSource.Filter += extraFilterStr + " ((preqty >0) " +
+                    "OR (dpreqty <> 0)  OR (inqty <> 0) OR (mainrtn <> 0) " +
+                    "OR (rtnpr <> 0) OR (moutqty <> 0) OR (dpoutqty <> 0 ) OR (saleqty <> 0) ) ";
+            }
+            else
+            {
+                //stockStatisticBindingSource.Filter = "";
+            }
+
             backgroundWorker.RunWorkerAsync();
             StartShowProcessing();
 
-            /*try
-            {
-                this.AllStockTableAdapter.Fill(this.posDataSet.allStock, ZeroTime(ToDate.Value), MaxTime(ToDate.Value));
-                this.reportViewer1.RefreshReport();
-            } catch(Exception ex)
-            {
-                MessageBox.Show("Có lỗi xảy ra khi tạo báo cáo. Vui lòng liên hệ người quản trị", "Lỗi", MessageBoxButtons.OK);
-            }*/
         }
 
         void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Enabled = true;
             StopShowProcessing();
+            posDataSet.allStock.DefaultView.RowFilter = allStockBindingSource.Filter;
+            allStockBindingSource.RaiseListChangedEvents = true;
+            allStockBindingSource.ResumeBinding();
+            allStockBindingSource.DataSource = posDataSet.allStock.DefaultView;
             reportViewer1.RefreshReport(); 
         }
 
