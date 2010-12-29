@@ -193,6 +193,7 @@
       <HintPath>..\Libraries\Spring.Web.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -219,6 +220,9 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -237,6 +241,11 @@
     <Compile Include="MasterDB.cs">
       <DependentUpon>MasterDB.xsd</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="posDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>posDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presenter\ClosedPeriodLogic.cs" />
     <Compile Include="Presenter\GoodsIO\MainStock\StockOutDialogController.cs" />
@@ -1809,6 +1818,17 @@
     <EmbeddedResource Include="SubStockToolStripPermissions.xml" />
     <EmbeddedResource Include="ServerToolStripPermissions.xml" />
     <Content Include="Logic\dummy.txt" />
+    <None Include="posDataSet.xsc">
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="posDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>posDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="posDataSet.xss">
+      <DependentUpon>posDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\achaylogo.png" />
     <Content Include="Resources\Add.png" />
     <Content Include="Resources\Address Book.png" />

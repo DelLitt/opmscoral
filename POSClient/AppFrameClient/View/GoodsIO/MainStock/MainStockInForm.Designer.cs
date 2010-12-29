@@ -580,7 +580,6 @@
             this.chkPrintByQuantity.TabIndex = 120;
             this.chkPrintByQuantity.Text = "In theo so luong";
             this.chkPrintByQuantity.UseVisualStyleBackColor = true;
-            this.chkPrintByQuantity.Visible = false;
             // 
             // MainStockInForm
             // 

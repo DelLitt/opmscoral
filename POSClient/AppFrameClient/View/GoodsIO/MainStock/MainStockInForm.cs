@@ -664,6 +664,11 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                             int extraPrint = 0;
                             int extraCount = 0;
                             var numberToPrint = (int)numericUpDownBarcode.Value;
+                            if (chkPrintByQuantity.Checked)
+                            {
+                                numberToPrint = (int)detail.Quantity;
+                                chkPrintByQuantity.Checked = false;
+                            }
                             var count = numberToPrint / 3;
                             if ((extraPrint = numberToPrint % 3) != 0)
                             {

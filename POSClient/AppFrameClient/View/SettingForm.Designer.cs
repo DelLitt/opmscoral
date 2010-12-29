@@ -70,6 +70,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cboBarcodeType = new System.Windows.Forms.ComboBox();
             this.grpSubStock = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboFastDept = new System.Windows.Forms.ComboBox();
             this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
             this.rdoLogin = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -77,11 +79,14 @@
             this.cboBinding = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkCheckingById = new System.Windows.Forms.CheckBox();
             this.chkNegativeExport = new System.Windows.Forms.CheckBox();
             this.chkImportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkExportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkNegativeSelling = new System.Windows.Forms.CheckBox();
-            this.chkCheckingById = new System.Windows.Forms.CheckBox();
+            this.posDataSet = new AppFrameClient.posDataSet();
+            this.departmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.departmentTableAdapter1 = new AppFrameClient.posDataSetTableAdapters.departmentTableAdapter();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -91,6 +96,8 @@
             this.grpSubStock.SuspendLayout();
             this.grpService.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExportPath
@@ -335,9 +342,9 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Location = new System.Drawing.Point(2, 22);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(125, 15);
+            this.lblDepartment.Size = new System.Drawing.Size(74, 15);
             this.lblDepartment.TabIndex = 26;
-            this.lblDepartment.Text = "Nơi xuất của kho phụ:";
+            this.lblDepartment.Text = "Nơi xuất bill:";
             // 
             // departmentTableAdapter
             // 
@@ -403,6 +410,8 @@
             // 
             // grpSubStock
             // 
+            this.grpSubStock.Controls.Add(this.label11);
+            this.grpSubStock.Controls.Add(this.cboFastDept);
             this.grpSubStock.Controls.Add(this.rdoEmployeeId);
             this.grpSubStock.Controls.Add(this.rdoLogin);
             this.grpSubStock.Controls.Add(this.label9);
@@ -414,6 +423,27 @@
             this.grpSubStock.TabIndex = 29;
             this.grpSubStock.TabStop = false;
             this.grpSubStock.Text = "Kho phụ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(328, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(74, 15);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Nơi xuất bill:";
+            // 
+            // cboFastDept
+            // 
+            this.cboFastDept.DataSource = this.departmentBindingSource1;
+            this.cboFastDept.DisplayMember = "DEPARTMENT_NAME";
+            this.cboFastDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFastDept.FormattingEnabled = true;
+            this.cboFastDept.Location = new System.Drawing.Point(408, 19);
+            this.cboFastDept.Name = "cboFastDept";
+            this.cboFastDept.Size = new System.Drawing.Size(173, 21);
+            this.cboFastDept.TabIndex = 32;
+            this.cboFastDept.ValueMember = "DEPARTMENT_ID";
             // 
             // rdoEmployeeId
             // 
@@ -493,6 +523,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức năng";
             // 
+            // chkCheckingById
+            // 
+            this.chkCheckingById.AutoSize = true;
+            this.chkCheckingById.Location = new System.Drawing.Point(6, 115);
+            this.chkCheckingById.Name = "chkCheckingById";
+            this.chkCheckingById.Size = new System.Drawing.Size(134, 19);
+            this.chkCheckingById.TabIndex = 4;
+            this.chkCheckingById.Text = "Xác nhận nhân viên";
+            this.chkCheckingById.UseVisualStyleBackColor = true;
+            // 
             // chkNegativeExport
             // 
             this.chkNegativeExport.AutoSize = true;
@@ -533,15 +573,19 @@
             this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
             this.chkNegativeSelling.UseVisualStyleBackColor = true;
             // 
-            // chkCheckingById
+            // posDataSet
             // 
-            this.chkCheckingById.AutoSize = true;
-            this.chkCheckingById.Location = new System.Drawing.Point(6, 115);
-            this.chkCheckingById.Name = "chkCheckingById";
-            this.chkCheckingById.Size = new System.Drawing.Size(134, 19);
-            this.chkCheckingById.TabIndex = 4;
-            this.chkCheckingById.Text = "Xác nhận nhân viên";
-            this.chkCheckingById.UseVisualStyleBackColor = true;
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // departmentBindingSource1
+            // 
+            this.departmentBindingSource1.DataMember = "department";
+            this.departmentBindingSource1.DataSource = this.posDataSet;
+            // 
+            // departmentTableAdapter1
+            // 
+            this.departmentTableAdapter1.ClearBeforeFill = true;
             // 
             // SettingForm
             // 
@@ -574,6 +618,8 @@
             this.grpService.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -632,5 +678,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboBarcodeType;
         private System.Windows.Forms.CheckBox chkCheckingById;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cboFastDept;
+        private posDataSet posDataSet;
+        private System.Windows.Forms.BindingSource departmentBindingSource1;
+        private AppFrameClient.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter1;
     }
 }

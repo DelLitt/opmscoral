@@ -8,7 +8,8 @@ namespace AppFrameClient.Common
 {
     public class ClientSetting
     {
-        
+        private static string _fastDept;
+
         public const string ZIP_PASSWORD = "gfd83fds32l1asdtg";
 
 
@@ -260,6 +261,12 @@ namespace AppFrameClient.Common
             {
                 AFCSetting.Default.BarcodeType = value;
             }
+        }
+
+        public static string FastDept
+        {
+            get { return AFCSetting.Default.FastDept; }
+            set { AFCSetting.Default.FastDept = value; }
         }
 
         public static void Reset()

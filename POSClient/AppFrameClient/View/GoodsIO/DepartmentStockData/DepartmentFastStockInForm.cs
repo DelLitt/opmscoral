@@ -183,7 +183,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void DepartmentStockInExtra_Load(object sender, EventArgs e)
         {
             rdoFastStockIn.Checked = true;
-            
+            rdoStockIn.Checked = false;
             DepartmentStockInEventArgs eventArgs = new DepartmentStockInEventArgs();
             EventUtility.fireEvent(LoadAllDepartments,this,eventArgs);
             if(eventArgs.DepartmentsList!= null && eventArgs.DepartmentsList.Count > 0)
@@ -194,26 +194,26 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cboDepartment.DisplayMember = "DepartmentName";
                 foreach (Department department in eventArgs.DepartmentsList)
                 {
-                    if (department.DepartmentId != CurrentDepartment.Get().DepartmentId)
+                    /*if (department.DepartmentId != CurrentDepartment.Get().DepartmentId)
                     {
                         string deptId = department.DepartmentId.ToString();
                         string currId = CurrentDepartment.Get().DepartmentId.ToString();
                         if(currId.StartsWith(deptId))
-                        {
+                        {*/
                             bdsDepartment.Add(department);    
-                        }
+                        /*}
                     }
                     if (ClientSetting.MarketDept.Equals(department.DepartmentId.ToString()))
                     {
                         bdsDepartment.Add(department);
-                    }
+                    }*/
                 }
                 bdsDepartment.EndEdit();
                 cboDepartment.Refresh();
                 cboDepartment.Invalidate();
             }
 
-            foreach (Department department in cboDepartment.Items)
+            /*foreach (Department department in cboDepartment.Items)
             {
                 string departmentId = department.DepartmentId.ToString();
                 string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
@@ -223,8 +223,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     cboDepartment.Enabled = false;
                     break;
                 }
-            }
-
+            }*/
+            rdoFastStockIn_CheckedChanged(null, null);
+            rdoStockIn_CheckedChanged(null, null);
             deptSODetailList = new DepartmentStockInDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
@@ -421,7 +422,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             eventArgs.Department = (Department)cboDepartment.SelectedItem;
             eventArgs.DepartmentStockList = departmentStockList;
             
-            /*if(rdoFastStockIn.Checked)
+            if(rdoFastStockIn.Checked)
             {
                 try
                 {
@@ -442,9 +443,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 }
             }
             else
-            {*/
+            {
                 EventUtility.fireEvent(SaveStockInBackEvent, this, eventArgs);
-            /*}*/
+            }
             
             if (eventArgs.EventResult != null)
             {
@@ -1259,8 +1260,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();
-                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
-                    if (currentSubStock.StartsWith(departmentId))
+                    //string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    string fastDept = ClientSetting.FastDept;
+                    //if (currentSubStock.StartsWith(departmentId))
+                    if (fastDept.Equals(departmentId))
                     {
                         cboDepartment.SelectedItem = department;
                         cboDepartment.Enabled = false;
@@ -1287,8 +1290,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();
-                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
-                    if (!currentSubStock.StartsWith(departmentId))
+                    //string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    string marketDept = ClientSetting.MarketDept;
+                    if (marketDept.Equals(departmentId))
                     {
                         cboDepartment.SelectedItem = department;
                         cboDepartment.Enabled = false;

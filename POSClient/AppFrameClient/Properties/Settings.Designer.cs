@@ -143,7 +143,7 @@ namespace AppFrameClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public string DeptMarket {
             get {
                 return ((string)(this["DeptMarket"]));
@@ -318,6 +318,31 @@ namespace AppFrameClient.Properties {
             }
             set {
                 this["MaxPOId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("User Id=root;Password=admin;Host=localhost;Port=3308;Database=pos;Unicode=True;Pe" +
+            "rsist Security Info=True;Default Command Timeout=300;Connection Timeout=1500;Emb" +
+            "edded=True;Server Parameters=\"--basedir=d:/MySqlEmbbeded/;--datadir=D:/MySqlEmbb" +
+            "eded/data/;\"")]
+        public string Setting {
+            get {
+                return ((string)(this["Setting"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public string FastDept {
+            get {
+                return ((string)(this["FastDept"]));
+            }
+            set {
+                this["FastDept"] = value;
             }
         }
     }

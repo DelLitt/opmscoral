@@ -349,10 +349,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     if (department.DepartmentId != CurrentDepartment.Get().DepartmentId)
                     {
-                        if (!ClientSetting.IsSubStock())
-                        {
+                        /*if (!ClientSetting.IsSubStock())
+                        {*/
                             bdsDepartment.Add(department);
-                        }
+                        /*}
                         else
                         {
                             string departmentId = department.DepartmentId.ToString();
@@ -367,7 +367,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                                 bdsDepartment.Add(department);
                                 marketDept = department.DepartmentName;
                             }
-                        }
+                        }*/
 
                     }
                 }
@@ -382,7 +382,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 rdoFastStockOut.Text = " Xuất đến " + directDept;
             }*/
-            foreach (Department department in cboDepartment.Items)
+            /*foreach (Department department in cboDepartment.Items)
             {
                 string departmentId = department.DepartmentId.ToString();
                 string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
@@ -392,7 +392,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     cboDepartment.Enabled = false;
                     break;
                 }
-            }
+            }*/
+            
+            rdoFastStockOut_CheckedChanged(null, null);
+            rdoStockOut_CheckedChanged(null, null);
             deptSODetailList = new DepartmentStockOutDetailCollection(bdsStockIn);
             bdsStockIn.DataSource = deptSODetailList;
             dgvDeptStockIn.DataError += new DataGridViewDataErrorEventHandler(dgvDeptStockIn_DataError);
@@ -447,7 +450,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     ObjectConverter.ConvertToNonGenericList<DepartmentStockOutDetail>(deptSODetailList);
 
             UpdateStockOutDescription();
-
+            cboDepartment.Enabled = false;
             GlobalMessage message = (GlobalMessage)GlobalUtility.GetObject("GlobalMessage");
             message.HasNewMessageEvent += new EventHandler<GlobalMessageEventArgs>(Instance_HasNewMessageEvent);
         }
@@ -700,7 +703,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
             EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
 
-            /*if(rdoFastStockOut.Checked)
+            if(rdoFastStockOut.Checked)
             {
                 try
                 {
@@ -724,9 +727,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     txtSumValue.Text = "";
                     return;
                 }
-            }*/
-            /*if(rdoStockOut.Checked || rd)
-            {*/
+            }
+            if(rdoStockOut.Checked)
+            {
                 if (eventArgs.DepartmentStockOut.DepartmentStockOutPK == null || eventArgs.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
                 {
                     ShowError(lblInformation, "Có lỗi phát sinh làm chương trình không in được. Liên hệ nhà quản trị.");
@@ -738,7 +741,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     DoPrinting(eventArgs.DepartmentStockOut);
                 }
 
-            /*}*/
+            }
             if (eventArgs.EventResult != null)
             {
                 /*if(!rdoFastStockOut.Checked)
@@ -1580,7 +1583,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 rdoRetail.Enabled = false;
                 rdoWholesale.Checked = false;
                 rdoRetail.Checked = true;
-                UpdateStockOutDescription();  
+                //UpdateStockOutDescription();  
             }
             else
             {
@@ -1590,8 +1593,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();
-                    string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
-                    if (!currentSubStock.StartsWith(departmentId))
+                    //string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
+                    string marketDept = ClientSetting.MarketDept;
+                    //if (!currentSubStock.StartsWith(departmentId))
+                    if (marketDept.Equals(departmentId))
                     {
                         cboDepartment.SelectedItem = department;
                         cboDepartment.Enabled = false;
@@ -1612,7 +1617,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 {
                     string departmentId = department.DepartmentId.ToString();
                     string currentSubStock = CurrentDepartment.Get().DepartmentId.ToString();
-                    if (currentSubStock.StartsWith(departmentId))
+                    string fastDept = ClientSetting.FastDept;
+                    //if (currentSubStock.StartsWith(departmentId))
+                    if (fastDept.Equals(departmentId))
                     {
                         cboDepartment.SelectedItem = department;
                         cboDepartment.Enabled = false;
@@ -1623,7 +1630,6 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 rdoRetail.Checked = true;
                 rdoWholesale.Enabled = false;
                 rdoRetail.Enabled = false;
-
                 UpdateStockOutDescription();  
             }
             else
@@ -1632,8 +1638,9 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 cboDepartment.Enabled = true;
                 rdoWholesale.Enabled = true;
                 rdoRetail.Enabled = true;
-                UpdateStockOutDescription();  
+                //UpdateStockOutDescription();  
             }
+            
         }
 
         private void UpdateStockOutDescription()

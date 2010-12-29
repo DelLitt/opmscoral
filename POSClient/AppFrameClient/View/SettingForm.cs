@@ -21,8 +21,14 @@ namespace AppFrameClient.View
 
         private void SettingForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'posDataSet.department' table. You can move, or remove it, as needed.
+            this.departmentTableAdapter1.Fill(this.posDataSet.department);
             this.departmentTableAdapter.Fill(this.masterDB.Department);
             ClientSetting.Reload();
+            cboBarcodeType.Items.Clear();
+            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE39);
+            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE128);
+            cboBarcodeType.SelectedItem = ClientSetting.BarcodeType;
             cboPrinters.Items.Clear();
             txtSyncImportPath.Text = ClientSetting.SyncImportPath;
             txtSyncExportPath.Text = ClientSetting.SyncExportPath;
@@ -32,6 +38,7 @@ namespace AppFrameClient.View
             txtMySQLDump.Text = ClientSetting.MySQLDumpPath;
             cboBinding.SelectedItem = ClientSetting.ServiceBinding;
             cboDepartment.SelectedValue = ClientSetting.MarketDept;
+            cboFastDept.SelectedValue = ClientSetting.FastDept;
             PrinterSettings.StringCollection printerNames = PrinterSettings.InstalledPrinters;
             foreach (string printerName in printerNames)
             {
@@ -67,10 +74,7 @@ namespace AppFrameClient.View
             chkExportConfirmation.Checked = ClientSetting.ExportConfirmation;
             chkImportConfirmation.Checked = ClientSetting.ImportConfirmation;
 
-            cboBarcodeType.Items.Clear();
-            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE39);
-            cboBarcodeType.Items.Add(BarcodeLib.TYPE.CODE128);
-            cboBarcodeType.SelectedItem = ClientSetting.BarcodeType;
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace AppFrameClient.View
             if (ClientSetting.IsSubStock())
             {
                 ClientSetting.MarketDept = cboDepartment.SelectedValue.ToString();
-
+                ClientSetting.FastDept = cboFastDept.SelectedValue.ToString();
                 if (rdoEmployeeId.Checked)
                 {
                     ClientSetting.ConfirmByEmployeeId = true;                    
