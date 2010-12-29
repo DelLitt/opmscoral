@@ -28,48 +28,48 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         //private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region IDepartmentStockInExtraController Members
 
-        private IDepartmentStockOutView mainStockInView;
+        private IDepartmentStockOutView deptStockOutView;
         public IDepartmentStockOutView DepartmentStockOutView
         {
             get
             {
-                return mainStockInView;
+                return deptStockOutView;
             }
             set
             {
-                mainStockInView = value;
+                deptStockOutView = value;
 
-                mainStockInView.FindBarcodeEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.FindBarcodeEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_FindBarcodeEvent);
-                mainStockInView.SaveStockOutEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.SaveStockOutEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_SaveStockOutEvent);
-                mainStockInView.FillProductToComboEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.FillProductToComboEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_FillProductToComboEvent);
-                mainStockInView.LoadStockStatusEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.LoadStockStatusEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadStockStatusEvent);
-                mainStockInView.LoadGoodsByNameColorSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.LoadGoodsByNameColorSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadGoodsByNameColorSizeEvent);
-                mainStockInView.LoadGoodsByNameEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.LoadGoodsByNameEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadGoodsByNameEvent);
-                mainStockInView.LoadProductColorEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.LoadProductColorEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadProductColorEvent);
-                mainStockInView.LoadProductSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.LoadProductSizeEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_LoadProductSizeEvent);
-                mainStockInView.GetSyncDataEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.GetSyncDataEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_GetSyncDataEvent);
-                mainStockInView.SyncToMainEvent += new EventHandler<DepartmentStockOutEventArgs>(
+                deptStockOutView.SyncToMainEvent += new EventHandler<DepartmentStockOutEventArgs>(
                     _departmentStockOutView_SyncToMainEvent);
-                mainStockInView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_LoadAllDepartments);
-                mainStockInView.DispatchDepartmentStockOut += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_DispatchDepartmentStockOut);
-                mainStockInView.PrepareDepartmentStockOutForPrintEvent += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_PrepareDepartmentStockOutForPrintEvent);
-                mainStockInView.FindByStockInIdEvent += new EventHandler<DepartmentStockOutEventArgs>(mainStockInView_FindByStockInIdEvent);
+                deptStockOutView.LoadAllDepartments += new EventHandler<DepartmentStockOutEventArgs>(deptStockOutView_LoadAllDepartments);
+                deptStockOutView.DispatchDepartmentStockOut += new EventHandler<DepartmentStockOutEventArgs>(deptStockOutView_DispatchDepartmentStockOut);
+                deptStockOutView.PrepareDepartmentStockOutForPrintEvent += new EventHandler<DepartmentStockOutEventArgs>(deptStockOutView_PrepareDepartmentStockOutForPrintEvent);
+                deptStockOutView.FindByStockInIdEvent += new EventHandler<DepartmentStockOutEventArgs>(deptStockOutView_FindByStockInIdEvent);
 
             }
         }
 
         public event EventHandler<DepartmentStockOutEventArgs> CompletedFindByStockInEvent;
 
-        void mainStockInView_FindByStockInIdEvent(object sender, DepartmentStockOutEventArgs e)
+        void deptStockOutView_FindByStockInIdEvent(object sender, DepartmentStockOutEventArgs e)
         {
             if (e.SelectedStockInIds.Count > 0)
             {
@@ -135,7 +135,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
         }
 
 
-        void mainStockInView_PrepareDepartmentStockOutForPrintEvent(object sender, DepartmentStockOutEventArgs e)
+        void deptStockOutView_PrepareDepartmentStockOutForPrintEvent(object sender, DepartmentStockOutEventArgs e)
         {
             Department destDept = DepartmentLogic.FindById(e.DepartmentStockOut.OtherDepartmentId);
             if (destDept != null)
@@ -153,7 +153,7 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             }            
         }
 
-        void mainStockInView_DispatchDepartmentStockOut(object sender, DepartmentStockOutEventArgs e)
+        void deptStockOutView_DispatchDepartmentStockOut(object sender, DepartmentStockOutEventArgs e)
         {
             
             Department destDept = DepartmentLogic.FindById(e.DepartmentStockOut.OtherDepartmentId);
@@ -170,13 +170,21 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
                     detail.DepartmentPrice = DepartmentPriceLogic.FindById(pricePk);
                 }
 
+                SyncFromDeptToDept fromDeptToDept = new SyncFromDeptToDept
+                                                        {
+                                                            DestinationDept = destDept
+                                                        };
+                fromDeptToDept.DepartmentStockOutList = new ArrayList();
+                fromDeptToDept.DepartmentStockOutList.Add(e.DepartmentStockOut);
+                
                 ServerServiceClient serverService = new ServerServiceClient(new InstanceContext(this), ClientSetting.ServiceBinding);
                 serverService.MakeRawDepartmentStockOut(destDept,e.DepartmentStockOut,new DepartmentPrice());
+
             }
 
         }
 
-        void mainStockInView_LoadAllDepartments(object sender, DepartmentStockOutEventArgs e)
+        void deptStockOutView_LoadAllDepartments(object sender, DepartmentStockOutEventArgs e)
         {
             IList list = DepartmentLogic.FindAll(null);
             e.DepartmentsList = list;
@@ -386,8 +394,44 @@ namespace AppFrameClient.Presenter.GoodsIO.DepartmentStockData
             IList list = DepartmentStockLogic.FindAll(criteria);
             if (list.Count == 0)
             {
-                throw new BusinessException("Mã vạch này không có trong kho ?!?! Đề nghị kiểm tra lại.");
-                return;
+
+                /* begin +++++++++++++++++++ XUAT TRUOT LO CHO KHO PHU +++++++++++++++++++++ */
+                if(ClientSetting.IsBlockSliding && ClientSetting.IsSubStock())
+                {
+                    // just sub-stock has the right to do block sliding
+                    if(ClientSetting.IsSubStock())
+                    {
+                        Product product = ProductLogic.FindById(e.ProductId);
+                        if(product == null ) throw new BusinessException("Mã vạch này chưa từng được nhập vào kho.");
+                        ProductColor color = product.ProductMaster.ProductColor;
+                        ProductSize size = product.ProductMaster.ProductSize;
+                        string productName = product.ProductMaster.ProductName;
+                        var productCriteria = new ObjectCriteria();
+                        IList slidedStockList = DepartmentStockLogic.FindSlidingStock(productName,color.ColorName,size.SizeName);
+                        BusinessException emptyStockException = new BusinessException(" Hàng " + productName + " - Màu:" + color.ColorName + " - Size:" + size.SizeName + " đã hết. Xin kiểm tra lại !");
+                        if (slidedStockList.Count == 0) throw emptyStockException;
+                        foreach (DepartmentStock departmentStock in slidedStockList)
+                        {
+                            if(departmentStock.Quantity > 0 && departmentStock.GoodQuantity > 0 )
+                            {
+                                list.Add(departmentStock);
+                                break;
+                            }
+                        }
+                        if (list.Count == 0) throw emptyStockException;
+                    }
+                    else // throw error if not sub stock
+                    {
+                        throw new BusinessException("Bạn đang dùng chức năng xuất trượt lô cho mã vạch không có trong kho. Chức năng xuất trượt lô chỉ có trong kho phụ.");
+                        return;        
+                    }
+                }
+                else
+                {
+                    throw new BusinessException("Mã vạch này không có trong kho ?!?! Đề nghị kiểm tra lại.");
+                    return;    
+                }
+                /* end +++++++++++++++++++ XUAT TRUOT LO CHO KHO PHU +++++++++++++++++++++ */
             }
             DepartmentStock stock = list[0] as DepartmentStock;
             e.SelectedDepartmentStockOutDetail = new DepartmentStockOutDetail();

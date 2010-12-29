@@ -167,7 +167,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         private void dgvDeptStockIn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             CalculateTotalStorePrice();
-//            try
+            #region useless
+            //            try
 //            {
 //                var mainStockInEventArgs = new DepartmentStockOutEventArgs();
 //                if (dgvDeptStockIn == null || dgvDeptStockIn.CurrentRow == null)
@@ -297,7 +298,8 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 //            catch (Exception ex)
 //            {
 //                MessageBox.Show("Mã sản phẩm không hợp lệ hoặc lỗi khi nhập");
-//            }
+            //            }
+            #endregion
         }
 
         private void CalculateTotalStorePrice()
@@ -495,19 +497,19 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
 
         #region IDepartmentStockInView Members
 
-        private DepartmentStockOutController mainStockInController;
+        /*private DepartmentStockOutController _departmentStockOutController;
         public DepartmentStockOutController DepartmentStockInController
         {
             get
             {
-                return mainStockInController;
+                return _departmentStockOutController;
             }
             set
             {
-                mainStockInController = value;
-                mainStockInController.DepartmentStockOutView = this;
+                _departmentStockOutController = value;
+                _departmentStockOutController.DepartmentStockOutView = this;
             }
-        }
+        }*/
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -531,12 +533,17 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
         public event EventHandler<DepartmentStockInEventArgs> SaveDepartmentStockInEvent;
 
         public event EventHandler<DepartmentStockInEventArgs> FindProductMasterEvent;
-        private IDepartmentStockOutController _mainStockOutController;
-        public IDepartmentStockOutController DepartmentStockOutController { set
-        {
-            _mainStockOutController = value;
-            _mainStockOutController.DepartmentStockOutView = this;
-        }
+        private IDepartmentStockOutController _deptStockOutController;
+        public IDepartmentStockOutController DepartmentStockOutController { 
+            set
+            {
+            _deptStockOutController = value;
+            _deptStockOutController.DepartmentStockOutView = this;
+            }
+            get 
+            { 
+                return _deptStockOutController;
+            }
         }
         public event EventHandler<DepartmentStockOutEventArgs> FindBarcodeEvent;
         public event EventHandler<DepartmentStockOutEventArgs> SaveStockOutEvent;
@@ -655,8 +662,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             bool isNeedClearData = deptSO.DepartmentStockOutPK == null || deptSO.DepartmentStockOutPK.StockOutId == 0;
             deptSO.StockOutDate = DateTime.Now;
             deptSO.DefectStatus = (StockDefectStatus)cbbStockOutType.SelectedItem;
-            deptSO.DepartmentStockOutDetails = deptSODetailList;
             deptSO.OtherDepartmentId = ((Department)cboDepartment.SelectedItem).DepartmentId;
+            deptSO.DepartmentStockOutDetails = new ArrayList();
+            foreach (DepartmentStockOutDetail outDetail in deptSODetailList)
+            {
+                deptSO.DepartmentStockOutDetails.Add(outDetail);
+            }
+            //deptSO.DepartmentStockOutDetails = deptSODetailList;
             //deptSO.ConfirmFlg = 3;
             
                 foreach (DepartmentStockOutDetail outDetail in deptSO.DepartmentStockOutDetails)
@@ -699,18 +711,13 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             if(rdoFastStockOut.Checked)
             {
                 ShowMessage("Đang truyền thông tin .... ");
-            }
-
-            EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
-
-            if(rdoFastStockOut.Checked)
-            {
                 try
                 {
                     if(eventArgs.EventResult!=null)
                     {
                         //EventUtility.fireAsyncEvent(DispatchDepartmentStockOut, this, eventArgs, new AsyncCallback(EndEvent));
-                        EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);          
+                        EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
+                        EventUtility.fireEvent(DispatchDepartmentStockOut, this, eventArgs);
                     }
                     
                 }
@@ -728,8 +735,10 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     return;
                 }
             }
+
             if(rdoStockOut.Checked)
             {
+                EventUtility.fireEvent(SaveStockOutEvent, this, eventArgs);
                 if (eventArgs.DepartmentStockOut.DepartmentStockOutPK == null || eventArgs.DepartmentStockOut.DepartmentStockOutPK.StockOutId == 0)
                 {
                     ShowError(lblInformation, "Có lỗi phát sinh làm chương trình không in được. Liên hệ nhà quản trị.");
@@ -774,6 +783,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             }
             txtBarcode.Focus();
         }
+
         IList<Stream> streamList = new List<Stream>();
         private int currentIndex = 0;
         private LocalReport DeptStockOutInvoice;
@@ -1613,6 +1623,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
             {
                 cboProductMasters.Enabled = false;
                 txtCustomerName.Enabled = false;
+                
                 foreach (Department department in cboDepartment.Items)
                 {
                     string departmentId = department.DepartmentId.ToString();
@@ -1623,6 +1634,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                     {
                         cboDepartment.SelectedItem = department;
                         cboDepartment.Enabled = false;
+                        txtCustomerName.Text = department.DepartmentName;
                         break;
                     }
                 }
@@ -1657,6 +1669,7 @@ namespace AppFrameClient.View.GoodsIO.DepartmentStockData
                 text += " VỚI GIÁ BÁN LẺ";
             }
             lblCommandDescription.Text = text;
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

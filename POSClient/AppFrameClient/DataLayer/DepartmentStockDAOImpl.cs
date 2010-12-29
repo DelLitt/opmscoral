@@ -490,6 +490,30 @@ namespace AppFrame.DataLayer
                                );
         }
 
+        public IList FindSlidingStock(string productName, string colorName, string sizeName)
+        {
+            return (IList)HibernateTemplate.Execute(
+                delegate(ISession session)
+                {
+                    try
+                    {
+                        string sqlString = " select s from DepartmentStock s,Product prd,ProductMaster prdMaster WHERE "
+                               + " s.DepartmentStockPK.ProductId = prd.ProductId and prd.ProductMaster.ProductMasterId = prdMaster.ProductMasterId "
+                               + " and prdMaster.ProductName = " + productName
+                               + " and prdMaster.ProductColor.ColorName = " + colorName
+                               + " and prdMaster.ProductSize.SizeName = " + sizeName;
+                        return session.CreateQuery(sqlString).List();
+                    }
+                    catch (Exception)
+                    {
+
+                        return null;
+                    }
+
+                }
+                               );
+        }
+
         #endregion
     }
 }

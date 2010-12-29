@@ -98,5 +98,11 @@
     <Setting Name="FastDept" Type="System.String" Scope="User">
       <Value Profile="(Default)">6</Value>
     </Setting>
+    <Setting Name="IsBlockSliding" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DeptToDeptPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CH-CH</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

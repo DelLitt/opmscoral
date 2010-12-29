@@ -72,6 +72,8 @@
             this.grpSubStock = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cboFastDept = new System.Windows.Forms.ComboBox();
+            this.departmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.posDataSet = new AppFrameClient.posDataSet();
             this.rdoEmployeeId = new System.Windows.Forms.RadioButton();
             this.rdoLogin = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,14 +81,17 @@
             this.cboBinding = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkBlockSliding = new System.Windows.Forms.CheckBox();
             this.chkCheckingById = new System.Windows.Forms.CheckBox();
             this.chkNegativeExport = new System.Windows.Forms.CheckBox();
             this.chkImportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkExportConfirmation = new System.Windows.Forms.CheckBox();
             this.chkNegativeSelling = new System.Windows.Forms.CheckBox();
-            this.posDataSet = new AppFrameClient.posDataSet();
-            this.departmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.departmentTableAdapter1 = new AppFrameClient.posDataSetTableAdapters.departmentTableAdapter();
+            this.txtDeptToDept = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnDeptToDeptPath = new System.Windows.Forms.Button();
+            this.deptToDeptDialog = new System.Windows.Forms.FolderBrowserDialog();
             btnExportPath = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDBBindingSource)).BeginInit();
@@ -94,10 +99,10 @@
             this.grpSync.SuspendLayout();
             this.grpPrinting.SuspendLayout();
             this.grpSubStock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
             this.grpService.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExportPath
@@ -113,7 +118,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 21);
+            this.label1.Location = new System.Drawing.Point(4, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 15);
             this.label1.TabIndex = 0;
@@ -121,7 +126,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(313, 419);
+            this.btnDefault.Location = new System.Drawing.Point(310, 462);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -131,7 +136,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(394, 419);
+            this.btnClose.Location = new System.Drawing.Point(391, 462);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -141,7 +146,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(232, 419);
+            this.btnSave.Location = new System.Drawing.Point(229, 462);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -161,7 +166,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 73);
+            this.label3.Location = new System.Drawing.Point(53, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 9;
@@ -170,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 96);
+            this.label4.Location = new System.Drawing.Point(9, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 15);
             this.label4.TabIndex = 10;
@@ -197,7 +202,7 @@
             // 
             // btnErrorPath
             // 
-            this.btnErrorPath.Location = new System.Drawing.Point(301, 68);
+            this.btnErrorPath.Location = new System.Drawing.Point(301, 96);
             this.btnErrorPath.Name = "btnErrorPath";
             this.btnErrorPath.Size = new System.Drawing.Size(31, 23);
             this.btnErrorPath.TabIndex = 15;
@@ -207,7 +212,7 @@
             // 
             // btnSuccessPath
             // 
-            this.btnSuccessPath.Location = new System.Drawing.Point(301, 94);
+            this.btnSuccessPath.Location = new System.Drawing.Point(301, 122);
             this.btnSuccessPath.Name = "btnSuccessPath";
             this.btnSuccessPath.Size = new System.Drawing.Size(31, 23);
             this.btnSuccessPath.TabIndex = 16;
@@ -217,7 +222,7 @@
             // 
             // btnMySQLDump
             // 
-            this.btnMySQLDump.Location = new System.Drawing.Point(302, 146);
+            this.btnMySQLDump.Location = new System.Drawing.Point(302, 174);
             this.btnMySQLDump.Name = "btnMySQLDump";
             this.btnMySQLDump.Size = new System.Drawing.Size(31, 23);
             this.btnMySQLDump.TabIndex = 18;
@@ -228,7 +233,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 151);
+            this.label6.Location = new System.Drawing.Point(0, 179);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 15);
             this.label6.TabIndex = 19;
@@ -236,7 +241,7 @@
             // 
             // btnBackupDB
             // 
-            this.btnBackupDB.Location = new System.Drawing.Point(301, 119);
+            this.btnBackupDB.Location = new System.Drawing.Point(301, 147);
             this.btnBackupDB.Name = "btnBackupDB";
             this.btnBackupDB.Size = new System.Drawing.Size(31, 23);
             this.btnBackupDB.TabIndex = 22;
@@ -247,7 +252,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(29, 122);
+            this.label7.Location = new System.Drawing.Point(29, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 15);
             this.label7.TabIndex = 21;
@@ -255,7 +260,7 @@
             // 
             // txtMySQLDump
             // 
-            this.txtMySQLDump.Location = new System.Drawing.Point(123, 146);
+            this.txtMySQLDump.Location = new System.Drawing.Point(123, 174);
             this.txtMySQLDump.Name = "txtMySQLDump";
             this.txtMySQLDump.Size = new System.Drawing.Size(173, 20);
             this.txtMySQLDump.TabIndex = 23;
@@ -263,7 +268,7 @@
             // 
             // txtBackupDB
             // 
-            this.txtBackupDB.Location = new System.Drawing.Point(122, 119);
+            this.txtBackupDB.Location = new System.Drawing.Point(122, 147);
             this.txtBackupDB.Name = "txtBackupDB";
             this.txtBackupDB.Size = new System.Drawing.Size(172, 20);
             this.txtBackupDB.TabIndex = 24;
@@ -271,7 +276,7 @@
             // 
             // txtSyncSuccessPath
             // 
-            this.txtSyncSuccessPath.Location = new System.Drawing.Point(123, 96);
+            this.txtSyncSuccessPath.Location = new System.Drawing.Point(123, 124);
             this.txtSyncSuccessPath.Name = "txtSyncSuccessPath";
             this.txtSyncSuccessPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncSuccessPath.TabIndex = 7;
@@ -279,7 +284,7 @@
             // 
             // txtSyncErrorPath
             // 
-            this.txtSyncErrorPath.Location = new System.Drawing.Point(123, 70);
+            this.txtSyncErrorPath.Location = new System.Drawing.Point(123, 98);
             this.txtSyncErrorPath.Name = "txtSyncErrorPath";
             this.txtSyncErrorPath.Size = new System.Drawing.Size(172, 20);
             this.txtSyncErrorPath.TabIndex = 6;
@@ -352,9 +357,12 @@
             // 
             // grpSync
             // 
+            this.grpSync.Controls.Add(this.txtDeptToDept);
+            this.grpSync.Controls.Add(this.label12);
+            this.grpSync.Controls.Add(this.btnDeptToDeptPath);
+            this.grpSync.Controls.Add(this.txtSyncExportPath);
             this.grpSync.Controls.Add(this.txtSyncImportPath);
             this.grpSync.Controls.Add(this.label1);
-            this.grpSync.Controls.Add(this.txtSyncExportPath);
             this.grpSync.Controls.Add(this.txtMySQLDump);
             this.grpSync.Controls.Add(this.label6);
             this.grpSync.Controls.Add(this.txtBackupDB);
@@ -372,7 +380,7 @@
             this.grpSync.Controls.Add(this.label4);
             this.grpSync.Location = new System.Drawing.Point(2, 13);
             this.grpSync.Name = "grpSync";
-            this.grpSync.Size = new System.Drawing.Size(346, 180);
+            this.grpSync.Size = new System.Drawing.Size(346, 223);
             this.grpSync.TabIndex = 27;
             this.grpSync.TabStop = false;
             this.grpSync.Text = "Đồng bộ";
@@ -383,7 +391,7 @@
             this.grpPrinting.Controls.Add(this.cboBarcodeType);
             this.grpPrinting.Controls.Add(this.cboPrinters);
             this.grpPrinting.Controls.Add(this.label5);
-            this.grpPrinting.Location = new System.Drawing.Point(2, 199);
+            this.grpPrinting.Location = new System.Drawing.Point(2, 242);
             this.grpPrinting.Name = "grpPrinting";
             this.grpPrinting.Size = new System.Drawing.Size(587, 42);
             this.grpPrinting.TabIndex = 28;
@@ -417,7 +425,7 @@
             this.grpSubStock.Controls.Add(this.label9);
             this.grpSubStock.Controls.Add(this.cboDepartment);
             this.grpSubStock.Controls.Add(this.lblDepartment);
-            this.grpSubStock.Location = new System.Drawing.Point(2, 247);
+            this.grpSubStock.Location = new System.Drawing.Point(2, 290);
             this.grpSubStock.Name = "grpSubStock";
             this.grpSubStock.Size = new System.Drawing.Size(587, 88);
             this.grpSubStock.TabIndex = 29;
@@ -444,6 +452,16 @@
             this.cboFastDept.Size = new System.Drawing.Size(173, 21);
             this.cboFastDept.TabIndex = 32;
             this.cboFastDept.ValueMember = "DEPARTMENT_ID";
+            // 
+            // departmentBindingSource1
+            // 
+            this.departmentBindingSource1.DataMember = "department";
+            this.departmentBindingSource1.DataSource = this.posDataSet;
+            // 
+            // posDataSet
+            // 
+            this.posDataSet.DataSetName = "posDataSet";
+            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rdoEmployeeId
             // 
@@ -481,7 +499,7 @@
             // 
             this.grpService.Controls.Add(this.cboBinding);
             this.grpService.Controls.Add(this.label8);
-            this.grpService.Location = new System.Drawing.Point(2, 341);
+            this.grpService.Location = new System.Drawing.Point(2, 384);
             this.grpService.Name = "grpService";
             this.grpService.Size = new System.Drawing.Size(587, 72);
             this.grpService.TabIndex = 30;
@@ -511,6 +529,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkBlockSliding);
             this.groupBox1.Controls.Add(this.chkCheckingById);
             this.groupBox1.Controls.Add(this.chkNegativeExport);
             this.groupBox1.Controls.Add(this.chkImportConfirmation);
@@ -518,10 +537,20 @@
             this.groupBox1.Controls.Add(this.chkNegativeSelling);
             this.groupBox1.Location = new System.Drawing.Point(355, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(234, 180);
+            this.groupBox1.Size = new System.Drawing.Size(234, 223);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức năng";
+            // 
+            // chkBlockSliding
+            // 
+            this.chkBlockSliding.AutoSize = true;
+            this.chkBlockSliding.Location = new System.Drawing.Point(6, 140);
+            this.chkBlockSliding.Name = "chkBlockSliding";
+            this.chkBlockSliding.Size = new System.Drawing.Size(145, 19);
+            this.chkBlockSliding.TabIndex = 5;
+            this.chkBlockSliding.Text = "Cho phép xuất trượt lô";
+            this.chkBlockSliding.UseVisualStyleBackColor = true;
             // 
             // chkCheckingById
             // 
@@ -573,25 +602,42 @@
             this.chkNegativeSelling.Text = "Cho phép bán hàng số âm";
             this.chkNegativeSelling.UseVisualStyleBackColor = true;
             // 
-            // posDataSet
-            // 
-            this.posDataSet.DataSetName = "posDataSet";
-            this.posDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // departmentBindingSource1
-            // 
-            this.departmentBindingSource1.DataMember = "department";
-            this.departmentBindingSource1.DataSource = this.posDataSet;
-            // 
             // departmentTableAdapter1
             // 
             this.departmentTableAdapter1.ClearBeforeFill = true;
+            // 
+            // txtDeptToDept
+            // 
+            this.txtDeptToDept.Location = new System.Drawing.Point(123, 73);
+            this.txtDeptToDept.Name = "txtDeptToDept";
+            this.txtDeptToDept.Size = new System.Drawing.Size(172, 20);
+            this.txtDeptToDept.TabIndex = 25;
+            this.txtDeptToDept.Text = "\\POS\\CH-CH";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 76);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(118, 15);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Đường dẫn kho phụ:";
+            // 
+            // btnDeptToDeptPath
+            // 
+            this.btnDeptToDeptPath.Location = new System.Drawing.Point(301, 71);
+            this.btnDeptToDeptPath.Name = "btnDeptToDeptPath";
+            this.btnDeptToDeptPath.Size = new System.Drawing.Size(31, 23);
+            this.btnDeptToDeptPath.TabIndex = 27;
+            this.btnDeptToDeptPath.Text = "...";
+            this.btnDeptToDeptPath.UseVisualStyleBackColor = true;
+            this.btnDeptToDeptPath.Click += new System.EventHandler(this.btnDeptToDeptPath_Click);
             // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 447);
+            this.ClientSize = new System.Drawing.Size(592, 497);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpService);
             this.Controls.Add(this.grpSubStock);
@@ -614,12 +660,12 @@
             this.grpPrinting.PerformLayout();
             this.grpSubStock.ResumeLayout(false);
             this.grpSubStock.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
             this.grpService.ResumeLayout(false);
             this.grpService.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,5 +729,10 @@
         private posDataSet posDataSet;
         private System.Windows.Forms.BindingSource departmentBindingSource1;
         private AppFrameClient.posDataSetTableAdapters.departmentTableAdapter departmentTableAdapter1;
+        private System.Windows.Forms.CheckBox chkBlockSliding;
+        private System.Windows.Forms.TextBox txtDeptToDept;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnDeptToDeptPath;
+        private System.Windows.Forms.FolderBrowserDialog deptToDeptDialog;
     }
 }

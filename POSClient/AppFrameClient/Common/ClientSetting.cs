@@ -9,6 +9,7 @@ namespace AppFrameClient.Common
     public class ClientSetting
     {
         private static string _fastDept;
+        private static string _syncDeptToDept;
 
         public const string ZIP_PASSWORD = "gfd83fds32l1asdtg";
 
@@ -274,6 +275,21 @@ namespace AppFrameClient.Common
             AFCSetting.Default.Reset();
         }
 
-        
+        public static bool IsBlockSliding
+        {
+            get { return AFCSetting.Default.IsBlockSliding;
+            }
+            set { AFCSetting.Default.IsBlockSliding = value; }
+        }
+
+        public static string SyncDeptToDept
+        {
+            get {
+                return AFCSetting.Default.DeptToDeptPath;
+            }
+            set {
+                AFCSetting.Default.DeptToDeptPath = value;
+            }
+        }
     }
 }

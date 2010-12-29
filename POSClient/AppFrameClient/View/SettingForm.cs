@@ -32,6 +32,7 @@ namespace AppFrameClient.View
             cboPrinters.Items.Clear();
             txtSyncImportPath.Text = ClientSetting.SyncImportPath;
             txtSyncExportPath.Text = ClientSetting.SyncExportPath;
+            txtDeptToDept.Text = ClientSetting.SyncDeptToDept;
             txtSyncErrorPath.Text = ClientSetting.SyncErrorPath;
             txtSyncSuccessPath.Text = ClientSetting.SyncSuccessPath;
             txtBackupDB.Text = ClientSetting.DBBackupPath;
@@ -73,8 +74,8 @@ namespace AppFrameClient.View
             chkNegativeSelling.Checked = ClientSetting.NegativeSelling;
             chkExportConfirmation.Checked = ClientSetting.ExportConfirmation;
             chkImportConfirmation.Checked = ClientSetting.ImportConfirmation;
+            chkBlockSliding.Checked = ClientSetting.IsBlockSliding;
 
-            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -91,6 +92,7 @@ namespace AppFrameClient.View
             ClientSetting.SyncImportPath = txtSyncImportPath.Text;
             ClientSetting.SyncExportPath =txtSyncExportPath.Text;
             ClientSetting.SyncErrorPath = txtSyncErrorPath.Text;
+            ClientSetting.SyncDeptToDept = txtDeptToDept.Text;
             ClientSetting.SyncSuccessPath = txtSyncSuccessPath.Text;
             ClientSetting.PrinterName = (string)cboPrinters.SelectedItem;
             ClientSetting.ServiceBinding = (string)cboBinding.SelectedItem;
@@ -118,7 +120,8 @@ namespace AppFrameClient.View
             ClientSetting.NegativeExport = chkNegativeExport.Checked;
             ClientSetting.ImportConfirmation = chkImportConfirmation.Checked;
             ClientSetting.ExportConfirmation = chkExportConfirmation.Checked;
-            ClientSetting.BarcodeType = (BarcodeLib.TYPE)cboBarcodeType.SelectedItem;    
+            ClientSetting.BarcodeType = (BarcodeLib.TYPE)cboBarcodeType.SelectedItem;
+            ClientSetting.IsBlockSliding = chkBlockSliding.Checked;
             
             ClientSetting.Save();
             
@@ -182,6 +185,13 @@ namespace AppFrameClient.View
         {
             mySQLBinDialog.ShowDialog();
             txtMySQLDump.Text = mySQLBinDialog.SelectedPath;
+        }
+
+        private void btnDeptToDeptPath_Click(object sender, EventArgs e)
+        {
+            deptToDeptDialog.ShowDialog();
+            string selectedPath = deptToDeptDialog.SelectedPath;
+            txtDeptToDept.Text = selectedPath.Length > 2 ? selectedPath.Substring(2) : selectedPath;
         }
     }
 }

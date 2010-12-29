@@ -50,9 +50,9 @@ namespace AppFrameClient.View
 
         private void btnImportFromDB_Click(object sender, EventArgs e)
         {
-            ImportMaxDateTableAdapter exportMaxDateTableAdapter = new ImportMaxDateTableAdapter();
-            exportMaxDateTableAdapter.ClearBeforeFill = true;
-            exportMaxDateTableAdapter.Fill(masterDB.ImportMaxDate, Int32.Parse(cboDepartment.SelectedValue.ToString()));
+            ImportMaxDateTableAdapter importMaxDateTableAdapter = new ImportMaxDateTableAdapter();
+            importMaxDateTableAdapter.ClearBeforeFill = true;
+            importMaxDateTableAdapter.Fill(masterDB.ImportMaxDate, Int32.Parse(cboDepartment.SelectedValue.ToString()));
             if (masterDB.ImportMaxDate.Rows.Count == 1)
             {
                 dtpCHKHO.Value = (DateTime)masterDB.ImportMaxDate.Rows[0]["sync_date"]; //DateTime.ParseExact(masterDB.ImportMaxDate.Rows[0][0].ToString(), "dd/MM/yy HH:mm:ss", null);
