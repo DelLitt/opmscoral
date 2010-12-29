@@ -1925,7 +1925,6 @@
     <None Include="Templates\TemplateXuatHang.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.resx.AnkhSVN.0.tmp" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
