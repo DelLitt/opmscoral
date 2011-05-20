@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="Stock"
+	    table="stock"
+>
+
+    <id
+        name="StockId"
+        type="Int64"
+        column="STOCK_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="Quantity"
+        type="Int64"
+        column="QUANTITY"
+        length="10"
+    >
+    </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+  <property
+        name="GoodQuantity"
+        type="Int64"
+        column="GOOD_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="ErrorQuantity"
+        type="Int64"
+        column="ERROR_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="LostQuantity"
+        type="Int64"
+        column="LOST_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="UnconfirmQuantity"
+        type="Int64"
+        column="UNCONFIRM_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="DamageQuantity"
+        type="Int64"
+        column="DAMAGE_QUANTITY"
+        length="10"
+    >
+  </property>
+  <property
+        name="Position"
+        type="string"
+        column="POSITION"
+        length="200"
+    >
+  </property>
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Product -->
+    <many-to-one
+        name="Product"
+        class="Product"
+        not-null="true"
+        lazy="false"
+    >
+      <column name="PRODUCT_ID" />
+    </many-to-one>
+
+  <many-to-one
+      name="ProductMaster"
+      class="ProductMaster"
+      not-null="true"
+    >
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,2748 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Utility/f:ClientUtility.cs" caret="0" fromTop="0" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:CreateSyncUSBForm.cs" caret="1841" fromTop="14" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Properties/f:Settings.Designer.cs" caret="14070" fromTop="19" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Logic/f:DepartmentStockLogicImpl.cs" caret="15911" fromTop="23" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Logic/f:IDepartmentStockLogic.cs" caret="2198" fromTop="28" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:DataLayer/f:IDepartmentStockDAO.cs" caret="2612" fromTop="28" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:DataLayer/f:DepartmentStockDAOImpl.cs" caret="18697" fromTop="4" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:LoadDataFromDepartmentToMain.cs" caret="2132" fromTop="0" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Model/f:SyncFromDeptToDept.cs" caret="210" fromTop="9" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Model/f:SyncFromMainToDepartment.cs" caret="504" fromTop="6" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentFastStockInForm.cs" caret="16302" fromTop="15" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/f:AuthService.cs" caret="5976" fromTop="11" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:MainForm.cs" caret="28551" fromTop="15" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:ServerService.cs" caret="1048" fromTop="25" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Model/f:SyncFromDepartmentToMain.cs" caret="13" fromTop="0" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Logic/f:DepartmentStockOutLogicImpl.cs" caret="30579" fromTop="3" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Utility/f:ObjectConverter.cs" caret="6005" fromTop="9" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Common/f:ClientSetting.cs" caret="7185" fromTop="3" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:SettingForm.cs" caret="4000" fromTop="12" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/f:Program.cs" caret="742" fromTop="0" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockCheckingForm.cs" caret="1408" fromTop="10" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:LoadDepartmentStockInToFileForm.cs" caret="13421" fromTop="13" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentFastStockOutForm.cs" caret="22943" fromTop="9" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="10409" fromTop="10" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Services/f:ClientService.cs" caret="4128" fromTop="0" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Services/f:ServerServiceConsumer.cs" caret="168" fromTop="2" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:IServerService.cs" caret="368" fromTop="0" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:IDepartmentStockOutCallback.cs" caret="256" fromTop="0" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/f:App.config" caret="2987" fromTop="10" />
+      <File id="53EA70B6-957C-4D8A-BD43-1450C7433920/f:Form1.cs" caret="391" fromTop="16" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentFastStockOutForm.cs" caret="32462" fromTop="19" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentFastStockOutForm.cs" caret="31613" fromTop="11" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/d:GoodsIO/d:DepartmentStockData/f:DepartmentFastStockInForm.cs" caret="16302" fromTop="15" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="8849" fromTop="17" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="34148" fromTop="24" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:SettingForm.cs" caret="7983" fromTop="27" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:SettingForm.cs" caret="1312" fromTop="25" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Common/f:ClientSetting.cs" caret="7373" fromTop="26" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:SettingForm.cs" caret="8081" fromTop="22" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:MainForm.cs" caret="4263" fromTop="1" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:MainForm.cs" caret="5635" fromTop="14" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:MainForm.cs" caret="12890" fromTop="11" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:ServerService.cs" caret="518" fromTop="17" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:IServerService.cs" caret="488" fromTop="10" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:ServerService.cs" caret="1048" fromTop="25" />
+      <File id="C3773063-F4BA-4DCC-99C6-6C1F66397173/d:Services/f:IDepartmentStockOutCallback.cs" caret="303" fromTop="5" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Model/f:SyncFromDepartmentToMain.cs" caret="2424" fromTop="7" />
+      <File id="73A362AB-99CF-4AA1-8278-01CAED2516F0/d:Model/f:SyncFromDepartmentToMain.cs" caret="767" fromTop="13" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Common/f:ClientSetting.cs" caret="7185" fromTop="3" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Common/f:ClientSetting.cs" caret="7419" fromTop="3" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:View/f:SettingForm.cs" caret="4001" fromTop="12" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="9339" fromTop="14" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="11450" fromTop="11" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="9818" fromTop="7" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="12173" fromTop="15" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="12316" fromTop="18" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="9924" fromTop="2" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="10535" fromTop="4" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="11174" fromTop="15" />
+      <File id="65E17626-8E16-448C-A89D-ADE344360AF4/d:Presenter/d:GoodsIO/d:DepartmentStockData/f:DepartmentStockOutController.cs" caret="11317" fromTop="16" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerMSTest>
+    <UseTestRunConfigFromMetadataFile>False</UseTestRunConfigFromMetadataFile>
+  </UnitTestRunnerMSTest>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="txtBarcode" priority="10" />
+      <Item value="Color" priority="13" />
+      <Item value="KnownColor" priority="0" />
+      <Item value="searchByProductMasterCriteria" priority="1" />
+      <Item value="searchProductMaster" priority="0" />
+      <Item value="IList" priority="50" />
+      <Item value="ProductLogic" priority="3" />
+      <Item value="Product" priority="7" />
+      <Item value="stockList" priority="8" />
+      <Item value="dgvStocks" priority="0" />
+      <Item value="DepartmentStockView" priority="2" />
+      <Item value="stock" priority="29" />
+      <Item value="try" priority="19" />
+      <Item value="if" priority="320" />
+      <Item value="productMasterControl" priority="1" />
+      <Item value="MessageBox" priority="12" />
+      <Item value="return" priority="104" />
+      <Item value="TextBox" priority="0" />
+      <Item value="DataGridCoralTextCell" priority="0" />
+      <Item value="CellTemplate" priority="0" />
+      <Item value="value" priority="17" />
+      <Item value="this" priority="42" />
+      <Item value="Close" priority="5" />
+      <Item value="BaseCollection" priority="2" />
+      <Item value="DepartmentCostCollection" priority="2" />
+      <Item value="private" priority="16" />
+      <Item value="costList" priority="4" />
+      <Item value="new" priority="192" />
+      <Item value="bdsCost" priority="2" />
+      <Item value="dgvCost" priority="8" />
+      <Item value="DepartmentCost" priority="3" />
+      <Item value="cost" priority="12" />
+      <Item value="DepartmentCostPK" priority="0" />
+      <Item value="DepartmentId" priority="22" />
+      <Item value="CurrentDepartment" priority="26" />
+      <Item value="CostDate" priority="0" />
+      <Item value="DateTime" priority="57" />
+      <Item value="ClientInfo" priority="13" />
+      <Item value="Int64" priority="6" />
+      <Item value="txtCost" priority="2" />
+      <Item value="txtCostDescription" priority="2" />
+      <Item value="txtCostName" priority="1" />
+      <Item value="cboCostType" priority="3" />
+      <Item value="eventArgs" priority="56" />
+      <Item value="DepartmentCostEventArgs" priority="3" />
+      <Item value="CreateDepartmentCostEvent" priority="0" />
+      <Item value="else" priority="67" />
+      <Item value="MessageBoxIcon" priority="2" />
+      <Item value="MessageBoxButtons" priority="6" />
+      <Item value="departmentCostCreateView" priority="2" />
+      <Item value="DepartmentCostLogic" priority="1" />
+      <Item value="e" priority="99" />
+      <Item value="tryf" priority="0" />
+      <Item value="throw" priority="7" />
+      <Item value="Exception" priority="2" />
+      <Item value="true" priority="57" />
+      <Item value="departmentCostEditView" priority="2" />
+      <Item value="departmentCostListView" priority="2" />
+      <Item value="bool" priority="18" />
+      <Item value="false" priority="50" />
+      <Item value="CreateFlag" priority="2" />
+      <Item value="Enabled" priority="0" />
+      <Item value="txtCostDate" priority="2" />
+      <Item value="cboDepartment" priority="24" />
+      <Item value="void" priority="15" />
+      <Item value="DisableCostControls" priority="2" />
+      <Item value="btnCreate" priority="2" />
+      <Item value="btnQuit" priority="3" />
+      <Item value="DepartmentCostCreateForm" priority="0" />
+      <Item value="timer1" priority="2" />
+      <Item value="Update" priority="0" />
+      <Item value="btnEdit" priority="2" />
+      <Item value="btnCancel" priority="0" />
+      <Item value="EventUtility" priority="16" />
+      <Item value="SearchDepartmentCostEvent" priority="0" />
+      <Item value="null" priority="71" />
+      <Item value="foreach" priority="100" />
+      <Item value="public" priority="71" />
+      <Item value="objectCriteria" priority="22" />
+      <Item value="ObjectCriteria" priority="20" />
+      <Item value="DateUtility" priority="6" />
+      <Item value="list" priority="34" />
+      <Item value="departmentCostController" priority="2" />
+      <Item value="ClearCostControls" priority="0" />
+      <Item value="BindingSource" priority="9" />
+      <Item value="bdsDepartment" priority="7" />
+      <Item value="toolStripClient" priority="3" />
+      <Item value="static" priority="15" />
+      <Item value="Form" priority="0" />
+      <Item value="clientInfo" priority="5" />
+      <Item value="ToolStrip" priority="0" />
+      <Item value="toolStrip" priority="3" />
+      <Item value="mainForm" priority="2" />
+      <Item value="setPermission" priority="0" />
+      <Item value="ref" priority="0" />
+      <Item value="toolStripPermission" priority="0" />
+      <Item value="toolStripMenuItem" priority="0" />
+      <Item value="baseUser" priority="0" />
+      <Item value="ClientSetting" priority="35" />
+      <Item value="Stream" priority="0" />
+      <Item value="ToolStripItemPermission" priority="2" />
+      <Item value="toolStripItemPermission" priority="3" />
+      <Item value="toolStripInStream" priority="1" />
+      <Item value="MenuUtility" priority="1" />
+      <Item value="GlobalCache" priority="9" />
+      <Item value="goodsSale" priority="0" />
+      <Item value="FormWindowState" priority="10" />
+      <Item value="BarcodeLib" priority="5" />
+      <Item value="Barcode" priority="0" />
+      <Item value="TYPE" priority="6" />
+      <Item value="txtAddress" priority="1" />
+      <Item value="txtDeparmentCost" priority="0" />
+      <Item value="txtDepartmentId" priority="0" />
+      <Item value="txtDepartmentName" priority="2" />
+      <Item value="department" priority="35" />
+      <Item value="Department" priority="22" />
+      <Item value="dtpCreateDate" priority="0" />
+      <Item value="SalePointEventArgs" priority="1" />
+      <Item value="ea" priority="4" />
+      <Item value="SaveDepartmentSubStockEvent" priority="0" />
+      <Item value="DepartmentLogic" priority="5" />
+      <Item value="cboDepartments" priority="10" />
+      <Item value="int" priority="49" />
+      <Item value="long" priority="23" />
+      <Item value="Console" priority="1" />
+      <Item value="subStockMin" priority="1" />
+      <Item value="subStockMax" priority="1" />
+      <Item value="departmentId" priority="12" />
+      <Item value="DepartmentDAO" priority="0" />
+      <Item value="salePointController" priority="0" />
+      <Item value="dept" priority="2" />
+      <Item value="rdoFastStockOut" priority="4" />
+      <Item value="string" priority="114" />
+      <Item value="button" priority="0" />
+      <Item value="enum" priority="0" />
+      <Item value="CoralMessageBoxButton" priority="0" />
+      <Item value="defaultButton" priority="0" />
+      <Item value="MessageBoxDefaultButton" priority="0" />
+      <Item value="DepartmentFastStockOutForm" priority="0" />
+      <Item value="btnReset" priority="0" />
+      <Item value="DepartmentStockOutEventArgs" priority="1" />
+      <Item value="mainStockInView" priority="1" />
+      <Item value="typeof" priority="1" />
+      <Item value="cboProductMasters" priority="3" />
+      <Item value="deptSO" priority="8" />
+      <Item value="virtual" priority="7" />
+      <Item value="dgvDeptStockIn" priority="13" />
+      <Item value="defectStatus" priority="4" />
+      <Item value="stockOutDetail" priority="17" />
+      <Item value="detail" priority="46" />
+      <Item value="rdoStockOut" priority="1" />
+      <Item value="BaseUser" priority="1" />
+      <Item value="IServerService" priority="0" />
+      <Item value="DepartmentStockOut" priority="9" />
+      <Item value="stockOut" priority="29" />
+      <Item value="ServerServiceCallback" priority="1" />
+      <Item value="DepartmentPrice" priority="14" />
+      <Item value="event" priority="6" />
+      <Item value="EventHandler" priority="7" />
+      <Item value="DispatchDepartmentStockOut" priority="0" />
+      <Item value="AsyncCallback" priority="1" />
+      <Item value="EndEvent" priority="1" />
+      <Item value="ServerService" priority="0" />
+      <Item value="InstanceContext" priority="0" />
+      <Item value="serverService" priority="8" />
+      <Item value="destDept" priority="3" />
+      <Item value="DepartmentPricePK" priority="9" />
+      <Item value="as" priority="6" />
+      <Item value="DepartmentStockOutDetail" priority="3" />
+      <Item value="pricePk" priority="5" />
+      <Item value="ProductMasterId" priority="2" />
+      <Item value="prdMasterId" priority="2" />
+      <Item value="DepartmentPriceLogic" priority="3" />
+      <Item value="ServerServiceConsumer" priority="1" />
+      <Item value="_callbackList" priority="0" />
+      <Item value="guest" priority="0" />
+      <Item value="connected" priority="2" />
+      <Item value="ServerServiceClient" priority="1" />
+      <Item value="DepartmentStockInLogic" priority="0" />
+      <Item value="stockIn" priority="52" />
+      <Item value="DepartmentStockIn" priority="2" />
+      <Item value="ClientUtility" priority="7" />
+      <Item value="DepartmentStockInPK" priority="1" />
+      <Item value="source" priority="3" />
+      <Item value="DepartmentStockInDetail" priority="7" />
+      <Item value="inDetail" priority="29" />
+      <Item value="outDetail" priority="24" />
+      <Item value="DepartmentStockInDetailPK" priority="1" />
+      <Item value="ProductId" priority="2" />
+      <Item value="stockInDetailList" priority="3" />
+      <Item value="GlobalUtility" priority="6" />
+      <Item value="Contract" priority="1" />
+      <Item value="Style" priority="0" />
+      <Item value="OperationFormatStyle" priority="0" />
+      <Item value="Use" priority="0" />
+      <Item value="OperationFormatUse" priority="0" />
+      <Item value="System" priority="7" />
+      <Item value="Runtime" priority="0" />
+      <Item value="Serialization" priority="0" />
+      <Item value="EnumMember" priority="0" />
+      <Item value="DataMember" priority="1" />
+      <Item value="callback" priority="1" />
+      <Item value="DepartmentStockOutPK" priority="3" />
+      <Item value="departmentStockOutPk" priority="1" />
+      <Item value="StockOutId" priority="1" />
+      <Item value="stockOutId" priority="5" />
+      <Item value="deptStockOut" priority="4" />
+      <Item value="DepartmentStockOutLogic" priority="3" />
+      <Item value="sourceDeptId" priority="1" />
+      <Item value="deptStockId" priority="0" />
+      <Item value="deptDeptId" priority="1" />
+      <Item value="ObjectConverter" priority="3" />
+      <Item value="objectConverter" priority="1" />
+      <Item value="departmentStockOut" priority="5" />
+      <Item value="SubStockConsumer" priority="1" />
+      <Item value="subStockConsumer" priority="0" />
+      <Item value="form" priority="8" />
+      <Item value="baseStockOutForm" priority="0" />
+      <Item value="deptStockCheckingForm" priority="0" />
+      <Item value="currentSubStock" priority="0" />
+      <Item value="lblDepartment" priority="0" />
+      <Item value="AFCSetting" priority="10" />
+      <Item value="break" priority="12" />
+      <Item value="_departmentStockInView" priority="1" />
+      <Item value="DepartmentFastStockInForm" priority="0" />
+      <Item value="lblStatus" priority="4" />
+      <Item value="lblMessage" priority="2" />
+      <Item value="currId" priority="0" />
+      <Item value="deptId" priority="17" />
+      <Item value="toDate" priority="6" />
+      <Item value="fromDate" priority="5" />
+      <Item value="TimeSpan" priority="4" />
+      <Item value="product" priority="14" />
+      <Item value="masterId" priority="5" />
+      <Item value="sealed" priority="0" />
+      <Item value="const" priority="3" />
+      <Item value="dateTime" priority="4" />
+      <Item value="strDate" priority="1" />
+      <Item value="year" priority="1" />
+      <Item value="StartYear" priority="0" />
+      <Item value="Int32" priority="7" />
+      <Item value="char" priority="0" />
+      <Item value="arrNum" priority="0" />
+      <Item value="month" priority="1" />
+      <Item value="retStr" priority="1" />
+      <Item value="StringBuilder" priority="3" />
+      <Item value="shortDate" priority="0" />
+      <Item value="ArrayList" priority="25" />
+      <Item value="maxPrdIdList" priority="1" />
+      <Item value="IDictionary" priority="2" />
+      <Item value="dictionary" priority="2" />
+      <Item value="Collections" priority="1" />
+      <Item value="Generic" priority="0" />
+      <Item value="Dictionary&lt;string,string&gt;" priority="0" />
+      <Item value="Dictionary" priority="0" />
+      <Item value="key" priority="0" />
+      <Item value="currPrdId" priority="1" />
+      <Item value="s" priority="3" />
+      <Item value="maxIPrdId" priority="0" />
+      <Item value="productId" priority="2" />
+      <Item value="nextPrdId" priority="3" />
+      <Item value="IncreaseMaxProductId" priority="0" />
+      <Item value="StockDefectStatus" priority="3" />
+      <Item value="DefectStatusId" priority="1" />
+      <Item value="ex" priority="2" />
+      <Item value="RelevantProductFinding" priority="0" />
+      <Item value="chkRelevant" priority="1" />
+      <Item value="Stock" priority="3" />
+      <Item value="StockLogic" priority="0" />
+      <Item value="criteria" priority="14" />
+      <Item value="subList" priority="1" />
+      <Item value="stock1" priority="0" />
+      <Item value="found" priority="5" />
+      <Item value="AddStockToList" priority="0" />
+      <Item value="subCriteria" priority="0" />
+      <Item value="_productMasterSearchOrCreateView" priority="1" />
+      <Item value="ProductCollection" priority="4" />
+      <Item value="ProductList" priority="2" />
+      <Item value="bdsProduct" priority="5" />
+      <Item value="dgvProductMaster" priority="2" />
+      <Item value="DataGridViewRow" priority="5" />
+      <Item value="ProductMasterName" priority="0" />
+      <Item value="row" priority="22" />
+      <Item value="SearchRelevantProductsEvent" priority="0" />
+      <Item value="dgvProduct" priority="7" />
+      <Item value="selectedRowsCollection" priority="0" />
+      <Item value="chkPricePrint" priority="1" />
+      <Item value="ProductMaster" priority="7" />
+      <Item value="stockView" priority="12" />
+      <Item value="departmentStock" priority="6" />
+      <Item value="stockViewList" priority="5" />
+      <Item value="bdsStockView" priority="3" />
+      <Item value="DepartmentStockCollection" priority="1" />
+      <Item value="DepartmentStockViewCollection" priority="0" />
+      <Item value="bdsStock" priority="2" />
+      <Item value="DepartmentStockSearchResultList" priority="1" />
+      <Item value="departmentStockView" priority="0" />
+      <Item value="dgvStockView" priority="2" />
+      <Item value="dgvStock" priority="11" />
+      <Item value="T" priority="0" />
+      <Item value="ConfirmLoginEvent" priority="0" />
+      <Item value="loginEventArgs" priority="3" />
+      <Item value="mView" priority="2" />
+      <Item value="loginResult" priority="0" />
+      <Item value="FormConstants" priority="2" />
+      <Item value="LoginForm" priority="1" />
+      <Item value="loginForm" priority="1" />
+      <Item value="IsConfirmed" priority="4" />
+      <Item value="DialogResult" priority="10" />
+      <Item value="isConfirmed" priority="0" />
+      <Item value="Keys" priority="2" />
+      <Item value="txtPassword" priority="0" />
+      <Item value="button1_Click" priority="2" />
+      <Item value="sender" priority="2" />
+      <Item value="DepartmentStockInEventArgs" priority="6" />
+      <Item value="LoadMasterDataForExportEvent" priority="0" />
+      <Item value="masterDataEvent" priority="2" />
+      <Item value="configExportPath" priority="1" />
+      <Item value="DepartmentCosts" priority="1" />
+      <Item value="DepartmentName" priority="2" />
+      <Item value="lastMasterDataSyncTime" priority="0" />
+      <Item value="departmentStockInExtraView" priority="4" />
+      <Item value="SyncFromMainToDepartment" priority="0" />
+      <Item value="prdCrit" priority="7" />
+      <Item value="SubObjectCriteria" priority="8" />
+      <Item value="subCrit" priority="1" />
+      <Item value="ProductLogicImpl" priority="0" />
+      <Item value="masterProductList" priority="3" />
+      <Item value="product1" priority="0" />
+      <Item value="masterProductList2" priority="0" />
+      <Item value="deptPriceCrit" priority="1" />
+      <Item value="masterDeptPriceList" priority="0" />
+      <Item value="var" priority="5" />
+      <Item value="Directory" priority="8" />
+      <Item value="masterPath" priority="1" />
+      <Item value="masterNames" priority="0" />
+      <Item value="Length" priority="0" />
+      <Item value="masterName" priority="1" />
+      <Item value="masterFileName" priority="2" />
+      <Item value="SyncExportedMasterDataEvent" priority="0" />
+      <Item value="File" priority="6" />
+      <Item value="syncFromMainToDepartment" priority="5" />
+      <Item value="productMasterList" priority="2" />
+      <Item value="color" priority="7" />
+      <Item value="ProductColorDAO" priority="0" />
+      <Item value="departmentPrice" priority="9" />
+      <Item value="existPrice" priority="5" />
+      <Item value="DepartmentPriceDAO" priority="1" />
+      <Item value="EmployeeLogic" priority="0" />
+      <Item value="streamList" priority="0" />
+      <Item value="currentIndex" priority="1" />
+      <Item value="startTime" priority="1" />
+      <Item value="endTime" priority="0" />
+      <Item value="Stopwatch" priority="2" />
+      <Item value="stopwatch" priority="2" />
+      <Item value="syncedSizeList" priority="0" />
+      <Item value="syncedProductTypeList" priority="0" />
+      <Item value="productMaster" priority="7" />
+      <Item value="ProductMasterDAO" priority="1" />
+      <Item value="NotInList" priority="2" />
+      <Item value="continue" priority="6" />
+      <Item value="DeptPriceList" priority="1" />
+      <Item value="exception" priority="6" />
+      <Item value="syncedProductMasterList" priority="0" />
+      <Item value="_globalMessage" priority="1" />
+      <Item value="GlobalMessage" priority="5" />
+      <Item value="List" priority="7" />
+      <Item value="EventArgs" priority="0" />
+      <Item value="Serializable" priority="1" />
+      <Item value="GlobalMessageEventArgs" priority="3" />
+      <Item value="channels" priority="5" />
+      <Item value="Dictionary&lt;string,EventHandler&lt;GlobalMessageEventArgs&gt;&gt;" priority="0" />
+      <Item value="channelName" priority="4" />
+      <Item value="EventHandler&lt;GlobalMessageEventArgs&gt;" priority="0" />
+      <Item value="message" priority="9" />
+      <Item value="channel" priority="1" />
+      <Item value="baseStatusStrip" priority="0" />
+      <Item value="ProgressBar" priority="5" />
+      <Item value="StatusLabel" priority="2" />
+      <Item value="ColorDialog" priority="3" />
+      <Item value="ShowStatusMessage" priority="0" />
+      <Item value="BaseForm" priority="0" />
+      <Item value="ShowMessage" priority="1" />
+      <Item value="base" priority="5" />
+      <Item value="ShowStatusStrip" priority="0" />
+      <Item value="Label" priority="0" />
+      <Item value="lblInformation" priority="2" />
+      <Item value="ShowError" priority="1" />
+      <Item value="ChannelConstants" priority="3" />
+      <Item value="FastDepartmentStockInMapper" priority="1" />
+      <Item value="mapper" priority="1" />
+      <Item value="UpdateStatus" priority="1" />
+      <Item value="lstProductColors" priority="14" />
+      <Item value="lbxProductColor" priority="3" />
+      <Item value="ProductColor" priority="3" />
+      <Item value="bdsColors" priority="10" />
+      <Item value="productColor" priority="0" />
+      <Item value="selectedObjectCollection" priority="0" />
+      <Item value="lstProductSizes" priority="3" />
+      <Item value="collection" priority="3" />
+      <Item value="bdsSizes" priority="3" />
+      <Item value="cbbProductType" priority="0" />
+      <Item value="Status" priority="2" />
+      <Item value="ViewStatus" priority="2" />
+      <Item value="while" priority="5" />
+      <Item value="for" priority="6" />
+      <Item value="i" priority="32" />
+      <Item value="out" priority="8" />
+      <Item value="index" priority="1" />
+      <Item value="count" priority="8" />
+      <Item value="removeList" priority="1" />
+      <Item value="colorBindingSource" priority="0" />
+      <Item value="cbbCountry" priority="0" />
+      <Item value="countryBindingSource" priority="0" />
+      <Item value="cbbManufacturer" priority="0" />
+      <Item value="manufacturerBindingSource" priority="0" />
+      <Item value="cbbPackager" priority="0" />
+      <Item value="packagerBindingSource" priority="0" />
+      <Item value="cbbDistributor" priority="0" />
+      <Item value="distributorBindingSource" priority="0" />
+      <Item value="lbxProductSize" priority="0" />
+      <Item value="ClearForm" priority="0" />
+      <Item value="LogicResult" priority="2" />
+      <Item value="result" priority="18" />
+      <Item value="ServiceResult" priority="3" />
+      <Item value="serviceResult" priority="4" />
+      <Item value="logicResult" priority="1" />
+      <Item value="logger" priority="2" />
+      <Item value="stockOutList" priority="0" />
+      <Item value="Array" priority="0" />
+      <Item value="object" priority="2" />
+      <Item value="array" priority="1" />
+      <Item value="@out" priority="0" />
+      <Item value="Thread" priority="3" />
+      <Item value="ctxShortcuts" priority="2" />
+      <Item value="text" priority="0" />
+      <Item value="lblCommandDescription" priority="0" />
+      <Item value="dgvStockIn" priority="3" />
+      <Item value="selectedRowCollection" priority="2" />
+      <Item value="StartShowProcessing" priority="0" />
+      <Item value="StopShowProcessing" priority="0" />
+      <Item value="StockInTableAdapter" priority="0" />
+      <Item value="SupplierStockoutTableAdapter" priority="0" />
+      <Item value="MaxTime" priority="3" />
+      <Item value="DepartmentStockInTableAdapter" priority="0" />
+      <Item value="DeptStockStatisticTableAdapter" priority="0" />
+      <Item value="pbVal" priority="0" />
+      <Item value="DepartmentStockOutTableAdapter" priority="1" />
+      <Item value="departments" priority="2" />
+      <Item value="txtSaleDepartment" priority="0" />
+      <Item value="DoStockIn" priority="0" />
+      <Item value="dalSalePoint" priority="6" />
+      <Item value="finally" priority="2" />
+      <Item value="ServerUtility" priority="1" />
+      <Item value="selectMaxIdSQL" priority="0" />
+      <Item value="InformMessage" priority="0" />
+      <Item value="destDeptId" priority="0" />
+      <Item value="isError" priority="1" />
+      <Item value="reqDeptStock" priority="0" />
+      <Item value="strServer" priority="0" />
+      <Item value="connDB" priority="0" />
+      <Item value="maxId" priority="3" />
+      <Item value="stockInId" priority="3" />
+      <Item value="priceCrit" priority="0" />
+      <Item value="prodMaster" priority="1" />
+      <Item value="price" priority="4" />
+      <Item value="txtPriceOut" priority="7" />
+      <Item value="mainStockInEventArgs" priority="2" />
+      <Item value="txtWSPriceOut" priority="2" />
+      <Item value="btnPriceInput" priority="0" />
+      <Item value="currentPrice" priority="2" />
+      <Item value="String" priority="1" />
+      <Item value="StringUtility" priority="1" />
+      <Item value="CheckUtility" priority="0" />
+      <Item value="DataGridViewSelectedRowCollection" priority="5" />
+      <Item value="deptSIDetailList" priority="11" />
+      <Item value="inputPrice" priority="0" />
+      <Item value="stockInDetail" priority="19" />
+      <Item value="NumberUtility" priority="0" />
+      <Item value="txtPriceIn" priority="0" />
+      <Item value="WholeSalePrice" priority="1" />
+      <Item value="CalculateTotalStorePrice" priority="3" />
+      <Item value="bdsStockIn" priority="5" />
+      <Item value="stockStatisticBindingSource" priority="10" />
+      <Item value="watcher" priority="1" />
+      <Item value="DepartmentStockOutDetailPK" priority="8" />
+      <Item value="disableColorList" priority="1" />
+      <Item value="master" priority="7" />
+      <Item value="disableSizeList" priority="0" />
+      <Item value="existSizeList" priority="0" />
+      <Item value="existColorList" priority="0" />
+      <Item value="OldColorList" priority="0" />
+      <Item value="OldSizeList" priority="1" />
+      <Item value="subObjectCriteria" priority="8" />
+      <Item value="decimal" priority="2" />
+      <Item value="productMasterIds" priority="0" />
+      <Item value="ProductMasterLogic" priority="4" />
+      <Item value="prdMaster" priority="0" />
+      <Item value="masterCrit" priority="0" />
+      <Item value="AuthService" priority="1" />
+      <Item value="user" priority="6" />
+      <Item value="PosRole" priority="1" />
+      <Item value="employeeInfo" priority="2" />
+      <Item value="LoginLogic" priority="2" />
+      <Item value="IEmployeeManagementView" priority="0" />
+      <Item value="_mainLogic" priority="0" />
+      <Item value="loggedUser" priority="1" />
+      <Item value="authService" priority="0" />
+      <Item value="Message" priority="0" />
+      <Item value="EnterPeriod" priority="2" />
+      <Item value="PostLogin" priority="0" />
+      <Item value="LoginOKEvent" priority="0" />
+      <Item value="login" priority="0" />
+      <Item value="LoginModel" priority="1" />
+      <Item value="FindById" priority="0" />
+      <Item value="Username" priority="0" />
+      <Item value="txtEmployeeId" priority="5" />
+      <Item value="ConfirmEmployeeIdEvent" priority="0" />
+      <Item value="EmployeeInfo" priority="1" />
+      <Item value="LocalCache" priority="4" />
+      <Item value="LoginEvent" priority="0" />
+      <Item value="default" priority="0" />
+      <Item value="rdoEmployeeId" priority="0" />
+      <Item value="rdoLogin" priority="0" />
+      <Item value="Column3" priority="0" />
+      <Item value="EmployeeCheckingForm" priority="0" />
+      <Item value="ProcessPeriodMoneyEventArgs" priority="0" />
+      <Item value="processPeriodMoneyView" priority="0" />
+      <Item value="mainView" priority="0" />
+      <Item value="OldProductMasterList" priority="2" />
+      <Item value="Items" priority="0" />
+      <Item value="picProduct" priority="0" />
+      <Item value="btnCreateType" priority="0" />
+      <Item value="txtImagePath" priority="0" />
+      <Item value="imagePath" priority="2" />
+      <Item value="builder" priority="3" />
+      <Item value="c" priority="1" />
+      <Item value="Globalization" priority="0" />
+      <Item value="NumberStyles" priority="0" />
+      <Item value="Convert" priority="0" />
+      <Item value="ConvertUnicodeToUnmarkVI" priority="0" />
+      <Item value="ConvertStringToHexChar" priority="0" />
+      <Item value="existPath" priority="1" />
+      <Item value="BaseStockOutEventArgs" priority="0" />
+      <Item value="IStockOutLogic" priority="0" />
+      <Item value="stockOutDialogView" priority="0" />
+      <Item value="ObjectDisposedException" priority="0" />
+      <Item value="ProductSizeLogic" priority="0" />
+      <Item value="ProductColorLogic" priority="0" />
+      <Item value="ProductTypeLogic" priority="0" />
+      <Item value="queryString" priority="0" />
+      <Item value="DepartmentLogicImpl" priority="0" />
+      <Item value="StockOutDialogEventArgs" priority="0" />
+      <Item value="Base64FormattingOptions" priority="0" />
+      <Item value="stockOutDialogController" priority="2" />
+      <Item value="InitDialogEvent" priority="0" />
+      <Item value="args" priority="2" />
+      <Item value="productMasterBindingSource" priority="2" />
+      <Item value="productColorBindingSource" priority="0" />
+      <Item value="cboColors" priority="0" />
+      <Item value="departmentBindingSource" priority="2" />
+      <Item value="mainStockOutView" priority="0" />
+      <Item value="_mainStockOutController" priority="1" />
+      <Item value="dgvDeptStockOut" priority="2" />
+      <Item value="UpdateStockInEvent" priority="0" />
+      <Item value="StockInDetail" priority="3" />
+      <Item value="StockIn" priority="6" />
+      <Item value="data" priority="10" />
+      <Item value="SaveStockInEvent" priority="0" />
+      <Item value="rowCollection" priority="0" />
+      <Item value="LockRowForEdit" priority="0" />
+      <Item value="LockRowsForEdit" priority="0" />
+      <Item value="stockInConfirmView" priority="2" />
+      <Item value="StockInLogic" priority="5" />
+      <Item value="stockInList" priority="1" />
+      <Item value="StockInDetailLogicImpl" priority="0" />
+      <Item value="BusinessException" priority="3" />
+      <Item value="HibernateQueryException" priority="0" />
+      <Item value="session" priority="1" />
+      <Item value="TransactionException" priority="0" />
+      <Item value="Transaction" priority="1" />
+      <Item value="ReadOnly" priority="1" />
+      <Item value="HibernateTemplate" priority="1" />
+      <Item value="DenyStockInEvent" priority="0" />
+      <Item value="dgvStockInDetail" priority="2" />
+      <Item value="confirmstockindetailBindingSource" priority="2" />
+      <Item value="confirm_stock_in_detailTableAdapter" priority="0" />
+      <Item value="masterDB" priority="16" />
+      <Item value="chkKeepInputInfo" priority="0" />
+      <Item value="cbbDept" priority="7" />
+      <Item value="dgvStockOut" priority="2" />
+      <Item value="StockOutConfirmEventArgs" priority="1" />
+      <Item value="LoadConfirmingStockOutsEvent" priority="0" />
+      <Item value="StockOut" priority="10" />
+      <Item value="mainStockOutReportView" priority="1" />
+      <Item value="StockOutLogic" priority="3" />
+      <Item value="departmentStockInDetail" priority="0" />
+      <Item value="MinusConfirmStockOut" priority="0" />
+      <Item value="StockOutDetail" priority="3" />
+      <Item value="SaveDepartmentStockInEvent" priority="0" />
+      <Item value="newRow" priority="1" />
+      <Item value="StockOutDetailDAO" priority="0" />
+      <Item value="delCount" priority="1" />
+      <Item value="listCount" priority="0" />
+      <Item value="SearchStockOut" priority="1" />
+      <Item value="quantity" priority="0" />
+      <Item value="goodQty" priority="0" />
+      <Item value="ws" priority="7" />
+      <Item value="range" priority="7" />
+      <Item value="MissingMemberException" priority="0" />
+      <Item value="departmentList" priority="4" />
+      <Item value="resultList" priority="2" />
+      <Item value="resDetail" priority="2" />
+      <Item value="Missing" priority="14" />
+      <Item value="writeList" priority="2" />
+      <Item value="CreateStockOutTemplateForm" priority="1" />
+      <Item value="saveTemplateFileDialog" priority="3" />
+      <Item value="app" priority="0" />
+      <Item value="path" priority="7" />
+      <Item value="fileName" priority="7" />
+      <Item value="saveTemplateFolderDialog" priority="1" />
+      <Item value="wb" priority="2" />
+      <Item value="lblExportStatus" priority="2" />
+      <Item value="END_ROW" priority="2" />
+      <Item value="Range" priority="3" />
+      <Item value="rangeFormat" priority="4" />
+      <Item value="START_ROW" priority="5" />
+      <Item value="XlBorderWeight" priority="0" />
+      <Item value="XlColorIndex" priority="0" />
+      <Item value="destRange" priority="0" />
+      <Item value="XlPasteType" priority="0" />
+      <Item value="XlPasteSpecialOperation" priority="1" />
+      <Item value="Font" priority="2" />
+      <Item value="AllDepartmentPurchaseOrderReportTableAdapter" priority="0" />
+      <Item value="MatrixPurchaseOrderReportViewer" priority="0" />
+      <Item value="stock_inTableAdapter" priority="0" />
+      <Item value="MasterDB" priority="9" />
+      <Item value="StockInDateFrom" priority="0" />
+      <Item value="StockInDateTo" priority="0" />
+      <Item value="stockinBindingSource" priority="1" />
+      <Item value="DepartmentStockInSearchController" priority="0" />
+      <Item value="selected" priority="2" />
+      <Item value="GetChildAtPointSkip" priority="0" />
+      <Item value="_stockInSearchView" priority="0" />
+      <Item value="btnSelect" priority="1" />
+      <Item value="departmentTableAdapter" priority="0" />
+      <Item value="DefectStatusName" priority="0" />
+      <Item value="IStockInDAO" priority="0" />
+      <Item value="Properties" priority="1" />
+      <Item value="Settings" priority="1" />
+      <Item value="SaleStatistic" priority="2" />
+      <Item value="ImExStatistic" priority="2" />
+      <Item value="ExecuteMySQLCmdLine" priority="1" />
+      <Item value="deletePODet" priority="0" />
+      <Item value="db" priority="3" />
+      <Item value="pass" priority="3" />
+      <Item value="deletePO" priority="0" />
+      <Item value="emp" priority="2" />
+      <Item value="employee" priority="1" />
+      <Item value="chkZeroValue" priority="0" />
+      <Item value="stockCrit" priority="0" />
+      <Item value="IsInList" priority="0" />
+      <Item value="chkRemoveZero_CheckedChanged" priority="0" />
+      <Item value="RefrefshDeptSIDetailList" priority="0" />
+      <Item value="refreshEventArgs" priority="2" />
+      <Item value="RefreshStockQuantityEvent" priority="0" />
+      <Item value="FindRemainsQuantity" priority="0" />
+      <Item value="selectedRows" priority="0" />
+      <Item value="AppFrameClient" priority="1" />
+      <Item value="crlBackupDrive" priority="1" />
+      <Item value="table" priority="1" />
+      <Item value="List&lt;string&gt;" priority="2" />
+      <Item value="tablesList" priority="8" />
+      <Item value="BackupTable" priority="0" />
+      <Item value="backupPath" priority="5" />
+      <Item value="savedFile" priority="0" />
+      <Item value="backupFileName" priority="0" />
+      <Item value="savedFiles" priority="1" />
+      <Item value="statistic" priority="0" />
+      <Item value="imExStatistic" priority="0" />
+      <Item value="file" priority="0" />
+      <Item value="using" priority="5" />
+      <Item value="ZipFile" priority="1" />
+      <Item value="zipFile" priority="1" />
+      <Item value="zip" priority="0" />
+      <Item value="ExtractExistingFileAction" priority="0" />
+      <Item value="sqlFiles" priority="0" />
+      <Item value="excelFile" priority="1" />
+      <Item value="_errorDetails" priority="2" />
+      <Item value="lstErrorDetails" priority="0" />
+      <Item value="bds" priority="1" />
+      <Item value="origFileName" priority="1" />
+      <Item value="bdsDept" priority="1" />
+      <Item value="deptIDStr" priority="2" />
+      <Item value="item" priority="4" />
+      <Item value="Utility" priority="3" />
+      <Item value="exportDeptId" priority="0" />
+      <Item value="deptSODetailList" priority="1" />
+      <Item value="Dispose" priority="0" />
+      <Item value="barCodeLine" priority="13" />
+      <Item value="stkCriteria" priority="1" />
+      <Item value="SortOrder" priority="1" />
+      <Item value="processingList" priority="4" />
+      <Item value="maxCount" priority="3" />
+      <Item value="detail1" priority="6" />
+      <Item value="detail2" priority="1" />
+      <Item value="stockOutDetailList" priority="1" />
+      <Item value="Microsoft" priority="0" />
+      <Item value="DirectX" priority="0" />
+      <Item value="DirectInput" priority="0" />
+      <Item value="DInputHelper" priority="1" />
+      <Item value="InputRange" priority="0" />
+      <Item value="deptStockList" priority="0" />
+      <Item value="pictureBox1" priority="1" />
+      <Item value="ScanType" priority="6" />
+      <Item value="scanTypesList" priority="6" />
+      <Item value="List&lt;ScanType&gt;" priority="0" />
+      <Item value="scannedType" priority="4" />
+      <Item value="unscanList" priority="2" />
+      <Item value="scanIndex" priority="2" />
+      <Item value="DepartmentStockCheckingEventArgs" priority="2" />
+      <Item value="scanType" priority="12" />
+      <Item value="checkTypeName" priority="0" />
+      <Item value="stockTempCri" priority="0" />
+      <Item value="DepartmentStockTemp" priority="0" />
+      <Item value="DepartmentStockTempLogicImpl" priority="0" />
+      <Item value="deptStockTemp" priority="0" />
+      <Item value="processedDeptStockTemp" priority="2" />
+      <Item value="prdName" priority="0" />
+      <Item value="LoadProductNamesInTypeEvent" priority="0" />
+      <Item value="departmentStockCheckingView" priority="1" />
+      <Item value="productName" priority="7" />
+      <Item value="cboTypeList" priority="6" />
+      <Item value="BindingList" priority="0" />
+      <Item value="cboTypeList_SelectedIndexChanged" priority="0" />
+      <Item value="lstProductList" priority="11" />
+      <Item value="scannedProduct" priority="4" />
+      <Item value="UpdateScanType" priority="0" />
+      <Item value="scanTypeBindingSource" priority="1" />
+      <Item value="ScanTypeCollection" priority="1" />
+      <Item value="prdTypeCrit" priority="1" />
+      <Item value="previousScanType" priority="2" />
+      <Item value="unscannedProduct" priority="1" />
+      <Item value="StockView" priority="0" />
+      <Item value="StockInDetailPK" priority="0" />
+      <Item value="totalSum" priority="2" />
+      <Item value="totalGoodSum" priority="1" />
+      <Item value="txtSum" priority="1" />
+      <Item value="bdsStockDefect" priority="2" />
+      <Item value="CalculateTotal" priority="2" />
+      <Item value="delegate" priority="0" />
+      <Item value="stockCriteria" priority="0" />
+      <Item value="stockChecked" priority="0" />
+      <Item value="foundStock" priority="1" />
+      <Item value="stockIndex" priority="0" />
+      <Item value="removeIndex" priority="0" />
+      <Item value="removeIndices" priority="2" />
+      <Item value="txtRealitySum" priority="0" />
+      <Item value="comboBox1" priority="3" />
+      <Item value="ProductType" priority="5" />
+      <Item value="List&lt;ProductType&gt;" priority="0" />
+      <Item value="prdTypeList" priority="3" />
+      <Item value="GetType" priority="0" />
+      <Item value="prdTypesBds" priority="2" />
+      <Item value="foundStockOutDetail" priority="0" />
+      <Item value="adapter" priority="6" />
+      <Item value="posDataSet" priority="8" />
+      <Item value="txtProducts" priority="1" />
+      <Item value="cboProductTypes" priority="2" />
+      <Item value="extraFilterStr" priority="0" />
+      <Item value="needAddNewStocks" priority="0" />
+      <Item value="newStock" priority="0" />
+      <Item value="addNewStock" priority="0" />
+      <Item value="needStockOutDetail" priority="4" />
+      <Item value="cbbStockOutType" priority="0" />
+      <Item value="needStockInDetail" priority="2" />
+      <Item value="foundDetail" priority="1" />
+      <Item value="productIds" priority="1" />
+      <Item value="DataGridView" priority="0" />
+      <Item value="GoodQuantity" priority="0" />
+      <Item value="dgvProductMasters" priority="4" />
+      <Item value="dgvRows" priority="0" />
+      <Item value="pmSelectedList" priority="3" />
+      <Item value="ProductMasterCollection" priority="1" />
+      <Item value="ProductName" priority="1" />
+      <Item value="productmasternameBindingSource" priority="0" />
+      <Item value="bdsProductMaster" priority="1" />
+      <Item value="dgvSelectedProductMaster" priority="1" />
+      <Item value="product_master_idsTableAdapter" priority="0" />
+      <Item value="cboProductType" priority="1" />
+      <Item value="pmChoosingForm" priority="0" />
+      <Item value="typeId" priority="4" />
+      <Item value="AllStockTableAdapter" priority="0" />
+      <Item value="dbUserModel" priority="6" />
+      <Item value="model" priority="6" />
+      <Item value="ConfirmNegativeSelling" priority="0" />
+      <Item value="ReturnResult" priority="1" />
+      <Item value="userinfo" priority="1" />
+      <Item value="role" priority="1" />
+      <Item value="userrole" priority="1" />
+      <Item value="Role" priority="0" />
+      <Item value="m" priority="0" />
+      <Item value="stockOutView" priority="0" />
+      <Item value="CommonConstants" priority="0" />
+      <Item value="label4" priority="1" />
+      <Item value="detailStockOut" priority="0" />
+      <Item value="masterDB3" priority="0" />
+      <Item value="mainstkqtyBindingSource" priority="1" />
+      <Item value="ErrorForm" priority="1" />
+      <Item value="sl" priority="1" />
+      <Item value="txtSL" priority="0" />
+      <Item value="txtSLThuc" priority="0" />
+      <Item value="slthuc" priority="0" />
+      <Item value="chkSLEquals" priority="1" />
+      <Item value="selectedRow" priority="1" />
+      <Item value="stockqtyRow" priority="6" />
+      <Item value="ReviewTypeList" priority="4" />
+      <Item value="type" priority="3" />
+      <Item value="cboTypes" priority="26" />
+      <Item value="InitTypeList" priority="1" />
+      <Item value="productType" priority="0" />
+      <Item value="cboTypeBds" priority="3" />
+      <Item value="stockqtyTableAdapter" priority="2" />
+      <Item value="stockqtyBindingSource" priority="1" />
+      <Item value="strAnd" priority="0" />
+      <Item value="chkDifferent" priority="1" />
+      <Item value="FilterDataset" priority="1" />
+      <Item value="dgvDeptStock" priority="2" />
+      <Item value="stock_evaluationTableAdapter" priority="5" />
+      <Item value="stockevaluationBindingSource" priority="6" />
+      <Item value="DEPARTMENT_ID" priority="0" />
+      <Item value="DEPARTMENT_NAME" priority="0" />
+      <Item value="CREATE_DATE" priority="0" />
+      <Item value="dgvSave" priority="2" />
+      <Item value="masterDB4" priority="4" />
+      <Item value="uint" priority="0" />
+      <Item value="UInt32" priority="0" />
+      <Item value="typeIndex" priority="0" />
+      <Item value="chkDiffer" priority="0" />
+      <Item value="InfoBox" priority="6" />
+      <Item value="InformationBoxInitialization" priority="2" />
+      <Item value="saveTime" priority="0" />
+      <Item value="catch" priority="0" />
+      <Item value="StockEvaluationReportTableAdapter" priority="0" />
+      <Item value="StockEvaluationReportViewer" priority="0" />
+      <Item value="chkEqualsValue" priority="0" />
+      <Item value="StockEvaluationReportBindingSource" priority="1" />
+      <Item value="StockOutDAO" priority="0" />
+      <Item value="StockInDAO" priority="0" />
+      <Item value="cboIsolatedBy" priority="0" />
+      <Item value="isolatedBy" priority="1" />
+      <Item value="ExtraCustomizeDepartmentReportTableAdapter" priority="0" />
+      <Item value="ReportType" priority="0" />
+      <Item value="limit" priority="2" />
+      <Item value="reqFromDate" priority="1" />
+      <Item value="reqToDate" priority="1" />
+      <Item value="DatabaseUtils" priority="0" />
+      <Item value="cboBarcodeType" priority="3" />
+      <Item value="detailStockIn" priority="0" />
+      <Item value="FillTxtResult" priority="3" />
+      <Item value="IFileReaderService" priority="4" />
+      <Item value="txtSizeFilter" priority="0" />
+      <Item value="txtPrdFilter" priority="5" />
+      <Item value="FilterString" priority="6" />
+      <Item value="filter" priority="6" />
+      <Item value="txtResult" priority="2" />
+      <Item value="ProductMasterStatisticTableAdapter" priority="0" />
+      <Item value="ProductMasterStatisticReportViewer" priority="0" />
+      <Item value="btnPutPrice" priority="0" />
+      <Item value="btnSave" priority="0" />
+      <Item value="label1" priority="0" />
+      <Item value="label7" priority="0" />
+      <Item value="txtPrice" priority="0" />
+      <Item value="txtWholeSalePrice" priority="0" />
+      <Item value="barcode" priority="0" />
+      <Item value="imageBC" priority="1" />
+      <Item value="ExtraCustomizeDepartmentSizeReportBindingSource" priority="0" />
+      <Item value="typeValue" priority="0" />
+      <Item value="RowNotInTableException" priority="0" />
+      <Item value="product_typeRow" priority="0" />
+      <Item value="typeName" priority="2" />
+      <Item value="typeFilter" priority="1" />
+      <Item value="txtTotalRecord" priority="1" />
+      <Item value="prdCount" priority="1" />
+      <Item value="dtpFromDate" priority="0" />
+      <Item value="TxtFillResult" priority="10" />
+      <Item value="txtLimit" priority="2" />
+      <Item value="StockRemainsStatisticTableAdapter" priority="0" />
+      <Item value="chkZeroRemove" priority="0" />
+      <Item value="StockRemainsStatisticBindingSource" priority="0" />
+      <Item value="StockRemainsReportViewer" priority="0" />
+      <Item value="lackingIdList" priority="1" />
+      <Item value="masterDB1" priority="1" />
+      <Item value="stockStats" priority="0" />
+      <Item value="department_stock" priority="0" />
+      <Item value="stock_history" priority="0" />
+      <Item value="department_stock_history" priority="0" />
+      <Item value="bdsPurchaseOrders" priority="1" />
+      <Item value="dgvSaleList" priority="1" />
+      <Item value="PurchaseOrderView" priority="0" />
+      <Item value="currPO" priority="0" />
+      <Item value="view" priority="5" />
+      <Item value="ReturnPo" priority="0" />
+      <Item value="returnDetails" priority="0" />
+      <Item value="returnPo" priority="0" />
+      <Item value="printDoc" priority="1" />
+      <Item value="PurchaseOrderBill" priority="0" />
+      <Item value="DepartmentStockOutDetailCollection" priority="0" />
+      <Item value="detailCollection" priority="0" />
+      <Item value="dtoFrom" priority="0" />
+      <Item value="rptDepartmentCost" priority="0" />
+      <Item value="IDepartmentCostSummaryView" priority="0" />
+      <Item value="departmentCostSummaryView" priority="1" />
+      <Item value="CommitDepartmentCostEvent" priority="0" />
+      <Item value="InformationBox" priority="4" />
+      <Item value="IEmployeeMoneyLogic" priority="1" />
+      <Item value="EmployeeMoneyLogic" priority="7" />
+      <Item value="employeeMoney" priority="13" />
+      <Item value="EmployeeMoney" priority="9" />
+      <Item value="EmployeeMoneyPK" priority="0" />
+      <Item value="EmployeeId" priority="1" />
+      <Item value="WorkingDay" priority="1" />
+      <Item value="nextDateTime" priority="1" />
+      <Item value="fixEmplMoney" priority="1" />
+      <Item value="toDay" priority="2" />
+      <Item value="masterDb" priority="0" />
+      <Item value="DepartmentSumCostTableAdapter" priority="0" />
+      <Item value="DepartmentSumCostReportTableAdapter" priority="4" />
+      <Item value="sumAdapter" priority="1" />
+      <Item value="outMoney" priority="0" />
+      <Item value="nextMoneyInDB" priority="0" />
+      <Item value="nextMoney" priority="0" />
+      <Item value="BackupKeyPasswordInvalidException" priority="0" />
+      <Item value="purchaseOrderId" priority="1" />
+      <Item value="tempId" priority="0" />
+      <Item value="PurchaseOrderDetailReportTableAdapter" priority="0" />
+      <Item value="crit" priority="0" />
+      <Item value="startToday" priority="7" />
+      <Item value="prevAmount" priority="1" />
+      <Item value="lastDayCrit" priority="0" />
+      <Item value="lastList" priority="2" />
+      <Item value="lastDayMoney" priority="4" />
+      <Item value="ThreadExceptionDialog" priority="0" />
+      <Item value="ThreadStart" priority="2" />
+      <Item value="thread" priority="1" />
+      <Item value="ProductMasterStatisticExTableAdapter" priority="0" />
+      <Item value="txtProductName" priority="1" />
+      <Item value="product_name" priority="1" />
+      <Item value="productInfoTableAdapter" priority="0" />
+      <Item value="chkDoNam" priority="0" />
+      <Item value="cboDepartment_SelectedIndexChanged" priority="0" />
+      <Item value="sync" priority="2" />
+      <Item value="DepartmentCostDAOImpl" priority="0" />
+      <Item value="EmployeeMoneyDAO" priority="0" />
+      <Item value="BackgroundWorker" priority="2" />
+      <Item value="backgroundWorker" priority="2" />
+      <Item value="in" priority="0" />
+      <Item value="dgvMainStock" priority="0" />
+      <Item value="filePath" priority="1" />
+      <Item value="ex1" priority="0" />
+      <Item value="info" priority="1" />
+      <Item value="exportMaxDateTableAdapter" priority="2" />
+      <Item value="ExportMaxDateTableAdapter" priority="0" />
+      <Item value="dtpKHOCH" priority="1" />
+      <Item value="txtStatus" priority="2" />
+      <Item value="ImportMaxDateTableAdapter" priority="0" />
+      <Item value="syncDept" priority="0" />
+      <Item value="dtpCHKHO" priority="0" />
+      <Item value="exportPath" priority="2" />
+      <Item value="CreateSyncUSBForm" priority="0" />
+      <Item value="importPath" priority="0" />
+      <Item value="successPath" priority="0" />
+      <Item value="errorPath" priority="0" />
+      <Item value="DailyMatrixPurchaseOrderReportViewer" priority="0" />
+      <Item value="obj" priority="2" />
+      <Item value="ClientSetting`0" priority="15" />
+      <Item value="IEmployeeLogic`0" priority="0" />
+      <Item value="IEmployeeDetailLogic`0" priority="0" />
+      <Item value="EmployeeDetailLogic" priority="0" />
+      <Item value="EmployeeDetailPK" priority="0" />
+      <Item value="EmployeeInfo`0" priority="1" />
+      <Item value="EmployeePK`0" priority="0" />
+      <Item value="employeePk" priority="1" />
+      <Item value="EmployeePK" priority="0" />
+      <Item value="DateTime`0" priority="2" />
+      <Item value="departmentTableAdapter1" priority="0" />
+      <Item value="EmployeePurchaseOrderDetailReportTableAdapter`0" priority="0" />
+      <Item value="EmployeePurchaseOrderReportViewer`0" priority="0" />
+      <Item value="purchaseOrderDetail" priority="1" />
+      <Item value="PurchaseOrderDetail`0" priority="0" />
+      <Item value="employeeId" priority="1" />
+      <Item value="Console`0" priority="0" />
+      <Item value="POSReports" priority="0" />
+      <Item value="posDataSet`0" priority="0" />
+      <Item value="currentDept" priority="0" />
+      <Item value="ArrayList`0" priority="12" />
+      <Item value="chooseDepartment" priority="2" />
+      <Item value="CurrentDepartment`0" priority="0" />
+      <Item value="CalculateTotal`0" priority="0" />
+      <Item value="AddToReviewTypeList`0" priority="0" />
+      <Item value="unknownType" priority="0" />
+      <Item value="barcodePrintDocument" priority="3" />
+      <Item value="extraCount" priority="2" />
+      <Item value="numericUpDownBarcode" priority="1" />
+      <Item value="numberToPrint" priority="0" />
+      <Item value="extraPrint" priority="1" />
+      <Item value="CollectionBase`0" priority="0" />
+      <Item value="stockInDetails" priority="3" />
+      <Item value="StockInDetail`0" priority="5" />
+      <Item value="StockInConfirmForm`0" priority="0" />
+      <Item value="biggestIndex" priority="0" />
+      <Item value="String`0" priority="0" />
+      <Item value="Array`0" priority="1" />
+      <Item value="Linq" priority="1" />
+      <Item value="Linq.Expressions" priority="1" />
+      <Item value="from" priority="1" />
+      <Item value="select" priority="1" />
+      <Item value="orderby" priority="1" />
+      <Item value="ascending" priority="1" />
+      <Item value="details" priority="1" />
+      <Item value="StockOutDetail`0" priority="0" />
+      <Item value="findAll" priority="0" />
+      <Item value="ProductType`0" priority="0" />
+      <Item value="det" priority="0" />
+      <Item value="ProductColor`0" priority="1" />
+      <Item value="ProductSize`0" priority="1" />
+      <Item value="chkPrintByQuantity" priority="1" />
+      <Item value="cboFastDept" priority="1" />
+      <Item value="fastDept" priority="1" />
+      <Item value="marketDept" priority="0" />
+      <Item value="rdoFastStockIn_CheckedChanged`0" priority="0" />
+      <Item value="rdoStockIn_CheckedChanged`0" priority="0" />
+      <Item value="rdoFastStockOut_CheckedChanged`0" priority="0" />
+      <Item value="rdoStockOut_CheckedChanged`0" priority="0" />
+      <Item value="txtCustomerName" priority="3" />
+      <Item value="chkBlockSliding" priority="1" />
+      <Item value="DepartmentStock`0" priority="2" />
+      <Item value="DepartmentStockLogic" priority="0" />
+      <Item value="DepartmentStockDAO" priority="2" />
+      <Item value="Product`0" priority="0" />
+      <Item value="ObjectCriteria`0" priority="0" />
+      <Item value="size" priority="1" />
+      <Item value="DepartmentStock" priority="0" />
+      <Item value="colorName" priority="1" />
+      <Item value="sizeName" priority="0" />
+      <Item value="slidedStockList" priority="0" />
+      <Item value="BusinessException`0" priority="0" />
+      <Item value="emptyStockException" priority="1" />
+      <Item value="CommunicationState`0" priority="0" />
+      <Item value="SyncFromMainToDepartment`0" priority="0" />
+      <Item value="Department`0" priority="0" />
+      <Item value="SyncFromDeptToDept`0" priority="1" />
+      <Item value="fromDeptToDept" priority="8" />
+      <Item value="SyncFromDeptToDept" priority="0" />
+      <Item value="DestinationDept" priority="0" />
+      <Item value="DepartmentStockOutList" priority="1" />
+      <Item value="deptToDeptDialog" priority="0" />
+      <Item value="txtDeptToDept" priority="2" />
+      <Item value="AppDomain`0" priority="0" />
+      <Item value="Application`0" priority="0" />
+      <Item value="internalPath" priority="4" />
+      <Item value="rootPath" priority="5" />
+      <Item value="Directory`0" priority="3" />
+      <Item value="syncExportPath" priority="0" />
+      <Item value="EnsurePath`0" priority="2" />
+      <Item value="syncImportPath" priority="0" />
+      <Item value="syncSuccessPath" priority="0" />
+      <Item value="syncErrorPath" priority="0" />
+      <Item value="BinaryWriter`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="BackColor" priority="1" />
+      <Item value="Text" priority="54" />
+      <Item value="Enabled" priority="6" />
+      <Item value="Focus" priority="5" />
+      <Item value="ForeColor" priority="1" />
+      <Item value="Handle" priority="0" />
+      <Item value="Visible" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.Color">
+      <Item value="Green" priority="1" />
+      <Item value="FromKnownColor" priority="0" />
+      <Item value="White" priority="1" />
+      <Item value="LightYellow" priority="1" />
+      <Item value="Red" priority="2" />
+      <Item value="Blue" priority="5" />
+      <Item value="DarkGreen" priority="0" />
+      <Item value="Black" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Drawing.KnownColor">
+      <Item value="Window" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.ObjectCriteria">
+      <Item value="AddEqCriteria" priority="11" />
+      <Item value="AddBetweenCriteria" priority="1" />
+      <Item value="AddLesserCriteria" priority="0" />
+      <Item value="AddLikeCriteria" priority="0" />
+      <Item value="AddNotEqualsCriteria" priority="0" />
+      <Item value="AddSubCriteria" priority="5" />
+      <Item value="AddGreaterOrEqualsCriteria" priority="2" />
+      <Item value="AddSearchInCriteria" priority="3" />
+      <Item value="MaxResult" priority="1" />
+      <Item value="AddOrder" priority="1" />
+      <Item value="AddEqCriteria`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IProductLogic">
+      <Item value="FindAll" priority="2" />
+      <Item value="FindById`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridView">
+      <Item value="CurrentCell" priority="9" />
+      <Item value="ReadOnly" priority="0" />
+      <Item value="Refresh" priority="13" />
+      <Item value="Invalidate" priority="13" />
+      <Item value="Enabled" priority="2" />
+      <Item value="SelectedRows" priority="10" />
+      <Item value="CurrentRow" priority="3" />
+      <Item value="Rows" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCell">
+      <Item value="RowIndex" priority="2" />
+      <Item value="ToString" priority="1" />
+      <Item value="Value" priority="8" />
+      <Item value="Style" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockView">
+      <Item value="ProductMaster" priority="9" />
+      <Item value="DepartmentStocks" priority="1" />
+      <Item value="Quantity" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.ProductMasterCreateControl">
+      <Item value="cbbProductType" priority="0" />
+      <Item value="txtProductName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox">
+      <Item value="SelectedIndex" priority="18" />
+      <Item value="Enabled" priority="13" />
+      <Item value="DataSource" priority="4" />
+      <Item value="DisplayMember" priority="3" />
+      <Item value="SelectedItem" priority="29" />
+      <Item value="Refresh" priority="4" />
+      <Item value="Invalidate" priority="2" />
+      <Item value="Visible" priority="0" />
+      <Item value="SelectedValue" priority="17" />
+      <Item value="Items" priority="15" />
+      <Item value="AutoCompleteSource" priority="0" />
+      <Item value="SelectedText" priority="5" />
+      <Item value="Text" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show" priority="14" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="IsNullOrEmpty" priority="22" />
+      <Item value="Empty" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.BindingSource">
+      <Item value="ResetBindings" priority="29" />
+      <Item value="DataSource" priority="14" />
+      <Item value="Add" priority="4" />
+      <Item value="EndEdit" priority="2" />
+      <Item value="Remove" priority="0" />
+      <Item value="Clear" priority="6" />
+      <Item value="RemoveAt" priority="2" />
+      <Item value="RaiseListChangedEvents" priority="0" />
+      <Item value="SuspendBinding" priority="0" />
+      <Item value="ResumeBinding" priority="0" />
+      <Item value="Count" priority="2" />
+      <Item value="Filter" priority="10" />
+      <Item value="SortDirection" priority="0" />
+      <Item value="Sort" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentCost">
+      <Item value="DepartmentCostPK" priority="1" />
+      <Item value="CreateDate" priority="0" />
+      <Item value="CreateId" priority="0" />
+      <Item value="Cost" priority="1" />
+      <Item value="CostDescription" priority="1" />
+      <Item value="CostName" priority="1" />
+      <Item value="CostType" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.CurrentDepartment">
+      <Item value="Get" priority="29" />
+      <Item value="Get`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.Department">
+      <Item value="DepartmentId" priority="52" />
+      <Item value="DepartmentName" priority="3" />
+      <Item value="CreateDate" priority="0" />
+      <Item value="UpdateId" priority="0" />
+      <Item value="StartDate" priority="0" />
+      <Item value="Address" priority="0" />
+      <Item value="Active" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Now" priority="49" />
+      <Item value="MinValue" priority="1" />
+      <Item value="Compare" priority="0" />
+      <Item value="ParseExact" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.ClientInfo">
+      <Item value="getInstance" priority="11" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.ClientInfo">
+      <Item value="LoggedUser" priority="11" />
+      <Item value="MenuPermissions" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.BaseUser">
+      <Item value="Name" priority="8" />
+      <Item value="IsInRole" priority="2" />
+      <Item value="Roles" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int64">
+      <Item value="Parse" priority="9" />
+      <Item value="TryParse" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Controls.NumberTextBox">
+      <Item value="Text" priority="4" />
+      <Item value="Enabled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Trim" priority="16" />
+      <Item value="PadLeft" priority="0" />
+      <Item value="PadRight" priority="1" />
+      <Item value="StartsWith" priority="3" />
+      <Item value="Substring" priority="6" />
+      <Item value="Equals" priority="27" />
+      <Item value="Length" priority="0" />
+      <Item value="ToString" priority="1" />
+      <Item value="EndsWith" priority="0" />
+      <Item value="IndexOf" priority="2" />
+      <Item value="Replace" priority="0" />
+      <Item value="LastIndexOf" priority="0" />
+      <Item value="ToUpper" priority="6" />
+      <Item value="Equals`0" priority="4" />
+      <Item value="Split`0" priority="0" />
+      <Item value="StartsWith`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.DepartmentCostCollection">
+      <Item value="Add" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.EventUtility">
+      <Item value="fireEvent" priority="17" />
+      <Item value="fireAsyncEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentCostEventArgs">
+      <Item value="AddErrorCode" priority="0" />
+      <Item value="HasErrors" priority="1" />
+      <Item value="CreateCost" priority="1" />
+      <Item value="FromDate" priority="1" />
+      <Item value="ToDate" priority="1" />
+      <Item value="CostList" priority="0" />
+      <Item value="EventResult" priority="1" />
+      <Item value="OutMoney" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBoxIcon">
+      <Item value="Error" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBoxButtons">
+      <Item value="OK" priority="1" />
+      <Item value="YesNo" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentCostCreateView">
+      <Item value="CreateDepartmentCostEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IDepartmentCostLogic">
+      <Item value="Add" priority="0" />
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.IDepartmentCostEditView">
+      <Item value="EditDepartmentCostEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.IDepartmentCostListView">
+      <Item value="SearchDepartmentCostEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DateTime">
+      <Item value="ToString" priority="6" />
+      <Item value="Subtract" priority="5" />
+      <Item value="Year" priority="0" />
+      <Item value="Ticks" priority="1" />
+      <Item value="AddDays" priority="0" />
+      <Item value="AddHours" priority="1" />
+      <Item value="Add" priority="0" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="Text" priority="1" />
+      <Item value="Enabled" priority="11" />
+      <Item value="Visible" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Timer">
+      <Item value="Start" priority="1" />
+      <Item value="Stop" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int64">
+      <Item value="ToString" priority="16" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.DateUtility">
+      <Item value="ZeroTime" priority="2" />
+      <Item value="MaxTime" priority="1" />
+      <Item value="DateOnly" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.IDepartmentCostController">
+      <Item value="DepartmentCostEditView" priority="0" />
+      <Item value="DepartmentCostListView" priority="0" />
+      <Item value="DepartmentCostSummaryView" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStrip">
+      <Item value="Focus" priority="0" />
+      <Item value="Items" priority="0" />
+      <Item value="Visible" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Common.ClientSetting">
+      <Item value="IsClient" priority="2" />
+      <Item value="IsServer" priority="2" />
+      <Item value="IsSubStock" priority="13" />
+      <Item value="MarketDept" priority="3" />
+      <Item value="ServiceBinding" priority="0" />
+      <Item value="SubStockDB" priority="0" />
+      <Item value="SalePointDB" priority="0" />
+      <Item value="ConfirmByEmployeeId" priority="3" />
+      <Item value="ImportConfirmation" priority="4" />
+      <Item value="ExportConfirmation" priority="1" />
+      <Item value="NegativeSelling" priority="1" />
+      <Item value="NegativeExport" priority="1" />
+      <Item value="BarcodeType" priority="4" />
+      <Item value="Save" priority="0" />
+      <Item value="MaxPOId" priority="0" />
+      <Item value="SyncExportPath" priority="1" />
+      <Item value="FastDept" priority="3" />
+      <Item value="IsBlockSliding" priority="2" />
+      <Item value="IsSubStock`0" priority="1" />
+      <Item value="SyncDeptToDept" priority="0" />
+      <Item value="SyncInternalPath" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.ToolStripItemPermission">
+      <Item value="INVISIBLE" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.ToolStripItemPermission">
+      <Item value="loadRoles" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.MenuUtility">
+      <Item value="setPermission" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.MainForm">
+      <Item value="toolStripClient" priority="1" />
+      <Item value="toolStripStatusLabel" priority="0" />
+      <Item value="ServiceStatus" priority="0" />
+      <Item value="stopProgressBar" priority="7" />
+      <Item value="showProgressBar" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.GlobalCache">
+      <Item value="Instance" priority="10" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.GlobalCache">
+      <Item value="ClientToolStripPermission" priority="0" />
+      <Item value="MainForm" priority="5" />
+      <Item value="IsCostSummary" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Form">
+      <Item value="WindowState" priority="7" />
+      <Item value="ShowDialog" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.FormWindowState">
+      <Item value="Maximized" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DateTimePicker">
+      <Item value="Value" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.SalePoints.SalePointEventArgs">
+      <Item value="SavingSubStock" priority="2" />
+      <Item value="HasErrors" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IDepartmentLogic">
+      <Item value="Add" priority="0" />
+      <Item value="FindById" priority="1" />
+      <Item value="FindAll" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine" priority="1" />
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IDepartmentDAO">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.SalePoints.ISalePointController">
+      <Item value="DepartmentModel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.RadioButton">
+      <Item value="Checked" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockOutEventArgs">
+      <Item value="SelectedDepartmentStockOutDetail" priority="6" />
+      <Item value="DepartmentsList" priority="2" />
+      <Item value="DepartmentStockList" priority="0" />
+      <Item value="DepartmentStockOut" priority="7" />
+      <Item value="SelectedProductMasterList" priority="2" />
+      <Item value="DepartmentStock" priority="0" />
+      <Item value="ProductId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockOutDetail">
+      <Item value="GoodQuantity" priority="5" />
+      <Item value="Quantity" priority="4" />
+      <Item value="DefectStatus" priority="0" />
+      <Item value="ProductMaster" priority="0" />
+      <Item value="Product" priority="3" />
+      <Item value="DepartmentPrice" priority="2" />
+      <Item value="StockOutDetailId" priority="0" />
+      <Item value="DepartmentStockOut" priority="0" />
+      <Item value="DepartmentStockOutDetailPK" priority="9" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentStockOutView">
+      <Item value="LoadAllDepartments" priority="0" />
+      <Item value="DispatchDepartmentStockOut" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.IList">
+      <Item value="Count" priority="35" />
+      <Item value="Add" priority="26" />
+      <Item value="RemoveAt" priority="2" />
+      <Item value="Clear" priority="0" />
+      <Item value="Add`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockOut">
+      <Item value="OtherDepartmentId" priority="10" />
+      <Item value="DepartmentStockOutDetails" priority="5" />
+      <Item value="ConfirmFlg" priority="2" />
+      <Item value="UpdateId" priority="0" />
+      <Item value="UpdateDate" priority="0" />
+      <Item value="DepartmentStockOutPK" priority="6" />
+      <Item value="DefectStatus" priority="0" />
+      <Item value="StockOutId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewCellStyle">
+      <Item value="BackColor" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.StockDefectStatus">
+      <Item value="DefectStatusId" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameServer.Services.IDepartmentStockOutCallback">
+      <Item value="NotifyNewDepartmentStockOut" priority="0" />
+      <Item value="NotifyConnected" priority="0" />
+      <Item value="NotifyRequestDepartmentStockOut" priority="0" />
+      <Item value="NotifyStockOutSuccess" priority="0" />
+      <Item value="NotifyUpdateStockInFlag" priority="0" />
+      <Item value="NotifyInformMessage" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Services.ServerServiceClient">
+      <Item value="MakeDepartmentStockOut" priority="3" />
+      <Item value="JoinDistributingGroup" priority="1" />
+      <Item value="InformDepartmentStockOutSuccess" priority="0" />
+      <Item value="RequestDepartmentStockOut" priority="0" />
+      <Item value="MakeDepartmentStockIn" priority="0" />
+      <Item value="InformDepartmentStockInSucess" priority="1" />
+      <Item value="UpdateStockInBackFlag" priority="0" />
+      <Item value="RequestDepartmentStockIn" priority="0" />
+      <Item value="State" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.ProductMaster">
+      <Item value="ProductMasterId" priority="8" />
+      <Item value="ProductName" priority="19" />
+      <Item value="ProductColor" priority="10" />
+      <Item value="ProductType" priority="5" />
+      <Item value="ImagePath" priority="8" />
+      <Item value="ProductSize" priority="6" />
+      <Item value="Equals" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.Product">
+      <Item value="ProductMaster" priority="23" />
+      <Item value="ProductId" priority="21" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IDepartmentPriceLogic">
+      <Item value="FindById" priority="3" />
+      <Item value="FindAll" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="ForEach" priority="0" />
+      <Item value="Add" priority="9" />
+      <Item value="ToArray" priority="1" />
+      <Item value="Clear" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockIn">
+      <Item value="CreateDate" priority="0" />
+      <Item value="CreateId" priority="0" />
+      <Item value="DepartmentStockInPK" priority="9" />
+      <Item value="DepartmentStockInDetails" priority="3" />
+      <Item value="StockInDate" priority="0" />
+      <Item value="ExclusiveKey" priority="0" />
+      <Item value="Department" priority="1" />
+      <Item value="DepartmentId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockInDetail">
+      <Item value="Quantity" priority="14" />
+      <Item value="Product" priority="12" />
+      <Item value="ProductMaster" priority="0" />
+      <Item value="DepartmentStockInDetailPK" priority="3" />
+      <Item value="Price" priority="1" />
+      <Item value="CreateDate" priority="2" />
+      <Item value="CreateId" priority="1" />
+      <Item value="ExclusiveKey" priority="0" />
+      <Item value="DepartmentStockIn" priority="0" />
+      <Item value="DelFlg" priority="0" />
+      <Item value="UpdateId" priority="0" />
+      <Item value="StockOutDetailId" priority="0" />
+      <Item value="StockQuantity" priority="3" />
+      <Item value="UpdateDate" priority="0" />
+      <Item value="OnStorePrice" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Utility.Mapper.FastDepartmentStockInMapper">
+      <Item value="Convert" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockInPK">
+      <Item value="DepartmentId" priority="8" />
+      <Item value="StockInId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentPrice">
+      <Item value="Price" priority="5" />
+      <Item value="DepartmentPricePK" priority="5" />
+      <Item value="WholeSalePrice" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockInDetailPK">
+      <Item value="StockInId" priority="0" />
+      <Item value="ProductId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.GlobalUtility">
+      <Item value="GetObject" priority="3" />
+      <Item value="GetFormObject" priority="1" />
+      <Item value="GetChildFormObject" priority="0" />
+      <Item value="GetOnlyChildFormObject" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.OperationFormatStyle">
+      <Item value="Rpc" priority="0" />
+      <Item value="Document" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.OperationFormatUse">
+      <Item value="Encoded" priority="0" />
+      <Item value="Literal" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IDepartmentStockOutLogic">
+      <Item value="FindById" priority="1" />
+      <Item value="Update" priority="0" />
+      <Item value="FindAll" priority="0" />
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockOutPK">
+      <Item value="DepartmentId" priority="1" />
+      <Item value="StockOutId" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.DepartmentStockData.DepartmentStockOutExtraForm">
+      <Item value="WindowState" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripStatusLabel">
+      <Item value="Text" priority="2" />
+      <Item value="ForeColor" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.IDepartmentStockInController">
+      <Item value="DepartmentStockInView" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Label">
+      <Item value="Validated" priority="0" />
+      <Item value="Visible" priority="2" />
+      <Item value="Text" priority="8" />
+      <Item value="ForeColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString" priority="27" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Properties.Settings">
+      <Item value="Default" priority="13" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Properties.Settings">
+      <Item value="DeptMarket" priority="1" />
+      <Item value="SalePointDB" priority="0" />
+      <Item value="SubStockDB" priority="0" />
+      <Item value="ConfirmByEmployeeId" priority="1" />
+      <Item value="TemplatePath" priority="0" />
+      <Item value="StatBackupPath" priority="0" />
+      <Item value="BarcodeType" priority="1" />
+      <Item value="MaxPOId" priority="0" />
+      <Item value="FastDept" priority="1" />
+      <Item value="DeptToDeptPath" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Boolean">
+      <Item value="Equals" priority="0" />
+      <Item value="ToString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentStockInView">
+      <Item value="FindBarcodeEvent" priority="0" />
+      <Item value="LoadAllDepartments" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockInEventArgs">
+      <Item value="DepartmentList" priority="0" />
+      <Item value="DepartmentStockList" priority="0" />
+      <Item value="DepartmentStockIn" priority="0" />
+      <Item value="EventResult" priority="2" />
+      <Item value="Department" priority="2" />
+      <Item value="LastSyncTime" priority="2" />
+      <Item value="SyncFromMainToDepartment" priority="4" />
+      <Item value="ProductMasterList" priority="2" />
+      <Item value="DepartmentStockInDetailList" priority="4" />
+      <Item value="StockOutList" priority="0" />
+      <Item value="UpdateStockOut" priority="0" />
+      <Item value="SelectedDepartmentStockInDetail" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.DepartmentStockData.DepartmentFastStockInForm">
+      <Item value="SaveDepartmentStockInEvent" priority="0" />
+      <Item value="SaveStockInBackEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.PosLogEventArgs">
+      <Item value="LogDateFrom" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse" priority="15" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="Append" priority="2" />
+      <Item value="ToString" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IDictionary`2">
+      <Item value="Keys" priority="0" />
+      <Item value="ContainsKey" priority="2" />
+      <Item value="Add" priority="1" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="Data" priority="0" />
+      <Item value="Message" priority="4" />
+      <Item value="StackTrace" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.CheckBox">
+      <Item value="Checked" priority="13" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.StockSearchEventArgs">
+      <Item value="RelevantProductFinding" priority="1" />
+      <Item value="Description" priority="1" />
+      <Item value="ProductType" priority="0" />
+      <Item value="ProductSize" priority="0" />
+      <Item value="ProductColor" priority="0" />
+      <Item value="Country" priority="0" />
+      <Item value="Manufacturer" priority="0" />
+      <Item value="Packager" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.Stock">
+      <Item value="Product" priority="11" />
+      <Item value="GoodQuantity" priority="4" />
+      <Item value="Quantity" priority="2" />
+      <Item value="ProductMaster" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IStockLogic">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.SubObjectCriteria">
+      <Item value="AddLikeCriteria" priority="1" />
+      <Item value="AddOrder" priority="0" />
+      <Item value="AddGreaterOrEqualsCriteria" priority="0" />
+      <Item value="AddSearchInCriteria" priority="0" />
+      <Item value="AddEqCriteria" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.IProductMasterSearchOrCreateView">
+      <Item value="SearchCommonProductMasterEvent" priority="0" />
+      <Item value="SearchRelevantProductsEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.ProductCollection">
+      <Item value="Clear" priority="0" />
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewSelectedRowCollection">
+      <Item value="Count" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRow">
+      <Item value="Cells" priority="7" />
+      <Item value="Index" priority="11" />
+      <Item value="ReadOnly" priority="0" />
+      <Item value="DefaultCellStyle" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.ProductMasterSearchOrCreateEventArgs">
+      <Item value="ProductList" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IDepartmentStockLogic">
+      <Item value="FindAll" priority="1" />
+      <Item value="FindByQueryForDeptStock" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStock">
+      <Item value="Product" priority="1" />
+      <Item value="Quantity" priority="1" />
+      <Item value="DepartmentStockPK" priority="1" />
+      <Item value="GoodQuantity" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockSearchEventArgs">
+      <Item value="DepartmentStockList" priority="0" />
+      <Item value="Description" priority="1" />
+      <Item value="ProductId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.DepartmentStockViewCollection">
+      <Item value="Clear" priority="0" />
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.ILoginView`1">
+      <Item value="ConfirmLoginEvent" priority="0" />
+      <Item value="ConfirmEmployeeIdEvent" priority="0" />
+      <Item value="ConfirmJustEmployeeIdEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.LoginEventArgs">
+      <Item value="LoginModel" priority="2" />
+      <Item value="ConfirmAction" priority="0" />
+      <Item value="HasErrors" priority="6" />
+      <Item value="EmployeeId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.LoginModel">
+      <Item value="Username" priority="2" />
+      <Item value="UpdateDate" priority="4" />
+      <Item value="CreateDate" priority="1" />
+      <Item value="Password" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="1" />
+      <Item value="Cancel" priority="0" />
+      <Item value="Yes" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DialogResult">
+      <Item value="Yes" priority="2" />
+      <Item value="Cancel" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.KeyEventArgs">
+      <Item value="KeyCode" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Keys">
+      <Item value="Enter" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.FileMode">
+      <Item value="Create" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentStockInExtraView">
+      <Item value="LoadMasterDataForExportEvent" priority="0" />
+      <Item value="SyncExportedMasterDataEvent" priority="0" />
+      <Item value="FindRemainsQuantity" priority="0" />
+      <Item value="UpdateStockOutEvent" priority="0" />
+      <Item value="RefreshStockQuantityEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.SyncFromMainToDepartment">
+      <Item value="DepartmentPriceMasterList" priority="2" />
+      <Item value="ProductMasterList" priority="0" />
+      <Item value="EmployeeList" priority="1" />
+      <Item value="DepartmentList" priority="2" />
+      <Item value="Department" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="GetFiles" priority="2" />
+      <Item value="Exists" priority="0" />
+      <Item value="CreateDirectory" priority="5" />
+      <Item value="GetDirectories`0" priority="0" />
+      <Item value="Exists`0" priority="0" />
+      <Item value="CreateDirectory`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Delete" priority="2" />
+      <Item value="Copy" priority="1" />
+      <Item value="Exists" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.ProductColor">
+      <Item value="ColorName" priority="12" />
+      <Item value="ColorId" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IProductColorDAO">
+      <Item value="Update" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.ProductSize">
+      <Item value="SizeName" priority="10" />
+      <Item value="SizeId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.ProductType">
+      <Item value="TypeName" priority="13" />
+      <Item value="GetType" priority="0" />
+      <Item value="TypeId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IDepartmentPriceDAO">
+      <Item value="FindById" priority="0" />
+      <Item value="Add" priority="0" />
+      <Item value="Update" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IEmployeeLogic">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Count" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Stopwatch">
+      <Item value="Frequency" priority="0" />
+      <Item value="StartNew" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Diagnostics.Stopwatch">
+      <Item value="Stop" priority="0" />
+      <Item value="Elapsed" priority="0" />
+      <Item value="ElapsedMilliseconds" priority="1" />
+      <Item value="Start" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IProductMasterDAO">
+      <Item value="FindById" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentPricePK">
+      <Item value="ProductMasterId" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.GlobalMessageEventArgs">
+      <Item value="Message" priority="3" />
+      <Item value="Channel" priority="1" />
+      <Item value="IsError" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripProgressBar">
+      <Item value="Value" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.GlobalMessage">
+      <Item value="Instance" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.GlobalMessage">
+      <Item value="HasNewMessageEvent" priority="1" />
+      <Item value="PublishMessage" priority="2" />
+      <Item value="PublishError" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Common.ChannelConstants">
+      <Item value="SUBSTOCK2DEPT_STOCKOUT" priority="2" />
+      <Item value="DEPT2SUBSTOCK_STOCKOUT" priority="1" />
+      <Item value="MAIN2DEPT_SYNC" priority="0" />
+      <Item value="DEPT2MAIN_SYNC" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox">
+      <Item value="SelectedItems" priority="2" />
+      <Item value="Refresh" priority="1" />
+      <Item value="Items" priority="1" />
+      <Item value="SelectedIndices" priority="4" />
+      <Item value="DataSource" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.ProductMasterExtraForm">
+      <Item value="txtProductType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.ViewStatus">
+      <Item value="ADD" priority="0" />
+      <Item value="OPENDIALOG" priority="0" />
+      <Item value="EDIT" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Model.MasterType">
+      <Item value="PRODUCT_COLOR" priority="1" />
+      <Item value="COUNTRY" priority="0" />
+      <Item value="MANUFACTURER" priority="0" />
+      <Item value="PACKAGER" priority="0" />
+      <Item value="DISTRIBUTOR" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.ProductMasterEventArgs">
+      <Item value="ProductTypeList" priority="1" />
+      <Item value="UpdateProductMasterList" priority="0" />
+      <Item value="ProductMaster" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox+SelectedIndexCollection">
+      <Item value="Clear" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ImportPOSData.ImportObject">
+      <Item value="Description" priority="0" />
+      <Item value="ProductId" priority="0" />
+      <Item value="MassPrice" priority="3" />
+      <Item value="Price" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.LogicResult">
+      <Item value="HasError" priority="2" />
+      <Item value="Messages" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Common.ServiceResult">
+      <Item value="HasError" priority="0" />
+      <Item value="Messages" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Utility.ClientUtility">
+      <Item value="Log" priority="0" />
+      <Item value="TryActionHelper" priority="6" />
+      <Item value="GetUSBDrives" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ContextMenuStrip">
+      <Item value="Items" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripItem">
+      <Item value="Text" priority="0" />
+      <Item value="Visible" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ToolStripItemCollection">
+      <Item value="Clear" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet">
+      <Item value="stockIn" priority="0" />
+      <Item value="supplierStockout" priority="0" />
+      <Item value="departmentStockIn" priority="0" />
+      <Item value="deptStockStatistic" priority="0" />
+      <Item value="DepartmentStockOut" priority="1" />
+      <Item value="CustomizeDepartmentDetailReport" priority="0" />
+      <Item value="PurchaseOrderDetailReport" priority="1" />
+      <Item value="AllDepartmentPurchaseOrderReport" priority="0" />
+      <Item value="StockStatistic" priority="7" />
+      <Item value="StockStatisticRow" priority="0" />
+      <Item value="allStockDataTable" priority="0" />
+      <Item value="allStock" priority="1" />
+      <Item value="StockEvaluationReport" priority="1" />
+      <Item value="ExtraCustomizeDepartmentReport" priority="0" />
+      <Item value="ExtraFilterCustomizeDepartmentReport" priority="0" />
+      <Item value="ProductMasterStatistic" priority="0" />
+      <Item value="product_type" priority="7" />
+      <Item value="product_typeRow" priority="0" />
+      <Item value="StockRemainsStatistic" priority="0" />
+      <Item value="department" priority="2" />
+      <Item value="EmployeePurchaseOrderDetailReport" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameServer.DataLayer.DataAccessLayer">
+      <Item value="Open" priority="1" />
+      <Item value="OpenTransaction" priority="0" />
+      <Item value="Close" priority="0" />
+      <Item value="Rollback" priority="0" />
+      <Item value="Commit" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameServer.Utility.ServerUtility">
+      <Item value="Log" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.MainStockInEventArgs">
+      <Item value="DepartmentPrice" priority="2" />
+      <Item value="StockIn" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.CheckUtility">
+      <Item value="IsNullOrEmpty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.StockInDetail">
+      <Item value="Price" priority="0" />
+      <Item value="SellPrice" priority="1" />
+      <Item value="DepartmentPrice" priority="7" />
+      <Item value="ProductMaster" priority="4" />
+      <Item value="WholeSalePrice" priority="1" />
+      <Item value="OldQuantity" priority="0" />
+      <Item value="Quantity" priority="2" />
+      <Item value="Product" priority="7" />
+      <Item value="DelFlg" priority="3" />
+      <Item value="StockIn" priority="0" />
+      <Item value="StockInDetailPK" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.NumberUtility">
+      <Item value="ParseLong" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Common.FormConstants">
+      <Item value="PRODUCT_MASTER_EXTRA_FORM" priority="0" />
+      <Item value="EMPLOYEE_MONEY_VIEW" priority="0" />
+      <Item value="DEPARTMENT_STOCK_IN_EXTRA_FORM" priority="0" />
+      <Item value="DEPARTMENT_COST_SUMMARY_FORM" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Rafael.Windows.Forms.ListBox.CoralListBox">
+      <Item value="DisabledRows" priority="1" />
+      <Item value="DataBindings" priority="0" />
+      <Item value="DataSource" priority="0" />
+      <Item value="DisplayMember" priority="0" />
+      <Item value="Refresh" priority="1" />
+      <Item value="Invalidate" priority="1" />
+      <Item value="Items" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IProductMasterLogic">
+      <Item value="FindAll" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Model.PosRole">
+      <Item value="LoggedManager" priority="1" />
+      <Item value="Manager" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Logic.LoginLogic">
+      <Item value="GetEmployeeInfo" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Logic.IMainLogic">
+      <Item value="MainView" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.IAuthService">
+      <Item value="PostLogin" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.AuthForm">
+      <Item value="LoginOKEvent" priority="0" />
+      <Item value="Handle" priority="0" />
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.ILoginLogic">
+      <Item value="FindAll" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.EmployeeInfo">
+      <Item value="EmployeePK" priority="1" />
+      <Item value="EmployeeName" priority="1" />
+      <Item value="Address" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.EmployeePK">
+      <Item value="EmployeeId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.MaskedTextBox">
+      <Item value="Text" priority="0" />
+      <Item value="Focus" priority="1" />
+      <Item value="BackColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Common.LocalCache">
+      <Item value="Instance" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Common.LocalCache">
+      <Item value="BackupUser" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.IProcessPeriodMoneyView">
+      <Item value="ProcessEmployeeMoneyEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.IEmployeeManagementView">
+      <Item value="ProcessEmployeeMoneyEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Max" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox+ObjectCollection">
+      <Item value="Count" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.PictureBox">
+      <Item value="Refresh" priority="0" />
+      <Item value="Location" priority="1" />
+      <Item value="Image" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.StringUtility">
+      <Item value="ConvertUnicodeToUnmarkVI" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Char">
+      <Item value="ToString" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Globalization.NumberStyles">
+      <Item value="HexNumber" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToInt32" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.MainStock.IStockOutDialogView">
+      <Item value="InitDialogEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Common.CommonConstants">
+      <Item value="DEL_FLG_NO" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.StockOutDialogEventArg">
+      <Item value="ProductSizeList" priority="0" />
+      <Item value="ProductColorList" priority="0" />
+      <Item value="ProductTypeList" priority="0" />
+      <Item value="ProductMastersList" priority="0" />
+      <Item value="DepartmentsList" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IProductSizeLogic">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IProductColorLogic">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IProductTypeLogic">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.IStockOutDialogController">
+      <Item value="StockOutDialogView" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.StockOutDialogEventArgs">
+      <Item value="ProductMastersList" priority="0" />
+      <Item value="ProductColorList" priority="0" />
+      <Item value="DepartmentsList" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.MainStock.IMainStockOutView">
+      <Item value="FindByStockInIdEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.IMainStockOutController">
+      <Item value="CompletedFindByStockInEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.StockIn">
+      <Item value="ConfirmFlg" priority="6" />
+      <Item value="StockInDetails" priority="9" />
+      <Item value="DelFlg" priority="1" />
+      <Item value="NotUpdateMainStock" priority="2" />
+      <Item value="CreateDate" priority="0" />
+      <Item value="UpdateId" priority="1" />
+      <Item value="CreateId" priority="0" />
+      <Item value="Description" priority="0" />
+      <Item value="StockInDate" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.StockOutConfirmEventArgs">
+      <Item value="ConfirmStockInList" priority="1" />
+      <Item value="DenyStockInList" priority="0" />
+      <Item value="EditStockOut" priority="1" />
+      <Item value="StockOutId" priority="0" />
+      <Item value="ConfirmStockOutIdsList" priority="0" />
+      <Item value="DenyStockOutIdsList" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.IStockInConfirmView">
+      <Item value="ConfirmStockInEvent" priority="0" />
+      <Item value="LoadStockInEvent" priority="0" />
+      <Item value="DenyStockInEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IStockInLogic">
+      <Item value="FindAll" priority="0" />
+      <Item value="Update" priority="0" />
+      <Item value="FindById" priority="0" />
+      <Item value="AddForStockOutToProducer" priority="2" />
+      <Item value="AddFixedStockIn" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.StockInConfirmEventArgs">
+      <Item value="ConfirmStockInList" priority="0" />
+      <Item value="EventResult" priority="0" />
+      <Item value="HasErrors" priority="0" />
+      <Item value="DenyStockInList" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Spring.Data.NHibernate.HibernateTemplate">
+      <Item value="SessionFactory" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ISessionFactory">
+      <Item value="GetCurrentSession" priority="1" />
+      <Item value="Close" priority="1" />
+      <Item value="OpenSession" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ISession">
+      <Item value="Update" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Spring.Transaction.TransactionPropagation">
+      <Item value="Nested" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.DataGridViewRowCollection">
+      <Item value="Clear" priority="2" />
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.confirm_stock_in_detailTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB">
+      <Item value="confirm_stock_in_detail" priority="0" />
+      <Item value="stock_in" priority="0" />
+      <Item value="Department" priority="0" />
+      <Item value="product_master_ids" priority="0" />
+      <Item value="product_master_name" priority="0" />
+      <Item value="stock_def_file" priority="0" />
+      <Item value="EnforceConstraints" priority="1" />
+      <Item value="mainstkqty" priority="1" />
+      <Item value="stock_evaluation" priority="3" />
+      <Item value="stockqty" priority="1" />
+      <Item value="DepartmentCostReport" priority="0" />
+      <Item value="DepartmentSumCostReport" priority="4" />
+      <Item value="ProductInfo" priority="0" />
+      <Item value="ExportMaxDate" priority="4" />
+      <Item value="ImportMaxDate" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.DepartmentStockData.DepartmentStockInFromMainEditForm">
+      <Item value="ShowDialog" priority="0" />
+      <Item value="StockOut" priority="0" />
+      <Item value="Closed" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.IStockOutConfirmView">
+      <Item value="LoadConfirmingStockOutsEvent" priority="0" />
+      <Item value="LoadEditStockOutsEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IStockOutLogic">
+      <Item value="FindById" priority="1" />
+      <Item value="Update" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrame.Utility.ObjectConverter">
+      <Item value="ConvertToNonGenericList" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.DepartmentStockInDetailCollection">
+      <Item value="Clear" priority="0" />
+      <Item value="Add" priority="1" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.StockOut">
+      <Item value="StockOutDetails" priority="3" />
+      <Item value="StockoutId" priority="1" />
+      <Item value="NotUpdateMainStock" priority="1" />
+      <Item value="DelFlg" priority="2" />
+      <Item value="ConfirmFlg" priority="1" />
+      <Item value="DepartmentId" priority="1" />
+      <Item value="DefectStatus" priority="0" />
+      <Item value="CreateDate" priority="1" />
+      <Item value="UpdateDate" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.StockOutDetail">
+      <Item value="Product" priority="3" />
+      <Item value="Quantity" priority="7" />
+      <Item value="GoodQuantity" priority="10" />
+      <Item value="DelFlg" priority="1" />
+      <Item value="CreateDate" priority="1" />
+      <Item value="CreateId" priority="0" />
+      <Item value="UpdateDate" priority="1" />
+      <Item value="Price" priority="0" />
+      <Item value="StockOutId" priority="0" />
+      <Item value="ProductMaster" priority="0" />
+      <Item value="StockOut" priority="0" />
+      <Item value="StockOutDetailId" priority="1" />
+      <Item value="StockQuantity" priority="1" />
+      <Item value="DefectStatus" priority="0" />
+      <Item value="ExclusiveKey" priority="0" />
+      <Item value="ErrorQuantity" priority="0" />
+      <Item value="DamageQuantity" priority="0" />
+      <Item value="LostQuantity" priority="0" />
+      <Item value="UnconfirmQuantity" priority="0" />
+      <Item value="WholeSalePrice" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IStockOutDetailDAO">
+      <Item value="Update" priority="0" />
+      <Item value="DeleteById" priority="0" />
+      <Item value="Delete" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Office.Interop.Excel.Range">
+      <Item value="set_Value" priority="2" />
+      <Item value="AddComment" priority="0" />
+      <Item value="Rows" priority="0" />
+      <Item value="Borders" priority="0" />
+      <Item value="BorderAround" priority="0" />
+      <Item value="Style" priority="0" />
+      <Item value="Copy" priority="0" />
+      <Item value="PasteSpecial" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.Missing">
+      <Item value="Value" priority="14" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.DepartmentStockData.CreateStockOutTemplateForm">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.SaveFileDialog">
+      <Item value="AddExtension" priority="0" />
+      <Item value="ShowDialog" priority="0" />
+      <Item value="FileName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Office.Interop.Excel.ApplicationClass">
+      <Item value="Workbooks" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.FolderBrowserDialog">
+      <Item value="ShowDialog" priority="0" />
+      <Item value="SelectedPath" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Office.Interop.Excel.Workbook">
+      <Item value="Save" priority="0" />
+      <Item value="ActiveSheet" priority="0" />
+      <Item value="Close" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Office.Interop.Excel.Worksheet">
+      <Item value="SaveAs" priority="0" />
+      <Item value="Columns" priority="0" />
+      <Item value="get_Range" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.Missing">
+      <Item value="Equals" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Office.Interop.Excel.XlBorderWeight">
+      <Item value="xlThin" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Office.Interop.Excel.XlColorIndex">
+      <Item value="xlColorIndexAutomatic" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Office.Interop.Excel.XlLineStyle">
+      <Item value="xlContinuous" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Office.Interop.Excel.XlPasteType">
+      <Item value="xlPasteFormats" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Office.Interop.Excel.XlPasteSpecialOperation">
+      <Item value="xlPasteSpecialOperationNone" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrintPageEventArgs">
+      <Item value="Graphics" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Graphics">
+      <Item value="DrawRectangle" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.MatrixPurchaseOrderReportViewer">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.stock_inTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.MainStockInSearchEventArgs">
+      <Item value="StockInDateFrom" priority="0" />
+      <Item value="StockInId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.MainStock.IMainStockInSearchView">
+      <Item value="SearchSingleStockInEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.DepartmentTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.Employee">
+      <Item value="EmployeeInfo" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ionic.Zip.ZipFile">
+      <Item value="ExtractAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Ionic.Zip.ExtractExistingFileAction">
+      <Item value="OverwriteSilently" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="8" />
+      <Item value="Key" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.DirectX.DirectInput.DInputHelper">
+      <Item value="GetTypeCode" priority="0" />
+      <Item value="EnumCollection" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ArrayList">
+      <Item value="Sort" priority="2" />
+      <Item value="OfType`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.ViewModel.ScanType">
+      <Item value="UnscanProducts" priority="1" />
+      <Item value="ScannedProducts" priority="1" />
+      <Item value="TypeName" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IDepartmentStockTempDAO">
+      <Item value="FindById" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockTemp">
+      <Item value="DepartmentStockTempPK" priority="0" />
+      <Item value="Fixed" priority="1" />
+      <Item value="DelFlg" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentStockCheckingView">
+      <Item value="FillProductMasterToComboEvent" priority="0" />
+      <Item value="LoadGoodsByProductIdEvent" priority="0" />
+      <Item value="LoadProductNamesInTypeEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.DepartmentGoodsIO.DepartmentStockCheckingEventArgs">
+      <Item value="ScannedType" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.ScanType">
+      <Item value="TypeName" priority="3" />
+      <Item value="UnscanProducts" priority="3" />
+      <Item value="ScannedProducts" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeView">
+      <Item value="Nodes" priority="12" />
+      <Item value="Refresh" priority="0" />
+      <Item value="Invalidated" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeNodeCollection">
+      <Item value="Clear" priority="0" />
+      <Item value="Add" priority="0" />
+      <Item value="ContainsKey" priority="1" />
+      <Item value="Count" priority="0" />
+      <Item value="RemoveByKey" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TreeNode">
+      <Item value="ForeColor" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.InventoryCheckingEventArgs">
+      <Item value="HasErrors" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.StockCollection">
+      <Item value="Add" priority="0" />
+      <Item value="Count" priority="0" />
+      <Item value="RemoveAt" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsIO.MainStock.MainStockOutEventArgs">
+      <Item value="SelectedStockOutDetail" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSetTableAdapters.StockStatisticTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet+StockStatisticDataTable">
+      <Item value="Rows" priority="0" />
+      <Item value="First" priority="0" />
+      <Item value="DataSet" priority="0" />
+      <Item value="DefaultView" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataSet">
+      <Item value="Tables" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataView">
+      <Item value="RowFilter" priority="1" />
+      <Item value="Sort" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.StockStatisticReportViewer">
+      <Item value="cboProductTypes" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ComboBox+ObjectCollection">
+      <Item value="Insert" priority="0" />
+      <Item value="Add" priority="0" />
+      <Item value="Clear" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.DepartmentStockPK">
+      <Item value="ProductId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IDepartmentStockDAO">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.StockOutDetailCollection">
+      <Item value="Add" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.ProductMasterCollection">
+      <Item value="Add" priority="0" />
+      <Item value="Clear" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.ProductMasterChoosingForm">
+      <Item value="product_master_nameTableAdapter" priority="0" />
+      <Item value="SelectedProductMasterList" priority="1" />
+      <Item value="Dispose" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.product_master_nameTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.LoginForm">
+      <Item value="ConfirmNegativeSelling" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BarcodeLib.TYPE">
+      <Item value="CODE128" priority="5" />
+      <Item value="CODE39" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Message">
+      <Item value="Msg" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.ViewModel.StockOutView">
+      <Item value="StockOut" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Common.InputDevice+KeyControlEventArgs">
+      <Item value="Keyboard" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.Common.InputDevice+DeviceInfo">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.ExportDeptStockDefinitionForm">
+      <Item value="masterDB1" priority="2" />
+      <Item value="deptstockdeffileBindingSource" priority="3" />
+      <Item value="stockdeffileBindingSource" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.DeptStockEvaluationComparingForm">
+      <Item value="mainstkqtyTableAdapter" priority="0" />
+      <Item value="masterDB3" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.mainstkqtyTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.MasterDB">
+      <Item value="mainstkqtyRow" priority="0" />
+      <Item value="stock_evaluationRow" priority="0" />
+      <Item value="ExportMaxDateRow" priority="0" />
+      <Item value="stock_evaluationRowChangeEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+stock_evaluationDataTable">
+      <Item value="Addstock_evaluationRow" priority="0" />
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.UInt32">
+      <Item value="Parse" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Decimal">
+      <Item value="Parse" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.stock_evaluationTableAdapter">
+      <Item value="Update" priority="3" />
+      <Item value="Insert" priority="0" />
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@InfoBox.InformationBox">
+      <Item value="Show" priority="4" />
+      <Item value="Show`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.StockEvaluationReportViewer">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IStockInDetailDAO">
+      <Item value="Delete" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IStockOutDAO">
+      <Item value="Delete" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.ProductMasterStatisticReportViewer">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BarcodeLib.Barcode">
+      <Item value="Encode" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.ExtraCustomizeDepartmentReportViewer">
+      <Item value="CustomizeDepartmentReportBindingSource" priority="0" />
+      <Item value="ExtraCustomizeDepartmentReportBindingSource" priority="0" />
+      <Item value="ExtraCustomizeDepartmentSizeReportBindingSource" priority="0" />
+      <Item value="ExtraCustomizeDepartmentColorReportBindingSource" priority="0" />
+      <Item value="customizeSizeReport" priority="0" />
+      <Item value="customizeColorReport" priority="0" />
+      <Item value="posDataSet" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet+product_typeDataTable">
+      <Item value="Addproduct_typeRow" priority="2" />
+      <Item value="Rows" priority="1" />
+      <Item value="OrderBy" priority="0" />
+      <Item value="AsDataView" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet+product_typeRow">
+      <Item value="TYPE_NAME" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRowCollection">
+      <Item value="InsertAt" priority="0" />
+      <Item value="Count" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.StockRemainsReportViewer">
+      <Item value="StockRemainsStatisticBindingSource" priority="0" />
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+stockqtyDataTable">
+      <Item value="AddstockqtyRow" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+mainstkqtyRow">
+      <Item value="TYPE_ID" priority="2" />
+      <Item value="TYPE_NAME" priority="0" />
+      <Item value="PRODUCT_MASTER_ID" priority="0" />
+      <Item value="PRODUCT_NAME" priority="0" />
+      <Item value="COLOR_NAME" priority="0" />
+      <Item value="SIZE_NAME" priority="0" />
+      <Item value="PRODUCT_ID" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.ViewModel.PurchaseOrderView">
+      <Item value="ReturnPOList" priority="1" />
+      <Item value="PurchaseOrder" priority="2" />
+      <Item value="SellQuantity" priority="0" />
+      <Item value="SellAmount" priority="0" />
+      <Item value="ReturnAmount" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrintDocument">
+      <Item value="EndPrint" priority="0" />
+      <Item value="PrinterSettings" priority="2" />
+      <Item value="Print`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.View.GoodsIO.DepartmentGoodsIO.IDepartmentCostSummaryView">
+      <Item value="CommitDepartmentCostEvent" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.EmployeeMoney">
+      <Item value="EmployeeMoneyPK" priority="5" />
+      <Item value="WorkingDay" priority="0" />
+      <Item value="DateLogin" priority="1" />
+      <Item value="InMoney" priority="1" />
+      <Item value="OutMoney" priority="2" />
+      <Item value="UpdateDate" priority="0" />
+      <Item value="UpdateId" priority="0" />
+      <Item value="DateLogout" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.EmployeeMoneyPK">
+      <Item value="DepartmentId" priority="0" />
+      <Item value="WorkingDay" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.DepartmentSumCostReportTableAdapter">
+      <Item value="ClearBeforeFill" priority="2" />
+      <Item value="Fill" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+DepartmentSumCostReportRow">
+      <Item value="total" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IEmployeeMoneyLogic">
+      <Item value="Update" priority="1" />
+      <Item value="Add" priority="1" />
+      <Item value="FindById" priority="2" />
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+DepartmentSumCostReportDataTable">
+      <Item value="Rows" priority="1" />
+      <Item value="totalColumn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataRow">
+      <Item value="Indexer" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Threading.Thread">
+      <Item value="Start" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Collection.DepartmentStockOutDetailCollection">
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.ProductInfoTableAdapter">
+      <Item value="Fill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.DataLayer.IEmployeeMoneyDAO">
+      <Item value="FindAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.SyncFromDepartmentToMain">
+      <Item value="EmployeeMoneyList" priority="2" />
+      <Item value="DepartmentCostList" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.GoodsIO.DepartmentStockData.LoadDataFromDepartmentToMain">
+      <Item value="Enabled" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ComponentModel.BackgroundWorker">
+      <Item value="DoWork" priority="0" />
+      <Item value="RunWorkerCompleted" priority="0" />
+      <Item value="RunWorkerAsync" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDBTableAdapters.ExportMaxDateTableAdapter">
+      <Item value="Fill" priority="0" />
+      <Item value="ClearBeforeFill" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+ExportMaxDateDataTable">
+      <Item value="Rows" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@AppFrameClient.Utility.ClientUtility+SyncType">
+      <Item value="SyncUp" priority="1" />
+      <Item value="SyncDown" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.View.CreateSyncUSBForm">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.DailyMatrixPurchaseOrderReportViewer">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+stockqtyRow">
+      <Item value="PRODUCT_ID" priority="0" />
+      <Item value="TYPE_ID" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Logic.IEmployeeDetailLogic">
+      <Item value="FindById`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.EmployeePurchaseOrderReportViewer">
+      <Item value="posDataSet" priority="2" />
+      <Item value="Show`0" priority="0" />
+      <Item value="departmentBindingSource" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet+departmentDataTable">
+      <Item value="AdddepartmentRow`0" priority="0" />
+      <Item value="OrderBy`2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:POSReports.posDataSet+departmentRow">
+      <Item value="DEPARTMENT_ID" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Presenter.GoodsSale.IGoodsSaleController">
+      <Item value="PurchaseOrder" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.PurchaseOrder">
+      <Item value="PurchaseOrderDetails" priority="0" />
+      <Item value="CreateId" priority="1" />
+      <Item value="UpdateDate" priority="0" />
+      <Item value="UpdateId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.PurchaseOrderDetail">
+      <Item value="CreateId" priority="0" />
+      <Item value="UpdateId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@POSReports.posDataSet">
+      <Item value="departmentRow`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrameClient.MasterDB+DepartmentRow">
+      <Item value="DEPARTMENT_ID" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Drawing.Printing.PrinterSettings">
+      <Item value="Copies" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.NumericUpDown">
+      <Item value="Validate`0" priority="0" />
+      <Item value="Value" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IOrderedEnumerable`1">
+      <Item value="ToList`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AppFrame.Model.SyncFromDeptToDept">
+      <Item value="DepartmentStockOutList" priority="1" />
+      <Item value="DestinationDept" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.AppDomain">
+      <Item value="CurrentDomain" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.AppDomain">
+      <Item value="ExecuteAssembly`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="CommonAppDataPath" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.2\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

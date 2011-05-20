@@ -1,0 +1,1 @@
+svcutil /t:code http://10.0.0.10:8081/ServerService/mex /out:PetCoralServiceClient.cs /config:Test.config

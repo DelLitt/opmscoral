@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="DepartmentStockProductMasterView"
+	    table="v_department_stock"
+>
+  <composite-id name="DepartmentStockProductMasterViewPK" class="DepartmentStockProductMasterViewPK">
+    <key-property
+        name="ProductMasterId"
+        column="PRODUCT_MASTER_ID"
+        type="string"
+        length="13">
+    </key-property>
+    <key-property
+        name="DepartmentId"
+        column="DEPARTMENT_ID"
+        type="Int64"
+        length="10">
+    </key-property>
+  </composite-id>
+  <property
+      name="Quantity"
+      type="Int64"
+      column="QUANTITY"
+      length="10"
+    >
+  </property>
+  <property
+      name="Price"
+      type="Int64"
+      column="PRICE"
+      length="10"
+    >
+  </property>
+  <property
+      name="LastStockInDate"
+      type="string"
+      column="LastStockInDate"
+      length="19"
+    >
+  </property>
+  <many-to-one
+    name="ProductMaster"
+    class="ProductMaster"
+    lazy="false"
+    >
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
+  <many-to-one
+    name="Department"
+    class="Department"
+    lazy="false"
+    >
+    <column name="DEPARTMENT_ID" />
+  </many-to-one>
+  
+</class>
+</hibernate-mapping>

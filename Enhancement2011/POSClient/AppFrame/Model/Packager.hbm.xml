@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="Packager"
+	    table="packager"
+>
+
+    <id
+        name="PackagerId"
+        type="Int64"
+        column="PACKAGER_ID"
+    >
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="PackagerName"
+        type="string"
+        column="PACKAGER_NAME"
+        length="500"
+    >
+    </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to ProductMaster -->
+    <!--<bag
+        name="ProductMasters"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="PACKAGER_ID" />
+        </key>
+        <one-to-many 
+            class="ProductMaster"
+        />
+    </bag>-->
+
+</class>
+</hibernate-mapping>

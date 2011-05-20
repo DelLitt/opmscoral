@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="SyncStatus"
+	    table="sync_status"
+>
+
+    <id
+        name="LastSyncDate"
+        type="DateTime"
+        column="LAST_SYNC_DATE"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="45"
+    >
+    </property>
+    
+</class>
+</hibernate-mapping>
