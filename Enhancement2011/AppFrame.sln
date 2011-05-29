@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSReports", "POSReports\POSReports.csproj", "{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameClient", "AppFrameClient\AppFrameClient.csproj", "{65E17626-8E16-448C-A89D-ADE344360AF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrame", "AppFrame\AppFrame.csproj", "{73A362AB-99CF-4AA1-8278-01CAED2516F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFrameServer", "AppFrameServer\AppFrameServer.csproj", "{C3773063-F4BA-4DCC-99C6-6C1F66397173}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportPOSData", "ImportPOSData\ImportPOSData.csproj", "{53EA70B6-957C-4D8A-BD43-1450C7433920}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "POSClientSetup", "Setup1\Setup1.vdproj", "{7D2B4E67-4CDD-400A-9A16-4BEA8958E27E}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A501DC0E-5E63-4CE7-8D99-F45D1B69CD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E17626-8E16-448C-A89D-ADE344360AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E17626-8E16-448C-A89D-ADE344360AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E17626-8E16-448C-A89D-ADE344360AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E17626-8E16-448C-A89D-ADE344360AF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73A362AB-99CF-4AA1-8278-01CAED2516F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73A362AB-99CF-4AA1-8278-01CAED2516F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73A362AB-99CF-4AA1-8278-01CAED2516F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73A362AB-99CF-4AA1-8278-01CAED2516F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3773063-F4BA-4DCC-99C6-6C1F66397173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3773063-F4BA-4DCC-99C6-6C1F66397173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3773063-F4BA-4DCC-99C6-6C1F66397173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3773063-F4BA-4DCC-99C6-6C1F66397173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EA70B6-957C-4D8A-BD43-1450C7433920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2B4E67-4CDD-400A-9A16-4BEA8958E27E}.Debug|Any CPU.ActiveCfg = Debug
+		{7D2B4E67-4CDD-400A-9A16-4BEA8958E27E}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

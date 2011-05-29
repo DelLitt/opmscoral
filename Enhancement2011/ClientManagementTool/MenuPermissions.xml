@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<mainmenu>
+  <menu name="fileMenu" role="*">
+    <menuitem name="loginMenu" role="%">
+    </menuitem>
+    <menuitem name="logoutMenu" role="@">
+    </menuitem>
+    <menuitem name="exitMenu" role="*">
+    </menuitem>    
+  </menu> 
+  <menu name="employeeManagementMenu" role="Administrator,Supervisor,Manager">
+    <menuitem name="employeeWorkingMenu" role="Administrator,Supervisor,Manager" />
+    <menuitem name="employeeWorkingSearchMenu" role="NotImplement" />
+    <menuitem name="employeeWorkingReport" role="NotImplement" />
+    <menuitem name="enterPeriodMenu" role="Manager" />
+    <menuitem name="leavePeriodMenu" role="Manager" />
+  </menu>  
+  <menu name="menuHelp" role="*">
+    <menuitem name="menuAbout" role="*">
+    </menuitem>
+  </menu>
+</mainmenu>

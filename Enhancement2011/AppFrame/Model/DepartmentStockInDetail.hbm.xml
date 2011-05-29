@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AppFrame" namespace="AppFrame.Model">
+
+<class name="DepartmentStockInDetail"
+	    table="department_stock_in_detail"
+>
+
+    <composite-id name="DepartmentStockInDetailPK" class="DepartmentStockInDetailPK">
+        <key-property 
+            name="StockInId" 
+            column="STOCK_IN_ID" 
+            type="string"
+            length="10">
+        </key-property>
+        <key-property 
+            name="ProductId" 
+            column="PRODUCT_ID" 
+            type="string"
+            length="20">
+        </key-property>
+        <key-property 
+            name="DepartmentId" 
+            column="DEPARTMENT_ID" 
+            type="Int64"
+            length="10">
+        </key-property>
+    </composite-id>    
+
+    <property
+        name="Quantity"
+        type="Int64"
+        column="QUANTITY"
+        length="10"
+    >
+    </property>
+  <property
+        name="Sold"
+        type="Int64"
+        column="SOLD"
+        length="10"
+    >
+  </property>
+    <property
+          name="Price"
+          type="Int64"
+          column="PRICE"
+          length="10"
+    >
+    </property>
+  <property
+        name="OnStorePrice"
+        type="Int64"
+        column="ON_STORE_PRICE"
+        length="10"
+    >
+  </property>
+    <property
+        name="CreateDate"
+        type="DateTime"
+        column="CREATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="CreateId"
+        type="string"
+        column="CREATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="UpdateDate"
+        type="DateTime"
+        column="UPDATE_DATE"
+        length="19"
+    >
+    </property>
+    <property
+        name="UpdateId"
+        type="string"
+        column="UPDATE_ID"
+        length="50"
+    >
+    </property>
+    <property
+        name="ExclusiveKey"
+        type="Int64"
+        column="EXCLUSIVE_KEY"
+        length="10"
+    >
+    </property>
+    <property
+        name="DelFlg"
+        type="Int64"
+        column="DEL_FLG"
+        length="10"
+    >
+    </property>
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to DepartmentStockIn -->
+    <many-to-one
+        name="DepartmentStockIn"
+	    class="DepartmentStockIn"
+	    update="false"
+	    insert="false"
+      lazy="false"
+	>
+    	<column name="STOCK_IN_ID" />
+    	<column name="DEPARTMENT_ID" />
+	</many-to-one>
+	
+    <!-- bi-directional many-to-one association to Product -->
+    <many-to-one
+        name="Product"
+	    class="Product"
+	    update="false"
+	    insert="false"
+      lazy="false"
+	>
+    	<column name="PRODUCT_ID" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  <many-to-one
+  name="ProductMaster"
+class="ProductMaster"
+update="false"
+insert="false"
+lazy="false"
+	>
+    <column name="PRODUCT_MASTER_ID" />
+  </many-to-one>
+
+</class>
+</hibernate-mapping>
