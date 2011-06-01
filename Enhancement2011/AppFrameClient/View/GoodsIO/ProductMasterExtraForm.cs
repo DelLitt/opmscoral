@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using AppFrame.Common;
 using AppFrame.Model;
@@ -22,6 +18,7 @@ namespace AppFrameClient.View.GoodsIO
         #region Implementation of IProductMasterView
 
         private IProductMasterController _productMasterController;
+
         public IProductMasterController ProductMasterController
         {
             set
@@ -38,21 +35,21 @@ namespace AppFrameClient.View.GoodsIO
 
         #endregion
 
-        public ProductMaster ProductMaster { get; set; }
-        public IList OldColorList { get; set; }
-        public IList OldSizeList { get; set; }
-        public IList OldProductMasterList { get; set; }
-
-
         public ProductMasterExtraForm()
         {
             InitializeComponent();
         }
 
+        public ProductMaster CurrentProductMaster { get; set; }
+        public IList OldColorList { get; set; }
+        public IList OldSizeList { get; set; }
+        public IList OldProductMasterList { get; set; }
+
+
         private void ProductMasterExtraForm_Load(object sender, EventArgs e)
         {
             var eventArgs = new ProductMasterEventArgs();
-            eventArgs.ProductMasterForInit = ProductMaster;
+            eventArgs.ProductMasterForInit = CurrentProductMaster;
             EventUtility.fireEvent(InitProductMasterEvent, this, eventArgs);
 
             if (eventArgs.ProductTypeList.Count > 1)
@@ -66,7 +63,6 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductSizeList.RemoveAt(0);
                 sizeBindingSource.DataSource = eventArgs.ProductSizeList;
-
             }
             //productMasterControl.cbbProductSize.DisplayMember = "SizeName";
 
@@ -74,7 +70,6 @@ namespace AppFrameClient.View.GoodsIO
             {
                 eventArgs.ProductColorList.RemoveAt(0);
                 colorBindingSource.DataSource = eventArgs.ProductColorList;
-
             }
             //productMasterControl.cbbProductColor.DisplayMember = "ColorName";
 
@@ -90,20 +85,20 @@ namespace AppFrameClient.View.GoodsIO
             packagerBindingSource.DataSource = eventArgs.PackagerList;
             cbbPackager.DisplayMember = "PackagerName";
 
-            if (ProductMaster != null)
+            if (CurrentProductMaster != null)
             {
                 OldProductMasterList = new ArrayList();
                 OldColorList = new ArrayList();
                 OldSizeList = new ArrayList();
-                txtDescription.Text = ProductMaster.Description;
-                txtProductMasterId.Text = ProductMaster.ProductMasterId;
-                txtProductName.Text = ProductMaster.ProductName;
+                txtDescription.Text = CurrentProductMaster.Description;
+                txtProductMasterId.Text = CurrentProductMaster.ProductMasterId;
+                txtProductName.Text = CurrentProductMaster.ProductName;
                 int i = 0;
-                if (ProductMaster.Country != null)
+                if (CurrentProductMaster.Country != null)
                 {
                     foreach (Country country in eventArgs.CountryList)
                     {
-                        if (country.CountryId == ProductMaster.Country.CountryId)
+                        if (country.CountryId == CurrentProductMaster.Country.CountryId)
                         {
                             cbbCountry.SelectedIndex = i;
                         }
@@ -113,11 +108,11 @@ namespace AppFrameClient.View.GoodsIO
                 cbbCountry.Enabled = false;
 
                 i = 0;
-                if (ProductMaster.Distributor != null)
+                if (CurrentProductMaster.Distributor != null)
                 {
                     foreach (Distributor distributor in eventArgs.DistributorList)
                     {
-                        if (distributor.DistributorId == ProductMaster.Distributor.DistributorId)
+                        if (distributor.DistributorId == CurrentProductMaster.Distributor.DistributorId)
                         {
                             cbbDistributor.SelectedIndex = i;
                         }
@@ -127,11 +122,11 @@ namespace AppFrameClient.View.GoodsIO
                 cbbDistributor.Enabled = false;
 
                 i = 0;
-                if (ProductMaster.ProductType != null)
+                if (CurrentProductMaster.ProductType != null)
                 {
                     foreach (ProductType productType in eventArgs.ProductTypeList)
                     {
-                        if (productType.TypeId == ProductMaster.ProductType.TypeId)
+                        if (productType.TypeId == CurrentProductMaster.ProductType.TypeId)
                         {
                             cbbProductType.SelectedIndex = i;
                         }
@@ -141,11 +136,11 @@ namespace AppFrameClient.View.GoodsIO
                 cbbProductType.Enabled = false;
 
                 i = 0;
-                if (ProductMaster.Manufacturer != null)
+                if (CurrentProductMaster.Manufacturer != null)
                 {
                     foreach (Manufacturer manufacturer in eventArgs.ManufacturerList)
                     {
-                        if (manufacturer.ManufacturerId == ProductMaster.Manufacturer.ManufacturerId)
+                        if (manufacturer.ManufacturerId == CurrentProductMaster.Manufacturer.ManufacturerId)
                         {
                             cbbManufacturer.SelectedIndex = i;
                         }
@@ -155,11 +150,11 @@ namespace AppFrameClient.View.GoodsIO
                 cbbManufacturer.Enabled = false;
 
                 i = 0;
-                if (ProductMaster.Packager != null)
+                if (CurrentProductMaster.Packager != null)
                 {
                     foreach (Packager packager in eventArgs.PackagerList)
                     {
-                        if (packager.PackagerId == ProductMaster.Packager.PackagerId)
+                        if (packager.PackagerId == CurrentProductMaster.Packager.PackagerId)
                         {
                             cbbPackager.SelectedIndex = i;
                         }
@@ -169,11 +164,11 @@ namespace AppFrameClient.View.GoodsIO
                 cbbPackager.Enabled = false;
 
                 i = 0;
-                if (ProductMaster.Packager != null)
+                if (CurrentProductMaster.Packager != null)
                 {
                     foreach (Packager packager in eventArgs.PackagerList)
                     {
-                        if (packager.PackagerId == ProductMaster.Packager.PackagerId)
+                        if (packager.PackagerId == CurrentProductMaster.Packager.PackagerId)
                         {
                             cbbPackager.SelectedIndex = i;
                         }
@@ -225,10 +220,9 @@ namespace AppFrameClient.View.GoodsIO
                 btnCreateType.Enabled = false;
                 btnCreateType.Enabled = false;
                 btnSelect.Enabled = true;
-                txtImagePath.Text = ProductMaster.ImagePath;
+                txtImagePath.Text = CurrentProductMaster.ImagePath;
                 ShowProductImage();
             }
-
         }
 
         private bool ExistInList(IList OldProductMasterList, ProductMaster master)
@@ -254,6 +248,7 @@ namespace AppFrameClient.View.GoodsIO
             }
             return false;
         }
+
         private bool ExistInList(IList sizeList, ProductSize size)
         {
             foreach (ProductSize list in sizeList)
@@ -308,7 +303,7 @@ namespace AppFrameClient.View.GoodsIO
             int i = list.Count - 1;
             while (i >= 0)
             {
-                bdsColors.RemoveAt((int)list[i]);
+                bdsColors.RemoveAt((int) list[i]);
                 i--;
             }
             bdsColors.ResetBindings(false);
@@ -357,7 +352,7 @@ namespace AppFrameClient.View.GoodsIO
             int i = list.Count - 1;
             while (i >= 0)
             {
-                bdsSizes.RemoveAt((int)list[i]);
+                bdsSizes.RemoveAt((int) list[i]);
                 i--;
             }
             bdsSizes.ResetBindings(false);
@@ -368,11 +363,10 @@ namespace AppFrameClient.View.GoodsIO
         {
             try
             {
-                txtProductType.Text = ((ProductType)cbbProductType.SelectedItem).TypeName;
+                txtProductType.Text = ((ProductType) cbbProductType.SelectedItem).TypeName;
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -460,7 +454,7 @@ namespace AppFrameClient.View.GoodsIO
                 }
             }
 
-            var eventArgs = new ProductMasterEventArgs { CreatedProductMasterList = productMasters };
+            var eventArgs = new ProductMasterEventArgs {CreatedProductMasterList = productMasters};
             // get old product master
             if (OldProductMasterList != null)
             {
@@ -487,7 +481,6 @@ namespace AppFrameClient.View.GoodsIO
                     ClearForm();
                 }
             }
-
         }
 
         private void ClearForm()
@@ -517,25 +510,27 @@ namespace AppFrameClient.View.GoodsIO
         private ProductMaster CreateProductMaster(ProductSize size, ProductColor color)
         {
             return new ProductMaster
-            {
-                ProductName = txtProductName.Text,
-                ImagePath = txtImagePath.Text,
-                Description = txtDescription.Text,
-                Packager = cbbPackager.SelectedIndex > 0 ? ((Packager)cbbPackager.SelectedItem) : null,
-                ProductSize = size,
-                ProductType = (ProductType)cbbProductType.SelectedItem,
-                ProductColor = color,
-                Country = cbbCountry.SelectedIndex > 0 ? ((Country)cbbCountry.SelectedItem) : null,
-                Manufacturer = cbbManufacturer.SelectedIndex > 0 ? ((Manufacturer)cbbManufacturer.SelectedItem) : null,
-                Distributor = cbbDistributor.SelectedIndex > 0 ? ((Distributor)cbbDistributor.SelectedItem) : null
-            };
+                       {
+                           ProductName = txtProductName.Text,
+                           ImagePath = txtImagePath.Text,
+                           Description = txtDescription.Text,
+                           Packager = cbbPackager.SelectedIndex > 0 ? ((Packager) cbbPackager.SelectedItem) : null,
+                           ProductSize = size,
+                           ProductType = (ProductType) cbbProductType.SelectedItem,
+                           ProductColor = color,
+                           Country = cbbCountry.SelectedIndex > 0 ? ((Country) cbbCountry.SelectedItem) : null,
+                           Manufacturer =
+                               cbbManufacturer.SelectedIndex > 0 ? ((Manufacturer) cbbManufacturer.SelectedItem) : null,
+                           Distributor =
+                               cbbDistributor.SelectedIndex > 0 ? ((Distributor) cbbDistributor.SelectedItem) : null
+                       };
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
             string imagePath = "";
             DialogResult result = imagePathFileDialog.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 imagePath = imagePathFileDialog.FileName;
             }
@@ -551,14 +546,14 @@ namespace AppFrameClient.View.GoodsIO
                 int maxHeight = picProduct.Height;
                 Image fullsizeImage = Image.FromFile(txtImagePath.Text);
                 // Prevent using images internal thumbnail
-                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
-                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+                fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
                 if (fullsizeImage.Width <= newWidth)
                 {
                     newWidth = fullsizeImage.Width;
                 }
-                int newHeight = fullsizeImage.Height * newWidth / fullsizeImage.Width;
+                int newHeight = fullsizeImage.Height*newWidth/fullsizeImage.Width;
                 if (newHeight > maxHeight)
                 {
                     // Resize with height instead
@@ -566,14 +561,13 @@ namespace AppFrameClient.View.GoodsIO
                     newHeight = maxHeight;
                 }
 
-                System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
+                Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
 
                 // Clear handle to original file so that we can overwrite it if necessary
                 fullsizeImage.Dispose();
 
                 picProduct.Image = newImage;
                 picProduct.Refresh();
-
             }
             catch (Exception ex)
             {
@@ -589,14 +583,14 @@ namespace AppFrameClient.View.GoodsIO
                 int maxHeight = picProduct.Height;
                 Image fullsizeImage = Image.FromFile(Application.StartupPath + "\\ProductImages\\" + txtImagePath.Text);
                 // Prevent using images internal thumbnail
-                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
-                fullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+                fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                fullsizeImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
                 if (fullsizeImage.Width <= newWidth)
                 {
                     newWidth = fullsizeImage.Width;
                 }
-                int newHeight = fullsizeImage.Height * newWidth / fullsizeImage.Width;
+                int newHeight = fullsizeImage.Height*newWidth/fullsizeImage.Width;
                 if (newHeight > maxHeight)
                 {
                     // Resize with height instead
@@ -604,7 +598,7 @@ namespace AppFrameClient.View.GoodsIO
                     newHeight = maxHeight;
                 }
 
-                System.Drawing.Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
+                Image newImage = fullsizeImage.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
 
                 // Clear handle to original file so that we can overwrite it if necessary
                 fullsizeImage.Dispose();
@@ -620,12 +614,13 @@ namespace AppFrameClient.View.GoodsIO
         private void btnCreateType_Click(object sender, EventArgs e)
         {
             AddToDataToComboBox(MasterType.PRODUCT_TYPE,
-                cbbProductType, typeBindingSource);
+                                cbbProductType, typeBindingSource);
         }
 
         private void AddToDataToComboBox(MasterType masterType, ComboBox cbb1, BindingSource s)
         {
-            var universalMasterCreateForm = GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
+            var universalMasterCreateForm =
+                GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
             universalMasterCreateForm.IsNeedClosing = true;
             universalMasterCreateForm.MasterType = masterType;
             universalMasterCreateForm.ShowDialog();
@@ -639,7 +634,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PRODUCT_TYPE:
                         foreach (ProductType type in cbb1.Items)
                         {
-                            if (type.TypeId.Equals(((ProductType)obj).TypeId))
+                            if (type.TypeId.Equals(((ProductType) obj).TypeId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -650,7 +645,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PRODUCT_SIZE:
                         foreach (ProductSize type in cbb1.Items)
                         {
-                            if (type.SizeId.Equals(((ProductSize)obj).SizeId))
+                            if (type.SizeId.Equals(((ProductSize) obj).SizeId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -661,7 +656,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PRODUCT_COLOR:
                         foreach (ProductColor type in cbb1.Items)
                         {
-                            if (type.ColorId.Equals(((ProductColor)obj).ColorId))
+                            if (type.ColorId.Equals(((ProductColor) obj).ColorId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -672,7 +667,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.COUNTRY:
                         foreach (Country type in cbb1.Items)
                         {
-                            if (type.CountryId.Equals(((Country)obj).CountryId))
+                            if (type.CountryId.Equals(((Country) obj).CountryId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -683,7 +678,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.DISTRIBUTOR:
                         foreach (Distributor type in cbb1.Items)
                         {
-                            if (type.DistributorId.Equals(((Distributor)obj).DistributorId))
+                            if (type.DistributorId.Equals(((Distributor) obj).DistributorId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -694,7 +689,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.MANUFACTURER:
                         foreach (Manufacturer type in cbb1.Items)
                         {
-                            if (type.ManufacturerId.Equals(((Manufacturer)obj).ManufacturerId))
+                            if (type.ManufacturerId.Equals(((Manufacturer) obj).ManufacturerId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -705,7 +700,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PACKAGER:
                         foreach (Packager type in cbb1.Items)
                         {
-                            if (type.PackagerId.Equals(((Packager)obj).PackagerId))
+                            if (type.PackagerId.Equals(((Packager) obj).PackagerId))
                             {
                                 cbb1.SelectedIndex = index;
                                 return;
@@ -723,20 +718,21 @@ namespace AppFrameClient.View.GoodsIO
         private void btnCreateColor_Click(object sender, EventArgs e)
         {
             AddToDataToBindingSource(MasterType.PRODUCT_COLOR,
-                colorBindingSource,
-                lbxProductColor);
+                                     colorBindingSource,
+                                     lbxProductColor);
         }
 
         private void btnCreateSize_Click(object sender, EventArgs e)
         {
             AddToDataToBindingSource(MasterType.PRODUCT_SIZE,
-                sizeBindingSource,
-                lbxProductSize);
+                                     sizeBindingSource,
+                                     lbxProductSize);
         }
 
         private void AddToDataToBindingSource(MasterType masterType, BindingSource source, ListBox listBox)
         {
-            var universalMasterCreateForm = GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
+            var universalMasterCreateForm =
+                GlobalUtility.GetFormObject<UniversalMasterCreateForm>(FormConstants.UNIVERASAL_MASTER_CREATE_FORM);
             universalMasterCreateForm.IsNeedClosing = true;
             universalMasterCreateForm.MasterType = masterType;
             universalMasterCreateForm.ShowDialog();
@@ -750,7 +746,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PRODUCT_COLOR:
                         foreach (ProductColor type in source)
                         {
-                            if (type.ColorId.Equals(((ProductColor)obj).ColorId))
+                            if (type.ColorId.Equals(((ProductColor) obj).ColorId))
                             {
                                 listBox.SelectedIndex = index;
                                 return;
@@ -761,7 +757,7 @@ namespace AppFrameClient.View.GoodsIO
                     case MasterType.PRODUCT_SIZE:
                         foreach (ProductSize type in source)
                         {
-                            if (type.SizeId.Equals(((ProductSize)obj).SizeId))
+                            if (type.SizeId.Equals(((ProductSize) obj).SizeId))
                             {
                                 listBox.SelectedIndex = index;
                                 return;
@@ -779,25 +775,25 @@ namespace AppFrameClient.View.GoodsIO
         private void btnCreateCountry_Click(object sender, EventArgs e)
         {
             AddToDataToComboBox(MasterType.COUNTRY,
-                 cbbCountry, countryBindingSource);
+                                cbbCountry, countryBindingSource);
         }
 
         private void btnCreateManufacturer_Click(object sender, EventArgs e)
         {
             AddToDataToComboBox(MasterType.MANUFACTURER,
-               cbbManufacturer, manufacturerBindingSource);
+                                cbbManufacturer, manufacturerBindingSource);
         }
 
         private void btnCreatePackager_Click(object sender, EventArgs e)
         {
             AddToDataToComboBox(MasterType.PACKAGER,
-              cbbPackager, packagerBindingSource);
+                                cbbPackager, packagerBindingSource);
         }
 
         private void btnCreateDistributor_Click(object sender, EventArgs e)
         {
             AddToDataToComboBox(MasterType.DISTRIBUTOR,
-                cbbDistributor, distributorBindingSource);
+                                cbbDistributor, distributorBindingSource);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -812,7 +808,6 @@ namespace AppFrameClient.View.GoodsIO
 
         private void ProductMasterExtraForm_LocationChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

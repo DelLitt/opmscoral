@@ -1,13 +1,6 @@
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Configuration;
-using AppFrame.DataLayer;
 using AppFrame.Model;
-using Spring.Context;
-using Spring.Context.Support;
 using AppFrame.Logic;
 
 /// <summary>

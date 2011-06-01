@@ -10,6 +10,7 @@ using AppFrame.Model;
 using AppFrameServer.DataLayer;
 using AppFrameServer.Utility;
 using AppFrameServer.View.Mapper;
+using Common.Logging;
 
 namespace AppFrameServer.Services
 {

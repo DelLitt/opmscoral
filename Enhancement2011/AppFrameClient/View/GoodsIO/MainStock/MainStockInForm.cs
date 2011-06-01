@@ -635,8 +635,8 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
         }
 
-        private IList<Product> printList = null;
-        private void btnBarcode_Click(object sender, EventArgs e)
+        IList<AppFrame.Model.Product> _printList = null;
+        private void BtnBarcodeClick(object sender, EventArgs e)
         {
             if (dgvDeptStockIn.CurrentRow == null)
             {
@@ -714,10 +714,10 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                         MessageBox.Show("Chỉ có thể in liên tiếp 3 mã vạch");
 
                     }
-                    printList = new List<Product>();
+                    _printList = new List<Product>();
                     foreach (DataGridViewRow selectedRow in selectedRows)
                     {
-                        printList.Add(deptSIDetailList[selectedRow.Index].Product);
+                        _printList.Add(deptSIDetailList[selectedRow.Index].Product);
                     }
                     barcodePrintDocument.Print();
                 }
@@ -882,22 +882,22 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             else // continue printing
             {
                 var height = 87;
-                if(printList == null || printList.Count == 0)
+                if(_printList == null || _printList.Count == 0)
                 {
                     return;
                 }
-                var numberToPrint = printList.Count;
+                var numberToPrint = _printList.Count;
                 
                 for (int i = 0; i < numberToPrint; i++)
                 {
-                string code = printList[i].ProductId;
+                string code = _printList[i].ProductId;
                 var eventArgs = new MainStockInEventArgs
                 {
-                    ProductMasterIdForPrice = printList[i].ProductMaster.ProductMasterId
+                    ProductMasterIdForPrice = _printList[i].ProductMaster.ProductMasterId
                 };
                 EventUtility.fireEvent(GetPriceEvent, this, eventArgs);
                 string titleString = "";
-                string name = printList[i].ProductMaster.ProductName;
+                string name = _printList[i].ProductMaster.ProductName;
                 if (chkPrintPrice.Checked && eventArgs.DepartmentPrice != null)
                 {
                     titleString = name + " - " + eventArgs.DepartmentPrice.Price.ToString() + ".00 ";
@@ -908,21 +908,21 @@ namespace AppFrameClient.View.GoodsIO.MainStock
                 }
 
                 BarcodeLib.Barcode barcode = new Barcode();
-                string barCodeStr = printList[i].ProductId;
+                string barCodeStr = _printList[i].ProductId;
                 string colorSize = "";
-                if (printList[i].ProductMaster.ProductColor.ColorId > 0)
+                if (_printList[i].ProductMaster.ProductColor.ColorId > 0)
                 {
                     colorSize += "M:" +
-                                 printList[i].ProductMaster.ProductColor.ColorName;
+                                 _printList[i].ProductMaster.ProductColor.ColorName;
                 }
-                if (printList[i].ProductMaster.ProductSize.SizeId > 0)
+                if (_printList[i].ProductMaster.ProductSize.SizeId > 0)
                 {
                     if (colorSize.Length > 0)
                     {
                         colorSize += " - ";
                     }
                     colorSize += "S:" +
-                                 printList[i].ProductMaster.ProductSize.SizeName;
+                                 _printList[i].ProductMaster.ProductSize.SizeName;
                 }
                 
                 Image imageBC = null;

@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class EmployeeInfoCollection : BaseCollection<EmployeeInfo>
+    public class EmployeeInfoCollection : AFBaseCollection<EmployeeInfo>
     {
         public EmployeeInfoCollection(BindingSource source) : base(source)
         {

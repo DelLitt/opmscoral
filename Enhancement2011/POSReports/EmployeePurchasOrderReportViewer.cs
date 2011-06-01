@@ -118,7 +118,7 @@ namespace POSReports
                 this.departmentTableAdapter1.Fill(this.posDataSet.department);
                 this.posDataSet.department.AdddepartmentRow(0, "TẤT CẢ CỬA HÀNG", "", 0, 0, DateTime.Now, "admin",
                                                             DateTime.Now, "admin", 0, 0, DateTime.Now);
-                this.departmentBindingSource.DataSource = this.posDataSet.department.OrderBy(dm => dm.DEPARTMENT_ID);
+                this.departmentBindingSource.DataSource = this.posDataSet.department;
                 long currentDept = CurrentDepartment.Get().DepartmentId;
                 if (currentDept != 0)
                 {

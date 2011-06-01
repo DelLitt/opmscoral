@@ -14,7 +14,7 @@ using Spring.Context;
 using Spring.Context.Support;
 using Spring.Objects.Factory;
 using Spring.Objects.Factory.Xml;
-using MainForm=AppFrame.View.MainForm;
+using MainForm = AppFrame.View.MainForm;
 
 namespace AppFrame
 {
@@ -32,7 +32,7 @@ namespace AppFrame
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if(    !ClientSetting.IsClient() 
+            if (!ClientSetting.IsClient()
                 && !ClientSetting.IsServer()
                 && !ClientSetting.IsSubStock())
             {
@@ -48,11 +48,11 @@ namespace AppFrame
             splashScreen = new SplashScreen();
             splashScreen.Show();
             splashScreen.Refresh();
-            
+
             IApplicationContext ctx = ContextRegistry.GetContext();
             MainForm mainForm = null;
             mainForm = ctx.GetObject(FormConstants.MAIN_FORM) as MainForm;
-            mainForm.Shown += new EventHandler(mainForm_Shown);            
+            mainForm.Shown += new EventHandler(mainForm_Shown);
             Application.Run(mainForm);
             //splashScreen.Close();
             //Application.Run(new SettingForm());                
@@ -62,7 +62,7 @@ namespace AppFrame
 
         static void mainForm_Shown(object sender, EventArgs e)
         {
-            if(splashScreen!=null)
+            if (splashScreen != null)
             {
                 splashScreen.Close();
             }

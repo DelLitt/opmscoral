@@ -11,14 +11,14 @@ using AppFrame.Controls;
 namespace AppFrame.Collection
 {
     [Serializable()]
-    public class BaseCollection<T> : BindingList<T>,ITypedList
+    public class AFBaseCollection<T> : BindingList<T>,ITypedList
     {
         private BindingSource bindingSource;
         /// <summary>
         ///  gfgfd
         /// </summary>
         /// <param name="source"></param>
-        public BaseCollection(BindingSource source) : base()
+        public AFBaseCollection(BindingSource source) : base()
         {
             bindingSource = source;
             bindingSource.DataSource = this;
@@ -27,7 +27,7 @@ namespace AppFrame.Collection
         /// <summary>
         /// 
         /// </summary>
-        public BaseCollection()
+        public AFBaseCollection()
             : base()
         {
         }
@@ -36,7 +36,7 @@ namespace AppFrame.Collection
         /// 
         /// </summary>
         /// <param name="list"></param>
-        public BaseCollection(IList<T> list)
+        public AFBaseCollection(IList<T> list)
             : base(list)
         {
         }

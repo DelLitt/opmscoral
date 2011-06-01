@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class ProductMasterCollection : BaseCollection<ProductMaster>
+    public class ProductMasterCollection : AFBaseCollection<ProductMaster>
     {
         public ProductMasterCollection(BindingSource source) : base(source)
         {

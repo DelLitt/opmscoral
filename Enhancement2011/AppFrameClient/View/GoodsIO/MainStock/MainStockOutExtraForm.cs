@@ -1013,7 +1013,7 @@ namespace AppFrameClient.View.GoodsIO.MainStock
             }
             ProductMasterCreateForm form =
                 GlobalUtility.GetFormObject<ProductMasterCreateForm>(FormConstants.PRODUCT_MASTER_CREATE_FORM);
-            form.ProductMaster = proMaster;
+            form.CurrentProductMaster = proMaster;
             form.CloseProductMasterEvent += new EventHandler<ProductMasterEventArgs>(form_CloseProductMasterEvent);
             form.Status = ViewStatus.OPENDIALOG;
             form.ShowDialog();

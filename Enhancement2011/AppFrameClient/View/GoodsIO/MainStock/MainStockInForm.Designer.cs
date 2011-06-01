@@ -198,7 +198,7 @@
             this.btnBarcode.TabIndex = 64;
             this.btnBarcode.Text = "Tạo mã vạch";
             this.btnBarcode.UseVisualStyleBackColor = true;
-            this.btnBarcode.Click += new System.EventHandler(this.btnBarcode_Click);
+            this.btnBarcode.Click += new System.EventHandler(this.BtnBarcodeClick);
             // 
             // label7
             // 

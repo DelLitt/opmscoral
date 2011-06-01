@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class PurchaseOrderCollection : BaseCollection<PurchaseOrder>
+    public class PurchaseOrderCollection : AFBaseCollection<PurchaseOrder>
     {
         /// <summary>
         /// 

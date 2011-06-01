@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class StockCollection : BaseCollection<Stock>
+    public class StockCollection : AFBaseCollection<Stock>
     {
         public StockCollection(BindingSource source) : base(source)
         {

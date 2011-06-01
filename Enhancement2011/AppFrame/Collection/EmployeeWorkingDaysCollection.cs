@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class EmployeeWorkingDaysCollection : BaseCollection<EmployeeWorkingDay>
+    public class EmployeeWorkingDaysCollection : AFBaseCollection<EmployeeWorkingDay>
     {
         public EmployeeWorkingDaysCollection(BindingSource source) : base(source)
         {

@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class LoginModelCollection : BaseCollection<LoginModel>
+    public class LoginModelCollection : AFBaseCollection<LoginModel>
     {
         public LoginModelCollection(BindingSource source) : base(source)
         {

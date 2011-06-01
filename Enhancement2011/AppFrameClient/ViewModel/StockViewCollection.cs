@@ -7,7 +7,7 @@ using AppFrame.Collection;
 
 namespace AppFrameClient.ViewModel
 {
-    public class StockViewCollection : BaseCollection<StockView>
+    public class StockViewCollection : AFBaseCollection<StockView>
     {
         public StockViewCollection(BindingSource source) : base(source)
         {

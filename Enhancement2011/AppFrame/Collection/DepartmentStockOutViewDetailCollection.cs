@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace AppFrame.Collection
 {
-    public class DepartmentStockOutViewDetailCollection : BaseCollection<DepartmentStockOutViewDetailCollection>
+    public class DepartmentStockOutViewDetailCollection : AFBaseCollection<DepartmentStockOutViewDetailCollection>
     {
         public DepartmentStockOutViewDetailCollection(BindingSource source) : base(source)
         {
