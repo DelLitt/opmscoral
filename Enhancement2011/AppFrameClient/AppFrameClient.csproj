@@ -21,6 +21,8 @@
     <SccAuxPath>Svn</SccAuxPath>
     <SccProvider>SubversionScc</SccProvider>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>http://localhost/AppFrameClient/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -35,7 +37,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +59,41 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>money-bag.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\AppFrameClient.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\AppFrameClient.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AppFrameClient.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
@@ -89,9 +125,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data.Entity, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\Libraries\NHibernate.dll</HintPath>
     </Reference>
@@ -289,7 +329,9 @@
     <Compile Include="View\AppFrameConsumerForm.Designer.cs">
       <DependentUpon>AppFrameConsumerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangePasswordForm.cs" />
+    <Compile Include="View\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
@@ -311,11 +353,15 @@
     <Compile Include="View\DeptStockEvaluationComparingForm.Designer.cs">
       <DependentUpon>DeptStockEvaluationComparingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeCheckingForm.cs" />
+    <Compile Include="View\EmployeeCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\EmployeeCheckingForm.Designer.cs">
       <DependentUpon>EmployeeCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeManagementForm.cs" />
+    <Compile Include="View\EmployeeManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\EmployeeManagementForm.Designer.cs">
       <DependentUpon>EmployeeManagementForm.cs</DependentUpon>
     </Compile>
@@ -332,27 +378,39 @@
     <Compile Include="View\ExportDeptStockDefinitionForm.Designer.cs">
       <DependentUpon>ExportDeptStockDefinitionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\CreateStockOutTemplateForm.Designer.cs">
       <DependentUpon>CreateStockOutTemplateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostCreateForm.Designer.cs">
       <DependentUpon>DepartmentCostCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostSummaryForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostSummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentCostSummaryForm.Designer.cs">
       <DependentUpon>DepartmentCostSummaryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockInForm.Designer.cs">
       <DependentUpon>DepartmentFastStockInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentFastStockOutForm.Designer.cs">
       <DependentUpon>DepartmentFastStockOutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentPriceUpdateForm.Designer.cs">
       <DependentUpon>DepartmentPriceUpdateForm.cs</DependentUpon>
     </Compile>
@@ -362,95 +420,141 @@
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentRemainStockForm.Designer.cs">
       <DependentUpon>DepartmentRemainStockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentReStockInForm.Designer.cs">
       <DependentUpon>DepartmentReStockInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInDetailSearchForm.Designer.cs">
       <DependentUpon>DepartmentStockInDetailSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInExtraForm.Designer.cs">
       <DependentUpon>DepartmentStockInExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInForm.Designer.cs">
       <DependentUpon>DepartmentStockInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainEditForm.Designer.cs">
       <DependentUpon>DepartmentStockInFromMainEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockInFromMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockInSearchForm.Designer.cs">
       <DependentUpon>DepartmentStockInSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockOutExtraForm.Designer.cs">
       <DependentUpon>DepartmentStockOutExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSearchForm.Designer.cs">
       <DependentUpon>DepartmentStockSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockSyncFromMainForm.Designer.cs">
       <DependentUpon>DepartmentStockSyncFromMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\DepartmentStockViewCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockViewCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDatabaseImageForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDatabaseImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\LoadDatabaseImageForm.Designer.cs">
       <DependentUpon>LoadDatabaseImageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\LoadDataFromDepartmentToMain.Designer.cs">
       <DependentUpon>LoadDataFromDepartmentToMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\LoadDepartmentStockInToFileForm.Designer.cs">
       <DependentUpon>LoadDepartmentStockInToFileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\SyncDatabaseImageForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncDatabaseImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\SyncDatabaseImageForm.Designer.cs">
       <DependentUpon>SyncDatabaseImageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockData\SyncToMainForm.Designer.cs">
       <DependentUpon>SyncToMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockOutsListForm.cs" />
+    <Compile Include="View\GoodsIO\StockOutsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockOutsListForm.Designer.cs">
       <DependentUpon>StockOutsListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockInEditExtraForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockInEditExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInEditExtraForm.Designer.cs">
       <DependentUpon>MainStockInEditExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockOutDetailConfirmForm.cs" />
+    <Compile Include="View\GoodsIO\StockOutDetailConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockOutDetailConfirmForm.Designer.cs">
       <DependentUpon>StockOutDetailConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockInConfirmForm.cs" />
+    <Compile Include="View\GoodsIO\StockInConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockInConfirmForm.Designer.cs">
       <DependentUpon>StockInConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterExtraForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterExtraForm.Designer.cs">
       <DependentUpon>ProductMasterExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterEditForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterEditForm.Designer.cs">
       <DependentUpon>ProductMasterEditForm.cs</DependentUpon>
     </Compile>
@@ -460,11 +564,15 @@
     <Compile Include="View\GoodsIO\ProductMasterListForm.Designer.cs">
       <DependentUpon>ProductMasterListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockOutConfirmForm.cs" />
+    <Compile Include="View\GoodsIO\StockOutConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockOutConfirmForm.Designer.cs">
       <DependentUpon>StockOutConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\GoodsReturnChildForm.cs" />
+    <Compile Include="View\GoodsSale\GoodsReturnChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\GoodsReturnChildForm.Designer.cs">
       <DependentUpon>GoodsReturnChildForm.cs</DependentUpon>
     </Compile>
@@ -475,15 +583,21 @@
       <DependentUpon>PurchaseOrderViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IEmployeeManagementView.cs" />
-    <Compile Include="View\Inventory\DepartmentStockFixingForm.cs" />
+    <Compile Include="View\Inventory\DepartmentStockFixingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Inventory\DepartmentStockFixingForm.Designer.cs">
       <DependentUpon>DepartmentStockFixingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.cs" />
+    <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Inventory\DepartmentStockAdhocCheckingForm.Designer.cs">
       <DependentUpon>DepartmentStockAdhocCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\ClosedPeriodForm.cs" />
+    <Compile Include="View\Management\ClosedPeriodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Management\ClosedPeriodForm.Designer.cs">
       <DependentUpon>ClosedPeriodForm.cs</DependentUpon>
     </Compile>
@@ -493,11 +607,15 @@
     <Compile Include="View\Management\DepartmentManagement.Designer.cs">
       <DependentUpon>DepartmentManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\EmployeeMoneyForm.cs" />
+    <Compile Include="View\Management\EmployeeMoneyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Management\EmployeeMoneyForm.Designer.cs">
       <DependentUpon>EmployeeMoneyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\EmployeeWorkingsForm.cs" />
+    <Compile Include="View\Management\EmployeeWorkingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Management\EmployeeWorkingsForm.Designer.cs">
       <DependentUpon>EmployeeWorkingsForm.cs</DependentUpon>
     </Compile>
@@ -538,7 +656,9 @@
     <Compile Include="View\PosLogDetailForm.Designer.cs">
       <DependentUpon>PosLogDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PosLogForm.cs" />
+    <Compile Include="View\PosLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\PosLogForm.Designer.cs">
       <DependentUpon>PosLogForm.cs</DependentUpon>
     </Compile>
@@ -548,15 +668,21 @@
     <Compile Include="View\ProductInfoForm.Designer.cs">
       <DependentUpon>ProductInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ProductMasterChoosingForm.cs" />
+    <Compile Include="View\ProductMasterChoosingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\ProductMasterChoosingForm.Designer.cs">
       <DependentUpon>ProductMasterChoosingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalePoints\EmployeeListForm.cs" />
+    <Compile Include="View\SalePoints\EmployeeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SalePoints\EmployeeListForm.Designer.cs">
       <DependentUpon>EmployeeListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalePoints\SalePointSubStock.cs" />
+    <Compile Include="View\SalePoints\SalePointSubStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SalePoints\SalePointSubStock.Designer.cs">
       <DependentUpon>SalePointSubStock.cs</DependentUpon>
     </Compile>
@@ -804,11 +930,15 @@
     <Compile Include="ViewModel\StockOutViewCollection.cs" />
     <Compile Include="ViewModel\StockView.cs" />
     <Compile Include="ViewModel\StockViewCollection.cs" />
-    <Compile Include="View\AuthForm.cs" />
+    <Compile Include="View\AuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EditCustomerForm.cs" />
+    <Compile Include="View\EditCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\EditCustomerForm.Designer.cs">
       <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </Compile>
@@ -818,65 +948,87 @@
     <Compile Include="View\GoodsIO\BarcodePreviewForm.Designer.cs">
       <DependentUpon>BarcodePreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.cs" />
+    <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\DepartmentStockOutConfirmForm.Designer.cs">
       <DependentUpon>DepartmentStockOutConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainReStockInExtraForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainReStockInExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainReStockInExtraForm.Designer.cs">
       <DependentUpon>MainReStockInExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockOutExtraForm.Designer.cs">
       <DependentUpon>MainStockOutExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockSearchByBarcodeForm.Designer.cs">
       <DependentUpon>MainStockSearchByBarcodeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.Designer.cs">
       <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\TrackingReturnGoodsForm.cs">
+    <Compile Include="View\Reports\MainStockOutReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\GoodsSale\TrackingReturnGoodsForm.Designer.cs">
-      <DependentUpon>TrackingReturnGoodsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Reports\MainStockOutReportForm.cs" />
     <Compile Include="View\Reports\MainStockOutReportForm.Designer.cs">
       <DependentUpon>MainStockOutReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\InventoryCheckingForm.Designer.cs">
       <DependentUpon>InventoryCheckingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockInExtraForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockInExtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInExtraForm.Designer.cs">
       <DependentUpon>MainStockInExtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockInForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInForm.Designer.cs">
       <DependentUpon>MainStockInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockInSearchForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockInSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInSearchForm.Designer.cs">
       <DependentUpon>MainStockInSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\MainStockInSearchReportForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\MainStockInSearchReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\MainStockInSearchReportForm.Designer.cs">
       <DependentUpon>MainStockInSearchReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\ReStockInForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\ReStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\ReStockInForm.Designer.cs">
       <DependentUpon>ReStockInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\BaseStockOutForm.cs" />
+    <Compile Include="View\GoodsIO\MainStock\BaseStockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\BaseStockOutForm.Designer.cs">
       <DependentUpon>BaseStockOutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterFormForBarcodeView.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterFormForBarcodeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterFormForBarcodeView.Designer.cs">
       <DependentUpon>ProductMasterFormForBarcodeView.cs</DependentUpon>
     </Compile>
@@ -922,19 +1074,27 @@
     <Compile Include="View\GoodsIO\ProductMasterCreateControl.Designer.cs">
       <DependentUpon>ProductMasterCreateControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterCreateForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterCreateForm.Designer.cs">
       <DependentUpon>ProductMasterCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterSearchDepartmentForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterSearchDepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterSearchDepartmentForm.Designer.cs">
       <DependentUpon>ProductMasterSearchDepartmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterSearchForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterSearchForm.Designer.cs">
       <DependentUpon>ProductMasterSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockSearchForm.cs" />
+    <Compile Include="View\GoodsIO\StockSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockSearchForm.Designer.cs">
       <DependentUpon>StockSearchForm.cs</DependentUpon>
     </Compile>
@@ -944,7 +1104,9 @@
     <Compile Include="View\GoodsIO\ProductMasterControl.Designer.cs">
       <DependentUpon>ProductMasterControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterForm.Designer.cs">
       <DependentUpon>ProductMasterForm.cs</DependentUpon>
     </Compile>
@@ -954,15 +1116,21 @@
     <Compile Include="View\GoodsIO\ProductMasterSearchControl.Designer.cs">
       <DependentUpon>ProductMasterSearchControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\ProductMasterSearchOrCreateForm.cs" />
+    <Compile Include="View\GoodsIO\ProductMasterSearchOrCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\ProductMasterSearchOrCreateForm.Designer.cs">
       <DependentUpon>ProductMasterSearchOrCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\StockCreateForm.cs" />
+    <Compile Include="View\GoodsIO\StockCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\StockCreateForm.Designer.cs">
       <DependentUpon>StockCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\DayGoodsSaleListForm.cs" />
+    <Compile Include="View\GoodsSale\DayGoodsSaleListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\DayGoodsSaleListForm.Designer.cs">
       <DependentUpon>DayGoodsSaleListForm.cs</DependentUpon>
     </Compile>
@@ -972,15 +1140,21 @@
     <Compile Include="View\GoodsSale\Goods.Designer.cs">
       <DependentUpon>Goods.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\GoodsSaleListForm.cs" />
+    <Compile Include="View\GoodsSale\GoodsSaleListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\GoodsSaleListForm.Designer.cs">
       <DependentUpon>GoodsSaleListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\GoodsSalePrintForm.cs" />
+    <Compile Include="View\GoodsSale\GoodsSalePrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\GoodsSalePrintForm.Designer.cs">
       <DependentUpon>GoodsSalePrintForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\GoodsSaleReturnForm.cs" />
+    <Compile Include="View\GoodsSale\GoodsSaleReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\GoodsSaleReturnForm.Designer.cs">
       <DependentUpon>GoodsSaleReturnForm.cs</DependentUpon>
     </Compile>
@@ -990,11 +1164,15 @@
     <Compile Include="View\GoodsSale\GoodsSync.Designer.cs">
       <DependentUpon>GoodsSync.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\MonthGoodsSaleListForm.cs" />
+    <Compile Include="View\GoodsSale\MonthGoodsSaleListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\MonthGoodsSaleListForm.Designer.cs">
       <DependentUpon>MonthGoodsSaleListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\SearchGoodsSaleListForm.cs" />
+    <Compile Include="View\GoodsSale\SearchGoodsSaleListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\SearchGoodsSaleListForm.Designer.cs">
       <DependentUpon>SearchGoodsSaleListForm.cs</DependentUpon>
     </Compile>
@@ -1028,11 +1206,15 @@
     <Compile Include="View\Masters\SupplierMaster.Designer.cs">
       <DependentUpon>SupplierMaster.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsSale\GoodsSaleForm.cs" />
+    <Compile Include="View\GoodsSale\GoodsSaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsSale\GoodsSaleForm.Designer.cs">
       <DependentUpon>GoodsSaleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginForm.cs" />
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
@@ -1042,23 +1224,33 @@
     <Compile Include="View\Masters\UniversalMasterCreateForm.Designer.cs">
       <DependentUpon>UniversalMasterCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\DepartmentStockInReportForm.cs" />
+    <Compile Include="View\Reports\DepartmentStockInReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Reports\DepartmentStockInReportForm.Designer.cs">
       <DependentUpon>DepartmentStockInReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\RemainStockReport.cs" />
+    <Compile Include="View\Reports\RemainStockReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Reports\RemainStockReport.Designer.cs">
       <DependentUpon>RemainStockReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\rptStock.cs" />
+    <Compile Include="View\Reports\rptStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Reports\rptStock.Designer.cs">
       <DependentUpon>rptStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\rptStockIn.cs" />
+    <Compile Include="View\Reports\rptStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Reports\rptStockIn.Designer.cs">
       <DependentUpon>rptStockIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalePoints\EmployeeForm.cs" />
+    <Compile Include="View\SalePoints\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SalePoints\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
@@ -1068,11 +1260,15 @@
     <Compile Include="View\SalePoints\FineBonusForm.Designer.cs">
       <DependentUpon>FineBonusForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalePoints\SalePointForm.cs" />
+    <Compile Include="View\SalePoints\SalePointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SalePoints\SalePointForm.Designer.cs">
       <DependentUpon>SalePointForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalePoints\SalePointListForm.cs" />
+    <Compile Include="View\SalePoints\SalePointListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SalePoints\SalePointListForm.Designer.cs">
       <DependentUpon>SalePointListForm.cs</DependentUpon>
     </Compile>
@@ -1082,11 +1278,15 @@
     <Compile Include="View\SalePoints\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SecuritySettingsForm.cs" />
+    <Compile Include="View\SecuritySettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\SecuritySettingsForm.Designer.cs">
       <DependentUpon>SecuritySettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GoodsIO\MainStock\StockOutDialog.cs" />
+    <Compile Include="View\GoodsIO\MainStock\StockOutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\GoodsIO\MainStock\StockOutDialog.Designer.cs">
       <DependentUpon>StockOutDialog.cs</DependentUpon>
     </Compile>
@@ -1426,9 +1626,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\GoodsIO\MainStock\ProcessErrorGoodsForm.resx">
       <DependentUpon>ProcessErrorGoodsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\GoodsSale\TrackingReturnGoodsForm.resx">
-      <DependentUpon>TrackingReturnGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\MainStockOutReportForm.resx">
       <DependentUpon>MainStockOutReportForm.cs</DependentUpon>

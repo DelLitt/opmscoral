@@ -8,7 +8,7 @@ using AppFrame.Model;
 namespace AppFrame.Collection
 {
     [Serializable()]
-    public class DepartmentStockInDetailCollection : AFBaseCollection<DepartmentStockInDetail>
+    public class DepartmentStockInDetailCollection : AfBaseCollection<DepartmentStockInDetail>
     {
         public DepartmentStockInDetailCollection(BindingSource source) : base(source)
         {

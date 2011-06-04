@@ -7,7 +7,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class DepartmentCostCollection : AFBaseCollection<DepartmentCost>
+    public class DepartmentCostCollection : AfBaseCollection<DepartmentCost>
     {
         public DepartmentCostCollection(BindingSource source) : base(source)
         {

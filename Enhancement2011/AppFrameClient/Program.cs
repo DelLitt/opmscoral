@@ -1,26 +1,16 @@
 using System;
-using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
-using AppFrame.Common;
-using AppFrame.Utility;
 using AppFrame.View;
-using AppFrameClient;
 using AppFrameClient.Common;
 using AppFrameClient.View;
-using AppFrameClient.View.GoodsIO;
-using AppFrameClient.View.GoodsIO.DepartmentStockData;
 using Spring.Context;
 using Spring.Context.Support;
-using Spring.Objects.Factory;
-using Spring.Objects.Factory.Xml;
-using MainForm = AppFrame.View.MainForm;
 
-namespace AppFrame
+namespace AppFrameClient
 {
     internal static class Program
     {
-        private static SplashScreen splashScreen = null;
+        private static SplashScreen _splashScreen = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -45,9 +35,9 @@ namespace AppFrame
                 settingForm.Refresh();
             }
 
-            splashScreen = new SplashScreen();
-            splashScreen.Show();
-            splashScreen.Refresh();
+            _splashScreen = new SplashScreen();
+            _splashScreen.Show();
+            _splashScreen.Refresh();
 
             IApplicationContext ctx = ContextRegistry.GetContext();
             MainForm mainForm = null;
@@ -62,9 +52,9 @@ namespace AppFrame
 
         static void mainForm_Shown(object sender, EventArgs e)
         {
-            if (splashScreen != null)
+            if (_splashScreen != null)
             {
-                splashScreen.Close();
+                _splashScreen.Close();
             }
         }
     }

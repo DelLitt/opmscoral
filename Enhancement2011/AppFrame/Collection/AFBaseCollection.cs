@@ -11,23 +11,23 @@ using AppFrame.Controls;
 namespace AppFrame.Collection
 {
     [Serializable()]
-    public class AFBaseCollection<T> : BindingList<T>,ITypedList
+    public class AfBaseCollection<T> : BindingList<T>,ITypedList
     {
-        private BindingSource bindingSource;
+        private BindingSource _bindingSource;
         /// <summary>
         ///  gfgfd
         /// </summary>
         /// <param name="source"></param>
-        public AFBaseCollection(BindingSource source) : base()
+        public AfBaseCollection(BindingSource source) : base()
         {
-            bindingSource = source;
-            bindingSource.DataSource = this;
+            _bindingSource = source;
+            _bindingSource.DataSource = this;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public AFBaseCollection()
+        public AfBaseCollection()
             : base()
         {
         }
@@ -36,15 +36,15 @@ namespace AppFrame.Collection
         /// 
         /// </summary>
         /// <param name="list"></param>
-        public AFBaseCollection(IList<T> list)
+        public AfBaseCollection(IList<T> list)
             : base(list)
         {
         }
 
         public BindingSource ParentBindingSource
         {
-            get { return bindingSource; }
-            set { bindingSource = value; }
+            get { return _bindingSource; }
+            set { _bindingSource = value; }
         }
         #region implement sortable
         protected override bool SupportsSearchingCore
@@ -233,13 +233,13 @@ namespace AppFrame.Collection
         public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
         {
             bool designTime = false;
-            if (bindingSource == null)
+            if (_bindingSource == null)
             {
                 designTime = true;
             }
             else
             {
-                if (bindingSource.Site != null && bindingSource.Site.DesignMode)
+                if (_bindingSource.Site != null && _bindingSource.Site.DesignMode)
                 {
                     designTime = true;
                 }

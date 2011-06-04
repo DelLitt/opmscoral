@@ -42,7 +42,7 @@ public string GuestName
             else
             {
                 User.IsGuest = false;
-                return User.createUser(username);
+                return User.CreateUser(username);
             }
         }
         private void CreateGuestUser()
@@ -60,7 +60,7 @@ public string GuestName
         /// <returns></returns>
         public bool validateUser(string username, string password)
         {
-            return User.validateUser(username, password);
+            return User.ValidateUser(username, password);
         }
 
         

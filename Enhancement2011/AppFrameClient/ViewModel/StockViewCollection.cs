@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using AppFrame.Collection;
 
 namespace AppFrameClient.ViewModel
 {
-    public class StockViewCollection : AFBaseCollection<StockView>
+    public class StockViewCollection : AppFrame.Collection.AfBaseCollection<StockView>
     {
         public StockViewCollection(BindingSource source) : base(source)
         {

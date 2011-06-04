@@ -8,7 +8,7 @@ using AppFrame.View.GoodsIO.DepartmentGoodsIO;
 
 namespace AppFrameClient.ViewModel
 {
-     public class ScanTypeCollection : AFBaseCollection<ScanType>
+     public class ScanTypeCollection : AfBaseCollection<ScanType>
     {
          public ScanTypeCollection(BindingSource source) : base(source)
          {

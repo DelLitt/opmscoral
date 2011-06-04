@@ -1,28 +1,17 @@
-
 using System;
+using AppFrame.Common;
 using AppFrame.Model;
 using AppFrame.Logic;
 
-/// <summary>
-/// Summary description for AppFrameUser
-/// </summary>
-
-namespace AppFrame.Common
+namespace AppFrameClient.Common
 {
 
     [Serializable]
-    public class AppFrameUser : AbstractUser
+    public class AppFrameUser : AppFrame.Common.AbstractUser
     {
+        public ILoginLogic LoginLogic { get; set; }
 
-        private ILoginLogic loginLogic;
-
-        public ILoginLogic LoginLogic
-        {
-            get { return loginLogic; }
-            set { loginLogic = value; }
-        }
-
-        public override bool validateUser(string username, string password)
+        public override bool ValidateUser(string username, string password)
         {
 
             LoginModel loginModel = new LoginModel();
@@ -32,7 +21,7 @@ namespace AppFrame.Common
 
         }
 
-        public override AbstractUser createUser(string username)
+        public override AppFrame.Common.AbstractUser CreateUser(string username)
         {
             BaseUser returnUser = LoginLogic.getUser(username);
             this.Name = returnUser.Name;

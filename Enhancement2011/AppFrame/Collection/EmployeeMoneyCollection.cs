@@ -8,7 +8,7 @@ using AppFrame.Model;
 
 namespace AppFrame.Collection
 {
-    public class EmployeeMoneyCollection : AFBaseCollection<EmployeeMoney>
+    public class EmployeeMoneyCollection : AfBaseCollection<EmployeeMoney>
     {
         public EmployeeMoneyCollection(BindingSource source) : base(source)
         {
