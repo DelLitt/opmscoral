@@ -179,6 +179,7 @@
     <Compile Include="Collection\StockOutCollection.cs" />
     <Compile Include="Collection\StockOutDetailCollection.cs" />
     <Compile Include="Common\AbstractUser.cs" />
+    <Compile Include="Common\AppFrameConroller.cs" />
     <Compile Include="Common\AppUserManager.cs" />
     <Compile Include="Common\AsyncController.cs">
     </Compile>
@@ -187,7 +188,9 @@
     <Compile Include="Common\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Common\BasePresenter.cs" />
     <Compile Include="Common\BaseUser.cs" />
+    <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\ClientInfo.cs" />
     <Compile Include="Common\ClonableObject.cs" />
     <Compile Include="Common\Code39.cs" />
@@ -204,12 +207,20 @@
     <Compile Include="Common\IBaseController.cs" />
     <Compile Include="Common\IDefaultController.cs" />
     <Compile Include="Common\InnerClipboard.cs" />
+    <Compile Include="Common\IPresenter.cs" />
     <Compile Include="Common\IView.cs" />
+    <Compile Include="Common\IViewModel.cs" />
+    <Compile Include="Common\IViewNew.cs" />
     <Compile Include="Common\LogicItemPermission.cs" />
     <Compile Include="Common\LogicResult.cs" />
     <Compile Include="Common\RoleEqualityComparer.cs" />
     <Compile Include="Common\ServiceResult.cs" />
     <Compile Include="Common\ToolStripItemPermission.cs" />
+    <Compile Include="Common\ViewAttribute.cs" />
+    <Compile Include="Common\ViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\ViewModelAttribute.cs" />
     <Compile Include="Controls\ComplexBindingSource.cs">
       <SubType>Component</SubType>
     </Compile>
