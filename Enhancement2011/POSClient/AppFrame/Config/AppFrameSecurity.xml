@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<security>
-  <authentication id ="auth" type="AppFrame.Common.AuthManager, AppFrame" usermanager="usermanager" />
-    <usermanager id="usermanager" type="AppFrame.Common.AppUserManager,AppFrame" user="User" />
-    <user id="user" type="AppFrame.Common.AppUserManager,AppFrame" />
-</security>  
-
