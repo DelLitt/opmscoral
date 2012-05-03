@@ -5,11 +5,11 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Security;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
+using Caliburn.Micro;
 
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using CoralPOS2.Models;
 using POSServer.BusinessLogic.Logic.Security;
 using POSServer.Common;
@@ -22,9 +22,9 @@ namespace POSServer.ViewModels.Security
     {
 
         private IShellViewModel _startViewModel;
-        public LoginViewModel(IShellViewModel startViewModel)
+        public LoginViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 
         private string _username;
@@ -74,7 +74,7 @@ namespace POSServer.ViewModels.Security
                 Flow.Session.Put(CommonConstants.LOGGED_USER, model);
                 ClientInfo.Instance.Username = model.Username;
                 ClientInfo.Instance.Role = "Supervisor";
-                //_startViewModel.Open<IMainView>();
+                //_startViewModel.Open<IMainViewModel>();
                 GoToNextNode();
             }
             else

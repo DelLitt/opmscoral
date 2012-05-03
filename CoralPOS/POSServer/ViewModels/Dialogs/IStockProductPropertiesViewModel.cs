@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    public interface IStockProductPropertiesViewModel : IScreenNode,IScreenEx
+    public interface IStockProductPropertiesViewModel : IScreenNode
     {
         #region Fields
         string ProductName { get; set; }

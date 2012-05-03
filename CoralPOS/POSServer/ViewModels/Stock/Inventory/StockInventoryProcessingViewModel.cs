@@ -10,10 +10,10 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Utility;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using CoralPOS.DTO;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
@@ -28,9 +28,9 @@ namespace POSServer.ViewModels.Stock.Inventory
     {
 
         private IShellViewModel _startViewModel;
-        public StockInventoryProcessingViewModel(IShellViewModel startViewModel)
+        public StockInventoryProcessingViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -361,7 +361,7 @@ namespace POSServer.ViewModels.Stock.Inventory
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             StockInventoryList = new ArrayList();
             EvaluationList = new ArrayList();

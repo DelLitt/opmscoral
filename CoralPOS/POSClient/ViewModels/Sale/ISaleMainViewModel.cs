@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 
 namespace POSClient.ViewModels.Sale
 {
@@ -17,21 +17,19 @@ namespace POSClient.ViewModels.Sale
 			#endregion
 		
 		#region Methods
-		        
-        void CreateProductMaster();
-        
-		        
-        void CreateProductMasterByTemplate();
-        
-		        
+
+        void CreatePurchaseOrder();
+
+
+        void PurchaseOrderList();
+
+
         void ProductMasterList();
+
+
+        void PriceList();
         
 		        
-        void StockInByExcel();
-        
-		        
-        void ExtendFunctions();
-        
-			#endregion
+        #endregion
     }
 }

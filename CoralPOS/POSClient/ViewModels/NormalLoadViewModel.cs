@@ -1,6 +1,7 @@
 ﻿using System.Timers;
 using AppFrame.WPF.Screens;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 
 namespace POSClient.ViewModels
 {
@@ -9,9 +10,9 @@ namespace POSClient.ViewModels
     {
         private IShellViewModel _startViewModel;
         private Timer timer = null;
-        public NormalLoadViewModel(IShellViewModel shellPresenter)
+        public NormalLoadViewModel()
         {
-            _startViewModel = shellPresenter;
+            _startViewModel = ShellViewModel.Current;
             /*timer = new Timer();
             timer.Interval = 100;
             timer.Elapsed += TimerElapsed;
@@ -52,7 +53,8 @@ namespace POSClient.ViewModels
         public void StopLoading()
         {
             //timer.Stop();
-            Shutdown(); 
+            ShellViewModel.Current.HideDialog(this);
+            //Shutdown(); 
         }
 
         protected override void OnInitialize()

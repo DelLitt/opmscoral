@@ -1,18 +1,13 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using AppFrame.Base;
 using AppFrame.DataLayer;
+using AppFrame.Invocation;
+using AppFrame.Validation;
 using AppFrame.WPF;
-using Caliburn.Core.Invocation;
-using Caliburn.Core.Validation;
-using Caliburn.PresentationFramework.Invocation;
-using Caliburn.PresentationFramework.ViewModels;
+using Caliburn.Micro;
 
 namespace AppFrame.Extensions
 {

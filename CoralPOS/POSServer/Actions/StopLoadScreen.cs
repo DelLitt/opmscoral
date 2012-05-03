@@ -13,13 +13,17 @@ namespace POSServer.Actions
         {
             ILoadViewModel var = GlobalSession.Instance.Get("GLOBALLOADSCREEN") as ILoadViewModel;
             var.StopLoading();
-            var.WasShutdown += new EventHandler(var_WasShutdown);
+            var.Deactivated += new EventHandler<Caliburn.Micro.DeactivationEventArgs>(var_Deactivated);
+            
+            //var.WasShutdown += new EventHandler(var_WasShutdown);
             
         }
 
-        void var_WasShutdown(object sender, EventArgs e)
+        void var_Deactivated(object sender, Caliburn.Micro.DeactivationEventArgs e)
         {
-            GoToNextNode();
+            GoToNextNode();            
         }
+
+        
     }
 }

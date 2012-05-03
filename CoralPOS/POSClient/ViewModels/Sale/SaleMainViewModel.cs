@@ -10,25 +10,25 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSClient.ViewModels.Menu;
 
 
 namespace POSClient.ViewModels.Sale
 {
-    [PerRequest(typeof(ISaleMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
-    public class SaleMainViewModel : PosViewModel,ISaleMainViewModel  
-    {
+	[PerRequest(typeof(ISaleMainViewModel))]
+	[AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
+	public class SaleMainViewModel : PosViewModel,ISaleMainViewModel  
+	{
 
-        private IShellViewModel _startViewModel;
-        public SaleMainViewModel(IShellViewModel startViewModel)
-        {
-            _startViewModel = startViewModel; 
-        }
+		private IShellViewModel _startViewModel;
+		public SaleMainViewModel()
+		{
+			_startViewModel = ShellViewModel.Current;
+		}
 		
 		#region Fields
 				#endregion
@@ -40,34 +40,34 @@ namespace POSClient.ViewModels.Sale
 				#endregion
 		
 		#region Methods
-		        
-        public void CreateProductMaster()
-        {
-            
-        }
-		        
-        public void CreateProductMasterByTemplate()
-        {
-            
-        }
-		        
-        public void ProductMasterList()
-        {
-            
-        }
-		        
-        public void StockInByExcel()
-        {
-            
-        }
-		        
-        public void ExtendFunctions()
-        {
-            
-        }
+
+		public void CreatePurchaseOrder()
+		{
+		    ShellViewModel.Current.EnterFlow("PurchaseOrderViewFlow");
+		}
+
+		public void PurchaseOrderList()
+		{
+			
+		}
+
+		public void ProductMasterList()
+		{
+			
+		}
+
+		public void PriceList()
+		{
+			
+		}
+				
+		public void ExtendFunctions()
+		{
+			
+		}
 				#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

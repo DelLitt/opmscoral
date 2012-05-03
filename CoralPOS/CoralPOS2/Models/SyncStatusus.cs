@@ -1,33 +1,31 @@
-using System; 
-using System.Text; 
-using System.Collections.Generic; 
-using System.Runtime.Serialization; 
-using Caliburn.PresentationFramework.Behaviors; 
+using System;
+using System.Runtime.Serialization;
+using AppFrame.Validation;
 
 
 namespace CoralPOS.Models {
-    
-    
-    [Serializable()]
-    [Validate()]
-    [DataContract()]
-    public class SyncStatusus {
-        
-        public SyncStatusus() {
-        }
-        
-        [DataMember(Name="1", Order=1)]
-        public virtual System.DateTime LastSyncDate {
-            get;
-            set;
-        }
-        
-        [DataMember(Name="2", Order=2)]
-        public virtual string CreateId {
-            get;
-            set;
-        }
-   	 protected bool Equals(SyncStatusus entity)
+	
+	
+	[Serializable()]
+	[Validate()]
+	[DataContract()]
+	public class SyncStatusus {
+		
+		public SyncStatusus() {
+		}
+		
+		[DataMember(Name="1", Order=1)]
+		public virtual System.DateTime LastSyncDate {
+			get;
+			set;
+		}
+		
+		[DataMember(Name="2", Order=2)]
+		public virtual string CreateId {
+			get;
+			set;
+		}
+	 protected bool Equals(SyncStatusus entity)
 		{
 			if (entity == null) return false;
 			if (!base.Equals(entity)) return false;

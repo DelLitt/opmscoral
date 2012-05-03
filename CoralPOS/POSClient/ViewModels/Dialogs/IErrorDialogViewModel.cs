@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
 using AppFrame.Base;
+using Caliburn.Micro;
 
 namespace POSClient.ViewModels.Dialogs
 {
-    public interface IErrorDialogViewModel : IScreenNode, IScreenEx
+    public interface IErrorDialogViewModel : IScreenNode, IScreen
     {
         IList ErrorResult { get; set; }
     }

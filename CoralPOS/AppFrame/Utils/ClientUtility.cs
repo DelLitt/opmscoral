@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
-using Caliburn.Core.Invocation;
 using Common.Logging;
 
 namespace AppFrame.Utils

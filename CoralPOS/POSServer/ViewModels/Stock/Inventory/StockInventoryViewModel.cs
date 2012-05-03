@@ -1,22 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Forms;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
 using AppFrame.Extensions;
+using AppFrame.Invocation;
 using AppFrame.Utils;
-using Caliburn.Core;
-using Caliburn.Core.Invocation;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
 using CoralPOS.DTO;
 using CoralPOS.Models;
 using NHibernate.Criterion;
@@ -35,9 +28,9 @@ namespace POSServer.ViewModels.Stock.Inventory
     {
 
         private IShellViewModel _startViewModel;
-        public StockInventoryViewModel(IShellViewModel startViewModel)
+        public StockInventoryViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -488,7 +481,7 @@ namespace POSServer.ViewModels.Stock.Inventory
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             ObjectCriteria<Department> crit = new ObjectCriteria<Department>();
             crit.AddOrder(m => m.DepartmentId,Order.Asc);

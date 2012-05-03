@@ -1,7 +1,8 @@
-﻿namespace Caliburn.WPF.ApplicationFramework
+﻿using System.Windows.Controls;
+using Caliburn.Micro;
+namespace Caliburn.WPF.ApplicationFramework
 {
-    using System.Windows.Controls;
-    using ModelFramework;
+    
 
     public class ValidationResult : IValidationResult
     {

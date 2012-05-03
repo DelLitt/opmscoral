@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using AppFrame.Base;
-using AppFrame.DataLayer;
-using AppFrame.WPF;
 using AppFrame.WPF.Screens;
-using Caliburn.Core.Invocation;
-using Caliburn.PresentationFramework.Actions;
-using Caliburn.PresentationFramework.Filters;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Utils;
+
 
 namespace POSServer.Actions.Stock.StockIn
 {
@@ -23,14 +15,14 @@ namespace POSServer.Actions.Stock.StockIn
         
         public override void DoExecute()
         {
-            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+            IoC.Get<ICircularLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockInPreLoadAction_DoExecuteCompleted;
             DoExecuteAsync(() => DoWork(), null);
         }
 
         void StockInPreLoadAction_DoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+            IoC.Get<ICircularLoadViewModel>().StopLoading();
             GoToNextNode();
         }
 

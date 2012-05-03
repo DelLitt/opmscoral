@@ -24,5 +24,8 @@
         <Button FontSize="14" FontWeight="Bold" Margin="59.994,324.412,69.256,284.416" Name="ToMainStock" TabIndex="9" Grid.Row="1">
             <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="72.5" Text="XUẤT ĐỒNG BỘ"></TextBlock>
         </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="60,434,71,175" Name="CreateSyncUSB" TabIndex="9" Grid.Row="1">
+            <TextBlock Text="TẠO USB ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" Width="72.5" />
+        </Button>
     </Grid>
 </UserControl>

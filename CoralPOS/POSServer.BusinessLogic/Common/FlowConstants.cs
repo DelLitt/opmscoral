@@ -31,6 +31,11 @@ namespace POSServer.BusinessLogic.Common
         public const string PRODUCT_SIZE_LIST = "ProductSizeList";
 
         public const string DEFINITION_STATUS_LIST = "DefinitionStatusList";
-        
+
+
+        public const string CONFIRMING_STOCK_OUT_LIST = "ConfirmingStockOutList";
+
+        public const string STOCK_OUT_CONFIRM_FLAG = "StockOutConfirmFlag";
+
     }
 }

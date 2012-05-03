@@ -1,11 +1,12 @@
 using System;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 using CoralPOS.Models;
 
 namespace POSClient.ViewModels.Dialogs
 {
-    public interface IStockOutChoosingViewModel : IScreenNode,IScreenEx
+    public interface IStockOutChoosingViewModel : IScreenNode,IScreen
     {
         #region Fields
 

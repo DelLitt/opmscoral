@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
+
 using CoralPOS2.Models;
 using POSClient.BusinessLogic.Logic.Security;
 using POSClient.Common;
@@ -19,9 +20,9 @@ namespace POSClient.ViewModels.Security
     {
 
         private IShellViewModel _startViewModel;
-        public LoginViewModel(IShellViewModel startViewModel)
+        public LoginViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 
         private string _username;

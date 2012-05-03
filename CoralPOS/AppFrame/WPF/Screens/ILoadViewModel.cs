@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework.Screens;
+﻿using Caliburn.Micro;
 
 namespace AppFrame.WPF.Screens
 {
-    public interface ILoadViewModel : IScreenEx
+    public interface ILoadViewModel : IScreen
     {
         void StartLoading();
         void StopLoading();

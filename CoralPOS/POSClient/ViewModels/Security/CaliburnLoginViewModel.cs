@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using AppFrame.Base;
+﻿using System.ComponentModel;
 using AppFrame.Base.Generic;
-using Caliburn.Core.IoC;
-using Caliburn.ModelFramework;
-using Caliburn.PresentationFramework.Screens;
-using Caliburn.PresentationFramework.Filters;
-using Caliburn.PresentationFramework.Screens;
-using CoralPOS2.Models;
-using NHibernate.Mapping;
+using AppFrame.CustomAttributes;
+using CoralPOS.Models;
+using POSServer.ViewModels.Security;
 
-namespace POSServer.ViewModels.Security
+namespace POSClient.ViewModels.Security
 {
     [PerRequest(typeof(ICaliburnLoginViewModel))]
     public class CaliburnLoginViewModel : GenericPosViewModel<CaliburnLoginModel>, ICaliburnLoginViewModel
@@ -27,7 +17,7 @@ namespace POSServer.ViewModels.Security
         }
 
         
-        [Preview("CanSave")]
+        //[Preview("CanSave")]
         public void LoginAction()
         {
             /*Subject.EndEdit();
@@ -55,29 +45,36 @@ namespace POSServer.ViewModels.Security
 
         protected override void OnActivate()
         {
-            base.OnActivate();
 
-            Subject.PropertyChanged += OnPropertyChangedEvent;
+            base.OnActivate();
+            this.PropertyChanged += OnPropertyChangedEvent;
+            
+            /*Subject.PropertyChanged += OnPropertyChangedEvent;
 
             Subject.BeginEdit();
-            Subject.Validate();
+            Subject.Validate();*/
         }
 
-        protected override void OnDeactivate()
+        protected override void OnDeactivate(bool close)
         {
-            base.OnDeactivate();
-            Subject.PropertyChanged -= OnPropertyChangedEvent;
+            base.OnDeactivate(close);
+            //Subject.PropertyChanged -= OnPropertyChangedEvent;
         }
 
-        protected override void OnShutdown()
+        protected void OnShutdown()
         {
-            base.OnShutdown();
-            Subject.CancelEdit();
+            /*base.OnShutdown();
+            Subject.CancelEdit();*/
+            
         }
 
         public bool CanSave
         {
-            get { return Subject.IsDirty && Subject.IsValid; }
+            get
+            {
+                return true;
+                //return Subject.IsDirty && Subject.IsValid;
+            }
         }
 
         private void OnPropertyChangedEvent(object s, PropertyChangedEventArgs e)

@@ -44,8 +44,8 @@
                 <Button FontSize="12" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="334,37,0,0" Name="ColorAdd" VerticalAlignment="Top" Width="40" Focusable="False">&lt;</Button>
                 <Button FontSize="12" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="334,68,0,0" Name="ColorRemove" VerticalAlignment="Top" Width="40" Focusable="False">&gt;</Button>
                 <Button FontSize="12" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="334,99,0,0" Name="ColorRemoveAll" VerticalAlignment="Top" Width="40" Focusable="False">&gt;&gt;</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="334,0,0,113" Name="SizeAddAll" Width="40" Height="25" VerticalAlignment="Bottom">&lt;&lt;</Button>
-                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="334,141,0,141.38" Name="SizeAdd" Width="40" Height="25">&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="334,141,0,0" Name="SizeAddAll" Width="40" Height="25" VerticalAlignment="Top">&lt;&lt;</Button>
+                <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="334,174,0,114" Name="SizeAdd" Width="40" Height="25">&lt;</Button>
                 <Button FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="334,0,0,82" Name="SizeRemove" Width="40" Height="25" VerticalAlignment="Bottom">&gt;</Button>
                 <Button FontSize="14" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="334,0,0,51" Name="SizeRemoveAll" VerticalAlignment="Bottom" Width="40">&gt;&gt;</Button>
                 <Label FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,1.25,0,0" Name="label6" VerticalAlignment="Top" Width="96.32">MÀU SẮC</Label>
@@ -53,7 +53,8 @@
                 <Button FontSize="14" FontWeight="Bold" Height="38" Margin="124.25,0,198.162,4.287" Name="MinorDetailEnter" VerticalAlignment="Bottom">CHI TIẾT PHỤ</Button>
                 <Button Height="40" HorizontalAlignment="Right" Margin="0,5.111,26.972,0" Name="NewColor" VerticalAlignment="Top" Width="145.758">MÀU MỚI</Button>
                 <Button HorizontalAlignment="Right" Margin="0,141,26.972,132.38" Name="NewSize" Width="145.758">KÍCH CỠ MỚI</Button>
-            </Grid>
+                    <Label Content="KICH CO" FontSize="14" Height="28" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="6,141,0,0" Name="label8" VerticalAlignment="Top" Width="96.32" />
+                </Grid>
         </GroupBox>
     </Grid>
         </WPF:PosDataErrorProvider>

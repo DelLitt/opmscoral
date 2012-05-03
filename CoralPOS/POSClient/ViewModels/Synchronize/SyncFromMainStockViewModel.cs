@@ -11,29 +11,30 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
+using AppFrame.Invocation;
 using AppFrame.Utils;
 using AppFrame.WPF.Screens;
-using Caliburn.Core;
-using Caliburn.Core.Invocation;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
+
 using POSClient.BusinessLogic.Implement;
 using POSClient.ViewModels.Menu;
 
 
 namespace POSClient.ViewModels.Synchronize
 {
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class SyncFromMainStockViewModel : PosViewModel,ISyncFromMainStockViewModel  
-    {
+	[AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
+	public class SyncFromMainStockViewModel : PosViewModel,ISyncFromMainStockViewModel  
+	{
 
-        private IShellViewModel _startViewModel;
-        public SyncFromMainStockViewModel(IShellViewModel startViewModel)
-        {
-            _startViewModel = startViewModel; 
-        }
+		private IShellViewModel _startViewModel;
+		public SyncFromMainStockViewModel()
+		{
+			_startViewModel = ShellViewModel.Current;
+		}
 		
 		#region Fields
 				#endregion
@@ -42,61 +43,61 @@ namespace POSClient.ViewModels.Synchronize
 				#endregion
 		
 		#region List which just using in Data Grid
-		        
-        private IList _resultGrid;
-        public IList ResultGrid
-        {
-            get
-            {
-                return _resultGrid;
-            }
-            set
-            {
-                _resultGrid = value;
-                NotifyOfPropertyChange(() => ResultGrid);
-            }
-        }
+				
+		private IList _resultGrid;
+		public IList ResultGrid
+		{
+			get
+			{
+				return _resultGrid;
+			}
+			set
+			{
+				_resultGrid = value;
+				NotifyOfPropertyChange(() => ResultGrid);
+			}
+		}
 				#endregion
 		
 		#region Methods
 
-        public IDepartmentLogic DepartmentLogic { get; set; }
-        public ISyncLogic SyncLogic { get; set; }
+		public IDepartmentLogic DepartmentLogic { get; set; }
+		public ISyncLogic SyncLogic { get; set; }
 
-        public void SyncFromMainStock()
-        {
-            IList departmentUsbList = ClientUtility.GetUSBDrives();
+		public void SyncFromMainStock()
+		{
+			IList departmentUsbList = ClientUtility.GetUSBDrives();
 
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
-            BackgroundTask _backgroundTask = null;
-            _backgroundTask = new BackgroundTask(() => SyncFromMain(departmentUsbList));
-            _backgroundTask.Completed += (s, e) => SyncToDepartmentCompleted(s, e);
-            _backgroundTask.Start(departmentUsbList);
+			IoC.Get<INormalLoadViewModel>().StartLoading();
+			BackgroundTask _backgroundTask = null;
+			_backgroundTask = new BackgroundTask(() => SyncFromMain(departmentUsbList));
+			_backgroundTask.Completed += (s, e) => SyncToDepartmentCompleted(s, e);
+			_backgroundTask.Start(departmentUsbList);
 
-        }
+		}
 
-        private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
-        {
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
-        }
+		private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs runWorkerCompletedEventArgs)
+		{
+			IoC.Get<INormalLoadViewModel>().StopLoading();
+		}
 
-        private object SyncFromMain(IList departmentUsbList)
-        {
-            foreach (var POSSyncDrive in departmentUsbList)
-            {
-                var configExportPath = POSSyncDrive + @"\POS\KHO-CH" + @"\1";
-                SyncLogic.SyncFromMain(configExportPath);
-            }
-            return null;
-        }
+		private object SyncFromMain(IList departmentUsbList)
+		{
+			foreach (var POSSyncDrive in departmentUsbList)
+			{
+				var configExportPath = POSSyncDrive + @"\POS\KHO-CH" + @"\1";
+				SyncLogic.SyncFromMain(configExportPath);
+			}
+			return null;
+		}
 
-        public void Quit()
-        {
-           Flow.End(); 
-        }
+		public void Quit()
+		{
+		   Flow.End(); 
+		}
 				#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

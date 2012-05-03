@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using AppFrame.Base;
 using AppFrame.Utils;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
+
 using POSClient.Common;
 using POSClient.ViewModels.Security;
 using Spring.Context;
@@ -24,17 +24,30 @@ namespace POSClient.ViewModels
         private IScreen _dialogModel;
 
         public string CurrentPath { get;set; }
-
-        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) { }
-        public ShellViewModel() : base() { }
-        public override void Activate()
+        private static ShellViewModel _currentShellNavigator;
+        public static ShellViewModel Current
+        {
+            get { return _currentShellNavigator; }
+            //private set { _currentShellNavigator = value; }
+        }
+        //public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) { }
+        public ShellViewModel()
+            : base()
+        {
+            if (_currentShellNavigator == null)
+            {
+                _currentShellNavigator = this;
+            }
+        }
+        /*public override void Activate()
         {
            
-        }
+        }*/
 
-        public override void Initialize() 
+
+        protected override void OnInitialize() 
         {
-            RootScreen = ServiceLocator.GetInstance<IMainViewModel>();
+            RootScreen = IoC.Get<IMainViewModel>();
             MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)

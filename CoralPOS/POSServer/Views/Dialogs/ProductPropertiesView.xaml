@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       
     xmlns:local="clr-namespace:AppFrame.WPF;assembly=AppFrame"  
-    xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework"                     
+    xmlns:cal="http://www.caliburnproject.org"                     
     xmlns:lbe="clr-namespace:AppFrame.Extensions.ListBox;assembly=AppFrame"    
     xmlns:dge="clr-namespace:AppFrame.Extensions.DataGrid;assembly=AppFrame"             
     Height="286" Width="531" Background="White">
@@ -32,7 +32,7 @@
                          FontSize="13"                          
                          CanUserAddRows="False" Grid.Column="0" IsTabStop="True" 
                          TabIndex="3" Margin="0,28,0,0" 
-                         RoutedMessaging:Message.Attach="[Event KeyUp]=[Action ProgressKeyUp($source,$eventArgs)]">
+                         cal:Message.Attach="[Event KeyUp]=[Action ProgressKeyUp($source,$eventArgs)]">
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductColors"/>
                 </dge:DataGridExtension.SelectedItemsSource>
@@ -56,7 +56,7 @@
                          RowHeight="NaN" 
                          Grid.Column="1" IsTabStop="True" 
                          TabIndex="3" Margin="0,28,0,0"
-                         RoutedMessaging:Message.Attach="[Event KeyUp]=[Action ProgressKeyUp($source,$eventArgs)]">
+                         cal:Message.Attach="[Event KeyUp]=[Action ProgressKeyUp($source,$eventArgs)]">
                 <dge:DataGridExtension.SelectedItemsSource>
                     <Binding Path="SelectedProductSizes"/>
                 </dge:DataGridExtension.SelectedItemsSource>
@@ -92,11 +92,11 @@
                  Name="ExtraProductColorList" 
                  VerticalAlignment="Bottom" Visibility="Hidden" SelectionMode="Extended" 
                  lbe:ListBoxExtension.SelectedItemsSource="{Binding ExtraSelectedProductColors}" 
-                 RoutedMessaging:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(1,$eventArgs)]"                            
+                 cal:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(1,$eventArgs)]"                            
                  DisplayMemberPath="ColorName" HorizontalAlignment="Left" Width="219.037" FontSize="13" />
                  <ListBox Height="155" Margin="219,0,0,-155" Name="ExtraProductSizeList" VerticalAlignment="Bottom" Visibility="Hidden"
                  SelectionMode="Extended" 
-                 RoutedMessaging:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(2,$eventArgs)]"
+                 cal:Message.Attach ="[Event KeyUp]=[Action AddToAvailList(2,$eventArgs)]"
                  lbe:ListBoxExtension.SelectedItemsSource="{Binding ExtraSelectedProductSizes}" DisplayMemberPath="SizeName" FontSize="13" />
     </Grid>
 </Border>

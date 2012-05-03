@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AppFrame.Base;
 using AppFrame.WPF.Screens;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
+using POSServer.Utils;
 
 namespace POSServer.Actions
 {
@@ -12,7 +10,7 @@ namespace POSServer.Actions
     {
         public override void DoExecute()
         {
-            ILoadViewModel var = ServiceLocator.Current.GetInstance<ILoadViewModel>("ILoadViewModel");
+            ILoadViewModel var = IoC.Get<ILoadViewModel>("ILoadViewModel");
             GlobalSession.Instance.Put("GLOBALLOADSCREEN", var);
             var.StartLoading();
         }

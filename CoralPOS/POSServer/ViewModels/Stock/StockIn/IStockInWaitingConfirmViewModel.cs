@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Stock.StockIn
 {

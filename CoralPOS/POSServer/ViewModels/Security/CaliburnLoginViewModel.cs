@@ -6,11 +6,8 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Base.Generic;
-using Caliburn.Core.IoC;
-using Caliburn.ModelFramework;
-using Caliburn.PresentationFramework.Screens;
-using Caliburn.PresentationFramework.Filters;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using CoralPOS.Models;
 using CoralPOS2.Models;
 using NHibernate.Mapping;
 
@@ -27,7 +24,7 @@ namespace POSServer.ViewModels.Security
         }
 
         
-        [Preview("CanSave")]
+        //[Preview("CanSave")]
         public void LoginAction()
         {
             /*Subject.EndEdit();
@@ -43,7 +40,7 @@ namespace POSServer.ViewModels.Security
             {
                 GlobalSession.Instance.Put(CommonConstants.IS_LOGGED, true);
                 Flow.Session.Put(CommonConstants.LOGGED_USER, model);
-                //_startViewModel.Open<IMainView>();
+                //_startViewModel.Open<IMainViewModel>();
                 GoToNextNode();
             }
             else
@@ -57,33 +54,35 @@ namespace POSServer.ViewModels.Security
         {
             base.OnActivate();
 
-            Subject.PropertyChanged += OnPropertyChangedEvent;
+            /*Subject.PropertyChanged += OnPropertyChangedEvent;
 
             Subject.BeginEdit();
-            Subject.Validate();
+            Subject.Validate();*/
         }
 
-        protected override void OnDeactivate()
+
+        protected override void OnDeactivate(bool close)
         {
-            base.OnDeactivate();
-            Subject.PropertyChanged -= OnPropertyChangedEvent;
+            base.OnDeactivate(close);
+            //Subject.PropertyChanged -= OnPropertyChangedEvent;
         }
 
-        protected override void OnShutdown()
+        /*protected void OnShutdown()
         {
-            base.OnShutdown();
+            //base.On//Shutdown();
             Subject.CancelEdit();
-        }
+        }*/
 
-        public bool CanSave
+        /*public bool CanSave
         {
             get { return Subject.IsDirty && Subject.IsValid; }
-        }
+        }*/
+
 
         private void OnPropertyChangedEvent(object s, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsDirty" || e.PropertyName == "IsValid")
-                NotifyOfPropertyChange(() => CanSave);
+            /*if (e.PropertyName == "IsDirty" || e.PropertyName == "IsValid")
+                NotifyOfPropertyChange(() => CanSave);*/
         }
     }
 }

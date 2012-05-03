@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework.Screens;
+﻿using Caliburn.Micro;
 
 namespace AppFrame.Base.Generic
 {
-    public class GenericPosViewModel<T> : Screen<T>, IScreenNode<T>
+    public class GenericPosViewModel<T> : Screen, IScreenNode<T>
     {
         public string Name { get; set; }
         public IFlow Flow { get; set; }

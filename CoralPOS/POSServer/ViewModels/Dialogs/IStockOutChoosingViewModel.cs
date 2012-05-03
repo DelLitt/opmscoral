@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 using CoralPOS.Models;
 
 namespace POSServer.ViewModels.Dialogs
 {
-    public interface IStockOutChoosingViewModel : IScreenNode,IScreenEx
+    public interface IStockOutChoosingViewModel : IScreenNode,IScreen
     {
         #region Fields
 

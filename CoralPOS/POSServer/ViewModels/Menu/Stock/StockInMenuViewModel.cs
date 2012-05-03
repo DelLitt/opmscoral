@@ -9,24 +9,24 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 
 
 
 namespace POSServer.ViewModels.Menu.Stock
 {
-    [PerRequest(typeof(IStockInMenuViewModel))]
-    public class StockInMenuViewModel : PosViewModel,IStockInMenuViewModel  
-    {
+	[PerRequest(typeof(IStockInMenuViewModel))]
+	public class StockInMenuViewModel : PosViewModel,IStockInMenuViewModel  
+	{
 
-        private IShellViewModel _startViewModel;
-        public StockInMenuViewModel(IShellViewModel startViewModel)
-        {
-            _startViewModel = startViewModel; 
-        }
+		private IShellViewModel _startViewModel;
+		public StockInMenuViewModel()
+		{
+			_startViewModel = ShellViewModel.Current;
+		}
 		
 		#region Fields
 				#endregion
@@ -38,29 +38,29 @@ namespace POSServer.ViewModels.Menu.Stock
 				#endregion
 		
 		#region Methods
-		        
-        public void StockIn()
-        {
-            
-        }
-		        
-        public void StockInList()
-        {
-            
-        }
-		        
-        public void StockInBackList()
-        {
-            
-        }
-		        
-        public void StockInByExcel()
-        {
-            
-        }
+				
+		public void StockIn()
+		{
+			
+		}
+				
+		public void StockInList()
+		{
+			
+		}
+				
+		public void StockInBackList()
+		{
+			
+		}
+				
+		public void StockInByExcel()
+		{
+			
+		}
 				#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

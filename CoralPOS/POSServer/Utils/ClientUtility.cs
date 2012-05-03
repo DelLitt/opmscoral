@@ -139,7 +139,28 @@ namespace POSServer.Utils
             log4net.GlobalContext.Properties["action"] = action;
             logger.Error(message); //now log error
         }*/
+        public static string EnsureSyncPath(string path)
+        {
+            string ensurePath = path;
+            bool result = false;
 
+            try
+            {
+                if (!Directory.Exists(ensurePath))
+                {
+                    Directory.CreateDirectory(ensurePath);
+                }
+                result = true;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+                return ensurePath;
+            
+        }
         public static string EnsureSyncPath(string path, Department department)
         {
             string ensurePath = path + "\\" + department.DepartmentId;

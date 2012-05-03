@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSClient.Common;
 using POSClient.ViewModels.Management;
 using POSClient.ViewModels.Sale;
@@ -28,9 +28,9 @@ namespace POSClient.ViewModels.Menu
     {
 
         private IShellViewModel _startViewModel;
-        public MainMenuViewModel(IShellViewModel startViewModel)
+        public MainMenuViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields

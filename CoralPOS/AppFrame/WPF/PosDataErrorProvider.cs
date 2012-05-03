@@ -8,9 +8,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using AppFrame.DataLayer;
-using Caliburn.Core.Validation;
-using Caliburn.PresentationFramework.Behaviors;
-using Caliburn.PresentationFramework.ViewModels;
+using AppFrame.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppFrame.WPF
 {
@@ -235,7 +234,7 @@ namespace AppFrame.WPF
 
         private bool ShoudValidate(PropertyInfo propertyType)
         {
-            object[] attrs = propertyType.PropertyType.GetCustomAttributes(typeof(ValidateAttribute),true);
+            object[] attrs = propertyType.PropertyType.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.ValidationAttribute), true);
             return attrs!=null && attrs.Length > 0; 
         }
 

@@ -6,9 +6,7 @@ using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Data;
 using AppFrame.DataLayer;
-using Caliburn.Core.Validation;
-using Caliburn.PresentationFramework.Behaviors;
-using Caliburn.PresentationFramework.ViewModels;
+using AppFrame.Validation;
 
 namespace AppFrame.WPF
 {
@@ -82,7 +80,7 @@ namespace AppFrame.WPF
 
         private bool ShouldValidate(object item)
         {
-            return item.GetType().GetCustomAttributes(typeof (ValidateAttribute), true).Any();
+            return item.GetType().GetCustomAttributes(typeof (System.ComponentModel.DataAnnotations.ValidationAttribute), true).Any();
         }
     }
 }

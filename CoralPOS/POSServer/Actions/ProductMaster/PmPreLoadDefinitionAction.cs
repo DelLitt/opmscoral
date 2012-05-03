@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AppFrame.Base;
-using Caliburn.Core.IoC;
-using Ninject;
+﻿using AppFrame.Base;
 using POSServer.BusinessLogic.Implement;
 
 namespace POSServer.Actions.ProductMaster
@@ -12,7 +6,7 @@ namespace POSServer.Actions.ProductMaster
     
     public class PmPreLoadDefinitionAction : PosAction,IPmPreLoadDefinitionAction
     {
-        public void DoExecute()
+        public override void DoExecute()
         {
             LoadProductMasterDefinition();
         }

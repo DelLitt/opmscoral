@@ -9,5 +9,8 @@
         <Button FontSize="14" FontWeight="Bold" Margin="47,112,47,508" Name="ToMainStock" TabIndex="9" Width="80" Height="80">
             <TextBlock Text="XUẤT ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" Width="72.5" />
         </Button>
+        <Button FontSize="14" FontWeight="Bold" Margin="48,214,48,407" Name="CreateSyncUSB" TabIndex="9">
+            <TextBlock Text="TẠO USB ĐỒNG BỘ" TextAlignment="Center" TextWrapping="Wrap" Width="72.5" />
+        </Button>
     </Grid>
 </UserControl>

@@ -1,10 +1,7 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text; 
-using System.Collections.Generic; 
 using System.Runtime.Serialization;
+using AppFrame.Validation;
 using AppFrame.WPF.ValidationAttributes;
-using Caliburn.PresentationFramework.Behaviors; 
 
 
 namespace CoralPOS.Models {

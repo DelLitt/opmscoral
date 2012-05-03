@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.Screens;
+
+using AppFrame.CustomAttributes;
 using POSClient.ViewModels.Menu;
 
 namespace POSClient.ViewModels
@@ -15,9 +15,9 @@ namespace POSClient.ViewModels
     public class MainViewModel : PosViewModel, IMainViewModel
     {
         private IShellViewModel _startViewModel;
-        public MainViewModel(IShellViewModel startViewModel)
+        public MainViewModel()
         {
-            _startViewModel = startViewModel;
+            _startViewModel = ShellViewModel.Current;
         }
     }
 }

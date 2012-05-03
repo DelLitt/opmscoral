@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
 using AppFrame.Extensions;
+using NHibernate.Linq;
 
 namespace AppFrame.DataLayer
 {
@@ -13,37 +14,53 @@ namespace AppFrame.DataLayer
     {
         private IList<Expression<Func<T, bool>>> _where;
         private IList<Expression<Func<T, bool>>> _order;
-        private IList<string> _fetchProps;
+        private IList<LambdaExpression> _fetchProps;
+        private IQueryable<T> _internalQuery;
+        private RepositoryContext _context  = new RepositoryContext();
+        public IQueryable<T> InternalQuery
+        {
+            get { return _internalQuery; }
+            set { _internalQuery = value; }
+        }
+
+        public IList<LambdaExpression> FetchProps
+        {
+            get { return _fetchProps; }
+            set { _fetchProps = value; }
+        }
+
         public int MaxResult { get; set; }
 
         public LinqCriteria()
         {
             _where = new List<Expression<Func<T, bool>>>();
             _order = new List<Expression<Func<T, bool>>>();
-            _fetchProps = new List<string>();
+            _fetchProps = new List<LambdaExpression>();
+            //_internalQuery = from item in _context.CurrentSession().Query<T>()
+            //                             select item;
+            _internalQuery = new NhQueryable<T>(null);
+            
         }
         public LinqCriteria<T> AddCriteria(Expression<Func<T, bool>> lambdaFunc)
         {
             _where.Add(lambdaFunc);
+            _internalQuery = _internalQuery.Where(lambdaFunc);
             return this;
         }
 
         public LinqCriteria<T> AddOrder(Expression<Func<T, bool>> lambdaFunc)
         {
             _order.Add(lambdaFunc);
+            _internalQuery = _internalQuery.OrderBy(lambdaFunc);
             return this;
         }
 
-        public LinqCriteria<T> AddFetchPath(string fetchProp)
+        public LinqCriteria<T> Fetch<TK>(Expression<Func<T, TK>> fetchProp)
         {
-            _fetchProps.Add(fetchProp);
+            _internalQuery = _internalQuery.Fetch(fetchProp);
             return this;
         }
-
-        public void AddFetchPath<TK>(Expression<Func<T, TK>> fetchProp)
-        {
-            _fetchProps.Add(TypedExpandExtension.ProcessSelector(fetchProp));
-        }
+        
 
         public IList<Expression<Func<T, bool>>> Where
         {
@@ -67,17 +84,6 @@ namespace AppFrame.DataLayer
                 _order = value;
             }
         }
-
-        public IList<string> FetchProps
-        {
-            get
-            {
-                return _fetchProps;
-            }
-            set
-            {
-                _fetchProps = value; 
-            }
-        }
+        
     }
 }

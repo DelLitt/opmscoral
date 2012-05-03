@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Reflection;
-using Caliburn.Core;
-using Caliburn.PresentationFramework;
+using Caliburn.Micro;
 
 namespace AppFrame.WPF
 {

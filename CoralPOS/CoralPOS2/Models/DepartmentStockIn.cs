@@ -1,8 +1,7 @@
-using System; 
-using System.Text; 
+using System;
 using System.Collections.Generic; 
-using System.Runtime.Serialization; 
-using Caliburn.PresentationFramework.Behaviors; 
+using System.Runtime.Serialization;
+using AppFrame.Validation;
 
 
 namespace CoralPOS.Models {

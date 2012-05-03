@@ -74,5 +74,8 @@ namespace POSServer.BusinessLogic.Implement
 
         IList FindAll(LinqCriteria<MainStock> crit);
         MainStock FindByProductId(string productId);
+        IList<MainStock> FetchAll(LinqCriteria<MainStock> crit);
+
+        void Update(StockOut stockOut);
     }
 }

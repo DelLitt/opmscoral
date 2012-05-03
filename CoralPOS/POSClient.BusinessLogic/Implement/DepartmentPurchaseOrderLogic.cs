@@ -46,7 +46,7 @@ namespace POSClient.BusinessLogic.Implement
             return (string) DepartmentPurchaseOrderDao.Execute(
                 delegate(ISession session)
                 {
-                    var maxId = (from po in session.Linq<DepartmentPurchaseOrder>()
+                    var maxId = (from po in session.Query<DepartmentPurchaseOrder>()
                                  select po.DepartmentPurchaseOrderPK.PurchaseOrderId).Max();
                     string nextId = string.IsNullOrEmpty(maxId) ? "1" : (Int64.Parse(maxId)+1).ToString();
                     return nextId;
@@ -92,7 +92,7 @@ namespace POSClient.BusinessLogic.Implement
                             if (detail.Product.AdhocCase == 0)
                             {
                                 // select all stocks
-                                var stockList = from stk in session.Linq<DepartmentStock>()
+                                var stockList = from stk in session.Query<DepartmentStock>()
                                                 where
                                                     stk.ProductMaster.ProductMasterId ==
                                                     detail.ProductMaster.ProductMasterId
@@ -156,7 +156,7 @@ namespace POSClient.BusinessLogic.Implement
                             else // 2:ADHOC CASE
                             {
                                 ObjectUtility.AddToList<Product>(adhocProducts,detail.Product,"ProductId");
-                                var result = (from stk in session.Linq<DepartmentStock>()
+                                var result = (from stk in session.Query<DepartmentStock>()
                                              where stk.DepartmentStockPK.ProductId == detail.Product.ProductId
                                              select stk)
                                              .Union
@@ -293,7 +293,17 @@ namespace POSClient.BusinessLogic.Implement
             
             MainPrice price;
             var product = ProductDao.FindById(barCode);
-            if (product != null)
+            // if can not get product by id so we try barcode
+            if (product == null)
+            {
+                product = (Product)ProductDao.Execute(delegate(ISession session)
+                                       {
+                                           return (from prd in session.Query<Product>()
+                                                       where prd.Barcode.Equals(barCode)
+                                                       select prd).ToList().FirstOrDefault();
+                                       });
+            }
+            if (product != null) // if we found the product by id or barcode
             {
                 product.ProductMaster = ProductMasterDao.FindById(product.ProductMaster.ProductMasterId);
                 // process sale actions
@@ -305,7 +315,7 @@ namespace POSClient.BusinessLogic.Implement
                                               });
 
             }
-            else
+            else // if can not find product by id & barcode
             {
                 // check whether it is a valid barcode
                 string productMasterId = string.Format("{0:0000000000000}", Int64.Parse(barCode.Substring(0, 7)));

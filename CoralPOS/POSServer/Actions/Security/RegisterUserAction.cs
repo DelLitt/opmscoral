@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using AppFrame.Base;
-using Caliburn.Core.IoC;
+﻿using AppFrame.Base;
+using AppFrame.CustomAttributes;
 using CoralPOS2.Models;
 using POSServer.Common;
 

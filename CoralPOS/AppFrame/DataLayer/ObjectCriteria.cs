@@ -1,15 +1,10 @@
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using AppFrame.Utils;
 using NHibernate;
 using NHibernate.Criterion;
-using NHibernate.LambdaExtensions;
-using NHibernate.Type;
-using NHibernate.Linq.Expressions;
 using System.Linq.Expressions;
-using Expression=NHibernate.Criterion.Expression;
+using NHibernate.LambdaExtensions;
 
 namespace AppFrame.DataLayer
 {

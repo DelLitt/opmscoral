@@ -185,7 +185,7 @@ namespace POSServer.BusinessLogic.Implement
             LinqCriteria<StockOut> stockOutCrit = new LinqCriteria<StockOut>();
             stockOutCrit.AddCriteria(so => so.CreateDate > DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0)));
             stockOutCrit.AddCriteria(so => so.Department.DepartmentId == syncToDept.Department.DepartmentId);
-            stockOutCrit.AddFetchPath(so => so.StockOutDetails);
+            stockOutCrit.Fetch(so => so.StockOutDetails);
             IList<StockOut> stockOuts = StockOutDao.FindAll(stockOutCrit);
             foreach (StockOut stockOut in stockOuts)
             {

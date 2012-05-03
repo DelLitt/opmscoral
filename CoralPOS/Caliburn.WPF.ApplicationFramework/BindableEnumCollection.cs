@@ -1,11 +1,11 @@
+using Caliburn.Micro;
+
 namespace Caliburn.WPF.ApplicationFramework
 {
     using System;
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
-    using Core;
-    using PresentationFramework;
 
     public class BindableEnumCollection<T> : BindableCollection<BindableEnum> where T : struct
     {

@@ -24,6 +24,11 @@ namespace CoralPOS.Common
                 {
                     config = new SystemConfig();
                 }
+                bool loadSuccess = config.Load();
+                if (!loadSuccess)
+                {
+                    config.CreateDefaultValue();
+                }
                 return config;
             }
         }

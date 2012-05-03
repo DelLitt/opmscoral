@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core.IoC;
+using AppFrame.CustomAttributes;
 using CoralPOS2.Models;
 using POSClient.Common;
 

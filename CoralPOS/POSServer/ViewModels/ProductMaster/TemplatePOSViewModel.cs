@@ -9,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
+using Caliburn.Micro;
 
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 
 
 
@@ -24,9 +24,9 @@ namespace POSServer.ViewModels.ProductMaster
     {
 
         private IShellViewModel _startViewModel;
-        public TemplatePOSViewModel(IShellViewModel startViewModel)
+        public TemplatePOSViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields

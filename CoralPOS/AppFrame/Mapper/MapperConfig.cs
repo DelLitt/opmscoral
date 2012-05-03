@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using EmitMapper.MappingConfiguration;
-using EmitMapper.Utils;
+
 namespace AppFrame.Mapper
 {
     public class MapperConfig<TSource,TDest> where TSource : class where TDest:class

@@ -1,88 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net"
-         xmlns:tx="http://www.springframework.net/tx">
+				 xmlns:tx="http://www.springframework.net/tx">
 
-  <!--<object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
+	<!--<object id="POSClient.LoginForm" type="POSClient.LoginForm, POSClient">
 	<property name="ActionMap">
-  	    <dictionary>
-    	  <entry key="Login" value-ref="POSClient.Step1"/>
-    	</dictionary>
+				<dictionary>
+				<entry key="Login" value-ref="POSClient.Step1"/>
+			</dictionary>
 	</property>
-  </object>
+	</object>
 	
-  <object id="POSClient.Step1" type="POSClient.Step1, POSClient">
+	<object id="POSClient.Step1" type="POSClient.Step1, POSClient">
 	<property name="ActionMap">
-  	    <dictionary>
-    	  <entry key="Next" value="Form1.xaml"/>
-    	</dictionary>
+				<dictionary>
+				<entry key="Next" value="Form1.xaml"/>
+			</dictionary>
 	</property>
-  </object>
+	</object>
 
-  <object id="POSClient.Form1" type="POSClient.Form1, POSClient">
+	<object id="POSClient.Form1" type="POSClient.Form1, POSClient">
 	<property name="ActionMap">
-  	    <dictionary>
-    	  <entry key="Logout" value="LoginForm.xaml"/>
-    	</dictionary>
+				<dictionary>
+				<entry key="Logout" value="LoginForm.xaml"/>
+			</dictionary>
 	</property>
-  </object>
-  
-  <object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary"  >
-    <dictionary>
-      <entry key="Login" value-ref="POSClient.Step1"/>
-    </dictionary>
-  </object>-->
-  <object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
-  
-  <object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
-    <property name="FlowSteps">
-      <dictionary>
-        <entry key="Step1" value="POSClient.ViewModels.Security.ILoginViewModel"/>
-        <entry key="Step2" value="POSClient.Actions.Security.IRegisterUserAction"/>
-      </dictionary>
-    </property>
-    <property name="Session" ref="FlowSession" />
-  </object>
-  <object id="PurchaseOrderViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
-    <property name="FlowSteps">
-      <dictionary>
-        <entry key="Step1" value="POSClient.ViewModels.Sale.IPurchaseOrderViewModel"/>        
-      </dictionary>
-    </property>
-    <property name="Session" ref="FlowSession" />
-  </object>
-  <object id="SyncFromMainStockFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
-    <property name="FlowSteps">
-      <dictionary>
-        <!-- Show product master form -->
-        <entry key="Step1" value="POSClient.ViewModels.Synchronize.ISyncFromMainStockViewModel"/>
-      </dictionary>
-    </property>
-    <property name="Session" ref="FlowSession" />
-  </object>
+	</object>
+	
+	<object id="POSClient.ViewModels.Security.LoginViewlModel" type="System.Collections.Specialized.HybridDictionary"  >
+		<dictionary>
+			<entry key="Login" value-ref="POSClient.Step1"/>
+		</dictionary>
+	</object>-->
+	<object id="FlowSession" type="AppFrame.Base.FlowSession, AppFrame" singleton="false" />
+	
+	<object id="LoginFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+		<property name="FlowSteps">
+			<dictionary>
+				<entry key="Step1" value="POSClient.ViewModels.Security.ILoginViewModel"/>
+				<entry key="Step2" value="POSClient.Actions.Security.IRegisterUserAction"/>
+			</dictionary>
+		</property>
+		<property name="Session" ref="FlowSession" />
+	</object>
+	<object id="PurchaseOrderViewFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+		<property name="FlowSteps">
+			<dictionary>
+				<entry key="Step1" value="POSClient.ViewModels.Sale.IPurchaseOrderViewModel"/>        
+			</dictionary>
+		</property>
+		<property name="Session" ref="FlowSession" />
+	</object>
+	<object id="SyncFromMainStockFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+		<property name="FlowSteps">
+			<dictionary>
+				<!-- Show product master form -->
+				<entry key="Step1" value="POSClient.ViewModels.Synchronize.ISyncFromMainStockViewModel"/>
+			</dictionary>
+		</property>
+		<property name="Session" ref="FlowSession" />
+	</object>
 
-  <object id="DepartmentStockOutCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
-    <property name="FlowSteps">
-      <dictionary>
-        <entry key="Step1" value="POSClient.Actions.Stock.StockOut.IDepartmentStockOutPreLoadAction"/>
-        <!-- Show product master form -->
-        <entry key="Step2" value="POSClient.ViewModels.Stock.StockOut.IDepartmentStockOutViewModel"/>
-        <!-- Show product master summary form -->
-        <entry key="Step3" value="[IDepartmentStockOutConfirmViewModel]"/>
-        <!-- Save Product Master -->
-        <entry key="Step4" value="POSClient.Actions.Stock.StockOut.IStockOutSaveAction"/>
-      </dictionary>
-    </property>
-    <property name="Session" ref="FlowSession" />
-  </object>
-  <!-- StockOutSearch List -->
-  <object id="StockOutSearchFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
-    <property name="FlowSteps">
-      <dictionary>
-        <!-- Show product master form -->
-        <entry key="Step1" value="[IDepartmentStockOutViewModel]"/>
-        <entry key="Step2" value="[IDepartmentStockOutDetailViewModel]"/>
-      </dictionary>
-    </property>
-    <property name="Session" ref="FlowSession" />
-  </object>
+	<object id="DepartmentStockOutCreateFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+		<property name="FlowSteps">
+			<dictionary>
+				<entry key="Step1" value="POSClient.Actions.Stock.StockOut.IDepartmentStockOutPreLoadAction"/>
+				<!-- Show product master form -->
+				<entry key="Step2" value="POSClient.ViewModels.Stock.StockOut.IDepartmentStockOutViewModel"/>
+				<!-- Show product master summary form -->
+				<entry key="Step3" value="[IDepartmentStockOutConfirmViewModel]"/>
+				<!-- Save Product Master -->
+				<entry key="Step4" value="POSClient.Actions.Stock.StockOut.IStockOutSaveAction"/>
+			</dictionary>
+		</property>
+		<property name="Session" ref="FlowSession" />
+	</object>
+	<!-- StockOutSearch List -->
+	<object id="StockOutSearchFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+		<property name="FlowSteps">
+			<dictionary>
+				<!-- Show product master form -->
+				<entry key="Step1" value="[IDepartmentStockOutViewModel]"/>
+				<entry key="Step2" value="[IDepartmentStockOutDetailViewModel]"/>
+			</dictionary>
+		</property>
+		<property name="Session" ref="FlowSession" />
+	</object>
 </objects>

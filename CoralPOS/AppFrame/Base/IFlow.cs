@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework.Screens;
+﻿using System.Collections;
+using Caliburn.Micro;
 
 namespace AppFrame.Base
 {

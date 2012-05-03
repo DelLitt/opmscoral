@@ -6,7 +6,6 @@
     using System.Windows.Controls.Primitives;
     using System.Windows.Data;
     using Converters;
-    using ModelFramework;
 
     public static class Bind
     {
@@ -120,7 +119,7 @@
         private static IProperty SetBindingForValue(FrameworkElement element, DependencyProperty dependencyProperty,
                                                     string modelProperty)
         {
-            var model = (IModel)element.DataContext;
+            /*var model = (IModel)element.DataContext;
             var state = model[modelProperty];
 
             state.AttachView(element, null);
@@ -133,7 +132,8 @@
                     Mode = BindingMode.TwoWay
                 });
 
-            return state;
+            return state;*/
+            return null;
         }
 
         private static void AddErrorToolTip(DependencyObject dependencyObject, IProperty state)

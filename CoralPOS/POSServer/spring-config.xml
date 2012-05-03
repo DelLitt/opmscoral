@@ -156,6 +156,22 @@
     <property name="Session" ref="FlowSession" />
   </object>
 
+
+  <object id="StockOutConfirmFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Load confirming stockouts -->
+        <entry key="Step1" value="POSServer.Actions.Stock.StockOut.IStockOutConfirmPreLoadAction"/>
+        <!-- Show stock out confirm form -->
+        <entry key="Step2" value="POSServer.ViewModels.Stock.StockOut.IStockOutWaitingConfirmViewModel"/>        
+        <!-- Save confirmed stock out -->
+        <entry key="Step3" value="POSServer.Actions.Stock.StockOut.IStockOutConfirmSaveAction"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  
+  
   <object id="StockInventoryProcessingFlow" type="AppFrame.Base.ChildFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>
@@ -177,6 +193,16 @@
     <property name="Session" ref="FlowSession" />
   </object>
 
+  <object id="CreateSyncUSBFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
+    <property name="FlowSteps">
+      <dictionary>
+        <!-- Show product master form -->
+        <entry key="Step1" value="POSServer.ViewModels.Synchronize.ICreateSyncUSBViewModel"/>
+      </dictionary>
+    </property>
+    <property name="Session" ref="FlowSession" />
+  </object>
+  
   <object id="SystemConfigFlow" type="AppFrame.Base.DefaultFlow, AppFrame" singleton="false">
     <property name="FlowSteps">
       <dictionary>

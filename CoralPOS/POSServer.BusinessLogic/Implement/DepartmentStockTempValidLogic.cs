@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NHibernate.Linq;
 using Spring.Transaction.Interceptor;
 using System.Linq.Expressions;
 using AppFrame.DataLayer;
@@ -12,7 +13,6 @@ using NHibernate.Criterion;
 using NHibernate.LambdaExtensions;
 using NHibernate.Linq.Expressions;
 using Spring.Data.NHibernate;
-using NHibernate.Linq;
 using System.Linq;
 using  CoralPOS.Models;
 using  POSServer.DataLayer.Implement;
@@ -119,10 +119,10 @@ namespace POSServer.BusinessLogic.Implement
             {
                 return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute(delegate(ISession session)
                 {
-                    var query = session.Linq<MainStock>();
-                    query.Expand("Product");
-                    query.Expand("ProductMaster");
-                    var stockList = from stock in query
+                    var query = session.Query<MainStock>();
+                    /*query.Expand("Product");
+                    query.Expand("ProductMaster");*/
+                    var stockList = from stock in query.Fetch(x=>x.Product).ThenFetch(x=>x.ProductMaster)
                                     where stock.Quantity > 0 
                                     select stock;
                     
@@ -165,10 +165,10 @@ namespace POSServer.BusinessLogic.Implement
             {
                 return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute(delegate(ISession session)
                 {
-                    var query = session.Linq<DepartmentStock>();
-                    query.Expand("Product");
-                    query.Expand("ProductMaster");
-                    var stockList = from stock in query
+                    var query = session.Query<DepartmentStock>();
+                    /*query.Expand("Product");
+                    query.Expand("ProductMaster");*/
+                    var stockList = from stock in query.Fetch(x=>x.Product).ThenFetch(x=>x.ProductMaster)
                                     where stock.Quantity > 0
                                     select stock;
 
@@ -204,9 +204,9 @@ namespace POSServer.BusinessLogic.Implement
             return (DepartmentStockTempValid)DepartmentStockTempValidDao.Execute(delegate(ISession session)
             {
                 DepartmentStockTempValid tempValid = null;
-                var query = session.Linq<Product>();
-                query.Expand("ProductMaster");
-                Product foundedProduct =(from product in query
+                var query = session.Query<Product>();
+                /*query.Expand("ProductMaster");*/
+                Product foundedProduct =(from product in query.Fetch(x=>x.ProductMaster)
                                 where product.ProductId == productId
                                 select product).FirstOrDefault();
                 if(foundedProduct!=null) // if found in db
@@ -255,11 +255,11 @@ namespace POSServer.BusinessLogic.Implement
         {
             return (IList<DepartmentStockTempValid>)DepartmentStockTempValidDao.Execute((session) =>
                                                     {
-                                                        var rs = session.Linq<DepartmentStockTempValid>();
-                                                        rs.Expand("ProductMaster");
-                                                        rs.Expand("Product");
+                                                        var rs = session.Query<DepartmentStockTempValid>();
+                                                        /*rs.Expand("ProductMaster");
+                                                        rs.Expand("Product");*/
                                                         var list =
-                                                            from tempValid in rs
+                                                            from tempValid in rs.Fetch(x=>x.Product).ThenFetch(x=>x.ProductMaster)
                                                             where
                                                                 tempValid.DepartmentStockTempValidPK.CreateDate <=
                                                                 toDate

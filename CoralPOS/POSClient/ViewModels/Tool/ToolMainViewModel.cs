@@ -10,25 +10,25 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSClient.ViewModels.Menu;
 
 
 namespace POSClient.ViewModels.Tool
 {
-    [PerRequest(typeof(IToolMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
-    public class ToolMainViewModel : PosViewModel,IToolMainViewModel  
-    {
+	[PerRequest(typeof(IToolMainViewModel))]
+	[AttachMenuAndMainScreen(typeof(IMainMenuViewModel), typeof(IMainViewModel))]
+	public class ToolMainViewModel : PosViewModel,IToolMainViewModel  
+	{
 
-        private IShellViewModel _startViewModel;
-        public ToolMainViewModel(IShellViewModel startViewModel)
-        {
-            _startViewModel = startViewModel; 
-        }
+		private IShellViewModel _startViewModel;
+		public ToolMainViewModel()
+		{
+			_startViewModel = ShellViewModel.Current;
+		}
 		
 		#region Fields
 				#endregion
@@ -40,34 +40,34 @@ namespace POSClient.ViewModels.Tool
 				#endregion
 		
 		#region Methods
-		        
-        public void LogViewer()
-        {
-            
-        }
-		        
-        public void BackupDatabase()
-        {
-            
-        }
-		        
-        public void CleanDatabase()
-        {
-            
-        }
-		        
-        public void RestoreDatabase()
-        {
-            
-        }
-		        
-        public void Configuration()
-        {
-            
-        }
+				
+		public void LogViewer()
+		{
+			
+		}
+				
+		public void BackupDatabase()
+		{
+			
+		}
+				
+		public void CleanDatabase()
+		{
+			
+		}
+				
+		public void RestoreDatabase()
+		{
+			
+		}
+				
+		public void Configuration()
+		{
+			
+		}
 				#endregion
 		
-        
-        
-    }
+		
+		
+	}
 }

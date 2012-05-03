@@ -6,8 +6,6 @@ using NHibernate;
 using NHibernate.Collection;
 using NHibernate.Proxy;
 
-using LockMode = NHibernate.LockMode;
-
 namespace AppFrame.DataLayer
 {
     public static class LazyInitializer

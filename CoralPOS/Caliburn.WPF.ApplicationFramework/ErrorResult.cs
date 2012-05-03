@@ -1,3 +1,5 @@
+using Caliburn.Micro;
+
 namespace Caliburn.WPF.ApplicationFramework
 {
     using System;
@@ -5,8 +7,6 @@ namespace Caliburn.WPF.ApplicationFramework
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
-    using ModelFramework;
-    using PresentationFramework.RoutedMessaging;
 
     public class ErrorResult : IResult
     {
@@ -17,13 +17,11 @@ namespace Caliburn.WPF.ApplicationFramework
             _results = results;
         }
 
-        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
-
-        public void Execute(ResultExecutionContext context)
+        public void Execute(ActionExecutionContext context)
         {
             //just demonstrating the power of a custom IExecutableResult
 
-            var source = (FrameworkElement)context.Message.Source.UIElement;
+            var source = context.Source;
             var popup = source.FindName("dirtyPopup") as Popup;
 
             var itemsControl = (ItemsControl)popup.FindName("messageHost");
@@ -40,5 +38,8 @@ namespace Caliburn.WPF.ApplicationFramework
 
             Completed(this, new ResultCompletionEventArgs());
         }
+
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
+       
     }
 }

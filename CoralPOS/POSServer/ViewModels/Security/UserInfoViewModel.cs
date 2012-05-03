@@ -1,24 +1,11 @@
-
-
-
-
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Filters;
-using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
-using System.Linq;
-using System.Linq.Expressions;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.ViewModels.Management;
@@ -35,9 +22,9 @@ namespace POSServer.ViewModels.Security
     {
 
         private IShellViewModel _startViewModel;
-        public UserInfoViewModel(IShellViewModel startViewModel)
+        public UserInfoViewModel()
         {
-            _startViewModel = startViewModel;
+            _startViewModel = ShellViewModel.Current;
         }
 
         #region Fields
@@ -270,7 +257,7 @@ namespace POSServer.ViewModels.Security
         /// <summary>
         /// Saves this instance.
         /// </summary>
-        [Dependencies("IsEdit")]
+        //[Dependencies("IsEdit")]
         public void Save()
         {
             var editUserInfo = Flow.Session.Get(FlowConstants.EDIT_USER_INFO);

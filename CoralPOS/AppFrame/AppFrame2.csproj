@@ -55,149 +55,22 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=1.4.4.561, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Autofac.dll</HintPath>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\libraries\Caliburn\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Autofac, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Castle, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.DynamicProxy, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.DynamicProxy.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.MEF, Version=1.0.0.26006, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.MEF.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.ModelFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.ModelFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Ninject, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.PresentationFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Prism, Version=1.0.0.26006, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Spring, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Spring.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.StructureMap, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Testability, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Testability.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Unity, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Caliburn.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.MicroKernel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Castle.MicroKernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Castle.Windsor.dll</HintPath>
-    </Reference>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Common.Logging.dll</HintPath>
+      <HintPath>..\libraries\Spring\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="EmitMapper">
-      <HintPath>..\libraries\EmitMapper.dll</HintPath>
+    <Reference Include="EmitMapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\libraries\NHibernate\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Fasterflect">
-      <HintPath>..\libraries\Fasterflect.dll</HintPath>
+    <Reference Include="NHibernate">
+      <HintPath>..\libraries\NHibernate\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Composite, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Composite.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.Presentation, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Composite.Presentation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Composite.UnityExtensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Composite.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.StaticFactory, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Microsoft.Practices.Unity.StaticFactory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.DomainModel, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\NHibernate.DomainModel.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\NHibernate.LambdaExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\NHibernate.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Ninject.dll</HintPath>
+    <Reference Include="NHibernate.LambdaExtensions">
+      <HintPath>..\libraries\Codeplex\NHibernate.LambdaExtensions.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -205,56 +78,33 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Spring.Aop, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Aop.dll</HintPath>
+    <Reference Include="Spring.Aop, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\libraries\Spring\Spring.Aop.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Core, Version=1.1.0.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Core.dll</HintPath>
+    <Reference Include="Spring.Core, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\libraries\Spring\Spring.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Data.dll</HintPath>
+    <Reference Include="Spring.Data, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\libraries\Spring\Spring.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Spring.Data.NHibernate21.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap, Version=2.5.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\StructureMap.dll</HintPath>
+    <Reference Include="Spring.Data.NHibernate32, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\libraries\Spring\Spring.Data.NHibernate32.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\System.ComponentModel.DataAnnotations.dll</HintPath>
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.Services">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Services" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Management.Instrumentation">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\libraries\Caliburn\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -262,7 +112,6 @@
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\ChildFlow.cs" />
@@ -275,12 +124,14 @@
     <Compile Include="Base\IFlow.cs" />
     <Compile Include="Base\IFlowManager.cs" />
     <Compile Include="Base\IFlowSession.cs" />
+    <Compile Include="Base\INavigator.cs" />
     <Compile Include="Base\IPosAction.cs" />
     <Compile Include="Base\IPosActionResult.cs" />
     <Compile Include="Base\IPosScreen.cs" />
     <Compile Include="Base\IRootNode.cs" />
     <Compile Include="Base\IScreenNode.cs" />
     <Compile Include="Base\ISession.cs" />
+    <Compile Include="Base\Navigator.cs" />
     <Compile Include="Base\PosAction.cs" />
     <Compile Include="Base\PosViewModel.cs" />
     <Compile Include="Base\PosViewModelExtensions.cs" />
@@ -290,7 +141,9 @@
     <Compile Include="Base\INode.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="CustomAttributes\AttachMenuAndMainScreenAttribute.cs" />
+    <Compile Include="CustomAttributes\SingletonAttribute.cs" />
     <Compile Include="CustomAttributes\MainScreenAttribute.cs" />
+    <Compile Include="CustomAttributes\PerRequestAttribute.cs" />
     <Compile Include="DataLayer\AdoWrapper.cs" />
     <Compile Include="DataLayer\DataErrorInfoFactory.cs" />
     <Compile Include="DataLayer\LazyInitializer.cs" />
@@ -298,10 +151,10 @@
     <Compile Include="DataLayer\ObjectCriteria.cs" />
     <Compile Include="DataLayer\PosContext.cs" />
     <Compile Include="DataLayer\QueryHandler.cs" />
-    <Compile Include="DataLayer\SqlExtensions.cs" />
     <Compile Include="DataLayer\Utils\PosDatabase.cs" />
     <Compile Include="Exceptions\IllegalFlowStateException.cs" />
     <Compile Include="Extensions\DataGrid\DataGridExtension.cs" />
+    <Compile Include="Extensions\DialogExtensions.cs" />
     <Compile Include="Extensions\HibernateTemplateExtensions.cs" />
     <Compile Include="Extensions\ListBox\IListItemConverter.cs" />
     <Compile Include="Extensions\ListBox\ListBoxExtension.cs" />
@@ -309,10 +162,26 @@
     <Compile Include="Extensions\ListBox\RelayCommand.cs" />
     <Compile Include="Extensions\ListBox\TwoListSynchronizer.cs" />
     <Compile Include="Extensions\PosViewModelExtensions.cs" />
-    <Compile Include="Extensions\TypedExpandExtension.cs" />
+    <Compile Include="Extensions\TypedExpandExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interceptors\DataErrorInfoInterceptor.cs" />
+    <Compile Include="Interceptors\ExceptionValidatorInterceptor.cs" />
+    <Compile Include="Interceptors\IInitializableInterceptor.cs" />
+    <Compile Include="Interceptors\InterceptorBase.cs" />
+    <Compile Include="Interceptors\ProxyInterceptor.cs" />
+    <Compile Include="Invocation\BackgroundTask.cs" />
+    <Compile Include="Invocation\DefaultMethodFactory.cs" />
+    <Compile Include="Invocation\DelegateFactory.cs" />
+    <Compile Include="Invocation\EventHelper.cs" />
+    <Compile Include="Invocation\ExecuteHelper.cs" />
+    <Compile Include="Invocation\IBackgroundContext.cs" />
+    <Compile Include="Invocation\IBackgroundTask.cs" />
+    <Compile Include="Invocation\IMethod.cs" />
+    <Compile Include="Invocation\IMethodFactory.cs" />
     <Compile Include="Mapper\MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\InRoleAttribute.cs" />
+    <Compile Include="Proxy\IProxy.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Security\RoleDeniedActions.cs" />
     <Compile Include="Security\RoleSecurity.cs" />
@@ -327,21 +196,21 @@
     <Compile Include="Utils\StringUtility.cs" />
     <Compile Include="Utils\TaskUtils.cs" />
     <Compile Include="Security\ClientInfo.cs" />
+    <Compile Include="Validation\DefaultError.cs" />
+    <Compile Include="Validation\DefaultValidator.cs" />
+    <Compile Include="Validation\IError.cs" />
+    <Compile Include="Validation\IValidator.cs" />
     <Compile Include="Validation\POSError.cs" />
     <Compile Include="Validation\POSErrorResult.cs" />
     <Compile Include="Validation\IObjectValidator.cs" />
     <Compile Include="Validation\ObjectValidator.cs" />
+    <Compile Include="Validation\ValidateAttribute.cs" />
     <Compile Include="Validation\ValidatorProvider.cs" />
     <Compile Include="WPF\BindableList.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResult.cs" />
     <Compile Include="WPF\FlowBackgroundTaskResultEventArgs.cs" />
-    <Compile Include="WPF\MessageExtensions.cs" />
     <Compile Include="WPF\ModelMapper.cs" />
-    <Compile Include="WPF\NavigationViewManager.cs" />
-    <Compile Include="WPF\NavigationWindowLocator.cs" />
-    <Compile Include="WPF\ObjectSupport.cs" />
     <Compile Include="WPF\PosDataErrorProvider.cs" />
-    <Compile Include="WPF\PosDynamicProxy.cs" />
     <Compile Include="WPF\PosErrorValidationRule.cs" />
     <Compile Include="WPF\PosValidationRule.cs" />
     <Compile Include="WPF\RowNumberConverter.cs" />

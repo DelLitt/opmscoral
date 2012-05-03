@@ -4,22 +4,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using NHibernate.Criterion;
-using NHibernate.Linq;
 using NHibernate;
 using NHibernate.LambdaExtensions;
 
 namespace AppFrame.DataLayer
 {
-    public class PosContext : NHibernateContext
+    public class PosContext : NHibernate.Context.CurrentSessionContext
     {
-        public PosContext()
+        private ISession session = null;
+        public PosContext() : base() {}
+        public PosContext(NHibernate.ISession session) : base()
         {
-            
-        }
-        public PosContext(NHibernate.ISession session)
-            : base(session)
-        {
-            
+            this.session = session;
         }
 
         public static void SetCriteria<T>(ICriteria hibernateCriteria, ObjectCriteria<T> criteria)
@@ -41,6 +37,12 @@ namespace AppFrame.DataLayer
             
             if (criteria.MaxResult > 0)
                 hibernateCriteria.SetMaxResults(criteria.MaxResult);
+        }
+
+        protected override ISession Session
+        {
+            get { return session; }
+            set { session = value; }
         }
     }
 }

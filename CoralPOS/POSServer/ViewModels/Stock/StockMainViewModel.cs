@@ -6,10 +6,10 @@ using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSServer.Common;
 using POSServer.ViewModels.Menu;
 
@@ -20,7 +20,7 @@ namespace POSServer.ViewModels.Stock
     /// 
     /// </summary>
     [PerRequest(typeof(IStockMainViewModel))]
-    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainView))]
+    [AttachMenuAndMainScreen(typeof(IMainMenuViewModel),typeof(IMainViewModel))]
     public class StockMainViewModel : PosViewModel,IStockMainViewModel  
     {
 
@@ -29,9 +29,9 @@ namespace POSServer.ViewModels.Stock
         /// Initializes a new instance of the <see cref="StockMainViewModel"/> class.
         /// </summary>
         /// <param name="startViewModel">The start view model.</param>
-        public StockMainViewModel(IShellViewModel startViewModel)
+        public StockMainViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -121,7 +121,7 @@ namespace POSServer.ViewModels.Stock
 		        
         public void StockOutConfirm()
         {
-            
+            _startViewModel.EnterFlow(FlowDefinition.StockOutConfirmingFlow);
         }
 		        
         public void DepartmentStockOutConfirm()

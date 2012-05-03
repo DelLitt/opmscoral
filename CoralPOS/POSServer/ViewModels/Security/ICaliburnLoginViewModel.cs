@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
+using CoralPOS.Models;
 using CoralPOS2.Models;
 
 

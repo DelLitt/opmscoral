@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="POSServer.Views.Stock.Inventory.StockInventoryProcessingResultView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:RoutedMessaging="clr-namespace:Caliburn.PresentationFramework.RoutedMessaging;assembly=Caliburn.PresentationFramework" Width="837" Height="700">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cal="http://www.caliburnproject.org" Width="837" Height="700">
     <Grid>
             <Grid Height="125" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>

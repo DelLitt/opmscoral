@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.Screens;
-using Microsoft.Practices.ServiceLocation;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
+
 
 namespace POSClient.ViewModels
 {
     public interface IShellViewModel
     {
         void Open<T>() where T : IScreen;
-        void ShowDialog<U>(U screen) where U : IScreenEx;
-        IServiceLocator ServiceLocator { get; set; }
+        void ShowDialog<U>(U screen) where U : IScreen;
+        //IServiceLocator ServiceLocator { get; set; }
         IScreen ActiveMenu { get; set; }
         IFlow ActiveFlow { get; set; }
 

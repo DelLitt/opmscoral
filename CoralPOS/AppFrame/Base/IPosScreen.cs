@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework.Screens;
+﻿using Caliburn.Micro;
 
 namespace AppFrame.Base
 {
@@ -11,7 +7,7 @@ namespace AppFrame.Base
         //IScreen AttachedMenu { get; set; }
     }
 
-    public interface IPosScreen<T> : IScreen<T>, INode
+    public interface IPosScreen<T> : IScreen, INode
     {
         //IScreen AttachedMenu { get; set; }
     }

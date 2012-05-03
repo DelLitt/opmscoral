@@ -6,35 +6,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 
 namespace POSServer.ViewModels.Stock.StockOut
 {
-    public interface IStockOutWaitingConfirmViewModel : IScreenNode
-    {
-        #region Fields
+	public interface IStockOutWaitingConfirmViewModel : IScreenNode
+	{
+		#region Fields
 			#endregion
 		
 		#region Methods
-		        
-        void Help();
-        
-		        
-        void Unconfirm();
-        
-		        
-        void Stop();
-        
-		        
-        void Confirm();
-        
-		        
-        void Edit();
-        
-		        
-        void Search();
-        
+				
+		void Help();
+		
+				
+		void Unconfirm();
+		
+				
+		void Stop();
+		
+				
+		void Confirm();
+		
+				
+		void Edit();
+		
+				
+		void Recreate();
+		
 			#endregion
-    }
+	}
 }

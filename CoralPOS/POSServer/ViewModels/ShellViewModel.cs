@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AppFrame.Base;
-using AppFrame.Utils;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
-using Microsoft.Practices.ServiceLocation;
+using AppFrame.CustomAttributes;
+using AppFrame.Extensions;
+using Caliburn.Micro;
 using POSServer.Common;
-using Spring.Context;
-using Spring.Context.Support;
 
 namespace POSServer.ViewModels
 {
+    //[Singleton(typeof(IShellViewModel))]
     //[Singleton(typeof(IShellViewModel))]
     public class ShellViewModel : ShellNavigator<IScreen,INode>, IShellViewModel
     {
@@ -24,27 +16,57 @@ namespace POSServer.ViewModels
         private IScreen _dialogModel;
 
         public string CurrentPath { get;set; }
+        private static ShellViewModel _currentShellNavigator;
+        public static ShellViewModel Current
+        {
+            get { return _currentShellNavigator; }
+            //private set { _currentShellNavigator = value; }
+        }
+        //public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) {}
+        public ShellViewModel() : base()
+        {
+            if (_currentShellNavigator == null)
+            {
+                _currentShellNavigator = this;
+            }
+        }
 
-        public ShellViewModel(IServiceLocator serviceLocator) : base(serviceLocator) {}
-        public ShellViewModel() : base() { }
+        //public override void Activate() {}
+        protected override void OnActivate()
+        {
+            DialogExtensions.HideDialog = HideDialog;
+            DialogExtensions.ShowDialog = ShowDialog;
+            base.OnActivate();
+            //if(IsActive == false) Console.WriteLine("UI GIOI !");
+            RootScreen = IoC.Get<IMainViewModel>();
+            MainScreen = RootScreen;
+            bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
+            if (isLogged)
+            {
+                this.ActivateItem(MainScreen);
+            }
+            else
+            {
+                EnterFlow(FlowDefinition.LoginFlow);
+            }
+        }
 
-        public override void Activate() {}
-
-        protected override void OnInitialize() 
+        
+        /*protected override void OnInitialize() 
         {
             base.OnInitialize();
-            RootScreen = ServiceLocator.GetInstance<IMainView>();
+            RootScreen = IoC.Get<IMainViewModel>();
             MainScreen = RootScreen;
             bool isLogged = (bool)GlobalSession.Instance.Get(CommonConstants.IS_LOGGED);
             if(isLogged)
             {
-                this.OpenScreen(MainScreen);
+                this.ActivateItem(MainScreen);
             }
             else
             {
                 EnterFlow(FlowDefinition.LoginFlow);    
             }
-        }
+        }*/
         
     }
 }

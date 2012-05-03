@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using AppFrame.CustomAttributes;
 using AppFrame.Utils;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
-using Microsoft.Practices.ServiceLocation;
-using Spring.Context;
-using Spring.Context.Support;
+using Caliburn.Micro;
+
 
 namespace AppFrame.Base
 {
@@ -20,24 +15,21 @@ namespace AppFrame.Base
     /// <typeparam name="T">Type of screen view</typeparam>
     /// <typeparam name="U">Type of node in a flow</typeparam>
     public class ShellNavigator<T,U> : Navigator<T>,IRootNode<U> 
-                                                       where T:class,IScreen
-                                                       where U:class,INode
+                                                        where T:class,IScreen
+                                                        where U:class,INode
     {
 
-        private IServiceLocator _serviceLocator;
         private IScreen _dialogModel;
         private IDictionary<string,IFlow> _freezeFlows = new Dictionary<string,IFlow>();
         private IFlow _currentFlow;
-
-        public ShellNavigator(IServiceLocator serviceLocator)
-        {
-            _serviceLocator = serviceLocator;
-        }
+         
         public ShellNavigator()
         {
-            _serviceLocator = ((CaliburnApplication) Application.Current).Container;
+            //_serviceLocator = (Caliburn.PresentationFramework.ApplicationModel.CaliburnApplication) Application.Current).Container;
+            /*var bootstrapper = (Bootstrapper)Application.Current.Resources["bootstrapper"];*/
         }
-        /// <summary>
+        
+        /*/// <summary>
         /// Service locator
         /// </summary>
         public IServiceLocator ServiceLocator
@@ -45,14 +37,17 @@ namespace AppFrame.Base
             get
             {
                 if (_serviceLocator == null)
-                    _serviceLocator = Microsoft.Practices.ServiceLocation.ServiceLocator.Current;
+                {
+                    var bootstrapper = (Bootstrapper)Application.Current.Resources["bootstrapper"];
+                    _serviceLocator = bootstrapper.Container;
+                }
                 return _serviceLocator;
             }
             set
             {
                 _serviceLocator = value;
             }
-        }
+        }*/
         
         /// <summary>
         /// Menu attach with ActiveScreen
@@ -112,7 +107,8 @@ namespace AppFrame.Base
             if( node is T)
             {
                 T screen = node as T;
-                this.OpenScreen(screen);
+                //this.OpenScreen(screen);
+                this.ActivateItem(screen);
             }
         }
 
@@ -120,19 +116,51 @@ namespace AppFrame.Base
         /// Open screen with type
         /// </summary>
         /// <typeparam name="V">interface of screen</typeparam>
-        public void Open<V>() where V: IScreen 
+        public void Open<V>() where V:IScreen
         {
-            var screen = _serviceLocator.GetInstance<V>();
+            V screen = IoC.Get<V>();
             T scr = screen as T;
-            this.OpenScreen(scr);
+            this.ActivateItem(scr);
+            NotifyOfPropertyChange("ActiveItem");
         }
 
-        public void ShowDialog<T>(T screen) where T : IScreenEx
+        public void ShowDialog<T>(T screen) where T : IScreen
         {
-            screen.WasShutdown +=
-                delegate { DialogModel = null; };
+            if (screen is PosViewModel)
+            {
 
+                screen.Deactivated += delegate { DialogModel = null; };
+            }
             DialogModel = screen;
+        }
+        public void HideDialog<T>(T screen) where T : IScreen
+        {
+            if (screen is PosViewModel)
+            {
+                screen.Deactivate(true);
+            }
+            DialogModel = null;
+        }
+
+        public override void ActivateItem(T item)
+        {
+            if (item != null && item.Equals(ActiveItem))
+            {
+                /*if (IsActive)
+                {*/
+                    ScreenExtensions.TryActivate(item);
+                    OnActivationProcessed(item, true);
+                /*}*/
+                RaiseChangeNotifications();
+                return;
+            }
+
+            CloseStrategy.Execute(new[] { ActiveItem }, (canClose, items) =>
+            {
+                if (canClose)
+                    ChangeActiveItem(item, true);
+                else OnActivationProcessed(item, false);
+            });
         }
 
         /// <summary>
@@ -151,7 +179,10 @@ namespace AppFrame.Base
               if(ActiveFlow is ChildFlow)
               {
                   ChildFlow childFlow = (ChildFlow) ActiveFlow;
-                  if(childFlow.ParentFlow.Name.Equals(flowName)) isParentFlow = true;
+                  if (childFlow.ParentFlow != null)
+                  {
+                      if (flowName.Equals(childFlow.ParentFlow.Name)) isParentFlow = true;
+                  }
               }
               if(!isParentFlow)
               _freezeFlows[ActiveFlow.Name] = ActiveFlow;
@@ -198,7 +229,7 @@ namespace AppFrame.Base
         {
             /*try
             {*/
-                IFlow flow = _serviceLocator.GetInstance<IFlow>(flowName);
+                IFlow flow = IoC.Get<IFlow>(flowName);
                 flow.Name = flowName;
                 ExecuteFlow(flow,false);
                 return true;
@@ -244,11 +275,11 @@ namespace AppFrame.Base
             {
                 string name = typeName.Replace("[", "");
                        name = name.Replace("]", "");
-                var instanceByName = _serviceLocator.GetInstance<U>(name);
-                return (U) instanceByName;
+                var instanceByName = IoC.Get<U>(name);
+                return instanceByName;
             }
             var type = System.Reflection.Assembly.GetEntryAssembly().GetType(typeName);
-            var instance = _serviceLocator.GetInstance(type);
+            var instance = IoC.GetInstance(type,null);
             return (U) instance;
         }
 
@@ -295,7 +326,7 @@ namespace AppFrame.Base
         /// </summary>
         private void OpenMainScreen()
         {
-            if (MainScreen != null) this.OpenScreen(MainScreen);        
+            if (MainScreen != null) this.ActivateItem(MainScreen);        
         }
 
         /// <summary>
@@ -313,28 +344,30 @@ namespace AppFrame.Base
             else
             {
                 ActiveFlow = null;
-                if (MainScreen != null) this.OpenScreen(MainScreen);
+                if (MainScreen != null) this.ActivateItem(MainScreen);
             }
         }
         /// <summary>
         /// Override original ChangeActiveScreenCore
         /// </summary>
         /// <param name="newActiveScreen"></param>
-        protected override void ChangeActiveScreenCore(T newActiveScreen)
+        /// 
+        protected override void ChangeActiveItem(T newActiveScreen,bool closePrevious)
         {
-            base.ChangeActiveScreenCore(newActiveScreen);
-
+            base.ChangeActiveItem(newActiveScreen,closePrevious);
+            
             // process AttachMenu
             Type type = newActiveScreen.GetType();
             object[] attachMenuAttributes = type.GetCustomAttributes(typeof (AttachMenuAndMainScreenAttribute), false);
             if(attachMenuAttributes!= null && attachMenuAttributes.Count() > 0)
             {
                 AttachMenuAndMainScreenAttribute attribute = (AttachMenuAndMainScreenAttribute) attachMenuAttributes[0];
-                IScreen menuScreen=(IScreen)_serviceLocator.GetInstance(attribute.AttachMenu);
+                IScreen menuScreen=(IScreen)IoC.GetInstance(attribute.AttachMenu,null);
                 ActiveMenu = menuScreen;
+                //ScreenExtensions.TryActivate(menuScreen);
                 if(attribute.MainScreen!=null)
                 {
-                    MainScreen = (T) _serviceLocator.GetInstance(attribute.MainScreen);
+                    MainScreen = (T) IoC.GetInstance(attribute.MainScreen,null);
                 }
                 else
                 {
@@ -343,6 +376,7 @@ namespace AppFrame.Base
             }
         }
 
+       
         public virtual void EnterChildFlow(string childFlowName, IFlow parentFlow)
         {
             ChildFlow flow = ObjectUtility.GetObject<ChildFlow>(childFlowName);

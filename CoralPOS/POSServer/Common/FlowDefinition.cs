@@ -7,9 +7,10 @@ namespace POSServer.Common
 {
     public class FlowDefinition
     {
+        
         #region Synchronize
         public const string SYNC_TO_DEPARTMENT = "SyncToDepartmentFlow";
-        
+        public static string CreateSyncUSBFlow = "CreateSyncUSBFlow";
 
         #endregion
 
@@ -47,9 +48,11 @@ namespace POSServer.Common
         public const string SyncToDepartmentFlow = "SyncToDepartmentFlow";
         public const string SystemConfigFlow = "SystemConfigFlow";
         public const string StockOutSpecificCreateFlow = "StockOutSpecificCreateFlow";
+        public const string StockOutConfirmingFlow = "StockOutConfirmFlow";
+
         #endregion
 
-        
-        
+
+
     }
 }

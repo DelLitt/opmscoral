@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSServer.Common;
 
 
@@ -23,9 +24,9 @@ namespace POSServer.ViewModels.Tool
     {
 
         private IShellViewModel _startViewModel;
-        public ToolMainViewModel(IShellViewModel startViewModel)
+        public ToolMainViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields

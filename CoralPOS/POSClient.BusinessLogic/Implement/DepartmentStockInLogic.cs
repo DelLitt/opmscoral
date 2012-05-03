@@ -124,7 +124,7 @@ namespace POSClient.BusinessLogic.Implement
             {
                 foreach (DepartmentStockInDetail inDetail in stockIn.DepartmentStockInDetails)
                 {
-                    DepartmentStock stock = (from stk in session.Linq<DepartmentStock>()
+                    DepartmentStock stock = (from stk in session.Query<DepartmentStock>()
                                        where
                                            stk.DepartmentStockPK.ProductId.Equals(inDetail.Product.ProductId)
                                        select stk).FirstOrDefault();

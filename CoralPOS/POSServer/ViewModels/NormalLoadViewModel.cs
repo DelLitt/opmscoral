@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Timers;
-using AppFrame.Base;
+﻿using System.Timers;
 using AppFrame.WPF.Screens;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.Invocation;
-using Caliburn.PresentationFramework.Screens;
-using System.Windows.Documents;
+using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
@@ -17,9 +9,10 @@ namespace POSServer.ViewModels
     {
         private IShellViewModel _startViewModel;
         private Timer timer = null;
-        public NormalLoadViewModel(IShellViewModel shellPresenter)
+        public NormalLoadViewModel()
         {
-            _startViewModel = shellPresenter;
+            _startViewModel = ShellViewModel.Current;
+            Parent = _startViewModel;
             /*timer = new Timer();
             timer.Interval = 100;
             timer.Elapsed += TimerElapsed;
@@ -59,8 +52,10 @@ namespace POSServer.ViewModels
 
         public void StopLoading()
         {
+            TryClose();
+            _startViewModel.HideDialog(this);
             //timer.Stop();
-            Shutdown(); 
+            //Shutdown(); 
         }
 
         protected override void OnInitialize()

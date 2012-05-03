@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using NHibernate.Linq;
 using System.Linq.Expressions;
 using System.Collections;
+using NHibernate;
+using NHibernate.Linq;
+using NHibernate.Transform;
+using Remotion.Linq;
+
 
 namespace AppFrame.Extensions
 {
     public static class TypedExpandExtension
     {
-        public static INHibernateQueryable<T> Expand<T, K, L>(
-            this INHibernateQueryable<T> nhQueryable,
+        //private NHibernate.Linq.NhQueryable<T> query = NHibernate.Linq;
+        /*public static IQueryable<T> Expand<T, K, L>(
+            this IQueryable<T> nhQueryable,
             Expression<Func<T, K>> selector, SubpathBuilder<L> subpaths)
         {
             var mainPath = ProcessSelector(selector);
@@ -19,26 +26,28 @@ namespace AppFrame.Extensions
             foreach (var subPathSelector in subpaths.Expressions)
             {
                 var subpath = ProcessSelector(subPathSelector);
-                nhQueryable.Expand(mainPath + "." + subpath);
+                nhQueryable.Expand(mainPath + "." + subpath);                
             }
 
             return nhQueryable;
-        }
+        }*/
 
-        public static INHibernateQueryable<T> Expand<T, K>(
-            this INHibernateQueryable<T> nhQueryable,
+        public static IQueryable<T> Expand<T, K>(
+            this IQueryable<T> nhQueryable,
             Expression<Func<T, K>> selector)
         {
             
-            if (selector.Body.NodeType != ExpressionType.MemberAccess)
+            /*if (selector.Body.NodeType != ExpressionType.MemberAccess)
                 throw new ArgumentException("Selector has to be of MemberAccess type", "selector");
 
-            nhQueryable.Expand(ProcessSelector(selector));
-
+            nhQueryable.Expand(ProcessSelector(selector));*/
+            nhQueryable = nhQueryable.Fetch(selector);
             return nhQueryable;
         }
 
-        public static string ProcessSelector(LambdaExpression expression)
+
+        
+        /*public static string ProcessSelector(LambdaExpression expression)
         {
             var memberStack = new Stack<string>();
             TraverseMemberAccess(expression.Body as MemberExpression, memberStack);
@@ -129,6 +138,6 @@ namespace AppFrame.Extensions
 
             Expressions.Add(selector);
             return this;
-        }
+        } */
     }
 }

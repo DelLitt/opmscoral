@@ -1,10 +1,8 @@
-﻿namespace Caliburn.WPF.ApplicationFramework
-{
-    using PresentationFramework;
-    using PresentationFramework.ApplicationModel;
-    using PresentationFramework.Screens;
+﻿using Caliburn.Micro;
 
-    public class Question : PropertyChangedBase, ISubordinate
+namespace Caliburn.WPF.ApplicationFramework
+{
+    public class Question : PropertyChangedBase // ,ISubordinate
     {
         private Answer _answer = Answer.No;
 
@@ -31,5 +29,7 @@
                 NotifyOfPropertyChange(() => Answer);
             }
         }
+
+        
     }
 }

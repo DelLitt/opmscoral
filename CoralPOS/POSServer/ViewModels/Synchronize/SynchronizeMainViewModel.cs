@@ -9,10 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using POSServer.BusinessLogic.Common;
 using POSServer.Common;
 
@@ -24,9 +24,9 @@ namespace POSServer.ViewModels.Synchronize
     {
 
         private IShellViewModel _startViewModel;
-        public SynchronizeMainViewModel(IShellViewModel startViewModel)
+        public SynchronizeMainViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -58,6 +58,11 @@ namespace POSServer.ViewModels.Synchronize
         public void ToMainStock()
         {
             
+        }
+
+        public void CreateSyncUSB()
+        {
+            _startViewModel.EnterFlow(FlowDefinition.CreateSyncUSBFlow);
         }
 				#endregion
 		

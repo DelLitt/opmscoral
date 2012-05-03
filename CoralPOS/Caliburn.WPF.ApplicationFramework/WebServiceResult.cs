@@ -1,12 +1,10 @@
-﻿namespace Caliburn.WPF.ApplicationFramework
+﻿using AppFrame.Invocation;
+using Caliburn.Micro;
+
+namespace Caliburn.WPF.ApplicationFramework
 {
     using System;
-    using System.Linq;
     using System.Linq.Expressions;
-    using Core;
-    using Core.Invocation;
-    using Microsoft.Practices.ServiceLocation;
-    using PresentationFramework.RoutedMessaging;
 
     public class WebServiceResult<T, K> : IResult
         where T : new()
@@ -26,11 +24,9 @@
             _callback = callback;
         }
 
-        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
-
-        public void Execute(ResultExecutionContext context)
+        public void Execute(ActionExecutionContext context)
         {
-            context.ServiceLocator.GetInstance<ILoadScreen>().StartLoading();
+            IoC.Get<ILoadScreen>().StartLoading();
             //if you would rather disable the control that caused the service to be called, you could do this:
             //ChangeAvailability(message, false);
 
@@ -41,7 +37,7 @@
             var service = new T();
 
             EventHelper.WireEvent(
-                service, 
+                service,
                 service.GetType().GetEvent(eventName),
                 OnEvent
                 );
@@ -49,9 +45,11 @@
             _serviceCall.Compile()(service);
         }
 
+        public event EventHandler<ResultCompletionEventArgs> Completed = delegate { };
+
         private void OnEvent(object s, EventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ILoadScreen>().StopLoading();
+            IoC.Get<ILoadScreen>().StopLoading();
             //or re-enable the control that caused the service to be called:
             //ChangeAvailability(message, true);
 
@@ -61,11 +59,5 @@
             Completed(this, new ResultCompletionEventArgs());
         }
 
-        private void ChangeAvailability(IRoutedMessage message, bool isAvailable)
-        {
-            (from trigger in message.Source.Triggers
-             where trigger.Message == message
-             select trigger).Apply(x => x.UpdateAvailabilty(isAvailable));
-        }
     }
 }

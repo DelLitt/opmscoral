@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.ModelFramework;
-
-namespace CoralPOS2.Models
+﻿namespace CoralPOS.Models
 {
-    public class CaliburnLoginModel : ModelBase
+    public class CaliburnLoginModel
     {
-        public static readonly IPropertyDefinition<string> UsernameProperty =
+        /*public static readonly IPropertyDefinition<string> UsernameProperty =
             Property<CaliburnLoginModel, string>(x => x.Username);
                 //.MustNotBeBlank("Phai nhap ten nguoi dung.");
 
@@ -26,6 +20,13 @@ namespace CoralPOS2.Models
         {
             get { return GetValue(PasswordProperty); }
             set { SetValue(PasswordProperty, value); }
+        }*/
+
+        public string Username
+        {
+            get;set;
         }
+
+        public string Password { get; set; }
     }
 }

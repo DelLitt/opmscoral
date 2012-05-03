@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using AppFrame.Base;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 using POSClient.BusinessLogic.Implement;
 
 namespace POSClient.ViewModels.Dialogs
 {
-    public interface IStockProductPropertiesViewModel : IScreenNode,IScreenEx
+    public interface IStockProductPropertiesViewModel : IScreenNode,IScreen
     {
         #region Fields
         string ProductName { get; set; }

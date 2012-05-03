@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
 using NHibernate;
-using Spring.Data;
 using Spring.Data.Common;
-using Spring.Data;
 using Spring.Data.Core;
 using Spring.Data.NHibernate;
-using Spring.Data.Objects;
-using Spring.Data.Support;
 
 namespace AppFrame.DataLayer.Utils
 {
+
     public class PosDatabase : AdoDaoSupport
     {
         public PosDatabase(AdoTemplate adoTemplate)
@@ -90,7 +85,7 @@ namespace AppFrame.DataLayer.Utils
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<PosDatabase>();
+                return IoC.Get<PosDatabase>();
             }
         }
 

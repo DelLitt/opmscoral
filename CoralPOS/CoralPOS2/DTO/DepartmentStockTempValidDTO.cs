@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using Caliburn.PresentationFramework.Behaviors;
+using AppFrame.Validation;
 using CoralPOS.Models;
 
 namespace CoralPOS.DTO

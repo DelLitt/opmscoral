@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using AppFrame.Base;
 using AppFrame.WPF.Screens;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
 using POSClient.BusinessLogic.Implement;
 using POSClient.Common;
 
@@ -20,14 +20,14 @@ namespace POSClient.Actions.Stock.StockOut
         public override void DoExecute()
         {
             CoralPOS.Models.DepartmentStockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_DEPT_STOCK_OUT) as CoralPOS.Models.DepartmentStockOut;
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
+            IoC.Get<INormalLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
             DoExecuteAsync(() => DepartmentStockOutLogic.Add(stockOut), stockOut);
         }
 
         void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
+            IoC.Get<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Saved StockOut successfully !!");
             GoToNextNode();
         }

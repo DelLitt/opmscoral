@@ -49,6 +49,7 @@ namespace POSServer.BusinessLogic.Implement
         [Transaction(ReadOnly=false)]
         public SyncStatusus Add(SyncStatusus data)
         {
+
             SyncStatususDao.Add(data);
             return data;
         }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using AppFrame.Base;
 using AppFrame.DataLayer;
 using AppFrame.WPF.Screens;
+using Caliburn.Micro;
 using CoralPOS.Models;
-using Microsoft.Practices.ServiceLocation;
+
 using POSClient.BusinessLogic.Implement;
 using POSClient.Common;
 
@@ -25,14 +26,14 @@ namespace POSClient.Actions.Stock.StockOut
 
         public override void DoExecute()
         {
-            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StartLoading();
+            IoC.Get<ICircularLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockOutPreLoadActionDoExecuteCompleted;
             DoExecuteAsync(() => DoWork(), null);
         }
 
         void StockOutPreLoadActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<ICircularLoadViewModel>().StopLoading();
+            IoC.Get<ICircularLoadViewModel>().StopLoading();
             GoToNextNode();
         }
 

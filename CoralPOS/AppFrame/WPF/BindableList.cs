@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework;
-using AppFrame.DataLayer;
+﻿using Caliburn.Micro;
 
 namespace AppFrame.WPF
 {

@@ -1,5 +1,6 @@
 ﻿using AppFrame.WPF.Screens;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 
 namespace POSClient.ViewModels
 {
@@ -7,9 +8,9 @@ namespace POSClient.ViewModels
     {
         private IShellViewModel _startViewModel;
 
-        public CircularLoadViewModel(IShellViewModel shellPresenter)
+        public CircularLoadViewModel()
         {
-            _startViewModel = shellPresenter;
+            _startViewModel = ShellViewModel.Current;
             
         }
         public void StartLoading()
@@ -19,7 +20,8 @@ namespace POSClient.ViewModels
 
         public void StopLoading()
         {
-            Shutdown();
+            ShellViewModel.Current.HideDialog(this);
+            //Shutdown();
         }
     }
 }

@@ -82,7 +82,7 @@ namespace AppFrame.Extensions.DataGrid
                 throw new InvalidOperationException("The DataGridExtension.SelectedItemsSource attached " +
                                                     "property can only be applied to DataGrid controls.");
 
-            dataGrid.SelectionChanged -= new SelectionChangedEventHandler(OnListBoxSelectionChanged);
+            dataGrid.SelectionChanged -= new SelectionChangedEventHandler(OnDataGridSelectionChanged);
 
             if (e.NewValue != null)
             {
@@ -105,11 +105,11 @@ namespace AppFrame.Extensions.DataGrid
                 return;
             }
 
-            dataGrid.SelectionChanged += new SelectionChangedEventHandler(OnListBoxSelectionChanged);
+            dataGrid.SelectionChanged += new SelectionChangedEventHandler(OnDataGridSelectionChanged);
             ResynchList(dataGrid);
         }
 
-        private static void OnListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private static void OnDataGridSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             System.Windows.Controls.DataGrid dataGrid = sender as System.Windows.Controls.DataGrid;
             if (dataGrid != null)

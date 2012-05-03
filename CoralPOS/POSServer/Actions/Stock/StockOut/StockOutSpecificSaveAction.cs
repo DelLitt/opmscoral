@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using AppFrame.Base;
-using AppFrame.Utils;
 using AppFrame.WPF.Screens;
-using Caliburn.PresentationFramework.Actions;
-using Caliburn.PresentationFramework.Invocation;
-using Microsoft.Practices.ServiceLocation;
+using Caliburn.Micro;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Utils;
@@ -28,14 +21,14 @@ namespace POSServer.Actions.Stock.StockOut
         public override void DoExecute()
         {
             CoralPOS.Models.StockOut stockOut = Flow.Session.Get(FlowConstants.SAVE_STOCK_OUT) as CoralPOS.Models.StockOut;
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
+            IoC.Get<INormalLoadViewModel>().StartLoading();
             DoExecuteCompleted += StockOutSaveActionDoExecuteCompleted;
             DoExecuteAsync(() => StockOutLogic.Add(stockOut), stockOut);
         }
 
         void StockOutSaveActionDoExecuteCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
+            IoC.Get<INormalLoadViewModel>().StopLoading();
             MessageBox.Show("Saved StockOut successfully !!");
             GoToNextNode();
         }

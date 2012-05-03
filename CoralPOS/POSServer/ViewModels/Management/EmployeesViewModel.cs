@@ -6,22 +6,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.DataLayer;
-using AppFrame.Utility;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Filters;
-using Caliburn.PresentationFramework.Screens;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
-using System.Linq;
-using System.Linq.Expressions;
 using POSServer.ViewModels.Menu.Management;
 
 
@@ -39,9 +30,9 @@ namespace POSServer.ViewModels.Management
         /// Initializes a new instance of the <see cref="EmployeesViewModel"/> class.
         /// </summary>
         /// <param name="startViewModel">The start view model.</param>
-        public EmployeesViewModel(IShellViewModel startViewModel)
+        public EmployeesViewModel()
         {
-            _startViewModel = startViewModel;
+            _startViewModel = ShellViewModel.Current;
         }
 
         #region Fields
@@ -330,7 +321,7 @@ namespace POSServer.ViewModels.Management
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             InitContent();
         }

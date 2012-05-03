@@ -39,7 +39,13 @@
     <property name="MainStockLogic" ref="IMainStockLogic" />
     <property name="DepartmentLogic" ref="IDepartmentLogic" />
   </object>
-
+  <object id="IStockOutConfirmPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmPreLoadAction, POSServer" singleton="false">
+    <property name="ProductMasterLogic" ref="IProductMasterLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
+    <property name="DepartmentLogic" ref="IDepartmentLogic" />
+    <property name="StockOutLogic" ref="IStockOutLogic" />
+  </object>
+  
   <object id="IStockOutSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutSaveAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="ProductColorLogic" ref="IExProductColorLogic" />
@@ -47,8 +53,12 @@
     <property name="CategoryLogic" ref="ICategoryLogic" />
     <property name="ProductTypeLogic" ref="IProductTypeLogic" />
     <property name="StockOutLogic" ref="IStockOutLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
   </object>
-
+  <object id="IStockOutConfirmSaveAction" type="POSServer.Actions.Stock.StockOut.StockOutConfirmSaveAction, POSServer" singleton="false">
+    <property name="StockOutLogic" ref="IStockOutLogic" />
+    <property name="MainStockLogic" ref="IMainStockLogic" />
+  </object>
   <object id="IStockOutSpecificPreLoadAction" type="POSServer.Actions.Stock.StockOut.StockOutSpecificPreLoadAction, POSServer" singleton="false">
     <property name="ProductMasterLogic" ref="IProductMasterLogic" />
     <property name="MainStockLogic" ref="IMainStockLogic" />

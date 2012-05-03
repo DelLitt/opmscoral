@@ -10,11 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using AppFrame.Base;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
+using Caliburn.Micro;
 
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -33,9 +33,9 @@ namespace POSServer.ViewModels.ProductMaster
 
         private IList _productSizes;
 
-        public ProductMasterSummaryViewModel(IShellViewModel startViewModel)
+        public ProductMasterSummaryViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -202,7 +202,7 @@ namespace POSServer.ViewModels.ProductMaster
             
         }
 
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             CoralPOS.Models.ProductMaster master = Flow.Session.Get(FlowConstants.SAVE_PRODUCT_MASTER) as CoralPOS.Models.ProductMaster;
 

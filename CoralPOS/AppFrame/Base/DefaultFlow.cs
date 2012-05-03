@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using Caliburn.PresentationFramework.Actions;
-using Caliburn.PresentationFramework.Screens;
+using Caliburn.Micro;
 
 namespace AppFrame.Base
 {
@@ -145,7 +140,7 @@ namespace AppFrame.Base
             if (_current is IScreen)
             {
                 var screen = _current as IScreen;
-                _rootNavigator.OpenScreen(screen);
+                _rootNavigator.ActivateItem(screen);
             }
             else if(_current is IActionNode)
             {

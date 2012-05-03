@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.WPF.Screens;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using Caliburn.Micro;
 
 namespace POSServer.ViewModels
 {
@@ -11,19 +12,22 @@ namespace POSServer.ViewModels
     {
         private IShellViewModel _startViewModel;
 
-        public CircularLoadViewModel(IShellViewModel shellPresenter)
+        public CircularLoadViewModel()
         {
-            _startViewModel = shellPresenter;
-            
+            _startViewModel = ShellViewModel.Current;
+            Parent = _startViewModel;
+
         }
         public void StartLoading()
         {
-           _startViewModel.ShowDialog(this); 
+            _startViewModel.ShowDialog(this); 
         }
 
         public void StopLoading()
         {
-            Shutdown();
+            TryClose();
+            _startViewModel.HideDialog(this);
+            ////Shutdown();
         }
     }
 }

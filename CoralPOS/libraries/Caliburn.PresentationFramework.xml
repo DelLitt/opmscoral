@@ -5433,7 +5433,7 @@
             </summary>
             <value>The subject.</value>
         </member>
-        <member name="T:Caliburn.PresentationFramework.Screens.IScreenEx">
+        <member name="T:Caliburn.PresentationFramework.Screens.IScreen">
             <summary>
             An <see cref="T:Caliburn.PresentationFramework.Screens.IScreen"/> which also implements <see cref="T:Caliburn.PresentationFramework.Screens.IHierarchicalScreen"/>, <see cref="T:Caliburn.PresentationFramework.ApplicationModel.ILifecycleNotifier"/> and <see cref="T:Caliburn.PresentationFramework.Views.IViewAware"/>.
             </summary>
@@ -5457,12 +5457,12 @@
             <param name="context">The context.</param>
             <returns>The view</returns>
         </member>
-        <member name="M:Caliburn.PresentationFramework.Screens.IScreenEx.Close">
+        <member name="M:Caliburn.PresentationFramework.Screens.IScreen.Close">
             <summary>
             Tries to close this screen.
             </summary>
         </member>
-        <member name="P:Caliburn.PresentationFramework.Screens.IScreenEx.IsInitialized">
+        <member name="P:Caliburn.PresentationFramework.Screens.IScreen.IsInitialized">
             <summary>
             Gets or sets a value indicating whether this instance is initialized.
             </summary>
@@ -5470,7 +5470,7 @@
             	<c>true</c> if this instance is initialized; otherwise, <c>false</c>.
             </value>
         </member>
-        <member name="P:Caliburn.PresentationFramework.Screens.IScreenEx.IsActive">
+        <member name="P:Caliburn.PresentationFramework.Screens.IScreen.IsActive">
             <summary>
             Gets or sets a value indicating whether this instance is active.
             </summary>
@@ -6107,7 +6107,7 @@
         </member>
         <member name="T:Caliburn.PresentationFramework.Screens.Screen">
             <summary>
-            A base implementation of <see cref="T:Caliburn.PresentationFramework.Screens.IScreen"/> and <see cref="T:Caliburn.PresentationFramework.Screens.IScreenEx"/>.
+            A base implementation of <see cref="T:Caliburn.PresentationFramework.Screens.IScreen"/> and <see cref="T:Caliburn.PresentationFramework.Screens.IScreen"/>.
             </summary>
         </member>
         <member name="M:Caliburn.PresentationFramework.Screens.Screen.Initialize">

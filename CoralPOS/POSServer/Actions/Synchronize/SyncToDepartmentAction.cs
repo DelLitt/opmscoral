@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using AppFrame.Base;
 using AppFrame.Base.Synchronize;
-using AppFrame.Utils;
 using AppFrame.WPF.Screens;
+using Caliburn.Micro;
 using CoralPOS.Models;
-using Microsoft.Practices.ServiceLocation;
-using POSServer.Actions.Stock.StockOut;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
 using POSServer.Common;
-using ProtoBuf;
+using POSServer.Utils;
 using ClientUtility = POSServer.Utils.ClientUtility;
 
 namespace POSServer.Actions.Synchronize
@@ -29,7 +24,8 @@ namespace POSServer.Actions.Synchronize
         public override void DoExecute()
         {
             SyncToDepartmentObject toDepartmentObject = Flow.Session.Get(FlowConstants.SYNC_TO_DEPARTMENT) as SyncToDepartmentObject;
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StartLoading();
+
+            IoC.Get<INormalLoadViewModel>().StartLoading();
             DoExecuteCompleted += SyncToDepartmentCompleted;
             DoExecuteAsync(() => SyncToDepartment(toDepartmentObject), toDepartmentObject);
             GoToNextNode();
@@ -70,7 +66,7 @@ namespace POSServer.Actions.Synchronize
 
         private void SyncToDepartmentCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<INormalLoadViewModel>().StopLoading();
+            IoC.Get<INormalLoadViewModel>().StopLoading();
             GoToNextNode();
         }
     }

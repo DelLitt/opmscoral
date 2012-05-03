@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using AopAlliance.Aop;
-using Caliburn.Core.Validation;
+using AppFrame.Validation;
 using Caliburn.DynamicProxy.Interceptors;
-using Caliburn.PresentationFramework.ViewModels;
-using Castle.Core.Interceptor;
 using Castle.DynamicProxy;
 using NHibernate;
-using NHibernate.Proxy;
 using NHibernate.Type;
-using Spring.Aop.Framework;
-using Spring.Aop.Support;
 
 
 namespace AppFrame.DataLayer

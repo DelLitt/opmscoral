@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AppFrame.Base;
+using AppFrame.CustomAttributes;
+using AppFrame.Extensions;
 using AppFrame.Validation;
-using Caliburn.Core.IoC;
+
 
 namespace POSServer.ViewModels.Dialogs
 {
@@ -28,13 +30,15 @@ namespace POSServer.ViewModels.Dialogs
             }
         }
 
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             
         }
+
         public void Close()
         {
-            Shutdown();
+            DialogExtensions.HideDialog(this);
+            //Shutdown();
         }
     }
 }

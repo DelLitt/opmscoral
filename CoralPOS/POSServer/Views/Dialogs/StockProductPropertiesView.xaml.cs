@@ -57,7 +57,7 @@ namespace POSServer.Views.Dialogs
                 {
                     addColorList = 2;
                 }
-                this.Send("UpdateChosenList",addColorList);
+                //this.Send("UpdateChosenList",addColorList);
             }
         }
         

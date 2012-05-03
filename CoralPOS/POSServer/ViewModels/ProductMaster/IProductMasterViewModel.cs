@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using AppFrame.Base;
 
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 
 namespace POSServer.ViewModels.ProductMaster

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using AppFrame.Base;
-using Caliburn.Core.IoC;
+using AppFrame.CustomAttributes;
+
 
 namespace POSClient.ViewModels.Dialogs
 {
@@ -23,13 +24,10 @@ namespace POSClient.ViewModels.Dialogs
             }
         }
 
-        public override void Initialize()
-        {
-            
-        }
         public void Close()
         {
-            Shutdown();
+            ShellViewModel.Current.HideDialog(this);
+            //Shutdown();
         }
     }
 }

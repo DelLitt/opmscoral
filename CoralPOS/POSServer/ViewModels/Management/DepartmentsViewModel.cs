@@ -11,11 +11,11 @@ using System.Windows;
 using AppFrame.Base;
 using AppFrame.CustomAttributes;
 using AppFrame.Utils;
-using Caliburn.Core;
-using Caliburn.Core.IoC;
+using Caliburn.Micro;
 
-using Caliburn.PresentationFramework.ApplicationModel;
-using Caliburn.PresentationFramework.Screens;
+
+using AppFrame.CustomAttributes;
+using AppFrame.CustomAttributes;
 using CoralPOS.Models;
 using POSServer.BusinessLogic.Common;
 using POSServer.BusinessLogic.Implement;
@@ -29,9 +29,9 @@ namespace POSServer.ViewModels.Management
     {
 
         private IShellViewModel _startViewModel;
-        public DepartmentsViewModel(IShellViewModel startViewModel)
+        public DepartmentsViewModel()
         {
-            _startViewModel = startViewModel; 
+            _startViewModel = ShellViewModel.Current;
         }
 		
 		#region Fields
@@ -170,7 +170,7 @@ namespace POSServer.ViewModels.Management
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public override void Initialize()
+        protected override void OnInitialize()
         {
             DepartmentLogic.LoadDefinition(Flow.Session);
             IList list = null;
